@@ -12,6 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 

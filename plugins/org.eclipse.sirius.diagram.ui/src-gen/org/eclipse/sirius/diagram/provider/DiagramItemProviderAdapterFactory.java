@@ -775,31 +775,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected FilterVariableValueItemProvider filterVariableValueItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createFilterVariableValueAdapter() {
-        if (filterVariableValueItemProvider == null) {
-            filterVariableValueItemProvider = new FilterVariableValueItemProvider(this);
-        }
-
-        return filterVariableValueItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.CollapseFilter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -999,6 +974,56 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected TypedVariableValueItemProvider typedVariableValueItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createTypedVariableValueAdapter() {
+        if (typedVariableValueItemProvider == null) {
+            typedVariableValueItemProvider = new TypedVariableValueItemProvider(this);
+        }
+
+        return typedVariableValueItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected EObjectVariableValueItemProvider eObjectVariableValueItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createEObjectVariableValueAdapter() {
+        if (eObjectVariableValueItemProvider == null) {
+            eObjectVariableValueItemProvider = new EObjectVariableValueItemProvider(this);
+        }
+
+        return eObjectVariableValueItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1186,9 +1211,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
         if (filterVariableHistoryItemProvider != null) {
             filterVariableHistoryItemProvider.dispose();
         }
-        if (filterVariableValueItemProvider != null) {
-            filterVariableValueItemProvider.dispose();
-        }
         if (collapseFilterItemProvider != null) {
             collapseFilterItemProvider.dispose();
         }
@@ -1212,6 +1234,12 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
         }
         if (dragAndDropTargetItemProvider != null) {
             dragAndDropTargetItemProvider.dispose();
+        }
+        if (typedVariableValueItemProvider != null) {
+            typedVariableValueItemProvider.dispose();
+        }
+        if (eObjectVariableValueItemProvider != null) {
+            eObjectVariableValueItemProvider.dispose();
         }
     }
 

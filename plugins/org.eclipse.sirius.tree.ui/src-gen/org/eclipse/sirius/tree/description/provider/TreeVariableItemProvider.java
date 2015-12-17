@@ -25,9 +25,10 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractVariableItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -70,11 +71,11 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeVariable_documentation_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TreeVariable_documentation_feature", "_UI_TreeVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.TREE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeVariable_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TreeVariable_documentation_feature", "_UI_TreeVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.TREE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -166,6 +167,8 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createAcceleoVariable()));
 

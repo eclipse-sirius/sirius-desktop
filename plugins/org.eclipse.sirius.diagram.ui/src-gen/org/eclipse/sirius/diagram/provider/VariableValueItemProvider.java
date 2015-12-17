@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+/*******************************************************************************
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,33 +7,40 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
- */
-package org.eclipse.sirius.viewpoint.description.tool.provider;
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.provider;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.tool.SubVariable} object.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.diagram.VariableValue} object. <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class SubVariableItemProvider extends AbstractVariableItemProvider {
+public class VariableValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public SubVariableItemProvider(AdapterFactory adapterFactory) {
+    public VariableValueItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -53,6 +60,17 @@ public class SubVariableItemProvider extends AbstractVariableItemProvider {
     }
 
     /**
+     * This returns VariableValue.gif. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     */
+    @Override
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/VariableValue")); //$NON-NLS-1$
+    }
+
+    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -60,9 +78,7 @@ public class SubVariableItemProvider extends AbstractVariableItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((SubVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SubVariable_type") : //$NON-NLS-1$
-            getString("_UI_SubVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return getString("_UI_VariableValue_type"); //$NON-NLS-1$
     }
 
     /**
@@ -89,6 +105,17 @@ public class SubVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
+
+    /**
+     * Return the resource locator for this item provider's resources. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ResourceLocator getResourceLocator() {
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

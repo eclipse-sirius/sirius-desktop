@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.DialogVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 

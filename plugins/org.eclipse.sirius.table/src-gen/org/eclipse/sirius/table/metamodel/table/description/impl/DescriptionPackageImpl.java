@@ -1622,7 +1622,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         deleteToolEClass.getESuperTypes().add(this.getTableTool());
         deleteColumnToolEClass.getESuperTypes().add(this.getDeleteTool());
         deleteLineToolEClass.getESuperTypes().add(this.getDeleteTool());
-        tableVariableEClass.getESuperTypes().add(theToolPackage.getAbstractVariable());
+        tableVariableEClass.getESuperTypes().add(theDescriptionPackage_1.getAbstractVariable());
         tableVariableEClass.getESuperTypes().add(theToolPackage.getVariableContainer());
         tableCreationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationCreationDescription());
         tableNavigationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationNavigationDescription());

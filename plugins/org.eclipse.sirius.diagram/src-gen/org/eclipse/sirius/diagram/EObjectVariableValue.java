@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+/*******************************************************************************
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,33 +7,32 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
- */
+ *******************************************************************************/
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.description.filter.FilterVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Filter Variable Value</b></em>'. <!-- end-user-doc -->
+ * <em><b>EObject Variable Value</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
+ * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
  * <em>Variable Definition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.FilterVariableValue#getModelElement
+ * <li>{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
  * <em>Model Element</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue()
+ * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue()
  * @model
  * @generated
  */
-public interface FilterVariableValue extends EObject {
+public interface EObjectVariableValue extends VariableValue {
     /**
      * Returns the value of the '<em><b>Variable Definition</b></em>' reference.
      * <!-- begin-user-doc -->
@@ -44,16 +43,16 @@ public interface FilterVariableValue extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Variable Definition</em>' reference.
-     * @see #setVariableDefinition(FilterVariable)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue_VariableDefinition()
+     * @see #setVariableDefinition(SelectModelElementVariable)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_VariableDefinition()
      * @model required="true"
      * @generated
      */
-    FilterVariable getVariableDefinition();
+    SelectModelElementVariable getVariableDefinition();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -62,7 +61,7 @@ public interface FilterVariableValue extends EObject {
      * @see #getVariableDefinition()
      * @generated
      */
-    void setVariableDefinition(FilterVariable value);
+    void setVariableDefinition(SelectModelElementVariable value);
 
     /**
      * Returns the value of the '<em><b>Model Element</b></em>' reference. <!--
@@ -75,7 +74,7 @@ public interface FilterVariableValue extends EObject {
      *
      * @return the value of the '<em>Model Element</em>' reference.
      * @see #setModelElement(EObject)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue_ModelElement()
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_ModelElement()
      * @model required="true"
      * @generated
      */
@@ -83,7 +82,7 @@ public interface FilterVariableValue extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue#getModelElement
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
      * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -94,4 +93,4 @@ public interface FilterVariableValue extends EObject {
      */
     void setModelElement(EObject value);
 
-} // FilterVariableValue
+} // EObjectVariableValue

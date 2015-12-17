@@ -26,7 +26,6 @@ import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -73,7 +72,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -211,13 +209,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
-    private EClass abstractVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass variableContainerEClass = null;
 
     /**
@@ -226,13 +217,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     private EClass acceleoVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass subVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1303,26 +1287,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
-    public EClass getAbstractVariable() {
-        return abstractVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EAttribute getAbstractVariable_Name() {
-        return (EAttribute) abstractVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EClass getVariableContainer() {
         return variableContainerEClass;
     }
@@ -1355,16 +1319,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     @Override
     public EAttribute getAcceleoVariable_ComputationExpression() {
         return (EAttribute) acceleoVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EClass getSubVariable() {
-        return subVariableEClass;
     }
 
     /**
@@ -2176,16 +2130,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         popupMenuEClass = createEClass(ToolPackage.POPUP_MENU);
         createEReference(popupMenuEClass, ToolPackage.POPUP_MENU__MENU_ITEM_DESCRIPTION);
 
-        abstractVariableEClass = createEClass(ToolPackage.ABSTRACT_VARIABLE);
-        createEAttribute(abstractVariableEClass, ToolPackage.ABSTRACT_VARIABLE__NAME);
-
         variableContainerEClass = createEClass(ToolPackage.VARIABLE_CONTAINER);
         createEReference(variableContainerEClass, ToolPackage.VARIABLE_CONTAINER__SUB_VARIABLES);
 
         acceleoVariableEClass = createEClass(ToolPackage.ACCELEO_VARIABLE);
         createEAttribute(acceleoVariableEClass, ToolPackage.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION);
-
-        subVariableEClass = createEClass(ToolPackage.SUB_VARIABLE);
 
         dialogVariableEClass = createEClass(ToolPackage.DIALOG_VARIABLE);
         createEAttribute(dialogVariableEClass, ToolPackage.DIALOG_VARIABLE__DIALOG_PROMPT);
@@ -2349,26 +2298,26 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         externalJavaActionCallEClass.getESuperTypes().add(this.getContainerModelOperation());
         popupMenuEClass.getESuperTypes().add(this.getAbstractToolDescription());
         acceleoVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        acceleoVariableEClass.getESuperTypes().add(this.getSubVariable());
-        subVariableEClass.getESuperTypes().add(this.getAbstractVariable());
-        dialogVariableEClass.getESuperTypes().add(this.getAbstractVariable());
-        elementDropVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        acceleoVariableEClass.getESuperTypes().add(theDescriptionPackage.getSubVariable());
+        dialogVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
+        elementDropVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         elementDropVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        elementSelectVariableEClass.getESuperTypes().add(this.getAbstractVariable());
-        elementVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        elementSelectVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
+        elementVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         elementVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        elementViewVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        elementViewVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         elementViewVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        elementDeleteVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        elementDeleteVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         elementDeleteVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        dropContainerVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        dropContainerVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         dropContainerVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        selectContainerVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        selectContainerVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         selectContainerVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        containerViewVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        containerViewVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         containerViewVariableEClass.getESuperTypes().add(this.getVariableContainer());
-        selectModelElementVariableEClass.getESuperTypes().add(this.getSubVariable());
+        selectModelElementVariableEClass.getESuperTypes().add(theDescriptionPackage.getSubVariable());
         selectModelElementVariableEClass.getESuperTypes().add(theDescriptionPackage.getSelectionDescription());
+        selectModelElementVariableEClass.getESuperTypes().add(theDescriptionPackage.getInteractiveVariableDescription());
         containerModelOperationEClass.getESuperTypes().add(this.getModelOperation());
         createInstanceEClass.getESuperTypes().add(this.getContainerModelOperation());
         changeContextEClass.getESuperTypes().add(this.getContainerModelOperation());
@@ -2380,7 +2329,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         forEClass.getESuperTypes().add(this.getContainerModelOperation());
         ifEClass.getESuperTypes().add(this.getContainerModelOperation());
         deleteViewEClass.getESuperTypes().add(this.getContainerModelOperation());
-        nameVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        nameVariableEClass.getESuperTypes().add(theDescriptionPackage.getAbstractVariable());
         caseEClass.getESuperTypes().add(this.getSwitchChild());
         defaultEClass.getESuperTypes().add(this.getSwitchChild());
         switchEClass.getESuperTypes().add(this.getModelOperation());
@@ -2687,16 +2636,10 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 null,
                 "menuItemDescription", null, 1, -1, PopupMenu.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(abstractVariableEClass, AbstractVariable.class, "AbstractVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getAbstractVariable_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 0, 1, AbstractVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
         initEClass(variableContainerEClass, VariableContainer.class, "VariableContainer", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(
                 getVariableContainer_SubVariables(),
-                this.getSubVariable(),
+                theDescriptionPackage.getSubVariable(),
                 null,
                 "subVariables", null, 0, -1, VariableContainer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
@@ -2705,8 +2648,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 getAcceleoVariable_ComputationExpression(),
                 theDescriptionPackage.getInterpretedExpression(),
                 "computationExpression", null, 0, 1, AcceleoVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        initEClass(subVariableEClass, SubVariable.class, "SubVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(dialogVariableEClass, DialogVariable.class, "DialogVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(

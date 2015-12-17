@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
-   Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+   Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
    All rights reserved. This program and the accompanying materials
    are made available under the terms of the Eclipse Public License v1.0
    which accompanies this distribution, and is available at
@@ -323,14 +323,14 @@
                class="org.eclipse.sirius.editor.properties.sections.tool.acceleovariable.AcceleoVariableComputationExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.acceleovariable.AcceleoVariableComputationExpressionFilter"
                id="tool.section.acceleoVariable.ComputationExpression"
-               afterSection="tool.section.abstractVariable.Name"
+               afterSection="description.section.abstractVariable.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.tool.abstractvariable.AbstractVariableNamePropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.tool.abstractvariable.AbstractVariableNameFilter"
-               id="tool.section.abstractVariable.Name"
+               class="org.eclipse.sirius.editor.properties.sections.description.abstractvariable.AbstractVariableNamePropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.abstractvariable.AbstractVariableNameFilter"
+               id="description.section.abstractVariable.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.tool.AbstractVariable"/>        
       </propertySection>
@@ -598,6 +598,30 @@
                id="style.section.basicLabelStyleDescription.IconPath"
                  tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.typedvariable.TypedVariableDefaultValueExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.typedvariable.TypedVariableDefaultValueExpressionFilter"
+               id="description.section.typedVariable.DefaultValueExpression"
+               afterSection="description.section.typedVariable.ValueClass"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.TypedVariable"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.typedvariable.TypedVariableValueTypePropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.typedvariable.TypedVariableValueTypeFilter"
+               id="description.section.typedVariable.ValueType"
+               afterSection="description.section.abstractVariable.Name"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.TypedVariable"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.interactivevariabledescription.InteractiveVariableDescriptionUserDocumentationPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.interactivevariabledescription.InteractiveVariableDescriptionUserDocumentationFilter"
+               id="description.section.interactiveVariableDescription.UserDocumentation"
+               afterSection="description.section.typedVariable.DefaultValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelExpressionPropertySection"

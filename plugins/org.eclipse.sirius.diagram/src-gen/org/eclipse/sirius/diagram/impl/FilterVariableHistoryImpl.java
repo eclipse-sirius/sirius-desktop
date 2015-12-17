@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
-import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -47,7 +47,7 @@ public class FilterVariableHistoryImpl extends MinimalEObjectImpl.Container impl
      * @generated
      * @ordered
      */
-    protected EList<FilterVariableValue> ownedValues;
+    protected EList<VariableValue> ownedValues;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -74,9 +74,9 @@ public class FilterVariableHistoryImpl extends MinimalEObjectImpl.Container impl
      * @generated
      */
     @Override
-    public EList<FilterVariableValue> getOwnedValues() {
+    public EList<VariableValue> getOwnedValues() {
         if (ownedValues == null) {
-            ownedValues = new EObjectContainmentEList.Resolving<FilterVariableValue>(FilterVariableValue.class, this, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);
+            ownedValues = new EObjectContainmentEList.Resolving<VariableValue>(VariableValue.class, this, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);
         }
         return ownedValues;
     }
@@ -120,7 +120,7 @@ public class FilterVariableHistoryImpl extends MinimalEObjectImpl.Container impl
         switch (featureID) {
         case DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES:
             getOwnedValues().clear();
-            getOwnedValues().addAll((Collection<? extends FilterVariableValue>) newValue);
+            getOwnedValues().addAll((Collection<? extends VariableValue>) newValue);
             return;
         }
         super.eSet(featureID, newValue);

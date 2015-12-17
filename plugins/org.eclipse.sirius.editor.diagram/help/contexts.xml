@@ -456,17 +456,6 @@
    
       </description>
    </context>
-   <context id="FilterVariableValue">
-     <description>
-       
-       
-         
-   <!-- Start of user code FilterVariableValue description -->
-   
-   <!-- End of user code FilterVariableValue description -->
-   
-      </description>
-   </context>
    <context id="CollapseFilter">
      <description>
        Graphical filter specifying that the owner element has to be collapsed.
@@ -568,6 +557,39 @@
    <!-- Start of user code HideLabelCapabilityStyle description -->
    
    <!-- End of user code HideLabelCapabilityStyle description -->
+   
+      </description>
+   </context>
+   <context id="VariableValue">
+     <description>
+       
+       
+         
+   <!-- Start of user code VariableValue description -->
+   
+   <!-- End of user code VariableValue description -->
+   
+      </description>
+   </context>
+   <context id="TypedVariableValue">
+     <description>
+       
+       
+         
+   <!-- Start of user code TypedVariableValue description -->
+   
+   <!-- End of user code TypedVariableValue description -->
+   
+      </description>
+   </context>
+   <context id="EObjectVariableValue">
+     <description>
+       
+       
+         
+   <!-- Start of user code EObjectVariableValue description -->
+   
+   <!-- End of user code EObjectVariableValue description -->
    
       </description>
    </context>
@@ -2026,33 +2048,6 @@
    <!-- Start of user code VariableFilter description -->
    
    <!-- End of user code VariableFilter description -->
-   
-      </description>
-   </context>
-   <context id="FilterVariable">
-     <description>
-       
-       Interpreted expressions, requested return type and available variables:
-          - candidatesExpression: a Collection&lt;EObject> or an EObject.
-                . diagram: the current DDiagram.
-                . containerView: the view of the container.
-                . container: the semantic element of the container.
-
-          - rootExpression: a Collection&lt;EObject> or an EObject.
-                . diagram: the current DDiagram.
-                . containerView: the view of the container.
-                . container: the semantic element of the container.
-
-          - childrenExpression: a Collection&lt;EObject> or an EObject.
-                . diagram: the current DDiagram.
-                . containerView: the view of the container.
-                . container: the semantic element of the container.
-
-
-         
-   <!-- Start of user code FilterVariable description -->
-   
-   <!-- End of user code FilterVariable description -->
    
       </description>
    </context>

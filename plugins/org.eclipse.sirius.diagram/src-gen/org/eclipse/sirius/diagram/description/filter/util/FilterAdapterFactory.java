@@ -19,12 +19,10 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
-import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -107,11 +105,6 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseFilterVariable(FilterVariable object) {
-            return createFilterVariableAdapter();
-        }
-
-        @Override
         public Adapter caseDocumentedElement(DocumentedElement object) {
             return createDocumentedElementAdapter();
         }
@@ -119,11 +112,6 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseIdentifiedElement(IdentifiedElement object) {
             return createIdentifiedElementAdapter();
-        }
-
-        @Override
-        public Adapter caseSelectionDescription(SelectionDescription object) {
-            return createSelectionDescriptionAdapter();
         }
 
         @Override
@@ -228,22 +216,6 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable
-     * <em>Variable</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
-     *
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.filter.FilterVariable
-     * @generated
-     */
-    public Adapter createFilterVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement
      * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -271,22 +243,6 @@ public class FilterAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createIdentifiedElementAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.SelectionDescription
-     * <em>Selection Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.SelectionDescription
-     * @generated
-     */
-    public Adapter createSelectionDescriptionAdapter() {
         return null;
     }
 

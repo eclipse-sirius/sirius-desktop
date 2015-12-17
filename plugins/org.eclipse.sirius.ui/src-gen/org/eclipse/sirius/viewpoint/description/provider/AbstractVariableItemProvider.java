@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  *
  */
-package org.eclipse.sirius.viewpoint.description.tool.provider;
+package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,13 +28,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -76,8 +76,7 @@ IItemPropertySource {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
                 getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
-                ToolPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+                DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -106,7 +105,7 @@ IItemPropertySource {
         updateChildren(notification);
 
         switch (notification.getFeatureID(AbstractVariable.class)) {
-        case ToolPackage.ABSTRACT_VARIABLE__NAME:
+        case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

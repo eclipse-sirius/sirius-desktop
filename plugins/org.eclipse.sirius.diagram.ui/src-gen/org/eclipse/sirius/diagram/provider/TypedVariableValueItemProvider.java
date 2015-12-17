@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+/*******************************************************************************
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *
- */
+ *******************************************************************************/
 package org.eclipse.sirius.diagram.provider;
 
 import java.util.Collection;
@@ -16,34 +15,28 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.TypedVariableValue;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.FilterVariableValue} object. <!--
+ * {@link org.eclipse.sirius.diagram.TypedVariableValue} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class FilterVariableValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class TypedVariableValueItemProvider extends VariableValueItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public FilterVariableValueItemProvider(AdapterFactory adapterFactory) {
+    public TypedVariableValueItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -59,7 +52,7 @@ IItemPropertySource {
             super.getPropertyDescriptors(object);
 
             addVariableDefinitionPropertyDescriptor(object);
-            addModelElementPropertyDescriptor(object);
+            addValuePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -72,33 +65,33 @@ IItemPropertySource {
      */
     protected void addVariableDefinitionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FilterVariableValue_variableDefinition_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_variableDefinition_feature", "_UI_FilterVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION, true, false, true, null, null, null));
+                getString("_UI_TypedVariableValue_variableDefinition_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_variableDefinition_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION, true, false, true, null, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Model Element feature. <!--
+     * This adds a property descriptor for the Value feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addModelElementPropertyDescriptor(Object object) {
+    protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FilterVariableValue_modelElement_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_modelElement_feature", "_UI_FilterVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.FILTER_VARIABLE_VALUE__MODEL_ELEMENT, true, false, true, null, null, null));
+                getString("_UI_TypedVariableValue_value_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_value_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This returns FilterVariableValue.gif. <!-- begin-user-doc --> <!--
+     * This returns TypedVariableValue.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FilterVariableValue")); //$NON-NLS-1$
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TypedVariableValue")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +102,9 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_FilterVariableValue_type"); //$NON-NLS-1$
+        String label = ((TypedVariableValue) object).getValue();
+        return label == null || label.length() == 0 ? getString("_UI_TypedVariableValue_type") : //$NON-NLS-1$
+            getString("_UI_TypedVariableValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -123,6 +118,12 @@ IItemPropertySource {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(TypedVariableValue.class)) {
+        case DiagramPackage.TYPED_VARIABLE_VALUE__VALUE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 
@@ -136,17 +137,6 @@ IItemPropertySource {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return DiagramUIPlugin.INSTANCE;
     }
 
 }

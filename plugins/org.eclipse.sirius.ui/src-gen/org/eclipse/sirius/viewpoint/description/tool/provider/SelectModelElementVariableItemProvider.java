@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.provider.SubVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -59,6 +60,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
             addRootExpressionPropertyDescriptor(object);
             addChildrenExpressionPropertyDescriptor(object);
             addMessagePropertyDescriptor(object);
+            addUserDocumentationPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -148,6 +150,19 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     }
 
     /**
+     * This adds a property descriptor for the User Documentation feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addUserDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_InteractiveVariableDescription_userDocumentation_feature"), //$NON-NLS-1$
+                getString("_UI_InteractiveVariableDescription_userDocumentation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns SelectModelElementVariable.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -190,6 +205,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION:
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION:
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
+        case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

@@ -14,9 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
@@ -224,7 +225,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
         if (baseClass == AbstractVariable.class) {
             switch (derivedFeatureID) {
             case ToolPackage.ACCELEO_VARIABLE__NAME:
-                return ToolPackage.ABSTRACT_VARIABLE__NAME;
+                return DescriptionPackage.ABSTRACT_VARIABLE__NAME;
             default:
                 return -1;
             }
@@ -247,7 +248,7 @@ public class AcceleoVariableImpl extends VariableContainerImpl implements Accele
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == AbstractVariable.class) {
             switch (baseFeatureID) {
-            case ToolPackage.ABSTRACT_VARIABLE__NAME:
+            case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
                 return ToolPackage.ACCELEO_VARIABLE__NAME;
             default:
                 return -1;

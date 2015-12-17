@@ -34,6 +34,7 @@ import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
@@ -44,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
@@ -831,14 +831,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable
      * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
+     * @see org.eclipse.sirius.viewpoint.description.AbstractVariable
      * @generated
      */
     public Adapter createAbstractVariableAdapter() {

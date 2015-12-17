@@ -3024,7 +3024,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int TABLE_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -3033,7 +3033,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int TABLE_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -3042,7 +3042,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_VARIABLE__DOCUMENTATION = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int TABLE_VARIABLE__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Table Variable</em>' class.
@@ -3051,7 +3051,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 2;
+    int TABLE_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '

@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.ColorStep;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
@@ -52,8 +54,10 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.UserColor;
 import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
@@ -334,6 +338,26 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDAnnotationEntry(DAnnotationEntry object) {
             return createDAnnotationEntryAdapter();
+        }
+
+        @Override
+        public Adapter caseAbstractVariable(AbstractVariable object) {
+            return createAbstractVariableAdapter();
+        }
+
+        @Override
+        public Adapter caseSubVariable(SubVariable object) {
+            return createSubVariableAdapter();
+        }
+
+        @Override
+        public Adapter caseInteractiveVariableDescription(InteractiveVariableDescription object) {
+            return createInteractiveVariableDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseTypedVariable(TypedVariable object) {
+            return createTypedVariableAdapter();
         }
 
         @Override
@@ -1056,6 +1080,70 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDAnnotationEntryAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable
+     * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.AbstractVariable
+     * @generated
+     */
+    public Adapter createAbstractVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.SubVariable
+     * <em>Sub Variable</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.SubVariable
+     * @generated
+     */
+    public Adapter createSubVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * <em>Interactive Variable Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * @generated
+     */
+    public Adapter createInteractiveVariableDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.TypedVariable
+     * <em>Typed Variable</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.TypedVariable
+     * @generated
+     */
+    public Adapter createTypedVariableAdapter() {
         return null;
     }
 

@@ -69,7 +69,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -154,9 +154,10 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
         // Containers
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE
-                .createCombinedFragmentMapping()));
+        result.add(
+                new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
+        result.add(
+                new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
         // Edges
         result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
@@ -291,7 +292,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         for (EReference ref : sequenceDiagramTool.eClass().getEAllReferences()) {
             if (ref.isContainment() && ref.getEType() instanceof EClass) {
                 EClass k = (EClass) ref.getEType();
-                EClass variable = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getAbstractVariable();
+                EClass variable = org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getAbstractVariable();
                 if (variable.isSuperTypeOf(k)) {
                     AbstractVariable var = (AbstractVariable) k.getEPackage().getEFactoryInstance().create(k);
                     EAnnotation annotation = ref.getEAnnotation("toolVariable"); //$NON-NLS-1$

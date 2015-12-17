@@ -20,11 +20,13 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -91,11 +93,13 @@ public class VariableFilterSpec extends VariableFilterImpl {
             variables = ArrayListMultimap.create();
 
             if (dDiagram.getFilterVariableHistory() != null) {
-                final Iterator<FilterVariableValue> it = dDiagram.getFilterVariableHistory().getOwnedValues().iterator();
+                final Iterator<VariableValue> it = dDiagram.getFilterVariableHistory().getOwnedValues().iterator();
                 while (it.hasNext()) {
-                    final FilterVariableValue value = it.next();
-                    if (getOwnedVariables().contains(value.getVariableDefinition())) {
-                        variables.put(value.getVariableDefinition().getName(), value.getModelElement());
+                    final VariableValue value = it.next();
+                    if (value instanceof EObjectVariableValue) {
+                        if (getOwnedVariables().contains(((EObjectVariableValue) value).getVariableDefinition())) {
+                            variables.put(((AbstractVariable) ((EObjectVariableValue) value).getVariableDefinition()).getName(), ((EObjectVariableValue) value).getModelElement());
+                        }
                     }
                 }
             }

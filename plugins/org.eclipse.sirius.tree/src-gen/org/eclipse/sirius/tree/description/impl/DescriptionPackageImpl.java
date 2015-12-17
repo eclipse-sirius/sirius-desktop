@@ -1126,7 +1126,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         treeCreationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationCreationDescription());
         treeNavigationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationNavigationDescription());
         treeMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationElementMapping());
-        treeVariableEClass.getESuperTypes().add(theToolPackage.getAbstractVariable());
+        treeVariableEClass.getESuperTypes().add(theDescriptionPackage_1.getAbstractVariable());
         treeVariableEClass.getESuperTypes().add(theToolPackage.getVariableContainer());
         precedingSiblingsVariablesEClass.getESuperTypes().add(this.getTreeVariable());
         treePopupMenuEClass.getESuperTypes().add(theToolPackage.getAbstractToolDescription());

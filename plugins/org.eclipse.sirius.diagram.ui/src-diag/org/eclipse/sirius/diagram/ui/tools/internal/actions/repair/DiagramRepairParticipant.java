@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
@@ -426,9 +426,9 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // remove the variable caches..
         if (diagram.getFilterVariableHistory() != null && diagram.getFilterVariableHistory().getOwnedValues() != null) {
             // diagram.getFilterVariableHistory().getOwnedValues().clear();
-            final Iterator<FilterVariableValue> filterVariablesIterator = diagram.getFilterVariableHistory().getOwnedValues().iterator();
+            final Iterator<VariableValue> filterVariablesIterator = diagram.getFilterVariableHistory().getOwnedValues().iterator();
             while (filterVariablesIterator.hasNext()) {
-                final FilterVariableValue filterVariable = filterVariablesIterator.next();
+                final VariableValue filterVariable = filterVariablesIterator.next();
                 if (filterVariable.eIsProxy() || filterVariable.eResource() == null) {
                     filterVariablesIterator.remove();
                 }

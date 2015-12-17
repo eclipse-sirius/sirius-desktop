@@ -305,89 +305,6 @@ public interface FilterPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
-     * <em>Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
-     * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterVariable()
-     * @generated
-     */
-    int FILTER_VARIABLE = 5;
-
-    /**
-     * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__CANDIDATES_EXPRESSION = DescriptionPackage.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION;
-
-    /**
-     * The feature id for the '<em><b>Multiple</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__MULTIPLE = DescriptionPackage.SELECTION_DESCRIPTION__MULTIPLE;
-
-    /**
-     * The feature id for the '<em><b>Tree</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__TREE = DescriptionPackage.SELECTION_DESCRIPTION__TREE;
-
-    /**
-     * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__ROOT_EXPRESSION = DescriptionPackage.SELECTION_DESCRIPTION__ROOT_EXPRESSION;
-
-    /**
-     * The feature id for the '<em><b>Children Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__CHILDREN_EXPRESSION = DescriptionPackage.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION;
-
-    /**
-     * The feature id for the '<em><b>Message</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__MESSAGE = DescriptionPackage.SELECTION_DESCRIPTION__MESSAGE;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE__NAME = DescriptionPackage.SELECTION_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
-     * The number of structural features of the '<em>Variable</em>' class. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE_FEATURE_COUNT = DescriptionPackage.SELECTION_DESCRIPTION_FEATURE_COUNT + 1;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.filter.FilterKind
      * <em>Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -395,7 +312,7 @@ public interface FilterPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterKind()
      * @generated
      */
-    int FILTER_KIND = 6;
+    int FILTER_KIND = 5;
 
     /**
      * Returns the meta object for class '
@@ -545,29 +462,6 @@ public interface FilterPackage extends EPackage {
      * @generated
      */
     EAttribute getVariableFilter_SemanticConditionExpression();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable
-     * <em>Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Variable</em>'.
-     * @see org.eclipse.sirius.diagram.description.filter.FilterVariable
-     * @generated
-     */
-    EClass getFilterVariable();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable#getName
-     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Name</em>'.
-     * @see org.eclipse.sirius.diagram.description.filter.FilterVariable#getName()
-     * @see #getFilterVariable()
-     * @generated
-     */
-    EAttribute getFilterVariable_Name();
 
     /**
      * Returns the meta object for enum '
@@ -722,26 +616,6 @@ public interface FilterPackage extends EPackage {
          * @generated
          */
         EAttribute VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getVariableFilter_SemanticConditionExpression();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
-         * <em>Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-         * -->
-         *
-         * @see org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl
-         * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterVariable()
-         * @generated
-         */
-        EClass FILTER_VARIABLE = FilterPackage.eINSTANCE.getFilterVariable();
-
-        /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute FILTER_VARIABLE__NAME = FilterPackage.eINSTANCE.getFilterVariable_Name();
 
         /**
          * The meta object literal for the '

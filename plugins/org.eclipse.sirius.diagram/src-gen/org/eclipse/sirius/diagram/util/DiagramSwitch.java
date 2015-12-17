@@ -39,12 +39,12 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
-import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
@@ -60,6 +60,8 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.TypedVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
@@ -1000,14 +1002,6 @@ public class DiagramSwitch<T> {
             }
             return result;
         }
-        case DiagramPackage.FILTER_VARIABLE_VALUE: {
-            FilterVariableValue filterVariableValue = (FilterVariableValue) theEObject;
-            T result = caseFilterVariableValue(filterVariableValue);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case DiagramPackage.COLLAPSE_FILTER: {
             CollapseFilter collapseFilter = (CollapseFilter) theEObject;
             T result = caseCollapseFilter(collapseFilter);
@@ -1114,6 +1108,36 @@ public class DiagramSwitch<T> {
         case DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE: {
             HideLabelCapabilityStyle hideLabelCapabilityStyle = (HideLabelCapabilityStyle) theEObject;
             T result = caseHideLabelCapabilityStyle(hideLabelCapabilityStyle);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DiagramPackage.VARIABLE_VALUE: {
+            VariableValue variableValue = (VariableValue) theEObject;
+            T result = caseVariableValue(variableValue);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DiagramPackage.TYPED_VARIABLE_VALUE: {
+            TypedVariableValue typedVariableValue = (TypedVariableValue) theEObject;
+            T result = caseTypedVariableValue(typedVariableValue);
+            if (result == null) {
+                result = caseVariableValue(typedVariableValue);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DiagramPackage.EOBJECT_VARIABLE_VALUE: {
+            EObjectVariableValue eObjectVariableValue = (EObjectVariableValue) theEObject;
+            T result = caseEObjectVariableValue(eObjectVariableValue);
+            if (result == null) {
+                result = caseVariableValue(eObjectVariableValue);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1721,23 +1745,6 @@ public class DiagramSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Filter Variable Value</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Filter Variable Value</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseFilterVariableValue(FilterVariableValue object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Collapse Filter</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1886,6 +1893,57 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseHideLabelCapabilityStyle(HideLabelCapabilityStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Variable Value</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Variable Value</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseVariableValue(VariableValue object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Typed Variable Value</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Typed Variable Value</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTypedVariableValue(TypedVariableValue object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>EObject Variable Value</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>EObject Variable Value</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEObjectVariableValue(EObjectVariableValue object) {
         return null;
     }
 

@@ -662,8 +662,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_2 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
-        org.eclipse.sirius.viewpoint.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.viewpoint.description.tool.ToolPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theToolPackage);
@@ -687,8 +685,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         returnMessageMappingEClass.getESuperTypes().add(this.getMessageMapping());
         creationMessageMappingEClass.getESuperTypes().add(this.getMessageMapping());
         destructionMessageMappingEClass.getESuperTypes().add(this.getMessageMapping());
-        messageEndVariableEClass.getESuperTypes().add(theToolPackage_1.getAbstractVariable());
-        coveredLifelinesVariableEClass.getESuperTypes().add(theToolPackage_1.getAbstractVariable());
+        messageEndVariableEClass.getESuperTypes().add(theDescriptionPackage_2.getAbstractVariable());
+        coveredLifelinesVariableEClass.getESuperTypes().add(theDescriptionPackage_2.getAbstractVariable());
         frameMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getContainerMapping());
         frameMappingEClass.getESuperTypes().add(this.getDelimitedEventMapping());
         interactionUseMappingEClass.getESuperTypes().add(this.getFrameMapping());

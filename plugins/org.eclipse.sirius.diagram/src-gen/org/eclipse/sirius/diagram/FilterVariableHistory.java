@@ -48,6 +48,6 @@ public interface FilterVariableHistory extends EObject {
      * @model containment="true" resolveProxies="true"
      * @generated
      */
-    EList<FilterVariableValue> getOwnedValues();
+    EList<VariableValue> getOwnedValues();
 
 } // FilterVariableHistory

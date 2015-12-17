@@ -39,12 +39,12 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
-import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
@@ -60,6 +60,8 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.TypedVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
@@ -305,11 +307,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseFilterVariableValue(FilterVariableValue object) {
-            return createFilterVariableValueAdapter();
-        }
-
-        @Override
         public Adapter caseCollapseFilter(CollapseFilter object) {
             return createCollapseFilterAdapter();
         }
@@ -352,6 +349,21 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseHideLabelCapabilityStyle(HideLabelCapabilityStyle object) {
             return createHideLabelCapabilityStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseVariableValue(VariableValue object) {
+            return createVariableValueAdapter();
+        }
+
+        @Override
+        public Adapter caseTypedVariableValue(TypedVariableValue object) {
+            return createTypedVariableValueAdapter();
+        }
+
+        @Override
+        public Adapter caseEObjectVariableValue(EObjectVariableValue object) {
+            return createEObjectVariableValueAdapter();
         }
 
         @Override
@@ -977,22 +989,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue
-     * <em>Filter Variable Value</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.FilterVariableValue
-     * @generated
-     */
-    public Adapter createFilterVariableValueAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.diagram.CollapseFilter
      * <em>Collapse Filter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1131,6 +1127,53 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createHideLabelCapabilityStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.VariableValue <em>Variable Value</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so
+     * that we can easily ignore cases; it's useful to ignore a case when
+     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.VariableValue
+     * @generated
+     */
+    public Adapter createVariableValueAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue
+     * <em>Typed Variable Value</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.TypedVariableValue
+     * @generated
+     */
+    public Adapter createTypedVariableValueAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue
+     * <em>EObject Variable Value</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.EObjectVariableValue
+     * @generated
+     */
+    public Adapter createEObjectVariableValueAdapter() {
         return null;
     }
 

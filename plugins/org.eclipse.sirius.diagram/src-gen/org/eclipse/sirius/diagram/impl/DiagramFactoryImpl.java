@@ -44,13 +44,13 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
-import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
@@ -66,6 +66,7 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.BundledImageSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.CustomStyleSpec;
@@ -186,8 +187,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return createNote();
         case DiagramPackage.FILTER_VARIABLE_HISTORY:
             return createFilterVariableHistory();
-        case DiagramPackage.FILTER_VARIABLE_VALUE:
-            return createFilterVariableValue();
         case DiagramPackage.COLLAPSE_FILTER:
             return createCollapseFilter();
         case DiagramPackage.INDIRECTLY_COLLAPSE_FILTER:
@@ -204,6 +203,10 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return createComputedStyleDescriptionRegistry();
         case DiagramPackage.DRAG_AND_DROP_TARGET:
             return createDragAndDropTarget();
+        case DiagramPackage.TYPED_VARIABLE_VALUE:
+            return createTypedVariableValue();
+        case DiagramPackage.EOBJECT_VARIABLE_VALUE:
+            return createEObjectVariableValue();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -593,17 +596,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
      * @generated
      */
     @Override
-    public FilterVariableValue createFilterVariableValue() {
-        FilterVariableValueImpl filterVariableValue = new FilterVariableValueImpl();
-        return filterVariableValue;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public CollapseFilter createCollapseFilter() {
         CollapseFilterImpl collapseFilter = new CollapseFilterImpl();
         return collapseFilter;
@@ -684,6 +676,28 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public DragAndDropTarget createDragAndDropTarget() {
         DragAndDropTargetImpl dragAndDropTarget = new DragAndDropTargetImpl();
         return dragAndDropTarget;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public TypedVariableValue createTypedVariableValue() {
+        TypedVariableValueImpl typedVariableValue = new TypedVariableValueImpl();
+        return typedVariableValue;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EObjectVariableValue createEObjectVariableValue() {
+        EObjectVariableValueImpl eObjectVariableValue = new EObjectVariableValueImpl();
+        return eObjectVariableValue;
     }
 
     /**

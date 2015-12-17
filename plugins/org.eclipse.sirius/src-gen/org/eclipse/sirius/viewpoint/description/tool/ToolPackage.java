@@ -1930,36 +1930,6 @@ public interface ToolPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl
-     * <em>Abstract Variable</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getAbstractVariable()
-     * @generated
-     */
-    int ABSTRACT_VARIABLE = 16;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int ABSTRACT_VARIABLE__NAME = 0;
-
-    /**
-     * The number of structural features of the '<em>Abstract Variable</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int ABSTRACT_VARIABLE_FEATURE_COUNT = 1;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.impl.VariableContainerImpl
      * <em>Variable Container</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -1968,7 +1938,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getVariableContainer()
      * @generated
      */
-    int VARIABLE_CONTAINER = 17;
+    int VARIABLE_CONTAINER = 16;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1998,7 +1968,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getAcceleoVariable()
      * @generated
      */
-    int ACCELEO_VARIABLE = 18;
+    int ACCELEO_VARIABLE = 17;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2038,36 +2008,6 @@ public interface ToolPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SubVariableImpl
-     * <em>Sub Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.SubVariableImpl
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSubVariable()
-     * @generated
-     */
-    int SUB_VARIABLE = 19;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SUB_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
-
-    /**
-     * The number of structural features of the '<em>Sub Variable</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SUB_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.impl.DialogVariableImpl
      * <em>Dialog Variable</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -2076,7 +2016,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDialogVariable()
      * @generated
      */
-    int DIALOG_VARIABLE = 20;
+    int DIALOG_VARIABLE = 18;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2085,7 +2025,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIALOG_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int DIALOG_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Dialog Prompt</b></em>' attribute. <!--
@@ -2094,7 +2034,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIALOG_VARIABLE__DIALOG_PROMPT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int DIALOG_VARIABLE__DIALOG_PROMPT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Dialog Variable</em>'
@@ -2103,7 +2043,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIALOG_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int DIALOG_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2115,7 +2055,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementDropVariable()
      * @generated
      */
-    int ELEMENT_DROP_VARIABLE = 21;
+    int ELEMENT_DROP_VARIABLE = 19;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2124,7 +2064,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DROP_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_DROP_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2133,7 +2073,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DROP_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_DROP_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Element Drop Variable</em>'
@@ -2142,7 +2082,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DROP_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int ELEMENT_DROP_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2154,7 +2094,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementSelectVariable()
      * @generated
      */
-    int ELEMENT_SELECT_VARIABLE = 22;
+    int ELEMENT_SELECT_VARIABLE = 20;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2163,7 +2103,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_SELECT_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_SELECT_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The number of structural features of the '
@@ -2173,7 +2113,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_SELECT_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_SELECT_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -2185,7 +2125,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementVariable()
      * @generated
      */
-    int ELEMENT_VARIABLE = 23;
+    int ELEMENT_VARIABLE = 21;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2194,7 +2134,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2203,7 +2143,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Element Variable</em>'
@@ -2212,7 +2152,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int ELEMENT_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2224,7 +2164,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementViewVariable()
      * @generated
      */
-    int ELEMENT_VIEW_VARIABLE = 24;
+    int ELEMENT_VIEW_VARIABLE = 22;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2233,7 +2173,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VIEW_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_VIEW_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2242,7 +2182,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VIEW_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_VIEW_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Element View Variable</em>'
@@ -2251,7 +2191,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_VIEW_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int ELEMENT_VIEW_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2263,7 +2203,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementDeleteVariable()
      * @generated
      */
-    int ELEMENT_DELETE_VARIABLE = 25;
+    int ELEMENT_DELETE_VARIABLE = 23;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2272,7 +2212,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DELETE_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_DELETE_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2281,7 +2221,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DELETE_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_DELETE_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -2291,7 +2231,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DELETE_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int ELEMENT_DELETE_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2303,7 +2243,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDropContainerVariable()
      * @generated
      */
-    int DROP_CONTAINER_VARIABLE = 26;
+    int DROP_CONTAINER_VARIABLE = 24;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2312,7 +2252,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DROP_CONTAINER_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int DROP_CONTAINER_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2321,7 +2261,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DROP_CONTAINER_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int DROP_CONTAINER_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -2331,7 +2271,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DROP_CONTAINER_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int DROP_CONTAINER_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2343,7 +2283,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSelectContainerVariable()
      * @generated
      */
-    int SELECT_CONTAINER_VARIABLE = 27;
+    int SELECT_CONTAINER_VARIABLE = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2352,7 +2292,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_CONTAINER_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int SELECT_CONTAINER_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2361,7 +2301,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_CONTAINER_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int SELECT_CONTAINER_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -2371,7 +2311,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_CONTAINER_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int SELECT_CONTAINER_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2383,7 +2323,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerViewVariable()
      * @generated
      */
-    int CONTAINER_VIEW_VARIABLE = 28;
+    int CONTAINER_VIEW_VARIABLE = 26;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2392,7 +2332,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_VIEW_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int CONTAINER_VIEW_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -2401,7 +2341,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_VIEW_VARIABLE__SUB_VARIABLES = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int CONTAINER_VIEW_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -2411,7 +2351,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_VIEW_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int CONTAINER_VIEW_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -2423,7 +2363,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSelectModelElementVariable()
      * @generated
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE = 29;
+    int SELECT_MODEL_ELEMENT_VARIABLE = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2432,7 +2372,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__NAME = ToolPackage.SUB_VARIABLE__NAME;
+    int SELECT_MODEL_ELEMENT_VARIABLE__NAME = DescriptionPackage.SUB_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
@@ -2441,7 +2381,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 0;
+    int SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Multiple</b></em>' attribute. <!--
@@ -2450,7 +2390,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__MULTIPLE = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 1;
+    int SELECT_MODEL_ELEMENT_VARIABLE__MULTIPLE = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Tree</b></em>' attribute. <!--
@@ -2459,7 +2399,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__TREE = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 2;
+    int SELECT_MODEL_ELEMENT_VARIABLE__TREE = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
@@ -2468,7 +2408,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 3;
+    int SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Children Expression</b></em>' attribute.
@@ -2477,7 +2417,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 4;
+    int SELECT_MODEL_ELEMENT_VARIABLE__CHILDREN_EXPRESSION = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Message</b></em>' attribute. <!--
@@ -2486,7 +2426,16 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 5;
+    int SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>User Documentation</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '
@@ -2496,7 +2445,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE_FEATURE_COUNT = ToolPackage.SUB_VARIABLE_FEATURE_COUNT + 6;
+    int SELECT_MODEL_ELEMENT_VARIABLE_FEATURE_COUNT = DescriptionPackage.SUB_VARIABLE_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '
@@ -2508,7 +2457,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getEditMaskVariables()
      * @generated
      */
-    int EDIT_MASK_VARIABLES = 30;
+    int EDIT_MASK_VARIABLES = 28;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' attribute. <!--
@@ -2538,7 +2487,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getModelOperation()
      * @generated
      */
-    int MODEL_OPERATION = 32;
+    int MODEL_OPERATION = 30;
 
     /**
      * The number of structural features of the '<em>Model Operation</em>'
@@ -2559,7 +2508,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerModelOperation()
      * @generated
      */
-    int CONTAINER_MODEL_OPERATION = 31;
+    int CONTAINER_MODEL_OPERATION = 29;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2590,7 +2539,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialNodeCreationOperation()
      * @generated
      */
-    int INITIAL_NODE_CREATION_OPERATION = 33;
+    int INITIAL_NODE_CREATION_OPERATION = 31;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2621,7 +2570,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialOperation()
      * @generated
      */
-    int INITIAL_OPERATION = 34;
+    int INITIAL_OPERATION = 32;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2651,7 +2600,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitEdgeCreationOperation()
      * @generated
      */
-    int INIT_EDGE_CREATION_OPERATION = 35;
+    int INIT_EDGE_CREATION_OPERATION = 33;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2682,7 +2631,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialContainerDropOperation()
      * @generated
      */
-    int INITIAL_CONTAINER_DROP_OPERATION = 36;
+    int INITIAL_CONTAINER_DROP_OPERATION = 34;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2713,7 +2662,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getCreateInstance()
      * @generated
      */
-    int CREATE_INSTANCE = 37;
+    int CREATE_INSTANCE = 35;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2770,7 +2719,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getChangeContext()
      * @generated
      */
-    int CHANGE_CONTEXT = 38;
+    int CHANGE_CONTEXT = 36;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2808,7 +2757,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSetValue()
      * @generated
      */
-    int SET_VALUE = 39;
+    int SET_VALUE = 37;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2856,7 +2805,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSetObject()
      * @generated
      */
-    int SET_OBJECT = 40;
+    int SET_OBJECT = 38;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2903,7 +2852,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getUnset()
      * @generated
      */
-    int UNSET = 41;
+    int UNSET = 39;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2951,7 +2900,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMoveElement()
      * @generated
      */
-    int MOVE_ELEMENT = 42;
+    int MOVE_ELEMENT = 40;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2999,7 +2948,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getRemoveElement()
      * @generated
      */
-    int REMOVE_ELEMENT = 43;
+    int REMOVE_ELEMENT = 41;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3028,7 +2977,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getFor()
      * @generated
      */
-    int FOR = 44;
+    int FOR = 42;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3075,7 +3024,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getIf()
      * @generated
      */
-    int IF = 45;
+    int IF = 43;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3114,7 +3063,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDeleteView()
      * @generated
      */
-    int DELETE_VIEW = 46;
+    int DELETE_VIEW = 44;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3144,7 +3093,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getNameVariable()
      * @generated
      */
-    int NAME_VARIABLE = 47;
+    int NAME_VARIABLE = 45;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -3153,7 +3102,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NAME_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int NAME_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The number of structural features of the '<em>Name Variable</em>' class.
@@ -3162,7 +3111,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NAME_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int NAME_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -3174,7 +3123,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getExternalJavaActionParameter()
      * @generated
      */
-    int EXTERNAL_JAVA_ACTION_PARAMETER = 48;
+    int EXTERNAL_JAVA_ACTION_PARAMETER = 46;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -3214,7 +3163,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getToolFilterDescription()
      * @generated
      */
-    int TOOL_FILTER_DESCRIPTION = 49;
+    int TOOL_FILTER_DESCRIPTION = 47;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -3262,7 +3211,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getFeatureChangeListener()
      * @generated
      */
-    int FEATURE_CHANGE_LISTENER = 50;
+    int FEATURE_CHANGE_LISTENER = 48;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -3302,7 +3251,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSwitchChild()
      * @generated
      */
-    int SWITCH_CHILD = 52;
+    int SWITCH_CHILD = 50;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3331,7 +3280,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getCase()
      * @generated
      */
-    int CASE = 51;
+    int CASE = 49;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3369,7 +3318,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDefault()
      * @generated
      */
-    int DEFAULT = 53;
+    int DEFAULT = 51;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3398,7 +3347,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSwitch()
      * @generated
      */
-    int SWITCH = 54;
+    int SWITCH = 52;
 
     /**
      * The feature id for the '<em><b>Cases</b></em>' containment reference
@@ -3437,7 +3386,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDragSource()
      * @generated
      */
-    int DRAG_SOURCE = 55;
+    int DRAG_SOURCE = 53;
 
     /**
      * Returns the meta object for class '
@@ -4366,30 +4315,6 @@ public interface ToolPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
-     * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for class '<em>Abstract Variable</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
-     * @generated
-     */
-    EClass getAbstractVariable();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable#getName
-     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Name</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractVariable#getName()
-     * @see #getAbstractVariable()
-     * @generated
-     */
-    EAttribute getAbstractVariable_Name();
-
-    /**
-     * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.VariableContainer
      * <em>Variable Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -4438,17 +4363,6 @@ public interface ToolPackage extends EPackage {
      * @generated
      */
     EAttribute getAcceleoVariable_ComputationExpression();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SubVariable
-     * <em>Sub Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Sub Variable</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.SubVariable
-     * @generated
-     */
-    EClass getSubVariable();
 
     /**
      * Returns the meta object for class '
@@ -5983,26 +5897,6 @@ public interface ToolPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl
-         * <em>Abstract Variable</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getAbstractVariable()
-         * @generated
-         */
-        EClass ABSTRACT_VARIABLE = ToolPackage.eINSTANCE.getAbstractVariable();
-
-        /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute ABSTRACT_VARIABLE__NAME = ToolPackage.eINSTANCE.getAbstractVariable_Name();
-
-        /**
-         * The meta object literal for the '
          * {@link org.eclipse.sirius.viewpoint.description.tool.impl.VariableContainerImpl
          * <em>Variable Container</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6042,18 +5936,6 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EAttribute ACCELEO_VARIABLE__COMPUTATION_EXPRESSION = ToolPackage.eINSTANCE.getAcceleoVariable_ComputationExpression();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SubVariableImpl
-         * <em>Sub Variable</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.SubVariableImpl
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSubVariable()
-         * @generated
-         */
-        EClass SUB_VARIABLE = ToolPackage.eINSTANCE.getSubVariable();
 
         /**
          * The meta object literal for the '

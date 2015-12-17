@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -53,7 +53,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * @generated
      * @ordered
      */
-    protected EList<FilterVariable> ownedVariables;
+    protected EList<InteractiveVariableDescription> ownedVariables;
 
     /**
      * The default value of the '{@link #getSemanticConditionExpression()
@@ -102,9 +102,9 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * @generated
      */
     @Override
-    public EList<FilterVariable> getOwnedVariables() {
+    public EList<InteractiveVariableDescription> getOwnedVariables() {
         if (ownedVariables == null) {
-            ownedVariables = new EObjectContainmentEList.Resolving<FilterVariable>(FilterVariable.class, this, FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES);
+            ownedVariables = new EObjectContainmentEList.Resolving<InteractiveVariableDescription>(InteractiveVariableDescription.class, this, FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES);
         }
         return ownedVariables;
     }
@@ -186,7 +186,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         switch (featureID) {
         case FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES:
             getOwnedVariables().clear();
-            getOwnedVariables().addAll((Collection<? extends FilterVariable>) newValue);
+            getOwnedVariables().addAll((Collection<? extends InteractiveVariableDescription>) newValue);
             return;
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
             setSemanticConditionExpression((String) newValue);

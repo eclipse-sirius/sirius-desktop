@@ -7,33 +7,33 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.editor.properties.filters.filter.filtervariable;
+package org.eclipse.sirius.editor.properties.filters.description.typedvariable;
 
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
 /**
- * A filter for the name property section.
+ * A filter for the defaultValueExpression property section.
  */
-public class FilterVariableNameFilter extends ViewpointPropertyFilter {
+public class TypedVariableDefaultValueExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     protected EStructuralFeature getFeature() {
-        return FilterPackage.eINSTANCE.getFilterVariable_Name();
+        return DescriptionPackage.eINSTANCE.getTypedVariable_DefaultValueExpression();
     }
 
     /**
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.diagram.description.filter.FilterVariable;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.TypedVariable;
     }
 
     // Start of user code user methods

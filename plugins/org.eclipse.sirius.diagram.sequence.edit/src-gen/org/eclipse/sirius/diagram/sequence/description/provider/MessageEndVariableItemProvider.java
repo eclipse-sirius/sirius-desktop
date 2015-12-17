@@ -18,7 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
-import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractVariableItemProvider;
+import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 
 /**
  * This is the item provider adapter for a

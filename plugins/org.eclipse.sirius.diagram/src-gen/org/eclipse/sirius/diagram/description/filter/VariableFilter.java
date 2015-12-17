@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.description.filter;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -44,8 +45,8 @@ public interface VariableFilter extends Filter {
     /**
      * Returns the value of the '<em><b>Owned Variables</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable}.
-     * <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription}
+     * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Owned Variables</em>' containment reference
      * list isn't clear, there really should be more of a description here...
@@ -58,7 +59,7 @@ public interface VariableFilter extends Filter {
      * @model containment="true" resolveProxies="true"
      * @generated
      */
-    EList<FilterVariable> getOwnedVariables();
+    EList<InteractiveVariableDescription> getOwnedVariables();
 
     /**
      * Returns the value of the '<em><b>Semantic Condition Expression</b></em>'

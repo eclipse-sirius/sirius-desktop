@@ -1604,7 +1604,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_CREATION_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int SOURCE_EDGE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1613,7 +1613,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_CREATION_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int SOURCE_EDGE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1623,7 +1623,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_CREATION_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int SOURCE_EDGE_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1644,7 +1644,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_VIEW_CREATION_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int SOURCE_EDGE_VIEW_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1653,7 +1653,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int SOURCE_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1663,7 +1663,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SOURCE_EDGE_VIEW_CREATION_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int SOURCE_EDGE_VIEW_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1684,7 +1684,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_CREATION_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int TARGET_EDGE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1693,7 +1693,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_CREATION_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int TARGET_EDGE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1703,7 +1703,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_CREATION_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int TARGET_EDGE_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1724,7 +1724,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_VIEW_CREATION_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int TARGET_EDGE_VIEW_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1733,7 +1733,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int TARGET_EDGE_VIEW_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1743,7 +1743,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TARGET_EDGE_VIEW_CREATION_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int TARGET_EDGE_VIEW_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1764,7 +1764,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DOUBLE_CLICK_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int ELEMENT_DOUBLE_CLICK_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1773,7 +1773,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DOUBLE_CLICK_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int ELEMENT_DOUBLE_CLICK_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -1783,7 +1783,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ELEMENT_DOUBLE_CLICK_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int ELEMENT_DOUBLE_CLICK_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1804,7 +1804,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_CREATION_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int NODE_CREATION_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1813,7 +1813,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_CREATION_VARIABLE__SUB_VARIABLES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int NODE_CREATION_VARIABLE__SUB_VARIABLES = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Node Creation Variable</em>
@@ -1822,7 +1822,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_CREATION_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
+    int NODE_CREATION_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '

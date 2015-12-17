@@ -22,9 +22,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractVariableItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -146,6 +147,8 @@ public class ElementDoubleClickVariableItemProvider extends AbstractVariableItem
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createAcceleoVariable()));
 

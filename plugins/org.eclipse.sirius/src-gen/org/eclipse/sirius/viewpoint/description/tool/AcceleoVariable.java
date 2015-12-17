@@ -11,6 +11,8 @@
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
+import org.eclipse.sirius.viewpoint.description.SubVariable;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Acceleo Variable</b></em>'. <!-- end-user-doc -->

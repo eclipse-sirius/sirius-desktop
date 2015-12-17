@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -147,6 +149,8 @@ public class SelectContainerVariableItemProvider extends AbstractVariableItemPro
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createAcceleoVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createSelectModelElementVariable()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
     }
 
 }
