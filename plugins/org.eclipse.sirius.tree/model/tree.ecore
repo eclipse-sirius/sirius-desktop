@@ -243,7 +243,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
           eType="#//description/ConditionalTreeItemStyleDescription" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemUpdater">

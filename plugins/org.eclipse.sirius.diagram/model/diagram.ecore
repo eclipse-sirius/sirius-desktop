@@ -899,13 +899,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterVariableHistory">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedValues" upperBound="-1"
-        eType="#//FilterVariableValue" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FilterVariableValue">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variableDefinition" lowerBound="1"
-        eType="#//description/filter/FilterVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+        eType="#//VariableValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResizeKind">
     <eLiterals name="NONE"/>
@@ -977,6 +971,18 @@
         <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypedVariableValue" eSuperTypes="#//VariableValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableDefinition" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypedVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EObjectVariableValue" eSuperTypes="#//VariableValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableDefinition" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/SelectModelElementVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/diagram/description/1.1.0"
       nsPrefix="description">
@@ -2668,14 +2674,14 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="SourceEdgeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+      <eClassifiers xsi:type="ecore:EClass" name="SourceEdgeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
       <eClassifiers xsi:type="ecore:EClass" name="SourceEdgeViewCreationVariable"
-          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
-      <eClassifiers xsi:type="ecore:EClass" name="TargetEdgeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+      <eClassifiers xsi:type="ecore:EClass" name="TargetEdgeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
       <eClassifiers xsi:type="ecore:EClass" name="TargetEdgeViewCreationVariable"
-          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ElementDoubleClickVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
-      <eClassifiers xsi:type="ecore:EClass" name="NodeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+          eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ElementDoubleClickVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
+      <eClassifiers xsi:type="ecore:EClass" name="NodeCreationVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer"/>
       <eClassifiers xsi:type="ecore:EClass" name="CreateView" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerModelOperation">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This operation allows to create a view."/>
@@ -2910,7 +2916,8 @@
           </eParameters>
         </eOperations>
         <eStructuralFeatures xsi:type="ecore:EReference" name="ownedVariables" upperBound="-1"
-            eType="#//description/filter/FilterVariable" containment="true"/>
+            eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InteractiveVariableDescription"
+            containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticConditionExpression"
             eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
             defaultValueLiteral="">
@@ -2921,14 +2928,6 @@
             <details key="returnType" value="a boolean."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="FilterVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/SelectionDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
-            eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Name of the variable."/>
-          </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EEnum" name="FilterKind">

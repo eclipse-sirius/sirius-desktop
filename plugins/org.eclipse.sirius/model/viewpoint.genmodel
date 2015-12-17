@@ -392,6 +392,21 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/source"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/details"/>
       </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/AbstractVariable">
+        <genFeatures createChild="false" propertyDescription="Name of the variable, you may access it in expressions using theNameOfTheVariable."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/AbstractVariable/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/SubVariable"/>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/InteractiveVariableDescription">
+        <genFeatures createChild="false" propertyDescription="A documentation that is displayed to the user"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/InteractiveVariableDescription/userDocumentation"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/TypedVariable">
+        <genFeatures createChild="false" propertyDescription="An expression used to define the default variable value"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/TypedVariable/defaultValueExpression"/>
+        <genFeatures notify="false" createChild="false" propertyDescription="The type of the variable value"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/TypedVariable/valueType"/>
+      </genClasses>
       <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/StyleDescription"/>
@@ -531,10 +546,6 @@
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/PopupMenu">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PopupMenu/menuItemDescription"/>
         </genClasses>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/AbstractVariable">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the variable, you may access it in expressions using theNameOfTheVariable."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractVariable/name"/>
-        </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/VariableContainer">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/VariableContainer/subVariables"/>
         </genClasses>
@@ -542,7 +553,6 @@
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression retrieving the variable value starting from the current element."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AcceleoVariable/computationExpression"/>
         </genClasses>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/SubVariable"/>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/DialogVariable">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Dialog message showed to the user."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DialogVariable/dialogPrompt"/>

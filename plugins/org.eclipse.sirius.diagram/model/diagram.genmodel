@@ -279,10 +279,6 @@
     <genClasses ecoreClass="diagram.ecore#//FilterVariableHistory">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//FilterVariableHistory/ownedValues"/>
     </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//FilterVariableValue">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//FilterVariableValue/variableDefinition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//FilterVariableValue/modelElement"/>
-    </genClasses>
     <genClasses ecoreClass="diagram.ecore#//CollapseFilter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//CollapseFilter/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//CollapseFilter/height"/>
@@ -315,6 +311,15 @@
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//HideLabelCapabilityStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//HideLabelCapabilityStyle/hideLabelByDefault"/>
+    </genClasses>
+    <genClasses ecoreClass="diagram.ecore#//VariableValue"/>
+    <genClasses ecoreClass="diagram.ecore#//TypedVariableValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//TypedVariableValue/variableDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//TypedVariableValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="diagram.ecore#//EObjectVariableValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//EObjectVariableValue/variableDefinition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//EObjectVariableValue/modelElement"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.diagram"
         disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description">
@@ -948,9 +953,6 @@
           <genOperations ecoreOperation="diagram.ecore#//description/filter/VariableFilter/setFilterContext">
             <genParameters ecoreParameter="diagram.ecore#//description/filter/VariableFilter/setFilterContext/variables"/>
           </genOperations>
-        </genClasses>
-        <genClasses ecoreClass="diagram.ecore#//description/filter/FilterVariable">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/filter/FilterVariable/name"/>
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.diagram.description"
