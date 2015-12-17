@@ -80,8 +80,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CreationMessageMapping" eSuperTypes="#//description/MessageMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="DestructionMessageMapping" eSuperTypes="#//description/MessageMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="MessageEndVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CoveredLifelinesVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MessageEndVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CoveredLifelinesVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
     <eClassifiers xsi:type="ecore:EClass" name="FrameMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coveredLifelinesExpression"
           lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">

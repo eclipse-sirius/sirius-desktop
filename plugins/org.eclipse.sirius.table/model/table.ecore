@@ -237,7 +237,8 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="importedElements" upperBound="-1"
-          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject" containment="true"/>
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EditionTableDescription" eSuperTypes="#//description/TableDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
@@ -554,7 +555,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/BackgroundStyleDescription"
           containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TableVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
+    <eClassifiers xsi:type="ecore:EClass" name="TableVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TableCreationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription">
