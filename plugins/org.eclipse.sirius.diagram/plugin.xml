@@ -744,12 +744,23 @@
            class="org.eclipse.sirius.diagram.business.internal.migration.GMFLabelStyleMigrationParticipant"
            kind="RepresentationsFile">
      </participant>
+     <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.FilterVariableValueMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
+     <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.VariableMigrationParticipant"
+           kind="VSM">
+     </participant>
   </extension>
   <extension
         point="org.eclipse.sirius.mmdescriptor">
      <descriptorprovider
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramMetamodelsProvider">
      </descriptorprovider>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.migrationParticipant">
   </extension>
   
 </plugin>
