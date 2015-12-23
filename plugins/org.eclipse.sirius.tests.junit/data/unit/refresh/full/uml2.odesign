@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="10.1.3.201511131800">
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Analysis workspace" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="Model">
       <toolSection documentation="reused tools" name="reused tools">
@@ -158,7 +158,7 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool:DiagramCreationDescription" name="InitHierarchy" precondition="aql:self.eContainer() == null" diagramDescription="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="InitHierarchy" precondition="aql:self.eContainer() = null" diagramDescription="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']">
           <initialOperation/>
           <containerViewVariable name="containerView"/>
           <representationNameVariable name="diagramName"/>
@@ -511,22 +511,22 @@
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Class_To_Class" preconditionExpression="aql:self->filter(InterfaceRealization)->size() = 0" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Class).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+      <edgeMappings name="CD_Dependency_Class_To_Class" preconditionExpression="aql:self.oclIsKindOf(uml::InterfaceRealization)" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Class).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
         <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Class_To_Interface" preconditionExpression="aql:self->filter(InterfaceRealization)->size() = 0" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Class).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+      <edgeMappings name="CD_Dependency_Class_To_Interface" preconditionExpression="aql:self.oclIsKindOf(uml::InterfaceRealization)" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Class).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
         <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Interface_To_Class" preconditionExpression="aql:self->filter(InterfaceRealization)->size() = 0" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Interface).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+      <edgeMappings name="CD_Dependency_Interface_To_Class" preconditionExpression="aql:self.oclIsKindOf(uml::InterfaceRealization)" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Interface).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
         <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Interface_To_Interface" preconditionExpression="aql:self->filter(InterfaceRealization)->size() = 0" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Interface).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+      <edgeMappings name="CD_Dependency_Interface_To_Interface" preconditionExpression="aql:self.oclIsKindOf(uml::InterfaceRealization)" semanticCandidatesExpression="aql:viewpoint.eAllContents(viewpoint::DSemanticDecorator).target->filter(Interface).clientDependency" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
         <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
@@ -754,7 +754,7 @@
           </ownedTools>
         </subSections>
         <subSections name="wizard">
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" documentation="Imports one or many packages." name="Import Package" precondition="aql:containerView.target->filter(uml::Package)->size() = 1" forceRefresh="true" candidatesExpression="aql:self.eResource().getContent()->first().eAllContents(uml::Package) - (containerView.eContainerOrSelf(ViewPoint).target.eAllContents(uml::Package) + containerView.target.packageImport.getImportedPackage + containerView.target->ancestors()->filter(uml::Package))" multiple="true">
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" documentation="Imports one or many packages." name="Import Package" precondition="aql:containerView.target->filter(uml::Package)->size() = 1" forceRefresh="true" candidatesExpression="aql:self.eResource().getContent()->first().eAllContents(uml::Package) - (containerView.eContainerOrSelf(ViewPoint).target.eAllContents(uml::Package) + containerView.target.packageImport.getImportedPackage + containerView.target.ancestors()->filter(uml::Package))" multiple="true">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -1108,7 +1108,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="BehaviorExecutionSpecification" referenceName="fragment"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:(containerView + containerView->ancestors())->select( e | e.target->filter(uml::Lifeline)->size() > 0).target">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.ancestors()->including(containerView)->select( e | e.target.oclIsKdinfOf(uml::Lifeline)).target">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredBy" valueExpression="aql:self.eContainerOrSelf(interactions::Interaction).fragment->last()"/>
                 </subModelOperations>
               </firstModelOperations>

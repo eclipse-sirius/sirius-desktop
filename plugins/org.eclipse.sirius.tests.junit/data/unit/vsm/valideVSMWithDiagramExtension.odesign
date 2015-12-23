@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="10.1.3.201511131800">
   <ownedViewpoints name="VP-3834_Viewpoint" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%eContainer == null%>">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="aql:self.eContainer() = null">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
@@ -19,8 +19,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EPackageMapping" preconditionExpression="&lt;%eContainer != null%>" semanticCandidatesExpression="[eSubpackages/]" createElements="false" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']" reusedContainerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+        <containerMappings name="EPackageMapping" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="[eSubpackages/]" createElements="false" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']" reusedContainerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -88,8 +88,8 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingBis" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
-          <style xsi:type="style:ShapeContainerStyleDescription">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingBis" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -110,20 +110,26 @@
           <conditionnalStyles predicateExpression="[true/]">
             <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription labelFormat="bold_italic">
+              <beginLabelStyleDescription>
+                <labelFormat>italic</labelFormat>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               </beginLabelStyleDescription>
-              <centerLabelStyleDescription labelFormat="bold_italic">
+              <centerLabelStyleDescription>
+                <labelFormat>italic</labelFormat>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               </centerLabelStyleDescription>
-              <endLabelStyleDescription labelFormat="bold_italic">
+              <endLabelStyleDescription>
+                <labelFormat>italic</labelFormat>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               </endLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
-          <style xsi:type="style:ShapeContainerStyleDescription">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="aql:self.eContainer() &lt;> null" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>

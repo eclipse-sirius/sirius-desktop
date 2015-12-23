@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="gconf1" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="gconf1" version="10.1.0.201507271600">
   <ownedViewpoints name="GConf1" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOnModel" domainClass="Model">
       <defaultLayer name="Default">
@@ -24,8 +24,8 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="ArrayOnClass" domainClass="Class">
-      <ownedLineMappings name="AOC_Attribute" domainClass="Property" headerLabelExpression="&lt;%name%>"/>
-      <ownedColumnMappings name="AOC_Type" headerLabelExpression="Type" canEdit="false" featureName="type" labelExpression="&lt;%name%>"/>
+      <ownedLineMappings name="AOC_Attribute" domainClass="Property" headerLabelExpression="aql:self.name"/>
+      <ownedColumnMappings name="AOC_Type" headerLabelExpression="Type" canEdit="false" featureName="type" labelExpression="aql:self.name"/>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

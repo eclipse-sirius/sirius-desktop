@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-1688" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-1688" version="10.1.0.201507271600">
   <ownedViewpoints name="VP-1688" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-1688" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -17,7 +17,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="ClassUse" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="&lt;%eReferences.eType%>">
+        <edgeMappings name="ClassUse" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eReferences.eType">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -25,7 +25,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PackageUse" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="&lt;%eReferences.eType.eContainer.nMinimize%>">
+        <edgeMappings name="PackageUse" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='VP-1688']/@ownedRepresentations[name='VP-1688']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="aql:self.eReferences.eType.eContainer()->asSet()">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -38,10 +38,10 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Group Classes">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%$views.target.filter(&quot;EClass&quot;).nSize > 1%>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.eContainer%>">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:views.target->filter(ecore::EClass)->size() > 1">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.target.eContainer()->first()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages" variableName="pkg">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;%$views.target.filter(&quot;EClass&quot;)%>" iteratorName="klass">
+                      <subModelOperations xsi:type="tool:For" expression="aql:views.target->filter(ecore::EClass)" iteratorName="klass">
                         <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:pkg" featureName="eClassifiers"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:pkg">

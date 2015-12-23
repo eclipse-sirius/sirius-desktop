@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="10.1.3.201511131800">
   <ownedViewpoints name="Football with UML2 (Modeler test for layers)" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="NodeMapping only" initialisation="true" domainClass="Package" rootExpression="">
       <defaultLayer name="Zidane">
-        <nodeMappings name="Class Diagram 1" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" semanticElements="" domainClass="Class">
+        <nodeMappings name="Class Diagram 1" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" semanticElements="" domainClass="Class">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12,7 +12,7 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="Makelele">
-        <nodeMappings name="Class Diagram" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Makelele&quot;]%>" semanticElements="" domainClass="Class">
+        <nodeMappings name="Class Diagram" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Makelele')" semanticElements="" domainClass="Class">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -33,7 +33,7 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="Old generation">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -42,7 +42,7 @@
         </nodeMappings>
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Benzema&quot;]%>" semanticElements="" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']"/>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Benzema')" semanticElements="" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']"/>
       </additionalLayers>
       <toolSection/>
     </ownedRepresentations>
@@ -56,7 +56,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:ShapeContainerStyleDescription">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
@@ -85,7 +85,7 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="Old generation">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -94,7 +94,7 @@
         </nodeMappings>
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Benzema&quot;]%>" semanticElements="" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Benzema')" semanticElements="" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -106,7 +106,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="NodeMappingImport with semantic elements from other diagram" initialisation="true" domainClass="Package">
       <defaultLayer name="all">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="class diag imported" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Benzema&quot;]%>" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="class diag imported" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Benzema')" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -115,7 +115,7 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="Old generation">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Makelele&quot;]%>" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Makelele')" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -124,7 +124,7 @@
         </nodeMappings>
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" semanticElements="" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" semanticElements="" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -136,7 +136,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="NodeMappingImport with semantic elements from other viewpoint" initialisation="true" domainClass="Package">
       <defaultLayer name="all">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="annexe node imported" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="annexe node imported" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -145,7 +145,7 @@
         </nodeMappings>
       </defaultLayer>
       <additionalLayers name="Old generation">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Benzema&quot;]%>" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Old generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Benzema')" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -154,7 +154,7 @@
         </nodeMappings>
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Makelele&quot;]%>" semanticElements="" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="New generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Makelele')" semanticElements="" importedMapping="//@ownedViewpoints[name='Annexe']/@ownedRepresentations[name='annexeDiag']/@defaultLayer/@nodeMappings[name='AnnexeNode']">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -256,8 +256,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="ContainerMapping only" initialisation="true" domainClass="Package" rootExpression="">
       <defaultLayer name="Zidane">
-        <containerMappings name="Container Mapping Class Diagram 0" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+        <containerMappings name="Container Mapping Class Diagram 0" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" domainClass="Class">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -266,8 +266,8 @@
         </containerMappings>
       </defaultLayer>
       <additionalLayers name="Makelele">
-        <containerMappings name="Container Mapping Class Diagram 1" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Makelele&quot;]%>" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+        <containerMappings name="Container Mapping Class Diagram 1" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Makelele')" domainClass="Class">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -280,7 +280,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="ContainerMappingImport without semantic elements" initialisation="true" domainClass="Package">
       <defaultLayer name="all">
         <containerMappings name="Container Mapping Class Diagram 2" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -290,7 +290,7 @@
       </defaultLayer>
       <additionalLayers name="Old generation">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="Old generation" semanticCandidatesExpression="feature:eAllContents" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
@@ -300,7 +300,7 @@
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="New generation" semanticCandidatesExpression="feature:eAllContents" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
@@ -313,7 +313,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="ContainerMappingImport with semantic elements" initialisation="true" domainClass="Package">
       <defaultLayer name="all">
         <containerMappings name="Container Mapping Class Diagram 3" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -322,8 +322,8 @@
         </containerMappings>
       </defaultLayer>
       <additionalLayers name="Old generation">
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Old generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Zidane&quot;]%>" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Old generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Zidane')" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
@@ -332,7 +332,7 @@
         </containerMappings>
       </additionalLayers>
       <additionalLayers name="New generation" icon="">
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="New generation" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[name == &quot;Benzema&quot;]%>" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="New generation" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.name = 'Benzema')" importedMapping="//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']"/>
       </additionalLayers>
       <toolSection/>
     </ownedRepresentations>
@@ -354,7 +354,7 @@
           </style>
         </nodeMappings>
         <containerMappings name="AnnexeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -367,14 +367,14 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="annexe2Diag" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layers/football.odesign#//@ownedViewpoints[name='Football with UML2 (Modeler test for layers)']" representationName="ContainerMappingImport without semantic elements">
       <layers name="extension">
         <nodeMappings name="AnnexeNode" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-          <style xsi:type="style:BundledImageDescription" sizeComputationExpression="&lt;%8%>">
+          <style xsi:type="style:BundledImageDescription" sizeComputationExpression="8">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <containerMappings name="AnnexeContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>

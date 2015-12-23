@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" version="10.1.3.201511131800">
   <ownedViewpoints name="VP2726">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Table" domainClass="EPackage">
       <ownedLineMappings name="Package" domainClass="EPackage">
         <ownedSubLines name="Class" domainClass="EClass" semanticCandidatesExpression="feature:eContents"/>
       </ownedLineMappings>
-      <ownedColumnMappings name="Abstract" headerLabelExpression="Abstract" featureName="abstract" labelExpression="&lt;%abstract%>" featureParentExpression="&lt;%eSuperTypes.nFirst%>"/>
+      <ownedColumnMappings name="Abstract" headerLabelExpression="Abstract" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="aql:self.eSuperTypes->first()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:TreeDescription" name="Tree" domainClass="EPackage">
       <subItemMappings name="Package" domainClass="EPackage">

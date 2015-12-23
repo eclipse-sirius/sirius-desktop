@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="UML2 modelers" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="UML2 modelers" version="10.1.0.201507271600">
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" titleExpression="&lt;%name%> Activity Diagram" domainClass="Activity">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" titleExpression="aql:self.name + ' Activity Diagram'" domainClass="Activity">
       <defaultLayer name="Activity">
-        <edgeMappings name="AD_ControlFlow_ActivityNode2ControlNode" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" targetFinderExpression="&lt;%source%>" sourceFinderExpression="&lt;%target%>" domainClass="ControlFlow" useDomainElement="true">
+        <edgeMappings name="AD_ControlFlow_ActivityNode2ControlNode" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" targetFinderExpression="aql:self.source" sourceFinderExpression="aql:self.target" domainClass="ControlFlow" useDomainElement="true">
           <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <centerLabelStyleDescription showIcon="false">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%guard != null &amp;&amp; source.filter(&quot;DecisionNode&quot;).nSize() >0%>">
+          <conditionnalStyles predicateExpression="aql:self.guard &lt;> null  and  source.oclIsKindOf(uml::DecisionNode)">
             <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="[&lt;%guard.body.nFirst()%>]">
@@ -19,7 +19,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="AD_ObjectFlow2ObjectFlow" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="ObjectFlow" useDomainElement="true">
+        <edgeMappings name="AD_ObjectFlow2ObjectFlow" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="ObjectFlow" useDomainElement="true">
           <style sizeComputationExpression="" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription>
@@ -27,7 +27,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="AD_ObjectFlow2Parameter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="ObjectFlow" useDomainElement="true">
+        <edgeMappings name="AD_ObjectFlow2Parameter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="ObjectFlow" useDomainElement="true">
           <style sizeComputationExpression="" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription>
@@ -35,7 +35,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="AD_ObjectFlow2DataStore" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="ObjectFlow" useDomainElement="true">
+        <edgeMappings name="AD_ObjectFlow2DataStore" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="ObjectFlow" useDomainElement="true">
           <style sizeComputationExpression="" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription>
@@ -43,7 +43,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="AD_DataStore2ObjectFlow" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="ObjectFlow" useDomainElement="true">
+        <edgeMappings name="AD_DataStore2ObjectFlow" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='Pin']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="ObjectFlow" useDomainElement="true">
           <style sizeComputationExpression="" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription>
@@ -124,14 +124,14 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="Comment" semanticCandidatesExpression="feature:eAllContents" domainClass="Comment">
-            <style xsi:type="style:NoteDescription" borderSizeComputationExpression="1" labelExpression="&lt;%body%>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:NoteDescription" borderSizeComputationExpression="1" labelExpression="aql:self.body" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
           </subNodeMappings>
           <subContainerMappings name="AD_DataStore" semanticCandidatesExpression="feature:eAllContents" domainClass="DataStoreNode">
-            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="Liquid">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="Liquid">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -139,61 +139,61 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="AD_ExecutableNode" semanticCandidatesExpression="feature:eContents" domainClass="ExecutableNode">
-            <borderedNodeMappings name="Pin" semanticCandidatesExpression="&lt;%ownedElement[~target.filter(&quot;Element&quot;) == null]%>" domainClass="Pin">
+            <borderedNodeMappings name="Pin" semanticCandidatesExpression="aql:self.ownedElement->select( e | e.eInverse('target')->filter(uml::Element) = null)" domainClass="Pin">
               <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() > 0 &amp;&amp; filter(&quot;CallOperationAction&quot;).nSize() >0 &amp;&amp; operation == null%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%&quot;&lt;&lt;&quot;+getAppliedStereotypes().nFirst().name+&quot;>>\n&quot;+name%>" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() > 0  and  self.oclIsKindOf(uml::CallOperationAction)  and  self.operation = null">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:'&lt;&lt;'+self.getAppliedStereotypes()->first().name+'>>\n'+self.name" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() == 0 &amp;&amp; filter(&quot;CallOperationAction&quot;).nSize() >0 &amp;&amp; operation !=null%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%operation.name%>" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() = 0  and  self.oclIsKindOf(uml::CallOperationAction)  and  self.operation &lt;>null">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:self.operation.name" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() > 0 &amp;&amp; filter(&quot;CallOperationAction&quot;).nSize() >0 &amp;&amp; operation !=null%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%&quot;&lt;&lt;&quot;+getAppliedStereotypes().nFirst().name+&quot;>>\n&quot;+operation.name%>" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() > 0  and  self.oclIsKindOf(uml::CallOperationAction)  and  self.operation &lt;>null">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:'&lt;&lt;'+self.getAppliedStereotypes()->first().name+'>>\n'+ self.operation.name" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() == 0 &amp;&amp; filter(&quot;CallOperationAction&quot;).nSize() >0 &amp;&amp; operation == null%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() = 0  and  self.oclIsKindOf(uml::CallOperationAction)  and  self.operation = null">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() > 0 &amp;&amp; filter(&quot;OpaqueAction&quot;).nSize() >0%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&lt;&lt;&quot;+getAppliedStereotypes().nFirst().name+&quot;>>\n&quot;+body.nFirst()%>" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() > 0  and  self.oclIsKindOf(uml::OpaqueAction)">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="aql:'&lt;&lt;'+self.getAppliedStereotypes()->first().name+'>>\n'+self.body->first()" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="&lt;%getAppliedStereotypes().nSize() == 0 &amp;&amp; filter(&quot;OpaqueAction&quot;).nSize() >0%>">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="&lt;%body.nFirst()%>" roundedCorner="true">
+            <conditionnalStyles predicateExpression="aql:self.getAppliedStereotypes()->size() = 0  and  self.oclIsKindOf(uml::OpaqueAction)">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" showIcon="false" labelExpression="aql:self.body->first()" roundedCorner="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -201,7 +201,7 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -215,7 +215,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="InitialNode" referenceName="node">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Initial_&lt;%$container.node.filter(&quot;InitialNode&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Initial_' + container.node->filter(uml::InitialNode)->size()"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -224,7 +224,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ActivityFinalNode" referenceName="node">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ActivityFinal_&lt;%$container.node.filter(&quot;ActivityFinalNode&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'ActivityFinal_' + container.node->filter(uml::ActivityFinalNode)->size()"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -233,7 +233,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="DecisionNode" referenceName="node">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Decision_&lt;%$container.node.filter(&quot;DecisionNode&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Decision_' + container.node->filter(uml::DecisionNode)->size()"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -242,7 +242,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="MergeNode" referenceName="node">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Merge_&lt;%$container.node.filter(&quot;MergeNode&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Merge_' + container.node->filter(uml::MergeNode)->size()"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -251,12 +251,12 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="OpaqueAction" referenceName="node">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="OpaqueAction_&lt;%$container.node.filter(&quot;OpaqueAction&quot;).nSize()%>"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="body" valueExpression="// TODO body of &lt;%$instance.name%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'OpaqueAction_' + container.node->filter(uml::OpaqueAction)->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="body" valueExpression="aql:'// TODO body of ' + instance.name"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="Call Operation Action" precondition="&lt;%$container.filter(&quot;Activity&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Operation&quot;)%>" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+            <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="Call Operation Action" precondition="aql:container.oclIsKindOf(uml::Activity)" forceRefresh="true" candidatesExpression="aql:self.eResource().getContent()->first().eAllContents(uml::Operation)" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
@@ -273,9 +273,9 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer()">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ControlFlow" referenceName="edge">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_To_&lt;%$target.name%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:source.name + '_To_' + target.name"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
                   </subModelOperations>

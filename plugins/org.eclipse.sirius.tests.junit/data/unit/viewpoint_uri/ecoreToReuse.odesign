@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.3.201511131800">
   <ownedViewpoints name="Design" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
         <reusedMappings xsi:type="description_1:NodeMapping" href="viewpoint:/org.eclipse.sirius.sample.ecore.design/Documentation#//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@nodeMappings[name='EC%20Doc%20Annotation']"/>
       </defaultLayer>

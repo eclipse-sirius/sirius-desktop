@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:contribution="http://www.eclipse.org/sirius/description/contribution/1.0.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="Base_Group" version="6.7.0.201302071200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:contribution="http://www.eclipse.org/sirius/description/contribution/1.0.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="Base_Group" version="10.1.0.201507271600">
   <ownedViewpoints name="VP1" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Target_Table" domainClass="ecore.EPackage">
       <ownedLineMappings name="Classes" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eContents"/>
-      <ownedColumnMappings name="Class_Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="Class_Name" headerLabelExpression="Name" featureName="name" labelExpression="aql:self.name"/>
     </ownedRepresentations>
   </ownedViewpoints>
   <ownedViewpoints name="VP2">
     <ownedRepresentationExtensions xsi:type="description_1:EditionTableExtensionDescription" name="Table_Customization" viewpointURI="viewpoint:/vp-1224/VP1" representationName="Target_Table" domainClass="ecore.EPackage">
       <contributions>
-        <source xsi:type="contribution:DirectEObjectReference" value="//@ownedViewpoints[name='VP2']/@ownedRepresentationExtensions[name='Table_Customization']/@ownedLineMappings[name='ClassesSubset']"/>
+        <source xsi:type="contribution:DirectEObjectReference"/>
         <target xsi:type="contribution:DirectEObjectReference" value="//@ownedViewpoints[name='VP1']/@ownedRepresentations[name='Target_Table']/@ownedLineMappings[name='Classes']"/>
         <featureMask xsi:type="contribution:SetFeatureContribution"/>
       </contributions>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="a" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="a" version="10.1.3.201511131800">
   <ownedViewpoints name="a">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="a" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%~target.filter(&quot;DDiagram&quot;)[eContainer != null].description[name==&quot;a&quot;].nSize &lt; 1%>">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="a" initialisation="true" domainClass="EPackage" preconditionExpression="aql:self.eInverse('target')->filter(diagram::DDiagram)->select( e | e.eContainer() &lt;> null).description->select(n | n.name='a')->size() &lt; 1">
       <defaultLayer name="Default">
         <nodeMappings name="class" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
@@ -10,18 +10,18 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="reference" labelDirectEdit="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20ref']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)%>" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="reference" labelDirectEdit="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20ref']" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="Ref : &lt;%name%>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:'Ref : ' + self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ref2" labelDirectEdit="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20ref']" sourceMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="&lt;%eReferences.eType%>">
+        <edgeMappings name="ref2" labelDirectEdit="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@toolSections.0/@ownedTools[name='edit%20ref']" sourceMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='a']/@ownedRepresentations[name='a']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="aql:self.eReferences.eType">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="Ref 2 : &lt;%name%>">
+            <centerLabelStyleDescription labelExpression="aql:'Ref 2 : ' + self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" version="10.0.0.201411061000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" version="10.1.3.201511131800">
   <ownedViewpoints name="2475">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="node" domainClass="EClass">
-          <conditionnalStyles predicateExpression="&lt;%%>"/>
+          <conditionnalStyles predicateExpression="aql:OrderedSet{}"/>
         </nodeMappings>
         <nodeMappings xsi:type="description_1:NodeMappingImport" name="nodeImport" domainClass="EClass" importedMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='node']"/>
-        <edgeMappings name="relation" sourceMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='node']" targetMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='container']" targetFinderExpression="&lt;%%>"/>
+        <edgeMappings name="relation" sourceMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='node']" targetMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='container']" targetFinderExpression="aql:OrderedSet{}"/>
         <edgeMappings name="elementEdge" sourceMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='container']" targetMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='containerImport']" domainClass="EReference" useDomainElement="true"/>
         <edgeMappingImports name="edgeImport" importedMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='relation']"/>
         <containerMappings name="container" domainClass="EClass">
-          <conditionnalStyles predicateExpression="&lt;%%>"/>
+          <conditionnalStyles predicateExpression="aql:OrderedSet{}"/>
         </containerMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="containerImport" domainClass="EClass" importedMapping="//@ownedViewpoints[name='2475']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='container']"/>
       </defaultLayer>

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="10.1.0.201507271600">
   <ownedViewpoints name="InitializationTest" modelFileExtension="uml" icon="">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Tests the simple initialization" name="BasicInit" initialisation="true" domainClass="EPackage"/>
   </ownedViewpoints>
   <ownedViewpoints name="ThreeMappings" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Tests the simple initialization" name="BasicInit2" initialisation="true" domainClass="EPackage">
       <nodeMappings name="map1" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-        <style xsi:type="style:SquareDescription" labelExpression="a" sizeComputationExpression="&lt;%4%>">
+        <style xsi:type="style:SquareDescription" labelExpression="a" sizeComputationExpression="4">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </nodeMappings>
       <containerMappings name="map2" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-        <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="b">
+        <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="b">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </containerMappings>
       <containerMappings name="map3" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" childrenPresentation="List">
-        <style xsi:type="style:ShapeContainerStyleDescription" labelSize="6" labelExpression="tt">
+        <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="6" labelExpression="tt">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>

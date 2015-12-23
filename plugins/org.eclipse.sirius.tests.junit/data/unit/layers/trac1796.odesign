@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="trac1796" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="trac1796" version="10.1.3.201511131800">
   <ownedViewpoints name="trac1796" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="trac1796" initialisation="true" domainClass="Model">
+      <metamodel href="http://www.eclipse.org/uml2/2.1.0/UML"/>
       <defaultLayer name="default">
         <nodeMappings name="Class Mapping" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
           <style xsi:type="style:SquareDescription">
@@ -10,10 +11,10 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Reference Mapping" semanticCandidatesExpression="&lt;%eAllContents(&quot;Property&quot;)[type.filter(&quot;Class&quot;)]%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetFinderExpression="&lt;%type.filter(&quot;Class&quot;)%>" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-          <style>
+        <edgeMappings name="Reference Mapping" semanticCandidatesExpression="aql:self.eAllContents(uml::Property)->select( e | e.type.oclIsKindOf(uml::Class))" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@nodeMappings[name='Class%20Mapping']" targetFinderExpression="aql:self.type->filter(uml::Class)" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+            <centerLabelStyleDescription labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -23,10 +24,10 @@
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension for compositions" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/trac1796" representationName="trac1796">
       <layers name="Extension for compositions">
         <edgeMappingImports name="Extension Reference Mapping" importedMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@edgeMappings[name='Reference%20Mapping']">
-          <conditionnalStyles predicateExpression="&lt;%isComposite%>">
-            <style sourceArrow="FillDiamond">
+          <conditionnalStyles predicateExpression="aql:self.isComposite">
+            <style sourceArrow="FillDiamond" sizeComputationExpression="[eContents()->size()/]">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-              <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <centerLabelStyleDescription labelExpression="aql:self.name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vp_1958" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vp_1958" version="10.1.3.201511131800">
   <ownedViewpoints name="vp_1958" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP_1958_Diagram" domainClass="EPackage">
       <defaultLayer name="Default1">
-        <nodeMappings name="Nodes" semanticCandidatesExpression="&lt;%self.eSubpackages%>" domainClass="EPackage">
-          <borderedNodeMappings name="BorderedNodes" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="EClass">
+        <nodeMappings name="Nodes" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="EPackage">
+          <borderedNodeMappings name="BorderedNodes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17,10 +17,10 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="EC_EReference" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='BorderedNodes']" targetMapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='BorderedNodes']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="EC_EReference" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='BorderedNodes']" targetMapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='BorderedNodes']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%name%> &lt;%$diagram.name%>">
+            <centerLabelStyleDescription labelExpression="aql:self.name + ' ' + diagram.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -58,7 +58,7 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:targetEClass"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ref"/>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']" containerViewExpression="&lt;% $sourceView.eContainer %>" sourceExpression="var:sourceEClass" targetExpression="var:targetEClass"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='vp_1958']/@ownedRepresentations[name='VP_1958_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']" containerViewExpression="aql:sourceView.eContainer()" sourceExpression="var:sourceEClass" targetExpression="var:targetEClass"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
