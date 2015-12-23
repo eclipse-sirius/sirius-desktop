@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
+import org.eclipse.swt.SWT;
 
 /**
  * Specific {@link OneLineBorder} with dash capabilities, two more supported
@@ -53,8 +54,9 @@ public class OneLineMarginBorder extends OneLineBorder {
      */
     @Override
     public void paint(IFigure figure, Graphics graphics, Insets insets) {
-        graphics.setLineDash(dash);
-
+        if (dash != null && getStyle() == SWT.LINE_CUSTOM) {
+            graphics.setLineDash(dash);
+        }
         super.paint(figure, graphics, insets);
 
         int one = MapModeUtil.getMapMode(figure).DPtoLP(1);
