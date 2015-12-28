@@ -3,14 +3,14 @@
   <ownedViewpoints name="EdgeLabelRefreshPb" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="EdgeLabelRefreshPb" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="Class" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="10" labelSize="81" labelFormat="italic" showIcon="false" labelExpression="&lt;%name%>1" tooltipExpression="OneToolTip" sizeComputationExpression="31" labelPosition="node" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="1">
+        <nodeMappings name="Class" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="10" labelSize="81" labelFormat="italic" showIcon="false" labelExpression="aql:self.name + '1'" tooltipExpression="OneToolTip" sizeComputationExpression="31" labelPosition="node" hideLabelByDefault="true" resizeKind="NSEW" width="1" height="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="edge" deletionDescription="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@toolSections.0/@ownedTools[name='TestDel']" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="edge" deletionDescription="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@toolSections.0/@ownedTools[name='TestDel']" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <centerLabelStyleDescription labelSize="5" labelFormat="bold" showIcon="false" labelExpression="plop1">

@@ -3,7 +3,7 @@
   <ownedViewpoints name="ReferencingViewpoint">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="ReferencingDiagram">
       <defaultLayer name="Default">
-        <edgeMappings name="edge" semanticElements="var:self" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="edge" semanticElements="var:self" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan" foldingStyle="SOURCE">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <centerLabelStyleDescription labelSize="5" labelFormat="bold" showIcon="false" labelExpression="plop1">
