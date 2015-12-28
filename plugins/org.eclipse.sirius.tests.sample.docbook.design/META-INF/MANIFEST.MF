@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.eclipse.sirius.tests.sample.docbook.design;singleton:=t
 Bundle-Version: 4.0.0.qualifier
 Require-Bundle: org.eclipse.sirius.tests.sample.docbook,
  org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.aql,
  org.eclipse.core.runtime
 Bundle-Vendor: %providerName
 Bundle-Activator: org.eclipse.sirius.tests.sample.docbook.design.tool.SampleDocbookPlugin

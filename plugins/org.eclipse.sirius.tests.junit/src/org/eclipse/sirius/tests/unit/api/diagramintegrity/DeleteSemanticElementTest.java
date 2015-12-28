@@ -126,8 +126,8 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         // add a chapter in the semantic model.
         addTinySection();
         addNote();
-
-        // create a diagram based on my semantic model (simple.docbook)
+        activateViewpoint("docbook1");
+        // create a diagram based on my semantic model (simple.docbook)        
         myRepresentation = createRepresentation("evoluate view");
 
         // refresh the current representation.

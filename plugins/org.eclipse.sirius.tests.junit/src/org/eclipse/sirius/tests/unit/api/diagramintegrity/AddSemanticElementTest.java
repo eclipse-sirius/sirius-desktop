@@ -122,6 +122,7 @@ public class AddSemanticElementTest extends DiagramIntegrityTestCase {
         // add a chapter in the semantic model.
         addTinySection();
 
+        activateViewpoint("docbook1");
         // create a diagram based on my semantic model (simple.docbook)
         myRepresentation = createRepresentation("evoluate view");
 

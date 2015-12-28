@@ -26,6 +26,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
         addTinySection();
         addNote();
 
+        activateViewpoint("docbook1");
         // create a diagram based on my semantic model (simple.docbook)
         myRepresentation = createRepresentation("evoluate view");
 

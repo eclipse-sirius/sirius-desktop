@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="10.1.3.201511131800">
   <ownedViewpoints name="docbook_extended" modelFileExtension="docbook">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20chapter%20note%20in%20diagram']" documentation="mon premier projet designer" name="obviousDiagram" domainClass="Book" init="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20obvious']">
-      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <metamodel href="http://docbook.org/ns/docbook#/"/>
       <nodeMappings name="tiny section" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3" dropDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20tiny%20note%20in%20tiny%20section']">
         <borderedNodeMappings name="tiny note" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
-          <style xsi:type="style:DotDescription" labelExpression="&lt;%data%>" sizeComputationExpression="1">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.data" sizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </borderedNodeMappings>
-        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelSize="2" labelExpression="&lt;%id%>" sizeComputationExpression="5">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelSize="2" labelExpression="aql:self.id" sizeComputationExpression="5">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </style>
       </nodeMappings>
-      <nodeMappings name="note" preconditionExpression="&lt;%eContainer().eClass().name == &quot;Sect2&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
-        <style xsi:type="style:SquareDescription" labelSize="2" labelExpression="&lt;%data%>" sizeComputationExpression="1">
+      <nodeMappings name="note" preconditionExpression="aql:self.eContainer().eClass().name = 'Sect2'" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+        <style xsi:type="style:SquareDescription" labelSize="2" labelExpression="aql:self.data" sizeComputationExpression="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
         </style>
       </nodeMappings>
       <nodeMappings name="cita" semanticCandidatesExpression="feature:eAllContents" domainClass="Citation">
-        <style xsi:type="style:SquareDescription" labelSize="2" labelExpression="&lt;%data%>" sizeComputationExpression="1">
+        <style xsi:type="style:SquareDescription" labelSize="2" labelExpression="aql:self.data" sizeComputationExpression="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20link']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%followingSibling().nFirst()%>">
+      <edgeMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20link']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.followingSiblings()->first()">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="noteToTitle" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetFinderExpression="aql:self.eContainerOrSelf(docbook::Chapter).eAllContents(docbook::Title)->first()">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="TitleToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer()">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetFinderExpression="aql:self.followingSiblings()">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterNoteToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="aql:self.eContainer().eAllContents(docbook::Sect2)->first()">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer().eContainer().eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
+        <style sizeComputationExpression="[eContents()->size()/]">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterNoteToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection']">
         <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="tinyToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
+      <edgeMappings name="chapterToChapterNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetFinderExpression="aql:self.eContents()->filter(docbook::Para)" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection']">
         <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="noteToTitle" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetFinderExpression="&lt;%eContainer(&quot;Chapter&quot;).eAllContents(&quot;Title&quot;).nFirst()%>">
-        <style>
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="TitleToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>">
-        <style>
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="tinyNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetFinderExpression="&lt;%followingSibling()%>">
-        <style>
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="chapterNoteToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%parent().eAllContents(&quot;Sect2&quot;).nFirst()%>">
-        <style>
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="tinyToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent().parent().parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
-        <style>
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="chapterNoteToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection']">
-        <style sizeComputationExpression="1">
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="chapterToChapterNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetFinderExpression="&lt;%eContents().filter(&quot;Para&quot;)%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection']">
-        <style sizeComputationExpression="1">
-          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-        </style>
-      </edgeMappings>
-      <edgeMappings name="chapterToBig" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect1&quot;)%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection']">
+      <edgeMappings name="chapterToBig" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetFinderExpression="aql:self.eAllContents(docbook::Sect1)" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection']">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="bigToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection']">
+      <edgeMappings name="bigToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection']">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="chapterToMedium" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect2&quot;)%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection']">
+      <edgeMappings name="chapterToMedium" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="aql:self.eAllContents(docbook::Sect2)" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection']">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="mediumToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent().parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection']">
+      <edgeMappings name="mediumToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="aql:self.eContainer().eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection']">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="chapterToTiny" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect3&quot;)%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20source%20reconnection']">
+      <edgeMappings name="chapterToTiny" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetFinderExpression="aql:self.eAllContents(docbook::Sect3)" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20source%20reconnection']">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
@@ -108,14 +108,14 @@
       </edgeMappings>
       <containerMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20container'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20obvious']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter" dropDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20big%20section%20in%20container'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20chapter%20note%20in%20chapter']">
         <borderedNodeMappings name="title" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Title">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%data%>" width="2" height="3">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.data" width="2" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
           </style>
         </borderedNodeMappings>
-        <borderedNodeMappings name="chapNote" preconditionExpression="&lt;%eContainer().eClass.name == &quot;Chapter&quot;%>" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%data%>" width="2" height="3">
+        <borderedNodeMappings name="chapNote" preconditionExpression="aql:self.eContainer().eClass().name = 'Chapter'" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.data" width="2" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -123,20 +123,20 @@
         </borderedNodeMappings>
         <subContainerMappings name="big section" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1" dropDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20medium%20section%20in%20big%20section']">
           <subNodeMappings name="medium section" detailDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20node']" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="4">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="4">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </subContainerMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.id">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -150,7 +150,7 @@
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Chapter" referenceName="chapter">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;% &quot;chap&quot; + precedingSibling().nSize()%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'chap' + self.precedingSiblings()->size()"/>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
               </subModelOperations>
             </firstModelOperations>
@@ -162,7 +162,7 @@
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;% &quot;Sect&quot; + precedingSibling().nSize()%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="aql:'Sect' + self.precedingSiblings()->size()"/>
               </subModelOperations>
             </firstModelOperations>
           </initialOperation>
@@ -187,7 +187,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nLast()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->last())">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
             </firstModelOperations>
           </initialOperation>
@@ -203,7 +203,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->first()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para"/>
             </firstModelOperations>
           </initialOperation>
@@ -235,23 +235,23 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Para&quot;).nLast()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Para)->last())">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Citation" referenceName="citation"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
         <subSections name="navigation links">
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw container" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw container" browseExpression="aql:self.eResource().getContents()->first()" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="aql:self.eResource().getContents()->first()" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw link" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw link" browseExpression="aql:self.eResource().getContents()->first()" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -271,7 +271,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target%>" featureName="para"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.targetNode.target" featureName="para"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -284,7 +284,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target%>" featureName="para"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.sourceNode.target" featureName="para"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -297,7 +297,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target%>" featureName="sect1"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.targetNode.target" featureName="sect1"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -310,7 +310,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target%>" featureName="sect1"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.sourceNode.target" featureName="sect1"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -323,7 +323,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target.eAllContents(&quot;Sect1&quot;).nFirst()%>" featureName="sect2"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.targetNode.target.eAllContents(docbook::Sect1)->first()" featureName="sect2"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -336,7 +336,7 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target.eAllContents(&quot;Sect1&quot;).nFirst()%>" featureName="sect2"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:edgeView.sourceNode.target.eAllContents(docbook::Sect1)->first()" featureName="sect2"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -348,7 +348,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
               </firstModelOperations>
             </initialOperation>
@@ -361,8 +361,8 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="sect3"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:target.eAllContents(docbook::Sect2)->first()" featureName="sect3"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -374,8 +374,8 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.targetNode.target%>">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="sect3"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.targetNode.target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:target.eAllContents(docbook::Sect2)->first()" featureName="sect3"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -387,7 +387,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.targetNode.target%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:edgeView.targetNode.target">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
               </firstModelOperations>
             </initialOperation>
@@ -446,9 +446,9 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$newContainerView.target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="para"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newContainerView.target.eAllContents(docbook::Sect2)->first()" featureName="para"/>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$newContainerView.target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="para"/>
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="aql:newContainerView.target.eAllContents(docbook::Sect2)->first()" featureName="para"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -457,67 +457,67 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="evoluate view" domainClass="Book" init="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate']">
-      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <metamodel href="http://docbook.org/ns/docbook#/"/>
       <nodeMappings name="chapt" detailDescriptions="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate'] //@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20node']" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='chapter']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter">
-        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="aql:self.eAllContents()->size()">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
         </style>
       </nodeMappings>
       <nodeMappings name="big sect" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='big%20sect']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1">
-        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="aql:self.eAllContents()->size()">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
         </style>
       </nodeMappings>
       <nodeMappings name="med sect" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='med%20sect']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2">
-        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="aql:self.eAllContents()->size()">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </style>
       </nodeMappings>
       <nodeMappings name="tiny sect" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='tiny%20sect']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3">
-        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="2">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="2">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </nodeMappings>
-      <nodeMappings name="paragraphe" preconditionExpression="&lt;%parent().eClass.name == &quot;Chapter&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
-        <style xsi:type="style:DotDescription" labelExpression="&lt;%data%>" sizeComputationExpression="2" resizeKind="NORTH_SOUTH">
+      <nodeMappings name="paragraphe" preconditionExpression="aql:self.eContainer().eClass().name = 'Chapter'" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+        <style xsi:type="style:DotDescription" labelExpression="aql:self.data" sizeComputationExpression="2" resizeKind="NORTH_SOUTH">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="belong To Chapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
-        <style>
+      <edgeMappings name="belong To Chapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="belong to big sect" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
-        <style>
+      <edgeMappings name="belong to big sect" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="belong to med section" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
-        <style>
+      <edgeMappings name="belong to med section" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="note mapping" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='direct%20edit%20note']" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetFinderExpression="&lt;%parent().eAllContents(&quot;Sect3&quot;).nFirst()%>" sourceFinderExpression="&lt;%parent()%>" targetExpression="var:self" domainClass="Para" useDomainElement="true">
-        <style sizeComputationExpression="&lt;%2%>">
+      <edgeMappings name="note mapping" labelDirectEdit="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='direct%20edit%20note']" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetMapping="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetFinderExpression="aql:self.eContainer().eAllContents(docbook::Sect3)->first()" sourceFinderExpression="aql:self.eContainer()" targetExpression="var:self" domainClass="Para" useDomainElement="true">
+        <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          <centerLabelStyleDescription labelExpression="&lt;%data%>">
+          <centerLabelStyleDescription labelExpression="aql:self.data">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
       <containerMappings name="title" semanticCandidatesExpression="feature:eAllContents" domainClass="Title">
-        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%data%>">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.data">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
@@ -536,7 +536,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Chapter&quot;).nFirst()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->first()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1"/>
             </firstModelOperations>
           </initialOperation>
@@ -545,7 +545,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect1&quot;).nFirst()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->first()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2"/>
             </firstModelOperations>
           </initialOperation>
@@ -554,7 +554,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->first()">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
             </firstModelOperations>
           </initialOperation>
@@ -575,8 +575,8 @@
           <elementView name="elementView"/>
           <containerView name="elementView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.parent().parent().parent()%>">
-              <subModelOperations xsi:type="tool_1:For" expression="&lt;%eContents().filter(&quot;Para&quot;)%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainer().eContainer().eContainer()">
+              <subModelOperations xsi:type="tool_1:For" expression="aql:self.eContents()->filter(docbook::Para)">
                 <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </subModelOperations>
               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
@@ -585,22 +585,22 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="multiple selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>" multiple="true">
+        <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="multiple selection wizard" forceRefresh="true" candidatesExpression="aql:containerView.eAllContents()->select( e | e.target.data = '')" multiple="true">
           <element name="element"/>
           <containerView name="containerView"/>
           <container name="container"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+            <firstModelOperations xsi:type="tool_1:For" expression="aql:element.target">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="single selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>">
+        <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="single selection wizard" forceRefresh="true" candidatesExpression="aql:containerView.eAllContents()->select( e | e.target.data = '')">
           <element name="element"/>
           <containerView name="containerView"/>
           <container name="container"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+            <firstModelOperations xsi:type="tool_1:For" expression="aql:element.target">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
             </firstModelOperations>
           </initialOperation>
@@ -609,7 +609,7 @@
           <variable name="container"/>
           <viewVariable name="containerView"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eContents.filter(&quot;Chapter&quot;).nLast()%>">
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eContents()->filter(docbook::Chapter)->last())">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
             </firstModelOperations>
           </initialOperation>
@@ -620,7 +620,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="aql:self.eResource().getContents()->first()" diagramDescription="//@ownedViewpoints[name='docbook_extended']/@ownedRepresentations[name='obviousDiagram']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -666,7 +666,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect1"/>
               </firstModelOperations>
             </initialOperation>
@@ -679,7 +679,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect2"/>
               </firstModelOperations>
             </initialOperation>
@@ -692,7 +692,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
               </firstModelOperations>
             </initialOperation>

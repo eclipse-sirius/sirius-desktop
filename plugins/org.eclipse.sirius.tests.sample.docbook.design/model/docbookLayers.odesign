@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Docbook modelers" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Docbook modelers" version="10.1.3.201511131800">
   <ownedViewpoints name="docbook1-layers" modelFileExtension="docbook">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="evoluate view" initialisation="true" domainClass="Book" reusedMappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@containerMappings[name='info']/@borderedNodeMappings[name='author']">
-      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <metamodel href="http://docbook.org/ns/docbook#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="hide things">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='paragraphe']"/>
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='paragraphe']"/>
@@ -12,102 +12,103 @@
       </concerns>
       <defaultLayer name="default">
         <nodeMappings name="chapt" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate']" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='chapter']" domainClass="Chapter">
-          <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%20%>">
+          <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="aql:self.id" sizeComputationExpression="20">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <sections maxValueExpression="&lt;%10%>" valueExpression="&lt;%eContents().nSize()%>" label="section1">
+            <sections maxValueExpression="10" valueExpression="aql:self.eContents()->size()" label="section1">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </sections>
-            <sections minValueExpression="&lt;%1%>" maxValueExpression="&lt;%10%>" valueExpression="&lt;%eContents().nSize()%>" label="section2">
+            <sections minValueExpression="1" maxValueExpression="10" valueExpression="aql:self.eContents()->size()" label="section2">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </sections>
           </style>
         </nodeMappings>
-        <nodeMappings name="big sect" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='big%20sect']" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Sect1">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+        <nodeMappings name="big sect" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='big%20sect']" semanticCandidatesExpression="aql:self.eResource().getContents()->first().eAllContents()" domainClass="Sect1">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="aql:self.eAllContents()->size()">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="med sect" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='med%20sect']" domainClass="Sect2">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="aql:self.eAllContents()->size()">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="tiny sect" deletionDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20tiny%20section']" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='tiny%20sect']" domainClass="Sect3">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="2">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="paragraphe" preconditionExpression="&lt;%parent().eClass.name == &quot;Chapter&quot;%>" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='direct%20edit%20note']" domainClass="Para">
-          <style xsi:type="style:DotDescription" labelExpression="&lt;%data%>" sizeComputationExpression="2" resizeKind="NORTH_SOUTH">
+        <nodeMappings name="paragraphe" preconditionExpression="aql:self.eContainer().eClass().name = 'Chapter'" labelDirectEdit="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='direct%20edit']/@ownedTools[name='direct%20edit%20note']" domainClass="Para">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.data" sizeComputationExpression="2" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="belong To Chapter" documentation="This edge has a different style if it represents the first BigSection of the chapter." sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
-          <style>
+        <edgeMappings name="belong To Chapter" documentation="This edge has a different style if it represents the first BigSection of the chapter." sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%self.eContainer().sect1.nFirst == self%>">
+          <conditionnalStyles predicateExpression="aql:self.eContainer().sect1->first() = self">
             <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="3" routingStyle="tree">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-              <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="ConditionalStyle">
+              <centerLabelStyleDescription showIcon="false" labelExpression="ConditionalStyle">
+                <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="belong to big sect" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
-          <style>
+        <edgeMappings name="belong to big sect" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="belong to med section" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
-          <style>
+        <edgeMappings name="belong to med section" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='med%20sect']" targetFinderExpression="aql:self.eContainer()" reconnections="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="note mapping" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='tiny%20sect']" targetFinderExpression="&lt;%parent().eAllContents(&quot;Sect3&quot;).nFirst()%>" sourceFinderExpression="&lt;%parent()%>" targetExpression="var:self" domainClass="Para" useDomainElement="true">
-          <style sizeComputationExpression="&lt;%2%>">
+        <edgeMappings name="note mapping" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']" targetMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='tiny%20sect']" targetFinderExpression="aql:self.eContainer().eAllContents(docbook::Sect3)->first()" sourceFinderExpression="aql:self.eContainer()" targetExpression="var:self" domainClass="Para" useDomainElement="true">
+          <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%data%>">
+            <centerLabelStyleDescription labelExpression="aql:self.data">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="info" semanticCandidatesExpression="" domainClass="Info" reusedNodeMappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='big%20sect']" reusedContainerMappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@containerMappings[name='title']">
-          <borderedNodeMappings name="author" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Author">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%personname%>" sizeComputationExpression="&lt;%3%>">
+          <borderedNodeMappings name="author" semanticCandidatesExpression="aql:self.eResource().getContents()->first().eAllContents()" domainClass="Author">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.personname">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
-            <conditionnalStyles predicateExpression="&lt;%getRootContainer().eAllContents(&quot;Author&quot;).nSize()>3%>">
-              <style xsi:type="style:SquareDescription" labelExpression="&lt;%personname%>" sizeComputationExpression="&lt;%6%>" labelPosition="node">
+            <conditionnalStyles predicateExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Author)->size()>3">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:self.personname" sizeComputationExpression="6" labelPosition="node">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="title" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Title" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="Liquid">
+        <containerMappings name="title" semanticCandidatesExpression="aql:self.eResource().getContents()->first().eAllContents()" domainClass="Title" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -126,7 +127,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eContents.filter(&quot;Chapter&quot;).nLast()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eContents()->filter(docbook::Chapter)->last())">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
               </firstModelOperations>
             </initialOperation>
@@ -135,9 +136,9 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Info&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Info)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Author" referenceName="author">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="personname" valueExpression="&lt;%&quot;Author&quot;+getRootContainer().eAllContents(&quot;Author&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="personname" valueExpression="aql:self.'Author'+eResource().getContents()->first().eAllContents(docbook::Author)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -153,7 +154,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Chapter&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1"/>
               </firstModelOperations>
             </initialOperation>
@@ -162,7 +163,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect1&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2"/>
               </firstModelOperations>
             </initialOperation>
@@ -171,7 +172,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Sect2)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
               </firstModelOperations>
             </initialOperation>
@@ -192,8 +193,8 @@
             <elementView name="view"/>
             <containerView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.parent().parent().parent()%>">
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;%eContents().filter(&quot;Para&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.eContainer().eContainer().eContainer()">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.eContents()->filter(docbook::Para)">
                   <subModelOperations xsi:type="tool_1:RemoveElement"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
@@ -202,45 +203,45 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" documentation="Ce wizard sert a faire un truc ou un machin je ne sais plus ..." name="multiple selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>" multiple="true">
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" documentation="Ce wizard sert a faire un truc ou un machin je ne sais plus ..." name="multiple selection wizard" forceRefresh="true" candidatesExpression="aql:containerView.eAllContents()->select( e | e.target.data = '')" multiple="true">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.target">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="single selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>">
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="single selection wizard" forceRefresh="true" candidatesExpression="aql:containerView.eAllContents()->select( e | e.target.data = '')">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.target">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:BehaviorTool" name="change para name">
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="&lt;%getRootContainer().eAllContents(&quot;Para&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:self.eResource().getContents()->first().eAllContents(docbook::Para)">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="behavior"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="deleteSubChapterView" candidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Chapter&quot;)%>">
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="deleteSubChapterView" candidatesExpression="aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.eAllContents()%>">
+              <firstModelOperations xsi:type="tool_1:For" expression="aql:element.eAllContents()">
                 <subModelOperations xsi:type="tool_1:DeleteView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <subSections name="navigation links">
-            <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to evoluate" browseExpression="&lt;%parent()%>" diagramDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']">
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to evoluate" browseExpression="aql:self.eContainer()" diagramDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']">
               <initialOperation/>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
@@ -286,7 +287,7 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                   <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect1"/>
                 </firstModelOperations>
               </initialOperation>
@@ -299,7 +300,7 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                   <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect2"/>
                 </firstModelOperations>
               </initialOperation>
@@ -312,7 +313,7 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.sourceNode.target">
                   <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
                 </firstModelOperations>
               </initialOperation>
@@ -323,21 +324,21 @@
       </defaultLayer>
       <additionalLayers name="optionnal layer">
         <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="deco1" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" preconditionExpression="&lt;%eAllContents().nSize > 4%>" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']"/>
+          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="deco1" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" preconditionExpression="aql:self.eAllContents()->size() > 4" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@nodeMappings[name='chapt']"/>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="deco2" position="NORTH_EAST" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@edgeMappings[name='belong%20To%20Chapter']"/>
           <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="deco4" position="CENTER" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" mappings="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@containerMappings[name='info']"/>
-          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="deco3" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" preconditionExpression="&lt;%parent().eAllContents() > 4%>" domainClass="Sect1"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="deco3" decoratorPath="/org.eclipse.sirius.diagram/icons/layer_active.gif" preconditionExpression="aql:self.eContainer().eAllContents() > 4" domainClass="Sect1"/>
         </decorationDescriptionsSet>
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="cross" initialisation="true" domainClass="Book">
-      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="cross creation" precondition="&lt;%parent.eAllContents(&quot;Sect1&quot;).nSize() > 5%>" browseExpression="&lt;%parent%>" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']">
+      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="cross creation" precondition="aql:self.eContainer().eAllContents(docbook::Sect1)->size() > 5" browseExpression="aql:self.eContainer()" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']">
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
-      <ownedLineMappings name="chapterCross" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']/@ownedRepresentationCreationDescriptions[name='edit%20creation']" domainClass="Chapter" semanticCandidatesExpression="" headerLabelExpression="&lt;%id%>"/>
-      <ownedColumnMappings name="big" headerLabelExpression="&lt;%id%>" domainClass="Sect1"/>
-      <intersection name="cross cell" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']/@ownedRepresentationCreationDescriptions[name='edit%20from%20cell'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate']" lineMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedLineMappings[name='chapterCross']" columnMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedColumnMappings.0" labelExpression="&lt;%id%>" useDomainClass="true" columnFinderExpression="&lt;%parent()%>" lineFinderExpression="&lt;%parent().parent()%>" semanticCandidatesExpression="" domainClass="Sect2" preconditionExpression="">
+      <ownedLineMappings name="chapterCross" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']/@ownedRepresentationCreationDescriptions[name='edit%20creation']" domainClass="Chapter" semanticCandidatesExpression="" headerLabelExpression="aql:self.id"/>
+      <ownedColumnMappings name="big" headerLabelExpression="aql:self.id" domainClass="Sect1"/>
+      <intersection name="cross cell" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']/@ownedRepresentationCreationDescriptions[name='edit%20from%20cell'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate']" lineMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedLineMappings[name='chapterCross']" columnMapping="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedColumnMappings.0" labelExpression="aql:self.id" useDomainClass="true" columnFinderExpression="aql:self.eContainer()" lineFinderExpression="aql:self.eContainer().eContainer()" semanticCandidatesExpression="" domainClass="Sect2" preconditionExpression="">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -360,16 +361,16 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="edit" initialisation="true" domainClass="Book">
-      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="edit creation" precondition="&lt;%parent.eAllContents(&quot;Sect1&quot;).nSize() > 7%>" browseExpression="&lt;%parent()%>" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']">
+      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="edit creation" precondition="aql:self.eContainer().eAllContents(docbook::Sect1)->size() > 7" browseExpression="aql:self.eContainer()" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']">
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
-      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="edit from cell" browseExpression="&lt;%getRootContainer().filter(&quot;Book&quot;)%>" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']">
+      <ownedRepresentationCreationDescriptions xsi:type="description_2:TableCreationDescription" name="edit from cell" browseExpression="aql:self.eResource().getContents()->first()->filter(docbook::Book)" tableDescription="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='edit']">
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
-      <ownedLineMappings name="chapterEdit" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedRepresentationCreationDescriptions[name='cross%20creation']" domainClass="Chapter" semanticCandidatesExpression="" headerLabelExpression="Chapitre &lt;%id%>"/>
-      <ownedColumnMappings name="chapter" headerLabelExpression="Id" canEdit="false" featureName="id" labelExpression="&lt;%id%>"/>
+      <ownedLineMappings name="chapterEdit" detailDescriptions="//@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='evoluate%20view']/@defaultLayer/@toolSections.0/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate'] //@ownedViewpoints[name='docbook1-layers']/@ownedRepresentations[name='cross']/@ownedRepresentationCreationDescriptions[name='cross%20creation']" domainClass="Chapter" semanticCandidatesExpression="" headerLabelExpression="aql:'Chapitre ' + self.id"/>
+      <ownedColumnMappings name="chapter" headerLabelExpression="Id" canEdit="false" featureName="id" labelExpression="aql:self.id"/>
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
