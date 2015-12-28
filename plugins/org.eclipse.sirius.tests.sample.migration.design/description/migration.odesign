@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="migration" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="migration" version="10.1.3.201511131800">
   <ownedViewpoints name="migration_modeler" label="migration modeler" modelFileExtension="migrationmodeler">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram" titleExpression="&lt;%id%>" domainClass="migrationmodeler.Diagram">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram" titleExpression="aql:self.id" domainClass="migrationmodeler.Diagram">
       <filters xsi:type="filter:CompositeFilterDescription" name="Test Filter">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
       </filters>
       <additionalLayers name="Test Layer"/>
       <nodeMappings name="node" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
         <borderedNodeMappings name="bordered" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered" reusedBorderedNodeMappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']">
-          <style xsi:type="style:EllipseNodeDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.id" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%id.matches(&quot;.*orange.*&quot;) != false%>">
-            <style xsi:type="style:EllipseNodeDescription" labelExpression="&lt;%id%>" sizeComputationExpression="2" resizeKind="NSEW">
+          <conditionnalStyles predicateExpression="aql:self.id.matches('.*orange.*')">
+            <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.id" sizeComputationExpression="2" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
             </style>
           </conditionnalStyles>
         </borderedNodeMappings>
-        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="6" resizeKind="NSEW">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" sizeComputationExpression="6" resizeKind="NSEW">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%id.matches(&quot;.*ellipse.*&quot;) != false%>">
-          <style xsi:type="style:EllipseNodeDescription" labelExpression="&lt;%id%>" sizeComputationExpression="4" resizeKind="NSEW">
+        <conditionnalStyles predicateExpression="aql:self.id.matches('.*ellipse.*')">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.id" sizeComputationExpression="4" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </conditionnalStyles>
       </nodeMappings>
-      <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']" targetMapping="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
+      <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']" targetMapping="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@edgeMappings[name='edge']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="migrationmodeler.Edge" useDomainElement="true">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription labelExpression="[id /]">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%id.matches(&quot;.*tree.*&quot;) != false%>">
+        <conditionnalStyles predicateExpression="aql:self.id.matches('.*tree.*')">
           <style sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="[id /]">
@@ -51,7 +51,7 @@
         </conditionnalStyles>
       </edgeMappings>
       <containerMappings name="container" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container" reusedBorderedNodeMappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" reusedNodeMappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" reusedContainerMappings="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']">
-        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.id" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -138,64 +138,64 @@
   <ownedViewpoints name="migration_modeler_bis" modelFileExtension="migrationmodeler">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram_bis" domainClass="migrationmodeler.Diagram">
       <defaultLayer name="Default">
-        <nodeMappings name="NodeWithSquareStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithSquareStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:SquareDescription" labelExpression="[id+'WithSquareStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithLozengeStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithLozengeStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:LozengeNodeDescription" labelExpression="[id+'WithLozengeStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithEllipseStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithEllipseStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:EllipseNodeDescription" labelExpression="[id+'WithEllipseStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithBundledImageStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithBundledImageStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:BundledImageDescription" labelExpression="[id+'WithBundledImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithNoteStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithNoteStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:NoteDescription" labelExpression="[id+'WithNoteStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithDotStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithDotStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:DotDescription" labelExpression="[id+'WithDotStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithGaugeStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
+        <nodeMappings name="NodeWithGaugeStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
           <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="[id+'WithGaugeStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <sections maxValueExpression="&lt;%90%>" valueExpression="&lt;%50%>" label="FirstSection">
+            <sections maxValueExpression="90" valueExpression="50" label="FirstSection">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </sections>
-            <sections maxValueExpression="&lt;%30%>" valueExpression="&lt;%15%>" label="SecondSection">
+            <sections maxValueExpression="30" valueExpression="15" label="SecondSection">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </sections>
           </style>
         </nodeMappings>
-        <nodeMappings name="NodeWithWorkspaceImageStyle" semanticCandidatesExpression="&lt;%nodes%>" domainClass="migrationmodeler.Node">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/DesignerTestProject/image.bmp">
+        <nodeMappings name="NodeWithWorkspaceImageStyle" semanticCandidatesExpression="aql:self.nodes" domainClass="migrationmodeler.Node">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -260,52 +260,52 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="layerOfContainerStyles">
-        <containerMappings name="ContainerWithFlatContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[id+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
+        <containerMappings name="ContainerWithFlatContainerStyle" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[id+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerWithShapeContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
-          <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[id+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
+        <containerMappings name="ContainerWithShapeContainerStyle" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[id+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerWithWorkspaceImageDescription" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" workspacePath="/DesignerTestProject/image.bmp">
+        <containerMappings name="ContainerWithWorkspaceImageDescription" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithFlatContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[id+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
+        <containerMappings name="ContainerListWithFlatContainerStyle" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[id+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithShapeContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
-          <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[id+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
+        <containerMappings name="ContainerListWithShapeContainerStyle" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container" childrenPresentation="List">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[id+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithWorkspaceImageDescription" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" workspacePath="/DesignerTestProject/image.bmp">
+        <containerMappings name="ContainerListWithWorkspaceImageDescription" semanticCandidatesExpression="aql:self.containers" domainClass="migrationmodeler.Container" childrenPresentation="List">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
       </additionalLayers>
       <additionalLayers name="layerWithEdgeStyles">
-        <edgeMappings name="EdgeWithBracketStyle" sourceMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription">
+        <edgeMappings name="EdgeWithBracketStyle" sourceMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="migrationmodeler.Edge" useDomainElement="true">
+          <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="['beginBracketEdgeStyle'+id/]" iconPath="/DesignerTestProject/image.bmp">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -318,7 +318,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="EdgeWithEdgeStyle" sourceMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
+        <edgeMappings name="EdgeWithEdgeStyle" sourceMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetMapping="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle'] //@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@additionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="migrationmodeler.Edge" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="['beginEdgeStyle'+id/]" iconPath="/DesignerTestProject/image.bmp">
