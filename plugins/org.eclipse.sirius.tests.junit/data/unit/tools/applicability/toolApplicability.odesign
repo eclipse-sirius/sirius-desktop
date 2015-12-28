@@ -24,7 +24,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="RemoteRef" sourceMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Package']/@borderedNodeMappings[name='RemoteType']" targetFinderExpression="&lt;%eStructuralFeatures.filter(&quot;EReference&quot;).eType%>">
+        <edgeMappings name="RemoteRef" sourceMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Package']/@borderedNodeMappings[name='RemoteType']" targetFinderExpression="aql:self.eStructuralFeatures->filter(ecore::EReference).eType">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>

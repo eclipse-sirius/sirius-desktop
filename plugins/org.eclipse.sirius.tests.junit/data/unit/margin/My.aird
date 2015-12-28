@@ -116,7 +116,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivna4uS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivna4uS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -135,7 +135,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -154,7 +154,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopBuS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopBuS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -173,7 +173,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHUssOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHUssOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
@@ -192,7 +192,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHXwAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHXwAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
@@ -211,7 +211,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHazUOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHazUOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
@@ -346,7 +346,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtm9j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtm9j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -365,7 +365,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnAT19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnAT19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -381,7 +381,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnCz19EeO8172-f6hTJg" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnDD19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnDD19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
@@ -400,7 +400,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnFz19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnFz19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
@@ -419,7 +419,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnIj19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnIj19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
@@ -438,7 +438,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDuN4j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDuN4j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="aql:self.name" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>

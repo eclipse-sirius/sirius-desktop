@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" documentation="org.eclipse.sirius.tests.data" name="RefreshTreeOdesign" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" documentation="org.eclipse.sirius.tests.data" name="RefreshTreeOdesign" version="10.1.3.201511131800">
   <ownedViewpoints name="Design" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="EPackageContent" domainClass="EPackage">
       <subItemMappings name="EClasses" domainClass="EClass" semanticCandidatesExpression="feature:eContents">
@@ -8,8 +8,8 @@
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </defaultStyle>
       </subItemMappings>
-      <subItemMappings name="AbstractClasses" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents()[isAbstract]%>" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='EPackageContent']/@subItemMappings[name='EClasses']">
-        <defaultStyle labelExpression="*&lt;%name%>">
+      <subItemMappings name="AbstractClasses" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->select(e | e.isAbstract)" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='EPackageContent']/@subItemMappings[name='EClasses']">
+        <defaultStyle labelExpression="*aql:self.name">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
@@ -60,7 +60,7 @@
       </subItemMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="PreconditionOnMappings" domainClass="EPackage">
-      <subItemMappings name="EClasses" domainClass="Abstract EClass by Precondition" preconditionExpression="&lt;%$view.target[isAbstract]%>" semanticCandidatesExpression="feature:eContents">
+      <subItemMappings name="EClasses" domainClass="Abstract EClass by Precondition" preconditionExpression="aql:view.target->select( e | e.isAbstract)" semanticCandidatesExpression="feature:eContents">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>

@@ -20,7 +20,7 @@
         </containerMappings>
         <toolSections>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createEClass" nodeMappings="//@ownedViewpoints[name='DOREMI-2887']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
-            <filters precondition="&lt;%self.eContainer(&quot;DDiagram&quot;).ownedDiagramElements.length>0%>" elementsToListen="var:self">
+            <filters precondition="aql:self.eContainerOrSelf(diagram::DDiagram).ownedDiagramElements->size() > 0" elementsToListen="var:self">
               <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
             </filters>
             <variable name="container"/>

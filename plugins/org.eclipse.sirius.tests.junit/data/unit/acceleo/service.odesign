@@ -3,7 +3,7 @@
   <ownedViewpoints name="UML2 diagrams" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Use  cases diagram" name="Use Cases" domainClass="Model">
       <nodeMappings name="Acteur" semanticCandidatesExpression="feature:eAllContents" domainClass="Actor">
-        <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="&lt;%actorNameService%>" sizeComputationExpression="4" shape="triangle">
+        <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="aql:self.actorNameService()" sizeComputationExpression="4" shape="triangle">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -16,7 +16,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="packagedElement">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Actor &lt;%eContainer.eContents(&quot;Actor&quot;).nSize%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'New ACtor ' + self.eContainer().eContents()->filter(uml::Actor)->size()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

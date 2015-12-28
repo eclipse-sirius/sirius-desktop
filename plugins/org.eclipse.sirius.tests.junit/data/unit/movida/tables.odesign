@@ -13,7 +13,7 @@
         <target xsi:type="contribution:DirectEObjectReference" value="//@ownedViewpoints[name='VP1']/@ownedRepresentations[name='Target_Table']/@ownedLineMappings[name='Classes']"/>
         <featureMask xsi:type="contribution:SetFeatureContribution"/>
       </contributions>
-      <ownedLineMappings name="ClassesSubset" semanticCandidatesExpression="&lt;%eClassifiers[name.startsWith(&quot;A&quot;)]%>"/>
+      <ownedLineMappings name="ClassesSubset" semanticCandidatesExpression="aql:self.eClassifiers->select(c | c.name.startsWith('A')>"/>
     </ownedRepresentationExtensions>
   </ownedViewpoints>
 </description:Group>

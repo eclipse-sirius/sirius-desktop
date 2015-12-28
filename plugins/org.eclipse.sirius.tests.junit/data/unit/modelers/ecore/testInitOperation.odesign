@@ -17,7 +17,7 @@
         </nodeMappings>
       </defaultLayer>
       <toolSection name="tools">
-        <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create another dummy diagram" browseExpression="&lt;%getRootContainer%>" diagramDescription="//@ownedViewpoints[name='CheckForInit']/@ownedRepresentations[name='DiagramWithEffect']">
+        <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Create another dummy diagram" browseExpression="aql:self.eResource().getContents()->first()" diagramDescription="//@ownedViewpoints[name='CheckForInit']/@ownedRepresentations[name='DiagramWithEffect']">
           <initialOperation/>
           <containerViewVariable name="containerView"/>
           <representationNameVariable name="diagramName"/>

@@ -462,13 +462,13 @@
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="TestInitialWidth" domainClass="Model" initialHeaderColumnWidth="200">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <ownedLineMappings name="Class" domainClass="Class" semanticCandidatesExpression="feature:eContents" headerLabelExpression="aql:'Class ' + self.name"/>
-      <ownedColumnMappings name="ClassName" headerLabelExpression="Name" initialWidth="250" featureName="&lt;%name%>" labelExpression="aql:self.name"/>
+      <ownedColumnMappings name="ClassName" headerLabelExpression="Name" initialWidth="250" featureName="aql:self.name" labelExpression="aql:self.name"/>
       <ownedColumnMappings name="ClassIsAbstract" headerLabelExpression="isAbstract" initialWidth="100" featureName="isAbstract" labelExpression="aql:self.isAbstract"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="TestColumnWithoutHeaderLabelExpression" domainClass="Model" initialHeaderColumnWidth="200">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <ownedLineMappings name="Class" domainClass="Class" semanticCandidatesExpression="feature:eContents" headerLabelExpression="aql:'Class ' + self.name"/>
-      <ownedColumnMappings name="ClassName" headerLabelExpression="" initialWidth="250" featureName="&lt;%name%>" labelExpression="aql:self.name"/>
+      <ownedColumnMappings name="ClassName" headerLabelExpression="" initialWidth="250" featureName="aql:self.name" labelExpression="aql:self.name"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Classes" initialisation="true" domainClass="Model">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>

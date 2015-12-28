@@ -647,7 +647,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQbXwJjDEeCTjf2eRUPO7Q" name="Square_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQbXwZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQbXwZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQbXwpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQbXw5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -658,7 +658,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQb-0JjDEeCTjf2eRUPO7Q" name="Square_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQcl4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQcl4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQcl4ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQcl4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -669,7 +669,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQdM8JjDEeCTjf2eRUPO7Q" name="Square_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQdM8ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQdM8ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQdM8pjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQdM85jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -680,7 +680,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQd0AJjDEeCTjf2eRUPO7Q" name="Square_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQd0AZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQd0AZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQd0ApjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQd0A5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -691,7 +691,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQebEJjDEeCTjf2eRUPO7Q" name="Lozenge_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQfCIJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQfCIJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQfCIZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:LozengeNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQfCIpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -702,7 +702,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQfpMJjDEeCTjf2eRUPO7Q" name="Lozenge_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQfpMZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQfpMZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQfpMpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:LozengeNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQfpM5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -713,7 +713,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQgQQJjDEeCTjf2eRUPO7Q" name="Lozenge_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQgQQZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQgQQZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQgQQpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:LozengeNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQgQQ5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -724,7 +724,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQg3UJjDEeCTjf2eRUPO7Q" name="Lozenge_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQg3UZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_fQg3UZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQg3UpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:LozengeNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQg3U5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -735,7 +735,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQheYJjDEeCTjf2eRUPO7Q" name="Ellipse_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQiFcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQiFcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQiFcZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:EllipseNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQiFcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -746,7 +746,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQisgJjDEeCTjf2eRUPO7Q" name="Ellipse_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQisgZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQisgZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQisgpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:EllipseNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQisg5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -757,7 +757,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQjTkJjDEeCTjf2eRUPO7Q" name="Ellipse_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQjTkZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQjTkZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQjTkpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:EllipseNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQjTk5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -768,7 +768,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQj6oJjDEeCTjf2eRUPO7Q" name="Ellipse_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQkhsJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_fQkhsJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQkhsZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:EllipseNodeDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQkhspjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -779,7 +779,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQlIwJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Square_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQlv0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQlv0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQlv0ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQlv0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -790,7 +790,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQlv1JjDEeCTjf2eRUPO7Q" name="Bundle_Image_Square_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQmW4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQmW4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQmW4ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQmW4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -801,7 +801,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQmW5JjDEeCTjf2eRUPO7Q" name="Bundle_Image_Square_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQm98JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQm98JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQm98ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQm98pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -812,7 +812,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQm99JjDEeCTjf2eRUPO7Q" name="Bundle_Image_Square_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQnlAJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQnlAJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQnlAZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQnlApjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -823,7 +823,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQoMEJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Stroke_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQoMEZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQoMEZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQoMEpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQoME5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -834,7 +834,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQozIJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Stroke_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQpaMJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQpaMJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQpaMZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQpaMpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -845,7 +845,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQpaNJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Stroke_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQqBQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQqBQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQqBQZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQqBQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -856,7 +856,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQqoUJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Stroke_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQqoUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQqoUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQqoUpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQqoU5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -867,7 +867,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQr2cJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Triangle_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQsdgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQsdgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQsdgZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQsdgpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -878,7 +878,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQtEkJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Triangle_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQtEkZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQtEkZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQtEkpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQtEk5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -889,7 +889,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQtroJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Triangle_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQtroZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQtroZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQtropjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQtro5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -900,7 +900,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQuSsJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Triangle_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQuSsZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQuSsZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQuSspjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQuSs5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -911,7 +911,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQu5wJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Dot_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQvg0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQvg0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQvg0ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQvg0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -922,7 +922,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQwH4JjDEeCTjf2eRUPO7Q" name="Bundle_Image_Dot_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQwH4ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQwH4ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQwH4pjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQwH45jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -933,7 +933,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQwu8JjDEeCTjf2eRUPO7Q" name="Bundle_Image_Dot_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQxWAJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQxWAJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQxWAZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQxWApjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -944,7 +944,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQxWBJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Dot_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQx9EJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQx9EJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQx9EZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQx9EpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -955,7 +955,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQykIJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Ring_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQykIZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQykIZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQykIpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQzLMJjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -966,7 +966,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQzLMpjDEeCTjf2eRUPO7Q" name="Bundle_Image_Ring_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQzyQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQzyQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQzyQZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQzyQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -977,7 +977,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ0ZUJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Ring_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQ0ZUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQ0ZUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ0ZUpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ0ZU5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -988,7 +988,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ1AYJjDEeCTjf2eRUPO7Q" name="Bundle_Image_Ring_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQ1AYZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_fQ1AYZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ1AYpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ1AY5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -999,7 +999,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ1ncJjDEeCTjf2eRUPO7Q" name="Note_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ2OgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ2OgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ2OgZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:NoteDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ2OgpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1010,7 +1010,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ21kJjDEeCTjf2eRUPO7Q" name="Note_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ21kZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ21kZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ21kpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:NoteDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ21k5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1021,7 +1021,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ3coJjDEeCTjf2eRUPO7Q" name="Note_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ3coZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ3coZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ3copjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:NoteDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ3co5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1032,7 +1032,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ4DsJjDEeCTjf2eRUPO7Q" name="Note_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ4DsZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Note" xmi:id="_fQ4DsZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ4DspjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:NoteDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ4Ds5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1043,7 +1043,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ4qwJjDEeCTjf2eRUPO7Q" name="Dot_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ5R0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="5">
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ5R0JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="5">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ5R0ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:DotDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ5R0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1054,7 +1054,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ544JjDEeCTjf2eRUPO7Q" name="Dot_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ544ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="5">
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ544ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="5">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ544pjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:DotDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ5445jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1065,7 +1065,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ6f8JjDEeCTjf2eRUPO7Q" name="Dot_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ6f8ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="5">
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ6f8ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="5">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ6f8pjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:DotDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ6f85jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1076,7 +1076,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ7HAJjDEeCTjf2eRUPO7Q" name="Dot_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ7HAZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="5">
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_fQ7HAZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="5">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ7HApjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:DotDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ7HA5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1087,7 +1087,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ8VIJjDEeCTjf2eRUPO7Q" name="Gauge_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ8VIZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ8VIZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <description xmi:type="style:GaugeCompositeStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ8VIpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1096,7 +1096,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ88MJjDEeCTjf2eRUPO7Q" name="Gauge_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ88MZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ88MZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <description xmi:type="style:GaugeCompositeStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ88MpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1105,7 +1105,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ9jQJjDEeCTjf2eRUPO7Q" name="Gauge_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ9jQZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ9jQZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <description xmi:type="style:GaugeCompositeStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ9jQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1114,7 +1114,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ-KUJjDEeCTjf2eRUPO7Q" name="Gauge_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ-KUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_fQ-KUZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <description xmi:type="style:GaugeCompositeStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ-KUpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1123,7 +1123,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ-xYJjDEeCTjf2eRUPO7Q" name="Workspace_Image_new EClass 1" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fQ_YcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fQ_YcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ_YcZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1132,7 +1132,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQ__gJjDEeCTjf2eRUPO7Q" name="Workspace_Image_new EClass 2" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fQ__gZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fQ__gZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQ__gpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1141,7 +1141,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fRAmkJjDEeCTjf2eRUPO7Q" name="Workspace_Image_new EClass 3" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRBNoJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRBNoJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRBNoZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1150,7 +1150,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fRB0sJjDEeCTjf2eRUPO7Q" name="Workspace_Image_new EClass 4" width="20" height="20" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRB0sZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRB0sZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRB0spjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1159,7 +1159,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRDC0JjDEeCTjf2eRUPO7Q" name="Flat_Container_new EClass 1" tooltipText="root.new EClass 1">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRDC0ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRDC0ZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRDC0pjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Flat%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRDC05jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1171,7 +1171,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRDp4JjDEeCTjf2eRUPO7Q" name="Flat_Container_new EClass 2" tooltipText="root.new EClass 2">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fREQ8JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fREQ8JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fREQ8ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Flat%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fREQ8pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1183,7 +1183,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fREQ9ZjDEeCTjf2eRUPO7Q" name="Flat_Container_new EClass 3" tooltipText="root.new EClass 3">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRE4AJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRE4AJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRE4AZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Flat%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRE4ApjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1195,7 +1195,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRFfEJjDEeCTjf2eRUPO7Q" name="Flat_Container_new EClass 4" tooltipText="root.new EClass 4">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRGGIJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fRGGIJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRGGIZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Flat%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRGGIpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1207,7 +1207,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRGtMJjDEeCTjf2eRUPO7Q" name="Shape_Container_new EClass 1" tooltipText="root.new EClass 1">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRHUQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRHUQJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRHUQZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:ShapeContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Shape%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRHUQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1218,7 +1218,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRH7UJjDEeCTjf2eRUPO7Q" name="Shape_Container_new EClass 2" tooltipText="root.new EClass 2">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRH7UZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRH7UZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRH7UpjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:ShapeContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Shape%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRH7U5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1229,7 +1229,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRIiYJjDEeCTjf2eRUPO7Q" name="Shape_Container_new EClass 3" tooltipText="root.new EClass 3">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRJJcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRJJcJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRJJcZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:ShapeContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Shape%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRJJcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1240,7 +1240,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRJJdJjDEeCTjf2eRUPO7Q" name="Shape_Container_new EClass 4" tooltipText="root.new EClass 4">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRJwgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_fRJwgJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fRJwgZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:ShapeContainerStyleDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Shape%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRJwgpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1251,7 +1251,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRKXkJjDEeCTjf2eRUPO7Q" name="Workspace_Image_Container_new EClass 1" tooltipText="root.new EClass 1">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%201"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRK-oJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRK-oJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Workspace%20Image%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRK-oZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1260,7 +1260,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRK-opjDEeCTjf2eRUPO7Q" name="Workspace_Image_Container_new EClass 2" tooltipText="root.new EClass 2">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%202"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRLlsJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRLlsJjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Workspace%20Image%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRLlsZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1269,7 +1269,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRMMwJjDEeCTjf2eRUPO7Q" name="Workspace_Image_Container_new EClass 3" tooltipText="root.new EClass 3">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%203"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRMMwZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRMMwZjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Workspace%20Image%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRMMwpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1278,7 +1278,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fRMz0JjDEeCTjf2eRUPO7Q" name="Workspace_Image_Container_new EClass 4" tooltipText="root.new EClass 4">
         <target xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
         <semanticElements xmi:type="ecore:EClass" href="2229.ecore#//new%20EClass%204"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRNa4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/2229/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_fRNa4JjDEeCTjf2eRUPO7Q" borderSize="4" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/2229/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2229.odesign#//@ownedViewpoints[name='tc2229']/@ownedRepresentations[name='tc2229']/@defaultLayer/@containerMappings[name='EC%20EClass%20Workspace%20Image%20Container']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fRNa4ZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>

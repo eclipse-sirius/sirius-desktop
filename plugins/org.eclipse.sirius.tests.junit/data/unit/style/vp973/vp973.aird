@@ -841,7 +841,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_ZqEzQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ZqEzQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqEzQZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqEzQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -855,7 +855,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_ZqGocJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_ZqGocJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqGocZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqGocpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -869,7 +869,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_ZqJrwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_ZqJrwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqJrwZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqJrwpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -883,7 +883,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqNWIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqNWIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqNWIZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqNWIpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -897,7 +897,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqRnkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqRnkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqRnkZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqRnkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -911,7 +911,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqVR8JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqVR8JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqVR8ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqVR8pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -925,7 +925,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqYVQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqYVQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqYVQZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqYVQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -939,7 +939,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqaKcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqaKcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqaKcZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqaKcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -953,7 +953,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Note" xmi:id="_ZqbYkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:Note" xmi:id="_ZqbYkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqbYkZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqbYkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -967,7 +967,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zqd00JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+        <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zqd00JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqd00ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqd00pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -981,7 +981,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZqqpIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+        <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZqqpIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
           <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqqpIZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -993,7 +993,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Zqr3QJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Zqr3QJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqr3QZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1008,7 +1008,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqwvwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqwvwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqwvwZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqwvwpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1022,7 +1022,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zqyk8JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zqyk8JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqyk8ZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqyk8pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1036,7 +1036,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqzzEZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZqzzEZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqzzEpjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqzzE5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1050,7 +1050,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zq1oQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zq1oQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq1oQZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq1oQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1064,7 +1064,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zq22YZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zq22YZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq3dcJjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq3dcZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1078,7 +1078,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zq4rkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+          <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zq4rkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq4rkZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq4rkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1092,7 +1092,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zq55sZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zq55sZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq55spjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq55s5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1106,7 +1106,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zq7u4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zq7u4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq7u4ZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1118,7 +1118,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zq89AZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zq89AZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq89ApjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq89A5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1132,7 +1132,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Note" xmi:id="_Zq_ZQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Note" xmi:id="_Zq_ZQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq_ZQZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zq_ZQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1146,7 +1146,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZrIjMJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZrIjMJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrIjMZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrIjMpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1160,7 +1160,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZrKYYZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZrKYYZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrKYYpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1169,7 +1169,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_ZqtscJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ZqtscJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqtscZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='Package']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZqtscpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1183,7 +1183,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ZrRGEJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ZrRGEJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrRGEZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@containerMappings[name='Package']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrRGEpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1197,7 +1197,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrXMsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrXMsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrXMsZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrXMspjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1211,7 +1211,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zra3EJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zra3EJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zra3EZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zra3EpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1225,7 +1225,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZriL0JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZriL0JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZriL0ZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZriL0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1239,7 +1239,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrjZ8ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrjZ8ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrjZ8pjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrjZ85jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1253,7 +1253,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrpgkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZrpgkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrpgkZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrpgkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1267,7 +1267,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Dot" xmi:id="_ZrrVwZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+          <ownedStyle xmi:type="diagram:Dot" xmi:id="_ZrrVwZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrr80JjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrr80ZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1281,7 +1281,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zrw1UJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zrw1UJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrw1UZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrw1UpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1295,7 +1295,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZryDcZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZryDcZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZryDcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1307,7 +1307,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zrz4oJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zrz4oJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrz4oZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zrz4opjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1321,7 +1321,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Note" xmi:id="_Zr4xIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Note" xmi:id="_Zr4xIJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zr4xIZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zr4xIpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1335,7 +1335,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_Zr6mUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_Zr6mUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zr6mUZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zr6mUpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1349,7 +1349,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZsDJMZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZsDJMZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsDJMpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1364,7 +1364,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsIBsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsIBsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsIBsZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsIBspjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1378,7 +1378,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsOIUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsOIUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsOIUZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsOIUpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1392,7 +1392,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsPWcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsPWcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsPWcZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsPWcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1406,7 +1406,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsRLoJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsRLoJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsRLoZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsRLopjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1420,7 +1420,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsYgYJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZsYgYJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsYgYZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsYgYpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1434,7 +1434,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_ZsaVkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_ZsaVkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsaVkZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsaVkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1448,7 +1448,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_ZsspcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_ZsspcJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsspcZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsspcpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1462,7 +1462,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZswT0ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_ZswT0ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZswT0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>
@@ -1474,7 +1474,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zs6r4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zs6r4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zs6r4ZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zs6r4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1488,7 +1488,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Note" xmi:id="_ZtFrAJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Note" xmi:id="_ZtFrAJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtFrAZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtFrApjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1502,7 +1502,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_ZtJ8cJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_ZtJ8cJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtJ8cZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtJ8cpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1516,7 +1516,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZtdecJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZtdecJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
               <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtdecZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>
@@ -1525,7 +1525,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZsE-YJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZsE-YJjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsE-YZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='Package']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsE-YpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1543,7 +1543,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZtzcsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZtzcsJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtzcsZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtzcspjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1557,7 +1557,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zt7_kJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zt7_kJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zt7_kZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zt7_kpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1571,7 +1571,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZuZSkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZuZSkJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZuZSkZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZuZSkpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1585,7 +1585,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZubHwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZubHwJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZubHwZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZubHwpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1599,7 +1599,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zuh1cJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+          <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zuh1cJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zuh1cZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zuh1cpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1613,7 +1613,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zuq_YJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zuq_YJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zuq_YZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zuq_YpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1627,7 +1627,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zuv34JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zuv34JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zuv34ZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1639,7 +1639,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zu1-gZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_Zu1-gZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zu2lkJjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zu2lkZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1653,7 +1653,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Note" xmi:id="_ZvBksJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+          <ownedStyle xmi:type="diagram:Note" xmi:id="_ZvBksJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvCLwJjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvCLwZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1667,7 +1667,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZvDZ4ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZvDZ4ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvDZ4pjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvDZ45jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1681,7 +1681,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZvHrUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZvHrUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvHrUZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1693,7 +1693,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZvJggJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZvJggJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvJggZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvJggpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1710,7 +1710,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zvqd4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="dot">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zvqd4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="dot">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zvqd4ZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zvqd4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1724,7 +1724,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zvs6IJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="ring">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zvs6IJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="ring">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zvs6IZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zvs6IpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1738,7 +1738,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZvuvUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ZvuvUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvuvUZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvuvUpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1752,7 +1752,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zv0O4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="stroke">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zv0O4JjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="stroke">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv0O4ZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv0O4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1766,7 +1766,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zv2EEJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" shape="triangle">
+            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Zv2EEJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" shape="triangle">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv2EEZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:BundledImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv2EEpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1780,7 +1780,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zv6VgJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" strokeSizeComputationExpression="1">
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_Zv6VgJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" strokeSizeComputationExpression="1">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv6VgZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:DotDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv6VgpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1794,7 +1794,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zv7joZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Ellipse" xmi:id="_Zv7joZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv7jopjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:EllipseNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv7jo5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1808,7 +1808,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zv9Y0ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:GaugeCompositeStyle" xmi:id="_Zv9Y0ZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <description xmi:type="style:GaugeCompositeStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zv9Y0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>
@@ -1820,7 +1820,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_ZwEGgZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_ZwEGgZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwEGgpjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:LozengeNodeDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwEGg5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1834,7 +1834,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Note" xmi:id="_ZwLbQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>">
+            <ownedStyle xmi:type="diagram:Note" xmi:id="_ZwLbQJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwLbQZjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:NoteDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwLbQpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1848,7 +1848,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_ZwNQcZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_ZwNQcZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
               <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwNQcpjDEeCTjf2eRUPO7Q"/>
               <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwNQc5jDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1862,7 +1862,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZwPssJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZwPssJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
               <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwPssZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>
@@ -1871,7 +1871,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZvMj0JjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" width="20" height="20">
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ZvMj0JjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" width="20" height="20">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvMj0ZjDEeCTjf2eRUPO7Q"/>
             <description xmi:type="style:SquareDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='Package']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvMj0pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
@@ -1882,7 +1882,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Zthv4JjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" backgroundStyle="GradientTopToBottom">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Zthv4JjDEeCTjf2eRUPO7Q" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Zthv4ZjDEeCTjf2eRUPO7Q"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@containerMappings[name='Package2']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zthv4pjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>

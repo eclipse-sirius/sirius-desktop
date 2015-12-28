@@ -53,7 +53,7 @@
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
       <colorSteps associatedValue="1" associatedColor="//@userColorsPalettes[name=null]/@entries[name='bleu']"/>
-      <colorSteps associatedValue="&lt;%10%>" associatedColor="//@userColorsPalettes[name=null]/@entries[name='rose']"/>
+      <colorSteps associatedValue="10" associatedColor="//@userColorsPalettes[name=null]/@entries[name='rose']"/>
     </entries>
     <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 2" colorValueComputationExpression="aql:self.eContents()->size()">
       <colorSteps>
