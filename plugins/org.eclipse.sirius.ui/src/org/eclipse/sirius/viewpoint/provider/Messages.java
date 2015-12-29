@@ -940,6 +940,9 @@ public final class Messages {
     public static String TreeEditorDialogFactory_error;
 
     @TranslatableMessage
+    public static String TypedVariableValueDialog_title;
+
+    @TranslatableMessage
     public static String UserSession_openRepresentationTask;
 
     @TranslatableMessage

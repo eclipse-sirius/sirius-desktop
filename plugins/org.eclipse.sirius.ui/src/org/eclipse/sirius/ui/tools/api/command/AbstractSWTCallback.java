@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -51,11 +52,13 @@ import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.resource.LoadEMFResourceRunnableWithProgress;
 import org.eclipse.sirius.ui.tools.api.Messages;
+import org.eclipse.sirius.ui.tools.api.selection.TypedVariableValueDialog;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
@@ -204,6 +207,16 @@ public abstract class AbstractSWTCallback implements UICallBack {
     }
 
     @Override
+    public List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException {
+        final TypedVariableValueDialog dialog = new TypedVariableValueDialog(typedVariableList, defaultValues, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+        final int result = dialog.open();
+        if (result == Window.OK) {
+            return dialog.getValues();
+        }
+        throw new InterruptedException();
+    }
+
+    @Override
     public boolean shouldReload(final Resource resource) {
         return openQuestion(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldReload_title,
                 MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldReload_message, resource.getURI()));
@@ -250,7 +263,8 @@ public abstract class AbstractSWTCallback implements UICallBack {
      * Return an expression describing what is saving :
      * <UL>
      * <LI>"Models" if only semantic files have been modified,</LI>
-     * <LI>"Representations" if only representations files have been modified,</LI>
+     * <LI>"Representations" if only representations files have been modified,
+     * </LI>
      * <LI>"Models and Representations" if both.</LI>
      * </UL>
      * suffixed with :
@@ -340,5 +354,4 @@ public abstract class AbstractSWTCallback implements UICallBack {
             MessageDialog.openError(getActiveShell(), title, message);
         }
     }
-
 }

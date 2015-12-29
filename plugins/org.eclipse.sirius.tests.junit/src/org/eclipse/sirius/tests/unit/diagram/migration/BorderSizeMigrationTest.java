@@ -98,13 +98,6 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         // Check that the migration is needed.
         Version migration = BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION;
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
-
-        // Check the migration is not needed on 3.1.0 aird file
-        // (testBorderSizeComputationExpressionMigrationNotDoneOn3_1_0_files
-        // ensures it will produce no effect)
-        loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_0 + REPRESENTATIONS_FILE_NAME, true),
-                false);
-        assertTrue("The current aird test data should be migrated.", BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION.compareTo(loadedVersion) < 0);
     }
 
     /**
@@ -112,11 +105,13 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
      * plugins.
      */
     public void testBorderSizeMigrationDoneInPlugin() {
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, REPRESENTATIONS_FILE_PATH, REPRESENTATIONS_FILE_NAME);
+
         ResourceSet set = new ResourceSetImpl();
 
         DAnalysis analysis = null;
         try {
-            analysis = (DAnalysis) ModelUtils.load(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + REPRESENTATIONS_FILE_NAME, true), set);
+            analysis = (DAnalysis) ModelUtils.load(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_FILE_NAME, true), set);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,6 +125,16 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         String version = analysis.getVersion();
         assertTrue("Before save, the migration framework will return true even if the migration has been done during load.",
                 RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
+
+        try {
+            analysis.eResource().save(Collections.emptyMap());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // save should update the version.
+        version = analysis.getVersion();
+        assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
 
         // We have to check the migration effect to be sure that the migration
         // is effective.

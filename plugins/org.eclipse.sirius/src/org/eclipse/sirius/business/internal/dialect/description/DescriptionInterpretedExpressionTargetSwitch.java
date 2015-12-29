@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
@@ -132,6 +133,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
      * 
      * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSemanticBasedDecoration(org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration)
      */
+    @Override
     public Option<Collection<String>> caseSemanticBasedDecoration(SemanticBasedDecoration object) {
         Option<Collection<String>> result = null;
         Collection<String> target = Sets.newLinkedHashSet();
@@ -227,6 +229,24 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
         case DescriptionPackage.SELECTION_DESCRIPTION__ROOT_EXPRESSION:
         case DescriptionPackage.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION:
             EObjectQuery query = new EObjectQuery(selectionDescription);
+            Option<EObject> parentRepresentationDescription = query.getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
+            if (parentRepresentationDescription.some()) {
+                result = globalSwitch.doSwitch(parentRepresentationDescription.get(), false);
+            }
+            break;
+
+        default:
+            break;
+        }
+        return result;
+    }
+
+    @Override
+    public Option<Collection<String>> caseTypedVariable(TypedVariable object) {
+        Option<Collection<String>> result = null;
+        switch (featureID) {
+        case DescriptionPackage.TYPED_VARIABLE__DEFAULT_VALUE_EXPRESSION:
+            EObjectQuery query = new EObjectQuery(object);
             Option<EObject> parentRepresentationDescription = query.getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
             if (parentRepresentationDescription.some()) {
                 result = globalSwitch.doSwitch(parentRepresentationDescription.get(), false);

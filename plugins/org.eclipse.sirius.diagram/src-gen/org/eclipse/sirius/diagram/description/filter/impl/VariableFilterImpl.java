@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
 package org.eclipse.sirius.diagram.description.filter.impl;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -139,7 +138,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * @generated
      */
     @Override
-    public void setFilterContext(Map<?, ?> variables) {
+    public void resetVariables() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
@@ -224,8 +223,8 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         case FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES:
             return ownedVariables != null && !ownedVariables.isEmpty();
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
-                    .equals(semanticConditionExpression);
+            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null
+                    : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
         }
         return super.eIsSet(featureID);
     }

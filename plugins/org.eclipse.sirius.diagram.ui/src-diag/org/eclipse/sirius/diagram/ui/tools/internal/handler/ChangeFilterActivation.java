@@ -14,9 +14,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -124,8 +122,7 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
              */
             if (objFilter instanceof VariableFilter) {
                 final VariableFilter filter = (VariableFilter) objFilter;
-                final Map<String, EObject> variables = FilterTools.askForFilterValues(vp, filter);
-                filter.setFilterContext(variables);
+                FilterTools.askForFilterValues(vp, filter);
                 containsVariableFilters = true;
             }
         }

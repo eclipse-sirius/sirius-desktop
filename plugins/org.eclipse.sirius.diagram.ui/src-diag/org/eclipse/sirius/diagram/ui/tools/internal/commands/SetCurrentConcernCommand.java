@@ -11,9 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import java.util.Iterator;
-import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
@@ -92,9 +90,7 @@ public class SetCurrentConcernCommand extends RecordingCommand {
                          */
                         if (objFilter instanceof VariableFilter && diagram instanceof DSemanticDiagram) {
                             final VariableFilter filter = (VariableFilter) objFilter;
-                            Map<String, EObject> variables;
-                            variables = FilterTools.askForFilterValues((DSemanticDiagram) diagram, filter);
-                            filter.setFilterContext(variables);
+                            FilterTools.askForFilterValues((DSemanticDiagram) diagram, filter);
                         }
                     }
                 }
