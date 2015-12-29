@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
@@ -136,8 +134,7 @@ public final class ActivateFiltersCommand extends RecordingCommand {
              */
             if (objFilter instanceof VariableFilter) {
                 final VariableFilter filter = (VariableFilter) objFilter;
-                final Map<String, EObject> variables = FilterTools.askForFilterValues(vp, filter);
-                filter.setFilterContext(variables);
+                FilterTools.askForFilterValues(vp, filter);
                 containsVariableFilters = true;
             }
         }

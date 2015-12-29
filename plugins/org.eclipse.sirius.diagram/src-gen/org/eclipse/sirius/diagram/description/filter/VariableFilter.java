@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,6 @@
  *
  */
 package org.eclipse.sirius.diagram.description.filter;
-
-import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
@@ -95,15 +93,11 @@ public interface VariableFilter extends Filter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Set the couple (name,value) of variables to consider while evaluating the
-     * filter.
+     * Reset the variables of the filter.
      *
-     * @param variables
-     *            (name,value) couples where name is a String and value is an
-     *            EObject <!-- end-model-doc -->
      * @model
      * @generated
      */
-    void setFilterContext(Map<?, ?> variables);
+    void resetVariables();
 
 } // VariableFilter

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.filter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 public class VariableFilterTest extends SiriusDiagramTestCase {
@@ -38,6 +40,8 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
 
     private static final String FILTER_NAME = "Classifier";
 
+    private static final String FILTER_NAME_2 = "FilterWithTypedVariables";
+
     private static final String TEST_SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/variablefilter/ticketvp1063/vp-1063.ecore";
 
     private static final String MODELER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/variablefilter/ticketvp1063/vp-1063.odesign";
@@ -45,6 +49,8 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
     private static final String DESIGN_VIEWPOINT_NAME = "vp1063";
 
     private static final String ENTITIES_DESC_NAME = "vp1063";
+
+    private static final String DIAGRAM_DESC_NAME_2 = "vpForFilterWithTypedVariable";
 
     private DDiagram diagram;
 
@@ -55,11 +61,16 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
      * 
      * @Override
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
-        diagram = (DDiagram) createRepresentation(ENTITIES_DESC_NAME);
+
+    }
+
+    private void openDiagram(String diagramDescriptionName) {
+        diagram = (DDiagram) createRepresentation(diagramDescriptionName);
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
         assertNotNull(editor);
@@ -69,6 +80,8 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
      * Test multiple variable filter on two selected elements.
      */
     public void testMultipleSelection() {
+        openDiagram(ENTITIES_DESC_NAME);
+
         activeMultipleSelectionFilter();
         final Collection<String> elementNames = new ArrayList<String>(2);
         elementNames.add("Class");
@@ -82,6 +95,8 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
      * Test multiple variable filter on one selected element.
      */
     public void testSimpleSelection() {
+        openDiagram(ENTITIES_DESC_NAME);
+
         activateSimpleSelectionFilter();
         final Collection<String> elementNames = new ArrayList<String>(1);
         elementNames.add("Class");
@@ -96,6 +111,45 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
     public void testMultipleAndSimpleSelection() {
         testMultipleSelection();
         testSimpleSelection();
+    }
+
+    /**
+     * Test variable filter typed Variable.
+     */
+    public void testFilterWithTypedFilter() {
+        openDiagram(DIAGRAM_DESC_NAME_2);
+
+        activateTypedVariableFilter();
+
+        // Check that nodes are not visible
+        // It means that variables are created with the good type and
+        // interpreted at runtime. The filter condition expression is:
+        // aql:not (rGBVariable.oclIsKindOf(viewpoint::RGBValues) and
+        // stringVariable.contains('textDefault') and intVariable+5=10)
+        assertTrue(diagram.getDiagramElements().size() != 0);
+        for (DDiagramElement diagramElement : diagram.getDiagramElements()) {
+            assertFalse(DIAGRAM_ELEMENT + diagramElement.getName() + " should be hidden", diagramElement.isVisible());
+        }
+
+        deactivateFilter(diagram, FILTER_NAME_2);
+        for (DDiagramElement diagramElement : diagram.getDiagramElements()) {
+            assertTrue(DIAGRAM_ELEMENT + diagramElement.getName() + SHOULD_BE_VISIBLE, diagramElement.isVisible());
+        }
+    }
+
+    private void activateTypedVariableFilter() {
+        SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback() {
+            List<String> stringValues = new ArrayList<String>();
+
+            @Override
+            public List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) {
+                stringValues.add("113,113,113");
+                stringValues.add("textDefault");
+                stringValues.add("5");
+                return stringValues;
+            }
+        });
+        activateFilter(diagram, FILTER_NAME_2);
     }
 
     private void activateSimpleSelectionFilter() {
@@ -161,6 +215,7 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
      * 
      * @Override
      */
+    @Override
     protected void tearDown() throws Exception {
         super.tearDown();
     }

@@ -594,7 +594,36 @@ The expressions of all active filters are evaluated whenever the diagram is refr
 
 h3(#variable_filter). Variable Filter
 
-A _Variable Filter_ is similar to a _Mapping Filter_, except that instead of using a list of mappings to select the candidate elements to filter, it opens a dialog box from which the user can select the specific elements he wants to filter. The configuration of the dialog box uses the same properties and semantic as the "Selection Wizard":#selection_wizard tool. Refer to its documentation for the details.
+A _Variable Filter_ is similar to a _Mapping Filter_, except that instead of using a list of mappings to select the candidate elements to filter, all represented elements are candidates but can be filtered with a Semantic Condition Expression.
+In that expression, the specifier can use variables that are defined in the variable filter.
+* Select Model Element Variable : it opens a dialog box from which the user can select a collection of EObjects. The configuration of the dialog box uses the same properties and semantic as the "Selection Wizard":#selection_wizard tool. Refer to its documentation for the details. 
+* Typed Variable : see "Filter with Typed Variable":#filter_with_typed_variable 
+ 
+h4(#filter_with_typed_variable). Filter with Typed Variable
+
+A Typed Variable is a variable which value type is a _EDataType_ as chosen by the specifier and which value is filled by the user when applying the variable filter.
+An interpreted expression allows defining the default value.
+
+!images/typedVariable_PropertyView.png!
+
+When the user applies a variable filter with typed variables, a dialog box is displayed to allow user entering the values. 
+This dialog box is prompted after all _Select Model Element_ wizard have been prompted.
+It contains as many line as number of typed variables under the variable filter.
+The user documentation is displayed as tooltip on question mark.
+The default value is the result of the interpreted expression defined on VSM.
+
+!images/dialog_TypedVariableValue.png!
+
+*EDataType class instantiation*
+
+Note that whatever the type of variable is, the field is a text field.
+
+In order that the EDataType class is instantiable, the value given by the user should follow rules which depend on how it is triggered by EMF mechanism.
+If the EFactory of the EDataType is not overloaded, the class corresponding to the EDataType must have a constructor with a String parameter. At instantiation, the string argument will be the string input by the user. This string argument is translated into the right data in the class constructor for example.
+What is done in the constructor described above can also be done overloading the EDataType class EFactory.
+
+Example:
+If your class represents a point coordinates with two fields x and y of type int, the string input by the user could be _[integer],[integer]_. This kind of information could be given to the user through the _User documentation_
 
 h2(#validation). Validation Rules
 

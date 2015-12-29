@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         loadedVersion = checkVsmFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_0 + VSM_FILE_NAME, true), true);
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
         assertTrue("The current test VSM data should by partially migrated.", BorderSizeComputationExpressionMigrationParticipant.INITIAL_MIGRATION_VERSION.compareTo(loadedVersion) < 0);
-    
+
         // Check the migration is also needed on 3.1.3 VSM file
         loadedVersion = checkVsmFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_3 + VSM_FILE_NAME, true), true);
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
@@ -105,31 +105,21 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         // Check that the migration is needed.
         Version migration = BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION;
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
-
-        // Check the migration is not needed on 3.1.0 aird file (testBorderSizeComputationExpressionMigrationNotDoneOn3_1_0_files ensures it will produce no effect)
-        loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_0 + REPRESENTATIONS_FILE_NAME, true),
-                false);
-        assertTrue("The current aird test data should have been migrated to 3.1.0.", BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION.compareTo(loadedVersion) < 0);
-    
-        // Check the migration is not also needed on 3.1.3 aird file (testBorderSizeComputationExpressionMigrationNotDoneOn3_1_3_files ensures it will produce no effect)
-        loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + PATH_3_1_3 + REPRESENTATIONS_FILE_NAME, true),
-                false);
-        assertTrue("The current aird test data should have been migrated to 3.1.3.", BorderSizeRepresentationFileMigrationParticipant.MIGRATION_VERSION.compareTo(loadedVersion) < 0);
     }
 
     /**
      * Check the behavior of the border size migration on an aird loaded from
      * plugins.
+     * 
+     * @throws IOException
      */
-    public void testBorderSizeMigrationDoneInPlugin() {
+    public void testBorderSizeMigrationDoneInPlugin() throws IOException {
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, REPRESENTATIONS_FILE_PATH, REPRESENTATIONS_FILE_NAME);
+
         ResourceSet set = new ResourceSetImpl();
 
         DAnalysis analysis = null;
-        try {
-            analysis = (DAnalysis) ModelUtils.load(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + REPRESENTATIONS_FILE_PATH + REPRESENTATIONS_FILE_NAME, true), set);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        analysis = (DAnalysis) ModelUtils.load(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_FILE_NAME, true), set);
 
         // Check that the migration was done.
         assertNotNull("Check the aird test data.", analysis);
@@ -140,6 +130,12 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         String version = analysis.getVersion();
         assertTrue("Before save, the migration framework will return true even if the migration has been done during load.",
                 RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
+
+        analysis.eResource().save(Collections.emptyMap());
+
+        // save should update the version.
+        version = analysis.getVersion();
+        assertFalse("The version tag should now be set telling that the migration was done.", RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version)));
 
         // We have to check the migration effect to be sure that the migration
         // is effective.

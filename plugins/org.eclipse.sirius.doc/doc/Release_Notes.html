@@ -88,18 +88,19 @@
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-info">Modified</span> Now if an object is locked and cannot be modified according to 
 				<code>IPermissionAuthority</code>, the properties view will not be editable if this locked object is selected from the Model Explorer view.
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-info">Modified</span> When trying to reconnect an edge end on another edge, the edge is now highlighted only if a reconnect tool is found (the precondition of the tool is not tested here).</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.</li>
 			<li><span class="label label-info">Modified</span> The 
 				<code>BorderSizeComputationExpression</code> migration has been corrected to recursively handle the sub container mappings. VSM created or migrated with Sirius 3.1.0, 3.1.1 or 3.1.2 might require a manual modification for the style descriptions of sub container mappings with border size computation equals to 0 as we cannot determine if they were added (or updated) after or before the migration: starting with Sirius 3.1.0, no border will be displayed for a 0 pixel value whereas with older version container always had at least a 1 pixel border. 
 			</li>
+			<li><span class="label label-info">Modified</span> The variable under VariableFilter, previously named &#171;Variable&#187;, is renamed to &#171;Select Model Element Variable&#187;. It is functionally equivalent.</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -121,6 +122,30 @@
 				<code>ModelOperations</code> outside of the context of a specific representation, provided the 
 				<code>ModelOperations</code> work in that context. 
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.description.TypedVariable</code> has been created.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription</code> has been created as tag interface for variables that require user interaction to be valued.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.tools.api.command.ui.UICallBack.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
+			</li>
+			<li><span class="label label-info">Added</span> 
+				<code>org.eclipse.sirius.tools.api.command.ui.NoUICallback.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable</code> now implements 
+				<code>org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.viewpoint.description.tool.AbstractVariable</code> has been moved to 
+				<code>org.eclipse.sirius.viewpoint.description.AbstractVariable</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.viewpoint.description.tool.SubVariable</code> has been moved to 
+				<code>org.eclipse.sirius.viewpoint.description.SubVariable</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
@@ -131,6 +156,43 @@
 				<code>org.eclipse.sirius.common.tools.api.interpreter.ValidationResult</code> so that 
 				<code>IInterpreter</code> implementations able to infer more specific types based on predicates result provides this information to Sirius which will then use it for validating other expressions. You might want to look at 
 				<code>org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter</code> which is an implementation providing this type inference.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.VariableValue</code>, 
+				<code>org.eclipse.sirius.diagram.TypedVariableValue</code> and 
+				<code>org.eclipse.sirius.diagram.EObjectVariableValue</code> has been created.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code> has been created to indicate that variables have to be computed again.
+			</li>
+			<li><span class="label label-info">Modified</span> The type of 
+				<code>org.eclipse.sirius.diagram.description.filter.VariableFilter.ownedVariable</code> has been changed to 
+				<code>org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> The type of 
+				<code>org.eclipse.sirius.diagram.FilterVariableHistory.ownedValues</code> has been changed to 
+				<code>org.eclipse.sirius.diagram.VariableValue</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.diagram.description.filter.FilterVariable</code> has been removed. It is replaced by 
+				<code>org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.setFilterContext()</code> has been removed. This method was, in part, useless and is replaced by 
+				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Added</span> 
+				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -161,7 +223,7 @@
 				<code>org.eclipse.sirius.ext.emf.ui.properties.ExtensiblePropertySource.collector</code> field is now in protected visibility to be modifiable and accessible by subclass.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -565,7 +627,7 @@
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1180,7 +1242,7 @@
 				<code>org.eclipse.sirius.viewpoint.DContainer</code> has been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1240,7 +1302,7 @@
 				<code>org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider.bindCompletionProcessor(AbstractPropertySection, Text)</code>, the difference is that it binds the completion processors available in plugins to the text.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1830,7 +1892,7 @@
 				<code>org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter</code>. However considering the way Sirius uses GMF, this adapter is not needed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1882,7 +1944,7 @@
 				<code>IServiceLocator.getService()</code> on the site.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

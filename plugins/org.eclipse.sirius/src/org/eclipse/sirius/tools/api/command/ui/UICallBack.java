@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tools.api.command.ui;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -20,6 +21,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
@@ -193,4 +195,21 @@ public interface UICallBack {
      *            of the dialog
      */
     void openError(String title, String message);
+
+    /**
+     * Open an UI to ask the user the value corresponding to each TypedVariable
+     * of typedVariableList. </br>
+     * The returned list has the same size as typedVariableList
+     * 
+     * @param typedVariableList
+     *            the list of variable for which to get the values
+     * @param defaultValues
+     *            the default values used to initialize UI. This list must have
+     *            the typedVariableList size.
+     * @return the value provided by the user
+     * @throws InterruptedException
+     *             when the process is interrupted (for instance the user
+     *             pressed "cancel".)
+     */
+    List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException;;
 }

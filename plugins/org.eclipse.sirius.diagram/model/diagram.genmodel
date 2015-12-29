@@ -953,9 +953,7 @@
         <genClasses ecoreClass="diagram.ecore#//description/filter/VariableFilter">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/filter/VariableFilter/ownedVariables"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/filter/VariableFilter/semanticConditionExpression"/>
-          <genOperations ecoreOperation="diagram.ecore#//description/filter/VariableFilter/setFilterContext">
-            <genParameters ecoreParameter="diagram.ecore#//description/filter/VariableFilter/setFilterContext/variables"/>
-          </genOperations>
+          <genOperations ecoreOperation="diagram.ecore#//description/filter/VariableFilter/resetVariables"/>
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.diagram.description"
