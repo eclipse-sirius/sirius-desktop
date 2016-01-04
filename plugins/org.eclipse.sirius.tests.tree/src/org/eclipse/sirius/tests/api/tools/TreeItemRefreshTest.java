@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
@@ -25,7 +28,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TreeTestCase;
 
@@ -56,14 +58,24 @@ public class TreeItemRefreshTest extends TreeTestCase {
 
     private DTreeEditor treeEditor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
+    }
+
+    private int countNamedEClasses(EObject semanticModel, String name) {
+        int count = 0;
+        EObject root = semanticModel.eResource().getContents().get(0);
+        TreeIterator<EObject> iter = root.eAllContents();
+        while (iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof EClass && name.equals(((EClass) current).getName())) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
@@ -104,13 +116,13 @@ public class TreeItemRefreshTest extends TreeTestCase {
         // Check that there is all elements in tree (13)
         Assert.assertEquals("We have 13 elements in ecore model, so we should have 13 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"EClass\")[name==\"NewEClass\"].nSize()%>").intValue();
+        instanceCount = countNamedEClasses(semanticModel, "NewEClass");
 
         Assert.assertEquals("Wrong count of element having the wanted value.", 4, instanceCount);
 
         applyRefresh(newTree);
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"EClass\")[name==\"NewEClass\"].nSize()%>").intValue();
+        instanceCount = countNamedEClasses(semanticModel, "NewEClass");
 
         Assert.assertEquals("Wrong count of elementhaving the wanted value.", 4, instanceCount);
         // Check there is an element more
@@ -149,7 +161,7 @@ public class TreeItemRefreshTest extends TreeTestCase {
 
         int instanceCount = -1;
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"EClass\")[name==\"EClass1\"].nSize()%>").intValue();
+        instanceCount = countNamedEClasses(semanticModel, "EClass1");
 
         Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
 
@@ -164,7 +176,7 @@ public class TreeItemRefreshTest extends TreeTestCase {
 
         });
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"EClass\")[name==\"EClass21\"].nSize()%>").intValue();
+        instanceCount = countNamedEClasses(semanticModel, "EClass21");
 
         applyRefresh(newTree);
 
@@ -191,9 +203,6 @@ public class TreeItemRefreshTest extends TreeTestCase {
         return TreeUIHelper.toHTML(expected);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(treeEditor, false);

@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.support.api.TreeTestCase;
@@ -40,8 +43,6 @@ import org.junit.Assert;
  */
 public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreModeler, TreeEcoreModeler {
 
-    private static final String REQUEST = "<%getRootContainer().eAllContents(\"EClass\")[name==\"EClass1\"].nSize()%>";
-
     private AbstractDTreeEditor treeEditor;
 
     @Override
@@ -49,6 +50,20 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         super.setUp();
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         TestsUtil.synchronizationWithUIThread();
+    }
+    
+    private int countNamedEClasses(EObject semanticModel) {
+        int count = 0;
+        String name = "EClass1";
+        EObject root = semanticModel.eResource().getContents().get(0);
+        TreeIterator<EObject> iter = root.eAllContents();
+        while (iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof EClass && name.equals(((EClass) current).getName())) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
@@ -110,7 +125,7 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         // Check that there is all elements in tree (8)
         Assert.assertEquals("We have 8 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that there is the element that will be removed
         Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
@@ -119,7 +134,7 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         applyDeletionTool(treeElement);
         TestsUtil.synchronizationWithUIThread();
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that the element are removed
         Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
@@ -138,7 +153,7 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         // Check that there is all elements in tree (8)
         Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that there is the element removed was restored
         Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
@@ -152,7 +167,7 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         applyRedo();
         TestsUtil.synchronizationWithUIThread();
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that the element are removed
         Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);

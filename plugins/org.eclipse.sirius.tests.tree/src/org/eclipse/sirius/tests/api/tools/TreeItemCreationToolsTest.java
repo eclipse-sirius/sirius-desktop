@@ -14,10 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.TreeTestCase;
+import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
+import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
@@ -32,10 +38,6 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
 
-import org.eclipse.sirius.tests.support.api.TreeTestCase;
-import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
-import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
-
 /**
  * Test Item Creation tool.
  * 
@@ -43,20 +45,29 @@ import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
  */
 public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEcoreModeler {
 
-    private static final String REQUEST = "<%getRootContainer().eAllContents(\"EClass\")[name==\"NewEClassCreationTool\"].nSize()%>";
-
     private TreeItemMapping treeItemMapping;
 
     private AbstractDTreeEditor treeEditor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         initViewpoint(TREE_VIEWPOINT_NAME);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    private int countNamedEClasses(EObject semanticModel) {
+        int count = 0;
+        String name = "NewEClassCreationTool";
+        EObject root = semanticModel.eResource().getContents().get(0);
+        TreeIterator<EObject> iter = root.eAllContents();
+        while (iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof EClass && name.equals(((EClass) current).getName())) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
@@ -167,15 +178,8 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
 
     }
 
-    /**
-     * @param newTree
-     * @param treeElement
-     * @param tree
-     * @throws EvaluationException
-     */
     private void testCreationOnMapping(DTree newTree, final DTreeElement treeElement, Tree tree) throws EvaluationException {
-        int instanceCount;
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        int instanceCount = countNamedEClasses(semanticModel);
 
         // Check that there is the element that will be removed
         Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
@@ -183,7 +187,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         // Creation element NewEClassCreationTool in tree.
         applyCreationTool(newTree, treeElement.getTarget(), treeItemMapping.getCreate().get(0));
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that the element are created.
         Assert.assertEquals("Wrong count of elementhaving the wanted value.", 1, instanceCount);
@@ -232,10 +236,6 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
 
     }
 
-    /**
-     * @param tree
-     * @return
-     */
     private void testTreeContent(Tree tree, DTree newTree) {
         String currentHtml = TreeUIHelper.toContentHTMl(tree);
         Assert.assertEquals("The editor has not the good number element", TreeItemCreationToolsTest.getModelHtml(), currentHtml);
@@ -243,11 +243,6 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
     }
 
-    /**
-     * @param newTree
-     * @param tree
-     * @throws EvaluationException
-     */
     private void testRedo(DTree newTree, Tree tree) throws EvaluationException {
         String currentHtml;
         int instanceCount;
@@ -256,7 +251,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         applyRedo();
         applyRedo();
         TestsUtil.synchronizationWithUIThread();
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that the element are created
         Assert.assertEquals("Wrong count of elementhaving the wanted value.", 1, instanceCount);
@@ -269,11 +264,6 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         Assert.assertEquals("The creation is not effetive in editor", TreeItemCreationToolsTest.getModelHtmlAfterCreate(), currentHtml);
     }
 
-    /**
-     * @param newTree
-     * @param tree
-     * @throws EvaluationException
-     */
     private void testUndo(DTree newTree, Tree tree) throws EvaluationException {
         String currentHtml;
         int instanceCount;
@@ -286,7 +276,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         // Check that there is all elements in tree (9)
         Assert.assertEquals("We have 9 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that there is the element Create was remove
         Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
@@ -297,17 +287,10 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         Assert.assertTrue("The undo is not effetive visually", TreeItemCreationToolsTest.getModelHtml().length() == currentHtml.length());
     }
 
-    /**
-     * @param treeDescription
-     * @param newTree
-     * @param tree
-     * @param currentHtml
-     * @param instanceCount
-     */
     private void testCreationToolOnRepresentation(final TreeDescription treeDescription, DTree newTree, Tree tree) throws EvaluationException {
         int instanceCount = -1;
         String currentHtml = TreeUIHelper.toContentHTMl(tree);
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that there is the element that will be removed
         Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
@@ -317,7 +300,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         applyCreationTool(newTree, newTree.getTarget(), treeDescription.getCreateTreeItem().get(0));
         TestsUtil.synchronizationWithUIThread();
 
-        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = countNamedEClasses(semanticModel);
 
         // Check that the element are created.
         Assert.assertEquals("Wrong count of elementhaving the wanted value.", 1, instanceCount);
@@ -394,9 +377,6 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         return TreeUIHelper.toHTML(expected);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(treeEditor, false);

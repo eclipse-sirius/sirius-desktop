@@ -84,7 +84,7 @@ public class ReadOnlyColumnTest extends AbstractSiriusSwtBotGefTestCase {
         pressKey(table.getTable(), SWT.SPACE);
 
         // Check the values after: no change expected, the column through which
-        // we tried to do the edition has canEdit = <%false%>
+        // we tried to do the edition has canEdit = false
         assertEquals("newEReference1 : B0", items[0].cell(0));
         assertEquals("false", items[0].cell(1));
         assertEquals("false", items[0].cell(2));

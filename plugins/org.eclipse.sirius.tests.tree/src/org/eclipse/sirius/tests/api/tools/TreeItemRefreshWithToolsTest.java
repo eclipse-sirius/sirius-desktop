@@ -14,10 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.TreeTestCase;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -29,9 +32,6 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.support.api.TreeTestCase;
 
 /**
  * Test that the tool have effects within do a refresh. Test the deletion tools.
@@ -54,8 +54,6 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
 
     private static final String SESSION_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/tree/unit/refreshtools/representations.aird";
 
-    private static final String REQUEST = "<%getRootContainer().eAllContents(\"EClass\")[name==\"NewEClass1\"].nSize()%>";
-
     private static final String REPRESENTATION_NAME = "tree";
 
     private static Tree tree;
@@ -68,9 +66,7 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
 
     private DTreeElement treeElement;
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -85,6 +81,19 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
         treeEditor = (AbstractDTreeEditor) openedEditor;
         tree = treeEditor.getTableViewer().getTreeViewer().getTree();
     }
+    
+    private int countNamedEClasses(EObject semanticModel, String name) {
+        int count = 0;
+        EObject root = semanticModel.eResource().getContents().get(0);
+        TreeIterator<EObject> iter = root.eAllContents();
+        while (iter.hasNext()) {
+            EObject current = iter.next();
+            if (current instanceof EClass && name.equals(((EClass) current).getName())) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 
     /**
      * Test when using the default delete tool the element is deleted from
@@ -92,27 +101,22 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
      */
     public void testDeleteFromTool() {
         checkInitialization();
-        try {
-            // Deletion element NewEClass1 in tree.
-            applyDeletionTool(treeElement);
-            TestsUtil.synchronizationWithUIThread();
+        // Deletion element NewEClass1 in tree.
+        applyDeletionTool(treeElement);
+        TestsUtil.synchronizationWithUIThread();
 
-            // Counts number of NewEClass1
-            int instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        // Counts number of NewEClass1
+        int instanceCount = countNamedEClasses(semanticModel, "NewEClass1");
 
-            // Check that the element is removed
-            Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
+        // Check that the element is removed
+        Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
 
-            // Check there is an element within
-            int expected = ELEMENTS_NUMBER_IN_TREE - 1;
-            Assert.assertEquals("We have " + expected + " elements in ecore model, so we should have " + expected + " elements in tree.", expected, dTree.getOwnedTreeItems().size());
+        // Check there is an element within
+        int expected = ELEMENTS_NUMBER_IN_TREE - 1;
+        Assert.assertEquals("We have " + expected + " elements in ecore model, so we should have " + expected + " elements in tree.", expected, dTree.getOwnedTreeItems().size());
 
-            // Check that the deletion is effective visually
-            Assert.assertEquals("The delete is not effetive in editor", TreeItemRefreshWithToolsTest.getModelHtmlAfterDelete(), getCurrentHtml());
-
-        } catch (EvaluationException e) {
-            fail("Error in the request " + REQUEST);
-        }
+        // Check that the deletion is effective visually
+        Assert.assertEquals("The delete is not effetive in editor", TreeItemRefreshWithToolsTest.getModelHtmlAfterDelete(), getCurrentHtml());
     }
 
     /**
@@ -167,27 +171,22 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
      * Check that the test case correspond to what is expected.
      */
     private void checkInitialization() {
-        try {
-            // Retrieve the visual result.
-            String currentHtml = TreeUIHelper.toContentHTMl(tree);
+        // Retrieve the visual result.
+        String currentHtml = TreeUIHelper.toContentHTMl(tree);
 
-            Assert.assertEquals("The editor has not the good number element", TreeItemRefreshWithToolsTest.getModelHtml(), currentHtml);
+        Assert.assertEquals("The editor has not the good number element", TreeItemRefreshWithToolsTest.getModelHtml(), currentHtml);
 
-            Assert.assertNotNull("Unit test data is not correct", desc);
+        Assert.assertNotNull("Unit test data is not correct", desc);
 
-            // Check that there is all elements in tree (3)
-            Assert.assertEquals("We have " + ELEMENTS_NUMBER_IN_TREE + " elements in ecore model, so we should have " + ELEMENTS_NUMBER_IN_TREE + " elements in tree.", ELEMENTS_NUMBER_IN_TREE, dTree
-                    .getOwnedTreeItems().size());
+        // Check that there is all elements in tree (3)
+        Assert.assertEquals("We have " + ELEMENTS_NUMBER_IN_TREE + " elements in ecore model, so we should have " + ELEMENTS_NUMBER_IN_TREE + " elements in tree.", ELEMENTS_NUMBER_IN_TREE, dTree
+                .getOwnedTreeItems().size());
 
-            // Counts number of NewEClass1
-            int instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        // Counts number of NewEClass1
+        int instanceCount = countNamedEClasses(semanticModel, "NewEClass1");
 
-            // Check that there is the element NewEclass1
-            Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
-
-        } catch (EvaluationException e) {
-            fail("Error in the request " + REQUEST);
-        }
+        // Check that there is the element NewEclass1
+        Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
     }
 
     /**
@@ -251,9 +250,6 @@ public class TreeItemRefreshWithToolsTest extends TreeTestCase {
         return TreeUIHelper.toHTML(expected);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(treeEditor, false);

@@ -111,7 +111,6 @@ public class InteractionOrderingServices {
     }
     
     public boolean eolPrecondition(Participant p) {
-       // <%eContainer("Interaction").messages.filter("DestroyParticipantMessage").receivingEnd[context == current("Participant")]%>
         Interaction i = (Interaction) new EObjectQuery(p).getFirstAncestorOfType(InteractionsPackage.Literals.INTERACTION).get();
         for (Message msg : Iterables.filter(i.getMessages(), Predicates.instanceOf(DestroyParticipantMessage.class))) {
             if (msg.getReceivingEnd() != null && msg.getReceivingEnd().getContext() == p) {
@@ -122,12 +121,10 @@ public class InteractionOrderingServices {
     }
     
     public boolean redimEolPrecondition(Participant p) {
-        // <%eContainer("Interaction").messages.filter("DestroyParticipantMessage").receivingEnd[context == current("Participant")].nSize==0%>
         return !eolPrecondition(p);
     }
     
     public Collection<EObject> lostMessageEndSemanticCandidates(Interaction i) {
-        // <%messages[sendingEnd == null && receivingEnd != null  || sendingEnd !=null && receivingEnd == null ]%>
         Collection<EObject> result = Lists.newArrayList();
         for (Message msg : i.getMessages()) {
             if ((msg.getSendingEnd() == null && msg.getReceivingEnd() != null) || (msg.getSendingEnd() != null && msg.getReceivingEnd() == null)) {

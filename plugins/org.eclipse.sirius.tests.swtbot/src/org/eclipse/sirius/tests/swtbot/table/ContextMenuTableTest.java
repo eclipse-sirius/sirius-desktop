@@ -194,7 +194,7 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Add change context
         ChangeContext changeContext = ToolFactory.eINSTANCE.createChangeContext();
-        changeContext.setBrowseExpression("<%$container%>");
+        changeContext.setBrowseExpression("var:container");
         tool.setFirstModelOperation(changeContext);
 
         // A complete tool is not needed : it must contains a model operation.

@@ -428,7 +428,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         // accesses to tab Label
         SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
         changeShowIcon();
-        changeAndTestPropertyTabLabel(8, 12, "feature:name", "Test<%name%>", 0, 1);
+        changeAndTestPropertyTabLabel(8, 12, "feature:name", "aql:'Test' + self.name", 0, 1);
         SWTBotUtils.waitAllUiEvents();
         // Save odesign
         saveViewpointSpecificationModel(VSM);

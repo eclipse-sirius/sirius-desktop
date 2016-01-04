@@ -53,7 +53,7 @@ public class MappingBasedPartitionTests {
 
     @Test
     public void orderIsKept() {
-        MappingBasedPartition partition = new MappingBasedPartition(ctx, "EObject", Options.newSome("<%eClassifiers%>"), Options.<EObject> newNone());
+        MappingBasedPartition partition = new MappingBasedPartition(ctx, "EObject", Options.newSome("feature:eClassifiers"), Options.<EObject> newNone());
         EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
 
         Iterator<EObject> itTree = partition.evaluate(semanticModel, null).elements();
@@ -70,7 +70,7 @@ public class MappingBasedPartitionTests {
 
     @Test
     public void orderIsKeptWithTypeFiltering() {
-        MappingBasedPartition partition = new MappingBasedPartition(ctx, "EClass", Options.newSome("<%eClassifiers%>"), Options.<EObject> newNone());
+        MappingBasedPartition partition = new MappingBasedPartition(ctx, "EClass", Options.newSome("feature:eClassifiers"), Options.<EObject> newNone());
         EPackage semanticModel = (EPackage) EcoreUtil.copy(EcorePackage.eINSTANCE);
 
         Iterator<EObject> itTree = partition.evaluate(semanticModel, null).elements();

@@ -84,7 +84,7 @@ public class RequestInterpreterTest extends AbstractMMEcoreBasedScenarioTestCase
         editor.click("EBigInteger");
 
         final SWTBot requestsInterpreterBot = requestInterpreterView.bot();
-        requestsInterpreterBot.text().setText("<%current.target%>");
+        requestsInterpreterBot.text().setText("feature:target");
 
         final SWTBotTree requestInterpreterTree = bot.tree();
 
@@ -96,7 +96,7 @@ public class RequestInterpreterTest extends AbstractMMEcoreBasedScenarioTestCase
 
         bot.button("OK").click();
 
-        requestsInterpreterBot.text().setText("<%$EBigIntegerVar%>");
+        requestsInterpreterBot.text().setText("var:EBigIntegerVar");
 
         requestsInterpreterBot.button("Set").click();
 

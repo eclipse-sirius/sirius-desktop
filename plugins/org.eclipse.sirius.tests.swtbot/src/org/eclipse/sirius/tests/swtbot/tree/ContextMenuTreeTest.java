@@ -197,7 +197,7 @@ public class ContextMenuTreeTest extends AbstractSiriusSwtBotGefTestCase {
         tool.setForceRefresh(true);
         // Add change context operation
         ChangeContext changeContext = (ChangeContext) tool.getFirstModelOperation();
-        changeContext.setBrowseExpression("<%$container%>");
+        changeContext.setBrowseExpression("var:container");
         changeContext.getSubModelOperations().add(ToolFactory.eINSTANCE.createCreateInstance());
         // Add create instance operation
         CreateInstance createInstance = (CreateInstance) changeContext.getSubModelOperations().get(0);
