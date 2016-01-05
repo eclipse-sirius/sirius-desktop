@@ -1,7 +1,0 @@
-target "sirius-query-legacy"
-
-with source, requirements
-
-location Sirius-Legacy "http://download.eclipse.org/sirius/updates/legacy/" {
-	org.eclipse.sirius.query.legacy.feature.feature.group lazy
-}

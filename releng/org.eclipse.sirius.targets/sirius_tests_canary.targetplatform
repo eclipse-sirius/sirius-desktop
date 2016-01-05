@@ -1,7 +1,6 @@
 target "sirius_tests_canary"
 
 include "sirius_canary.targetplatform"
-include "modules/query-legacy.tpd"
 
 with source, requirements
 

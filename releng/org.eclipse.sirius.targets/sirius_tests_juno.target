@@ -52,10 +52,6 @@
       <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="0.0.0"/>
-      <repository id="Sirius-Legacy" location="http://download.eclipse.org/sirius/updates/legacy/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.doc.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>

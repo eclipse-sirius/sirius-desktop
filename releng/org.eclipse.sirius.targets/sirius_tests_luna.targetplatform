@@ -1,7 +1,6 @@
 target "sirius_tests_luna"
 
 include "sirius_luna.targetplatform"
-include "modules/query-legacy.tpd"
 
 with source, requirements
 

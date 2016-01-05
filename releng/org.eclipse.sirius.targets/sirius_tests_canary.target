@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<<<<<<< HEAD
 <target name="sirius_tests_canary" sequenceNumber="1453197181">
+=======
+<target name="sirius_tests_canary" sequenceNumber="1451987502">
+>>>>>>> 3341266... [478878] Remove query-legacy from the tests target platforms
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -100,10 +104,6 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
       <repository id="XText-Latest" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="0.0.0"/>
-      <repository id="Sirius-Legacy" location="http://download.eclipse.org/sirius/updates/legacy/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.doc.feature.feature.group" version="0.0.0"/>

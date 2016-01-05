@@ -1,7 +1,6 @@
 target "sirius_tests_juno"
 
 include "sirius_juno.targetplatform"
-include "modules/query-legacy.tpd"
 
 with source, requirements
 
