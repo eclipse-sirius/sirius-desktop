@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_neon" sequenceNumber="1444653984">
+<target name="sirius_neon" sequenceNumber="1452000306">
   <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601041621"/>
+      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601041621/"/>
+    </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
       <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
@@ -33,29 +37,28 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
-      <unit id="com.ibm.icu" version="54.1.1.v201501272100"/>
-      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.10.100.201509280204"/>
-      <unit id="org.eclipse.emf.common.feature.group" version="2.11.0.v20150928-0625"/>
-      <unit id="org.eclipse.emf.compare.feature.group" version="3.2.0.201509300604"/>
-      <unit id="org.eclipse.emf.ecore.feature.group" version="2.12.0.v20150928-0625"/>
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.12.0.v20150928-0952"/>
-      <unit id="org.eclipse.emf.eef.runtime" version="1.5.0.201505291308"/>
-      <unit id="org.eclipse.emf.feature.group" version="2.12.0.v20150928-0952"/>
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.12.0.v20150928-0952"/>
+      <unit id="com.ibm.icu" version="54.1.1.v201511091919"/>
+      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.10.100.201512140303"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="2.12.0.v20151209-1100"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="3.2.0.201512130548"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="2.12.0.v20151209-1100"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.12.0.v20151214-0410"/>
+      <unit id="org.eclipse.emf.feature.group" version="2.12.0.v20151214-0410"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.12.0.v20151214-0410"/>
       <unit id="org.eclipse.emf.transaction.feature.group" version="1.9.0.201506010221"/>
       <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.9.0.201506010221"/>
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.9.0.201505312255"/>
       <unit id="org.eclipse.emf.workspace.feature.group" version="1.9.0.201506010221"/>
-      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.12.0.v20150911-2106"/>
-      <unit id="org.eclipse.gef.feature.group" version="3.10.100.201509280204"/>
-      <unit id="org.eclipse.gef.sdk.feature.group" version="3.10.100.201509280204"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.12.0.v20151207-2221"/>
+      <unit id="org.eclipse.gef.feature.group" version="3.11.0.201512140303"/>
+      <unit id="org.eclipse.gef.sdk.feature.group" version="3.11.0.201512140303"/>
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.9.0.201505312221"/>
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.9.0.201506060219"/>
       <unit id="org.eclipse.ocl.all.feature.group" version="5.1.100.v20150611-1921"/>
       <unit id="org.eclipse.ocl.core.sdk.feature.group" version="5.1.100.v20150611-1921"/>
-      <unit id="org.eclipse.platform.feature.group" version="4.5.0.v20150805-2000"/>
-      <unit id="org.eclipse.sdk.feature.group" version="4.5.0.v20150805-2000"/>
-      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.9.0.v201509281643"/>
+      <unit id="org.eclipse.platform.feature.group" version="4.6.0.v20151209-2300"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.6.0.v20151209-2300"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.9.0.v201512010527"/>
       <repository id="Eclipse-Neon" location="http://download.eclipse.org/releases/neon"/>
     </location>
   </locations>

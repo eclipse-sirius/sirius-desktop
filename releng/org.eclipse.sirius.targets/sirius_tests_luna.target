@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_luna" sequenceNumber="1444653993">
+<target name="sirius_tests_luna" sequenceNumber="1451989212">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201505291308"/>
-      <repository id="EEF-1.5rc3" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/"/>
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601041621"/>
+      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601041621/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>

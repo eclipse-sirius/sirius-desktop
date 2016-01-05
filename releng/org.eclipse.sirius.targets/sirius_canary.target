@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1444643900">
+<target name="sirius_canary" sequenceNumber="1451989188">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.6.0.I20151006-0800"/>
-      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20151006-0800"/>
-      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20151006-0800"/>
+      <unit id="org.eclipse.platform.ide" version="4.6.0.I20151229-0800"/>
+      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20151229-0800"/>
+      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20151229-0800"/>
       <repository id="Eclipse-Neon-Integration" location="http://download.eclipse.org/eclipse/updates/4.6-I-builds"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -69,7 +69,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
-      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052/"/>
+      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601041621/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>

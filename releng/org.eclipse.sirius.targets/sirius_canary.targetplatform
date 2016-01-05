@@ -68,7 +68,7 @@ location EMF-Transaction-LastSuccessful "https://hudson.eclipse.org/transaction/
 //	org.eclipse.emf.eef.runtime lazy
 //}
 
-location EEF-1.5 "http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052/" {
+location EEF-1.5 "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601041621/" {
 	org.eclipse.emf.eef.runtime lazy
 }
 
