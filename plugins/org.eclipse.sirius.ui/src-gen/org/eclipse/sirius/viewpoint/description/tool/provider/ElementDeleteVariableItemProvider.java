@@ -111,8 +111,8 @@ public class ElementDeleteVariableItemProvider extends AbstractVariableItemProvi
     @Override
     public String getText(Object object) {
         String label = ((ElementDeleteVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ElementDeleteVariable_type") : //$NON-NLS-1$
-            getString("_UI_ElementDeleteVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_ElementDeleteVariable_type") //$NON-NLS-1$
+                : getString("_UI_ElementDeleteVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -140,7 +140,7 @@ public class ElementDeleteVariableItemProvider extends AbstractVariableItemProvi
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -150,7 +150,24 @@ public class ElementDeleteVariableItemProvider extends AbstractVariableItemProvi
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createSelectModelElementVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
+        // newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES,
+        // DescriptionFactory.eINSTANCE.createTypedVariable()));
     }
 
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createAcceleoVariable()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createSelectModelElementVariable()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
+    }
 }
