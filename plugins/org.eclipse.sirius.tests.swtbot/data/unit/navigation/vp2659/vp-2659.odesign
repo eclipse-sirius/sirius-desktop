@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-2659" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-2659" version="10.1.3.201511131800">
   <ownedViewpoints name="NavigationDescriptions">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="EPackage Diagram" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="EClass" semanticElements="&lt;%self.eClassifiers%>" domainClass="EClass">
+        <nodeMappings name="EClass" semanticElements="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:EllipseNodeDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -13,38 +13,38 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="EPackage crossTable" domainClass="EPackage">
-      <ownedRepresentationNavigationDescriptions xsi:type="tool:DiagramNavigationDescription" name="Navigate From Class to Package" browseExpression="&lt;%self.ancestor().filter(&quot;EPackage&quot;)%>" navigationNameExpression="custom navigation" diagramDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20Diagram']">
+      <ownedRepresentationNavigationDescriptions xsi:type="tool:DiagramNavigationDescription" name="Navigate From Class to Package" browseExpression="aql:self->ancestors()->filter(ecore::EPackage)" navigationNameExpression="custom navigation" diagramDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20Diagram']">
         <containerViewVariable name="containerView"/>
         <containerVariable name="container"/>
         <representationNameVariable name="diagramName"/>
       </ownedRepresentationNavigationDescriptions>
-      <ownedLineMappings name="EClass" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedRepresentationNavigationDescriptions[name='Navigate%20From%20Class%20to%20Package']" domainClass="EClass" semanticCandidatesExpression="&lt;%self.eClassifiers%>"/>
+      <ownedLineMappings name="EClass" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedRepresentationNavigationDescriptions[name='Navigate%20From%20Class%20to%20Package']" domainClass="EClass" semanticCandidatesExpression="aql:self.eClassifiers"/>
       <ownedColumnMappings name="EAttributes" domainClass="EAttribute"/>
-      <intersection name="hasAttribute" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedRepresentationNavigationDescriptions[name='Navigate%20From%20Class%20to%20Package']" lineMapping="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedLineMappings[name='EClass']" columnMapping="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%self.eStructuralFeatures%>"/>
+      <intersection name="hasAttribute" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedRepresentationNavigationDescriptions[name='Navigate%20From%20Class%20to%20Package']" lineMapping="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedLineMappings[name='EClass']" columnMapping="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20crossTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="aql:self.eStructuralFeatures"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="EPackage editionTable" domainClass="EPackage">
-      <ownedRepresentationNavigationDescriptions xsi:type="description_3:TreeNavigationDescription" name="navigate to EPackage treee" precondition="&lt;%self.name == &quot;C1&quot;%>" browseExpression="feature:eContainer" navigationNameExpression="custom navigation" treeDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']">
+      <ownedRepresentationNavigationDescriptions xsi:type="description_3:TreeNavigationDescription" name="navigate to EPackage treee" precondition="aql:self.name = 'C1'" browseExpression="feature:eContainer" navigationNameExpression="custom navigation" treeDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']">
         <containerViewVariable name="view"/>
         <containerVariable name="element"/>
         <representationNameVariable name="name"/>
       </ownedRepresentationNavigationDescriptions>
-      <ownedLineMappings name="EClass" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20editionTable']/@ownedRepresentationNavigationDescriptions[name='navigate%20to%20EPackage%20treee']" domainClass="EClass" semanticCandidatesExpression="&lt;%self.eClassifiers%>"/>
+      <ownedLineMappings name="EClass" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20editionTable']/@ownedRepresentationNavigationDescriptions[name='navigate%20to%20EPackage%20treee']" domainClass="EClass" semanticCandidatesExpression="aql:self.eClassifiers"/>
       <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="feature:name"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="EPackage tree" domainClass="EPackage">
-      <subItemMappings name="EClass" domainClass="EClass" semanticCandidatesExpression="&lt;%self.eClassifiers%>">
+      <subItemMappings name="EClass" domainClass="EClass" semanticCandidatesExpression="aql:self.eClassifiers">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
-        <subItemMappings name="EAttribute" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']/@ownedRepresentationNavigationDescriptions[name='navigation%20FromTree%20To%20Tree']" domainClass="EAttribute" semanticCandidatesExpression="&lt;%self.eStructuralFeatures%>">
+        <subItemMappings name="EAttribute" navigationDescriptions="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']/@ownedRepresentationNavigationDescriptions[name='navigation%20FromTree%20To%20Tree']" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eStructuralFeatures">
           <defaultStyle>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
         </subItemMappings>
       </subItemMappings>
-      <ownedRepresentationNavigationDescriptions xsi:type="description_3:TreeNavigationDescription" name="navigation FromTree To Tree" browseExpression="&lt;%eContainer.eContainer%>" navigationNameExpression="custom navigation" treeDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']">
+      <ownedRepresentationNavigationDescriptions xsi:type="description_3:TreeNavigationDescription" name="navigation FromTree To Tree" browseExpression="aql:self.eContainer().eContainer()" navigationNameExpression="custom navigation" treeDescription="//@ownedViewpoints[name='NavigationDescriptions']/@ownedRepresentations[name='EPackage%20tree']">
         <containerViewVariable name="container"/>
         <containerVariable/>
         <representationNameVariable name="treeName"/>

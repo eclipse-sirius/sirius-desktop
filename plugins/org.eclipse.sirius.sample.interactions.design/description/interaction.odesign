@@ -154,7 +154,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -255,7 +255,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -529,7 +529,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -582,7 +582,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -636,7 +636,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -689,7 +689,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.ReturnMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1288,7 +1288,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1390,7 +1390,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1425,7 +1425,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -1461,7 +1461,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1499,7 +1499,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1572,7 +1572,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1699,7 +1699,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1734,7 +1734,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
@@ -1770,7 +1770,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>

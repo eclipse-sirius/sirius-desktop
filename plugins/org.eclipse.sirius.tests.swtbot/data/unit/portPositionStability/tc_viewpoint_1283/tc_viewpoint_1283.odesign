@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc_viewpoint_1283" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc_viewpoint_1283" version="10.1.3.201511131800">
   <ownedViewpoints name="tc_viewpoint_1283" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc_viewpoint_1283" domainClass="EPackage">
       <nodeMappings name="EPackage as node" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
         <borderedNodeMappings name="EClass" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
           <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
-            <style xsi:type="style:SquareDescription" labelExpression="DN2EP_on_DN2EP_&lt;%name%>" resizeKind="NSEW" width="5" height="5">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'DN2EP_on_DN2EP_' + self.name" resizeKind="NSEW" width="5" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="DN2EP_on_DNEP_&lt;%name%>" resizeKind="NSEW" width="10" height="10">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'DN2EP_on_DNEP_' + self.name" resizeKind="NSEW" width="10" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
           </style>
         </borderedNodeMappings>
-        <style xsi:type="style:SquareDescription" labelExpression="DNEP_&lt;%name%>" resizeKind="NSEW" width="25" height="25">
+        <style xsi:type="style:SquareDescription" labelExpression="aql:'DNEP_' + self.name" resizeKind="NSEW" width="25" height="25">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
         </style>
       </nodeMappings>
       <containerMappings name="Package" semanticCandidatesExpression="feature:eContents" semanticElements="var:self" domainClass="EPackage">
-        <borderedNodeMappings name="EClass as border node" preconditionExpression="&lt;%eContents().nSize() > 0%>" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+        <borderedNodeMappings name="EClass as border node" preconditionExpression="aql:self.eContents()->size() > 0" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
           <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
-            <style xsi:type="style:SquareDescription" labelExpression="DN4EP_on_DN4EP_&lt;%name%>" resizeKind="NSEW" width="5" height="5">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'DN4EP_on_DN4EP_' + self.name" resizeKind="NSEW" width="5" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="DN4EP_&lt;%name%>" resizeKind="NSEW" width="10" height="10">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'DN4EP_' + self.name" resizeKind="NSEW" width="10" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </borderedNodeMappings>
-        <subNodeMappings name="EClass as subnode" preconditionExpression="&lt;%eContents().nSize() > 0%>" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+        <subNodeMappings name="EClass as subnode" preconditionExpression="aql:self.eContents()->size() > 0" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
           <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
-            <style xsi:type="style:SquareDescription" labelExpression="DN2EP_on_DN3EP_&lt;%name%>" resizeKind="NSEW" width="5" height="5">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'DN2EP_on_DN3EP_' + self.name" resizeKind="NSEW" width="5" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="DN3EP_&lt;%name%>" resizeKind="NSEW" width="10" height="10">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'DN3EP_' + self.name" resizeKind="NSEW" width="10" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

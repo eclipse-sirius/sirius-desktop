@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2700" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2700" version="10.1.3.201511131800">
   <ownedViewpoints name="VP-2700" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-2700_Diagram" domainClass="EPackage">
       <defaultLayer name="Default1">
-        <containerMappings name="PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping" semanticCandidatesExpression="&lt;%self.eSubpackages%>" domainClass="EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" labelAlignment="RIGHT">
+        <containerMappings name="PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" borderSizeComputationExpression="1" labelAlignment="RIGHT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="PackageCompartmentContainerMappingZ" semanticCandidatesExpression="&lt;%self.eSubpackages%>" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='VP-2700']/@ownedRepresentations[name='VP-2700_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
-          <subContainerMappings name="SubPackageCompartmentContainerMapping" semanticCandidatesExpression="&lt;%eAllContents(&quot;EPackage&quot;)%>" domainClass="EPackage" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" labelAlignment="RIGHT">
+        <containerMappings name="PackageCompartmentContainerMappingZ" semanticCandidatesExpression="aql:self.eSubpackages" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='VP-2700']/@ownedRepresentations[name='VP-2700_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
+          <subContainerMappings name="SubPackageCompartmentContainerMapping" semanticCandidatesExpression="aql:self.eAllContents(ecore::EPackage)" domainClass="EPackage" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" borderSizeComputationExpression="1" labelAlignment="RIGHT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" labelAlignment="RIGHT">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" borderSizeComputationExpression="1" labelAlignment="RIGHT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -28,7 +28,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="ocl: self.eClassifiers->select(cl : EClassifier | cl.oclIsTypeOf(EClass))->collect(cl : EClassifier | cl.oclAsType(EClass))->select(c : EClass | not c.eStructuralFeatures->isEmpty())" domainClass="EClass">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" labelAlignment="RIGHT">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="100" arcHeight="100" borderSizeComputationExpression="1" labelAlignment="RIGHT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -49,7 +49,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.eContainer%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.eContainer()">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="ownedDiagramElements" elementExpression="var:elementView"/>
                 <subModelOperations xsi:type="tool_1:Unset" featureName="ownedBorderedNodes" elementExpression="var:elementView"/>
               </firstModelOperations>

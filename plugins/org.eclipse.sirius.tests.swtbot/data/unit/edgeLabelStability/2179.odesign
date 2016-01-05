@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="10.1.3.201511131800">
   <ownedViewpoints name="2179Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="2179Diag" domainClass="EPackage">
       <defaultLayer name="Default">
-        <edgeMappings name="LinkClass" sourceMapping="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@containerMappings[name='PackageContainer']/@borderedNodeMappings[name='ClassBorderedNode']" targetMapping="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@containerMappings[name='PackageContainer']/@borderedNodeMappings[name='ClassBorderedNode']" targetFinderExpression="&lt;%eSuperTypes%>">
+        <edgeMappings name="LinkClass" sourceMapping="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@containerMappings[name='PackageContainer']/@borderedNodeMappings[name='ClassBorderedNode']" targetMapping="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@containerMappings[name='PackageContainer']/@borderedNodeMappings[name='ClassBorderedNode']" targetFinderExpression="aql:self.eSuperTypes">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="extends &lt;%name%>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:'extends ' + self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PackageContainer" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Package']">
+        <containerMappings name="PackageContainer" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='2179Viewpoint']/@ownedRepresentations[name='2179Diag']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Package']">
           <borderedNodeMappings name="ClassBorderedNode" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
             <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -19,7 +19,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -33,8 +33,8 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

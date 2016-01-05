@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="10.1.3.201511131800">
   <ownedViewpoints name="NewInputLabelForDirectEdit" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ClassDiag" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -11,14 +11,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;node>> ' + name/]" tooltipExpression="&lt;%name%>" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;node>> ' + name/]" tooltipExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <containerMappings name="ClassList" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="['&lt;&lt;list>> ' + name/]">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="['&lt;&lt;list>> ' + name/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -27,13 +27,13 @@
         </containerMappings>
         <containerMappings name="ClassContainer" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
           <subNodeMappings name="ClassNodeInContainer" labelDirectEdit="//@ownedViewpoints[name='NewInputLabelForDirectEdit']/@ownedRepresentations[name='ClassDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DirectEditClass']" semanticCandidatesExpression="[self/]" domainClass="EClass">
-            <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;nodeInContainer>> ' + name/]" tooltipExpression="&lt;%name%>" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="['&lt;&lt;nodeInContainer>> ' + name/]" tooltipExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="['&lt;&lt;container>> ' + name/]">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="['&lt;&lt;container>> ' + name/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

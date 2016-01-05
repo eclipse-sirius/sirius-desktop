@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="vp-4112" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="vp-4112" version="10.1.3.201511131800">
   <ownedViewpoints name="vp-4112">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp-4112" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
@@ -11,7 +11,7 @@
           </style>
         </nodeMappings>
         <toolSections name="selection tools">
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Tree Selection" candidatesExpression="&lt;%$container + $container.eAllContents()%>" multiple="true" tree="true" rootExpression="&lt;%$container.filter(&quot;EPackage&quot;) + $container.eAllContents().filter(&quot;EPackage&quot;)%>" childrenExpression="feature:eContents">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Tree Selection" candidatesExpression="aql:OrderedSet{container} + container.eAllContents()" multiple="true" tree="true" rootExpression="aql:OrderedSet{container}->filter(ecore::EPackage) + container.eAllContents()->filter(ecore::EPackage)" childrenExpression="feature:eContents">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -21,7 +21,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Pane Based Selection" windowTitle="Pane Based" candidatesExpression="&lt;%$container + $container.eAllContents()%>" tree="true" rootExpression="&lt;%$container.filter(&quot;EPackage&quot;) + $container.eAllContents().filter(&quot;EPackage&quot;)%>" childrenExpression="feature:eContents">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Pane Based Selection" windowTitle="Pane Based" candidatesExpression="aql:OrderedSet{container} + container.eAllContents()" tree="true" rootExpression="aql:OrderedSet{container}->filter(ecore::EPackage) + container.eAllContents()->filter(ecore::EPackage)" childrenExpression="feature:eContents">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
