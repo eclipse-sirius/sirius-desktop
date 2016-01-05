@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationVariable;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -113,8 +112,8 @@ public class NodeCreationVariableItemProvider extends AbstractVariableItemProvid
     @Override
     public String getText(Object object) {
         String label = ((NodeCreationVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_NodeCreationVariable_type") : //$NON-NLS-1$
-            getString("_UI_NodeCreationVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_NodeCreationVariable_type") //$NON-NLS-1$
+                : getString("_UI_NodeCreationVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -142,13 +141,15 @@ public class NodeCreationVariableItemProvider extends AbstractVariableItemProvid
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
+
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
+        // newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES,
+        // DescriptionFactory.eINSTANCE.createTypedVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES, ToolFactory.eINSTANCE.createAcceleoVariable()));
 
