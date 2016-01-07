@@ -10,24 +10,30 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
+import org.eclipse.swt.events.MouseEvent;
 
 /**
  * Specific implementation of
- * {@link org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx}. <br/>
+ * {@link org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx}.
+ * <br/>
  * It adds margins around parent dragged edit part in order to lower drag 'n
  * drop sensibility.
  * 
  * @author dlecan
  */
-public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
+public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx implements MoveInDiagramDragTracker {
 
     /**
      * The x margin used when moving bordered node to not have drag'n drop
@@ -40,6 +46,8 @@ public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
      * considered.
      */
     private static final int Y_MARGIN = X_MARGIN;
+
+    private Point previousMouseLocation;
 
     /**
      * Constructor.
@@ -182,5 +190,44 @@ public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
     @Override
     protected void setCloneActive(boolean cloneActive) {
         super.setCloneActive(false);
+    }
+
+    @Override
+    protected boolean handleButtonDown(int button) {
+        if (button == 2) {
+            setCursor(SharedCursors.HAND);
+            return stateTransition(STATE_INITIAL, STATE_SCROLL_DIAGRAM);
+        } else {
+            return super.handleButtonDown(button);
+        }
+    }
+
+    @Override
+    public void mouseDrag(MouseEvent me, EditPartViewer viewer) {
+        previousMouseLocation = getCurrentInput().getMouseLocation().getCopy();
+        super.mouseDrag(me, viewer);
+    }
+
+    @Override
+    protected boolean handleDragStarted() {
+        if (isInState(STATE_SCROLL_DIAGRAM)) {
+            return stateTransition(STATE_SCROLL_DIAGRAM, STATE_SCROLL_DIAGRAM_IN_PROGRESS);
+        }
+        return super.handleDragStarted();
+    }
+
+    @Override
+    protected boolean handleDragInProgress() {
+        if (isInState(STATE_SCROLL_DIAGRAM_IN_PROGRESS)) {
+            if (getCurrentViewer().getControl() instanceof FigureCanvas) {
+                FigureCanvas figureCanvas = (FigureCanvas) getCurrentViewer().getControl();
+                Point currentMouseLocation = getCurrentInput().getMouseLocation();
+                Dimension difference = previousMouseLocation.getDifference(currentMouseLocation);
+                Point location = figureCanvas.getViewport().getViewLocation();
+                figureCanvas.scrollTo(location.x + difference.width, location.y + difference.height);
+            }
+            return true;
+        }
+        return super.handleDragInProgress();
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
+import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.MouseEvent;
 
 /**
  * A specific dragEditPartTracket that allows to change the behavior of
@@ -23,7 +30,7 @@ import org.eclipse.swt.events.KeyEvent;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
-public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx {
+public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx implements MoveInDiagramDragTracker {
 
     /**
      * Constant passed to extended data of the request to keep the chosen mode
@@ -51,6 +58,8 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx {
      * to the request.
      */
     boolean snapToAllShape = SnapToAllDragEditPartsTracker.DEFAULT_SNAP_TO_SHAPE_MODE;
+
+    private Point previousMouseLocation;
 
     /**
      * Default constructor.
@@ -102,5 +111,44 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx {
         // Clean up the mode to original state.
         snapToAllShape = SnapToAllDragEditPartsTracker.DEFAULT_SNAP_TO_SHAPE_MODE;
         return result;
+    }
+
+    @Override
+    protected boolean handleButtonDown(int button) {
+        if (button == 2) {
+            setCursor(SharedCursors.HAND);
+            return stateTransition(STATE_INITIAL, STATE_SCROLL_DIAGRAM);
+        } else {
+            return super.handleButtonDown(button);
+        }
+    }
+
+    @Override
+    public void mouseDrag(MouseEvent me, EditPartViewer viewer) {
+        previousMouseLocation = getCurrentInput().getMouseLocation().getCopy();
+        super.mouseDrag(me, viewer);
+    }
+
+    @Override
+    protected boolean handleDragStarted() {
+        if (isInState(STATE_SCROLL_DIAGRAM)) {
+            return stateTransition(STATE_SCROLL_DIAGRAM, STATE_SCROLL_DIAGRAM_IN_PROGRESS);
+        }
+        return super.handleDragStarted();
+    }
+
+    @Override
+    protected boolean handleDragInProgress() {
+        if (isInState(STATE_SCROLL_DIAGRAM_IN_PROGRESS)) {
+            if (getCurrentViewer().getControl() instanceof FigureCanvas) {
+                FigureCanvas figureCanvas = (FigureCanvas) getCurrentViewer().getControl();
+                Point currentMouseLocation = getCurrentInput().getMouseLocation();
+                Dimension difference = previousMouseLocation.getDifference(currentMouseLocation);
+                Point location = figureCanvas.getViewport().getViewLocation();
+                figureCanvas.scrollTo(location.x + difference.width, location.y + difference.height);
+            }
+            return true;
+        }
+        return super.handleDragInProgress();
     }
 }
