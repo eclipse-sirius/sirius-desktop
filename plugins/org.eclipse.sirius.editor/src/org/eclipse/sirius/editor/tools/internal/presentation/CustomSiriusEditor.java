@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
+import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.contexts.IContextService;
 import org.osgi.framework.Version;
@@ -373,6 +374,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             result = ((URIEditorInput) input).getURI();
         } else if (input instanceof IPathEditorInput) {
             result = URI.createFileURI(((IPathEditorInput) input).getPath().toOSString());
+        } else if (input instanceof IURIEditorInput) {
+            result = URI.createURI(((IURIEditorInput) input).getURI().toString());
         } else {
             result = (URI) input.getAdapter(URI.class);
         }
