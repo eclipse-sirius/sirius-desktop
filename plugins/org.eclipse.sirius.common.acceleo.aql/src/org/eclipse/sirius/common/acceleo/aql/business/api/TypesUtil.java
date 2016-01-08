@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.api;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -24,6 +25,8 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
+
+import com.google.common.collect.Sets;
 
 /**
  * An utility class to convert types denotations.
@@ -52,10 +55,7 @@ public final class TypesUtil {
         final Set<IType> selfTyping = new LinkedHashSet<IType>(2);
         VariableType targetTypeName = context.getTargetType();
         for (TypeName possibleType : targetTypeName.getPossibleTypes()) {
-            EClassifierType found = searchEClassifierType(queryEnvironment, possibleType);
-            if (found != null) {
-                selfTyping.add(found);
-            }
+            selfTyping.addAll(searchEClassifierType(queryEnvironment, possibleType));
         }
 
         if (selfTyping.size() == 0) {
@@ -67,10 +67,7 @@ public final class TypesUtil {
             VariableType typeName = varDef.getValue();
             final Set<IType> potentialTypes = new LinkedHashSet<IType>(2);
             for (TypeName possibleVariableTypes : typeName.getPossibleTypes()) {
-                EClassifierType found = searchEClassifierType(queryEnvironment, possibleVariableTypes);
-                if (found != null) {
-                    potentialTypes.add(found);
-                }
+                potentialTypes.addAll(searchEClassifierType(queryEnvironment, possibleVariableTypes));
             }
             if (potentialTypes.size() == 0) {
                 potentialTypes.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEObject()));
@@ -80,18 +77,21 @@ public final class TypesUtil {
         return variableTypes;
     }
 
-    private static EClassifierType searchEClassifierType(IQueryEnvironment queryEnvironment, TypeName targetTypeName) {
-        EClassifier found = null;
+    private static Collection<EClassifierType> searchEClassifierType(IQueryEnvironment queryEnvironment, TypeName targetTypeName) {
+        Collection<EClassifier> found = Sets.newLinkedHashSet();
         if (targetTypeName.getPackagePrefix().some()) {
             String typeName = targetTypeName.getClassifierName();
             String name = targetTypeName.getPackagePrefix().get();
-            found = queryEnvironment.getEPackageProvider().getType(name, typeName);
+            found.addAll(queryEnvironment.getEPackageProvider().getTypes(name, typeName));
         } else {
-            found = queryEnvironment.getEPackageProvider().getType(targetTypeName.getClassifierName());
+            found.addAll(queryEnvironment.getEPackageProvider().getTypes(targetTypeName.getClassifierName()));
         }
-        if (found != null) {
-            return new EClassifierType(queryEnvironment, found);
+
+        Collection<EClassifierType> types = Sets.newLinkedHashSet();
+
+        for (EClassifier eClassifier : found) {
+            types.add(new EClassifierType(queryEnvironment, eClassifier));
         }
-        return null;
+        return types;
     }
 }
