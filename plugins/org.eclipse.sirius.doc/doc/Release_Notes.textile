@@ -4,6 +4,37 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius3.1.3.100). Changes in Sirius 3.1.3.100
+
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.
+* <span class="label label-info">Modified</span> The variable under VariableFilter, previously named "Variable", is renamed to "Select Model Element Variable". It is functionally equivalent.
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.TypedVariable@ has been created.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@ has been created as tag interface for variables that require user interaction to be valued.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@ now implements @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.VariableValue@, @org.eclipse.sirius.diagram.TypedVariableValue@ and @org.eclipse.sirius.diagram.EObjectVariableValue@ has been created.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()@ has been created to indicate that variables have to be computed again.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created. @org.eclipse.sirius.tools.api.command.ui.NoUICallback@ and @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback@ now implement that method.
+* <span class="label label-info">Modified</span> The type of @org.eclipse.sirius.diagram.description.filter.VariableFilter.ownedVariable@ has been changed to @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
+* <span class="label label-info">Modified</span> The type of @org.eclipse.sirius.diagram.FilterVariableHistory.ownedValues@ has been changed to @org.eclipse.sirius.diagram.VariableValue@.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.description.filter.FilterVariable@ has been removed. It is replaced by @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.setFilterContext()@ has been removed. This method was, in part, useless and is replaced by @org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()@.
+
 h2(#sirius3.1.3). Changes in Sirius 3.1.3
 
 h3. User-Visible Changes

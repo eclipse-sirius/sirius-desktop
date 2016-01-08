@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.api.selection;
+package org.eclipse.sirius.ui.tools.internal.selection;
 
 import java.util.ArrayList;
 import java.util.List;

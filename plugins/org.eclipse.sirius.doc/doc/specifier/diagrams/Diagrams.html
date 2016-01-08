@@ -1475,8 +1475,47 @@
 		<h3 id="variable_filter">Variable Filter</h3>
 		<p>A 
 			<em>Variable Filter</em> is similar to a 
-			<em>Mapping Filter</em>, except that instead of using a list of mappings to select the candidate elements to filter, it opens a dialog box from which the user can select the specific elements he wants to filter. The configuration of the dialog box uses the same properties and semantic as the 
-			<a href="#selection_wizard">Selection Wizard</a> tool. Refer to its documentation for the details.
+			<em>Mapping Filter</em>, except that instead of using a list of mappings to select the candidate elements to filter, all represented elements are candidates but can be filtered with a Semantic Condition Expression.
+			<br/>In that expression, the specifier can use variables that are defined in the variable filter.
+		</p>
+		<ul>
+			<li>Select Model Element Variable : it opens a dialog box from which the user can select a collection of EObjects. The configuration of the dialog box uses the same properties and semantic as the 
+				<a href="#selection_wizard">Selection Wizard</a> tool. Refer to its documentation for the details. 
+			</li>
+			<li>Typed Variable : see 
+				<a href="#filter_with_typed_variable">Filter with Typed Variable</a> 
+			</li>
+		</ul>
+		<h4 id="filter_with_typed_variable">Filter with Typed Variable</h4>
+		<p>A Typed Variable is a variable which value type is a 
+			<em>EDataType</em> as chosen by the specifier and which value is filled by the user when applying the variable filter.
+			<br/>An interpreted expression allows defining the default value.
+		</p>
+		<p>
+			<img border="0" src="images/typedVariable_PropertyView.png"/>
+		</p>
+		<p>When the user applies a variable filter with typed variables, a dialog box is displayed to allow user entering the values. 
+			<br/>This dialog box is prompted after all 
+			<em>Select Model Element</em> wizard have been prompted.
+			<br/>It contains as many line as number of typed variables under the variable filter.
+			<br/>The user documentation is displayed as tooltip on question mark.
+			<br/>The default value is the result of the interpreted expression defined on VSM.
+		</p>
+		<p>
+			<img border="0" src="images/dialog_TypedVariableValue.png"/>
+		</p>
+		<p>
+			<strong>EDataType class instantiation</strong>
+		</p>
+		<p>Note that whatever the type of variable is, the field is a text field.</p>
+		<p>In order that the EDataType class is instantiable, the value given by the user should follow rules which depend on how it is triggered by EMF mechanism.
+			<br/>If the EFactory of the EDataType is not overloaded, the class corresponding to the EDataType must have a constructor with a String parameter. At instantiation, the string argument will be the string input by the user. This string argument is translated into the right data in the class constructor for example.
+			<br/>What is done in the constructor described above can also be done overloading the EDataType class EFactory.
+		</p>
+		<p>Example:
+			<br/>If your class represents a point coordinates with two fields x and y of type int, the string input by the user could be 
+			<em lang="integer">,[integer]</em>. This kind of information could be given to the user through the 
+			<em>User documentation</em>
 		</p>
 		<h2 id="validation">Validation Rules</h2>
 		<p>A diagram description can define custom validation rules which will only be applied when launching a validation on an instance of this diagram (using the 
