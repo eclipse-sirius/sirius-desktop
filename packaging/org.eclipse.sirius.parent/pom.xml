@@ -343,11 +343,11 @@
         <module>../../incubation/org.eclipse.sirius.properties</module>
         <module>../../incubation/org.eclipse.sirius.properties.edit</module>
         <module>../../incubation/org.eclipse.sirius.editor.properties</module>
-        <!-- <module>../../incubation/org.eclipse.sirius.ui.properties</module> -->
+        <module>../../incubation/org.eclipse.sirius.ui.properties</module>
         <!-- features -->
         <module>../../incubation/org.eclipse.sirius.incubation</module>
         <module>../../incubation/org.eclipse.sirius.incubation.interpreter</module>
-        <!-- <module>../../incubation/org.eclipse.sirius.incubation.properties</module> -->
+        <module>../../incubation/org.eclipse.sirius.incubation.properties</module>
         <!-- update sites -->
         <module>../../incubation/org.eclipse.sirius.incubation.update</module>
       </modules>
