@@ -15,11 +15,11 @@
    <feature id="org.eclipse.sirius.incubation.interpreter.source" version="0.0.0">
       <category name="Sirius Incubation"/>
    </feature>
-   <feature id="org.eclipse.sirius.incubation.properties" version="0.0.0">
-      <category name="Sirius Incubation"/>
-   </feature>
-   <feature id="org.eclipse.sirius.incubation.properties.source" version="0.0.0">
-      <category name="Sirius Incubation"/>
-   </feature>
+   <!-- <feature id="org.eclipse.sirius.incubation.properties" version="0.0.0"> -->
+   <!--    <category name="Sirius Incubation"/> -->
+   <!-- </feature> -->
+   <!-- <feature id="org.eclipse.sirius.incubation.properties.source" version="0.0.0"> -->
+   <!--    <category name="Sirius Incubation"/> -->
+   <!-- </feature> -->
    <category-def name="Sirius Incubation" label="Sirius Incubation"/>
 </site>
