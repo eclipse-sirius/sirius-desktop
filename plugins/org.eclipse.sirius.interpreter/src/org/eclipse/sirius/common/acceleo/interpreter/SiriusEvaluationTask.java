@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -97,12 +99,10 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
              * the current selection is known by the interpreter.
              */
             Collection<MetamodelDescriptor> mmDescriptors = Sets.newLinkedHashSet();
-            for (EObject targetEObject : context.getTargetEObjects()) {
 
-                EPackage ePackage = targetEObject.eClass().getEPackage();
-                if (ePackage != null) {
-                    mmDescriptors.add(new EcoreMetamodelDescriptor(ePackage));
-                }
+            final Set<EPackage> knownEPackages = collectEPackagesToRegister(target);
+            for (EPackage ePackage : knownEPackages) {
+                mmDescriptors.add(new EcoreMetamodelDescriptor(ePackage));
             }
             vpInterpreter.activateMetamodels(mmDescriptors);
 
@@ -134,6 +134,48 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         assert evaluationResult != null;
 
         return evaluationResult;
+    }
+
+    private Set<EPackage> collectEPackagesToRegister(final EObject target) {
+        final Set<EPackage.Registry> localEPackageRegistries = Sets.newLinkedHashSet();
+        final Set<EPackage> knownEPackages = Sets.newLinkedHashSet();
+
+        for (EObject targetEObject : Iterables.filter(context.getTargetNotifiers(), EObject.class)) {
+
+            EPackage ePackage = targetEObject.eClass().getEPackage();
+            if (ePackage != null && ePackage.getNsURI() != null) {
+                knownEPackages.add(ePackage);
+            }
+            Resource targetEObjectResource = targetEObject.eResource();
+            if (targetEObjectResource != null && targetEObjectResource.getResourceSet() != null) {
+                localEPackageRegistries.add(targetEObjectResource.getResourceSet().getPackageRegistry());
+            }
+        }
+        Set<String> localyRegisteredNsURIs = Sets.newLinkedHashSet();
+        for (EPackage.Registry registry : localEPackageRegistries) {
+            localyRegisteredNsURIs.addAll(registry.keySet());
+            for (String nsURI : registry.keySet()) {
+                /*
+                 * we get the instance by using Map.get() instead of
+                 * getEPackage() in order to avoid resolving EPackages which
+                 * would be registered but not used yet.
+                 */
+                Object value = registry.get(nsURI);
+                if (value instanceof EPackage) {
+                    knownEPackages.add((EPackage) value);
+                }
+            }
+        }
+
+        for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
+            if (localyRegisteredNsURIs.size() == 0 || !localyRegisteredNsURIs.contains(nsURI)) {
+                Object value = EPackage.Registry.INSTANCE.get(nsURI);
+                if (value instanceof EPackage) {
+                    knownEPackages.add((EPackage) value);
+                }
+            }
+        }
+        return knownEPackages;
     }
 
     /**
