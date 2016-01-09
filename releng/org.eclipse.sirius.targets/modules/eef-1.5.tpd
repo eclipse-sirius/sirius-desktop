@@ -2,6 +2,6 @@ target "eef-1.5"
 
 with source, requirements
 
-location EEF-1.5 "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201505291308/" {
+location EEF-1.5 "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601041621" {
         org.eclipse.emf.eef.runtime-feature.feature.group [1.5.0,2.0.0)
 }
