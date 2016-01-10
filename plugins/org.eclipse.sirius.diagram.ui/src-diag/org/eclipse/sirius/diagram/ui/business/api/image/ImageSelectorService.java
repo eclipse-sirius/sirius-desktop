@@ -247,7 +247,9 @@ public class ImageSelectorService {
         } else if (dde instanceof DDiagramElementContainer) {
             newStyle = createAndAffectContainerStyle((DDiagramElementContainer) dde, wid);
         }
-        newStyle.getCustomFeatures().add(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+        if (newStyle != null) {
+            newStyle.getCustomFeatures().add(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+        }
         return newStyle;
     }
 
