@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,6 +50,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Implementation of ContainerDropDescription.
@@ -71,15 +73,17 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
             final DDiagram diagram = (DDiagram) targetContainer;
             final DiagramDescription desc = diagram.getDescription();
 
-            Session session = null;
+            Collection<Viewpoint> selectedViewpoints = Collections.emptyList();
             if (diagram instanceof DSemanticDiagram) {
-                session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
+                Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
+                if (session != null) {
+                    selectedViewpoints = session.getSelectedViewpoints(false);
+                }
             }
 
-            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(
-                    new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
-            allMappings.addAll(getAllMappingsWithSuperMappings(session, desc));
-            allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
+            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(selectedViewpoints, desc));
+            allMappings.addAll(getAllMappingsWithSuperMappings(selectedViewpoints, desc));
+            allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(selectedViewpoints, desc));
             iterCandidates = allMappings.iterator();
 
         } else if (targetContainer instanceof DDiagramElementContainer) {
@@ -174,9 +178,9 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
         return result;
     }
 
-    private Collection<DiagramElementMapping> getAllMappingsWithSuperMappings(final Session session, final DiagramDescription desc) {
+    private Collection<DiagramElementMapping> getAllMappingsWithSuperMappings(Collection<Viewpoint> selectedViewpoints, final DiagramDescription desc) {
         final Collection<DiagramElementMapping> result = new ArrayList<DiagramElementMapping>();
-        final Iterator<NodeMapping> it = new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedViewpoints(false), desc).iterator();
+        final Iterator<NodeMapping> it = new DiagramComponentizationManager().getAllNodeMappings(selectedViewpoints, desc).iterator();
         while (it.hasNext()) {
             final NodeMapping nM = it.next();
             result.add(nM);
