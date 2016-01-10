@@ -481,8 +481,12 @@ public class DDiagramSynchronizer {
             public boolean apply(EdgeMapping input) {
                 // Valid if edge mapping has been refreshed or is not in the
                 // activated layers
-                return mappingsToEdgeTargets.keySet().contains(input)
-                        || !getDiagram().getActivatedLayers().contains(new EObjectQuery(input).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getLayer()));
+                boolean hasBeenRefreshed = mappingsToEdgeTargets.keySet().contains(input);
+                if (!hasBeenRefreshed) {
+                    Option<EObject> parentLayer = new EObjectQuery(input).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getLayer());
+                    hasBeenRefreshed = parentLayer.some() && !getDiagram().getActivatedLayers().contains(parentLayer.get());
+                }
+                return hasBeenRefreshed;
             }
         };
 
