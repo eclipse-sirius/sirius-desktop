@@ -87,7 +87,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
                     }
                 }
             }
-            if (event.character == SWT.ESC || event.character == ESCAPE_CHAR_CODE) {
+            if (event.character == SWT.ESC) {
                 dispose();
             }
             if (event.keyCode == SWT.CR) {
@@ -166,8 +166,6 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
             return resultList;
         }
     }
-
-    private static final int ESCAPE_CHAR_CODE = 0x1B;
 
     /** The filtered tree we're displaying. */
     private FilteredTree filteredTree;
