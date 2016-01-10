@@ -157,7 +157,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         Routing routingValue = getRoutingValue();
 
         // we do not handle Tree routing style
-        if (!(Routing.TREE_LITERAL.equals(routingValue.getLiteral()))) {
+        if (!Routing.TREE_LITERAL.equals(routingValue)) {
             if (isEdgeSourceCentered() && isEdgeTargetCentered()) {
 
                 centerEdgeEnds(CenteringStyle.BOTH, routingValue);
