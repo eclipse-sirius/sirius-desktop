@@ -70,13 +70,13 @@ public class MappingForReconnectToolsConstraint extends AbstractModelConstraint 
 
         Collection<EdgeMapping> edgeToRegions = Sets.newLinkedHashSet();
         for (EdgeMapping em : tool.getMappings()) {
-            if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL || tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL) {
+            if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_SOURCE_LITERAL || tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL) {
                 if (Iterables.any(Iterables.filter(em.getSourceMapping(), ContainerMapping.class), isRegionMapping)) {
                     edgeToRegions.add(em);
                 }
             }
 
-            if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL || tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL) {
+            if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_TARGET_LITERAL || tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL) {
                 if (Iterables.any(Iterables.filter(em.getTargetMapping(), ContainerMapping.class), isRegionMapping)) {
                     edgeToRegions.add(em);
                 }
