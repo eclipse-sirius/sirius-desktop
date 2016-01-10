@@ -430,9 +430,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * @return the web safe colour.
      */
     private RGB getWebSafeColour(RGB colour) {
-        int red = Math.round((colour.red + 25) / 51) * 51;
-        int green = Math.round((colour.green + 25) / 51) * 51;
-        int blue = Math.round((colour.blue + 25) / 51) * 51;
+        int red = ((colour.red + 25) / 51) * 51;
+        int green = ((colour.green + 25) / 51) * 51;
+        int blue = ((colour.blue + 25) / 51) * 51;
         return new RGB(red, green, blue);
     }
 }
