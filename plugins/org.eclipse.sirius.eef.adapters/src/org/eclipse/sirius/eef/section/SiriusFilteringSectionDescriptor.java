@@ -135,7 +135,7 @@ class SectionDescriptor extends AbstractSectionDescriptor {
         this.configurationElement = cfgElement;
         id = cfgElement.getAttribute("id"); //$NON-NLS-1$
         targetTab = cfgElement.getAttribute("tab"); //$NON-NLS-1$
-        afterSection = cfgElement.getAttribute(afterSection);
+        afterSection = cfgElement.getAttribute("afterSection"); //$NON-NLS-1$
         if (afterSection == null) {
             afterSection = ITabDescriptor.TOP;
         }
