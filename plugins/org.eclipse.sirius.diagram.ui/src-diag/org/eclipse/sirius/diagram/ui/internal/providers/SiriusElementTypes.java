@@ -261,47 +261,28 @@ public class SiriusElementTypes extends ElementInitializers {
     public static ENamedElement getElement(IAdaptable hint) {
         Object type = hint.getAdapter(IElementType.class);
         if (elements == null) {
-            elements = new IdentityHashMap<IElementType, EClass>();
-
-            elements.put(DDiagram_1000, DiagramPackage.eINSTANCE.getDDiagram());
-
-            elements.put(DNode_2001, DiagramPackage.eINSTANCE.getDNode());
-
-            elements.put(DNodeContainer_2002, DiagramPackage.eINSTANCE.getDNodeContainer());
-
-            elements.put(DNodeList_2003, DiagramPackage.eINSTANCE.getDNodeList());
-
-            elements.put(DNode_3001, DiagramPackage.eINSTANCE.getDNode());
-
-            elements.put(BundledImage_3004, DiagramPackage.eINSTANCE.getBundledImage());
-
-            elements.put(Dot_3002, DiagramPackage.eINSTANCE.getDot());
-
-            elements.put(GaugeCompositeStyle_3006, DiagramPackage.eINSTANCE.getGaugeCompositeStyle());
-
-            elements.put(Square_3003, DiagramPackage.eINSTANCE.getSquare());
-
-            elements.put(Ellipse_3016, DiagramPackage.eINSTANCE.getEllipse());
-
-            elements.put(Lozenge_3017, DiagramPackage.eINSTANCE.getLozenge());
-
-            elements.put(WorkspaceImage_3005, DiagramPackage.eINSTANCE.getWorkspaceImage());
-
-            elements.put(Note_3013, DiagramPackage.eINSTANCE.getNote());
-
-            elements.put(CustomStyle_3014, DiagramPackage.eINSTANCE.getCustomStyle());
-
-            elements.put(DNode_3007, DiagramPackage.eINSTANCE.getDNode());
-
-            elements.put(DNodeContainer_3008, DiagramPackage.eINSTANCE.getDNodeContainer());
-
-            elements.put(DNodeList_3009, DiagramPackage.eINSTANCE.getDNodeList());
-
-            elements.put(DNodeListElement_3010, DiagramPackage.eINSTANCE.getDNodeListElement());
-
-            elements.put(DNode_3012, DiagramPackage.eINSTANCE.getDNode());
-
-            elements.put(DEdge_4001, DiagramPackage.eINSTANCE.getDEdge());
+            IdentityHashMap<IElementType, EClass> tmp = new IdentityHashMap<IElementType, EClass>();
+            tmp.put(DDiagram_1000, DiagramPackage.eINSTANCE.getDDiagram());
+            tmp.put(DNode_2001, DiagramPackage.eINSTANCE.getDNode());
+            tmp.put(DNodeContainer_2002, DiagramPackage.eINSTANCE.getDNodeContainer());
+            tmp.put(DNodeList_2003, DiagramPackage.eINSTANCE.getDNodeList());
+            tmp.put(DNode_3001, DiagramPackage.eINSTANCE.getDNode());
+            tmp.put(BundledImage_3004, DiagramPackage.eINSTANCE.getBundledImage());
+            tmp.put(Dot_3002, DiagramPackage.eINSTANCE.getDot());
+            tmp.put(GaugeCompositeStyle_3006, DiagramPackage.eINSTANCE.getGaugeCompositeStyle());
+            tmp.put(Square_3003, DiagramPackage.eINSTANCE.getSquare());
+            tmp.put(Ellipse_3016, DiagramPackage.eINSTANCE.getEllipse());
+            tmp.put(Lozenge_3017, DiagramPackage.eINSTANCE.getLozenge());
+            tmp.put(WorkspaceImage_3005, DiagramPackage.eINSTANCE.getWorkspaceImage());
+            tmp.put(Note_3013, DiagramPackage.eINSTANCE.getNote());
+            tmp.put(CustomStyle_3014, DiagramPackage.eINSTANCE.getCustomStyle());
+            tmp.put(DNode_3007, DiagramPackage.eINSTANCE.getDNode());
+            tmp.put(DNodeContainer_3008, DiagramPackage.eINSTANCE.getDNodeContainer());
+            tmp.put(DNodeList_3009, DiagramPackage.eINSTANCE.getDNodeList());
+            tmp.put(DNodeListElement_3010, DiagramPackage.eINSTANCE.getDNodeListElement());
+            tmp.put(DNode_3012, DiagramPackage.eINSTANCE.getDNode());
+            tmp.put(DEdge_4001, DiagramPackage.eINSTANCE.getDEdge());
+            elements = tmp;
         }
         return elements.get(type);
     }
@@ -318,28 +299,29 @@ public class SiriusElementTypes extends ElementInitializers {
      */
     public static boolean isKnownElementType(IElementType elementType) {
         if (KNOWN_ELEMENT_TYPES == null) {
-            KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
-            KNOWN_ELEMENT_TYPES.add(DDiagram_1000);
-            KNOWN_ELEMENT_TYPES.add(DNode_2001);
-            KNOWN_ELEMENT_TYPES.add(DNodeContainer_2002);
-            KNOWN_ELEMENT_TYPES.add(DNodeList_2003);
-            KNOWN_ELEMENT_TYPES.add(DNode_3001);
-            KNOWN_ELEMENT_TYPES.add(BundledImage_3004);
-            KNOWN_ELEMENT_TYPES.add(Dot_3002);
-            KNOWN_ELEMENT_TYPES.add(GaugeCompositeStyle_3006);
-            KNOWN_ELEMENT_TYPES.add(Square_3003);
-            KNOWN_ELEMENT_TYPES.add(Ellipse_3016);
-            KNOWN_ELEMENT_TYPES.add(Lozenge_3017);
-            KNOWN_ELEMENT_TYPES.add(WorkspaceImage_3005);
-            KNOWN_ELEMENT_TYPES.add(Note_3013);
-            KNOWN_ELEMENT_TYPES.add(CustomStyle_3014);
-            KNOWN_ELEMENT_TYPES.add(DNode_3007);
-            KNOWN_ELEMENT_TYPES.add(DNodeContainer_3008);
-            KNOWN_ELEMENT_TYPES.add(DNodeList_3009);
-            KNOWN_ELEMENT_TYPES.add(DNodeListElement_3010);
-            KNOWN_ELEMENT_TYPES.add(DNode_3012);
-            KNOWN_ELEMENT_TYPES.add(DEdge_4001);
-            KNOWN_ELEMENT_TYPES.add(BracketEdge_4002);
+            HashSet<IElementType> tmp = new HashSet<IElementType>();
+            tmp.add(DDiagram_1000);
+            tmp.add(DNode_2001);
+            tmp.add(DNodeContainer_2002);
+            tmp.add(DNodeList_2003);
+            tmp.add(DNode_3001);
+            tmp.add(BundledImage_3004);
+            tmp.add(Dot_3002);
+            tmp.add(GaugeCompositeStyle_3006);
+            tmp.add(Square_3003);
+            tmp.add(Ellipse_3016);
+            tmp.add(Lozenge_3017);
+            tmp.add(WorkspaceImage_3005);
+            tmp.add(Note_3013);
+            tmp.add(CustomStyle_3014);
+            tmp.add(DNode_3007);
+            tmp.add(DNodeContainer_3008);
+            tmp.add(DNodeList_3009);
+            tmp.add(DNodeListElement_3010);
+            tmp.add(DNode_3012);
+            tmp.add(DEdge_4001);
+            tmp.add(BracketEdge_4002);
+            KNOWN_ELEMENT_TYPES = tmp;
         }
         return KNOWN_ELEMENT_TYPES.contains(elementType);
     }
