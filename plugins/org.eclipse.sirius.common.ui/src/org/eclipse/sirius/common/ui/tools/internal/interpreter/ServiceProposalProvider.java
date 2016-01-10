@@ -167,7 +167,7 @@ public class ServiceProposalProvider implements IProposalProvider {
             if (variableInterpreter != null) {
                 final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(variableInterpreter);
                 for (IProposalProvider provider : proposalProviders) {
-                    List<ContentProposal> variableProposals = null;
+                    List<ContentProposal> variableProposals = Collections.emptyList();
                     if (context instanceof ContentContext) {
                         variableProposals = provider.getProposals(variableInterpreter, (ContentContext) context);
                     } else if (context instanceof ContentInstanceContext) {
