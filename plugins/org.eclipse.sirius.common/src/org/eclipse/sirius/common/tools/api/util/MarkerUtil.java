@@ -55,7 +55,7 @@ public final class MarkerUtil {
                 final IMarker marker = resource.createMarker(type);
                 marker.setAttribute(IMarker.SEVERITY, severity);
                 marker.setAttribute(IMarker.MESSAGE, message);
-                Options.newSome(marker);
+                return Options.newSome(marker);
             }
         } catch (final CoreException e) {
             DslCommonPlugin.getDefault().getLog().log(e.getStatus());
