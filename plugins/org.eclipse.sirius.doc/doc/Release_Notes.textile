@@ -56,6 +56,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager@ has been removed. 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

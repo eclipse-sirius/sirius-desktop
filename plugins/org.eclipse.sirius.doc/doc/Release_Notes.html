@@ -93,7 +93,7 @@
 				<code>IPermissionAuthority</code>, the properties view will not be editable if this locked object is selected from the Model Explorer view.
 			</li>
 			<li><span class="label label-info">Modified</span> When trying to reconnect an edge end on another edge, the edge is now highlighted only if a reconnect tool is found (the precondition of the tool is not tested here).</li>
-			<li><span class="label label-info">Modified</span> List items now have the same margin whichever their parent is: a simple list or a compartmentalized list. The margin in compartmentalized list used to be incorrectly set to 0 pixel.</li>
+			<li><span class="label label-info">Modified</span> List items now have the same margin whichever their parent is a simple list or a compartmentalized list. The margin in compartmentalized list was incorrectly set to 0 pixel.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -213,6 +213,9 @@
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
+			</li>
+			<li><span class="label label-danger">Removed</span> The class 
+				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
