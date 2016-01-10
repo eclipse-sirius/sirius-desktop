@@ -246,7 +246,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
     }
 
     private static boolean matchesSeverity(final Integer markerSeverity, final Object severity) {
-        return severity instanceof Integer && (Integer) severity == markerSeverity;
+        return severity instanceof Integer && ((Integer) severity).equals(markerSeverity);
     }
 
     private static boolean matchesMessage(final String markerMessage, final Object message) {
