@@ -90,9 +90,10 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
         if (d == null) {
             secondaryCorner.width = 0;
             secondaryCorner.height = 0;
+        } else {
+            secondaryCorner.width = d.width;
+            secondaryCorner.height = d.height;
         }
-        secondaryCorner.width = d.width;
-        secondaryCorner.height = d.height;
     }
 
     /**

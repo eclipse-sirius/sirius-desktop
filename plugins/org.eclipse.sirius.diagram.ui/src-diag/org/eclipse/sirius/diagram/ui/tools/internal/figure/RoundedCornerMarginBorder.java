@@ -113,8 +113,9 @@ public class RoundedCornerMarginBorder extends OneLineMarginBorder {
         if (d == null) {
             corner.width = 0;
             corner.height = 0;
+        } else {
+            corner.width = d.width;
+            corner.height = d.height;
         }
-        corner.width = d.width;
-        corner.height = d.height;
     }
 }
