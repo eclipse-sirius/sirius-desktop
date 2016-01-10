@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,10 @@ import com.google.common.collect.Lists;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class GMFNotationUtilities {
+    /**
+     * The tolerance used for floating point "equality" comparisons.
+     */
+    private static final double FP_TOLERANCE = 0.0000001;
 
     /**
      * Default constructor.
@@ -75,7 +79,7 @@ public final class GMFNotationUtilities {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getSourceAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
-                if (relativeReferencePoint.preciseX() != newXAnchorPercentage) {
+                if (Math.abs(relativeReferencePoint.preciseX() - newXAnchorPercentage) > FP_TOLERANCE) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
                     referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
@@ -127,7 +131,7 @@ public final class GMFNotationUtilities {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getTargetAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
-                if (relativeReferencePoint.preciseX() != newXAnchorPercentage) {
+                if (Math.abs(relativeReferencePoint.preciseX() - newXAnchorPercentage) > FP_TOLERANCE) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
                     referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
