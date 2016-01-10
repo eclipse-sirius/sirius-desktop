@@ -172,7 +172,6 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          */
         @Override
         public String toString() {
-            StringBuilder result = new StringBuilder();
             if (isMoved) {
                 return MessageFormat.format(Messages.BorderItemLayoutData_movedBorderItemSincePreviousLayout, getPreviousCenterLocation());
             } else {
