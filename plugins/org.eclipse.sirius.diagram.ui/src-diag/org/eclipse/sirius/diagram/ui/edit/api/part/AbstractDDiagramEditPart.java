@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -75,6 +76,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -391,14 +393,17 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                 final DiagramDescription desc = dDiagram.getDescription();
                 final List<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>();
 
-                Session session = null;
+                Collection<Viewpoint> selectedViewpoints = Collections.emptyList();
                 if (dDiagram instanceof DSemanticDiagram) {
-                    session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
+                    Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
+                    if (session != null) {
+                        selectedViewpoints = session.getSelectedViewpoints(false);
+                    }
                 }
 
-                allMappings.addAll(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
-                allMappings.addAll(new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedViewpoints(false), desc));
-                allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllContainerMappings(selectedViewpoints, desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllNodeMappings(selectedViewpoints, desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(selectedViewpoints, desc));
                 final Iterator<DiagramElementMapping> iterAllMappings = allMappings.iterator();
                 while (iterAllMappings.hasNext()) {
                     final DiagramElementMapping diagramElementMapping = iterAllMappings.next();
