@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
+import com.google.common.base.Objects;
+
 /**
  * Default command for dropin node.
  * 
@@ -115,7 +117,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
         } else if (abstractDNode instanceof DNode) {
             ((DNodeList) target).getOwnedBorderedNodes().add((DNode) abstractDNode);
         }
-        if (!abstractDNode.equals(droppedDiagramElement)) {
+        if (!Objects.equal(abstractDNode, droppedDiagramElement)) {
             if (moveEdges) {
                 DnDTasksOperations.moveEdges(target, semanticContainer, droppedDiagramElement, abstractDNode);
             }
