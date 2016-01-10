@@ -111,7 +111,9 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     private static final String ACCELEO_EXPRESSION_SUFFIX = IAcceleoConstants.DEFAULT_END_BODY_CHAR + IAcceleoConstants.DEFAULT_END;
 
-    /** This will be used whenever we need to split a path around its separator. */
+    /**
+     * This will be used whenever we need to split a path around its separator.
+     */
     private static final String FILE_SEPARATOR_REGEX = "/|\\\\"; //$NON-NLS-1$
 
     /**
@@ -797,7 +799,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
             removed = true;
         } else if (javaFiles.containsKey(dependency)) {
             javaFiles.remove(dependency);
-            extendedDependencies.remove(dependency);
             removed = true;
         }
         if (removed) {
