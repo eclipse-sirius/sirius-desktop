@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -940,10 +940,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 final EditPart editPart = iterParts.next();
                 if (editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
                     final DSemanticDiagram semanticElement = (DSemanticDiagram) ((GraphicalEditPart) editPart).resolveSemanticElement();
-                    if (semanticElement == null || semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null) {
-                        // The session may not be accessible if the session is
-                        // using
-                        // CDOResources and the server is down
+                    if (semanticElement != null && (semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null)) {
                         if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
                             /*
                              * The element has been deleted, we should close the
