@@ -75,18 +75,34 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
     private IStatus checkExpression(IValidationContext ctx, EObject target, EStructuralFeature feature) {
         String expression = (String) target.eGet(feature);
 
+        Collection<IStatus> statuses = Sets.newLinkedHashSet();
         Collection<IInterpreterStatus> errors = Sets.newLinkedHashSet();
+        Collection<EObject> locus = Collections.singleton(target);
         if (!StringUtil.isEmpty(expression)) {
-            IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(target, feature);
-            errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
+            try {
+                IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(target, feature);
+                errors = MultiLanguagesValidator.getInstance().validateExpression(context, expression).getStatuses();
+
+                // CHECKSTYLE:OFF
+                /*
+                 * the rationale for catching *any* exception is as such :
+                 * whatever happens in an interpreter implementation the
+                 * exception should not bubble up to the emf validation
+                 * framework or it will blacklist the constraint and will not
+                 * launch it anymore. Better to catch the exception and report a
+                 * status so that the end user knows there is something wrong
+                 * (hopefully the exception message give a clue).
+                 */
+            } catch (Exception e) {
+                statuses.add(ConstraintStatus.createStatus(ctx, locus, e.getMessage()));
+            }
+            // CHECKSTYLE:ON
         }
 
         if (errors.isEmpty()) {
             return null;
         }
 
-        Collection<IStatus> statuses = Sets.newLinkedHashSet();
-        Collection<EObject> locus = Collections.singleton(target);
         for (IInterpreterStatus interpreterStatus : errors) {
             statuses.add(ConstraintStatus.createStatus(ctx, locus, interpreterStatus.getMessage()));
         }
