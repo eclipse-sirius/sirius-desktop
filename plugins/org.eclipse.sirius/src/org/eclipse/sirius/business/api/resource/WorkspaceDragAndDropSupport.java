@@ -180,10 +180,8 @@ public class WorkspaceDragAndDropSupport {
      *            the target session
      */
     public void addSemanticResourceToSession(final Resource resource, final Session session) {
-        if (!hasURIInSemanticResources(session.getSemanticResources(), resource.getURI())) {
-            if (session != null) {
-                session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
-            }
+        if (session != null && !hasURIInSemanticResources(session.getSemanticResources(), resource.getURI())) {
+            session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
         }
     }
 

@@ -1439,7 +1439,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DView container = null;
 
             for (final DView view : analysis.getOwnedViews()) {
-                if (viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
+                if (view != null && viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
                     container = view;
                     break;
                 }

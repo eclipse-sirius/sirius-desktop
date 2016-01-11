@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -23,6 +24,7 @@ import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateBehaviorToolsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateBehaviorToolsCommand;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -38,12 +40,6 @@ import com.google.common.collect.Lists;
  * @author ymortier
  */
 public class BehaviorsPropertySection extends FiltersPropertySection {
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#getAppliedElements()
-     */
     @Override
     protected Collection<?> getAppliedElements() {
         final Collection<BehaviorTool> result = new HashSet<BehaviorTool>();
@@ -53,21 +49,19 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#getAvailableElements()
-     */
     @Override
     protected Collection<?> getAvailableElements() {
         final Collection<BehaviorTool> result = new HashSet<BehaviorTool>();
         final DDiagram diagram = getDiagram();
         if (diagram != null && diagram.getDescription() != null) {
-            Session session = null;
+            Collection<Viewpoint> selectedViewpoints = Collections.emptyList();
             if (diagram instanceof DSemanticDiagram) {
-                session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
+                Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
+                if (session != null) {
+                    selectedViewpoints = session.getSelectedViewpoints(false);
+                }
             }
-            final Iterator<?> iterTools = new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), diagram.getDescription()).iterator();
+            final Iterator<?> iterTools = new DiagramComponentizationManager().getAllTools(selectedViewpoints, diagram.getDescription()).iterator();
             while (iterTools.hasNext()) {
                 final Object currentTool = iterTools.next();
                 if (currentTool instanceof BehaviorTool) {
@@ -79,11 +73,6 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#createFeatureComposite(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Composite createFeatureComposite(final Composite composite) {
         final Composite featureComposite = getWidgetFactory().createComposite(composite, SWT.NONE);
@@ -95,11 +84,6 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         return featureComposite;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#createChoiceComposite(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Composite createChoiceComposite(final Composite composite) {
         final Composite choiceComposite = getWidgetFactory().createComposite(composite, SWT.NONE);
@@ -111,21 +95,11 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         return choiceComposite;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#newElementsSelected(java.util.Collection)
-     */
     @Override
     protected void newElementsSelected(final Collection<?> newElements) {
         domain.getCommandStack().execute(new ActivateBehaviorToolsCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(newElements, BehaviorTool.class))));
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#oldElementsRemoved(java.util.Collection)
-     */
     @Override
     protected void oldElementsRemoved(final Collection<?> oldElements) {
         domain.getCommandStack().execute(new DeactivateBehaviorToolsCommand(domain, getDiagram(), Lists.newArrayList(Iterables.filter(oldElements, BehaviorTool.class))));

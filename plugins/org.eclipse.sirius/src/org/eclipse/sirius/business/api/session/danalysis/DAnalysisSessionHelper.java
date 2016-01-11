@@ -448,7 +448,7 @@ public final class DAnalysisSessionHelper {
     private static DView getDView(DAnalysis analysis, Viewpoint viewpoint) {
         DView result = null;
         for (final DView view : analysis.getOwnedViews()) {
-            if (viewpoint == view.getViewpoint()) {
+            if (view != null && viewpoint == view.getViewpoint()) {
                 result = view;
                 break;
             }

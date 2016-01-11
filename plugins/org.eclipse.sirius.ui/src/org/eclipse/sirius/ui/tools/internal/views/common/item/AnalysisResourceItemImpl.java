@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
 /**
@@ -113,20 +114,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
             result = true;
         } else if (obj instanceof AnalysisResourceItemImpl) {
             AnalysisResourceItemImpl other = (AnalysisResourceItemImpl) obj;
-            result = true;
-
-            if (parent == null && other.parent != null) {
-                result = false;
-            } else if (!parent.equals(other.parent)) {
-                result = false;
-            }
-
-            if (resource == null && other.resource != null) {
-                result = false;
-            } else if (!resource.equals(other.resource)) {
-                result = false;
-            }
-
+            result = Objects.equal(parent, other.parent) && Objects.equal(resource, other.resource);
         }
         return result;
     }
