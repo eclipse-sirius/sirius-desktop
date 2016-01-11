@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,11 +49,6 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
         minSize = new Dimension(0, 0);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.draw2d.Figure#setSize(int, int)
-     */
     @Override
     public void setSize(final int w, final int h) {
         if (keepAspectRatio) {
@@ -64,31 +59,16 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.draw2d.Figure#setMaximumSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setMaximumSize(final Dimension d) {
         super.setMaximumSize(this.getSize());
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.draw2d.Figure#setMinimumSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setMinimumSize(final Dimension d) {
         super.setMinimumSize(this.getSize());
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.draw2d.Figure#setPreferredSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setPreferredSize(final Dimension size) {
         super.setPreferredSize(this.getSize());
@@ -228,7 +208,11 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      * @return true for svg or svgz image format.
      */
     public static boolean isSvgImage(String path) {
-        String pathToUpperCase = path.toUpperCase();
-        return pathToUpperCase.endsWith(ImageFileFormat.SVG.getName()) || pathToUpperCase.endsWith(ImageFileFormat.SVGZ.getName());
+        if (path == null) {
+            return false;
+        } else {
+            String pathToUpperCase = path.toUpperCase();
+            return pathToUpperCase.endsWith(ImageFileFormat.SVG.getName()) || pathToUpperCase.endsWith(ImageFileFormat.SVGZ.getName());
+        }
     }
 }
