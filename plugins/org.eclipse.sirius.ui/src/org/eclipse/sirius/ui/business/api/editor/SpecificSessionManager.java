@@ -79,10 +79,9 @@ public class SpecificSessionManager {
         } catch (CoreException e) {
             return;
         }
-        URI semanticResourceURI = URI.createURI(semanticModelPath.toPortableString(), true);
-        createdSession.addSemanticResource(semanticResourceURI, new NullProgressMonitor());
-
         if (createdSession != null) {
+            URI semanticResourceURI = URI.createURI(semanticModelPath.toPortableString(), true);
+            createdSession.addSemanticResource(semanticResourceURI, new NullProgressMonitor());
             final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(createdSession);
             uiSession.open();
         }
