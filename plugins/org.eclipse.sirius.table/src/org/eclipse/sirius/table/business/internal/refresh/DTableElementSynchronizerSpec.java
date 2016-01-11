@@ -752,7 +752,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * TODO : TBD <BR>
      * The first conditional background style of the cell (with predicate
      * expression that returns true). In this case the backgroundStyleOrigin
-     * references the intersection mapping and the defaultStyle is equal false. <BR>
+     * references the intersection mapping and the defaultStyle is equal false.
+     * <BR>
      * Otherwise the first conditional background style of the column (with
      * predicate expression that returns true). In this case the
      * backgroundStyleOrigin references the column mapping and the defaultStyle
@@ -882,7 +883,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         if (column.getOriginMapping() instanceof FeatureColumnMapping || column.getOriginMapping() instanceof ElementColumnMapping) {
             styleUpdater = (StyleUpdater) column.getOriginMapping();
         }
-        if (styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
+        if (styleUpdater != null && styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
             bestBackgroundColor = styleUpdater.getDefaultBackground().getBackgroundColor();
         }
         return bestBackgroundColor;
@@ -1025,7 +1026,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         if (column.getOriginMapping() instanceof FeatureColumnMapping || column.getOriginMapping() instanceof ElementColumnMapping) {
             styleUpdater = (StyleUpdater) column.getOriginMapping();
         }
-        if (styleUpdater.getDefaultForeground() != null && styleUpdater.getDefaultForeground().getForeGroundColor() instanceof FixedColor) {
+        if (styleUpdater != null && styleUpdater.getDefaultForeground() != null && styleUpdater.getDefaultForeground().getForeGroundColor() instanceof FixedColor) {
             bestForegroundStyleDescription = styleUpdater.getDefaultForeground();
         }
         return bestForegroundStyleDescription;
