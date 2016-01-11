@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,6 +64,7 @@ public class TextContentProposalProvider implements IAssistContentProvider {
      * 
      * @return list of proposals
      */
+    @Override
     public IContentProposal[] getProposals(final String contents, final int position) {
         if (StringUtil.isEmpty(contents)) {
             /*
@@ -81,10 +82,6 @@ public class TextContentProposalProvider implements IAssistContentProvider {
             String proposalStart = new ContentContextHelper(contents, position, prefix).getProposalStart();
             List<ContentProposal> proposals = new ArrayList<ContentProposal>();
 
-            if (StringUtil.isEmpty(proposalStart) || !StringUtil.isEmpty(prefix) && proposalStart.contains(prefix)) {
-                // proposals.addAll(getVariableProposals(context, prefix,
-                // proposalStart));
-            }
             proposals.addAll(CompoundInterpreter.INSTANCE.getProposals(CompoundInterpreter.INSTANCE, context));
 
             /* remove duplicated proposals */
@@ -145,13 +142,12 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         return f;
     }
 
+    @Override
     public void setView(final AbstractPropertySection view) {
         this.view = view;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void initContext(EObject selectedElement, EStructuralFeature selectedFeature) {
         this.element = selectedElement;
         this.feature = selectedFeature;
@@ -163,6 +159,7 @@ public class TextContentProposalProvider implements IAssistContentProvider {
      * @param adapter
      *            the ContentProposalAdater
      */
+    @Override
     public void proposalPopupClosed(final ContentProposalAdapter adapter) {
 
         final Text text = (Text) adapter.getControl();
@@ -175,11 +172,7 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.fieldassist.IContentProposalListener2#proposalPopupOpened(org.eclipse.jface.fieldassist.ContentProposalAdapter)
-     */
+    @Override
     public void proposalPopupOpened(final ContentProposalAdapter adapter) {
 
         final Text text = (Text) adapter.getControl();
