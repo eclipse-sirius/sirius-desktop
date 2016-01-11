@@ -27,6 +27,11 @@ h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> A new variant of @org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)@ has been added, which does not require to specify a @DRepresentation@ in the context. It allows the creation of a task which executes a behavior specified by @ModelOperations@ outside of the context of a specific representation, provided the @ModelOperations@ work in that context. 
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> A method @getInferredVariableTypes(Boolean value)@ in @org.eclipse.sirius.common.tools.api.interpreter.ValidationResult@ so that @IInterpreter@ implementations able to infer more specific types based on predicates result provides this information to Sirius which will then use it for validating other expressions. You might want to look at @org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter@ which is an implementation providing this type inference.
+
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ interface has been added to provide a customized tab-bar for a specific selection.

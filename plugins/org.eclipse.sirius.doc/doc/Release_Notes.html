@@ -122,6 +122,17 @@
 				<code>ModelOperations</code> work in that context. 
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A method 
+				<code>getInferredVariableTypes(Boolean value)</code> in 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.ValidationResult</code> so that 
+				<code>IInterpreter</code> implementations able to infer more specific types based on predicates result provides this information to Sirius which will then use it for validating other expressions. You might want to look at 
+				<code>org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter</code> which is an implementation providing this type inference.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
@@ -485,7 +496,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -905,7 +916,7 @@
 				<a href="https://git.eclipse.org/r/#/admin/projects/sirius/org.eclipse.sirius">Sirius Gerrit</a> now automatically trigger a sub-set of the Sirius automated test suites, which give a good feedback on the absence of regressions introduced by the proposed patch.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1824,7 +1835,7 @@
 				<code>findViewpointByName()</code> to correct a wrong rebranding.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

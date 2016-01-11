@@ -11,7 +11,9 @@
 package org.eclipse.sirius.common.tools.api.interpreter;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -22,7 +24,7 @@ import com.google.common.collect.Lists;
  * @since 3.0
  *
  */
-public final class ValidationResult {
+public class ValidationResult {
 
     private List<IInterpreterStatus> statuses = Lists.newArrayList();
 
@@ -74,5 +76,18 @@ public final class ValidationResult {
      */
     public VariableType getReturnTypes() {
         return returnType;
+    }
+
+    /**
+     * Return a map of type infered types based on the fact that the expression
+     * is considered as returning a specific boolean result.
+     * 
+     * @param value
+     *            the predicate result we consider.
+     * @return a map of type infered types based on the fact that the expression
+     *         is considered as returning true or false.
+     */
+    public Map<String, VariableType> getInferredVariableTypes(Boolean value) {
+        return Collections.<String, VariableType> emptyMap();
     }
 }

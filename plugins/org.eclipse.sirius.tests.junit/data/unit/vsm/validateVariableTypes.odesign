@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="10.0.0.201504091800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="vsmtypes" version="11.0.0.201511131800">
   <ownedViewpoints name="VSMTypes">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SelfTypeInference" domainClass="interactions.Model">
       <metamodel href="http://www.eclipse.org/sirius/sample/interactions#/"/>
@@ -98,14 +98,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="ParticipantContainer" deletionDescription="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ParticipantContainer']" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@subSections[name='Ignored']/@ownedTools[name='ElementType']" domainClass="interactions.Participant">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:nonExistent">
-            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1">
+            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -113,13 +113,13 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="InteractionContainer" domainClass="interactions.Interaction">
-          <style xsi:type="style:WorkspaceImageDescription" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.emf.ecore.edit/icons/full/obj16/EClass.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
         <containerMappings name="StateContainer" labelDirectEdit="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@toolSections.0/@ownedTools[name='MultipleTypes']" domainClass="interactions.State">
-          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -360,6 +360,26 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Check AQL type inference" nodeMappings="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='InteractionNode'] //@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='SelfTypeInference']/@defaultLayer/@nodeMappings[name='ParticipantNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(interactions::Interaction)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(interactions::Participant)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.name &lt;> null and self.oclIsKindOf(interactions::Interaction)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:executions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not self.oclIsKindOf(interactions::Interaction)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:type"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>
@@ -467,7 +487,7 @@
           </style>
         </backgroundConditionalStyle>
         <ownedSubLines name="MessageEnd subline" domainClass="interactions.MessageEnd" semanticCandidatesExpression="feature:sendingEnd" headerLabelExpression="feature:context"/>
-        <create name="Create MessageEnd" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']/@ownedSubLines[name='MessageEnd%20subline']">
+        <create name="Create MessageEnd" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='XTable']/@ownedLineMappings[name='Message%20Line']/@ownedSubLines[name='MessageEnd%20subline']">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -503,7 +523,7 @@
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultBackground>
-        <create name="Create Participant">
+        <create name="Create Participant" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -567,7 +587,7 @@
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="EditionTable" domainClass="interactions.Model">
       <ownedLineMappings name="Participants" domainClass="interactions.Participant">
         <ownedSubLines name="Message Subline" domainClass="interactions.Message"/>
-        <create name="create message" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']/@ownedSubLines[name='Message%20Subline']">
+        <create name="create message" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']/@ownedSubLines[name='Message%20Subline']">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -584,7 +604,7 @@
           </firstModelOperation>
         </create>
       </ownedLineMappings>
-      <ownedCreateLine name="Create new Participant" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']">
+      <ownedCreateLine name="Create new Participant" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='VSMTypes']/@ownedRepresentations[name='EditionTable']/@ownedLineMappings[name='Participants']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -602,5 +622,6 @@
       </ownedCreateLine>
       <ownedColumnMappings name="name" featureName="name" labelExpression="feature:name"/>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
   </ownedViewpoints>
 </description:Group>

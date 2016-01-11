@@ -45,6 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -67,6 +68,10 @@ import com.google.common.collect.Sets;
  * 
  */
 public abstract class AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
+    /**
+     * The "self" reserved variable name.
+     */
+    protected static final String SELF = "self"; //$NON-NLS-1$
 
     /**
      * The source tag used in the meta-model for all EAnnotations concerning the
@@ -470,6 +475,22 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      */
     protected void collectContextualVariableForOperation(EObject current, Map<String, Collection<VariableType>> definitions, EObject leaf) {
         if (current != leaf) {
+            if (current instanceof If) {
+
+                If ifThen = (If) current;
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(ifThen, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ifThen.getConditionExpression());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        changeSelfType(infered.getValue());
+                    } else {
+                        addDefinition(definitions, infered.getKey(), infered.getValue());
+                    }
+
+                }
+            }
+
             if (current instanceof ChangeContext) {
                 ChangeContext f = (ChangeContext) current;
                 IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(f, ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION);

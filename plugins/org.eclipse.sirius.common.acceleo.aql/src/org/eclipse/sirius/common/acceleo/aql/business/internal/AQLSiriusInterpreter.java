@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.acceleo.aql.business.internal;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +41,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -67,6 +69,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -103,8 +106,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             try {
                 queryEnvironment.registerServicePackage(clazz);
             } catch (InvalidAcceleoPackageException e) {
-                AQLSiriusPlugin.INSTANCE.log(
-                        new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName, e.getMessage()), e));
+                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName,
+                        e.getMessage()), e));
             }
 
         }
@@ -262,18 +265,40 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         this.javaExtensions.reloadIfNeeded();
 
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
-        ValidationResult result = new ValidationResult();
 
         Map<String, Set<IType>> variableTypes = TypesUtil.createAQLVariableTypesFromInterpreterContext(context, queryEnvironment);
-
+        ValidationResult result = new ValidationResult();
         IQueryValidationEngine validator = QueryValidation.newEngine(this.queryEnvironment);
         try {
-            IValidationResult validationResult = validator.validate(trimmedExpression, variableTypes);
-            for (IValidationMessage message : validationResult.getMessages()) {
+            final IValidationResult aqlValidationResult = validator.validate(trimmedExpression, variableTypes);
+            result = new ValidationResult() {
+
+                @Override
+                public Map<String, VariableType> getInferredVariableTypes(Boolean value) {
+                    Map<String, VariableType> mapResult = Maps.newLinkedHashMap();
+                    Map<String, Set<IType>> types = aqlValidationResult.getInferredVariableTypes(aqlValidationResult.getAstResult().getAst(), value);
+                    Iterator<Map.Entry<String, Set<IType>>> it = types.entrySet().iterator();
+                    while (it.hasNext()) {
+                        Set<EClassifier> eClassifiers = Sets.newLinkedHashSet();
+                        Map.Entry<String, Set<IType>> entry = it.next();
+                        for (IType type : entry.getValue()) {
+                            if (type.getType() instanceof EClassifier) {
+                                eClassifiers.add((EClassifier) type.getType());
+                            }
+                        }
+                        if (eClassifiers.size() > 0) {
+                            mapResult.put(entry.getKey(), VariableType.fromEClassifiers(eClassifiers));
+                        }
+
+                    }
+                    return mapResult;
+                }
+            };
+            for (IValidationMessage message : aqlValidationResult.getMessages()) {
                 result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.WARNING, message.getMessage()));
             }
             List<String> classifierNames = Lists.newArrayList();
-            for (IType type : validationResult.getPossibleTypes(validationResult.getAstResult().getAst())) {
+            for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
                 if (type instanceof EClassifierType) {
                     EClassifierType eClassifierType = (EClassifierType) type;
                     if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
