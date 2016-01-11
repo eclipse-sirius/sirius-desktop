@@ -74,7 +74,8 @@ public class RepresentationInSemanticSorter extends ViewerSorter {
     }
 
     private int compareRepresentations(Viewer viewer, DRepresentation e1, DRepresentation e2) {
-        int result = Collator.getInstance().compare(e1.getName(), e2.getName());
+        String defaultName = ""; //$NON-NLS-1$
+        int result = Collator.getInstance().compare(e1 != null ? e1.getName() : defaultName, e2 != null ? e2.getName() : defaultName);
         // if different representation types, compare class names to sort
         // navigator
         if (e1 != null && e2 != null && e1.eClass() != null) {

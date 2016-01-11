@@ -127,7 +127,8 @@ public class CommonItemSorter extends ViewerSorter {
      *         value is greater than zero if source is greater than target.
      */
     public static int compareRepresentationDescriptions(RepresentationDescription e1, RepresentationDescription e2) {
-        int result = Collator.getInstance().compare(e1.getName(), e2.getName());
+        String defaultName = ""; //$NON-NLS-1$
+        int result = Collator.getInstance().compare(e1 != null ? e1.getName() : defaultName, e2 != null ? e2.getName() : defaultName);
         // if different representation types, compare class names to sort
         // navigator
         if (e1 != null && e2 != null && e1.eClass() != null && !e1.eClass().equals(e2.eClass())) {
