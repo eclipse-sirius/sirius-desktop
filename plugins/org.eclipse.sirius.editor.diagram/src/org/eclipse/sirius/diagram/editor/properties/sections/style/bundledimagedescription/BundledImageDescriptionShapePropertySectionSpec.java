@@ -33,6 +33,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         ArrayList values = Lists.newArrayList();
         for (int i = 0; i < BundledImageShape.VALUES.size(); i++) {
@@ -91,10 +92,11 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
      * 
      * @return The value of the feature as text.
      */
+    @Override
     protected String getFeatureAsText() {
         final EStructuralFeature eFeature = getFeature();
         final String label = getPropertyLabel(eObject.eGet(eFeature));
-        if (label.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName()) && eObject instanceof BundledImageDescription) {
+        if (BundledImageShape.PROVIDED_SHAPE_LITERAL.getName().equals(label) && eObject instanceof BundledImageDescription) {
             BundledImageDescription bundledImageDescription = (BundledImageDescription) eObject;
             String providedShapeID = bundledImageDescription.getProvidedShapeID();
 
