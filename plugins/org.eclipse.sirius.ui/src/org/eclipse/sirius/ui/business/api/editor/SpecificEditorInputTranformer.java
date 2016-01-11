@@ -80,9 +80,6 @@ public class SpecificEditorInputTranformer {
      */
     protected Session session;
 
-    /** The temporary file created if file should not be saved in the workspace. */
-    private File tempFile;
-
     /** The representation description used to create the diagram. */
     private RepresentationDescription description;
 
@@ -130,10 +127,6 @@ public class SpecificEditorInputTranformer {
     public void cleanEnvironment() {
         if (session != null) {
             session.close(new NullProgressMonitor());
-        }
-        if (tempFile != null) {
-            tempFile.delete();
-            tempFile = null;
         }
     }
 
@@ -287,7 +280,7 @@ public class SpecificEditorInputTranformer {
 
     /**
      * Activate the viewpoint.
-     * */
+     */
     private void activateSirius() {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
