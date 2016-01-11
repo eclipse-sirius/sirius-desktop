@@ -228,8 +228,8 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         getSite().getPage().removeSelectionListener(listener);
         if (interpreter != null) {
             interpreter.removeVariableStatusListener(variableListener);
+            interpreter.dispose();
         }
-        interpreter.dispose();
         top.dispose();
         formToolkit.dispose();
         intepreterSection.dispose();
