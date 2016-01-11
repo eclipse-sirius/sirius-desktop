@@ -413,7 +413,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
 
         // accesses to tab General
         SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
-        changeAndTestPropertyTabGeneral("aql:name.size() > 13");
+        changeAndTestPropertyTabGeneral("aql:self.name.size() > 13");
         SWTBotSiriusHelper.selectPropertyTabItem("All");
 
         odesignEditor.bot().tree().setFocus();
