@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2007 IBM Corporation and others.
+ * Copyright (c) 2002, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -102,10 +102,12 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         public Dimension getEllipseTextSize(Font f) {
             Dimension d = (Dimension) fontToEllipseTextSize.get(f);
             if (d == null) {
-                IMapMode mapMode = (IMapMode) mapModeRef.get();
                 d = FigureUtilities.getTextExtents(_ellipse, f);
                 d.height = FigureUtilities.getFontMetrics(f).getHeight();
-                d = new Dimension(mapMode.DPtoLP(d.width), mapMode.DPtoLP(d.height));
+                IMapMode mapMode = (IMapMode) mapModeRef.get();
+                if (mapMode != null) {
+                    d = new Dimension(mapMode.DPtoLP(d.width), mapMode.DPtoLP(d.height));
+                }
                 fontToEllipseTextSize.put(f, d);
             }
             return d;
@@ -221,8 +223,8 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         public abstract void setIcon(Image icon, int i);
 
         /**
-		 * 
-		 */
+         * 
+         */
         public abstract int getMaxIcons();
 
     }
@@ -232,6 +234,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         static int count;
 
         public static final SingleIconInfo NULL_INFO = new SingleIconInfo() {
+            @Override
             public int getNumberofIcons() {
                 return 0;
             }
@@ -251,10 +254,12 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             ++count;
         }
 
+        @Override
         public final int getMaxIcons() {
             return 1;
         }
 
+        @Override
         public Image getIcon(int i) {
             if (i == 0) {
                 return icon;
@@ -264,10 +269,12 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             throw new IndexOutOfBoundsException();
         }
 
+        @Override
         public void setIcon(Image img, int i) {
             throw new UnsupportedOperationException();
         }
 
+        @Override
         public Dimension getIconSize(IMapMode mapMode, int i) {
             if (i == 0) {
                 return getTotalIconSize(mapMode);
@@ -276,10 +283,12 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             throw new IndexOutOfBoundsException();
         }
 
+        @Override
         public int getNumberofIcons() {
             return 1;
         }
 
+        @Override
         public Dimension getTotalIconSize(IMapMode mapMode) {
             if (totalIconSize != null)
                 return totalIconSize;
@@ -294,6 +303,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             return totalIconSize;
         }
 
+        @Override
         public void invalidate() {
             totalIconSize = null;
         }
@@ -312,6 +322,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             super();
         }
 
+        @Override
         public int getMaxIcons() {
             return -1;
         }
@@ -323,6 +334,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
          *            the index to retrieve the icon of
          * @return <code>Image</code> that corresponds to the given index.
          */
+        @Override
         public Image getIcon(int i) {
             if (i >= icons.size())
                 return null;
@@ -336,6 +348,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
          * @param icon
          * @param i
          */
+        @Override
         public void setIcon(Image icon, int i) {
             int size = icons.size();
             if (i >= size) {
@@ -354,6 +367,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
          * @return the <code>Dimension</code> that is the size of the icon at
          *         the given index.
          */
+        @Override
         public Dimension getIconSize(IMapMode mapMode, int i) {
             Image img = getIcon(i);
             if (img != null && !img.isDisposed()) {
@@ -366,6 +380,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         /**
          * @return the number of icons
          */
+        @Override
         public int getNumberofIcons() {
             return icons.size();
         }
@@ -374,6 +389,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
          * @return the <code>Dimension</code> that is the total size of all the
          *         icons.
          */
+        @Override
         public Dimension getTotalIconSize(IMapMode mapMode) {
             if (totalIconSize != null)
                 return totalIconSize;
@@ -394,8 +410,9 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         }
 
         /**
-		 * 
-		 */
+         * 
+         */
+        @Override
         public void invalidate() {
             totalIconSize = null;
         }
@@ -754,6 +771,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * @see IFigure#getMinimumSize(int, int)
      */
+    @Override
     public Dimension getMinimumSize(int w, int h) {
         if (minSize != null)
             return minSize;
@@ -771,10 +789,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         return minSize;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.eclipse.draw2d.IFigure#getPreferredSize(int, int)
-     */
+    @Override
     public Dimension getPreferredSize(int wHint, int hHint) {
         if (prefSize == null || wHint != cachedPrefSizeHint_width || hHint != cachedPrefSizeHint_height) {
             prefSize = calculateLabelSize(getTextSize(wHint, hHint));
@@ -791,10 +806,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         return prefSize;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see org.eclipse.draw2d.IFigure#getMaximumSize()
-     */
+    @Override
     public Dimension getMaximumSize() {
         // this assumes that getPreferredSize(wHint, hHint) is called before
         return prefSize;
@@ -814,14 +826,14 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         String theText = getText();
         int textLen = theText.length();
         if (textLen == 0) {
-            return subStringText = "";//$NON-NLS-1$;;
+            return subStringText = "";//$NON-NLS-1$
         }
         Dimension size = getSize();
         Dimension shrink = getPreferredSize(size.width, size.height).getShrinked(size);
         Dimension effectiveSize = getTextSize().getExpanded(-shrink.width, -shrink.height);
 
         if (effectiveSize.height == 0) {
-            return subStringText = "";//$NON-NLS-1$;
+            return subStringText = "";//$NON-NLS-1$
         }
 
         Font f = getFont();
@@ -888,7 +900,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         }
 
         if ((hHint == 0) || (wHint == 0)) {
-            return "";//$NON-NLS-1$;
+            return "";//$NON-NLS-1$
         }
 
         Font f = getFont();
@@ -897,7 +909,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         if (hHint != -1) {
             maxLines = (int) (hHint / (double) fontHeight);
             if (maxLines == 0) {
-                return "";//$NON-NLS-1$;;
+                return "";//$NON-NLS-1$
             }
         }
 
@@ -1046,6 +1058,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * @see IFigure#invalidate()
      */
+    @Override
     public void invalidate() {
         prefSize = null;
         minSize = null;
@@ -1072,6 +1085,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * @see org.eclipse.draw2d.Figure#paintFigure(org.eclipse.draw2d.Graphics)
      */
+    @Override
     public void paintFigure(Graphics graphics) {
         if (isSelected()) {
             graphics.pushState();
@@ -1625,6 +1639,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * @return the focus state of this label
      */
+    @Override
     public boolean hasFocus() {
         return (flags & FLAG_HASFOCUS) != 0;
     }
