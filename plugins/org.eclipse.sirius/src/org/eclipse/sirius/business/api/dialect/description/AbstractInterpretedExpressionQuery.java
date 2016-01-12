@@ -285,6 +285,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  */
                 availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
             }
+            
             addVariablesFromToolContext(operationContext);
         }
         collectLocalVariablesDefinitions();
@@ -337,7 +338,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      *            the potential create operation from which to get the variable
      */
     protected void addVariableFromCreateOperation(ModelOperation modelOperation) {
-        if (modelOperation instanceof CreateInstance) {
+        if (modelOperation instanceof CreateInstance && !StringUtil.isEmpty(((CreateInstance) modelOperation).getVariableName())) {
             availableVariables.put(((CreateInstance) modelOperation).getVariableName(), VariableType.fromString(((CreateInstance) modelOperation).getTypeName()));
         }
     }
@@ -655,11 +656,13 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      *            the variable type
      */
     protected void addDefinition(Map<String, Collection<VariableType>> definitions, String name, VariableType type) {
-        Collection<VariableType> defs = definitions.get(name);
-        if (defs == null) {
-            defs = Lists.newArrayList();
-            definitions.put(name, defs);
+        if (name != null) {
+            Collection<VariableType> defs = definitions.get(name);
+            if (defs == null) {
+                defs = Lists.newArrayList();
+                definitions.put(name, defs);
+            }
+            defs.add(type);
         }
-        defs.add(type);
     }
 }
