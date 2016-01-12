@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.emf.validation.service.ConstraintRegistry;
+import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
@@ -104,7 +106,7 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
         }
 
         for (IInterpreterStatus interpreterStatus : errors) {
-            statuses.add(ConstraintStatus.createStatus(ctx, locus, interpreterStatus.getMessage()));
+            statuses.add(createStatus(ctx, locus, interpreterStatus));
         }
 
         final IStatus returnStatus;
@@ -114,6 +116,20 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
             returnStatus = ConstraintStatus.createMultiStatus(ctx, statuses);
         }
         return returnStatus;
+    }
+
+    private ConstraintStatus createStatus(IValidationContext ctx, Collection<EObject> resultLocus, IInterpreterStatus status, Object... messageArguments) {
+
+        IConstraintDescriptor desc = ConstraintRegistry.getInstance().getDescriptor(ctx.getCurrentConstraintId());
+
+        int severity = desc.getSeverity().toIStatusSeverity();
+        if (IInterpreterStatus.WARNING.equals(status.getSeverity())) {
+            severity = IStatus.WARNING;
+        } else if (IInterpreterStatus.ERROR.equals(status.getSeverity())) {
+            severity = IStatus.ERROR;
+        }
+
+        return ConstraintStatus.createStatus(ctx, null, resultLocus, severity, desc.getStatusCode(), status.getMessage(), messageArguments);
     }
 
 }

@@ -35,6 +35,7 @@ import org.eclipse.acceleo.query.runtime.Query;
 import org.eclipse.acceleo.query.runtime.QueryEvaluation;
 import org.eclipse.acceleo.query.runtime.QueryParsing;
 import org.eclipse.acceleo.query.runtime.QueryValidation;
+import org.eclipse.acceleo.query.runtime.ValidationMessageLevel;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
@@ -295,7 +296,11 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 }
             };
             for (IValidationMessage message : aqlValidationResult.getMessages()) {
-                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.WARNING, message.getMessage()));
+                String severity = IInterpreterStatus.WARNING;
+                if (message.getLevel() == ValidationMessageLevel.ERROR) {
+                    severity = IInterpreterStatus.ERROR;
+                }
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, severity, message.getMessage()));
             }
             List<String> classifierNames = Lists.newArrayList();
             for (IType type : aqlValidationResult.getPossibleTypes(aqlValidationResult.getAstResult().getAst())) {
