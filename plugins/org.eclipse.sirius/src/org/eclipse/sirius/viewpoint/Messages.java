@@ -247,6 +247,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ExecuteToolOperationTask_label;
+    
+    @TranslatableMessage
+    public static String ExecuteToolOperationTask_sessionNotFound;
 
     @TranslatableMessage
     public static String ExternalJavaActionDescriptor_actionCreationErrorMsg;

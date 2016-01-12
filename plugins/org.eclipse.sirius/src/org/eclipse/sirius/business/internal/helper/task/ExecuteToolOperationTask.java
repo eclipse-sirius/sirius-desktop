@@ -30,6 +30,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
+import com.google.common.base.Preconditions;
+
 /**
  * The main task for operations of a tool.
  * 
@@ -55,6 +57,24 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
      *            the extended package
      * @param target
      *            the target
+     * @param op
+     *            the operation
+     * 
+     * @param uiCallback
+     *            the {@link UICallBack}
+     * @since 4.0.0
+     */
+    public ExecuteToolOperationTask(final ModelAccessor extPackage, final EObject target, final ModelOperation op, final UICallBack uiCallback) {
+        this(extPackage, target, null, op, uiCallback);
+    }
+
+    /**
+     * Default constructor.
+     * 
+     * @param extPackage
+     *            the extended package
+     * @param target
+     *            the target
      * @param representation
      *            current representation
      * @param op
@@ -67,9 +87,10 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         this.extPackage = extPackage;
         this.uiCallback = uiCallback;
         this.session = new EObjectQuery(target).getSession();
-        if (session == null) {
+        if (session == null && representation != null) {
             this.session = new EObjectQuery(representation).getSession();
         }
+        Preconditions.checkArgument(session != null, Messages.ExecuteToolOperationTask_sessionNotFound);
         final CommandContext context = new CommandContext(target, representation);
         this.rootOperationTask = createTask(op, context);
         // for task creates children tasks at runtime

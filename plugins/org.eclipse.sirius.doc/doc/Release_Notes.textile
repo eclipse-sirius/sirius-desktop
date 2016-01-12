@@ -23,6 +23,9 @@ h3. Developer-Visible Changes
 * <span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the @ITabbarContributor@ through the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. See the developer documentation for more details.
 * <span class="label label-success">Added</span> It is now possible to provide new shapes for basic shape styles through the @org.eclipse.sirius.diagram.bundledImageShape@ extension-point. See the developer documentation for more details.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> A new variant of @org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)@ has been added, which does not require to specify a @DRepresentation@ in the context. It allows the creation of a task which executes a behavior specified by @ModelOperations@ outside of the context of a specific representation, provided the @ModelOperations@ work in that context. 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

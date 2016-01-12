@@ -67,6 +67,21 @@ public class TaskHelper {
         this.modelAccessor = modelAccessor;
         this.uiCallback = uiCallback;
     }
+    
+    /**
+     * Create an {@link ExecuteToolOperationTask} with the specified context and
+     * operation.
+     * 
+     * @param target
+     *            the context.
+     * @param op
+     *            the operation.
+     * @return the created {@link ExecuteToolOperationTask}.
+     * @since 4.0.0
+     */
+    public ICommandTask buildTaskFromModelOperation(final EObject target, final ModelOperation op) {
+        return new ExecuteToolOperationTask(modelAccessor, target, op, uiCallback);
+    }
 
     /**
      * Create an {@link ExecuteToolOperationTask} with the specified context and
