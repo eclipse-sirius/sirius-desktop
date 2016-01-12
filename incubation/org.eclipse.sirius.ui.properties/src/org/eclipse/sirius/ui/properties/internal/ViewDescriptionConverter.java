@@ -73,7 +73,7 @@ public class ViewDescriptionConverter {
                     eefTextDescription.setValueExpression(textDescription.getValueExpression());
 
                     InitialOperation initialOperation = textDescription.getInitialOperation();
-                    eefTextDescription.setEditExpression("aql:self.run(selection, '" + EcoreUtil.getURI(initialOperation).toString() + "')");
+                    eefTextDescription.setEditExpression("aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')");
                 }
             }
         }

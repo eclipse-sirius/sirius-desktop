@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 public class SiriusToolServices {
-    public void run(EObject eObject, Object selection, String initialCommandUri) {
+    public void executeOperation(EObject eObject, String initialCommandUri) {
         Session session = new EObjectQuery(eObject).getSession();
         ModelAccessor modelAccessor = session.getModelAccessor();
         TaskHelper taskHelper = new TaskHelper(modelAccessor, new NoUICallback());
@@ -47,7 +47,7 @@ public class SiriusToolServices {
 
         if (modelOperation != null) {
             ICommandTask task = taskHelper.buildTaskFromModelOperation(eObject, modelOperation);
-            SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#run");
+            SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation");
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
         }
