@@ -11,11 +11,9 @@
 package org.eclipse.sirius.editor.tools.api.menu;
 
 import java.text.Collator;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -49,6 +47,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Abstract class to dynamically build treeview menus.
@@ -224,12 +223,12 @@ public abstract class AbstractMenuBuilder {
     /**
      * Child actions for the advanced menu.
      */
-    protected Collection advancedChildActions;
+    protected Collection<CreateChildAction> advancedChildActions;
 
     /**
      * Descriptors for the menu action.
      */
-    protected Collection descriptors;
+    protected Collection<Object> descriptors;
 
     /**
      * Menu manager for the advanced menu.
@@ -247,7 +246,7 @@ public abstract class AbstractMenuBuilder {
      */
     public AbstractMenuBuilder() {
         super();
-        descriptors = new LinkedHashSet();
+        descriptors = Sets.newLinkedHashSet();
         getMenu();
     }
 
@@ -265,7 +264,7 @@ public abstract class AbstractMenuBuilder {
      * 
      * @return the menu child descriptors
      */
-    public Collection getMyDescriptors() {
+    public Collection<?> getMyDescriptors() {
         return descriptors;
     }
 
@@ -323,12 +322,12 @@ public abstract class AbstractMenuBuilder {
      * @param editor
      *            current editor.
      */
-    public void update(final Collection newChildDescriptors, final ISelection selection, final IEditorPart editor) {
+    public void update(final Collection<?> newChildDescriptors, final ISelection selection, final IEditorPart editor) {
         depopulate();
         advancedChildActions = generateCreateChildActions(filter(newChildDescriptors), selection, editor);
     }
 
-    private Collection filter(final Collection newChildDescriptors) {
+    private Collection<?> filter(final Collection<?> newChildDescriptors) {
         for (final Object object : newChildDescriptors) {
             if (object instanceof CommandParameter) {
                 if (!isDeprecated((CommandParameter) object) && isMine((CommandParameter) object)) {
@@ -373,7 +372,7 @@ public abstract class AbstractMenuBuilder {
      * Depopulate the menu.
      */
     protected void depopulate() {
-        descriptors = new LinkedHashSet();
+        descriptors = Sets.newLinkedHashSet();
         if (myMenuManager != null) {
             depopulateManager(myMenuManager, advancedChildActions);
         }
@@ -390,7 +389,7 @@ public abstract class AbstractMenuBuilder {
      * @param actions
      *            the actions to remove from the manager.
      */
-    protected void depopulateManager(final IContributionManager manager, final Collection actions) {
+    protected void depopulateManager(final IContributionManager manager, final Collection<CreateChildAction> actions) {
         if (actions != null) {
             final IContributionItem[] items = manager.getItems();
             for (IContributionItem item : items) {
@@ -424,8 +423,8 @@ public abstract class AbstractMenuBuilder {
      *            the current editor.
      * @return the list of actions.
      */
-    protected Collection generateCreateChildActions(final Collection actionDescriptors, final ISelection selection, final IEditorPart editor) {
-        final Collection actions = new ArrayList();
+    protected Collection<CreateChildAction> generateCreateChildActions(final Collection<?> actionDescriptors, final ISelection selection, final IEditorPart editor) {
+        final Collection<CreateChildAction> actions = Lists.newArrayList();
         if (actionDescriptors != null) {
             for (final Object actionDescriptor : actionDescriptors) {
                 final CreateChildAction cca;
@@ -468,7 +467,7 @@ public abstract class AbstractMenuBuilder {
      * @param contributionID
      *            the Id for the contribution.
      */
-    protected void populateManager(final IContributionManager manager, final Collection actions, final String contributionID) {
+    protected void populateManager(final IContributionManager manager, final Collection<CreateChildAction> actions, final String contributionID) {
         if (actions != null) {
             List<IAction> sortedActions = Lists.newArrayList(Iterables.filter(actions, IAction.class));
             Comparator<IAction> comparator = new Comparator<IAction>() {
