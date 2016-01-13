@@ -29,18 +29,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @author ymortier
  */
 public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrdering {
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractTreeViewOrdering#getChildren(org.eclipse.gmf.runtime.notation.View,
-     *      java.util.List)
-     */
     @Override
-    public List getChildren(final View parent, final List views) {
+    public List<View> getChildren(final View parent, final List<View> views) {
         // FIXME YMO doesn't work fine if there are many views that have the
         // same target.
-        final List semantics = new ArrayList(views.size());
+        final List<EObject> semantics = new ArrayList<>(views.size());
         //
         // Gets the parent semantic element.
         final EObject semanticParent = this.resolveSemanticElement(parent);
@@ -49,12 +42,12 @@ public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrder
         }
         //
         // Keep a trace semantic -> view.
-        final Map semanticToView = new HashMap();
-        final Iterator iterViews = views.iterator();
+        final Map<EObject, View> semanticToView = new HashMap<>();
+        final Iterator<View> iterViews = views.iterator();
         //
         // Find all semantic elements.
         while (iterViews.hasNext()) {
-            final View currentView = (View) iterViews.next();
+            final View currentView = iterViews.next();
             // Only Nodes are able to compose a tree.
             if (currentView instanceof Node) {
                 final EObject semanticElement = this.resolveSemanticElement(currentView);
@@ -66,35 +59,30 @@ public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrder
         }
         //
         // Gets children.
-        final List semanticChildren = this.getSemanticChildren(semanticParent, semantics);
-        final List viewRoots = new ArrayList(semanticChildren.size());
+        final List<EObject> semanticChildren = this.getSemanticChildren(semanticParent, semantics);
+        final List<View> viewRoots = new ArrayList<>(semanticChildren.size());
         //
         // Gets view roots.
-        final Iterator iterSemanticRoots = semanticChildren.iterator();
+        final Iterator<EObject> iterSemanticRoots = semanticChildren.iterator();
         while (iterSemanticRoots.hasNext()) {
             viewRoots.add(semanticToView.get(iterSemanticRoots.next()));
         }
         return viewRoots;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractTreeViewOrdering#getRoots(java.util.List)
-     */
     @Override
-    public List getRoots(final List views) {
+    public List<View> getRoots(final List<View> views) {
         // FIXME YMO doesn't work fine if there are many views that have the
         // same target.
-        final List semantics = new ArrayList(views.size());
+        final List<EObject> semantics = new ArrayList<>(views.size());
         //
         // Keep a trace semantic -> view.
-        final Map semanticToView = new HashMap();
-        final Iterator iterViews = views.iterator();
+        final Map<EObject, View> semanticToView = new HashMap<>();
+        final Iterator<View> iterViews = views.iterator();
         //
         // Find all semantic elements.
         while (iterViews.hasNext()) {
-            final View currentView = (View) iterViews.next();
+            final View currentView = iterViews.next();
             // Only Nodes are able to compose a tree.
             if (currentView instanceof Node) {
                 final EObject semanticElement = this.resolveSemanticElement(currentView);
@@ -106,11 +94,11 @@ public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrder
         }
         //
         // Gets roots.
-        final List semanticRoots = this.getSemanticRoots(semantics);
-        final List viewRoots = new ArrayList(semanticRoots.size());
+        final List<EObject> semanticRoots = this.getSemanticRoots(semantics);
+        final List<View> viewRoots = new ArrayList<>(semanticRoots.size());
         //
         // Gets view roots.
-        final Iterator iterSemanticRoots = semanticRoots.iterator();
+        final Iterator<EObject> iterSemanticRoots = semanticRoots.iterator();
         while (iterSemanticRoots.hasNext()) {
             viewRoots.add(semanticToView.get(iterSemanticRoots.next()));
         }
@@ -124,7 +112,7 @@ public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrder
      *            the semantic elements that are on the diagram.
      * @return the semantic elements that are the roots of the tree.
      */
-    public abstract List getSemanticRoots(List eObjects);
+    public abstract List<EObject> getSemanticRoots(List<EObject> eObjects);
 
     /**
      * Return the semantic elements that are the children of
@@ -137,7 +125,7 @@ public abstract class AbstractSemanticTreeOrdering extends AbstractTreeViewOrder
      * @return the semantic elements that are the children of
      *         <code>semanticParent</code>.
      */
-    public abstract List getSemanticChildren(EObject semanticParent, List candidates);
+    public abstract List<EObject> getSemanticChildren(EObject semanticParent, List<EObject> candidates);
 
     /**
      * Resolves the real semantic element of the specified GMF view.
