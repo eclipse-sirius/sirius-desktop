@@ -64,4 +64,9 @@ public class EvaluationResult implements IEvaluationResult {
     public Diagnostic getDiagnostic() {
         return status;
     }
+    
+    @Override
+    public boolean success() {
+        return Diagnostic.OK == status.getSeverity() && rawValue != null;
+    }
 }

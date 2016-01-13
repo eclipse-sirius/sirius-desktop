@@ -32,4 +32,12 @@ public interface IEvaluationResult {
      */
     Diagnostic getDiagnostic();
 
+    /**
+     * Tests of the evaluation was a success, i.e. it produced an actual (non-
+     * <code>null</code>) result and no warnings or errors.
+     * 
+     * @return <code>true</code> iff the evaluation was a success.
+     */
+    boolean success();
+
 }
