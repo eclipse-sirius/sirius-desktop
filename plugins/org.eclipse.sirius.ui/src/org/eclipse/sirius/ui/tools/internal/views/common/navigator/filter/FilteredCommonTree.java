@@ -619,7 +619,7 @@ public class FilteredCommonTree extends Composite {
                 if (filterTextString.length() == 0 || filterTextString.equals(initialText)) {
                     e.result = initialText;
                 } else {
-                    e.result = MessageFormat.format(WorkbenchMessages.FilteredTree_AccessibleListenerFiltered, new String[] { filterTextString, String.valueOf(getFilteredItemsCount()) });
+                    e.result = MessageFormat.format(WorkbenchMessages.FilteredTree_AccessibleListenerFiltered, filterTextString, String.valueOf(getFilteredItemsCount()));
                 }
             }
 

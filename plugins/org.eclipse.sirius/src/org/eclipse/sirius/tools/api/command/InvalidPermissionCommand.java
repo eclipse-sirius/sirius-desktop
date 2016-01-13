@@ -55,7 +55,7 @@ public class InvalidPermissionCommand extends SiriusCommand {
      *            the elements that user tried to modify
      */
     public InvalidPermissionCommand(TransactionalEditingDomain domain, EObject... lockedElements) {
-        super(domain, MessageFormat.format(Messages.InvalidPermissionCommand_label, lockedElements));
+        super(domain, MessageFormat.format(Messages.InvalidPermissionCommand_label, (Object) lockedElements));
         this.lockedElements = lockedElements;
     }
 

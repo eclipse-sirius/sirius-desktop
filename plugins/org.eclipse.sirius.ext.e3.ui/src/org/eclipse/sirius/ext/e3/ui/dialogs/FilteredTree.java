@@ -644,10 +644,9 @@ public class FilteredTree extends Composite {
                         } else {
                             e.result = MessageFormat.format(
                                             WorkbenchMessages.FilteredTree_AccessibleListenerFiltered,
-                                            new String[] {
                                                     filterTextString,
                                                     String
-                                                            .valueOf(getFilteredItemsCount()) });
+                                                            .valueOf(getFilteredItemsCount()));
                         }
                     }
 
