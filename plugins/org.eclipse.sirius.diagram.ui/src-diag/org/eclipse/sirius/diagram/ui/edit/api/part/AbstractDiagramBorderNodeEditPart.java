@@ -250,7 +250,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     @Override
     protected List<?> getModelChildren() {
         // create a new view to avoid to change the super.getModelChildren list.
-        @SuppressWarnings("unchecked")
         final List<?> modelChildren = new ArrayList<Object>(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
         final EObject diagramElement = this.resolveDiagramElement();

@@ -43,22 +43,10 @@ public class DTreeItemDragListener extends DragSourceAdapter implements DragSour
         this.selectionProvider = selectionProvider;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragFinished(org.eclipse.swt.dnd.DragSourceEvent)
-     */
     @Override
     public void dragFinished(DragSourceEvent event) {
-
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragSetData(org.eclipse.swt.dnd.DragSourceEvent)
-     */
-    @SuppressWarnings("unchecked")
     @Override
     public void dragSetData(DragSourceEvent event) {
         // We set the data of the drag to all selected DTreeItem (if any)
@@ -77,14 +65,8 @@ public class DTreeItemDragListener extends DragSourceAdapter implements DragSour
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragStart(org.eclipse.swt.dnd.DragSourceEvent)
-     */
     @Override
     public void dragStart(DragSourceEvent event) {
         event.doit = !this.selectionProvider.getSelection().isEmpty();
     }
-
 }

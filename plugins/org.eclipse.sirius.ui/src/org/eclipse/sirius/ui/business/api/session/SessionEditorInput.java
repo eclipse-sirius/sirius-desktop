@@ -362,7 +362,7 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+    public Object getAdapter(Class adapter) {
         Object a = super.getAdapter(adapter);
         if (IFile.class == adapter && a == null) {
             if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {

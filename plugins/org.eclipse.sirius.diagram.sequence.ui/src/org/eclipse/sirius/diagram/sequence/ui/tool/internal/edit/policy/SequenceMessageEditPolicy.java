@@ -132,11 +132,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         return (SequenceMessageEditPart) getHost();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected void addInvisibleCreationHandle(@SuppressWarnings("rawtypes") List list, ConnectionEditPart connEP, int i) {
+    protected void addInvisibleCreationHandle(List list, ConnectionEditPart connEP, int i) {
         /*
          * Do nothing: the handles created by default use a raw GEF drag tracker
          * which we do not control, and which can lead to disconnections of

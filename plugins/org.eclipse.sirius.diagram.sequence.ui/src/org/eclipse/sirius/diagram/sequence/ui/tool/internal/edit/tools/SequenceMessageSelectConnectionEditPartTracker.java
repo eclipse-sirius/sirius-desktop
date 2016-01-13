@@ -60,14 +60,10 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
         return rq;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void updateSourceRequest() {
         super.updateSourceRequest();
         if (bendpointRequest != null) {
-            @SuppressWarnings("unchecked")
             Map<Object, Object> extData = bendpointRequest.getExtendedData();
             if (msgToSelfMove) {
                 extData.put(SequenceMessageEditPart.MSG_TO_SELF_TOP_MOVE, fromTop);

@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNode
  * 
  * @author mporhel
  */
-@SuppressWarnings("restriction")
 public class RegionGraphicalNodeEditPolicy extends SiriusGraphicalNodeEditPolicy {
 
     @Override

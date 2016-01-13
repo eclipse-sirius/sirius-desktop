@@ -56,7 +56,6 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
         return MIGRATION_VERSION;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {

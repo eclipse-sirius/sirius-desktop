@@ -434,7 +434,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         if (option.some()) {
             pointList = option.get();
         } else {
-            @SuppressWarnings("unchecked")
             List<RelativeBendpoint> relativeBendpoints = bendpoints.getPoints();
             for (int i = 0; i < relativeBendpoints.size(); i++) {
                 float weight = i / ((float) relativeBendpoints.size() - 1);

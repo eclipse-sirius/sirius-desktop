@@ -398,7 +398,6 @@ public class AbstractNodeEventResizeSelectionValidator {
      *            the host execution
      * @return a validator.
      */
-    @SuppressWarnings("unchecked")
     public static AbstractNodeEventResizeSelectionValidator getOrCreateValidator(ChangeBoundsRequest cbr, AbstractNodeEvent host) {
         RequestQuery requestQuery = new RequestQuery(cbr);
         AbstractNodeEventResizeSelectionValidator validator = null;

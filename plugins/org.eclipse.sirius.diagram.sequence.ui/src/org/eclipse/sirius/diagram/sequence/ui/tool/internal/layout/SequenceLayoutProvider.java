@@ -39,11 +39,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
  * @author ymortier, mporhel
  */
 public class SequenceLayoutProvider extends AbstractLayoutProvider {
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public Command layoutEditParts(@SuppressWarnings("rawtypes") List selectedObjects, IAdaptable layoutHint) {
+    public Command layoutEditParts(List selectedObjects, IAdaptable layoutHint) {
         SequenceDiagramEditPart sdep = getParentSequenceDiagramEditPart(selectedObjects);
         boolean isArrangeAll = isArrangeAll(sdep, selectedObjects);
         if (sdep != null && isArrangeAll) {

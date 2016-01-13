@@ -69,7 +69,6 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
      * @throws Exception
      *             Test error.
      */
-    @SuppressWarnings("unchecked")
     public void testGEFBotAPI() throws Exception {
         SWTBotSiriusDiagramEditor editor = SWTBotSiriusHelper.getSiriusDiagramEditor("ecore package entities");
 

@@ -1282,7 +1282,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
+    public Object getAdapter(final Class type) {
         Object adapter = null;
         if (type == IDiagramCommandFactoryProvider.class) {
             adapter = this.emfCommandFactoryProvider;

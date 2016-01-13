@@ -252,7 +252,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * @param request
      *            the request
      */
-    @SuppressWarnings("unchecked")
     @Override
     protected void showChangeBoundsFeedback(final ChangeBoundsRequest request) {
         // Get the figure of the target edit part
@@ -363,7 +362,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * @param request
      *            The request to store in.
      */
-    @SuppressWarnings("unchecked")
     private void storeFeedback(IFigure feedback, ChangeBoundsRequest request) {
         if (request.getEditParts().size() > 1 && !getHost().equals(request.getEditParts().get(request.getEditParts().size() - 1))) {
             // Store the feedback new location in request to use it for

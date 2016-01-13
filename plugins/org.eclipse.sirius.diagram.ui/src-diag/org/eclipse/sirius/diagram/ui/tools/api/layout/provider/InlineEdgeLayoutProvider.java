@@ -250,20 +250,12 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.provider.DefaultLayoutProvider#layoutEditParts(java.util.List,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
-    public Command layoutEditParts(@SuppressWarnings("rawtypes")
-    final List selectedObjects, final IAdaptable layoutHint) {
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         final CompoundCommand cc = new CompoundCommand();
 
         this.connectionsToMoveEdgeDescriptor.clear();
 
-        @SuppressWarnings("unchecked")
         final Map<EditPart, List<EditPart>> containerToChildren = this.split(selectedObjects);
         final Iterator<Entry<EditPart, List<EditPart>>> iterLayouts = containerToChildren.entrySet().iterator();
         while (iterLayouts.hasNext()) {

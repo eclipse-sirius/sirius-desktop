@@ -594,7 +594,6 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
      *            the host
      * @return a validator.
      */
-    @SuppressWarnings("unchecked")
     public static ISEComplexMoveValidator getOrCreateValidator(ChangeBoundsRequest cbr, RequestQuery requestQuery, ISequenceEvent host) {
         ISEComplexMoveValidator validator = null;
         Object object = cbr.getExtendedData().get(VALIDATOR);

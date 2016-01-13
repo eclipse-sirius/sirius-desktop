@@ -58,9 +58,6 @@ public class SiriusSelectConnectionEditPartTracker extends SelectConnectionEditP
         setDisabledCursor(SharedCursors.NO);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Request createSourceRequest() {
         Request rq = super.createSourceRequest();
@@ -70,10 +67,6 @@ public class SiriusSelectConnectionEditPartTracker extends SelectConnectionEditP
         return rq;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
     @Override
     protected void updateSourceRequest() {
         super.updateSourceRequest();

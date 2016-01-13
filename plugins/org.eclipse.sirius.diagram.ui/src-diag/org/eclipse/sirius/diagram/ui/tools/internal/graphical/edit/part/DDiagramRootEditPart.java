@@ -89,7 +89,7 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
+    public Object getAdapter(Class key) {
         if (key == AutoexposeHelper.class) {
             return new SiriusScroller(this, SiriusScroller.VIEWPOINT_SCROLLER_INSETS);
         }

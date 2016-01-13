@@ -99,7 +99,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      * @was-generated
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class type) {
+    public Object getAdapter(Class type) {
 
         if (type == IShowInTargetList.class) {
             return new IShowInTargetList() {

@@ -166,15 +166,8 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
         this.lineSizeMode = lineSizeMode;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.provider.DefaultLayoutProvider#layoutEditParts(java.util.List,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
-    public Command layoutEditParts(@SuppressWarnings("rawtypes")
-    final List selectedObjects, final IAdaptable layoutHint) {
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         extender.startLayouting();
         this.maxHeights.clear();
         this.maxWidths.clear();

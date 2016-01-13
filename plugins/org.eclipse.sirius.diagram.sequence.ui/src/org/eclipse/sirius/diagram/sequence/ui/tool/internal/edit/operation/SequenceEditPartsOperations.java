@@ -192,7 +192,6 @@ public final class SequenceEditPartsOperations {
      * @param element
      *            the key to use.
      */
-    @SuppressWarnings("unchecked")
     public static void registerDiagramElement(IGraphicalEditPart self, EObject element) {
         self.getViewer().getEditPartRegistry().put(element, self);
     }
@@ -207,7 +206,6 @@ public final class SequenceEditPartsOperations {
      *            the key of the registry entry to remove.
      */
     public static void unregisterDiagramElement(IGraphicalEditPart self, EObject element) {
-        @SuppressWarnings("unchecked")
         Map<Object, Object> registry = self.getViewer().getEditPartRegistry();
         if (registry.get(element) == self) {
             registry.remove(element);

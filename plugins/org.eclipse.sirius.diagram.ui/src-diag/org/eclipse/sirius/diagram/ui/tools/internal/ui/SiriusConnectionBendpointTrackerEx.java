@@ -104,7 +104,6 @@ public class SiriusConnectionBendpointTrackerEx extends ConnectionBendpointTrack
     /**
      * Update the request with information about snapToAll and moveGroup modes.
      */
-    @SuppressWarnings({ "unchecked" })
     @Override
     protected void updateSourceRequest() {
         if (getSourceRequest() instanceof SnapBendpointRequest) {

@@ -99,7 +99,6 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
                 IGraphicalEditPart self = (IGraphicalEditPart) getHost();
                 SequenceDiagramEditPart sdep = EditPartsHelper.getSequenceDiagramPart(self);
                 if (sdep != null) {
-                    @SuppressWarnings("unchecked")
                     Map<Object, Object> extData = request.getExtendedData();
                     extData.put(FrameCreationValidator.ORIGINAL_TARGET, getHost());
                     return Options.newSome(sdep);

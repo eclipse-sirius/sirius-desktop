@@ -244,7 +244,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
     private Collection<Edge> refreshConnections(final Diagram diagram) {
         final Map<EObject, View> domain2NotationMap = new HashMap<EObject, View>();
         final Collection<SiriusLinkDescriptor> linkDescriptors = collectAllLinks(diagram, domain2NotationMap);
-        @SuppressWarnings("unchecked")
         final Collection<Edge> existingLinks = new LinkedList<Edge>(diagram.getEdges());
         existingLinks.addAll(collectAllDanglingEdges(diagram));
 
@@ -331,7 +330,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         @SuppressWarnings("serial")
         TreeIterator<View> it = new AbstractTreeIterator<View>(view) {
 
-            @SuppressWarnings("unchecked")
             @Override
             protected Iterator<? extends View> getChildren(Object object) {
                 if (object instanceof View) {
@@ -391,7 +389,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      */
     private Collection<Edge> collectAllNoteAttachments(final Diagram diagram) {
         final Collection<Edge> result = new LinkedList<Edge>();
-        @SuppressWarnings("unchecked")
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
             final Edge currentEdge = edges.next();
@@ -411,7 +408,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      */
     private Collection<Edge> collectAllLines(final Diagram diagram) {
         final Collection<Edge> result = new LinkedList<Edge>();
-        @SuppressWarnings("unchecked")
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
             final Edge currentEdge = edges.next();

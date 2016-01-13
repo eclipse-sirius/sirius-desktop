@@ -542,7 +542,6 @@ public class PaletteManagerImpl implements PaletteManager {
         return result;
     }
 
-    @SuppressWarnings("unchecked")
     private static void setToolsVisibility(final PaletteDrawer drawner, final Layer layer, final ToolSection section, final boolean visibility) {
         for (final PaletteEntry entry : (List<PaletteEntry>) drawner.getChildren()) {
             if (entry instanceof ToolGroupPaletteStack) {

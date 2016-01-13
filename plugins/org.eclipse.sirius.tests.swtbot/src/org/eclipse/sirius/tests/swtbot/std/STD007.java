@@ -80,7 +80,6 @@ public class STD007 extends AbstractSiriusSwtBotGefTestCase {
      * @throws Exception
      *             Test error.
      */
-    @SuppressWarnings("unchecked")
     public void testSTD007() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*

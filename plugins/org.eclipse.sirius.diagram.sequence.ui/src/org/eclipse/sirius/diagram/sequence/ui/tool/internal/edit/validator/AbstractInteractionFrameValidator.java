@@ -347,7 +347,6 @@ public abstract class AbstractInteractionFrameValidator {
      *            the host execution
      * @return a validator.
      */
-    @SuppressWarnings("unchecked")
     public static AbstractInteractionFrameValidator getOrCreateResizeValidator(ChangeBoundsRequest cbr, AbstractFrame host) {
         RequestQuery requestQuery = new RequestQuery(cbr);
         Preconditions.checkArgument(requestQuery.isResize());

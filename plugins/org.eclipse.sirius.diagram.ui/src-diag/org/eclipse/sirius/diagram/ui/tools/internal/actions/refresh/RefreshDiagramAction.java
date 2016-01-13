@@ -154,7 +154,6 @@ public class RefreshDiagramAction extends RetargetAction {
         if (editPart.getChildren().contains(mayBeChild)) {
             res = true;
         }
-        @SuppressWarnings("unchecked")
         final Iterator<EditPart> iterChildren = editPart.getChildren().iterator();
         while (iterChildren.hasNext() && !res) {
             final EditPart currentEditPart = iterChildren.next();

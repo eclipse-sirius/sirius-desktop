@@ -119,7 +119,6 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
      *            {@link org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart}
      * @return super.getConnectionCreateCommand() using CreateConnectionRequest
      */
-    @SuppressWarnings("unchecked")
     @Override
     protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
         Command connectionCreateCommand = super.getConnectionCreateCommand(request);

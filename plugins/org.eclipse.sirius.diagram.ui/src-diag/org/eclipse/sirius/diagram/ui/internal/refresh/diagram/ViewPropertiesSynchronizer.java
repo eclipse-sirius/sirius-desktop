@@ -351,7 +351,6 @@ public class ViewPropertiesSynchronizer {
      *            the type of the style to create
      * @return the created style added to the specified view
      */
-    @SuppressWarnings("unchecked")
     private Style createOrFindStyle(final View view, final EClass styleClass) {
         Style style = view.getStyle(styleClass);
         if (style == null) {

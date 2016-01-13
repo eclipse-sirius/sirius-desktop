@@ -468,7 +468,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class type) {
+    public Object getAdapter(Class type) {
         Object result = super.getAdapter(type);
         if (result == null) {
             if (type == ITableCommandFactoryProvider.class) {

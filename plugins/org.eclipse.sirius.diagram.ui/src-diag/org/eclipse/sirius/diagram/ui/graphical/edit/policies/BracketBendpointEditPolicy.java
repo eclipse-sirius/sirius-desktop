@@ -89,7 +89,6 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
     /**
      * Overridden to return custom selection handles. {@inheritDoc}
      */
-    @SuppressWarnings("rawtypes")
     @Override
     protected List createSelectionHandles() {
         final List<BendpointHandle> selectionHandles = new ArrayList<BendpointHandle>();

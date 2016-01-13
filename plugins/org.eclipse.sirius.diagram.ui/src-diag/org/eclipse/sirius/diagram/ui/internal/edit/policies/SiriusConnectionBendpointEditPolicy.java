@@ -130,7 +130,6 @@ public class SiriusConnectionBendpointEditPolicy extends ConnectionBendpointEdit
         super.eraseSourceFeedback(request);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     protected void addInvisibleCreationHandle(List list, org.eclipse.gef.ConnectionEditPart connEP, int i) {
         if (getLineSegMode() != LineMode.OBLIQUE) {

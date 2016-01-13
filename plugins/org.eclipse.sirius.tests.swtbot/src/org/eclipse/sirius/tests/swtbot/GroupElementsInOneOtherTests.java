@@ -207,7 +207,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
      * @return true if there is a figure at this location, false otherwise.
      */
     protected boolean isThereFigureAtLocation(IFigure parent, Point location, Set<IFigure> figuresToIgnore) {
-        @SuppressWarnings("unchecked")
         ListIterator<IFigure> listIterator = parent.getChildren().listIterator();
         while (listIterator.hasNext()) {
             IFigure child = listIterator.next();

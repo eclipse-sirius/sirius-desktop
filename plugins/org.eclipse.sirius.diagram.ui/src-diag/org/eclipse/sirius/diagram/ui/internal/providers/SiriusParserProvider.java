@@ -402,8 +402,8 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
         /**
          * @was-generated
          */
-        public Object getAdapter(@SuppressWarnings("rawtypes")
-        Class adapter) {
+        @Override
+        public Object getAdapter(Class adapter) {
             if (IElementType.class.equals(adapter)) {
                 return elementType;
             }

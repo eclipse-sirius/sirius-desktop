@@ -155,7 +155,6 @@ public class BracketEdgeEditPart extends AbstractDiagramEdgeEditPart {
         if (bracketConnectionQuery != null) {
             List<BracketRelativeBendpoint> figureConstraint = null;
             final RelativeBendpoints bendpoints = (RelativeBendpoints) getEdge().getBendpoints();
-            @SuppressWarnings("unchecked")
             final List<RelativeBendpoint> gmfRelativeBendpoints = bendpoints.getPoints();
             if (hasDefaultBendpoints(gmfRelativeBendpoints)) {
                 figureConstraint = getDefaultFigureConstraint();

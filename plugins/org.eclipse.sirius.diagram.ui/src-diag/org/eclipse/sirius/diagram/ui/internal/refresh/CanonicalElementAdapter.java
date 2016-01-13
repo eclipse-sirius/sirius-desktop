@@ -43,8 +43,7 @@ public class CanonicalElementAdapter extends EObjectAdapter {
      *            the type of the object to return
      * @return the adapted object
      */
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    Class adapter) {
+    public Object getAdapter(Class adapter) {
         if (adapter.equals(String.class)) {
             return hint;
         }

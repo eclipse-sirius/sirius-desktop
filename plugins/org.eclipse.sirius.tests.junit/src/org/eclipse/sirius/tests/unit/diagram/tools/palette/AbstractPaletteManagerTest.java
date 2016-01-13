@@ -257,7 +257,6 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
     private List<String> getLabelEntries(PaletteEntry paletteEntry) {
         List<String> result = Lists.newArrayList();
 
-        @SuppressWarnings("unchecked")
         Iterable<PaletteEntry> filtered2 = Iterables.filter((List<PaletteEntry>) ((PaletteContainer) paletteEntry).getChildren(), VISIBLE_ENTRY);
 
         for (PaletteEntry subEntry : filtered2) {
@@ -309,7 +308,6 @@ public abstract class AbstractPaletteManagerTest extends SiriusDiagramTestCase {
     private Collection<? extends PaletteEntry> getAllVisiblePaletteEntries(PaletteEntry paletteEntry) {
         Set<PaletteEntry> paletteEntries = Sets.newLinkedHashSet();
 
-        @SuppressWarnings("unchecked")
         Iterable<PaletteEntry> children = Iterables.filter((List<PaletteEntry>) ((PaletteContainer) paletteEntry).getChildren(), VISIBLE_ENTRY);
 
         for (PaletteEntry subEntry : children) {

@@ -59,7 +59,6 @@ public class ReparentExecutionOperation extends AbstractModelChangeOperation<Voi
 
         // real reconnection ?
         if (validate(thisSem, thisNode, newSem, newParentNode)) {
-            @SuppressWarnings("unchecked")
             EList<View> persistedChildren = newParentNode.getPersistedChildren();
             persistedChildren.add(thisNode);
             newSem.getOwnedBorderedNodes().add(thisSem);

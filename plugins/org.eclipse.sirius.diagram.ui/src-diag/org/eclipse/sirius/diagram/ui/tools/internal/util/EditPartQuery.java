@@ -242,7 +242,6 @@ public class EditPartQuery {
      * @return true if the figure of the current part is currently visible (by
      *         the end-user), false otherwise.
      */
-    @SuppressWarnings("unchecked")
     public boolean isVisibleOnViewport() {
         // Traverse the viewport path of the figure (and reduce clipRect
         // to what is actually visible); process all viewports up to the

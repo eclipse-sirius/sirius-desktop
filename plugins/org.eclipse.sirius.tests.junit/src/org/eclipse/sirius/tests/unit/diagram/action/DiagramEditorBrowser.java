@@ -70,7 +70,6 @@ public class DiagramEditorBrowser {
         @SuppressWarnings("serial")
         final AbstractTreeIterator<IGraphicalEditPart> it = new AbstractTreeIterator<IGraphicalEditPart>(editor.getDiagramEditPart()) {
 
-            @SuppressWarnings("unchecked")
             @Override
             protected Iterator<? extends IGraphicalEditPart> getChildren(final Object object) {
                 if (object instanceof IGraphicalEditPart) {

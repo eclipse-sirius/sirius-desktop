@@ -99,11 +99,8 @@ public class InstanceRoleMappingSpec extends InstanceRoleMappingImpl implements 
      * Here we add the behavior we should inherit from AbstractNodeMapping
      */
 
-    /**
-     * {@inheritDoc}
-     */
-    public void createBorderingNodes(final EObject modelElement, final DDiagramElement vpElement, @SuppressWarnings("rawtypes")
-    final Collection filterSemantic, final DDiagram viewPoint) {
+    @Override
+    public void createBorderingNodes(final EObject modelElement, final DDiagramElement vpElement, final Collection filterSemantic, final DDiagram viewPoint) {
         AbstractNodeMappingSpecOperations.createBorderingNodes(this, modelElement, vpElement, filterSemantic, viewPoint);
     }
 

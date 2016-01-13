@@ -254,7 +254,6 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             while (result.isEmpty() && it.hasNext()) {
                 final EStructuralFeature.Setting setting = it.next();
                 if (setting.getEObject() instanceof View) {
-                    @SuppressWarnings("unchecked")
                     EList<View> children = ((View) setting.getEObject()).getChildren();
                     for (View view : children) {
                         ViewQuery query = new ViewQuery(view);

@@ -467,7 +467,6 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
      * 
      * @return a validator {@link FrameCreationValidator}
      */
-    @SuppressWarnings("unchecked")
     public static FrameCreationValidator getOrCreateValidator(SequenceDiagram sequenceDiagram, ContainerCreationDescription containerCreationDescription, CreateRequestQuery createRequestQuery) {
         FrameCreationValidator validator = null;
         Object object = createRequestQuery.getExtendedData().get(VALIDATOR);

@@ -125,7 +125,6 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         /*
          * create a new view to avoid to change the super.getModelChildren list.
          */
-        @SuppressWarnings("unchecked")
         final List<?> modelChildren = new ArrayList<Object>(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
         return modelChildren;

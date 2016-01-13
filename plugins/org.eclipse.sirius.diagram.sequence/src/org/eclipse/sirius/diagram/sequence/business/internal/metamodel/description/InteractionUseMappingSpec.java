@@ -96,11 +96,8 @@ public class InteractionUseMappingSpec extends InteractionUseMappingImpl impleme
      * Here we add the behavior we should inherit from AbstractNodeMapping
      */
 
-    /**
-     * {@inheritDoc}
-     */
-    public void createBorderingNodes(EObject modelElement, DDiagramElement vpElement, @SuppressWarnings("rawtypes")
-    Collection filterSemantic, DDiagram viewPoint) {
+    @Override
+    public void createBorderingNodes(EObject modelElement, DDiagramElement vpElement, Collection filterSemantic, DDiagram viewPoint) {
         AbstractNodeMappingSpecOperations.createBorderingNodes(this, modelElement, vpElement, filterSemantic, viewPoint);
     }
 

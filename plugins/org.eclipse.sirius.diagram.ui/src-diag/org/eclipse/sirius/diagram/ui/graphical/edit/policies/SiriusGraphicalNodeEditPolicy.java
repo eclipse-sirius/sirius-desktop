@@ -244,7 +244,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         ConnectionAnchor sourceAnchor = node.getSourceConnectionAnchor(request);
         View sourceView = (View) request.getTarget().getModel();
-        @SuppressWarnings("unchecked")
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Source, sourceView,
                 sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         scaCommand.setNewSourceTerminal(node.mapConnectionAnchorToTerminal(sourceAnchor));
@@ -278,7 +277,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         restoreMissingBendpointOverCandidate(request, connectionPointList);
 
         // Set the connection bendpoints with a PointList using a command
-        @SuppressWarnings("unchecked")
         SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(),
                 ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
@@ -433,7 +431,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         INodeEditPart targetEP = getConnectionCompleteEditPart(request);
 
         View targetView = (View) targetEP.getModel();
-        @SuppressWarnings("unchecked")
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Target, targetView,
                 targetView.getTargetEdges(), ReconnectionKind.RECONNECT_TARGET_LITERAL);
         scaCommand.setNewTargetTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
@@ -467,7 +464,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             pointList.addPoint(sourceAnchor.getLocation(targetAnchor.getReferencePoint()));
             pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
 
-            @SuppressWarnings("unchecked")
             SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(pointList, sourceAnchor.getReferencePoint(), targetAnchor.getReferencePoint());
@@ -495,7 +491,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             restoreMissingBendpointOverCandidate(request, connectionPointList);
 
             // Set the connection bendpoints with a PointList using a command
-            @SuppressWarnings("unchecked")
             SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
@@ -704,7 +699,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             connectionCreateCommand = super.getConnectionCreateCommand(request);
         } else {
 
-            @SuppressWarnings("unchecked")
             Map<Object, Object> extendedData = request.getExtendedData();
 
             ConnectionAnchor sourceAnchor = getConnectableEditPart().getSourceConnectionAnchor(request);
@@ -1542,7 +1536,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return new ICommandProxy(cc);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void showCreationFeedback(CreateConnectionRequest request) {
         super.showCreationFeedback(request);

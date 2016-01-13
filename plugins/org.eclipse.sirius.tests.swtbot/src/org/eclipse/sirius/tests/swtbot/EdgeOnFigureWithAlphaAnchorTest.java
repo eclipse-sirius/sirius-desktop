@@ -37,7 +37,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-@SuppressWarnings("restriction")
 public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PATH = "data/unit/edgeOnFigureWithAlphaAnchor/";

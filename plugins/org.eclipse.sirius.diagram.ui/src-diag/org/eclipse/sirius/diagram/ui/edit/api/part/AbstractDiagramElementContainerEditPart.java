@@ -243,7 +243,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         }
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({ "unchecked" })
     @Override
     protected List getModelChildren() {
         // create a new view to avoid to change the super.getModelChildren list.
@@ -838,7 +838,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * (created with a previous style) and replace them with those created with
      * the current style.
      */
-    @SuppressWarnings("unchecked")
     public void reInitFigure() {
         final IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
         final List<IFigure> prevChildren = new ArrayList<IFigure>(mainFigure.getChildren());

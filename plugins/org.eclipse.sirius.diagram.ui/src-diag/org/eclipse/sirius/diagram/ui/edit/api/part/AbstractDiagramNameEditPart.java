@@ -279,13 +279,8 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getAdapter()
-     */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
+    public Object getAdapter(Class key) {
         try {
             return super.getAdapter(key);
         } catch (NullPointerException e) {

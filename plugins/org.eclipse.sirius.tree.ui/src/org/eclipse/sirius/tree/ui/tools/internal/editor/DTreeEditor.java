@@ -438,7 +438,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes") Class type) {
+    public Object getAdapter(Class type) {
         Object result = super.getAdapter(type);
         if (result == null) {
             if (type == ITreeCommandFactoryProvider.class) {

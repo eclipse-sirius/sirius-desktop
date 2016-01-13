@@ -129,7 +129,6 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         diagramFiller.fill();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
         if (partSelected == this.part) {

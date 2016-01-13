@@ -180,7 +180,6 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
             }
             if (!resource.isLoaded()) {
                 try {
-                    @SuppressWarnings("unchecked")
                     final Map<?, ?> options = new HashMap<Object, Object>(GMFResourceFactory.getDefaultLoadOptions());
                     // @see 171060
                     // options.put(org.eclipse.emf.ecore.xmi.XMLResource.

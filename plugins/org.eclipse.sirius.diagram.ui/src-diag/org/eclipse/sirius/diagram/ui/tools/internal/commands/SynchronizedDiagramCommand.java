@@ -44,7 +44,7 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
      *      java.util.Map)
      */
     @Override
-    public void updateElement(final UIElement element, @SuppressWarnings("rawtypes") final Map parameters) {
+    public void updateElement(final UIElement element, final Map parameters) {
         final IWorkbenchWindow window = element.getServiceLocator().getService(IWorkbenchWindow.class);
         if (window == null) {
             return;

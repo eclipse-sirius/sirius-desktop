@@ -48,7 +48,6 @@ public final class EditPartTools {
             result = root;
         }
         if (result == null) {
-            @SuppressWarnings("unchecked")
             final Iterator<EditPart> iterChildren = root.getChildren().iterator();
             while (iterChildren.hasNext() && result == null) {
                 result = EditPartTools.getEditPartOfType(iterChildren.next(), editPartType);

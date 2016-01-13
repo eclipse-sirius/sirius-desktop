@@ -248,7 +248,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @param gmfView
      * @return true if an element was moved.
      */
-    @SuppressWarnings("unchecked")
     private boolean refreshSemanticChildrenOrdering(View hostView) {
         boolean moveOccur = false;
         Map<EObject, View> semantic2ViewMap = new HashMap<EObject, View>();
@@ -284,9 +283,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     private List<View> getViewChildren(final View current) {
-        @SuppressWarnings("unchecked")
-        ArrayList<View> childrens = new ArrayList<View>(current.getChildren());
-        return childrens;
+        return new ArrayList<>(current.getChildren());
     }
 
     /**

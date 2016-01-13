@@ -298,7 +298,6 @@ public class Draw2dToSiriusModelTransformer {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private ContainerRepresentation getMigrationContainerRepresentation(IDiagramListEditPart diagramListEditPart) {
         ContainerRepresentation containerRepresentation = MigrationmodelerFactory.eINSTANCE.createContainerRepresentation();
         containerRepresentation.setMappingId(getMappingId(diagramListEditPart));
@@ -353,7 +352,6 @@ public class Draw2dToSiriusModelTransformer {
         return containerRepresentation;
     }
 
-    @SuppressWarnings("unchecked")
     private ContainerRepresentation getMigrationContainerRepresentation(IDiagramContainerEditPart diagramContainerEditPart) {
         ContainerRepresentation containerRepresentation = MigrationmodelerFactory.eINSTANCE.createContainerRepresentation();
         containerRepresentation.setMappingId(getMappingId(diagramContainerEditPart));

@@ -127,7 +127,6 @@ public class SiriusResizeTracker extends ResizeTracker {
      * {@link ResizeTracker#updateSourceRequest()}). Also update the request
      * with information about snapToAll mode.
      */
-    @SuppressWarnings("unchecked")
     @Override
     protected void updateSourceRequest() {
         if (getSourceRequest() instanceof SnapChangeBoundsRequest) {

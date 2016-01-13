@@ -366,7 +366,6 @@ public class MoveEdgeGroupManager {
         return new PrecisionPoint(moveDelta);
     }
 
-    @SuppressWarnings("unchecked")
     private List<Object> getAllConnections(AbstractDiagramBorderNodeEditPart borderNodeEditPart) {
         List<Object> connections = new ArrayList<Object>();
         connections.addAll(borderNodeEditPart.getSourceConnections());

@@ -484,7 +484,6 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      *            the root edit part
      * @return all edit parts contained in root + root.
      */
-    @SuppressWarnings("unchecked")
     public List<EditPart> getAllEditParts(final EditPart root) {
         final Set<EditPart> editParts = new HashSet<EditPart>();
         editParts.add(root);

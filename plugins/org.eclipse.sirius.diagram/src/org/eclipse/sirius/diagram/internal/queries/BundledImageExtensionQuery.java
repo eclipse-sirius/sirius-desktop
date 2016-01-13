@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
  * @author smonnier
  *
  */
-@SuppressWarnings({ "deprecation", "restriction" })
+@SuppressWarnings({ "restriction" })
 public class BundledImageExtensionQuery {
 
     /**

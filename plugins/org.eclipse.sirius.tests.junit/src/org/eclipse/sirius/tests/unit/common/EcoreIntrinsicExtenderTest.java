@@ -26,7 +26,6 @@ public class EcoreIntrinsicExtenderTest {
      * This test has been added to detect problem during the first update of the
      * metamodels.
      */
-    @SuppressWarnings("unchecked")
     @Test
     public void udpateMetamodels() {
         EcoreIntrinsicExtender extender = new EcoreIntrinsicExtender();

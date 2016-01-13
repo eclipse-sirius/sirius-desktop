@@ -68,7 +68,8 @@ public class SiriusLinkDescriptor extends SiriusNodeDescriptor {
         this(source, destination, linkElement, linkVID);
         final IElementType elementTypeCopy = elementType;
         mySemanticAdapter = new EObjectAdapter(linkElement) {
-            public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+            @Override
+            public Object getAdapter(Class adapter) {
                 if (IElementType.class.equals(adapter)) {
                     return elementTypeCopy;
                 }

@@ -231,7 +231,6 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
 
     }
 
-    @SuppressWarnings("unchecked")
     private Set<EObject> getTargetsFromSelection(IStructuredSelection iStructuredSelection) {
         Set<EObject> targets = new HashSet<EObject>();
         for (Iterator<Object> iterator = iStructuredSelection.iterator(); iterator.hasNext(); /**/) {

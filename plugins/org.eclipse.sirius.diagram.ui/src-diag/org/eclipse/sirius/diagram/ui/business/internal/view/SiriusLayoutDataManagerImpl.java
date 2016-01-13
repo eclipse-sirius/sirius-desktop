@@ -773,14 +773,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getArrangeCommand(org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest,
-     *      org.eclipse.gef.EditPart)
-     */
     @Override
-    @SuppressWarnings({ "unchecked" })
     public Command getArrangeCommand(ArrangeRequest request, EditPart host) {
         Command arrangeCommand = null;
 
