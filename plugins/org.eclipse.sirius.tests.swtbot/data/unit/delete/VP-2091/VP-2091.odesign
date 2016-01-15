@@ -1,75 +1,72 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2091" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2091" version="8.0.0">
   <ownedViewpoints endUserDocumentation="&lt;html>&#xA;&lt;head>&#xA;&lt;/head>&#xA;&lt;body>&#xA;&lt;p>Provides graphical and tabular representation to design an Ecore model.&lt;/p>&#xA;&lt;br>&#xA;&lt;img src=&quot;/doc/screenshots/entities.png&quot;/>&#xA;&lt;img src=&quot;/doc/screenshots/classes.png&quot;/>&#xA;&lt;/body>&#xA;&lt;/html>&#xA;&#xA;&#xA;" name="VP-2091_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="VP-2091_Diagram" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style>
+        <edgeMappings name="EC_EReference" preconditionExpression="&lt;%!eOpposite%>" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%render%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.containment  and  self.derived">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
+          <conditionnalStyles predicateExpression="&lt;%containment &amp;&amp; derived%>">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
-                <labelFormat>italic</labelFormat>
+              <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="&lt;%render%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:not self.containment  and  self.derived">
-            <style>
+          <conditionnalStyles predicateExpression="&lt;%!containment &amp;&amp; derived%>">
+            <style sizeComputationExpression="1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
-                <labelFormat>italic</labelFormat>
+              <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="&lt;%render%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.containment">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
+          <conditionnalStyles predicateExpression="&lt;%containment%>">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
+              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%render%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <containerMappings name="EC EClass" deletionDescription="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20EClass']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+        <containerMappings name="EC EClass" deletionDescription="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20EClass']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
           <subNodeMappings name="EC EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
-            <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.render()" labelAlignment="LEFT" sizeComputationExpression="1">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%render%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + self.eParameters" domainClass="EOperation">
-            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="aql:self.render()" labelAlignment="LEFT" tooltipExpression="aql:self.name + '(' + self.eParameters.name->sep(',') + '): '+ self.eType.name" sizeComputationExpression="2">
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + eParameters%>" domainClass="EOperation">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="&lt;%render%>" labelAlignment="LEFT" tooltipExpression="&lt;%name%>(&lt;%eParameters.name.sep(&quot;, &quot;)%>) : &lt;%eType.name%>" sizeComputationExpression="2">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Design Package" deletionDescription="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20EPackage']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
+        <containerMappings name="Design Package" deletionDescription="//@ownedViewpoints[name='VP-2091_Viewpoint']/@ownedRepresentations[name='VP-2091_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20EPackage']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>

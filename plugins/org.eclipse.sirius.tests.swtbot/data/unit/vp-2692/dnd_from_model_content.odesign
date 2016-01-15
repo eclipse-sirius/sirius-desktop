@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="dnd_from_model_content" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="dnd_from_model_content" version="8.0.0">
   <ownedViewpoints name="dnd_from_model_content" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='dnd_from_model_content']/@ownedRepresentations[name='dnd_from_model_content']/@defaultLayer/@toolSections.0/@ownedTools[name='DAD_EClass']" name="dnd_from_model_content" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
+        <nodeMappings name="EClass" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -24,12 +24,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'EClass' + self.eContainer().eClassifiers->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="EClass&lt;%eContainer.eClassifiers.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DAD_EClass" precondition="aql:self.oclIsKindOf(ecore::EClass)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DAD_EClass" precondition="&lt;%filter(&quot;EClass&quot;)%>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -46,7 +46,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Package' + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

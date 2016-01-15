@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-1896 Group" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-1896 Group" version="8.0.0">
   <ownedViewpoints name="1896" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Table" domainClass="EPackage">
-      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)">
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
         <foregroundConditionalStyle predicateExpression="feature:abstract">
-          <style labelSize="15">
-            <labelFormat>italic</labelFormat>
+          <style labelSize="15" labelFormat="italic">
             <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </foregroundConditionalStyle>
@@ -15,11 +14,11 @@
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
         </defaultBackground>
-        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)">
+        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
           <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedCreateLine name="Create Class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
+      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -29,7 +28,7 @@
           </subModelOperations>
         </firstModelOperation>
       </ownedCreateLine>
-      <ownedCreateLine name="line" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
+      <ownedCreateLine name="line" forceRefresh="true" mapping="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -39,11 +38,11 @@
           </subModelOperations>
         </firstModelOperation>
       </ownedCreateLine>
-      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="aql: if self.derived then '/' + self.name else self.name endif"/>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%if (filter(&quot;EStructuralFeature&quot;).derived) {%>/&lt;%}%>&lt;%name%>"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default" icon="">
-        <containerMappings name="EC EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+        <containerMappings name="EC EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
           <subNodeMappings name="EC EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
             <style xsi:type="style:BundledImageDescription" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -51,23 +50,22 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + self.eParameters" domainClass="EOperation">
-            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="aql:self.render()" tooltipExpression="aql:self.name + '(' + self.eParameters.name->sep(',') + '): '+ self.eType.name" sizeComputationExpression="2">
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + eParameters%>" domainClass="EOperation">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="&lt;%render%>" tooltipExpression="&lt;%name%>(&lt;%eParameters.name.sep(&quot;, &quot;)%>) : &lt;%eType.name%>" sizeComputationExpression="2">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -77,24 +75,23 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="Tree" label="Tree" domainClass="EPackage">
-      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" reusedTreeItemMappings="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class'] //@ownedViewpoints[name='1896']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Package']">
+      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" reusedTreeItemMappings="//@ownedViewpoints[name='1896']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class'] //@ownedViewpoints[name='1896']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Package']">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
       </subItemMappings>
-      <subItemMappings name="Class" label="Class" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)">
-        <defaultStyle showIcon="false">
-          <labelFormat>bold</labelFormat>
+      <subItemMappings name="Class" label="Class" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+        <defaultStyle labelFormat="bold" showIcon="false">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
         <subItemMappings name="Categorie" domainClass="EClass" semanticCandidatesExpression="var:self">
-          <defaultStyle labelExpression="aql:self.name + ' Categorie'">
+          <defaultStyle labelExpression="&lt;%name%> Categorie">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
+          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
             <defaultStyle>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -108,7 +105,7 @@
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
-        <create name="my create tool" elementsToSelect="service:stdEmptyCollection">
+        <create name="my create tool">
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
             <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
               <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
@@ -134,17 +131,16 @@
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
         </create>
       </subItemMappings>
-      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EEnum)">
+      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EEnum&quot;)%>">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
       </subItemMappings>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
-    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]"/>
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
     <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>

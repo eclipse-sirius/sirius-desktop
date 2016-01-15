@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.1.0">
   <ownedViewpoints name="testclosingotherrepresentation">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diag1" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -10,7 +10,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="inheritance" deletionDescription="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@toolSections.0/@ownedTools[name='']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="aql:self.eSuperTypes">
+        <edgeMappings name="inheritance" deletionDescription="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@toolSections.0/@ownedTools[name='']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="&lt;%eSuperTypes%>">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -24,8 +24,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="aql:elementView.targetNode.target"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="&lt;%$elementView.targetNode.target%>"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
   <ownedViewpoints name="VP3216">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -18,7 +18,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="annotation" domainClass="EAnnotation">
-          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.source" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%source%>" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
@@ -40,17 +40,17 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Switch">
-                <cases conditionExpression="aql:target.oclIsKindOf(ecore::EPackage)">
+                <cases conditionExpression="&lt;%$target.filter(&quot;EPackage&quot;) %>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                     <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
                   </subModelOperations>
                 </cases>
-                <cases conditionExpression="aql:target.oclIsKindOf(ecore::EClass)">
+                <cases conditionExpression="&lt;%$target.filter(&quot;EClass&quot;) %>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                     <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
                   </subModelOperations>
                 </cases>
-                <cases conditionExpression="aql:sourceView.oclIsKindOf(diagram::DEdge)">
+                <cases conditionExpression="&lt;%$sourceView.filter(&quot;DEdge&quot;)%>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                     <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
                   </subModelOperations>
@@ -65,7 +65,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -75,7 +75,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'E' + self.eContainer().eAllContents(ecore::EClass)->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="E&lt;%eContainer().eAllContents(&quot;EClass&quot;).nSize%>"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -84,7 +84,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="aql:'a' + self.eContainer().name + self.eContainer().eAnnotations->size()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="a&lt;%eContainer().name + eContainer().eAnnotations.nSize%>"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

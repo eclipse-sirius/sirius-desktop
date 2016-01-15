@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="multiLines" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="multiLines" version="8.0.0">
   <ownedViewpoints name="multiLines" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Ticket VP-1810 EPackage" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="Node with label on border" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <borderedNodeMappings name="Port  with label on border" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)" domainClass="EAttribute">
-            <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+        <nodeMappings name="Node with label on border" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <borderedNodeMappings name="Port  with label on border" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
+            <style xsi:type="style:EllipseNodeDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="Port with label in node" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)" domainClass="EAttribute">
-            <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'" sizeComputationExpression="10" labelPosition="node">
+          <borderedNodeMappings name="Port with label in node" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
+            <style xsi:type="style:EllipseNodeDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3" sizeComputationExpression="10" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'" sizeComputationExpression="10">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3" sizeComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Node with label in node" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:EllipseNodeDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'" sizeComputationExpression="10" labelPosition="node">
+        <nodeMappings name="Node with label in node" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:EllipseNodeDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3" sizeComputationExpression="10" labelPosition="node">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -34,35 +34,35 @@
         <edgeMappings name="RelationBasedEdge EReference" label="Edge" sourceMapping="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='List']" targetMapping="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EPackage" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+            <beginLabelStyleDescription labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+            <centerLabelStyleDescription labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+            <endLabelStyleDescription labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="List" label="List" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+        <containerMappings name="List" label="List" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression=" &lt;%self.name%>1 &#xA; &lt;%self.name%>2 &#xA; &lt;%self.name%>3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Container" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']">
-          <subNodeMappings name="Node In Container with label on border" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border']">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'" sizeComputationExpression="7">
+        <containerMappings name="Container" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']">
+          <subNodeMappings name="Node In Container with label on border" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border']">
+            <style xsi:type="style:SquareDescription" labelExpression=" &lt;%self.name%>1 &#xA; &lt;%self.name%>2 &#xA; &lt;%self.name%>3" sizeComputationExpression="7">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Node In Container with label on node" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'" sizeComputationExpression="7" labelPosition="node">
+          <subNodeMappings name="Node In Container with label on node" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" labelExpression=" &lt;%self.name%>1 &#xA; &lt;%self.name%>2 &#xA; &lt;%self.name%>3" sizeComputationExpression="7" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -70,33 +70,33 @@
           </subNodeMappings>
           <subContainerMappings name="Container EClass R1" label="Container 2" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node']">
             <subNodeMappings name="Node EAttribute R1" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
-              <style xsi:type="style:DotDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+              <style xsi:type="style:DotDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </subNodeMappings>
             <subNodeMappings name="Node EAttribute R1 label" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
-              <style xsi:type="style:DotDescription" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+              <style xsi:type="style:DotDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
           <subContainerMappings name="Container EClass R1 List" label="List2" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subContainerMappings[name='Container%20EClass%20R1']/@subNodeMappings[name='Node%20EAttribute%20R1%20label'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='Ticket%20VP-1810%20EPackage']/@defaultLayer/@containerMappings[name='Container']/@subContainerMappings[name='Container%20EClass%20R1']/@subNodeMappings[name='Node%20EAttribute%20R1']" childrenPresentation="List">
-            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression=" &lt;%name%>1 &#xA; &lt;%name%>2 &#xA; &lt;%name%>3">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + '1 \n ' + self.name + '2 \n ' + self.name + '3'">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression=" &lt;%self.name%>1 &#xA; &lt;%self.name%>2 &#xA; &lt;%self.name%>3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -108,7 +108,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-2211" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="NodeFirstLevel" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
-          <style xsi:type="style:SquareDescription" labelExpression="aql:'Node ' + self.name" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="Node &lt;%name%>" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -130,7 +130,7 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="ContainerSecondLevel" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'Container ' + self.name">
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Container &lt;%name%>">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -138,14 +138,14 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ContainerListSecondLevel" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'ListContainer ' + self.name">
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="ListContainer &lt;%name%>">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'Container ' + self.name">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Container &lt;%name%>">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -153,14 +153,14 @@
           </style>
         </containerMappings>
         <containerMappings name="ContainerListFirstLevelTrunc" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="List">
-          <subNodeMappings name="NodeElementListTrunc" semanticCandidatesExpression="aql:self.eAllContents()" domainClass="EClass">
+          <subNodeMappings name="NodeElementListTrunc" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="EClass">
             <style xsi:type="style:SquareDescription" labelExpression="Truncated Element List At opening" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="Truncated ListContainer At opening">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Truncated ListContainer At opening">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -176,7 +176,7 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="ContainerSecondLevelTrunc" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="Truncated Container in container At opening">
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Truncated Container in container At opening">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -184,14 +184,14 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ContainerListSecondLevelTrunc" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="Truncated ListContainer in container At opening">
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Truncated ListContainer in container At opening">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="Truncated Container At opening">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="Truncated Container At opening">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -199,14 +199,14 @@
           </style>
         </containerMappings>
         <containerMappings name="ContainerListFirstLevel" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="List">
-          <subNodeMappings name="NodeElementList" semanticCandidatesExpression="aql:self.eAllContents()" domainClass="EClass">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:'NE ' + self.name" labelPosition="node">
+          <subNodeMappings name="NodeElementList" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" labelExpression="NE &lt;%name%>" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'ListContainer ' + self.name">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="ListContainer &lt;%name%>">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -217,15 +217,15 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3382" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="Node with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <borderedNodeMappings name="Port  with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)" domainClass="EAttribute">
+        <nodeMappings name="Node with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <borderedNodeMappings name="Port  with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
             <style xsi:type="style:EllipseNodeDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="Port with label in node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)" domainClass="EAttribute">
+          <borderedNodeMappings name="Port with label in node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
             <style xsi:type="style:EllipseNodeDescription" sizeComputationExpression="10" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -238,7 +238,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Node with label in node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+        <nodeMappings name="Node with label in node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
           <style xsi:type="style:EllipseNodeDescription" sizeComputationExpression="10" labelPosition="node">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -248,34 +248,34 @@
         <edgeMappings name="RelationBasedEdge EReference" label="Edge" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" sourceMapping="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='List']" targetMapping="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EPackage" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.name">
+            <beginLabelStyleDescription labelExpression="&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="aql:self.name">
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
-            <endLabelStyleDescription labelExpression="aql:self.name">
+            <endLabelStyleDescription labelExpression="&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="List" label="List" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+        <containerMappings name="List" label="List" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Node%20In%20Container%20with%20label%20on%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Container" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']">
-          <subNodeMappings name="Node In Container with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border']">
+        <containerMappings name="Container" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20in%20node']">
+          <subNodeMappings name="Node In Container with label on border" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border']">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="7">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Node In Container with label on node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+          <subNodeMappings name="Node In Container with label on node" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -297,20 +297,20 @@
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <style xsi:type="style:ShapeContainerStyleDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
           <subContainerMappings name="Container EClass R1 List" label="List2" labelDirectEdit="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@toolSections.0/@ownedTools[name='directEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20%20with%20label%20on%20border'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@nodeMappings[name='Node%20with%20label%20on%20border']/@borderedNodeMappings[name='Port%20with%20label%20in%20node']" reusedNodeMappings="//@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subContainerMappings[name='Container%20EClass%20R1']/@subNodeMappings[name='Node%20EAttribute%20R1%20label'] //@ownedViewpoints[name='multiLines']/@ownedRepresentations[name='VP-3382']/@defaultLayer/@containerMappings[name='Container']/@subContainerMappings[name='Container%20EClass%20R1']/@subNodeMappings[name='Node%20EAttribute%20R1']" childrenPresentation="List">
-            <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <style xsi:type="style:ShapeContainerStyleDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>

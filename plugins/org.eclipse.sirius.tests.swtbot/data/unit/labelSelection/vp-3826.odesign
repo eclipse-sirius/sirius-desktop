@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vp-3826" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vp-3826" version="8.0.0">
   <ownedViewpoints name="vp-3826">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="LabelTests" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="edge" labelDirectEdit="//@ownedViewpoints[name='vp-3826']/@ownedRepresentations[name='LabelTests']/@defaultLayer/@toolSections.0/@ownedTools[name='e']" sourceMapping="//@ownedViewpoints[name='vp-3826']/@ownedRepresentations[name='LabelTests']/@defaultLayer/@containerMappings[name='cont']/@subNodeMappings[name='node1']" targetMapping="//@ownedViewpoints[name='vp-3826']/@ownedRepresentations[name='LabelTests']/@defaultLayer/@containerMappings[name='cont']/@subNodeMappings[name='node2']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="aql:self.name">
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -26,7 +26,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="container">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="container">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -44,7 +44,7 @@
       </defaultLayer>
       <additionalLayers name="layer" label="Layer with begin and end labels">
         <edgeMappingImports name="edgeWithMultiLabels" importedMapping="//@ownedViewpoints[name='vp-3826']/@ownedRepresentations[name='LabelTests']/@defaultLayer/@edgeMappings[name='edge']">
-          <conditionnalStyles predicateExpression="aql:true">
+          <conditionnalStyles predicateExpression="&lt;%true%>">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <beginLabelStyleDescription labelExpression="begin">

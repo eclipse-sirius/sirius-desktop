@@ -84,7 +84,7 @@ public class ContentAssistTest extends AbstractContentAssistTest {
             propertiesBot.setFocus();
             final SWTBotText semanticCandidateExpressionText = propertiesBot.bot().text("feature:eContents");
             semanticCandidateExpressionText.setFocus();
-            semanticCandidateExpressionText.setText("aql:self.aa");
+            semanticCandidateExpressionText.setText("<%aa");
 
             // Unfocus the semantic candidate expression and add text to another
             // text area
@@ -95,12 +95,12 @@ public class ContentAssistTest extends AbstractContentAssistTest {
             // Focus back on the semantic candidate expression and modify its
             // content
             semanticCandidateExpressionText.setFocus();
-            semanticCandidateExpressionText.setText("aql:");
+            semanticCandidateExpressionText.setText("<%");
 
             String initialText = semanticCandidateExpressionText.getText();
 
             // Use of content assist
-            String contentAssistProposalText = selectContentAssistProposal(semanticCandidateExpressionText, 4, 4);
+            String contentAssistProposalText = selectContentAssistProposal(semanticCandidateExpressionText, 2, 2);
             String expectedCompletion = contentAssistProposalText.split(" String")[0].replaceAll(" ", "");
             assertEquals("The content of Semantic Candidate Expression after content assist use is not as expected", initialText + expectedCompletion, semanticCandidateExpressionText.getText());
         } finally {

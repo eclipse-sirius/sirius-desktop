@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="2444" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="2444" version="8.0.0">
   <ownedViewpoints name="2444" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="2444" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="EClass" semanticCandidatesExpression="feature:eContents" semanticElements="aql:Sequence{self} + self.eReferences" domainClass="EClass">
+        <nodeMappings name="EClass" semanticCandidatesExpression="feature:eContents" semanticElements="&lt;%self + eReferences%>" domainClass="EClass">
           <style xsi:type="style:SquareDescription" labelPosition="node" width="10" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="SimpleEdge" semanticElements="aql:Sequence{self} + self.eReferences" sourceMapping="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@nodeMappings[name='EClass']" targetFinderExpression="var:self">
+        <edgeMappings name="SimpleEdge" semanticElements="&lt;%self + eReferences%>" sourceMapping="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@nodeMappings[name='EClass']" targetFinderExpression="var:self">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="aql:self.eReferences->first().name">
+            <centerLabelStyleDescription labelExpression="&lt;%eReferences.nFirst.name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="package" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@nodeMappings[name='EClass']" reusedContainerMappings="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@containerMappings[name='package']">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+        <containerMappings name="package" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@nodeMappings[name='EClass']" reusedContainerMappings="//@ownedViewpoints[name='2444']/@ownedRepresentations[name='2444']/@defaultLayer/@containerMappings[name='package']">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

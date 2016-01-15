@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket #1054" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Ticket #1054" version="8.0.0">
   <ownedViewpoints name="Test case for ticket #1054" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R1']" name="TC1054 representation 1" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <containerMappings name="Container EPackage R1" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R1']" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R1']">
-          <subNodeMappings name="Node EPackage R1" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R1']" domainClass="EPackage">
+        <containerMappings name="Container EPackage R1" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R1']" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Drag%20%26%20Drop%20R1']">
+          <subNodeMappings name="Node EPackage R1" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R1']" domainClass="EPackage">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -25,16 +25,16 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Double click R1" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']/@subNodeMappings[name='Node%20EPackage%20R1'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Double click R1" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']/@subNodeMappings[name='Node%20EPackage%20R1'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']/@defaultLayer/@containerMappings[name='Container%20EPackage%20R1']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']"/>
+              <firstModelOperations xsi:type="tool_1:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -42,7 +42,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC1054 representation 2" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="Node EPackage R3" detailDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigation']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R2']" domainClass="EPackage">
+        <nodeMappings name="Node EPackage R3" detailDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigation']" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" doubleClickDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@toolSections.0/@ownedTools[name='Double%20click%20R2']" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -50,16 +50,16 @@
           </style>
         </nodeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Navigation" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Navigation" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Double click R2" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Double click R2" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%202']/@defaultLayer/@nodeMappings[name='Node%20EPackage%20R3']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:Navigation" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']"/>
+              <firstModelOperations xsi:type="tool_1:Navigation" diagramDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231054']/@ownedRepresentations[name='TC1054%20representation%201']"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

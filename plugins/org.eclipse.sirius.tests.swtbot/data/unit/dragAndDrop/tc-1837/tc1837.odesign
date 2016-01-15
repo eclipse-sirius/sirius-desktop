@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket_1837" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket_1837" version="8.0.0">
   <ownedViewpoints name="TC1837" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EClass_Blue'] //@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@additionalLayers[name='Optional']/@toolSections.0/@ownedTools[name='Drop%20EClass%20Green']" name="Main_Diagram" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="NM_EClass_Blue" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+        <nodeMappings name="NM_EClass_Blue" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="NM_EClass_Green" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+        <nodeMappings name="NM_EClass_Green" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
           <style xsi:type="style:BundledImageDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="CM_EPackage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EClass_Blue'] //@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@additionalLayers[name='Optional']/@toolSections.0/@ownedTools[name='Drop%20EClass%20Green']" reusedNodeMappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Blue'] //@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Green']" reusedContainerMappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EClass_Blue'] //@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@additionalLayers[name='Optional']/@toolSections.0/@ownedTools[name='Drop%20EClass%20Green']" reusedNodeMappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Blue'] //@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Green']" reusedContainerMappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -26,15 +26,15 @@
           </style>
         </containerMappings>
         <toolSections name="Drop">
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EClass_Blue" precondition="aql:true" forceRefresh="true" mappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Blue']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EClass_Blue" precondition="&lt;%true%>" forceRefresh="true" mappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Blue']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.name + ' [droped using \'Drop EClass Blue\' tool]'"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%name%> [droped using 'Drop EClass Blue' tool]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -42,15 +42,15 @@
       </defaultLayer>
       <additionalLayers name="Optional">
         <toolSections name="Drop">
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EClass Green" precondition="aql:true" forceRefresh="true" mappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Green']" dragSource="BOTH">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EClass Green" precondition="&lt;%true%>" forceRefresh="true" mappings="//@ownedViewpoints[name='TC1837']/@ownedRepresentations[name='Main_Diagram']/@defaultLayer/@nodeMappings[name='NM_EClass_Green']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.name + ' [droped using \'Drop EClass Green\' tool]'"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%name%> [droped using 'Drop EClass Green' tool]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

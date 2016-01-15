@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="group" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="group" version="8.0.0">
   <ownedViewpoints name="vp939" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp939" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -25,7 +25,7 @@
           </style>
         </nodeMappings>
         <containerMappings name="package" domainClass="EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+          <style xsi:type="style:FlatContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -34,41 +34,41 @@
         </containerMappings>
         <toolSections name="tools">
           <ownedTools xsi:type="tool:PopupMenu" name="myMenu1">
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction1.1" precondition="aql:self.oclIsKindOf(ecore::EClass)">
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction1.1" precondition="&lt;%filter(&quot;EClass&quot;)%>">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction1.2" precondition="aql:self.oclIsKindOf(ecore::EAttribute)">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
-              </initialOperation>
-            </menuItemDescription>
-          </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="myMenu2" precondition="aql:self.oclIsKindOf(ecore::EPackage)">
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction2.1" precondition="aql:false">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
-              </initialOperation>
-            </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction2.2" precondition="aql:false">
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction1.2" precondition="&lt;%filter(&quot;EAttribute&quot;)%>">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="myMenu3" precondition="aql:false">
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction3.1" precondition="aql:self.oclIsKindOf(ecore::EAttribute)">
+          <ownedTools xsi:type="tool:PopupMenu" name="myMenu2" precondition="&lt;%filter(&quot;EPackage&quot;)%>">
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction2.1" precondition="&lt;%false%>">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="myAction3.2" precondition="aql:self.oclIsKindOf(ecore::EClass)">
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction2.2" precondition="&lt;%false%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="myMenu3" precondition="&lt;%false%>">
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction3.1" precondition="&lt;%filter(&quot;EAttribute&quot;)%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="myAction3.2" precondition="&lt;%filter(&quot;EClass&quot;)%>">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
@@ -76,7 +76,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="myMenu4">
-            <menuItemDescription xsi:type="tool:OperationAction" name="actionMenu4" precondition="aql:views->size() >= 2">
+            <menuItemDescription xsi:type="tool:OperationAction" name="actionMenu4" precondition="&lt;%$views.nSize() >= 2%>">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
@@ -87,7 +87,7 @@
               <parameters name="view" value="var:elementView"/>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="myMenuWithWrongVariable" precondition="aql:self.views">
+          <ownedTools xsi:type="tool:PopupMenu" name="myMenuWithWrongVariable" precondition="&lt;%views%>">
             <menuItemDescription xsi:type="tool:OperationAction" name="myActionWithViews1">
               <view name="views"/>
               <initialOperation>
@@ -106,7 +106,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="myExternalJavaActionWithWrongVariable">
-            <menuItemDescription xsi:type="tool:ExternalJavaAction" name="myExternalJavaActionWithWrongVariableAction" precondition="aql:self.views" id="org.eclipse.sirius.tests.unit.api.tools.stubJavaActionID">
+            <menuItemDescription xsi:type="tool:ExternalJavaAction" name="myExternalJavaActionWithWrongVariableAction" precondition="&lt;%views%>" id="org.eclipse.sirius.tests.unit.api.tools.stubJavaActionID">
               <parameters name="eClass" value="var:element"/>
               <parameters name="view" value="var:elementView"/>
             </menuItemDescription>
@@ -124,7 +124,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="myExternalJavaActionCallWithWrongVariable">
-            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="myExternalJavaActionCallWithWrongVariableAction" precondition="aql:self.views" action="//@ownedViewpoints[name='vp939']/@ownedRepresentations[name='vp939']/@defaultLayer/@toolSections.0/@ownedTools[name='myExternalJavaActionCallWithWrongVariable']/@menuItemDescription.2"/>
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="myExternalJavaActionCallWithWrongVariableAction" precondition="&lt;%views%>" action="//@ownedViewpoints[name='vp939']/@ownedRepresentations[name='vp939']/@defaultLayer/@toolSections.0/@ownedTools[name='myExternalJavaActionCallWithWrongVariable']/@menuItemDescription.2"/>
             <menuItemDescription xsi:type="tool:OperationAction" name="myActionWithViews">
               <view name="views"/>
               <initialOperation>

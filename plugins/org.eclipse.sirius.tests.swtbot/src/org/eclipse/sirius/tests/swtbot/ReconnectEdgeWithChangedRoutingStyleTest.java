@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -22,7 +21,6 @@ import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -96,12 +94,6 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
         editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
-        /*
-         * Force the addition of a dependency to the sample ecore editor
-         * otherwise the interpreter has no way to retrieve the service class
-         * hence any call to "render()" will fail.
-         */
-        localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign"));
     }
 
     /**
@@ -265,8 +257,8 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
 
     private ConnectionEditPart getConnectionEditPart(String sourceEditPartName, String targetEditPartName) {
         assertNotNull("There is no connection between " + sourceEditPartName + " and " + targetEditPartName, getConnectionEditPartList(sourceEditPartName, targetEditPartName));
-        assertEquals("There are more or less than 1 connection between " + sourceEditPartName + " and " + targetEditPartName, 1,
-                getConnectionEditPartList(sourceEditPartName, targetEditPartName).size());
+        assertEquals("There are more or less than 1 connection between " + sourceEditPartName + " and " + targetEditPartName, 1, getConnectionEditPartList(sourceEditPartName, targetEditPartName)
+                .size());
         return getConnectionEditPartList(sourceEditPartName, targetEditPartName).get(0).part();
     }
 

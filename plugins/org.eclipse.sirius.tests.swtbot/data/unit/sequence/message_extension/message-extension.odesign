@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" name="Group" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" name="Group" version="8.0.0">
   <ownedViewpoints name="Scenario Etendus">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="message-extension" viewpointURI="viewpoint:/org.eclipse.sirius.sample.interactions.design/Interactions" representationName="Sequence Diagram on Interaction">
       <layers name="Extension Scenario">
         <edgeMappingImports name="extendedMapping">
           <importedMapping xsi:type="description_2:BasicMessageMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@edgeMappings[name='Call%20Message']"/>
           <conditionnalStyles predicateExpression="true">
-            <style targetArrow="NoDecoration">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <beginLabelStyleDescription labelSize="6" showIcon="false" labelExpression="begin">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </beginLabelStyleDescription>
-              <centerLabelStyleDescription labelExpression="aql:self.name + '_extended'">
+              <centerLabelStyleDescription labelExpression="&lt;%name%>_extended">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </centerLabelStyleDescription>
               <endLabelStyleDescription labelSize="6" showIcon="false" labelExpression="end">

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
   <ownedViewpoints name="BreakDownEcore" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Breakdown" domainClass="EPackage">
-      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eSubpackages" nodeMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']"/>
+      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="&lt;%eSubpackages %>" nodeMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Package" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)" domainClass="EPackage">
+        <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12,7 +12,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
-          <style routingStyle="tree">
+          <style sizeComputationExpression="1" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -37,7 +37,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -48,7 +48,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BreakdownCompositeTopToBottom" domainClass="EPackage">
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Package" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)" domainClass="EPackage">
+        <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -56,7 +56,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeTopToBottom']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeTopToBottom']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration" routingStyle="tree">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -81,7 +81,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -92,7 +92,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BreakdownCompositeLeftToRight" domainClass="EPackage">
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Package" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)" domainClass="EPackage">
+        <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -100,7 +100,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeLeftToRight']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeLeftToRight']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
-          <style routingStyle="tree">
+          <style sizeComputationExpression="1" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -125,7 +125,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -136,7 +136,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BreakdownCompositeBottomToTop" domainClass="EPackage">
       <layout xsi:type="description_1:CompositeLayout" direction="bottomToTop"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Package" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)" domainClass="EPackage">
+        <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -144,7 +144,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeBottomToTop']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='BreakDownEcore']/@ownedRepresentations[name='BreakdownCompositeBottomToTop']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
-          <style routingStyle="tree">
+          <style sizeComputationExpression="1" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -169,7 +169,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="HideLabelIcons" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="HideLabelIcons" version="8.0.0">
   <ownedViewpoints name="VP1257">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP1257Diagram" domainClass="EPackage">
       <filters xsi:type="filter:CompositeFilterDescription" name="myClassAndEdgeFilter">
@@ -11,15 +11,15 @@
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="SuperTypes" label="isSuperTypeOf" sourceMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetFinderExpression="aql:self.eSuperTypes">
+      <edgeMappings name="SuperTypes" label="isSuperTypeOf" sourceMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetFinderExpression="&lt;%self.eSuperTypes%>">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          <centerLabelStyleDescription labelExpression="aql:'isSuperTypeOf' + self.name">
+          <centerLabelStyleDescription labelExpression="isSuperTypeOf&lt;%self.name%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <edgeMappings name="IsContainedIn" label="isContainedIn" sourceMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@containerMappings[name='EPackages']" targetFinderExpression="aql:self.ePackage">
+      <edgeMappings name="IsContainedIn" label="isContainedIn" sourceMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']" targetMapping="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@containerMappings[name='EPackages']" targetFinderExpression="&lt;%self.ePackage%>">
         <style lineStyle="dot" sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           <centerLabelStyleDescription labelExpression="isContainedIn">
@@ -27,8 +27,8 @@
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <containerMappings name="EPackages" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']">
-        <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+      <containerMappings name="EPackages" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP1257']/@ownedRepresentations[name='VP1257Diagram']/@nodeMappings[name='EClasses']">
+        <style xsi:type="style:ShapeContainerStyleDescription">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
@@ -41,7 +41,7 @@
           <initialOperation>
             <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
               <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newTestClass"/>
-              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.instance">
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%instance%>">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:instance"/>
               </subModelOperations>
             </firstModelOperations>
