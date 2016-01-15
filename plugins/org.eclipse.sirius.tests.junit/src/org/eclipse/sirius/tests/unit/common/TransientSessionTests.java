@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,6 +132,7 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
         ISaveablePart saveablePart = diagramEditor;
         assertEquals("With a transient session adding a EClass should, the session become dirty ", SessionStatus.DIRTY, session.getStatus());
         assertTrue("With a transient session adding a EClass should, the editor become dirty ", saveablePart.isDirty());
+        assertTrue("The resource status is wrong for a transient session. It should be modified after modification.", session.getSessionResource().isModified());
 
         // Save on diagramEditor
         saveablePart.doSave(new NullProgressMonitor());
@@ -139,6 +140,7 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
 
         assertEquals("With a transient session the save should be allowed", SessionStatus.SYNC, session.getStatus());
         assertFalse("With a transient session, saving the editor, it become no dirty ", saveablePart.isDirty());
+        assertFalse("The resource status is wrong for a transient session. It should be \"not modified\" after a save.", session.getSessionResource().isModified());
 
         DialectUIManager.INSTANCE.closeEditor(diagramEditor, true);
         TestsUtil.synchronizationWithUIThread();
