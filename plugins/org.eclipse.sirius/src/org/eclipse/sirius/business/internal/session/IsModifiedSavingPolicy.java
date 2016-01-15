@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-
 package org.eclipse.sirius.business.internal.session;
 
 import java.io.IOException;
@@ -145,7 +144,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
 
             @Override
             public boolean apply(Resource resourcetoSave) {
-                return resourcetoSave.getURI().isFile() || resourcetoSave.getURI().isPlatformResource() && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
+                return !ResourceSetSync.isReadOnly(resourcetoSave) && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
             }
 
         }));
