@@ -10,8 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.interpreter.api;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EObject;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Default implementaiton of {@link IEvaluationResult}, suitable for most cases.
@@ -64,9 +72,33 @@ public class EvaluationResult implements IEvaluationResult {
     public Diagnostic getDiagnostic() {
         return status;
     }
-    
+
     @Override
     public boolean success() {
         return Diagnostic.OK == status.getSeverity() && rawValue != null;
+    }
+
+    @Override
+    public Collection<EObject> asEObjects() {
+        final Collection<EObject> result;
+        if (rawValue instanceof Collection<?>) {
+            result = Lists.newArrayList(Iterables.filter((Collection<?>) rawValue, EObject.class));
+        } else if (rawValue instanceof EObject) {
+            result = Collections.singleton((EObject) rawValue);
+        } else if (rawValue != null && rawValue.getClass().isArray()) {
+            result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) rawValue), EObject.class));
+        } else {
+            result = Collections.emptySet();
+        }
+        return result;
+    }
+
+    @Override
+    public String asString() {
+        if (rawValue != null) {
+            return String.valueOf(rawValue);
+        } else {
+            return "";
+        }
     }
 }
