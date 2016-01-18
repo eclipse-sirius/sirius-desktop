@@ -1,117 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
-    xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0"
-    xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
-    xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
-    xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
-    name="project"
-    version="11.0.0.201511131800">
-  <ownedViewpoints
-      name="Design">
-    <ownedRepresentations
-        xsi:type="description_1:DiagramDescription"
-        name="Class Diagram"
-        domainClass="ecore.EPackage"
-        enablePopupBars="true">
-      <defaultLayer
-          name="Default">
-        <containerMappings
-            name="CD_Class"
-            domainClass="ecore.EClass"
-            childrenPresentation="List">
-          <subNodeMappings
-              name="CD_Attribute"
-              semanticCandidatesExpression="feature:eAllContents"
-              domainClass="ecore.EAttribute">
-            <style
-                xsi:type="style:BundledImageDescription"
-                labelPosition="node"
-                resizeKind="NSEW">
-              <borderColor
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="project" version="11.0.0.201511131800">
+  <ownedViewpoints name="Design">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Class Diagram" domainClass="ecore.EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="CD_Class" domainClass="ecore.EClass" childrenPresentation="List">
+          <subNodeMappings name="CD_Attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings
-              name="CD_Reference"
-              semanticCandidatesExpression="feature:eAllContents"
-              domainClass="ecore.EReference">
-            <style
-                xsi:type="style:BundledImageDescription"
-                labelPosition="node"
-                resizeKind="NSEW">
-              <borderColor
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color
-                  xsi:type="description:SystemColor"
-                  href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <subNodeMappings name="CD_Reference" semanticCandidatesExpression="feature:eAllContents" domainClass="ecore.EReference">
+            <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style
-              xsi:type="style:FlatContainerStyleDescription"
-              borderSizeComputationExpression="1">
-            <borderColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
-  <extensions
-      xsi:type="properties:ViewExtensionDescription"
-      identifier="Properties"
-      defaultPage="//@extensions.0/@pages.0"
-      labelExpression="aql:self.name"
-      preconditionExpression="">
-    <pages identifier="PageOne"
-        labelExpression="aql:'General'"
-        domainClass="ecore.EAttribute"
-        semanticCandidateExpression=""/>
-    <pages identifier="PageTwo"
-        labelExpression="aql:'Semantic'"
-        domainClass="ecore.EReference"/>
-    <pages identifier="PageThree"
-        labelExpression="aql:'Documentation'"
-        domainClass="ecore.EClass"/>
-    <groups
-        identifier="GroupOne"
-        labelExpression=""
-        domainClass="ecore.ENamedElement"
-        semanticCandidateExpression="">
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties" defaultPage="//@extensions.0/@pages.0" labelExpression="aql:self.name" preconditionExpression="">
+    <pages identifier="All EClass attributes" labelExpression="aql:self.name" domainClass="ecore.EAttribute" semanticCandidateExpression="aql:self.eContents(ecore::EAttribute)" groups="//@extensions.0/@groups.0"/>
+    <pages identifier="Single EAttribute" labelExpression="aql:self.name" domainClass="ecore.EAttribute" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
+    <groups identifier="EAttribute properties" labelExpression="" domainClass="ecore.EAttribute" semanticCandidateExpression="">
       <container>
-        <widgets
-            xsi:type="properties:TextDescription"
-            labelExpression="Name"
-            valueExpression="feature:name">
+        <widgets xsi:type="properties:TextDescription" identifier="Name" labelExpression="Name" valueExpression="feature:name">
           <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="name"
-                valueExpression="aql:newValue"/>
+            <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:newValue"/>
           </initialOperation>
         </widgets>
       </container>
