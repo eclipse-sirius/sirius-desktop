@@ -29,7 +29,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.TypedVariable@ has been created.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@ has been created as tag interface for variables that require user interaction to be valued.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
-* <span class="label label-info">Added</span> @org.eclipse.sirius.tools.api.command.ui.NoUICallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.NoUICallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@ now implements @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
@@ -49,7 +49,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
-* <span class="label label-info">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
@@ -67,6 +67,9 @@ h4. Changes in @org.eclipse.sirius.ui@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertyDescriptor@ has been added to provide a specific @ExtensiblePropertyDescriptor@ which test @IPermissionAuthority@ to make properties view editable or not.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ has been modified to use @SiriusExtensiblePropertyDescriptor@ to provide not editable properties view when the object, selected from the Model Explorer view, cannot be modified.
 
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-success">Added</span> The method @getTreeItem(final SWTBotTreeItem[], final String)@ has been added in @org.eclipse.sirius.tests.swtbot.support.utils@ to retrieve recursively a @SWTBotTreeItem@ in a @SWTBotTreeItem@ array.
 
 h2(#sirius3.1.1). Changes in Sirius 3.1.1
 
