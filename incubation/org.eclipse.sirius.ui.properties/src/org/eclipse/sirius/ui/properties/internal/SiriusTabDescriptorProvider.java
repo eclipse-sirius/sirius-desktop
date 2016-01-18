@@ -28,13 +28,17 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptorProvider;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -60,19 +64,14 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
     private ITabDescriptor[] getTabDescriptors(EObject semanticElement) {
         Session session = new EObjectQuery(semanticElement).getSession();
-        List<ViewExtensionDescription> descriptions = findActiveDescriptions(session, semanticElement);
-        // FIXME We take only the firts one
-        if (descriptions.size() > 0) {
-            ViewExtensionDescription viewExtensionDescription = descriptions.get(0);
-            return getTabDescriptors(session, semanticElement, viewExtensionDescription);
-        }
-        return new ITabDescriptor[0];
+        List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(semanticElement, session);
+        return getTabDescriptors(session, semanticElement, effectivePageDescriptions);
     }
 
-    private ITabDescriptor[] getTabDescriptors(Session session, EObject semanticElement, ViewExtensionDescription viewExtensionDescription) {
-        EEFViewDescription viewDescription = new ViewDescriptionConverter(viewExtensionDescription).convert();
+    private ITabDescriptor[] getTabDescriptors(Session session, EObject semanticElement, List<PageDescription> effectivePageDescriptions) {
+        EEFViewDescription viewDescription = new ViewDescriptionConverter(session, semanticElement, effectivePageDescriptions).convert();
         EEFView eefView = createEEFView(session, semanticElement, viewDescription);
-        
+
         List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
         List<EEFPage> eefPages = eefView.getPages();
         for (EEFPage eefPage : eefPages) {
@@ -88,24 +87,29 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
         return eefView;
     }
 
-    private List<ViewExtensionDescription> findActiveDescriptions(Session session, EObject semanticElement) {
-        List<ViewExtensionDescription> descriptions = new ArrayList<ViewExtensionDescription>();
-        if (session != null) {
-            Set<Resource> activeVSMs = Sets.newLinkedHashSet();
-            for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
-                Resource vsm = viewpoint.eResource();
-                if (vsm != null) {
-                    activeVSMs.add(vsm);
-                }
-            }
+    /**
+     * Computes the equivalent of:
+     * 
+     * <pre>
+     * session.selectedViewpoints.eContainer(description::Group).eContents(properties::ViewExtensionDescription).pages
+     * </pre>
+     */
+    private List<PageDescription> computeEffectiveDescription(EObject semanticElement, Session session) {
+        Preconditions.checkNotNull(session);
 
-            List<ViewExtensionDescription> result = Lists.newArrayList();
-            for (Resource vsm : activeVSMs) {
-                Group group = (Group) vsm.getContents().get(0);
-                Iterables.addAll(result, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
+        List<ViewExtensionDescription> viewDescriptions = Lists.newArrayList();
+        for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
+            Option<EObject> parent = new EObjectQuery(viewpoint).getFirstAncestorOfType(DescriptionPackage.Literals.GROUP);
+            if (parent.some()) {
+                Group group = (Group) parent.get();
+                Iterables.addAll(viewDescriptions, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
             }
-            return result;
         }
-        return descriptions;
+
+        List<PageDescription> effectivePages = Lists.newArrayList();
+        for (ViewExtensionDescription ved : viewDescriptions) {
+            effectivePages.addAll(ved.getPages());
+        }
+        return effectivePages;
     }
 }
