@@ -1,6 +1,6 @@
 h1. Sequence Diagrams Editors
 
-This document explains how to Sirius sequence diagrams editors/modelers. Sequence diagrams share most  of the functionalities of normal diagrams, but they have some specificities and restrictions.
+This document explains how to use sequence diagrams editors/modelers. Sequence diagrams share most  of the functionalities of normal diagrams, but they have some specificities and restrictions.
 
 {toc:style=disc|minLevel=2|maxLevel=3}
 
