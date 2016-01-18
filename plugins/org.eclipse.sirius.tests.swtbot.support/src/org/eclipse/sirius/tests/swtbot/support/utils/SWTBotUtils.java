@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -457,4 +457,30 @@ public final class SWTBotUtils {
 
     }
 
+    /**
+     * Find a {@link SWTBotTreetem} with its name in a {@link SWTBotTreetem}
+     * list and its children recursively.
+     * 
+     * @param treeElements
+     *            the {@link SWTBotTreetem} list to search in
+     * @param name
+     *            the name of the searched {@link SWTBotTreetem}
+     * @return the tree item
+     */
+    public static SWTBotTreeItem getTreeItem(final SWTBotTreeItem[] treeElements, final String name) {
+        SWTBotTreeItem foundTreeItem = null;
+        if (treeElements != null && treeElements.length > 0) {
+            for (SWTBotTreeItem swtBotTreeItem : treeElements) {
+                if (swtBotTreeItem.getText().equals(name)) {
+                    foundTreeItem = swtBotTreeItem;
+                    break;
+                }
+                foundTreeItem = getTreeItem(swtBotTreeItem.getItems(), name);
+                if (foundTreeItem != null) {
+                    break;
+                }
+            }
+        }
+        return foundTreeItem;
+    }
 }
