@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_mars" sequenceNumber="1450085224">
+<target name="sirius_mars" sequenceNumber="1453197452">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -31,6 +31,10 @@
       <repository id="Acceleo-Nightly" location="http://download.eclipse.org/acceleo/updates/nightly/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
+      <repository id="EEF-1.5" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.5/R201601141612"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
       <repository id="Sirius-Incubation-Nightly" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/"/>
     </location>
@@ -46,7 +50,6 @@
       <unit id="org.eclipse.emf.compare.feature.group" version="3.1.1.201509120604"/>
       <unit id="org.eclipse.emf.ecore.feature.group" version="2.11.1.v20150805-0538"/>
       <unit id="org.eclipse.emf.edit.feature.group" version="2.11.1.v20150806-0404"/>
-      <unit id="org.eclipse.emf.eef.runtime" version="1.5.0.201505291308"/>
       <unit id="org.eclipse.emf.feature.group" version="2.11.1.v20150806-0404"/>
       <unit id="org.eclipse.emf.sdk.feature.group" version="2.11.1.v20150806-0404"/>
       <unit id="org.eclipse.emf.transaction.feature.group" version="1.9.0.201506010221"/>
