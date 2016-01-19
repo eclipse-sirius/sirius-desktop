@@ -154,7 +154,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -255,7 +255,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -529,7 +529,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -582,7 +582,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -636,7 +636,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:target.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -689,7 +689,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.ReturnMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:target.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1278,7 +1278,7 @@
       </defaultLayer>
       <additionalLayers name="Lost Found" label="Lost and found messages creation">
         <toolSections name="Lost Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1288,7 +1288,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1313,7 +1313,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1346,7 +1346,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1380,7 +1380,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Lost Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1390,7 +1390,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1415,7 +1415,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1425,7 +1425,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
@@ -1451,7 +1451,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1461,7 +1461,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1499,7 +1499,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1572,7 +1572,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant.type.eOperation->first()"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperation->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1655,7 +1655,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContaienr().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContainer().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1689,7 +1689,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Found Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1699,7 +1699,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
@@ -1724,7 +1724,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1734,7 +1734,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.FeatureAccessMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant.type.eStructuralFeatures->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="feature" valueExpression="aql:element.currentParticipant().type.eStructuralFeatures->first()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="isWrite" valueExpression="aql:true"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
@@ -1760,7 +1760,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1770,7 +1770,7 @@
                     <parameters name="enabled" value="aql:false"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="newMessage">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant.type.eOperations->first()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:element.currentParticipant().type.eOperations->first()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.MessageEnd" referenceName="ends" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:newMessage"/>
