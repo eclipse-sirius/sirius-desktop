@@ -380,6 +380,18 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="GenericTool" precondition="aql:element.oclIsKindOf(interactions::Interaction) and elementView.oclIsKindOf(diagram::DNode)">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContents"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="Ignored">
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="ElementType">
               <mask mask="{0}"/>

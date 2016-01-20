@@ -69,6 +69,11 @@ import com.google.common.collect.Sets;
  */
 public abstract class AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
     /**
+     * The {@DSemanticDecorator} variable type.
+     */
+    protected static final VariableType DSEMANTIC_DECORATOR = VariableType.fromString("viewpoint.DSemanticDecorator"); //$NON-NLS-1$
+
+    /**
      * The "self" reserved variable name.
      */
     protected static final String SELF = "self"; //$NON-NLS-1$
@@ -288,18 +293,36 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  * the containerView variable is accessible in any Model
                  * operation which is a child of the ToolDescription.
                  */
-                availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
+                availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$ 
+                /*
+                 * Infer type of variables using the tool precondition.
+                 */
+                IInterpreterContext iContext = SiriusInterpreterContextFactory.createInterpreterContext(operationContext, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+                ValidationResult res = MultiLanguagesValidator.getInstance().validateExpression(iContext, ((ToolDescription) operationContext).getPrecondition());
+                Map<String, VariableType> inferedTypes = res.getInferredVariableTypes(Boolean.TRUE);
+                for (Entry<String, VariableType> infered : inferedTypes.entrySet()) {
+                    if (SELF.equals(infered.getKey())) {
+                        changeSelfType(infered.getValue());
+                    } else {
+                        availableVariables.put(infered.getKey(), infered.getValue());
+                    }
+
+                }
+
             }
-            
+
             addVariablesFromToolContext(operationContext);
         }
         collectLocalVariablesDefinitions();
         if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
             /*
-             * the containerView variable is accessible in the "precondition"
-             * feature of the ToolDescription. See GenericToolCommandBuilder.
+             * the containerView, element and elementView variables are
+             * accessible in the "precondition" feature of the ToolDescription.
+             * See GenericToolCommandBuilder.
              */
-            availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
+            availableVariables.put("containerView", DSEMANTIC_DECORATOR); //$NON-NLS-1$
+            availableVariables.put(((ToolDescription) this.target).getElement().getName(), VariableType.ANY_EOBJECT);
+            availableVariables.put(((ToolDescription) this.target).getElementView().getName(), DSEMANTIC_DECORATOR);
         }
 
         if (ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT.equals(feature)) {
