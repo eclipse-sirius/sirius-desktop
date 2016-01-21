@@ -275,8 +275,26 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
      *            the variable types
      */
     protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, String expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
+        assertVariableExistenceAndType(tool, expectedVariable, VariableType.fromString(expectedType), variables, variablesToType);
+    }
+    
+    /**
+     * Assert variable existence and test type.
+     * 
+     * @param tool
+     *            the tool owning the variable
+     * @param expectedVariable
+     *            the expected variable
+     * @param expectedType
+     *            the expected type
+     * @param variables
+     *            the variables
+     * @param variablesToType
+     *            the variable types
+     */
+    protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, VariableType expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
         assertVariableExistence(tool, expectedVariable, variables);
-        assertEquals("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable " + expectedVariable, VariableType.fromString(expectedType).toString(),
+        assertEquals("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable " + expectedVariable, expectedType.toString(),
                 variablesToType.get(expectedVariable).toString());
     }
 }

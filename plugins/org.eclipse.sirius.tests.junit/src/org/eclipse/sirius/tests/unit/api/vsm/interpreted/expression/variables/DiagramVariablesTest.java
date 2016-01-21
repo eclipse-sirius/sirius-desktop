@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -180,7 +181,7 @@ public class DiagramVariablesTest extends AbstractInterpretedExpressionTestCase 
         assertVariableExistence(createReconnectEdgeDescription, "element", variables);
 
         // check variables from create operation
-        assertVariableExistenceAndType(createReconnectEdgeDescription, "otherEnd", "diagram.EdgeTarget", variables, variablesToType);
+        assertVariableExistenceAndType(createReconnectEdgeDescription, "otherEnd", VariableType.fromStrings(Arrays.asList("diagram.DEdge","diagram.DDiagramElementContainer","diagram.DNode")), variables, variablesToType);
         assertVariableExistenceAndType(createReconnectEdgeDescription, "edgeView", "diagram.DEdge", variables, variablesToType);
     }
 }

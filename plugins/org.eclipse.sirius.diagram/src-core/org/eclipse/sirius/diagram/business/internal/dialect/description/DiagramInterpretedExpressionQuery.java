@@ -75,6 +75,8 @@ import com.google.common.collect.Sets;
  */
 public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
 
+    private static final String DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER = "diagram.DDiagramElementContainer"; //$NON-NLS-1$
+
     private static final String DIAGRAM_D_SEMANTIC_DIAGRAM = "diagram.DSemanticDiagram"; //$NON-NLS-1$
 
     private static final String DIAGRAM_D_NODE = "diagram.DNode"; //$NON-NLS-1$
@@ -85,7 +87,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
     private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_EDGE_TARGET_TYPE = "diagram.EdgeTarget"; //$NON-NLS-1$
+    private static final VariableType EDGE_TARGET_POSSIBILITIES = VariableType.fromStrings(Sets.newHashSet(DIAGRAM_D_EDGE_TYPE, DIAGRAM_D_NODE, DIAGRAM_D_DIAGRAM_ELEMENT_CONTAINER)); 
 
     /**
      * Default constructor.
@@ -179,9 +181,9 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
             availableVariables.put("diagram", VariableType.fromString("diagram.DDiagram")); //$NON-NLS-1$ //$NON-NLS-2$
             availableVariables.put("preSource", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
-            availableVariables.put("preSourceView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+            availableVariables.put("preSourceView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
             availableVariables.put("preTarget", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
-            availableVariables.put("preTargetView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+            availableVariables.put("preTargetView", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
         }
 
         return availableVariables;
@@ -208,7 +210,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             if (toolContext instanceof ReconnectEdgeDescription) {
                 ReconnectEdgeDescription tool = (ReconnectEdgeDescription) toolContext;
                 declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
-                availableVariables.put("otherEnd", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+                availableVariables.put("otherEnd", EDGE_TARGET_POSSIBILITIES); //$NON-NLS-1$
                 availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE)); //$NON-NLS-1$
 
                 Collection<String> possibleSources = Lists.newArrayList();
