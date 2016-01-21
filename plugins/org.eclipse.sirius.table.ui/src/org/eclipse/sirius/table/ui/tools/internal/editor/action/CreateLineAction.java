@@ -57,14 +57,12 @@ public class CreateLineAction extends AbstractLineAction {
     @Override
     public void run() {
         super.run();
-        EObject target;
+        EObject target = getTarget();
         LineContainer lineContainer;
         DLine dLine = getLine();
         if (dLine != null) {
-            target = dLine.getTarget();
             lineContainer = (LineContainer) dLine.eContainer();
         } else {
-            target = table.getTarget();
             lineContainer = table;
         }
         Command cmd = tableCommandFactory.buildCreateLineCommandFromTool(lineContainer, target, getCreateTool());
@@ -82,6 +80,15 @@ public class CreateLineAction extends AbstractLineAction {
         return tool;
     }
 
+    private EObject getTarget() {
+        DLine dLine = getLine();
+        if (dLine != null) {
+            return dLine.getTarget();
+        } else {
+            return getTable().getTarget();
+        }
+    }
+
     @Override
     public boolean canExecute() {
         boolean canExecute = true;
@@ -90,20 +97,18 @@ public class CreateLineAction extends AbstractLineAction {
                 canExecute = false;
             } else {
                 if (getCreateTool().getPrecondition() != null && !StringUtil.isEmpty(getCreateTool().getPrecondition().trim())) {
-                    IInterpreter interpreter;
+                    EObject target = getTarget();
+                    IInterpreter interpreter = InterpreterUtil.getInterpreter(target);
+                    interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, target);
                     if (getLine() != null) {
-                        interpreter = InterpreterUtil.getInterpreter(getLine().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(getLine()).getTarget());
-                        interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getLine().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, ((LineContainer) getLine().eContainer()).getTarget());
                     } else {
-                        interpreter = InterpreterUtil.getInterpreter(getTable().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ROOT, getTable().getTarget());
-                        interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getTable().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, null);
                     }
                     try {
-                        canExecute = interpreter.evaluateBoolean(getLine().getTarget(), getCreateTool().getPrecondition());
+                        canExecute = interpreter.evaluateBoolean(target, getCreateTool().getPrecondition());
                     } catch (final EvaluationException e) {
                         RuntimeLoggerManager.INSTANCE.error(getCreateTool(), ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                     }
