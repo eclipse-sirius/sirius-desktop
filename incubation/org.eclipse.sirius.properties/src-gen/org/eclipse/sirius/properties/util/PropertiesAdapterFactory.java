@@ -103,6 +103,10 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
                 return createTextDescriptionAdapter();
             }
             @Override
+            public Adapter caseLabelDescription(LabelDescription object) {
+                return createLabelDescriptionAdapter();
+            }
+            @Override
             public Adapter caseExtension(Extension object) {
                 return createExtensionAdapter();
             }
@@ -207,6 +211,20 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createTextDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.LabelDescription <em>Label Description</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.LabelDescription
+     * @generated
+     */
+    public Adapter createLabelDescriptionAdapter() {
         return null;
     }
 

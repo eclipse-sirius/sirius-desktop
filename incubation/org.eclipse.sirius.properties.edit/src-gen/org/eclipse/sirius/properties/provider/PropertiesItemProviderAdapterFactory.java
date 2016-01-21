@@ -213,6 +213,29 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.LabelDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected LabelDescriptionItemProvider labelDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.LabelDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createLabelDescriptionAdapter() {
+        if (labelDescriptionItemProvider == null) {
+            labelDescriptionItemProvider = new LabelDescriptionItemProvider(this);
+        }
+
+        return labelDescriptionItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -316,6 +339,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (groupDescriptionItemProvider != null) groupDescriptionItemProvider.dispose();
         if (containerDescriptionItemProvider != null) containerDescriptionItemProvider.dispose();
         if (textDescriptionItemProvider != null) textDescriptionItemProvider.dispose();
+        if (labelDescriptionItemProvider != null) labelDescriptionItemProvider.dispose();
     }
 
     /**

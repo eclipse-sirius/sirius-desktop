@@ -70,6 +70,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             case PropertiesPackage.GROUP_DESCRIPTION: return createGroupDescription();
             case PropertiesPackage.CONTAINER_DESCRIPTION: return createContainerDescription();
             case PropertiesPackage.TEXT_DESCRIPTION: return createTextDescription();
+            case PropertiesPackage.LABEL_DESCRIPTION: return createLabelDescription();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -123,6 +124,16 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public TextDescription createTextDescription() {
         TextDescriptionImpl textDescription = new TextDescriptionImpl();
         return textDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public LabelDescription createLabelDescription() {
+        LabelDescriptionImpl labelDescription = new LabelDescriptionImpl();
+        return labelDescription;
     }
 
     /**

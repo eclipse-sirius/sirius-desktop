@@ -45,5 +45,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/initialOperation"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//LabelDescription"/>
   </genPackages>
 </genmodel:GenModel>

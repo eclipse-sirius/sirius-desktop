@@ -192,6 +192,11 @@ public class ContainerDescriptionItemProvider
             (createChildParameter
                 (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
                  PropertiesFactory.eINSTANCE.createTextDescription()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
+                 PropertiesFactory.eINSTANCE.createLabelDescription()));
     }
 
     /**

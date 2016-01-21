@@ -398,6 +398,44 @@ public interface PropertiesPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl <em>Label Description</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.sirius.properties.impl.LabelDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
+     * @generated
+     */
+    int LABEL_DESCRIPTION = 6;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+
+    /**
+     * The number of structural features of the '<em>Label Description</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.ViewExtensionDescription <em>View Extension Description</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -700,6 +738,16 @@ public interface PropertiesPackage extends EPackage {
     EReference getTextDescription_InitialOperation();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.LabelDescription <em>Label Description</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Label Description</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription
+     * @generated
+     */
+    EClass getLabelDescription();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -956,6 +1004,16 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference TEXT_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getTextDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl <em>Label Description</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.sirius.properties.impl.LabelDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
+         * @generated
+         */
+        EClass LABEL_DESCRIPTION = eINSTANCE.getLabelDescription();
 
     }
 

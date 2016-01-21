@@ -51,4 +51,5 @@
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelDescription" eSuperTypes="#//WidgetDescription"/>
 </ecore:EPackage>

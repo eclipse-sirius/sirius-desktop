@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -82,6 +83,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass textDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass labelDescriptionEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -404,6 +412,15 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getLabelDescription() {
+        return labelDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory)getEFactoryInstance();
     }
@@ -460,6 +477,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         textDescriptionEClass = createEClass(TEXT_DESCRIPTION);
         createEAttribute(textDescriptionEClass, TEXT_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(textDescriptionEClass, TEXT_DESCRIPTION__INITIAL_OPERATION);
+
+        labelDescriptionEClass = createEClass(LABEL_DESCRIPTION);
     }
 
     /**
@@ -497,6 +516,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         // Add supertypes to classes
         viewExtensionDescriptionEClass.getESuperTypes().add(theDescriptionPackage.getExtension());
         textDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        labelDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -532,6 +552,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(textDescriptionEClass, TextDescription.class, "TextDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTextDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, TextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getTextDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, TextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);
