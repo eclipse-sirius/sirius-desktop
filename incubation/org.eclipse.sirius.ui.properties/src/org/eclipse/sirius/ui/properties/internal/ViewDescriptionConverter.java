@@ -118,8 +118,8 @@ public class ViewDescriptionConverter {
     private void createPage(PageDescription pageDescription, EObject pageTarget, EEFViewDescription view) {
         EEFPageDescription page = EefFactory.eINSTANCE.createEEFPageDescription();
         page.setIdentifier(pageDescription.getIdentifier());
-        page.setLabelExpression(computeString(pageTarget, pageDescription.getLabelExpression()));
-
+        page.setLabelExpression(pageDescription.getLabelExpression());
+        page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
         for (GroupDescription groupDescription : pageDescription.getGroups()) {
             instantiateGroups(groupDescription, page, pageTarget, view);
         }

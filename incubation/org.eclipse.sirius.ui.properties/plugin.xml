@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-  <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
-    <propertyContributor
-        contributorId="org.eclipse.sirius.diagram.ui"
-        tabDescriptorProvider="org.eclipse.sirius.ui.properties.internal.SiriusTabDescriptorProvider" >
-      <propertyCategory/>
-    </propertyContributor>
-  </extension>
 
-  <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
-    <propertyContributor
-        contributorId="org.eclipse.sirius.table.ui.EditorID"
-        tabDescriptorProvider="org.eclipse.sirius.ui.properties.internal.SiriusTabDescriptorProvider">
-      <propertyCategory/>
-    </propertyContributor>
-  </extension>
   
-  <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
-    <propertyContributor
-        contributorId="org.eclipse.sirius.tree.ui.EditorID"
-        tabDescriptorProvider="org.eclipse.sirius.ui.properties.internal.SiriusTabDescriptorProvider">
-      <propertyCategory/>
-    </propertyContributor>
-  </extension>
   
   <extension point="org.eclipse.core.runtime.adapters">
     <factory adaptableType="org.eclipse.gef.GraphicalEditPart"
@@ -38,5 +17,14 @@
              class="org.eclipse.sirius.ui.properties.internal.SiriusSemanticAdapter">
       <adapter type="org.eclipse.emf.ecore.EObject" />
     </factory>
+  </extension>
+  <extension
+        point="org.eclipse.eef.properties.ui.eefTabDescriptorProvider">
+     <descriptor
+           class="org.eclipse.sirius.ui.properties.internal.SiriusTabDescriptorProvider"
+           description="Provides EEF tab descriptors according to what is defined in the view properties extension"
+           id="org.eclipse.sirius.eefTabDescriptorProvider"
+           label="Sirius EEF Tab Descriptor Provider">
+     </descriptor>
   </extension>
 </plugin>

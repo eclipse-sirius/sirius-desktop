@@ -11,23 +11,24 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
-import org.eclipse.eef.ide.ui.internal.properties.EEFTabDescriptor;
+import org.eclipse.eef.ide.ui.api.EEFTabDescriptor;
+import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
+import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
+import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -35,18 +36,15 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
-import org.eclipse.ui.views.properties.tabbed.ITabDescriptorProvider;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
-public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
+public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
 
     @Override
-    public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part, ISelection selection) {
+    public Collection<IEEFTabDescriptor> get(IWorkbenchPart part, ISelection selection) {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             Object[] objects = structuredSelection.toArray();
@@ -59,25 +57,25 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
                 }
             }
         }
-        return new ITabDescriptor[0];
+        return new ArrayList<IEEFTabDescriptor>();
     }
 
-    private ITabDescriptor[] getTabDescriptors(EObject semanticElement) {
+    private Collection<IEEFTabDescriptor> getTabDescriptors(EObject semanticElement) {
         Session session = new EObjectQuery(semanticElement).getSession();
         List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(semanticElement, session);
         return getTabDescriptors(session, semanticElement, effectivePageDescriptions);
     }
 
-    private ITabDescriptor[] getTabDescriptors(Session session, EObject semanticElement, List<PageDescription> effectivePageDescriptions) {
+    private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, EObject semanticElement, List<PageDescription> effectivePageDescriptions) {
         EEFViewDescription viewDescription = new ViewDescriptionConverter(session, semanticElement, effectivePageDescriptions).convert();
         EEFView eefView = createEEFView(session, semanticElement, viewDescription);
 
-        List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
+        List<IEEFTabDescriptor> descriptors = new ArrayList<IEEFTabDescriptor>();
         List<EEFPage> eefPages = eefView.getPages();
         for (EEFPage eefPage : eefPages) {
             descriptors.add(new EEFTabDescriptor(eefPage));
         }
-        return descriptors.toArray(new ITabDescriptor[descriptors.size()]);
+        return descriptors;
     }
 
     private EEFView createEEFView(Session session, EObject semanticElement, EEFViewDescription viewDescription) {
