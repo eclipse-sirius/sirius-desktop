@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFGroupDescription;
-import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -31,7 +30,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.properties.GroupDescription;
-import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -158,8 +156,8 @@ public class ViewDescriptionConverter {
         for (WidgetDescription widgetDescription : groupDescription.getContainer().getWidgets()) {
             if (widgetDescription instanceof TextDescription) {
                 containerDesc.getWidgets().add(createEEFTextDescription((TextDescription) widgetDescription));
-            } else if (widgetDescription instanceof LabelDescription) {
-                containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
+//            } else if (widgetDescription instanceof LabelDescription) {
+//                containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
             }
         }
 
@@ -178,13 +176,13 @@ public class ViewDescriptionConverter {
         return eefTextDescription;
     }
 
-    private EEFLabelDescription createEEFLabelDescription(LabelDescription labelDescription) {
-        EEFLabelDescription eefLabelDescription = EefFactory.eINSTANCE.createEEFLabelDescription();
-
-        eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
-        eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
-        return eefLabelDescription;
-    }
+//    private EEFLabelDescription createEEFLabelDescription(LabelDescription labelDescription) {
+//        EEFLabelDescription eefLabelDescription = EefFactory.eINSTANCE.createEEFLabelDescription();
+//
+//        eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
+//        eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
+//        return eefLabelDescription;
+//    }
 
     private static Map<String, Object> singletonEnv(String name, Object value) {
         Map<String, Object> env = Maps.newHashMap();
