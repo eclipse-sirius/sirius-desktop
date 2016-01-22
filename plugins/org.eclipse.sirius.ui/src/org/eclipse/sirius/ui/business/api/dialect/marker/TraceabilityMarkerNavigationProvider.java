@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,8 +63,7 @@ import com.google.common.collect.Sets;
  * </p>
  * *
  * <ul>
- * <li>
- * If the opened representation is representing S1 in some way, the element
+ * <li>If the opened representation is representing S1 in some way, the element
  * representing S1 should be revealed and selected</li>
  * <li>If the opened representation is not representing S1, the code should look
  * through the representations opened for this session and find one representing
@@ -190,9 +189,8 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * </p>
      * *
      * <ul>
-     * <li>
-     * If the opened representation is representing S1 in some way, the element
-     * representing S1 should be revealed and selected</li>
+     * <li>If the opened representation is representing S1 in some way, the
+     * element representing S1 should be revealed and selected</li>
      * <li>If the opened representation is not representing S1, the code should
      * look through the representations opened for this session and find one
      * representing S1. If one if found, it should call the goToMarker method on
@@ -334,7 +332,9 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             }
         }
 
-        /* If the searched semantic element has been found in the given editor */
+        /*
+         * If the searched semantic element has been found in the given editor
+         */
         if (foundEditor) {
             editorToFocus = editor;
             representationToFocus = editor.getRepresentation();
@@ -385,28 +385,37 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
                 res = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformResourceString));
             }
         }
+        // If we can't retrieve the resource, there is nothing to do.
+        if (res != null) {
+            IMarker shadowMarker = null;
+            try {
+                shadowMarker = res.createMarker(marker.getType());
+                shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
 
-        IMarker shadowMarker = null;
-        try {
-            shadowMarker = res.createMarker(marker.getType());
-            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
-            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_INTERNAL_ATTRIBUTE, "active"); //$NON-NLS-1$
+                // If there is no corresponding representation element we do not
+                // set
+                // the REPRESENTATION_ELEMENT_ID.
+                if (representationElementToSelect != null) {
+                    shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
+                }
+                shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
+                shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_INTERNAL_ATTRIBUTE, "active"); //$NON-NLS-1$
 
-            // Step 2 : we sets the focus on the editor and call the goToMarker
-            // method on it
-            editorToFocus.setFocus();
-            editorToFocus.gotoMarker(shadowMarker);
+                // Step 2 : we sets the focus on the editor and call the
+                // goToMarker
+                // method on it
+                editorToFocus.setFocus();
+                editorToFocus.gotoMarker(shadowMarker);
 
-        } catch (CoreException e) {
-            // Nothing to do, goToMarker will fail.
-        } finally {
-            if (shadowMarker != null) {
-                try {
-                    shadowMarker.delete();
-                } catch (CoreException e) {
-                    // Nothing to do, goToMarker will fail.
+            } catch (CoreException e) {
+                // Nothing to do, goToMarker will fail.
+            } finally {
+                if (shadowMarker != null) {
+                    try {
+                        shadowMarker.delete();
+                    } catch (CoreException e) {
+                        // Nothing to do, goToMarker will fail.
+                    }
                 }
             }
         }
@@ -578,8 +587,8 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
          *            the content provider to evaluate the tree structure
          */
         public RepresentationToOpenDialog(Shell parent, Session session, Set<DRepresentation> candidateRepresentations, EObject semanticElement) {
-            super(parent, new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()), new CandidateRepresentationContentProvider(ViewHelper.INSTANCE.createAdapterFactory(),
-                    candidateRepresentations, session));
+            super(parent, new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()),
+                    new CandidateRepresentationContentProvider(ViewHelper.INSTANCE.createAdapterFactory(), candidateRepresentations, session));
             SessionLabelProvider labelProvider = new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory());
             String objectName = labelProvider.getText(semanticElement);
             setTitle(MessageFormat.format(Messages.TraceabilityMarkerNavigationProvider_dialogTitle, objectName));
