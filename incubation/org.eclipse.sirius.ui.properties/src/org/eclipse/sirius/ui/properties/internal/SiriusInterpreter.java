@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -22,6 +24,7 @@ import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
+import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -63,9 +66,17 @@ public class SiriusInterpreter implements IInterpreter {
     private void setupInterpreter(Map<String, Object> variables) {
         if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
             org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
-            // FIXME This breaks the rest of Sirius by wiping the session
-            // interpreter's "classpath" for services
-            i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, Lists.newArrayList("org.eclipse.sirius.ui.properties"));
+            Collection<Object> filesProperty = Lists.newArrayList();
+            if (i instanceof ODesignGenericInterpreter) {
+                Object current = ((ODesignGenericInterpreter) i).getProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES);
+                if (current instanceof Collection) {
+                    filesProperty = (Collection<Object>) current;
+                }
+            }
+            if (!filesProperty.contains(Activator.PLUGIN_ID)) {
+                filesProperty.add(Activator.PLUGIN_ID);
+            }
+            i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, filesProperty);
             i.addImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
             declareLocals(variables, i);
         }

@@ -22,6 +22,8 @@ import org.osgi.framework.BundleContext;
  * Bundle activator for <code>org.eclipse.sirius.ui.properties</code>.
  */
 public class Activator implements BundleActivator {
+    static final String PLUGIN_ID = "org.eclipse.sirius.ui.properties";
+
     /**
      * The adapter is stateless, use a single instance that can be easily
      * unregistered when stopped.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -232,6 +232,17 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
         for (final IInterpreter interpreter : this.loadedInterpreters.values()) {
             interpreter.setProperty(key, value);
         }
+    }
+
+    /**
+     * Returns the current value of a specific property.
+     * 
+     * @param key
+     *            the property's key.
+     * @return the property's value.
+     */
+    public Object getProperty(Object key) {
+        return this.properties.get(key);
     }
 
     @Override
