@@ -87,4 +87,20 @@ public class VariableManager implements IVariableManager {
 			variableManager.clear();
 		}
 	}
+	
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    for (Map.Entry<String, Object> var : getVariables().entrySet()) {
+            String name = var.getKey();
+            Object value = var.getValue();
+            boolean local = variables.containsKey(name);
+            sb.append(name).append(" = ").append(value);
+            if (!local) {
+                sb.append(" [inherited]");
+            }
+            sb.append("\n");
+        }
+	    return sb.toString();
+	}
 }
