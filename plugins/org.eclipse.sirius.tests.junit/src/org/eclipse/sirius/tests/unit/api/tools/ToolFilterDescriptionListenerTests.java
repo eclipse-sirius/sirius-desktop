@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.unit.api.tools;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
-import junit.framework.TestCase;
 
 import org.eclipse.core.commands.operations.DefaultOperationHistory;
 import org.eclipse.core.commands.operations.IOperationHistory;
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
+import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
@@ -40,7 +40,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 import com.google.common.collect.Maps;
 
+import junit.framework.TestCase;
+
 public class ToolFilterDescriptionListenerTests extends TestCase {
+
+    private static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
+
+    private static final String SESSION_MODEL_FILENAME = "test.aird";
+
+    private static final String SEMANTIC_MODEL_FILENAME = "test.ecore";
 
     private TransactionalEditingDomain editingDomain;
 
@@ -59,11 +67,13 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
         /* create an editing domain */
         editingDomain = createEditingDomain(rset);
 
-        final Resource resource = editingDomain.getResourceSet().createResource(URI.createFileURI("test.ecore"));
+        URI semanticResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);
+        final Resource resource = editingDomain.getResourceSet().createResource(semanticResourceURI);
         ePackage = createEPackage(resource);
         resource.save(Maps.newHashMap());
 
-        final Resource airdResource = editingDomain.getResourceSet().createResource(URI.createFileURI("test.aird"));
+        URI sessionResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME);
+        final Resource airdResource = editingDomain.getResourceSet().createResource(sessionResourceURI);
 
         SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(airdResource.getURI(), new NullProgressMonitor());
         sessionCreationOperation.execute();
