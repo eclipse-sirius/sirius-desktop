@@ -539,8 +539,12 @@
 				<code>service:</code> interpreter.
 			</li>
 			<li><span class="label label-success">Added</span> The class 
-				<code>org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2</code> has been added and should be prefered instead of implementing 
+				<code>org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2</code> has been added and should be preferred instead of implementing 
 				<code>MetamodelDescriptorProvider</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryImpl.addViewpointFileCollector()</code> method has been added to replace deprecated 
+				<code>ViewpointRegistryImpl.addSiriusFileCollector()</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.canDeleteInstance(EObject)</code> when called for an object will not be called for children of this object as we know it will return true because if we can delete a parent object we can delete its children. 
@@ -548,6 +552,11 @@
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no longer inherits from 
 				<code>IUndoableCommand</code> since undo/redo is managed by EMF Transaction.
+			</li>
+			<li><span class="label label-warning">Deprecated</span> 
+				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryImpl.addSiriusFileCollector()</code> method has been deprecated as it is about 
+				<code>ViewpointFileCollector</code> and not 
+				<code>SiriusFileCollector</code>.
 			</li>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.

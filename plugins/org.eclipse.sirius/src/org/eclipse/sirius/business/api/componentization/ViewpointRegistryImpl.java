@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,8 +132,25 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the collector responsible for providing the viewpoints from a
      *            loaded model having the given file extension.
      */
-    public void addSiriusFileCollector(String fileExtension, ViewpointFileCollector collector) {
+    public void addViewpointFileCollector(String fileExtension, ViewpointFileCollector collector) {
         this.collectors.put(fileExtension, collector);
+    }
+
+    /**
+     * Add a viewpoint file collector for a given file extension.
+     * 
+     * @param fileExtension
+     *            the file extension.
+     * @param collector
+     *            the collector responsible for providing the viewpoints from a
+     *            loaded model having the given file extension.
+     * @deprecated use
+     *             {@link ViewpointRegistryImpl#addViewpointFileCollector(String, ViewpointFileCollector)}
+     *             instead
+     */
+    @Deprecated
+    public void addSiriusFileCollector(String fileExtension, ViewpointFileCollector collector) {
+        addViewpointFileCollector(fileExtension, collector);
     }
 
     /**
@@ -287,7 +304,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     @Override
     public Set<Viewpoint> registerFromPlugin(final String modelerModelResourcePath) {
 
-        final Set<Viewpoint> addedSirius = new HashSet<Viewpoint>();
+        final Set<Viewpoint> addedViewpoints = new HashSet<Viewpoint>();
 
         try {
             final URI fileURI = URI.createPlatformPluginURI(modelerModelResourcePath, true);
@@ -296,8 +313,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             if (collector.some() && collector.get().isValid(root)) {
                 for (final Viewpoint viewpoint : collector.get().collect(root)) {
                     viewpointsFromPlugin.add(viewpoint);
-                    mapToSiriusProtocol(viewpoint);
-                    addedSirius.add(viewpoint);
+                    mapToViewpointProtocol(viewpoint);
+                    addedViewpoints.add(viewpoint);
                 }
 
                 /* add cross referencer */
@@ -316,7 +333,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, modelerModelResourcePath), e);
         }
         invalidateCache();
-        return addedSirius;
+        return addedViewpoints;
     }
 
     private Option<ViewpointFileCollector> getCollectorFromURI(URI fileURI) {
@@ -351,7 +368,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             if (c instanceof Viewpoint) {
                 Viewpoint viewpoint = (Viewpoint) c;
                 viewpointsFromWorkspace.add(viewpoint);
-                mapToSiriusProtocol(viewpoint);
+                mapToViewpointProtocol(viewpoint);
             }
         }
         invalidateCache();
@@ -388,7 +405,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                 });
 
                 for (Viewpoint sameNameAndPluginSirius : sameNameAndPluginViewpoints) {
-                    mapToSiriusProtocol(sameNameAndPluginSirius);
+                    mapToViewpointProtocol(sameNameAndPluginSirius);
                     break;
                 }
             }
@@ -560,11 +577,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
     private void mapToSiriusProtocol(Collection<Viewpoint> viewpoints) {
         for (Viewpoint viewpoint : viewpoints) {
-            mapToSiriusProtocol(viewpoint);
+            mapToViewpointProtocol(viewpoint);
         }
     }
 
-    private void mapToSiriusProtocol(Viewpoint viewpoint) {
+    private void mapToViewpointProtocol(Viewpoint viewpoint) {
         final Resource resource = viewpoint.eResource();
         if (resource != null && resource.getURI() != null) {
             URI uri = EcoreUtil.getURI(viewpoint);
@@ -858,7 +875,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             if (StringUtil.equals(vp.getName(), viewpoint.getName())) {
                 URI vpURI = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(vp));
                 if (vpURI != null && viewpointUri != null && StringUtil.equals(vpURI.toString(), viewpointUri.toString())) {
-                    mapToSiriusProtocol(vp);
+                    mapToViewpointProtocol(vp);
                     return;
                 }
             }
