@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="base" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="base" version="10.1.3.201511131800">
   <ownedViewpoints documentation="ddd" name="DragAndDropTests" label="DragAndDropTests" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='DragAndDropTests']/@ownedRepresentations[name='Class%20diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20tool']" name="Class diagram" label="Class diagram" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -18,9 +18,9 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%newSemanticContainer%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%> &lt;%$element.path%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:element.name + '  ' + element.path"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

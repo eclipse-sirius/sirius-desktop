@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EcoreIntrinsicExtender;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.query.legacy.business.internal.interpreter.AcceleoExtendedInterpreter;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
 import org.junit.Assert;
@@ -45,7 +45,7 @@ public class MappingBasedPartitionTests {
         accessor.addExtender(new EcoreIntrinsicExtender(), ExtenderConstants.HIGHEST_PRIORITY);
         accessor.init(set);
 
-        IInterpreter interpreter = new AcceleoExtendedInterpreter();
+        IInterpreter interpreter = new FeatureInterpreter();
 
         ctx = new GlobalContext(accessor, interpreter, null);
 

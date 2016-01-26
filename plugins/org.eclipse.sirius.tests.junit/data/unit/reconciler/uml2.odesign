@@ -825,7 +825,7 @@
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
         </style>
       </containerMappings>
-      <containerMappings name="CO_ImportedComponent" semanticCandidatesExpression="aql:self.eContainerOrSelf(Model).eAllContents(uml::Component) - self.eAllContents(uml::Component)" createElements="false" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']">
+      <containerMappings name="CO_ImportedComponent" semanticCandidatesExpression="aql:self.eContainerOrSelf(uml::Model).eAllContents(uml::Component) - self.eAllContents(uml::Component)" createElements="false" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']">
         <borderedNodeMappings name="CO_PortImport" semanticCandidatesExpression="aql:self.ownedAttribute" domainClass="Port">
           <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

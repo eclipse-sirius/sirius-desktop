@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -84,6 +86,13 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+        /*
+         * Force the addition of a dependency to the swtbot tests plugins
+         * otherwise the interpreter has no way to retrieve the service class
+         * hence any call to "getUniqueReferencesByName()" will fail.
+         */
+        localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.tests.swtbot/" + DATA_UNIT_DIR + VSM_FILE));
+
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES2, DDiagram.class);
         bot.viewById("org.eclipse.ui.views.ContentOutline").close();
         SWTBotUtils.waitAllUiEvents();

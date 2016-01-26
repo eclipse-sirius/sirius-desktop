@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="STD002Group" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="STD002Group" version="10.1.3.201511131800">
   <ownedViewpoints name="STD-VP-002" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="STD002-Diag" domainClass="EPackage">
       <defaultLayer name="Default">
-        <nodeMappings name="C_EClass" semanticCandidatesExpression="&lt;%getEClassifiers()%>" domainClass="EClass">
+        <nodeMappings name="C_EClass" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
           <style xsi:type="style:SquareDescription" labelExpression="ocl:name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

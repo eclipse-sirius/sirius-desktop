@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3535" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3535" version="10.1.3.201511131800">
   <ownedViewpoints name="VP-3535_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3535_Diagram" domainClass="ecore.EPackage">
       <defaultLayer name="Default">
@@ -49,18 +49,18 @@
           <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="[name+'WithGaugeStyle'/]" iconPath="/DesignerTestProject/image.bmp" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <sections maxValueExpression="&lt;%90%>" valueExpression="&lt;%50%>" label="FirstSection">
+            <sections maxValueExpression="90" valueExpression="50" label="FirstSection">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </sections>
-            <sections maxValueExpression="&lt;%30%>" valueExpression="&lt;%15%>" label="SecondSection">
+            <sections maxValueExpression="30" valueExpression="15" label="SecondSection">
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </sections>
           </style>
         </nodeMappings>
         <nodeMappings name="EClassNodeWithWorkspaceImageStyle" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/DesignerTestProject/image.bmp">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -68,7 +68,7 @@
       </defaultLayer>
       <additionalLayers name="layerOfContainerStyles">
         <containerMappings name="EPackageWithFlatContainerStyle" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[name+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -76,14 +76,14 @@
           </style>
         </containerMappings>
         <containerMappings name="EPackageWithShapeContainerStyle" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage">
-          <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[name+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[name+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
         <containerMappings name="EPackageWithWorkspaceImageDescription" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" workspacePath="/DesignerTestProject/image.bmp">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="[name+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" arcWidth="1" arcHeight="1" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>

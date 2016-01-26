@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc2225" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc2225" version="10.1.3.201511131800">
   <ownedViewpoints name="Design2225" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities2225" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities2225" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <nodeMappings name="EC Class Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
-          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>Node" sizeComputationExpression="6" resizeKind="NSEW">
+        <nodeMappings name="EC Class Node" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
+          <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.name + 'Node'" sizeComputationExpression="6" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EC Class Node 2" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
-          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>Node2" sizeComputationExpression="6" resizeKind="NSEW">
+        <nodeMappings name="EC Class Node 2" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
+          <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.name + 'Node2'" sizeComputationExpression="6" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EC Class Node WithBundleImage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>Node_BI" workspacePath="/DesignerTestProject/missingImage.jpg">
+        <nodeMappings name="EC Class Node WithBundleImage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="aql:self.name + 'Node_BI'" workspacePath="/DesignerTestProject/missingImage.jpg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="EC EClass Liste" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%name%>List" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+        <containerMappings name="EC EClass Liste" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + 'List'" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EClass " semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+        <containerMappings name="EC EClass " semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
           <subNodeMappings name="EC EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
-            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>&lt;%$view.eContainer.name%>" resizeKind="NSEW">
+            <style xsi:type="style:BundledImageDescription" labelExpression="aql:self.name +view.eContainer().name" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%name%>Container" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name + 'Container'" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EClass Liste WithBundleImage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']" childrenPresentation="List">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>List_BI" workspacePath="/DesignerTestProject/missingImage.jpg">
+        <containerMappings name="EC EClass Liste WithBundleImage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']" childrenPresentation="List">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="aql:self.name + 'List_BI'" workspacePath="/DesignerTestProject/missingImage.jpg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC Class WithBundleImage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+        <containerMappings name="EC Class WithBundleImage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
           <subNodeMappings name="EC EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
-            <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>&lt;%$view.eContainer.name%>" workspacePath="/DesignerTestProject/missingImage.jpg">
+            <style xsi:type="style:WorkspaceImageDescription" labelExpression="aql:self.name +view.eContainer().name" workspacePath="/DesignerTestProject/missingImage.jpg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>Container_BI" workspacePath="/DesignerTestProject/missingImage.jpg">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="aql:self.name + 'Container_BI'" workspacePath="/DesignerTestProject/missingImage.jpg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>

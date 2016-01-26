@@ -109,7 +109,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EDataType)->select( e | e.self.eClass().name = 'ecore::EDataType')" domainClass="EDataType" childrenPresentation="List">
+        <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EDataType)->select( e | e.eClass().name = 'ecore::EDataType')" domainClass="EDataType" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

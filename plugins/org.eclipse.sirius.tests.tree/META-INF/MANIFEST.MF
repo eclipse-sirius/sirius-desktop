@@ -34,7 +34,6 @@ Require-Bundle: org.eclipse.sirius,
  org.eclipse.sirius.table.ui,
  org.eclipse.sirius.table.ui.ext,
  org.eclipse.sirius.diagram,
- org.eclipse.sirius.query.legacy;bundle-version="1.0.0",
  org.eclipse.sdk,
  org.eclipse.platform
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTreeTestsPlugin
@@ -51,5 +50,4 @@ Export-Package: org.eclipse.sirius.tests,
  org.eclipse.sirius.tests.unit.tree,
  org.eclipse.sirius.tests.unit.tree.tools,
  org.eclipse.sirius.tests.unit.tree.vsm.edit
-Import-Package: org.eclipse.sirius.ext.base;version="1.0.0",
- org.eclipse.sirius.query.legacy.business.internal.interpreter
+Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

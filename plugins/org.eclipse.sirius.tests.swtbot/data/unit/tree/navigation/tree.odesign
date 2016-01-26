@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.3.201511131800">
   <ownedViewpoints name="Design" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree" label="Tree" domainClass="EPackage">
-      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Package']">
+      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Package']">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -14,17 +14,18 @@
           </defaultStyle>
         </subItemMappings>
       </subItemMappings>
-      <subItemMappings name="Class" label="Class" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@ownedRepresentationCreationDescriptions[name='Tree%20Creation%20on%20Class']" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
-        <defaultStyle labelFormat="bold" showIcon="false">
+      <subItemMappings name="Class" label="Class" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@ownedRepresentationCreationDescriptions[name='Tree%20Creation%20on%20Class']" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)">
+        <defaultStyle showIcon="false">
+          <labelFormat>bold</labelFormat>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
         <subItemMappings name="Categorie" domainClass="EClass" semanticCandidatesExpression="var:self">
-          <defaultStyle labelExpression="&lt;%name%> Categorie">
+          <defaultStyle labelExpression="aql:self.name + ' Categorie'">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
+          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
             <defaultStyle>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -38,7 +39,7 @@
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
-        <create name="my create tool">
+        <create name="my create tool" elementsToSelect="service:stdEmptyCollection">
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
             <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
               <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClassCreationTool"/>
@@ -67,13 +68,13 @@
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
         </create>
       </subItemMappings>
-      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EEnum&quot;)%>">
+      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EEnum)">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
       </subItemMappings>
-      <createTreeItem name="Create root class" forceRefresh="true" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']">
+      <createTreeItem name="Create root class" forceRefresh="true" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']">
         <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
           <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClassCreationTool"/>
@@ -89,7 +90,7 @@
       </ownedRepresentationCreationDescriptions>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree on Class" domainClass="EClass">
-      <subItemMappings name="Attr2" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
+      <subItemMappings name="Attr2" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -97,9 +98,10 @@
       </subItemMappings>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.EcoreService"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
-    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
     <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>

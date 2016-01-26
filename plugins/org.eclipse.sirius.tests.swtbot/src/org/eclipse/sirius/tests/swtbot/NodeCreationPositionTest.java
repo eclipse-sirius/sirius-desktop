@@ -34,6 +34,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
@@ -196,6 +197,13 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(new UIResource(designerProject, MODEL));
         semanticResourceNode.expandNode(P1).click();
         otherTED = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        /*
+         * Force the addition of a dependency to the sample ecore editor
+         * otherwise the interpreter has no way to retrieve the service class
+         * hence any call to "render()" will fail.
+         */
+        localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign"));
+
     }
 
     private void openDiagram() {

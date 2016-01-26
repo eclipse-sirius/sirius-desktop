@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="edgeLayoutPb" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="edgeLayoutPb" version="10.1.3.201511131800">
   <ownedViewpoints name="edgeLayoutPb" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="edgeLayoutPbDiag" domainClass="EPackage">
       <defaultLayer name="Default">
-        <edgeMappings name="Ref" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="&lt;%eAllStructuralFeatures.filter(&quot;EReference&quot;).eReferenceType%>">
-          <style>
+        <edgeMappings name="Ref" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='edgeLayoutPb']/@ownedRepresentations[name='edgeLayoutPbDiag']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="aql:self.eAllStructuralFeatures->filter(ecore::EReference).eReferenceType">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
-        <containerMappings name="EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
-          <borderedNodeMappings name="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass">
+        <containerMappings name="EPackage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage">
+          <borderedNodeMappings name="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" synchronizationLock="true" domainClass="EClass">
             <style xsi:type="style:SquareDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -24,7 +24,7 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="clickOnPackage" candidatesExpression="&lt;%$diagram.target.eSubpackages%>" message="Select the package p3">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="clickOnPackage" candidatesExpression="aql:diagram.target.eSubpackages" message="Select the package p3">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
