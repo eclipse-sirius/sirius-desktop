@@ -3803,7 +3803,7 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Provided Shape ID</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -3816,7 +3816,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 2;
+    int BUNDLED_IMAGE_FEATURE_COUNT = DiagramPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -8725,7 +8725,7 @@ public interface DiagramPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Provided Shape ID</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EAttribute BUNDLED_IMAGE__PROVIDED_SHAPE_ID = DiagramPackage.eINSTANCE.getBundledImage_ProvidedShapeID();

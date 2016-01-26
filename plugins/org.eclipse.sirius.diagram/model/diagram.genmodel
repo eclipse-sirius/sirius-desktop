@@ -36,6 +36,7 @@
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//BundledImageShape/triangle"/>
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//BundledImageShape/dot"/>
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//BundledImageShape/ring"/>
+      <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//BundledImageShape/providedShape"/>
     </genEnums>
     <genEnums ecoreEnum="diagram.ecore#//LineStyle">
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//LineStyle/solid"/>
@@ -236,6 +237,7 @@
     <genClasses ecoreClass="diagram.ecore#//BundledImage">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//BundledImage/shape"/>
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//BundledImage/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//BundledImage/providedShapeID"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//WorkspaceImage">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//WorkspaceImage/workspacePath"/>
@@ -653,6 +655,7 @@
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BundledImageDescription/shape"/>
           <genFeatures createChild="false" propertyCategory="Color" propertyDescription="Color for the shape."
               ecoreFeature="ecore:EReference diagram.ecore#//description/style/BundledImageDescription/color"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BundledImageDescription/providedShapeID"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/style/NoteDescription">
           <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference diagram.ecore#//description/style/NoteDescription/color"/>
