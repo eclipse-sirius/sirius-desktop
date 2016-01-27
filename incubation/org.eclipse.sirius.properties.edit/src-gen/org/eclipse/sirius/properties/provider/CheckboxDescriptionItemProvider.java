@@ -18,46 +18,32 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.sirius.properties.DynamicMappingCase;
-import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.properties.DynamicMappingCase} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.properties.CheckboxDescription} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DynamicMappingCaseItemProvider 
-    extends ItemProviderAdapter
-    implements
-        IEditingDomainItemProvider,
-        IStructuredItemContentProvider,
-        ITreeItemContentProvider,
-        IItemLabelProvider,
-        IItemPropertySource {
+public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public DynamicMappingCaseItemProvider(AdapterFactory adapterFactory) {
+    public CheckboxDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -72,25 +58,25 @@ public class DynamicMappingCaseItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addCaseExpressionPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Case Expression feature.
+     * This adds a property descriptor for the Value Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addCaseExpressionPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_DynamicMappingCase_caseExpression_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingCase_caseExpression_feature", "_UI_DynamicMappingCase_type"),
-                 PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION,
+                 getString("_UI_CheckboxDescription_valueExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CheckboxDescription_valueExpression_feature", "_UI_CheckboxDescription_type"),
+                 PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION,
                  true,
                  false,
                  false,
@@ -111,7 +97,7 @@ public class DynamicMappingCaseItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET);
+            childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
         }
         return childrenFeatures;
     }
@@ -130,14 +116,14 @@ public class DynamicMappingCaseItemProvider
     }
 
     /**
-     * This returns DynamicMappingCase.gif.
+     * This returns CheckboxDescription.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingCase"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CheckboxDescription"));
     }
 
     /**
@@ -148,10 +134,10 @@ public class DynamicMappingCaseItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingCase)object).getCaseExpression();
+        String label = ((CheckboxDescription)object).getIdentifier();
         return label == null || label.length() == 0 ?
-            getString("_UI_DynamicMappingCase_type") :
-            getString("_UI_DynamicMappingCase_type") + " " + label;
+            getString("_UI_CheckboxDescription_type") :
+            getString("_UI_CheckboxDescription_type") + " " + label;
     }
     
 
@@ -166,11 +152,11 @@ public class DynamicMappingCaseItemProvider
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DynamicMappingCase.class)) {
-            case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
+        switch (notification.getFeatureID(CheckboxDescription.class)) {
+            case PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
-            case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+            case PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -190,34 +176,8 @@ public class DynamicMappingCaseItemProvider
 
         newChildDescriptors.add
             (createChildParameter
-                (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
-                 PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
-                 PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
-                 PropertiesFactory.eINSTANCE.createCheckboxDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
-                 PropertiesFactory.eINSTANCE.createSelectDescription()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+                (PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION,
+                 ToolFactory.eINSTANCE.createInitialOperation()));
     }
 
 }

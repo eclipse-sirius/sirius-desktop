@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
 import java.util.List;
 
+import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
@@ -25,6 +26,7 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingSwitch;
@@ -144,6 +146,8 @@ public class ViewDescriptionConverter {
             description = createEEFTextDescription((TextDescription) widgetDescription);
         } else if (widgetDescription instanceof LabelDescription) {
             description = createEEFLabelDescription((LabelDescription) widgetDescription);
+        } else if (widgetDescription instanceof CheckboxDescription) {
+            description = createEEFCheckboxDescription((CheckboxDescription) widgetDescription);
         } else if (widgetDescription instanceof SelectDescription) {
             description = createEEFSelectDescription((SelectDescription) widgetDescription);
         }
@@ -171,6 +175,15 @@ public class ViewDescriptionConverter {
         return eefLabelDescription;
     }
 
+    private EEFCheckboxDescription createEEFCheckboxDescription(CheckboxDescription checkboxDescription) {
+        EEFCheckboxDescription eefCheckboxDescription = EefFactory.eINSTANCE.createEEFCheckboxDescription();
+
+        eefCheckboxDescription.setIdentifier(checkboxDescription.getIdentifier());
+        eefCheckboxDescription.setLabelExpression(checkboxDescription.getLabelExpression());
+        eefCheckboxDescription.setValueExpression(checkboxDescription.getValueExpression());
+        return eefCheckboxDescription;
+    }
+
     private EEFSelectDescription createEEFSelectDescription(SelectDescription selectDescription) {
         EEFSelectDescription eefSelectDescription = EefFactory.eINSTANCE.createEEFSelectDescription();
 
@@ -181,4 +194,5 @@ public class ViewDescriptionConverter {
         eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
         return eefSelectDescription;
     }
+
 }

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
@@ -100,6 +101,20 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass checkboxDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass selectDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EClass dynamicMappingForEClass = null;
 
     /**
@@ -115,13 +130,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass dynamicMappingCaseEClass = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    private EClass selectDescriptionEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -462,6 +470,78 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getCheckboxDescription() {
+        return checkboxDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getCheckboxDescription_ValueExpression() {
+        return (EAttribute)checkboxDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getCheckboxDescription_InitialOperation() {
+        return (EReference)checkboxDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getSelectDescription() {
+        return selectDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_ValueExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSelectDescription_InitialOperation() {
+        return (EReference)selectDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_CandidatesExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_CandidateDisplayExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getDynamicMappingFor() {
         return dynamicMappingForEClass;
     }
@@ -552,51 +632,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
-    public EClass getSelectDescription() {
-        return selectDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getSelectDescription_ValueExpression() {
-        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EReference getSelectDescription_InitialOperation() {
-        return (EReference)selectDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getSelectDescription_CandidatesExpression() {
-        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getSelectDescription_CandidateDisplayExpression() {
-        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory)getEFactoryInstance();
     }
@@ -657,6 +692,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         labelDescriptionEClass = createEClass(LABEL_DESCRIPTION);
 
+        checkboxDescriptionEClass = createEClass(CHECKBOX_DESCRIPTION);
+        createEAttribute(checkboxDescriptionEClass, CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(checkboxDescriptionEClass, CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
+
+        selectDescriptionEClass = createEClass(SELECT_DESCRIPTION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(selectDescriptionEClass, SELECT_DESCRIPTION__INITIAL_OPERATION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
+
         dynamicMappingForEClass = createEClass(DYNAMIC_MAPPING_FOR);
         createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__ITERATOR);
         createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
@@ -669,12 +714,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         dynamicMappingCaseEClass = createEClass(DYNAMIC_MAPPING_CASE);
         createEAttribute(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
         createEReference(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__WIDGET);
-
-        selectDescriptionEClass = createEClass(SELECT_DESCRIPTION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__VALUE_EXPRESSION);
-        createEReference(selectDescriptionEClass, SELECT_DESCRIPTION__INITIAL_OPERATION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
     }
 
     /**
@@ -713,6 +752,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         viewExtensionDescriptionEClass.getESuperTypes().add(theDescriptionPackage.getExtension());
         textDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         labelDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        checkboxDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         selectDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
 
         // Initialize classes and features; add operations and parameters
@@ -753,6 +793,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getCheckboxDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, CheckboxDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSelectDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSelectDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSelectDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDynamicMappingFor_Iterator(), theEcorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDynamicMappingFor_DomainClassExpression(), theEcorePackage.getEString(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -765,12 +815,6 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getSelectDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getSelectDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getSelectDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

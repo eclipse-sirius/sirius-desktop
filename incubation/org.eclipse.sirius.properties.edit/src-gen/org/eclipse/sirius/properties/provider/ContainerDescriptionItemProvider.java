@@ -203,6 +203,11 @@ public class ContainerDescriptionItemProvider
         newChildDescriptors.add
             (createChildParameter
                 (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
+                 PropertiesFactory.eINSTANCE.createCheckboxDescription()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
                  PropertiesFactory.eINSTANCE.createSelectDescription()));
 
         newChildDescriptors.add

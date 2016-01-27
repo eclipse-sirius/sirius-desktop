@@ -85,6 +85,24 @@ public interface PropertiesFactory extends EFactory {
     LabelDescription createLabelDescription();
 
     /**
+     * Returns a new object of class '<em>Checkbox Description</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Checkbox Description</em>'.
+     * @generated
+     */
+    CheckboxDescription createCheckboxDescription();
+
+    /**
+     * Returns a new object of class '<em>Select Description</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Select Description</em>'.
+     * @generated
+     */
+    SelectDescription createSelectDescription();
+
+    /**
      * Returns a new object of class '<em>Dynamic Mapping For</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -110,15 +128,6 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     DynamicMappingCase createDynamicMappingCase();
-
-    /**
-     * Returns a new object of class '<em>Select Description</em>'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return a new object of class '<em>Select Description</em>'.
-     * @generated
-     */
-    SelectDescription createSelectDescription();
 
     /**
      * Returns the package supported by this factory.

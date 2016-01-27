@@ -236,6 +236,52 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.CheckboxDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected CheckboxDescriptionItemProvider checkboxDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.CheckboxDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createCheckboxDescriptionAdapter() {
+        if (checkboxDescriptionItemProvider == null) {
+            checkboxDescriptionItemProvider = new CheckboxDescriptionItemProvider(this);
+        }
+
+        return checkboxDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.SelectDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SelectDescriptionItemProvider selectDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.SelectDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSelectDescriptionAdapter() {
+        if (selectDescriptionItemProvider == null) {
+            selectDescriptionItemProvider = new SelectDescriptionItemProvider(this);
+        }
+
+        return selectDescriptionItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DynamicMappingFor} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -302,29 +348,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return dynamicMappingCaseItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.SelectDescription} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected SelectDescriptionItemProvider selectDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a {@link org.eclipse.sirius.properties.SelectDescription}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createSelectDescriptionAdapter() {
-        if (selectDescriptionItemProvider == null) {
-            selectDescriptionItemProvider = new SelectDescriptionItemProvider(this);
-        }
-
-        return selectDescriptionItemProvider;
     }
 
     /**
@@ -432,10 +455,11 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (containerDescriptionItemProvider != null) containerDescriptionItemProvider.dispose();
         if (textDescriptionItemProvider != null) textDescriptionItemProvider.dispose();
         if (labelDescriptionItemProvider != null) labelDescriptionItemProvider.dispose();
+        if (checkboxDescriptionItemProvider != null) checkboxDescriptionItemProvider.dispose();
+        if (selectDescriptionItemProvider != null) selectDescriptionItemProvider.dispose();
         if (dynamicMappingForItemProvider != null) dynamicMappingForItemProvider.dispose();
         if (dynamicMappingSwitchItemProvider != null) dynamicMappingSwitchItemProvider.dispose();
         if (dynamicMappingCaseItemProvider != null) dynamicMappingCaseItemProvider.dispose();
-        if (selectDescriptionItemProvider != null) selectDescriptionItemProvider.dispose();
     }
 
     /**

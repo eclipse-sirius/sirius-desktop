@@ -107,6 +107,14 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
                 return createLabelDescriptionAdapter();
             }
             @Override
+            public Adapter caseCheckboxDescription(CheckboxDescription object) {
+                return createCheckboxDescriptionAdapter();
+            }
+            @Override
+            public Adapter caseSelectDescription(SelectDescription object) {
+                return createSelectDescriptionAdapter();
+            }
+            @Override
             public Adapter caseDynamicMappingFor(DynamicMappingFor object) {
                 return createDynamicMappingForAdapter();
             }
@@ -117,10 +125,6 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseDynamicMappingCase(DynamicMappingCase object) {
                 return createDynamicMappingCaseAdapter();
-            }
-            @Override
-            public Adapter caseSelectDescription(SelectDescription object) {
-                return createSelectDescriptionAdapter();
             }
             @Override
             public Adapter caseExtension(Extension object) {
@@ -245,6 +249,34 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.CheckboxDescription <em>Checkbox Description</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.CheckboxDescription
+     * @generated
+     */
+    public Adapter createCheckboxDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.SelectDescription <em>Select Description</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.SelectDescription
+     * @generated
+     */
+    public Adapter createSelectDescriptionAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.DynamicMappingFor <em>Dynamic Mapping For</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -283,20 +315,6 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDynamicMappingCaseAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.properties.SelectDescription <em>Select Description</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.eclipse.sirius.properties.SelectDescription
-     * @generated
-     */
-    public Adapter createSelectDescriptionAdapter() {
         return null;
     }
 

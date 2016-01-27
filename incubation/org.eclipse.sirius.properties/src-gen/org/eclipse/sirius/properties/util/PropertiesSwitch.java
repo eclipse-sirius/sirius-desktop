@@ -139,6 +139,20 @@ public class PropertiesSwitch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case PropertiesPackage.CHECKBOX_DESCRIPTION: {
+                CheckboxDescription checkboxDescription = (CheckboxDescription)theEObject;
+                T result = caseCheckboxDescription(checkboxDescription);
+                if (result == null) result = caseWidgetDescription(checkboxDescription);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case PropertiesPackage.SELECT_DESCRIPTION: {
+                SelectDescription selectDescription = (SelectDescription)theEObject;
+                T result = caseSelectDescription(selectDescription);
+                if (result == null) result = caseWidgetDescription(selectDescription);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             case PropertiesPackage.DYNAMIC_MAPPING_FOR: {
                 DynamicMappingFor dynamicMappingFor = (DynamicMappingFor)theEObject;
                 T result = caseDynamicMappingFor(dynamicMappingFor);
@@ -154,13 +168,6 @@ public class PropertiesSwitch<T> {
             case PropertiesPackage.DYNAMIC_MAPPING_CASE: {
                 DynamicMappingCase dynamicMappingCase = (DynamicMappingCase)theEObject;
                 T result = caseDynamicMappingCase(dynamicMappingCase);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case PropertiesPackage.SELECT_DESCRIPTION: {
-                SelectDescription selectDescription = (SelectDescription)theEObject;
-                T result = caseSelectDescription(selectDescription);
-                if (result == null) result = caseWidgetDescription(selectDescription);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -274,6 +281,36 @@ public class PropertiesSwitch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Checkbox Description</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Checkbox Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCheckboxDescription(CheckboxDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Select Description</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Select Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSelectDescription(SelectDescription object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Dynamic Mapping For</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -315,21 +352,6 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDynamicMappingCase(DynamicMappingCase object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Select Description</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Select Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseSelectDescription(SelectDescription object) {
         return null;
     }
 
