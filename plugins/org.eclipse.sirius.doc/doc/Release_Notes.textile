@@ -25,7 +25,7 @@ h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius@
 
-* <span class="label label-success">Added</span> A new variant of @org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)@ has been added, which does not require to specify a @DRepresentation@ in the context. It allows the creation of a task which executes a behavior specified by @ModelOperations@ outside of the context of a specific representation, provided the @ModelOperations@ work in that context. 
+* <span class="label label-success">Added</span> A new variant of @org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)@ has been added, which does not require to specify a @DRepresentation@ in the context. It allows the creation of a task which executes a behavior specified by @ModelOperations@ outside of the context of a specific representation, provided the @ModelOperations@ work in that context.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.TypedVariable@ has been created.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@ has been created as tag interface for variables that require user interaction to be valued.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
@@ -36,6 +36,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@ now implements @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2@ has been deleted and is now @MetamodelDescriptorProvider@.
 
 h4. Changes in @org.eclipse.sirius.common@
 

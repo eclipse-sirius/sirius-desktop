@@ -12,10 +12,9 @@ package org.eclipse.sirius.business.internal.extender;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2;
+import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -29,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author cbrun
  * 
  */
-public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescriptorProvider2 {
+public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescriptorProvider {
     /**
      * 
      * {@inheritDoc}
@@ -64,9 +63,4 @@ public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescr
         }
     }
     
-    @Override
-    public Collection<MetamodelDescriptor> provides(Viewpoint vp) {
-        return Collections.<MetamodelDescriptor>emptyList();
-    }
-
 }

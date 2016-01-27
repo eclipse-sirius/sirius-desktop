@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,25 +17,22 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Provider able to return a list of MetamodelDescriptor from viewpoints.
- * 
- * This interfaces is deprecated, MetamodelDescriptorProvider2 should be used
- * instead as it provides the ability to handle several Viewpoints at once.
+ * Implementers can declare MetamodelDescriptors even if no Viewpoint is
+ * enabled.
  * 
  * @author cbrun
  * 
  */
-@Deprecated
 public interface MetamodelDescriptorProvider {
     /**
-     * return the list of metamodel descritor provided by the viewpoint.
+     * Return the list of metamodel descritor provided by the selected
+     * viewpoints.
      * 
-     * This method is deprecated and will not be called if the class implements
-     * {@link MetamodelDescriptorProvider2}.
-     * 
-     * @param vp
-     *            any representation description.
+     * @param vps
+     *            A list of selected Viewpoints. This list might be empty and
+     *            yet the adopter might want to provide metamodel descriptors
+     *            anyway.
      * @return the list of metamodel descritor provided by the viewpoint.
      */
-    @Deprecated
-    Collection<MetamodelDescriptor> provides(Viewpoint vp);
+    Collection<MetamodelDescriptor> provides(Collection<Viewpoint> vps);
 }
