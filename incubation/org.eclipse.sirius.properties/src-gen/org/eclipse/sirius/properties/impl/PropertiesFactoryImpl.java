@@ -74,6 +74,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             case PropertiesPackage.DYNAMIC_MAPPING_FOR: return createDynamicMappingFor();
             case PropertiesPackage.DYNAMIC_MAPPING_SWITCH: return createDynamicMappingSwitch();
             case PropertiesPackage.DYNAMIC_MAPPING_CASE: return createDynamicMappingCase();
+            case PropertiesPackage.SELECT_DESCRIPTION: return createSelectDescription();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -167,6 +168,16 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public DynamicMappingCase createDynamicMappingCase() {
         DynamicMappingCaseImpl dynamicMappingCase = new DynamicMappingCaseImpl();
         return dynamicMappingCase;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SelectDescription createSelectDescription() {
+        SelectDescriptionImpl selectDescription = new SelectDescriptionImpl();
+        return selectDescription;
     }
 
     /**

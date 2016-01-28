@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.textdescription;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription;
 
 // Start of user code imports
 
@@ -27,9 +27,9 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the valueExpression property of a TextDescription object.
+ * A section for the valueExpression property of a SelectDescription object.
  */
-public class TextDescriptionValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class SelectDescriptionValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
@@ -54,7 +54,7 @@ public class TextDescriptionValueExpressionPropertySection extends AbstractTextW
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getSelectDescription_ValueExpression();
     }
 
     /**
@@ -93,7 +93,7 @@ public class TextDescriptionValueExpressionPropertySection extends AbstractTextW
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TextDescriptionValueExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), SelectDescriptionValueExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

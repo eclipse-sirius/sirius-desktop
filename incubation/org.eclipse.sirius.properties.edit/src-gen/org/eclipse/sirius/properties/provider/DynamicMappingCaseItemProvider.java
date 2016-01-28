@@ -197,6 +197,11 @@ public class DynamicMappingCaseItemProvider
             (createChildParameter
                 (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
                  PropertiesFactory.eINSTANCE.createLabelDescription()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE__WIDGET,
+                 PropertiesFactory.eINSTANCE.createSelectDescription()));
     }
 
     /**

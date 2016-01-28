@@ -305,6 +305,29 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.SelectDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SelectDescriptionItemProvider selectDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.SelectDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSelectDescriptionAdapter() {
+        if (selectDescriptionItemProvider == null) {
+            selectDescriptionItemProvider = new SelectDescriptionItemProvider(this);
+        }
+
+        return selectDescriptionItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -412,6 +435,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (dynamicMappingForItemProvider != null) dynamicMappingForItemProvider.dispose();
         if (dynamicMappingSwitchItemProvider != null) dynamicMappingSwitchItemProvider.dispose();
         if (dynamicMappingCaseItemProvider != null) dynamicMappingCaseItemProvider.dispose();
+        if (selectDescriptionItemProvider != null) selectDescriptionItemProvider.dispose();
     }
 
     /**

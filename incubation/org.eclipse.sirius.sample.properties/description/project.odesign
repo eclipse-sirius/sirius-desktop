@@ -92,21 +92,13 @@
         domainClass="ecore.EClass"
         semanticCandidateExpression="var:self"
         groups="//@extensions.0/@groups.1"/>
-    <pages identifier="All EClass attributes"
         labelExpression="aql:self.name"
-        domainClass="ecore.EAttribute"
-        semanticCandidateExpression="aql:self.eContents(ecore::EAttribute)"
-        groups="//@extensions.0/@groups.0"/>
-    <pages identifier="Single EAttribute"
-        labelExpression="aql:self.name"
-        domainClass="ecore.EAttribute"
+        domainClass="ecore.EClass"
         semanticCandidateExpression="var:self"
         groups="//@extensions.0/@groups.0"/>
     <groups
-        identifier="EAttribute properties"
-        labelExpression=""
-        domainClass="ecore.EAttribute"
-        semanticCandidateExpression="">
+        identifier="EClass properties"
+        domainClass="ecore.EClass">
       <container>
         <widgets
             xsi:type="properties:TextDescription"
@@ -121,9 +113,9 @@
           </initialOperation>
         </widgets>
         <widgets
-            xsi:type="properties:LabelDescription"
-            identifier="Label"
-            labelExpression="feature:name"/>
+            xsi:type="properties:SelectDescription"
+            identifier="Reference"
+            labelExpression="Reference"
       </container>
     </groups>
     <groups

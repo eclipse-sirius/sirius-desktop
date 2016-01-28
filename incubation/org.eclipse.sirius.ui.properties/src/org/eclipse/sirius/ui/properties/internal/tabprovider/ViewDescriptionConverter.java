@@ -19,6 +19,7 @@ import org.eclipse.eef.EEFDynamicMappingSwitch;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.properties.DynamicMappingSwitch;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -106,6 +108,8 @@ public class ViewDescriptionConverter {
                 containerDesc.getWidgets().add(createEEFTextDescription((TextDescription) widgetDescription));
             } else if (widgetDescription instanceof LabelDescription) {
                 containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
+            } else if (widgetDescription instanceof SelectDescription) {
+                containerDesc.getWidgets().add(createEEFSelectDescription((SelectDescription) widgetDescription));
             }
 
             EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
@@ -172,4 +176,14 @@ public class ViewDescriptionConverter {
         return eefLabelDescription;
     }
 
+    private EEFSelectDescription createEEFSelectDescription(SelectDescription selectDescription) {
+        EEFSelectDescription eefSelectDescription = EefFactory.eINSTANCE.createEEFSelectDescription();
+
+        eefSelectDescription.setIdentifier(selectDescription.getIdentifier());
+        eefSelectDescription.setLabelExpression(selectDescription.getLabelExpression());
+        eefSelectDescription.setValueExpression(selectDescription.getValueExpression());
+        eefSelectDescription.setCandidatesExpression(selectDescription.getCandidatesExpression());
+        eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
+        return eefSelectDescription;
+    }
 }

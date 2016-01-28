@@ -112,6 +112,15 @@ public interface PropertiesFactory extends EFactory {
     DynamicMappingCase createDynamicMappingCase();
 
     /**
+     * Returns a new object of class '<em>Select Description</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Select Description</em>'.
+     * @generated
+     */
+    SelectDescription createSelectDescription();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

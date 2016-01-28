@@ -30,7 +30,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the semanticCandidateExpression property of a GroupDescription
  * object.
  */
-public class GroupDescriptionSemanticCandidateExpressionPropertySection extends AbstractTextWithButtonPropertySection /* implements ContentProposalClient */ {
+public class GroupDescriptionSemanticCandidateExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()

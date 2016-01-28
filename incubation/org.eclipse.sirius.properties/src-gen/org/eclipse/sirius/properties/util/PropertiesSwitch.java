@@ -157,6 +157,13 @@ public class PropertiesSwitch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case PropertiesPackage.SELECT_DESCRIPTION: {
+                SelectDescription selectDescription = (SelectDescription)theEObject;
+                T result = caseSelectDescription(selectDescription);
+                if (result == null) result = caseWidgetDescription(selectDescription);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -308,6 +315,21 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDynamicMappingCase(DynamicMappingCase object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Select Description</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Select Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSelectDescription(SelectDescription object) {
         return null;
     }
 

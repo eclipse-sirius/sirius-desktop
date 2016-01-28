@@ -566,6 +566,80 @@ public interface PropertiesPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl <em>Select Description</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.sirius.properties.impl.SelectDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
+     * @generated
+     */
+    int SELECT_DESCRIPTION = 10;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Value Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__VALUE_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__INITIAL_OPERATION = WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Candidate Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Select Description</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.ViewExtensionDescription <em>View Extension Description</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -996,6 +1070,60 @@ public interface PropertiesPackage extends EPackage {
     EReference getDynamicMappingCase_Widget();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.SelectDescription <em>Select Description</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Select Description</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription
+     * @generated
+     */
+    EClass getSelectDescription();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.SelectDescription#getValueExpression <em>Value Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getValueExpression()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EAttribute getSelectDescription_ValueExpression();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation <em>Initial Operation</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getInitialOperation()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EReference getSelectDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression <em>Candidates Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Candidates Expression</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EAttribute getSelectDescription_CandidatesExpression();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression <em>Candidate Display Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Candidate Display Expression</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EAttribute getSelectDescription_CandidateDisplayExpression();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1356,6 +1484,48 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference DYNAMIC_MAPPING_CASE__WIDGET = eINSTANCE.getDynamicMappingCase_Widget();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl <em>Select Description</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.sirius.properties.impl.SelectDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
+         * @generated
+         */
+        EClass SELECT_DESCRIPTION = eINSTANCE.getSelectDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Value Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SELECT_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getSelectDescription_ValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SELECT_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getSelectDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Candidates Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = eINSTANCE.getSelectDescription_CandidatesExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Candidate Display Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = eINSTANCE.getSelectDescription_CandidateDisplayExpression();
 
     }
 

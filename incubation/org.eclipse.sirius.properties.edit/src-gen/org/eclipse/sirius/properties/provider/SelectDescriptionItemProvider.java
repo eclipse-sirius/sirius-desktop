@@ -18,46 +18,32 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.SelectDescription;
+
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ContainerDescription} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.properties.SelectDescription} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ContainerDescriptionItemProvider 
-    extends ItemProviderAdapter
-    implements
-        IEditingDomainItemProvider,
-        IStructuredItemContentProvider,
-        ITreeItemContentProvider,
-        IItemLabelProvider,
-        IItemPropertySource {
+public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public ContainerDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public SelectDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -72,25 +58,71 @@ public class ContainerDescriptionItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addIdentifierPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
+            addCandidatesExpressionPropertyDescriptor(object);
+            addCandidateDisplayExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Identifier feature.
+     * This adds a property descriptor for the Value Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addIdentifierPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_ContainerDescription_identifier_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ContainerDescription_identifier_feature", "_UI_ContainerDescription_type"),
-                 PropertiesPackage.Literals.CONTAINER_DESCRIPTION__IDENTIFIER,
+                 getString("_UI_SelectDescription_valueExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SelectDescription_valueExpression_feature", "_UI_SelectDescription_type"),
+                 PropertiesPackage.Literals.SELECT_DESCRIPTION__VALUE_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Candidates Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addCandidatesExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SelectDescription_candidatesExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SelectDescription_candidatesExpression_feature", "_UI_SelectDescription_type"),
+                 PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Candidate Display Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SelectDescription_candidateDisplayExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SelectDescription_candidateDisplayExpression_feature", "_UI_SelectDescription_type"),
+                 PropertiesPackage.Literals.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION,
                  true,
                  false,
                  false,
@@ -111,8 +143,7 @@ public class ContainerDescriptionItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
+            childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION);
         }
         return childrenFeatures;
     }
@@ -131,14 +162,14 @@ public class ContainerDescriptionItemProvider
     }
 
     /**
-     * This returns ContainerDescription.gif.
+     * This returns SelectDescription.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SelectDescription"));
     }
 
     /**
@@ -149,10 +180,10 @@ public class ContainerDescriptionItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContainerDescription)object).getIdentifier();
+        String label = ((SelectDescription)object).getIdentifier();
         return label == null || label.length() == 0 ?
-            getString("_UI_ContainerDescription_type") :
-            getString("_UI_ContainerDescription_type") + " " + label;
+            getString("_UI_SelectDescription_type") :
+            getString("_UI_SelectDescription_type") + " " + label;
     }
     
 
@@ -167,12 +198,13 @@ public class ContainerDescriptionItemProvider
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ContainerDescription.class)) {
-            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+        switch (notification.getFeatureID(SelectDescription.class)) {
+            case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
+            case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
+            case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
-            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+            case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -192,34 +224,8 @@ public class ContainerDescriptionItemProvider
 
         newChildDescriptors.add
             (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
-                 PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
-                 PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
-                 PropertiesFactory.eINSTANCE.createSelectDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS,
-                 PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+                (PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION,
+                 ToolFactory.eINSTANCE.createInitialOperation()));
     }
 
 }

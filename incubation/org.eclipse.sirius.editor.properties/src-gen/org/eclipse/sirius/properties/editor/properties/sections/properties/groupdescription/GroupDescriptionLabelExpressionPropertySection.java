@@ -29,7 +29,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * A section for the labelExpression property of a GroupDescription object.
  */
-public class GroupDescriptionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection /* implements ContentProposalClient */ {
+public class GroupDescriptionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()

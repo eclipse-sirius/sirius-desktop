@@ -28,6 +28,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -114,6 +115,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass dynamicMappingCaseEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass selectDescriptionEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -544,6 +552,51 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getSelectDescription() {
+        return selectDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_ValueExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSelectDescription_InitialOperation() {
+        return (EReference)selectDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_CandidatesExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSelectDescription_CandidateDisplayExpression() {
+        return (EAttribute)selectDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory)getEFactoryInstance();
     }
@@ -616,6 +669,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         dynamicMappingCaseEClass = createEClass(DYNAMIC_MAPPING_CASE);
         createEAttribute(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
         createEReference(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__WIDGET);
+
+        selectDescriptionEClass = createEClass(SELECT_DESCRIPTION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(selectDescriptionEClass, SELECT_DESCRIPTION__INITIAL_OPERATION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
+        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
     }
 
     /**
@@ -654,6 +713,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         viewExtensionDescriptionEClass.getESuperTypes().add(theDescriptionPackage.getExtension());
         textDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         labelDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        selectDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -705,6 +765,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSelectDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSelectDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSelectDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

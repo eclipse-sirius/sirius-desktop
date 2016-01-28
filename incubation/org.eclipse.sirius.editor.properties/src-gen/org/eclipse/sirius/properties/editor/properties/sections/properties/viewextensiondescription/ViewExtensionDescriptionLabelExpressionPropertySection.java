@@ -30,7 +30,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * A section for the labelExpression property of a ViewExtensionDescription
  * object.
  */
-public class ViewExtensionDescriptionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection /* implements ContentProposalClient */ {
+public class ViewExtensionDescriptionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
