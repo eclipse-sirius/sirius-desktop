@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -128,12 +130,15 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         }
     };
 
-    private static final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE = new Predicate<SWTBotGefEditPart>() {
+    private static final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE = new Predicate<SWTBotGefEditPart>() {
 
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, 10011046);
+                // Use same Color as
+                // org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup.GRAY
+                Integer color = FigureUtilities.RGBToInteger(new RGB(128, 128, 128));
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false, null, -1, color.intValue());
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -145,7 +150,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         @Override
         public boolean apply(SWTBotGefEditPart input) {
-            return NORMAL_FONT_STATE_PREDICATE.apply(input) && !STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE.apply(input);
+            return NORMAL_FONT_STATE_PREDICATE.apply(input) && !STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE.apply(input);
         }
     };
 
@@ -173,7 +178,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     private void doTestChangeLabelColorFromAppearanceSection(String name, Class<? extends EditPart> type) {
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
-                STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE);
+                STATE_WHEN_LABEL_COLOR_IS_CHANGED_TO_GRAY_PREDICATE);
     }
 
     /**

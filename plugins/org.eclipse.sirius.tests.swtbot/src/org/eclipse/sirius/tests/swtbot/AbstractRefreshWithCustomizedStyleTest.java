@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -416,6 +416,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 2: Enable button and check result
         buttonFromAppearanceSectionToTest.click();
+        // Click on the GRAY button
         bot.button(3).click();
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
@@ -429,6 +430,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 4: re-enable button and check result
         buttonFromAppearanceSectionToTest.click();
+        // Click on the GRAY button
         bot.button(3).click();
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
