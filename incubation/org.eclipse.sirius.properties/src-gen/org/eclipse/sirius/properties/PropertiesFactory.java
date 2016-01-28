@@ -85,6 +85,33 @@ public interface PropertiesFactory extends EFactory {
     LabelDescription createLabelDescription();
 
     /**
+     * Returns a new object of class '<em>Dynamic Mapping For</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Dynamic Mapping For</em>'.
+     * @generated
+     */
+    DynamicMappingFor createDynamicMappingFor();
+
+    /**
+     * Returns a new object of class '<em>Dynamic Mapping Switch</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Dynamic Mapping Switch</em>'.
+     * @generated
+     */
+    DynamicMappingSwitch createDynamicMappingSwitch();
+
+    /**
+     * Returns a new object of class '<em>Dynamic Mapping Case</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Dynamic Mapping Case</em>'.
+     * @generated
+     */
+    DynamicMappingCase createDynamicMappingCase();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

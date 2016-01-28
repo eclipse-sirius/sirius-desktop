@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets <em>Widgets</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings <em>Dynamic Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +75,21 @@ public interface ContainerDescription extends EObject {
      * @generated
      */
     EList<WidgetDescription> getWidgets();
+
+    /**
+     * Returns the value of the '<em><b>Dynamic Mappings</b></em>' containment reference list.
+     * The list contents are of type {@link org.eclipse.sirius.properties.DynamicMappingFor}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Dynamic Mappings</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Dynamic Mappings</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_DynamicMappings()
+     * @model containment="true"
+     * @generated
+     */
+    EList<DynamicMappingFor> getDynamicMappings();
 
 } // ContainerDescription

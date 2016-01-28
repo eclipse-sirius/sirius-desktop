@@ -71,6 +71,9 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             case PropertiesPackage.CONTAINER_DESCRIPTION: return createContainerDescription();
             case PropertiesPackage.TEXT_DESCRIPTION: return createTextDescription();
             case PropertiesPackage.LABEL_DESCRIPTION: return createLabelDescription();
+            case PropertiesPackage.DYNAMIC_MAPPING_FOR: return createDynamicMappingFor();
+            case PropertiesPackage.DYNAMIC_MAPPING_SWITCH: return createDynamicMappingSwitch();
+            case PropertiesPackage.DYNAMIC_MAPPING_CASE: return createDynamicMappingCase();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -134,6 +137,36 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public LabelDescription createLabelDescription() {
         LabelDescriptionImpl labelDescription = new LabelDescriptionImpl();
         return labelDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DynamicMappingFor createDynamicMappingFor() {
+        DynamicMappingForImpl dynamicMappingFor = new DynamicMappingForImpl();
+        return dynamicMappingFor;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DynamicMappingSwitch createDynamicMappingSwitch() {
+        DynamicMappingSwitchImpl dynamicMappingSwitch = new DynamicMappingSwitchImpl();
+        return dynamicMappingSwitch;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DynamicMappingCase createDynamicMappingCase() {
+        DynamicMappingCaseImpl dynamicMappingCase = new DynamicMappingCaseImpl();
+        return dynamicMappingCase;
     }
 
     /**

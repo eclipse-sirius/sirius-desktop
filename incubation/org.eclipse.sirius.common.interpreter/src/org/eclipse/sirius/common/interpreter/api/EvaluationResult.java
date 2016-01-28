@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.interpreter.api;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;

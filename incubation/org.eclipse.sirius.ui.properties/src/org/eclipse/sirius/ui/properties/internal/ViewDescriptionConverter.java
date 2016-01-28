@@ -17,6 +17,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.eef.EEFContainerDescription;
+import org.eclipse.eef.EEFDynamicMappingCase;
+import org.eclipse.eef.EEFDynamicMappingFor;
+import org.eclipse.eef.EEFDynamicMappingSwitch;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
@@ -30,6 +33,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
+import org.eclipse.sirius.properties.DynamicMappingCase;
+import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.DynamicMappingSwitch;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -161,6 +167,32 @@ public class ViewDescriptionConverter {
             } else if (widgetDescription instanceof LabelDescription) {
                 containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
             }
+        }
+
+        for (DynamicMappingFor dynamicMappingFor : groupDescription.getContainer().getDynamicMappings()) {
+            EEFDynamicMappingFor eefDynamicMappingFor = EefFactory.eINSTANCE.createEEFDynamicMappingFor();
+            eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
+            eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
+
+            DynamicMappingSwitch dynamicMappingSwitch = dynamicMappingFor.getSwitch();
+            EEFDynamicMappingSwitch eefDynamicMappingSwitch = EefFactory.eINSTANCE.createEEFDynamicMappingSwitch();
+            eefDynamicMappingSwitch.setSwitchExpression(dynamicMappingSwitch.getSwitchExpression());
+            eefDynamicMappingFor.setSwitch(eefDynamicMappingSwitch);
+
+            for (DynamicMappingCase dynamicMappingCase : dynamicMappingSwitch.getCases()) {
+                EEFDynamicMappingCase eefDynamicMappingCase = EefFactory.eINSTANCE.createEEFDynamicMappingCase();
+                eefDynamicMappingCase.setCaseExpression(dynamicMappingCase.getCaseExpression());
+
+                if (dynamicMappingCase.getWidget() instanceof TextDescription) {
+                    eefDynamicMappingCase.setWidget(createEEFTextDescription((TextDescription) dynamicMappingCase.getWidget()));
+                } else if (dynamicMappingCase.getWidget() instanceof LabelDescription) {
+                    eefDynamicMappingCase.setWidget(createEEFLabelDescription((LabelDescription) dynamicMappingCase.getWidget()));
+                }
+
+                eefDynamicMappingSwitch.getCases().add(eefDynamicMappingCase);
+            }
+
+            containerDesc.getDynamicMappings().add(eefDynamicMappingFor);
         }
 
         group.setContainer(containerDesc);

@@ -12,22 +12,17 @@
 package org.eclipse.sirius.properties.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
@@ -40,6 +35,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <ul>
  *   <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getWidgets <em>Widgets</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getDynamicMappings <em>Dynamic Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,6 +71,16 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @ordered
      */
     protected EList<WidgetDescription> widgets;
+
+    /**
+     * The cached value of the '{@link #getDynamicMappings() <em>Dynamic Mappings</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDynamicMappings()
+     * @generated
+     * @ordered
+     */
+    protected EList<DynamicMappingFor> dynamicMappings;
 
     /**
      * <!-- begin-user-doc -->
@@ -133,11 +139,25 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * <!-- end-user-doc -->
      * @generated
      */
+    public EList<DynamicMappingFor> getDynamicMappings() {
+        if (dynamicMappings == null) {
+            dynamicMappings = new EObjectContainmentEList<DynamicMappingFor>(DynamicMappingFor.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
+        }
+        return dynamicMappings;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
                 return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
+            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+                return ((InternalEList<?>)getDynamicMappings()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -154,6 +174,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
                 return getIdentifier();
             case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
                 return getWidgets();
+            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+                return getDynamicMappings();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -174,6 +196,10 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
                 getWidgets().clear();
                 getWidgets().addAll((Collection<? extends WidgetDescription>)newValue);
                 return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+                getDynamicMappings().clear();
+                getDynamicMappings().addAll((Collection<? extends DynamicMappingFor>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -192,6 +218,9 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
             case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
                 getWidgets().clear();
                 return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+                getDynamicMappings().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -208,6 +237,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
                 return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
             case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
                 return widgets != null && !widgets.isEmpty();
+            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+                return dynamicMappings != null && !dynamicMappings.isEmpty();
         }
         return super.eIsSet(featureID);
     }

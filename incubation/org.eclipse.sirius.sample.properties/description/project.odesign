@@ -84,9 +84,14 @@
   <extensions
       xsi:type="properties:ViewExtensionDescription"
       identifier="Properties"
-      defaultPage="//@extensions.0/@pages.0"
+      defaultPage="//@extensions.0/@pages.1"
       labelExpression="aql:self.name"
       preconditionExpression="">
+    <pages identifier="eclass"
+        labelExpression="aql:self.name"
+        domainClass="ecore.EClass"
+        semanticCandidateExpression="var:self"
+        groups="//@extensions.0/@groups.1"/>
     <pages identifier="All EClass attributes"
         labelExpression="aql:self.name"
         domainClass="ecore.EAttribute"
@@ -119,6 +124,37 @@
             xsi:type="properties:LabelDescription"
             identifier="Label"
             labelExpression="feature:name"/>
+      </container>
+    </groups>
+    <groups
+        identifier="EClass Dynamic Mapping"
+        labelExpression="aql:self.name"
+        domainClass="ecore.EClass"
+        semanticCandidateExpression="var:self">
+      <container
+          identifier="container dynamic mapping">
+        <dynamicMappings
+            iterator="eStructuralFeature"
+            domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
+          <switch
+              switchExpression="aql:eStructuralFeature.eType.name">
+            <cases
+                caseExpression="EString">
+              <widget
+                  xsi:type="properties:TextDescription"
+                  identifier=""
+                  labelExpression="aql:eStructuralFeature.name"
+                  valueExpression="aql:self.eGet(eStructuralFeature)">
+                <initialOperation>
+                  <firstModelOperations
+                      xsi:type="tool:SetValue"
+                      featureName="aql:eStructuralFeature.name"
+                      valueExpression="aql:newValue"/>
+                </initialOperation>
+              </widget>
+            </cases>
+          </switch>
+        </dynamicMappings>
       </container>
     </groups>
   </extensions>

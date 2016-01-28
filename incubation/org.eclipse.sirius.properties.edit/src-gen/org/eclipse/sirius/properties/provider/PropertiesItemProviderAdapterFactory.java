@@ -236,6 +236,75 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DynamicMappingFor} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DynamicMappingForItemProvider dynamicMappingForItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingFor}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDynamicMappingForAdapter() {
+        if (dynamicMappingForItemProvider == null) {
+            dynamicMappingForItemProvider = new DynamicMappingForItemProvider(this);
+        }
+
+        return dynamicMappingForItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DynamicMappingSwitch} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DynamicMappingSwitchItemProvider dynamicMappingSwitchItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingSwitch}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDynamicMappingSwitchAdapter() {
+        if (dynamicMappingSwitchItemProvider == null) {
+            dynamicMappingSwitchItemProvider = new DynamicMappingSwitchItemProvider(this);
+        }
+
+        return dynamicMappingSwitchItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.eclipse.sirius.properties.DynamicMappingCase} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DynamicMappingCaseItemProvider dynamicMappingCaseItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.properties.DynamicMappingCase}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDynamicMappingCaseAdapter() {
+        if (dynamicMappingCaseItemProvider == null) {
+            dynamicMappingCaseItemProvider = new DynamicMappingCaseItemProvider(this);
+        }
+
+        return dynamicMappingCaseItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -340,6 +409,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (containerDescriptionItemProvider != null) containerDescriptionItemProvider.dispose();
         if (textDescriptionItemProvider != null) textDescriptionItemProvider.dispose();
         if (labelDescriptionItemProvider != null) labelDescriptionItemProvider.dispose();
+        if (dynamicMappingForItemProvider != null) dynamicMappingForItemProvider.dispose();
+        if (dynamicMappingSwitchItemProvider != null) dynamicMappingSwitchItemProvider.dispose();
+        if (dynamicMappingCaseItemProvider != null) dynamicMappingCaseItemProvider.dispose();
     }
 
     /**

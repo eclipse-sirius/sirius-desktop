@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.DynamicMappingCase;
+import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.DynamicMappingSwitch;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -90,6 +93,27 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass labelDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass dynamicMappingForEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass dynamicMappingSwitchEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass dynamicMappingCaseEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -358,6 +382,15 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EReference getContainerDescription_DynamicMappings() {
+        return (EReference)containerDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getWidgetDescription() {
         return widgetDescriptionEClass;
     }
@@ -421,6 +454,96 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getDynamicMappingFor() {
+        return dynamicMappingForEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getDynamicMappingFor_Iterator() {
+        return (EAttribute)dynamicMappingForEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getDynamicMappingFor_DomainClassExpression() {
+        return (EAttribute)dynamicMappingForEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getDynamicMappingFor_Switch() {
+        return (EReference)dynamicMappingForEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getDynamicMappingSwitch() {
+        return dynamicMappingSwitchEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getDynamicMappingSwitch_SwitchExpression() {
+        return (EAttribute)dynamicMappingSwitchEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getDynamicMappingSwitch_Cases() {
+        return (EReference)dynamicMappingSwitchEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getDynamicMappingCase() {
+        return dynamicMappingCaseEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getDynamicMappingCase_CaseExpression() {
+        return (EAttribute)dynamicMappingCaseEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getDynamicMappingCase_Widget() {
+        return (EReference)dynamicMappingCaseEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory)getEFactoryInstance();
     }
@@ -469,6 +592,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         containerDescriptionEClass = createEClass(CONTAINER_DESCRIPTION);
         createEAttribute(containerDescriptionEClass, CONTAINER_DESCRIPTION__IDENTIFIER);
         createEReference(containerDescriptionEClass, CONTAINER_DESCRIPTION__WIDGETS);
+        createEReference(containerDescriptionEClass, CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
 
         widgetDescriptionEClass = createEClass(WIDGET_DESCRIPTION);
         createEAttribute(widgetDescriptionEClass, WIDGET_DESCRIPTION__IDENTIFIER);
@@ -479,6 +603,19 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(textDescriptionEClass, TEXT_DESCRIPTION__INITIAL_OPERATION);
 
         labelDescriptionEClass = createEClass(LABEL_DESCRIPTION);
+
+        dynamicMappingForEClass = createEClass(DYNAMIC_MAPPING_FOR);
+        createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__ITERATOR);
+        createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
+        createEReference(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__SWITCH);
+
+        dynamicMappingSwitchEClass = createEClass(DYNAMIC_MAPPING_SWITCH);
+        createEAttribute(dynamicMappingSwitchEClass, DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION);
+        createEReference(dynamicMappingSwitchEClass, DYNAMIC_MAPPING_SWITCH__CASES);
+
+        dynamicMappingCaseEClass = createEClass(DYNAMIC_MAPPING_CASE);
+        createEAttribute(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
+        createEReference(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__WIDGET);
     }
 
     /**
@@ -544,6 +681,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getContainerDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getContainerDescription_Widgets(), this.getWidgetDescription(), null, "widgets", null, 0, -1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDescription_DynamicMappings(), this.getDynamicMappingFor(), null, "dynamicMappings", null, 0, -1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(widgetDescriptionEClass, WidgetDescription.class, "WidgetDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWidgetDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, WidgetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -554,6 +692,19 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getTextDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, TextDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingFor_Iterator(), theEcorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDynamicMappingFor_DomainClassExpression(), theEcorePackage.getEString(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDynamicMappingFor_Switch(), this.getDynamicMappingSwitch(), null, "switch", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(dynamicMappingSwitchEClass, DynamicMappingSwitch.class, "DynamicMappingSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingSwitch_SwitchExpression(), theEcorePackage.getEString(), "switchExpression", null, 1, 1, DynamicMappingSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDynamicMappingSwitch_Cases(), this.getDynamicMappingCase(), null, "cases", null, 1, -1, DynamicMappingSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

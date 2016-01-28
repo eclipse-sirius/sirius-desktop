@@ -33,17 +33,17 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.properties.ContainerDescription} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.properties.DynamicMappingFor} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ContainerDescriptionItemProvider 
+public class DynamicMappingForItemProvider 
     extends ItemProviderAdapter
     implements
         IEditingDomainItemProvider,
@@ -57,7 +57,7 @@ public class ContainerDescriptionItemProvider
      * <!-- end-user-doc -->
      * @generated
      */
-    public ContainerDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public DynamicMappingForItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -72,25 +72,48 @@ public class ContainerDescriptionItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addIdentifierPropertyDescriptor(object);
+            addIteratorPropertyDescriptor(object);
+            addDomainClassExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Identifier feature.
+     * This adds a property descriptor for the Iterator feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addIdentifierPropertyDescriptor(Object object) {
+    protected void addIteratorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_ContainerDescription_identifier_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ContainerDescription_identifier_feature", "_UI_ContainerDescription_type"),
-                 PropertiesPackage.Literals.CONTAINER_DESCRIPTION__IDENTIFIER,
+                 getString("_UI_DynamicMappingFor_iterator_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingFor_iterator_feature", "_UI_DynamicMappingFor_type"),
+                 PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERATOR,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Domain Class Expression feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addDomainClassExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_DynamicMappingFor_domainClassExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingFor_domainClassExpression_feature", "_UI_DynamicMappingFor_type"),
+                 PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION,
                  true,
                  false,
                  false,
@@ -111,8 +134,7 @@ public class ContainerDescriptionItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
+            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__SWITCH);
         }
         return childrenFeatures;
     }
@@ -131,14 +153,14 @@ public class ContainerDescriptionItemProvider
     }
 
     /**
-     * This returns ContainerDescription.gif.
+     * This returns DynamicMappingFor.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingFor"));
     }
 
     /**
@@ -149,10 +171,10 @@ public class ContainerDescriptionItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContainerDescription)object).getIdentifier();
+        String label = ((DynamicMappingFor)object).getIterator();
         return label == null || label.length() == 0 ?
-            getString("_UI_ContainerDescription_type") :
-            getString("_UI_ContainerDescription_type") + " " + label;
+            getString("_UI_DynamicMappingFor_type") :
+            getString("_UI_DynamicMappingFor_type") + " " + label;
     }
     
 
@@ -167,12 +189,12 @@ public class ContainerDescriptionItemProvider
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ContainerDescription.class)) {
-            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+        switch (notification.getFeatureID(DynamicMappingFor.class)) {
+            case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
+            case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
-            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
+            case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -192,18 +214,8 @@ public class ContainerDescriptionItemProvider
 
         newChildDescriptors.add
             (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
-                 PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS,
-                 PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS,
-                 PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
+                (PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__SWITCH,
+                 PropertiesFactory.eINSTANCE.createDynamicMappingSwitch()));
     }
 
     /**

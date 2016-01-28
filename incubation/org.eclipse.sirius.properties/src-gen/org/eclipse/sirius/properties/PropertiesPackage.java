@@ -296,13 +296,22 @@ public interface PropertiesPackage extends EPackage {
     int CONTAINER_DESCRIPTION__WIDGETS = 1;
 
     /**
+     * The feature id for the '<em><b>Dynamic Mappings</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = 2;
+
+    /**
      * The number of structural features of the '<em>Container Description</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CONTAINER_DESCRIPTION_FEATURE_COUNT = 2;
+    int CONTAINER_DESCRIPTION_FEATURE_COUNT = 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl <em>Widget Description</em>}' class.
@@ -433,6 +442,127 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int LABEL_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl <em>Dynamic Mapping For</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.sirius.properties.impl.DynamicMappingForImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
+     * @generated
+     */
+    int DYNAMIC_MAPPING_FOR = 7;
+
+    /**
+     * The feature id for the '<em><b>Iterator</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR__ITERATOR = 0;
+
+    /**
+     * The feature id for the '<em><b>Domain Class Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = 1;
+
+    /**
+     * The feature id for the '<em><b>Switch</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR__SWITCH = 2;
+
+    /**
+     * The number of structural features of the '<em>Dynamic Mapping For</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR_FEATURE_COUNT = 3;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingSwitchImpl <em>Dynamic Mapping Switch</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.sirius.properties.impl.DynamicMappingSwitchImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingSwitch()
+     * @generated
+     */
+    int DYNAMIC_MAPPING_SWITCH = 8;
+
+    /**
+     * The feature id for the '<em><b>Switch Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = 0;
+
+    /**
+     * The feature id for the '<em><b>Cases</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_SWITCH__CASES = 1;
+
+    /**
+     * The number of structural features of the '<em>Dynamic Mapping Switch</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_SWITCH_FEATURE_COUNT = 2;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl <em>Dynamic Mapping Case</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingCase()
+     * @generated
+     */
+    int DYNAMIC_MAPPING_CASE = 9;
+
+    /**
+     * The feature id for the '<em><b>Case Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = 0;
+
+    /**
+     * The feature id for the '<em><b>Widget</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_CASE__WIDGET = 1;
+
+    /**
+     * The number of structural features of the '<em>Dynamic Mapping Case</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_CASE_FEATURE_COUNT = 2;
 
 
     /**
@@ -674,6 +804,17 @@ public interface PropertiesPackage extends EPackage {
     EReference getContainerDescription_Widgets();
 
     /**
+     * Returns the meta object for the containment reference list '{@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings <em>Dynamic Mappings</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Dynamic Mappings</em>'.
+     * @see org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings()
+     * @see #getContainerDescription()
+     * @generated
+     */
+    EReference getContainerDescription_DynamicMappings();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.properties.WidgetDescription <em>Widget Description</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -746,6 +887,113 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EClass getLabelDescription();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.DynamicMappingFor <em>Dynamic Mapping For</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Dynamic Mapping For</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingFor
+     * @generated
+     */
+    EClass getDynamicMappingFor();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator <em>Iterator</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Iterator</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingFor#getIterator()
+     * @see #getDynamicMappingFor()
+     * @generated
+     */
+    EAttribute getDynamicMappingFor_Iterator();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression <em>Domain Class Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Domain Class Expression</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression()
+     * @see #getDynamicMappingFor()
+     * @generated
+     */
+    EAttribute getDynamicMappingFor_DomainClassExpression();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.eclipse.sirius.properties.DynamicMappingFor#getSwitch <em>Switch</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Switch</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingFor#getSwitch()
+     * @see #getDynamicMappingFor()
+     * @generated
+     */
+    EReference getDynamicMappingFor_Switch();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.DynamicMappingSwitch <em>Dynamic Mapping Switch</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Dynamic Mapping Switch</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingSwitch
+     * @generated
+     */
+    EClass getDynamicMappingSwitch();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DynamicMappingSwitch#getSwitchExpression <em>Switch Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Switch Expression</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingSwitch#getSwitchExpression()
+     * @see #getDynamicMappingSwitch()
+     * @generated
+     */
+    EAttribute getDynamicMappingSwitch_SwitchExpression();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.eclipse.sirius.properties.DynamicMappingSwitch#getCases <em>Cases</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Cases</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingSwitch#getCases()
+     * @see #getDynamicMappingSwitch()
+     * @generated
+     */
+    EReference getDynamicMappingSwitch_Cases();
+
+    /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.properties.DynamicMappingCase <em>Dynamic Mapping Case</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Dynamic Mapping Case</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingCase
+     * @generated
+     */
+    EClass getDynamicMappingCase();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression <em>Case Expression</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Case Expression</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression()
+     * @see #getDynamicMappingCase()
+     * @generated
+     */
+    EAttribute getDynamicMappingCase_CaseExpression();
+
+    /**
+     * Returns the meta object for the containment reference '{@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget <em>Widget</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Widget</em>'.
+     * @see org.eclipse.sirius.properties.DynamicMappingCase#getWidget()
+     * @see #getDynamicMappingCase()
+     * @generated
+     */
+    EReference getDynamicMappingCase_Widget();
 
     /**
      * Returns the factory that creates the instances of the model.
@@ -954,6 +1202,14 @@ public interface PropertiesPackage extends EPackage {
         EReference CONTAINER_DESCRIPTION__WIDGETS = eINSTANCE.getContainerDescription_Widgets();
 
         /**
+         * The meta object literal for the '<em><b>Dynamic Mappings</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = eINSTANCE.getContainerDescription_DynamicMappings();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl <em>Widget Description</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1014,6 +1270,92 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EClass LABEL_DESCRIPTION = eINSTANCE.getLabelDescription();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl <em>Dynamic Mapping For</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.sirius.properties.impl.DynamicMappingForImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
+         * @generated
+         */
+        EClass DYNAMIC_MAPPING_FOR = eINSTANCE.getDynamicMappingFor();
+
+        /**
+         * The meta object literal for the '<em><b>Iterator</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DYNAMIC_MAPPING_FOR__ITERATOR = eINSTANCE.getDynamicMappingFor_Iterator();
+
+        /**
+         * The meta object literal for the '<em><b>Domain Class Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = eINSTANCE.getDynamicMappingFor_DomainClassExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Switch</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference DYNAMIC_MAPPING_FOR__SWITCH = eINSTANCE.getDynamicMappingFor_Switch();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingSwitchImpl <em>Dynamic Mapping Switch</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.sirius.properties.impl.DynamicMappingSwitchImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingSwitch()
+         * @generated
+         */
+        EClass DYNAMIC_MAPPING_SWITCH = eINSTANCE.getDynamicMappingSwitch();
+
+        /**
+         * The meta object literal for the '<em><b>Switch Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = eINSTANCE.getDynamicMappingSwitch_SwitchExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Cases</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference DYNAMIC_MAPPING_SWITCH__CASES = eINSTANCE.getDynamicMappingSwitch_Cases();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl <em>Dynamic Mapping Case</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingCase()
+         * @generated
+         */
+        EClass DYNAMIC_MAPPING_CASE = eINSTANCE.getDynamicMappingCase();
+
+        /**
+         * The meta object literal for the '<em><b>Case Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = eINSTANCE.getDynamicMappingCase_CaseExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Widget</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference DYNAMIC_MAPPING_CASE__WIDGET = eINSTANCE.getDynamicMappingCase_Widget();
 
     }
 
