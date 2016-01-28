@@ -1,0 +1,76 @@
+h1. Sirius Evolution Specification: Internationalization of the Viewpoint Specification Model
+
+h2. Preamble
+
+_Summary_:  Internationalization of the Viewpoint Specification Model
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1      | DRAFT    | 2015-12-10    | smonnier  | Initial version. |
+
+_Relevant tickets:_
+* "Bugzilla 459993, Add support for internationalization (I18N)":https://bugs.eclipse.org/bugs/show_bug.cgi?id=459993
+
+h2. Introduction
+
+This evolution purpose is to offer to the specifiers the possibility to internationalize their Viewpoint Specification Models. Many fields are labels that will be displayed to the end users and should be translatable as part of the whole Sirius internationalization. 
+
+h2. Detailed Specification
+
+Every label that are set in the VSM and that will be displayed to the end users should be translatable. This way, specifiers will be able to provide internationalized labels in a plugin.properties file in the Viewpoint Specification Projet. Then a label can be set as internationalized by filling the field as "%label_id", where label_id is a label identifier available in the plugin.properties file (like other translatable strings).
+
+In the Sirius metamodel(s), each String attribute concerning these labels will be set to a new datatype "TranslatableMessage". Accessor methods to these fields will delegate the content of this attribute to a helper dedicated into detecting if the text is internationalized and in this case find the proper text depending on the language. A text will be detected as internationalized if it starts with a "%". If no corresponding entry is found in the plugin.properties, the text will be displayed without change. This way old VSM with labels starting with a "%" will still be displayed correctly.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+Creation of a new datatype TranslatableMessage.
+
+List of metamodel String attribute that should be set to TranslatableMessage:
+* IdentifiedElement
+** label
+* EndUserDocumentedElement
+** endUserDocumentation
+* SelectionWizardDescription
+** windowTitle
+* SelectionDescription
+** message
+* PaneBasedSelectionWizardDescription
+** windowTitle
+** message
+** choiceOfValuesMessage
+** selectedValuesMessage
+  
+h3. API Changes
+
+The helper that analyzes a label to determine if it is an internationalized label and returns the proper label will be API.
+
+h3. User Interface Changes
+
+In the VSM editor, the TranslatableMessage fields will be displayed with a different color: blue.
+Concerning the end-users, the only change of the User Interface will be a translation of labels if a language different than english was set and if the specifier translated VSM labels.
+
+h3. Documentation Changes
+
+* N&N : the internationalization of the VSM must be documented.
+* Specifier documentation : it will present how to provide an internationalized label in the VSM.
+
+h2. Tests and Non-regression strategy
+
+* SWTBot test : each TranslatableMessage metamodel attribute will be tested with an internationalized label, the following ways:
+** a test should validate that the field is displayed properly with an internationalized text.
+** a test should validate that the field is displayed properly with an non-internationalized text.
+** a test should validate that selecting another language will change the labels.
+** a test should validate that an internationalized label id that is not found in a plugin.properties is displayed unprocessed.
+
+h2. Implementation choices and tradeoffs
+
+The following metamodel string attribute are candidates that have been dismissed from this evolution:
+* IdentifiedElement
+** name : used as an id.
+* Group
+** name : never displayed. id
+* DocumentedElement
+** documentation : limited interest, we suppose that specifiers on the same VSM speak the same language.
+* Every attribute typed ImagePath
+** limited interest into having translatable icon path
