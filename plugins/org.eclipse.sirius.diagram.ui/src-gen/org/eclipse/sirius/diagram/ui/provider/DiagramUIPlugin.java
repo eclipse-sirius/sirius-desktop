@@ -55,6 +55,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -144,6 +145,8 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         private WorkspaceImageFigureRefresher workspaceImageFigureRefresher;
 
+        private final boolean isForkedPropertiesFrameworkAvailable;
+
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -152,9 +155,23 @@ public final class DiagramUIPlugin extends EMFPlugin {
         public Implementation() {
             super();
 
+            isForkedPropertiesFrameworkAvailable = isBundlePresent("org.eclipse.eef.properties.ui"); //$NON-NLS-1$
             // Remember the static instance.
             //
             DiagramUIPlugin.plugin = this;
+        }
+
+        public boolean isForkedPropertiesFrameworkAvailable() {
+            return isForkedPropertiesFrameworkAvailable;
+        }
+
+        private boolean isBundlePresent(String bundleName) {
+            for (Bundle bundle : getBundle().getBundleContext().getBundles()) {
+                if (bundleName.equals(bundle.getSymbolicName())) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /**

@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
-import org.eclipse.eef.properties.ui.api.IEEFTabbedPropertySheetPageContributor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -42,11 +41,12 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.osgi.framework.Bundle;
 
 /**
  * @not-generated
  */
-public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoMarker, IAdaptable, IEEFTabbedPropertySheetPageContributor {
+public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoMarker, IAdaptable {
 
     /**
      * @was-generated
@@ -110,13 +110,17 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
                 }
             };
         }
-        if (type == IPropertySheetPage.class) {
-            return new EEFTabbedPropertySheetPage(this);
+        if (type == IPropertySheetPage.class && useForkedPropertySheetFramework()) {
+            return new EEFTabbedPropertySheetPage(this, this.getContributorId());
         }
         if (type == AdapterFactory.class) {
             return DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         }
         return super.getAdapter(type);
+    }
+
+    private boolean useForkedPropertySheetFramework() {
+        return DiagramUIPlugin.getPlugin().isForkedPropertiesFrameworkAvailable();
     }
 
     /**
