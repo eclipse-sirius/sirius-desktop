@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
@@ -40,6 +41,7 @@ import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -266,7 +268,7 @@ public class ControlAction extends CommandActionHandler {
             }
 
             if (!result && !resourceInSet && resource != null) {
-                resource.unload();
+                ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, new NullProgressMonitor());
                 resourceSet.getResources().remove(resource);
             } else {
                 this.resource = resource;

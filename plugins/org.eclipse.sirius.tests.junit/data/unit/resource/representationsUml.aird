@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_WhOY4L9UEeW8h4FKucAEcA" selectedViews="_iaBL0L9UEeW8h4FKucAEcA" version="11.0.0.201601261200">
+  <semanticResources>My.uml</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_iaBL0L9UEeW8h4FKucAEcA">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_pKensNS4EeW1fZq5Zi9jKw" name="new Classes">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pKfOwNS4EeW1fZq5Zi9jKw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_pKfOwdS4EeW1fZq5Zi9jKw"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pLD2gNS4EeW1fZq5Zi9jKw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_pLD2gdS4EeW1fZq5Zi9jKw" type="Sirius" element="_pKensNS4EeW1fZq5Zi9jKw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_p9L3ANS4EeW1fZq5Zi9jKw" type="2001" element="_p8R4ENS4EeW1fZq5Zi9jKw">
+            <children xmi:type="notation:Node" xmi:id="_p9v3sNS4EeW1fZq5Zi9jKw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_p9v3sdS4EeW1fZq5Zi9jKw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_p95BoNS4EeW1fZq5Zi9jKw" type="3003" element="_p8iWwNS4EeW1fZq5Zi9jKw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_p95BodS4EeW1fZq5Zi9jKw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p95BotS4EeW1fZq5Zi9jKw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_p9MeENS4EeW1fZq5Zi9jKw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p9MeEdS4EeW1fZq5Zi9jKw" x="192" y="132" width="60" height="60"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qSUZgNS4EeW1fZq5Zi9jKw" type="2001" element="_qSIMQNS4EeW1fZq5Zi9jKw">
+            <children xmi:type="notation:Node" xmi:id="_qSW1wNS4EeW1fZq5Zi9jKw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_qSW1wdS4EeW1fZq5Zi9jKw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qSXc0NS4EeW1fZq5Zi9jKw" type="3003" element="_qSJaYNS4EeW1fZq5Zi9jKw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qSXc0dS4EeW1fZq5Zi9jKw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qSXc0tS4EeW1fZq5Zi9jKw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qSVnoNS4EeW1fZq5Zi9jKw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qSVnodS4EeW1fZq5Zi9jKw" x="456" y="156" width="60" height="60"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_pLD2gtS4EeW1fZq5Zi9jKw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_p8R4ENS4EeW1fZq5Zi9jKw" name="newClass" width="6" height="6" resizeKind="NSEW">
+        <target xmi:type="uml:Class" href="My.uml#_p8HgANS4EeW1fZq5Zi9jKw"/>
+        <semanticElements xmi:type="uml:Class" href="My.uml#_p8HgANS4EeW1fZq5Zi9jKw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_p8iWwNS4EeW1fZq5Zi9jKw" borderColor="114,159,207" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_qSIMQNS4EeW1fZq5Zi9jKw" name="newClass" width="6" height="6" resizeKind="NSEW">
+        <target xmi:type="uml:Class" href="My.uml#_qSFwANS4EeW1fZq5Zi9jKw"/>
+        <semanticElements xmi:type="uml:Class" href="My.uml#_qSFwANS4EeW1fZq5Zi9jKw"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_qSJaYNS4EeW1fZq5Zi9jKw" borderColor="114,159,207" labelPosition="node" color="194,239,255">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_pKfOwtS4EeW1fZq5Zi9jKw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Classes']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="My.uml#_n3NNQL9UEeW8h4FKucAEcA"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign#//@ownedViewpoints[name='UML2%20tables%20for%20tests']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

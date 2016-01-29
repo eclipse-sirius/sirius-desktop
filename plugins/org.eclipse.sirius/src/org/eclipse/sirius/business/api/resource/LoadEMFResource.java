@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
+import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -96,7 +97,7 @@ public class LoadEMFResource implements Runnable {
 
     private void unload() {
         if (res != null) {
-            res.unload();
+            ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(res, new NullProgressMonitor());
             set.getResources().remove(res);
             res = null;
         }

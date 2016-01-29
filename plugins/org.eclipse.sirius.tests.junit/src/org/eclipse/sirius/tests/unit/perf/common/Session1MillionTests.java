@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,8 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
      * machine with an SSD drive.
      */
     private static final long MAX_TIME_TO_OPEN_SECONDS = 15;
+
+    private static final long MAX_TIME_TO_CLOSE_SECONDS = 2;
 
     private static final int NUMBER_Of_ELEMENTS = 966220;
 
@@ -102,6 +104,8 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
         closingtimer.stop();
         System.out.println("[PERFO] Closing a project with " + semanticElementsCount + " semantic elements in " + closingtimer.elapsed(TimeUnit.SECONDS) + " seconds.");
         assertFalse("The session should have been closed and is not reporting it is", session.isOpen());
+        elapsedTime = closingtimer.elapsed(TimeUnit.SECONDS);
+        assertTrue("The time required to close the session (" + elapsedTime + " secs) is bigger than expected (" + MAX_TIME_TO_CLOSE_SECONDS + ").", elapsedTime < MAX_TIME_TO_CLOSE_SECONDS);
 
     }
 

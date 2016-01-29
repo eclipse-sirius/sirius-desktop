@@ -29,6 +29,7 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -45,6 +46,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
@@ -611,7 +613,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                  */
             }
             try {
-                resource.unload();
+                ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, new NullProgressMonitor());
             } catch (final IllegalArgumentException e) {
                 SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_unableToUnloadFileErrorMsg, resource.getURI().toString()), e);
             } catch (final NullPointerException e) {
@@ -851,9 +853,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                 final URI resourceURI = resource.getURI();
                 if (resourceURI != null) {
                     if (resourceURI.toPlatformString(true) != null && resourceURI.toPlatformString(true).equals(odesignFile.getFullPath().toString())) {
-                        resource.unload();
                         if (remove) {
+                            ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, new NullProgressMonitor());
                             sessionResourceSet.getResources().remove(resource);
+                        } else {
+                            resource.unload();
                         }
                     }
                 }

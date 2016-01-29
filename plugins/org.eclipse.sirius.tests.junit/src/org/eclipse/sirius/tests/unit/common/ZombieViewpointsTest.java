@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public class ZombieViewpointsTest extends SiriusTestCase {
         assertTrue("The first version of the VSM should contribute Viewpoint 'A'", !v1.eIsProxy() && "A".equals(v1.getName()) && ZombieViewpointsTest.WKS_URI.equals(v1.eResource().getURI()));
         helper.deleteProject("sample");
         assertTrue("The viewpoints contributed by the first version of the VSM should not be visible once the VSM has been deleted", !ViewpointRegistry.getInstance().getViewpoints().contains(v1));
-        assertTrue("The previously contributed viewpoint should be unloaded and removed from the registry", v1.eIsProxy() && v1.eResource() == null);
+        assertTrue("The previously contributed viewpoint should be removed from its resourceSet", v1.eResource().getResourceSet() == null);
 
         // Copy the second version of "/sample/bug.odesign" and check the
         // Viewpoint registry's state
@@ -74,7 +74,7 @@ public class ZombieViewpointsTest extends SiriusTestCase {
         assertEquals("The second version of the workspace VSM should contribute only 1 new Viewpoint", 1, v2Contributions.size());
         Viewpoint v2 = v2Contributions.iterator().next();
         assertTrue("The second version of the VSM should contribute Viewpoint 'B'", !v2.eIsProxy() && "B".equals(v2.getName()) && ZombieViewpointsTest.WKS_URI.equals(v2.eResource().getURI()));
-        assertTrue("The previously contributed viewpoint should be unloaded and removed from the registry", v1.eIsProxy() && v1.eResource() == null);
+        assertTrue("The previously contributed viewpoint should be removed from its resourceSet", v1.eResource().getResourceSet() == null);
         helper.deleteProject("sample");
 
         // Check that after removing the test fixtures, the registry is back to
@@ -85,6 +85,7 @@ public class ZombieViewpointsTest extends SiriusTestCase {
     private HashSet<URI> snapshotRegistryResources() {
         ResourceSet resourceSet = ViewpointRegistry.getInstance().getViewpoints().iterator().next().eResource().getResourceSet();
         return Sets.newHashSet(Iterables.transform(resourceSet.getResources(), new Function<Resource, URI>() {
+            @Override
             public URI apply(Resource res) {
                 return res.getURI();
             };

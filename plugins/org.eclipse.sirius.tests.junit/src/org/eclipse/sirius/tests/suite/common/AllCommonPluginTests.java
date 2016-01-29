@@ -35,6 +35,8 @@ import org.eclipse.sirius.tests.unit.api.modelingproject.SemanticResourcesManage
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderByContainingTest;
 import org.eclipse.sirius.tests.unit.api.navigator.GroupingContentProviderTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ModifyHeaderLabelExpressionTest;
+import org.eclipse.sirius.tests.unit.api.resource.ResourceStrategyForUmlTests;
+import org.eclipse.sirius.tests.unit.api.resource.ResourceStrategyTests;
 import org.eclipse.sirius.tests.unit.api.resource.SemanticResourceURIInAirdTests;
 import org.eclipse.sirius.tests.unit.api.resource.WorkspaceDragAndDropSupportTests;
 import org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEdgeConditionalStyleTest;
@@ -302,6 +304,8 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SiriusControlAndCrossReferenceInMultiSessionTest.class);
         suite.addTestSuite(ModelsToSemanticResourcesMigrationTest.class);
         suite.addTestSuite(SemanticResourceURIInAirdTests.class);
+        suite.addTestSuite(ResourceStrategyTests.class);
+        suite.addTestSuite(ResourceStrategyForUmlTests.class);
         suite.addTestSuite(OpenSessionTest.class);
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);

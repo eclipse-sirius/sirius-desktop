@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES, Obeo
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES, Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStack;
@@ -64,6 +62,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
+import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
@@ -649,39 +648,38 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources) {
-        ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
         if (removeReferencingResources) {
             for (final Resource res : collectAllReferencingResources(semanticResource)) {
-                doRemoveSemanticResource(res, resourceSet);
+                doRemoveSemanticResource(res);
             }
         }
-        doRemoveSemanticResource(semanticResource, resourceSet);
+        doRemoveSemanticResource(semanticResource);
     }
 
     /**
-     * Unregisters the resource from the list of semantic resources.
+     * Unregisters the resource from the list of semantic resources and remove
+     * the resource from its ResourceSet.
      * 
      * @param res
      *            the semantic resource to unregister.
-     * @param set
-     *            the resourceset from which to remove it.
      */
-    protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
-        set.getResources().remove(res);
+    protected void doRemoveSemanticResource(final Resource res) {
+        ResourceSet resourceSet = res.getResourceSet();
+        if (resourceSet != null) {
+            // update models in aird resource
+            for (final DAnalysis analysis : this.allAnalyses()) {
+                analysis.getSemanticResources().remove(new ResourceDescriptor(res.getURI()));
+            }
 
-        // update models in aird resource
-        for (final DAnalysis analysis : this.allAnalyses()) {
-            analysis.getSemanticResources().remove(new ResourceDescriptor(res.getURI()));
-        }
-
-        unregisterResourceInCrossReferencer(res);
-        if (!isFromPackageRegistry(set, res)) {
+            unregisterResourceInCrossReferencer(res);
             disableCrossReferencerResolve(res);
-            res.unload();
+            ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(res, new NullProgressMonitor());
             enableCrossReferencerResolve(res);
-        }
 
-        ControlledResourcesDetector.refreshControlledResources(this);
+            resourceSet.getResources().remove(res);
+
+            ControlledResourcesDetector.refreshControlledResources(this);
+        }
     }
 
     void discoverAutomaticallyLoadedResources(List<Resource> allResources) {
@@ -1230,12 +1228,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         flushOperations(transactionalEditingDomain);
         // Unload all referenced resources
-        unloadAllResources();
-        // To remove remaining resource like environment:/viewpoint
-        for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
-            resource.unload();
-            resourceSet.getResources().remove(resource);
-        }
+        unloadAllResources(monitor);
+
         // Notify that the session is closed.
         notifyListeners(SessionListener.CLOSED);
         SessionManager.INSTANCE.remove(this);
@@ -1324,34 +1318,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Method called at {@link Session#close(IProgressMonitor)} to unload all
      * referenced {@link Resource}s.
+     * 
+     * @param monitor
      */
-    private void unloadAllResources() {
+    private void unloadAllResources(IProgressMonitor monitor) {
         ResourceSet rs = transactionalEditingDomain.getResourceSet();
-        for (Resource resource : getAllSessionResources()) {
-            resource.unload();
+        for (Resource resource : new ArrayList<Resource>(rs.getResources())) {
+            ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, monitor);
             rs.getResources().remove(resource);
-        }
-        for (Resource res : Iterables.concat(super.getResources(), getSemanticResources(), super.getControlledResources())) {
-            // Don't try to unload metamodel resources.
-            try {
-                if (!isFromPackageRegistry(rs, res)) {
-                    res.unload();
-                }
-            } catch (final IllegalStateException e) {
-                // we might have an exception unloading a resource already
-                // unaccessible
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DAnalysisSessionImpl_unloadingErrorMsg, e.getMessage()), e));
-            }
-            rs.getResources().remove(res);
         }
         super.getAnalyses().clear();
         super.getResources().clear();
         super.getControlledResources().clear();
-    }
-
-    private boolean isFromPackageRegistry(ResourceSet rset, Resource resource) {
-        URI uri = resource.getURI();
-        return uri != null && rset.getPackageRegistry().getEPackage(uri.toString()) != null;
     }
 
     // *******************

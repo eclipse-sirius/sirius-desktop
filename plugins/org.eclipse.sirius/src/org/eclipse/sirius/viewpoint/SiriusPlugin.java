@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
+import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -41,6 +42,7 @@ public final class SiriusPlugin extends EMFPlugin {
      * Tell whether Eclipse is running or not.
      */
     public static final boolean IS_ECLIPSE_RUNNING;
+
     static {
         boolean result = false;
         // CHECKSTYLE:OFF
@@ -123,6 +125,12 @@ public final class SiriusPlugin extends EMFPlugin {
         private ExternalJavaActionRegistryListener javaActionRegistryListener;
 
         /**
+         * The registry listener that will be used to listen to contribution
+         * changes against the external resource strategy extension point.
+         */
+        private ResourceStrategyRegistryListener resourceStrategyRegistryListener;
+
+        /**
          * Creates an instance.
          */
         public Implementation() {
@@ -145,6 +153,8 @@ public final class SiriusPlugin extends EMFPlugin {
             deleteHookDescriptorRegistryListener.init();
             javaActionRegistryListener = new ExternalJavaActionRegistryListener();
             javaActionRegistryListener.init();
+            resourceStrategyRegistryListener = new ResourceStrategyRegistryListener();
+            resourceStrategyRegistryListener.init();
         }
 
         @Override
@@ -157,10 +167,13 @@ public final class SiriusPlugin extends EMFPlugin {
             deleteHookDescriptorRegistryListener = null;
             javaActionRegistryListener.dispose();
             javaActionRegistryListener = null;
+            resourceStrategyRegistryListener.dispose();
+            resourceStrategyRegistryListener = null;
 
             ViewpointRegistry.getInstance().dispose();
-            
+
             MultiLanguagesValidator.getInstance().dispose();
+
             super.stop(context);
         }
 

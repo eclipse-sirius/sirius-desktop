@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_aiqOAL9UEeW8h4FKucAEcA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_nN2HML9UEeW8h4FKucAEcA">
+    <packagedElement xmi:type="uml:Class" xmi:id="_tYj9AL9UEeW8h4FKucAEcA" name="referenced">
+      <interfaceRealization xmi:id="_x3EvsL9UEeW8h4FKucAEcA" name="" client="_tYj9AL9UEeW8h4FKucAEcA" supplier="_xIi1wL9UEeW8h4FKucAEcA" contract="_xIi1wL9UEeW8h4FKucAEcA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_xIi1wL9UEeW8h4FKucAEcA" name="referenced"/>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_J-5VcNS4EeW1fZq5Zi9jKw" name="MyStereotype" redefinedClassifier="_xIi1wL9UEeW8h4FKucAEcA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_n3NNQL9UEeW8h4FKucAEcA">
+    <packagedElement xmi:type="uml:Class" xmi:id="_p8HgANS4EeW1fZq5Zi9jKw" name="newClass"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qSFwANS4EeW1fZq5Zi9jKw" name="newClass"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Profile" xmi:id="_XNI4YNS4EeW1fZq5Zi9jKw" name="MyProfile">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_dIe1cNS4EeW1fZq5Zi9jKw"/>
+  </packagedElement>
+</uml:Package>
