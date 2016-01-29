@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -32,10 +33,9 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * A {@code ResourceSetListener} to update the
- * {@link ViewpointPackage#DANALYSIS__MODELS} feature according changes in
- * representations resources. This class also contains some methods to load + *
- * resources and detects new semantic resources.
+ * A {@code ResourceSetListener} to update the {@link ViewpointPackage#DANALYSIS__MODELS} feature according changes in
+ * representations resources. This class also contains some methods to load + * resources and detects new semantic
+ * resources.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -80,8 +80,8 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
     }
 
     /**
-     * Overridden to update the {@link DAnalysis#getModels()} reference
-     * according to new added {@link DSemanticDecorator}.
+     * Overridden to update the {@link DAnalysis#getModels()} reference according to new added
+     * {@link DSemanticDecorator}.
      * 
      * {@inheritDoc}
      */
@@ -111,24 +111,20 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
     }
 
     /**
-     * Get for each {@link DAnalysis} impacted a set of semantic resource root
-     * element whose semantic resource content is referenced by a
-     * {@link DSemanticDecorator} from the specified collection of
-     * {@link Notification}s.
+     * Get for each {@link DAnalysis} impacted a set of semantic resource root element whose semantic resource content
+     * is referenced by a {@link DSemanticDecorator} from the specified collection of {@link Notification}s.
      * 
      * @param notifications
      *            the specified collection of {@link Notification}
-     * @return a map associating for each {@link DAnalysis} semantic resource
-     *         descriptor.
+     * @return a map associating for each {@link DAnalysis} semantic resource descriptor.
      */
     private Multimap<DAnalysis, ResourceDescriptor> getRootSemanticResourceEltsPerRepresentationsResource(Collection<Notification> notifications) {
         Multimap<DAnalysis, ResourceDescriptor> semanticResourceDescriptors = HashMultimap.create();
         for (Notification notification : notifications) {
             if (Notification.ADD == notification.getEventType() && notification.getNewValue() instanceof DSemanticDecorator) {
                 DSemanticDecorator decorator = (DSemanticDecorator) notification.getNewValue();
-                Resource representationsResource = decorator.eResource();
-                if (decorator.getTarget() != null && representationsResource != null) {
-                    DAnalysis analysis = (DAnalysis) representationsResource.getContents().get(0);
+                DAnalysis analysis = new EObjectQuery(decorator).getDAnalysis();
+                if (decorator.getTarget() != null && analysis != null && analysis.eResource() != null) {
                     Resource targetResource = decorator.getTarget().eResource();
                     registerNewReferencedResource(semanticResourceDescriptors, analysis, targetResource);
                 }
