@@ -3,7 +3,7 @@
   <ownedViewpoints name="Ticket 1666" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Validation" initialisation="true" domainClass="EPackage">
       <defaultLayer name="Default">
-        <containerMappings name="V_EClass" semanticCandidatesExpression="feature:eContents" documentation="&lt;%eContents.filter(&quot;EClass&quot;)[.~.filter(&quot;EReference&quot;).nMinimize().nSize() > 0]%>" domainClass="EClass">
+        <containerMappings name="V_EClass" semanticCandidatesExpression="feature:eContents" documentation="aql:self.eContents()->filter(ecore::EClass)->select(e | e.eInverse(ecore::EReference)->asSet()->size() > 0)" domainClass="EClass">
           <subNodeMappings name="V_Reference" semanticCandidatesExpression="aql:self.eAllReferences.eReferenceType" domainClass="EClass">
             <style xsi:type="style:SquareDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

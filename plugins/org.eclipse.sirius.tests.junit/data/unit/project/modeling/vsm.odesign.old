@@ -38,7 +38,7 @@
       </subItemMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="InfiniteRecursion" domainClass="EObject">
-      <subItemMappings name="Current EObject" domainClass="EObject " semanticCandidatesExpression="&lt;%self%>" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion']/@subItemMappings[name='Current%20EObject']">
+      <subItemMappings name="Current EObject" domainClass="EObject " semanticCandidatesExpression="aql:self" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion']/@subItemMappings[name='Current%20EObject']">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -46,12 +46,12 @@
       </subItemMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="InfiniteRecursion With Inheritance" domainClass="EObject">
-      <subItemMappings name="Current EObject Infinite" domainClass="EObject " semanticCandidatesExpression="&lt;%self%>">
+      <subItemMappings name="Current EObject Infinite" domainClass="EObject " semanticCandidatesExpression="aql:self">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
-        <subItemMappings name="Current EObject Infinite Specialized" domainClass="EObject" semanticCandidatesExpression="&lt;%self%>" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion%20With%20Inheritance']/@subItemMappings[name='Current%20EObject%20Infinite']">
+        <subItemMappings name="Current EObject Infinite Specialized" domainClass="EObject" semanticCandidatesExpression="aql:self" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion%20With%20Inheritance']/@subItemMappings[name='Current%20EObject%20Infinite']">
           <defaultStyle>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -60,7 +60,7 @@
       </subItemMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="PreconditionOnMappings" domainClass="EPackage">
-      <subItemMappings name="EClasses" domainClass="Abstract EClass by Precondition" preconditionExpression="&lt;%$view.target[isAbstract]%>" semanticCandidatesExpression="aql:self.eContents()">
+      <subItemMappings name="EClasses" domainClass="Abstract EClass by Precondition" preconditionExpression="aql:view.target.isAbstract" semanticCandidatesExpression="aql:self.eContents()">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>

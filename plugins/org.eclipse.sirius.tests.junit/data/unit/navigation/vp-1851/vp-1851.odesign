@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-1851" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-1851" version="10.1.3.201511131800">
   <ownedViewpoints name="VP-1851" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Source" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -14,7 +14,7 @@
           <ownedTools xsi:type="tool:OperationAction" name="Test VP-1851">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.nFirst().target.eContainer(&quot;EPackage&quot;)%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views->first().target.eContainerOrSelf(ecore::EPackage)">
                 <subModelOperations xsi:type="tool_1:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='VP-1851']/@ownedRepresentations[name='Target']"/>
               </firstModelOperations>
             </initialOperation>
