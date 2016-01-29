@@ -16,9 +16,9 @@
 
   <parent>
     <groupId>org.eclipse.sirius</groupId>
-    <artifactId>sirius-tests-parent</artifactId>
+    <artifactId>sirius-parent</artifactId>
     <version>4.0.0-SNAPSHOT</version>
-    <relativePath>../../packaging/org.eclipse.sirius.tests.parent</relativePath>
+    <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.sirius.sample.interactions</artifactId>

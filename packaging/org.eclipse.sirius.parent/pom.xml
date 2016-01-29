@@ -41,7 +41,40 @@
     <platform-version-name>mars</platform-version-name>
     <target-platform-path>.</target-platform-path>
     <tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/sirius/org.eclipse.sirius.git</tycho.scmUrl>
+    <tests.skipLongTests>false</tests.skipLongTests>
+    <tests.skipUnreliableTests>false</tests.skipUnreliableTests>
+    <tests.timeout>0</tests.timeout>
+    <tests.vmargs.mac />
+    <tests.junit.skip>true</tests.junit.skip>
+    <tests.swtbot.skip>true</tests.swtbot.skip>
+    <tests.junit.include />
+    <tests.swtbot.include />
+    <tests.swtbot-sequence.include />
+    <tests.ignoreFailures>true</tests.ignoreFailures>
   </properties>
+
+<!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
+  <repositories>
+    <repository>
+      <id>Indigo Release</id>
+      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>Indigo Release</id>
+      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.acceleo</groupId>
+      <artifactId>maven</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+  </dependencies>
 
   <modules>
     <!-- All modules are contributed by specific profiles, see below. -->
@@ -220,8 +253,22 @@
           <configuration>
             <defaultP2Metadata>false</defaultP2Metadata>
           </configuration>
-        </plugin>
-      </plugins>
+        </plugin>        
+            <plugin>
+                <groupId>org.eclipse.acceleo</groupId>
+                <artifactId>maven</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>acceleo-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>acceleo-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </pluginManagement>
   </build>
 
@@ -330,9 +377,36 @@
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
-      </modules>
-    </profile>
-    <profile>
+
+        <!-- Test metamodels and modelers -->
+        <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.design</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.edit</module>
+        <module>../../plugins/org.eclipse.sirius.sample.interactions.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.component.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.scxml</module>
+        <module>../../plugins/org.eclipse.sirius.tests.sample.scxml.design</module>
+        <module>../../plugins/org.eclipse.sirius.tests.junit</module>
+        <module>../../plugins/org.eclipse.sirius.tests.tree</module>
+        <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
+        <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.tests</module>
+
+        <!-- update sites -->
+        <module>../../packaging/org.eclipse.sirius.tests.update</module>
+
+    </modules>
+</profile>
+<profile>
       <id>incubation</id>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -420,5 +494,104 @@
         </pluginRepository>
       </pluginRepositories>
     </profile>
-  </profiles>
+     <profile>
+         <id>junit</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.junit.skip>false</tests.junit.skip>
+             <tests.timeout>${tests.timeout.junit}</tests.timeout>
+             <tests.junit.include>org/eclipse/sirius/tests/suite/AllSiriusTestSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java</tests.junit.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+         </properties>
+     </profile>
+     <profile>
+         <id>gerrit-junit</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.junit.skip>false</tests.junit.skip>
+             <tests.timeout>${tests.timeout.junit}</tests.timeout>
+             <tests.junit.include>org/eclipse/sirius/tests/suite/GerritJUnitSuite.java, org/eclipse/sirius/tests/suite/tree/AllSiriusTestSuite.java</tests.junit.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.ignoreFailures>false</tests.ignoreFailures>
+         </properties>
+     </profile>
+     <profile>
+         <id>swtbot</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+             <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/AllTestSuite.java</tests.swtbot.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+         </properties>
+     </profile>
+     <profile>
+         <id>swtbot-part1</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+             <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart1Suite.java</tests.swtbot.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+         </properties>
+     </profile>
+     <profile>
+         <id>swtbot-part2</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+             <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart2Suite.java</tests.swtbot.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+         </properties>
+     </profile>
+     <profile>
+         <id>gerrit-swtbot</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+             <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/GerritSWTBotSuite.java</tests.swtbot.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.ignoreFailures>false</tests.ignoreFailures>
+         </properties>
+     </profile>
+     <profile>
+         <id>swtbot-sequence</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
+             <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/SequenceSwtBotTestSuite.java</tests.swtbot-sequence.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+         </properties>
+     </profile>
+     <profile>
+         <id>gerrit-swtbot-sequence</id>
+         <activation>
+             <activeByDefault>false</activeByDefault>
+         </activation>
+         <properties>
+             <tests.swtbot.skip>false</tests.swtbot.skip>
+             <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
+             <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/GerritSequenceSWTBotSuite.java</tests.swtbot-sequence.include>
+             <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+             <tests.ignoreFailures>false</tests.ignoreFailures>
+         </properties>
+     </profile>
+ </profiles>
 </project>

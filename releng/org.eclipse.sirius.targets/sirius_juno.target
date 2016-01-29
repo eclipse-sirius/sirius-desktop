@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_juno" sequenceNumber="1453196349">
+<target name="sirius_juno" sequenceNumber="1454078490">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
@@ -72,6 +72,7 @@
       <unit id="org.eclipse.platform" version="4.2.2.v201302041200"/>
       <unit id="org.eclipse.rcp" version="4.2.1.v201302041200"/>
       <unit id="org.eclipse.sdk" version="4.2.2.v201302041200"/>
+      <unit id="org.eclipse.uml2.sdk.feature.group" version="4.0.2.v20130114-0902"/>
       <repository id="Eclipse-Juno" location="http://download.eclipse.org/releases/juno"/>
     </location>
   </locations>

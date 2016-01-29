@@ -34,4 +34,5 @@ location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
         org.eclipse.platform.feature.group [4.4.0,4.5.0)
         org.eclipse.sdk.feature.group [4.4.0,4.5.0)
         org.eclipse.xtext.sdk.feature.group [2.5.0,2.7.0)
+        org.eclipse.uml2.sdk.feature.group [5.0.0,5.1.0)
 }

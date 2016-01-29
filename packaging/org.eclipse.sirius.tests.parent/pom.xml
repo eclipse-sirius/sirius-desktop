@@ -59,58 +59,7 @@
     <tests.ignoreFailures>true</tests.ignoreFailures>
   </properties>
 
-  <modules>
-    <!-- Test metamodels and modelers -->
-    <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
-    <module>../../plugins/org.eclipse.sirius.sample.interactions</module>
-    <module>../../plugins/org.eclipse.sirius.sample.interactions.design</module>
-    <module>../../plugins/org.eclipse.sirius.sample.interactions.edit</module>
-    <module>../../plugins/org.eclipse.sirius.sample.interactions.editor</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.benchmark</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.edit</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.editor</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.component</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.component.design</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.scxml</module>
-    <module>../../plugins/org.eclipse.sirius.tests.sample.scxml.design</module>
-    <module>../../plugins/org.eclipse.sirius.tests.junit</module>
-    <module>../../plugins/org.eclipse.sirius.tests.tree</module>
-    <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
-    <!-- features -->
-    <module>../../packaging/org.eclipse.sirius.tests</module>
-
-    <!-- update sites -->
-    <module>../../packaging/org.eclipse.sirius.tests.update</module>
-  </modules>
-
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <includePackedArtifacts>true</includePackedArtifacts>
-          <resolver>p2</resolver>
-          <dependency-resolution>
-            <optionalDependencies>ignore</optionalDependencies>
-          </dependency-resolution>
-          <target>
-            <artifact>
-              <groupId>org.eclipse.sirius</groupId>
-              <artifactId>sirius-tests-parent</artifactId>
-              <version>4.0.0-SNAPSHOT</version>
-              <classifier>../../releng/org.eclipse.sirius.targets/sirius_tests_${platform-version-name}</classifier>
-            </artifact>
-          </target>
-        </configuration>
-      </plugin>
-    </plugins>
-
     <pluginManagement>
       <plugins>
         <plugin>
