@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and Obeo.
+ * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,8 +46,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
- * A {@link ResourceSyncClient} that updates a session according to the resource
- * changes it is notified of.
+ * A {@link ResourceSyncClient} that updates a session according to the resource changes it is notified of.
  * 
  * @author pcdavid
  */
@@ -97,9 +96,8 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
                     for (Resource resource : newStatuses.get(newStatus)) {
                         try {
                             /*
-                             * if the project was renamed, deleted or closed we
-                             * should not try to reload any thing, this does not
-                             * make sense
+                             * if the project was renamed, deleted or closed we should not try to reload any thing, this
+                             * does not make sense
                              */
                             if (isInProjectDeletedRenamedOrClosed(resource)) {
                                 processAction(Action.CLOSE_SESSION, resource, pm);
@@ -140,8 +138,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
      * 
      * @param resource
      *            the resource to check
-     * @return true if this resource is in an non-existent project or a closed
-     *         project, false otherwise
+     * @return true if this resource is in an non-existent project or a closed project, false otherwise
      */
     private boolean isInProjectDeletedRenamedOrClosed(Resource resource) {
         IFile file = WorkspaceSynchronizer.getFile(resource);
@@ -229,8 +226,8 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
     }
 
     /**
-     * Remove a resource from the current session and close the current session
-     * if it contains no more analysis resource.
+     * Remove a resource from the current session and close the current session if it contains no more analysis
+     * resource.
      * 
      * @param resource
      *            The resource to remove
@@ -254,26 +251,24 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
     }
 
     /**
-     * Indicates whether all resources (semantic and Danalysises) of this
-     * Session are whether {@link ResourceStatus#SYNC} or
-     * {@link ResourceStatus#READONLY}.
+     * Indicates whether all resources (semantic and Danalysises) of this Session are whether
+     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
      * 
-     * @return true if all resources (semantic and Danalysises) of this Session
-     *         are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
+     * @return true if all resources (semantic and Danalysises) of this Session are whether {@link ResourceStatus#SYNC}
+     *         or {@link ResourceStatus#READONLY}, false otherwise
      */
     protected boolean allResourcesAreInSync() {
         return checkResourcesAreInSync(getAllSessionResources());
     }
 
     /**
-     * Indicates whether considered resources are whether
-     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
+     * Indicates whether considered resources are whether {@link ResourceStatus#SYNC} or
+     * {@link ResourceStatus#READONLY}.
      * 
      * @param resourcesToConsider
      *            the resources to inspect.
-     * @return true if all considered are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
+     * @return true if all considered are whether {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}, false
+     *         otherwise
      */
     protected boolean checkResourcesAreInSync(Iterable<? extends Resource> resourcesToConsider) {
         boolean allResourceAreInSync = true;
@@ -307,7 +302,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
     }
 
     private Iterable<Resource> getAllSessionResources() {
-        return Iterables.concat(session.getSemanticResources(), session.getAllSessionResources(), session.getControlledResources());
+        return Iterables.concat(session.getSemanticResources(), session.getAllSessionResources(), session.getControlledResources(), session.getSrmResources());
     }
 
     private Iterable<Resource> getAllSemanticResources() {

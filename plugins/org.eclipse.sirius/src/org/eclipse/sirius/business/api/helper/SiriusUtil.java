@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,9 @@ public final class SiriusUtil {
     /** The file extension for Designer modeler description files. */
     public static final String DESCRIPTION_MODEL_EXTENSION = "odesign"; //$NON-NLS-1$
 
+    /** The file extension for representation files. */
+    public static final String REPRESENTATION_FILE_EXTENSION = "srm"; //$NON-NLS-1$
+
     /** The "environment:/" uri scheme. */
     public static final String ENVIRONMENT_URI_SCHEME = "environment"; //$NON-NLS-1$
 
@@ -78,8 +81,7 @@ public final class SiriusUtil {
     }
 
     /**
-     * Return the first {@link DSemanticDecorator}. it tests the eObject
-     * parameter and all parents of eObject.
+     * Return the first {@link DSemanticDecorator}. it tests the eObject parameter and all parents of eObject.
      * 
      * @param eObject
      *            an {@link EObject}.
@@ -98,15 +100,13 @@ public final class SiriusUtil {
     }
 
     /**
-     * Return the first {@link Group} that has the specified name in the
-     * resource set <code>resourceSet</code>.
+     * Return the first {@link Group} that has the specified name in the resource set <code>resourceSet</code>.
      * 
      * @param resourceSet
      *            the resource set to browse.
      * @param name
      *            the name of the group.
-     * @return the first {@link Group} that has the specified name in the
-     *         resource set <code>resourceSet</code>.
+     * @return the first {@link Group} that has the specified name in the resource set <code>resourceSet</code>.
      */
     public static Group getGroupByName(final ResourceSet resourceSet, final String name) {
         Group result = null;
@@ -151,13 +151,11 @@ public final class SiriusUtil {
     }
 
     /**
-     * Find the designer representation that owns the specified representation
-     * element.
+     * Find the designer representation that owns the specified representation element.
      * 
      * @param element
      *            the element.
-     * @return the found representation or <code>null</code> if no view is
-     *         found.
+     * @return the found representation or <code>null</code> if no view is found.
      */
     public static DRepresentation findRepresentation(final DRepresentationElement element) {
         EObject current = element;
@@ -171,16 +169,13 @@ public final class SiriusUtil {
     }
 
     /**
-     * Return <code>true</code> if the specified object is an instance of a
-     * class coming from Sirius. Using this method has strong implications
-     * regarding extensibility as subtypes of classes or interfaces coming from
-     * Sirius will return false here. You might want to pause a minute before
-     * using it.
+     * Return <code>true</code> if the specified object is an instance of a class coming from Sirius. Using this method
+     * has strong implications regarding extensibility as subtypes of classes or interfaces coming from Sirius will
+     * return false here. You might want to pause a minute before using it.
      * 
      * @param ep
      *            : any {@link Object}
-     * @return true if this object class is from the Sirius project false
-     *         otherwise.
+     * @return true if this object class is from the Sirius project false otherwise.
      */
     public static boolean isFromSirius(final Object ep) {
         if (ep != null) {
@@ -232,30 +227,26 @@ public final class SiriusUtil {
     }
 
     /**
-     * Deletes the object from its {@link EObject#eResource containing} resource
-     * and/or its {@link EObject#eContainer containing} object as well as from
-     * any other feature that references it (by using the session semantic cross
+     * Deletes the object from its {@link EObject#eResource containing} resource and/or its {@link EObject#eContainer
+     * containing} object as well as from any other feature that references it (by using the session semantic cross
      * referencer) within the enclosing resource set, resource, or root object.
      * 
      * @param eObject
-     *            the object to delete. We try to retrieve the session from this
-     *            eObject.
+     *            the object to delete. We try to retrieve the session from this eObject.
      */
     public static void delete(EObject eObject) {
         delete(eObject, null);
     }
 
     /**
-     * Deletes the object from its {@link EObject#eResource containing} resource
-     * and/or its {@link EObject#eContainer containing} object as well as from
-     * any other feature that references it (by using the session semantic cross
+     * Deletes the object from its {@link EObject#eResource containing} resource and/or its {@link EObject#eContainer
+     * containing} object as well as from any other feature that references it (by using the session semantic cross
      * referencer) within the enclosing resource set, resource, or root object.
      * 
      * @param eObject
      *            the object to delete.
      * @param session
-     *            the eObject session. Used to retrieve the semantic cross
-     *            referencer.
+     *            the eObject session. Used to retrieve the semantic cross referencer.
      */
     public static void delete(EObject eObject, Session session) {
         Session currentEObjectSession = session;

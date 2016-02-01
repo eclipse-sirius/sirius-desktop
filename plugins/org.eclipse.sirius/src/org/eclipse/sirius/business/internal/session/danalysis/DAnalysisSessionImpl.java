@@ -94,6 +94,7 @@ import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -252,12 +253,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Add the cross referencer (if exists and is not present) to the eAdapters
-     * list of the given resource.
+     * Add the cross referencer (if exists and is not present) to the eAdapters list of the given resource.
      * 
      * @param newResource
-     *            the resource on which the semantic cross reference should be
-     *            added.
+     *            the resource on which the semantic cross reference should be added.
      */
     protected void registerResourceInCrossReferencer(final Resource newResource) {
         if (crossReferencer != null) {
@@ -268,12 +267,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Remove the cross referencer (if exists and is present) from the eAdapters
-     * list of the given resource.
+     * Remove the cross referencer (if exists and is present) from the eAdapters list of the given resource.
      * 
      * @param resource
-     *            the resource from which the semantic cross reference should be
-     *            removed.
+     *            the resource from which the semantic cross reference should be removed.
      */
     protected void unregisterResourceInCrossReferencer(final Resource resource) {
         if (crossReferencer != null) {
@@ -527,13 +524,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
 
     /**
-     * Find all the resources referenced by any object from the specified
-     * resource. Ignore "http" resources.
+     * Find all the resources referenced by any object from the specified resource. Ignore "http" resources.
      * 
      * @param res
      *            the resource to start from.
-     * @return all the resources referenced by elements from res, except "http"
-     *         resources.
+     * @return all the resources referenced by elements from res, except "http" resources.
      */
     protected Collection<Resource> collectAllReferencedResources(Resource res) {
         Collection<Resource> result = Collections.emptyList();
@@ -544,13 +539,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Find all the resources referencing by any object from the specified
-     * resource. Ignore "http" resources.
+     * Find all the resources referencing by any object from the specified resource. Ignore "http" resources.
      * 
      * @param res
      *            the resource to start from.
-     * @return all the resources referencing by elements from res, except "http"
-     *         resources.
+     * @return all the resources referencing by elements from res, except "http" resources.
      */
     protected Collection<Resource> collectAllReferencingResources(Resource res) {
         Collection<Resource> result = Collections.emptyList();
@@ -651,8 +644,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Allow semanticResources to be recomputed when calling
-     * <code>getSemanticResources()</code>.
+     * Allow semanticResources to be recomputed when calling <code>getSemanticResources()</code>.
      */
     void setSemanticResourcesNotUptodate() {
         tracker.setSemanticResourcesNotUptodate();
@@ -678,8 +670,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Unregisters the resource from the list of semantic resources and remove
-     * the resource from its ResourceSet.
+     * Unregisters the resource from the list of semantic resources and remove the resource from its ResourceSet.
      * 
      * @param res
      *            the semantic resource to unregister.
@@ -740,19 +731,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // Saving and Synchronization
     // *******************
     /**
-     * Sets the Synchronization status of every resources of this Session's
-     * resourceSet to SYNC or changed regarding their modified status.
+     * Sets the Synchronization status of every resources of this Session's resourceSet to SYNC or changed regarding
+     * their modified status.
      */
     protected void setSynchronizeStatusofEveryResource() {
         setSynchronizeStatusofEveryResource(transactionalEditingDomain.getResourceSet().getResources());
     }
 
     /**
-     * Sets the Synchronization status of considered resources of this Session's
-     * resourceSet to SYNC or changed regarding their modified status.
+     * Sets the Synchronization status of considered resources of this Session's resourceSet to SYNC or changed
+     * regarding their modified status.
      * 
-     * Should only be called from setSynchronizeStatusofEveryResource method
-     * (and overriding ones).
+     * Should only be called from setSynchronizeStatusofEveryResource method (and overriding ones).
      * 
      * @param resourcesToConsider
      *            the resources to consider.
@@ -786,8 +776,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param monitor
      *            the monitor to use to report progress.
      * @param runExclusive
-     *            whether or not to execute the saving in an exclusive
-     *            transaction.
+     *            whether or not to execute the saving in an exclusive transaction.
      */
     protected void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
         try {
@@ -797,6 +786,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             Collection<Resource> semanticResourcesCollection = getSemanticResources();
             allResources.addAll(semanticResourcesCollection);
             allResources.addAll(getControlledResources());
+            allResources.addAll(getSrmResources());
+
             monitor.worked(1);
             RunnableWithResult<Collection<Resource>> save = new RunnableWithResult.Impl<Collection<Resource>>() {
                 @Override
@@ -807,9 +798,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             };
             if (runExclusive && !saver.domainDisposed.get()) {
                 /*
-                 * launching the save itself in a read-only transaction will
-                 * block any other operation on the model which could come in
-                 * the meantime.
+                 * launching the save itself in a read-only transaction will block any other operation on the model
+                 * which could come in the meantime.
                  */
                 getTransactionalEditingDomain().runExclusive(save);
             } else {
@@ -847,17 +837,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Tells if the specified resource is one of
-     * {@link Session#getSemanticResources()},
-     * {@link Session#getAllSessionResources()} or
-     * DAnalysisSessionEObject#getControlledResources().
+     * Tells if the specified resource is one of {@link Session#getSemanticResources()},
+     * {@link Session#getAllSessionResources()} or DAnalysisSessionEObject#getControlledResources().
      * 
      * @param resource
      *            the specified {@link Resource}
      * @param resources
      *            the session resources
-     * @return true if the specified {@link Resource} is one of the
-     *         {@link Session}, false otherwise
+     * @return true if the specified {@link Resource} is one of the {@link Session}, false otherwise
      */
     protected boolean isResourceOfSession(Resource resource, Iterable<Resource> resources) {
         for (Resource input : resources) {
@@ -892,10 +879,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Returns the custom saving policy the session should use ; if no
-     * SavingPolicy has been defined, creates a default one.<br/>
-     * Subclasses can override this method to define a new default Saving
-     * Policy.
+     * Returns the custom saving policy the session should use ; if no SavingPolicy has been defined, creates a default
+     * one.<br/>
+     * Subclasses can override this method to define a new default Saving Policy.
      * 
      * @return the custom saving policy the session should use
      */
@@ -905,26 +891,24 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Indicates whether all resources (semantic and Danalysises) of this
-     * Session are whether {@link ResourceStatus#SYNC} or
-     * {@link ResourceStatus#READONLY}.
+     * Indicates whether all resources (semantic and Danalysises) of this Session are whether
+     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
      * 
-     * @return true if all resources (semantic and Danalysises) of this Session
-     *         are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
+     * @return true if all resources (semantic and Danalysises) of this Session are whether {@link ResourceStatus#SYNC}
+     *         or {@link ResourceStatus#READONLY}, false otherwise
      */
     protected boolean allResourcesAreInSync() {
         return resourcesSynchronizer.allResourcesAreInSync();
     }
 
     /**
-     * Indicates whether considered resources are whether
-     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
+     * Indicates whether considered resources are whether {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}
+     * .
      * 
      * @param resourcesToConsider
      *            the resources to inspect.
-     * @return true if all considered are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
+     * @return true if all considered are whether {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}, false
+     *         otherwise
      */
     protected final boolean checkResourcesAreInSync(Iterable<? extends Resource> resourcesToConsider) {
         return resourcesSynchronizer.checkResourcesAreInSync(resourcesToConsider);
@@ -948,9 +932,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Set to true to do saving in a read-only EMF Transaction, false otherwise.
-     * Note that if the {@link SavingPolicy} execute some EMF Command, this must
-     * be at false.
+     * Set to true to do saving in a read-only EMF Transaction, false otherwise. Note that if the {@link SavingPolicy}
+     * execute some EMF Command, this must be at false.
      * 
      * @param saveInExclusiveTransaction
      *            specify if the saving is done in a read-only transaction
@@ -983,10 +966,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // Events, Triggers and Listeners
     // *******************
     /**
-     * This method allows adding {@code ModelChangeTrigger} to the current
-     * session {@link SessionEventBroker}. This method is called during the
-     * opening of the Session, before setting the open attribute to true and
-     * before launching the SessionListener.OPENED notifications.
+     * This method allows adding {@code ModelChangeTrigger} to the current session {@link SessionEventBroker}. This
+     * method is called during the opening of the Session, before setting the open attribute to true and before
+     * launching the SessionListener.OPENED notifications.
      */
     protected void initLocalTriggers() {
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
@@ -999,9 +981,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         addRefreshEditorsListener();
         /*
-         * Make sure these adapters are added after the rest, and in particular
-         * after the semantic cross-referencer, so that they can rely on an
-         * up-to-date cross-referencer when invoked.
+         * Make sure these adapters are added after the rest, and in particular after the semantic cross-referencer, so
+         * that they can rely on an up-to-date cross-referencer when invoked.
          */
         for (DAnalysis analysis : allAnalyses()) {
             addAdaptersOnAnalysis(analysis);
@@ -1206,8 +1187,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Throw an {@link RuntimeException} if one of the resource of the selected
-     * viewpoints or session resources contain an error.
+     * Throw an {@link RuntimeException} if one of the resource of the selected viewpoints or session resources contain
+     * an error.
      */
     private void checkResourceErrors() {
         Collection<ResourceVersionMismatchDiagnostic> diagnostics = Lists.newArrayList();
@@ -1266,8 +1247,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
         super.setOpen(false);
         /*
-         * Let's clear the cross referencer of the VSM resource if it's still
-         * there (added by the updateSelectedViewpointsData).
+         * Let's clear the cross referencer of the VSM resource if it's still there (added by the
+         * updateSelectedViewpointsData).
          */
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
 
@@ -1312,8 +1293,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Disable {@link SiriusCrossReferenceAdapter} resolveProxy capability on
-     * resource and all its contents
+     * Disable {@link SiriusCrossReferenceAdapter} resolveProxy capability on resource and all its contents
      * 
      * @param resource
      *            the resource
@@ -1330,8 +1310,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Enable {@link SiriusCrossReferenceAdapter} resolveProxy capability on
-     * resource and all its contents
+     * Enable {@link SiriusCrossReferenceAdapter} resolveProxy capability on resource and all its contents
      * 
      * @param resource
      *            the resource
@@ -1366,20 +1345,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Disposes the permission authority corresponding to this session (if any
-     * found).
+     * Disposes the permission authority corresponding to this session (if any found).
      * 
      * @param resourceSet
-     *            the resourceSet associated to the current session (given in
-     *            parameter as the EditingDomain may already have been disposed)
+     *            the resourceSet associated to the current session (given in parameter as the EditingDomain may already
+     *            have been disposed)
      */
     protected void doDisposePermissionAuthority(ResourceSet resourceSet) {
         PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet).dispose(resourceSet);
     }
 
     /**
-     * Method called at {@link Session#close(IProgressMonitor)} to unload all
-     * referenced {@link Resource}s.
+     * Method called at {@link Session#close(IProgressMonitor)} to unload all referenced {@link Resource}s.
      * 
      * @param monitor
      */
@@ -1422,8 +1399,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Get collection of available {@link DView} for the
-     * {@link RepresentationDescription}.
+     * Get collection of available {@link DView} for the {@link RepresentationDescription}.
      * 
      * @param representationDescription
      *            the representation description.
@@ -1451,5 +1427,25 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
 
         return containers;
+    }
+
+    /**
+     * returns the representation file resources.
+     * 
+     * @return a collection of resource.
+     */
+    @Override
+    public Collection<Resource> getSrmResources() {
+        Collection<Resource> repFiles = Sets.newLinkedHashSet();
+
+        if (transactionalEditingDomain != null && transactionalEditingDomain.getResourceSet() != null) {
+            Collection<Resource> allResources = Lists.newArrayList(transactionalEditingDomain.getResourceSet().getResources());
+            for (Resource res : allResources) {
+                if (!res.getContents().isEmpty() && res.getContents().get(0) instanceof DRepresentation) {
+                    repFiles.add(res);
+                }
+            }
+        }
+        return repFiles;
     }
 }
