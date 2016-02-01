@@ -98,7 +98,7 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.properties.sections.filter.mappingfilter;version="3.0.0",
  org.eclipse.sirius.diagram.editor.properties.sections.filter.variablefilter;version="3.0.0",
  org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription;version="3.1.0",
- org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription;version="2.0.4",
+ org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription;version="2.1.0",
  org.eclipse.sirius.diagram.editor.properties.sections.style.containerstyledescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.style.customstyledescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.style.dotdescription;version="3.0.0",

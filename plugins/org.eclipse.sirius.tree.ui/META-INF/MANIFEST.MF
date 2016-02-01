@@ -8,7 +8,7 @@ Bundle-Activator: org.eclipse.sirius.tree.ui.provider.TreeUIPlugin$Implementatio
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.sirius.tree.description.provider;version="2.0.4",
+Export-Package: org.eclipse.sirius.tree.description.provider;version="3.0.0",
  org.eclipse.sirius.tree.provider;version="3.0.0",
  org.eclipse.sirius.tree.ui.business.api.helper;version="2.0.4",
  org.eclipse.sirius.tree.ui.business.internal.dialect;x-internal:=true;version="2.2.0",
@@ -16,10 +16,10 @@ Export-Package: org.eclipse.sirius.tree.description.provider;version="2.0.4",
  org.eclipse.sirius.tree.ui.properties.section.common;version="3.0.0",
  org.eclipse.sirius.tree.ui.properties.section.core;version="3.0.0",
  org.eclipse.sirius.tree.ui.properties.section.semantic;version="3.0.0",
- org.eclipse.sirius.tree.ui.provider;version="2.1.0",
+ org.eclipse.sirius.tree.ui.provider;version="2.2.0",
  org.eclipse.sirius.tree.ui.tools.api.editor;version="2.0.4",
  org.eclipse.sirius.tree.ui.tools.internal.commands;x-internal:=true;version="2.0.3",
- org.eclipse.sirius.tree.ui.tools.internal.editor;x-internal:=true;version="3.1.0",
+ org.eclipse.sirius.tree.ui.tools.internal.editor;x-internal:=true;version="3.2.0",
  org.eclipse.sirius.tree.ui.tools.internal.editor.actions;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.tree.ui.tools.internal.editor.provider;x-internal:=true;version="2.2.0",
