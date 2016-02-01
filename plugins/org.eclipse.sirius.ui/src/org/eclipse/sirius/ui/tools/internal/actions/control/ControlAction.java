@@ -224,7 +224,7 @@ public class ControlAction extends CommandActionHandler {
                 MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_AlreadyInResource")); //$NON-NLS-1$ //$NON-NLS-2$
                 return false;
             }
-            if (domain.isReadOnly(resource)) {
+            if (resource != null && domain.isReadOnly(resource)) {
                 MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_ReadOnlyResource")); //$NON-NLS-1$ //$NON-NLS-2$
                 return false;
             }
