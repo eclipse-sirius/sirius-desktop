@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -145,8 +145,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
         private WorkspaceImageFigureRefresher workspaceImageFigureRefresher;
 
-        private final boolean isForkedPropertiesFrameworkAvailable;
-
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -154,24 +152,9 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public Implementation() {
             super();
-
-            isForkedPropertiesFrameworkAvailable = isBundlePresent("org.eclipse.eef.properties.ui"); //$NON-NLS-1$
             // Remember the static instance.
             //
             DiagramUIPlugin.plugin = this;
-        }
-
-        public boolean isForkedPropertiesFrameworkAvailable() {
-            return isForkedPropertiesFrameworkAvailable;
-        }
-
-        private boolean isBundlePresent(String bundleName) {
-            for (Bundle bundle : getBundle().getBundleContext().getBundles()) {
-                if (bundleName.equals(bundle.getSymbolicName())) {
-                    return true;
-                }
-            }
-            return false;
         }
 
         /**

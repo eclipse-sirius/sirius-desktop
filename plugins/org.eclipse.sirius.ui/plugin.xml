@@ -23,6 +23,7 @@
    <extension-point id="newmodeldependencywizard" name="%extension-point.newmodeldependencywizard.name" schema="schema/newmodeldependencywizard.exsd"/>
    <extension-point id="modelingprojectresourcelistener" name="%extension-point.modelingProjectResourceListener.name" schema="schema/modelingprojectresourcelistener.exsd"/>
    <extension-point id="siriuspropertiescelleditor" name="%extension-point.siriusPropertiesCellEditor.name" schema="schema/siriuspropertiescelleditor.exsd"/>
+   <extension-point id="siriusPropertySheetPageProvider" name="%extension-point.siriusPropertySheetPageProvider.name" schema="schema/siriusPropertySheetPageProvider.exsd"/>
 
    
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">

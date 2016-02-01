@@ -64,9 +64,9 @@
         <configuration>
           <includePackedArtifacts>true</includePackedArtifacts>
           <resolver>p2</resolver>
-<!--           <dependency-resolution>
+          <dependency-resolution>
             <optionalDependencies>ignore</optionalDependencies>
-          </dependency-resolution> -->
+          </dependency-resolution>
           <target>
             <artifact>
               <groupId>org.eclipse.sirius</groupId>

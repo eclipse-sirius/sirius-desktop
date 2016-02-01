@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.eef.properties.ui.api.EEFTabbedPropertySheetPage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -36,12 +35,12 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
-import org.osgi.framework.Bundle;
 
 /**
  * @not-generated
@@ -110,17 +109,16 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
                 }
             };
         }
-        if (type == IPropertySheetPage.class && useForkedPropertySheetFramework()) {
-            return new EEFTabbedPropertySheetPage(this, this.getContributorId());
+        if (type == IPropertySheetPage.class) {
+            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+            if (contributedPage != null) {
+                return contributedPage;
+            }
         }
         if (type == AdapterFactory.class) {
             return DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         }
         return super.getAdapter(type);
-    }
-
-    private boolean useForkedPropertySheetFramework() {
-        return DiagramUIPlugin.getPlugin().isForkedPropertiesFrameworkAvailable();
     }
 
     /**

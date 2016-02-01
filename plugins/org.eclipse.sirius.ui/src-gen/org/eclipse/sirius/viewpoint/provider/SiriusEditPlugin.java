@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -51,6 +53,7 @@ import org.eclipse.sirius.ui.business.internal.session.GenericSWTCallBack;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryDescriptorRegistryListener;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
+import org.eclipse.sirius.ui.tools.api.properties.ISiriusPropertySheetPageProvider;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener.IModelingProjectResourceListener;
 import org.eclipse.sirius.ui.tools.internal.actions.analysis.IAddModelDependencyWizardRegistryListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.resourcelistener.ModelingProjectResourceListenerRegistry;
@@ -63,7 +66,11 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAd
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.osgi.framework.BundleContext;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * This is the central singleton for the Viewpoint edit plugin. <!--
@@ -148,6 +155,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private Map<ImageDescriptor, Image> descriptorsToImages;
 
         private UICallBack uiCallback = new GenericSWTCallBack();
+        
+        private Multimap<String, ISiriusPropertySheetPageProvider> propertySheetPageProviders = HashMultimap.create();
 
         /**
          * The registry listener that will be used to listen to extension
@@ -203,6 +212,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
             resourceWizardRegistryListener = new IAddModelDependencyWizardRegistryListener();
             resourceWizardRegistryListener.init();
+            
+            registerPropertySheetPageProviders();
 
             try {
                 SiriusTasks.initSiriusTasks();
@@ -225,6 +236,20 @@ public final class SiriusEditPlugin extends EMFPlugin {
                 Platform.addLogListener(LogThroughActiveDialectEditorLogListener.INSTANCE);
             } finally {
                 // Do nothing
+            }
+        }
+
+        private void registerPropertySheetPageProviders() {
+            for (IConfigurationElement ce : EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.ui.siriusPropertySheetPageProvider")) { //$NON-NLS-1$
+                try {
+                    String contribId = ce.getAttribute("contributorId"); //$NON-NLS-1$
+                    if (contribId != null) {
+                        ISiriusPropertySheetPageProvider provider = (ISiriusPropertySheetPageProvider) ce.createExecutableExtension("class"); //$NON-NLS-1$
+                        this.propertySheetPageProviders.put(contribId, provider);
+                    }
+                } catch (CoreException e) {
+                    getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, e.getMessage(), e));
+                }
             }
         }
 
@@ -416,6 +441,27 @@ public final class SiriusEditPlugin extends EMFPlugin {
             IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item, IItemLabelProvider.class);
             if (labelProvider != null) {
                 return labelProvider.getText(item);
+            }
+            return null;
+        }
+
+        /**
+         * Get the most specific IPropertySheetPage adapted for the specified
+         * source.
+         * 
+         * @param source
+         *            the source part.
+         * @param contributorId
+         *            the contributor id.
+         * @return a IPropertySheetPage adapted for the specified source, or
+         *         <code>null</code> if none was contributed.
+         */
+        public IPropertySheetPage getPropertySheetPage(Object source, String contributorId) {
+            for (ISiriusPropertySheetPageProvider provider : this.propertySheetPageProviders.get(contributorId)) {
+                IPropertySheetPage page = provider.getPropertySheetPage(source, contributorId);
+                if (page != null) {
+                    return page;
+                }
             }
             return null;
         }
