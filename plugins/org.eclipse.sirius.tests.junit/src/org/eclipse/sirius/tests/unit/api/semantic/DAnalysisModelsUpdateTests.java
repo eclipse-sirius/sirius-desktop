@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,8 +68,7 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Iterables;
 
 /**
- * Tests {@link DAnalysis#getModels()} updates according to scenario of VP-2770
- * and VP-3022.
+ * Tests {@link DAnalysis#getModels()} updates according to scenario of VP-2770 and VP-3022.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -213,11 +212,10 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
      * Test scenario of VP-2770 :
      * 
      * <ol>
-     * <li>With "Always create an aird fragment on control" pref enabled, from a
-     * ecore containing a root EPackage owning 2 child EPackages p1 and p2</li>
+     * <li>With "Always create an aird fragment on control" pref enabled, from a ecore containing a root EPackage owning
+     * 2 child EPackages p1 and p2</li>
      * <li>Control (fragment) p1 and p2 each in its own fragment</li>
-     * <li>Drag'n drop EPackage p2 from Model Explorer to "p1 package entities"
-     * diagram and save the session</li>
+     * <li>Drag'n drop EPackage p2 from Model Explorer to "p1 package entities" diagram and save the session</li>
      * </ol>
      * 
      * @throws Exception
@@ -254,8 +252,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
      * 
      * <ol>
      * <li>Control (fragment) p22 and p222 each in its own fragment</li>
-     * <li>Add inheritance E3 to class E2 (in p222) on semantic model
-     * VP-2770.ecore</li>
+     * <li>Add inheritance E3 to class E2 (in p222) on semantic model VP-2770.ecore</li>
      * <li>Check model p3.ecore adding to p2.aird</li>
      * </ol>
      * 
@@ -271,8 +268,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
      * <ol>
      * <li>Control (fragment) p22 and p222 each in its own fragment</li>
      * <li>Close session</li>
-     * <li>Add inheritance E3 to class E2 (in p222) on semantic model
-     * VP-2770.ecore</li>
+     * <li>Add inheritance E3 to class E2 (in p222) on semantic model VP-2770.ecore</li>
      * <li>Open session</li>
      * <li>Check model p3.ecore adding to p2.aird</li>
      * </ol>
@@ -284,8 +280,8 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Test that a repair/migrate action on the result of the first test doesn't
-     * corrupts the DAnalysis.models references.
+     * Test that a repair/migrate action on the result of the first test doesn't corrupts the DAnalysis.models
+     * references.
      * 
      * @throws Exception
      */
@@ -322,9 +318,8 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * This test check that after an opening of an aird that uses VSM that
-     * references another VSM not used by this aird, the analysis has always
-     * only one models reference (VP-3312).
+     * This test check that after an opening of an aird that uses VSM that references another VSM not used by this aird,
+     * the analysis has always only one models reference (VP-3312).
      * 
      * @throws Exception
      */
@@ -337,15 +332,13 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * This test check that after an opening of an aird that uses VSM that not
-     * references all MM, the analysis has always only one models reference
-     * (VP-3384).
+     * This test check that after an opening of an aird that uses VSM that not references all MM, the analysis has
+     * always only one models reference (VP-3384).
      * 
      * Use case :
      * <UL>
      * <LI>MM1 has a class A extending class B of MM2.</LI>
-     * <LI>VSM has a representation that references MM1 has metamodel (but not
-     * MM2).</LI>
+     * <LI>VSM has a representation that references MM1 has metamodel (but not MM2).</LI>
      * </UL>
      * 
      * @throws Exception
@@ -358,8 +351,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Checks that after the first fragmentation we have 2 new files and that
-     * DAnalysis.models references are corrects.
+     * Checks that after the first fragmentation we have 2 new files and that DAnalysis.models references are corrects.
      * 
      * @throws Exception
      */
@@ -370,7 +362,11 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+        if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
+            assertEquals("The current project should contains 7 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
+        } else {
+            assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+        }
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
         assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
         assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
@@ -388,8 +384,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Checks that after the p2 fragmentation we have 2 new files and that
-     * DAnalysis.models references are corrects.
+     * Checks that after the p2 fragmentation we have 2 new files and that DAnalysis.models references are corrects.
      * 
      * @throws Exception
      */
@@ -400,7 +395,11 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
         // Checks that 2 new resources has been created
         IResource[] members = temporaryProject.members();
-        assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+        if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
+            assertEquals("The current project should contains 7 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 7, members.length);
+        } else {
+            assertEquals("The current project should contains 6 files : .project, " + SEMANTIC_RESOURCE_NAME + ", " + SEMANTIC_RESOURCE_NAME_P3 + ", " + SESSION_RESOURCE_NAME, 6, members.length);
+        }
         assertEquals("The current project should contain .project ", ".project", members[0].getName());
         assertEquals("The current project should contain " + SESSION_RESOURCE_NAME, SESSION_RESOURCE_NAME, members[1].getName());
         assertEquals("The current project should contain " + SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, members[2].getName());
@@ -418,8 +417,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Checks that after the second fragmentation we have 2 new files and that
-     * DAnalysis.models references are corrects.
+     * Checks that after the second fragmentation we have 2 new files and that DAnalysis.models references are corrects.
      * 
      * @throws Exception
      */
@@ -451,8 +449,8 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Checks that after p22 fragmentation (after p2 fragmentation) we have 2
-     * new files and that DAnalysis.models references are corrects.
+     * Checks that after p22 fragmentation (after p2 fragmentation) we have 2 new files and that DAnalysis.models
+     * references are corrects.
      * 
      * @throws Exception
      */
@@ -484,8 +482,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Checks that after the drag'n drop the DAnalysis.models references are
-     * corrects.
+     * Checks that after the drag'n drop the DAnalysis.models references are corrects.
      * 
      * @throws Exception
      */

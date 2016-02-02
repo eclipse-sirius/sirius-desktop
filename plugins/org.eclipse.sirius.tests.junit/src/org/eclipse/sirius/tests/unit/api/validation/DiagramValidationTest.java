@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,8 +91,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test case. It checks that source point location of a specific edge does
-     * not change after zoom in operation.
+     * Test case. It checks that source point location of a specific edge does not change after zoom in operation.
      * 
      * @throws Exception
      *             Test error.
@@ -116,7 +115,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         assertTrue("Validation constraint has not been called", ConstraintStub.hasBeenCalled());
 
         // Get session .aird file to find validation warnings
-        IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
+        IFile file = WorkspaceSynchronizer.getFile(session.getSessionResource());
         file.refreshLocal(1, new NullProgressMonitor());
         IMarker[] findUIMarkers = file.findMarkers(SiriusMarkerNavigationProvider.MARKER_TYPE, true, IResource.DEPTH_INFINITE);
         assertTrue("At least one marker must be found", findUIMarkers.length >= 1);
@@ -140,11 +139,11 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test there is only one error by elements not validated and not many
-     * errors message duplicate for same element. See VP-2940
+     * Test there is only one error by elements not validated and not many errors message duplicate for same element.
+     * See VP-2940
      * 
-     * Also check that there is only one semantic error for the root element.
-     * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
+     * Also check that there is only one semantic error for the root element. See
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
      * 
      * @throws CoreException
      *             Test errors.
@@ -165,7 +164,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         va.run();
 
         // Get session .aird file to find validation warnings
-        IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
+        IFile file = WorkspaceSynchronizer.getFile(session.getSessionResource());
         file.refreshLocal(1, new NullProgressMonitor());
         IMarker[] foundUIMarkers = file.findMarkers(SiriusMarkerNavigationProvider.MARKER_TYPE, true, IResource.DEPTH_INFINITE);
         assertEquals("Five markers must be found", 5, foundUIMarkers.length);
@@ -207,8 +206,8 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * @param foundMarkers
      *            markers found
      * @param expectedNbViewMarker
-     *            expected number of view marker for the first {@link DNode}
-     *            with target equals to {@code semanticElement}
+     *            expected number of view marker for the first {@link DNode} with target equals to
+     *            {@code semanticElement}
      * @param expectedNbSemanticMarker
      *            expected number of semantic marker for {@code semanticElement}
      */

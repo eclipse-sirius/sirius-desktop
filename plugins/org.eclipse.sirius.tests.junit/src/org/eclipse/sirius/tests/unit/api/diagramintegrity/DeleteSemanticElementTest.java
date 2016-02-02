@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,8 @@ import org.eclipse.sirius.viewpoint.DView;
 public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
     /*
-     * Check that the corresponding container is removed from the representation
-     * if its target is removed from the semantic model.
+     * Check that the corresponding container is removed from the representation if its target is removed from the
+     * semantic model.
      */
     public void testSemanticElementDeletionRemovesContainer() {
         int eltCount = -1;
@@ -84,8 +84,8 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
     }
 
     /*
-     * Check that the corresponding node is removed from the representation if
-     * its target is removed from the semantic model.
+     * Check that the corresponding node is removed from the representation if its target is removed from the semantic
+     * model.
      */
     public void testSemanticElementDeletionRemovesdNode() {
         int eltCount = -1;
@@ -124,8 +124,8 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
     }
 
     /*
-     * Check that the corresponding edge is removed from the representation if
-     * its target is removed from the semantic model.
+     * Check that the corresponding edge is removed from the representation if its target is removed from the semantic
+     * model.
      */
     public void testSemanticElementDeletionRemovesEdge() {
         int eltCount = -1;
@@ -184,8 +184,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
     }
 
     /*
-     * Check that the corresponding diagram is removed if it's target is removed
-     * from the semantic model.
+     * Check that the corresponding diagram is removed if it's target is removed from the semantic model.
      */
     public void testSemanticElementDeletionRemovesDiagram() {
         myRepresentation = createRepresentation("chapterDiagram", semanticModel.eContents().get(0));
@@ -206,7 +205,13 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         // delete the chapter.
         deleteChapter();
 
-        this.session.getTransactionalEditingDomain().getCommandStack().execute(new RemoveDanglingReferences(this.session.getTransactionalEditingDomain(), this.sessionModel));
+        this.session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(this.session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                RemoveDanglingReferences.removeDanglingReferences(semanticModel.eResource().getResourceSet());
+
+            }
+        });
 
         for (final EObject object : this.sessionModel.eContents()) {
             if (object instanceof DRefreshable) {

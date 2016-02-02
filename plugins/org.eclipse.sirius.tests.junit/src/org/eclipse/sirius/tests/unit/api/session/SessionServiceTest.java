@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,12 @@ public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreMo
             }
         };
         executeCommand(cmd);
-
-        Collection<EObject> collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, null);
+        Collection<EObject> collected;
+        if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
+            collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram);
+        } else {
+            collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, null);
+        }
         assertEquals(1, collected.size());
         assertTrue(collected.contains(eClass));
     }
