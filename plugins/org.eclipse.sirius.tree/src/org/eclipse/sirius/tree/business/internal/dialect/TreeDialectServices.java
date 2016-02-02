@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -215,7 +215,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     @Override
     public boolean canCreate(EObject semantic, RepresentationDescription desc) {
         boolean result = false;
-        if (semantic != null && isSupported(desc)) {
+        if (semantic != null && isSupported(desc) && isRelatedViewpointSelected(new EObjectQuery(semantic).getSession(), desc)) {
             TreeDescription treeDesc = (TreeDescription) desc;
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
             if (accessor != null) {
