@@ -22,7 +22,7 @@ public class SiriusSemanticAdapter implements IAdapterFactory {
     @Override
     public Object getAdapter(final Object adaptableObject, @SuppressWarnings("rawtypes") final Class adapterType) {
         if (adapterType != null) {
-            return SemanticElementFinder.getAssociatedSemanticElement(adaptableObject);
+            return SiriusContext.from(adaptableObject).getMainSemanticElement().get();
         } else {
             return null;
         }

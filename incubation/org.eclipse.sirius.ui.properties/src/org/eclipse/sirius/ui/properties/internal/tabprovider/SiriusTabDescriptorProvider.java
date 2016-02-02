@@ -37,7 +37,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.ui.properties.internal.Messages;
-import org.eclipse.sirius.ui.properties.internal.SemanticElementFinder;
+import org.eclipse.sirius.ui.properties.internal.SiriusContext;
 import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -73,11 +73,10 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
                 if (objects.length > 1) {
                     SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection, null);
                 }
-
-                EObject semanticElement = SemanticElementFinder.getAssociatedSemanticElement(objects[0]);
-                if (semanticElement != null) {
+                SiriusContext ctx = SiriusContext.from(objects[0]);
+                if (ctx.getMainSemanticElement().some()) {
                     // Let's find out the description of the view
-                    return this.getTabDescriptors(semanticElement);
+                    return this.getTabDescriptors(ctx.getMainSemanticElement().get());
                 } else {
                     SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement, null);
                 }
