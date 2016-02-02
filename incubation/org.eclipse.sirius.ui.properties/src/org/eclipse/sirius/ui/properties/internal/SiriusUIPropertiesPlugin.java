@@ -11,16 +11,10 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.osgi.framework.BundleContext;
 
 /**
  * The plugin for <code>org.eclipse.sirius.ui.properties</code>.
@@ -71,33 +65,12 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
      * @author sbegaudeau
      */
     public static class Implementation extends EclipsePlugin {
-
-        /**
-         * The adapter is stateless, use a single instance that can be easily
-         * unregistered when stopped.
-         */
-        private final SiriusSemanticAdapter adapterFactory = new SiriusSemanticAdapter();
-
         /**
          * The constructor.
          */
         public Implementation() {
             super();
             SiriusUIPropertiesPlugin.plugin = this;
-        }
-
-        @Override
-        public void start(BundleContext context) throws Exception {
-            IAdapterManager adapterManager = Platform.getAdapterManager();
-            adapterManager.registerAdapters(adapterFactory, DSemanticDecorator.class);
-            adapterManager.registerAdapters(adapterFactory, GraphicalEditPart.class);
-            adapterManager.registerAdapters(adapterFactory, ConnectionEditPart.class);
-        }
-
-        @Override
-        public void stop(BundleContext context) throws Exception {
-            IAdapterManager adapterManager = Platform.getAdapterManager();
-            adapterManager.unregisterAdapters(adapterFactory);
         }
 
         /**
