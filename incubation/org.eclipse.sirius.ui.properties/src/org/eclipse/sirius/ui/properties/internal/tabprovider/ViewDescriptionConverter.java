@@ -104,14 +104,6 @@ public class ViewDescriptionConverter {
         EEFContainerDescription containerDesc = EefFactory.eINSTANCE.createEEFContainerDescription();
 
         for (WidgetDescription widgetDescription : groupDescription.getContainer().getWidgets()) {
-            if (widgetDescription instanceof TextDescription) {
-                containerDesc.getWidgets().add(createEEFTextDescription((TextDescription) widgetDescription));
-            } else if (widgetDescription instanceof LabelDescription) {
-                containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
-            } else if (widgetDescription instanceof SelectDescription) {
-                containerDesc.getWidgets().add(createEEFSelectDescription((SelectDescription) widgetDescription));
-            }
-
             EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
             if (description != null) {
                 containerDesc.getWidgets().add(description);
@@ -152,7 +144,10 @@ public class ViewDescriptionConverter {
             description = createEEFTextDescription((TextDescription) widgetDescription);
         } else if (widgetDescription instanceof LabelDescription) {
             description = createEEFLabelDescription((LabelDescription) widgetDescription);
+        } else if (widgetDescription instanceof SelectDescription) {
+            description = createEEFSelectDescription((SelectDescription) widgetDescription);
         }
+
         return description;
     }
 
