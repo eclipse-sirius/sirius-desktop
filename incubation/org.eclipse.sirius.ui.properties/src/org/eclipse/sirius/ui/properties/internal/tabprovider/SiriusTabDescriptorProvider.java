@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,7 +22,11 @@ import org.eclipse.eef.core.api.EEFViewFactory;
 import org.eclipse.eef.ide.ui.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -32,6 +36,10 @@ import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.ui.properties.internal.Messages;
+import org.eclipse.sirius.ui.properties.internal.SemanticElementFinder;
+import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
+import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -41,7 +49,19 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+/**
+ * The {@link IEEFTabDescriptorProvider} for Eclipse Sirius.
+ * 
+ * @author sbegaudeau
+ * @author pcdavid
+ */
 public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
+
+    /**
+     * The URI of the model containing the default value of the properties page
+     * to create.
+     */
+    private static final String DEFAULT_PROPERTIES_URI = "platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi";
 
     @Override
     public Collection<IEEFTabDescriptor> get(IWorkbenchPart part, ISelection selection) {
@@ -50,16 +70,29 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
             Object[] objects = structuredSelection.toArray();
             // FIXME We take the first one
             if (objects.length > 0) {
+                if (objects.length > 1) {
+                    SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection, null);
+                }
+
                 EObject semanticElement = SemanticElementFinder.getAssociatedSemanticElement(objects[0]);
                 if (semanticElement != null) {
                     // Let's find out the description of the view
                     return this.getTabDescriptors(semanticElement);
+                } else {
+                    SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement, null);
                 }
             }
         }
         return new ArrayList<IEEFTabDescriptor>();
     }
 
+    /**
+     * Returns the {@link IEEFTabDescriptor} for the given semantic element.
+     * 
+     * @param semanticElement
+     *            The semantic element
+     * @return A collection of {@link IEEFTabDescriptor}
+     */
     private Collection<IEEFTabDescriptor> getTabDescriptors(EObject semanticElement) {
         Session session = new EObjectQuery(semanticElement).getSession();
         List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(semanticElement, session);
@@ -67,7 +100,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
     }
 
     private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, EObject semanticElement, List<PageDescription> effectivePageDescriptions) {
-        EEFViewDescription viewDescription = new ViewDescriptionConverter(session, semanticElement, effectivePageDescriptions).convert();
+        EEFViewDescription viewDescription = new ViewDescriptionConverter(effectivePageDescriptions).convert();
         EEFView eefView = createEEFView(session, semanticElement, viewDescription);
 
         List<IEEFTabDescriptor> descriptors = new ArrayList<IEEFTabDescriptor>();
@@ -108,6 +141,22 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         for (ViewExtensionDescription ved : viewDescriptions) {
             effectivePages.addAll(ved.getPages());
         }
+
+        if (effectivePages.size() == 0) {
+            ResourceSet resourceSet = new ResourceSetImpl();
+            URI uri = URI.createURI(DEFAULT_PROPERTIES_URI, true);
+            Resource resource = resourceSet.getResource(uri, true);
+            if (resource != null) {
+                List<EObject> contents = resource.getContents();
+                if (contents.size() > 0 && contents.get(0) instanceof ViewExtensionDescription) {
+                    ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) contents.get(0);
+                    effectivePages.addAll(viewExtensionDescription.getPages());
+                }
+            } else {
+                SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound, null);
+            }
+        }
+
         return effectivePages;
     }
 }

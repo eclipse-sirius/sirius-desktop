@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.properties.internal;
+package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFDynamicMappingCase;
@@ -25,14 +21,9 @@ import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefFactory;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
-import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingSwitch;
@@ -43,119 +34,68 @@ import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
 /**
  * Interprets the high-level property views description defined in a Sirius VSM
  * into a lower-level EEFViewDescription suitable for the EEF runtime.
+ * 
+ * @author pcdavid
  */
 public class ViewDescriptionConverter {
-    private static class DomainClassTester implements Predicate<EObject> {
-        private static final Pattern SEPARATOR = Pattern.compile("(::?|\\.)");
-
-        private final String packageName;
-
-        private final String className;
-
-        public DomainClassTester(String domainClassName) {
-            Matcher m = Pattern.compile("(::?|\\.)").matcher(domainClassName);
-            if (m.find()) {
-                packageName = domainClassName.substring(0, m.start());
-                className = domainClassName.substring(m.end());
-            } else {
-                packageName = null;
-                className = domainClassName;
-            }
-
-        }
-
-        @Override
-        public boolean apply(EObject input) {
-            if (input != null) {
-                EClass klass = input.eClass();
-                boolean packageMatch = packageName == null || packageName.equals(klass.getEPackage().getName());
-                return packageMatch && (className == null || className.equals(klass.getName()));
-            } else {
-                return false;
-            }
-        }
-
-    }
-
-    private final IInterpreter itp;
-
-    private final EObject viewTarget;
-
     private final List<PageDescription> pageDescriptions;
 
-    public ViewDescriptionConverter(Session session, EObject viewTarget, List<PageDescription> pageDescriptions) {
-        this.itp = new SiriusInterpreter(session);
-        this.viewTarget = viewTarget;
+    /**
+     * The contrsuctor.
+     * 
+     * @param pageDescriptions
+     *            The description of the pages to convert
+     */
+    public ViewDescriptionConverter(List<PageDescription> pageDescriptions) {
         this.pageDescriptions = pageDescriptions;
     }
 
-    public EEFViewDescription convert() {
-        EEFViewDescription wrappingView = EefFactory.eINSTANCE.createEEFViewDescription();
-        for (PageDescription pageDescription : pageDescriptions) {
-            instantiatePages(pageDescription, wrappingView);
-        }
-
-        return wrappingView;
-    }
-
     /**
-     * Instanciates a PageDescription for a concrete semantic target (the
-     * top-level input int the page's case), and put the resulting EEF pages &
-     * groups in the specified view.
+     * Use the description of the pages provided in order to create an
+     * {@link EEFViewDescription}.
+     * 
+     * @return The {@link EEFViewDescription} computed
      */
-    private void instantiatePages(PageDescription pageDescription, EEFViewDescription view) {
-        List<EObject> candidates = computeCandidates(viewTarget, pageDescription.getSemanticCandidateExpression(), pageDescription.getDomainClass());
-        for (EObject pageTarget : candidates) {
-            createPage(pageDescription, pageTarget, view);
+    public EEFViewDescription convert() {
+        EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
+        for (PageDescription pageDescription : pageDescriptions) {
+            createPage(pageDescription, view);
         }
+
+        return view;
     }
 
     /**
      * Creates a concrete page instance bound to a specific semantic target.
      */
-    private void createPage(PageDescription pageDescription, EObject pageTarget, EEFViewDescription view) {
+    private void createPage(PageDescription pageDescription, EEFViewDescription view) {
         EEFPageDescription page = EefFactory.eINSTANCE.createEEFPageDescription();
         page.setIdentifier(pageDescription.getIdentifier());
         page.setLabelExpression(pageDescription.getLabelExpression());
         page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
+
         for (GroupDescription groupDescription : pageDescription.getGroups()) {
-            instantiateGroups(groupDescription, page, pageTarget, view);
+            createGroup(groupDescription, page, view);
         }
 
         view.getPages().add(page);
     }
 
     /**
-     * Instanciates a GroupDescription for a concrete semantic target, and put
-     * the resulting EEF pages & groups in the specified view.
-     */
-    private void instantiateGroups(GroupDescription groupDescription, EEFPageDescription page, EObject pageTarget, EEFViewDescription view) {
-        List<EObject> candidates = computeCandidates(pageTarget, groupDescription.getSemanticCandidateExpression(), groupDescription.getDomainClass());
-        for (EObject groupTarget : candidates) {
-            page.getGroups().add(createGroup(groupDescription, groupTarget, view));
-        }
-    }
-
-    /**
      * Creates a concrete group instance bound to a specific semantic target.
      */
-    private EEFGroupDescription createGroup(GroupDescription groupDescription, EObject groupTarget, EEFViewDescription view) {
+    private void createGroup(GroupDescription groupDescription, EEFPageDescription page, EEFViewDescription view) {
         EEFGroupDescription group = EefFactory.eINSTANCE.createEEFGroupDescription();
         group.setIdentifier(groupDescription.getIdentifier());
-        // TODO: should be setLabel()
-        group.setLabelExpression(computeString(groupTarget, groupDescription.getLabelExpression()));
+        group.setLabelExpression(groupDescription.getLabelExpression());
 
         convertGroupContents(groupDescription, group);
+
+        page.getGroups().add(group);
         view.getGroups().add(group);
-        return group;
     }
 
     private void convertGroupContents(GroupDescription groupDescription, EEFGroupDescription group) {
@@ -166,6 +106,11 @@ public class ViewDescriptionConverter {
                 containerDesc.getWidgets().add(createEEFTextDescription((TextDescription) widgetDescription));
             } else if (widgetDescription instanceof LabelDescription) {
                 containerDesc.getWidgets().add(createEEFLabelDescription((LabelDescription) widgetDescription));
+            }
+
+            EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
+            if (description != null) {
+                containerDesc.getWidgets().add(description);
             }
         }
 
@@ -183,10 +128,9 @@ public class ViewDescriptionConverter {
                 EEFDynamicMappingCase eefDynamicMappingCase = EefFactory.eINSTANCE.createEEFDynamicMappingCase();
                 eefDynamicMappingCase.setCaseExpression(dynamicMappingCase.getCaseExpression());
 
-                if (dynamicMappingCase.getWidget() instanceof TextDescription) {
-                    eefDynamicMappingCase.setWidget(createEEFTextDescription((TextDescription) dynamicMappingCase.getWidget()));
-                } else if (dynamicMappingCase.getWidget() instanceof LabelDescription) {
-                    eefDynamicMappingCase.setWidget(createEEFLabelDescription((LabelDescription) dynamicMappingCase.getWidget()));
+                EEFWidgetDescription widgetDescription = this.createEEFWidgetDescription(dynamicMappingCase.getWidget());
+                if (widgetDescription != null) {
+                    eefDynamicMappingCase.setWidget(widgetDescription);
                 }
 
                 eefDynamicMappingSwitch.getCases().add(eefDynamicMappingCase);
@@ -196,6 +140,16 @@ public class ViewDescriptionConverter {
         }
 
         group.setContainer(containerDesc);
+    }
+
+    private EEFWidgetDescription createEEFWidgetDescription(WidgetDescription widgetDescription) {
+        EEFWidgetDescription description = null;
+        if (widgetDescription instanceof TextDescription) {
+            description = createEEFTextDescription((TextDescription) widgetDescription);
+        } else if (widgetDescription instanceof LabelDescription) {
+            description = createEEFLabelDescription((LabelDescription) widgetDescription);
+        }
+        return description;
     }
 
     private EEFTextDescription createEEFTextDescription(TextDescription textDescription) {
@@ -218,47 +172,4 @@ public class ViewDescriptionConverter {
         return eefLabelDescription;
     }
 
-    private static Map<String, Object> singletonEnv(String name, Object value) {
-        Map<String, Object> env = Maps.newHashMap();
-        env.put(name, value);
-        return env;
-    }
-
-    private String computeString(EObject self, String expression) {
-        IEvaluationResult result = itp.evaluateExpression(singletonEnv("self", self), expression);
-        if (result.success()) {
-            return result.asString();
-        } else {
-            log(result.getDiagnostic());
-            return "";
-        }
-    }
-
-    private List<EObject> computeCandidates(EObject self, String semanticCandidatesExpression, String domainClass) {
-        IEvaluationResult result = itp.evaluateExpression(singletonEnv("self", self), isBlank(semanticCandidatesExpression) ? "var:self" : semanticCandidatesExpression);
-        if (result.success()) {
-            return Lists.newArrayList(Iterables.filter(result.asEObjects(), new DomainClassTester(domainClass)));
-        } else {
-            log(result.getDiagnostic());
-            return Collections.emptyList();
-        }
-    }
-
-    /**
-     * Tests if a string is blank (i.e. null, empty, or containing only
-     * whitespace).
-     *
-     * @param s
-     *            the string to test.
-     * @return <code>true</code> iff the string is blank.
-     */
-    private boolean isBlank(String s) {
-        return s == null || s.trim().length() == 0;
-    }
-
-    private void log(Diagnostic diagnostic) {
-        // CHECKSTYLE:OFF
-        System.err.println(diagnostic);
-        // CHECKSTYLE:ON
-    }
 }

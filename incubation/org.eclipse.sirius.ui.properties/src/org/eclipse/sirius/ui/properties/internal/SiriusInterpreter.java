@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -37,10 +36,22 @@ public class SiriusInterpreter implements IInterpreter {
 
     private IInterpreterWithDiagnostic interpreter;
 
+    /**
+     * The constructor.
+     * 
+     * @param session
+     *            The Sirius session
+     */
     public SiriusInterpreter(Session session) {
         this((IInterpreterWithDiagnostic) session.getInterpreter());
     }
 
+    /**
+     * The constructor.
+     * 
+     * @param interpreterWithDiagnostic
+     *            An interpreter
+     */
     public SiriusInterpreter(IInterpreterWithDiagnostic interpreterWithDiagnostic) {
         this.interpreter = Preconditions.checkNotNull(interpreterWithDiagnostic);
     }
@@ -73,8 +84,8 @@ public class SiriusInterpreter implements IInterpreter {
                     filesProperty = (Collection<Object>) current;
                 }
             }
-            if (!filesProperty.contains(Activator.PLUGIN_ID)) {
-                filesProperty.add(Activator.PLUGIN_ID);
+            if (!filesProperty.contains(SiriusUIPropertiesPlugin.PLUGIN_ID)) {
+                filesProperty.add(SiriusUIPropertiesPlugin.PLUGIN_ID);
             }
             i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, filesProperty);
             i.addImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());

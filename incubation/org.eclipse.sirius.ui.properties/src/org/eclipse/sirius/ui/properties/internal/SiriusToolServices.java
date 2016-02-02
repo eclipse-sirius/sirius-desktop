@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,21 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
+/**
+ * This class contains various services provided by the Sirius UI Properties
+ * bundle to the interpreter.
+ * 
+ * @author sbegaudeau
+ */
 public class SiriusToolServices {
+    /**
+     * Executes the operation with the given URI.
+     * 
+     * @param eObject
+     *            The current EObject
+     * @param initialCommandUri
+     *            the URI of the operation to execute
+     */
     public void executeOperation(EObject eObject, String initialCommandUri) {
         Session session = new EObjectQuery(eObject).getSession();
         ModelAccessor modelAccessor = session.getModelAccessor();

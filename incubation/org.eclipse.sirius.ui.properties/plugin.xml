@@ -21,7 +21,7 @@
   <extension
         point="org.eclipse.eef.properties.ui.eefTabDescriptorProvider">
      <descriptor
-           class="org.eclipse.sirius.ui.properties.internal.SiriusTabDescriptorProvider"
+           class="org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider"
            description="Provides EEF tab descriptors according to what is defined in the view properties extension"
            id="org.eclipse.sirius.eefTabDescriptorProvider"
            label="Sirius EEF Tab Descriptor Provider">
