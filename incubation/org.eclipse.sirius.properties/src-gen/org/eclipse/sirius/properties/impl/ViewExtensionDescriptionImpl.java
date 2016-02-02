@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -77,7 +77,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      * @ordered
      */
-    protected String identifier = IDENTIFIER_EDEFAULT;
+    protected String identifier = ViewExtensionDescriptionImpl.IDENTIFIER_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}'
@@ -129,7 +129,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}'
@@ -165,6 +165,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public String getIdentifier() {
         return identifier;
     }
@@ -174,11 +175,13 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void setIdentifier(String newIdentifier) {
         String oldIdentifier = identifier;
         identifier = newIdentifier;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
+        }
     }
 
     /**
@@ -186,6 +189,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public EList<EPackage> getMetamodels() {
         if (metamodels == null) {
             metamodels = new EObjectResolvingEList<EPackage>(EPackage.class, this, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS);
@@ -198,6 +202,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public EList<PageDescription> getPages() {
         if (pages == null) {
             pages = new EObjectContainmentEList<PageDescription>(PageDescription.class, this, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES);
@@ -210,13 +215,15 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public PageDescription getDefaultPage() {
         if (defaultPage != null && defaultPage.eIsProxy()) {
             InternalEObject oldDefaultPage = (InternalEObject) defaultPage;
             defaultPage = (PageDescription) eResolveProxy(oldDefaultPage);
             if (defaultPage != oldDefaultPage) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, oldDefaultPage, defaultPage));
+                }
             }
         }
         return defaultPage;
@@ -236,11 +243,13 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void setDefaultPage(PageDescription newDefaultPage) {
         PageDescription oldDefaultPage = defaultPage;
         defaultPage = newDefaultPage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, oldDefaultPage, defaultPage));
+        }
     }
 
     /**
@@ -248,6 +257,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -257,11 +267,13 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -269,6 +281,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * 
      * @generated
      */
+    @Override
     public EList<GroupDescription> getGroups() {
         if (groups == null) {
             groups = new EObjectContainmentEList<GroupDescription>(GroupDescription.class, this, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS);
@@ -307,8 +320,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
             return getPages();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            if (resolve)
+            if (resolve) {
                 return getDefaultPage();
+            }
             return basicGetDefaultPage();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
@@ -361,7 +375,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
+            setIdentifier(ViewExtensionDescriptionImpl.IDENTIFIER_EDEFAULT);
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             getMetamodels().clear();
@@ -373,7 +387,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             setDefaultPage((PageDescription) null);
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             getGroups().clear();
@@ -391,7 +405,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            return ViewExtensionDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !ViewExtensionDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
             return metamodels != null && !metamodels.isEmpty();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
@@ -399,7 +413,7 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
             return defaultPage != null;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             return groups != null && !groups.isEmpty();
         }
@@ -413,8 +427,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2016 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
-    modelDirectory="/org.eclipse.sirius.properties/src-gen" editDirectory="/org.eclipse.sirius.properties.edit/src-gen"
-    editorDirectory="/org.eclipse.sirius.properties.editor/src-gen" modelPluginID="org.eclipse.sirius.properties"
-    modelName="Properties" modelPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
-    importOrganizing="true">
+    modelDirectory="/org.eclipse.sirius.properties/src-gen" creationIcons="false"
+    editDirectory="/org.eclipse.sirius.properties.edit/src-gen" editorDirectory=""
+    modelPluginID="org.eclipse.sirius.properties" modelName="Properties" modelPluginClass=""
+    editorPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testsDirectory="" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" editorPluginID="org.eclipse.sirius.properties.editor"
+    testsPluginID="org.eclipse.sirius.properties.editor" runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    importOrganizing="true" cleanup="true">
   <foreignModel>properties.ecore</foreignModel>
   <genPackages prefix="Properties" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
       childCreationExtenders="true" ecorePackage="properties.ecore#/">
@@ -76,6 +78,12 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextAreaDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextAreaDescription/lineCount"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//RadioDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/valueExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/initialOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidatesExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidateDisplayExpression"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

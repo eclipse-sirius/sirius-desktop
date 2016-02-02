@@ -35,6 +35,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "CandidatesExpression"; //$NON-NLS-1$
     }
@@ -42,6 +43,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -54,6 +56,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getSelectDescription_CandidatesExpression();
     }
@@ -61,6 +64,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -68,6 +72,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -75,6 +80,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -93,6 +99,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), SelectDescriptionCandidatesExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -105,6 +112,7 @@ public class SelectDescriptionCandidatesExpressionPropertySection extends Abstra
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

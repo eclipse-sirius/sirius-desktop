@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.provider;
 
@@ -19,14 +19,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 /**
  * This is the central singleton for the Properties edit plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class PropertiesEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final PropertiesEditPlugin INSTANCE = new PropertiesEditPlugin();
@@ -34,7 +34,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -57,7 +57,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return PropertiesEditPlugin.plugin;
     }
 
     /**
@@ -68,13 +68,13 @@ public final class PropertiesEditPlugin extends EMFPlugin {
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return PropertiesEditPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
@@ -88,7 +88,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            PropertiesEditPlugin.plugin = this;
         }
     }
 

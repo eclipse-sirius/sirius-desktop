@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -58,7 +58,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * @generated
      * @ordered
      */
-    protected String buttonLabelExpression = BUTTON_LABEL_EXPRESSION_EDEFAULT;
+    protected String buttonLabelExpression = ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -95,6 +95,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * 
      * @generated
      */
+    @Override
     public String getButtonLabelExpression() {
         return buttonLabelExpression;
     }
@@ -104,11 +105,13 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * 
      * @generated
      */
+    @Override
     public void setButtonLabelExpression(String newButtonLabelExpression) {
         String oldButtonLabelExpression = buttonLabelExpression;
         buttonLabelExpression = newButtonLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION, oldButtonLabelExpression, buttonLabelExpression));
+        }
     }
 
     /**
@@ -116,6 +119,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         return initialOperation;
     }
@@ -130,10 +134,11 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -143,18 +148,23 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -214,7 +224,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
-            setButtonLabelExpression(BUTTON_LABEL_EXPRESSION_EDEFAULT);
+            setButtonLabelExpression(ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
@@ -232,7 +242,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
-            return BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null : !BUTTON_LABEL_EXPRESSION_EDEFAULT.equals(buttonLabelExpression);
+            return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT
+                    .equals(buttonLabelExpression);
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         }
@@ -246,8 +257,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (buttonLabelExpression: ");

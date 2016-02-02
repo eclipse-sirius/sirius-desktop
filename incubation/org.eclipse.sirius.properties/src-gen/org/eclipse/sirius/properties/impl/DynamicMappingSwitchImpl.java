@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -64,7 +64,7 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected String switchExpression = SWITCH_EXPRESSION_EDEFAULT;
+    protected String switchExpression = DynamicMappingSwitchImpl.SWITCH_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getCases() <em>Cases</em>}' containment
@@ -100,6 +100,7 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public String getSwitchExpression() {
         return switchExpression;
     }
@@ -109,11 +110,13 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setSwitchExpression(String newSwitchExpression) {
         String oldSwitchExpression = switchExpression;
         switchExpression = newSwitchExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION, oldSwitchExpression, switchExpression));
+        }
     }
 
     /**
@@ -121,6 +124,7 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EList<DynamicMappingCase> getCases() {
         if (cases == null) {
             cases = new EObjectContainmentEList<DynamicMappingCase>(DynamicMappingCase.class, this, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES);
@@ -187,7 +191,7 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION:
-            setSwitchExpression(SWITCH_EXPRESSION_EDEFAULT);
+            setSwitchExpression(DynamicMappingSwitchImpl.SWITCH_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES:
             getCases().clear();
@@ -205,7 +209,7 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION:
-            return SWITCH_EXPRESSION_EDEFAULT == null ? switchExpression != null : !SWITCH_EXPRESSION_EDEFAULT.equals(switchExpression);
+            return DynamicMappingSwitchImpl.SWITCH_EXPRESSION_EDEFAULT == null ? switchExpression != null : !DynamicMappingSwitchImpl.SWITCH_EXPRESSION_EDEFAULT.equals(switchExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES:
             return cases != null && !cases.isEmpty();
         }
@@ -219,8 +223,9 @@ public class DynamicMappingSwitchImpl extends MinimalEObjectImpl.Container imple
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (switchExpression: ");

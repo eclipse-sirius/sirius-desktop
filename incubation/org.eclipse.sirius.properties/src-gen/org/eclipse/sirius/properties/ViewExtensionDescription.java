@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -54,7 +54,7 @@ public interface ViewExtensionDescription extends Extension {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Identifier()
@@ -85,7 +85,7 @@ public interface ViewExtensionDescription extends Extension {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Metamodels</em>' reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Metamodels()
      * @model
@@ -103,7 +103,7 @@ public interface ViewExtensionDescription extends Extension {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Pages</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Pages()
      * @model containment="true"
@@ -119,7 +119,7 @@ public interface ViewExtensionDescription extends Extension {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Page</em>' reference.
      * @see #setDefaultPage(PageDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_DefaultPage()
@@ -182,7 +182,7 @@ public interface ViewExtensionDescription extends Extension {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Groups</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_Groups()
      * @model containment="true"

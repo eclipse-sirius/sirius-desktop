@@ -29,6 +29,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "DomainClassExpression"; //$NON-NLS-1$
     }
@@ -36,6 +37,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -48,6 +50,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
     }
@@ -55,6 +58,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -62,6 +66,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -69,6 +74,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
@@ -83,6 +89,7 @@ public class DynamicMappingForDomainClassExpressionPropertySection extends Abstr
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

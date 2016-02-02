@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.util;
 
@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
@@ -55,8 +56,8 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public PropertiesAdapterFactory() {
-        if (modelPackage == null) {
-            modelPackage = PropertiesPackage.eINSTANCE;
+        if (PropertiesAdapterFactory.modelPackage == null) {
+            PropertiesAdapterFactory.modelPackage = PropertiesPackage.eINSTANCE;
         }
     }
 
@@ -71,11 +72,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      */
     @Override
     public boolean isFactoryForType(Object object) {
-        if (object == modelPackage) {
+        if (object == PropertiesAdapterFactory.modelPackage) {
             return true;
         }
         if (object instanceof EObject) {
-            return ((EObject) object).eClass().getEPackage() == modelPackage;
+            return ((EObject) object).eClass().getEPackage() == PropertiesAdapterFactory.modelPackage;
         }
         return false;
     }
@@ -83,7 +84,7 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PropertiesSwitch<Adapter> modelSwitch = new PropertiesSwitch<Adapter>() {
@@ -155,6 +156,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseTextAreaDescription(TextAreaDescription object) {
             return createTextAreaDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseRadioDescription(RadioDescription object) {
+            return createRadioDescriptionAdapter();
         }
 
         @Override
@@ -392,6 +398,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.RadioDescription
+     * <em>Radio Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.RadioDescription
+     * @generated
+     */
+    public Adapter createRadioDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.TextAreaDescription
      * <em>Text Area Description</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -413,7 +435,7 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.Extension
      * @generated

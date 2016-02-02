@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -64,7 +64,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * @generated
      * @ordered
      */
-    protected String valueExpression = VALUE_EXPRESSION_EDEFAULT;
+    protected String valueExpression = SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -97,7 +97,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * @generated
      * @ordered
      */
-    protected String candidatesExpression = CANDIDATES_EXPRESSION_EDEFAULT;
+    protected String candidatesExpression = SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getCandidateDisplayExpression()
@@ -119,7 +119,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * @generated
      * @ordered
      */
-    protected String candidateDisplayExpression = CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT;
+    protected String candidateDisplayExpression = SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -145,6 +145,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public String getValueExpression() {
         return valueExpression;
     }
@@ -154,11 +155,13 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public void setValueExpression(String newValueExpression) {
         String oldValueExpression = valueExpression;
         valueExpression = newValueExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION, oldValueExpression, valueExpression));
+        }
     }
 
     /**
@@ -166,6 +169,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         return initialOperation;
     }
@@ -180,10 +184,11 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -193,18 +198,23 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -212,6 +222,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public String getCandidatesExpression() {
         return candidatesExpression;
     }
@@ -221,11 +232,13 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public void setCandidatesExpression(String newCandidatesExpression) {
         String oldCandidatesExpression = candidatesExpression;
         candidatesExpression = newCandidatesExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION, oldCandidatesExpression, candidatesExpression));
+        }
     }
 
     /**
@@ -233,6 +246,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public String getCandidateDisplayExpression() {
         return candidateDisplayExpression;
     }
@@ -242,11 +256,13 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * 
      * @generated
      */
+    @Override
     public void setCandidateDisplayExpression(String newCandidateDisplayExpression) {
         String oldCandidateDisplayExpression = candidateDisplayExpression;
         candidateDisplayExpression = newCandidateDisplayExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION, oldCandidateDisplayExpression, candidateDisplayExpression));
+        }
     }
 
     /**
@@ -316,16 +332,16 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
-            setValueExpression(VALUE_EXPRESSION_EDEFAULT);
+            setValueExpression(SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
         case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
-            setCandidatesExpression(CANDIDATES_EXPRESSION_EDEFAULT);
+            setCandidatesExpression(SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
-            setCandidateDisplayExpression(CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT);
+            setCandidateDisplayExpression(SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -340,13 +356,14 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION:
-            return VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
+            return SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !SelectDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION:
-            return CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
+            return SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
-            return CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT == null ? candidateDisplayExpression != null : !CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT.equals(candidateDisplayExpression);
+            return SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT == null ? candidateDisplayExpression != null : !SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT
+                    .equals(candidateDisplayExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -358,8 +375,9 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (valueExpression: ");

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -32,7 +32,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>View Extension Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>View Extension Description</em>'.
      * @generated
      */
@@ -41,7 +41,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Page Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Page Description</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Group Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Group Description</em>'.
      * @generated
      */
@@ -59,7 +59,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Container Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Container Description</em>'.
      * @generated
      */
@@ -68,7 +68,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Text Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Text Description</em>'.
      * @generated
      */
@@ -77,7 +77,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Button Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Button Description</em>'.
      * @generated
      */
@@ -86,7 +86,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Label Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Label Description</em>'.
      * @generated
      */
@@ -95,7 +95,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Checkbox Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Checkbox Description</em>'.
      * @generated
      */
@@ -104,7 +104,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Select Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Select Description</em>'.
      * @generated
      */
@@ -113,7 +113,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Dynamic Mapping For</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Dynamic Mapping For</em>'.
      * @generated
      */
@@ -122,7 +122,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Dynamic Mapping Switch</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Dynamic Mapping Switch</em>'.
      * @generated
      */
@@ -131,7 +131,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Dynamic Mapping Case</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Dynamic Mapping Case</em>'.
      * @generated
      */
@@ -140,11 +140,20 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Text Area Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Text Area Description</em>'.
      * @generated
      */
     TextAreaDescription createTextAreaDescription();
+
+    /**
+     * Returns a new object of class '<em>Radio Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Radio Description</em>'.
+     * @generated
+     */
+    RadioDescription createRadioDescription();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

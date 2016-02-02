@@ -25,6 +25,7 @@ public class DynamicMappingForDomainClassExpressionFilter extends ViewpointPrope
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
     }
@@ -32,6 +33,7 @@ public class DynamicMappingForDomainClassExpressionFilter extends ViewpointPrope
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.DynamicMappingFor;
     }

@@ -25,6 +25,7 @@ public class ViewExtensionDescriptionLabelExpressionFilter extends ViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getViewExtensionDescription_LabelExpression();
     }
@@ -32,6 +33,7 @@ public class ViewExtensionDescriptionLabelExpressionFilter extends ViewpointProp
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.ViewExtensionDescription;
     }

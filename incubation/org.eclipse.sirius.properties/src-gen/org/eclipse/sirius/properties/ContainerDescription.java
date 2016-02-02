@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -44,7 +44,7 @@ public interface ContainerDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Identifier()
@@ -76,7 +76,7 @@ public interface ContainerDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Widgets</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Widgets()
      * @model containment="true"
@@ -94,7 +94,7 @@ public interface ContainerDescription extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Dynamic Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_DynamicMappings()

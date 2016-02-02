@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -47,7 +47,7 @@ public interface SelectDescription extends WidgetDescription {
      * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The initial selected values of the combo. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_ValueExpression()
@@ -75,7 +75,7 @@ public interface SelectDescription extends WidgetDescription {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Defines the behavior executed when the end-user
      * updates the value of the combo. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -104,7 +104,7 @@ public interface SelectDescription extends WidgetDescription {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Defines the various proposals available. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidates Expression</em>' attribute.
      * @see #setCandidatesExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_CandidatesExpression()
@@ -133,7 +133,7 @@ public interface SelectDescription extends WidgetDescription {
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Indicates how to display the input value. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Candidate Display Expression</em>'
      *         attribute.
      * @see #setCandidateDisplayExpression(String)

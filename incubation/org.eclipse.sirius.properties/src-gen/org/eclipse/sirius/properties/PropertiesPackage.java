@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -77,7 +77,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -86,7 +86,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Metamodels</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -104,7 +104,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Page</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -113,7 +113,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -153,7 +153,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -162,7 +162,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -171,7 +171,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -189,7 +189,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Groups</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -219,7 +219,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -228,7 +228,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -237,7 +237,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -285,7 +285,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -333,7 +333,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -342,7 +342,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -372,29 +372,29 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+    int TEXT_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+    int TEXT_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION__VALUE_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int TEXT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -403,7 +403,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION__INITIAL_OPERATION = WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int TEXT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Text Description</em>'
@@ -412,7 +412,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int TEXT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -429,20 +429,20 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+    int BUTTON_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+    int BUTTON_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Button Label Expression</b></em>'
@@ -451,7 +451,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -460,7 +460,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION__INITIAL_OPERATION = WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Button Description</em>'
@@ -469,7 +469,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -486,20 +486,20 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+    int LABEL_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+    int LABEL_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The number of structural features of the '<em>Label Description</em>'
@@ -508,7 +508,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -525,29 +525,29 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+    int CHECKBOX_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+    int CHECKBOX_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -556,7 +556,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION__INITIAL_OPERATION = WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int CHECKBOX_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Checkbox Description</em>'
@@ -565,7 +565,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -582,29 +582,29 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__IDENTIFIER = WIDGET_DESCRIPTION__IDENTIFIER;
+    int SELECT_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__LABEL_EXPRESSION = WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+    int SELECT_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__VALUE_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int SELECT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -613,7 +613,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__INITIAL_OPERATION = WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int SELECT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
@@ -622,7 +622,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Candidate Display Expression</b></em>'
@@ -631,7 +631,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Select Description</em>'
@@ -640,7 +640,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION_FEATURE_COUNT = WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int SELECT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -657,7 +657,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Iterator</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -744,7 +744,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Case Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -783,29 +783,29 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION__IDENTIFIER = TEXT_DESCRIPTION__IDENTIFIER;
+    int TEXT_AREA_DESCRIPTION__IDENTIFIER = PropertiesPackage.TEXT_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION__LABEL_EXPRESSION = TEXT_DESCRIPTION__LABEL_EXPRESSION;
+    int TEXT_AREA_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.TEXT_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION__VALUE_EXPRESSION = TEXT_DESCRIPTION__VALUE_EXPRESSION;
+    int TEXT_AREA_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -814,16 +814,16 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION__INITIAL_OPERATION = TEXT_DESCRIPTION__INITIAL_OPERATION;
+    int TEXT_AREA_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Line Count</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION__LINE_COUNT = TEXT_DESCRIPTION_FEATURE_COUNT + 0;
+    int TEXT_AREA_DESCRIPTION__LINE_COUNT = PropertiesPackage.TEXT_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Text Area Description</em>'
@@ -832,14 +832,84 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_AREA_DESCRIPTION_FEATURE_COUNT = TEXT_DESCRIPTION_FEATURE_COUNT + 1;
+    int TEXT_AREA_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.TEXT_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.ViewExtensionDescription
-     * <em>View Extension Description</em>}'. <!-- begin-user-doc --> <!--
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl
+     * <em>Radio Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
+     * @see org.eclipse.sirius.properties.impl.RadioDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioDescription()
+     * @generated
+     */
+    int RADIO_DESCRIPTION = 14;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__CANDIDATES_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Candidate Display Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Radio Description</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
      * @return the meta object for class '<em>View Extension Description</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription
      * @generated
@@ -900,7 +970,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression()
      * @see #getViewExtensionDescription()
@@ -926,7 +996,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageDescription
      * <em>Page Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Page Description</em>'.
      * @see org.eclipse.sirius.properties.PageDescription
      * @generated
@@ -950,7 +1020,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageDescription#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getLabelExpression()
      * @see #getPageDescription()
@@ -1001,7 +1071,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupDescription
      * <em>Group Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Group Description</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription
      * @generated
@@ -1025,7 +1095,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getLabelExpression()
      * @see #getGroupDescription()
@@ -1114,7 +1184,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings
      * <em>Dynamic Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Dynamic Mappings</em>'.
      * @see org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings()
@@ -1128,7 +1198,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetDescription
      * <em>Widget Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Widget Description</em>'.
      * @see org.eclipse.sirius.properties.WidgetDescription
      * @generated
@@ -1152,7 +1222,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
      * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Expression</em>'.
      * @see org.eclipse.sirius.properties.WidgetDescription#getLabelExpression()
      * @see #getWidgetDescription()
@@ -1165,7 +1235,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextDescription
      * <em>Text Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Text Description</em>'.
      * @see org.eclipse.sirius.properties.TextDescription
      * @generated
@@ -1177,7 +1247,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextDescription#getValueExpression
      * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Value Expression</em>'.
      * @see org.eclipse.sirius.properties.TextDescription#getValueExpression()
      * @see #getTextDescription()
@@ -1190,7 +1260,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.properties.TextDescription#getInitialOperation()
@@ -1204,7 +1274,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ButtonDescription
      * <em>Button Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Button Description</em>'.
      * @see org.eclipse.sirius.properties.ButtonDescription
      * @generated
@@ -1230,7 +1300,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ButtonDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.properties.ButtonDescription#getInitialOperation()
@@ -1244,7 +1314,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.LabelDescription
      * <em>Label Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Label Description</em>'.
      * @see org.eclipse.sirius.properties.LabelDescription
      * @generated
@@ -1268,7 +1338,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getValueExpression
      * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Value Expression</em>'.
      * @see org.eclipse.sirius.properties.CheckboxDescription#getValueExpression()
      * @see #getCheckboxDescription()
@@ -1281,7 +1351,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.properties.CheckboxDescription#getInitialOperation()
@@ -1295,7 +1365,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectDescription
      * <em>Select Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Select Description</em>'.
      * @see org.eclipse.sirius.properties.SelectDescription
      * @generated
@@ -1307,7 +1377,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectDescription#getValueExpression
      * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Value Expression</em>'.
      * @see org.eclipse.sirius.properties.SelectDescription#getValueExpression()
      * @see #getSelectDescription()
@@ -1320,7 +1390,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
      * @see org.eclipse.sirius.properties.SelectDescription#getInitialOperation()
@@ -1362,7 +1432,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.DynamicMappingFor
      * <em>Dynamic Mapping For</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Dynamic Mapping For</em>'.
      * @see org.eclipse.sirius.properties.DynamicMappingFor
      * @generated
@@ -1424,7 +1494,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.DynamicMappingSwitch#getSwitchExpression
      * <em>Switch Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Switch Expression</em>'.
      * @see org.eclipse.sirius.properties.DynamicMappingSwitch#getSwitchExpression()
      * @see #getDynamicMappingSwitch()
@@ -1506,9 +1576,73 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getTextAreaDescription_LineCount();
 
     /**
-     * Returns the factory that creates the instances of the model. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.RadioDescription
+     * <em>Radio Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Radio Description</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription
+     * @generated
+     */
+    EClass getRadioDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getValueExpression
+     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription#getValueExpression()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EAttribute getRadioDescription_ValueExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getInitialOperation
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription#getInitialOperation()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EReference getRadioDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression
+     * <em>Candidates Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
+     * @return the meta object for the attribute '<em>Candidates Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EAttribute getRadioDescription_CandidatesExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression
+     * <em>Candidate Display Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Candidate Display Expression</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EAttribute getRadioDescription_CandidateDisplayExpression();
+
+    /**
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -1538,7 +1672,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getViewExtensionDescription()
          * @generated
          */
-        EClass VIEW_EXTENSION_DESCRIPTION = eINSTANCE.getViewExtensionDescription();
+        EClass VIEW_EXTENSION_DESCRIPTION = PropertiesPackage.eINSTANCE.getViewExtensionDescription();
 
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
@@ -1546,7 +1680,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute VIEW_EXTENSION_DESCRIPTION__IDENTIFIER = eINSTANCE.getViewExtensionDescription_Identifier();
+        EAttribute VIEW_EXTENSION_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Metamodels</b></em>'
@@ -1554,7 +1688,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference VIEW_EXTENSION_DESCRIPTION__METAMODELS = eINSTANCE.getViewExtensionDescription_Metamodels();
+        EReference VIEW_EXTENSION_DESCRIPTION__METAMODELS = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Metamodels();
 
         /**
          * The meta object literal for the '<em><b>Pages</b></em>' containment
@@ -1562,7 +1696,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference VIEW_EXTENSION_DESCRIPTION__PAGES = eINSTANCE.getViewExtensionDescription_Pages();
+        EReference VIEW_EXTENSION_DESCRIPTION__PAGES = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Pages();
 
         /**
          * The meta object literal for the '<em><b>Default Page</b></em>'
@@ -1570,7 +1704,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE = eINSTANCE.getViewExtensionDescription_DefaultPage();
+        EReference VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE = PropertiesPackage.eINSTANCE.getViewExtensionDescription_DefaultPage();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -1578,7 +1712,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION = eINSTANCE.getViewExtensionDescription_LabelExpression();
+        EAttribute VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getViewExtensionDescription_LabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Groups</b></em>' containment
@@ -1586,7 +1720,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference VIEW_EXTENSION_DESCRIPTION__GROUPS = eINSTANCE.getViewExtensionDescription_Groups();
+        EReference VIEW_EXTENSION_DESCRIPTION__GROUPS = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Groups();
 
         /**
          * The meta object literal for the '
@@ -1598,7 +1732,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPageDescription()
          * @generated
          */
-        EClass PAGE_DESCRIPTION = eINSTANCE.getPageDescription();
+        EClass PAGE_DESCRIPTION = PropertiesPackage.eINSTANCE.getPageDescription();
 
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
@@ -1606,7 +1740,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute PAGE_DESCRIPTION__IDENTIFIER = eINSTANCE.getPageDescription_Identifier();
+        EAttribute PAGE_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getPageDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -1614,7 +1748,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute PAGE_DESCRIPTION__LABEL_EXPRESSION = eINSTANCE.getPageDescription_LabelExpression();
+        EAttribute PAGE_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getPageDescription_LabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -1622,7 +1756,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute PAGE_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getPageDescription_DomainClass();
+        EAttribute PAGE_DESCRIPTION__DOMAIN_CLASS = PropertiesPackage.eINSTANCE.getPageDescription_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -1631,7 +1765,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = eINSTANCE.getPageDescription_SemanticCandidateExpression();
+        EAttribute PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = PropertiesPackage.eINSTANCE.getPageDescription_SemanticCandidateExpression();
 
         /**
          * The meta object literal for the '<em><b>Groups</b></em>' reference
@@ -1639,7 +1773,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference PAGE_DESCRIPTION__GROUPS = eINSTANCE.getPageDescription_Groups();
+        EReference PAGE_DESCRIPTION__GROUPS = PropertiesPackage.eINSTANCE.getPageDescription_Groups();
 
         /**
          * The meta object literal for the '
@@ -1651,7 +1785,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupDescription()
          * @generated
          */
-        EClass GROUP_DESCRIPTION = eINSTANCE.getGroupDescription();
+        EClass GROUP_DESCRIPTION = PropertiesPackage.eINSTANCE.getGroupDescription();
 
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
@@ -1659,7 +1793,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GROUP_DESCRIPTION__IDENTIFIER = eINSTANCE.getGroupDescription_Identifier();
+        EAttribute GROUP_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getGroupDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -1667,7 +1801,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GROUP_DESCRIPTION__LABEL_EXPRESSION = eINSTANCE.getGroupDescription_LabelExpression();
+        EAttribute GROUP_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupDescription_LabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
@@ -1675,7 +1809,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GROUP_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getGroupDescription_DomainClass();
+        EAttribute GROUP_DESCRIPTION__DOMAIN_CLASS = PropertiesPackage.eINSTANCE.getGroupDescription_DomainClass();
 
         /**
          * The meta object literal for the '
@@ -1684,7 +1818,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = eINSTANCE.getGroupDescription_SemanticCandidateExpression();
+        EAttribute GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupDescription_SemanticCandidateExpression();
 
         /**
          * The meta object literal for the '<em><b>Container</b></em>'
@@ -1693,7 +1827,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference GROUP_DESCRIPTION__CONTAINER = eINSTANCE.getGroupDescription_Container();
+        EReference GROUP_DESCRIPTION__CONTAINER = PropertiesPackage.eINSTANCE.getGroupDescription_Container();
 
         /**
          * The meta object literal for the '
@@ -1705,7 +1839,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getContainerDescription()
          * @generated
          */
-        EClass CONTAINER_DESCRIPTION = eINSTANCE.getContainerDescription();
+        EClass CONTAINER_DESCRIPTION = PropertiesPackage.eINSTANCE.getContainerDescription();
 
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
@@ -1713,7 +1847,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CONTAINER_DESCRIPTION__IDENTIFIER = eINSTANCE.getContainerDescription_Identifier();
+        EAttribute CONTAINER_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getContainerDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Widgets</b></em>' containment
@@ -1721,7 +1855,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DESCRIPTION__WIDGETS = eINSTANCE.getContainerDescription_Widgets();
+        EReference CONTAINER_DESCRIPTION__WIDGETS = PropertiesPackage.eINSTANCE.getContainerDescription_Widgets();
 
         /**
          * The meta object literal for the '<em><b>Dynamic Mappings</b></em>'
@@ -1730,7 +1864,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = eINSTANCE.getContainerDescription_DynamicMappings();
+        EReference CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = PropertiesPackage.eINSTANCE.getContainerDescription_DynamicMappings();
 
         /**
          * The meta object literal for the '
@@ -1742,7 +1876,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetDescription()
          * @generated
          */
-        EClass WIDGET_DESCRIPTION = eINSTANCE.getWidgetDescription();
+        EClass WIDGET_DESCRIPTION = PropertiesPackage.eINSTANCE.getWidgetDescription();
 
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
@@ -1750,7 +1884,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute WIDGET_DESCRIPTION__IDENTIFIER = eINSTANCE.getWidgetDescription_Identifier();
+        EAttribute WIDGET_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getWidgetDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -1758,7 +1892,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute WIDGET_DESCRIPTION__LABEL_EXPRESSION = eINSTANCE.getWidgetDescription_LabelExpression();
+        EAttribute WIDGET_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetDescription_LabelExpression();
 
         /**
          * The meta object literal for the '
@@ -1770,7 +1904,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextDescription()
          * @generated
          */
-        EClass TEXT_DESCRIPTION = eINSTANCE.getTextDescription();
+        EClass TEXT_DESCRIPTION = PropertiesPackage.eINSTANCE.getTextDescription();
 
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
@@ -1778,7 +1912,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXT_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getTextDescription_ValueExpression();
+        EAttribute TEXT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -1787,7 +1921,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference TEXT_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getTextDescription_InitialOperation();
+        EReference TEXT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getTextDescription_InitialOperation();
 
         /**
          * The meta object literal for the '
@@ -1799,16 +1933,16 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonDescription()
          * @generated
          */
-        EClass BUTTON_DESCRIPTION = eINSTANCE.getButtonDescription();
+        EClass BUTTON_DESCRIPTION = PropertiesPackage.eINSTANCE.getButtonDescription();
 
         /**
          * The meta object literal for the '
          * <em><b>Button Label Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = eINSTANCE.getButtonDescription_ButtonLabelExpression();
+        EAttribute BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getButtonDescription_ButtonLabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -1817,7 +1951,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference BUTTON_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getButtonDescription_InitialOperation();
+        EReference BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getButtonDescription_InitialOperation();
 
         /**
          * The meta object literal for the '
@@ -1829,7 +1963,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
          * @generated
          */
-        EClass LABEL_DESCRIPTION = eINSTANCE.getLabelDescription();
+        EClass LABEL_DESCRIPTION = PropertiesPackage.eINSTANCE.getLabelDescription();
 
         /**
          * The meta object literal for the '
@@ -1841,7 +1975,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxDescription()
          * @generated
          */
-        EClass CHECKBOX_DESCRIPTION = eINSTANCE.getCheckboxDescription();
+        EClass CHECKBOX_DESCRIPTION = PropertiesPackage.eINSTANCE.getCheckboxDescription();
 
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
@@ -1849,7 +1983,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getCheckboxDescription_ValueExpression();
+        EAttribute CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getCheckboxDescription_ValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -1858,7 +1992,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference CHECKBOX_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getCheckboxDescription_InitialOperation();
+        EReference CHECKBOX_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getCheckboxDescription_InitialOperation();
 
         /**
          * The meta object literal for the '
@@ -1870,7 +2004,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
          * @generated
          */
-        EClass SELECT_DESCRIPTION = eINSTANCE.getSelectDescription();
+        EClass SELECT_DESCRIPTION = PropertiesPackage.eINSTANCE.getSelectDescription();
 
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
@@ -1878,7 +2012,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute SELECT_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getSelectDescription_ValueExpression();
+        EAttribute SELECT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getSelectDescription_ValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
@@ -1887,25 +2021,25 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference SELECT_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getSelectDescription_InitialOperation();
+        EReference SELECT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getSelectDescription_InitialOperation();
 
         /**
          * The meta object literal for the '
          * <em><b>Candidates Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = eINSTANCE.getSelectDescription_CandidatesExpression();
+        EAttribute SELECT_DESCRIPTION__CANDIDATES_EXPRESSION = PropertiesPackage.eINSTANCE.getSelectDescription_CandidatesExpression();
 
         /**
          * The meta object literal for the '
          * <em><b>Candidate Display Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = eINSTANCE.getSelectDescription_CandidateDisplayExpression();
+        EAttribute SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getSelectDescription_CandidateDisplayExpression();
 
         /**
          * The meta object literal for the '
@@ -1917,7 +2051,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
          * @generated
          */
-        EClass DYNAMIC_MAPPING_FOR = eINSTANCE.getDynamicMappingFor();
+        EClass DYNAMIC_MAPPING_FOR = PropertiesPackage.eINSTANCE.getDynamicMappingFor();
 
         /**
          * The meta object literal for the '<em><b>Iterator</b></em>' attribute
@@ -1925,16 +2059,16 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DYNAMIC_MAPPING_FOR__ITERATOR = eINSTANCE.getDynamicMappingFor_Iterator();
+        EAttribute DYNAMIC_MAPPING_FOR__ITERATOR = PropertiesPackage.eINSTANCE.getDynamicMappingFor_Iterator();
 
         /**
          * The meta object literal for the '
          * <em><b>Domain Class Expression</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = eINSTANCE.getDynamicMappingFor_DomainClassExpression();
+        EAttribute DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingFor_DomainClassExpression();
 
         /**
          * The meta object literal for the '<em><b>Switch</b></em>' containment
@@ -1942,7 +2076,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DYNAMIC_MAPPING_FOR__SWITCH = eINSTANCE.getDynamicMappingFor_Switch();
+        EReference DYNAMIC_MAPPING_FOR__SWITCH = PropertiesPackage.eINSTANCE.getDynamicMappingFor_Switch();
 
         /**
          * The meta object literal for the '
@@ -1954,7 +2088,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingSwitch()
          * @generated
          */
-        EClass DYNAMIC_MAPPING_SWITCH = eINSTANCE.getDynamicMappingSwitch();
+        EClass DYNAMIC_MAPPING_SWITCH = PropertiesPackage.eINSTANCE.getDynamicMappingSwitch();
 
         /**
          * The meta object literal for the '<em><b>Switch Expression</b></em>'
@@ -1962,7 +2096,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = eINSTANCE.getDynamicMappingSwitch_SwitchExpression();
+        EAttribute DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingSwitch_SwitchExpression();
 
         /**
          * The meta object literal for the '<em><b>Cases</b></em>' containment
@@ -1970,7 +2104,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DYNAMIC_MAPPING_SWITCH__CASES = eINSTANCE.getDynamicMappingSwitch_Cases();
+        EReference DYNAMIC_MAPPING_SWITCH__CASES = PropertiesPackage.eINSTANCE.getDynamicMappingSwitch_Cases();
 
         /**
          * The meta object literal for the '
@@ -1982,7 +2116,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingCase()
          * @generated
          */
-        EClass DYNAMIC_MAPPING_CASE = eINSTANCE.getDynamicMappingCase();
+        EClass DYNAMIC_MAPPING_CASE = PropertiesPackage.eINSTANCE.getDynamicMappingCase();
 
         /**
          * The meta object literal for the '<em><b>Case Expression</b></em>'
@@ -1990,7 +2124,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = eINSTANCE.getDynamicMappingCase_CaseExpression();
+        EAttribute DYNAMIC_MAPPING_CASE__CASE_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingCase_CaseExpression();
 
         /**
          * The meta object literal for the '<em><b>Widget</b></em>' containment
@@ -1998,7 +2132,54 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EReference DYNAMIC_MAPPING_CASE__WIDGET = eINSTANCE.getDynamicMappingCase_Widget();
+        EReference DYNAMIC_MAPPING_CASE__WIDGET = PropertiesPackage.eINSTANCE.getDynamicMappingCase_Widget();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl
+         * <em>Radio Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.properties.impl.RadioDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioDescription()
+         * @generated
+         */
+        EClass RADIO_DESCRIPTION = PropertiesPackage.eINSTANCE.getRadioDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Value Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute RADIO_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getRadioDescription_ValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference RADIO_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getRadioDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Candidates Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute RADIO_DESCRIPTION__CANDIDATES_EXPRESSION = PropertiesPackage.eINSTANCE.getRadioDescription_CandidatesExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Candidate Display Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getRadioDescription_CandidateDisplayExpression();
 
         /**
          * The meta object literal for the '
@@ -2010,7 +2191,7 @@ public interface PropertiesPackage extends EPackage {
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
          * @generated
          */
-        EClass TEXT_AREA_DESCRIPTION = eINSTANCE.getTextAreaDescription();
+        EClass TEXT_AREA_DESCRIPTION = PropertiesPackage.eINSTANCE.getTextAreaDescription();
 
         /**
          * The meta object literal for the '<em><b>Line Count</b></em>'
@@ -2018,7 +2199,7 @@ public interface PropertiesPackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute TEXT_AREA_DESCRIPTION__LINE_COUNT = eINSTANCE.getTextAreaDescription_LineCount();
+        EAttribute TEXT_AREA_DESCRIPTION__LINE_COUNT = PropertiesPackage.eINSTANCE.getTextAreaDescription_LineCount();
 
     }
 

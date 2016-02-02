@@ -25,6 +25,7 @@ public class TextDescriptionValueExpressionFilter extends ViewpointPropertyFilte
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
     }
@@ -32,6 +33,7 @@ public class TextDescriptionValueExpressionFilter extends ViewpointPropertyFilte
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.TextDescription;
     }

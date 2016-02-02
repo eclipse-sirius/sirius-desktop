@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
@@ -101,6 +102,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createDynamicMappingCase();
         case PropertiesPackage.TEXT_AREA_DESCRIPTION:
             return createTextAreaDescription();
+        case PropertiesPackage.RADIO_DESCRIPTION:
+            return createRadioDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -111,6 +114,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public ViewExtensionDescription createViewExtensionDescription() {
         ViewExtensionDescriptionImpl viewExtensionDescription = new ViewExtensionDescriptionImpl();
         return viewExtensionDescription;
@@ -121,6 +125,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public PageDescription createPageDescription() {
         PageDescriptionImpl pageDescription = new PageDescriptionImpl();
         return pageDescription;
@@ -131,6 +136,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public GroupDescription createGroupDescription() {
         GroupDescriptionImpl groupDescription = new GroupDescriptionImpl();
         return groupDescription;
@@ -141,6 +147,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public ContainerDescription createContainerDescription() {
         ContainerDescriptionImpl containerDescription = new ContainerDescriptionImpl();
         return containerDescription;
@@ -151,6 +158,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public TextDescription createTextDescription() {
         TextDescriptionImpl textDescription = new TextDescriptionImpl();
         return textDescription;
@@ -161,6 +169,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public ButtonDescription createButtonDescription() {
         ButtonDescriptionImpl buttonDescription = new ButtonDescriptionImpl();
         return buttonDescription;
@@ -171,6 +180,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public LabelDescription createLabelDescription() {
         LabelDescriptionImpl labelDescription = new LabelDescriptionImpl();
         return labelDescription;
@@ -181,6 +191,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public CheckboxDescription createCheckboxDescription() {
         CheckboxDescriptionImpl checkboxDescription = new CheckboxDescriptionImpl();
         return checkboxDescription;
@@ -191,6 +202,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public SelectDescription createSelectDescription() {
         SelectDescriptionImpl selectDescription = new SelectDescriptionImpl();
         return selectDescription;
@@ -201,6 +213,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public DynamicMappingFor createDynamicMappingFor() {
         DynamicMappingForImpl dynamicMappingFor = new DynamicMappingForImpl();
         return dynamicMappingFor;
@@ -211,6 +224,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public DynamicMappingSwitch createDynamicMappingSwitch() {
         DynamicMappingSwitchImpl dynamicMappingSwitch = new DynamicMappingSwitchImpl();
         return dynamicMappingSwitch;
@@ -221,6 +235,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public DynamicMappingCase createDynamicMappingCase() {
         DynamicMappingCaseImpl dynamicMappingCase = new DynamicMappingCaseImpl();
         return dynamicMappingCase;
@@ -231,6 +246,18 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
+    public RadioDescription createRadioDescription() {
+        RadioDescriptionImpl radioDescription = new RadioDescriptionImpl();
+        return radioDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public TextAreaDescription createTextAreaDescription() {
         TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
         return textAreaDescription;
@@ -241,6 +268,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * 
      * @generated
      */
+    @Override
     public PropertiesPackage getPropertiesPackage() {
         return (PropertiesPackage) getEPackage();
     }

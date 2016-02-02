@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
@@ -143,6 +144,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     private EClass textAreaDescriptionEClass = null;
 
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass radioDescriptionEClass = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
      * package package URI value.
@@ -151,14 +159,14 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.properties.PropertiesPackage#eNS_URI
      * @see #init()
      * @generated
      */
     private PropertiesPackageImpl() {
-        super(eNS_URI, PropertiesFactory.eINSTANCE);
+        super(PropertiesPackage.eNS_URI, PropertiesFactory.eINSTANCE);
     }
 
     /**
@@ -171,27 +179,28 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link PropertiesPackage#eINSTANCE}
      * when that field is accessed. Clients should not invoke it directly.
      * Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static PropertiesPackage init() {
-        if (isInited)
+        if (PropertiesPackageImpl.isInited) {
             return (PropertiesPackage) EPackage.Registry.INSTANCE.getEPackage(PropertiesPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        PropertiesPackageImpl thePropertiesPackage = (PropertiesPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof PropertiesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new PropertiesPackageImpl());
+        PropertiesPackageImpl thePropertiesPackage = (PropertiesPackageImpl) (EPackage.Registry.INSTANCE.get(PropertiesPackage.eNS_URI) instanceof PropertiesPackageImpl ? EPackage.Registry.INSTANCE
+                .get(PropertiesPackage.eNS_URI) : new PropertiesPackageImpl());
 
-        isInited = true;
+        PropertiesPackageImpl.isInited = true;
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
@@ -215,6 +224,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getViewExtensionDescription() {
         return viewExtensionDescriptionEClass;
     }
@@ -224,6 +234,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getViewExtensionDescription_Identifier() {
         return (EAttribute) viewExtensionDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -233,6 +244,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getViewExtensionDescription_Metamodels() {
         return (EReference) viewExtensionDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -242,6 +254,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getViewExtensionDescription_Pages() {
         return (EReference) viewExtensionDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -251,6 +264,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getViewExtensionDescription_DefaultPage() {
         return (EReference) viewExtensionDescriptionEClass.getEStructuralFeatures().get(3);
     }
@@ -260,6 +274,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getViewExtensionDescription_LabelExpression() {
         return (EAttribute) viewExtensionDescriptionEClass.getEStructuralFeatures().get(4);
     }
@@ -269,6 +284,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getViewExtensionDescription_Groups() {
         return (EReference) viewExtensionDescriptionEClass.getEStructuralFeatures().get(5);
     }
@@ -278,6 +294,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getPageDescription() {
         return pageDescriptionEClass;
     }
@@ -287,6 +304,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getPageDescription_Identifier() {
         return (EAttribute) pageDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -296,6 +314,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getPageDescription_LabelExpression() {
         return (EAttribute) pageDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -305,6 +324,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getPageDescription_DomainClass() {
         return (EAttribute) pageDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -314,6 +334,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getPageDescription_SemanticCandidateExpression() {
         return (EAttribute) pageDescriptionEClass.getEStructuralFeatures().get(3);
     }
@@ -323,6 +344,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getPageDescription_Groups() {
         return (EReference) pageDescriptionEClass.getEStructuralFeatures().get(4);
     }
@@ -332,6 +354,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getGroupDescription() {
         return groupDescriptionEClass;
     }
@@ -341,6 +364,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getGroupDescription_Identifier() {
         return (EAttribute) groupDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -350,6 +374,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getGroupDescription_LabelExpression() {
         return (EAttribute) groupDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -359,6 +384,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getGroupDescription_DomainClass() {
         return (EAttribute) groupDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -368,6 +394,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getGroupDescription_SemanticCandidateExpression() {
         return (EAttribute) groupDescriptionEClass.getEStructuralFeatures().get(3);
     }
@@ -377,6 +404,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getGroupDescription_Container() {
         return (EReference) groupDescriptionEClass.getEStructuralFeatures().get(4);
     }
@@ -386,6 +414,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getContainerDescription() {
         return containerDescriptionEClass;
     }
@@ -395,6 +424,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getContainerDescription_Identifier() {
         return (EAttribute) containerDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -404,6 +434,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getContainerDescription_Widgets() {
         return (EReference) containerDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -413,6 +444,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getContainerDescription_DynamicMappings() {
         return (EReference) containerDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -422,6 +454,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getWidgetDescription() {
         return widgetDescriptionEClass;
     }
@@ -431,6 +464,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getWidgetDescription_Identifier() {
         return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -440,6 +474,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getWidgetDescription_LabelExpression() {
         return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -449,6 +484,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getTextDescription() {
         return textDescriptionEClass;
     }
@@ -458,6 +494,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getTextDescription_ValueExpression() {
         return (EAttribute) textDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -467,6 +504,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getTextDescription_InitialOperation() {
         return (EReference) textDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -476,6 +514,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getButtonDescription() {
         return buttonDescriptionEClass;
     }
@@ -485,6 +524,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getButtonDescription_ButtonLabelExpression() {
         return (EAttribute) buttonDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -494,6 +534,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getButtonDescription_InitialOperation() {
         return (EReference) buttonDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -503,6 +544,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getLabelDescription() {
         return labelDescriptionEClass;
     }
@@ -512,6 +554,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getCheckboxDescription() {
         return checkboxDescriptionEClass;
     }
@@ -521,6 +564,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getCheckboxDescription_ValueExpression() {
         return (EAttribute) checkboxDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -530,6 +574,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getCheckboxDescription_InitialOperation() {
         return (EReference) checkboxDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -539,6 +584,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getSelectDescription() {
         return selectDescriptionEClass;
     }
@@ -548,6 +594,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getSelectDescription_ValueExpression() {
         return (EAttribute) selectDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -557,6 +604,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getSelectDescription_InitialOperation() {
         return (EReference) selectDescriptionEClass.getEStructuralFeatures().get(1);
     }
@@ -566,6 +614,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getSelectDescription_CandidatesExpression() {
         return (EAttribute) selectDescriptionEClass.getEStructuralFeatures().get(2);
     }
@@ -575,6 +624,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getSelectDescription_CandidateDisplayExpression() {
         return (EAttribute) selectDescriptionEClass.getEStructuralFeatures().get(3);
     }
@@ -584,6 +634,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getDynamicMappingFor() {
         return dynamicMappingForEClass;
     }
@@ -593,6 +644,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getDynamicMappingFor_Iterator() {
         return (EAttribute) dynamicMappingForEClass.getEStructuralFeatures().get(0);
     }
@@ -602,6 +654,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getDynamicMappingFor_DomainClassExpression() {
         return (EAttribute) dynamicMappingForEClass.getEStructuralFeatures().get(1);
     }
@@ -611,6 +664,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getDynamicMappingFor_Switch() {
         return (EReference) dynamicMappingForEClass.getEStructuralFeatures().get(2);
     }
@@ -620,6 +674,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getDynamicMappingSwitch() {
         return dynamicMappingSwitchEClass;
     }
@@ -629,6 +684,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getDynamicMappingSwitch_SwitchExpression() {
         return (EAttribute) dynamicMappingSwitchEClass.getEStructuralFeatures().get(0);
     }
@@ -638,6 +694,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getDynamicMappingSwitch_Cases() {
         return (EReference) dynamicMappingSwitchEClass.getEStructuralFeatures().get(1);
     }
@@ -647,6 +704,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getDynamicMappingCase() {
         return dynamicMappingCaseEClass;
     }
@@ -656,6 +714,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getDynamicMappingCase_CaseExpression() {
         return (EAttribute) dynamicMappingCaseEClass.getEStructuralFeatures().get(0);
     }
@@ -665,6 +724,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EReference getDynamicMappingCase_Widget() {
         return (EReference) dynamicMappingCaseEClass.getEStructuralFeatures().get(1);
     }
@@ -674,6 +734,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EClass getTextAreaDescription() {
         return textAreaDescriptionEClass;
     }
@@ -683,6 +744,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
     public EAttribute getTextAreaDescription_LineCount() {
         return (EAttribute) textAreaDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -692,6 +754,57 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    @Override
+    public EClass getRadioDescription() {
+        return radioDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getRadioDescription_ValueExpression() {
+        return (EAttribute) radioDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getRadioDescription_InitialOperation() {
+        return (EReference) radioDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getRadioDescription_CandidatesExpression() {
+        return (EAttribute) radioDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getRadioDescription_CandidateDisplayExpression() {
+        return (EAttribute) radioDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory) getEFactoryInstance();
     }
@@ -711,77 +824,84 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        viewExtensionDescriptionEClass = createEClass(VIEW_EXTENSION_DESCRIPTION);
-        createEAttribute(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__IDENTIFIER);
-        createEReference(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__METAMODELS);
-        createEReference(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__PAGES);
-        createEReference(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE);
-        createEAttribute(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION);
-        createEReference(viewExtensionDescriptionEClass, VIEW_EXTENSION_DESCRIPTION__GROUPS);
+        viewExtensionDescriptionEClass = createEClass(PropertiesPackage.VIEW_EXTENSION_DESCRIPTION);
+        createEAttribute(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER);
+        createEReference(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS);
+        createEReference(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES);
+        createEReference(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE);
+        createEAttribute(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION);
+        createEReference(viewExtensionDescriptionEClass, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS);
 
-        pageDescriptionEClass = createEClass(PAGE_DESCRIPTION);
-        createEAttribute(pageDescriptionEClass, PAGE_DESCRIPTION__IDENTIFIER);
-        createEAttribute(pageDescriptionEClass, PAGE_DESCRIPTION__LABEL_EXPRESSION);
-        createEAttribute(pageDescriptionEClass, PAGE_DESCRIPTION__DOMAIN_CLASS);
-        createEAttribute(pageDescriptionEClass, PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
-        createEReference(pageDescriptionEClass, PAGE_DESCRIPTION__GROUPS);
+        pageDescriptionEClass = createEClass(PropertiesPackage.PAGE_DESCRIPTION);
+        createEAttribute(pageDescriptionEClass, PropertiesPackage.PAGE_DESCRIPTION__IDENTIFIER);
+        createEAttribute(pageDescriptionEClass, PropertiesPackage.PAGE_DESCRIPTION__LABEL_EXPRESSION);
+        createEAttribute(pageDescriptionEClass, PropertiesPackage.PAGE_DESCRIPTION__DOMAIN_CLASS);
+        createEAttribute(pageDescriptionEClass, PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
+        createEReference(pageDescriptionEClass, PropertiesPackage.PAGE_DESCRIPTION__GROUPS);
 
-        groupDescriptionEClass = createEClass(GROUP_DESCRIPTION);
-        createEAttribute(groupDescriptionEClass, GROUP_DESCRIPTION__IDENTIFIER);
-        createEAttribute(groupDescriptionEClass, GROUP_DESCRIPTION__LABEL_EXPRESSION);
-        createEAttribute(groupDescriptionEClass, GROUP_DESCRIPTION__DOMAIN_CLASS);
-        createEAttribute(groupDescriptionEClass, GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
-        createEReference(groupDescriptionEClass, GROUP_DESCRIPTION__CONTAINER);
+        groupDescriptionEClass = createEClass(PropertiesPackage.GROUP_DESCRIPTION);
+        createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__IDENTIFIER);
+        createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__LABEL_EXPRESSION);
+        createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS);
+        createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
+        createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER);
 
-        containerDescriptionEClass = createEClass(CONTAINER_DESCRIPTION);
-        createEAttribute(containerDescriptionEClass, CONTAINER_DESCRIPTION__IDENTIFIER);
-        createEReference(containerDescriptionEClass, CONTAINER_DESCRIPTION__WIDGETS);
-        createEReference(containerDescriptionEClass, CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
+        containerDescriptionEClass = createEClass(PropertiesPackage.CONTAINER_DESCRIPTION);
+        createEAttribute(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER);
+        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS);
+        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
 
-        widgetDescriptionEClass = createEClass(WIDGET_DESCRIPTION);
-        createEAttribute(widgetDescriptionEClass, WIDGET_DESCRIPTION__IDENTIFIER);
-        createEAttribute(widgetDescriptionEClass, WIDGET_DESCRIPTION__LABEL_EXPRESSION);
+        widgetDescriptionEClass = createEClass(PropertiesPackage.WIDGET_DESCRIPTION);
+        createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER);
+        createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION);
 
-        textDescriptionEClass = createEClass(TEXT_DESCRIPTION);
-        createEAttribute(textDescriptionEClass, TEXT_DESCRIPTION__VALUE_EXPRESSION);
-        createEReference(textDescriptionEClass, TEXT_DESCRIPTION__INITIAL_OPERATION);
+        textDescriptionEClass = createEClass(PropertiesPackage.TEXT_DESCRIPTION);
+        createEAttribute(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION);
 
-        buttonDescriptionEClass = createEClass(BUTTON_DESCRIPTION);
-        createEAttribute(buttonDescriptionEClass, BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION);
-        createEReference(buttonDescriptionEClass, BUTTON_DESCRIPTION__INITIAL_OPERATION);
+        buttonDescriptionEClass = createEClass(PropertiesPackage.BUTTON_DESCRIPTION);
+        createEAttribute(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION);
+        createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION);
 
-        labelDescriptionEClass = createEClass(LABEL_DESCRIPTION);
+        labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
 
-        checkboxDescriptionEClass = createEClass(CHECKBOX_DESCRIPTION);
-        createEAttribute(checkboxDescriptionEClass, CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
-        createEReference(checkboxDescriptionEClass, CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
+        checkboxDescriptionEClass = createEClass(PropertiesPackage.CHECKBOX_DESCRIPTION);
+        createEAttribute(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
 
-        selectDescriptionEClass = createEClass(SELECT_DESCRIPTION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__VALUE_EXPRESSION);
-        createEReference(selectDescriptionEClass, SELECT_DESCRIPTION__INITIAL_OPERATION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
-        createEAttribute(selectDescriptionEClass, SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
+        selectDescriptionEClass = createEClass(PropertiesPackage.SELECT_DESCRIPTION);
+        createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION);
+        createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
+        createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
 
-        dynamicMappingForEClass = createEClass(DYNAMIC_MAPPING_FOR);
-        createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__ITERATOR);
-        createEAttribute(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
-        createEReference(dynamicMappingForEClass, DYNAMIC_MAPPING_FOR__SWITCH);
+        dynamicMappingForEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_FOR);
+        createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR);
+        createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
+        createEReference(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH);
 
-        dynamicMappingSwitchEClass = createEClass(DYNAMIC_MAPPING_SWITCH);
-        createEAttribute(dynamicMappingSwitchEClass, DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION);
-        createEReference(dynamicMappingSwitchEClass, DYNAMIC_MAPPING_SWITCH__CASES);
+        dynamicMappingSwitchEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_SWITCH);
+        createEAttribute(dynamicMappingSwitchEClass, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION);
+        createEReference(dynamicMappingSwitchEClass, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES);
 
-        dynamicMappingCaseEClass = createEClass(DYNAMIC_MAPPING_CASE);
-        createEAttribute(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
-        createEReference(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__WIDGET);
+        dynamicMappingCaseEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_CASE);
+        createEAttribute(dynamicMappingCaseEClass, PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
+        createEReference(dynamicMappingCaseEClass, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET);
 
-        textAreaDescriptionEClass = createEClass(TEXT_AREA_DESCRIPTION);
-        createEAttribute(textAreaDescriptionEClass, TEXT_AREA_DESCRIPTION__LINE_COUNT);
+        textAreaDescriptionEClass = createEClass(PropertiesPackage.TEXT_AREA_DESCRIPTION);
+        createEAttribute(textAreaDescriptionEClass, PropertiesPackage.TEXT_AREA_DESCRIPTION__LINE_COUNT);
+
+        radioDescriptionEClass = createEClass(PropertiesPackage.RADIO_DESCRIPTION);
+        createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION);
+        createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
+        createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
     }
 
     /**
@@ -795,18 +915,19 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(PropertiesPackage.eNAME);
+        setNsPrefix(PropertiesPackage.eNS_PREFIX);
+        setNsURI(PropertiesPackage.eNS_URI);
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
@@ -825,116 +946,153 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         checkboxDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         selectDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         textAreaDescriptionEClass.getESuperTypes().add(this.getTextDescription());
+        radioDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getViewExtensionDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ViewExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getViewExtensionDescription_Metamodels(), theEcorePackage.getEPackage(), null, "metamodels", null, 0, -1, ViewExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getViewExtensionDescription_Pages(), this.getPageDescription(), null, "pages", null, 0, -1, ViewExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getViewExtensionDescription_DefaultPage(), this.getPageDescription(), null, "defaultPage", null, 0, 1, ViewExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getViewExtensionDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, ViewExtensionDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getViewExtensionDescription_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, ViewExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getViewExtensionDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewExtensionDescription_Metamodels(), theEcorePackage.getEPackage(), null, "metamodels", null, 0, -1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewExtensionDescription_Pages(), this.getPageDescription(), null, "pages", null, 0, -1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewExtensionDescription_DefaultPage(), this.getPageDescription(), null, "defaultPage", null, 0, 1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getViewExtensionDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, ViewExtensionDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getViewExtensionDescription_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(pageDescriptionEClass, PageDescription.class, "PageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getPageDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, PageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getPageDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, PageDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getPageDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, PageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(pageDescriptionEClass, PageDescription.class, "PageDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getPageDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getPageDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getPageDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getPageDescription_SemanticCandidateExpression(), theDescriptionPackage.getInterpretedExpression(), "semanticCandidateExpression", null, 0, 1, PageDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getPageDescription_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, PageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getPageDescription_Groups(), this.getGroupDescription(), null, "groups", null, 0, -1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(groupDescriptionEClass, GroupDescription.class, "GroupDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGroupDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, GroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getGroupDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, GroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getGroupDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, GroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(groupDescriptionEClass, GroupDescription.class, "GroupDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getGroupDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupDescription_SemanticCandidateExpression(), theDescriptionPackage.getInterpretedExpression(), "semanticCandidateExpression", null, 0, 1, GroupDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getGroupDescription_Container(), this.getContainerDescription(), null, "container", null, 0, 1, GroupDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getGroupDescription_Container(), this.getContainerDescription(), null, "container", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getContainerDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getContainerDescription_Widgets(), this.getWidgetDescription(), null, "widgets", null, 0, -1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getContainerDescription_DynamicMappings(), this.getDynamicMappingFor(), null, "dynamicMappings", null, 0, -1, ContainerDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getContainerDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getContainerDescription_Widgets(), this.getWidgetDescription(), null, "widgets", null, 0, -1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getContainerDescription_DynamicMappings(), this.getDynamicMappingFor(), null, "dynamicMappings", null, 0, -1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(widgetDescriptionEClass, WidgetDescription.class, "WidgetDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getWidgetDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, WidgetDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getWidgetDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, WidgetDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(widgetDescriptionEClass, WidgetDescription.class, "WidgetDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getWidgetDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getWidgetDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(textDescriptionEClass, TextDescription.class, "TextDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTextDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, TextDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getTextDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, TextDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(textDescriptionEClass, TextDescription.class, "TextDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTextDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTextDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(buttonDescriptionEClass, ButtonDescription.class, "ButtonDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getButtonDescription_ButtonLabelExpression(), theDescriptionPackage.getInterpretedExpression(), "buttonLabelExpression", null, 0, 1, ButtonDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getButtonDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, ButtonDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(buttonDescriptionEClass, ButtonDescription.class, "ButtonDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getButtonDescription_ButtonLabelExpression(), theDescriptionPackage.getInterpretedExpression(), "buttonLabelExpression", null, 0, 1, ButtonDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getButtonDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, ButtonDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getCheckboxDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, CheckboxDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getCheckboxDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getSelectDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getSelectDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, SelectDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getSelectDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, SelectDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEAttribute(getSelectDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, SelectDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDynamicMappingFor_Iterator(), theEcorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDynamicMappingFor_DomainClassExpression(), theEcorePackage.getEString(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDynamicMappingFor_Switch(), this.getDynamicMappingSwitch(), null, "switch", null, 1, 1, DynamicMappingFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingFor_Iterator(), theEcorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDynamicMappingFor_DomainClassExpression(), theEcorePackage.getEString(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDynamicMappingFor_Switch(), this.getDynamicMappingSwitch(), null, "switch", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dynamicMappingSwitchEClass, DynamicMappingSwitch.class, "DynamicMappingSwitch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDynamicMappingSwitch_SwitchExpression(), theEcorePackage.getEString(), "switchExpression", null, 1, 1, DynamicMappingSwitch.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDynamicMappingSwitch_Cases(), this.getDynamicMappingCase(), null, "cases", null, 1, -1, DynamicMappingSwitch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dynamicMappingSwitchEClass, DynamicMappingSwitch.class, "DynamicMappingSwitch", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingSwitch_SwitchExpression(), theEcorePackage.getEString(), "switchExpression", null, 1, 1, DynamicMappingSwitch.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDynamicMappingSwitch_Cases(), this.getDynamicMappingCase(), null, "cases", null, 1, -1, DynamicMappingSwitch.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(textAreaDescriptionEClass, TextAreaDescription.class, "TextAreaDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTextAreaDescription_LineCount(), ecorePackage.getEInt(), "lineCount", "5", 0, 1, TextAreaDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(textAreaDescriptionEClass, TextAreaDescription.class, "TextAreaDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTextAreaDescription_LineCount(), ecorePackage.getEInt(), "lineCount", "5", 0, 1, TextAreaDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(radioDescriptionEClass, RadioDescription.class, "RadioDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getRadioDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, RadioDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getRadioDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, RadioDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getRadioDescription_CandidatesExpression(), theDescriptionPackage.getInterpretedExpression(), "candidatesExpression", null, 0, 1, RadioDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getRadioDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, RadioDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         // Create resource
-        createResource(eNS_URI);
+        createResource(PropertiesPackage.eNS_URI);
     }
 
 } // PropertiesPackageImpl

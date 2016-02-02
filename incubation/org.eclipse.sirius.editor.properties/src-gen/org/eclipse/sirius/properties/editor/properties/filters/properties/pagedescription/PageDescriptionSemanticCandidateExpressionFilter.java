@@ -25,6 +25,7 @@ public class PageDescriptionSemanticCandidateExpressionFilter extends ViewpointP
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getPageDescription_SemanticCandidateExpression();
     }
@@ -32,6 +33,7 @@ public class PageDescriptionSemanticCandidateExpressionFilter extends ViewpointP
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.PageDescription;
     }

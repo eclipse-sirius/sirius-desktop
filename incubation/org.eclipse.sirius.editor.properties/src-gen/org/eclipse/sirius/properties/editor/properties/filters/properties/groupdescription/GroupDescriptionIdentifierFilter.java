@@ -25,6 +25,7 @@ public class GroupDescriptionIdentifierFilter extends ViewpointPropertyFilter {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getGroupDescription_Identifier();
     }
@@ -32,6 +33,7 @@ public class GroupDescriptionIdentifierFilter extends ViewpointPropertyFilter {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.GroupDescription;
     }

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -50,7 +50,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
      * @generated
      * @ordered
      */
-    protected int lineCount = LINE_COUNT_EDEFAULT;
+    protected int lineCount = TextAreaDescriptionImpl.LINE_COUNT_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -76,6 +76,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
      * 
      * @generated
      */
+    @Override
     public int getLineCount() {
         return lineCount;
     }
@@ -85,11 +86,13 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
      * 
      * @generated
      */
+    @Override
     public void setLineCount(int newLineCount) {
         int oldLineCount = lineCount;
         lineCount = newLineCount;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_AREA_DESCRIPTION__LINE_COUNT, oldLineCount, lineCount));
+        }
     }
 
     /**
@@ -130,7 +133,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.TEXT_AREA_DESCRIPTION__LINE_COUNT:
-            setLineCount(LINE_COUNT_EDEFAULT);
+            setLineCount(TextAreaDescriptionImpl.LINE_COUNT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -145,7 +148,7 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.TEXT_AREA_DESCRIPTION__LINE_COUNT:
-            return lineCount != LINE_COUNT_EDEFAULT;
+            return lineCount != TextAreaDescriptionImpl.LINE_COUNT_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -157,8 +160,9 @@ public class TextAreaDescriptionImpl extends TextDescriptionImpl implements Text
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (lineCount: ");

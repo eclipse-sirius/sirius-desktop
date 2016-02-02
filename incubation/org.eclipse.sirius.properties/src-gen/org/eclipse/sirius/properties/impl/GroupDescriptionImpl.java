@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -66,7 +66,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      * @ordered
      */
-    protected String identifier = IDENTIFIER_EDEFAULT;
+    protected String identifier = GroupDescriptionImpl.IDENTIFIER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -88,7 +88,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = GroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
@@ -108,7 +108,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      * @ordered
      */
-    protected String domainClass = DOMAIN_CLASS_EDEFAULT;
+    protected String domainClass = GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSemanticCandidateExpression()
@@ -130,7 +130,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      * @ordered
      */
-    protected String semanticCandidateExpression = SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT;
+    protected String semanticCandidateExpression = GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}'
@@ -166,6 +166,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public String getIdentifier() {
         return identifier;
     }
@@ -175,11 +176,13 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public void setIdentifier(String newIdentifier) {
         String oldIdentifier = identifier;
         identifier = newIdentifier;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
+        }
     }
 
     /**
@@ -187,6 +190,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -196,11 +200,13 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -208,6 +214,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public String getDomainClass() {
         return domainClass;
     }
@@ -217,11 +224,13 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public void setDomainClass(String newDomainClass) {
         String oldDomainClass = domainClass;
         domainClass = newDomainClass;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS, oldDomainClass, domainClass));
+        }
     }
 
     /**
@@ -229,6 +238,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public String getSemanticCandidateExpression() {
         return semanticCandidateExpression;
     }
@@ -238,11 +248,13 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public void setSemanticCandidateExpression(String newSemanticCandidateExpression) {
         String oldSemanticCandidateExpression = semanticCandidateExpression;
         semanticCandidateExpression = newSemanticCandidateExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, oldSemanticCandidateExpression, semanticCandidateExpression));
+        }
     }
 
     /**
@@ -250,6 +262,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public ContainerDescription getContainer() {
         return container;
     }
@@ -264,10 +277,11 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         container = newContainer;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, oldContainer, newContainer);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -277,18 +291,23 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * 
      * @generated
      */
+    @Override
     public void setContainer(ContainerDescription newContainer) {
         if (newContainer != container) {
             NotificationChain msgs = null;
-            if (container != null)
-                msgs = ((InternalEObject) container).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
-            if (newContainer != null)
-                msgs = ((InternalEObject) newContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
+            if (container != null) {
+                msgs = ((InternalEObject) container).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
+            }
+            if (newContainer != null) {
+                msgs = ((InternalEObject) newContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
+            }
             msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, newContainer, newContainer));
+        }
     }
 
     /**
@@ -363,16 +382,16 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.GROUP_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
+            setIdentifier(GroupDescriptionImpl.IDENTIFIER_EDEFAULT);
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(GroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS:
-            setDomainClass(DOMAIN_CLASS_EDEFAULT);
+            setDomainClass(GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT);
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
-            setSemanticCandidateExpression(SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT);
+            setSemanticCandidateExpression(GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             setContainer((ContainerDescription) null);
@@ -390,13 +409,14 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.GROUP_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            return GroupDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !GroupDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.GROUP_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return GroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !GroupDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS:
-            return DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DOMAIN_CLASS_EDEFAULT.equals(domainClass);
+            return GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
-            return SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null : !SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
+            return GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null : !GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT
+                    .equals(semanticCandidateExpression);
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             return container != null;
         }
@@ -410,8 +430,9 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

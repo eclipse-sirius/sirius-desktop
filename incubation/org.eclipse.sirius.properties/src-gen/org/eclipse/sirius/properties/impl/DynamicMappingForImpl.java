@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -60,7 +60,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * @generated
      * @ordered
      */
-    protected String iterator = ITERATOR_EDEFAULT;
+    protected String iterator = DynamicMappingForImpl.ITERATOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getDomainClassExpression()
@@ -82,7 +82,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * @generated
      * @ordered
      */
-    protected String domainClassExpression = DOMAIN_CLASS_EXPRESSION_EDEFAULT;
+    protected String domainClassExpression = DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSwitch() <em>Switch</em>}'
@@ -118,6 +118,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public String getIterator() {
         return iterator;
     }
@@ -127,11 +128,13 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public void setIterator(String newIterator) {
         String oldIterator = iterator;
         iterator = newIterator;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR, oldIterator, iterator));
+        }
     }
 
     /**
@@ -139,6 +142,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public String getDomainClassExpression() {
         return domainClassExpression;
     }
@@ -148,11 +152,13 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public void setDomainClassExpression(String newDomainClassExpression) {
         String oldDomainClassExpression = domainClassExpression;
         domainClassExpression = newDomainClassExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION, oldDomainClassExpression, domainClassExpression));
+        }
     }
 
     /**
@@ -160,6 +166,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public DynamicMappingSwitch getSwitch() {
         return switch_;
     }
@@ -174,10 +181,11 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
         switch_ = newSwitch;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, oldSwitch, newSwitch);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -187,18 +195,23 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @Override
     public void setSwitch(DynamicMappingSwitch newSwitch) {
         if (newSwitch != switch_) {
             NotificationChain msgs = null;
-            if (switch_ != null)
-                msgs = ((InternalEObject) switch_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
-            if (newSwitch != null)
-                msgs = ((InternalEObject) newSwitch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
+            if (switch_ != null) {
+                msgs = ((InternalEObject) switch_).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
+            }
+            if (newSwitch != null) {
+                msgs = ((InternalEObject) newSwitch).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
+            }
             msgs = basicSetSwitch(newSwitch, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, newSwitch, newSwitch));
+        }
     }
 
     /**
@@ -263,10 +276,10 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
-            setIterator(ITERATOR_EDEFAULT);
+            setIterator(DynamicMappingForImpl.ITERATOR_EDEFAULT);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            setDomainClassExpression(DOMAIN_CLASS_EXPRESSION_EDEFAULT);
+            setDomainClassExpression(DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
             setSwitch((DynamicMappingSwitch) null);
@@ -284,9 +297,10 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
-            return ITERATOR_EDEFAULT == null ? iterator != null : !ITERATOR_EDEFAULT.equals(iterator);
+            return DynamicMappingForImpl.ITERATOR_EDEFAULT == null ? iterator != null : !DynamicMappingForImpl.ITERATOR_EDEFAULT.equals(iterator);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            return DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null : !DOMAIN_CLASS_EXPRESSION_EDEFAULT.equals(domainClassExpression);
+            return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT
+                    .equals(domainClassExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
             return switch_ != null;
         }
@@ -300,8 +314,9 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (iterator: ");

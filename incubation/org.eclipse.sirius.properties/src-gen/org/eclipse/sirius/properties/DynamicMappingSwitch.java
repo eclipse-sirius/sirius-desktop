@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -74,7 +74,7 @@ public interface DynamicMappingSwitch extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cases</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingSwitch_Cases()
      * @model containment="true" required="true"

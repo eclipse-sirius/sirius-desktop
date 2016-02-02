@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.util;
 
@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
@@ -58,8 +59,8 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public PropertiesSwitch() {
-        if (modelPackage == null) {
-            modelPackage = PropertiesPackage.eINSTANCE;
+        if (PropertiesSwitch.modelPackage == null) {
+            PropertiesSwitch.modelPackage = PropertiesPackage.eINSTANCE;
         }
     }
 
@@ -86,7 +87,7 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == PropertiesSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -108,115 +109,148 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION: {
             ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) theEObject;
             T result = caseViewExtensionDescription(viewExtensionDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseExtension(viewExtensionDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.PAGE_DESCRIPTION: {
             PageDescription pageDescription = (PageDescription) theEObject;
             T result = casePageDescription(pageDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.GROUP_DESCRIPTION: {
             GroupDescription groupDescription = (GroupDescription) theEObject;
             T result = caseGroupDescription(groupDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.CONTAINER_DESCRIPTION: {
             ContainerDescription containerDescription = (ContainerDescription) theEObject;
             T result = caseContainerDescription(containerDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.WIDGET_DESCRIPTION: {
             WidgetDescription widgetDescription = (WidgetDescription) theEObject;
             T result = caseWidgetDescription(widgetDescription);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.TEXT_DESCRIPTION: {
             TextDescription textDescription = (TextDescription) theEObject;
             T result = caseTextDescription(textDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseWidgetDescription(textDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.BUTTON_DESCRIPTION: {
             ButtonDescription buttonDescription = (ButtonDescription) theEObject;
             T result = caseButtonDescription(buttonDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseWidgetDescription(buttonDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.LABEL_DESCRIPTION: {
             LabelDescription labelDescription = (LabelDescription) theEObject;
             T result = caseLabelDescription(labelDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseWidgetDescription(labelDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.CHECKBOX_DESCRIPTION: {
             CheckboxDescription checkboxDescription = (CheckboxDescription) theEObject;
             T result = caseCheckboxDescription(checkboxDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseWidgetDescription(checkboxDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.SELECT_DESCRIPTION: {
             SelectDescription selectDescription = (SelectDescription) theEObject;
             T result = caseSelectDescription(selectDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseWidgetDescription(selectDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.DYNAMIC_MAPPING_FOR: {
             DynamicMappingFor dynamicMappingFor = (DynamicMappingFor) theEObject;
             T result = caseDynamicMappingFor(dynamicMappingFor);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.DYNAMIC_MAPPING_SWITCH: {
             DynamicMappingSwitch dynamicMappingSwitch = (DynamicMappingSwitch) theEObject;
             T result = caseDynamicMappingSwitch(dynamicMappingSwitch);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.DYNAMIC_MAPPING_CASE: {
             DynamicMappingCase dynamicMappingCase = (DynamicMappingCase) theEObject;
             T result = caseDynamicMappingCase(dynamicMappingCase);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case PropertiesPackage.TEXT_AREA_DESCRIPTION: {
             TextAreaDescription textAreaDescription = (TextAreaDescription) theEObject;
             T result = caseTextAreaDescription(textAreaDescription);
-            if (result == null)
+            if (result == null) {
                 result = caseTextDescription(textAreaDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = caseWidgetDescription(textAreaDescription);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.RADIO_DESCRIPTION: {
+            RadioDescription radioDescription = (RadioDescription) theEObject;
+            T result = caseRadioDescription(radioDescription);
+            if (result == null) {
+                result = caseWidgetDescription(radioDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -442,6 +476,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDynamicMappingCase(DynamicMappingCase object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Radio Description</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Radio Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRadioDescription(RadioDescription object) {
         return null;
     }
 

@@ -25,6 +25,7 @@ public class PageDescriptionDomainClassFilter extends ViewpointPropertyFilter {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getPageDescription_DomainClass();
     }
@@ -32,6 +33,7 @@ public class PageDescriptionDomainClassFilter extends ViewpointPropertyFilter {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.PageDescription;
     }

@@ -21,6 +21,7 @@ import org.eclipse.eef.EEFDynamicMappingSwitch;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFRadioDescription;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -35,6 +36,7 @@ import org.eclipse.sirius.properties.DynamicMappingSwitch;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
@@ -157,6 +159,8 @@ public class ViewDescriptionConverter {
             description = createEEFSelectDescription((SelectDescription) widgetDescription);
         } else if (widgetDescription instanceof ButtonDescription) {
             description = createEEFButtonDescription((ButtonDescription) widgetDescription);
+        } else if (widgetDescription instanceof RadioDescription) {
+            description = createEEFRadioDescription((RadioDescription) widgetDescription);
         }
 
         return description;
@@ -228,6 +232,17 @@ public class ViewDescriptionConverter {
         eefSelectDescription.setCandidatesExpression(selectDescription.getCandidatesExpression());
         eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
         return eefSelectDescription;
+    }
+
+    private EEFRadioDescription createEEFRadioDescription(RadioDescription radioDescription) {
+        EEFRadioDescription eefRadioDescription = EefFactory.eINSTANCE.createEEFRadioDescription();
+
+        eefRadioDescription.setIdentifier(radioDescription.getIdentifier());
+        eefRadioDescription.setLabelExpression(radioDescription.getLabelExpression());
+        eefRadioDescription.setValueExpression(radioDescription.getValueExpression());
+        eefRadioDescription.setCandidatesExpression(radioDescription.getCandidatesExpression());
+        eefRadioDescription.setCandidateDisplayExpression(radioDescription.getCandidateDisplayExpression());
+        return eefRadioDescription;
     }
 
 }

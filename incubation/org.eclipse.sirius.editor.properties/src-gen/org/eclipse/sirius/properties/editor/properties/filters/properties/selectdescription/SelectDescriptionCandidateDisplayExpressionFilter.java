@@ -25,6 +25,7 @@ public class SelectDescriptionCandidateDisplayExpressionFilter extends Viewpoint
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getSelectDescription_CandidateDisplayExpression();
     }
@@ -32,6 +33,7 @@ public class SelectDescriptionCandidateDisplayExpressionFilter extends Viewpoint
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.SelectDescription;
     }

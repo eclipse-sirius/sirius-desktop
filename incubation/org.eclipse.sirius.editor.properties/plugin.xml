@@ -19,6 +19,29 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionCandidateDisplayExpressionPropertySection"
+               id="properties.section.radioDescription.CandidateDisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionCandidateDisplayExpressionFilter"
+               afterSection="properties.section.radioDescription.CandidatesExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.RadioDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionCandidatesExpressionPropertySection"
+               id="properties.section.radioDescription.CandidatesExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionCandidatesExpressionFilter"
+               afterSection="properties.section.radioDescription.ValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.RadioDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionValueExpressionPropertySection"
+               id="properties.section.radioDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionValueExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.RadioDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.textareadescription.TextAreaDescriptionLineCountPropertySection"
                id="properties.section.textAreaDescription.LineCount"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textareadescription.TextAreaDescriptionLineCountFilter"

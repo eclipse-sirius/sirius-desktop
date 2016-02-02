@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -66,7 +66,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected String identifier = IDENTIFIER_EDEFAULT;
+    protected String identifier = ContainerDescriptionImpl.IDENTIFIER_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getWidgets() <em>Widgets</em>}'
@@ -82,7 +82,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * The cached value of the '{@link #getDynamicMappings()
      * <em>Dynamic Mappings</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDynamicMappings()
      * @generated
      * @ordered
@@ -113,6 +113,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public String getIdentifier() {
         return identifier;
     }
@@ -122,11 +123,13 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public void setIdentifier(String newIdentifier) {
         String oldIdentifier = identifier;
         identifier = newIdentifier;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
+        }
     }
 
     /**
@@ -134,6 +137,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EList<WidgetDescription> getWidgets() {
         if (widgets == null) {
             widgets = new EObjectContainmentEList<WidgetDescription>(WidgetDescription.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS);
@@ -146,6 +150,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * 
      * @generated
      */
+    @Override
     public EList<DynamicMappingFor> getDynamicMappings() {
         if (dynamicMappings == null) {
             dynamicMappings = new EObjectContainmentEList<DynamicMappingFor>(DynamicMappingFor.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
@@ -220,7 +225,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
+            setIdentifier(ContainerDescriptionImpl.IDENTIFIER_EDEFAULT);
             return;
         case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
             getWidgets().clear();
@@ -241,7 +246,7 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            return ContainerDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !ContainerDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
             return widgets != null && !widgets.isEmpty();
         case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
@@ -257,8 +262,9 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

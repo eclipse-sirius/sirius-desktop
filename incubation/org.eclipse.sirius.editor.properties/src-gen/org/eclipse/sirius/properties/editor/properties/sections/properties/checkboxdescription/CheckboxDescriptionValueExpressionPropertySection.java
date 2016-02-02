@@ -34,6 +34,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "ValueExpression"; //$NON-NLS-1$
     }
@@ -41,6 +42,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -53,6 +55,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
+    @Override
     public EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getCheckboxDescription_ValueExpression();
     }
@@ -60,6 +63,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return newText;
     }
@@ -67,6 +71,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
+    @Override
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
     }
@@ -74,6 +79,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         /*
@@ -92,6 +98,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     @Override
     protected SelectionListener createButtonListener() {
         return new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), CheckboxDescriptionValueExpressionPropertySection.this, text.getText());
                 dialog.open();
@@ -104,6 +111,7 @@ public class CheckboxDescriptionValueExpressionPropertySection extends AbstractT
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getPropertyDescription() {
         return "";
     }

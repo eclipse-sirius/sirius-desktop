@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -59,7 +59,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected String caseExpression = CASE_EXPRESSION_EDEFAULT;
+    protected String caseExpression = DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getWidget() <em>Widget</em>}'
@@ -95,6 +95,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public String getCaseExpression() {
         return caseExpression;
     }
@@ -104,11 +105,13 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setCaseExpression(String newCaseExpression) {
         String oldCaseExpression = caseExpression;
         caseExpression = newCaseExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION, oldCaseExpression, caseExpression));
+        }
     }
 
     /**
@@ -116,6 +119,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public WidgetDescription getWidget() {
         return widget;
     }
@@ -130,10 +134,11 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
         widget = newWidget;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, oldWidget, newWidget);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -143,18 +148,23 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
+    @Override
     public void setWidget(WidgetDescription newWidget) {
         if (newWidget != widget) {
             NotificationChain msgs = null;
-            if (widget != null)
-                msgs = ((InternalEObject) widget).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
-            if (newWidget != null)
-                msgs = ((InternalEObject) newWidget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+            if (widget != null) {
+                msgs = ((InternalEObject) widget).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+            }
+            if (newWidget != null) {
+                msgs = ((InternalEObject) newWidget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+            }
             msgs = basicSetWidget(newWidget, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, newWidget, newWidget));
+        }
     }
 
     /**
@@ -214,7 +224,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            setCaseExpression(CASE_EXPRESSION_EDEFAULT);
+            setCaseExpression(DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
             setWidget((WidgetDescription) null);
@@ -232,7 +242,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            return CASE_EXPRESSION_EDEFAULT == null ? caseExpression != null : !CASE_EXPRESSION_EDEFAULT.equals(caseExpression);
+            return DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT == null ? caseExpression != null : !DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT.equals(caseExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
             return widget != null;
         }
@@ -246,8 +256,9 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (caseExpression: ");

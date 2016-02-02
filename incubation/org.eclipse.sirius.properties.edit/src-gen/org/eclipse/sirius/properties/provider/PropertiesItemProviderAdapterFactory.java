@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.provider;
 
@@ -63,7 +63,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -80,7 +80,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public PropertiesItemProviderAdapterFactory() {
@@ -104,7 +104,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.PageDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PageDescriptionItemProvider pageDescriptionItemProvider;
@@ -129,7 +129,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.PageDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.GroupDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GroupDescriptionItemProvider groupDescriptionItemProvider;
@@ -154,7 +154,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.GroupDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.ContainerDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.TextDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TextDescriptionItemProvider textDescriptionItemProvider;
@@ -204,7 +204,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.TextDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ButtonDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonDescriptionItemProvider buttonDescriptionItemProvider;
@@ -229,7 +229,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.ButtonDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.LabelDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelDescriptionItemProvider labelDescriptionItemProvider;
@@ -254,7 +254,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.LabelDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.CheckboxDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CheckboxDescriptionItemProvider checkboxDescriptionItemProvider;
@@ -279,7 +279,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.CheckboxDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.SelectDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectDescriptionItemProvider selectDescriptionItemProvider;
@@ -304,7 +304,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.SelectDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -320,7 +320,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.DynamicMappingFor} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingForItemProvider dynamicMappingForItemProvider;
@@ -329,7 +329,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.DynamicMappingFor}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.DynamicMappingSwitch}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +370,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.DynamicMappingCase} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingCaseItemProvider dynamicMappingCaseItemProvider;
@@ -379,7 +379,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.DynamicMappingCase}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -395,7 +395,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.TextAreaDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TextAreaDescriptionItemProvider textAreaDescriptionItemProvider;
@@ -404,7 +404,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.properties.TextAreaDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,11 +417,37 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.RadioDescription} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected RadioDescriptionItemProvider radioDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.RadioDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createRadioDescriptionAdapter() {
+        if (radioDescriptionItemProvider == null) {
+            radioDescriptionItemProvider = new RadioDescriptionItemProvider(this);
+        }
+
+        return radioDescriptionItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -429,9 +455,10 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -479,6 +506,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -488,6 +516,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -496,9 +525,10 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -510,42 +540,59 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (viewExtensionDescriptionItemProvider != null)
+        if (viewExtensionDescriptionItemProvider != null) {
             viewExtensionDescriptionItemProvider.dispose();
-        if (pageDescriptionItemProvider != null)
+        }
+        if (pageDescriptionItemProvider != null) {
             pageDescriptionItemProvider.dispose();
-        if (groupDescriptionItemProvider != null)
+        }
+        if (groupDescriptionItemProvider != null) {
             groupDescriptionItemProvider.dispose();
-        if (containerDescriptionItemProvider != null)
+        }
+        if (containerDescriptionItemProvider != null) {
             containerDescriptionItemProvider.dispose();
-        if (textDescriptionItemProvider != null)
+        }
+        if (textDescriptionItemProvider != null) {
             textDescriptionItemProvider.dispose();
-        if (buttonDescriptionItemProvider != null)
+        }
+        if (buttonDescriptionItemProvider != null) {
             buttonDescriptionItemProvider.dispose();
-        if (labelDescriptionItemProvider != null)
+        }
+        if (labelDescriptionItemProvider != null) {
             labelDescriptionItemProvider.dispose();
-        if (checkboxDescriptionItemProvider != null)
+        }
+        if (checkboxDescriptionItemProvider != null) {
             checkboxDescriptionItemProvider.dispose();
-        if (selectDescriptionItemProvider != null)
+        }
+        if (selectDescriptionItemProvider != null) {
             selectDescriptionItemProvider.dispose();
-        if (dynamicMappingForItemProvider != null)
+        }
+        if (dynamicMappingForItemProvider != null) {
             dynamicMappingForItemProvider.dispose();
-        if (dynamicMappingSwitchItemProvider != null)
+        }
+        if (dynamicMappingSwitchItemProvider != null) {
             dynamicMappingSwitchItemProvider.dispose();
-        if (dynamicMappingCaseItemProvider != null)
+        }
+        if (dynamicMappingCaseItemProvider != null) {
             dynamicMappingCaseItemProvider.dispose();
-        if (textAreaDescriptionItemProvider != null)
+        }
+        if (textAreaDescriptionItemProvider != null) {
             textAreaDescriptionItemProvider.dispose();
+        }
+        if (radioDescriptionItemProvider != null) {
+            radioDescriptionItemProvider.dispose();
+        }
     }
 
     /**
      * A child creation extender for the {@link DescriptionPackage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class DescriptionChildCreationExtender implements IChildCreationExtender {
@@ -611,6 +658,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
          * 
          * @generated
          */
+        @Override
         public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
             ArrayList<Object> result = new ArrayList<Object>();
             new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
@@ -622,6 +670,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
          * 
          * @generated
          */
+        @Override
         public ResourceLocator getResourceLocator() {
             return PropertiesEditPlugin.INSTANCE;
         }

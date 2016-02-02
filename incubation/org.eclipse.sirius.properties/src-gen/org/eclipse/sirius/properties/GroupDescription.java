@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -47,7 +47,7 @@ public interface GroupDescription extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Identifier()
@@ -108,7 +108,7 @@ public interface GroupDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_DomainClass()

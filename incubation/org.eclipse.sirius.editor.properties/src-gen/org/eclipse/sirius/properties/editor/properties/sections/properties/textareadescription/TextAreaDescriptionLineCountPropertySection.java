@@ -22,6 +22,7 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "LineCount"; //$NON-NLS-1$
     }
@@ -29,6 +30,7 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -41,6 +43,7 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getTextAreaDescription_LineCount();
     }
@@ -48,35 +51,40 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
      */
+    @Override
     protected String getFeatureAsText() {
         String value = new String();
-        if (eObject.eGet(getFeature()) != null)
+        if (eObject.eGet(getFeature()) != null) {
             value = toInteger(eObject.eGet(getFeature()).toString()).toString();
+        }
         return value;
     }
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(String newText) {
         boolean equal = true;
-        if (toInteger(newText) != null)
+        if (toInteger(newText) != null) {
             equal = getFeatureAsText().equals(toInteger(newText).toString());
-        else
+        } else {
             refresh();
+        }
         return equal;
     }
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(String newText) {
         return toInteger(newText);
     }
 
     /**
      * Converts the given text to the integer it represents if applicable.
-     * 
+     *
      * @return The integer the given text represents if applicable,
      *         <code>null</code> otherwise.
      */
@@ -93,6 +101,7 @@ public class TextAreaDescriptionLineCountPropertySection extends AbstractSpinner
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 

@@ -25,6 +25,7 @@ public class ViewExtensionDescriptionDefaultPageFilter extends ViewpointProperty
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getViewExtensionDescription_DefaultPage();
     }
@@ -32,6 +33,7 @@ public class ViewExtensionDescriptionDefaultPageFilter extends ViewpointProperty
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.ViewExtensionDescription;
     }

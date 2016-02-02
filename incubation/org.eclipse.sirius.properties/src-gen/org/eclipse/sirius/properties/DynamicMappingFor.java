@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties;
 
@@ -43,7 +43,7 @@ public interface DynamicMappingFor extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Iterator</em>' attribute.
      * @see #setIterator(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingFor_Iterator()
@@ -57,7 +57,7 @@ public interface DynamicMappingFor extends EObject {
      * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator
      * <em>Iterator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Iterator</em>' attribute.
      * @see #getIterator()

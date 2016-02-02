@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.provider;
 
@@ -27,14 +27,14 @@ import org.eclipse.sirius.properties.TextAreaDescription;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.TextAreaDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TextAreaDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -60,7 +60,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
     /**
      * This adds a property descriptor for the Line Count feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLineCountPropertyDescriptor(Object object) {
@@ -116,7 +116,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

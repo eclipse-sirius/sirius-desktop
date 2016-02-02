@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -58,7 +58,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * @generated
      * @ordered
      */
-    protected String valueExpression = VALUE_EXPRESSION_EDEFAULT;
+    protected String valueExpression = TextDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -95,6 +95,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * 
      * @generated
      */
+    @Override
     public String getValueExpression() {
         return valueExpression;
     }
@@ -104,11 +105,13 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * 
      * @generated
      */
+    @Override
     public void setValueExpression(String newValueExpression) {
         String oldValueExpression = valueExpression;
         valueExpression = newValueExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION, oldValueExpression, valueExpression));
+        }
     }
 
     /**
@@ -116,6 +119,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * 
      * @generated
      */
+    @Override
     public InitialOperation getInitialOperation() {
         return initialOperation;
     }
@@ -130,10 +134,11 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
@@ -143,18 +148,23 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * 
      * @generated
      */
+    @Override
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (initialOperation != null) {
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
+            if (newInitialOperation != null) {
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            }
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+        }
     }
 
     /**
@@ -214,7 +224,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-            setValueExpression(VALUE_EXPRESSION_EDEFAULT);
+            setValueExpression(TextDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
@@ -232,7 +242,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-            return VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
+            return TextDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !TextDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         }
@@ -246,8 +256,9 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (valueExpression: ");

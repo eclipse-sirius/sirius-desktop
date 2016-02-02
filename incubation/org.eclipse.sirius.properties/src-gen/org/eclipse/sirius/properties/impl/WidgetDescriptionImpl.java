@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.properties.impl;
 
@@ -54,7 +54,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected String identifier = IDENTIFIER_EDEFAULT;
+    protected String identifier = WidgetDescriptionImpl.IDENTIFIER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -76,7 +76,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
+    protected String labelExpression = WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -102,6 +102,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public String getIdentifier() {
         return identifier;
     }
@@ -111,11 +112,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setIdentifier(String newIdentifier) {
         String oldIdentifier = identifier;
         identifier = newIdentifier;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
+        }
     }
 
     /**
@@ -123,6 +126,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -132,11 +136,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * 
      * @generated
      */
+    @Override
     public void setLabelExpression(String newLabelExpression) {
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
+        }
     }
 
     /**
@@ -182,10 +188,10 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     public void eUnset(int featureID) {
         switch (featureID) {
         case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
+            setIdentifier(WidgetDescriptionImpl.IDENTIFIER_EDEFAULT);
             return;
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+            setLabelExpression(WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -200,9 +206,9 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            return WidgetDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !WidgetDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            return WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -214,8 +220,9 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

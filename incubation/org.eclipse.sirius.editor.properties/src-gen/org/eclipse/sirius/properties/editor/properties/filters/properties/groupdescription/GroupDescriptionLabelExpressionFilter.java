@@ -25,6 +25,7 @@ public class GroupDescriptionLabelExpressionFilter extends ViewpointPropertyFilt
     /**
      * {@inheritDoc}
      */
+    @Override
     protected EStructuralFeature getFeature() {
         return PropertiesPackage.eINSTANCE.getGroupDescription_LabelExpression();
     }
@@ -32,6 +33,7 @@ public class GroupDescriptionLabelExpressionFilter extends ViewpointPropertyFilt
     /**
      * {@inheritDoc}
      */
+    @Override
     protected boolean isRightInputType(Object arg0) {
         return arg0 instanceof org.eclipse.sirius.properties.GroupDescription;
     }

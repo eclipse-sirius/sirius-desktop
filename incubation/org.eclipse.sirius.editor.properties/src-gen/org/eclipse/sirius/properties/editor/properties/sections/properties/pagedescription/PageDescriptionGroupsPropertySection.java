@@ -30,6 +30,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "Groups"; //$NON-NLS-1$
     }
@@ -37,6 +38,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
@@ -49,6 +51,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
+    @Override
     protected EReference getFeature() {
         return PropertiesPackage.eINSTANCE.getPageDescription_Groups();
     }
@@ -56,6 +59,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
+    @Override
     protected String getFeatureAsText() {
         String string = new String();
 
@@ -64,8 +68,9 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
             for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
                 EObject eObj = (EObject) iterator.next();
                 string += getAdapterFactoryLabelProvider(eObj).getText(eObj);
-                if (iterator.hasNext())
+                if (iterator.hasNext()) {
                     string += ", ";
+                }
             }
         }
 
@@ -75,6 +80,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
      */
+    @Override
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));
     }
@@ -82,6 +88,7 @@ public class PageDescriptionGroupsPropertySection extends AbstractEditorDialogPr
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
         // Start of user code create controls
