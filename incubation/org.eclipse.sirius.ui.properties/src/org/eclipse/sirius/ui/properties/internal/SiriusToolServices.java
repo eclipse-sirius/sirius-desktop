@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -65,5 +66,32 @@ public class SiriusToolServices {
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
         }
+    }
+
+    /**
+     * Returns the value of the given structural feature for the given object.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @return The value
+     */
+    public Object eGet(EObject eObject, EStructuralFeature eStructuralFeature) {
+        return eObject.eGet(eStructuralFeature);
+    }
+
+    /**
+     * Sets the value of the given structural feature for the given object.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @param value
+     *            The new value
+     */
+    public void eSet(EObject eObject, EStructuralFeature eStructuralFeature, Object value) {
+        eObject.eSet(eStructuralFeature, value);
     }
 }
