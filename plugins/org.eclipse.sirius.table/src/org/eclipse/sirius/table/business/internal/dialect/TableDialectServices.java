@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -112,12 +113,17 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
-            TableDescription tableDesc = (TableDescription) desc;
-            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
-            if (accessor != null) {
-                result = checkDomainClass(accessor, semantic, tableDesc.getDomainClass());
+            Session session = new EObjectQuery(semantic).getSession();
+            // If the semantic doesn't belong to a session we don't check
+            // viewpoint selection but only others things like domainClass
+            if (session == null || isRelatedViewpointSelected(session, desc)) {
+                TableDescription tableDesc = (TableDescription) desc;
+                ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
+                if (accessor != null) {
+                    result = checkDomainClass(accessor, semantic, tableDesc.getDomainClass());
+                }
+                result = result && checkPrecondition(semantic, tableDesc.getPreconditionExpression());
             }
-            result = result && checkPrecondition(semantic, tableDesc.getPreconditionExpression());
         }
         return result;
     }

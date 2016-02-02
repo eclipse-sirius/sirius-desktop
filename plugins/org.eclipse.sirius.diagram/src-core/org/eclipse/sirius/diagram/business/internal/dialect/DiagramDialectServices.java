@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.dialect;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -121,27 +122,31 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
-            DiagramDescription diagDesc = (DiagramDescription) desc;
-            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
-            if (accessor != null) {
-                result = checkDomainClass(accessor, semantic, diagDesc.getDomainClass());
+            Session session = new EObjectQuery(semantic).getSession();
+            // If the semantic doesn't belong to a session we don't check
+            // viewpoint selection but only others things like domainClass
+            if (session == null || isRelatedViewpointSelected(session, desc)) {
+                DiagramDescription diagDesc = (DiagramDescription) desc;
+                ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
+                if (accessor != null) {
+                    result = checkDomainClass(accessor, semantic, diagDesc.getDomainClass());
+                    // If the representation is a diagram description
+                    boolean needsToCheckSemanticElement = true;
+                    // We first check if the diagram description has a non null
+                    // initial operation
+                    if ((diagDesc.getInit() == null) || (diagDesc.getInit().getInitialOperation() == null) || (diagDesc.getInit().getInitialOperation().getFirstModelOperations() == null)) {
+                        // If the diagram description has no initial operation
+                        // we do not need to check the semantic element
+                        // => true will be returned
+                        needsToCheckSemanticElement = false;
+                    }
 
-                // If the representation is a diagram description
-                boolean needsToCheckSemanticElement = true;
-                // We first check if the diagram description has a non null
-                // initial operation
-                if ((diagDesc.getInit() == null) || (diagDesc.getInit().getInitialOperation() == null) || (diagDesc.getInit().getInitialOperation().getFirstModelOperations() == null)) {
-                    // If the diagram description has no initial operation
-                    // we do not need to check the semantic element
-                    // => true will be returned
-                    needsToCheckSemanticElement = false;
+                    if (needsToCheckSemanticElement) {
+                        result = result && checkSemanticElementCanBeFilled(accessor, semantic);
+                    }
                 }
-
-                if (needsToCheckSemanticElement) {
-                    result = result && checkSemanticElementCanBeFilled(accessor, semantic);
-                }
+                result = result && checkPrecondition(semantic, diagDesc.getPreconditionExpression());
             }
-            result = result && checkPrecondition(semantic, diagDesc.getPreconditionExpression());
         }
         return result;
     }
@@ -173,7 +178,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             monitor.subTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name));
             diagram = createRepresentation(name, semantic, description, new SubProgressMonitor(monitor, 2));
             if (diagram != null) {
-                refresh(diagram, new SubProgressMonitor(monitor, 26));
+                DialectManager.INSTANCE.refresh(diagram, new SubProgressMonitor(monitor, 26));
                 if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) diagram);
                     monitor.worked(1);
@@ -261,6 +266,22 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         } finally {
             monitor.done();
         }
+    }
+
+    @Override
+    public Set<Viewpoint> getRequiredViewpoints(DRepresentation representation) {
+        Set<Viewpoint> requiredViewpoints = super.getRequiredViewpoints(representation);
+        if (representation instanceof DDiagram) {
+            DDiagram dDiagram = (DDiagram) representation;
+            List<Layer> activatedLayers = dDiagram.getActivatedLayers();
+            for (Layer activatedLayer : activatedLayers) {
+                if (!activatedLayer.eIsProxy() && activatedLayer.eContainer() != null) {
+                    Viewpoint viewpoint = (Viewpoint) activatedLayer.eContainer().eContainer();
+                    requiredViewpoints.add(viewpoint);
+                }
+            }
+        }
+        return requiredViewpoints;
     }
 
     /**

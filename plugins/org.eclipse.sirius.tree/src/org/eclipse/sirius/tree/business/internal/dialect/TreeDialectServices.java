@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -216,12 +216,17 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     public boolean canCreate(EObject semantic, RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
-            TreeDescription treeDesc = (TreeDescription) desc;
-            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
-            if (accessor != null) {
-                result = checkDomainClass(accessor, semantic, treeDesc.getDomainClass());
+            Session session = new EObjectQuery(semantic).getSession();
+            // If the semantic doesn't belong to a session we don't check
+            // viewpoint selection but only others things like domainClass
+            if (session == null || isRelatedViewpointSelected(session, desc)) {
+                TreeDescription treeDesc = (TreeDescription) desc;
+                ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
+                if (accessor != null) {
+                    result = checkDomainClass(accessor, semantic, treeDesc.getDomainClass());
+                }
+                result = result && checkPrecondition(semantic, treeDesc.getPreconditionExpression());
             }
-            result = result && checkPrecondition(semantic, treeDesc.getPreconditionExpression());
         }
         return result;
     }

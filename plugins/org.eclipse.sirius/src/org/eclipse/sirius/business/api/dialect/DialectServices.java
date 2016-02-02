@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.dialect;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
@@ -176,16 +177,23 @@ public interface DialectServices {
     /**
      * Tell whether the dialect is able to refresh the given representation.
      * 
+     * NOTE: a prerequisite to have a {@link DRepresentation} refreshable is to
+     * have its required viewpoints selected in the current session.
+     * 
      * @param representation
      *            representation to refresh.
      * @return true if the dialect can refresh the representation, false
      *         otherwise.
+     * @see DialectServices#getRequiredViewpoints(DRepresentation)
      */
     boolean canRefresh(DRepresentation representation);
 
     /**
      * Tell whether the dialect is able to create a representation from the
      * given representation description and the semantic object.
+     * 
+     * NOTE: If the semantic does not belong to a session we do not check that
+     * required viewpoint is selected but only others things like domainClass
      * 
      * @param semantic
      *            semantic object used to create the representation.
@@ -354,4 +362,18 @@ public interface DialectServices {
      * @since 1.0.0 M6
      */
     boolean allowsEStructuralFeatureCustomization(EObject element);
+
+    /**
+     * Tell which {@link Viewpoint viewpoints} are required to do a refresh of
+     * the specified <code>representation</code>.
+     * 
+     * NOTE: only available viewpoints are returned. In some cases, the
+     * Viewpoint of a selected layer might not be available: for example if it
+     * is not installed.
+     * 
+     * @param representation
+     *            the specified {@link DRepresentation}
+     * @return the collection of required {@link Viewpoint viewpoints}
+     */
+    Set<Viewpoint> getRequiredViewpoints(DRepresentation representation);
 }

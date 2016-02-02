@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
@@ -222,14 +223,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     private Set<Viewpoint> activateNeededViewpoints(Session session, DDiagram dDiagram, IProgressMonitor monitor) {
-        List<Layer> activatedLayers = dDiagram.getActivatedLayers();
-        Set<Viewpoint> neededViewpoints = new LinkedHashSet<Viewpoint>();
-        for (Layer activatedLayer : activatedLayers) {
-            if (!activatedLayer.eIsProxy() && activatedLayer.eContainer() != null) {
-                Viewpoint viewpoint = (Viewpoint) activatedLayer.eContainer().eContainer();
-                neededViewpoints.add(viewpoint);
-            }
-        }
+        Set<Viewpoint> neededViewpoints = DialectManager.INSTANCE.getRequiredViewpoints(dDiagram);
         Set<Viewpoint> selectedViewpoints = new LinkedHashSet<Viewpoint>();
         for (Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
             selectedViewpoints.add(SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint));
