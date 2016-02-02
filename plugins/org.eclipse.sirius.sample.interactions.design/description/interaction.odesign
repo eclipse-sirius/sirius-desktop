@@ -125,8 +125,8 @@
         </containerMappings>
         <toolSections name="Tools">
           <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="Participant" nodeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']">
-            <variable name="variable"/>
-            <viewVariable name="viewVariable"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Participant" referenceName="participants">
