@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.eef.core.api.AbstractEEFEclipsePlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -64,82 +62,13 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
      * 
      * @author sbegaudeau
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends AbstractEEFEclipsePlugin {
         /**
          * The constructor.
          */
         public Implementation() {
-            super();
+            super(PLUGIN_ID);
             SiriusUIPropertiesPlugin.plugin = this;
-        }
-
-        /**
-         * Logs the status.
-         * 
-         * @param severity
-         *            The severity of the status
-         * @param message
-         *            The message to log or <code>null</code>. If the message is
-         *            <code>null</code>, the message of the exception will be
-         *            used instead
-         * @param exception
-         *            The exception to log
-         */
-        private void doLog(int severity, String message, Exception exception) {
-            String messageToLog = message;
-            if (messageToLog == null && exception != null) {
-                messageToLog = exception.getMessage();
-            }
-            IStatus status = new Status(severity, PLUGIN_ID, messageToLog, exception);
-            this.getLog().log(status);
-        }
-
-        /**
-         * Logs an error with the exception and the given message.
-         *
-         * @param message
-         *            The message
-         * @param exception
-         *            The exception
-         */
-        public void error(String message, Exception exception) {
-            if (exception instanceof CoreException) {
-                this.getLog().log(((CoreException) exception).getStatus());
-            } else {
-                this.doLog(IStatus.ERROR, message, exception);
-            }
-        }
-
-        /**
-         * Logs a warning with the exception and the given message.
-         *
-         * @param message
-         *            The message
-         * @param exception
-         *            The exception
-         */
-        public void warning(String message, Exception exception) {
-            if (exception instanceof CoreException) {
-                this.getLog().log(((CoreException) exception).getStatus());
-            } else {
-                this.doLog(IStatus.WARNING, message, exception);
-            }
-        }
-
-        /**
-         * Logs an info with the exception and the given message.
-         *
-         * @param message
-         *            The message
-         * @param exception
-         *            The exception
-         */
-        public void info(String message, Exception exception) {
-            if (exception instanceof CoreException) {
-                this.getLog().log(((CoreException) exception).getStatus());
-            } else {
-                this.doLog(IStatus.INFO, message, exception);
-            }
         }
 
     }

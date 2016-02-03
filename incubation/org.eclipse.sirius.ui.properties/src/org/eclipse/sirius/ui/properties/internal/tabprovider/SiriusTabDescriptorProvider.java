@@ -71,14 +71,14 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
             // FIXME We take the first one
             if (objects.length > 0) {
                 if (objects.length > 1) {
-                    SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection, null);
+                    SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection);
                 }
                 SiriusContext ctx = SiriusContext.from(objects[0]);
                 if (ctx.getMainSemanticElement().some()) {
                     // Let's find out the description of the view
                     return this.getTabDescriptors(ctx.getMainSemanticElement().get());
                 } else {
-                    SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement, null);
+                    SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement);
                 }
             }
         }
@@ -152,7 +152,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
                     effectivePages.addAll(viewExtensionDescription.getPages());
                 }
             } else {
-                SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound, null);
+                SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound);
             }
         }
 
