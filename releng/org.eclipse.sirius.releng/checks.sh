@@ -51,10 +51,10 @@ done
 # All the about.html should be identical
 # find . -name "about.html" -exec md5sum {} \; | sort | cut -d' ' -f1 | sort -u
 
-readonly BREE="JavaSE-1.6"
+readonly BREE="JavaSE-1.7"
 check "All plug-ins have a consistent BREE ($BREE)"
 BREES=$(git grep Bundle-RequiredExecutionEnvironment -- '**/MANIFEST.MF' | awk '{print $2}' | sort -u)
-[ "$BREES" = "JavaSE-1.6" ] || {
+[ "$BREES" = "JavaSE-1.7" ] || {
     error "Inconsistent BREE detected: " $(echo "$BREES")
 }
 

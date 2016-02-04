@@ -9,4 +9,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.mtl,
  org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

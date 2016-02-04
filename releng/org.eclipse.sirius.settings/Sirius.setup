@@ -17,8 +17,8 @@
     label="Sirius">
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.6"
-      location="${jre.location-1.6}">
+      version="JavaSE-1.7"
+      location="${jre.location-1.7}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -31,7 +31,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Dosgi.requiredJavaVersion"
-      value="1.6"
+      value="1.7"
       vm="true"/>
   <setupTask
       xsi:type="setup:ResourceCreationTask"
