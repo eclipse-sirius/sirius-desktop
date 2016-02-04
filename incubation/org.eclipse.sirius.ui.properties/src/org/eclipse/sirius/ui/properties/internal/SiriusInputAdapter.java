@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,18 +11,20 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import org.eclipse.core.runtime.IAdapterFactory;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.eef.core.api.InputDescriptor;
 
 /**
- * An adapter factory to convert an element selected in Sirius into the
- * underlying semantic element.
+ * An adapter factory to convert an element selected in Sirius into a suitable
+ * {@link InputDescriptor}.
+ * 
+ * @author Pierre-Charles David <pierre-charles.david@obeo.fr>
  */
-public class SiriusSemanticAdapter implements IAdapterFactory {
+public class SiriusInputAdapter implements IAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public Object getAdapter(final Object adaptableObject, @SuppressWarnings("rawtypes") final Class adapterType) {
         if (adapterType != null) {
-            return SiriusContext.from(adaptableObject).getMainSemanticElement().get();
+            return new SiriusInputDescriptor(adaptableObject);
         } else {
             return null;
         }
@@ -30,7 +32,6 @@ public class SiriusSemanticAdapter implements IAdapterFactory {
 
     @Override
     public Class<?>[] getAdapterList() {
-        return new Class<?>[] { EObject.class };
+        return new Class<?>[] { InputDescriptor.class };
     }
-
 }

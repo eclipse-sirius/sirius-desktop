@@ -37,7 +37,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.ui.properties.internal.Messages;
-import org.eclipse.sirius.ui.properties.internal.SiriusContext;
+import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -73,10 +73,10 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
                 if (objects.length > 1) {
                     SiriusUIPropertiesPlugin.getPlugin().warning(Messages.SiriusTabDescriptorProvider_UnsupportedMultipleSelection);
                 }
-                SiriusContext ctx = SiriusContext.from(objects[0]);
-                if (ctx.getMainSemanticElement().some()) {
+                SiriusInputDescriptor sid = new SiriusInputDescriptor(objects[0]);
+                if (sid.getSemanticElement() != null) {
                     // Let's find out the description of the view
-                    return this.getTabDescriptors(ctx.getMainSemanticElement().get());
+                    return this.getTabDescriptors(sid);
                 } else {
                     SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement);
                 }
@@ -92,15 +92,15 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      *            The semantic element
      * @return A collection of {@link IEEFTabDescriptor}
      */
-    private Collection<IEEFTabDescriptor> getTabDescriptors(EObject semanticElement) {
-        Session session = new EObjectQuery(semanticElement).getSession();
-        List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(semanticElement, session);
-        return getTabDescriptors(session, semanticElement, effectivePageDescriptions);
+    private Collection<IEEFTabDescriptor> getTabDescriptors(SiriusInputDescriptor input) {
+        Session session = input.getFullContext().getSession().get();
+        List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(input, session);
+        return getTabDescriptors(session, input, effectivePageDescriptions);
     }
 
-    private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, EObject semanticElement, List<PageDescription> effectivePageDescriptions) {
+    private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, SiriusInputDescriptor input, List<PageDescription> effectivePageDescriptions) {
         EEFViewDescription viewDescription = new ViewDescriptionConverter(effectivePageDescriptions).convert();
-        EEFView eefView = createEEFView(session, semanticElement, viewDescription);
+        EEFView eefView = createEEFView(session, input, viewDescription);
 
         List<IEEFTabDescriptor> descriptors = new ArrayList<IEEFTabDescriptor>();
         List<EEFPage> eefPages = eefView.getPages();
@@ -110,10 +110,11 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         return descriptors;
     }
 
-    private EEFView createEEFView(Session session, EObject semanticElement, EEFViewDescription viewDescription) {
+    private EEFView createEEFView(Session session, SiriusInputDescriptor input, EEFViewDescription viewDescription) {
         IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
-        variableManager.put(EEFExpressionUtils.SELF, semanticElement);
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), session.getTransactionalEditingDomain(), semanticElement);
+        variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
+        variableManager.put(EEFExpressionUtils.INPUT, input);
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), session.getTransactionalEditingDomain(), input);
         return eefView;
     }
 
@@ -124,7 +125,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      * session.selectedViewpoints.eContainer(description::Group).eContents(properties::ViewExtensionDescription).pages
      * </pre>
      */
-    private List<PageDescription> computeEffectiveDescription(EObject semanticElement, Session session) {
+    private List<PageDescription> computeEffectiveDescription(SiriusInputDescriptor input, Session session) {
         Preconditions.checkNotNull(session);
 
         List<ViewExtensionDescription> viewDescriptions = Lists.newArrayList();
