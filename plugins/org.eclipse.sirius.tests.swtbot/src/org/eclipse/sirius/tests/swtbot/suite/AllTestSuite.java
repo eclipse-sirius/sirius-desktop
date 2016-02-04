@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -70,7 +64,12 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
 import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
+
 import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -88,7 +87,7 @@ public class AllTestSuite extends TestCase {
     public static void main(final String[] args) {
         TestRunner.run(suite());
     }
-    
+
     @SuppressWarnings("javadoc")
     public static class SWTBotBundlesReport extends AvailableBundlesReportTest {
         public SWTBotBundlesReport() {
@@ -201,6 +200,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SnapAllShapesTest.class);
         suite.addTestSuite(MoveEdgeGroupTest.class);
         suite.addTestSuite(TabbarContributorExtensionTest.class);
+        suite.addTestSuite(BorderNodeSideTest.class);
     }
 
     /**

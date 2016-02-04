@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_TA4PgMtFEeWoBdAV1FTlhA" selectedViews="_T-lN4MtFEeWoBdAV1FTlhA" version="11.0.0.201601261200">
+  <semanticResources>borderNodeSide.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_T-lN4MtFEeWoBdAV1FTlhA">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_T_TmoMtFEeWoBdAV1FTlhA" name="borderNodeSide" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_T_TmoctFEeWoBdAV1FTlhA" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_T_TmostFEeWoBdAV1FTlhA"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_T_cJgMtFEeWoBdAV1FTlhA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_T_cJgctFEeWoBdAV1FTlhA" type="Sirius" element="_T_TmoMtFEeWoBdAV1FTlhA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_wNGcoMtGEeWoBdAV1FTlhA" type="2002" element="_wM7dgMtGEeWoBdAV1FTlhA">
+            <children xmi:type="notation:Node" xmi:id="_wNHDsMtGEeWoBdAV1FTlhA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_wNHqwMtGEeWoBdAV1FTlhA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_wNHqwctGEeWoBdAV1FTlhA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_wNHqwstGEeWoBdAV1FTlhA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_wNGcoctGEeWoBdAV1FTlhA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wNGcostGEeWoBdAV1FTlhA" x="204" y="72" width="267" height="111"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_T_cJgstFEeWoBdAV1FTlhA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_wM7dgMtGEeWoBdAV1FTlhA" name="subPackage1">
+        <target xmi:type="ecore:EPackage" href="borderNodeSide.ecore#//subPackage1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="borderNodeSide.ecore#//subPackage1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wM8EkMtGEeWoBdAV1FTlhA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="194,239,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderNodeSide.odesign#//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderNodeSide.odesign#//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer/@containerMappings[name='container']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="borderNodeSide.odesign#//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_T_Tmo8tFEeWoBdAV1FTlhA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="borderNodeSide.odesign#//@ownedViewpoints[name='borderNodeSide']/@ownedRepresentations[name='borderNodeSide']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="borderNodeSide.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="borderNodeSide.odesign#//@ownedViewpoints[name='borderNodeSide']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
