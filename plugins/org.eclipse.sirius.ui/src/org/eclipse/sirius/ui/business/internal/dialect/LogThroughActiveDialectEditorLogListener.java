@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -158,8 +158,15 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
      *         false otherwise
      */
     private boolean shouldBeLoggedThroughPopup(Throwable exception) {
-        // We only consider LockedInstanceException
-        return exception instanceof LockedInstanceException || exception instanceof SecurityException;
+        boolean shouldBeLogged = false;
+        // We only consider LockedInstanceException and SecurityException with
+        // message
+        shouldBeLogged = exception instanceof LockedInstanceException || exception instanceof SecurityException;
+        if (shouldBeLogged) {
+            String message = getErrorMessage(exception);
+            shouldBeLogged = message != null && !message.isEmpty();
+        }
+        return shouldBeLogged;
     }
 
     /**
