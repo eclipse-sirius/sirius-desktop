@@ -201,6 +201,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(MoveEdgeGroupTest.class);
         suite.addTestSuite(TabbarContributorExtensionTest.class);
         suite.addTestSuite(BorderNodeSideTest.class);
+        suite.addTestSuite(SecurityExceptionPopupTest.class);
     }
 
     /**

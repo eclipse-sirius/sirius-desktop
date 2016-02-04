@@ -236,16 +236,16 @@
 			</li>
 			<li><span class="label label-info">Added</span> The new internationalizable label 
 				<code>Messages_createRepresentationInputDialog_DefaultRepresentationDescName</code> has been added (available through 
-				<code>org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName</code>. Its value is &#171;Representation&#187;.
+				<code>org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName</code>. Its value is &#8220;Representation&#8221;.
 			</li>
 			<li><span class="label label-info">Modified</span> The internationalizable label 
-				<code>Messages_createRepresentationInputDialog_NewRepresentationNameLabel</code> has been replaced by &#171;Name:&#187; (previous value was &#171;Representation name:&#187;). 
+				<code>Messages_createRepresentationInputDialog_NewRepresentationNameLabel</code> has been replaced by &#8220;Name:&#8221; (previous value was &#8220;Representation name:&#8221;). 
 			</li>
 			<li><span class="label label-info">Modified</span> The internationalizable label 
-				<code>Messages_createRepresentationInputDialog_RepresentationDescriptionLabel</code> has been replaced by &#171;Representation description: {0}&#187; (previous value was &#171;Representation description: &#187;). 
+				<code>Messages_createRepresentationInputDialog_RepresentationDescriptionLabel</code> has been replaced by &#8220;Representation description: {0}&#8221; (previous value was &#8220;Representation description: &#8221;). 
 			</li>
 			<li><span class="label label-info">Modified</span> The internationalizable label 
-				<code>Messages_createRepresentationInputDialog_Title</code> has been replaced by &#171;New {0}&#187; (previous value was &#171;New Representation&#187;). 
+				<code>Messages_createRepresentationInputDialog_Title</code> has been replaced by &#8220;New {0}&#8221; (previous value was &#8220;New Representation&#8221;). 
 			</li>
 			<li><span class="label label-danger">Removed</span> The class 
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
@@ -320,6 +320,17 @@
 				<code>SWTBotTreeItem</code> in a 
 				<code>SWTBotTreeItem</code> array.
 			</li>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.ShellChangedCondition</code> has been added to wait until the current active shell has changed.
+			</li>
+			<li><span class="label label-info">Modified</span> A second 
+				<code>String</code> parameter has been added to the method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession.newDiagramRepresentation(String, String)</code>. This parameter is the label of the representation description. It is necessary since the change of the wizard to ask the new representation name (see User-Visible Changes for detail).
+			</li>
+			<li><span class="label label-info">Modified</span> A third 
+				<code>String</code> parameter has been added to the constructor of 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilder</code> for the same above reasons.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.xtext">Changes in 
 			<code>org.eclipse.sirius.common.xtext</code>
@@ -329,14 +340,6 @@
 				<code>org.eclipse.sirius.common.xtext</code> to the JDT plug-in 
 				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
-			</li>
-			<li><span class="label label-info">Modified</span> A second 
-				<code>String</code> parameter has been added to the method 
-				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession.newDiagramRepresentation(String, String)</code>. This parameter is the label of the representation description. It is necessary since the change of the wizard to ask the new representation name (see User-Visible Changes for detail).
-			</li>
-			<li><span class="label label-info">Modified</span> A third 
-				<code>String</code> parameter has been added to the constructor of 
-				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilder</code> for the same above reasons.
 			</li>
 		</ul>
 		<h2 id="sirius3.1.1">Changes in Sirius 3.1.1</h2>
