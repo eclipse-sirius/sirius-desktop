@@ -21,8 +21,11 @@ import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -93,5 +96,113 @@ public class SiriusToolServices {
      */
     public void eSet(EObject eObject, EStructuralFeature eStructuralFeature, Object value) {
         eObject.eSet(eStructuralFeature, value);
+    }
+
+    /**
+     * Returns the {@link SiriusContext} associated with an arbitrary model
+     * element.
+     * 
+     * @param self
+     *            an arbitrary model element.
+     * @return the element's {@link SiriusContext}.
+     */
+    public SiriusContext context(EObject self) {
+        return SiriusContext.from(self);
+    }
+
+    /**
+     * Returns the {@link SiriusContext} associated with a
+     * {@link SiriusInputDescriptor} (typically the "input" variable of the
+     * properties view).
+     * 
+     * @param sid
+     *            a {@link SiriusInputDescriptor} (typically the "input"
+     *            variable of the properties view).
+     * @return the input's full context.
+     */
+    public SiriusContext context(SiriusInputDescriptor sid) {
+        return sid.getFullContext();
+    }
+
+    /**
+     * Returns the Sirius session associated to a given context.
+     * 
+     * @param ctx
+     *            a Sirius context.
+     * 
+     * @return the Sirius session associated to a given context.
+     */
+    public Session session(SiriusContext ctx) {
+        Option<Session> s = ctx.getSession();
+        if (s.some()) {
+            return s.get();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the Sirius representation associated to a given context.
+     * 
+     * @param ctx
+     *            a Sirius context.
+     * 
+     * @return the Sirius representation associated to a given context.
+     */
+    public DRepresentation representation(SiriusContext ctx) {
+        Option<DRepresentation> r = ctx.getDRepresentation();
+        if (r.some()) {
+            return r.get();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns the Sirius {@link DSemanticDecorator} associated to a given
+     * context.
+     * 
+     * @param ctx
+     *            a Sirius context.
+     * 
+     * @return the Sirius {@link DSemanticDecorator} associated to a given
+     *         context.
+     */
+    public DSemanticDecorator semanticDecorator(SiriusContext ctx) {
+        return ctx.getSemanticDecorator();
+    }
+
+    /**
+     * Returns the main semantic element associated to a given context.
+     * 
+     * @param ctx
+     *            a Sirius context.
+     * 
+     * @return the main semantic element associated to a given context.
+     */
+    public EObject mainSemanticElement(SiriusContext ctx) {
+        Option<EObject> target = ctx.getMainSemanticElement();
+        if (target.some()) {
+            return target.get();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Returns all the semantic elements associated to a given context.
+     * 
+     * @param ctx
+     *            a Sirius context.
+     * 
+     * @return all the semantic elements associated to a given context.
+     */
+    public Collection<EObject> allSemanticElements(SiriusContext ctx) {
+        Option<Collection<EObject>> elements = ctx.getAdditionalSemanticElements();
+        if (elements.some()) {
+            return elements.get();
+        } else {
+            return null;
+        }
     }
 }
