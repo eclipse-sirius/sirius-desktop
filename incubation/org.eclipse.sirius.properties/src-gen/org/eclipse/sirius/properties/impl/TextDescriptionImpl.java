@@ -13,26 +13,25 @@ package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.TextDescription;
-
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Text Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Text Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getInitialOperation <em>Initial Operation</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getValueExpression
+ * <em>Value Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getInitialOperation
+ * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,9 +39,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  */
 public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDescription {
     /**
-     * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The default value of the '{@link #getValueExpression()
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -50,9 +50,10 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getValueExpression()
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -60,9 +61,10 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected String valueExpression = VALUE_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getInitialOperation() <em>Initial Operation</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getInitialOperation()
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -70,8 +72,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     protected InitialOperation initialOperation;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected TextDescriptionImpl() {
@@ -79,8 +81,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -89,8 +91,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getValueExpression() {
@@ -98,8 +100,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setValueExpression(String newValueExpression) {
@@ -110,8 +112,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public InitialOperation getInitialOperation() {
@@ -119,8 +121,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -128,120 +130,124 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
         initialOperation = newInitialOperation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
         }
         return msgs;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void setInitialOperation(InitialOperation newInitialOperation) {
         if (newInitialOperation != initialOperation) {
             NotificationChain msgs = null;
             if (initialOperation != null)
-                msgs = ((InternalEObject)initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
             if (newInitialOperation != null)
-                msgs = ((InternalEObject)newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, null, msgs);
             msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-            case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
-                return basicSetInitialOperation(null, msgs);
+        case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
+            return basicSetInitialOperation(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-                return getValueExpression();
-            case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
-                return getInitialOperation();
+        case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
+            return getValueExpression();
+        case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
+            return getInitialOperation();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-                setValueExpression((String)newValue);
-                return;
-            case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
-                setInitialOperation((InitialOperation)newValue);
-                return;
+        case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
+            setValueExpression((String) newValue);
+            return;
+        case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
+            setInitialOperation((InitialOperation) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-                setValueExpression(VALUE_EXPRESSION_EDEFAULT);
-                return;
-            case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
-                setInitialOperation((InitialOperation)null);
-                return;
+        case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
+            setValueExpression(VALUE_EXPRESSION_EDEFAULT);
+            return;
+        case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
+            setInitialOperation((InitialOperation) null);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
-                return VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
-            case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
-                return initialOperation != null;
+        case PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION:
+            return VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
+        case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
+            return initialOperation != null;
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy()) return super.toString();
+        if (eIsProxy())
+            return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (valueExpression: ");
@@ -250,4 +256,4 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
         return result.toString();
     }
 
-} //TextDescriptionImpl
+} // TextDescriptionImpl

@@ -14,18 +14,23 @@ package org.eclipse.sirius.properties;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Group Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Group Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.sirius.properties.GroupDescription#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression <em>Label Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.GroupDescription#getDomainClass <em>Domain Class</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.GroupDescription#getContainer <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getIdentifier <em>
+ * Identifier</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression
+ * <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getDomainClass <em>
+ * Domain Class</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression
+ * <em>Semantic Candidate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getContainer <em>
+ * Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,13 +40,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface GroupDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Identifier</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Identifier</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Identifier()
@@ -51,10 +57,13 @@ public interface GroupDescription extends EObject {
     String getIdentifier();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupDescription#getIdentifier <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Identifier</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getIdentifier
+     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
      * @generated
      */
@@ -68,32 +77,38 @@ public interface GroupDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_LabelExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
     String getLabelExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Label Expression</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression
+     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
      * @generated
      */
     void setLabelExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Domain Class</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Domain Class</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_DomainClass()
@@ -103,49 +118,60 @@ public interface GroupDescription extends EObject {
     String getDomainClass();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupDescription#getDomainClass <em>Domain Class</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Domain Class</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getDomainClass
+     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
      * @generated
      */
     void setDomainClass(String value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Candidate Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic Candidate Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Semantic Candidate Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Semantic Candidate Expression</em>' attribute
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Semantic Candidate Expression</em>' attribute.
+     * 
+     * @return the value of the '<em>Semantic Candidate Expression</em>'
+     *         attribute.
      * @see #setSemanticCandidateExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_SemanticCandidateExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
     String getSemanticCandidateExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Semantic Candidate Expression</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression
+     * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Semantic Candidate Expression</em>'
+     *            attribute.
      * @see #getSemanticCandidateExpression()
      * @generated
      */
     void setSemanticCandidateExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Container</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Container</b></em>' containment
+     * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Container</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(ContainerDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Container()
@@ -155,10 +181,14 @@ public interface GroupDescription extends EObject {
     ContainerDescription getContainer();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.GroupDescription#getContainer <em>Container</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Container</em>' containment reference.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getContainer
+     * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Container</em>' containment
+     *            reference.
      * @see #getContainer()
      * @generated
      */

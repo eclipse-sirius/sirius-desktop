@@ -19,29 +19,6 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionCandidateDisplayExpressionPropertySection"
-               id="properties.section.selectDescription.CandidateDisplayExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionCandidateDisplayExpressionFilter"
-               afterSection="properties.section.selectDescription.CandidatesExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.SelectDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionCandidatesExpressionPropertySection"
-               id="properties.section.selectDescription.CandidatesExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionCandidatesExpressionFilter"
-               afterSection="properties.section.selectDescription.ValueExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.SelectDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionValueExpressionPropertySection"
-               id="properties.section.selectDescription.ValueExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionValueExpressionFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.SelectDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionPropertySection"
                id="properties.section.dynamicMappingCase.CaseExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionFilter"
@@ -69,6 +46,43 @@
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingfor.DynamicMappingForIteratorFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.DynamicMappingFor"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionCandidateDisplayExpressionPropertySection"
+               id="properties.section.selectDescription.CandidateDisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionCandidateDisplayExpressionFilter"
+               afterSection="properties.section.selectDescription.CandidatesExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.SelectDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionCandidatesExpressionPropertySection"
+               id="properties.section.selectDescription.CandidatesExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionCandidatesExpressionFilter"
+               afterSection="properties.section.selectDescription.ValueExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.SelectDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.selectdescription.SelectDescriptionValueExpressionPropertySection"
+               id="properties.section.selectDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.selectdescription.SelectDescriptionValueExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.SelectDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.checkboxdescription.CheckboxDescriptionValueExpressionPropertySection"
+               id="properties.section.checkboxDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.checkboxdescription.CheckboxDescriptionValueExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.CheckboxDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.buttondescription.ButtonDescriptionButtonLabelExpressionPropertySection"
+               id="properties.section.buttonDescription.ButtonLabelExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.buttondescription.ButtonDescriptionButtonLabelExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ButtonDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.textdescription.TextDescriptionValueExpressionPropertySection"

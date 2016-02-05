@@ -66,6 +66,17 @@
    
       </description>
    </context>
+   <context id="ButtonDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ButtonDescription description -->
+   
+   <!-- End of user code ButtonDescription description -->
+   
+      </description>
+   </context>
    <context id="LabelDescription">
      <description>
        
@@ -74,6 +85,29 @@
    <!-- Start of user code LabelDescription description -->
    
    <!-- End of user code LabelDescription description -->
+   
+      </description>
+   </context>
+   <context id="CheckboxDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code CheckboxDescription description -->
+   
+   <!-- End of user code CheckboxDescription description -->
+   
+      </description>
+   </context>
+   <context id="SelectDescription">
+     <description>
+       Represents a collection of candidates used to edit a single or multi-valued property.
+
+       
+         
+   <!-- Start of user code SelectDescription description -->
+   
+   <!-- End of user code SelectDescription description -->
    
       </description>
    </context>
@@ -107,18 +141,6 @@
    <!-- Start of user code DynamicMappingCase description -->
    
    <!-- End of user code DynamicMappingCase description -->
-   
-      </description>
-   </context>
-   <context id="SelectDescription">
-     <description>
-       Represents a collection of candidates used to edit a single or multi-valued property.
-
-       
-         
-   <!-- Start of user code SelectDescription description -->
-   
-   <!-- End of user code SelectDescription description -->
    
       </description>
    </context>

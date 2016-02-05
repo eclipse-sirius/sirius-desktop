@@ -12,14 +12,12 @@
 package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Label Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Label Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -27,8 +25,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  */
 public class LabelDescriptionImpl extends WidgetDescriptionImpl implements LabelDescription {
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected LabelDescriptionImpl() {
@@ -36,8 +34,8 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -45,4 +43,4 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
         return PropertiesPackage.Literals.LABEL_DESCRIPTION;
     }
 
-} //LabelDescriptionImpl
+} // LabelDescriptionImpl

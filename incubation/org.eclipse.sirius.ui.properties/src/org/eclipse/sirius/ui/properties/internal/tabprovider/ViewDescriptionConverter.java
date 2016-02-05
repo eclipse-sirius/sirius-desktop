@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
 import java.util.List;
 
+import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFDynamicMappingCase;
@@ -26,6 +27,7 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
@@ -150,6 +152,8 @@ public class ViewDescriptionConverter {
             description = createEEFCheckboxDescription((CheckboxDescription) widgetDescription);
         } else if (widgetDescription instanceof SelectDescription) {
             description = createEEFSelectDescription((SelectDescription) widgetDescription);
+        } else if (widgetDescription instanceof ButtonDescription) {
+            description = createEEFButtonDescription((ButtonDescription) widgetDescription);
         }
 
         return description;
@@ -173,6 +177,17 @@ public class ViewDescriptionConverter {
         eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
         eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
         return eefLabelDescription;
+    }
+
+    private EEFButtonDescription createEEFButtonDescription(ButtonDescription buttonDescription) {
+        EEFButtonDescription eefButtonDescription = EefFactory.eINSTANCE.createEEFButtonDescription();
+
+        eefButtonDescription.setIdentifier(buttonDescription.getIdentifier());
+        eefButtonDescription.setLabelExpression(buttonDescription.getLabelExpression());
+        eefButtonDescription.setButtonLabelExpression(buttonDescription.getButtonLabelExpression());
+        InitialOperation initialOperation = buttonDescription.getInitialOperation();
+        eefButtonDescription.setPushExpression("aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')");
+        return eefButtonDescription;
     }
 
     private EEFCheckboxDescription createEEFCheckboxDescription(CheckboxDescription checkboxDescription) {

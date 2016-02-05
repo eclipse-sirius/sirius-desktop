@@ -14,43 +14,52 @@ package org.eclipse.sirius.properties.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.sirius.properties.*;
+import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.DynamicMappingCase;
+import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.ViewExtensionDescription;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public static PropertiesFactory init() {
         try {
-            PropertiesFactory thePropertiesFactory = (PropertiesFactory)EPackage.Registry.INSTANCE.getEFactory(PropertiesPackage.eNS_URI);
+            PropertiesFactory thePropertiesFactory = (PropertiesFactory) EPackage.Registry.INSTANCE.getEFactory(PropertiesPackage.eNS_URI);
             if (thePropertiesFactory != null) {
                 return thePropertiesFactory;
             }
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             EcorePlugin.INSTANCE.log(exception);
         }
         return new PropertiesFactoryImpl();
     }
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     public PropertiesFactoryImpl() {
@@ -58,32 +67,45 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
-            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION: return createViewExtensionDescription();
-            case PropertiesPackage.PAGE_DESCRIPTION: return createPageDescription();
-            case PropertiesPackage.GROUP_DESCRIPTION: return createGroupDescription();
-            case PropertiesPackage.CONTAINER_DESCRIPTION: return createContainerDescription();
-            case PropertiesPackage.TEXT_DESCRIPTION: return createTextDescription();
-            case PropertiesPackage.LABEL_DESCRIPTION: return createLabelDescription();
-            case PropertiesPackage.CHECKBOX_DESCRIPTION: return createCheckboxDescription();
-            case PropertiesPackage.SELECT_DESCRIPTION: return createSelectDescription();
-            case PropertiesPackage.DYNAMIC_MAPPING_FOR: return createDynamicMappingFor();
-            case PropertiesPackage.DYNAMIC_MAPPING_SWITCH: return createDynamicMappingSwitch();
-            case PropertiesPackage.DYNAMIC_MAPPING_CASE: return createDynamicMappingCase();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION:
+            return createViewExtensionDescription();
+        case PropertiesPackage.PAGE_DESCRIPTION:
+            return createPageDescription();
+        case PropertiesPackage.GROUP_DESCRIPTION:
+            return createGroupDescription();
+        case PropertiesPackage.CONTAINER_DESCRIPTION:
+            return createContainerDescription();
+        case PropertiesPackage.TEXT_DESCRIPTION:
+            return createTextDescription();
+        case PropertiesPackage.BUTTON_DESCRIPTION:
+            return createButtonDescription();
+        case PropertiesPackage.LABEL_DESCRIPTION:
+            return createLabelDescription();
+        case PropertiesPackage.CHECKBOX_DESCRIPTION:
+            return createCheckboxDescription();
+        case PropertiesPackage.SELECT_DESCRIPTION:
+            return createSelectDescription();
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR:
+            return createDynamicMappingFor();
+        case PropertiesPackage.DYNAMIC_MAPPING_SWITCH:
+            return createDynamicMappingSwitch();
+        case PropertiesPackage.DYNAMIC_MAPPING_CASE:
+            return createDynamicMappingCase();
+        default:
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ViewExtensionDescription createViewExtensionDescription() {
@@ -92,8 +114,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public PageDescription createPageDescription() {
@@ -102,8 +124,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public GroupDescription createGroupDescription() {
@@ -112,8 +134,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ContainerDescription createContainerDescription() {
@@ -122,8 +144,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public TextDescription createTextDescription() {
@@ -132,8 +154,18 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ButtonDescription createButtonDescription() {
+        ButtonDescriptionImpl buttonDescription = new ButtonDescriptionImpl();
+        return buttonDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public LabelDescription createLabelDescription() {
@@ -142,8 +174,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public CheckboxDescription createCheckboxDescription() {
@@ -152,8 +184,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public SelectDescription createSelectDescription() {
@@ -162,8 +194,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DynamicMappingFor createDynamicMappingFor() {
@@ -172,8 +204,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DynamicMappingSwitch createDynamicMappingSwitch() {
@@ -182,8 +214,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public DynamicMappingCase createDynamicMappingCase() {
@@ -192,17 +224,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public PropertiesPackage getPropertiesPackage() {
-        return (PropertiesPackage)getEPackage();
+        return (PropertiesPackage) getEPackage();
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @deprecated
      * @generated
      */
@@ -211,4 +243,4 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
         return PropertiesPackage.eINSTANCE;
     }
 
-} //PropertiesFactoryImpl
+} // PropertiesFactoryImpl

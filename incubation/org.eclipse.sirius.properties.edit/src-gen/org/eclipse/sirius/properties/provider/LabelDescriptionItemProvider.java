@@ -11,28 +11,26 @@
  */
 package org.eclipse.sirius.properties.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
 import org.eclipse.sirius.properties.LabelDescription;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.properties.LabelDescription} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link org.eclipse.sirius.properties.LabelDescription} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
-     * This constructs an instance from a factory and a notifier.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This constructs an instance from a factory and a notifier. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public LabelDescriptionItemProvider(AdapterFactory adapterFactory) {
@@ -40,9 +38,9 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
-     * This returns the property descriptors for the adapted class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This returns the property descriptors for the adapted class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -55,9 +53,9 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
-     * This returns LabelDescription.gif.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This returns LabelDescription.gif. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -66,25 +64,23 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
-     * This returns the label text for the adapted class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((LabelDescription)object).getIdentifier();
-        return label == null || label.length() == 0 ?
-            getString("_UI_LabelDescription_type") :
-            getString("_UI_LabelDescription_type") + " " + label;
+        String label = ((LabelDescription) object).getIdentifier();
+        return label == null || label.length() == 0 ? getString("_UI_LabelDescription_type") : getString("_UI_LabelDescription_type") + " " + label;
     }
-    
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to
+     * update any cached children and by creating a viewer notification, which
+     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -94,10 +90,10 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-     * that can be created under this object.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override

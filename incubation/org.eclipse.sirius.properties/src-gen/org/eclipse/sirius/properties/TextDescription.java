@@ -14,15 +14,16 @@ package org.eclipse.sirius.properties;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Text Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Text Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.sirius.properties.TextDescription#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.TextDescription#getInitialOperation <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.TextDescription#getValueExpression
+ * <em>Value Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.TextDescription#getInitialOperation
+ * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,33 +40,40 @@ public interface TextDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription_ValueExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
     String getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.TextDescription#getValueExpression <em>Value Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Value Expression</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.TextDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
      * @generated
      */
     void setValueExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Initial Operation</em>' containment reference
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Initial Operation</em>' containment reference.
+     * 
+     * @return the value of the '<em>Initial Operation</em>' containment
+     *         reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription_InitialOperation()
      * @model containment="true" required="true"
@@ -74,10 +82,14 @@ public interface TextDescription extends WidgetDescription {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.TextDescription#getInitialOperation <em>Initial Operation</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Initial Operation</em>' containment reference.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.TextDescription#getInitialOperation
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Initial Operation</em>' containment
+     *            reference.
      * @see #getInitialOperation()
      * @generated
      */

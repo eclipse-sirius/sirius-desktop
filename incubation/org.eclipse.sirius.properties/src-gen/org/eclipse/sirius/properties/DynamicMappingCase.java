@@ -14,15 +14,17 @@ package org.eclipse.sirius.properties;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Dynamic Mapping Case</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Dynamic Mapping Case</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression <em>Case Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget <em>Widget</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression
+ * <em>Case Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget <em>
+ * Widget</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +41,7 @@ public interface DynamicMappingCase extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Case Expression</em>' attribute.
      * @see #setCaseExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingCase_CaseExpression()
@@ -48,10 +51,13 @@ public interface DynamicMappingCase extends EObject {
     String getCaseExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression <em>Case Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Case Expression</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression
+     * <em>Case Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Case Expression</em>' attribute.
      * @see #getCaseExpression()
      * @generated
      */
@@ -61,10 +67,11 @@ public interface DynamicMappingCase extends EObject {
      * Returns the value of the '<em><b>Widget</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Widget</em>' containment reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Widget</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Widget</em>' containment reference.
      * @see #setWidget(WidgetDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingCase_Widget()
@@ -74,10 +81,13 @@ public interface DynamicMappingCase extends EObject {
     WidgetDescription getWidget();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget <em>Widget</em>}' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Widget</em>' containment reference.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget
+     * <em>Widget</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Widget</em>' containment reference.
      * @see #getWidget()
      * @generated
      */

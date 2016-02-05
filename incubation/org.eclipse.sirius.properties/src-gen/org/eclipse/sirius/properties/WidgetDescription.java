@@ -14,15 +14,17 @@ package org.eclipse.sirius.properties;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Widget Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Widget Description</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression <em>Label Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>
+ * Identifier</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
+ * <em>Label Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,13 +34,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface WidgetDescription extends EObject {
     /**
-     * Returns the value of the '<em><b>Identifier</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Identifier</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Identifier</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_Identifier()
@@ -48,10 +51,13 @@ public interface WidgetDescription extends EObject {
     String getIdentifier();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Identifier</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier
+     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
      * @generated
      */
@@ -65,19 +71,24 @@ public interface WidgetDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_LabelExpression()
-     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
     String getLabelExpression();
 
     /**
-     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Label Expression</em>' attribute.
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
+     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
      * @generated
      */
