@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,7 +87,7 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + ZOOM_SEMANTIC_MODEL_NAME, MODELER_PATH, alternativeSessionResourcePath);
         alternateSession = session;
         alternateSemanticModel = alternateSession.getSemanticResources().iterator().next().getContents().get(0);
-        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
+        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, true);
         TestsUtil.emptyEventsFromUIThread();
 
         String sessionResourcePath = TEMPORARY_PROJECT_NAME + "/" + "session.aird";
@@ -137,8 +137,8 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         final DView view = analysis.getOwnedViews().get(0);
         assertFalse(view.getOwnedRepresentations().isEmpty());
 
-        Command removeRepresentationCmd = RemoveCommand.create(session.getTransactionalEditingDomain(), view, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, view.getOwnedRepresentations()
-                .get(0));
+        Command removeRepresentationCmd = RemoveCommand.create(session.getTransactionalEditingDomain(), view, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS,
+                view.getOwnedRepresentations().get(0));
         session.getTransactionalEditingDomain().getCommandStack().execute(removeRepresentationCmd);
         TestsUtil.synchronizationWithUIThread();
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());

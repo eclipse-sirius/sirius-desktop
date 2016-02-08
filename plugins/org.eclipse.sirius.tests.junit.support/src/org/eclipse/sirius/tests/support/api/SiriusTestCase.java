@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import junit.framework.TestCase;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -117,6 +115,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
+import junit.framework.TestCase;
+
 /**
  * The main test case for viewpoint unit tests.
  * 
@@ -150,8 +150,8 @@ public abstract class SiriusTestCase extends TestCase {
      * The default session URI used when there is no session path passed to the
      * generic setup.
      */
-    protected static final URI DEFAULT_MODELING_PROJECT_REPRESENTATIONS_FILE_URI = URI.createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator
-            + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME, true);
+    protected static final URI DEFAULT_MODELING_PROJECT_REPRESENTATIONS_FILE_URI = URI
+            .createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME, true);
 
     private static final String DOT = ".";
 
@@ -881,7 +881,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the name of the viewpoint to initialize.
      */
     protected final void initViewpoint(final String viewpointName) {
-        initViewpoint(viewpointName, session, semanticModel);
+        initViewpoint(viewpointName, session, true);
     }
 
     /**
@@ -894,8 +894,28 @@ public abstract class SiriusTestCase extends TestCase {
      * @param alternateSemanticModel
      *            the model to use to initialize the viewpoint
      * @since 1.1
+     * @deprecated use
+     *             {@link SiriusTestCase#initViewpoint(String, Session, boolean)}
+     *             instead
      */
+    @Deprecated
     protected final void initViewpoint(final String viewpointName, final Session alternateSession, final EObject alternateSemanticModel) {
+        initViewpoint(viewpointName, alternateSession, true);
+    }
+
+    /**
+     * Initialize a viewpoint.
+     * 
+     * @param viewpointName
+     *            the name of the viewpoint to initialize.
+     * @param alternateSession
+     *            the session to use to initialize the viewpoint
+     * @param initRepresentations
+     *            true to init representations at viewpoint activation, false to
+     *            not do it
+     * @since 1.1
+     */
+    protected final void initViewpoint(final String viewpointName, final Session alternateSession, final boolean initRepresentations) {
         Viewpoint localSessionViewpoint = null;
         for (final Viewpoint viewpoint : viewpoints) {
             if (viewpointName != null && viewpointName.equals(viewpoint.getName())) {
@@ -904,9 +924,9 @@ public abstract class SiriusTestCase extends TestCase {
             }
         }
         if (localSessionViewpoint != null) {
-            Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(alternateSession, new ViewpointSelectionCallback(), Collections.singleton(localSessionViewpoint),
-                    Collections.<Viewpoint> emptySet(), new NullProgressMonitor());
-            alternateSession.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
+            Command changeViewpointsSelectionCmd = new ChangeViewpointSelectionCommand(alternateSession, new ViewpointSelectionCallback(), Collections.singleton(localSessionViewpoint),
+                    Collections.<Viewpoint> emptySet(), initRepresentations, new NullProgressMonitor());
+            alternateSession.getTransactionalEditingDomain().getCommandStack().execute(changeViewpointsSelectionCmd);
         }
     }
 

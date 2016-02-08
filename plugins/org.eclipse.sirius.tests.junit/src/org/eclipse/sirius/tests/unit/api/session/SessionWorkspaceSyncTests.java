@@ -80,8 +80,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
 
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PACKAGES_SEMANTIC_MODEL_FOLDER_PATH + PACKAGES_SEMANTIC_MODEL_NAME, TEMPORARY_PROJECT_NAME + "/"
-                + PACKAGES_SEMANTIC_MODEL_NAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PACKAGES_SEMANTIC_MODEL_FOLDER_PATH + PACKAGES_SEMANTIC_MODEL_NAME,
+                TEMPORARY_PROJECT_NAME + "/" + PACKAGES_SEMANTIC_MODEL_NAME);
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + PACKAGES_SEMANTIC_MODEL_NAME, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         TestsUtil.emptyEventsFromUIThread();
@@ -346,7 +346,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         assertNotNull("Alternate Session has not been well initialized", alternateSession);
         assertNotNull("Alternate Domain has not been well initialized", alternateSession.getTransactionalEditingDomain());
         assertNotNull("Alternate semantic model has not been well initialized", alternateSemanticModel);
-        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
+        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, true);
         TestsUtil.synchronizationWithUIThread();
 
         // Save session 2
@@ -436,8 +436,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
          * reloading an aird should create a not undoable recording command to
          * set new analysis in session object
          */
-        assertFalse("Reloading an aird should create a not undoable recording command to set new analysis in session object. So the command stack should not be undoable.", session
-                .getTransactionalEditingDomain().getCommandStack().canUndo());
+        assertFalse("Reloading an aird should create a not undoable recording command to set new analysis in session object. So the command stack should not be undoable.",
+                session.getTransactionalEditingDomain().getCommandStack().canUndo());
 
         /* editor should not be closed */
         editor.setFocus();

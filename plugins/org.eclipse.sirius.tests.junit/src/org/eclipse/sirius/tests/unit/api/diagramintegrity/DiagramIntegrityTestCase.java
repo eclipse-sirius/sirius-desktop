@@ -27,7 +27,7 @@ public class DiagramIntegrityTestCase extends DocbookTestCase {
         EclipseTestsSupportHelper.INSTANCE.createProject(TEMPORARY_PROJECT_NAME);
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
-
+        initViewpoint(DOCKBOOK_VIEWPOINT_NAME, session, false);
         sessionModel = session.getSessionResource().getContents().get(0);
 
         INTERPRETER = session.getInterpreter();

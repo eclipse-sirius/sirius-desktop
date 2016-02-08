@@ -87,6 +87,11 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.support.api.DefaultTestMemento@ has been created. It help to simulate a real @IMemento@ for editor restoration.
 
+h4. Changes in @org.eclipse.sirius.tests.junit.support@
+
+* <span class="label label-success">Added</span> The method @SiriusTestCase.initViewpoint(String, Session, boolean)@ has been added to allow viewpoint activation without creating representations.
+* <span class="label label-warning">Deprecated</span> The method @SiriusTestCase.initViewpoint(String, Session, EObject)@ has been deprecated because the last parameter is useless to activate a viewpoint.
+
 h2(#sirius3.1.0). Changes in Sirius 3.1.0
 
 h3. User-Visible Changes
