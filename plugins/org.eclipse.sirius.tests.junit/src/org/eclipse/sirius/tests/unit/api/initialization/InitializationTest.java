@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  */
 public class InitializationTest extends SiriusDiagramTestCase {
 
-    /** The name of the simpliest viewpoint. */
+    /** The name of the simplest viewpoint. */
     private static final String SIMPLEST_VP_NAME = "InitializationTest";
 
     /** One node, one container and one list. */
@@ -37,11 +37,6 @@ public class InitializationTest extends SiriusDiagramTestCase {
 
     private static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/initialization/test.ecore";
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -52,9 +47,12 @@ public class InitializationTest extends SiriusDiagramTestCase {
      * Tests the initialization of one diagram and zero mapping.
      */
     public void testSimpleInitialization() {
-        Viewpoint viewpoint = this.getSiriusByName(SIMPLEST_VP_NAME);
+        initViewpoint(SIMPLEST_VP_NAME);
+        Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
+        // The viewpoint activation will create a new representation
+        int nbReps = DialectManager.INSTANCE.getRepresentations(semanticModel, session).size();
         DialectManager.INSTANCE.initRepresentations(viewpoint, semanticModel, new NullProgressMonitor());
-        assertEquals("There is no or more than one diagram(s) in the returned view", 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
+        assertEquals("There is no or more than one diagram(s) in the returned view", nbReps + 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
     }
 
     /**
@@ -65,10 +63,13 @@ public class InitializationTest extends SiriusDiagramTestCase {
      * 
      */
     public void testInitializationWith3Mappings() {
-        Viewpoint viewpoint = this.getSiriusByName(THREE_MAPPINGS);
+        initViewpoint(THREE_MAPPINGS);
+        Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
+        // The viewpoint activation will create a new representation
+        int nbReps = DialectManager.INSTANCE.getRepresentations(semanticModel, session).size();
         DialectManager.INSTANCE.initRepresentations(viewpoint, semanticModel, new NullProgressMonitor());
 
-        assertEquals("There is no or more than one diagram(s) in the returned view", 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
+        assertEquals("There is no or more than one diagram(s) in the returned view", nbReps + 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
 
         final DDiagram diagram = (DDiagram) DialectManager.INSTANCE.getRepresentations(semanticModel, session).toArray()[0];
 
@@ -88,23 +89,6 @@ public class InitializationTest extends SiriusDiagramTestCase {
 
         assertEquals("There is not exactly one simple container", 1, simpleContainer);
         assertEquals("There is not exactly one list container", 1, listContainer);
-
-    }
-
-    /**
-     * Returns the viewpoint having the specified name.
-     * 
-     * @param name
-     *            name of the viewpoint to return.
-     * @return the viewpoint having the specified name.
-     */
-    private Viewpoint getSiriusByName(String name) {
-        for (Viewpoint vp : viewpoints) {
-            if (vp.getName() != null && vp.getName().equals(name)) {
-                return vp;
-            }
-        }
-        return null;
     }
 
 }
