@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class EdgeSizeTest extends SiriusDiagramTestCase {
 
         TestsUtil.emptyEventsFromUIThread();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
-
+        initViewpoint("VP-1879");
         diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME);
         assertNotNull(diagram);
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
