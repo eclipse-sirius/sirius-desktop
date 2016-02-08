@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,8 +27,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -179,53 +176,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      */
     @Override
     public boolean canRefresh(DRepresentation representation) {
-        return isSupported(representation) && areRequiredViewpointsSelected(representation);
-    }
-
-    private boolean areRequiredViewpointsSelected(DRepresentation representation) {
-        boolean areRequiredViewpointsSelected = false;
-        if (representation != null) {
-            Collection<Viewpoint> requiredViewpoints = getRequiredViewpoints(representation);
-            if (!requiredViewpoints.isEmpty()) {
-                Session session = new EObjectQuery(representation).getSession();
-                if (session != null) {
-                    areRequiredViewpointsSelected = session.getSelectedViewpoints(false).containsAll(requiredViewpoints);
-                }
-            }
-        }
-        return areRequiredViewpointsSelected;
-    }
-
-    /**
-     * Tell if the {@link Viewpoint} owner of the
-     * {@link RepresentationDescription} is enabled on {@link Session}.
-     * 
-     * @param session
-     *            the {@link Session}
-     * @param representationDescription
-     *            a {@link RepresentationDescription} in the context of the
-     *            {@link Session}
-     * @return true if the {@link Viewpoint} owner of the
-     *         {@link RepresentationDescription} is enabled on {@link Session}
-     */
-    protected boolean isRelatedViewpointSelected(Session session, RepresentationDescription representationDescription) {
-        boolean isRelatedViewpointSelected = false;
-        Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
-        isRelatedViewpointSelected = session != null && parentViewpoint != null && session.getSelectedViewpoints(false).contains(parentViewpoint);
-        return isRelatedViewpointSelected;
-    }
-
-    @Override
-    public Set<Viewpoint> getRequiredViewpoints(DRepresentation representation) {
-        Set<Viewpoint> requiredViewpoints = new LinkedHashSet<Viewpoint>();
-        RepresentationDescription representationDescription = getDescription(representation);
-        if (representationDescription != null) {
-            Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
-            if (parentViewpoint != null) {
-                requiredViewpoints.add(parentViewpoint);
-            }
-        }
-        return requiredViewpoints;
+        return isSupported(representation);
     }
 
     /**
