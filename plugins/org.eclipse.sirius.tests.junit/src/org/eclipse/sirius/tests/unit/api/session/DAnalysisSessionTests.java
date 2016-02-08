@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -69,6 +70,8 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
+        initViewpoint("UML2 Benchmarks Acceleo");
+        initViewpoint("UML2 Benchmarks OCL");
     }
 
     /**
@@ -101,16 +104,12 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         final RepresentationDescription representationDescription = description;
         while (it.hasNext()) {
             final EObject cur = it.next();
-            if (DialectManager.INSTANCE.canCreate(cur, description)) {
-                editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
-                    @Override
-                    protected void doExecute() {
-                        doOpenSession();
-                        final DRepresentation rep = DialectManager.INSTANCE.createRepresentation("Diagram for " + cur, cur, representationDescription, session, new NullProgressMonitor());
-                        Assert.assertNotNull("The representation has not been created ! ", rep);
-                        representations.add(rep);
-                    }
-                });
+            if (DialectManager.INSTANCE.canCreate(cur, representationDescription)) {
+                CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, representationDescription, cur, "Diagram for " + cur, new NullProgressMonitor());
+                editingDomain.getCommandStack().execute(createRepresentationCommand);
+                DRepresentation rep = createRepresentationCommand.getCreatedRepresentation();
+                Assert.assertNotNull("The representation has not been created ! ", rep);
+                representations.add(rep);
             }
         }
         Assert.assertEquals("We should have " + wantedRepresentations + " representations", wantedRepresentations, representations.size());
