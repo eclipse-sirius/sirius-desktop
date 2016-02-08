@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
+import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.suite.common.AllCommonPluginTests;
 import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramPluginsTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
 import org.eclipse.sirius.tests.suite.table.AllTablePluginTests;
 import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
+import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
 
 public class AllSiriusTestSuite extends TestCase {
 
@@ -34,6 +37,12 @@ public class AllSiriusTestSuite extends TestCase {
         TestRunner.run(suite());
     }
 
+    public static class JUnitBundlesReport extends AvailableBundlesReportTest {
+        public JUnitBundlesReport() {
+            super(SiriusTestsPlugin.getDefault().getBundle(), "JUnit");
+        }
+    }
+    
     /**
      * Add the gerrit part of the Junit tests to the specified suite.
      * 
@@ -41,6 +50,7 @@ public class AllSiriusTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addGerritPart(TestSuite suite) {
+        suite.addTest(new JUnit4TestAdapter(JUnitBundlesReport.class));
         suite.addTest(AllCommonStandaloneTests.suite());
         suite.addTest(AllTableStandaloneTests.suite());
         suite.addTest(AllDiagramStandaloneTests.suite());

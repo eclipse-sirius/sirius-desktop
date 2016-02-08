@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessagesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnSequenceDiagramTest;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragments2Tests;
@@ -82,6 +84,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SyncCall3Test;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallInOperandReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallTest;
+import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
 
 /**
  * All SWTBot tests on sequence diagram.
@@ -100,6 +103,13 @@ public class SequenceSwtBotTestSuite extends TestCase {
         TestRunner.run(suite());
     }
 
+    @SuppressWarnings("javadoc")
+    public static class SWTBotSequenceBundlesReport extends AvailableBundlesReportTest {
+        public SWTBotSequenceBundlesReport() {
+            super(Activator.getDefault().getBundle(), "SWTBot-Sequence");
+        }
+    }
+
     /**
      * Add the gerrit part of the Sequence tests to the specified suite.
      * 
@@ -107,6 +117,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addGerritPart(TestSuite suite) {
+        suite.addTest(new JUnit4TestAdapter(SWTBotSequenceBundlesReport.class));
         suite.addTestSuite(InstanceRoleResizableEditPolicyTests.class);
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
@@ -139,7 +150,6 @@ public class SequenceSwtBotTestSuite extends TestCase {
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
-
         addGerritPart(suite);
 
         suite.addTestSuite(SequenceReturnMessageTest.class);

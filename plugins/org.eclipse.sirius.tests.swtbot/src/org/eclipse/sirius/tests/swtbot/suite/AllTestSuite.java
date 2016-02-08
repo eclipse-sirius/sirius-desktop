@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,12 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -63,12 +69,8 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
-
+import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
 import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -85,6 +87,13 @@ public class AllTestSuite extends TestCase {
      */
     public static void main(final String[] args) {
         TestRunner.run(suite());
+    }
+    
+    @SuppressWarnings("javadoc")
+    public static class SWTBotBundlesReport extends AvailableBundlesReportTest {
+        public SWTBotBundlesReport() {
+            super(Activator.getDefault().getBundle(), "SWTBot");
+        }
     }
 
     /**
@@ -106,6 +115,7 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addGerritPart1(TestSuite suite) {
+        suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
         suite.addTestSuite(ContentAssistTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
@@ -151,7 +161,7 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addGerritPart2(TestSuite suite) {
-
+        suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
         suite.addTestSuite(NoteCreationTest.class);
         suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(VSMFieldTest.class);
