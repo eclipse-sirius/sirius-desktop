@@ -64,10 +64,6 @@ public class EdgeSizeTest extends SiriusDiagramTestCase {
      * Test method.
      */
     public void testConsistentEdgeSizes() {
-        doTest();
-    }
-
-    private void doTest() {
         /* Check tests datas */
         assertEquals("The diagram should contain 8 edges", 8, diagram.getEdges().size());
 
