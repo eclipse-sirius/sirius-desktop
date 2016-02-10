@@ -11,7 +11,9 @@
   <pages identifier="org.eclipse.sirius.ui.properties.defaultpage"
       labelExpression="General"
       groups="//@groups.0"/>
-  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup">
+  <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup"
+      labelExpression="Properties"
+      semanticCandidateExpression="">
     <container>
       <dynamicMappings
           iterator="eStructuralFeature"
@@ -25,6 +27,19 @@
                 identifier=""
                 labelExpression="aql:eStructuralFeature.name"
                 valueExpression="aql:self.eGet(eStructuralFeature).toString()">
+              <initialOperation>
+                <firstModelOperations
+                    xsi:type="tool:ChangeContext"
+                    browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+              </initialOperation>
+            </widget>
+          </cases>
+          <cases
+              caseExpression="EBoolean">
+            <widget
+                xsi:type="properties:CheckboxDescription"
+                labelExpression="aql:eStructuralFeature.name"
+                valueExpression="aql:self.eGet(eStructuralFeature)">
               <initialOperation>
                 <firstModelOperations
                     xsi:type="tool:ChangeContext"
