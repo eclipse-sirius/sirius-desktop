@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal;
 
-import org.eclipse.eef.core.api.AbstractEEFEclipsePlugin;
+import org.eclipse.eef.common.api.AbstractEEFEclipsePlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
