@@ -44,8 +44,9 @@ public class SiriusToolServices {
      *            The current EObject
      * @param initialCommandUri
      *            the URI of the operation to execute
+     * @return the model elemnt on which the tool was executed.
      */
-    public void executeOperation(EObject eObject, String initialCommandUri) {
+    public EObject executeOperation(EObject eObject, String initialCommandUri) {
         Session session = new EObjectQuery(eObject).getSession();
         ModelAccessor modelAccessor = session.getModelAccessor();
         TaskHelper taskHelper = new TaskHelper(modelAccessor, new NoUICallback());
@@ -69,6 +70,7 @@ public class SiriusToolServices {
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
         }
+        return eObject;
     }
 
     /**
