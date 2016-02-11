@@ -1460,16 +1460,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
         addAnnotation(getTreeDescription_PreconditionExpression(), source, new String[] {});
         addAnnotation(getTreeItemMapping_PreconditionExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTreeItemMapping_SemanticCandidatesExpression(), source, new String[] { "tree", "tree.DTree | current DTree.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTreeMapping_SemanticElements(), source, new String[] { "view", "tree.DTreeElement | current DTreeElement.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTreeElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
         });
     }
 

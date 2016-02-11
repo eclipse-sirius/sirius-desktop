@@ -93,7 +93,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
     public String getText(Object object) {
         String label = ((MappingBasedDecoration) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_MappingBasedDecoration_type") : //$NON-NLS-1$
-            getString("_UI_MappingBasedDecoration_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_MappingBasedDecoration_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -38,7 +38,7 @@ import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
  * @generated
  */
 public class ForegroundStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

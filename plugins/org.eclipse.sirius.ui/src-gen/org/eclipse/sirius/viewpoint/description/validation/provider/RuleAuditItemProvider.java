@@ -99,7 +99,7 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
     public String getText(Object object) {
         String label = ((RuleAudit) object).getAuditExpression();
         return label == null || label.length() == 0 ? getString("_UI_RuleAudit_type") : //$NON-NLS-1$
-            getString("_UI_RuleAudit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_RuleAudit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

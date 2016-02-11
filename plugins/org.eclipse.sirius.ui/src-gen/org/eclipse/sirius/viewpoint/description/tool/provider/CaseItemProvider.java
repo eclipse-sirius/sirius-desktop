@@ -91,7 +91,7 @@ public class CaseItemProvider extends SwitchChildItemProvider {
     public String getText(Object object) {
         String label = ((Case) object).getConditionExpression();
         return label == null || label.length() == 0 ? getString("_UI_Case_type") : //$NON-NLS-1$
-            getString("_UI_Case_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_Case_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

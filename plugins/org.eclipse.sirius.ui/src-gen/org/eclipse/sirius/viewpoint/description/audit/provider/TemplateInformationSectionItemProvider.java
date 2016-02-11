@@ -92,7 +92,7 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
     public String getText(Object object) {
         String label = ((TemplateInformationSection) object).getTemplatePath();
         return label == null || label.length() == 0 ? getString("_UI_TemplateInformationSection_type") : //$NON-NLS-1$
-            getString("_UI_TemplateInformationSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_TemplateInformationSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

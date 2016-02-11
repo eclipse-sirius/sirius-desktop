@@ -107,7 +107,7 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
     public String getText(Object object) {
         String label = ((MoveElement) object).getFeatureName();
         return label == null || label.length() == 0 ? getString("_UI_MoveElement_type") : //$NON-NLS-1$
-            getString("_UI_MoveElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_MoveElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

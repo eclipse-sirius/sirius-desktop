@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  * @generated
  */
 public class EStructuralFeatureCustomizationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-IItemLabelProvider, IItemPropertySource {
+        IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

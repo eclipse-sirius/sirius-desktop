@@ -2068,13 +2068,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         addAnnotation(getNodeCreationDescription_ViewVariable(), source, new String[] { "type", "diagram.DDiagramElementContainer" //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getEdgeCreationDescription_ConnectionStartPrecondition(), source, new String[] { "container", "ecore.EObject | the semantic element of diagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "preSourceView", "diagram.EdgeTarget | (edge only) the source view of the current potential edge.", //$NON-NLS-1$ //$NON-NLS-2$
-            "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", //$NON-NLS-1$ //$NON-NLS-2$
-            "diagram", "diagram.DDiagram | the diagram of the current potential edge" //$NON-NLS-1$ //$NON-NLS-2$
+                "preSourceView", "diagram.EdgeTarget | (edge only) the source view of the current potential edge.", //$NON-NLS-1$ //$NON-NLS-2$
+                "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "diagram.DDiagram | the diagram of the current potential edge" //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getDeleteHookParameter_Value(), source, new String[] {});
         addAnnotation(getDirectEditLabel_InputLabelExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "view", "diagram.DDiagramElement | the current view for which the label is calculated." //$NON-NLS-1$ //$NON-NLS-2$
+                "view", "diagram.DDiagramElement | the current view for which the label is calculated." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getCreateView_ContainerViewExpression(), source, new String[] {});
         addAnnotation(getCreateEdgeView_SourceExpression(), source, new String[] {});

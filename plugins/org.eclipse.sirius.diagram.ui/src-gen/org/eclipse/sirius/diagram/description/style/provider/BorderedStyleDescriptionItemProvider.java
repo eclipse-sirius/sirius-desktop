@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * @generated
  */
 public class BorderedStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -133,7 +133,7 @@ IItemPropertySource {
     public String getText(Object object) {
         String label = ((BorderedStyleDescription) object).getBorderSizeComputationExpression();
         return label == null || label.length() == 0 ? getString("_UI_BorderedStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_BorderedStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_BorderedStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

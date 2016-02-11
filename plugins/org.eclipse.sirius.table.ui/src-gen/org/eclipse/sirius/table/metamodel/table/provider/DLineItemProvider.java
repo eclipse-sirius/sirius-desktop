@@ -221,7 +221,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
     public String getText(Object object) {
         String label = ((DLine) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DLine_type") : //$NON-NLS-1$
-            getString("_UI_DLine_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DLine_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

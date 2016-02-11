@@ -107,7 +107,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
     public String getText(Object object) {
         String label = ((CreateEdgeView) object).getVariableName();
         return label == null || label.length() == 0 ? getString("_UI_CreateEdgeView_type") : //$NON-NLS-1$
-            getString("_UI_CreateEdgeView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CreateEdgeView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

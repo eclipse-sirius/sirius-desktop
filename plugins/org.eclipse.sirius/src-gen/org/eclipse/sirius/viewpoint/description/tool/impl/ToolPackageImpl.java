@@ -2952,20 +2952,20 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         addAnnotation(getToolDescription_ElementView(), source, new String[] { "type", "ecore.EObject" //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "viewpoint.DSemanticDecorator | the selected view.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | the semantic element of containerView." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getRepresentationCreationDescription_TitleExpression(), source, new String[] {});
         addAnnotation(getRepresentationCreationDescription_BrowseExpression(), source, new String[] {});

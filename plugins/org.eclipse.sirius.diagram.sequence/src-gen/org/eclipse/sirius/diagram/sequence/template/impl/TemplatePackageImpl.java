@@ -1435,42 +1435,42 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
         addAnnotation(getTAbstractMapping_SemanticCandidatesExpression(), source, new String[] { "containerView", "the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
-            "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTSequenceDiagram_EndsOrdering(), source, new String[] { "eventEnds", "a List<EObject> containing the semantic event ends." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTLifelineMapping_EolVisibleExpression(), source, new String[] { "containerView", "the view that sould contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTLifelineStyle_LifelineWidthComputationExpression(), source, new String[] {});
         addAnnotation(getTConditionalLifelineStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTExecutionMapping_StartingEndFinderExpression(), source, new String[] {});
         addAnnotation(getTExecutionMapping_FinishingEndFinderExpression(), source, new String[] {});
         addAnnotation(getTExecutionStyle_BorderSizeComputationExpression(), source, new String[] {});
         addAnnotation(getTConditionalExecutionStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTMessageMapping_SendingEndFinderExpression(), source, new String[] {});
         addAnnotation(getTMessageMapping_ReceivingEndFinderExpression(), source, new String[] {});
         addAnnotation(getTMessageStyle_LabelExpression(), source, new String[] { "diagram", "the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "view", "the current view for which the label is calculated." //$NON-NLS-1$ //$NON-NLS-2$
+                "view", "the current view for which the label is calculated." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTConditionalMessageStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTSourceTargetMessageMapping_SourceFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTSourceTargetMessageMapping_TargetFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-            "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getTReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] {});
     }

@@ -118,7 +118,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
     public String getText(Object object) {
         String label = ((ConditionalNodeStyleDescription) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_ConditionalNodeStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_ConditionalNodeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ConditionalNodeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -208,7 +208,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     public String getText(Object object) {
         String label = ((DCell) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DCell_type") : //$NON-NLS-1$
-            getString("_UI_DCell_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DCell_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

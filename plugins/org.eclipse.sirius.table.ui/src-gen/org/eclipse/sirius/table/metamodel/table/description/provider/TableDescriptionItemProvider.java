@@ -334,12 +334,12 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
 
         // add creation description tools for known representations
         newChildDescriptors
-        .addAll(DialectUIManager.INSTANCE
-                .provideRepresentationCreationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS));
+                .addAll(DialectUIManager.INSTANCE
+                        .provideRepresentationCreationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS));
         // add navigation description tools for known representations
         newChildDescriptors
-        .addAll(DialectUIManager.INSTANCE
-                .provideRepresentationNavigationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS));
+                .addAll(DialectUIManager.INSTANCE
+                        .provideRepresentationNavigationToolDescriptors(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS));
 
         collectCreateLineTool(newChildDescriptors);
 

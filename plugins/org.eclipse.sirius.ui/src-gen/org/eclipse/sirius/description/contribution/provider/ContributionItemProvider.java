@@ -75,19 +75,10 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Contribution_description_feature"), //$NON-NLS-1$
-                 getString("_UI_PropertyDescriptor_description", "_UI_Contribution_description_feature", "_UI_Contribution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                 ContributionPackage.Literals.CONTRIBUTION__DESCRIPTION,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_Contribution_description_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Contribution_description_feature", "_UI_Contribution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ContributionPackage.Literals.CONTRIBUTION__DESCRIPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     @Override
@@ -96,10 +87,13 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This specifies how to implement {@link #getChildren} and is used to
+     * deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand},
+     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in
+     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -116,35 +110,37 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper feature to use for
+        // Check the type of the specified child object and return the proper
+        // feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns the label text for the adapted class.
-     * <!-- begin-user-doc
+     * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((Contribution)object).getDescription();
-        return label == null || label.length() == 0 ?
-            getString("_UI_Contribution_type") : //$NON-NLS-1$
-            getString("_UI_Contribution_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        String label = ((Contribution) object).getDescription();
+        return label == null || label.length() == 0 ? getString("_UI_Contribution_type") : //$NON-NLS-1$
+                getString("_UI_Contribution_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to
+     * update any cached children and by creating a viewer notification, which
+     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -152,15 +148,15 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
         updateChildren(notification);
 
         switch (notification.getFeatureID(Contribution.class)) {
-            case ContributionPackage.CONTRIBUTION__DESCRIPTION:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-            case ContributionPackage.CONTRIBUTION__SOURCE:
-            case ContributionPackage.CONTRIBUTION__TARGET:
-            case ContributionPackage.CONTRIBUTION__FEATURE_MASK:
-            case ContributionPackage.CONTRIBUTION__SUB_CONTRIBUTIONS:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
+        case ContributionPackage.CONTRIBUTION__DESCRIPTION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case ContributionPackage.CONTRIBUTION__SOURCE:
+        case ContributionPackage.CONTRIBUTION__TARGET:
+        case ContributionPackage.CONTRIBUTION__FEATURE_MASK:
+        case ContributionPackage.CONTRIBUTION__SUB_CONTRIBUTIONS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
         }
         super.notifyChanged(notification);
     }
@@ -176,60 +172,27 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__SOURCE,
-                 ContributionFactory.eINSTANCE.createDirectEObjectReference()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__SOURCE, ContributionFactory.eINSTANCE.createDirectEObjectReference()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__SOURCE,
-                 ContributionFactory.eINSTANCE.createComputedEObjectReference()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__SOURCE, ContributionFactory.eINSTANCE.createComputedEObjectReference()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__TARGET,
-                 ContributionFactory.eINSTANCE.createDirectEObjectReference()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__TARGET, ContributionFactory.eINSTANCE.createDirectEObjectReference()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__TARGET,
-                 ContributionFactory.eINSTANCE.createComputedEObjectReference()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__TARGET, ContributionFactory.eINSTANCE.createComputedEObjectReference()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createIgnoreFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createIgnoreFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createSetFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createSetFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createAddFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createAddFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createRemoveFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createRemoveFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createClearFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createClearFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK,
-                 ContributionFactory.eINSTANCE.createResetFeatureContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__FEATURE_MASK, ContributionFactory.eINSTANCE.createResetFeatureContribution()));
 
-        newChildDescriptors.add
-            (createChildParameter
-                (ContributionPackage.Literals.CONTRIBUTION__SUB_CONTRIBUTIONS,
-                 ContributionFactory.eINSTANCE.createContribution()));
+        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION__SUB_CONTRIBUTIONS, ContributionFactory.eINSTANCE.createContribution()));
     }
 
     /**
@@ -244,14 +207,11 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify =
-            childFeature == ContributionPackage.Literals.CONTRIBUTION__SOURCE ||
-            childFeature == ContributionPackage.Literals.CONTRIBUTION__TARGET;
+        boolean qualify = childFeature == ContributionPackage.Literals.CONTRIBUTION__SOURCE || childFeature == ContributionPackage.Literals.CONTRIBUTION__TARGET;
 
         if (qualify) {
-            return getString
-                ("_UI_CreateChild_text2", //$NON-NLS-1$
-                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

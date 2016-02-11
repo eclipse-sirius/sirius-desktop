@@ -151,7 +151,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     public String getTextGen(Object object) {
         String label = ((NodeMappingImport) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_NodeMappingImport_type") : //$NON-NLS-1$
-            getString("_UI_NodeMappingImport_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_NodeMappingImport_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -21,8 +21,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.SetFeatureContribution} object.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
+ * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class SetFeatureContributionItemProvider extends FeatureContributionItemProvider {
@@ -52,9 +54,9 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
     }
 
     /**
-     * This returns SetFeatureContribution.gif.
-     * <!-- begin-user-doc --> <!--
+     * This returns SetFeatureContribution.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -87,10 +89,11 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to
+     * update any cached children and by creating a viewer notification, which
+     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     @Override

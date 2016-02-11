@@ -137,7 +137,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
     public String getText(Object object) {
         String label = ((WorkspaceImageDescription) object).getWorkspacePath();
         return label == null || label.length() == 0 ? getString("_UI_WorkspaceImageDescription_type") : //$NON-NLS-1$
-            getString("_UI_WorkspaceImageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_WorkspaceImageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

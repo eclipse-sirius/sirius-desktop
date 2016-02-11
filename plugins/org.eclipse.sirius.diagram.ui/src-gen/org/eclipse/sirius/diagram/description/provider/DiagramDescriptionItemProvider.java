@@ -629,7 +629,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
                 ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors
-        .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
                 DescriptionFactory.eINSTANCE.createAdditionalLayer()));

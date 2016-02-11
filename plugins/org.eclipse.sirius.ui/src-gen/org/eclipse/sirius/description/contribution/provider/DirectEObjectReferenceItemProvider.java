@@ -31,8 +31,10 @@ import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.DirectEObjectReference} object.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
+ * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -70,25 +72,17 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_DirectEObjectReference_value_feature"), //$NON-NLS-1$
-                 getString("_UI_PropertyDescriptor_description", "_UI_DirectEObjectReference_value_feature", "_UI_DirectEObjectReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                 ContributionPackage.Literals.DIRECT_EOBJECT_REFERENCE__VALUE,
-                 true,
-                 false,
-                 true,
-                 null,
-                 getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                 null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DirectEObjectReference_value_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DirectEObjectReference_value_feature", "_UI_DirectEObjectReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ContributionPackage.Literals.DIRECT_EOBJECT_REFERENCE__VALUE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
-     * This returns DirectEObjectReference.gif.
-     * <!-- begin-user-doc --> <!--
+     * This returns DirectEObjectReference.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -124,10 +118,11 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to
+     * update any cached children and by creating a viewer notification, which
+     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -135,9 +130,9 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
         updateChildren(notification);
 
         switch (notification.getFeatureID(DirectEObjectReference.class)) {
-            case ContributionPackage.DIRECT_EOBJECT_REFERENCE__VALUE:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
+        case ContributionPackage.DIRECT_EOBJECT_REFERENCE__VALUE:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         }
         super.notifyChanged(notification);
     }

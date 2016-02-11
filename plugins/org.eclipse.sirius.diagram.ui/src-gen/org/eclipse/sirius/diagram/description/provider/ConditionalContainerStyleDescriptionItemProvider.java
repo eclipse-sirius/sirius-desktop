@@ -115,7 +115,7 @@ public class ConditionalContainerStyleDescriptionItemProvider extends Conditiona
     public String getText(Object object) {
         String label = ((ConditionalContainerStyleDescription) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_ConditionalContainerStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_ConditionalContainerStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ConditionalContainerStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

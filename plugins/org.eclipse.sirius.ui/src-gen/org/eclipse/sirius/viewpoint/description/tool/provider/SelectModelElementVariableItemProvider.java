@@ -183,7 +183,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     public String getText(Object object) {
         String label = ((SelectModelElementVariable) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_SelectModelElementVariable_type") : //$NON-NLS-1$
-            getString("_UI_SelectModelElementVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_SelectModelElementVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

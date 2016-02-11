@@ -91,7 +91,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
     public String getText(Object object) {
         String label = ((CustomStyle) object).getId();
         return label == null || label.length() == 0 ? getString("_UI_CustomStyle_type") : //$NON-NLS-1$
-            getString("_UI_CustomStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CustomStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

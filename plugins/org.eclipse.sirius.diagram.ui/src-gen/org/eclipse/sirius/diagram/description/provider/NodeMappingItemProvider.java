@@ -157,7 +157,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     public String getTextGen(Object object) {
         String label = ((NodeMapping) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : //$NON-NLS-1$
-            getString("_UI_NodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_NodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

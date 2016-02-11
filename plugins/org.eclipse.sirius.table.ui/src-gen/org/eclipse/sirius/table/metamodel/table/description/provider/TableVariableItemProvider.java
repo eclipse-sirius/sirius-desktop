@@ -70,11 +70,11 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider {
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TableVariable_documentation_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_TableVariable_documentation_feature", "_UI_TableVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        DescriptionPackage.Literals.TABLE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
-                        null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_TableVariable_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TableVariable_documentation_feature", "_UI_TableVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TABLE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**

@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
  * @generated
  */
 public class SytemColorsPaletteItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

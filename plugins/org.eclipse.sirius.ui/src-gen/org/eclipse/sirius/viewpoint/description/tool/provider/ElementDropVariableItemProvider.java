@@ -111,8 +111,8 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
     @Override
     public String getText(Object object) {
         String label = ((ElementDropVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ElementDropVariable_type") //$NON-NLS-1$
-                : getString("_UI_ElementDropVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        return label == null || label.length() == 0 ? getString("_UI_ElementDropVariable_type") : //$NON-NLS-1$
+                getString("_UI_ElementDropVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -153,7 +153,6 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
         // newChildDescriptors.add(createChildParameter(ToolPackage.Literals.VARIABLE_CONTAINER__SUB_VARIABLES,
         // DescriptionFactory.eINSTANCE.createTypedVariable()));
     }
-
 
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s

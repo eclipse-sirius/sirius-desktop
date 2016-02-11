@@ -115,7 +115,7 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
     public String getText(Object object) {
         String label = ((ConditionalEdgeStyleDescription) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_ConditionalEdgeStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_ConditionalEdgeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ConditionalEdgeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

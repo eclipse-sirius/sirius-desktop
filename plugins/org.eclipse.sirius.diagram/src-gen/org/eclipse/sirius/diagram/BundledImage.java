@@ -55,7 +55,7 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -85,7 +85,7 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()
@@ -101,7 +101,7 @@ public interface BundledImage extends NodeStyle {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Provided Shape ID</em>' attribute.
      * @see #setProvidedShapeID(String)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_ProvidedShapeID()
@@ -115,7 +115,7 @@ public interface BundledImage extends NodeStyle {
      * {@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeID
      * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Provided Shape ID</em>' attribute.
      * @see #getProvidedShapeID()

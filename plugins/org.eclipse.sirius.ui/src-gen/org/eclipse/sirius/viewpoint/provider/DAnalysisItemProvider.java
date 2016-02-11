@@ -190,7 +190,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     public String getText(Object object) {
         String label = ((DAnalysis) object).getVersion();
         return label == null || label.length() == 0 ? getString("_UI_DAnalysis_type") : //$NON-NLS-1$
-            getString("_UI_DAnalysis_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DAnalysis_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

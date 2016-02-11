@@ -55,7 +55,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -152,6 +151,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public Implementation() {
             super();
+
             // Remember the static instance.
             //
             DiagramUIPlugin.plugin = this;

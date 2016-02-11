@@ -91,7 +91,7 @@ public class IfItemProvider extends ContainerModelOperationItemProvider {
     public String getText(Object object) {
         String label = ((If) object).getConditionExpression();
         return label == null || label.length() == 0 ? getString("_UI_If_type") : //$NON-NLS-1$
-            getString("_UI_If_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_If_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

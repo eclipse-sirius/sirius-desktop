@@ -105,7 +105,7 @@ public class SetObjectItemProvider extends ContainerModelOperationItemProvider {
     public String getText(Object object) {
         String label = ((SetObject) object).getFeatureName();
         return label == null || label.length() == 0 ? getString("_UI_SetObject_type") : //$NON-NLS-1$
-            getString("_UI_SetObject_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_SetObject_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

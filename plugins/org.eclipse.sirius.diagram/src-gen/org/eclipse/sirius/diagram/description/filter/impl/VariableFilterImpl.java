@@ -223,8 +223,8 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         case FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES:
             return ownedVariables != null && !ownedVariables.isEmpty();
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null
-                    : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
+            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
+                    .equals(semanticConditionExpression);
         }
         return super.eIsSet(featureID);
     }

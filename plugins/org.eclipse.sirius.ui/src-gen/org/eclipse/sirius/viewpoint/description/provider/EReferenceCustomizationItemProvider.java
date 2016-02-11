@@ -105,7 +105,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
     public String getText(Object object) {
         String label = ((EReferenceCustomization) object).getReferenceName();
         return label == null || label.length() == 0 ? getString("_UI_EReferenceCustomization_type") : //$NON-NLS-1$
-            getString("_UI_EReferenceCustomization_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_EReferenceCustomization_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

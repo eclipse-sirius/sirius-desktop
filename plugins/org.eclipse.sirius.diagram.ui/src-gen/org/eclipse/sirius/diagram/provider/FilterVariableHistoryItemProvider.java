@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * @generated
  */
 public class FilterVariableHistoryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

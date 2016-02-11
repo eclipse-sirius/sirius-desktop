@@ -114,7 +114,7 @@ public class ColorStepItemProvider extends ItemProviderAdapter implements IEditi
     public String getText(Object object) {
         String label = ((ColorStep) object).getAssociatedValue();
         return label == null || label.length() == 0 ? getString("_UI_ColorStep_type") : //$NON-NLS-1$
-            getString("_UI_ColorStep_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ColorStep_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

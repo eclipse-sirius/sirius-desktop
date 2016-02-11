@@ -2133,48 +2133,48 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
         addAnnotation(getTableDescription_PreconditionExpression(), source, new String[] {});
         addAnnotation(getTableMapping_SemanticElements(), source, new String[] { "view", "table.DTableElement | current DTableElement (DCell, DColumn, DLine, ...).", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "ecore.EObject | container of the current DTableElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "ecore.EObject | container of the current DTableElement (variable is available if container is not null).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getLineMapping_SemanticCandidatesExpression(), source, new String[] { "viewpoint", "table.DTable | (deprecated) current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "table", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "root", "ecore.EObject | semantic target of $table.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "table.LineContainer | current LineContainer (DLine or DTable).", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
+                "table", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
+                "root", "ecore.EObject | semantic target of $table.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "table.LineContainer | current LineContainer (DLine or DTable).", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getLineMapping_HeaderLabelExpression(), source, new String[] {});
         addAnnotation(getColumnMapping_HeaderLabelExpression(), source, new String[] {});
         addAnnotation(getElementColumnMapping_SemanticCandidatesExpression(), source, new String[] { "viewpoint", "table.DTable | (deprecated) current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "table", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "containerView", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic element targeted by the current DTable." //$NON-NLS-1$ //$NON-NLS-2$
+                "table", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
+                "containerView", "table.DTable | current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic element targeted by the current DTable." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getFeatureColumnMapping_LabelExpression(), source, new String[] { "root", "ecore.EObject | semantic target of the current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "line", "table.DLine | DLine of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
-            "lineSemantic", "ecore.EObject | semantic target of $line", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $line.", //$NON-NLS-1$ //$NON-NLS-2$
-            "column", "table.DColumn | DColumn of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
-            "columnSemantic", "ecore.EObject | semantic target of $column" //$NON-NLS-1$ //$NON-NLS-2$
+                "line", "table.DLine | DLine of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
+                "lineSemantic", "ecore.EObject | semantic target of $line", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $line.", //$NON-NLS-1$ //$NON-NLS-2$
+                "column", "table.DColumn | DColumn of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
+                "columnSemantic", "ecore.EObject | semantic target of $column" //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getFeatureColumnMapping_FeatureParentExpression(), source, new String[] { "root", "ecore.EObject | semantic target of the current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of the current DLine." //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of the current DLine." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getCellUpdater_CanEdit(), source, new String[] {});
         addAnnotation(getIntersectionMapping_LabelExpression(), source, new String[] { "root", "ecore.EObject | semantic target of the current DTable.", //$NON-NLS-1$ //$NON-NLS-2$
-            "line", "table.DLine | DLine of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
-            "lineSemantic", "ecore.EObject | semantic target of $line", //$NON-NLS-1$ //$NON-NLS-2$
-            "container", "ecore.EObject | semantic target of $line.", //$NON-NLS-1$ //$NON-NLS-2$
-            "column", "table.DColumn | DColumn of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
-            "columnSemantic", "ecore.EObject | semantic target of $column" //$NON-NLS-1$ //$NON-NLS-2$
+                "line", "table.DLine | DLine of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
+                "lineSemantic", "ecore.EObject | semantic target of $line", //$NON-NLS-1$ //$NON-NLS-2$
+                "container", "ecore.EObject | semantic target of $line.", //$NON-NLS-1$ //$NON-NLS-2$
+                "column", "table.DColumn | DColumn of the current DCell.", //$NON-NLS-1$ //$NON-NLS-2$
+                "columnSemantic", "ecore.EObject | semantic target of $column" //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getIntersectionMapping_ColumnFinderExpression(), source, new String[] {});
         addAnnotation(getIntersectionMapping_LineFinderExpression(), source, new String[] {});
         addAnnotation(getIntersectionMapping_SemanticCandidatesExpression(), source, new String[] {});
         addAnnotation(getIntersectionMapping_PreconditionExpression(), source, new String[] { "line", "table.DLine | the source view of the current potential line.", //$NON-NLS-1$ //$NON-NLS-2$
-            "lineSemantic", "ecore.EObject | the semantic element of $line.", //$NON-NLS-1$ //$NON-NLS-2$
-            "column", "table.DColumn | the source view of the current potential column.", //$NON-NLS-1$ //$NON-NLS-2$
-            "columnSemantic", "ecore.EObject | the semantic element of $column.", //$NON-NLS-1$ //$NON-NLS-2$
-            "table", "table.DTable | the current DTable." //$NON-NLS-1$ //$NON-NLS-2$
+                "lineSemantic", "ecore.EObject | the semantic element of $line.", //$NON-NLS-1$ //$NON-NLS-2$
+                "column", "table.DColumn | the source view of the current potential column.", //$NON-NLS-1$ //$NON-NLS-2$
+                "columnSemantic", "ecore.EObject | the semantic element of $column.", //$NON-NLS-1$ //$NON-NLS-2$
+                "table", "table.DTable | the current DTable." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getForegroundConditionalStyle_PredicateExpression(), source, new String[] {});
         addAnnotation(getBackgroundConditionalStyle_PredicateExpression(), source, new String[] {});

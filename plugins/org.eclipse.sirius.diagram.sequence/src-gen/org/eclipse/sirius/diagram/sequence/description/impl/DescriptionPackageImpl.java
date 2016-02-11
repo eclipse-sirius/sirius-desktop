@@ -807,7 +807,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getFrameMapping_CoveredLifelinesExpression(), source, new String[] {
-            "returnType", "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." //$NON-NLS-1$ //$NON-NLS-2$
+                "returnType", "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getFrameMapping_CenterLabelExpression(), source, new String[] { "returnType", "the text to show in the center of the IU" //$NON-NLS-1$ //$NON-NLS-2$
         });

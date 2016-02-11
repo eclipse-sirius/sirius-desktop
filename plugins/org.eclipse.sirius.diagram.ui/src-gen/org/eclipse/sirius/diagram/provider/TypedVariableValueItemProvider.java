@@ -104,7 +104,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
     public String getText(Object object) {
         String label = ((TypedVariableValue) object).getValue();
         return label == null || label.length() == 0 ? getString("_UI_TypedVariableValue_type") : //$NON-NLS-1$
-            getString("_UI_TypedVariableValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_TypedVariableValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

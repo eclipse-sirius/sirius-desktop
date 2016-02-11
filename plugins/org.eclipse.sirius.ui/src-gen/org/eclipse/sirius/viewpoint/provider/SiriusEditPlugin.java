@@ -155,7 +155,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private Map<ImageDescriptor, Image> descriptorsToImages;
 
         private UICallBack uiCallback = new GenericSWTCallBack();
-        
+
         private Multimap<String, ISiriusPropertySheetPageProvider> propertySheetPageProviders = HashMultimap.create();
 
         /**
@@ -212,7 +212,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
             resourceWizardRegistryListener = new IAddModelDependencyWizardRegistryListener();
             resourceWizardRegistryListener.init();
-            
+
             registerPropertySheetPageProviders();
 
             try {
@@ -448,7 +448,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         /**
          * Get the most specific IPropertySheetPage adapted for the specified
          * source.
-         * 
+         *
          * @param source
          *            the source part.
          * @param contributorId

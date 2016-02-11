@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * @generated
  */
 public class ConditionalStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -92,7 +92,7 @@ IItemPropertySource {
     public String getText(Object object) {
         String label = ((ConditionalStyleDescription) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_ConditionalStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_ConditionalStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ConditionalStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

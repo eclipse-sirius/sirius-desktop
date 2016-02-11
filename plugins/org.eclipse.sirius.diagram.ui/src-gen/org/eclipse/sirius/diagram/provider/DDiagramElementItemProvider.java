@@ -162,7 +162,7 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
     public String getText(Object object) {
         String label = ((DDiagramElement) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DDiagramElement_type") : //$NON-NLS-1$
-            getString("_UI_DDiagramElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DDiagramElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * @generated
  */
 public class DocumentedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -90,7 +90,7 @@ IItemPropertySource {
     public String getText(Object object) {
         String label = crop(((DocumentedElement) object).getDocumentation());
         return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type") : //$NON-NLS-1$
-            getString("_UI_DocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

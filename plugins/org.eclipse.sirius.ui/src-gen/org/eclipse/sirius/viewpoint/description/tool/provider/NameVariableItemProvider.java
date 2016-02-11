@@ -74,7 +74,7 @@ public class NameVariableItemProvider extends AbstractVariableItemProvider {
     public String getText(Object object) {
         String label = ((NameVariable) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_NameVariable_type") : //$NON-NLS-1$
-            getString("_UI_NameVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_NameVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

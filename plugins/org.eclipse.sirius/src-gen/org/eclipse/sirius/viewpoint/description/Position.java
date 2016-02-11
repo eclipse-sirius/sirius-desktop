@@ -259,7 +259,7 @@ public enum Position implements Enumerator {
      * @generated
      */
     private static final Position[] VALUES_ARRAY = new Position[] { NORTH_LITERAL, WEST_LITERAL, SOUTH_LITERAL, EAST_LITERAL, NORTH_WEST_LITERAL, NORTH_EAST_LITERAL, SOUTH_WEST_LITERAL,
-        SOUTH_EAST_LITERAL, CENTER_LITERAL, };
+            SOUTH_EAST_LITERAL, CENTER_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>Position</b></em>'

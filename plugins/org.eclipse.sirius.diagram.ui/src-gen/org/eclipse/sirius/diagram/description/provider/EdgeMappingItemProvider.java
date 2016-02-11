@@ -382,7 +382,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEdgeStyleDescription()));
 
         newChildDescriptors
-        .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalEdgeStyleDescription()));

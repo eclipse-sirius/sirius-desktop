@@ -256,7 +256,7 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     public String getText(Object object) {
         String label = ((DDiagramElementContainer) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DDiagramElementContainer_type") : //$NON-NLS-1$
-            getString("_UI_DDiagramElementContainer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DDiagramElementContainer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

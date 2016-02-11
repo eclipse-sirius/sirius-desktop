@@ -112,7 +112,7 @@ public class ConditionalTreeItemStyleDescriptionItemProvider extends Conditional
     public String getText(Object object) {
         String label = ((ConditionalTreeItemStyleDescription) object).getPredicateExpression();
         return label == null || label.length() == 0 ? getString("_UI_ConditionalTreeItemStyleDescription_type") : //$NON-NLS-1$
-            getString("_UI_ConditionalTreeItemStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_ConditionalTreeItemStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

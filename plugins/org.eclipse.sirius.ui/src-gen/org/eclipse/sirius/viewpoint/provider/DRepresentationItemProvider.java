@@ -149,7 +149,7 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
     public String getText(Object object) {
         String label = ((DRepresentation) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DRepresentation_type") : //$NON-NLS-1$
-            getString("_UI_DRepresentation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DRepresentation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

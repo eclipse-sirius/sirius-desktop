@@ -94,7 +94,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This adds a property descriptor for the Provided Shape ID feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addProvidedShapeIDPropertyDescriptor(Object object) {

@@ -124,7 +124,7 @@ public class MappingFilterItemProvider extends FilterItemProvider {
         FilterKind labelValue = ((MappingFilter) object).getFilterKind();
         String label = labelValue == null ? null : labelValue.toString();
         return label == null || label.length() == 0 ? getString("_UI_MappingFilter_type") : //$NON-NLS-1$
-            getString("_UI_MappingFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_MappingFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

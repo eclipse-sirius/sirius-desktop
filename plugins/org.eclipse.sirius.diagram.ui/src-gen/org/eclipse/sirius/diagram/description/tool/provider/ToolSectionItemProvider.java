@@ -323,7 +323,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaAction()));
 
         newChildDescriptors
-        .add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+                .add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPopupMenu()));
 
