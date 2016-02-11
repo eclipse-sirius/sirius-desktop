@@ -31,6 +31,11 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EcoreIntrinsicExtender;
 import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
+import org.eclipse.sirius.tests.data.GroupRefreshTreeOdesignData;
+import org.eclipse.sirius.tests.data.TreeDescriptionGenericEMFTree;
+import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
+import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
@@ -46,12 +51,6 @@ import org.junit.Before;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.tests.data.GroupRefreshTreeOdesignData;
-import org.eclipse.sirius.tests.data.TreeDescriptionGenericEMFTree;
-import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
-import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-
 public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, TreeEcoreModeler {
 
     private GlobalContext ctx;
@@ -60,6 +59,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
     private GroupRefreshTreeOdesignData odesign;
 
+    @Override
     @Before
     public void setUp() throws Exception {
         invalidator = new SemanticPartitionInvalidator();
@@ -167,8 +167,6 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
 
-        String beforeDelete = toString(newTree);
-
         EcoreUtil.delete(semanticModel.getEClassifier("EModelElement"));
 
         refresher.refresh(new NullProgressMonitor());
@@ -189,7 +187,15 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
 
-        String beforeDelete = toString(newTree);
+        String initialState = toString(newTree);
+        String[] tabInitialState = initialState.split("\n");
+        int numberOfEModelElement = 0;
+        for (int i = 0; i <= tabInitialState.length - 1; i++) {
+            if (tabInitialState[i].equals("  |-*EModelElement")) {
+                numberOfEModelElement++;
+            }
+        }
+        assertEquals("We should have only one Abstract EModelElement instance.", 1, numberOfEModelElement);
 
         semanticModel.getEClassifiers().add((EClassifier) EcoreUtil.copy(semanticModel.getEClassifier("EModelElement")));
 
@@ -198,13 +204,13 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         String afterCreate = toString(newTree);
 
         String[] tabAfterCreate = afterCreate.split("\n");
-        int numberSameElement = 0;
+        int numberOfEModelElementAfterDuplication = 0;
         for (int i = 0; i <= tabAfterCreate.length - 1; i++) {
             if (tabAfterCreate[i].equals("  |-*EModelElement")) {
-                numberSameElement++;
+                numberOfEModelElementAfterDuplication++;
             }
         }
-        Assert.assertTrue(numberSameElement == 2);
+        assertEquals("We should have one more Abstract EModelElement instance after duplication.", numberOfEModelElement + 1, numberOfEModelElementAfterDuplication);
     }
 
     public void testRenameElement() throws Exception {
@@ -216,8 +222,6 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
-
-        String before = toString(newTree);
 
         semanticModel.getEClassifier("EModelElement").setName("RenamedElement");
 
@@ -240,19 +244,13 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         DTreeRefresh refresher = new DTreeRefresh(newTree, mappings, invalidator, ctx);
         refresher.refresh(new NullProgressMonitor());
 
-        String beforeExpand = toString(newTree);
-
         newTree.getOwnedTreeItems().get(0).setExpanded(true);
 
         refresher.refresh(new NullProgressMonitor());
 
-        String afterFirstExpand = toString(newTree);
-
         newTree.getOwnedTreeItems().get(0).getOwnedTreeItems().get(0).setExpanded(true);
 
         refresher.refresh(new NullProgressMonitor());
-
-        String afterSecondExpand = toString(newTree);
     }
 
     class ToStringueur {
@@ -276,6 +274,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
             }
         }
 
+        @Override
         public String toString() {
             StringBuilder builder = new StringBuilder();
             builder.append("\n");
