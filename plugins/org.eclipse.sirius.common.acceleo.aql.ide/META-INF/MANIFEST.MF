@@ -11,8 +11,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.common.acceleo.aql.ide;version="3.1.0",
  org.eclipse.sirius.common.acceleo.aql.ide.proposal;version="3.0.0";x-internal:=true
-Import-Package: org.eclipse.acceleo.query.runtime;version="[3.6.0,4.0.0)",
- org.eclipse.acceleo.query.validation.type;version="[3.6.0,4.0.0)",
+Import-Package: org.eclipse.acceleo.query.runtime;version="[5.0.0,6.0.0)",
+ org.eclipse.acceleo.query.validation.type;version="[5.0.0,6.0.0)",
  org.eclipse.sirius.ecore.extender.business.api.accessor;version="[3.0.0,4.0.0)",
  org.eclipse.sirius.ext.base;version="2.1.0"
 Bundle-Localization: plugin
