@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -85,6 +86,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getResizeKind
  * <em>Resize Kind</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl#getForbiddenSides
+ * <em>Forbidden Sides</em>}</li>
  * </ul>
  * </p>
  *
@@ -377,6 +381,17 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @ordered
      */
     protected ResizeKind resizeKind = NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getForbiddenSides()
+     * <em>Forbidden Sides</em>}' attribute list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getForbiddenSides()
+     * @generated
+     * @ordered
+     */
+    protected EList<Side> forbiddenSides;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -789,6 +804,19 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      */
     @Override
+    public EList<Side> getForbiddenSides() {
+        if (forbiddenSides == null) {
+            forbiddenSides = new EDataTypeUniqueEList<Side>(Side.class, this, StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES);
+        }
+        return forbiddenSides;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
@@ -827,6 +855,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             return getLabelPosition();
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return getResizeKind();
+        case StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES:
+            return getForbiddenSides();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -886,6 +916,10 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind((ResizeKind) newValue);
             return;
+        case StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES:
+            getForbiddenSides().clear();
+            getForbiddenSides().addAll((Collection<? extends Side>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -943,6 +977,9 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind(NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT);
             return;
+        case StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES:
+            getForbiddenSides().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -987,6 +1024,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             return labelPosition != NodeStyleDescriptionImpl.LABEL_POSITION_EDEFAULT;
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return resizeKind != NodeStyleDescriptionImpl.RESIZE_KIND_EDEFAULT;
+        case StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES:
+            return forbiddenSides != null && !forbiddenSides.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -1157,6 +1196,8 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         result.append(labelPosition);
         result.append(", resizeKind: "); //$NON-NLS-1$
         result.append(resizeKind);
+        result.append(", forbiddenSides: "); //$NON-NLS-1$
+        result.append(forbiddenSides);
         result.append(')');
         return result.toString();
     }

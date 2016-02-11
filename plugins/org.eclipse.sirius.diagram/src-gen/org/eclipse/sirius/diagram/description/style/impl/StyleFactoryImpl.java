@@ -12,6 +12,7 @@
 package org.eclipse.sirius.diagram.description.style.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
 import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -122,6 +124,36 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
             return createBracketEdgeStyleDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object createFromString(EDataType eDataType, String initialValue) {
+        switch (eDataType.getClassifierID()) {
+        case StylePackage.SIDE:
+            return createSideFromString(eDataType, initialValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String convertToString(EDataType eDataType, Object instanceValue) {
+        switch (eDataType.getClassifierID()) {
+        case StylePackage.SIDE:
+            return convertSideToString(eDataType, instanceValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -339,6 +371,28 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
         BracketEdgeStyleDescriptionImpl bracketEdgeStyleDescription = new BracketEdgeStyleDescriptionImpl();
         new DiagramDefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
         return bracketEdgeStyleDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Side createSideFromString(EDataType eDataType, String initialValue) {
+        Side result = Side.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertSideToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
     }
 
     /**

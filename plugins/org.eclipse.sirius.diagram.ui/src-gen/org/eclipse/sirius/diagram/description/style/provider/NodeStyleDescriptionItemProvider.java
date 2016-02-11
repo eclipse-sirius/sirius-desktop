@@ -76,6 +76,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
             addSizeComputationExpressionPropertyDescriptor(object);
             addLabelPositionPropertyDescriptor(object);
             addResizeKindPropertyDescriptor(object);
+            addForbiddenSidesPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -311,6 +312,19 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     }
 
     /**
+     * This adds a property descriptor for the Forbidden Sides feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addForbiddenSidesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_NodeStyleDescription_forbiddenSides_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_NodeStyleDescription_forbiddenSides_feature", "_UI_NodeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -349,6 +363,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
         case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
         case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
+        case StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.description.style.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NoteDescription;
 import org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
@@ -223,6 +225,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
     private EClass hideLabelCapabilityStyleDescriptionEClass = null;
 
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EEnum sideEEnum = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
      * package package URI value.
@@ -391,6 +400,16 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
     @Override
     public EAttribute getNodeStyleDescription_ResizeKind() {
         return (EAttribute) nodeStyleDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getNodeStyleDescription_ForbiddenSides() {
+        return (EAttribute) nodeStyleDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1109,6 +1128,16 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     @Override
+    public EEnum getSide() {
+        return sideEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public StyleFactory getStyleFactory() {
         return (StyleFactory) getEFactoryInstance();
     }
@@ -1143,6 +1172,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND);
+        createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES);
 
         customStyleDescriptionEClass = createEClass(StylePackage.CUSTOM_STYLE_DESCRIPTION);
         createEAttribute(customStyleDescriptionEClass, StylePackage.CUSTOM_STYLE_DESCRIPTION__ID);
@@ -1235,6 +1265,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
         hideLabelCapabilityStyleDescriptionEClass = createEClass(StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION);
         createEAttribute(hideLabelCapabilityStyleDescriptionEClass, StylePackage.HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT);
+
+        // Create enums
+        sideEEnum = createEEnum(StylePackage.SIDE);
     }
 
     /**
@@ -1338,6 +1371,10 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 getNodeStyleDescription_ResizeKind(),
                 theDiagramPackage.getResizeKind(),
                 "resizeKind", "NONE", 1, 1, NodeStyleDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(
+                getNodeStyleDescription_ForbiddenSides(),
+                this.getSide(),
+                "forbiddenSides", null, 0, -1, NodeStyleDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(customStyleDescriptionEClass, CustomStyleDescription.class,
                 "CustomStyleDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1616,6 +1653,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 getHideLabelCapabilityStyleDescription_HideLabelByDefault(),
                 ecorePackage.getEBoolean(),
                 "hideLabelByDefault", "false", 0, 1, HideLabelCapabilityStyleDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+        // Initialize enums and add enum literals
+        initEEnum(sideEEnum, Side.class, "Side"); //$NON-NLS-1$
+        addEEnumLiteral(sideEEnum, Side.WEST);
+        addEEnumLiteral(sideEEnum, Side.SOUTH);
+        addEEnumLiteral(sideEEnum, Side.EAST);
+        addEEnumLiteral(sideEEnum, Side.NORTH);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

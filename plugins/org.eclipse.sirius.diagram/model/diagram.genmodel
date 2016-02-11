@@ -622,6 +622,12 @@
       </genClasses>
       <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.diagram.description"
           disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/style">
+        <genEnums typeSafeEnumCompatible="false" ecoreEnum="diagram.ecore#//description/style/Side">
+          <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/style/Side/WEST"/>
+          <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/style/Side/SOUTH"/>
+          <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/style/Side/EAST"/>
+          <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/style/Side/NORTH"/>
+        </genEnums>
         <genClasses ecoreClass="diagram.ecore#//description/style/BorderedStyleDescription">
           <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
@@ -635,6 +641,7 @@
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/labelPosition"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/resizeKind"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/forbiddenSides"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/style/CustomStyleDescription">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="ID for the custom style, you should put here an ID you'll leverage using the API to provide your own custom style."

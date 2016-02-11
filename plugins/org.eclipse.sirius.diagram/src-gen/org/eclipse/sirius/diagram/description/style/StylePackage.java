@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.description.style;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -262,13 +263,22 @@ public interface StylePackage extends EPackage {
     int NODE_STYLE_DESCRIPTION__RESIZE_KIND = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 15;
+
+    /**
      * The number of structural features of the '<em>Node Style Description</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 15;
+    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The meta object id for the '
@@ -419,6 +429,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+
+    /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
@@ -588,6 +607,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SQUARE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+
+    /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SQUARE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -775,6 +803,15 @@ public interface StylePackage extends EPackage {
     int LOZENGE_NODE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LOZENGE_NODE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
+
+    /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -958,6 +995,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int ELLIPSE_NODE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+
+    /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE_NODE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
@@ -1147,6 +1193,15 @@ public interface StylePackage extends EPackage {
     int BUNDLED_IMAGE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
+
+    /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1332,6 +1387,15 @@ public interface StylePackage extends EPackage {
     int NOTE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NOTE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
+
+    /**
      * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1498,6 +1562,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int DOT_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+
+    /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -1676,6 +1749,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
+
+    /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
 
     /**
      * The feature id for the '<em><b>Alignment</b></em>' attribute. <!--
@@ -2581,6 +2663,15 @@ public interface StylePackage extends EPackage {
     int WORKSPACE_IMAGE_DESCRIPTION__RESIZE_KIND = StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
+     * The feature id for the '<em><b>Forbidden Sides</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES;
+
+    /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3163,6 +3254,17 @@ public interface StylePackage extends EPackage {
     int HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION_FEATURE_COUNT = 1;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.Side <em>Side</em>}'
+     * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.Side
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSide()
+     * @generated
+     */
+    int SIDE = 23;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription
      * <em>Bordered Style Description</em>}'. <!-- begin-user-doc --> <!--
@@ -3262,6 +3364,19 @@ public interface StylePackage extends EPackage {
      * @generated
      */
     EAttribute getNodeStyleDescription_ResizeKind();
+
+    /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides
+     * <em>Forbidden Sides</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute list '<em>Forbidden Sides</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides()
+     * @see #getNodeStyleDescription()
+     * @generated
+     */
+    EAttribute getNodeStyleDescription_ForbiddenSides();
 
     /**
      * Returns the meta object for class '
@@ -4167,6 +4282,17 @@ public interface StylePackage extends EPackage {
     EAttribute getHideLabelCapabilityStyleDescription_HideLabelByDefault();
 
     /**
+     * Returns the meta object for enum '
+     * {@link org.eclipse.sirius.diagram.description.style.Side <em>Side</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for enum '<em>Side</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.Side
+     * @generated
+     */
+    EEnum getSide();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4262,6 +4388,14 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EAttribute NODE_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.eINSTANCE.getNodeStyleDescription_ResizeKind();
+
+        /**
+         * The meta object literal for the '<em><b>Forbidden Sides</b></em>'
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute NODE_STYLE_DESCRIPTION__FORBIDDEN_SIDES = StylePackage.eINSTANCE.getNodeStyleDescription_ForbiddenSides();
 
         /**
          * The meta object literal for the '
@@ -4929,6 +5063,17 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EAttribute HIDE_LABEL_CAPABILITY_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.eINSTANCE.getHideLabelCapabilityStyleDescription_HideLabelByDefault();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.style.Side
+         * <em>Side</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.style.Side
+         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSide()
+         * @generated
+         */
+        EEnum SIDE = StylePackage.eINSTANCE.getSide();
 
     }
 

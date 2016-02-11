@@ -1827,6 +1827,8 @@
             <details key="documentation" value="Define the directions the user is able to resize."/>
           </eAnnotations>
         </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="forbiddenSides" upperBound="-1"
+            eType="#//description/style/Side"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="CustomStyleDescription" eSuperTypes="#//description/style/NodeStyleDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
@@ -2228,6 +2230,12 @@
             <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
           </eAnnotations>
         </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EEnum" name="Side">
+        <eLiterals name="WEST"/>
+        <eLiterals name="SOUTH" value="1"/>
+        <eLiterals name="EAST" value="2"/>
+        <eLiterals name="NORTH" value="3"/>
       </eClassifiers>
     </eSubpackages>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"

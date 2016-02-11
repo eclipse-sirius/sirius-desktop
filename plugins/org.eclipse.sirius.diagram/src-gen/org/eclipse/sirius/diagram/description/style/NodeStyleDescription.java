@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram.description.style;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
@@ -35,6 +36,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind
  * <em>Resize Kind</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides
+ * <em>Forbidden Sides</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,5 +138,26 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * @generated
      */
     void setResizeKind(ResizeKind value);
+
+    /**
+     * Returns the value of the '<em><b>Forbidden Sides</b></em>' attribute
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.style.Side}. The literals
+     * are from the enumeration
+     * {@link org.eclipse.sirius.diagram.description.style.Side}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Forbidden Sides</em>' attribute list isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Forbidden Sides</em>' attribute list.
+     * @see org.eclipse.sirius.diagram.description.style.Side
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_ForbiddenSides()
+     * @model
+     * @generated
+     */
+    EList<Side> getForbiddenSides();
 
 } // NodeStyleDescription
