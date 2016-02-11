@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.description.filter.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -454,13 +453,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
                 theDescriptionPackage_1.getInterpretedExpression(),
                 "semanticConditionExpression", "", 0, 1, VariableFilter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
-        op = addEOperation(variableFilterEClass, null, "setFilterContext", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        EGenericType g1 = createEGenericType(theEcorePackage.getEMap());
-        EGenericType g2 = createEGenericType();
-        g1.getETypeArguments().add(g2);
-        g2 = createEGenericType();
-        g1.getETypeArguments().add(g2);
-        addEParameter(op, g1, "variables", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        addEOperation(variableFilterEClass, null, "resetVariables", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         // Initialize enums and add enum literals
         initEEnum(filterKindEEnum, FilterKind.class, "FilterKind"); //$NON-NLS-1$
