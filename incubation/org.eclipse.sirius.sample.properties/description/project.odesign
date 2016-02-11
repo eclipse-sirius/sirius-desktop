@@ -31,8 +31,8 @@
   <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties" defaultPage="//@extensions.0/@pages.0" labelExpression="aql:self.name" preconditionExpression="">
     <pages identifier="All EClass attributes" labelExpression="aql:self.name" domainClass="ecore.EAttribute" semanticCandidateExpression="aql:self.eContents(ecore::EAttribute)" groups="//@extensions.0/@groups.0"/>
     <pages identifier="Single EAttribute" labelExpression="aql:self.name" domainClass="ecore.EAttribute" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
-    <groups identifier="EAttribute properties" labelExpression="" domainClass="ecore.EAttribute" semanticCandidateExpression="">
-      <container>
+    <groups identifier="EAttribute properties" labelExpression="EAttribute properties" domainClass="ecore.EAttribute" semanticCandidateExpression="">
+      <container identifier="container">
         <widgets xsi:type="properties:TextDescription" identifier="Name" labelExpression="Name" valueExpression="feature:name">
           <initialOperation>
             <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:newValue"/>
