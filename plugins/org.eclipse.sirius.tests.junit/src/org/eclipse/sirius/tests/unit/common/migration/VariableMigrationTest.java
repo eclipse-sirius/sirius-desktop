@@ -49,7 +49,7 @@ import org.osgi.framework.Version;
  */
 public class VariableMigrationTest extends SiriusTestCase {
 
-    private static final String REPRESENTATIONS_FILE_PATH = "/data/unit/migration/variableFilter/";
+    private static final String REPRESENTATIONS_FILE_PATH = "/data/unit/migration/do_not_migrate/variableFilter/";
 
     private static final String REPRESENTATIONS_FILE_NAME = "filterMigration.aird";
 
