@@ -184,7 +184,7 @@ public abstract class SiriusTestCase extends TestCase {
     /**
      * Registered viewpoints.
      */
-    protected final Set<Viewpoint> viewpoints = new HashSet<Viewpoint>();
+    protected final Set<Viewpoint> viewpoints = new LinkedHashSet<Viewpoint>();
 
     /**
      * The viewpoint selection callback to use.

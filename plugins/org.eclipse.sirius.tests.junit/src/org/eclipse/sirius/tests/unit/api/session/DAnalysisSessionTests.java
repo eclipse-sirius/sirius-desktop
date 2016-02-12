@@ -238,6 +238,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         }
         representations = new ArrayList<DRepresentation>();
         editors = new ArrayList<IEditorPart>();
+        viewpoints.clear();
     }
 
     private void doCloseSession() {
