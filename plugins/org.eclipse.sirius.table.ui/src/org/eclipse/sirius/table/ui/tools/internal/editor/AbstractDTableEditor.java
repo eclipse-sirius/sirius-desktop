@@ -108,7 +108,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
-        if (isDeleted(getEditorInput())) {
+        if (isAirdResourceDeleted(getEditorInput())) {
             if (isSaveAsAllowed()) {
                 /*
                  * 1GEUSSR: ITPUI:ALL - User should never loose changes made in the editors. Changed Behavior to make
@@ -148,7 +148,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             dialog.setOriginalFile(original);
         }
         dialog.create();
-        if (isDeleted(input) && original != null) {
+        if (isAirdResourceDeleted(input) && original != null) {
             final String message = MessageFormat.format(Messages.dTableEditor_SavingDeletedFile, original.getName());
             dialog.setErrorMessage(null);
             dialog.setMessage(message, IMessageProvider.WARNING);

@@ -104,7 +104,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
-        if (isDeleted(getEditorInput())) {
+        if (isAirdResourceDeleted(getEditorInput())) {
             if (isSaveAsAllowed()) {
                 performSaveAs(progressMonitor);
             }

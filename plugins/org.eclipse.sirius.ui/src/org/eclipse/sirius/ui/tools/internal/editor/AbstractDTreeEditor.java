@@ -33,6 +33,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
 import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -66,6 +68,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorDescriptor;
@@ -95,9 +98,8 @@ public abstract class AbstractDTreeEditor extends EditorPart
         implements DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReusableEditor, SessionListener, ISaveablesSource, IPageListener {
 
     /**
-     * This class has the responsibility to open the editing session
-     * corresponding to a session added to the session manager and attaching to
-     * it the current editor so it can be handled correctly.
+     * This class has the responsibility to open the editing session corresponding to a session added to the session
+     * manager and attaching to it the current editor so it can be handled correctly.
      * 
      * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
      *
@@ -161,8 +163,8 @@ public abstract class AbstractDTreeEditor extends EditorPart
     protected Session session;
 
     /**
-     * To increase performance we stop the update of the corresponding
-     * propertySheetPage during the refresh of the DTable.
+     * To increase performance we stop the update of the corresponding propertySheetPage during the refresh of the
+     * DTable.
      */
     protected boolean propertiesUpdateEnabled;
 
@@ -190,8 +192,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     protected DialectEditorDialogFactory myDialogFactory = new TreeEditorDialogFactory(this);
 
     /**
-     * The {@link UndoRedoActionHandler} used to provide appropriate undo and
-     * redo Action Handlers to this editor.
+     * The {@link UndoRedoActionHandler} used to provide appropriate undo and redo Action Handlers to this editor.
      */
     protected UndoRedoActionHandler undoRedoActionHandler;
 
@@ -211,8 +212,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     private Image lockByOtherImage;
 
     /**
-     * Singleton instance of the image when DRepresentation has no write
-     * permission
+     * Singleton instance of the image when DRepresentation has no write permission
      */
     private Image noWritePermissionImage;
 
@@ -258,11 +258,9 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * Lazily gets the image when there is no write permission of the
-     * DRepresentation.
+     * Lazily gets the image when there is no write permission of the DRepresentation.
      * 
-     * @return the image when there is no write permission of the
-     *         DRepresentation.
+     * @return the image when there is no write permission of the DRepresentation.
      */
     protected Image getNoWritePermissionImage() {
         if (noWritePermissionImage == null || noWritePermissionImage.isDisposed()) {
@@ -301,18 +299,19 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * Tells if the {@link Resource} associated to the specified
-     * <code>editorInput</code> exists or not.
+     * Tells if the aird {@link Resource} associated to the specified <code>editorInput</code> exists or not.
      * 
      * @param editorInput
      *            the specifed {@link IEditorInput}
-     * @return false if the {@link Resource} associated to the specified
-     *         <code>editorInput</code> exists, true else
+     * @return false if the aird {@link Resource} associated to the specified <code>editorInput</code> exists, true else
      */
-    protected boolean isDeleted(final IEditorInput editorInput) {
+    protected boolean isAirdResourceDeleted(final IEditorInput editorInput) {
         boolean isDeleted = false;
-        if (getRepresentation() != null) {
-            final Resource sessionResource = getRepresentation().eResource();
+        DRepresentation representation = getRepresentation();
+        if (representation != null) {
+            DRepresentationQuery dRepresentationQuery = new DRepresentationQuery(representation);
+            DRepresentationDescriptor descriptor = dRepresentationQuery.getRepresentationDescriptor();
+            final Resource sessionResource = descriptor != null ? descriptor.eResource() : representation.eResource();
             if (sessionResource != null) {
                 URI sessionResourceURI = sessionResource.getURI();
                 boolean sessionResourceExists = sessionResource.getResourceSet().getURIConverter().exists(sessionResourceURI, Collections.emptyMap());
@@ -328,8 +327,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * We have to take care of the case when Eclipse starts up with a session
-     * and diagram already open. see bug #1217
+     * We have to take care of the case when Eclipse starts up with a session and diagram already open. see bug #1217
      * 
      * {@inheritDoc}
      */
@@ -387,8 +385,8 @@ public abstract class AbstractDTreeEditor extends EditorPart
     protected abstract void configureCommandFactoryProviders();
 
     /**
-     * Initialize {@link IPermissionAuthority} and the title image if the Table
-     * is already locked by the current user before opening.
+     * Initialize {@link IPermissionAuthority} and the title image if the Table is already locked by the current user
+     * before opening.
      * 
      * @param representation
      *            the {@link DSemanticDecorator} that is opening.
@@ -469,11 +467,9 @@ public abstract class AbstractDTreeEditor extends EditorPart
                 updateEditorAfterAirdResourceReload();
             }
             /*
-             * A regression in Kepler can cause an NPE inside the
-             * treeViewerManager.getControl().setFocus() below. The guard
-             * condition is a workaround, which seems to fix the problem (or at
-             * least the symptom) in our tests. See
-             * https://bugs.eclipse.org/bugs/show_bug.cgi?id=378846#c16
+             * A regression in Kepler can cause an NPE inside the treeViewerManager.getControl().setFocus() below. The
+             * guard condition is a workaround, which seems to fix the problem (or at least the symptom) in our tests.
+             * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=378846#c16
              */
             AbstractDTreeViewer viewer = treeViewerManager.getTreeViewer();
             if (viewer != null && viewer.getTree() != null && viewer.getTree().getTopItem() != null) {
@@ -487,9 +483,8 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * Update all needed editor elements after an Aird resource reload like
-     * {@link Tree} or {@link AbstractDTableViewerManager} referencing previous
-     * Aird elements as proxies.
+     * Update all needed editor elements after an Aird resource reload like {@link Tree} or
+     * {@link AbstractDTableViewerManager} referencing previous Aird elements as proxies.
      */
     protected abstract void updateEditorAfterAirdResourceReload();
 
@@ -499,8 +494,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
      * @param uri
      *            the URI to resolve.
      * @param loadOnDemand
-     *            whether to create and load the resource, if it doesn't already
-     *            exists.
+     *            whether to create and load the resource, if it doesn't already exists.
      */
     protected abstract void setRepresentation(URI uri, boolean loadOnDemand);
 
@@ -758,8 +752,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     @Override
     public boolean isSaveOnCloseNeeded() {
         /*
-         * No call to editingSession.needToBeSavedOnClose(this) here to allow
-         * close all detection.
+         * No call to editingSession.needToBeSavedOnClose(this) here to allow close all detection.
          */
         return isDirty();
     }
@@ -840,8 +833,8 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * Initializes an UndoRedoActionHandler, which purpose is to provide
-     * appropriate undo and redo Action Handlers to this editor.
+     * Initializes an UndoRedoActionHandler, which purpose is to provide appropriate undo and redo Action Handlers to
+     * this editor.
      */
     protected void setUpUndoRedoActionHandler() {
         // Undo/Redo Issues with Trees and Tables
@@ -862,15 +855,14 @@ public abstract class AbstractDTreeEditor extends EditorPart
     }
 
     /**
-     * Indicates if the given TreeItem list contains (at any level) the given
-     * element. If it's the case, returns the TreeItem containing this element.
+     * Indicates if the given TreeItem list contains (at any level) the given element. If it's the case, returns the
+     * TreeItem containing this element.
      * 
      * @param items
      *            the TreeItems to look into
      * @param element
      *            the searched element
-     * @return the TreeItem containing the searched element if one found, null
-     *         otherwise
+     * @return the TreeItem containing the searched element if one found, null otherwise
      */
     protected TreeItem contains(TreeItem[] items, Object element) {
         TreeItem searchedTreeItem = null;
