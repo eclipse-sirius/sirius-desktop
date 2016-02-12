@@ -34,6 +34,7 @@ public class QuickOutlineAction extends Action implements IWorkbenchWindowAction
      * 
      * @see org.eclipse.ui.IWorkbenchWindowActionDelegate#dispose()
      */
+    @Override
     public void dispose() {
         // No disposal needed here
     }
@@ -43,6 +44,7 @@ public class QuickOutlineAction extends Action implements IWorkbenchWindowAction
      * 
      * @see org.eclipse.ui.IWorkbenchWindowActionDelegate#init(org.eclipse.ui.IWorkbenchWindow)
      */
+    @Override
     public void init(IWorkbenchWindow window) {
         // no initialization required
     }
@@ -52,10 +54,14 @@ public class QuickOutlineAction extends Action implements IWorkbenchWindowAction
      * 
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(IAction action) {
         super.run();
-        SiriusInformationPresenter presenter = getCurrentEditor().getQuickOutlinePresenter();
-        presenter.showInformation();
+        DDiagramEditorImpl currentEditor = getCurrentEditor();
+        if (currentEditor != null) {
+            SiriusInformationPresenter presenter = currentEditor.getQuickOutlinePresenter();
+            presenter.showInformation();
+        }
     }
 
     /**
@@ -64,14 +70,15 @@ public class QuickOutlineAction extends Action implements IWorkbenchWindowAction
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(IAction action, ISelection selection) {
         // We don't need to react to selection changes
     }
 
     /**
-     * Returns the currently active editor if it's an AcceleoEditor.
+     * Returns the currently active editor if it's an SiriusDiagramEditor.
      * 
-     * @return The currently active editor if it's an AcceleoEditor,
+     * @return The currently active editor if it's an SiriusDiagramEditor,
      *         <code>null</code> otherwise.
      */
     protected DDiagramEditorImpl getCurrentEditor() {
@@ -88,6 +95,7 @@ public class QuickOutlineAction extends Action implements IWorkbenchWindowAction
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
         // empty.
     }
