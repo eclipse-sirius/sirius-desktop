@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,13 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.DiagramWithChildrensCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.junit.After;
+import org.junit.Assume;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Class to test port location after drag'n'drop of a parent of bordered nodes
@@ -26,6 +32,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * 
  * @author lredor
  */
+@RunWith(SWTBotJunit4ClassRunner.class)
 public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest {
     private final static String ROOT_MODEL_NAME = "<Model> root";
 
@@ -40,6 +47,18 @@ public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest
     private UIResource umlResource;
 
     private SWTBotTreeItem semanticResourceNode;
+
+    @Override
+    @Before
+    public void setUp() throws Exception {
+        super.setUp();
+    }
+
+    @Override
+    @After
+    public void tearDown() throws Exception {
+        super.tearDown();
+    }
 
     /**
      * {@inheritDoc}
@@ -78,7 +97,9 @@ public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest
      * @throws Exception
      *             in case of problem.
      */
+    @Test
     public void testPortLocationFromParentDnDFromModelExplorerView() throws Exception {
+        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         // DnD ComponentWith3Ports from the Model Explorer view to the diagram
         final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.expandNode(ROOT_MODEL_NAME).expandNode(COMPONENENT_TO_DRAG_PARENT_NAME_WITH_PREFIX)
                 .getNode(COMPONENENT_TO_DRAG_ON_DIAGRAM_NAME_WITH_PREFIX);
@@ -106,8 +127,8 @@ public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest
         assertTrue("Bad layout constraint type", port3Node.getLayoutConstraint() instanceof Location);
         final Location thirdLocation = (Location) port3Node.getLayoutConstraint();
         // Check that the constraint are not all equals to {0,0}
-        assertFalse("All the layout constraints of the ports should not be in {0,0}", firstBounds.getX() == 0 && firstBounds.getY() == 0 && secondLocation.getX() == 0 && thirdLocation.getY() == 0
-                && thirdLocation.getX() == 0 && thirdLocation.getY() == 0);
+        assertFalse("All the layout constraints of the ports should not be in {0,0}",
+                firstBounds.getX() == 0 && firstBounds.getY() == 0 && secondLocation.getX() == 0 && thirdLocation.getY() == 0 && thirdLocation.getX() == 0 && thirdLocation.getY() == 0);
         // Check that all the constraint are different
         assertTrue("All the layout constraints of the ports should be different", firstBounds.getX() != secondLocation.getX() || firstBounds.getY() != secondLocation.getY());
         assertTrue("All the layout constraints of the ports should be different", firstBounds.getX() != thirdLocation.getX() || firstBounds.getY() != thirdLocation.getY());
@@ -125,8 +146,8 @@ public class PortLocationAfterDragAndDropTest extends AbstractUmlDragAndDropTest
         assertTrue("Bad layout constraint type", collapsedPort2Node.getLayoutConstraint() instanceof Bounds);
         final Bounds secondCollapsedBounds = (Bounds) collapsedPort2Node.getLayoutConstraint();
 
-        assertTrue("The size of the collapsed bordered nodes should be 1x1", firstCollapsedBounds.getWidth() == 1 && firstCollapsedBounds.getHeight() == 1 && secondCollapsedBounds.getWidth() == 1
-                && secondCollapsedBounds.getHeight() == 1);
+        assertTrue("The size of the collapsed bordered nodes should be 1x1",
+                firstCollapsedBounds.getWidth() == 1 && firstCollapsedBounds.getHeight() == 1 && secondCollapsedBounds.getWidth() == 1 && secondCollapsedBounds.getHeight() == 1);
         assertEquals("The space between two bordered nodes should be as if they are expanded", secondCollapsedBounds.getY() - firstCollapsedBounds.getY() - 1, firstBounds.getHeight());
     }
 }

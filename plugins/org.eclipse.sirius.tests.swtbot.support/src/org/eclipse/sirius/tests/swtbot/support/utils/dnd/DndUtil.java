@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot.support.utils.dnd;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -148,7 +149,8 @@ public class DndUtil {
     }
 
     private void doDragAndDrop(final Point source, final Point dest) {
-        // log.debug(MessageFormat.format("Drag-and-dropping from ({0},{1}) to ({2},{3})",
+        // log.debug(MessageFormat.format("Drag-and-dropping from ({0},{1}) to
+        // ({2},{3})",
         // source.x, source.y, dest.x, dest.y));
         try {
             final Robot awtRobot = new Robot();
@@ -326,6 +328,37 @@ public class DndUtil {
             });
         }
 
+    }
+
+    /**
+     * Check if Xvnc exists on the current environment.<BR>
+     * Copied from
+     * {@link org.eclipse.swtbot.swt.finder.widgets.DnDTreeTest#isUsingXvnc()}
+     * 
+     * @return true if Xvnc exists on the current environment, false otherwise.
+     */
+    public static boolean isUsingXvnc() {
+        String os = System.getProperty("os.name").toLowerCase();
+        if (!(os.indexOf("nix") < 0 && os.indexOf("nux") < 0 && os.indexOf("aix") < 0)) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            String xdisplay = System.getenv("DISPLAY"); //$NON-NLS-1$
+            // command is like pgrep -l -f "Xvnc.*:0"
+            StringBuilder commandBuilder = new StringBuilder();
+            commandBuilder.append("/usr/bin/pgrep -l -f "); //$NON-NLS-1$
+            commandBuilder.append("Xvnc.*"); //$NON-NLS-1$
+            commandBuilder.append(xdisplay);
+            Process proc;
+            try {
+                proc = Runtime.getRuntime().exec(commandBuilder.toString());
+                proc.waitFor();
+                // If pgrep found something, it will return 0;
+                return proc.exitValue() == 0;
+            } catch (IOException e) {
+                // Do nothing
+            } catch (InterruptedException e) {
+                // Do nothing
+            }
+        }
+        return false;
     }
 
 }

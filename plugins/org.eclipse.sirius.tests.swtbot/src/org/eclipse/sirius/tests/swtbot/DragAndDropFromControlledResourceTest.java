@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,14 @@ import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.junit.After;
+import org.junit.Assume;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
@@ -39,6 +45,7 @@ import com.google.common.collect.Sets.SetView;
  * 
  * @author pcdavid
  */
+@RunWith(SWTBotJunit4ClassRunner.class)
 public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String MODEL = "Root.ecore";
 
@@ -61,6 +68,12 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
     private UIResource ecoreEcoreResource;
 
     private SWTBotTreeItem semanticResourceNode;
+
+    @Override
+    @Before
+    public void setUp() throws Exception {
+        super.setUp();
+    }
 
     /**
      * {@inheritDoc}
@@ -95,7 +108,9 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
      * @throws Exception
      *             if an error occurs.
      */
+    @Test
     public void testDragAndDropClassFromControlledResourceOntoDiagram() throws Exception {
+        Assume.assumeFalse("Drag and drop from View does not work with Xvnc", DndUtil.isUsingXvnc());
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dnd_from_model_content", "new dnd_from_model_content", DDiagram.class);
 
         // Read the initial state.
@@ -125,7 +140,8 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
      * {@inheritDoc}
      */
     @Override
-    protected void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
 

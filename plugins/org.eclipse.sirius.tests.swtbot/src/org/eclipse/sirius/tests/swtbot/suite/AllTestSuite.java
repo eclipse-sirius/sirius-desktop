@@ -64,6 +64,7 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
 
+import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -249,7 +250,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
-        suite.addTestSuite(PortLocationAfterDragAndDropTest.class);
+        suite.addTest(new JUnit4TestAdapter(PortLocationAfterDragAndDropTest.class));
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest.class);
@@ -260,7 +261,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PortSelectionTest.class);
         suite.addTestSuite(PortNotVisibleSelectionTest.class);
         suite.addTestSuite(RefreshAfterUndoDeletionFromGenericToolTest.class);
-        suite.addTestSuite(RefreshAfterViewCreationTest.class);
+        suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
         suite.addTestSuite(RefreshWithCustomizedStyleFromAppearanceTabTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromTabbarTests.class);
         suite.addTestSuite(ResizeKindRefreshTests.class);
@@ -343,7 +344,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LayoutStabilityOnManualRefreshTest.class);
         suite.addTestSuite(EdgeAndPortStabilityOnSemanticChangeTest.class);
         suite.addTestSuite(SessionSaveableTest.class);
-        suite.addTestSuite(DragAndDropFromControlledResourceTest.class);
+        suite.addTest(new JUnit4TestAdapter(DragAndDropFromControlledResourceTest.class));
         suite.addTestSuite(RoundedCornerRefreshTest.class);
         suite.addTestSuite(ModelExplorerFilterTests.class);
         suite.addTestSuite(ProjectDependenciesTest.class);
