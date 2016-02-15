@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignme
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
@@ -247,6 +249,15 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
         assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+
+        ResizableCompartmentEditPart compartmentEditPart = (ResizableCompartmentEditPart) editPart.getChildren().get(1);
+        Border border = compartmentEditPart.getContentPane().getBorder();
+
+        if (editPart instanceof IDiagramListEditPart) {
+            assertEquals("Wrong border margin for " + label, new Insets(0, 4, editPart.isRegion() ? 0 : 1, 4), border.getInsets(null));
+        } else if (editPart instanceof IDiagramContainerEditPart) {
+            assertNull("Wrong border for " + label + ": the BorderItemsAwareFreeFormLayer used as content pane of a freeform region should not have a border.", border);
+        }
     }
 
     private Rectangle getBounds(Node notationView) {

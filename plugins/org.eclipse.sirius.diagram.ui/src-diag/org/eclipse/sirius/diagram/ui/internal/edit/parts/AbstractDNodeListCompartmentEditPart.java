@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
@@ -142,11 +143,21 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     @Override
     public IFigure createFigure() {
         ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-        if (new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) resolveSemanticElement()).isRegion()) {
+        boolean isRegion = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) resolveSemanticElement()).isRegion();
+        if (isRegion) {
             // Use a NestableResizableCompartmentFigure to have collapsed Region
             // to have only the label area visible
             ResizableCompartmentFigure nrcf = new NestedResizableCompartmentFigure(getMapMode());
-            nrcf.getContentPane().setLayoutManager(result.getLayoutManager());
+            // Configure the text pane layout manager to be the same as the non-region case.
+            nrcf.getContentPane().setLayoutManager(result.getContentPane().getLayoutManager());
+            // Get the viewport border computed for the non-region case to keep
+            // the same margin:
+            Border border = result.getScrollPane().getContents().getBorder();
+            if (border instanceof MarginBorder) {
+                Insets insets = border.getInsets(nrcf);
+                border = new MarginBorder(0, insets.left, 0, insets.right);
+                nrcf.getScrollPane().getContents().setBorder(border);
+            }
             result = nrcf;
         }
 
@@ -158,11 +169,11 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         // Now that the border size is taken into account to calculate border
         // margin; reduce the scroll pane insets to retrieve the previous
         // minimum/preferred size, scroll-bar visibility condition for one pixel
-        // borders.
+        // borders. Impact only horizontal insets for regions.
         IFigure contentPane = result.getContentPane();
         if (contentPane != null && contentPane.getBorder() instanceof MarginBorder) {
             Insets insets = contentPane.getBorder().getInsets(result);
-            Insets legacyBorderCompensation = new Insets(0, -1, -1, -1);
+            Insets legacyBorderCompensation = new Insets(0, -1, isRegion ? 0 : -1, -1);
             contentPane.setBorder(new MarginBorder(insets.getAdded(legacyBorderCompensation)));
         }
         return result;
