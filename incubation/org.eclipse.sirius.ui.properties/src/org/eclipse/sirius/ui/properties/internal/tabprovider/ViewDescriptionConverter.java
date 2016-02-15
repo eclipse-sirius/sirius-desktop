@@ -36,6 +36,7 @@ import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -144,7 +145,9 @@ public class ViewDescriptionConverter {
 
     private EEFWidgetDescription createEEFWidgetDescription(WidgetDescription widgetDescription) {
         EEFWidgetDescription description = null;
-        if (widgetDescription instanceof TextDescription) {
+        if (widgetDescription instanceof TextAreaDescription) {
+            description = createEEFTextDescription((TextAreaDescription) widgetDescription);
+        } else if (widgetDescription instanceof TextDescription) {
             description = createEEFTextDescription((TextDescription) widgetDescription);
         } else if (widgetDescription instanceof LabelDescription) {
             description = createEEFLabelDescription((LabelDescription) widgetDescription);
@@ -167,7 +170,24 @@ public class ViewDescriptionConverter {
         eefTextDescription.setValueExpression(textDescription.getValueExpression());
 
         InitialOperation initialOperation = textDescription.getInitialOperation();
-        eefTextDescription.setEditExpression("aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')");
+        eefTextDescription.setEditExpression(getExpressionForOperation(initialOperation));
+        return eefTextDescription;
+    }
+
+    private String getExpressionForOperation(InitialOperation initialOperation) {
+        return "aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')";
+    }
+
+    private EEFTextDescription createEEFTextDescription(TextAreaDescription textDescription) {
+        EEFTextDescription eefTextDescription = EefFactory.eINSTANCE.createEEFTextDescription();
+
+        eefTextDescription.setIdentifier(textDescription.getIdentifier());
+        eefTextDescription.setLabelExpression(textDescription.getLabelExpression());
+        eefTextDescription.setValueExpression(textDescription.getValueExpression());
+        eefTextDescription.setLineCount(textDescription.getLineCount());
+
+        InitialOperation initialOperation = textDescription.getInitialOperation();
+        eefTextDescription.setEditExpression(getExpressionForOperation(initialOperation));
         return eefTextDescription;
     }
 
@@ -186,7 +206,7 @@ public class ViewDescriptionConverter {
         eefButtonDescription.setLabelExpression(buttonDescription.getLabelExpression());
         eefButtonDescription.setButtonLabelExpression(buttonDescription.getButtonLabelExpression());
         InitialOperation initialOperation = buttonDescription.getInitialOperation();
-        eefButtonDescription.setPushExpression("aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')");
+        eefButtonDescription.setPushExpression(getExpressionForOperation(initialOperation));
         return eefButtonDescription;
     }
 

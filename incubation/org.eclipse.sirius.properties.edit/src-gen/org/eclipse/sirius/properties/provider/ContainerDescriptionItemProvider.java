@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -181,6 +181,8 @@ public class ContainerDescriptionItemProvider extends ItemProviderAdapter implem
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createSelectDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
     }

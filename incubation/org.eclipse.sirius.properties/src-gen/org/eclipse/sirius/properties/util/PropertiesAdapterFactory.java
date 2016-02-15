@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -149,6 +150,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDynamicMappingCase(DynamicMappingCase object) {
             return createDynamicMappingCaseAdapter();
+        }
+
+        @Override
+        public Adapter caseTextAreaDescription(TextAreaDescription object) {
+            return createTextAreaDescriptionAdapter();
         }
 
         @Override
@@ -381,6 +387,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDynamicMappingCaseAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.TextAreaDescription
+     * <em>Text Area Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.TextAreaDescription
+     * @generated
+     */
+    public Adapter createTextAreaDescriptionAdapter() {
         return null;
     }
 

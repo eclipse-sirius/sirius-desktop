@@ -19,6 +19,13 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textareadescription.TextAreaDescriptionLineCountPropertySection"
+               id="properties.section.textAreaDescription.LineCount"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textareadescription.TextAreaDescriptionLineCountFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextAreaDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionPropertySection"
                id="properties.section.dynamicMappingCase.CaseExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionFilter"

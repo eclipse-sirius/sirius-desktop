@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -136,6 +136,15 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     DynamicMappingCase createDynamicMappingCase();
+
+    /**
+     * Returns a new object of class '<em>Text Area Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Text Area Description</em>'.
+     * @generated
+     */
+    TextAreaDescription createTextAreaDescription();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

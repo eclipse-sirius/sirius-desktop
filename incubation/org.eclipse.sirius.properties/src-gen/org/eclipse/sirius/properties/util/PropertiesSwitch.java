@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -203,6 +204,17 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.DYNAMIC_MAPPING_CASE: {
             DynamicMappingCase dynamicMappingCase = (DynamicMappingCase) theEObject;
             T result = caseDynamicMappingCase(dynamicMappingCase);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case PropertiesPackage.TEXT_AREA_DESCRIPTION: {
+            TextAreaDescription textAreaDescription = (TextAreaDescription) theEObject;
+            T result = caseTextAreaDescription(textAreaDescription);
+            if (result == null)
+                result = caseTextDescription(textAreaDescription);
+            if (result == null)
+                result = caseWidgetDescription(textAreaDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -430,6 +442,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDynamicMappingCase(DynamicMappingCase object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Text Area Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTextAreaDescription(TextAreaDescription object) {
         return null;
     }
 

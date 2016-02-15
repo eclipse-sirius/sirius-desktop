@@ -115,4 +115,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="widget" lowerBound="1"
         eType="#//WidgetDescription" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextAreaDescription" eSuperTypes="#//TextDescription">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Represents a text area in the user interface."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="5"/>
+  </eClassifiers>
 </ecore:EPackage>

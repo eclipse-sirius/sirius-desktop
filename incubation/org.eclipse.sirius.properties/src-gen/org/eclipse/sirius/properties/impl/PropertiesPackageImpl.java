@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -133,6 +134,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass dynamicMappingCaseEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass textAreaDescriptionEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -666,6 +674,24 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
+    public EClass getTextAreaDescription() {
+        return textAreaDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getTextAreaDescription_LineCount() {
+        return (EAttribute) textAreaDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory) getEFactoryInstance();
     }
@@ -753,6 +779,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         dynamicMappingCaseEClass = createEClass(DYNAMIC_MAPPING_CASE);
         createEAttribute(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
         createEReference(dynamicMappingCaseEClass, DYNAMIC_MAPPING_CASE__WIDGET);
+
+        textAreaDescriptionEClass = createEClass(TEXT_AREA_DESCRIPTION);
+        createEAttribute(textAreaDescriptionEClass, TEXT_AREA_DESCRIPTION__LINE_COUNT);
     }
 
     /**
@@ -795,6 +824,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         labelDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         checkboxDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         selectDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        textAreaDescriptionEClass.getESuperTypes().add(this.getTextDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -898,6 +928,10 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(textAreaDescriptionEClass, TextAreaDescription.class, "TextAreaDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTextAreaDescription_LineCount(), ecorePackage.getEInt(), "lineCount", "5", 0, 1, TextAreaDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

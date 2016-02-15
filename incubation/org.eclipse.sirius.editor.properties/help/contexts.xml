@@ -144,4 +144,16 @@
    
       </description>
    </context>
+   <context id="TextAreaDescription">
+     <description>
+       Represents a text area in the user interface.
+
+       
+         
+   <!-- Start of user code TextAreaDescription description -->
+   
+   <!-- End of user code TextAreaDescription description -->
+   
+      </description>
+   </context>
 </contexts>

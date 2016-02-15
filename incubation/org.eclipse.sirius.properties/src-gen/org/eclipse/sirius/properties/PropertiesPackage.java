@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -769,6 +769,72 @@ public interface PropertiesPackage extends EPackage {
     int DYNAMIC_MAPPING_CASE_FEATURE_COUNT = 2;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
+     * <em>Text Area Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
+     * @generated
+     */
+    int TEXT_AREA_DESCRIPTION = 13;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__IDENTIFIER = TEXT_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__LABEL_EXPRESSION = TEXT_DESCRIPTION__LABEL_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__VALUE_EXPRESSION = TEXT_DESCRIPTION__VALUE_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__INITIAL_OPERATION = TEXT_DESCRIPTION__INITIAL_OPERATION;
+
+    /**
+     * The feature id for the '<em><b>Line Count</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__LINE_COUNT = TEXT_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>Text Area Description</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION_FEATURE_COUNT = TEXT_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription
      * <em>View Extension Description</em>}'. <!-- begin-user-doc --> <!--
@@ -1416,6 +1482,30 @@ public interface PropertiesPackage extends EPackage {
     EReference getDynamicMappingCase_Widget();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.TextAreaDescription
+     * <em>Text Area Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Text Area Description</em>'.
+     * @see org.eclipse.sirius.properties.TextAreaDescription
+     * @generated
+     */
+    EClass getTextAreaDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
+     * <em>Line Count</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Line Count</em>'.
+     * @see org.eclipse.sirius.properties.TextAreaDescription#getLineCount()
+     * @see #getTextAreaDescription()
+     * @generated
+     */
+    EAttribute getTextAreaDescription_LineCount();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1909,6 +1999,26 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference DYNAMIC_MAPPING_CASE__WIDGET = eINSTANCE.getDynamicMappingCase_Widget();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
+         * <em>Text Area Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
+         * @generated
+         */
+        EClass TEXT_AREA_DESCRIPTION = eINSTANCE.getTextAreaDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Line Count</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute TEXT_AREA_DESCRIPTION__LINE_COUNT = eINSTANCE.getTextAreaDescription_LineCount();
 
     }
 

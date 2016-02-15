@@ -74,5 +74,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingCase/caseExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingCase/widget"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//TextAreaDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextAreaDescription/lineCount"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

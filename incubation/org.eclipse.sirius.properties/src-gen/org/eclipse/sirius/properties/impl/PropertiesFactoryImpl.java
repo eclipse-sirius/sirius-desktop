@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 
@@ -98,6 +99,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createDynamicMappingSwitch();
         case PropertiesPackage.DYNAMIC_MAPPING_CASE:
             return createDynamicMappingCase();
+        case PropertiesPackage.TEXT_AREA_DESCRIPTION:
+            return createTextAreaDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -221,6 +224,16 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public DynamicMappingCase createDynamicMappingCase() {
         DynamicMappingCaseImpl dynamicMappingCase = new DynamicMappingCaseImpl();
         return dynamicMappingCase;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public TextAreaDescription createTextAreaDescription() {
+        TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
+        return textAreaDescription;
     }
 
     /**

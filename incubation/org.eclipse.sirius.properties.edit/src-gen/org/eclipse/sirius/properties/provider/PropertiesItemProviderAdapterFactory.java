@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -392,6 +392,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.TextAreaDescription} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected TextAreaDescriptionItemProvider textAreaDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.TextAreaDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createTextAreaDescriptionAdapter() {
+        if (textAreaDescriptionItemProvider == null) {
+            textAreaDescriptionItemProvider = new TextAreaDescriptionItemProvider(this);
+        }
+
+        return textAreaDescriptionItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -513,6 +538,8 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             dynamicMappingSwitchItemProvider.dispose();
         if (dynamicMappingCaseItemProvider != null)
             dynamicMappingCaseItemProvider.dispose();
+        if (textAreaDescriptionItemProvider != null)
+            textAreaDescriptionItemProvider.dispose();
     }
 
     /**
