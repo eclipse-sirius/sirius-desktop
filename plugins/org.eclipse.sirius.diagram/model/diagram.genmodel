@@ -641,7 +641,8 @@
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/labelPosition"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/resizeKind"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/forbiddenSides"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized sides on the parent node or container."
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/forbiddenSides"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/style/CustomStyleDescription">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="ID for the custom style, you should put here an ID you'll leverage using the API to provide your own custom style."

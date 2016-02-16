@@ -724,6 +724,14 @@
         <input type="org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionForbiddenSidesPropertySectionSpec"
+               id="style.section.nodeStyleDescription.ForbiddenSides"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionForbiddenSidesFilter"
+               afterSection="style.section.nodeStyleDescription.LabelPosition"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionLabelPositionPropertySection"
                id="style.section.nodeStyleDescription.LabelPosition"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionLabelPositionFilter"
