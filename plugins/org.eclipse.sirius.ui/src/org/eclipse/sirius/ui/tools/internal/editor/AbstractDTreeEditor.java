@@ -537,8 +537,14 @@ public abstract class AbstractDTreeEditor extends EditorPart
         Object result = super.getAdapter(type);
         if (result == null) {
             if (type == IPropertySheetPage.class) {
-                currentPropertySheetpage = new DTablePropertySheetpage(this);
-                result = currentPropertySheetpage;
+                IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+                if (contributedPage != null) {
+                    currentPropertySheetpage = null;
+                    result = contributedPage;
+                } else {
+                    currentPropertySheetpage = new DTablePropertySheetpage(this);
+                    result = currentPropertySheetpage;
+                }
             } else if (type == EditingDomain.class) {
                 result = getEditingDomain();
             }

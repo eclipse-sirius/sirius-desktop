@@ -135,10 +135,19 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
      * {@inheritDoc}
      */
     public Object getAdapter(Class type) {
+        Object result = null;
         if (type == IPropertySheetPage.class) {
-            return new TabbedPropertySheetPage(this);
+            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+            if (contributedPage != null) {
+                result = contributedPage;
+            } else {
+                result = new TabbedPropertySheetPage(this);
+            }
         }
-        return super.getAdapter(type);
+        if (result == null) {
+            result = super.getAdapter(type);
+        }
+        return result;
     }
 
     /**

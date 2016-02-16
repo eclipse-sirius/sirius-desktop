@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
-  
-  
   <extension point="org.eclipse.core.runtime.adapters">
     <factory adaptableType="org.eclipse.gef.GraphicalEditPart"
              class="org.eclipse.sirius.ui.properties.internal.SiriusInputAdapter">
@@ -17,7 +14,12 @@
              class="org.eclipse.sirius.ui.properties.internal.SiriusInputAdapter">
       <adapter type="org.eclipse.eef.core.api.InputDescriptor" />
     </factory>
+    <factory adaptableType="org.eclipse.emf.ecore.EObject"
+             class="org.eclipse.sirius.ui.properties.internal.SiriusInputAdapter">
+      <adapter type="org.eclipse.eef.core.api.InputDescriptor" />
+    </factory>
   </extension>
+
   <extension
         point="org.eclipse.eef.properties.ui.eefTabDescriptorProvider">
      <descriptor
@@ -27,6 +29,7 @@
            label="Sirius EEF Tab Descriptor Provider">
      </descriptor>
   </extension>
+  
   <extension
         point="org.eclipse.sirius.ui.siriusPropertySheetPageProvider">
      <siriusPropertySheetPageProvider
@@ -40,6 +43,10 @@
      <siriusPropertySheetPageProvider
            class="org.eclipse.sirius.ui.properties.internal.EEFPropertySheetPageProvider"
            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+     </siriusPropertySheetPageProvider>
+     <siriusPropertySheetPageProvider
+           class="org.eclipse.sirius.ui.properties.internal.EEFPropertySheetPageProvider"
+           contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
      </siriusPropertySheetPageProvider>
   </extension>
 </plugin>
