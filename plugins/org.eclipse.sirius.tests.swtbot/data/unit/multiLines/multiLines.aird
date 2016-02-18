@@ -1935,7 +1935,7 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ROqMNKPyEeCnJeyFpgI19w" x="60"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_ROplJKPyEeCnJeyFpgI19w" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ROplJaPyEeCnJeyFpgI19w" x="15" y="204" width="106" height="46"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ROplJaPyEeCnJeyFpgI19w" x="15" y="204" width="106" height="44"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_ROTm4qPyEeCnJeyFpgI19w"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_ROTm46PyEeCnJeyFpgI19w"/>
