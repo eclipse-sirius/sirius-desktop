@@ -502,13 +502,22 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Body Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
      * The number of structural features of the '<em>Label Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1283,6 +1292,18 @@ public interface PropertiesPackage extends EPackage {
     EClass getLabelDescription();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
+     * <em>Body Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Body Expression</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getBodyExpression()
+     * @see #getLabelDescription()
+     * @generated
+     */
+    EAttribute getLabelDescription_BodyExpression();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.CheckboxDescription
      * <em>Checkbox Description</em>}'. <!-- begin-user-doc --> <!--
@@ -1890,6 +1911,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EClass LABEL_DESCRIPTION = PropertiesPackage.eINSTANCE.getLabelDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Body Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_BodyExpression();
 
         /**
          * The meta object literal for the '

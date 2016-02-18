@@ -52,7 +52,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ButtonDescription/buttonLabelExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/initialOperation"/>
     </genClasses>
-    <genClasses ecoreClass="properties.ecore#//LabelDescription"/>
+    <genClasses ecoreClass="properties.ecore#//LabelDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/bodyExpression"/>
+    </genClasses>
     <genClasses ecoreClass="properties.ecore#//CheckboxDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CheckboxDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/initialOperation"/>

@@ -547,6 +547,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getLabelDescription_BodyExpression() {
+        return (EAttribute) labelDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EClass getCheckboxDescription() {
         return checkboxDescriptionEClass;
     }
@@ -832,6 +842,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION);
 
         labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
+        createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION);
 
         checkboxDescriptionEClass = createEClass(PropertiesPackage.CHECKBOX_DESCRIPTION);
         createEAttribute(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
@@ -987,6 +998,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getLabelDescription_BodyExpression(), theDescriptionPackage.getInterpretedExpression(), "bodyExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class,

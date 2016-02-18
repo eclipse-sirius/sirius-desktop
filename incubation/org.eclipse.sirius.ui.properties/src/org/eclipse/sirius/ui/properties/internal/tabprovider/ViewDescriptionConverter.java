@@ -192,6 +192,7 @@ public class ViewDescriptionConverter {
 
         eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
         eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
+        eefLabelDescription.setBodyExpression(labelDescription.getBodyExpression());
         return eefLabelDescription;
     }
 

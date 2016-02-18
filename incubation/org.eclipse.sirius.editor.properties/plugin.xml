@@ -101,6 +101,13 @@
         <input type="org.eclipse.sirius.properties.CheckboxDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeldescription.LabelDescriptionBodyExpressionPropertySection"
+               id="properties.section.labelDescription.BodyExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeldescription.LabelDescriptionBodyExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.LabelDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.buttondescription.ButtonDescriptionButtonLabelExpressionPropertySection"
                id="properties.section.buttonDescription.ButtonLabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.buttondescription.ButtonDescriptionButtonLabelExpressionFilter"
