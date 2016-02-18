@@ -15,53 +15,54 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Dynamic Mapping Case</b></em>'. <!-- end-user-doc -->
+ * <em><b>Dynamic Mapping If</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression
- * <em>Case Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget <em>
+ * {@link org.eclipse.sirius.properties.DynamicMappingIf#getPredicateExpression
+ * <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.DynamicMappingIf#getWidget <em>
  * Widget</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingCase()
+ * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIf()
  * @model
  * @generated
  */
-public interface DynamicMappingCase extends EObject {
+public interface DynamicMappingIf extends EObject {
     /**
-     * Returns the value of the '<em><b>Case Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Predicate Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Case Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Predicate Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Case Expression</em>' attribute.
-     * @see #setCaseExpression(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingCase_CaseExpression()
+     * @return the value of the '<em>Predicate Expression</em>' attribute.
+     * @see #setPredicateExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIf_PredicateExpression()
      * @model required="true"
      * @generated
      */
-    String getCaseExpression();
+    String getPredicateExpression();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.DynamicMappingCase#getCaseExpression
-     * <em>Case Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.properties.DynamicMappingIf#getPredicateExpression
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Case Expression</em>' attribute.
-     * @see #getCaseExpression()
+     *            the new value of the '<em>Predicate Expression</em>'
+     *            attribute.
+     * @see #getPredicateExpression()
      * @generated
      */
-    void setCaseExpression(String value);
+    void setPredicateExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Widget</b></em>' containment reference.
@@ -74,7 +75,7 @@ public interface DynamicMappingCase extends EObject {
      * 
      * @return the value of the '<em>Widget</em>' containment reference.
      * @see #setWidget(WidgetDescription)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingCase_Widget()
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingIf_Widget()
      * @model containment="true" required="true"
      * @generated
      */
@@ -82,7 +83,7 @@ public interface DynamicMappingCase extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.DynamicMappingCase#getWidget
+     * {@link org.eclipse.sirius.properties.DynamicMappingIf#getWidget
      * <em>Widget</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -93,4 +94,4 @@ public interface DynamicMappingCase extends EObject {
      */
     void setWidget(WidgetDescription value);
 
-} // DynamicMappingCase
+} // DynamicMappingIf

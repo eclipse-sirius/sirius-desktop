@@ -18,36 +18,41 @@
       <dynamicMappings
           iterator="eStructuralFeature"
           domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
-        <switch
-            switchExpression="aql:eStructuralFeature.eType.name">
-          <cases
-              caseExpression="EString">
-            <widget
-                xsi:type="properties:TextDescription"
-                identifier=""
-                labelExpression="aql:eStructuralFeature.name"
-                valueExpression="aql:self.eGet(eStructuralFeature).toString()">
-              <initialOperation>
-                <firstModelOperations
-                    xsi:type="tool:ChangeContext"
-                    browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
-              </initialOperation>
-            </widget>
-          </cases>
-          <cases
-              caseExpression="EBoolean">
-            <widget
-                xsi:type="properties:CheckboxDescription"
-                labelExpression="aql:eStructuralFeature.name"
-                valueExpression="aql:self.eGet(eStructuralFeature)">
-              <initialOperation>
-                <firstModelOperations
-                    xsi:type="tool:ChangeContext"
-                    browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
-              </initialOperation>
-            </widget>
-          </cases>
-        </switch>
+        <ifs
+            predicateExpression="aql:eStructuralFeature.eType = ecore::EString">
+          <widget
+              xsi:type="properties:TextDescription"
+              labelExpression="aql:eStructuralFeature.name"
+              valueExpression="aql:self.eGet(eStructuralFeature)">
+            <initialOperation>
+              <firstModelOperations
+                  xsi:type="tool:ChangeContext"
+                  browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+            </initialOperation>
+          </widget>
+        </ifs>
+        <ifs
+            predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean">
+          <widget
+              xsi:type="properties:CheckboxDescription"
+              labelExpression="aql:eStructuralFeature.name"
+              valueExpression="aql:self.eGet(eStructuralFeature)">
+            <initialOperation>
+              <firstModelOperations
+                  xsi:type="tool:ChangeContext"
+                  browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+            </initialOperation>
+          </widget>
+        </ifs>
+        <ifs
+            predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.many) and not(eStructuralFeature.containment) and not(eStructuralFeature.container) and not(eStructuralFeature.derived)">
+          <widget
+              xsi:type="properties:SelectDescription"
+              labelExpression="aql:eStructuralFeature.name"
+              valueExpression="aql:self.eGet(eStructuralFeature)"
+              candidatesExpression="aql:self.eResource().getContents().eAllContents()->filter(eStructuralFeature.eType)"
+              candidateDisplayExpression="aql:candidate.name"/>
+        </ifs>
       </dynamicMappings>
     </container>
   </groups>

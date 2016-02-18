@@ -18,9 +18,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -144,13 +143,8 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDynamicMappingSwitch(DynamicMappingSwitch object) {
-            return createDynamicMappingSwitchAdapter();
-        }
-
-        @Override
-        public Adapter caseDynamicMappingCase(DynamicMappingCase object) {
-            return createDynamicMappingCaseAdapter();
+        public Adapter caseDynamicMappingIf(DynamicMappingIf object) {
+            return createDynamicMappingIfAdapter();
         }
 
         @Override
@@ -366,33 +360,17 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.DynamicMappingSwitch
-     * <em>Dynamic Mapping Switch</em>}'. <!-- begin-user-doc --> This default
+     * {@link org.eclipse.sirius.properties.DynamicMappingIf
+     * <em>Dynamic Mapping If</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.properties.DynamicMappingSwitch
+     * @see org.eclipse.sirius.properties.DynamicMappingIf
      * @generated
      */
-    public Adapter createDynamicMappingSwitchAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.DynamicMappingCase
-     * <em>Dynamic Mapping Case</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.properties.DynamicMappingCase
-     * @generated
-     */
-    public Adapter createDynamicMappingCaseAdapter() {
+    public Adapter createDynamicMappingIfAdapter() {
         return null;
     }
 

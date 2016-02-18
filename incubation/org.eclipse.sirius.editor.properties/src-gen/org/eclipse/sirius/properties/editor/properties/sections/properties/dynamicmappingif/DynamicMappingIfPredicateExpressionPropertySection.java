@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingswitch;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingif;
 
 // Start of user code imports
 
@@ -21,16 +21,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the switchExpression property of a DynamicMappingSwitch object.
+ * A section for the predicateExpression property of a DynamicMappingIf object.
  */
-public class DynamicMappingSwitchSwitchExpressionPropertySection extends AbstractTextPropertySection {
+public class DynamicMappingIfPredicateExpressionPropertySection extends AbstractTextPropertySection {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "SwitchExpression"; //$NON-NLS-1$
+        return "PredicateExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -51,7 +51,7 @@ public class DynamicMappingSwitchSwitchExpressionPropertySection extends Abstrac
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getDynamicMappingSwitch_SwitchExpression();
+        return PropertiesPackage.eINSTANCE.getDynamicMappingIf_PredicateExpression();
     }
 
     /**

@@ -18,9 +18,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -212,17 +211,9 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
-        case PropertiesPackage.DYNAMIC_MAPPING_SWITCH: {
-            DynamicMappingSwitch dynamicMappingSwitch = (DynamicMappingSwitch) theEObject;
-            T result = caseDynamicMappingSwitch(dynamicMappingSwitch);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE: {
-            DynamicMappingCase dynamicMappingCase = (DynamicMappingCase) theEObject;
-            T result = caseDynamicMappingCase(dynamicMappingCase);
+        case PropertiesPackage.DYNAMIC_MAPPING_IF: {
+            DynamicMappingIf dynamicMappingIf = (DynamicMappingIf) theEObject;
+            T result = caseDynamicMappingIf(dynamicMappingIf);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -447,35 +438,18 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Dynamic Mapping Switch</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
+     * <em>Dynamic Mapping If</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
      * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Dynamic Mapping Switch</em>'.
+     *         <em>Dynamic Mapping If</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseDynamicMappingSwitch(DynamicMappingSwitch object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Dynamic Mapping Case</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Dynamic Mapping Case</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDynamicMappingCase(DynamicMappingCase object) {
+    public T caseDynamicMappingIf(DynamicMappingIf object) {
         return null;
     }
 

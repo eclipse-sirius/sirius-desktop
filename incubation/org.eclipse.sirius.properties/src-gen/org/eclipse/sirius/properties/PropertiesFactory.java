@@ -120,22 +120,13 @@ public interface PropertiesFactory extends EFactory {
     DynamicMappingFor createDynamicMappingFor();
 
     /**
-     * Returns a new object of class '<em>Dynamic Mapping Switch</em>'. <!--
+     * Returns a new object of class '<em>Dynamic Mapping If</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return a new object of class '<em>Dynamic Mapping Switch</em>'.
+     * @return a new object of class '<em>Dynamic Mapping If</em>'.
      * @generated
      */
-    DynamicMappingSwitch createDynamicMappingSwitch();
-
-    /**
-     * Returns a new object of class '<em>Dynamic Mapping Case</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Dynamic Mapping Case</em>'.
-     * @generated
-     */
-    DynamicMappingCase createDynamicMappingCase();
+    DynamicMappingIf createDynamicMappingIf();
 
     /**
      * Returns a new object of class '<em>Text Area Description</em>'. <!--

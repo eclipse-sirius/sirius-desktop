@@ -11,14 +11,19 @@
  */
 package org.eclipse.sirius.properties.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
@@ -33,9 +38,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getDomainClassExpression
  * <em>Domain Class Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getSwitch
- * <em>Switch</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIfs
+ * <em>Ifs</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,14 +89,14 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     protected String domainClassExpression = DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getSwitch() <em>Switch</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see #getSwitch()
+     * @see #getIfs()
      * @generated
      * @ordered
      */
-    protected DynamicMappingSwitch switch_;
+    protected EList<DynamicMappingIf> ifs;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -167,51 +171,11 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * @generated
      */
     @Override
-    public DynamicMappingSwitch getSwitch() {
-        return switch_;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetSwitch(DynamicMappingSwitch newSwitch, NotificationChain msgs) {
-        DynamicMappingSwitch oldSwitch = switch_;
-        switch_ = newSwitch;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, oldSwitch, newSwitch);
-            if (msgs == null) {
-                msgs = notification;
-            } else {
-                msgs.add(notification);
-            }
+    public EList<DynamicMappingIf> getIfs() {
+        if (ifs == null) {
+            ifs = new EObjectContainmentEList<DynamicMappingIf>(DynamicMappingIf.class, this, PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS);
         }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setSwitch(DynamicMappingSwitch newSwitch) {
-        if (newSwitch != switch_) {
-            NotificationChain msgs = null;
-            if (switch_ != null) {
-                msgs = ((InternalEObject) switch_).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
-            }
-            if (newSwitch != null) {
-                msgs = ((InternalEObject) newSwitch).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, null, msgs);
-            }
-            msgs = basicSetSwitch(newSwitch, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH, newSwitch, newSwitch));
-        }
+        return ifs;
     }
 
     /**
@@ -222,8 +186,8 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
-            return basicSetSwitch(null, msgs);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+            return ((InternalEList<?>) getIfs()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -240,8 +204,8 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
             return getIterator();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             return getDomainClassExpression();
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
-            return getSwitch();
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+            return getIfs();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -251,6 +215,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -260,8 +225,9 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             setDomainClassExpression((String) newValue);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
-            setSwitch((DynamicMappingSwitch) newValue);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+            getIfs().clear();
+            getIfs().addAll((Collection<? extends DynamicMappingIf>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -281,8 +247,8 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             setDomainClassExpression(DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
-            setSwitch((DynamicMappingSwitch) null);
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+            getIfs().clear();
             return;
         }
         super.eUnset(featureID);
@@ -301,8 +267,8 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT
                     .equals(domainClassExpression);
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
-            return switch_ != null;
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+            return ifs != null && !ifs.isEmpty();
         }
         return super.eIsSet(featureID);
     }

@@ -343,52 +343,27 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.DynamicMappingSwitch} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * {@link org.eclipse.sirius.properties.DynamicMappingIf} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    protected DynamicMappingSwitchItemProvider dynamicMappingSwitchItemProvider;
+    protected DynamicMappingIfItemProvider dynamicMappingIfItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.DynamicMappingSwitch}. <!--
+     * {@link org.eclipse.sirius.properties.DynamicMappingIf}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
-    public Adapter createDynamicMappingSwitchAdapter() {
-        if (dynamicMappingSwitchItemProvider == null) {
-            dynamicMappingSwitchItemProvider = new DynamicMappingSwitchItemProvider(this);
+    public Adapter createDynamicMappingIfAdapter() {
+        if (dynamicMappingIfItemProvider == null) {
+            dynamicMappingIfItemProvider = new DynamicMappingIfItemProvider(this);
         }
 
-        return dynamicMappingSwitchItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.DynamicMappingCase} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected DynamicMappingCaseItemProvider dynamicMappingCaseItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.DynamicMappingCase}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createDynamicMappingCaseAdapter() {
-        if (dynamicMappingCaseItemProvider == null) {
-            dynamicMappingCaseItemProvider = new DynamicMappingCaseItemProvider(this);
-        }
-
-        return dynamicMappingCaseItemProvider;
+        return dynamicMappingIfItemProvider;
     }
 
     /**
@@ -444,7 +419,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -575,11 +550,8 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (dynamicMappingForItemProvider != null) {
             dynamicMappingForItemProvider.dispose();
         }
-        if (dynamicMappingSwitchItemProvider != null) {
-            dynamicMappingSwitchItemProvider.dispose();
-        }
-        if (dynamicMappingCaseItemProvider != null) {
-            dynamicMappingCaseItemProvider.dispose();
+        if (dynamicMappingIfItemProvider != null) {
+            dynamicMappingIfItemProvider.dispose();
         }
         if (textAreaDescriptionItemProvider != null) {
             textAreaDescriptionItemProvider.dispose();

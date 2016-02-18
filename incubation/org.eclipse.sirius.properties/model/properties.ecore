@@ -100,17 +100,11 @@
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClassExpression"
         lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="switch" lowerBound="1"
-        eType="#//DynamicMappingSwitch" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifs" lowerBound="1" upperBound="-1"
+        eType="#//DynamicMappingIf" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingSwitch">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="switchExpression" lowerBound="1"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
-        eType="#//DynamicMappingCase" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingCase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="caseExpression" lowerBound="1"
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingIf">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="widget" lowerBound="1"
         eType="#//WidgetDescription" containment="true"/>

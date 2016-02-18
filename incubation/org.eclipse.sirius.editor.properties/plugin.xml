@@ -49,18 +49,11 @@
         <input type="org.eclipse.sirius.properties.TextAreaDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionPropertySection"
-               id="properties.section.dynamicMappingCase.CaseExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingcase.DynamicMappingCaseCaseExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingif.DynamicMappingIfPredicateExpressionPropertySection"
+               id="properties.section.dynamicMappingIf.PredicateExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingif.DynamicMappingIfPredicateExpressionFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.DynamicMappingCase"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingswitch.DynamicMappingSwitchSwitchExpressionPropertySection"
-               id="properties.section.dynamicMappingSwitch.SwitchExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.dynamicmappingswitch.DynamicMappingSwitchSwitchExpressionFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.DynamicMappingSwitch"/>
+        <input type="org.eclipse.sirius.properties.DynamicMappingIf"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.dynamicmappingfor.DynamicMappingForDomainClassExpressionPropertySection"

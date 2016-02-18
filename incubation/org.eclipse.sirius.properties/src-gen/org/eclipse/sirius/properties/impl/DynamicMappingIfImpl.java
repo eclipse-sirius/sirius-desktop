@@ -17,49 +17,48 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.sirius.properties.DynamicMappingCase;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Dynamic Mapping Case</b></em>'. <!-- end-user-doc -->
+ * <em><b>Dynamic Mapping If</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl#getCaseExpression
- * <em>Case Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.DynamicMappingCaseImpl#getWidget
+ * {@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getPredicateExpression
+ * <em>Predicate Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getWidget
  * <em>Widget</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container implements DynamicMappingCase {
+public class DynamicMappingIfImpl extends MinimalEObjectImpl.Container implements DynamicMappingIf {
     /**
-     * The default value of the '{@link #getCaseExpression()
-     * <em>Case Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getPredicateExpression()
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @see #getCaseExpression()
+     * @see #getPredicateExpression()
      * @generated
      * @ordered
      */
-    protected static final String CASE_EXPRESSION_EDEFAULT = null;
+    protected static final String PREDICATE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getCaseExpression()
-     * <em>Case Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getPredicateExpression()
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @see #getCaseExpression()
+     * @see #getPredicateExpression()
      * @generated
      * @ordered
      */
-    protected String caseExpression = DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT;
+    protected String predicateExpression = DynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getWidget() <em>Widget</em>}'
@@ -76,7 +75,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
-    protected DynamicMappingCaseImpl() {
+    protected DynamicMappingIfImpl() {
         super();
     }
 
@@ -87,7 +86,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      */
     @Override
     protected EClass eStaticClass() {
-        return PropertiesPackage.Literals.DYNAMIC_MAPPING_CASE;
+        return PropertiesPackage.Literals.DYNAMIC_MAPPING_IF;
     }
 
     /**
@@ -96,8 +95,8 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      */
     @Override
-    public String getCaseExpression() {
-        return caseExpression;
+    public String getPredicateExpression() {
+        return predicateExpression;
     }
 
     /**
@@ -106,11 +105,11 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      */
     @Override
-    public void setCaseExpression(String newCaseExpression) {
-        String oldCaseExpression = caseExpression;
-        caseExpression = newCaseExpression;
+    public void setPredicateExpression(String newPredicateExpression) {
+        String oldPredicateExpression = predicateExpression;
+        predicateExpression = newPredicateExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION, oldCaseExpression, caseExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, oldPredicateExpression, predicateExpression));
         }
     }
 
@@ -133,7 +132,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
         WidgetDescription oldWidget = widget;
         widget = newWidget;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, oldWidget, newWidget);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET, oldWidget, newWidget);
             if (msgs == null) {
                 msgs = notification;
             } else {
@@ -153,17 +152,17 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
         if (newWidget != widget) {
             NotificationChain msgs = null;
             if (widget != null) {
-                msgs = ((InternalEObject) widget).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+                msgs = ((InternalEObject) widget).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET, null, msgs);
             }
             if (newWidget != null) {
-                msgs = ((InternalEObject) newWidget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, null, msgs);
+                msgs = ((InternalEObject) newWidget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET, null, msgs);
             }
             msgs = basicSetWidget(newWidget, msgs);
             if (msgs != null) {
                 msgs.dispatch();
             }
         } else if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET, newWidget, newWidget));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET, newWidget, newWidget));
         }
     }
 
@@ -175,7 +174,7 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             return basicSetWidget(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -189,9 +188,9 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            return getCaseExpression();
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+            return getPredicateExpression();
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             return getWidget();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -205,10 +204,10 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            setCaseExpression((String) newValue);
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+            setPredicateExpression((String) newValue);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             setWidget((WidgetDescription) newValue);
             return;
         }
@@ -223,10 +222,10 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            setCaseExpression(DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT);
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+            setPredicateExpression(DynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             setWidget((WidgetDescription) null);
             return;
         }
@@ -241,9 +240,9 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION:
-            return DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT == null ? caseExpression != null : !DynamicMappingCaseImpl.CASE_EXPRESSION_EDEFAULT.equals(caseExpression);
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+            return DynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !DynamicMappingIfImpl.PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             return widget != null;
         }
         return super.eIsSet(featureID);
@@ -261,10 +260,10 @@ public class DynamicMappingCaseImpl extends MinimalEObjectImpl.Container impleme
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (caseExpression: ");
-        result.append(caseExpression);
+        result.append(" (predicateExpression: ");
+        result.append(predicateExpression);
         result.append(')');
         return result.toString();
     }
 
-} // DynamicMappingCaseImpl
+} // DynamicMappingIfImpl

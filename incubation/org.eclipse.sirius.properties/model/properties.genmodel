@@ -66,15 +66,11 @@
     <genClasses ecoreClass="properties.ecore#//DynamicMappingFor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/iterator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/domainClassExpression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingFor/switch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingFor/ifs"/>
     </genClasses>
-    <genClasses ecoreClass="properties.ecore#//DynamicMappingSwitch">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingSwitch/switchExpression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingSwitch/cases"/>
-    </genClasses>
-    <genClasses ecoreClass="properties.ecore#//DynamicMappingCase">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingCase/caseExpression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingCase/widget"/>
+    <genClasses ecoreClass="properties.ecore#//DynamicMappingIf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingIf/predicateExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//DynamicMappingIf/widget"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextAreaDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextAreaDescription/lineCount"/>

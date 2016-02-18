@@ -28,18 +28,18 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.DynamicMappingSwitch} object. <!--
+ * {@link org.eclipse.sirius.properties.DynamicMappingIf} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class DynamicMappingSwitchItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
 IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -47,7 +47,7 @@ IItemPropertySource {
      *
      * @generated
      */
-    public DynamicMappingSwitchItemProvider(AdapterFactory adapterFactory) {
+    public DynamicMappingIfItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -62,22 +62,22 @@ IItemPropertySource {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addSwitchExpressionPropertyDescriptor(object);
+            addPredicateExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Switch Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
+     * This adds a property descriptor for the Predicate Expression feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
-    protected void addSwitchExpressionPropertyDescriptor(Object object) {
+    protected void addPredicateExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DynamicMappingSwitch_switchExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingSwitch_switchExpression_feature", "_UI_DynamicMappingSwitch_type"),
-                PropertiesPackage.Literals.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_DynamicMappingIf_predicateExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingIf_predicateExpression_feature", "_UI_DynamicMappingIf_type"),
+                PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,7 +94,7 @@ IItemPropertySource {
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_SWITCH__CASES);
+            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET);
         }
         return childrenFeatures;
     }
@@ -114,14 +114,14 @@ IItemPropertySource {
     }
 
     /**
-     * This returns DynamicMappingSwitch.gif. <!-- begin-user-doc --> <!--
+     * This returns DynamicMappingIf.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingSwitch"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingIf"));
     }
 
     /**
@@ -132,8 +132,8 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingSwitch) object).getSwitchExpression();
-        return label == null || label.length() == 0 ? getString("_UI_DynamicMappingSwitch_type") : getString("_UI_DynamicMappingSwitch_type") + " " + label;
+        String label = ((DynamicMappingIf) object).getPredicateExpression();
+        return label == null || label.length() == 0 ? getString("_UI_DynamicMappingIf_type") : getString("_UI_DynamicMappingIf_type") + " " + label;
     }
 
     /**
@@ -148,11 +148,11 @@ IItemPropertySource {
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DynamicMappingSwitch.class)) {
-        case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION:
+        switch (notification.getFeatureID(DynamicMappingIf.class)) {
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES:
+        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -170,7 +170,19 @@ IItemPropertySource {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_SWITCH__CASES, PropertiesFactory.eINSTANCE.createDynamicMappingCase()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createButtonDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createLabelDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createSelectDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createRadioDescription()));
     }
 
     /**

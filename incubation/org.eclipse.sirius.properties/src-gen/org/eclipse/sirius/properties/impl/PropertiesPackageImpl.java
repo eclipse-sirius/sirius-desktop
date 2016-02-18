@@ -20,9 +20,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -127,14 +126,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * 
      * @generated
      */
-    private EClass dynamicMappingSwitchEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dynamicMappingCaseEClass = null;
+    private EClass dynamicMappingIfEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -665,7 +657,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getDynamicMappingFor_Switch() {
+    public EReference getDynamicMappingFor_Ifs() {
         return (EReference) dynamicMappingForEClass.getEStructuralFeatures().get(2);
     }
 
@@ -675,8 +667,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EClass getDynamicMappingSwitch() {
-        return dynamicMappingSwitchEClass;
+    public EClass getDynamicMappingIf() {
+        return dynamicMappingIfEClass;
     }
 
     /**
@@ -685,8 +677,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getDynamicMappingSwitch_SwitchExpression() {
-        return (EAttribute) dynamicMappingSwitchEClass.getEStructuralFeatures().get(0);
+    public EAttribute getDynamicMappingIf_PredicateExpression() {
+        return (EAttribute) dynamicMappingIfEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -695,38 +687,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getDynamicMappingSwitch_Cases() {
-        return (EReference) dynamicMappingSwitchEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EClass getDynamicMappingCase() {
-        return dynamicMappingCaseEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EAttribute getDynamicMappingCase_CaseExpression() {
-        return (EAttribute) dynamicMappingCaseEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getDynamicMappingCase_Widget() {
-        return (EReference) dynamicMappingCaseEClass.getEStructuralFeatures().get(1);
+    public EReference getDynamicMappingIf_Widget() {
+        return (EReference) dynamicMappingIfEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -884,15 +846,11 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         dynamicMappingForEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_FOR);
         createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR);
         createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION);
-        createEReference(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH);
+        createEReference(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS);
 
-        dynamicMappingSwitchEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_SWITCH);
-        createEAttribute(dynamicMappingSwitchEClass, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__SWITCH_EXPRESSION);
-        createEReference(dynamicMappingSwitchEClass, PropertiesPackage.DYNAMIC_MAPPING_SWITCH__CASES);
-
-        dynamicMappingCaseEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_CASE);
-        createEAttribute(dynamicMappingCaseEClass, PropertiesPackage.DYNAMIC_MAPPING_CASE__CASE_EXPRESSION);
-        createEReference(dynamicMappingCaseEClass, PropertiesPackage.DYNAMIC_MAPPING_CASE__WIDGET);
+        dynamicMappingIfEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_IF);
+        createEAttribute(dynamicMappingIfEClass, PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION);
+        createEReference(dynamicMappingIfEClass, PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET);
 
         textAreaDescriptionEClass = createEClass(PropertiesPackage.TEXT_AREA_DESCRIPTION);
         createEAttribute(textAreaDescriptionEClass, PropertiesPackage.TEXT_AREA_DESCRIPTION__LINE_COUNT);
@@ -1056,21 +1014,14 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDynamicMappingFor_DomainClassExpression(), theEcorePackage.getEString(), "domainClassExpression", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDynamicMappingFor_Switch(), this.getDynamicMappingSwitch(), null, "switch", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEReference(getDynamicMappingFor_Ifs(), this.getDynamicMappingIf(), null, "ifs", null, 1, -1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
-        initEClass(dynamicMappingSwitchEClass, DynamicMappingSwitch.class, "DynamicMappingSwitch", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDynamicMappingSwitch_SwitchExpression(), theEcorePackage.getEString(), "switchExpression", null, 1, 1, DynamicMappingSwitch.class, !EPackageImpl.IS_TRANSIENT,
+        initEClass(dynamicMappingIfEClass, DynamicMappingIf.class, "DynamicMappingIf", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDynamicMappingIf_PredicateExpression(), theEcorePackage.getEString(), "predicateExpression", null, 1, 1, DynamicMappingIf.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDynamicMappingSwitch_Cases(), this.getDynamicMappingCase(), null, "cases", null, 1, -1, DynamicMappingSwitch.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-
-        initEClass(dynamicMappingCaseEClass, DynamicMappingCase.class, "DynamicMappingCase", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDynamicMappingCase_CaseExpression(), theEcorePackage.getEString(), "caseExpression", null, 1, 1, DynamicMappingCase.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDynamicMappingCase_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingCase.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEReference(getDynamicMappingIf_Widget(), this.getWidgetDescription(), null, "widget", null, 1, 1, DynamicMappingIf.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 

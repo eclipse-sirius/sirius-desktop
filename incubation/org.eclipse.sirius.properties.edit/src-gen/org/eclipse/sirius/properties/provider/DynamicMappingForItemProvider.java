@@ -107,7 +107,7 @@ IItemPropertySource {
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__SWITCH);
+            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__IFS);
         }
         return childrenFeatures;
     }
@@ -166,7 +166,7 @@ IItemPropertySource {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__SWITCH:
+        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -184,7 +184,7 @@ IItemPropertySource {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__SWITCH, PropertiesFactory.eINSTANCE.createDynamicMappingSwitch()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__IFS, PropertiesFactory.eINSTANCE.createDynamicMappingIf()));
     }
 
     /**

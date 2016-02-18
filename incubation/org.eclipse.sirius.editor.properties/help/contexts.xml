@@ -122,25 +122,14 @@
    
       </description>
    </context>
-   <context id="DynamicMappingSwitch">
+   <context id="DynamicMappingIf">
      <description>
        
        
          
-   <!-- Start of user code DynamicMappingSwitch description -->
+   <!-- Start of user code DynamicMappingIf description -->
    
-   <!-- End of user code DynamicMappingSwitch description -->
-   
-      </description>
-   </context>
-   <context id="DynamicMappingCase">
-     <description>
-       
-       
-         
-   <!-- Start of user code DynamicMappingCase description -->
-   
-   <!-- End of user code DynamicMappingCase description -->
+   <!-- End of user code DynamicMappingIf description -->
    
       </description>
    </context>

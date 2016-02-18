@@ -15,9 +15,8 @@ import java.util.List;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
-import org.eclipse.eef.EEFDynamicMappingCase;
 import org.eclipse.eef.EEFDynamicMappingFor;
-import org.eclipse.eef.EEFDynamicMappingSwitch;
+import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFPageDescription;
@@ -30,9 +29,8 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
-import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -122,21 +120,15 @@ public class ViewDescriptionConverter {
             eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
             eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
 
-            DynamicMappingSwitch dynamicMappingSwitch = dynamicMappingFor.getSwitch();
-            EEFDynamicMappingSwitch eefDynamicMappingSwitch = EefFactory.eINSTANCE.createEEFDynamicMappingSwitch();
-            eefDynamicMappingSwitch.setSwitchExpression(dynamicMappingSwitch.getSwitchExpression());
-            eefDynamicMappingFor.setSwitch(eefDynamicMappingSwitch);
+            List<DynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
+            for (DynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
+                EEFDynamicMappingIf eefDynamicMappingIf = EefFactory.eINSTANCE.createEEFDynamicMappingIf();
+                eefDynamicMappingIf.setPredicateExpression(dynamicMappingIf.getPredicateExpression());
 
-            for (DynamicMappingCase dynamicMappingCase : dynamicMappingSwitch.getCases()) {
-                EEFDynamicMappingCase eefDynamicMappingCase = EefFactory.eINSTANCE.createEEFDynamicMappingCase();
-                eefDynamicMappingCase.setCaseExpression(dynamicMappingCase.getCaseExpression());
+                EEFWidgetDescription eefWidgetDescription = this.createEEFWidgetDescription(dynamicMappingIf.getWidget());
+                eefDynamicMappingIf.setWidget(eefWidgetDescription);
 
-                EEFWidgetDescription widgetDescription = this.createEEFWidgetDescription(dynamicMappingCase.getWidget());
-                if (widgetDescription != null) {
-                    eefDynamicMappingCase.setWidget(widgetDescription);
-                }
-
-                eefDynamicMappingSwitch.getCases().add(eefDynamicMappingCase);
+                eefDynamicMappingFor.getIfs().add(eefDynamicMappingIf);
             }
 
             containerDesc.getDynamicMappings().add(eefDynamicMappingFor);

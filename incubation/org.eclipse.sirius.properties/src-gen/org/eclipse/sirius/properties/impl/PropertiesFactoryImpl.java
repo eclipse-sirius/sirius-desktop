@@ -19,9 +19,8 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingCase;
 import org.eclipse.sirius.properties.DynamicMappingFor;
-import org.eclipse.sirius.properties.DynamicMappingSwitch;
+import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -96,10 +95,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createSelectDescription();
         case PropertiesPackage.DYNAMIC_MAPPING_FOR:
             return createDynamicMappingFor();
-        case PropertiesPackage.DYNAMIC_MAPPING_SWITCH:
-            return createDynamicMappingSwitch();
-        case PropertiesPackage.DYNAMIC_MAPPING_CASE:
-            return createDynamicMappingCase();
+        case PropertiesPackage.DYNAMIC_MAPPING_IF:
+            return createDynamicMappingIf();
         case PropertiesPackage.TEXT_AREA_DESCRIPTION:
             return createTextAreaDescription();
         case PropertiesPackage.RADIO_DESCRIPTION:
@@ -225,20 +222,9 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public DynamicMappingSwitch createDynamicMappingSwitch() {
-        DynamicMappingSwitchImpl dynamicMappingSwitch = new DynamicMappingSwitchImpl();
-        return dynamicMappingSwitch;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public DynamicMappingCase createDynamicMappingCase() {
-        DynamicMappingCaseImpl dynamicMappingCase = new DynamicMappingCaseImpl();
-        return dynamicMappingCase;
+    public DynamicMappingIf createDynamicMappingIf() {
+        DynamicMappingIfImpl dynamicMappingIf = new DynamicMappingIfImpl();
+        return dynamicMappingIf;
     }
 
     /**
