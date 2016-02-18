@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.internal.figures.ResizableLabelLocator;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
@@ -93,8 +92,9 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     protected void setManager(DirectEditManager manager) {
         DEdge edge = (DEdge) resolveSemanticElement();
         Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-        if (edgeMapping.some() && edgeMapping.get().getLabelDirectEdit() != null)
+        if (edgeMapping.some() && edgeMapping.get().getLabelDirectEdit() != null) {
             this.manager = manager;
+        }
     }
 
     /**
@@ -150,11 +150,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
         int height = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
         Rectangle rectangle = new Rectangle(dx, dy, width, height);
         if (getParent() instanceof AbstractConnectionEditPart) {
-            if (this instanceof AbstractDEdgeNameEditPart) {
-                ((AbstractGraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), new EdgeLabelLocator(getFigure().getParent(), rectangle, getKeyPoint()));
-            } else {
-                ((AbstractGraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), new ResizableLabelLocator(getFigure().getParent(), rectangle, getKeyPoint()));
-            }
+            ((AbstractGraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), new EdgeLabelLocator(getFigure().getParent(), rectangle, getKeyPoint()));
         }
     }
 
