@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -138,7 +139,8 @@ public class CompartmentMappingsTests extends SiriusDiagramTestCase implements I
         DDiagramElement dDiagramElement = representation.getContainers().get(0);
         DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
 
-        assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping", diagramElementMapping instanceof ContainerMapping);
+        assertTrue("The '" + MessageTranslator.INSTANCE.getMessage(diagramElementMapping.getLabel()) + "' mapping should be a ContainerMapping",
+                diagramElementMapping instanceof ContainerMapping);
         ContainerMapping containerMapping = (ContainerMapping) diagramElementMapping;
         return containerMapping;  
     }

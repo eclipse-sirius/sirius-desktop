@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -106,7 +107,8 @@ public final class FilterTools {
                 FilterTools.computeInput(diagram, model, var, input);
 
                 if (!var.isMultiple()) {
-                    final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+                    final EObject modelElement = uiCallback.askForEObject(MessageTranslator.INSTANCE.getMessage(var.getMessage()), input,
+                            DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                     final EObjectVariableValue newValue = DiagramFactory.eINSTANCE.createEObjectVariableValue();
                     newValue.setModelElement(modelElement);

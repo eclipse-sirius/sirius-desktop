@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.C
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramImportDescriptionSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.LayerSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
@@ -276,11 +277,11 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public EdgeMappingImport createEdgeMappingImport() {
-        EdgeMappingImportImpl edgeMappingImport = new EdgeMappingImportImpl();
+        EdgeMappingImportImpl edgeMappingImport = new EdgeMappingImportSpec();
         return edgeMappingImport;
     }
 

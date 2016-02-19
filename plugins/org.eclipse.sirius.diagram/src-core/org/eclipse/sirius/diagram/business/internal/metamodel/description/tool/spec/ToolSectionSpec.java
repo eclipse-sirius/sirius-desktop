@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
@@ -43,5 +44,10 @@ public class ToolSectionSpec extends ToolSectionImpl {
             }
         }
         return new EcoreEList.UnmodifiableEList<PopupMenu>(eInternalContainer(), ToolPackage.eINSTANCE.getToolSection_PopupMenus(), popupMenus.size(), popupMenus.toArray());
+    }
+
+    @Override
+    public String getLabel() {
+        return MessageTranslator.INSTANCE.getMessage(super.getLabel());
     }
 }

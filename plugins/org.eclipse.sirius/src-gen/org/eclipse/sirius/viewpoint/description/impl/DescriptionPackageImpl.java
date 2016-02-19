@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -474,6 +474,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EDataType uriEDataType = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EDataType translatableMessageEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -2062,6 +2069,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EDataType getTranslatableMessage() {
+        return translatableMessageEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -2287,6 +2304,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         featureNameEDataType = createEDataType(DescriptionPackage.FEATURE_NAME);
         imagePathEDataType = createEDataType(DescriptionPackage.IMAGE_PATH);
         uriEDataType = createEDataType(DescriptionPackage.URI);
+        translatableMessageEDataType = createEDataType(DescriptionPackage.TRANSLATABLE_MESSAGE);
     }
 
     /**
@@ -2707,8 +2725,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         initEClass(selectionDescriptionEClass, SelectionDescription.class, "SelectionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(
-                getSelectionDescription_CandidatesExpression(),
-                this.getInterpretedExpression(),
+                getSelectionDescription_CandidatesExpression(), 
+                this.getInterpretedExpression(), 
                 "candidatesExpression", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         initEAttribute(
                 getSelectionDescription_Multiple(),
@@ -2728,7 +2746,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 "childrenExpression", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         initEAttribute(
                 getSelectionDescription_Message(),
-                theEcorePackage.getEString(),
+                this.getTranslatableMessage(),
                 "message", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(colorDescriptionEClass, ColorDescription.class, "ColorDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2853,7 +2871,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 "name", "", 1, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
         initEAttribute(
                 getIdentifiedElement_Label(),
-                theEcorePackage.getEString(),
+                this.getTranslatableMessage(),
                 "label", null, 0, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(computedColorEClass, ComputedColor.class, "ComputedColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2952,6 +2970,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEDataType(featureNameEDataType, String.class, "FeatureName", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEDataType(imagePathEDataType, String.class, "ImagePath", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEDataType(uriEDataType, org.eclipse.emf.common.util.URI.class, "URI", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEDataType(translatableMessageEDataType, String.class, "TranslatableMessage", EPackageImpl.IS_SERIALIZABLE, !EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

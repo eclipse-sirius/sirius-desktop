@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Internal;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -1098,7 +1099,7 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
      * @see org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getLabel()
      */
     public String getLabel() {
-        return edgeMappingImport.getLabel();
+        return MessageTranslator.INSTANCE.getMessage(edgeMappingImport.getLabel());
     }
 
     /**

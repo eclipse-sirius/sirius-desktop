@@ -39,6 +39,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
@@ -110,10 +111,10 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
      */
     public EObjectPaneBasedSelectionWizardPage(final String pageName, final String title, final ImageDescriptor imageTitle, final String choiceOfValuesMessage, final String selectedValuesMessage,
             final AdapterFactory factory) {
-        super(pageName, title, imageTitle);
+        super(pageName, MessageTranslator.INSTANCE.getMessage(title), imageTitle);
         this.myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(factory);
-        this.choiceOfValuesMessage = choiceOfValuesMessage;
-        this.selectedValuesMessage = selectedValuesMessage;
+        this.choiceOfValuesMessage = MessageTranslator.INSTANCE.getMessage(choiceOfValuesMessage);
+        this.selectedValuesMessage = MessageTranslator.INSTANCE.getMessage(selectedValuesMessage);
     }
 
     /**

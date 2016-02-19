@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.PaneBasedSelectionWizardDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.PasteDescriptionSpec;
+import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.SelectionWizardDescriptionSpec;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
@@ -281,7 +283,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     @Override
     public SelectionWizardDescription createSelectionWizardDescription() {
-        SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionImpl();
+        SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionSpec();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
         elementSelectVariable.setName("element"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
@@ -303,7 +305,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     @Override
     public PaneBasedSelectionWizardDescription createPaneBasedSelectionWizardDescription() {
-        PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionImpl();
+        PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionSpec();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
         elementSelectVariable.setName("element"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();

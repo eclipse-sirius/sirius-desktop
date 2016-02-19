@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
@@ -90,7 +91,8 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
             shell = new Shell();
             createdShell = true;
         }
-        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), input,
+        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(MessageTranslator.INSTANCE.getMessage(this.tool.getWindowTitle()),
+                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()), getImage(), input,
                 DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.setMany(tool.isMultiple());
         final WizardDialog dlg = new WizardDialog(shell, wizard);

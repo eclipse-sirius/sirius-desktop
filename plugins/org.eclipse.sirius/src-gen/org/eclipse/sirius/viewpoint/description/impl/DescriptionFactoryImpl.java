@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -177,6 +177,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createImagePathFromString(eDataType, initialValue);
         case DescriptionPackage.URI:
             return createURIFromString(eDataType, initialValue);
+        case DescriptionPackage.TRANSLATABLE_MESSAGE:
+            return createTranslatableMessageFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -204,6 +206,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return convertImagePathToString(eDataType, instanceValue);
         case DescriptionPackage.URI:
             return convertURIToString(eDataType, instanceValue);
+        case DescriptionPackage.TRANSLATABLE_MESSAGE:
+            return convertTranslatableMessageToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -626,6 +630,24 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public String convertURIToString(EDataType eDataType, Object instanceValue) {
         return instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String createTranslatableMessageFromString(EDataType eDataType, String initialValue) {
+        return (String) super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertTranslatableMessageToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
     }
 
     /**

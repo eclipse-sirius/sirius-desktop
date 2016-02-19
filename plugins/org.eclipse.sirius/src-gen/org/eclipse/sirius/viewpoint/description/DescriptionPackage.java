@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2371,6 +2371,16 @@ public interface DescriptionPackage extends EPackage {
     int URI = 54;
 
     /**
+     * The meta object id for the '<em>Translatable Message</em>' data type.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see java.lang.String
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTranslatableMessage()
+     * @generated
+     */
+    int TRANSLATABLE_MESSAGE = 55;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.description.Group <em>Group</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4218,6 +4228,18 @@ public interface DescriptionPackage extends EPackage {
     EDataType getURI();
 
     /**
+     * Returns the meta object for data type '{@link java.lang.String
+     * <em>Translatable Message</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for data type '<em>Translatable Message</em>'.
+     * @see java.lang.String
+     * @model instanceClass="java.lang.String"
+     * @generated
+     */
+    EDataType getTranslatableMessage();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -5673,6 +5695,16 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EDataType URI = DescriptionPackage.eINSTANCE.getURI();
+
+        /**
+         * The meta object literal for the '<em>Translatable Message</em>' data
+         * type. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see java.lang.String
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTranslatableMessage()
+         * @generated
+         */
+        EDataType TRANSLATABLE_MESSAGE = DescriptionPackage.eINSTANCE.getTranslatableMessage();
 
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -97,7 +98,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                viewpoint.setLabel(viewpoint.getLabel() + "Modify");
+                viewpoint.setLabel(MessageTranslator.INSTANCE.getMessage(viewpoint.getLabel()) + "Modify");
             }
         });
         assertEquals("The rename of the label of the viewpoint break the existing diagram (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
@@ -131,7 +132,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                diagramDescription.setLabel(diagramDescription.getLabel() + "Modify");
+                diagramDescription.setLabel(MessageTranslator.INSTANCE.getMessage(diagramDescription.getLabel()) + "Modify");
             }
         });
         refresh(diagram);
@@ -173,7 +174,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
             @Override
             protected void doExecute() {
                 Layer layer = diagram.getDescription().getAllLayers().get(1);
-                layer.setLabel(layer.getLabel() + "Modify");
+                layer.setLabel(MessageTranslator.INSTANCE.getMessage(layer.getLabel()) + "Modify");
             }
         });
         assertEquals("The rename of the label of the layer break the existing diagram (bad number of diagram elements).", nbDiagramElementsExpected, diagram.getOwnedDiagramElements().size());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectPaneBasedSelectionWizard;
@@ -94,8 +95,10 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
             shell = new Shell();
             createdShell = true;
         }
-        final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), this.tool.getChoiceOfValuesMessage(),
-                this.tool.getSelectedValuesMessage(), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+        final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(MessageTranslator.INSTANCE.getMessage(this.tool.getWindowTitle()),
+                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()),
+ getImage(), MessageTranslator.INSTANCE.getMessage(this.tool.getChoiceOfValuesMessage()),
+                MessageTranslator.INSTANCE.getMessage(this.tool.getSelectedValuesMessage()), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.init(input, preSelection);
         final WizardDialog dlg = new WizardDialog(shell, wizard);
         final int result = dlg.open();

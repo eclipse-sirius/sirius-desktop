@@ -172,6 +172,10 @@
 				<code>IInterpreter</code> implementations able to infer more specific types based on predicates result provides this information to Sirius which will then use it for validating other expressions. You might want to look at 
 				<code>org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter</code> which is an implementation providing this type inference.
 			</li>
+			<li><span class="label label-success">Added</span> A helper 
+				<code>org.eclipse.sirius.common.tools.api.util.MessageTranslator</code> providing a 
+				<code>getMessage(String)</code> service dedicated into processing a translatable message to return the translation in the active language when available. This service returns the String without modification if not translatable or no translation is available.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
