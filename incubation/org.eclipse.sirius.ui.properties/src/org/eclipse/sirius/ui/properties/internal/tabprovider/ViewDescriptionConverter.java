@@ -171,7 +171,10 @@ public class ViewDescriptionConverter {
     }
 
     private String getExpressionForOperation(InitialOperation initialOperation) {
-        return "aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')";
+        if (initialOperation != null) {
+            return "aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')";
+        }
+        return null;
     }
 
     private EEFTextDescription createEEFTextDescription(TextAreaDescription textDescription) {
