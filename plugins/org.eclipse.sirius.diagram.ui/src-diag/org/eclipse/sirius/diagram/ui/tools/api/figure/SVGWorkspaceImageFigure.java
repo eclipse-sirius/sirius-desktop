@@ -14,7 +14,6 @@ import java.io.File;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
@@ -43,8 +42,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
     /**
      * Create a new {@link SVGWorkspaceImageFigure}.
      */
-    public SVGWorkspaceImageFigure() { // final Image flyWeightImage) {
-        this.setLayoutManager(new XYLayout());
+    public SVGWorkspaceImageFigure() {
         minSize = new Dimension(0, 0);
     }
 
@@ -151,16 +149,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
                 this.contentChanged();
                 SimpleImageTranscoder transcoder = getTranscoder();
                 if (transcoder != null) {
-                    int canvasHeight = transcoder.getCanvasHeight();
-                    int canvasWidth = transcoder.getCanvasWidth();
-
-                    if (canvasHeight == -1 || canvasWidth == -1) {
-                        int width = transcoder.getBufferedImage().getWidth();
-                        int height = transcoder.getBufferedImage().getHeight();
-                        imageAspectRatio = (double) width / (double) height;
-                    } else {
-                        imageAspectRatio = (double) canvasWidth / (double) canvasHeight;
-                    }
+                    imageAspectRatio = transcoder.getAspectRatio();
                 }
             }
         } else {

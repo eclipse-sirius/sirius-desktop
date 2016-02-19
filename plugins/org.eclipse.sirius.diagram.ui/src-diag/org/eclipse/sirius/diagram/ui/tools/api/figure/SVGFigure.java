@@ -12,7 +12,6 @@
  */
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -85,42 +84,27 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     @Override
     public int getImageHeight() {
         SimpleImageTranscoder transcoder = getTranscoder();
-        int height = 0;
         if (transcoder != null) {
-            int canvasHeight = transcoder.getCanvasHeight();
-            if (canvasHeight == -1) {
-                height = transcoder.getBufferedImage().getHeight();
-            } else {
-                height = canvasHeight;
-            }
+            return transcoder.getImageHeight();
+        } else {
+            return 0;
         }
-        return height;
     }
 
     @Override
     public int getImageWidth() {
         SimpleImageTranscoder transcoder = getTranscoder();
-        int width = 0;
         if (transcoder != null) {
-            int canvasWidth = transcoder.getCanvasWidth();
-            if (canvasWidth == -1) {
-                width = transcoder.getBufferedImage().getWidth();
-            } else {
-                width = canvasWidth;
-            }
+            return transcoder.getImageWidth();
         }
-        return width;
+        return 0;
     }
 
     @Override
     public int getImageAlphaValue(int x, int y) {
         SimpleImageTranscoder transcoder = getTranscoder();
         if (transcoder != null) {
-            BufferedImage bufferedImage = transcoder.getBufferedImage();
-            if (bufferedImage != null && bufferedImage.getWidth() >= x && bufferedImage.getHeight() >= y) {
-                int[] result = bufferedImage.getAlphaRaster().getPixel(x, y, new int[1]);
-                return result[0];
-            }
+            return transcoder.getImageAlphaValue(x, y);
         }
         return 255;
     }
@@ -226,16 +210,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     protected void updateRenderingHints(Graphics graphics) {
         if (transcoder != null) {
-            Object antiAliasHint = SVGUtils.getAntialiasHint(graphics);
-            if (transcoder.getRenderingHints().get(RenderingHints.KEY_ANTIALIASING) != antiAliasHint) {
-                transcoder.getRenderingHints().put(RenderingHints.KEY_ANTIALIASING, antiAliasHint);
-                transcoder.contentChanged();
-            }
-            Object textAntiAliasHint = SVGUtils.getTextAntialiasHint(graphics);
-            if (transcoder.getRenderingHints().get(RenderingHints.KEY_TEXT_ANTIALIASING) != textAntiAliasHint) {
-                transcoder.getRenderingHints().put(RenderingHints.KEY_TEXT_ANTIALIASING, textAntiAliasHint);
-                transcoder.contentChanged();
-            }
+            transcoder.updateRenderingHints(graphics);
         }
     }
 

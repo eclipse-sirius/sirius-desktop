@@ -24,6 +24,7 @@ import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.w3c.dom.Document;
@@ -50,10 +51,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         return document;
     }
 
-    public final RenderingHints getRenderingHints() {
-        return renderingHints;
-    }
-
     public final int getCanvasWidth() {
         return canvasWidth;
     }
@@ -68,32 +65,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         }
         this.canvasWidth = width;
         this.canvasHeight = height;
-        contentChanged();
-    }
-
-    public final Rectangle2D getCanvasAreaOfInterest() {
-        if (canvasAOI == null) {
-            return null;
-        }
-        Rectangle2D result = new Rectangle2D.Float();
-        result.setRect(canvasAOI);
-        return result;
-    }
-
-    public void setCanvasAreaOfInterest(Rectangle2D value) {
-        if (value == null) {
-            if (canvasAOI == null) {
-                return;
-            }
-            canvasAOI = null;
-            contentChanged();
-            return;
-        }
-        if (value.equals(canvasAOI)) {
-            return;
-        }
-        canvasAOI = new Rectangle2D.Float();
-        canvasAOI.setRect(value);
         contentChanged();
     }
 
@@ -159,6 +130,63 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
             updateImage();
         }
         return bufferedImage;
+    }
+
+    public int getImageHeight() {
+        int height = 0;
+        int canvasHeight = getCanvasHeight();
+        if (canvasHeight == -1) {
+            height = getBufferedImage().getHeight();
+        } else {
+            height = canvasHeight;
+        }
+        return height;
+    }
+
+    public int getImageWidth() {
+        int width = 0;
+        int canvasWidth = getCanvasWidth();
+        if (canvasWidth == -1) {
+            width = getBufferedImage().getWidth();
+        } else {
+            width = canvasWidth;
+        }
+        return width;
+    }
+
+    public int getImageAlphaValue(int x, int y) {
+        BufferedImage bufferedImage = getBufferedImage();
+        if (bufferedImage != null && bufferedImage.getWidth() >= x && bufferedImage.getHeight() >= y) {
+            int[] result = bufferedImage.getAlphaRaster().getPixel(x, y, new int[1]);
+            return result[0];
+        }
+        return 255;
+    }
+
+    public double getAspectRatio() {
+        int canvasHeight = getCanvasHeight();
+        int canvasWidth = getCanvasWidth();
+
+        if (canvasHeight == -1 || canvasWidth == -1) {
+            int width = getBufferedImage().getWidth();
+            int height = getBufferedImage().getHeight();
+            return (double) width / (double) height;
+        } else {
+            return (double) canvasWidth / (double) canvasHeight;
+        }
+    }
+
+    public void updateRenderingHints(Graphics graphics) {
+        Object antiAliasHint = SVGUtils.getAntialiasHint(graphics);
+        if (renderingHints.get(RenderingHints.KEY_ANTIALIASING) != antiAliasHint) {
+            renderingHints.put(RenderingHints.KEY_ANTIALIASING, antiAliasHint);
+            contentChanged();
+        }
+        Object textAntiAliasHint = SVGUtils.getTextAntialiasHint(graphics);
+        if (renderingHints.get(RenderingHints.KEY_TEXT_ANTIALIASING) != textAntiAliasHint) {
+            renderingHints.put(RenderingHints.KEY_TEXT_ANTIALIASING, textAntiAliasHint);
+            contentChanged();
+        }
     }
 }
 // CHECKSTYLE:ON
