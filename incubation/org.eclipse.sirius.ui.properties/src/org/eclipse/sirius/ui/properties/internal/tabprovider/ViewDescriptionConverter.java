@@ -84,6 +84,10 @@ public class ViewDescriptionConverter {
         page.setLabelExpression(pageDescription.getLabelExpression());
         page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
 
+        if (page.getIdentifier() == null || page.getIdentifier().trim().length() == 0) {
+            page.setIdentifier(EcoreUtil.getURI(pageDescription).toString());
+        }
+
         for (GroupDescription groupDescription : pageDescription.getGroups()) {
             createGroup(groupDescription, page, view);
         }
@@ -99,6 +103,10 @@ public class ViewDescriptionConverter {
         group.setIdentifier(groupDescription.getIdentifier());
         group.setLabelExpression(groupDescription.getLabelExpression());
 
+        if (group.getIdentifier() == null || group.getIdentifier().trim().length() == 0) {
+            group.setIdentifier(EcoreUtil.getURI(groupDescription).toString());
+        }
+
         convertGroupContents(groupDescription, group);
 
         page.getGroups().add(group);
@@ -108,33 +116,33 @@ public class ViewDescriptionConverter {
     private void convertGroupContents(GroupDescription groupDescription, EEFGroupDescription group) {
         EEFContainerDescription containerDesc = EefFactory.eINSTANCE.createEEFContainerDescription();
 
-        for (WidgetDescription widgetDescription : groupDescription.getContainer().getWidgets()) {
-            EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
-            if (description != null) {
-                containerDesc.getWidgets().add(description);
+        if (groupDescription.getContainer() != null) {
+            for (WidgetDescription widgetDescription : groupDescription.getContainer().getWidgets()) {
+                EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
+                if (description != null) {
+                    containerDesc.getWidgets().add(description);
+                }
             }
-        }
+            for (DynamicMappingFor dynamicMappingFor : groupDescription.getContainer().getDynamicMappings()) {
+                EEFDynamicMappingFor eefDynamicMappingFor = EefFactory.eINSTANCE.createEEFDynamicMappingFor();
+                eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
+                eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
 
-        for (DynamicMappingFor dynamicMappingFor : groupDescription.getContainer().getDynamicMappings()) {
-            EEFDynamicMappingFor eefDynamicMappingFor = EefFactory.eINSTANCE.createEEFDynamicMappingFor();
-            eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
-            eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
+                List<DynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
+                for (DynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
+                    EEFDynamicMappingIf eefDynamicMappingIf = EefFactory.eINSTANCE.createEEFDynamicMappingIf();
+                    eefDynamicMappingIf.setPredicateExpression(dynamicMappingIf.getPredicateExpression());
 
-            List<DynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
-            for (DynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
-                EEFDynamicMappingIf eefDynamicMappingIf = EefFactory.eINSTANCE.createEEFDynamicMappingIf();
-                eefDynamicMappingIf.setPredicateExpression(dynamicMappingIf.getPredicateExpression());
+                    EEFWidgetDescription eefWidgetDescription = this.createEEFWidgetDescription(dynamicMappingIf.getWidget());
+                    eefDynamicMappingIf.setWidget(eefWidgetDescription);
 
-                EEFWidgetDescription eefWidgetDescription = this.createEEFWidgetDescription(dynamicMappingIf.getWidget());
-                eefDynamicMappingIf.setWidget(eefWidgetDescription);
+                    eefDynamicMappingFor.getIfs().add(eefDynamicMappingIf);
+                }
 
-                eefDynamicMappingFor.getIfs().add(eefDynamicMappingIf);
+                containerDesc.getDynamicMappings().add(eefDynamicMappingFor);
             }
-
-            containerDesc.getDynamicMappings().add(eefDynamicMappingFor);
+            group.setContainer(containerDesc);
         }
-
-        group.setContainer(containerDesc);
     }
 
     private EEFWidgetDescription createEEFWidgetDescription(WidgetDescription widgetDescription) {
@@ -155,6 +163,11 @@ public class ViewDescriptionConverter {
             description = createEEFRadioDescription((RadioDescription) widgetDescription);
         }
 
+        if (description != null) {
+            description.setHelpExpression(widgetDescription.getHelpExpression());
+            description.setLabelExpression(widgetDescription.getLabelExpression());
+        }
+
         return description;
     }
 
@@ -162,7 +175,6 @@ public class ViewDescriptionConverter {
         EEFTextDescription eefTextDescription = EefFactory.eINSTANCE.createEEFTextDescription();
 
         eefTextDescription.setIdentifier(textDescription.getIdentifier());
-        eefTextDescription.setLabelExpression(textDescription.getLabelExpression());
         eefTextDescription.setValueExpression(textDescription.getValueExpression());
 
         InitialOperation initialOperation = textDescription.getInitialOperation();
@@ -181,7 +193,6 @@ public class ViewDescriptionConverter {
         EEFTextDescription eefTextDescription = EefFactory.eINSTANCE.createEEFTextDescription();
 
         eefTextDescription.setIdentifier(textDescription.getIdentifier());
-        eefTextDescription.setLabelExpression(textDescription.getLabelExpression());
         eefTextDescription.setValueExpression(textDescription.getValueExpression());
         eefTextDescription.setLineCount(textDescription.getLineCount());
 
@@ -194,7 +205,6 @@ public class ViewDescriptionConverter {
         EEFLabelDescription eefLabelDescription = EefFactory.eINSTANCE.createEEFLabelDescription();
 
         eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
-        eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
         eefLabelDescription.setBodyExpression(labelDescription.getBodyExpression());
         return eefLabelDescription;
     }
@@ -203,7 +213,6 @@ public class ViewDescriptionConverter {
         EEFButtonDescription eefButtonDescription = EefFactory.eINSTANCE.createEEFButtonDescription();
 
         eefButtonDescription.setIdentifier(buttonDescription.getIdentifier());
-        eefButtonDescription.setLabelExpression(buttonDescription.getLabelExpression());
         eefButtonDescription.setButtonLabelExpression(buttonDescription.getButtonLabelExpression());
         InitialOperation initialOperation = buttonDescription.getInitialOperation();
         eefButtonDescription.setPushExpression(getExpressionForOperation(initialOperation));
@@ -214,7 +223,6 @@ public class ViewDescriptionConverter {
         EEFCheckboxDescription eefCheckboxDescription = EefFactory.eINSTANCE.createEEFCheckboxDescription();
 
         eefCheckboxDescription.setIdentifier(checkboxDescription.getIdentifier());
-        eefCheckboxDescription.setLabelExpression(checkboxDescription.getLabelExpression());
         eefCheckboxDescription.setValueExpression(checkboxDescription.getValueExpression());
         return eefCheckboxDescription;
     }
@@ -223,7 +231,6 @@ public class ViewDescriptionConverter {
         EEFSelectDescription eefSelectDescription = EefFactory.eINSTANCE.createEEFSelectDescription();
 
         eefSelectDescription.setIdentifier(selectDescription.getIdentifier());
-        eefSelectDescription.setLabelExpression(selectDescription.getLabelExpression());
         eefSelectDescription.setValueExpression(selectDescription.getValueExpression());
         eefSelectDescription.setCandidatesExpression(selectDescription.getCandidatesExpression());
         eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
@@ -234,7 +241,6 @@ public class ViewDescriptionConverter {
         EEFRadioDescription eefRadioDescription = EefFactory.eINSTANCE.createEEFRadioDescription();
 
         eefRadioDescription.setIdentifier(radioDescription.getIdentifier());
-        eefRadioDescription.setLabelExpression(radioDescription.getLabelExpression());
         eefRadioDescription.setValueExpression(radioDescription.getValueExpression());
         eefRadioDescription.setCandidatesExpression(radioDescription.getCandidatesExpression());
         eefRadioDescription.setCandidateDisplayExpression(radioDescription.getCandidateDisplayExpression());

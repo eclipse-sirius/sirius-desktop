@@ -30,6 +30,9 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getHelpExpression
+ * <em>Help Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,7 +42,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -49,7 +52,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -60,7 +63,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -71,7 +74,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -79,8 +82,30 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     protected String labelExpression = WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getHelpExpression()
+     * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String HELP_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getHelpExpression()
+     * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getHelpExpression()
+     * @generated
+     * @ordered
+     */
+    protected String helpExpression = WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WidgetDescriptionImpl() {
@@ -89,7 +114,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +124,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +134,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +148,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +158,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +172,31 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public String getHelpExpression() {
+        return helpExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setHelpExpression(String newHelpExpression) {
+        String oldHelpExpression = helpExpression;
+        helpExpression = newHelpExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION, oldHelpExpression, helpExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -157,13 +206,15 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
             return getIdentifier();
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
+        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+            return getHelpExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,13 +226,16 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
             return;
+        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,13 +247,16 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression(WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+            setHelpExpression(WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,13 +266,15 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
             return WidgetDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !WidgetDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             return WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+            return WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT == null ? helpExpression != null : !WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT.equals(helpExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,6 +288,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
         result.append(identifier);
         result.append(", labelExpression: ");
         result.append(labelExpression);
+        result.append(", helpExpression: ");
+        result.append(helpExpression);
         result.append(')');
         return result.toString();
     }

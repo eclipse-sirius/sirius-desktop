@@ -62,6 +62,7 @@ IItemPropertySource {
 
             addIdentifierPropertyDescriptor(object);
             addLabelExpressionPropertyDescriptor(object);
+            addHelpExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -92,6 +93,19 @@ IItemPropertySource {
     }
 
     /**
+     * This adds a property descriptor for the Help Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addHelpExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetDescription_helpExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"),
+                PropertiesPackage.Literals.WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -118,6 +132,7 @@ IItemPropertySource {
         switch (notification.getFeatureID(WidgetDescription.class)) {
         case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
+        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
