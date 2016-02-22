@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,8 +41,8 @@ class VSMRequirementChangeAdapter extends EContentAdapter {
     private final DynamicVSMLoader loader;
 
     /**
-     * For each Sirius URI directly required, the set of Viewpoints which require
-     * it.
+     * For each Sirius URI directly required, the set of Viewpoints which
+     * require it.
      */
     private final Multimap<URI, Viewpoint> requirements = HashMultimap.create();
 
@@ -109,7 +109,7 @@ class VSMRequirementChangeAdapter extends EContentAdapter {
                 Object removed = notification.getOldValue();
                 if (removed instanceof List<?>) {
                     handleViewpointsRemoved(Iterables.filter((List<?>) removed, Viewpoint.class));
-                } else if (removed instanceof URI) {
+                } else if (removed instanceof Viewpoint) {
                     handleViewpointsRemoved(Collections.singleton((Viewpoint) removed));
                 }
                 break;
