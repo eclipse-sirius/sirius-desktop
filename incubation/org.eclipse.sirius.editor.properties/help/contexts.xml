@@ -228,4 +228,37 @@
    
       </description>
    </context>
+   <context id="CustomDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomDescription description -->
+   
+   <!-- End of user code CustomDescription description -->
+   
+      </description>
+   </context>
+   <context id="CustomExpression">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomExpression description -->
+   
+   <!-- End of user code CustomExpression description -->
+   
+      </description>
+   </context>
+   <context id="CustomOperation">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomOperation description -->
+   
+   <!-- End of user code CustomOperation description -->
+   
+      </description>
+   </context>
 </contexts>

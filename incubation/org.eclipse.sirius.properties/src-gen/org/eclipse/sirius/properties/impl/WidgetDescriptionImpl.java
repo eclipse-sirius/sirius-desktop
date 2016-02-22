@@ -42,7 +42,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getHelpExpression()
      * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getHelpExpression()
      * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WidgetDescriptionImpl() {
@@ -114,7 +114,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

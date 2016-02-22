@@ -54,7 +54,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The default value of the '{@link #getDisplayExpression()
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDisplayExpression()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getDisplayExpression()
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDisplayExpression()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getCreateOperation()
      * <em>Create Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getCreateOperation()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getSearchOperation()
      * <em>Search Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSearchOperation()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getUnsetOperation()
      * <em>Unset Operation</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getUnsetOperation()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
      * The cached value of the '{@link #getOnClickOperation()
      * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getOnClickOperation()
      * @generated
      * @ordered
@@ -140,7 +140,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SingleReferenceDescriptionImpl() {
@@ -149,7 +149,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetCreateOperation(OperationDescription newCreateOperation, NotificationChain msgs) {
@@ -236,7 +236,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetSearchOperation(OperationDescription newSearchOperation, NotificationChain msgs) {
@@ -289,7 +289,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetUnsetOperation(OperationDescription newUnsetOperation, NotificationChain msgs) {
@@ -342,7 +342,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -366,7 +366,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -376,7 +376,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOnClickOperation(OperationDescription newOnClickOperation, NotificationChain msgs) {
@@ -395,7 +395,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -421,7 +421,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -441,7 +441,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -465,7 +465,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -495,7 +495,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -525,7 +525,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -535,7 +535,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
             return SingleReferenceDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !SingleReferenceDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION:
             return SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null : !SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT
-            .equals(displayExpression);
+                    .equals(displayExpression);
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION:
             return createOperation != null;
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION:
@@ -550,7 +550,7 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

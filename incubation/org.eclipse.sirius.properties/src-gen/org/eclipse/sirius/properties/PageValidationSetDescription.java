@@ -44,7 +44,7 @@ public interface PageValidationSetDescription extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Semantic Validation Rules</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageValidationSetDescription_SemanticValidationRules()

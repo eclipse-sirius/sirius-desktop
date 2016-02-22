@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.CustomDescription;
+import org.eclipse.sirius.properties.CustomExpression;
+import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
@@ -47,14 +50,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.properties.PropertiesPackage
  * @generated
  */
 public class PropertiesSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static PropertiesPackage modelPackage;
@@ -62,7 +65,7 @@ public class PropertiesSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PropertiesSwitch() {
@@ -75,7 +78,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -88,7 +91,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -106,7 +109,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -312,6 +315,33 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.CUSTOM_DESCRIPTION: {
+            CustomDescription customDescription = (CustomDescription) theEObject;
+            T result = caseCustomDescription(customDescription);
+            if (result == null) {
+                result = caseWidgetDescription(customDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.CUSTOM_EXPRESSION: {
+            CustomExpression customExpression = (CustomExpression) theEObject;
+            T result = caseCustomExpression(customExpression);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.CUSTOM_OPERATION: {
+            CustomOperation customOperation = (CustomOperation) theEObject;
+            T result = caseCustomOperation(customOperation);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -322,7 +352,7 @@ public class PropertiesSwitch<T> {
      * <em>View Extension Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -339,7 +369,7 @@ public class PropertiesSwitch<T> {
      * <em>Page Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -356,7 +386,7 @@ public class PropertiesSwitch<T> {
      * <em>Page Validation Set Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -373,7 +403,7 @@ public class PropertiesSwitch<T> {
      * <em>Property Validation Rule</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -390,7 +420,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -407,7 +437,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Validation Set Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -424,7 +454,7 @@ public class PropertiesSwitch<T> {
      * <em>Container Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -441,7 +471,7 @@ public class PropertiesSwitch<T> {
      * <em>Widget Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -458,7 +488,7 @@ public class PropertiesSwitch<T> {
      * <em>Text Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -475,7 +505,7 @@ public class PropertiesSwitch<T> {
      * <em>Button Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -492,7 +522,7 @@ public class PropertiesSwitch<T> {
      * <em>Label Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -509,7 +539,7 @@ public class PropertiesSwitch<T> {
      * <em>Checkbox Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -526,7 +556,7 @@ public class PropertiesSwitch<T> {
      * <em>Select Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -543,7 +573,7 @@ public class PropertiesSwitch<T> {
      * <em>Dynamic Mapping For</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -560,7 +590,7 @@ public class PropertiesSwitch<T> {
      * <em>Dynamic Mapping If</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -574,27 +604,10 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Text Area Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseTextAreaDescription(TextAreaDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Radio Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -611,7 +624,7 @@ public class PropertiesSwitch<T> {
      * <em>Single Reference Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -628,7 +641,7 @@ public class PropertiesSwitch<T> {
      * <em>Operation Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -645,7 +658,7 @@ public class PropertiesSwitch<T> {
      * <em>Multiple References Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -659,10 +672,78 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Custom Description</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Custom Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomDescription(CustomDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Custom Expression</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Custom Expression</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomExpression(CustomExpression object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Custom Operation</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Custom Operation</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomOperation(CustomOperation object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Text Area Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTextAreaDescription(TextAreaDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Extension</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -679,7 +760,7 @@ public class PropertiesSwitch<T> {
      * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -713,7 +794,7 @@ public class PropertiesSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

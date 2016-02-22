@@ -50,14 +50,14 @@ import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -75,7 +75,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -98,7 +98,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ViewExtensionDescriptionItemProvider viewExtensionDescriptionItemProvider;
@@ -148,7 +148,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.PageValidationSetDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PageValidationSetDescriptionItemProvider pageValidationSetDescriptionItemProvider;
@@ -198,7 +198,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.GroupValidationSetDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GroupValidationSetDescriptionItemProvider groupValidationSetDescriptionItemProvider;
@@ -223,7 +223,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.PropertyValidationRule} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PropertyValidationRuleItemProvider propertyValidationRuleItemProvider;
@@ -248,7 +248,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ContainerDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerDescriptionItemProvider containerDescriptionItemProvider;
@@ -498,7 +498,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SingleReferenceDescriptionItemProvider singleReferenceDescriptionItemProvider;
@@ -523,7 +523,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.OperationDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected OperationDescriptionItemProvider operationDescriptionItemProvider;
@@ -548,7 +548,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected MultipleReferencesDescriptionItemProvider multipleReferencesDescriptionItemProvider;
@@ -567,6 +567,81 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return multipleReferencesDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CustomDescription} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomDescriptionItemProvider customDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CustomDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomDescriptionAdapter() {
+        if (customDescriptionItemProvider == null) {
+            customDescriptionItemProvider = new CustomDescriptionItemProvider(this);
+        }
+
+        return customDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CustomExpression} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomExpressionItemProvider customExpressionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CustomExpression}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomExpressionAdapter() {
+        if (customExpressionItemProvider == null) {
+            customExpressionItemProvider = new CustomExpressionItemProvider(this);
+        }
+
+        return customExpressionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CustomOperation} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomOperationItemProvider customOperationItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CustomOperation}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomOperationAdapter() {
+        if (customOperationItemProvider == null) {
+            customOperationItemProvider = new CustomOperationItemProvider(this);
+        }
+
+        return customOperationItemProvider;
     }
 
     /**
@@ -593,7 +668,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -604,7 +679,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -614,7 +689,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -631,7 +706,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -641,7 +716,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -730,6 +805,15 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (multipleReferencesDescriptionItemProvider != null) {
             multipleReferencesDescriptionItemProvider.dispose();
         }
+        if (customDescriptionItemProvider != null) {
+            customDescriptionItemProvider.dispose();
+        }
+        if (customExpressionItemProvider != null) {
+            customExpressionItemProvider.dispose();
+        }
+        if (customOperationItemProvider != null) {
+            customOperationItemProvider.dispose();
+        }
     }
 
     /**
@@ -742,14 +826,14 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         protected static class CreationSwitch extends DescriptionSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -757,7 +841,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -765,7 +849,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -775,7 +859,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             @Override
@@ -787,7 +871,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -798,7 +882,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override
@@ -810,7 +894,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override
@@ -829,14 +913,14 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         protected static class CreationSwitch extends ValidationSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -844,7 +928,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -852,7 +936,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -862,7 +946,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             @Override
@@ -874,7 +958,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             *
+             * 
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -885,7 +969,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override
@@ -897,7 +981,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         @Override

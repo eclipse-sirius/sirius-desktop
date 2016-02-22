@@ -19,6 +19,9 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.CustomDescription;
+import org.eclipse.sirius.properties.CustomExpression;
+import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
@@ -41,14 +44,14 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static PropertiesFactory init() {
@@ -66,7 +69,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PropertiesFactoryImpl() {
@@ -75,7 +78,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,6 +122,12 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createOperationDescription();
         case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION:
             return createMultipleReferencesDescription();
+        case PropertiesPackage.CUSTOM_DESCRIPTION:
+            return createCustomDescription();
+        case PropertiesPackage.CUSTOM_EXPRESSION:
+            return createCustomExpression();
+        case PropertiesPackage.CUSTOM_OPERATION:
+            return createCustomOperation();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -126,7 +135,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,7 +146,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -148,7 +157,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +168,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +179,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +190,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -192,7 +201,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +212,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -214,7 +223,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -225,7 +234,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +245,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -247,7 +256,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +267,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -269,7 +278,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -280,18 +289,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public TextAreaDescription createTextAreaDescription() {
-        TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
-        return textAreaDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -302,7 +300,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +311,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -324,7 +322,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -335,7 +333,51 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    public CustomDescription createCustomDescription() {
+        CustomDescriptionImpl customDescription = new CustomDescriptionImpl();
+        return customDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public CustomExpression createCustomExpression() {
+        CustomExpressionImpl customExpression = new CustomExpressionImpl();
+        return customExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public CustomOperation createCustomOperation() {
+        CustomOperationImpl customOperation = new CustomOperationImpl();
+        return customOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public TextAreaDescription createTextAreaDescription() {
+        TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
+        return textAreaDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -345,7 +387,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

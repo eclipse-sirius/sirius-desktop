@@ -72,7 +72,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -99,7 +99,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -115,7 +115,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Create Operation</em>' containment
      *         reference.
      * @see #setCreateOperation(OperationDescription)
@@ -130,7 +130,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getCreateOperation
      * <em>Create Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Create Operation</em>' containment
      *            reference.
@@ -147,7 +147,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Search Operation</em>' containment
      *         reference.
      * @see #setSearchOperation(OperationDescription)
@@ -162,7 +162,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getSearchOperation
      * <em>Search Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Search Operation</em>' containment
      *            reference.
@@ -179,7 +179,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Unset Operation</em>' containment
      *         reference.
      * @see #setUnsetOperation(OperationDescription)
@@ -194,7 +194,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUnsetOperation
      * <em>Unset Operation</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Unset Operation</em>' containment
      *            reference.
@@ -211,7 +211,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>On Click Operation</em>' containment
      *         reference.
      * @see #setOnClickOperation(OperationDescription)
@@ -226,7 +226,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getOnClickOperation
      * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>On Click Operation</em>' containment
      *            reference.
@@ -243,7 +243,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Up Operation</em>' containment reference.
      * @see #setUpOperation(OperationDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getMultipleReferencesDescription_UpOperation()
@@ -257,7 +257,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUpOperation
      * <em>Up Operation</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Up Operation</em>' containment
      *            reference.
@@ -274,7 +274,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Down Operation</em>' containment reference.
      * @see #setDownOperation(OperationDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getMultipleReferencesDescription_DownOperation()
@@ -288,7 +288,7 @@ public interface MultipleReferencesDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDownOperation
      * <em>Down Operation</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Down Operation</em>' containment
      *            reference.

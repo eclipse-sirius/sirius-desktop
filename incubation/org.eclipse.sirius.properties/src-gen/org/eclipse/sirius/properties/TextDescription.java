@@ -40,7 +40,7 @@ public interface TextDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription_ValueExpression()
@@ -55,7 +55,7 @@ public interface TextDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.TextDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -71,7 +71,7 @@ public interface TextDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -86,7 +86,7 @@ public interface TextDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.TextDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

@@ -19,6 +19,28 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.customoperation.CustomOperationIdentifierPropertySection"
+               id="properties.section.customOperation.Identifier"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customoperation.CustomOperationIdentifierFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.CustomOperation"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.customexpression.CustomExpressionCustomExpressionPropertySection"
+               id="properties.section.customExpression.CustomExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customexpression.CustomExpressionCustomExpressionFilter"
+               afterSection="properties.section.customExpression.Identifier"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.CustomExpression"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.customexpression.CustomExpressionIdentifierPropertySection"
+               id="properties.section.customExpression.Identifier"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.customexpression.CustomExpressionIdentifierFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.CustomExpression"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.multiplereferencesdescription.MultipleReferencesDescriptionDisplayExpressionPropertySection"
                id="properties.section.multipleReferencesDescription.DisplayExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.multiplereferencesdescription.MultipleReferencesDescriptionDisplayExpressionFilter"

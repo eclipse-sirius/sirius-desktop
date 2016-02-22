@@ -117,5 +117,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/upOperation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/downOperation"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CustomDescription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/customExpressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/customOperations"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CustomExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomExpression/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomExpression/customExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CustomOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomOperation/identifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomOperation/initialOperation"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

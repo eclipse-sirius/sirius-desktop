@@ -19,18 +19,18 @@ import java.util.Set;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFContainerDescription;
+import org.eclipse.eef.EEFCustomExpression;
+import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.EEFDynamicMappingFor;
 import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
-import org.eclipse.eef.EEFMultipleReferencesDescription;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFRadioDescription;
 import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
-import org.eclipse.eef.EEFSingleReferenceDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
@@ -41,17 +41,17 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CustomDescription;
+import org.eclipse.sirius.properties.CustomExpression;
+import org.eclipse.sirius.properties.CustomOperation;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
-import org.eclipse.sirius.properties.MultipleReferencesDescription;
-import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
-import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -280,10 +280,8 @@ public class ViewDescriptionConverter {
             description = createEEFButtonDescription((ButtonDescription) widgetDescription);
         } else if (widgetDescription instanceof RadioDescription) {
             description = createEEFRadioDescription((RadioDescription) widgetDescription);
-        } else if (widgetDescription instanceof SingleReferenceDescription) {
-            description = createEEFSingleReferenceDescription((SingleReferenceDescription) widgetDescription);
-        } else if (widgetDescription instanceof MultipleReferencesDescription) {
-            description = createEEFMultipleReferencesDescription((MultipleReferencesDescription) widgetDescription);
+        } else if (widgetDescription instanceof CustomDescription) {
+            description = createEEFCustomDescription((CustomDescription) widgetDescription);
         }
 
         if (description != null) {
@@ -372,74 +370,30 @@ public class ViewDescriptionConverter {
         return eefRadioDescription;
     }
 
-    private EEFSingleReferenceDescription createEEFSingleReferenceDescription(SingleReferenceDescription singleReferenceDescription) {
-        EEFSingleReferenceDescription eefSingleReferenceDescription = EefFactory.eINSTANCE.createEEFSingleReferenceDescription();
+    private EEFCustomWidgetDescription createEEFCustomDescription(CustomDescription customDescription) {
+        EEFCustomWidgetDescription eefCustomDescription = EefFactory.eINSTANCE.createEEFCustomWidgetDescription();
 
-        eefSingleReferenceDescription.setIdentifier(singleReferenceDescription.getIdentifier());
-        eefSingleReferenceDescription.setLabelExpression(singleReferenceDescription.getLabelExpression());
-        eefSingleReferenceDescription.setValueExpression(singleReferenceDescription.getValueExpression());
-        eefSingleReferenceDescription.setDisplayExpression(singleReferenceDescription.getDisplayExpression());
-        OperationDescription createOperationDescription = singleReferenceDescription.getCreateOperation();
-        if (createOperationDescription != null) {
-            InitialOperation initialOperation = createOperationDescription.getInitialOperation();
-            eefSingleReferenceDescription.setCreateExpression(getExpressionForOperation(initialOperation));
+        eefCustomDescription.setIdentifier(customDescription.getIdentifier());
+        eefCustomDescription.setLabelExpression(customDescription.getLabelExpression());
+
+        for (CustomExpression customExpression : customDescription.getCustomExpressions()) {
+            EEFCustomExpression eefCustomExpression = EefFactory.eINSTANCE.createEEFCustomExpression();
+
+            eefCustomExpression.setIdentifier(customExpression.getIdentifier());
+            String expression = customExpression.getCustomExpression();
+            eefCustomExpression.setCustomExpression(expression);
+            eefCustomDescription.getCustomExpressions().add(eefCustomExpression);
         }
-        OperationDescription searchOperationDescription = singleReferenceDescription.getSearchOperation();
-        if (searchOperationDescription != null) {
-            InitialOperation initialOperation = searchOperationDescription.getInitialOperation();
-            eefSingleReferenceDescription.setSearchExpression(getExpressionForOperation(initialOperation));
+
+        for (CustomOperation customOperation : customDescription.getCustomOperations()) {
+            EEFCustomExpression eefCustomExpression = EefFactory.eINSTANCE.createEEFCustomExpression();
+
+            eefCustomExpression.setIdentifier(customOperation.getIdentifier());
+            eefCustomExpression.setCustomExpression(getExpressionForOperation(customOperation.getInitialOperation()));
+            eefCustomDescription.getCustomExpressions().add(eefCustomExpression);
         }
-        OperationDescription unsetOperationDescription = singleReferenceDescription.getUnsetOperation();
-        if (unsetOperationDescription != null) {
-            InitialOperation initialOperation = unsetOperationDescription.getInitialOperation();
-            eefSingleReferenceDescription.setUnsetExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription onClickOperationDescription = singleReferenceDescription.getOnClickOperation();
-        if (onClickOperationDescription != null) {
-            InitialOperation initialOperation = onClickOperationDescription.getInitialOperation();
-            eefSingleReferenceDescription.setOnClickExpression(getExpressionForOperation(initialOperation));
-        }
-        return eefSingleReferenceDescription;
+        return eefCustomDescription;
     }
 
-    private EEFMultipleReferencesDescription createEEFMultipleReferencesDescription(MultipleReferencesDescription multipleReferencesDescription) {
-        EEFMultipleReferencesDescription eefMultipleReferencesDescription = EefFactory.eINSTANCE.createEEFMultipleReferencesDescription();
-
-        eefMultipleReferencesDescription.setIdentifier(multipleReferencesDescription.getIdentifier());
-        eefMultipleReferencesDescription.setLabelExpression(multipleReferencesDescription.getLabelExpression());
-        eefMultipleReferencesDescription.setValueExpression(multipleReferencesDescription.getValueExpression());
-        eefMultipleReferencesDescription.setDisplayExpression(multipleReferencesDescription.getDisplayExpression());
-        OperationDescription createOperationDescription = multipleReferencesDescription.getCreateOperation();
-        if (createOperationDescription != null) {
-            InitialOperation initialOperation = createOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setCreateExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription searchOperationDescription = multipleReferencesDescription.getSearchOperation();
-        if (searchOperationDescription != null) {
-            InitialOperation initialOperation = searchOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setSearchExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription unsetOperationDescription = multipleReferencesDescription.getUnsetOperation();
-        if (unsetOperationDescription != null) {
-            InitialOperation initialOperation = unsetOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setUnsetExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription onClickOperationDescription = multipleReferencesDescription.getOnClickOperation();
-        if (onClickOperationDescription != null) {
-            InitialOperation initialOperation = onClickOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setOnClickExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription upOperationDescription = multipleReferencesDescription.getUpOperation();
-        if (upOperationDescription != null) {
-            InitialOperation initialOperation = upOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setUpExpression(getExpressionForOperation(initialOperation));
-        }
-        OperationDescription downOperationDescription = multipleReferencesDescription.getDownOperation();
-        if (downOperationDescription != null) {
-            InitialOperation initialOperation = downOperationDescription.getInitialOperation();
-            eefMultipleReferencesDescription.setDownExpression(getExpressionForOperation(initialOperation));
-        }
-        return eefMultipleReferencesDescription;
-    }
 
 }
