@@ -82,6 +82,7 @@ public class ViewDescriptionConverter {
         EEFPageDescription page = EefFactory.eINSTANCE.createEEFPageDescription();
         page.setIdentifier(pageDescription.getIdentifier());
         page.setLabelExpression(pageDescription.getLabelExpression());
+        page.setDomainClass(pageDescription.getDomainClass());
         page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
 
         if (page.getIdentifier() == null || page.getIdentifier().trim().length() == 0) {
@@ -102,6 +103,8 @@ public class ViewDescriptionConverter {
         EEFGroupDescription group = EefFactory.eINSTANCE.createEEFGroupDescription();
         group.setIdentifier(groupDescription.getIdentifier());
         group.setLabelExpression(groupDescription.getLabelExpression());
+        group.setDomainClass(groupDescription.getDomainClass());
+        group.setSemanticCandidateExpression(groupDescription.getSemanticCandidateExpression());
 
         if (group.getIdentifier() == null || group.getIdentifier().trim().length() == 0) {
             group.setIdentifier(EcoreUtil.getURI(groupDescription).toString());

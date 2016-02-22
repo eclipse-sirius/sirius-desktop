@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
@@ -48,6 +49,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The {@link IEEFTabDescriptorProvider} for Eclipse Sirius.
@@ -128,7 +130,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
     private List<PageDescription> computeEffectiveDescription(SiriusInputDescriptor input, Session session) {
         Preconditions.checkNotNull(session);
 
-        List<ViewExtensionDescription> viewDescriptions = Lists.newArrayList();
+        Set<ViewExtensionDescription> viewDescriptions = Sets.newLinkedHashSet();
         for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
             Option<EObject> parent = new EObjectQuery(viewpoint).getFirstAncestorOfType(DescriptionPackage.Literals.GROUP);
             if (parent.some()) {
