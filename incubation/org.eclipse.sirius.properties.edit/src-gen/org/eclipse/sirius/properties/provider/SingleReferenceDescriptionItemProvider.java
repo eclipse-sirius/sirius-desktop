@@ -16,38 +16,30 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.SingleReferenceDescription;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.DynamicMappingFor} object. <!--
+ * {@link org.eclipse.sirius.properties.SingleReferenceDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class DynamicMappingForItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public DynamicMappingForItemProvider(AdapterFactory adapterFactory) {
+    public SingleReferenceDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -62,35 +54,36 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addIteratorPropertyDescriptor(object);
-            addDomainClassExpressionPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
+            addDisplayExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Iterator feature. <!--
+     * This adds a property descriptor for the Value Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addIteratorPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DynamicMappingFor_iterator_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingFor_iterator_feature", "_UI_DynamicMappingFor_type"),
-                PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__ITERATOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_SingleReferenceDescription_valueExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceDescription_valueExpression_feature", "_UI_SingleReferenceDescription_type"),
+                PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Domain Class Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Display Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    protected void addDomainClassExpressionPropertyDescriptor(Object object) {
+    protected void addDisplayExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DynamicMappingFor_domainClassExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingFor_domainClassExpression_feature", "_UI_DynamicMappingFor_type"),
-                PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_SingleReferenceDescription_displayExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceDescription_displayExpression_feature", "_UI_SingleReferenceDescription_type"),
+                PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -107,7 +100,10 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__IFS);
+            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
         }
         return childrenFeatures;
     }
@@ -127,14 +123,14 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
     }
 
     /**
-     * This returns DynamicMappingFor.gif. <!-- begin-user-doc --> <!--
+     * This returns SingleReferenceDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingFor"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SingleReferenceDescription"));
     }
 
     /**
@@ -145,8 +141,8 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingFor) object).getIterator();
-        return label == null || label.length() == 0 ? getString("_UI_DynamicMappingFor_type") : getString("_UI_DynamicMappingFor_type") + " " + label;
+        String label = ((SingleReferenceDescription) object).getIdentifier();
+        return label == null || label.length() == 0 ? getString("_UI_SingleReferenceDescription_type") : getString("_UI_SingleReferenceDescription_type") + " " + label;
     }
 
     /**
@@ -161,12 +157,15 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DynamicMappingFor.class)) {
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
+        switch (notification.getFeatureID(SingleReferenceDescription.class)) {
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION:
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION:
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION:
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -184,18 +183,36 @@ public class DynamicMappingForItemProvider extends ItemProviderAdapter implement
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_FOR__IFS, PropertiesFactory.eINSTANCE.createDynamicMappingIf()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
     }
 
     /**
-     * Return the resource locator for this item provider's resources. <!--
+     * This returns the label text for
+     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
-    public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+        Object childFeature = feature;
+        Object childObject = child;
+
+        boolean qualify = childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION
+                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION
+                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION
+                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION;
+
+        if (qualify) {
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+        }
+        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 }

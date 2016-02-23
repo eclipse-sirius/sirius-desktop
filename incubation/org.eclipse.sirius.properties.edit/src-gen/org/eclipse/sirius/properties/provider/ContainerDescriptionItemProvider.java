@@ -40,7 +40,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * @generated
  */
 public class ContainerDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -185,6 +185,10 @@ IItemPropertySource {
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createRadioDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createSingleReferenceDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__WIDGETS, PropertiesFactory.eINSTANCE.createMultipleReferencesDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
     }

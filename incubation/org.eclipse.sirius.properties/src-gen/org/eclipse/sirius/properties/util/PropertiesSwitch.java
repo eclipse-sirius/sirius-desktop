@@ -22,10 +22,13 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.MultipleReferencesDescription;
+import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -238,6 +241,36 @@ public class PropertiesSwitch<T> {
             T result = caseRadioDescription(radioDescription);
             if (result == null) {
                 result = caseWidgetDescription(radioDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION: {
+            SingleReferenceDescription singleReferenceDescription = (SingleReferenceDescription) theEObject;
+            T result = caseSingleReferenceDescription(singleReferenceDescription);
+            if (result == null) {
+                result = caseWidgetDescription(singleReferenceDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.OPERATION_DESCRIPTION: {
+            OperationDescription operationDescription = (OperationDescription) theEObject;
+            T result = caseOperationDescription(operationDescription);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION: {
+            MultipleReferencesDescription multipleReferencesDescription = (MultipleReferencesDescription) theEObject;
+            T result = caseMultipleReferencesDescription(multipleReferencesDescription);
+            if (result == null) {
+                result = caseWidgetDescription(multipleReferencesDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -467,6 +500,57 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseRadioDescription(RadioDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Single Reference Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Single Reference Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSingleReferenceDescription(SingleReferenceDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Operation Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Operation Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseOperationDescription(OperationDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Multiple References Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Multiple References Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseMultipleReferencesDescription(MultipleReferencesDescription object) {
         return null;
     }
 

@@ -417,6 +417,81 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.SingleReferenceDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected SingleReferenceDescriptionItemProvider singleReferenceDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.SingleReferenceDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createSingleReferenceDescriptionAdapter() {
+        if (singleReferenceDescriptionItemProvider == null) {
+            singleReferenceDescriptionItemProvider = new SingleReferenceDescriptionItemProvider(this);
+        }
+
+        return singleReferenceDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.OperationDescription} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected OperationDescriptionItemProvider operationDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.OperationDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createOperationDescriptionAdapter() {
+        if (operationDescriptionItemProvider == null) {
+            operationDescriptionItemProvider = new OperationDescriptionItemProvider(this);
+        }
+
+        return operationDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected MultipleReferencesDescriptionItemProvider multipleReferencesDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createMultipleReferencesDescriptionAdapter() {
+        if (multipleReferencesDescriptionItemProvider == null) {
+            multipleReferencesDescriptionItemProvider = new MultipleReferencesDescriptionItemProvider(this);
+        }
+
+        return multipleReferencesDescriptionItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -558,6 +633,15 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (radioDescriptionItemProvider != null) {
             radioDescriptionItemProvider.dispose();
+        }
+        if (singleReferenceDescriptionItemProvider != null) {
+            singleReferenceDescriptionItemProvider.dispose();
+        }
+        if (operationDescriptionItemProvider != null) {
+            operationDescriptionItemProvider.dispose();
+        }
+        if (multipleReferencesDescriptionItemProvider != null) {
+            multipleReferencesDescriptionItemProvider.dispose();
         }
     }
 

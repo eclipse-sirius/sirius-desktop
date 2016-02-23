@@ -40,7 +40,7 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  * @generated
  */
 public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

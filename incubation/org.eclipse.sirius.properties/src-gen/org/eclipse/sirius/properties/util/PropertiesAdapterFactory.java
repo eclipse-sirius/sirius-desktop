@@ -22,10 +22,13 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.MultipleReferencesDescription;
+import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -155,6 +158,21 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseRadioDescription(RadioDescription object) {
             return createRadioDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseSingleReferenceDescription(SingleReferenceDescription object) {
+            return createSingleReferenceDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseOperationDescription(OperationDescription object) {
+            return createOperationDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseMultipleReferencesDescription(MultipleReferencesDescription object) {
+            return createMultipleReferencesDescriptionAdapter();
         }
 
         @Override
@@ -387,6 +405,54 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRadioDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.SingleReferenceDescription
+     * <em>Single Reference Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.SingleReferenceDescription
+     * @generated
+     */
+    public Adapter createSingleReferenceDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.OperationDescription
+     * <em>Operation Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.OperationDescription
+     * @generated
+     */
+    public Adapter createOperationDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription
+     * <em>Multiple References Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription
+     * @generated
+     */
+    public Adapter createMultipleReferencesDescriptionAdapter() {
         return null;
     }
 

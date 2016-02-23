@@ -43,6 +43,7 @@
     <genClasses image="false" ecoreClass="properties.ecore#//WidgetDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/labelExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/helpExpression"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>
@@ -82,6 +83,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/initialOperation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidateDisplayExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//SingleReferenceDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SingleReferenceDescription/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SingleReferenceDescription/displayExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SingleReferenceDescription/createOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SingleReferenceDescription/searchOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SingleReferenceDescription/unsetOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SingleReferenceDescription/onClickOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//OperationDescription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//OperationDescription/initialOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//MultipleReferencesDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//MultipleReferencesDescription/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//MultipleReferencesDescription/displayExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/createOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/searchOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/unsetOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/onClickOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/upOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//MultipleReferencesDescription/downOperation"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

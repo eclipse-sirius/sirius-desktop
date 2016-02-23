@@ -23,11 +23,14 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.MultipleReferencesDescription;
+import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -101,6 +104,12 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createTextAreaDescription();
         case PropertiesPackage.RADIO_DESCRIPTION:
             return createRadioDescription();
+        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION:
+            return createSingleReferenceDescription();
+        case PropertiesPackage.OPERATION_DESCRIPTION:
+            return createOperationDescription();
+        case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION:
+            return createMultipleReferencesDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -236,6 +245,39 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public RadioDescription createRadioDescription() {
         RadioDescriptionImpl radioDescription = new RadioDescriptionImpl();
         return radioDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public SingleReferenceDescription createSingleReferenceDescription() {
+        SingleReferenceDescriptionImpl singleReferenceDescription = new SingleReferenceDescriptionImpl();
+        return singleReferenceDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public OperationDescription createOperationDescription() {
+        OperationDescriptionImpl operationDescription = new OperationDescriptionImpl();
+        return operationDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public MultipleReferencesDescription createMultipleReferencesDescription() {
+        MultipleReferencesDescriptionImpl multipleReferencesDescription = new MultipleReferencesDescriptionImpl();
+        return multipleReferencesDescription;
     }
 
     /**

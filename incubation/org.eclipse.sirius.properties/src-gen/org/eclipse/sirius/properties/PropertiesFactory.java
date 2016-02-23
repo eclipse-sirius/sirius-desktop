@@ -147,6 +147,33 @@ public interface PropertiesFactory extends EFactory {
     RadioDescription createRadioDescription();
 
     /**
+     * Returns a new object of class '<em>Single Reference Description</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Single Reference Description</em>'.
+     * @generated
+     */
+    SingleReferenceDescription createSingleReferenceDescription();
+
+    /**
+     * Returns a new object of class '<em>Operation Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Operation Description</em>'.
+     * @generated
+     */
+    OperationDescription createOperationDescription();
+
+    /**
+     * Returns a new object of class '<em>Multiple References Description</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Multiple References Description</em>'.
+     * @generated
+     */
+    MultipleReferencesDescription createMultipleReferencesDescription();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
