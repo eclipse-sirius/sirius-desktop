@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1455886019">
+<target name="sirius_canary" sequenceNumber="1456220557">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -16,10 +16,10 @@
       <repository id="EEF-NG-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.6.0.I20160216-1400"/>
-      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20160216-1400"/>
-      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20160216-1400"/>
-      <repository id="Eclipse-Neon-Integration" location="http://download.eclipse.org/eclipse/updates/4.6-I-builds"/>
+      <unit id="org.eclipse.platform.ide" version="0.0.0"/>
+      <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
+      <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
+      <repository id="Eclipse-Neon-Integration" location="http://download.eclipse.org/eclipse/updates/4.6-N-builds/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
@@ -37,13 +37,12 @@
       <repository id="GEF-LastSuccessful" location="https://hudson.eclipse.org/gef/job/gef-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.swtbot.ide.feature.group" version="0.0.0"/>
-      <repository id="SWTBot-LastSuccessful" location="https://hudson.eclipse.org/swtbot/job/swtbot-tycho/ws/org.eclipse.swtbot.updatesite/target/repository/"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.1.1.201307101628"/>
+      <repository id="SWTBot-2_1" location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
