@@ -84,9 +84,7 @@ public class EdgeMappingTestCase extends AbstractSiriusSwtBotGefTestCase {
 
         // Save and Close c.odesign
         bot.editorByTitle(MODEL).setFocus();
-        bot.menu("File").menu("Save").click();
-        bot.editorByTitle(MODEL).setFocus();
-        bot.editorByTitle(MODEL).close();
+        bot.editorByTitle(MODEL).saveAndClose();
     }
 
 }

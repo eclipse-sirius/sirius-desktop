@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -282,8 +282,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         editor2.click(0, 0);
         SWTBotGefEditPart c1EP = editor2.getEditPart("new EClass 1", DNodeList2EditPart.class);
         SWTBotGefEditPart c2EP = editor2.getEditPart("new EClass 2", DNodeList2EditPart.class);
-        assertFalse("The location (top-left corner) of the first created figure should not overlaped the location (top-left corner) of the second created figure.", ((GraphicalEditPart) c1EP.part())
-                .getFigure().getBounds().getLocation().equals(((GraphicalEditPart) c2EP.part()).getFigure().getBounds().getLocation()));
+        assertFalse("The location (top-left corner) of the first created figure should not overlaped the location (top-left corner) of the second created figure.",
+                ((GraphicalEditPart) c1EP.part()).getFigure().getBounds().getLocation().equals(((GraphicalEditPart) c2EP.part()).getFigure().getBounds().getLocation()));
     }
 
     /**
@@ -949,8 +949,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void saveCloseReopenDiagram() {
-        bot.menu("File").menu("Save").click();
-        editor.close();
+        editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
         openDiagram();
     }
@@ -1065,6 +1064,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public Object getData(final TreeItem widget) {
         return UIThreadRunnable.syncExec(new Result<Object>() {
+            @Override
             public Object run() {
                 return widget.getData();
             }

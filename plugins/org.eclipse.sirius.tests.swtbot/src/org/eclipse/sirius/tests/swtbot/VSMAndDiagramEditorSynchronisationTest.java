@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -126,7 +126,7 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
         SWTBotEditor activeEditor = bot.activeEditor();
         activeEditor.setFocus();
         activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME).expandNode(DEFAULT)
-        .expandNode(EC_E_CLASS).select(FLAT_CONTAINER_STYLE_DESCRIPTION_1);
+                .expandNode(EC_E_CLASS).select(FLAT_CONTAINER_STYLE_DESCRIPTION_1);
 
         // Change the color
         modifyVSM(DARK_RED, DARK_PURPLE);
@@ -162,6 +162,7 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean test() throws Exception {
             return editor.isDirty();
         }
@@ -169,6 +170,7 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getFailureMessage() {
             return null;
         }
@@ -196,15 +198,14 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
         SWTBotEditor activeEditor = bot.activeEditor();
         activeEditor.setFocus();
         activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME).expandNode(DEFAULT)
-        .expandNode(EC_E_CLASS).select(FLAT_CONTAINER_STYLE_DESCRIPTION_1);
+                .expandNode(EC_E_CLASS).select(FLAT_CONTAINER_STYLE_DESCRIPTION_1);
 
         // Change the color
         modifyVSM(DARK_RED, DARK_PURPLE);
 
         // save the VSM
         activeEditor.setFocus();
-        activeEditor.save();
-        activeEditor.close();
+        activeEditor.saveAndClose();
 
         // Check diagram opening
         editor.setFocus();

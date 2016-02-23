@@ -82,9 +82,7 @@ public class CascadingSiriusURITest extends AbstractSiriusSwtBotGefTestCase {
 
         // Save and Close c.odesign
         bot.editorByTitle(VSM_FILE_C).setFocus();
-        bot.menu("File").menu("Save").click();
-        bot.editorByTitle(VSM_FILE_C).setFocus();
-        bot.editorByTitle(VSM_FILE_C).close();
+        bot.editorByTitle(VSM_FILE_C).saveAndClose();
 
         // Open b.odesign
         openOdesing(VSM_FILE_B);

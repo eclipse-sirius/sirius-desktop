@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -136,16 +136,15 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
         // Select a node mapping
         SWTBotEditor activeEditor = bot.activeEditor();
         activeEditor.setFocus();
-        activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME)
-        .expandNode(DEFAULT).expandNode(NODE_CLASS).select(BUNDLED_IMAGE_DESCRIPTION);
+        activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME).expandNode(DEFAULT)
+                .expandNode(NODE_CLASS).select(BUNDLED_IMAGE_DESCRIPTION);
 
         // Change the shape square (from bundledImage) to triangle
         modifyVSM(SQUARE, TRIANGLE);
 
         // save the VSM
         activeEditor.setFocus();
-        activeEditor.save();
-        activeEditor.close();
+        activeEditor.saveAndClose();
 
         // The refresh is automatically do in runtime but with SWTBot it's
         // necessary to do a manual refresh

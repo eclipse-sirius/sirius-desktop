@@ -16,7 +16,6 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**
@@ -78,13 +77,10 @@ public class SequenceDiagramDirtyTests extends AbstractSequenceDiagramTestCase {
         editor.click(new Point(320, 280));
         deleteSelectedElement();
         assertEquals(SessionStatus.DIRTY, session.getStatus());
-        // Save => the session is clean
-        bot.menu("File").menu("Save").click();
-        bot.waitUntil(new SessionSavedCondition(session));
+        // Save and close => the session is clean
+        editor.saveAndClose();
         assertEquals(SessionStatus.SYNC, session.getStatus());
-        // Close and reopen the editor => the session should still be clean
-        editor.close();
-
+        // Reopen the editor => the session should still be clean
         editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), getDRepresentationName().get(), DDiagram.class);
         assertEquals(SessionStatus.SYNC, session.getStatus());
     }
