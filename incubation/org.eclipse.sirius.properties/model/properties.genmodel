@@ -27,6 +27,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/domainClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/semanticCandidateExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//PageDescription/groups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//PageDescription/validationSet"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//PageValidationSetDescription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//PageValidationSetDescription/semanticValidationRules"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//PropertyValidationRule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//PropertyValidationRule/targets"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//GroupDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/identifier"/>
@@ -34,6 +41,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/domainClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/semanticCandidateExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/validationSet"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//GroupValidationSetDescription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupValidationSetDescription/semanticValidationRules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupValidationSetDescription/propertyValidationRules"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//ContainerDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ContainerDescription/identifier"/>

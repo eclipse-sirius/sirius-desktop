@@ -28,7 +28,6 @@ package org.eclipse.sirius.properties;
  * @generated
  */
 public interface LabelDescription extends WidgetDescription {
-
     /**
      * Returns the value of the '<em><b>Body Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
@@ -37,7 +36,7 @@ public interface LabelDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Body Expression</em>' attribute.
      * @see #setBodyExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_BodyExpression()
@@ -52,11 +51,12 @@ public interface LabelDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
      * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Body Expression</em>' attribute.
      * @see #getBodyExpression()
      * @generated
      */
     void setBodyExpression(String value);
+
 } // LabelDescription

@@ -58,7 +58,7 @@ public interface ContainerDescription extends EObject {
      * {@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()

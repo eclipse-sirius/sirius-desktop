@@ -57,7 +57,7 @@ public interface WidgetDescription extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
@@ -73,7 +73,7 @@ public interface WidgetDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_LabelExpression()
@@ -88,7 +88,7 @@ public interface WidgetDescription extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -104,7 +104,7 @@ public interface WidgetDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Help Expression</em>' attribute.
      * @see #setHelpExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_HelpExpression()
@@ -119,7 +119,7 @@ public interface WidgetDescription extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetDescription#getHelpExpression
      * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Help Expression</em>' attribute.
      * @see #getHelpExpression()

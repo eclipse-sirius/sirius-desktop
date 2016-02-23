@@ -40,7 +40,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * @generated
  */
 public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -70,7 +70,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
     /**
      * This adds a property descriptor for the Predicate Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
     /**
      * This returns DynamicMappingIf.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

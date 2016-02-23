@@ -40,7 +40,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * @generated
  */
 public class GroupDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -110,7 +110,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
     /**
      * This adds a property descriptor for the Semantic Candidate Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
@@ -127,7 +127,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,13 +135,14 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTAINER);
+            childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__VALIDATION_SET);
         }
         return childrenFeatures;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +157,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
     /**
      * This returns GroupDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +168,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +182,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,6 +197,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
+        case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -214,6 +216,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter implements
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTAINER, PropertiesFactory.eINSTANCE.createContainerDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__VALIDATION_SET, PropertiesFactory.eINSTANCE.createGroupValidationSetDescription()));
     }
 
     /**

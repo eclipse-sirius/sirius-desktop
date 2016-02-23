@@ -68,7 +68,7 @@ public interface ViewExtensionDescription extends Extension {
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
@@ -133,7 +133,7 @@ public interface ViewExtensionDescription extends Extension {
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getDefaultPage
      * <em>Default Page</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Page</em>' reference.
      * @see #getDefaultPage()
@@ -149,7 +149,7 @@ public interface ViewExtensionDescription extends Extension {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_LabelExpression()
@@ -164,7 +164,7 @@ public interface ViewExtensionDescription extends Extension {
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()

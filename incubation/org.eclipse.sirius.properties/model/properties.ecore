@@ -23,6 +23,17 @@
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//GroupDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//PageValidationSetDescription"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageValidationSetDescription">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValidationRule" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/ValidationRule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//WidgetDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
@@ -33,6 +44,15 @@
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//ContainerDescription"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//GroupValidationSetDescription"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupValidationSetDescription">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyValidationRules"
+        upperBound="-1" eType="#//PropertyValidationRule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"

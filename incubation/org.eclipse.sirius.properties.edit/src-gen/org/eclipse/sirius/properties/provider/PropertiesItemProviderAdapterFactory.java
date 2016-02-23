@@ -39,6 +39,9 @@ import org.eclipse.sirius.properties.util.PropertiesAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -47,14 +50,14 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -72,7 +75,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -95,7 +98,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewExtensionDescriptionItemProvider viewExtensionDescriptionItemProvider;
@@ -143,6 +146,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.PageValidationSetDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected PageValidationSetDescriptionItemProvider pageValidationSetDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.PageValidationSetDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createPageValidationSetDescriptionAdapter() {
+        if (pageValidationSetDescriptionItemProvider == null) {
+            pageValidationSetDescriptionItemProvider = new PageValidationSetDescriptionItemProvider(this);
+        }
+
+        return pageValidationSetDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.GroupDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -168,9 +196,59 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.GroupValidationSetDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GroupValidationSetDescriptionItemProvider groupValidationSetDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.GroupValidationSetDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGroupValidationSetDescriptionAdapter() {
+        if (groupValidationSetDescriptionItemProvider == null) {
+            groupValidationSetDescriptionItemProvider = new GroupValidationSetDescriptionItemProvider(this);
+        }
+
+        return groupValidationSetDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.PropertyValidationRule} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected PropertyValidationRuleItemProvider propertyValidationRuleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.PropertyValidationRule}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createPropertyValidationRuleAdapter() {
+        if (propertyValidationRuleItemProvider == null) {
+            propertyValidationRuleItemProvider = new PropertyValidationRuleItemProvider(this);
+        }
+
+        return propertyValidationRuleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ContainerDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerDescriptionItemProvider containerDescriptionItemProvider;
@@ -420,7 +498,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SingleReferenceDescriptionItemProvider singleReferenceDescriptionItemProvider;
@@ -445,7 +523,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.OperationDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperationDescriptionItemProvider operationDescriptionItemProvider;
@@ -470,7 +548,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MultipleReferencesDescriptionItemProvider multipleReferencesDescriptionItemProvider;
@@ -515,7 +593,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -526,7 +604,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -536,7 +614,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -553,7 +631,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -563,7 +641,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -601,8 +679,17 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (pageDescriptionItemProvider != null) {
             pageDescriptionItemProvider.dispose();
         }
+        if (pageValidationSetDescriptionItemProvider != null) {
+            pageValidationSetDescriptionItemProvider.dispose();
+        }
+        if (propertyValidationRuleItemProvider != null) {
+            propertyValidationRuleItemProvider.dispose();
+        }
         if (groupDescriptionItemProvider != null) {
             groupDescriptionItemProvider.dispose();
+        }
+        if (groupValidationSetDescriptionItemProvider != null) {
+            groupValidationSetDescriptionItemProvider.dispose();
         }
         if (containerDescriptionItemProvider != null) {
             containerDescriptionItemProvider.dispose();
@@ -655,14 +742,14 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected static class CreationSwitch extends DescriptionSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -670,7 +757,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -678,7 +765,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -688,7 +775,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -700,7 +787,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -711,7 +798,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -723,7 +810,94 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
+         * @generated
+         */
+        @Override
+        public ResourceLocator getResourceLocator() {
+            return PropertiesEditPlugin.INSTANCE;
+        }
+    }
+
+    /**
+     * A child creation extender for the {@link ValidationPackage}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public static class ValidationChildCreationExtender implements IChildCreationExtender {
+        /**
+         * The switch for creating child descriptors specific to each extended
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        protected static class CreationSwitch extends ValidationSwitch<Object> {
+            /**
+             * The child descriptors being populated. <!-- begin-user-doc -->
+             * <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected List<Object> newChildDescriptors;
+
+            /**
+             * The domain in which to create the children. <!-- begin-user-doc
+             * --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected EditingDomain editingDomain;
+
+            /**
+             * Creates the a switch for populating child descriptors in the
+             * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+                this.newChildDescriptors = newChildDescriptors;
+                this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            @Override
+            public Object caseValidationSet(ValidationSet object) {
+                newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_SET__OWNED_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             *
+             * @generated
+             */
+            protected CommandParameter createChildParameter(Object feature, Object child) {
+                return new CommandParameter(null, feature, child);
+            }
+
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        @Override
+        public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+            ArrayList<Object> result = new ArrayList<Object>();
+            new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+            return result;
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         @Override

@@ -22,12 +22,15 @@ import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
@@ -38,14 +41,14 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static PropertiesFactory init() {
@@ -63,7 +66,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PropertiesFactoryImpl() {
@@ -72,7 +75,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,8 +85,14 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createViewExtensionDescription();
         case PropertiesPackage.PAGE_DESCRIPTION:
             return createPageDescription();
+        case PropertiesPackage.PAGE_VALIDATION_SET_DESCRIPTION:
+            return createPageValidationSetDescription();
+        case PropertiesPackage.PROPERTY_VALIDATION_RULE:
+            return createPropertyValidationRule();
         case PropertiesPackage.GROUP_DESCRIPTION:
             return createGroupDescription();
+        case PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION:
+            return createGroupValidationSetDescription();
         case PropertiesPackage.CONTAINER_DESCRIPTION:
             return createContainerDescription();
         case PropertiesPackage.TEXT_DESCRIPTION:
@@ -117,7 +126,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +137,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +148,29 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public PageValidationSetDescription createPageValidationSetDescription() {
+        PageValidationSetDescriptionImpl pageValidationSetDescription = new PageValidationSetDescriptionImpl();
+        return pageValidationSetDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public PropertyValidationRule createPropertyValidationRule() {
+        PropertyValidationRuleImpl propertyValidationRule = new PropertyValidationRuleImpl();
+        return propertyValidationRule;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -150,7 +181,18 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public GroupValidationSetDescription createGroupValidationSetDescription() {
+        GroupValidationSetDescriptionImpl groupValidationSetDescription = new GroupValidationSetDescriptionImpl();
+        return groupValidationSetDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -161,7 +203,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +214,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +225,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +236,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +247,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +258,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +269,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,51 +280,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public RadioDescription createRadioDescription() {
-        RadioDescriptionImpl radioDescription = new RadioDescriptionImpl();
-        return radioDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public SingleReferenceDescription createSingleReferenceDescription() {
-        SingleReferenceDescriptionImpl singleReferenceDescription = new SingleReferenceDescriptionImpl();
-        return singleReferenceDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public OperationDescription createOperationDescription() {
-        OperationDescriptionImpl operationDescription = new OperationDescriptionImpl();
-        return operationDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public MultipleReferencesDescription createMultipleReferencesDescription() {
-        MultipleReferencesDescriptionImpl multipleReferencesDescription = new MultipleReferencesDescriptionImpl();
-        return multipleReferencesDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +291,51 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public RadioDescription createRadioDescription() {
+        RadioDescriptionImpl radioDescription = new RadioDescriptionImpl();
+        return radioDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public SingleReferenceDescription createSingleReferenceDescription() {
+        SingleReferenceDescriptionImpl singleReferenceDescription = new SingleReferenceDescriptionImpl();
+        return singleReferenceDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public OperationDescription createOperationDescription() {
+        OperationDescriptionImpl operationDescription = new OperationDescriptionImpl();
+        return operationDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public MultipleReferencesDescription createMultipleReferencesDescription() {
+        MultipleReferencesDescriptionImpl multipleReferencesDescription = new MultipleReferencesDescriptionImpl();
+        return multipleReferencesDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -303,7 +345,7 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

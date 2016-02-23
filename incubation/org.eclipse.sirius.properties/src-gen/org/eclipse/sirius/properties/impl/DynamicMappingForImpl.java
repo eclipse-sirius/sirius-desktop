@@ -49,7 +49,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getIterator() <em>Iterator</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIterator()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getIterator() <em>Iterator</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIterator()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * The default value of the '{@link #getDomainClassExpression()
      * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClassExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
      * The cached value of the '{@link #getDomainClassExpression()
      * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClassExpression()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getIfs() <em>Ifs</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIfs()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DynamicMappingForImpl() {
@@ -109,7 +109,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -235,7 +235,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
             return DynamicMappingForImpl.ITERATOR_EDEFAULT == null ? iterator != null : !DynamicMappingForImpl.ITERATOR_EDEFAULT.equals(iterator);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
             return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT
-                    .equals(domainClassExpression);
+            .equals(domainClassExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             return ifs != null && !ifs.isEmpty();
         }
@@ -275,7 +275,7 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

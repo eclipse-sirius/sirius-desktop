@@ -14,13 +14,16 @@ package org.eclipse.sirius.properties.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
@@ -43,6 +46,9 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em>Semantic Candidate Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getGroups
  * <em>Groups</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getValidationSet
+ * <em>Validation Set</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,7 +58,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -62,7 +68,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -73,7 +79,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -84,7 +90,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -94,7 +100,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -104,7 +110,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -115,7 +121,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The default value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -126,7 +132,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The cached value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -136,7 +142,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroups()
      * @generated
      * @ordered
@@ -144,8 +150,19 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     protected EList<GroupDescription> groups;
 
     /**
+     * The cached value of the '{@link #getValidationSet()
+     * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getValidationSet()
+     * @generated
+     * @ordered
+     */
+    protected PageValidationSetDescription validationSet;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PageDescriptionImpl() {
@@ -154,7 +171,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +181,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +191,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +205,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +215,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +229,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +239,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +253,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +263,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +277,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +290,74 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public PageValidationSetDescription getValidationSet() {
+        return validationSet;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetValidationSet(PageValidationSetDescription newValidationSet, NotificationChain msgs) {
+        PageValidationSetDescription oldValidationSet = validationSet;
+        validationSet = newValidationSet;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET, oldValidationSet, newValidationSet);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setValidationSet(PageValidationSetDescription newValidationSet) {
+        if (newValidationSet != validationSet) {
+            NotificationChain msgs = null;
+            if (validationSet != null) {
+                msgs = ((InternalEObject) validationSet).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
+            if (newValidationSet != null) {
+                msgs = ((InternalEObject) newValidationSet).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET, null, msgs);
+            }
+            msgs = basicSetValidationSet(newValidationSet, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET, newValidationSet, newValidationSet));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
+            return basicSetValidationSet(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -289,13 +373,15 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
             return getSemanticCandidateExpression();
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             return getGroups();
+        case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
+            return getValidationSet();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -318,13 +404,16 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
             getGroups().clear();
             getGroups().addAll((Collection<? extends GroupDescription>) newValue);
             return;
+        case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
+            setValidationSet((PageValidationSetDescription) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,13 +434,16 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             getGroups().clear();
             return;
+        case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
+            setValidationSet((PageValidationSetDescription) null);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,16 +457,18 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
             return PageDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !PageDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             return PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null : !PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT
-                    .equals(semanticCandidateExpression);
+            .equals(semanticCandidateExpression);
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             return groups != null && !groups.isEmpty();
+        case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
+            return validationSet != null;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

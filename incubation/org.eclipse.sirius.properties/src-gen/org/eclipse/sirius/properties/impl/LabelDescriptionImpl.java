@@ -36,7 +36,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
      * The default value of the '{@link #getBodyExpression()
      * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBodyExpression()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
      * The cached value of the '{@link #getBodyExpression()
      * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBodyExpression()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelDescriptionImpl() {
@@ -65,7 +65,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

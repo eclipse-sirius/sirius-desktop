@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFCheckboxDescription;
@@ -21,12 +25,18 @@ import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFMultipleReferencesDescription;
 import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFRadioDescription;
+import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFSelectDescription;
+import org.eclipse.eef.EEFSemanticValidationRuleDescription;
 import org.eclipse.eef.EEFSingleReferenceDescription;
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.EEFValidationFixDescription;
+import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.ButtonDescription;
@@ -38,6 +48,7 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
+import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
@@ -45,6 +56,11 @@ import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Interprets the high-level property views description defined in a Sirius VSM
@@ -53,6 +69,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * @author pcdavid
  */
 public class ViewDescriptionConverter {
+    private Map<WidgetDescription, EEFWidgetDescription> widget2eefWidget = new HashMap<>();
+
+    private Map<EEFPropertyValidationRuleDescription, PropertyValidationRule> eefPropertyValidationRule2propertyValidationRule = new HashMap<>();
+
     private final List<PageDescription> pageDescriptions;
 
     /**
@@ -77,6 +97,22 @@ public class ViewDescriptionConverter {
             createPage(pageDescription, view);
         }
 
+        // Resolve the links from property validation rules to widgets
+        Set<Entry<EEFPropertyValidationRuleDescription, PropertyValidationRule>> entries = this.eefPropertyValidationRule2propertyValidationRule.entrySet();
+        for (Entry<EEFPropertyValidationRuleDescription, PropertyValidationRule> entry : entries) {
+            List<WidgetDescription> widgets = entry.getValue().getTargets();
+            for (WidgetDescription widgetDescription : widgets) {
+                EEFWidgetDescription eefWidgetDescription = this.widget2eefWidget.get(widgetDescription);
+                if (eefWidgetDescription != null) {
+                    EEFPropertyValidationRuleDescription eefPropertyValidationRule = entry.getKey();
+                    eefPropertyValidationRule.getTargets().add(eefWidgetDescription);
+                }
+            }
+        }
+
+        this.widget2eefWidget.clear();
+        this.eefPropertyValidationRule2propertyValidationRule.clear();
+
         return view;
     }
 
@@ -98,7 +134,70 @@ public class ViewDescriptionConverter {
             createGroup(groupDescription, page, view);
         }
 
+        if (pageDescription.getValidationSet() != null) {
+            List<SemanticValidationRule> semanticValidationRules = pageDescription.getValidationSet().getSemanticValidationRules();
+            for (SemanticValidationRule semanticValidationRule : semanticValidationRules) {
+                page.getSemanticValidationRules().add(this.createSemanticValidationRuleDescription(semanticValidationRule));
+            }
+        }
         view.getPages().add(page);
+    }
+
+    private EEFSemanticValidationRuleDescription createSemanticValidationRuleDescription(SemanticValidationRule semanticValidationRule) {
+        EEFSemanticValidationRuleDescription eefSemanticValidationRuleDescription = EefFactory.eINSTANCE.createEEFSemanticValidationRuleDescription();
+        eefSemanticValidationRuleDescription.setTargetClass(semanticValidationRule.getTargetClass());
+        eefSemanticValidationRuleDescription.setSeverity(this.getValidationSeverity(semanticValidationRule.getLevel()));
+
+        this.createValidationRuleContent(eefSemanticValidationRuleDescription, semanticValidationRule);
+        return eefSemanticValidationRuleDescription;
+    }
+
+    private EEFPropertyValidationRuleDescription createPropertyValidationRuleDescription(PropertyValidationRule propertyValidationRule) {
+        EEFPropertyValidationRuleDescription eefPropertyValidationRuleDescription = EefFactory.eINSTANCE.createEEFPropertyValidationRuleDescription();
+        eefPropertyValidationRuleDescription.setSeverity(this.getValidationSeverity(propertyValidationRule.getLevel()));
+
+        this.createValidationRuleContent(eefPropertyValidationRuleDescription, propertyValidationRule);
+
+        return eefPropertyValidationRuleDescription;
+    }
+
+    private void createValidationRuleContent(EEFValidationRuleDescription eefValidationRuleDescription, ValidationRule validationRule) {
+        eefValidationRuleDescription.setMessageExpression(validationRule.getMessage());
+
+        List<RuleAudit> audits = validationRule.getAudits();
+        for (RuleAudit audit : audits) {
+            EEFRuleAuditDescription eefRuleAuditDescription = EefFactory.eINSTANCE.createEEFRuleAuditDescription();
+            eefRuleAuditDescription.setAuditExpression(audit.getAuditExpression());
+            eefValidationRuleDescription.getAudits().add(eefRuleAuditDescription);
+        }
+
+        List<ValidationFix> fixes = validationRule.getFixes();
+        for (ValidationFix validationFix : fixes) {
+            EEFValidationFixDescription eefValidationFixDescription = EefFactory.eINSTANCE.createEEFValidationFixDescription();
+            eefValidationFixDescription.setName(validationFix.getName());
+            eefValidationFixDescription.setFixExpression(this.getExpressionForOperation(validationFix.getInitialOperation()));
+        }
+    }
+
+    private EEF_VALIDATION_SEVERITY_DESCRIPTION getValidationSeverity(ERROR_LEVEL level) {
+        EEF_VALIDATION_SEVERITY_DESCRIPTION severity = EEF_VALIDATION_SEVERITY_DESCRIPTION.INFO;
+
+        switch (level) {
+        case INFO_LITERAL:
+            severity = EEF_VALIDATION_SEVERITY_DESCRIPTION.INFO;
+            break;
+        case WARNING_LITERAL:
+            severity = EEF_VALIDATION_SEVERITY_DESCRIPTION.WARNING;
+            break;
+        case ERROR_LITERAL:
+            severity = EEF_VALIDATION_SEVERITY_DESCRIPTION.ERROR;
+            break;
+        default:
+            severity = EEF_VALIDATION_SEVERITY_DESCRIPTION.INFO;
+            break;
+        }
+
+        return severity;
     }
 
     /**
@@ -116,6 +215,18 @@ public class ViewDescriptionConverter {
         }
 
         convertGroupContents(groupDescription, group);
+
+        if (groupDescription.getValidationSet() != null) {
+            for (SemanticValidationRule semanticValidationRule : groupDescription.getValidationSet().getSemanticValidationRules()) {
+                group.getSemanticValidationRules().add(this.createSemanticValidationRuleDescription(semanticValidationRule));
+            }
+
+            for (PropertyValidationRule propertyValidationRule : groupDescription.getValidationSet().getPropertyValidationRules()) {
+                EEFPropertyValidationRuleDescription propertyValidationRuleDescription = this.createPropertyValidationRuleDescription(propertyValidationRule);
+                this.eefPropertyValidationRule2propertyValidationRule.put(propertyValidationRuleDescription, propertyValidationRule);
+                group.getPropertyValidationRules().add(propertyValidationRuleDescription);
+            }
+        }
 
         page.getGroups().add(group);
         view.getGroups().add(group);
@@ -178,6 +289,8 @@ public class ViewDescriptionConverter {
         if (description != null) {
             description.setHelpExpression(widgetDescription.getHelpExpression());
             description.setLabelExpression(widgetDescription.getLabelExpression());
+
+            this.widget2eefWidget.put(widgetDescription, description);
         }
 
         return description;

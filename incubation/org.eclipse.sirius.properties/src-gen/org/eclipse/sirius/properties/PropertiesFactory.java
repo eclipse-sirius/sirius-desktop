@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.properties.PropertiesPackage
  * @generated
  */
@@ -24,7 +24,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     PropertiesFactory eINSTANCE = org.eclipse.sirius.properties.impl.PropertiesFactoryImpl.init();
@@ -48,6 +48,24 @@ public interface PropertiesFactory extends EFactory {
     PageDescription createPageDescription();
 
     /**
+     * Returns a new object of class '<em>Page Validation Set Description</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Page Validation Set Description</em>'.
+     * @generated
+     */
+    PageValidationSetDescription createPageValidationSetDescription();
+
+    /**
+     * Returns a new object of class '<em>Property Validation Rule</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Property Validation Rule</em>'.
+     * @generated
+     */
+    PropertyValidationRule createPropertyValidationRule();
+
+    /**
      * Returns a new object of class '<em>Group Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -55,6 +73,16 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     GroupDescription createGroupDescription();
+
+    /**
+     * Returns a new object of class '<em>Group Validation Set Description</em>
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Group Validation Set Description</em>
+     *         '.
+     * @generated
+     */
+    GroupValidationSetDescription createGroupValidationSetDescription();
 
     /**
      * Returns a new object of class '<em>Container Description</em>'. <!--
@@ -149,7 +177,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Single Reference Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Single Reference Description</em>'.
      * @generated
      */
@@ -167,7 +195,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Multiple References Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Multiple References Description</em>'.
      * @generated
      */
@@ -176,7 +204,7 @@ public interface PropertiesFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

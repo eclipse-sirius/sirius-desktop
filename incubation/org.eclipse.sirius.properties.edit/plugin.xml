@@ -33,6 +33,9 @@
       <extender
             uri="http://www.eclipse.org/sirius/description/1.1.0"
             class="org.eclipse.sirius.properties.provider.PropertiesItemProviderAdapterFactory$DescriptionChildCreationExtender"/>
+      <extender
+            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
+            class="org.eclipse.sirius.properties.provider.PropertiesItemProviderAdapterFactory$ValidationChildCreationExtender"/>
    </extension>
 
 </plugin>

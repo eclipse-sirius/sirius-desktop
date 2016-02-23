@@ -72,7 +72,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
     /**
      * This returns TextAreaDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

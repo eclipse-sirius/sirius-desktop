@@ -22,6 +22,31 @@
    
       </description>
    </context>
+   <context id="PageValidationSetDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code PageValidationSetDescription description -->
+   
+   <!-- End of user code PageValidationSetDescription description -->
+   
+      </description>
+   </context>
+   <context id="PropertyValidationRule">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - message: a string.
+
+
+         
+   <!-- Start of user code PropertyValidationRule description -->
+   
+   <!-- End of user code PropertyValidationRule description -->
+   
+      </description>
+   </context>
    <context id="GroupDescription">
      <description>
        
@@ -30,6 +55,17 @@
    <!-- Start of user code GroupDescription description -->
    
    <!-- End of user code GroupDescription description -->
+   
+      </description>
+   </context>
+   <context id="GroupValidationSetDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code GroupValidationSetDescription description -->
+   
+   <!-- End of user code GroupValidationSetDescription description -->
    
       </description>
    </context>

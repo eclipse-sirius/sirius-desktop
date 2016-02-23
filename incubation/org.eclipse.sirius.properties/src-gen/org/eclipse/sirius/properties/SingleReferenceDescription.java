@@ -50,7 +50,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
     /**
      * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The initial selected values of the radio. <!-- end-model-doc -->
+     * The initial value. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
@@ -66,7 +66,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -93,7 +93,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -103,14 +103,9 @@ public interface SingleReferenceDescription extends WidgetDescription {
 
     /**
      * Returns the value of the '<em><b>Create Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Create Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Defines the expected
-     * behavior when the user clicks on the create button. <!-- end-model-doc
-     * -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Defines the expected behavior when the user clicks on
+     * the create button. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Create Operation</em>' containment
      *         reference.
@@ -126,7 +121,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getCreateOperation
      * <em>Create Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Create Operation</em>' containment
      *            reference.
@@ -137,14 +132,9 @@ public interface SingleReferenceDescription extends WidgetDescription {
 
     /**
      * Returns the value of the '<em><b>Search Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Search Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Defines the expected
-     * behavior when the user clicks on the search button. <!-- end-model-doc
-     * -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Defines the expected behavior when the user clicks on
+     * the search button. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Search Operation</em>' containment
      *         reference.
@@ -160,7 +150,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getSearchOperation
      * <em>Search Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Search Operation</em>' containment
      *            reference.
@@ -171,13 +161,9 @@ public interface SingleReferenceDescription extends WidgetDescription {
 
     /**
      * Returns the value of the '<em><b>Unset Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Unset Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Defines the expected
-     * behavior when the user clicks on the unset button. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Defines the expected behavior when the user clicks on
+     * the unset button. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Unset Operation</em>' containment
      *         reference.
@@ -193,7 +179,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getUnsetOperation
      * <em>Unset Operation</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Unset Operation</em>' containment
      *            reference.
@@ -204,13 +190,9 @@ public interface SingleReferenceDescription extends WidgetDescription {
 
     /**
      * Returns the value of the '<em><b>On Click Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>On Click Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Defines the expected
-     * behavior when the user clicks on the hyperlink. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Defines the expected behavior when the user clicks on
+     * the hyperlink. <!-- end-model-doc -->
      *
      * @return the value of the '<em>On Click Operation</em>' containment
      *         reference.
@@ -226,7 +208,7 @@ public interface SingleReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getOnClickOperation
      * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>On Click Operation</em>' containment
      *            reference.

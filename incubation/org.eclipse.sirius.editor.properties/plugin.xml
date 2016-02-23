@@ -213,6 +213,13 @@
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.propertyvalidationrule.PropertyValidationRuleTargetsPropertySection"
+               id="properties.section.propertyValidationRule.Targets"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.propertyvalidationrule.PropertyValidationRuleTargetsFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.PropertyValidationRule"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionGroupsPropertySection"
                id="properties.section.pageDescription.Groups"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionGroupsFilter"

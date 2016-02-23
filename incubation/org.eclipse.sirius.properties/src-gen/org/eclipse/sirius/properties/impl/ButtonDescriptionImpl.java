@@ -42,7 +42,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * The default value of the '{@link #getButtonLabelExpression()
      * <em>Button Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getButtonLabelExpression()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * The cached value of the '{@link #getButtonLabelExpression()
      * <em>Button Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getButtonLabelExpression()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ButtonDescriptionImpl() {
@@ -82,7 +82,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -145,7 +145,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
             return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT
-                    .equals(buttonLabelExpression);
+            .equals(buttonLabelExpression);
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
         }
@@ -252,7 +252,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
