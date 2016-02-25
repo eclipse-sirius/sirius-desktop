@@ -56,23 +56,23 @@
 <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
   <repositories>
     <repository>
-      <id>Indigo Release</id>
-      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+      <id>Eclipse - Acceleo Release</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
     </repository>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
-      <id>Indigo Release</id>
-      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+      <id>Eclipse - Acceleo Release</id>
+      <url>https://repo.eclipse.org/content/repositories/acceleo-releases</url>
     </pluginRepository>
   </pluginRepositories>
 
   <dependencies>
     <dependency>
       <groupId>org.eclipse.acceleo</groupId>
-      <artifactId>maven</artifactId>
-      <version>3.2.1</version>
+      <artifactId>org.eclipse.acceleo.maven</artifactId>
+      <version>3.5.2</version>
     </dependency>
   </dependencies>
 
@@ -256,8 +256,8 @@
         </plugin>        
             <plugin>
                 <groupId>org.eclipse.acceleo</groupId>
-                <artifactId>maven</artifactId>
-                <version>3.2.1</version>
+                <artifactId>org.eclipse.acceleo.maven</artifactId>
+                <version>3.5.2</version>
                 <executions>
                     <execution>
                         <id>acceleo-compile</id>

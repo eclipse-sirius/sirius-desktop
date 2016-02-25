@@ -30,8 +30,8 @@
       <!-- Compile Acceleo3 modules -->
       <plugin>
         <groupId>org.eclipse.acceleo</groupId>
-        <artifactId>maven</artifactId>
-        <version>3.2.1</version>
+        <artifactId>org.eclipse.acceleo.maven</artifactId>
+        <version>3.5.2</version>
         <executions>
           <execution>
             <phase>compile</phase>
