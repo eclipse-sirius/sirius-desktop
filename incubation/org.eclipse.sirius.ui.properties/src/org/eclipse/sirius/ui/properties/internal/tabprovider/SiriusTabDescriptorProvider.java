@@ -79,8 +79,6 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
                 if (sid.getSemanticElement() != null) {
                     // Let's find out the description of the view
                     return this.getTabDescriptors(sid);
-                } else {
-                    SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_UndefinedSemanticElement);
                 }
             }
         }
