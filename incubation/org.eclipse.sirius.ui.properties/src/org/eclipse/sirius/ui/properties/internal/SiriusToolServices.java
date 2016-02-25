@@ -44,7 +44,7 @@ public class SiriusToolServices {
      *            The current EObject
      * @param initialCommandUri
      *            the URI of the operation to execute
-     * @return the model elemnt on which the tool was executed.
+     * @return the model element on which the tool was executed.
      */
     public EObject executeOperation(EObject eObject, String initialCommandUri) {
         Session session = new EObjectQuery(eObject).getSession();
@@ -95,9 +95,11 @@ public class SiriusToolServices {
      *            The EStructuralFeature
      * @param value
      *            The new value
+     * @return the model element on which the service was executed.
      */
-    public void eSet(EObject eObject, EStructuralFeature eStructuralFeature, Object value) {
+    public EObject eSet(EObject eObject, EStructuralFeature eStructuralFeature, Object value) {
         eObject.eSet(eStructuralFeature, value);
+        return eObject;
     }
 
     /**
