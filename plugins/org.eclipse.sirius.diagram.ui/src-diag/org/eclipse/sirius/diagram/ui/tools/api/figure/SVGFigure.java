@@ -66,7 +66,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
          *            the graphical context
          * @return an image store in a cache
          */
-        public Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
+        public synchronized Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
             String key = fig.getKey(graphics);
             Image result = images.getIfPresent(key);
             if (result == null) {
@@ -89,7 +89,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
          *            the document key.
          * @return true of something was removed.
          */
-        public boolean doRemoveFromCache(String documentKey) {
+        public synchronized boolean doRemoveFromCache(String documentKey) {
             if (!StringUtil.isEmpty(documentKey)) {
                 boolean remove = false;
                 Collection<String> keyToRemove = Lists.newArrayList();
