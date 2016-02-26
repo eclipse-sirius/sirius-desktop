@@ -19,7 +19,7 @@
           iterator="eStructuralFeature"
           domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
         <ifs
-            predicateExpression="aql:eStructuralFeature.eType = ecore::EString">
+            predicateExpression="aql:eStructuralFeature.eType = ecore::EString and not(eStructuralFeature.many)">
           <widget
               xsi:type="properties:TextDescription"
               labelExpression="aql:eStructuralFeature.name"
@@ -32,7 +32,7 @@
           </widget>
         </ifs>
         <ifs
-            predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean">
+            predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean and not(eStructuralFeature.many)">
           <widget
               xsi:type="properties:CheckboxDescription"
               labelExpression="aql:eStructuralFeature.name"
