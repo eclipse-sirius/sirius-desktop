@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -22,8 +24,10 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
+import org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -48,29 +52,65 @@ public class SiriusToolServices {
      */
     public EObject executeOperation(EObject eObject, String initialCommandUri) {
         Session session = new EObjectQuery(eObject).getSession();
-        ModelAccessor modelAccessor = session.getModelAccessor();
-        TaskHelper taskHelper = new TaskHelper(modelAccessor, new NoUICallback());
-
-        ModelOperation modelOperation = null;
-
-        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
-        for (Viewpoint viewpoint : selectedViewpoints) {
-            Resource eResource = viewpoint.eResource();
-            if (eResource != null && URI.createURI(initialCommandUri).trimFragment().equals(eResource.getURI())) {
-                EObject modelOperationEObject = eResource.getEObject(URI.createURI(initialCommandUri).fragment());
-                if (modelOperationEObject instanceof InitialOperation) {
-                    modelOperation = ((InitialOperation) modelOperationEObject).getFirstModelOperations();
-                }
-            }
-        }
-
+        ModelOperation modelOperation = findModelOperation(initialCommandUri, session);
         if (modelOperation != null) {
-            ICommandTask task = taskHelper.buildTaskFromModelOperation(eObject, modelOperation);
+            ModelAccessor modelAccessor = session.getModelAccessor();
+            ICommandTask task = new TaskHelper(modelAccessor, new NoUICallback()).buildTaskFromModelOperation(eObject, modelOperation);
             SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation");
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
         }
         return eObject;
+    }
+
+    /**
+     * Resolves the actual {@link ModelOperation} to execute given its URI.
+     * 
+     * @param initialCommandUri
+     *            the URI of the operation to search for.
+     * @param session
+     *            the Sirius session which determines the scope to search into.
+     * @return the {@link ModelOperation} instance found at the specified URI,
+     *         either in one of the VSMs for which at least one Viewpoint is
+     *         currently enabled in the session, or from the default ruleset, or
+     *         <code>null</code> if no matching operation could be located.
+     */
+    private ModelOperation findModelOperation(String initialCommandUri, Session session) {
+        URI commandResourceURI = URI.createURI(initialCommandUri).trimFragment();
+        for (Resource res : getResourcesInScope(session)) {
+            if (commandResourceURI.equals(res.getURI())) {
+                EObject modelOperationEObject = res.getEObject(URI.createURI(initialCommandUri).fragment());
+                if (modelOperationEObject instanceof InitialOperation) {
+                    return ((InitialOperation) modelOperationEObject).getFirstModelOperations();
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns all the (VSM-like) resources in which to search for the
+     * {@link ModelOperation} to execute.
+     * 
+     * @param session
+     *            the Sirius session.
+     * @return all the resources in which to look for the ModelOperation, in
+     *         order of preference.
+     */
+    private Set<Resource> getResourcesInScope(Session session) {
+        Set<Resource> result = new LinkedHashSet<>();
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
+        for (Viewpoint viewpoint : selectedViewpoints) {
+            Resource eResource = viewpoint.eResource();
+            if (eResource != null) {
+                result.add(eResource);
+            }
+        }
+        ViewExtensionDescription defaults = SiriusTabDescriptorProvider.getDefaultRules();
+        if (defaults != null && defaults.eResource() != null) {
+            result.add(defaults.eResource());
+        }
+        return result;
     }
 
     /**

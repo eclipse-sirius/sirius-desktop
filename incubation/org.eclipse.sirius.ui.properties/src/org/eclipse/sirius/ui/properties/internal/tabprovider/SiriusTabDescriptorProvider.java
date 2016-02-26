@@ -63,7 +63,28 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      * The URI of the model containing the default value of the properties page
      * to create.
      */
-    private static final String DEFAULT_PROPERTIES_URI = "platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi";
+    private static final URI DEFAULT_PROPERTIES_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi", true);
+
+    private static final ResourceSet DEFAULT_RULES = new ResourceSetImpl();
+
+    /**
+     * Returns the global default rules which apply when nothing more specific
+     * was specified.
+     * 
+     * @return the global default rules.
+     */
+    public static ViewExtensionDescription getDefaultRules() {
+        Resource resource = DEFAULT_RULES.getResource(DEFAULT_PROPERTIES_URI, true);
+        if (resource == null) {
+            SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound);
+        } else {
+            List<EObject> contents = resource.getContents();
+            if (contents.size() > 0 && contents.get(0) instanceof ViewExtensionDescription) {
+                return (ViewExtensionDescription) contents.get(0);
+            }
+        }
+        return null;
+    }
 
     @Override
     public Collection<IEEFTabDescriptor> get(IWorkbenchPart part, ISelection selection) {
@@ -143,15 +164,9 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         }
 
         if (effectivePages.size() == 0) {
-            ResourceSet resourceSet = new ResourceSetImpl();
-            URI uri = URI.createURI(DEFAULT_PROPERTIES_URI, true);
-            Resource resource = resourceSet.getResource(uri, true);
-            if (resource != null) {
-                List<EObject> contents = resource.getContents();
-                if (contents.size() > 0 && contents.get(0) instanceof ViewExtensionDescription) {
-                    ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) contents.get(0);
-                    effectivePages.addAll(viewExtensionDescription.getPages());
-                }
+            ViewExtensionDescription viewExtensionDescription = getDefaultRules();
+            if (viewExtensionDescription != null) {
+                effectivePages.addAll(viewExtensionDescription.getPages());
             } else {
                 SiriusUIPropertiesPlugin.getPlugin().error(Messages.SiriusTabDescriptorProvider_DefaultPropertiesNotFound);
             }
