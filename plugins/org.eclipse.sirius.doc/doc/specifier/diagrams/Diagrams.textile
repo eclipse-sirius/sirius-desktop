@@ -419,6 +419,11 @@ h3(#colors). Colors
 
 Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. The palette is created directly inside the _Viewpoint_ element, and its colors can be used by any representation, not just diagram. See "the general section on colors":../general/Colors.html for more details.
 
+h3(#authorizedsides). Authorized Sides
+
+By default, border node can be located on any side of its parent. It is possible to restrict a border node authorized sides. Thus the end user will not have the possibility to create or to move a border node on a forbidden side. Authorized sides can be specified in the advanced tab of the border node style:
+!images/styles/authorizedSides.png!
+
 h2(#tools). Tools
 
 Tools are used to define the behavior of your modeler. Some tools will appear in the diagram's palette (e.g. a tool to create a new node), while others are automatically invoked when the user performs certain operations (e.g. a delete tool which is triggered when the user deletes an element from the diagram).
