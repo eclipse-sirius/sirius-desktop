@@ -449,8 +449,10 @@ public final class JavaExtensionsManager {
      */
     public void addImport(String classQualifiedName) {
         if (classQualifiedName != null && classQualifiedName.contains(".")) { //$NON-NLS-1$
-            this.imports.add(classQualifiedName);
-            this.shouldLoadServices = true;
+            boolean newImport = this.imports.add(classQualifiedName);
+            if (newImport) {
+                this.shouldLoadServices = true;
+            }
         }
     }
 
