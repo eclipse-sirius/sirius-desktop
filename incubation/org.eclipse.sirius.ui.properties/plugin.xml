@@ -44,9 +44,11 @@
            class="org.eclipse.sirius.ui.properties.internal.EEFPropertySheetPageProvider"
            contributorId="org.eclipse.sirius.tree.ui.EditorID">
      </siriusPropertySheetPageProvider>
+     <!--
      <siriusPropertySheetPageProvider
            class="org.eclipse.sirius.ui.properties.internal.EEFPropertySheetPageProvider"
            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
      </siriusPropertySheetPageProvider>
+     -->
   </extension>
 </plugin>
