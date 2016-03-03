@@ -88,9 +88,7 @@ public class SiriusInterpreter implements IInterpreter {
 
     private void tearDownInterpreter(Map<String, Object> variables) {
         if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
-            org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
-            i.removeImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
-            unsetLocals(variables, i);
+            unsetLocals(variables, (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter);
         }
     }
 
