@@ -314,20 +314,26 @@ public class DBorderItemLocator extends BorderItemLocator {
         final Point leftTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceToTheRight = true;
         boolean isStillFreeSpaceToTheLeft = true;
-        int rightVerticalGap = 0;
-        int leftVerticalGap = 0;
+        int rightHorizontalGap = 0;
+        int leftHorizontalGap = 0;
         // The recommendedLocationForEast is set when we detected that there is
         // not free space on right of south side.
         Point recommendedLocationForEast = recommendedLocation.getLocation();
+        Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the south side
-                rightTestPoint.x += rightVerticalGap;
+                rightTestPoint.x += rightHorizontalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(rightTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
-                    rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
-                    if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().y == rightTestPoint.y) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
+                    rightHorizontalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
+                    if (rightTestPoint.x + rightHorizontalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
                         isStillFreeSpaceToTheRight = false;
                     }
                 } else {
@@ -336,11 +342,16 @@ public class DBorderItemLocator extends BorderItemLocator {
             }
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the south side
-                leftTestPoint.x -= leftVerticalGap;
+                leftTestPoint.x -= leftHorizontalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(leftTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
-                    leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
-                    if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().y == leftTestPoint.y) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
+                    leftHorizontalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
+                    if (leftTestPoint.x - leftHorizontalGap < getParentBorder().getTopLeft().x) {
                         isStillFreeSpaceToTheLeft = false;
                     }
                 } else {
@@ -353,9 +364,13 @@ public class DBorderItemLocator extends BorderItemLocator {
                 if (circuitCount == NB_SIDES - 1) {
                     // There is no space on either side (so use the last
                     // conflicting position)
-                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    if (lastOptionalConflictingRectangleOnSameSide.some()) {
+                        resultLocation = lastOptionalConflictingRectangleOnSameSide.get().getTopLeft();
+                    } else {
+                        resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    }
                 } else {
-                    recommendedLocationForEast = new Point(rightTestPoint.x + rightVerticalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
+                    recommendedLocationForEast = new Point(rightTestPoint.x + rightHorizontalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                 }
             }
         }
@@ -397,20 +412,26 @@ public class DBorderItemLocator extends BorderItemLocator {
         final Point leftTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceToTheRight = true;
         boolean isStillFreeSpaceToTheLeft = true;
-        int rightVerticalGap = 0;
-        int leftVerticalGap = 0;
+        int rightHorizontalGap = 0;
+        int leftHorizontalGap = 0;
         // The recommendedLocationForWest is set when we detected that there is
         // not free space on left of north side.
         Point recommendedLocationForWest = recommendedLocation.getLocation();
+        Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the north side
-                rightTestPoint.x += rightVerticalGap;
+                rightTestPoint.x += rightHorizontalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(rightTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
-                    rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
-                    if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().y == rightTestPoint.y) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
+                    rightHorizontalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
+                    if (rightTestPoint.x + rightHorizontalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
                         isStillFreeSpaceToTheRight = false;
                     }
                 } else {
@@ -419,11 +440,16 @@ public class DBorderItemLocator extends BorderItemLocator {
             }
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the north side
-                leftTestPoint.x -= leftVerticalGap;
+                leftTestPoint.x -= leftHorizontalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(leftTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
-                    leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
-                    if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().y == leftTestPoint.y) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
+                    leftHorizontalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
+                    if (leftTestPoint.x - leftHorizontalGap < getParentBorder().getTopLeft().x) {
                         isStillFreeSpaceToTheLeft = false;
                     }
                 } else {
@@ -436,9 +462,13 @@ public class DBorderItemLocator extends BorderItemLocator {
                 if (circuitCount == NB_SIDES - 1) {
                     // There is no space on either side (so use the last
                     // conflicting position)
-                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    if (lastOptionalConflictingRectangleOnSameSide.some()) {
+                        resultLocation = lastOptionalConflictingRectangleOnSameSide.get().getTopLeft();
+                    } else {
+                        resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    }
                 } else {
-                    recommendedLocationForWest = new Point(leftTestPoint.x - leftVerticalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
+                    recommendedLocationForWest = new Point(leftTestPoint.x - leftHorizontalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
                 }
             }
         }
@@ -485,6 +515,7 @@ public class DBorderItemLocator extends BorderItemLocator {
         // The recommendedLocationForSouth is set when we detected that there is
         // not free space on bottom of west side.
         Point recommendedLocationForSouth = recommendedLocation.getLocation();
+        Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
@@ -492,6 +523,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 belowTestPoint.y += belowVerticalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(belowTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().x == belowTestPoint.x) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
                         isStillFreeSpaceBelow = false;
@@ -505,6 +541,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 aboveTestPoint.y -= aboveVerticalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(aboveTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().x == aboveTestPoint.x) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
                         isStillFreeSpaceAbove = false;
@@ -518,7 +559,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 if (circuitCount == NB_SIDES - 1) {
                     // There is no space on either side (so use the last
                     // conflicting position)
-                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    if (lastOptionalConflictingRectangleOnSameSide.some()) {
+                        resultLocation = lastOptionalConflictingRectangleOnSameSide.get().getTopLeft();
+                    } else {
+                        resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    }
                 } else {
                     recommendedLocationForSouth = new Point(belowTestPoint.x + optionalConflictingRectangle.get().width + 1, belowTestPoint.y + belowVerticalGap);
                 }
@@ -568,6 +613,7 @@ public class DBorderItemLocator extends BorderItemLocator {
         // The recommendedLocationForNorth is set when we detected that there is
         // not free space on top of east side.
         Point recommendedLocationForNorth = recommendedLocation.getLocation();
+        Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
@@ -575,6 +621,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 belowTestPoint.y += belowVerticalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(belowTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().x == aboveTestPoint.x) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
                         isStillFreeSpaceBelow = false;
@@ -588,6 +639,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 aboveTestPoint.y -= aboveVerticalGap;
                 optionalConflictingRectangle = conflicts(new Rectangle(aboveTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
+                    // We make sure the conflicting location is on the same side
+                    // and not on one of the neighbor.
+                    if (optionalConflictingRectangle.get().x == aboveTestPoint.x) {
+                        lastOptionalConflictingRectangleOnSameSide = optionalConflictingRectangle;
+                    }
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
                         isStillFreeSpaceAbove = false;
@@ -601,7 +657,11 @@ public class DBorderItemLocator extends BorderItemLocator {
                 if (circuitCount == NB_SIDES - 1) {
                     // There is no space on either side (so use the last
                     // conflicting position)
-                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    if (lastOptionalConflictingRectangleOnSameSide.some()) {
+                        resultLocation = lastOptionalConflictingRectangleOnSameSide.get().getTopLeft();
+                    } else {
+                        resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                    }
                 } else {
                     recommendedLocationForNorth = new Point(optionalConflictingRectangle.get().x - borderItemSize.width - 1, aboveTestPoint.y - aboveVerticalGap);
                 }
