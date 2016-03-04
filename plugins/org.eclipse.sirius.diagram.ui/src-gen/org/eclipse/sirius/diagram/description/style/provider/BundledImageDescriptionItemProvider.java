@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -122,8 +122,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
         if (shape.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName()) && object instanceof BundledImageDescription) {
             BundledImageDescription bundledImageDescription = (BundledImageDescription) object;
             String providedShapeID = bundledImageDescription.getProvidedShapeID();
-            BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-            shape = bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeID);
+            shape = BundledImageExtensionQuery.getInstance().getExtendedLabelForVSM(providedShapeID);
         }
 
         if (shape != null && color != null) {

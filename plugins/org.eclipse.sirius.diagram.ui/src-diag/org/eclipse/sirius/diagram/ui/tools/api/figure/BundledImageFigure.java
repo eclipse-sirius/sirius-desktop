@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -116,8 +116,6 @@ public class BundledImageFigure extends SVGFigure {
      */
     private static final String COLOR_IDENTIFIER = "colorIdentifier"; //$NON-NLS-1$
 
-    private BundledImageExtensionQuery bundledImageExtensionQuery;
-
     /**
      * The actual shapeName use to draw the SVG figure
      */
@@ -185,7 +183,7 @@ public class BundledImageFigure extends SVGFigure {
                     String providedShapeID = bundledImage.getProvidedShapeID();
                     IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(providedShapeID);
                     if (extension != null) {
-                        final String path = bundledImageExtensionQuery.getImagePath(extension);
+                        final String path = BundledImageExtensionQuery.getInstance().getImagePath(extension);
                         String imageFileURI = "platform:/plugin" + path; //$NON-NLS-1$
                         this.setURI(imageFileURI, false);
                         this.setShapeName(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName());
@@ -371,10 +369,7 @@ public class BundledImageFigure extends SVGFigure {
     }
 
     private BundledImageExtensionQuery getBundledImageExtensionQuery() {
-        if (this.bundledImageExtensionQuery == null) {
-            this.bundledImageExtensionQuery = new BundledImageExtensionQuery();
-        }
-        return this.bundledImageExtensionQuery;
+        return BundledImageExtensionQuery.getInstance();
     }
 
     private static String getImageFileURI(String shapeName) {

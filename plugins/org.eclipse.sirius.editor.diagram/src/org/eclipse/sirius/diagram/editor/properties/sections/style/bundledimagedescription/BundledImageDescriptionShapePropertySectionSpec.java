@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
                 values.add(bundledImageShape);
             }
         }
-        BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-        values.addAll(bundledImageExtensionQuery.getExtendedLabelsForVSM());
+        values.addAll(BundledImageExtensionQuery.getInstance().getExtendedLabelsForVSM());
         return values;
     }
 
@@ -53,13 +52,12 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
         } else if (index < BundledImageShape.VALUES.size() - 1) {
             super.handleComboModified();
         } else {
-            BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-            IConfigurationElement[] elements = bundledImageExtensionQuery.getExtensions();
+            IConfigurationElement[] elements = BundledImageExtensionQuery.getInstance().getExtensions();
             // To compute the selected provided shape index we need to remove
             // the default shape
             int providedBundleImageShapeIndex = index - (BundledImageShape.VALUES.size() - 1);
             IConfigurationElement configurationElement = elements[providedBundleImageShapeIndex];
-            String identifier = bundledImageExtensionQuery.getIdentifier(configurationElement);
+            String identifier = BundledImageExtensionQuery.getInstance().getIdentifier(configurationElement);
 
             // Selected value without the plugin name
             EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
@@ -95,8 +93,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
             BundledImageDescription bundledImageDescription = (BundledImageDescription) eObject;
             String providedShapeID = bundledImageDescription.getProvidedShapeID();
 
-            BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-            return bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeID);
+            return BundledImageExtensionQuery.getInstance().getExtendedLabelForVSM(providedShapeID);
         }
         return label != null ? label : getDefaultFeatureAsText();
     }

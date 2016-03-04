@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,11 @@ import org.eclipse.core.runtime.Platform;
  *
  */
 @SuppressWarnings({ "restriction" })
-public class BundledImageExtensionQuery {
+public final class BundledImageExtensionQuery {
+    /**
+     * The global instance.
+     */
+    private static final BundledImageExtensionQuery INSTANCE = new BundledImageExtensionQuery();
 
     /**
      * Identifier of the extension point.
@@ -42,8 +46,17 @@ public class BundledImageExtensionQuery {
      * This default constructor initializes the list of extensions concerning
      * the bundled image shape extension point.
      */
-    public BundledImageExtensionQuery() {
+    private BundledImageExtensionQuery() {
         getExtensions();
+    }
+
+    /**
+     * Returns the global instance.
+     * 
+     * @return the global instance.
+     */
+    public static BundledImageExtensionQuery getInstance() {
+        return INSTANCE;
     }
 
     /**
