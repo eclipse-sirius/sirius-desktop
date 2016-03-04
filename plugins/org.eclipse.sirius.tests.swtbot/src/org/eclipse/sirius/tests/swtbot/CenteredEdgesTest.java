@@ -28,10 +28,13 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
+import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -48,10 +51,14 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
 /**
  * Class test for the new feature "centered edges". see bug #437528
@@ -81,6 +88,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME_ROUTING = "routingStyle";
 
+    private static final String REPRESENTATION_NAME_CHANGING_ROUTING = "changeRoutingStyle";
+
     private static final String REPRESENTATION_NAME_MOVING = "moving";
 
     private static final String REPRESENTATION_NAME_RESIZE = "resizeTest";
@@ -94,6 +103,14 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_RECTILINEAR_CASES = "rectilinearCases";
 
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
+
+    private static final String PROPERTIES = "Properties";
+
+    private static final String STYLE = "Style";
+
+    private static final String APPEARANCE = "Appearance";
+
+    private static final String STYLES = "Styles:";
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -273,6 +290,39 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("edge1", DEdgeEditPart.class);
         changeRoutingStyle((SWTBotGefConnectionEditPart) botGefEditPart, RECTILINEAR_STYLE_ROUTING);
         assertEdgeHasExpectedTgtAnchor((SWTBotGefConnectionEditPart) botGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that when changing the edge routing style to rectilinear (from the
+     * menu == only one notification filter by
+     * RefreshEdgeLayoutNotificationFilter), the edge is still centered toward
+     * its target. Check that the GMF point is the same as the draw2d point. It
+     * should be the case because in current scenario we can use the figure as
+     * reference. This problem of GMF point != draw2d point should exist only
+     * when the GMF data is used.
+     */
+    public void testTgtChangingRoutingStyleWithGMFAutoSize() {
+        openDiagram(REPRESENTATION_NAME_CHANGING_ROUTING);
+        SWTBotGefConnectionEditPart botEdgeEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyle(botEdgeEditPart, RECTILINEAR_STYLE_ROUTING);
+        assertEdgeHasExpectedTgtAnchor(botEdgeEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that when changing the edge routing style to rectilinear (from style
+     * tab of properties view == 2 notifications used by
+     * RefreshEdgeLayoutNotificationFilter), the edge is still centered toward
+     * its target. Check that the GMF point is the same as the draw2d point. It
+     * should be the case because in current scenario we can use the figure as
+     * reference. This problem of GMF point != draw2d point should exist only
+     * when the GMF data is used.
+     * 
+     */
+    public void testTgtChangingRoutingStyleFromStyleTabWithGMFAutoSize() {
+        openDiagram(REPRESENTATION_NAME_CHANGING_ROUTING);
+        SWTBotGefConnectionEditPart botEdgeEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyleFromTabStyleOfPropertiesView(botEdgeEditPart, EdgeRouting.MANHATTAN_LITERAL);
+        assertEdgeHasExpectedTgtAnchor(botEdgeEditPart, new PrecisionPoint(0.5, 0.5));
     }
 
     /**
@@ -1106,4 +1156,53 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
             }
         }
     }
+
+    private void changeRoutingStyleFromTabStyleOfPropertiesView(SWTBotGefConnectionEditPart botEdgeEditPart, EdgeRouting routingStyle) {
+        botEdgeEditPart.select();
+        SWTBotUtils.waitAllUiEvents();
+        // accesses to property view
+        SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
+        SWTBotUtils.waitAllUiEvents();
+        propertiesBot.setFocus();
+        // accesses to tab Style
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+        SWTBotTree tree = propertiesBot.bot().tree();
+        // select routing syle <routingStyle> in combo
+        tree.expandNode("Misc").select().getNode("Routing Style").doubleClick();
+        SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox();
+        String routingStyleLitteral = routingStyle.getLiteral().substring(0, 1).toUpperCase().concat(routingStyle.getLiteral().substring(1, routingStyle.getLiteral().length()));
+        comboBox.setSelection(routingStyleLitteral);
+        // applied change with change focus
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+
+        checkRoutingStyleInAppearance(routingStyle);
+        checkRoutingStyle(botEdgeEditPart, routingStyle);
+    }
+
+    private void checkRoutingStyleInAppearance(EdgeRouting routingStyle) {
+        String appearanceLabel = "Oblique";
+        if (routingStyle.equals(EdgeRouting.MANHATTAN_LITERAL)) {
+            appearanceLabel = "Rectilinear";
+        } else if (routingStyle.equals(EdgeRouting.TREE_LITERAL)) {
+            appearanceLabel = "Tree";
+        }
+        assertEquals("The radio button oblique should be selected", true, bot.viewByTitle(PROPERTIES).bot().radioInGroup(appearanceLabel, STYLES).isSelected());
+    }
+
+    private void checkRoutingStyle(SWTBotGefConnectionEditPart botEdgeEditPart, EdgeRouting routingStyle) {
+        Edge edgeGMF = (Edge) botEdgeEditPart.part().getModel();
+        DEdge dedge = (DEdge) edgeGMF.getElement();
+        assertEquals("The rooting style is not : " + routingStyle.getLiteral(), routingStyle, ((EdgeStyle) dedge.getStyle()).getRoutingStyle());
+        Routing currentRouting = ((ConnectorStyle) edgeGMF.getStyles().get(0)).getRouting();
+        String gmfRoutingStyleName;
+        if (currentRouting.equals(Routing.MANUAL_LITERAL)) {
+            gmfRoutingStyleName = "straight";
+        } else if (currentRouting.equals(Routing.RECTILINEAR_LITERAL)) {
+            gmfRoutingStyleName = "manhattan";
+        } else {
+            gmfRoutingStyleName = currentRouting.getLiteral().toLowerCase();
+        }
+        assertEquals("The GMF routing style is not the right", routingStyle.getLiteral(), gmfRoutingStyleName);
+    }
+
 }
