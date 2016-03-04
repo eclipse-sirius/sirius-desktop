@@ -18,7 +18,21 @@
              actionClass="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionForDDiagramElementCreation"
              id="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionForDDiagramElementCreationID">
        </javaActions>
-    </extension>
+ </extension>
+ <extension
+          point="org.eclipse.sirius.externalJavaAction">
+       <javaActions
+             actionClass="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificLayout"
+             id="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificLayoutID">
+       </javaActions>
+ </extension>
+ <extension
+          point="org.eclipse.sirius.externalJavaAction">
+       <javaActions
+             actionClass="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificVerticalLayout"
+             id="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificVerticalLayoutID">
+       </javaActions>
+ </extension>
  <extension
        point="org.eclipse.ui.menus">
     <menuContribution

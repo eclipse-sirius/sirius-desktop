@@ -50,7 +50,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.diagram.ui;bundle-version="1.0.0",
  org.eclipse.sirius.diagram.ui.ext,
  org.eclipse.sdk,
- org.eclipse.platform
+ org.eclipse.platform,
+ org.eclipse.sirius.tests.sample.migration
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-RegisterBuddy: org.apache.log4j
