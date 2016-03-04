@@ -112,4 +112,18 @@
     <edges id="edge3" source="//@representations.6/@containers.3" target="//@representations.6/@containers.1"/>
     <edges id="edge4" source="//@representations.6/@containers.2" target="//@representations.6/@containers.0"/>
   </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram7">
+    <containers id="P1">
+      <elements xsi:type="migrationmodeler:Container" id="P11">
+        <elements xsi:type="migrationmodeler:Node" id="Class11"/>
+        <elements xsi:type="migrationmodeler:Bordered" id="Interface11"/>
+      </elements>
+      <elements xsi:type="migrationmodeler:Container" id="P12">
+        <elements xsi:type="migrationmodeler:Bordered" id="Interface12"/>
+      </elements>
+    </containers>
+    <nodes id="Class1"/>
+    <edges id="toClass11" source="//@representations.7/@nodes.0" target="//@representations.7/@containers.0/@elements.0/@elements.0"/>
+    <edges id="edge1" source="//@representations.7/@containers.0/@elements.0/@elements.1" target="//@representations.7/@containers.0/@elements.1/@elements.0"/>
+  </representations>
 </migrationmodeler:TestCase>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_tyCgMPfKEeOewbIoSlcvjw" selectedViews="_uYpNMPfKEeOewbIoSlcvjw" version="10.1.0.201509162000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_tyCgMPfKEeOewbIoSlcvjw" selectedViews="_uYpNMPfKEeOewbIoSlcvjw _NFsncOSUEeW5uORBaLWliQ" version="10.1.0.201509162000">
   <semanticResources>platform:/resource/Test/useCase.migrationmodeler</semanticResources>
   <semanticResources>useCase.migrationmodeler</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_uYpNMPfKEeOewbIoSlcvjw">
@@ -2490,6 +2490,297 @@
       <activatedLayers xmi:type="description_1:Layer" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer"/>
       <target xmi:type="migrationmodeler:Diagram" href="useCase.migrationmodeler#//@representations.4"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_hKxmgObdEeWNq6OCTnmZcA" name="specificVerticalLayout">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hKxmgebdEeWNq6OCTnmZcA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_hKxmgubdEeWNq6OCTnmZcA" type="Sirius" element="_hKxmgObdEeWNq6OCTnmZcA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_hKxmg-bdEeWNq6OCTnmZcA" type="2002" element="_hKxmoObdEeWNq6OCTnmZcA">
+            <children xmi:type="notation:Node" xmi:id="_hKxmhObdEeWNq6OCTnmZcA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_hKxmhebdEeWNq6OCTnmZcA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hKxmhubdEeWNq6OCTnmZcA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hKxmh-bdEeWNq6OCTnmZcA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKxmiObdEeWNq6OCTnmZcA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKxmiebdEeWNq6OCTnmZcA" x="160" y="40" width="179"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hKxmiubdEeWNq6OCTnmZcA" type="2002" element="_hKxmoubdEeWNq6OCTnmZcA">
+            <children xmi:type="notation:Node" xmi:id="_hKxmi-bdEeWNq6OCTnmZcA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_hKxmjObdEeWNq6OCTnmZcA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_hKxmjebdEeWNq6OCTnmZcA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_hKxmjubdEeWNq6OCTnmZcA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hKxmj-bdEeWNq6OCTnmZcA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKxmkObdEeWNq6OCTnmZcA" x="640" y="260"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_hKxmkebdEeWNq6OCTnmZcA"/>
+          <edges xmi:type="notation:Edge" xmi:id="_hKxmkubdEeWNq6OCTnmZcA" type="4001" element="_hKxmpObdEeWNq6OCTnmZcA" source="_hKxmg-bdEeWNq6OCTnmZcA" target="_hKxmiubdEeWNq6OCTnmZcA">
+            <children xmi:type="notation:Node" xmi:id="_hKxmk-bdEeWNq6OCTnmZcA" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKxmlObdEeWNq6OCTnmZcA" x="-4" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hKxmlebdEeWNq6OCTnmZcA" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKxmlubdEeWNq6OCTnmZcA" x="-5" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hKxml-bdEeWNq6OCTnmZcA" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hKxmmObdEeWNq6OCTnmZcA" x="-1" y="11"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_hKxmmebdEeWNq6OCTnmZcA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_hKxmmubdEeWNq6OCTnmZcA" fontName="Cantarell" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hKxmm-bdEeWNq6OCTnmZcA" points="[19, 35, -558, -185]$[70, 126, -507, -94]$[450, 126, -127, -94]$[529, 185, -48, -35]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hKxmnObdEeWNq6OCTnmZcA" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hKxmnebdEeWNq6OCTnmZcA" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_hKxmnubdEeWNq6OCTnmZcA" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_hKxmn-bdEeWNq6OCTnmZcA"/>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_hKxmoObdEeWNq6OCTnmZcA" name="container2" outgoingEdges="_hKxmpObdEeWNq6OCTnmZcA">
+        <target xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.4/@containers.1"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.4/@containers.1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_hKxmoebdEeWNq6OCTnmZcA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
+          <description xmi:type="style:FlatContainerStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMappingImport" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_hKxmoubdEeWNq6OCTnmZcA" name="container1container1container1container1container1container1" incomingEdges="_hKxmpObdEeWNq6OCTnmZcA">
+        <target xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.4/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.4/@containers.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_hKxmo-bdEeWNq6OCTnmZcA" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
+          <description xmi:type="style:FlatContainerStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMappingImport" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_hKxmpObdEeWNq6OCTnmZcA" name="edge1" sourceNode="_hKxmoObdEeWNq6OCTnmZcA" targetNode="_hKxmoubdEeWNq6OCTnmZcA">
+        <target xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.4/@edges.0"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.4/@edges.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_hKxmpebdEeWNq6OCTnmZcA" centered="Both" strokeColor="39,76,114">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_hKxmpubdEeWNq6OCTnmZcA"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_hKxmp-bdEeWNq6OCTnmZcA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="useCase.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer"/>
+      <target xmi:type="migrationmodeler:Diagram" href="useCase.migrationmodeler#//@representations.4"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="useCase.odesign#//@ownedViewpoints[name='centered']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_NFsncOSUEeW5uORBaLWliQ">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_VUHrUOSdEeW5uORBaLWliQ" name="new borderNodesDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_VUHrUeSdEeW5uORBaLWliQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_VUHrUuSdEeW5uORBaLWliQ"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_VUISYOSdEeW5uORBaLWliQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_VUISYeSdEeW5uORBaLWliQ" type="Sirius" element="_VUHrUOSdEeW5uORBaLWliQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_VUISY-SdEeW5uORBaLWliQ" type="2002" element="_VUHrU-SdEeW5uORBaLWliQ">
+            <children xmi:type="notation:Node" xmi:id="_VUI5cOSdEeW5uORBaLWliQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_VUI5ceSdEeW5uORBaLWliQ" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_VUKHkOSdEeW5uORBaLWliQ" type="3008" element="_VUHrVeSdEeW5uORBaLWliQ">
+                <children xmi:type="notation:Node" xmi:id="_VUKHk-SdEeW5uORBaLWliQ" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_VUKuoOSdEeW5uORBaLWliQ" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_VTjOIOSeEeW5uORBaLWliQ" type="3007" element="_VTfjwOSeEeW5uORBaLWliQ">
+                    <children xmi:type="notation:Node" xmi:id="_VTjOI-SeEeW5uORBaLWliQ" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_VTjOJOSeEeW5uORBaLWliQ" y="5"/>
+                    </children>
+                    <children xmi:type="notation:Node" xmi:id="_VTj1MOSeEeW5uORBaLWliQ" type="3003" element="_VTgK0OSeEeW5uORBaLWliQ">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_VTj1MeSeEeW5uORBaLWliQ" fontName="Ubuntu"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VTj1MuSeEeW5uORBaLWliQ"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_VTjOIeSeEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VTjOIuSeEeW5uORBaLWliQ" x="30" y="28" width="101" height="50"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_VUKuoeSdEeW5uORBaLWliQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_VUKuouSdEeW5uORBaLWliQ"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_-PJo8OSeEeW5uORBaLWliQ" type="3012" element="_-PGloOSeEeW5uORBaLWliQ">
+                  <children xmi:type="notation:Node" xmi:id="_-PJo8-SeEeW5uORBaLWliQ" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_-PJo9OSeEeW5uORBaLWliQ" x="11" y="-10"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_-PJo9eSeEeW5uORBaLWliQ" type="3003" element="_-PGloeSeEeW5uORBaLWliQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_-PJo9uSeEeW5uORBaLWliQ" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-PJo9-SeEeW5uORBaLWliQ"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_-PJo8eSeEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-PJo8uSeEeW5uORBaLWliQ" x="-2" y="24" width="10" height="10"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_VUKHkeSdEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VUKHkuSdEeW5uORBaLWliQ" x="33" y="34" width="150" height="92"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_VUKuo-SdEeW5uORBaLWliQ" type="3008" element="_VUHrV-SdEeW5uORBaLWliQ">
+                <children xmi:type="notation:Node" xmi:id="_VUKupuSdEeW5uORBaLWliQ" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_VUKup-SdEeW5uORBaLWliQ" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_VUKuqOSdEeW5uORBaLWliQ"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_VUKuqeSdEeW5uORBaLWliQ"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_7YY3MOSeEeW5uORBaLWliQ" type="3012" element="_7YWa8OSeEeW5uORBaLWliQ">
+                  <children xmi:type="notation:Node" xmi:id="_7YY3M-SeEeW5uORBaLWliQ" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7YY3NOSeEeW5uORBaLWliQ" x="11" y="-10"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_7YZeQOSeEeW5uORBaLWliQ" type="3003" element="_7YXCAOSeEeW5uORBaLWliQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7YZeQeSeEeW5uORBaLWliQ" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YZeQuSeEeW5uORBaLWliQ"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7YY3MeSeEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7YY3MuSeEeW5uORBaLWliQ" x="-2" y="20" width="10" height="10"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_VUKupOSdEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VUKupeSdEeW5uORBaLWliQ" x="353" y="110" width="150" height="70"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_VUI5cuSdEeW5uORBaLWliQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_VUI5c-SdEeW5uORBaLWliQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VUISZOSdEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VUISZeSdEeW5uORBaLWliQ" x="37" y="20" width="576" height="194"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_VTinEOSeEeW5uORBaLWliQ" type="2001" element="_VTdHgOSeEeW5uORBaLWliQ">
+            <children xmi:type="notation:Node" xmi:id="_VTinE-SeEeW5uORBaLWliQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_VTinFOSeEeW5uORBaLWliQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VTkcQ-SeEeW5uORBaLWliQ" type="3003" element="_VTdukOSeEeW5uORBaLWliQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_VTkcROSeEeW5uORBaLWliQ" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VTkcReSeEeW5uORBaLWliQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VTinEeSeEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VTinEuSeEeW5uORBaLWliQ" x="70" y="320" width="101" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_VUISYuSdEeW5uORBaLWliQ"/>
+          <edges xmi:type="notation:Edge" xmi:id="_RIK9YOSfEeW5uORBaLWliQ" type="4001" element="_RIH6EOSfEeW5uORBaLWliQ" source="_VTinEOSeEeW5uORBaLWliQ" target="_VTjOIOSeEeW5uORBaLWliQ">
+            <children xmi:type="notation:Node" xmi:id="_RILkcOSfEeW5uORBaLWliQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RILkceSfEeW5uORBaLWliQ" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_RIMLgOSfEeW5uORBaLWliQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RIMLgeSfEeW5uORBaLWliQ" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_RIMLguSfEeW5uORBaLWliQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RIMLg-SfEeW5uORBaLWliQ" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_RIK9YeSfEeW5uORBaLWliQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_RIK9YuSfEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RIK9Y-SfEeW5uORBaLWliQ" points="[6, -25, -54, 195]$[53, -195, -7, 25]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RINZoOSfEeW5uORBaLWliQ" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RINZoeSfEeW5uORBaLWliQ" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_jRmA4OSfEeW5uORBaLWliQ" type="4001" element="_jRkywOSfEeW5uORBaLWliQ" source="_-PJo8OSeEeW5uORBaLWliQ" target="_7YY3MOSeEeW5uORBaLWliQ">
+            <children xmi:type="notation:Node" xmi:id="_jRmA5OSfEeW5uORBaLWliQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jRmA5eSfEeW5uORBaLWliQ" x="-1" y="-9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jRmA5uSfEeW5uORBaLWliQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jRmA5-SfEeW5uORBaLWliQ" x="1" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jRmA6OSfEeW5uORBaLWliQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jRmA6eSfEeW5uORBaLWliQ" x="2" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_jRmA4eSfEeW5uORBaLWliQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_jRmA4uSfEeW5uORBaLWliQ" fontName="Ubuntu" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jRmA4-SfEeW5uORBaLWliQ" points="[5, 0, -268, -44]$[268, 43, -5, -1]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jRmn8OSfEeW5uORBaLWliQ" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jRmn8eSfEeW5uORBaLWliQ" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_VUHrU-SdEeW5uORBaLWliQ" name="P1">
+        <target xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_VUHrVOSdEeW5uORBaLWliQ" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_VUHrVeSdEeW5uORBaLWliQ" name="P11">
+          <target xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0"/>
+          <semanticElements xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_-PGloOSeEeW5uORBaLWliQ" name="Interface11" outgoingEdges="_jRkywOSfEeW5uORBaLWliQ" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="migrationmodeler:Bordered" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0/@elements.1"/>
+            <semanticElements xmi:type="migrationmodeler:Bordered" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0/@elements.1"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_-PGloeSeEeW5uORBaLWliQ" showIcon="false" color="224,133,3">
+              <description xmi:type="style:SquareDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_VUHrVuSdEeW5uORBaLWliQ" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_VTfjwOSeEeW5uORBaLWliQ" name="Class11" incomingEdges="_RIH6EOSfEeW5uORBaLWliQ" width="5" height="5" resizeKind="NSEW">
+            <target xmi:type="migrationmodeler:Node" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0/@elements.0"/>
+            <semanticElements xmi:type="migrationmodeler:Node" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.0/@elements.0"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_VTgK0OSeEeW5uORBaLWliQ" labelPosition="node">
+              <description xmi:type="style:SquareDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_VUHrV-SdEeW5uORBaLWliQ" name="P12">
+          <target xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.1"/>
+          <semanticElements xmi:type="migrationmodeler:Container" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7YWa8OSeEeW5uORBaLWliQ" name="Interface12" incomingEdges="_jRkywOSfEeW5uORBaLWliQ" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="migrationmodeler:Bordered" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.1/@elements.0"/>
+            <semanticElements xmi:type="migrationmodeler:Bordered" href="useCase.migrationmodeler#//@representations.7/@containers.0/@elements.1/@elements.0"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_7YXCAOSeEeW5uORBaLWliQ" showIcon="false" color="224,133,3">
+              <description xmi:type="style:SquareDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']"/>
+          </ownedBorderedNodes>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_VUHrWOSdEeW5uORBaLWliQ" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_VTdHgOSeEeW5uORBaLWliQ" name="Class1" outgoingEdges="_RIH6EOSfEeW5uORBaLWliQ" width="5" height="5" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="useCase.migrationmodeler#//@representations.7/@nodes.0"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="useCase.migrationmodeler#//@representations.7/@nodes.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_VTdukOSeEeW5uORBaLWliQ" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RIH6EOSfEeW5uORBaLWliQ" name="toClass11" sourceNode="_VTdHgOSeEeW5uORBaLWliQ" targetNode="_VTfjwOSeEeW5uORBaLWliQ">
+        <target xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.7/@edges.0"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.7/@edges.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_RIH6EeSfEeW5uORBaLWliQ" size="2" centered="Both">
+          <customFeatures>centered</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_RIH6EuSfEeW5uORBaLWliQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jRkywOSfEeW5uORBaLWliQ" name="edge1" sourceNode="_-PGloOSeEeW5uORBaLWliQ" targetNode="_7YWa8OSeEeW5uORBaLWliQ">
+        <target xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.7/@edges.1"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="useCase.migrationmodeler#//@representations.7/@edges.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jRkyweSfEeW5uORBaLWliQ" size="2" centered="Both">
+          <customFeatures>centered</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_jRkywuSfEeW5uORBaLWliQ"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_VUHrW-SdEeW5uORBaLWliQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer"/>
+      <target xmi:type="migrationmodeler:Diagram" href="useCase.migrationmodeler#//@representations.7"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="useCase.odesign#//@ownedViewpoints[name='borderNodes']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="useCase" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="useCase" version="10.1.3.201511131800">
   <ownedViewpoints name="centered">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="useCase" domainClass="migrationmodeler.Diagram">
       <defaultLayer name="Default">
@@ -18,14 +18,14 @@
           </style>
         </nodeMappings>
         <edgeMappings name="edge" semanticCandidatesExpression="feature:eContents" createElements="false" sourceMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" targetMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="migrationmodeler.Edge" useDomainElement="true" reconnections="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnectTarget']">
-          <style sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" centeredTargetMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']">
+          <style centeredSourceMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" centeredTargetMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription labelExpression="feature:id">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="container" preconditionExpression="[id = 'container3' or id = 'container4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container">
+        <containerMappings name="container" preconditionExpression="[id = 'container3' or id = 'container4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container" reusedContainerMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']">
           <borderedNodeMappings name="bordered_centered" preconditionExpression="[id = 'border1' or id = 'border4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered">
             <style xsi:type="style:SquareDescription" labelExpression="feature:id" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -40,7 +40,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="feature:id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -48,7 +48,7 @@
           </style>
         </containerMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="containerImportCentered" preconditionExpression="[id.contains('container1') or id.contains('container2') /]" semanticCandidatesExpression="feature:eContents" reusedBorderedNodeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']" importedMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="feature:id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -104,6 +104,67 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="This specific tool moves several elements at same time and reveals a problem about the &quot;center edges&quot;. It must be applied on diagram." name="MoveElements" label="Move elements" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificVerticalLayoutID" forceRefresh="true" id="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificVerticalLayoutID">
+                  <parameters name="ddiagram" value="var:elementView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="borderNodes">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="borderNodesDiagram" label="borderNodesDiagram" domainClass="migrationmodeler.Diagram">
+      <metamodel href="http://www.eclipse.org/sirius/tests/sample/migrationmodeler#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Class" label="Class" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:id" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReference" sourceMapping="//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class'] //@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" targetMapping="//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class'] //@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="migrationmodeler.Edge" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="feature:id">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" label="Package" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container" reusedNodeMappings="//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@nodeMappings[name='Class']" reusedContainerMappings="//@ownedViewpoints[name='borderNodes']/@ownedRepresentations[name='borderNodesDiagram']/@defaultLayer/@containerMappings[name='Package']">
+          <borderedNodeMappings name="Interface" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="feature:id" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:id">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="This specific tool moves several elements at same time and reveals a problem about the &quot;center edges&quot;. It must be applied on diagram." name="MoveElements" label="Move elements" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificLayoutID" forceRefresh="true" id="org.eclipse.sirius.tests.swtbot.services.ExternalJavaActionSpecificLayoutID">
+                  <parameters name="ddiagram" value="var:elementView"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>

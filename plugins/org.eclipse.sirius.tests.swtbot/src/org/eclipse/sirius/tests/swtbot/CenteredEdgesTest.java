@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -546,7 +547,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         containerBotGefEditPart.resize(PositionConstants.SOUTH_EAST, 300, 80);
 
         // we make sure the figure has been resized
-        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
 
         SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
         assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
@@ -570,7 +571,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 200);
 
         // we make sure the figure has been resized
-        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
         // The source is no longer centered, and the bendpoints of edges must no
         // be changed (bug 441424)
         checkPointsListAfterResizing(edgeSwtBotGefEditPart, edge2PointListBefore, false);
@@ -621,7 +622,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
             borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, (int) (200 * zoomLevel.getAmount()));
 
             // we make sure the figure has been resized
-            bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+            bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
 
             assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
 
@@ -653,7 +654,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         border1NodeBotGefEditPart.resize(PositionConstants.NORTH, 0, 160);
 
         // we make sure the figure has been resized (and moved)
-        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
 
         assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
 
@@ -681,7 +682,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         border2NodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 125);
 
         // we make sure the figure has been resized (and moved)
-        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
 
         assertEquals("The overlapped border node should not be moved.", border1BoundsBefore, ((GraphicalEditPart) border1NodeBotGefEditPart.part()).getFigure().getBounds().getCopy());
     }
@@ -704,7 +705,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         containerBotGefEditPart.resize(PositionConstants.NORTH_EAST, 677, 255);
 
         // we make sure the figure has been resized
-        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
 
         SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
         assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
@@ -814,6 +815,72 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         assertEdgeHasExpectedSrcAnchor(edge5BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
         assertEdgeHasExpectedTgtAnchor(edge6BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
 
+    }
+
+    /**
+     * This test launches a specific tool that arranges some nodes and edges:
+     * <UL>
+     * <LI>Source node of edge A is moved</LI>
+     * <LI>Target node of edge A is moved</LI>
+     * <LI>Bendpoints of edge A are recomputed</LI>
+     * <LI>Routing style of edge A is changed (both in Sirius style and GMF
+     * style)</LI>
+     * <LI>Routing style of edge B is changed (both in Sirius style and GMF
+     * style)</LI>
+     * </UL>
+     * . This kind of layout can be done when someone make specific layout
+     * action. The goal is to check that in this condition, the edge A is
+     * correctly layouted.
+     */
+    public void testSpecificLayout() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "borderNodesDiagram", "new borderNodesDiagram", DDiagram.class);
+        IFigure figure = ((GraphicalEditPart) editor.getEditPart("Class1", DNodeEditPart.class).part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+
+        editor.activateTool("Move elements");
+        editor.click(10, 10);
+        // we make sure the at least one figure has been moved
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
+
+        // Check that the edge from Class1 to Class11 is correctly layouted
+        // (only two bendpoints)
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("toClass11", DEdgeEditPart.class);
+        ConnectionEditPart connectionEditPart = (ConnectionEditPart) swtBotGefEditPart.part();
+        Connection connection = (Connection) connectionEditPart.getFigure();
+        assertEquals("Wrong nomber of points for edge figure.", 2, connection.getPoints().size());
+        assertEquals("Wrong nomber of GMF bendpoints.", 2, ((RelativeBendpoints) ((Edge) connectionEditPart.getNotationView()).getBendpoints()).getPoints().size());
+    }
+
+    /**
+     * This test launches a specific tool that arranges some nodes and edge:
+     * <UL>
+     * <LI>Auto-sized target node of an edge is moved</LI>
+     * <LI>Bendpoints of edge are recomputed</LI>
+     * <LI>Routing style of edge is changed (both in Sirius style and GMF style)
+     * </LI>
+     * </UL>
+     * . This kind of layout can be done when someone make specific layout
+     * action. The goal is to check that in this condition, the edge is
+     * correctly layouted.
+     */
+    public void testSpecificVerticalLayout() {
+        openDiagram("specificVerticalLayout");
+        IFigure figure = ((GraphicalEditPart) editor.getEditPart("container1container1container1container1container1container1", DNodeContainerEditPart.class).part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+
+        editor.activateTool("Move elements");
+        editor.click(10, 10);
+        // we make sure the at least one figure has been moved
+        bot.waitUntil(new WaitFigureBoundsChangedCondition(boundsBefore, figure));
+
+        // Check that the edge from container2 to
+        // container1container1container1container1container1container1 is
+        // correctly layouted (only two bendpoints)
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        ConnectionEditPart connectionEditPart = (ConnectionEditPart) swtBotGefEditPart.part();
+        Connection connection = (Connection) connectionEditPart.getFigure();
+        assertEquals("Wrong nomber of points for edge figure.", 2, connection.getPoints().size());
+        assertEquals("Wrong nomber of GMF bendpoints.", 2, ((RelativeBendpoints) ((Edge) connectionEditPart.getNotationView()).getBendpoints()).getPoints().size());
     }
 
     /**
@@ -1032,7 +1099,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * @author fbarbin
      * 
      */
-    private class WaitFigureResizedCondition extends DefaultCondition {
+    private class WaitFigureBoundsChangedCondition extends DefaultCondition {
 
         private Rectangle before;
 
@@ -1047,7 +1114,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
          * @param figure
          *            the figure.
          */
-        public WaitFigureResizedCondition(Rectangle before, IFigure figure) {
+        public WaitFigureBoundsChangedCondition(Rectangle before, IFigure figure) {
             this.before = before;
             this.figure = figure;
         }
@@ -1068,7 +1135,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
          */
         @Override
         public String getFailureMessage() {
-            return "the figure should be resized";
+            return "The bounds of the figure should be changed (resized or moved)";
         }
 
     }
