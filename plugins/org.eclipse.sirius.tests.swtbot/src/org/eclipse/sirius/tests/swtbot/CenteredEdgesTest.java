@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.List;
+
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
@@ -38,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -169,7 +172,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         createEdge((IGraphicalEditPart) srcEditPart.part(), TOP_LEFT_CORNER, (IGraphicalEditPart) tgtEditPart.part(), BOTTOM_RIGHT_CORNER);
         DEdgeEditPart editPart = getSingleDEdgeFrom((NodeEditPart) srcEditPart.part());
 
-        assertEdgeHasExpectedSrcAnchor(editPart, (NodeEditPart) srcEditPart.part(), new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(editPart, (NodeEditPart) srcEditPart.part(), new PrecisionPoint(0.5, 0.5), false);
     }
 
     /**
@@ -182,7 +185,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart tgtEditPart = editor.getEditPart("container2", DNodeContainerEditPart.class);
         createEdge((IGraphicalEditPart) srcEditPart.part(), TOP_LEFT_CORNER, (IGraphicalEditPart) tgtEditPart.part(), BOTTOM_RIGHT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("newEdge", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5), false);
     }
 
     /**
@@ -219,7 +222,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart toBotGefEditPart = editor.getEditPart("container1", DNodeContainerEditPart.class);
         reconnectEdge("edge2", toBotGefEditPart, false);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5), false);
     }
 
     /**
@@ -366,7 +369,14 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("container4", DNodeContainerEditPart.class);
         moveEdgeConnection("edge4", botGefEditPart, true, TOP_LEFT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge4", DEdgeEditPart.class);
-        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, TOP_LEFT_CORNER);
+        // In this case, the GMF point is not the same as the draw2d point. This
+        // "bug" does not concern the centered edge as the source is not
+        // centered.
+        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        // The target, other side of the move, must be always centered. But
+        // there is the same problem about GMF point (TODO compare with node
+        // case).
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5), false);
     }
 
     /**
@@ -378,7 +388,12 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("node3", DNodeEditPart.class);
         moveEdgeConnection("edge6", botGefEditPart, true, TOP_LEFT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge6", DEdgeEditPart.class);
-        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, TOP_LEFT_CORNER);
+        // In this case, the GMF point is not the same as the draw2d point. This
+        // "bug" does not concern the centered edge as the source is not
+        // centered.
+        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        // The target, other side of the move, must be always centered.
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
     }
 
     /**
@@ -390,7 +405,9 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("border2", DNode4EditPart.class);
         moveEdgeConnection("edge1", botGefEditPart, false, BOTTOM_RIGHT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, BOTTOM_RIGHT_CORNER);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, BOTTOM_RIGHT_CORNER, false);
+        // TODO: In this case the source is no longer centered as the router
+        // flats the edge.
     }
 
     /**
@@ -402,7 +419,14 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("container3", DNodeContainerEditPart.class);
         moveEdgeConnection("edge3", botGefEditPart, false, TOP_LEFT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, TOP_LEFT_CORNER);
+        // In this case, the GMF point is not the same as the draw2d point. This
+        // "bug" does not concern the centered edge as the target is not
+        // centered.
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        // The source, other side of the move, must be always centered. But
+        // there is the same problem about GMF point (TODO compare with node
+        // case).
+        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5), false);
     }
 
     /**
@@ -414,7 +438,12 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("node4", DNodeEditPart.class);
         moveEdgeConnection("edge5", botGefEditPart, false, TOP_LEFT_CORNER);
         SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, TOP_LEFT_CORNER);
+        // In this case, the GMF point is not the same as the draw2d point. This
+        // "bug" does not concern the centered edge as the target is not
+        // centered.
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, TOP_LEFT_CORNER, false);
+        // The source, other side of the move, must be always centered.
+        assertEdgeHasExpectedSrcAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5), true);
     }
 
     /**
@@ -648,7 +677,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(checkEditPartMoved);
         edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
-        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5), false);
 
         SWTBotGefConnectionEditPart edge1BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
         assertEdgeHasExpectedSrcAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
@@ -657,7 +686,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
 
         SWTBotGefConnectionEditPart edge4BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge4", DEdgeEditPart.class);
-        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5), false);
 
         SWTBotGefConnectionEditPart edge5BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
         assertEdgeHasExpectedSrcAnchor(edge5BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
@@ -728,10 +757,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefConnectionEditPart edge5BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
         SWTBotGefConnectionEditPart edge6BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge6", DEdgeEditPart.class);
 
-        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5), false);
         assertEdgeHasExpectedSrcAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
-        assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
-        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5), false);
+        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5), false);
         assertEdgeHasExpectedSrcAnchor(edge5BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
         assertEdgeHasExpectedTgtAnchor(edge6BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
 
@@ -802,6 +831,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void assertEdgeHasExpectedTgtAnchor(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, PrecisionPoint expectedAnchor) {
+        assertEdgeHasExpectedTgtAnchor(swtBotGefConnectionEditPart, expectedAnchor, true);
+    }
+
+    private void assertEdgeHasExpectedTgtAnchor(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, PrecisionPoint expectedAnchor, boolean checkGMFPoint) {
         SWTBotGefEditPart targetSwtBotGefEditPart = swtBotGefConnectionEditPart.target();
 
         ConnectionAnchor connectionAnchor = ((NodeEditPart) targetSwtBotGefEditPart.part()).getTargetConnectionAnchor(swtBotGefConnectionEditPart.part());
@@ -820,10 +853,21 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         if (option.some()) {
             assertConnectionEndPointEquals("Wrong edge target connection", option.get(), realTargetConnection);
         }
+        if (checkGMFPoint) {
+            // Check the last GMF points compared to last draw2D point
+            Edge edge = (Edge) swtBotGefConnectionEditPart.part().getModel();
+            List<Point> pointsFromSource = GMFHelper.getPointsFromSource(swtBotGefConnectionEditPart.part());
+            Point lastGMFPoint = pointsFromSource.get(pointsFromSource.size() - 1);
+            assertConnectionEndPointEquals("The last GMF point should be the same as last draw2d point.", realTargetConnection, lastGMFPoint);
+        }
 
     }
 
     private void assertEdgeHasExpectedSrcAnchor(ConnectionEditPart connectionPart, NodeEditPart sourceEditPart, PrecisionPoint expectedAnchor) {
+        assertEdgeHasExpectedSrcAnchor(connectionPart, sourceEditPart, expectedAnchor, true);
+    }
+
+    private void assertEdgeHasExpectedSrcAnchor(ConnectionEditPart connectionPart, NodeEditPart sourceEditPart, PrecisionPoint expectedAnchor, boolean checkGMFPoint) {
 
         ConnectionAnchor connectionAnchor = sourceEditPart.getSourceConnectionAnchor(connectionPart);
 
@@ -840,12 +884,24 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         if (option.some()) {
             assertConnectionEndPointEquals("Wrong edge source connection", option.get(), realSourceConnection);
         }
-
+        if (checkGMFPoint) {
+            // Check the first GMF points compared to first draw2D point
+            Edge edge = (Edge) connectionPart.getModel();
+            List<Point> pointsFromTarget = GMFHelper.getPointsFromTarget(connectionPart);
+            Point firstGMFPoint = pointsFromTarget.get(0);
+            assertConnectionEndPointEquals("The first GMF point should be the same as first draw2d point.", realSourceConnection, firstGMFPoint);
+        }
     }
 
     private void assertEdgeHasExpectedSrcAnchor(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, PrecisionPoint expectedAnchor) {
 
         assertEdgeHasExpectedSrcAnchor((ConnectionEditPart) swtBotGefConnectionEditPart.part(), (NodeEditPart) swtBotGefConnectionEditPart.source().part(), expectedAnchor);
+
+    }
+
+    private void assertEdgeHasExpectedSrcAnchor(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, PrecisionPoint expectedAnchor, boolean checkGMFPoint) {
+
+        assertEdgeHasExpectedSrcAnchor((ConnectionEditPart) swtBotGefConnectionEditPart.part(), (NodeEditPart) swtBotGefConnectionEditPart.source().part(), expectedAnchor, checkGMFPoint);
 
     }
 
