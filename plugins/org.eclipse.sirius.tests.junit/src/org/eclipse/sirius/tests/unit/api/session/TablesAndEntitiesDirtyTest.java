@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -273,9 +274,20 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      *            The expected status
      * @return The opened representation
      */
-    public IEditorPart openRepresentation(DRepresentation representation, SessionStatus expectedStatus) {
+    public IEditorPart openRepresentation(DRepresentation representation, final SessionStatus expectedStatus) {
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-        assertEquals(expectedStatus, session.getStatus());
+        TestsUtil.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return expectedStatus.equals(session.getStatus());
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The session is not in the expected state: expected:<" + expectedStatus + "> but was:<" + session.getStatus() + ">";
+            }
+        });
         assertNotNull(editor);
         assertEquals(editor.isDirty(), expectedStatus != SessionStatus.SYNC);
         return editor;
