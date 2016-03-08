@@ -96,11 +96,11 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
             createdShell = true;
         }
         final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(MessageTranslator.INSTANCE.getMessage(this.tool.getWindowTitle()),
-                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()),
- getImage(), MessageTranslator.INSTANCE.getMessage(this.tool.getChoiceOfValuesMessage()),
+                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()), getImage(), MessageTranslator.INSTANCE.getMessage(this.tool.getChoiceOfValuesMessage()),
                 MessageTranslator.INSTANCE.getMessage(this.tool.getSelectedValuesMessage()), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.init(input, preSelection);
         final WizardDialog dlg = new WizardDialog(shell, wizard);
+        dlg.setMinimumPageSize(200, 300);
         final int result = dlg.open();
         if (result == Window.OK) {
             final Collection<EObject> selectedElements = wizard.getSelectedEObjects();
