@@ -786,52 +786,93 @@ public class DBorderItemLocator extends BorderItemLocator {
         final Point childCenter = proposedLocation.getCenter();
 
         int position;
-
-        if (childCenter.x < parentCenter.x) {
+        if (canHandleWestSide(parentCenter, childCenter)) {
             // West, North or South.
-            if (childCenter.y < parentCenter.y) {
-                // west or north
-                // closer to west or north?
-                final Point parentTopLeft = parentBorder.getTopLeft();
-                if (childCenter.y < parentTopLeft.y) {
-                    position = PositionConstants.NORTH;
-                } else if ((childCenter.x - parentTopLeft.x) <= (childCenter.y - parentTopLeft.y)) {
-                    position = PositionConstants.WEST;
-                } else {
-                    position = PositionConstants.NORTH;
-                }
-            } else { // west or south
-                final Point parentBottomLeft = parentBorder.getBottomLeft();
-                if (childCenter.y > parentBottomLeft.y) {
-                    position = PositionConstants.SOUTH;
-                } else if ((childCenter.x - parentBottomLeft.x) <= (parentBottomLeft.y - childCenter.y)) {
-                    position = PositionConstants.WEST;
-                } else {
-                    position = PositionConstants.SOUTH;
-                }
-            }
+            position = handleWestSide(parentBorder, parentCenter, childCenter);
         } else {
-            // EAST, NORTH or SOUTH
-            if (childCenter.y < parentCenter.y) {
-                // north or east
-                final Point parentTopRight = parentBorder.getTopRight();
-                if (childCenter.y < parentTopRight.y) {
-                    position = PositionConstants.NORTH;
-                } else if ((parentTopRight.x - childCenter.x) <= (childCenter.y - parentTopRight.y)) {
-                    position = PositionConstants.EAST;
-                } else {
-                    position = PositionConstants.NORTH;
-                }
-            } else { // south or east.
-                final Point parentBottomRight = parentBorder.getBottomRight();
-                if (childCenter.y > parentBottomRight.y) {
-                    position = PositionConstants.SOUTH;
-                } else if ((parentBottomRight.x - childCenter.x) <= (parentBottomRight.y - childCenter.y)) {
-                    position = PositionConstants.EAST;
-                } else {
-                    position = PositionConstants.SOUTH;
-                }
-            }
+            position = handleEastSide(parentBorder, parentCenter, childCenter);
+        }
+        return position;
+    }
+
+    private static boolean canHandleWestSide(final Point parentCenter, final Point childCenter) {
+        return childCenter.x < parentCenter.x;
+    }
+
+    // south or east.
+    private static int handleWestSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter) {
+        int position;
+        if (childCenter.y < parentCenter.y) {
+            // west or north
+            position = handleNorthWest(parentBorder, childCenter);
+        } else {
+            // west or south
+            position = handleSouthWest(parentBorder, childCenter);
+        }
+        return position;
+    }
+
+    private static int handleNorthWest(final Rectangle parentBorder, final Point childCenter) {
+        int position;
+        // closer to west or north?
+        final Point parentTopLeft = parentBorder.getTopLeft();
+        if (childCenter.y < parentTopLeft.y) {
+            position = PositionConstants.NORTH;
+        } else if ((childCenter.x - parentTopLeft.x) <= (childCenter.y - parentTopLeft.y)) {
+            position = PositionConstants.WEST;
+        } else {
+            position = PositionConstants.NORTH;
+        }
+        return position;
+    }
+
+    private static int handleSouthWest(final Rectangle parentBorder, final Point childCenter) {
+        int position;
+        final Point parentBottomLeft = parentBorder.getBottomLeft();
+        if (childCenter.y > parentBottomLeft.y) {
+            position = PositionConstants.SOUTH;
+        } else if ((childCenter.x - parentBottomLeft.x) <= (parentBottomLeft.y - childCenter.y)) {
+            position = PositionConstants.WEST;
+        } else {
+            position = PositionConstants.SOUTH;
+        }
+        return position;
+    }
+
+    private static int handleEastSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter) {
+        int position;
+        // EAST, NORTH or SOUTH
+        if (childCenter.y < parentCenter.y) {
+            // north or east
+            position = handleNorthEast(parentBorder, childCenter);
+        } else { // south or east.
+            position = handleSouthEast(parentBorder, childCenter);
+        }
+        return position;
+    }
+
+    private static int handleNorthEast(final Rectangle parentBorder, final Point childCenter) {
+        int position;
+        final Point parentTopRight = parentBorder.getTopRight();
+        if (childCenter.y < parentTopRight.y) {
+            position = PositionConstants.NORTH;
+        } else if ((parentTopRight.x - childCenter.x) <= (childCenter.y - parentTopRight.y)) {
+            position = PositionConstants.EAST;
+        } else {
+            position = PositionConstants.NORTH;
+        }
+        return position;
+    }
+
+    private static int handleSouthEast(final Rectangle parentBorder, final Point childCenter) {
+        int position;
+        final Point parentBottomRight = parentBorder.getBottomRight();
+        if (childCenter.y > parentBottomRight.y) {
+            position = PositionConstants.SOUTH;
+        } else if ((parentBottomRight.x - childCenter.x) <= (parentBottomRight.y - childCenter.y)) {
+            position = PositionConstants.EAST;
+        } else {
+            position = PositionConstants.SOUTH;
         }
         return position;
     }
