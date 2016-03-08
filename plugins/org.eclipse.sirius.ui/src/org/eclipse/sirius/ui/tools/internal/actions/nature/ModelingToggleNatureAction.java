@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.jdt.internal.core.JavaProject;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -59,9 +59,9 @@ public class ModelingToggleNatureAction extends AbstractHandler {
             for (Object object : ((IStructuredSelection) currentSelection).toList()) {
                 if (object instanceof IProject) {
                     selectedProjects.add((IProject) object);
-                } else if (object instanceof JavaProject) {
-                    JavaProject javaProject = (JavaProject) object;
-                    selectedProjects.add(javaProject.getProject());
+                } else if (object instanceof IProjectNature) {
+                    IProjectNature nature = (IProjectNature) object;
+                    selectedProjects.add(nature.getProject());
                 } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
                     selectedProjects.add((IProject) Platform.getAdapterManager().getAdapter(object, IProject.class));
                 }

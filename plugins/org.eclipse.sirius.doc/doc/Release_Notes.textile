@@ -73,6 +73,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertyDescriptor@ has been added to provide a specific @ExtensiblePropertyDescriptor@ which test @IPermissionAuthority@ to make properties view editable or not.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource@ has been modified to use @SiriusExtensiblePropertyDescriptor@ to provide not editable properties view when the object, selected from the Model Explorer view, cannot be modified.
+* <span class="label label-danger">Removed</span> The @org.eclipse.sirius.ui@, and thus the whole @org.eclipse.sirius.runtime@ feature no longer depends on the JDT (technically the dependency towards @org.eclipse.jdt.core@ has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The @org.eclipse.sirius.common.xtext@ plug-in (which is optional) still depends on the JDT, and the Sirius specification environment (@org.eclipse.sirius.editor@) still depends on PDE (and thus indirectly the JDT too).
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

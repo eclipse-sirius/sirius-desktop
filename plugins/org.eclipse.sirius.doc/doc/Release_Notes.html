@@ -259,6 +259,13 @@
 				<code>org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource</code> has been modified to use 
 				<code>SiriusExtensiblePropertyDescriptor</code> to provide not editable properties view when the object, selected from the Model Explorer view, cannot be modified.
 			</li>
+			<li><span class="label label-danger">Removed</span> The 
+				<code>org.eclipse.sirius.ui</code>, and thus the whole 
+				<code>org.eclipse.sirius.runtime</code> feature no longer depends on the JDT (technically the dependency towards 
+				<code>org.eclipse.jdt.core</code> has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The 
+				<code>org.eclipse.sirius.common.xtext</code> plug-in (which is optional) still depends on the JDT, and the Sirius specification environment (
+				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
