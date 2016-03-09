@@ -132,7 +132,7 @@ public class TabbarContributorExtensionTest extends AbstractSiriusSwtBotGefTestC
 
             @Override
             public void run() {
-                result = new Integer(toolBar.getItemCount());
+                result = Integer.valueOf(toolBar.getItemCount());
             }
 
             @Override

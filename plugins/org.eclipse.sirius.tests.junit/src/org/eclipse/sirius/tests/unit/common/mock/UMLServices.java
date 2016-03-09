@@ -81,7 +81,7 @@ public class UMLServices {
         if (multiplicityElement.getLowerValue() != null) {
             result.append(multiplicityElement.getLowerValue().stringValue());
         } else {
-            result.append(new Integer(multiplicityElement.getLower()).toString());
+            result.append(Integer.valueOf(multiplicityElement.getLower()).toString());
         }
         result.append("..");
         if (multiplicityElement.getUpperValue() != null) {
@@ -90,7 +90,7 @@ public class UMLServices {
             if (multiplicityElement.getLower() < 0) {
                 result.append("*");
             } else {
-                result.append(new Integer(multiplicityElement.getUpper()).toString());
+                result.append(Integer.valueOf(multiplicityElement.getUpper()).toString());
             }
         }
         result.append("]");

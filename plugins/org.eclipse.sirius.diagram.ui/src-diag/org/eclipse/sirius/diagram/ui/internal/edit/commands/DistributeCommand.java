@@ -238,7 +238,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.x);
+            return Integer.valueOf(rectangle.x);
         };
     };
 
@@ -254,7 +254,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.getCenter().x);
+            return Integer.valueOf(rectangle.getCenter().x);
         };
     };
 
@@ -270,7 +270,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.getRight().x);
+            return Integer.valueOf(rectangle.getRight().x);
         };
     };
 
@@ -286,7 +286,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.y);
+            return Integer.valueOf(rectangle.y);
         };
     };
 
@@ -302,7 +302,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.getCenter().y);
+            return Integer.valueOf(rectangle.getCenter().y);
         };
     };
 
@@ -318,7 +318,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.getBottom().y);
+            return Integer.valueOf(rectangle.getBottom().y);
         };
     };
 
@@ -334,7 +334,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.width);
+            return Integer.valueOf(rectangle.width);
         };
     };
 
@@ -350,7 +350,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
         @Override
         protected Integer apply(Rectangle rectangle) {
-            return new Integer(rectangle.height);
+            return Integer.valueOf(rectangle.height);
         };
     };
 

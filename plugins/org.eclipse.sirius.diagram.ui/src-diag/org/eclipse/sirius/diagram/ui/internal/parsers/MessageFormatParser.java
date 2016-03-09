@@ -216,7 +216,7 @@ public class MessageFormatParser extends AbstractParser {
         ParsePosition pos = new ParsePosition(0);
         Object[] values = getEditProcessor().parse(editString, pos);
         if (values == null) {
-            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, MessageFormat.format(Messages.MessageFormatParser_InvalidInputError, new Integer(pos.getErrorIndex())));
+            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, MessageFormat.format(Messages.MessageFormatParser_InvalidInputError, Integer.valueOf(pos.getErrorIndex())));
         }
         return validateNewValues(values);
     }

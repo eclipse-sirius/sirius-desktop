@@ -178,8 +178,8 @@ public class ExternalModificationsTests extends AbstractSequenceDiagramTestCase 
         Collection<AbsoluteBoundsFilter> flags = Lists.newArrayList(Iterators.filter(sequenceDiagram.get().getSequenceDDiagram().eAllContents(), AbsoluteBoundsFilter.class));
         assertFalse(flags.isEmpty());
         for (AbsoluteBoundsFilter flag : flags) {
-            Integer specificFlagValue1 = new Integer(-1);
-            Integer specificFlagValue2 = new Integer(-2);
+            Integer specificFlagValue1 = Integer.valueOf(-1);
+            Integer specificFlagValue2 = Integer.valueOf(-2);
             assertFalse(specificFlagValue1.equals(flag.getX()) || specificFlagValue2.equals(flag.getX()));
             assertFalse(specificFlagValue1.equals(flag.getWidth()) || specificFlagValue2.equals(flag.getWidth()));
         }
