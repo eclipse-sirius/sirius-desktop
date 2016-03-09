@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh.borderednode;
 
+import java.util.BitSet;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
@@ -23,7 +24,10 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
@@ -57,6 +61,8 @@ public class CanonicalDBorderItemLocator {
 
     private int currentSide = PositionConstants.WEST;
 
+    private BitSet authorizedSides = new BitSet(PositionConstants.NSEW);
+
     /**
      * The parent bounds can be set with
      * {@link #setParentBorderBounds(Rectangle)} if it is known or if the
@@ -77,6 +83,7 @@ public class CanonicalDBorderItemLocator {
     public CanonicalDBorderItemLocator(Node containerNode, int preferredSide) {
         this.container = containerNode;
         this.preferredSide = preferredSide;
+        initAuthorizedSides();
     }
 
     /**
@@ -157,100 +164,201 @@ public class CanonicalDBorderItemLocator {
      * @return draw constant
      */
     public static int findClosestSideOfParent(final Rectangle proposedLocation, final Rectangle parentBorder) {
-        // Rectangle parentBorder = getParentBorder();
+        return findClosestSideOfParent(proposedLocation, parentBorder, null);
+    }
+
+    /**
+     * Find the closest side when x,y is inside parent.
+     * 
+     * @param proposedLocation
+     *            the proposed location
+     * @param parentBorder
+     *            the parent border
+     * @param authorizedSides
+     *            the authorized sides. a BitSet using the
+     *            {@link PositionConstants} values as index. All sides are
+     *            considered as authorized if the value is null or the bitSet is
+     *            empty.
+     * @return draw constant
+     */
+    private static int findClosestSideOfParent(final Rectangle proposedLocation, final Rectangle parentBorder, BitSet authorizedSides) {
         final Point parentCenter = parentBorder.getCenter();
         final Point childCenter = proposedLocation.getCenter();
 
         int position;
-
-        if (canHandleWestSide(parentCenter, childCenter)) {
+        boolean northAuthorized = true;
+        boolean southAuthorized = true;
+        boolean eastAuthorized = true;
+        boolean westAuthorized = true;
+        if (authorizedSides != null && !authorizedSides.isEmpty()) {
+            northAuthorized = isAuthorized(authorizedSides, PositionConstants.NORTH);
+            southAuthorized = isAuthorized(authorizedSides, PositionConstants.SOUTH);
+            eastAuthorized = isAuthorized(authorizedSides, PositionConstants.EAST);
+            westAuthorized = isAuthorized(authorizedSides, PositionConstants.WEST);
+        }
+        // if the east side is not authorized we try west event if this is not
+        // natural.
+        if (!eastAuthorized || canHandleWestSide(parentCenter, childCenter, northAuthorized, southAuthorized, westAuthorized)) {
             // West, North or South.
-            position = handleWestSide(parentBorder, parentCenter, childCenter);
+            position = handleWestSide(parentBorder, parentCenter, childCenter, northAuthorized, southAuthorized, westAuthorized);
         } else {
-            position = handleEastSide(parentBorder, parentCenter, childCenter);
+            position = handleEastSide(parentBorder, parentCenter, childCenter, northAuthorized, southAuthorized, eastAuthorized);
         }
         return position;
     }
 
-    private static boolean canHandleWestSide(final Point parentCenter, final Point childCenter) {
-        return childCenter.x < parentCenter.x;
+    private static boolean canHandleWestSide(final Point parentCenter, final Point childCenter, boolean northAuthorized, boolean southAuthorized, boolean westAuthorized) {
+        return (westAuthorized || southAuthorized || northAuthorized) && childCenter.x < parentCenter.x;
     }
 
-    private static int handleWestSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter) {
+    private static int handleWestSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter, boolean northAuthorized, boolean southAuthorized, boolean westAuthorized) {
         int position;
-        if (childCenter.y < parentCenter.y) {
+        if (!southAuthorized || (westAuthorized || northAuthorized) && childCenter.y < parentCenter.y) {
             // west or north
-            position = handleNorthWest(parentBorder, childCenter);
+            position = handleNorthWest(parentBorder, childCenter, northAuthorized, westAuthorized);
         } else {
             // west or south
-            position = handleSouthWest(parentBorder, childCenter);
+            position = handleSouthWest(parentBorder, childCenter, southAuthorized, westAuthorized);
         }
         return position;
     }
 
-    private static int handleNorthWest(final Rectangle parentBorder, final Point childCenter) {
+    private static int handleNorthWest(final Rectangle parentBorder, final Point childCenter, boolean northAuthorized, boolean westAuthorized) {
         int position;
-        // closer to west or north?
-        final Point parentTopLeft = parentBorder.getTopLeft();
-        if (childCenter.y < parentTopLeft.y) {
-            position = PositionConstants.NORTH;
-        } else if ((childCenter.x - parentTopLeft.x) <= (childCenter.y - parentTopLeft.y)) {
-            position = PositionConstants.WEST;
+        // if one of these sides is not authorized, we retain the only
+        // one authorized.
+        if (!northAuthorized || !westAuthorized) {
+            if (northAuthorized) {
+                position = PositionConstants.NORTH;
+            } else {
+                position = PositionConstants.WEST;
+            }
         } else {
-            position = PositionConstants.NORTH;
+            // closer to west or north?
+            final Point parentTopLeft = parentBorder.getTopLeft();
+            if (childCenter.y < parentTopLeft.y) {
+                position = PositionConstants.NORTH;
+            } else if ((childCenter.x - parentTopLeft.x) <= (childCenter.y - parentTopLeft.y)) {
+                position = PositionConstants.WEST;
+            } else {
+                position = PositionConstants.NORTH;
+            }
         }
         return position;
     }
 
-    private static int handleSouthWest(final Rectangle parentBorder, final Point childCenter) {
+    private static int handleSouthWest(final Rectangle parentBorder, final Point childCenter, boolean southAuthorized, boolean westAuthorized) {
         int position;
-        final Point parentBottomLeft = parentBorder.getBottomLeft();
-        if (childCenter.y > parentBottomLeft.y) {
-            position = PositionConstants.SOUTH;
-        } else if ((childCenter.x - parentBottomLeft.x) <= (parentBottomLeft.y - childCenter.y)) {
-            position = PositionConstants.WEST;
+        // if one of these sides is not authorized, we retain the only
+        // one authorized.
+        if (!southAuthorized || !westAuthorized) {
+            if (southAuthorized) {
+                position = PositionConstants.SOUTH;
+            } else {
+                position = PositionConstants.WEST;
+            }
         } else {
-            position = PositionConstants.SOUTH;
+            final Point parentBottomLeft = parentBorder.getBottomLeft();
+            if (childCenter.y > parentBottomLeft.y) {
+                position = PositionConstants.SOUTH;
+            } else if ((childCenter.x - parentBottomLeft.x) <= (parentBottomLeft.y - childCenter.y)) {
+                position = PositionConstants.WEST;
+            } else {
+                position = PositionConstants.SOUTH;
+            }
         }
         return position;
     }
 
-    private static int handleEastSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter) {
+    private static int handleEastSide(final Rectangle parentBorder, final Point parentCenter, final Point childCenter, boolean northAuthorized, boolean southAuthorized, boolean eastAuthorized) {
         int position;
         // EAST, NORTH or SOUTH
-        if (childCenter.y < parentCenter.y) {
+        if (!southAuthorized || (eastAuthorized || northAuthorized) && childCenter.y < parentCenter.y) {
             // north or east
-            position = handleNorthEast(parentBorder, childCenter);
+            position = handleNorthEast(parentBorder, childCenter, northAuthorized, eastAuthorized);
         } else { // south or east.
-            position = handleSouthEast(parentBorder, childCenter);
+            position = handleSouthEast(parentBorder, childCenter, southAuthorized, eastAuthorized);
         }
         return position;
     }
 
-    private static int handleNorthEast(final Rectangle parentBorder, final Point childCenter) {
+    private static int handleNorthEast(final Rectangle parentBorder, final Point childCenter, boolean northAuthorized, boolean eastAuthorized) {
         int position;
-        final Point parentTopRight = parentBorder.getTopRight();
-        if (childCenter.y < parentTopRight.y) {
-            position = PositionConstants.NORTH;
-        } else if ((parentTopRight.x - childCenter.x) <= (childCenter.y - parentTopRight.y)) {
-            position = PositionConstants.EAST;
+        // if one of these sides is not authorized, we retain the only
+        // one authorized.
+        if (!eastAuthorized || !northAuthorized) {
+            if (eastAuthorized) {
+                position = PositionConstants.EAST;
+            } else {
+                position = PositionConstants.NORTH;
+            }
         } else {
-            position = PositionConstants.NORTH;
+            final Point parentTopRight = parentBorder.getTopRight();
+            if (childCenter.y < parentTopRight.y) {
+                position = PositionConstants.NORTH;
+            } else if ((parentTopRight.x - childCenter.x) <= (childCenter.y - parentTopRight.y)) {
+                position = PositionConstants.EAST;
+            } else {
+                position = PositionConstants.NORTH;
+            }
         }
         return position;
     }
 
-    private static int handleSouthEast(final Rectangle parentBorder, final Point childCenter) {
+    private static int handleSouthEast(final Rectangle parentBorder, final Point childCenter, boolean southAuthorized, boolean eastAuthorized) {
         int position;
-        final Point parentBottomRight = parentBorder.getBottomRight();
-        if (childCenter.y > parentBottomRight.y) {
-            position = PositionConstants.SOUTH;
-        } else if ((parentBottomRight.x - childCenter.x) <= (parentBottomRight.y - childCenter.y)) {
-            position = PositionConstants.EAST;
+        // if one of these sides is not authorized, we retain the only
+        // one authorized.
+        if (!eastAuthorized || !southAuthorized) {
+            if (eastAuthorized) {
+                position = PositionConstants.EAST;
+            } else {
+                position = PositionConstants.SOUTH;
+            }
         } else {
-            position = PositionConstants.SOUTH;
+            final Point parentBottomRight = parentBorder.getBottomRight();
+            if (childCenter.y > parentBottomRight.y) {
+                position = PositionConstants.SOUTH;
+            } else if ((parentBottomRight.x - childCenter.x) <= (parentBottomRight.y - childCenter.y)) {
+                position = PositionConstants.EAST;
+            } else {
+                position = PositionConstants.SOUTH;
+            }
         }
         return position;
+    }
+
+    private void updateAuthorizedSide(DNode borderNode) {
+        initAuthorizedSides();
+        DNodeQuery query = new DNodeQuery(borderNode);
+        List<Side> forbiddenSides = query.getForbiddenSide();
+        // If all the sides are forbidden, we consider all sides as authorized
+        // since the border node has to be located somewhere anyway.
+        if (!(forbiddenSides.size() == Side.VALUES.size())) {
+            for (Side side : forbiddenSides) {
+                if (Side.WEST.getName().equals(side.getName())) {
+                    this.authorizedSides.clear(PositionConstants.WEST);
+                } else if (Side.EAST.getName().equals(side.getName())) {
+                    this.authorizedSides.clear(PositionConstants.EAST);
+                } else if (Side.NORTH.getName().equals(side.getName())) {
+                    this.authorizedSides.clear(PositionConstants.NORTH);
+                } else if (Side.SOUTH.getName().equals(side.getName())) {
+                    this.authorizedSides.clear(PositionConstants.SOUTH);
+                }
+            }
+        }
+    }
+
+    private void initAuthorizedSides() {
+        this.authorizedSides.clear();
+        this.authorizedSides.set(PositionConstants.WEST);
+        this.authorizedSides.set(PositionConstants.SOUTH);
+        this.authorizedSides.set(PositionConstants.EAST);
+        this.authorizedSides.set(PositionConstants.NORTH);
+    }
+
+    private static boolean isAuthorized(BitSet authorizedSides, int side) {
+        return authorizedSides.get(side);
     }
 
     /**
@@ -260,12 +368,16 @@ public class CanonicalDBorderItemLocator {
      *            The view to relocate
      */
     public void relocate(Node borderItem) {
+        EObject element = borderItem.getElement();
+        if (element instanceof DNode) {
+            updateAuthorizedSide((DNode) element);
+        }
         final Dimension size = getSize(borderItem);
         final Rectangle rectSuggested = new Rectangle(getPreferredLocation(borderItem), size);
         // If the border item has moved, we change the preferred side, otherwise
         // we let the current side enabled
         if (borderItemHasMoved) {
-            final int closestSide = findClosestSideOfParent(rectSuggested, getParentBorder());
+            final int closestSide = findClosestSideOfParent(rectSuggested, getParentBorder(), this.authorizedSides);
             setPreferredSideOfParent(closestSide);
             setCurrentSideOfParent(closestSide);
             borderItemHasMoved = false;
@@ -464,21 +576,15 @@ public class CanonicalDBorderItemLocator {
         // not free space on right of south side.
         Point recommendedLocationForEast = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
+            Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the south side
                 rightTestPoint.x += rightVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
                         isStillFreeSpaceToTheRight = false;
-                        if (circuitCount == NB_SIDES - 1) {
-                            // There is no space on either side (so use the last
-                            // conflicting position)
-                            resultLocation = optionalConflictingRectangle.get().getTopLeft();
-                        } else {
-                            recommendedLocationForEast = new Point(rightTestPoint.x + rightVerticalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
-                        }
                     }
                 } else {
                     resultLocation = rightTestPoint;
@@ -487,7 +593,7 @@ public class CanonicalDBorderItemLocator {
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the south side
                 leftTestPoint.x -= leftVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
@@ -497,10 +603,21 @@ public class CanonicalDBorderItemLocator {
                     resultLocation = leftTestPoint;
                 }
             }
+            // If this side is full
+            if (!isStillFreeSpaceToTheLeft && !isStillFreeSpaceToTheRight) {
+                if (circuitCount == NB_SIDES - 1) {
+                    // There is no space on either side (so use the last
+                    // conflicting position)
+                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                } else {
+                    recommendedLocationForEast = new Point(rightTestPoint.x + rightVerticalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
+                }
+            }
         }
         if (resultLocation == null) {
-            // south is full, try east.
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForEast, borderItemSize), PositionConstants.EAST, circuitCount + 1, borderItem, portsNodesToIgnore);
+            // south is full, try the next (east).
+            int next = getNextAuthorizedSide(PositionConstants.SOUTH);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForEast, borderItemSize), next, circuitCount + 1, borderItem, portsNodesToIgnore);
         }
         return resultLocation;
     }
@@ -537,10 +654,11 @@ public class CanonicalDBorderItemLocator {
         // not free space on left of north side.
         Point recommendedLocationForWest = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
+            Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the north side
                 rightTestPoint.x += rightVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
@@ -553,27 +671,31 @@ public class CanonicalDBorderItemLocator {
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the north side
                 leftTestPoint.x -= leftVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
                         isStillFreeSpaceToTheLeft = false;
-                        if (circuitCount == NB_SIDES - 1) {
-                            // There is no space on either side (so use the last
-                            // conflicting position)
-                            resultLocation = optionalConflictingRectangle.get().getTopLeft();
-                        } else {
-                            recommendedLocationForWest = new Point(leftTestPoint.x - leftVerticalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
-                        }
                     }
                 } else {
                     resultLocation = leftTestPoint;
                 }
             }
+            // If this side is full
+            if (!isStillFreeSpaceToTheLeft && !isStillFreeSpaceToTheRight) {
+                if (circuitCount == NB_SIDES - 1) {
+                    // There is no space on either side (so use the last
+                    // conflicting position)
+                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                } else {
+                    recommendedLocationForWest = new Point(leftTestPoint.x - leftVerticalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
+                }
+            }
         }
         if (resultLocation == null) {
-            // North is full, try west.
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForWest, borderItemSize), PositionConstants.WEST, circuitCount + 1, borderItem, portsNodesToIgnore);
+            // North is full, try the next (west).
+            int next = getNextAuthorizedSide(PositionConstants.NORTH);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForWest, borderItemSize), next, circuitCount + 1, borderItem, portsNodesToIgnore);
         }
         return resultLocation;
     }
@@ -610,21 +732,15 @@ public class CanonicalDBorderItemLocator {
         // not free space on bottom of west side.
         Point recommendedLocationForSouth = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
+            Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
                 // Move down on the west side
                 belowTestPoint.y += belowVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
                         isStillFreeSpaceBelow = false;
-                        if (circuitCount == NB_SIDES - 1) {
-                            // There is no space on either side (so use the last
-                            // conflicting position)
-                            resultLocation = optionalConflictingRectangle.get().getTopLeft();
-                        } else {
-                            recommendedLocationForSouth = new Point(belowTestPoint.x + optionalConflictingRectangle.get().width + 1, belowTestPoint.y + belowVerticalGap);
-                        }
                     }
                 } else {
                     resultLocation = belowTestPoint;
@@ -633,7 +749,7 @@ public class CanonicalDBorderItemLocator {
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the west side
                 aboveTestPoint.y -= aboveVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
@@ -643,10 +759,21 @@ public class CanonicalDBorderItemLocator {
                     resultLocation = aboveTestPoint;
                 }
             }
+            // If this side is full
+            if (!isStillFreeSpaceBelow && !isStillFreeSpaceAbove) {
+                if (circuitCount == NB_SIDES - 1) {
+                    // There is no space on either side (so use the last
+                    // conflicting position)
+                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                } else {
+                    recommendedLocationForSouth = new Point(belowTestPoint.x + optionalConflictingRectangle.get().width + 1, belowTestPoint.y + belowVerticalGap);
+                }
+            }
         }
         if (resultLocation == null) {
-            // west is full, try south.
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForSouth, borderItemSize), PositionConstants.SOUTH, circuitCount + 1, borderItem, portsNodesToIgnore);
+            // west is full, try the next (south).
+            int next = getNextAuthorizedSide(PositionConstants.WEST);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForSouth, borderItemSize), next, circuitCount + 1, borderItem, portsNodesToIgnore);
         }
         return resultLocation;
     }
@@ -683,10 +810,11 @@ public class CanonicalDBorderItemLocator {
         // not free space on top of east side.
         Point recommendedLocationForNorth = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
+            Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
                 // Move down on the east side
                 belowTestPoint.y += belowVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
@@ -699,27 +827,31 @@ public class CanonicalDBorderItemLocator {
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the east side
                 aboveTestPoint.y -= aboveVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
+                optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
                         isStillFreeSpaceAbove = false;
-                        if (circuitCount == NB_SIDES - 1) {
-                            // There is no space on either side (so use the last
-                            // conflicting position)
-                            resultLocation = optionalConflictingRectangle.get().getTopLeft();
-                        } else {
-                            recommendedLocationForNorth = new Point(optionalConflictingRectangle.get().x - borderItemSize.width - 1, aboveTestPoint.y - aboveVerticalGap);
-                        }
                     }
                 } else {
                     resultLocation = aboveTestPoint;
                 }
             }
+            // If this side is full
+            if (!isStillFreeSpaceBelow && !isStillFreeSpaceAbove) {
+                if (circuitCount == NB_SIDES - 1) {
+                    // There is no space on either side (so use the last
+                    // conflicting position)
+                    resultLocation = optionalConflictingRectangle.get().getTopLeft();
+                } else {
+                    recommendedLocationForNorth = new Point(optionalConflictingRectangle.get().x - borderItemSize.width - 1, aboveTestPoint.y - aboveVerticalGap);
+                }
+            }
         }
         if (resultLocation == null) {
-            // East is full, try north.
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNorth, borderItemSize), PositionConstants.NORTH, circuitCount + 1, borderItem, portsNodesToIgnore);
+            // East is full, try the next (north).
+            int next = getNextAuthorizedSide(PositionConstants.EAST);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNorth, borderItemSize), next, circuitCount + 1, borderItem, portsNodesToIgnore);
         }
         return resultLocation;
     }
@@ -809,6 +941,10 @@ public class CanonicalDBorderItemLocator {
      * @return a Point corresponding to the valid location
      */
     public Point getValidLocation(Rectangle proposedBounds, Node borderItem, final Collection<Node> portsNodesToIgnore) {
+        EObject element = borderItem.getElement();
+        if (element instanceof DNode) {
+            updateAuthorizedSide((DNode) element);
+        }
         final Rectangle realBounds = new Rectangle(proposedBounds);
         Dimension oldOffset = getBorderItemOffset();
         NodeQuery nodeQuery = new NodeQuery(borderItem);
@@ -822,8 +958,8 @@ public class CanonicalDBorderItemLocator {
             }
         }
 
-        final int side = findClosestSideOfParent(proposedBounds, getParentBorder());
-        Point newTopLeft = locateOnBorder(realBounds, side, 0, borderItem, portsNodesToIgnore);
+        final int side = findClosestSideOfParent(proposedBounds, getParentBorder(), this.authorizedSides);
+        Point newTopLeft = locateOnBorder(realBounds, side, NB_SIDES - getNumberOfAuthorizedSides(), borderItem, portsNodesToIgnore);
         if (isCollapsed) {
             setBorderItemOffset(oldOffset);
             Rectangle collapsedBounds = PortLayoutHelper.getCollapseCandidateLocation(nodeQuery.getCollapsedSize(), new Rectangle(newTopLeft, nodeQuery.getOriginalDimensionBeforeCollapse()),
@@ -831,5 +967,59 @@ public class CanonicalDBorderItemLocator {
             newTopLeft = collapsedBounds.getLocation();
         }
         return newTopLeft;
+    }
+
+    /**
+     * Returns the next authorized side starting from the current side.
+     * 
+     * @param currentSide
+     *            the current {@link PositionConstants}.
+     * @return the next authorized {@link PositionConstants}.
+     */
+    private int getNextAuthorizedSide(int currentSide) {
+        return getNextAuthorizedSide(currentSide, currentSide);
+    }
+
+    private int getNextAuthorizedSide(int currentSide, int initialSide) {
+        int nextAuthorized = PositionConstants.NONE;
+        int nextSide = getNextSide(currentSide);
+        if (initialSide == nextSide) {
+            // if the iteration started from the next side, we have finished
+            // without finding new authorized side.
+        } else if (this.authorizedSides.get(nextSide)) {
+            nextAuthorized = nextSide;
+        } else {
+            // if the next side is not authorized we step forward
+            // recursively.
+            nextAuthorized = getNextAuthorizedSide(nextSide, initialSide);
+        }
+
+        return nextAuthorized;
+
+    }
+
+    private int getNextSide(int current) {
+        int next = PositionConstants.NONE;
+        switch (current) {
+        case PositionConstants.WEST:
+            next = PositionConstants.SOUTH;
+            break;
+        case PositionConstants.SOUTH:
+            next = PositionConstants.EAST;
+            break;
+        case PositionConstants.EAST:
+            next = PositionConstants.NORTH;
+            break;
+        case PositionConstants.NORTH:
+            next = PositionConstants.WEST;
+            break;
+        default:
+            break;
+        }
+        return next;
+    }
+
+    private int getNumberOfAuthorizedSides() {
+        return this.authorizedSides.cardinality();
     }
 }

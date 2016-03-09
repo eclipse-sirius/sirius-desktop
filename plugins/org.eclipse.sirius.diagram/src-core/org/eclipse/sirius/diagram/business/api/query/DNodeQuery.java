@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.Side;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * Queries for DNodes.
@@ -93,6 +99,21 @@ public class DNodeQuery {
             }
         }
         return hasEmptyNameDefinition;
+    }
+
+    /**
+     * Returns the specified forbidden sides for the current DNode. This feature
+     * makes sense for border nodes only.
+     * 
+     * @return the list of forbidden {@link Side}
+     */
+    public List<Side> getForbiddenSide() {
+        NodeStyle nodeStyle = node.getOwnedStyle();
+        StyleDescription styleDescription = nodeStyle.getDescription();
+        if (styleDescription instanceof NodeStyleDescription) {
+            return ((NodeStyleDescription) styleDescription).getForbiddenSides();
+        }
+        return Collections.emptyList();
     }
 
 }
