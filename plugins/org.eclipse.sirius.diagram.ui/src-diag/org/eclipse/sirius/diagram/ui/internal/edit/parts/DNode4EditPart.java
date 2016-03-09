@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -33,12 +32,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.BorderedNodeLayoutEd
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode4ItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
@@ -104,17 +99,6 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
          * remove the connection items display
          */
         removeEditPolicy(EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-    }
-
-    /**
-     * @not-generated add the folding toggle figure as bordered figure
-     */
-    @Override
-    protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure());
-        nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
-        nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
-        return nodeFigure;
     }
 
     /**

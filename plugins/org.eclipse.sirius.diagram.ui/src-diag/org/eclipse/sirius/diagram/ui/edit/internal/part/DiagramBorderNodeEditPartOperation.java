@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.util.List;
+
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -38,10 +41,12 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
@@ -144,6 +149,11 @@ public final class DiagramBorderNodeEditPartOperation {
             } else if (notification.getOldValue() instanceof CollapseFilter && notification.getNewValue() == null) {
                 DiagramBorderNodeEditPartOperation.updateCollapseMode(self, notification.getNotifier());
             }
+        } else if (DiagramPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) || DiagramPackage.eINSTANCE.getDNode_ActualMapping().equals(notification.getFeature())) {
+            IFigure nodeFigure = self.getFigure();
+            if (nodeFigure instanceof DBorderedNodeFigure) {
+                DiagramBorderNodeEditPartOperation.updateAuthorizedSide((DBorderedNodeFigure) nodeFigure, self);
+            }
         }
     }
 
@@ -157,6 +167,36 @@ public final class DiagramBorderNodeEditPartOperation {
                     DiagramBorderNodeEditPartOperation.updateTransparencyMode(self, (ITransparentFigure) styledFigure);
                 }
             }
+        }
+    }
+
+    /**
+     * Updates figure authorized sides.
+     * 
+     * @param nodeFigure
+     *            the current figure.
+     * @param diagramBorderNodeEditPart
+     *            the edit part.
+     */
+    public static void updateAuthorizedSide(DBorderedNodeFigure nodeFigure, IDiagramBorderNodeEditPart diagramBorderNodeEditPart) {
+        EObject semanticElement = diagramBorderNodeEditPart.resolveSemanticElement();
+        if (semanticElement instanceof DNode) {
+            DNodeQuery query = new DNodeQuery((DNode) semanticElement);
+            List<Side> forbiddenSides = query.getForbiddenSide();
+            int[] sides = new int[forbiddenSides.size()];
+            int i = 0;
+            for (Side side : forbiddenSides) {
+                if (Side.WEST.getName().equals(side.getName())) {
+                    sides[i++] = PositionConstants.WEST;
+                } else if (Side.EAST.getName().equals(side.getName())) {
+                    sides[i++] = PositionConstants.EAST;
+                } else if (Side.NORTH.getName().equals(side.getName())) {
+                    sides[i++] = PositionConstants.NORTH;
+                } else if (Side.SOUTH.getName().equals(side.getName())) {
+                    sides[i++] = PositionConstants.SOUTH;
+                }
+            }
+            nodeFigure.setForbiddenSides(sides);
         }
     }
 
@@ -280,7 +320,8 @@ public final class DiagramBorderNodeEditPartOperation {
                     break;
                 }
             }
-            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(part.getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
+            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(part.getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(part.getNotationView()),
+                    new Rectangle(position, dimension));
             result = new ICommandProxy(setBoundsCommand);
         } else {
             result = null;

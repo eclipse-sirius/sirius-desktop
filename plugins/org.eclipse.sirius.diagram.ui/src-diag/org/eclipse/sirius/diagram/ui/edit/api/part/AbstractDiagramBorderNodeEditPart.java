@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -63,6 +64,9 @@ import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
@@ -97,6 +101,15 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      */
     public AbstractDiagramBorderNodeEditPart(final View view) {
         super(view);
+    }
+
+    @Override
+    protected NodeFigure createNodeFigure() {
+        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure());
+        DiagramBorderNodeEditPartOperation.updateAuthorizedSide(nodeFigure, this);
+        nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
+        nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
+        return nodeFigure;
     }
 
     @Override
