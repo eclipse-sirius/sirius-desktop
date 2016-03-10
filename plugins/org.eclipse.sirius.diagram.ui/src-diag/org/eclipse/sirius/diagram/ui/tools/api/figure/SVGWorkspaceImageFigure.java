@@ -15,7 +15,7 @@ import java.io.File;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
@@ -186,7 +186,7 @@ public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImag
         SVGWorkspaceImageFigure fig = new SVGWorkspaceImageFigure();
         fig.updateImageURI(path);
         fig.contentChanged();
-        return fig.getImage(new Rectangle(0, 0, -1, -1), null);
+        return fig.getImage(new PrecisionRectangle(0, 0, -1, -1), null);
     }
 
     /**

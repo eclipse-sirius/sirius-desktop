@@ -22,6 +22,7 @@ import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.XYLayout;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -300,13 +301,13 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         result.append(SVGFigure.SEPARATOR);
         result.append(aaText);
         result.append(SVGFigure.SEPARATOR);
-        Rectangle r = getClientArea().getCopy();
+        Rectangle r = new PrecisionRectangle(getClientArea());
         if (CACHE_SCALED_IMAGES && graphics != null) {
             r.performScale(graphics.getAbsoluteScale());
         }
-        result.append(r.width);
+        result.append(r.width());
         result.append(SVGFigure.SEPARATOR);
-        result.append(r.height);
+        result.append(r.height());
 
         return result.toString();
     }
@@ -317,16 +318,16 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         modifier.pushState();
         Rectangle svgArea = getClientArea();
         if (CACHE_SCALED_IMAGES) {
-            Rectangle scaledArea = new Rectangle(svgArea);
+            Rectangle scaledArea = new PrecisionRectangle(svgArea);
             scaledArea.performScale(graphics.getAbsoluteScale());
             Image image = getImage(svgArea, graphics);
             if (image != null) {
-                graphics.drawImage(image, 0, 0, scaledArea.width, scaledArea.height, svgArea.x, svgArea.y, svgArea.width, svgArea.height);
+                graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
             }
         } else {
             Image image = getImage(svgArea, graphics);
             if (image != null) {
-                graphics.drawImage(image, svgArea.x, svgArea.y);
+                graphics.drawImage(image, svgArea.x(), svgArea.y());
             }
         }
         modifier.popState();

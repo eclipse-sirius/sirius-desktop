@@ -25,6 +25,7 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -125,11 +126,11 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         Image result = null;
         if (document != null) {
             if (scaleImage && graphics != null) {
-                Rectangle scaledArea = new Rectangle(clientArea);
+                PrecisionRectangle scaledArea = new PrecisionRectangle(clientArea);
                 scaledArea.performScale(graphics.getAbsoluteScale());
-                setCanvasSize(scaledArea.width, scaledArea.height);
+                setCanvasSize(scaledArea.width(), scaledArea.height());
             } else {
-                setCanvasSize(clientArea.width, clientArea.height);
+                setCanvasSize(clientArea.width(), clientArea.height());
             }
             updateRenderingHints(graphics);
             BufferedImage awtImage = getBufferedImage();
