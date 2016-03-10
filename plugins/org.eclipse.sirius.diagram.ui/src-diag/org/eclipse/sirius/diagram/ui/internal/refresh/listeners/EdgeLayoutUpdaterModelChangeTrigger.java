@@ -23,14 +23,18 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Location;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
@@ -38,6 +42,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Predicate;
@@ -72,6 +77,12 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
      */
     private static final Set<EStructuralFeature> CONSEQUENCE_FEATURES = new HashSet<EStructuralFeature>();
 
+    /**
+     * List of features concerning move or resize of the source/target of an
+     * edge.
+     */
+    private static final Set<EStructuralFeature> MOVE_OR_RESIZE_FEATURES = new HashSet<EStructuralFeature>();
+
     static {
         REFRESH_FEATURES_WITH_CONSEQUENCE.add(DiagramPackage.Literals.EDGE_STYLE__CENTERED);
         REFRESH_FEATURES_WITH_CONSEQUENCE.add(NotationPackage.Literals.ROUTING_STYLE__ROUTING);
@@ -82,6 +93,13 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
 
         CONSEQUENCE_FEATURES.add(ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES);
         CONSEQUENCE_FEATURES.add(DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE);
+
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.LOCATION__X);
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.LOCATION__Y);
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.SIZE__WIDTH);
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.SIZE__HEIGHT);
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.NODE__LAYOUT_CONSTRAINT);
+        MOVE_OR_RESIZE_FEATURES.add(NotationPackage.Literals.EDGE__BENDPOINTS);
     }
 
     private TransactionalEditingDomain domain;
@@ -120,8 +138,9 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         Collection<AbstractModelChangeOperation<Void>> operations = new ArrayList<AbstractModelChangeOperation<Void>>();
         for (Notification notification : notifications) {
             // Only consider notification of
-            // RefreshEdgeLayoutNotificationFilter.REFRESH_FEATURES list
-            if (isRefreshEdgeLayoutNeededForNotification(notification)) {
+            // RefreshEdgeLayoutNotificationFilter.REFRESH_FEATURES list and for
+            // which the source or the target has not been moved
+            if (isRefreshEdgeLayoutNeededForNotification(notification, notifications)) {
                 Option<Edge> optionalGmfEdge = getCorrespondingEdge(notification);
                 if (optionalGmfEdge.some() && edgesWithCreatedCommand.add(optionalGmfEdge.get())) {
                     // if there are several notifications, we do not try to
@@ -222,11 +241,59 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
      * 
      * @param notification
      *            The {@link Notification} to check.
+     * @param notifications
+     *            the whole notification list.
      * @return true if this notification concerns the edge ends centering, false
      *         otherwise.
      */
-    private boolean isRefreshEdgeLayoutNeededForNotification(Notification notification) {
-        return REFRESH_FEATURES.contains(notification.getFeature());
+    private boolean isRefreshEdgeLayoutNeededForNotification(final Notification notification, Collection<Notification> notifications) {
+        if (REFRESH_FEATURES.contains(notification.getFeature())) {
+            Option<Edge> optionalEdge = getCorrespondingEdge(notification);
+            if (optionalEdge.some()) {
+                final Edge referenceEdge = optionalEdge.get();
+                // Analyze other notifications to detect if the source or the
+                // target of the concerned edges has been moved. In this case we
+                // consider that a "full" layout has been done and that it its
+                // responsibility to correctly set the edge layout.
+                return Iterables.all(notifications, new Predicate<Notification>() {
+                    @Override
+                    public boolean apply(Notification currentNotification) {
+                        boolean apply = false;
+                        if (currentNotification == notification) {
+                            apply = true;
+                        } else {
+                            Option<? extends View> optionalView = getCorrespondingView(currentNotification);
+                            if (optionalView.some() && optionalView.get() == referenceEdge.getSource() || optionalView.get() == referenceEdge.getTarget()) {
+                                // The notification concerns the source or the
+                                // target of the edge, return true only if the
+                                // notification does not concern a move or a
+                                // resize feature
+                                apply = !MOVE_OR_RESIZE_FEATURES.contains(currentNotification.getFeature());
+                            } else {
+                                apply = true;
+                            }
+                        }
+                        return apply;
+                    }
+                });
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Search the corresponding GMF view associated to this notification.
+     * 
+     * @param notification
+     *            The {@link Notification} to analyze
+     * @return an optional {@link View}
+     */
+    private Option<? extends View> getCorrespondingView(Notification notification) {
+        Option<? extends View> result = getCorrespondingNode(notification);
+        if (!result.some()) {
+            result = getCorrespondingEdge(notification);
+        }
+        return result;
     }
 
     /**
@@ -239,7 +306,9 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
     private Option<Edge> getCorrespondingEdge(Notification notification) {
         Edge gmfEdge = null;
         Object notifier = notification.getNotifier();
-        if (notifier instanceof DEdge) {
+        if (notifier instanceof Edge) {
+            gmfEdge = (Edge) notifier;
+        } else if (notifier instanceof DEdge) {
             gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) notifier);
         } else if (notifier instanceof EdgeStyle) {
             EObject container = ((EdgeStyle) notifier).eContainer();
@@ -260,6 +329,36 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
             return Options.newNone();
         } else {
             return Options.newSome(gmfEdge);
+        }
+    }
+
+    /**
+     * Search the corresponding GMF node associated to this notification.
+     * 
+     * @param notification
+     *            The {@link Notification} to analyze
+     * @return an optional {@link Node}
+     */
+    private Option<Node> getCorrespondingNode(Notification notification) {
+        Node gmfNode = null;
+        Object notifier = notification.getNotifier();
+        if (notifier instanceof DNode) {
+            gmfNode = SiriusGMFHelper.getGmfNode((DNode) notifier);
+        } else if (notifier instanceof Style) {
+            EObject container = ((Style) notifier).eContainer();
+            if (container instanceof DNode) {
+                gmfNode = SiriusGMFHelper.getGmfNode((DNode) container);
+            }
+        } else if (notifier instanceof Location) {
+            EObject container = ((Location) notifier).eContainer();
+            if (container instanceof Node) {
+                gmfNode = ((Node) container);
+            }
+        }
+        if (gmfNode == null) {
+            return Options.newNone();
+        } else {
+            return Options.newSome(gmfNode);
         }
     }
 }
