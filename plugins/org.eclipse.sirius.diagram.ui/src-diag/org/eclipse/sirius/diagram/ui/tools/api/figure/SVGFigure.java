@@ -114,7 +114,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     private static final boolean CACHE_ENABLED = true;
 
-    private static final boolean CACHE_SCALED_IMAGES = false;
+    private static final boolean CACHE_SCALED_IMAGES = true;
 
     /**
      * The uri of the image to display when the file has not been found.
