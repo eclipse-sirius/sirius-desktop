@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 Obeo.
+ * Copyright (c) 2013, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import javax.lang.model.SourceVersion;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.FileLocator;
@@ -448,7 +450,7 @@ public final class JavaExtensionsManager {
      *            Extension.
      */
     public void addImport(String classQualifiedName) {
-        if (classQualifiedName != null && classQualifiedName.contains(".")) { //$NON-NLS-1$
+        if (classQualifiedName != null && SourceVersion.isName(classQualifiedName)) {
             boolean newImport = this.imports.add(classQualifiedName);
             if (newImport) {
                 this.shouldLoadServices = true;
