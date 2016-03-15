@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -261,6 +261,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
+                // Just call getActiveWorkbenchWindow() to avoid potential
+                // empty list in getWorkbenchWindows() (see bug 441507).
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 Shell shell = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
                 if (System.getProperty("os.name").contains("Mac")) {
                     shell.setMaximized(AbstractSiriusSwtBotGefTestCase.fFullScreen);
