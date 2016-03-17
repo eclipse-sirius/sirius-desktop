@@ -14,14 +14,20 @@ import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.FreeformLayeredPane;
 import org.eclipse.draw2d.Layer;
 import org.eclipse.draw2d.LayeredPane;
+import org.eclipse.draw2d.ScalableFigure;
 import org.eclipse.draw2d.ScalableFreeformLayeredPane;
+import org.eclipse.draw2d.Viewport;
 import org.eclipse.gef.AutoexposeHelper;
 import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemsAwareFreeFormLayer;
+import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DConnectionLayerEx;
+import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusAnimatableZoomManager;
 
 /**
  * Installs the tree designer forest router and a scalable feedback layer.
@@ -29,6 +35,14 @@ import org.eclipse.sirius.diagram.ui.tools.internal.figure.DConnectionLayerEx;
  * @author ymortier
  */
 public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
+
+    private SiriusAnimatableZoomManager siriusZoomManager;
+
+    /**
+     * Copy of org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart.
+     * zoomLevels
+     */
+    private double[] siriusZoomLevels = { .05, .1, .25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 4 };
 
     /**
      * Constructor.
@@ -78,4 +92,23 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
         return super.getAdapter(key);
     }
 
+    @Override
+    public ZoomManager getZoomManager() {
+        if (siriusZoomManager == null) {
+            siriusZoomManager = new SiriusAnimatableZoomManager((ScalableFigure) getScaledLayers(), (Viewport) getFigure());
+            siriusZoomManager.setZoomLevels(siriusZoomLevels);
+            refreshEnableZoomAnimation(siriusZoomManager);
+        }
+
+        return siriusZoomManager;
+    }
+
+    /**
+     * Duplicated method from super DiagramRootEditPart.
+     */
+    private void refreshEnableZoomAnimation(ZoomManager zoomMangr) {
+        IPreferenceStore preferenceStore = (IPreferenceStore) getPreferencesHint().getPreferenceStore();
+        boolean animatedZoom = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM);
+        zoomMangr.setZoomAnimationStyle(animatedZoom ? ZoomManager.ANIMATE_ZOOM_IN_OUT : ZoomManager.ANIMATE_NEVER);
+    }
 }

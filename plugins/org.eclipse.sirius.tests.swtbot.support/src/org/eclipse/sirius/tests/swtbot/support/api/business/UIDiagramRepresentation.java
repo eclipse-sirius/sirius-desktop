@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,10 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
      */
     public static enum ZoomLevel {
         /**
+         * Zoom 25%.
+         */
+        ZOOM_25("25%", 0.25),
+        /**
          * Zoom 50%.
          */
         ZOOM_50("50%", 0.5),
@@ -60,6 +64,16 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
          * Zoom 125%.
          */
         ZOOM_125("125%", 1.25),
+
+        /**
+         * Zoom 150%.
+         */
+        ZOOM_150("150%", 1.50),
+
+        /**
+         * Zoom 175%.
+         */
+        ZOOM_175("175%", 1.75),
 
         /**
          * Zoom 200%.

@@ -941,6 +941,32 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * This method applies a zoom by mouse wheel scroll with the given key
+     * pressed at the given coordinates.
+     * 
+     * This method is asynchronous so make sure you wait the finishing of all UI
+     * events before testing the effect of this method.
+     * 
+     * @param xPosition
+     *            x absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param yPosition
+     *            y absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param keyCode
+     *            the keyboard key that should be pressed when doing the zoom.
+     * @param zoomIncrement
+     *            the zoom power from original zoom. A positive value for
+     *            zoom-in. A negative value for zoom out.
+     * @throws UnsupportedOperationException
+     *             if the canvas associated to this viewer is not an
+     *             SWTBotSiriusFigureCanvas.
+     */
+    public void mouseScrollWithKey(final int xPosition, final int yPosition, final int keyCode, final int zoomIncrement) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).mouseScrollWithKey(xPosition, yPosition, keyCode, zoomIncrement);
+    }
+
+    /**
      * Drag and drop the specified edit part to the specified location.
      * 
      * @param editPartBot

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_SEc7wFiYEea85cvr5QCr2w" selectedViews="_S90zwFiYEea85cvr5QCr2w" version="11.1.0.201606300900">
+  <semanticResources>mouseZoomTest.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_S90zwFiYEea85cvr5QCr2w">
+    <viewpoint xmi:type="description:Viewpoint" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']"/>
+    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_T8GZ4FiYEea85cvr5QCr2w" name="zoomMouseDiagram" representation="_T8GZ4ViYEea85cvr5QCr2w">
+      <description xmi:type="description_1:DiagramDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']"/>
+      <target xmi:type="ecore:EPackage" href="mouseZoomTest.ecore#/"/>
+    </ownedRepresentationDescriptors>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_T8GZ4ViYEea85cvr5QCr2w" name="zoomMouseDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_T8GZ4liYEea85cvr5QCr2w" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_T8GZ41iYEea85cvr5QCr2w"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_T8LSYFiYEea85cvr5QCr2w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_T8LSYViYEea85cvr5QCr2w" type="Sirius" element="_T8GZ4ViYEea85cvr5QCr2w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_T8QK4FiYEea85cvr5QCr2w" type="2003" element="_T8GZ5FiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1QFiYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1QViYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1QliYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1Q1iYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8QK4ViYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8QK4liYEea85cvr5QCr2w" x="130" y="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1RFiYEea85cvr5QCr2w" type="2003" element="_T8GZ5liYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1R1iYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1SFiYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1SViYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1SliYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1RViYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1RliYEea85cvr5QCr2w" x="313" y="165"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1S1iYEea85cvr5QCr2w" type="2003" element="_T8GZ6FiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1TliYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1T1iYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1UFiYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1UViYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1TFiYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1TViYEea85cvr5QCr2w" x="492" y="325"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1UliYEea85cvr5QCr2w" type="2003" element="_T8GZ6liYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1VViYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1VliYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1V1iYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1WFiYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1U1iYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1VFiYEea85cvr5QCr2w" x="1065" y="55"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1WViYEea85cvr5QCr2w" type="2003" element="_T8GZ7FiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1XFiYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1XViYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1XliYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1X1iYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1WliYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1W1iYEea85cvr5QCr2w" x="705" y="530"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1YFiYEea85cvr5QCr2w" type="2003" element="_T8GZ7liYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8T1Y1iYEea85cvr5QCr2w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_T8T1ZFiYEea85cvr5QCr2w" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8T1ZViYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8T1ZliYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1YViYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1YliYEea85cvr5QCr2w" x="1315" y="335"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_T8T1Z1iYEea85cvr5QCr2w" type="2002" element="_T8GZ8FiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8dmQFiYEea85cvr5QCr2w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_T8eNUFiYEea85cvr5QCr2w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_T8fbcFiYEea85cvr5QCr2w" type="3009" element="_T8GZ8liYEea85cvr5QCr2w">
+                <children xmi:type="notation:Node" xmi:id="_T8fbc1iYEea85cvr5QCr2w" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_T8gpkFiYEea85cvr5QCr2w" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_T8gpkViYEea85cvr5QCr2w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_T8gpkliYEea85cvr5QCr2w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_T8fbcViYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8fbcliYEea85cvr5QCr2w" x="30" y="159"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_T8hQoFiYEea85cvr5QCr2w" type="3009" element="_T8GZ9FiYEea85cvr5QCr2w">
+                <children xmi:type="notation:Node" xmi:id="_T8h3sFiYEea85cvr5QCr2w" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_T8h3sViYEea85cvr5QCr2w" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_T8h3sliYEea85cvr5QCr2w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_T8h3s1iYEea85cvr5QCr2w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_T8hQoViYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8hQoliYEea85cvr5QCr2w" x="30" y="29"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T8eNUViYEea85cvr5QCr2w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T8eNUliYEea85cvr5QCr2w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_T8T1aFiYEea85cvr5QCr2w" fontColor="9031421" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8T1aViYEea85cvr5QCr2w" x="60" y="305" width="373" height="318"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_T8LSYliYEea85cvr5QCr2w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_T8kT8FiYEea85cvr5QCr2w" type="4001" element="_T8GZ9liYEea85cvr5QCr2w" source="_T8QK4FiYEea85cvr5QCr2w" target="_T8T1RFiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8liEFiYEea85cvr5QCr2w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8liEViYEea85cvr5QCr2w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8mwMFiYEea85cvr5QCr2w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8mwMViYEea85cvr5QCr2w" x="4" y="8"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8nXQFiYEea85cvr5QCr2w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8nXQViYEea85cvr5QCr2w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_T8kT8ViYEea85cvr5QCr2w" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_T8kT8liYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T8kT81iYEea85cvr5QCr2w" points="[-58, 98, -241, -115]$[-58, 147, -241, -66]$[66, 147, -117, -66]$[66, 150, -117, -63]$[124, 150, -59, -63]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8rBoFiYEea85cvr5QCr2w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8rBoViYEea85cvr5QCr2w" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_T8rosFiYEea85cvr5QCr2w" type="4001" element="_T8GZ-1iYEea85cvr5QCr2w" source="_T8T1S1iYEea85cvr5QCr2w" target="_T8T1UliYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8sPwFiYEea85cvr5QCr2w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8sPwViYEea85cvr5QCr2w" x="183" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8sPwliYEea85cvr5QCr2w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8sPw1iYEea85cvr5QCr2w" x="80" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8s20FiYEea85cvr5QCr2w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8s20ViYEea85cvr5QCr2w" x="63" y="-57"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_T8rosViYEea85cvr5QCr2w" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_T8rosliYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T8ros1iYEea85cvr5QCr2w" points="[0, 0, -573, 172]$[0, -113, -573, 59]$[573, -113, 0, 59]$[573, -172, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8s20liYEea85cvr5QCr2w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8s201iYEea85cvr5QCr2w" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_T8td4FiYEea85cvr5QCr2w" type="4001" element="_T8GaAFiYEea85cvr5QCr2w" source="_T8T1WViYEea85cvr5QCr2w" target="_T8T1YFiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8td5FiYEea85cvr5QCr2w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8td5ViYEea85cvr5QCr2w" x="-13"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8uE8FiYEea85cvr5QCr2w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8uE8ViYEea85cvr5QCr2w" x="-38"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8uE8liYEea85cvr5QCr2w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8uE81iYEea85cvr5QCr2w" x="-83"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_T8td4ViYEea85cvr5QCr2w" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_T8td4liYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T8td41iYEea85cvr5QCr2w" points="[0, 0, -610, 97]$[0, -31, -610, 66]$[555, -31, -55, 66]$[555, -97, -55, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8uE9FiYEea85cvr5QCr2w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8uE9ViYEea85cvr5QCr2w" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_T8usAFiYEea85cvr5QCr2w" type="4001" element="_T8GaBViYEea85cvr5QCr2w" source="_T8fbcFiYEea85cvr5QCr2w" target="_T8hQoFiYEea85cvr5QCr2w">
+            <children xmi:type="notation:Node" xmi:id="_T8usBFiYEea85cvr5QCr2w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8usBViYEea85cvr5QCr2w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8vTEFiYEea85cvr5QCr2w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8vTEViYEea85cvr5QCr2w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_T8vTEliYEea85cvr5QCr2w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T8vTE1iYEea85cvr5QCr2w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_T8usAViYEea85cvr5QCr2w" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_T8usAliYEea85cvr5QCr2w" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_T8usA1iYEea85cvr5QCr2w" points="[0, -50, 0, 110]$[0, -110, 0, 50]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8v6IFiYEea85cvr5QCr2w" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_T8v6IViYEea85cvr5QCr2w" id="(0.5,1.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ5FiYEea85cvr5QCr2w" name="A" tooltipText="A" outgoingEdges="_T8GZ9liYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//A"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//A"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ5ViYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ5liYEea85cvr5QCr2w" name="B" tooltipText="B" incomingEdges="_T8GZ9liYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//B"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//B"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ51iYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ6FiYEea85cvr5QCr2w" name="C" tooltipText="C" outgoingEdges="_T8GZ-1iYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//C"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//C"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ6ViYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ6liYEea85cvr5QCr2w" name="D" tooltipText="D" incomingEdges="_T8GZ-1iYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//D"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//D"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ61iYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ7FiYEea85cvr5QCr2w" name="E" tooltipText="E" outgoingEdges="_T8GaAFiYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//E"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//E"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ7ViYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ7liYEea85cvr5QCr2w" name="F" tooltipText="F" incomingEdges="_T8GaAFiYEea85cvr5QCr2w" width="12" height="10">
+        <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//F"/>
+        <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//F"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ71iYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_T8GZ8FiYEea85cvr5QCr2w" name="P1">
+        <target xmi:type="ecore:EPackage" href="mouseZoomTest.ecore#//P1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="mouseZoomTest.ecore#//P1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ8ViYEea85cvr5QCr2w" labelColor="253,206,137" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid">
+          <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Dropped%20Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Dropped%20Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ8liYEea85cvr5QCr2w" name="C1A" tooltipText="C1A" outgoingEdges="_T8GaBViYEea85cvr5QCr2w" width="12" height="10">
+          <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//P1/C1A"/>
+          <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//P1/C1A"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ81iYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+            <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_T8GZ9FiYEea85cvr5QCr2w" name="C1B" tooltipText="C1B" incomingEdges="_T8GaBViYEea85cvr5QCr2w" width="12" height="10">
+          <target xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//P1/C1B"/>
+          <semanticElements xmi:type="ecore:EClass" href="mouseZoomTest.ecore#//P1/C1B"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_T8GZ9ViYEea85cvr5QCr2w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+            <description xmi:type="style:FlatContainerStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_T8GZ9liYEea85cvr5QCr2w" name="refToBCenter" sourceNode="_T8GZ5FiYEea85cvr5QCr2w" targetNode="_T8GZ5liYEea85cvr5QCr2w" beginLabel="refToBBegin" endLabel="refToBEnd">
+        <target xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//A/refToB"/>
+        <semanticElements xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//A/refToB"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_T8GZ91iYEea85cvr5QCr2w" sourceArrow="Diamond" routingStyle="manhattan" strokeColor="0,0,0">
+          <description xmi:type="style:EdgeStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_T8GZ-FiYEea85cvr5QCr2w"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_T8GZ-ViYEea85cvr5QCr2w" showIcon="false"/>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_T8GZ-liYEea85cvr5QCr2w" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_T8GZ-1iYEea85cvr5QCr2w" name="refToDCenter" sourceNode="_T8GZ6FiYEea85cvr5QCr2w" targetNode="_T8GZ6liYEea85cvr5QCr2w" beginLabel="refToDBegin" endLabel="refToDEnd">
+        <target xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//C/refToD"/>
+        <semanticElements xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//C/refToD"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_T8GZ_FiYEea85cvr5QCr2w" sourceArrow="Diamond" routingStyle="manhattan" strokeColor="0,0,0">
+          <description xmi:type="style:EdgeStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_T8GZ_ViYEea85cvr5QCr2w"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_T8GZ_liYEea85cvr5QCr2w" showIcon="false"/>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_T8GZ_1iYEea85cvr5QCr2w" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_T8GaAFiYEea85cvr5QCr2w" name="refToFCenter" sourceNode="_T8GZ7FiYEea85cvr5QCr2w" targetNode="_T8GZ7liYEea85cvr5QCr2w" beginLabel="refToFBegin" endLabel="refToFEnd">
+        <target xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//E/refToF"/>
+        <semanticElements xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//E/refToF"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_T8GaAViYEea85cvr5QCr2w" sourceArrow="Diamond" routingStyle="manhattan" strokeColor="0,0,0">
+          <description xmi:type="style:EdgeStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_T8GaAliYEea85cvr5QCr2w"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_T8GaA1iYEea85cvr5QCr2w" showIcon="false"/>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_T8GaBFiYEea85cvr5QCr2w" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_T8GaBViYEea85cvr5QCr2w" name="refToC1BCenter" sourceNode="_T8GZ8liYEea85cvr5QCr2w" targetNode="_T8GZ9FiYEea85cvr5QCr2w" beginLabel="refToC1BBegin" endLabel="refToC1BEnd">
+        <target xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//P1/C1A/refToC1B"/>
+        <semanticElements xmi:type="ecore:EReference" href="mouseZoomTest.ecore#//P1/C1A/refToC1B"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_T8GaBliYEea85cvr5QCr2w" sourceArrow="Diamond" routingStyle="manhattan" strokeColor="0,0,0">
+          <description xmi:type="style:EdgeStyleDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_T8GaB1iYEea85cvr5QCr2w"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_T8GaCFiYEea85cvr5QCr2w" showIcon="false"/>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_T8GaCViYEea85cvr5QCr2w" showIcon="false"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_T8GaCliYEea85cvr5QCr2w"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="VSMForMouseZoomTest.odesign#//@ownedViewpoints[name='VSMForMouseZoomTest']/@ownedRepresentations[name='Diagram']/@additionalLayers[name='Package']"/>
+      <target xmi:type="ecore:EPackage" href="mouseZoomTest.ecore#/"/>
+    </ownedRepresentations>
+  </ownedViews>
+</viewpoint:DAnalysis>

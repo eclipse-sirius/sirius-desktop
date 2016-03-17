@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -235,6 +235,56 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
 
                 org.eclipse.swt.events.MouseEvent meUp = wrapMouseEvent(toXPosition, toYPosition, 1, SWT.BUTTON1, 1);
                 eventDispatcher.dispatchMouseReleased(meUp);
+                if (keyCode != SWT.None) {
+                    eventDispatcher.dispatchKeyReleased(keyEvent);
+                }
+            }
+        });
+    }
+
+    /**
+     * This method applies a zoom by mouse wheel scroll with the given key
+     * pressed at the given coordinates.
+     * 
+     * This method is asynchronous so make sure you wait the finishing of all UI
+     * events before testing the effect of this method.
+     * 
+     * @param xPosition
+     *            x absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param yPosition
+     *            y absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param keyCode
+     *            the keyboard key that should be pressed when doing the zoom.
+     * @param zoomIncrement
+     *            the zoom power from original zoom. A positive value for
+     *            zoom-in. A negative value for zoom out.
+     */
+    public void mouseScrollWithKey(final int xPosition, final int yPosition, final int keyCode, final int zoomIncrement) {
+        UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
+            public void run() {
+
+                KeyEvent keyEvent = null;
+                if (keyCode != SWT.None) {
+                    keyEvent = new KeyEvent(createEvent());
+                    keyEvent.keyCode = keyCode;
+                    keyEvent.doit = true;
+                    eventDispatcher.dispatchKeyPressed(keyEvent);
+                }
+
+                final Event event = new Event();
+                event.type = SWT.MouseWheel;
+                event.keyCode = SWT.MouseHorizontalWheel;
+                event.detail = SWT.SCROLL_LINE;
+                event.stateMask = SWT.CTRL;
+                event.x = xPosition;
+                event.y = yPosition;
+                event.count = zoomIncrement;
+
+                eventDispatcher.dispatchMouseWheelScrolled(event);
+
                 if (keyCode != SWT.None) {
                     eventDispatcher.dispatchKeyReleased(keyEvent);
                 }

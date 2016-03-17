@@ -75,6 +75,11 @@ When the diagram is larger than the editor area, you can move it in all directio
 
 <video height="240" src="videos/moveInAllDirections.mp4" target="_self" autoplay="autoplay" loop="loop"></video>
 
+h3(#zooming_diagram_id). Zooming the diagram
+
+The zoom on a diagram can be done by using the tools in the palette like explained in "Chapter Standard Tools":#standardToolId.
+Or by using the combination of the keyboard key _CTRL_ and the mouse wheel. Since Sirius 4.1.0, in this case, the zoom is done on the mouse location instead of the center of the editor.
+
 h3. Resizing elements
 
 If the specifier has authorized it, it is possible to resize a shape by dragging them until they are the size that you want.
@@ -636,7 +641,7 @@ __Moving__. If you prefer, you can move the palette to the left side of the diag
 
 	!images/palette_moving.png!
 
-h4. Standard Tools
+h4(#standardToolId). Standard Tools
 
 A few general tools are available in standard on all Sirius diagrams. They appear in the top row of the palette, just below the header.
 

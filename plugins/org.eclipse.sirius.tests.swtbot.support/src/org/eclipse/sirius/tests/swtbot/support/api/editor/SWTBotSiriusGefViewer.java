@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -322,6 +322,36 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
             ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
         } else {
             canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
+        }
+    }
+
+    /**
+     * This method applies a zoom by mouse wheel scroll with the given key
+     * pressed at the given coordinates.
+     * 
+     * This method is asynchronous so make sure you wait the finishing of all UI
+     * events before testing the effect of this method.
+     * 
+     * @param xPosition
+     *            x absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param yPosition
+     *            y absolute position of the mouse from which we do the zoom by
+     *            mouse wheel scroll.
+     * @param keyCode
+     *            the keyboard key that should be pressed when doing the zoom.
+     * @param zoomIncrement
+     *            the zoom power from original zoom. A positive value for
+     *            zoom-in. A negative value for zoom out.
+     * @throws UnsupportedOperationException
+     *             if the canvas associated to this viewer is not an
+     *             SWTBotSiriusFigureCanvas.
+     */
+    public void mouseScrollWithKey(final int xPosition, final int yPosition, final int keyCode, final int zoomIncrement) {
+        if (canvas instanceof SWTBotSiriusFigureCanvas) {
+            ((SWTBotSiriusFigureCanvas) canvas).mouseScrollWithKey(xPosition, yPosition, keyCode, zoomIncrement);
+        } else {
+            throw new UnsupportedOperationException("This method is supported only by SWTBotSiriusFigureCanvas canvas and not by " + canvas.getClass().getSimpleName());
         }
     }
 

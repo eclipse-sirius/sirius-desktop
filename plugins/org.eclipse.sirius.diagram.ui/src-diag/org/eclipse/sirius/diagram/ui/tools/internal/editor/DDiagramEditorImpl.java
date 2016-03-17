@@ -52,7 +52,6 @@ import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
-import org.eclipse.gef.MouseWheelZoomHandler;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.CommandStack;
@@ -154,6 +153,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderC
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.TabbarRefresher;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusMouseWheelZoomHandler;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramMenuUpdater;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineControl;
@@ -816,8 +816,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 
             getOperationHistory().addOperationHistoryListener(operationHistoryListener);
-            // add the wheel mouse to zoom
-            this.getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), MouseWheelZoomHandler.SINGLETON);
         } else {
             workspaceViewerPreferenceStore = new PreferenceStore();
             if (getDiagramGraphicalViewer() instanceof DiagramGraphicalViewer) {
@@ -1398,6 +1396,21 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected void setGraphicalViewer(GraphicalViewer viewer) {
         viewer.setProperty(EDITOR_ID, this);
         super.setGraphicalViewer(viewer);
+    }
+
+    /*
+     * We override this method because the super type DiagramEditor initialize
+     * the default zoom handler in this method. So we replace it by our own
+     * handler just after. (non-Javadoc)
+     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor#
+     * initializeGraphicalViewerContents()
+     */
+    @Override
+    protected void initializeGraphicalViewerContents() {
+        super.initializeGraphicalViewerContents();
+        // add the wheel mouse to zoom
+        this.getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), SiriusMouseWheelZoomHandler.SINGLETON);
+
     }
 
     @Override

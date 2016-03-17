@@ -105,6 +105,9 @@
 			<li><span class="label label-info">Modified</span> The 
 				<a href="./user/diagrams/Diagrams.html#move_edge_group">move edge group</a> feature now also work for a selection of edge group.
 			</li>
+			<li><span class="label label-info">Modified</span> In a diagram editor, the zoom with mouse wheel is now zooming on mouse location instead of center of the editor. See 
+				<a href="./user/diagrams/Diagrams.html#zooming_diagram_id">user documentation</a> .
+			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -287,6 +290,17 @@
 				<code>getRepresentationDescriptorFromRepresentation(DRepresentation)</code> have been added in class 
 				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> to adapt tests considering the 
 				<code>DView.ownedRepresentationDescriptors</code> addition.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The utility method 
+				<code>mouseScrollWithKey(int, int, int, int)</code>, has been added in classes 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer</code> and 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas</code> to allow testing events occurring after a mouse scroll combined to a keyboard key pressed at a given absolute position.  
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
@@ -736,7 +750,7 @@
 				<code>genericSetUp</code> behavior.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1246,7 +1260,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -2199,7 +2213,7 @@
 				<code>org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)</code> can be used instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -2643,7 +2657,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support5">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
