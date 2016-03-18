@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -187,8 +189,16 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, List<FontFormat> viewpointStyle, boolean underlined, boolean strikedThrough, String fontName,
             int fontSize, int fontColor) {
         // Check the state of draw2d label, GMF view and Sirius style.
-        if (editPart.part() instanceof AbstractDiagramNameEditPart) {
-            AbstractDiagramNameEditPart part = (AbstractDiagramNameEditPart) editPart.part();
+        EditPart currentPart = editPart.part();
+        if (currentPart instanceof AbstractDEdgeNameEditPart) {
+            // For AbstractDEdgeNameEditPart, the parent
+            // AbstractDiagramEdgeEditPart must be considered (the
+            // GMF styles is
+            // supported by the Edge view)
+            currentPart = currentPart.getParent();
+        }
+        if (currentPart instanceof AbstractDiagramNameEditPart) {
+            AbstractDiagramNameEditPart part = (AbstractDiagramNameEditPart) currentPart;
 
             assertTrue("The figure of this part should be a SiriusWrapLabel.", part.getFigure() instanceof SiriusWrapLabel);
             SiriusWrapLabel label = (SiriusWrapLabel) part.getFigure();
@@ -199,8 +209,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
 
             DDiagramElement viewpointNode = part.resolveDiagramElement();
             checkFont(viewpointNode, viewpointStyle);
-        } else if (editPart.part() instanceof AbstractDiagramElementContainerEditPart) {
-            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) editPart.part();
+        } else if (currentPart instanceof AbstractDiagramElementContainerEditPart) {
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) currentPart;
             AbstractDiagramNameEditPart labelPart = (AbstractDiagramNameEditPart) part.getChildren().get(0);
 
             assertTrue("The figure of this part should be a SiriusWrapLabel.", labelPart.getFigure() instanceof SiriusWrapLabel);
@@ -212,8 +222,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
 
             DDiagramElement viewpointNode = part.resolveDiagramElement();
             checkFont(viewpointNode, viewpointStyle);
-        } else if (editPart.part() instanceof AbstractDiagramEdgeEditPart) {
-            AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) editPart.part();
+        } else if (currentPart instanceof AbstractDiagramEdgeEditPart) {
+            AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) currentPart;
             AbstractDiagramNameEditPart labelPart = (AbstractDiagramNameEditPart) part.getChildren().get(0);
 
             assertTrue("The figure of this part should be a SiriusWrapLabel.", labelPart.getFigure() instanceof SiriusWrapLabel);
@@ -227,7 +237,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
             DDiagramElement viewpointNode = part.resolveDiagramElement();
             checkFont(viewpointNode, viewpointStyle);
         } else {
-            fail("The case of \"" + editPart.part().getClass().getName() + "\" is not managed by this method.");
+            fail("The case of \"" + currentPart.getClass().getName() + "\" is not managed by this method.");
         }
     }
 

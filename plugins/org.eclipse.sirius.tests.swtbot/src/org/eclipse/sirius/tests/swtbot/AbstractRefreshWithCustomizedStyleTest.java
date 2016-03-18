@@ -14,10 +14,15 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.properties.ResetStylePropertiesToDefaultValuesSelectionAdapter;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
@@ -242,7 +247,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 2: Enable button and check result
         checkboxToTest.click();
         assertTrue("Checkbox should be checked", checkboxToTest.isChecked());
-        assertTrue("The radio " + checkboxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore", stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
+        assertTrue("The radio " + checkboxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
+                stateWhenRadioIsModifiedPredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
 
         // Step 3: Refresh
@@ -333,7 +339,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 2: Enable button and check result
         comboBoxToTest.setSelection(modifiedComboValue);
-        assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore", stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
+        assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
+                stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
 
@@ -345,7 +352,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 4: re-enable button and check result
         comboBoxToTest.setSelection(modifiedComboValue);
-        assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore", stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
+        assertTrue("The combo " + comboBoxToTest.getToolTipText() + " has been modified, so the initial state should not be checked anymore",
+                stateWhenComboIsModifiedPredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
 
@@ -742,7 +750,19 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 6: Reopen diagram
         editor.close();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
-        selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        if (DEdgeEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge in the new editor
+            Edge gmfEdge = (Edge) ((DEdgeEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfEdge.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeEditPart.class);
+        } else if (DEdgeNameEditPart.class.isInstance(selectedEditPart.part())) {
+            // Select the corresponding DEdge name in the new editor
+            Node gmfNode = (Node) ((DEdgeNameEditPart) selectedEditPart.part()).getModel();
+            DEdge dEdge = (DEdge) gmfNode.getElement();
+            selectedEditPart = editor.getEditPart(dEdge.getName(), DEdgeNameEditPart.class);
+        } else {
+            selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
+        }
         selectedEditPart.select();
         buttonFromTabbarToTest = bot.toolbarToggleButtonWithTooltip(tabbarButtonTooltip);
         resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromTabbar();

@@ -18,6 +18,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
@@ -191,6 +193,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestBoldFromToolbar("myAttribute", DNodeListElementEditPart.class);
         doTestBoldFromToolbar("myPackage", DNodeContainerEditPart.class);
         doTestBoldFromToolbar("myPackage2", DNodeContainer2EditPart.class);
+        doTestBoldFromToolbar("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestBoldFromToolbar("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -217,6 +221,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestItalicFromToolbar("myAttribute", DNodeListElementEditPart.class);
         doTestItalicFromToolbar("myPackage", DNodeContainerEditPart.class);
         doTestItalicFromToolbar("myPackage2", DNodeContainer2EditPart.class);
+        doTestItalicFromToolbar("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestItalicFromToolbar("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -243,6 +249,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestChangeLabelColorFromTabbar("myAttribute", DNodeListElementEditPart.class);
         doTestChangeLabelColorFromTabbar("myPackage", DNodeContainerEditPart.class);
         doTestChangeLabelColorFromTabbar("myPackage2", DNodeContainer2EditPart.class);
+        doTestChangeLabelColorFromTabbar("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestChangeLabelColorFromTabbar("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**
@@ -288,6 +296,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         doTestItalicAndBoldFromToolbar("myAttribute", DNodeListElementEditPart.class);
         doTestItalicAndBoldFromToolbar("myPackage", DNodeContainerEditPart.class);
         doTestItalicAndBoldFromToolbar("myPackage2", DNodeContainer2EditPart.class);
+        doTestItalicAndBoldFromToolbar("[0..1] newEReference1", DEdgeEditPart.class);
+        doTestItalicAndBoldFromToolbar("[0..1] newEReference1", DEdgeNameEditPart.class);
     }
 
     /**

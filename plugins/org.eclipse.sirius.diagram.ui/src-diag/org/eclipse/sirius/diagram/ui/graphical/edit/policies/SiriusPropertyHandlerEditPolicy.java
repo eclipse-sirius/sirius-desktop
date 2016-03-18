@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -80,7 +82,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
 
         if (styleCommand != null) {
             final CompoundCommand cc = new CompoundCommand();
-            cc.setDebugLabel(Messages.SiriusPropertyHandlerEditPolicy_chainedStyleCommandDebugLabel); 
+            cc.setDebugLabel(Messages.SiriusPropertyHandlerEditPolicy_chainedStyleCommandDebugLabel);
             cc.add(c);
             cc.add(styleCommand);
             return cc;
@@ -186,5 +188,16 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
             return new ICommandProxy(colorCommand);
         }
         return null;
+    }
+
+    @Override
+    public EditPart getTargetEditPart(Request request) {
+        EditPart result = super.getTargetEditPart(request);
+        if (result instanceof AbstractDEdgeNameEditPart && result.getParent() instanceof AbstractDiagramEdgeEditPart) {
+            // For DEdge name, this kind of request is handled by its parent
+            // DEdge.
+            return result.getParent();
+        }
+        return result;
     }
 }

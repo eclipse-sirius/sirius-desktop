@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -149,6 +151,13 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
             for (Object obj : structuredSelection.toList()) {
                 if (obj instanceof IGraphicalEditPart) {
                     IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) obj;
+                    if (graphicalEditPart instanceof AbstractDEdgeNameEditPart && graphicalEditPart.getParent() instanceof AbstractDiagramEdgeEditPart) {
+                        // For AbstractDEdgeNameEditPart, the parent
+                        // AbstractDiagramEdgeEditPart must be considered (the
+                        // GMF styles is
+                        // supported by the Edge view)
+                        graphicalEditPart = (IGraphicalEditPart) graphicalEditPart.getParent();
+                    }
                     View view = graphicalEditPart.getNotationView();
                     EObject element = view.getElement();
                     if (element instanceof DDiagramElement) {
