@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -67,23 +68,22 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
 
     private static final String NODE_NAME_ROOT2 = "root2";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+    }
+
+    private SWTBotSiriusDiagramEditor openTestDiagram(String descriptionName, String representationName) {
+        SWTBotEditor result = openRepresentation(localSession.getOpenedSession(), descriptionName, representationName, DDiagram.class, true);
+        return (SWTBotSiriusDiagramEditor) result;
     }
 
     /**
@@ -99,7 +99,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropSourceRoot2BottomtoBottomEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 220, 100, 220, 47);
         // Select node root2
@@ -112,7 +112,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 255, 230, 255, 100, 220, 100, 220, 47);
         // Close editor
@@ -133,7 +133,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropSourceRoot2BottomToTopEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 220, 100, 220, 47);
         // Select node root2
@@ -146,7 +146,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 45, 120, 100, 220, 100, 220, 47);
         // Close editor
@@ -167,7 +167,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropSourceRoot2TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 305, 175, 305, 120);
         // Select node root2
@@ -180,7 +180,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 385, 230, 385, 175, 305, 175, 305, 120);
         // Close editor
@@ -200,7 +200,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropSourceRoot2TopToTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 305, 175, 305, 120);
         // Select node root2
@@ -213,7 +213,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 85, 75, 85, 175, 305, 175, 305, 120);
         // Close editor
@@ -233,7 +233,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropTargetRoot1ToptoTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 220, 100, 220, 47);
         // Select node root1
@@ -246,7 +246,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 290, 100, 290, 72);
         // Close editor
@@ -267,7 +267,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropTargetRoot1TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 220, 100, 220, 47);
         // Select node root1
@@ -280,7 +280,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 100, 260, 100, 260, 170);
         // Close editor
@@ -301,7 +301,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropTargetRoot1TopToBottomEdgeBellow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 305, 175, 305, 120);
         // Select node root1
@@ -314,7 +314,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 335, 175, 335, 240);
         // Close editor
@@ -334,7 +334,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testTreeLayoutDragNDropTargetRoot1TopToTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 305, 175, 305, 120);
         // Select node root1
@@ -347,7 +347,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_BREAKDOWN_ABOVE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 185, 120, 185, 175, 355, 175, 355, 75);
         // Close editor
@@ -368,8 +368,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropTargetRoot1BottomtoBottomEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 340, 215, 340, 255);
         // Select node root1
@@ -382,7 +381,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 435, 215, 435, 350);
         // Close editor
@@ -403,8 +402,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropTargetRoot1BottomToTopEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 340, 215, 340, 255);
         // Select node root1
@@ -417,7 +415,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 410, 215, 410, 170);
         // Close editor
@@ -437,8 +435,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropSourceRoot2ToptoTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 340, 215, 340, 255);
         // Select node root2
@@ -451,7 +448,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 85, 120, 85, 215, 340, 215, 340, 255);
         // Close editor
@@ -472,8 +469,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropSourceRoot2TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 170, 170, 170, 215, 340, 215, 340, 255);
         // Select node root2
@@ -486,7 +482,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 215, 340, 215, 340, 255);
         // Close editor
@@ -507,8 +503,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropTargetRoot1TopToBottomEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 340, 210, 340, 255);
         // Select node root1
@@ -521,7 +516,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 265, 210, 265, 325);
         // Close editor
@@ -542,8 +537,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropTargetRoot1TopToTopEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 340, 210, 340, 255);
         // Select node root1
@@ -556,7 +550,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 265, 210, 265, 170);
         // Close editor
@@ -577,8 +571,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBottomDragNDropSourceRoot2TopToBottomEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 340, 210, 340, 255);
         // Select node root2
@@ -591,7 +584,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 65, 350, 65, 210, 340, 210, 340, 255);
         // Close editor
@@ -612,8 +605,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutTopToBotttomDragNDropSourceRoot2TopToTopEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 120, 255, 120, 210, 340, 210, 340, 255);
         // Select node root2
@@ -626,7 +618,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_TOP_TO_BOTTOM, REPRESENTATION_NAME_BREAKDOWN_TOP_TO_BOTTOM_BELOW_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 85, 170, 85, 210, 340, 210, 340, 255);
         // Close editor
@@ -647,8 +639,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropSourceRoot2BottomtoBottomEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 250, 145, 250, 100);
         // Select node root2
@@ -661,7 +652,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 550, 275, 550, 145, 250, 145, 250, 100);
         // Close editor
@@ -682,8 +673,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropSourcetRoot2BottomToTopEdgeAbove() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 250, 145, 250, 100);
         // Select node root2
@@ -696,7 +686,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 535, 100, 535, 145, 250, 145, 250, 100);
         // Close editor
@@ -717,8 +707,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropSourceRoot2TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 190, 195, 190, 150);
         // Select node root2
@@ -731,7 +720,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 475, 270, 475, 195, 190, 195, 190, 150);
         // Close editor
@@ -752,8 +741,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropSourceRoot2TopToTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 190, 195, 190, 150);
         // Select node root2
@@ -766,7 +754,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 485, 105, 485, 195, 190, 195, 190, 150);
         // Close editor
@@ -786,8 +774,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropTargetRoot1ToptoTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 250, 145, 250, 100);
         // Select node root1
@@ -800,7 +787,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 145, 145, 145, 75);
         // Close editor
@@ -821,8 +808,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropTargetRoot1TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class,
-                true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 250, 145, 250, 100);
         // Select node root1
@@ -835,7 +821,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 450, 200, 450, 145, 80, 145, 80, 200);
         // Close editor
@@ -856,8 +842,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomtoTopDragNDropTargetRoot1TopToBottomEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 190, 195, 190, 150);
         // Select node root1
@@ -870,7 +855,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 100, 195, 100, 230);
         // Close editor
@@ -891,8 +876,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
      * </ol>
      */
     public void testCompositeLayoutBottomToTopDragNDropTargetRoot1TopToTopEdgeBelow() {
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE,
-                DDiagram.class, true);
+        SWTBotSiriusDiagramEditor editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location.
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 190, 195, 190, 150);
         // Select node root1
@@ -905,7 +889,7 @@ public class SpecificLayoutBendpointsOnReopeningTest extends AbstractSiriusSwtBo
         // Save and close representation
         editor.saveAndClose();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE, DDiagram.class, true);
+        editor = openTestDiagram(REPRESENTATION_DESCRIPTION_NAME_BOTTOM_TO_TOP, REPRESENTATION_NAME_BREAKDOWN_BOTTOM_TO_TOP_ABOVE_EDGE);
         // Retrieve edge point location
         checkPositionEdge(editor, NODE_NAME_ROOT2, NODE_NAME_ROOT1, 390, 150, 390, 195, 110, 195, 110, 90);
         // Close editor

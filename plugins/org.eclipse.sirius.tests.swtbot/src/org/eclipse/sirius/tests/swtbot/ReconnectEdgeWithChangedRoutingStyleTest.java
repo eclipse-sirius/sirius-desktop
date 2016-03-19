@@ -86,16 +86,13 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         /*
          * Force the addition of a dependency to the sample ecore editor
          * otherwise the interpreter has no way to retrieve the service class

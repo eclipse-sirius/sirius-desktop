@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPrefer
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
@@ -51,9 +52,6 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      */
     protected abstract Collection<List<String>> getElementPathsToCheckNoEffectInWizard();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getRepresentationId() {
         return InteractionsConstants.SEQUENCE_DIAGRAM_REPRESENTATION_ID;
@@ -67,7 +65,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
         Option<String> dRepresentationName = getDRepresentationName();
         if (dRepresentationName.some()) {
-            editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
         }
 
         initEditor();

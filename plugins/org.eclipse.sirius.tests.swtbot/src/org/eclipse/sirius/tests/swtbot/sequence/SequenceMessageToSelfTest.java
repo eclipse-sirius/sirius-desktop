@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIs
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
@@ -292,10 +293,11 @@ public class SequenceMessageToSelfTest extends AbstractDefaultModelSequenceTests
         assertMessageVerticalPosition(SECOND_MESSAGE, getLogicalPosition(LIFELINE_A).y + getLogicalSize(LIFELINE_A).height + LayoutConstants.TIME_START_OFFSET);
         assertMessageVerticalPosition(FIRST_MESSAGE, getSequenceMessageLastPointScreenVerticalPosition(THIRD_MESSAGE_TO_SELF) + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP);
 
-        assertEquals("The message named " + THIRD_MESSAGE_TO_SELF + " is not at the expected vertical position", getSequenceMessageScreenVerticalPosition(SECOND_MESSAGE)
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getSequenceMessageScreenVerticalPosition(THIRD_MESSAGE_TO_SELF), 1);
-        assertEquals("The message named " + THIRD_MESSAGE_TO_SELF + " is not at the expected vertical position", getSequenceMessageScreenVerticalPosition(THIRD_MESSAGE_TO_SELF)
-                + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP, getSequenceMessageLastPointScreenVerticalPosition(THIRD_MESSAGE_TO_SELF));
+        assertEquals("The message named " + THIRD_MESSAGE_TO_SELF + " is not at the expected vertical position",
+                getSequenceMessageScreenVerticalPosition(SECOND_MESSAGE) + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getSequenceMessageScreenVerticalPosition(THIRD_MESSAGE_TO_SELF), 1);
+        assertEquals("The message named " + THIRD_MESSAGE_TO_SELF + " is not at the expected vertical position",
+                getSequenceMessageScreenVerticalPosition(THIRD_MESSAGE_TO_SELF) + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP,
+                getSequenceMessageLastPointScreenVerticalPosition(THIRD_MESSAGE_TO_SELF));
 
         // Validates the semantic ordering equals the graphical ordering
         assertTrue("The semantic ordering does not match the graphical ordering",
@@ -627,7 +629,7 @@ public class SequenceMessageToSelfTest extends AbstractDefaultModelSequenceTests
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, session_file_2305);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
 
-        editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), representation_instance_name_2305, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), representation_instance_name_2305, DDiagram.class);
 
         maximizeEditor(editor);
         // Reveal A to scroll to the left

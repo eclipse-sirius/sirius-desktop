@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -55,30 +56,25 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
      */
     private static final String SUFFIX = "Suffix";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
     }
 
     /**
      * This method checks
      * <UL>
      * <LI>that the display label during a direct edit of a Node corresponds to
-     * the expected one (specified in inputLabelExpression of directEditTool)</LI>
+     * the expected one (specified in inputLabelExpression of directEditTool)
+     * </LI>
      * <LI>and that the application of the tool is OK.</LI>
      * </UL>
      * 
@@ -109,7 +105,8 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
      * This method checks
      * <UL>
      * <LI>that the display label during a direct edit of a List corresponds to
-     * the expected one (specified in inputLabelExpression of directEditTool)</LI>
+     * the expected one (specified in inputLabelExpression of directEditTool)
+     * </LI>
      * <LI>and that the application of the tool is OK.</LI>
      * </UL>
      * 
@@ -205,6 +202,7 @@ public class DirectEditWithInputLabelTest extends AbstractSiriusSwtBotGefTestCas
         if (controls.size() == 1) {
             final Text textControl = controls.get(0);
             UIThreadRunnable.syncExec(new VoidResult() {
+                @Override
                 public void run() {
                     assertEquals(CLASS_NAME, textControl.getText());
                 }

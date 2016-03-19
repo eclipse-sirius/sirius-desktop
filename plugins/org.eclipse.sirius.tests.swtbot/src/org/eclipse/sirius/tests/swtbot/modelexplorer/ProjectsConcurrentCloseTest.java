@@ -93,9 +93,7 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
         SWTBotUtils.waitAllUiEvents();
@@ -122,10 +120,12 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
 
         bot.waitUntil(new DefaultCondition() {
 
+            @Override
             public boolean test() throws Exception {
                 return SWTBotUtils.hasContextMenu(uiProject.getProjectTreeItem(), "Convert to Modeling Project");
             }
 
+            @Override
             public String getFailureMessage() {
                 return "Convert menu was not available on " + projectName;
             }
@@ -150,13 +150,16 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
         modelExplorerViewBot.tree().select(getProjectName(), getProject2Name());
         bot.waitUntil(new ICondition() {
 
+            @Override
             public boolean test() throws Exception {
                 return modelExplorerViewBot.tree().selectionCount() == 2;
             }
 
+            @Override
             public void init(SWTBot bot) {
             }
 
+            @Override
             public String getFailureMessage() {
                 return "Two projects should be selected.";
             }
@@ -179,8 +182,8 @@ public class ProjectsConcurrentCloseTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void testProjectConcurrentCloseWithOpenedDiagrams() {
         // open a diagram per session.
-        openDiagram(localSession.getOpenedSession(), "Entities", "p package entities", DDiagram.class);
-        openDiagram(localSession2.getOpenedSession(), "Entities", "p package entities", DDiagram.class);
+        openRepresentation(localSession.getOpenedSession(), "Entities", "p package entities", DDiagram.class);
+        openRepresentation(localSession2.getOpenedSession(), "Entities", "p package entities", DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         // close projects

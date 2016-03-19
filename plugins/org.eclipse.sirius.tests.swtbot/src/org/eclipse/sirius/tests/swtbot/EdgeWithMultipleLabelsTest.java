@@ -99,7 +99,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     private void openDiagram(String name) {
-        editor = openDiagram(localSession.getOpenedSession(), name, name, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), name, name, DDiagram.class);
     }
 
     private boolean error;

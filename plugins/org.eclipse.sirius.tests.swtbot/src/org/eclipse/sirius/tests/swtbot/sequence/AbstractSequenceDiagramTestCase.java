@@ -64,6 +64,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -361,7 +362,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
             Option<String> dRepresentationName = getDRepresentationName();
             if (dRepresentationName.some()) {
-                editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
+                editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
             }
         }
 
@@ -391,6 +392,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         }
     }
 
+    @Override
     protected SWTBotMenu arrangeAll() {
         // Give the focus to the editor
         editor.setFocus();
@@ -414,12 +416,14 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
      * @deprecated Use {@link #closeErrorLogViewByAPI()} instead. This method is
      *             faster.
      */
+    @Deprecated
     protected void closeErrorLogView() throws Exception {
         bot.viewByTitle("Error Log").close();
     }
 
     protected void closeErrorLogViewByAPI() throws Exception {
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+            @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 IViewPart errorLogView = page.findView("org.eclipse.pde.runtime.LogView");
@@ -551,6 +555,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
                 return selected || correctLocation;
             }
 
+            @Override
             public void describeTo(Description description) {
             }
         });
@@ -591,6 +596,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
                 return selected || probablyCorrectLocation;
             }
 
+            @Override
             public void describeTo(Description description) {
             }
         });
@@ -730,6 +736,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
                 return selected || probablyCorrectLocation;
             }
 
+            @Override
             public void describeTo(Description description) {
             }
         });
@@ -756,6 +763,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
 
         Predicate<SWTBotGefEditPart> combinedFragmentIncludingClickLocation = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 if (input.part() instanceof CombinedFragmentEditPart) {
                     CombinedFragmentEditPart combinedFragmentEditPart = (CombinedFragmentEditPart) input.part();
@@ -847,6 +855,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
                 return editPart.getSelected() == EditPart.SELECTED_PRIMARY;
             }
 
+            @Override
             public void describeTo(Description description) {
             }
         });
@@ -1199,6 +1208,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
 
     protected LifelineEditPart getLifelineEditPart(String lifelineName) {
         Predicate<SWTBotGefEditPart> pred = new Predicate<SWTBotGefEditPart>() {
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 return input.part() instanceof LifelineEditPart;
             };
@@ -1229,11 +1239,13 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
             return;
 
         Matcher<? extends EditPart> m = new BaseMatcher<EditPart>() {
+            @Override
             public boolean matches(Object item) {
                 // TODO Auto-generated method stub
                 return editPartsToSelect.contains(item);
             }
 
+            @Override
             public void describeTo(Description description) {
             }
         };

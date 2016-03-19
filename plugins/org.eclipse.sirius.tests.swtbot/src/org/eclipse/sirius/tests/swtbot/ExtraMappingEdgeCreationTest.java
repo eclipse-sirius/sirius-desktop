@@ -64,29 +64,23 @@ public class ExtraMappingEdgeCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     protected UIDiagramRepresentation diagram;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         // Check that edge type is available on source and target extra mapping
         assertEquals("", DescriptionPackage.eINSTANCE.getDiagramElementMapping(), ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraSourceMappings().getEReferenceType());
         assertEquals("", DescriptionPackage.eINSTANCE.getDiagramElementMapping(), ToolPackage.eINSTANCE.getEdgeCreationDescription_ExtraTargetMappings().getEReferenceType());
-   
+
     }
 
     /**
@@ -105,8 +99,8 @@ public class ExtraMappingEdgeCreationTest extends AbstractSiriusSwtBotGefTestCas
         // Check that the edge must be connect between edge and node
         done = new OperationDoneCondition();
         editor.click(((ViewEdgeFigure) edgeContain.getFigure()).getPoints().getMidpoint());
-        editor.click(((NodeFigure) ((GraphicalEditPart) nodeToConnect.part()).getFigure()).getBounds().getCenter().getCopy().x, ((NodeFigure) ((GraphicalEditPart) nodeToConnect.part()).getFigure())
-                .getBounds().getCenter().getCopy().y);
+        editor.click(((NodeFigure) ((GraphicalEditPart) nodeToConnect.part()).getFigure()).getBounds().getCenter().getCopy().x,
+                ((NodeFigure) ((GraphicalEditPart) nodeToConnect.part()).getFigure()).getBounds().getCenter().getCopy().y);
         // Check that creation of 'contains' relation is ok
         edgeContain = getSingleDEdgeFrom("aroot1");
         assertEquals("The relation 'contains' should be connect on'P1' node", edgeContain, nodeToConnect.targetConnections().get(1).part());
@@ -144,8 +138,8 @@ public class ExtraMappingEdgeCreationTest extends AbstractSiriusSwtBotGefTestCas
         assertEquals("It should not be have a relation 'contains' between 'p1' node and 'aroot2' node", 0, nodeToConnect.targetConnections().size());
         editor.save();
         // Check in semantic model that 'aroot2' was containing by 'aroot1'
-        assertEquals("The Eannotation should be child of 'arrot1'", "aroot2", ((EPackage) ((DNode) ((Node) targetRoot2.part().getModel()).getElement()).getTarget()).getEAnnotations().get(0)
-                .getEAnnotations().get(0).getSource());
+        assertEquals("The Eannotation should be child of 'arrot1'", "aroot2",
+                ((EPackage) ((DNode) ((Node) targetRoot2.part().getModel()).getElement()).getTarget()).getEAnnotations().get(0).getEAnnotations().get(0).getSource());
     }
 
     private DEdgeEditPart getSingleDEdgeFrom(String sourceName) {

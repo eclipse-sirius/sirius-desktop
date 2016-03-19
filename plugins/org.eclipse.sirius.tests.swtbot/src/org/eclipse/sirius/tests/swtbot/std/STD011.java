@@ -74,7 +74,8 @@ public class STD011 extends AbstractSiriusSwtBotGefTestCase {
         UILocalSession localSession = wizard.fromAlreadySelectedSemanticResource().withDefaultSessionName().finish().selectViewpoints(viewpointsSelection);
 
         // Open the editor on the representation (that is automatically created)
-        SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM,
+                DDiagram.class);
 
         // Adding various items of the palette on the diagram
         // Add a class
@@ -99,7 +100,7 @@ public class STD011 extends AbstractSiriusSwtBotGefTestCase {
                 .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_DIAGRAM, UIDiagramRepresentation.class).open();
 
         // Open the editor on the representation
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
 
         assertNotNull(editor.getEditPart(NEW_CLASS));
         assertNotNull(editor.getEditPart(NEW_ATTRIBUTE));

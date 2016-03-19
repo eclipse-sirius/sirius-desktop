@@ -33,6 +33,7 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -82,7 +83,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithExternalCreationOnShape() {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         EPackage root = loadRootPackage();
         createNewPackage(root, "Pkg1");
 
@@ -115,7 +116,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithToolCreationOnShape() {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         // EPackage root = loadRootPackage();
         // createNewPackage(root, "Pkg1");
 
@@ -148,7 +149,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithToolCreationOnFlat() {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
 
         editor.activateTool("Create eenum");
         editor.click(new Point(100, 100));
@@ -177,7 +178,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * </ul>
      */
     public void testDefaultSizeWithExternalCreationOnFlat() {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         EPackage root = loadRootPackage();
         createNewEEnum(root, "eenum1");
 

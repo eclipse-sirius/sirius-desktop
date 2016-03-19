@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -54,9 +55,6 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
 
     private String oldDefaultFontName;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         // Set the default fontName to have tests on
@@ -66,25 +64,18 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         // Reset the default fontName
         changeDefaultFontName(oldDefaultFontName);
-
         super.tearDown();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

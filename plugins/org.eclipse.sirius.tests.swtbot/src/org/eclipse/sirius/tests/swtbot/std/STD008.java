@@ -68,14 +68,23 @@ public class STD008 extends AbstractSiriusSwtBotGefTestCase {
     public void testSTD008() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: STD-TEST-008.ecore
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:152)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.selectResource(UIProject.java:122)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.openSessionCreationWizardFromSemanticResource(UIPerspective.java:188)
-            at org.eclipse.sirius.tests.swtbot.std.STD008.testSTD008(STD008.java:74)
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find node with text: STD-TEST-008.ecore at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(
+             * SWTBotTreeItem.java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
+             * SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
+             * SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * getUIItemFromResource(UIProject.java:152) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * selectResource(UIProject.java:122) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.
+             * UIPerspective.openSessionCreationWizardFromSemanticResource(
+             * UIPerspective.java:188) at
+             * org.eclipse.sirius.tests.swtbot.std.STD008.testSTD008(STD008.java
+             * :74)
              */
             return;
         }
@@ -86,7 +95,8 @@ public class STD008 extends AbstractSiriusSwtBotGefTestCase {
         UILocalSession localSession = wizard.fromAlreadySelectedSemanticResource().withDefaultSessionName().finish().selectViewpoints(viewpointsSelection);
 
         // Open the editor on the representation (that is automatically created)
-        final SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM,
+                DDiagram.class);
 
         // Adding various items of the palette on the diagram
         // Add a package
@@ -112,7 +122,8 @@ public class STD008 extends AbstractSiriusSwtBotGefTestCase {
         localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME_DIAGRAM)
                 .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_DIAGRAM, UIDiagramRepresentation.class).open();
         // Open the editor on the representation
-        SWTBotSiriusDiagramEditor editor2 = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        SWTBotSiriusDiagramEditor editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM,
+                DDiagram.class);
 
         final SWTBotGefEditPart editPart = editor2.getEditPart(NEW_CLASS);
         final Rectangle bounds2 = ((GraphicalEditPart) editPart.part()).getFigure().getBounds();

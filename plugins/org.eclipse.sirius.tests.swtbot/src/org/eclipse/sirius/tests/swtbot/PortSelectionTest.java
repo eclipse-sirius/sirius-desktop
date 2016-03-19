@@ -64,23 +64,17 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         final UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -92,6 +86,7 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
     public void testClickInCenterSelectPortWithManyEdges() throws Exception {
         clickWithCallBackToPortToSelectPortWithManyEdges(new CalculatePointCallBack() {
 
+            @Override
             public Point caculatePoint(final Rectangle bounds) {
                 return bounds.getCenter();
             }
@@ -108,6 +103,7 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
         clickWithCallBackToPortToSelectPortWithManyEdges(new CalculatePointCallBack() {
 
+            @Override
             public Point caculatePoint(final Rectangle bounds) {
                 final Point pointToClick = new Point();
 
@@ -129,6 +125,7 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
     public void testClickBottomLeftPortToSelectPortWithManyEdges() throws Exception {
         clickWithCallBackToPortToSelectPortWithManyEdges(new CalculatePointCallBack() {
 
+            @Override
             public Point caculatePoint(final Rectangle bounds) {
                 final Point pointToClick = new Point();
 
@@ -173,10 +170,12 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         editor.drag(selection.x, selection.y, selection.getBottomRight().x, selection.getBottomRight().y);
 
         bot.waitUntil(new DefaultCondition() {
+            @Override
             public boolean test() throws Exception {
                 return portEditPart.getSelected() >= EditPart.SELECTED;
             }
 
+            @Override
             public String getFailureMessage() {
                 return "Port edit part should be selected after drawing a selection rectangle from left to right around it";
             }
@@ -219,10 +218,12 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         editor.click(pointToClick.x, pointToClick.y);
 
         bot.waitUntil(new DefaultCondition() {
+            @Override
             public boolean test() throws Exception {
                 return portEditPart.getSelected() >= EditPart.SELECTED;
             }
 
+            @Override
             public String getFailureMessage() {
                 return "Port edit part should be selected after clic on it";
             }

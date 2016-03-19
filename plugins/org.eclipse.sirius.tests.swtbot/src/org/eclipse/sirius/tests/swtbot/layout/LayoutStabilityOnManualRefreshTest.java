@@ -57,17 +57,11 @@ public class LayoutStabilityOnManualRefreshTest extends AbstractSiriusSwtBotGefT
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -82,7 +76,7 @@ public class LayoutStabilityOnManualRefreshTest extends AbstractSiriusSwtBotGefT
      *             Test error.
      */
     public void testLayoutStabilityOnOneViewCreatedDuringManualRefreshWithoutPinnedElement() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
         layoutStabilityOnOneViewCreatedDuringManualRefreshCommon();
     }
 
@@ -94,7 +88,7 @@ public class LayoutStabilityOnManualRefreshTest extends AbstractSiriusSwtBotGefT
      *             Test error.
      */
     public void testLayoutStabilityOnOneViewCreatedDuringManualRefreshWithPinnedElement() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
         layoutStabilityOnOneViewCreatedDuringManualRefreshCommon();
     }
 

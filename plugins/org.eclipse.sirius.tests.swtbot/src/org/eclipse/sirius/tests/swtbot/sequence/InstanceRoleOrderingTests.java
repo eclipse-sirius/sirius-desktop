@@ -147,7 +147,7 @@ public class InstanceRoleOrderingTests extends AbstractSequenceDiagramTestCase {
          * Open an existing diagram and check that lifelines are reordered
          * during opening.
          */
-        editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME2, DDiagram.class);
 
         // To be able to check that ordering is done only for the opened
         // diagram.
@@ -172,7 +172,7 @@ public class InstanceRoleOrderingTests extends AbstractSequenceDiagramTestCase {
          * Open an other existing diagram and check that lifelines are reordered
          * during opening.
          */
-        editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME3, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME3, DDiagram.class);
 
         // Check that ordering is done only for the opened diagram.
         assertTrue("Layout should graphically reorder InstanceRoles during opening", localSession.isDirty());
@@ -201,8 +201,8 @@ public class InstanceRoleOrderingTests extends AbstractSequenceDiagramTestCase {
     public void testInstanceRoleReorderingOnOtherOpenedDiagram() {
         // Open 2 existing diagrams. There are 3 diagrams opened.
         SWTBotSiriusDiagramEditor editor1 = editor;
-        SWTBotSiriusDiagramEditor editor2 = openDiagram(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME2, DDiagram.class);
-        SWTBotSiriusDiagramEditor editor3 = openDiagram(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME3, DDiagram.class);
+        SWTBotSiriusDiagramEditor editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME2, DDiagram.class);
+        SWTBotSiriusDiagramEditor editor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_NAME3, DDiagram.class);
 
         assertEquals("", editor3.getReference(), bot.activeEditor().getReference());
         editor = editor3;
@@ -393,14 +393,17 @@ public class InstanceRoleOrderingTests extends AbstractSequenceDiagramTestCase {
         return PATH;
     }
 
+    @Override
     protected String getSemanticModel() {
         return MODEL;
     }
 
+    @Override
     protected String getTypesSemanticModel() {
         return TYPES_FILE;
     }
 
+    @Override
     protected String getSessionModel() {
         return SESSION_FILE;
     }

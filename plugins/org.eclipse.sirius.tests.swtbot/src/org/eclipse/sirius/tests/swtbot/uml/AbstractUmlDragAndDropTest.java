@@ -146,7 +146,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
      * @return the opened editor.
      */
     protected SWTBotSiriusDiagramEditor openAndGetEditor(final String representationDescriptionName, final String representationName) {
-        final SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
         editor.zoomDefault();
         editor.setSnapToGrid(false);
         return editor;

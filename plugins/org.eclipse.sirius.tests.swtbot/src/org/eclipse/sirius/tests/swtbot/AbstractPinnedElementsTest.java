@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomiz
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -58,6 +59,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean matches(Object item) {
             if (item instanceof IDiagramElementEditPart) {
                 return isDiagramElementEditPartPinned((IDiagramElementEditPart) item);
@@ -68,6 +70,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
         /**
          * {@inheritDoc}
          */
+        @Override
         public void describeTo(Description description) {
             String message = "diagram element is not pinned";
             description.appendText(message);
@@ -97,6 +100,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getFailureMessage() {
             StringDescription ds = new StringDescription();
             matcher.describeTo(ds);
@@ -106,6 +110,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean test() throws Exception {
             return matcher.matches(editPart);
         }
@@ -121,7 +126,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
     protected UILocalSession localSession;
 
     protected void openDiagram(final String viewpointName, final String representationDescriptionName, final String diagramName) {
-        editor = openDiagram(localSession.getOpenedSession(), representationDescriptionName, diagramName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, diagramName, DDiagram.class);
         editor.setSnapToGrid(false);
         SWTBotUtils.waitAllUiEvents();
     }
@@ -134,6 +139,7 @@ public class AbstractPinnedElementsTest extends AbstractSiriusSwtBotGefTestCase 
 
         Display.getDefault().syncExec(new Runnable() {
 
+            @Override
             public void run() {
                 for (final SWTBotGefEditPart partBot : parts) {
                     final EditPart rawPart = partBot.part();

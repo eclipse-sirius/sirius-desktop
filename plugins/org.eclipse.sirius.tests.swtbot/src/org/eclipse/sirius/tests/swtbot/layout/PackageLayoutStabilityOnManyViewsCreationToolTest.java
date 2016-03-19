@@ -49,23 +49,17 @@ public class PackageLayoutStabilityOnManyViewsCreationToolTest extends AbstractS
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         final UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -90,6 +84,7 @@ public class PackageLayoutStabilityOnManyViewsCreationToolTest extends AbstractS
         // Adds the ports for each package using the Palette tool
         editor.activateTool("New Port on each container");
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Click on p1 package
                 editor.click(p111Location.x + 20, p111Location.y + 20);
@@ -147,6 +142,7 @@ public class PackageLayoutStabilityOnManyViewsCreationToolTest extends AbstractS
         // Adds the ports for each package using the Palette tool
         editor.activateTool("New Port on each container");
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Click on p1 package
                 editor.click(p111Location.x + 20, p111Location.y + 20);

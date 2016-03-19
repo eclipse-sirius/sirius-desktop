@@ -101,7 +101,8 @@ public class STD007 extends AbstractSiriusSwtBotGefTestCase {
         UILocalSession localSession = wizard.fromAlreadySelectedSemanticResource().withDefaultSessionName().finish().selectViewpoints(viewpointsSelection);
 
         // Open the editor on the representation (that is automatically created)
-        final SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM,
+                DDiagram.class);
 
         // Adding various items of the palette on the diagram
         // Add a class
@@ -151,7 +152,8 @@ public class STD007 extends AbstractSiriusSwtBotGefTestCase {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         // Open the editor on the representation
-        SWTBotSiriusDiagramEditor editor2 = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM, DDiagram.class);
+        SWTBotSiriusDiagramEditor editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_DIAGRAM, REPRESENTATION_INSTANCE_NAME_DIAGRAM,
+                DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         assertNotNull(editor2.getEditPart(ANNOTATION_NAME));

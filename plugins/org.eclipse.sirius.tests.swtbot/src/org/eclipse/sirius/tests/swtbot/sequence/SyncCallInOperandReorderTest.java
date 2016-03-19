@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPrefer
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -73,9 +74,6 @@ public class SyncCallInOperandReorderTest extends AbstractDefaultModelSequenceTe
         moveCombinedFragment(REP_1);
     }
 
-    /**
-     * @param rep1
-     */
     private void moveCombinedFragment(String representationName) {
         prepareEditorForTest(representationName);
 
@@ -86,10 +84,12 @@ public class SyncCallInOperandReorderTest extends AbstractDefaultModelSequenceTe
 
         List<SWTBotGefEditPart> execs = sequenceDiagramBot.descendants(IsInstanceOf.instanceOf(ExecutionEditPart.class));
         Collections.sort(execs, new Comparator<SWTBotGefEditPart>() {
+            @Override
             public int compare(SWTBotGefEditPart o1, SWTBotGefEditPart o2) {
                 return editor.getBounds(o1).y - editor.getBounds(o2).y;
             }
 
+            @Override
             public boolean equals(Object obj) {
                 return super.equals(obj);
             }
@@ -148,11 +148,8 @@ public class SyncCallInOperandReorderTest extends AbstractDefaultModelSequenceTe
         moveCombinedFragment(REP_3);
     }
 
-    /**
-     * @param rep1
-     */
     private void prepareEditorForTest(String repName) {
-        editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), repName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), repName, DDiagram.class);
 
         editor.mainEditPart().part().getViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, Boolean.FALSE);
         editor.mainEditPart().part().getViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, Boolean.FALSE);

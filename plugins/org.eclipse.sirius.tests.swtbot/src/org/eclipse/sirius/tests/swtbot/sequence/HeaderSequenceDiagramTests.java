@@ -25,6 +25,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -60,9 +61,6 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
 
     private List<HeaderData> headerDatas = new ArrayList<HeaderData>();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         if (getSessionModel() == null) {
@@ -74,7 +72,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
             Option<String> dRepresentationName = getDRepresentationName();
             if (dRepresentationName.some()) {
-                editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
+                editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
             }
         }
 
@@ -283,6 +281,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
             final DiagramHeaderComposite composite = ((DDiagramEditorImpl) part).getDiagramHeader();
             Display.getDefault().syncExec(new Runnable() {
 
+                @Override
                 public void run() {
                     Control[] controls = composite.getChildren();
                     Control[] labelContainers = ((Composite) controls[1]).getChildren();

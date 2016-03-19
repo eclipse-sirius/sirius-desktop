@@ -107,7 +107,8 @@ public class AbstractGroupingContentProviderTest extends AbstractSiriusSwtBotGef
     }
 
     protected SWTBotTreeItem[] getPaneBasedSelectionWizardTreeitems() {
-        SWTBotSiriusDiagramEditor representation = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        SWTBotSiriusDiagramEditor representation = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME,
+                DDiagram.class);
         representation.setFocus();
         representation.activateTool("Pane Based Selection");
         representation.click(50, 100);
@@ -118,7 +119,8 @@ public class AbstractGroupingContentProviderTest extends AbstractSiriusSwtBotGef
     }
 
     protected SWTBotTreeItem[] getSelectionWizardTreeitems() {
-        SWTBotSiriusDiagramEditor representation = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
+        SWTBotSiriusDiagramEditor representation = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME,
+                DDiagram.class);
         representation.setFocus();
         representation.activateTool("Tree Selection");
         representation.click(50, 100);
@@ -151,6 +153,7 @@ public class AbstractGroupingContentProviderTest extends AbstractSiriusSwtBotGef
         for (final SWTBotTreeItem swtBotTreeItem : items) {
             final Object data = UIThreadRunnable.syncExec(new Result<Object>() {
                 /** {@inheritDoc} */
+                @Override
                 public Object run() {
                     return swtBotTreeItem.widget.getData();
                 }

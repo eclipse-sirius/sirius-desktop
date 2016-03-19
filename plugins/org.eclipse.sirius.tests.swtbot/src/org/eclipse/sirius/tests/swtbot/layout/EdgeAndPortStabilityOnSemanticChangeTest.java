@@ -114,7 +114,7 @@ public class EdgeAndPortStabilityOnSemanticChangeTest extends AbstractSiriusSwtB
 
     public void testEdgeLayoutStabilityOnSemanticDelete() throws Exception {
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         // Checks the number of edges outgoing from C1 class to C2 class (nodes
         // not pinned)
         SWTBotGefEditPart c1EditPart = editor.getEditPart("C1", AbstractDiagramNodeEditPart.class);
@@ -347,7 +347,7 @@ public class EdgeAndPortStabilityOnSemanticChangeTest extends AbstractSiriusSwtB
 
     public void testPortLayoutStabilityOnSemanticAddPort() throws Exception {
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_2, REPRESENTATION_NAME_2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_2, REPRESENTATION_NAME_2, DDiagram.class);
 
         SWTBotGefEditPart p1EditPart = editor.getEditPart("p1", AbstractDiagramContainerEditPart.class);
         SWTBotGefEditPart aEditPart = p1EditPart.children().get(2);
@@ -379,7 +379,7 @@ public class EdgeAndPortStabilityOnSemanticChangeTest extends AbstractSiriusSwtB
         SWTBotUtils.waitAllUiEvents();
 
         // Open the diagram
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_2, REPRESENTATION_NAME_2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME_2, REPRESENTATION_NAME_2, DDiagram.class);
 
         p1EditPart = editor.getEditPart("p1", AbstractDiagramContainerEditPart.class);
         aEditPart = p1EditPart.children().get(2);

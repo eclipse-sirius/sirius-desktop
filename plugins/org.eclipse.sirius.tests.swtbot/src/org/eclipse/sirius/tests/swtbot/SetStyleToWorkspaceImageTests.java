@@ -42,6 +42,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleEleme
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -120,9 +121,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, DESIGN_FILE, IMG_FILE, IMG_FILE1, IMG_SVG_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         // Reset the default fontName
@@ -131,9 +129,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         super.tearDown();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false);
@@ -141,7 +136,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

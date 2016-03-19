@@ -61,23 +61,17 @@ public class EdgeLayoutStabilityWithToolWizardTest extends AbstractSiriusSwtBotG
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         final UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -110,6 +104,7 @@ public class EdgeLayoutStabilityWithToolWizardTest extends AbstractSiriusSwtBotG
         // Adds the third package using the tool wizard
         editor.activateTool("clickOnPackage");
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Click on p1 package
                 editor.click(p1Location.x + 20, p1Location.y + 20);

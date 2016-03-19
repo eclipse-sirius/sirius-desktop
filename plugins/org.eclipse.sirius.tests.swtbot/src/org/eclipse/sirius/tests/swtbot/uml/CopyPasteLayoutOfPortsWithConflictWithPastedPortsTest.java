@@ -50,7 +50,8 @@ public class CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest extends Abstr
         // Launch copy layout
         editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
-        final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "conflictsWithOtherPasteElements-paste", DDiagram.class);
+        final SWTBotSiriusDiagramEditor editorForPaste = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationDescriptionName(),
+                "conflictsWithOtherPasteElements-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
         String errorMessage = "The copied {0} location should have the same location of the {1} current location in diagram to paste.";
         assertSameLocation(editor, "Port1", editorForPaste, "Port2", errorMessage);

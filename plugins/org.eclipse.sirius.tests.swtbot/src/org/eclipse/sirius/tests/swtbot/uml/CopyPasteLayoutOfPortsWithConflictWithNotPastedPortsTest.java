@@ -70,7 +70,8 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         // Launch copy layout
         editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
-        final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "conflictsWithNotPasteElements-paste", DDiagram.class);
+        final SWTBotSiriusDiagramEditor editorForPaste = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationDescriptionName(),
+                "conflictsWithNotPasteElements-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
         String errorMessage = "The copied {0} location should have the same location of the {1} current location in diagram to paste.";
         assertSameLocation(editor, "Port1", editorForPaste, "Port7", errorMessage);
@@ -104,7 +105,8 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         // Launch copy layout
         editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
-        final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "collapseWithConflicts1-paste", DDiagram.class);
+        final SWTBotSiriusDiagramEditor editorForPaste = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationDescriptionName(),
+                "collapseWithConflicts1-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
         String errorMessage = "The copied {0} location should have the same location of the {1} current location in diagram to paste.";
         assertSameLocation(editor, "Port1", editorForPaste, "Port1", errorMessage);
@@ -142,7 +144,8 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         // Launch copy layout
         editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
-        final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "collapseWithConflicts2-paste", DDiagram.class);
+        final SWTBotSiriusDiagramEditor editorForPaste = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationDescriptionName(),
+                "collapseWithConflicts2-paste", DDiagram.class);
         // Check that the location of port to paste is included in one of the
         // existing other ports
         String errorMessage2 = "The copied {0} location should be contained in the bounds of the {1} in diagram to paste.";

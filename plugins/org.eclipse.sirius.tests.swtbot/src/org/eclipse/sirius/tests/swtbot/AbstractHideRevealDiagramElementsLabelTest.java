@@ -145,7 +145,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -256,6 +256,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
         SWTBotUtils.waitAllUiEvents();
         item.display.asyncExec(new Runnable() {
 
+            @Override
             public void run() {
                 boolean a = mustHaveHiddenDecoration;
                 boolean b = (shownImage != item.widget.getImage());

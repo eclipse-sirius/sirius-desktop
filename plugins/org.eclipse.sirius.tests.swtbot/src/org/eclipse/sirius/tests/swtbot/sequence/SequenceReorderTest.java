@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 
 /**
  * Tests reorder tool
@@ -47,7 +48,7 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
 
-        editor = openDiagram(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.mainEditPart().part().getViewer().setProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED, Boolean.FALSE);
         editor.mainEditPart().part().getViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, Boolean.FALSE);
@@ -92,7 +93,8 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", e2.bottom(), getReturnSyncCallScreenPosition(LIFELINE_B, 1));
         assertEquals("The message named " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", e3.y,
                 getSequenceMessageVerticalPosition(FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B));
-        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", e3.bottom(), getReturnSyncCallScreenPosition(LIFELINE_B, 2));
+        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", e3.bottom(),
+                getReturnSyncCallScreenPosition(LIFELINE_B, 2));
         assertEquals("The message named " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", e4.y,
                 getSequenceMessageVerticalPosition(SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C));
         assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", e4.bottom(),
@@ -108,8 +110,8 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
                 getExecutionScreenPosition(LIFELINE_B, 0).y + getExecutionScreenDimension(LIFELINE_B, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP,
                 getExecutionScreenPosition(LIFELINE_B, 1).y);
         assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " is not at the expected horizontal position", e1.x, getExecutionScreenPosition(LIFELINE_B, 1).x);
-        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
+        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected horizontal position", e2.x, getExecutionScreenPosition(LIFELINE_B, 2).x);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position",
                 getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP,
@@ -117,10 +119,11 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", e4.x, getExecutionScreenPosition(LIFELINE_C, 0).x);
 
         // Validates the dimension of the execution
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 1).height
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 2).height
-                + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3, getExecutionScreenDimension(LIFELINE_B, 1).height);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 1).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 2).height + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3,
+                getExecutionScreenDimension(LIFELINE_B, 1).height);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
                 getExecutionScreenDimension(LIFELINE_B, 2).height);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
@@ -129,40 +132,41 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         // Validate the positions of the messages
         assertEquals("The message named " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y,
                 getSequenceMessageVerticalPosition(FIRST_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y
-                + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
+        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 0).y + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
         assertEquals("The message named " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y,
                 getSequenceMessageVerticalPosition(THIRD_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
+        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
         assertEquals("The message named " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y,
                 getSequenceMessageVerticalPosition(FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B));
-        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y
-                + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
+        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
 
         assertEquals("The message named " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y,
                 getSequenceMessageVerticalPosition(SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C));
-        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y
-                + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
+        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_C, 0).y + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
 
         // Drag the second execution back on the first execution
         editor.drag(getExecutionScreenPosition(LIFELINE_B, 1), new Point(e1.x, e1.y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP));
 
         // Validates the position of the execution
         assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", startY, getExecutionScreenPosition(LIFELINE_B, 0).y);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 1).y);
-        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 0).y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 1).y);
+        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position",
                 getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP,
                 getExecutionScreenPosition(LIFELINE_C, 0).y);
 
         // Validates the dimension of the execution
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 1).height
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 2).height
-                + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3, getExecutionScreenDimension(LIFELINE_B, 1).height);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 1).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 2).height + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3,
+                getExecutionScreenDimension(LIFELINE_B, 1).height);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
                 getExecutionScreenDimension(LIFELINE_B, 2).height);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
@@ -171,40 +175,41 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         // Validate the positions of the messages
         assertEquals("The message named " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y,
                 getSequenceMessageVerticalPosition(FIRST_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y
-                + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
+        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 0).y + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
         assertEquals("The message named " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y,
                 getSequenceMessageVerticalPosition(THIRD_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
+        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
         assertEquals("The message named " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y,
                 getSequenceMessageVerticalPosition(FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B));
-        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y
-                + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
+        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
 
         assertEquals("The message named " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y,
                 getSequenceMessageVerticalPosition(SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C));
-        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y
-                + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
+        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_C, 0).y + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
 
         // Arrange All to validate the ordering is stable
         arrangeAll();
 
         // Validates the position of the execution
         assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", startY, getExecutionScreenPosition(LIFELINE_B, 0).y);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 1).y);
-        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 0).y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 1).y);
+        assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP, getExecutionScreenPosition(LIFELINE_B, 2).y);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position",
                 getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP,
                 getExecutionScreenPosition(LIFELINE_C, 0).y);
 
         // Validates the dimension of the execution
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 1).height
-                + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height", getExecutionScreenDimension(LIFELINE_B, 2).height
-                + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3, getExecutionScreenDimension(LIFELINE_B, 1).height);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 1).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 2, getExecutionScreenDimension(LIFELINE_B, 0).height);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_B + " has not the expected height",
+                getExecutionScreenDimension(LIFELINE_B, 2).height + getExecutionScreenDimension(LIFELINE_C, 0).height + LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP * 3,
+                getExecutionScreenDimension(LIFELINE_B, 1).height);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_B + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
                 getExecutionScreenDimension(LIFELINE_B, 2).height);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " has not the expected height", LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT,
@@ -213,20 +218,20 @@ public class SequenceReorderTest extends AbstractDefaultModelSequenceTests {
         // Validate the positions of the messages
         assertEquals("The message named " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y,
                 getSequenceMessageVerticalPosition(FIRST_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 0).y
-                + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
+        assertEquals("The return message linked to " + FIRST_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 0).y + getExecutionScreenDimension(LIFELINE_B, 0).height, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
         assertEquals("The message named " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y,
                 getSequenceMessageVerticalPosition(THIRD_MESSAGE_SYNC_CALL));
-        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 1).y
-                + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
+        assertEquals("The return message linked to " + THIRD_MESSAGE_SYNC_CALL + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 1).y + getExecutionScreenDimension(LIFELINE_B, 1).height, getReturnSyncCallScreenPosition(LIFELINE_B, 1));
         assertEquals("The message named " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y,
                 getSequenceMessageVerticalPosition(FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B));
-        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_B, 2).y
-                + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
+        assertEquals("The return message linked to " + FIFTH_MESSAGE_SYNC_CALL_ON_LIFELINE_B + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_B, 2).y + getExecutionScreenDimension(LIFELINE_B, 2).height, getReturnSyncCallScreenPosition(LIFELINE_B, 2));
 
         assertEquals("The message named " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y,
                 getSequenceMessageVerticalPosition(SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C));
-        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position", getExecutionScreenPosition(LIFELINE_C, 0).y
-                + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
+        assertEquals("The return message linked to " + SEVENTH_MESSAGE_SYNC_CALL_ON_LIFELINE_C + " is not at the expected vertical position",
+                getExecutionScreenPosition(LIFELINE_C, 0).y + getExecutionScreenDimension(LIFELINE_C, 0).height, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
     }
 }
