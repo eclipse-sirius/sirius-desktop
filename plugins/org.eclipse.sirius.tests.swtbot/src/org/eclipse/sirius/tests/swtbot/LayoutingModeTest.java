@@ -137,13 +137,7 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
             if (statusLineMessage == null) {
                 statusLineMessage = "";
             }
-        } catch (SecurityException e) {
-            Assert.fail(e.getMessage());
-        } catch (NoSuchFieldException e) {
-            Assert.fail(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            Assert.fail(e.getMessage());
-        } catch (IllegalAccessException e) {
+        } catch (SecurityException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
             Assert.fail(e.getMessage());
         }
 
