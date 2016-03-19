@@ -95,7 +95,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      */
     public QuickOutlineControl(Shell parentShell, int shellStyle, SiriusDiagramEditor editor) {
-        super(parentShell, shellStyle, true, true, false, true, null, null);
+        super(parentShell, shellStyle, true, true, true, false, true, null, null);
         create();
         this.editor = editor;
     }
@@ -105,6 +105,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#addDisposeListener(org.eclipse.swt.events.DisposeListener)
      */
+    @Override
     public void addDisposeListener(DisposeListener listener) {
         getShell().addDisposeListener(listener);
     }
@@ -114,6 +115,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#addFocusListener(org.eclipse.swt.events.FocusListener)
      */
+    @Override
     public void addFocusListener(FocusListener listener) {
         getShell().addFocusListener(listener);
     }
@@ -123,6 +125,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#computeSizeHint()
      */
+    @Override
     public Point computeSizeHint() {
         return getShell().getSize();
     }
@@ -132,6 +135,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#dispose()
      */
+    @Override
     public final void dispose() {
         filteredTree.dispose();
         close();
@@ -142,6 +146,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControlExtension#hasContents()
      */
+    @Override
     public boolean hasContents() {
         // FIXME check TreeViewer filtered content and return false if no
         // visible children
@@ -153,6 +158,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#isFocusControl()
      */
+    @Override
     public boolean isFocusControl() {
         return getShell() == Display.getCurrent().getActiveShell();
     }
@@ -162,6 +168,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#addDisposeListener(org.eclipse.swt.events.DisposeListener)
      */
+    @Override
     public void removeDisposeListener(DisposeListener listener) {
         getShell().removeDisposeListener(listener);
     }
@@ -171,6 +178,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#removeFocusListener(org.eclipse.swt.events.FocusListener)
      */
+    @Override
     public void removeFocusListener(FocusListener listener) {
         getShell().removeFocusListener(listener);
     }
@@ -180,6 +188,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setBackgroundColor(org.eclipse.swt.graphics.Color)
      */
+    @Override
     public void setBackgroundColor(Color background) {
         applyBackgroundColor(background, getContents());
     }
@@ -189,6 +198,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setFocus()
      */
+    @Override
     public void setFocus() {
         getShell().forceFocus();
         filteredTree.setFocus();
@@ -199,6 +209,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setForegroundColor(org.eclipse.swt.graphics.Color)
      */
+    @Override
     public void setForegroundColor(Color foreground) {
         applyForegroundColor(foreground, getContents());
     }
@@ -208,6 +219,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setInformation(java.lang.String)
      */
+    @Override
     public void setInformation(String information) {
         // We're implementing IInformationControlExtension2, this will not be
         // called
@@ -218,6 +230,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControlExtension2#setInput(java.lang.Object)
      */
+    @Override
     public void setInput(Object input) {
         treeViewer.setInput(input);
     }
@@ -227,6 +240,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setLocation(org.eclipse.swt.graphics.Point)
      */
+    @Override
     public void setLocation(Point location) {
         // Only override the shell's location if it's not persisted by the
         // PopupDialog
@@ -240,6 +254,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setSize(int, int)
      */
+    @Override
     public void setSize(int width, int height) {
         getShell().setSize(width, height);
     }
@@ -250,6 +265,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * @see org.eclipse.jface.text.IInformationControl#setSizeConstraints(int,
      *      int)
      */
+    @Override
     public void setSizeConstraints(int maxWidth, int maxHeight) {
         // We'll use the dialog's size
     }
@@ -259,6 +275,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.jface.text.IInformationControl#setVisible(boolean)
      */
+    @Override
     public void setVisible(boolean visible) {
         if (visible) {
             open();
@@ -273,6 +290,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
      * 
      * @see org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse.swt.events.DisposeEvent)
      */
+    @Override
     public void widgetDisposed(DisposeEvent event) {
         adapterFactory = null;
         filteredTree = null;
@@ -404,17 +422,19 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
         });
 
         tree.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 // do nothing
             }
 
+            @Override
             public void widgetDefaultSelected(SelectionEvent e) {
                 gotoSelectedElement();
             }
         });
 
-        treeViewer.setContentProvider(new FilteredTreeContentProvider(getAdapterFactory(), Predicates.or(Predicates.instanceOf(DDiagramElement.class),
-                Predicates.instanceOf(AbstractDDiagramElementLabelItemProvider.class))));
+        treeViewer.setContentProvider(new FilteredTreeContentProvider(getAdapterFactory(),
+                Predicates.or(Predicates.instanceOf(DDiagramElement.class), Predicates.instanceOf(AbstractDDiagramElementLabelItemProvider.class))));
         treeViewer.setLabelProvider(new OutlineLabelProvider());
 
         // We want to remove everything that's not "top level elements" from the
