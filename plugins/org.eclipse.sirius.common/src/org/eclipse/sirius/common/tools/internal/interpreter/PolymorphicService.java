@@ -38,6 +38,7 @@ class PolymorphicService implements IPolymorphicService {
         this.name = Preconditions.checkNotNull(name);
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -48,21 +49,24 @@ class PolymorphicService implements IPolymorphicService {
         implementers.add(svc);
     }
 
+    @Override
     public boolean appliesTo(Object[] target) {
         return Iterables.any(implementers, getCompatibilityChecker(target));
     }
 
+    @Override
     public Object call(Object[] target) throws EvaluationException {
         List<IMonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
         } else {
-            throw new EvaluationException(MessageFormat.format(Messages.PolymorphicService_noCompatibleImplem, getName(), target));
+            throw new EvaluationException(MessageFormat.format(Messages.PolymorphicService_noCompatibleImplem, getName(), String.valueOf(target)));
         }
     }
 
     private Predicate<IMonomorphicService> getCompatibilityChecker(final Object[] target) {
         Predicate<IMonomorphicService> isCompatible = new Predicate<IMonomorphicService>() {
+            @Override
             public boolean apply(IMonomorphicService svc) {
                 return svc.appliesTo(target);
             }
@@ -75,6 +79,7 @@ class PolymorphicService implements IPolymorphicService {
         return MessageFormat.format(Messages.PolymorphicService_toString, getName(), implementers.size());
     }
 
+    @Override
     public Set<IMonomorphicService> getImplementers() {
         return implementers;
     }
