@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,18 +22,12 @@ public class CheckNotEmptySelection extends DefaultCondition {
 
     private Class<SequenceMessageEditPart> expectedType;
 
-    /**
-     * Constructor.
-     */
-    public CheckNotEmptySelection(SWTBotSiriusDiagramEditor editor) {
-        this.editor = editor;
-    }
-
     public CheckNotEmptySelection(SWTBotSiriusDiagramEditor editor, Class<SequenceMessageEditPart> expectedType) {
         this.editor = editor;
         this.expectedType = expectedType;
     }
 
+    @Override
     public boolean test() throws Exception {
         ISelection selection = editor.getSelection();
         if (expectedType == null) {
@@ -45,6 +39,7 @@ public class CheckNotEmptySelection extends DefaultCondition {
         return false;
     }
 
+    @Override
     public String getFailureMessage() {
         return null;
     }

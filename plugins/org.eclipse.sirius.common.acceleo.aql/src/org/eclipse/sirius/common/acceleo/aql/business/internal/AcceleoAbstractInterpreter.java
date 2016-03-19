@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2017 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
-import com.google.common.collect.Sets;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +19,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
+
+import com.google.common.collect.Sets;
 
 /**
  * An abstract class which handles the variables and classloading status.
@@ -141,5 +141,4 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
     public void clearImports() {
         javaExtensions.clearImports();
     }
-
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -119,6 +119,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Color getWidgetBackgroundColor(final TreeItem widget) {
         return syncExec(new Result<Color>() {
+            @Override
             public Color run() {
                 return widget.getBackground(0);
             }
@@ -137,6 +138,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Color getWidgetLabelColor(final TreeItem widget) {
         return syncExec(new Result<Color>() {
+            @Override
             public Color run() {
                 return widget.getForeground(0);
             }
@@ -156,6 +158,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getWidgetLabelExpression(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return widget.getText();
             }
@@ -175,6 +178,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Image getWidgetImage(final TreeItem widget) {
         return syncExec(new Result<Image>() {
+            @Override
             public Image run() {
                 return widget.getImage();
             }
@@ -194,6 +198,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Integer getWidgetSize(final TreeItem widget) {
         return syncExec(new Result<Integer>() {
+            @Override
             public Integer run() {
                 Font font = widget.getFont(0);
                 if (font.getFontData().length > 0) {
@@ -218,6 +223,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public int getLabelSize(final TreeItem widget) {
         return syncExec(new Result<Integer>() {
+            @Override
             public Integer run() {
                 return ((DTreeItem) widget.getData()).getOwnedStyle().getLabelSize();
             }
@@ -236,6 +242,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Color getLabelBackgroundColor(final TreeItem widget) {
         return syncExec(new Result<Color>() {
+            @Override
             public Color run() {
                 return VisualBindingManager.getDefault().getColorFromRGBValues(((DTreeItem) widget.getData()).getOwnedStyle().getBackgroundColor());
             }
@@ -254,6 +261,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public Color getLabelColor(final TreeItem widget) {
         return syncExec(new Result<Color>() {
+            @Override
             public Color run() {
                 return VisualBindingManager.getDefault().getColorFromRGBValues(((DTreeItem) widget.getData()).getOwnedStyle().getLabelColor());
             }
@@ -271,6 +279,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public boolean isShowIcon(final TreeItem widget) {
         return syncExec(new Result<Boolean>() {
+            @Override
             public Boolean run() {
                 return ((DTreeItem) widget.getData()).getOwnedStyle().isShowIcon();
             }
@@ -288,6 +297,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getIconPath(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getOwnedStyle().getIconPath();
             }
@@ -306,6 +316,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getSemanticElement(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getTreeElementMapping().getSemanticElements();
             }
@@ -324,6 +335,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getDomainClass(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getDomainClass();
             }
@@ -342,6 +354,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getId(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getName();
             }
@@ -360,6 +373,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getLabel(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getLabel();
             }
@@ -378,6 +392,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getPreconditionExpression(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getPreconditionExpression();
             }
@@ -397,6 +412,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getSemanticCandidatesExpression(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getSemanticCandidatesExpression();
             }
@@ -415,6 +431,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public EList<TreeItemMapping> getReusedTreeItemMappings(final TreeItem widget) {
         return syncExec(new Result<EList<TreeItemMapping>>() {
+            @Override
             public EList<TreeItemMapping> run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getReusedTreeItemMappings();
             }
@@ -433,6 +450,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public EList<RepresentationCreationDescription> getDetailDescriptions(final TreeItem widget) {
         return syncExec(new Result<EList<RepresentationCreationDescription>>() {
+            @Override
             public EList<RepresentationCreationDescription> run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getDetailDescriptions();
             }
@@ -451,6 +469,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public EList<RepresentationNavigationDescription> getNavigationDescriptions(final TreeItem widget) {
         return syncExec(new Result<EList<RepresentationNavigationDescription>>() {
+            @Override
             public EList<RepresentationNavigationDescription> run() {
                 return ((DTreeItem) widget.getData()).getActualMapping().getNavigationDescriptions();
             }
@@ -469,6 +488,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public List<String> getLabelFormat(final TreeItem widget) {
         return syncExec(new Result<List<String>>() {
+            @Override
             public List<String> run() {
                 return getFontFormatLiterals(((DTreeItem) widget.getData()).getOwnedStyle().getLabelFormat());
             }
@@ -495,6 +515,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      */
     public String getLabelAlignment(final TreeItem widget) {
         return syncExec(new Result<String>() {
+            @Override
             public String run() {
                 return ((DTreeItem) widget.getData()).getOwnedStyle().getLabelAlignment().getName();
             }
@@ -508,6 +529,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      *            the name of viewpoint specification model (.odesing)
      * @return odesignEditor
      */
+    @Override
     public SWTBotVSMEditor openViewpointSpecificationModel(String viewpointSpecificationModel) {
         SWTBotCommonHelper.openEditor(getProjectName(), viewpointSpecificationModel);
         SWTBotVSMEditor odesignEditor = SWTBotVSMHelper.getVSMEditorContainingName(viewpointSpecificationModel);

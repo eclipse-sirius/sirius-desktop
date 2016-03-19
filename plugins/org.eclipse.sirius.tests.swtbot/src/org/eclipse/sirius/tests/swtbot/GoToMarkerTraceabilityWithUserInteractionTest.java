@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,6 @@ import junit.framework.AssertionFailedError;
  * @author alagarde
  */
 public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScenarioTestCase {
-
     private static final String REPRESENTATION_EMPTY_DIAGRAM = "EmptyDiagram";
 
     /**
@@ -412,7 +411,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
                     if (part instanceof IEditingDomainProvider) {
                         domainProvider = (IEditingDomainProvider) part;
                     } else {
-                        domainProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+                        domainProvider = part.getAdapter(IEditingDomainProvider.class);
                     }
 
                     if (domainProvider != null) {

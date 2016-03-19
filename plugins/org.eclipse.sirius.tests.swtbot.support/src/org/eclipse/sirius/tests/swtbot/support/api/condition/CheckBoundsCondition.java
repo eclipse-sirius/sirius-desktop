@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,9 +74,6 @@ public class CheckBoundsCondition extends DefaultCondition {
         this.checkHeight = checkHeight;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean test() throws Exception {
         boolean result = false;
@@ -98,9 +95,6 @@ public class CheckBoundsCondition extends DefaultCondition {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getFailureMessage() {
         String result = null;

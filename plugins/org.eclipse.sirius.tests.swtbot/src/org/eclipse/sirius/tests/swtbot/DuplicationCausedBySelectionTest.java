@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -105,13 +105,10 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
      */
     UILocalSession localSession;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, ODESIGN_FOR_NODES, ODESIGN_FOR_BORDERED, MODEL_NODES, SESSION_NODES, MODEL_CONTAINERS, SESSION_CONTAINERS, MODEL_EDGES,
-                SESSION_EDGES, MODEL_LISTS, SESSION_LISTS, MODEL_BORDERED, SESSION_BORDERED, MODEL_SEQUENCE, MODEL_SEQUENCE2, SESSION_SEQUENCE);
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, ODESIGN_FOR_NODES, ODESIGN_FOR_BORDERED, MODEL_NODES, SESSION_NODES, MODEL_CONTAINERS, SESSION_CONTAINERS, MODEL_EDGES, SESSION_EDGES,
+                MODEL_LISTS, SESSION_LISTS, MODEL_BORDERED, SESSION_BORDERED, MODEL_SEQUENCE, MODEL_SEQUENCE2, SESSION_SEQUENCE);
     }
 
     /**
@@ -289,6 +286,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         SWTBotUtils.waitAllUiEvents();
         List<SWTBotGefEditPart> editParts = editor.editParts(new BaseMatcher<EditPart>() {
 
+            @Override
             public boolean matches(Object item) {
                 boolean hasExpectedType = false;
                 for (Class<?> editPartType : editPartTypes) {
@@ -300,6 +298,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
                 return hasExpectedType;
             }
 
+            @Override
             public void describeTo(Description description) {
 
             }
@@ -339,10 +338,12 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : getting all edit Parts
         List<SWTBotGefEditPart> editParts = editor.editParts(new BaseMatcher<EditPart>() {
 
+            @Override
             public boolean matches(Object item) {
                 return editPartType.isInstance(item);
             }
 
+            @Override
             public void describeTo(Description description) {
 
             }
@@ -375,12 +376,10 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
             super((FigureCanvas) canvas.widget);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseDrag(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition) {
             UIThreadRunnable.asyncExec(new VoidResult() {
+                @Override
                 public void run() {
                     // Moving mouse to the start position
                     org.eclipse.swt.events.MouseEvent meMove = wrapMouseEvent(fromXPosition, fromYPosition, 0, 0, 0);
@@ -396,6 +395,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
             });
             SWTBotUtils.waitAllUiEvents();
             UIThreadRunnable.asyncExec(new VoidResult() {
+                @Override
                 public void run() {
                     // Pressing on "Ctrl"
                     eventDispatcher.dispatchKeyPressed(keyEvent(SWT.CTRL));

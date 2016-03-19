@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -135,8 +135,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         // same level (brother edit parts).
         SWTBotGefEditPart package5Bot = editor.getEditPart("Package5", AbstractDiagramContainerEditPart.class);
         Point package5AbsoluteLocation = editor.getAbsoluteLocation("Package5", AbstractDiagramContainerEditPart.class);
-        assertFalse(
-                "The location (top-left corner) of the new figure should not overlaped an existing figure",
+        assertFalse("The location (top-left corner) of the new figure should not overlaped an existing figure",
                 isThereFigureAtLocation(((GraphicalEditPart) editor.mainEditPart().part()).getContentPane(), package5AbsoluteLocation,
                         Collections.singleton(((org.eclipse.gef.GraphicalEditPart) package5Bot.part()).getFigure())));
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
-
-import junit.framework.AssertionFailedError;
 
 import org.eclipse.core.internal.runtime.InternalPlatform;
 import org.eclipse.core.runtime.ILogListener;
@@ -40,6 +38,8 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.junit.Assert;
 
+import junit.framework.AssertionFailedError;
+
 /**
  * Tests for edges with multiple labels.
  * 
@@ -47,13 +47,6 @@ import org.junit.Assert;
  */
 @SuppressWarnings("restriction")
 public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase {
-    // private static final PrecisionPoint TOP_LEFT_CORNER = new PrecisionPoint(
-    // 0.1, 0.1);
-    //
-    // private static final PrecisionPoint BOTTOM_RIGHT_CORNER = new
-    // PrecisionPoint(
-    // 0.9, 0.9);
-
     private static final String MODEL_FILE = "doremi_1551.ecore";
 
     private static final String SESSION_FILE = "doremi_1551.aird";
@@ -117,7 +110,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateRelationBasedEdgeStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -129,7 +122,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateRelationBasedEdgeManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -141,7 +134,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateRelationBasedEdgeTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -189,7 +182,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateElementBasedEdgeStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -201,7 +194,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateElementBasedEdgeManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -213,7 +206,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to create an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testCreateElementBasedEdgeTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -261,7 +254,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteRelationBasedEdgeStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -273,7 +266,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteRelationBasedEdgeManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -285,7 +278,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete a relation based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteRelationBasedEdgeTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -334,7 +327,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteElementBasedEdgeStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -346,7 +339,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteElementBasedEdgeManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -358,7 +351,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * Test to delete an element based edge and validated that there are
      * multiple labels.
      * 
-     * */
+     */
     public void testDeleteElementBasedEdgeTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -406,7 +399,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void testShowHideRelationBasedEdgeLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -417,7 +410,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void testShowHideRelationBasedEdgeLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -428,7 +421,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void testShowHideRelationBasedEdgeLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -469,7 +462,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void testShowHideElementBasedEdgeLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -480,7 +473,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void testShowHideElementBasedEdgeLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -491,7 +484,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void testShowHideElementBasedEdgeLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -536,7 +529,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void _testShowHideRelationBasedEdge3LabelsStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -547,7 +540,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void _testShowHideRelationBasedEdge3LabelsManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -558,7 +551,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show a relation based edge labels.
      * 
-     * */
+     */
     public void _testShowHideRelationBasedEdge3LabelsTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -574,7 +567,8 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         bot.text().setText("*label");
         bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
         bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
-        // bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end label").select().toggleCheck();
+        // bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end
+        // label").select().toggleCheck();
 
         bot.button("OK").click();
 
@@ -603,7 +597,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void _testShowHideElementBasedEdge3LabelsStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -614,7 +608,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void _testShowHideElementBasedEdge3LabelsManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -625,7 +619,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to hide and show an element based edge labels.
      * 
-     * */
+     */
     public void _testShowHideElementBasedEdge3LabelsTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -641,7 +635,8 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
         bot.text().setText("*label");
         bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
         bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
-        // bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end label").select().toggleCheck();
+        // bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end
+        // label").select().toggleCheck();
 
         bot.button("OK").click();
 
@@ -672,7 +667,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge begin label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeBeginLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -683,7 +678,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge begin label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeBeginLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -694,7 +689,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge begin label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeBeginLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -716,7 +711,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge center label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeCenterLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -727,7 +722,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge center label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeCenterLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -738,7 +733,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge center label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeCenterLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -760,7 +755,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge end label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeEndLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -771,7 +766,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge end label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeEndLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -782,7 +777,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select a relation based edge end label.
      * 
-     * */
+     */
     public void testSelectRelationBasedEdgeEndLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -804,7 +799,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge begin label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeBeginLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -815,7 +810,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge begin label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeBeginLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -826,7 +821,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge begin label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeBeginLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -848,7 +843,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge center label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeCenterLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -859,7 +854,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge center label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeCenterLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -870,7 +865,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge center label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeCenterLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -892,7 +887,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge end label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeEndLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -903,7 +898,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge end label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeEndLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -914,7 +909,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test to select an element based edge end label.
      * 
-     * */
+     */
     public void testSelectElementBasedEdgeEndLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -936,7 +931,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeBeginLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -951,7 +946,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeBeginLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -966,7 +961,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeBeginLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -1009,7 +1004,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeCenterLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -1020,7 +1015,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeCenterLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -1031,7 +1026,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeCenterLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -1055,7 +1050,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeEndLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_RB_STRAIGHT_NAME);
 
@@ -1070,7 +1065,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeEndLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_RB_MANHATTAN_NAME);
 
@@ -1085,7 +1080,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on a relation based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditRelationBasedEdgeEndLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_RB_TREE_NAME);
 
@@ -1120,7 +1115,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeBeginLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -1135,7 +1130,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeBeginLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -1150,7 +1145,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge begin label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeBeginLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -1185,7 +1180,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge center label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeCenterLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -1196,7 +1191,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge center label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeCenterLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -1207,7 +1202,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge center label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeCenterLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -1232,7 +1227,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge end label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeEndLabelStraight() {
         openDiagram(REPRESENTATION_DESC_1551_EB_STRAIGHT_NAME);
 
@@ -1247,7 +1242,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge end label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeEndLabelManhattan() {
         openDiagram(REPRESENTATION_DESC_1551_EB_MANHATTAN_NAME);
 
@@ -1262,7 +1257,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
      * 
      * Test direct edit on an element based edge end label.
      * 
-     * */
+     */
     public void testDirectEditElementBasedEdgeEndLabelTree() {
         openDiagram(REPRESENTATION_DESC_1551_EB_TREE_NAME);
 
@@ -1319,6 +1314,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     private void addWarningListener() {
         listener = new ILogListener() {
 
+            @Override
             public void logging(IStatus status, String plugin) {
                 if (status.getSeverity() == IStatus.WARNING && status.getMessage().indexOf("MapModeUtil") != -1)
                     errorOccurs();
@@ -1362,6 +1358,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     /**
      * Delete the selected element if possible.
      */
+    @Override
     protected void deleteSelectedElement() {
         SWTBotMenu deleteMenu = bot.menu("Edit").menu("Delete");
         if (deleteMenu.isEnabled()) {
