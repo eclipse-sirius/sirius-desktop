@@ -42,7 +42,6 @@ import com.google.common.collect.Lists;
  *
  * @author pcdavid
  */
-// TODO Could this be replaced by ListSelectionDialog or made more generic?
 public class RepresentationsSelectionDialog extends TitleAreaDialog implements ICheckStateListener {
     /**
      * The complete list of candidates among which the user can choose, sorted

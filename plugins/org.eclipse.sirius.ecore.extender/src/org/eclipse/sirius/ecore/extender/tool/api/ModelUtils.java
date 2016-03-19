@@ -139,7 +139,6 @@ public final class ModelUtils {
         return resourceSet.createResource(modelURI);
     }
 
-    // TODO unit test this
     /**
      * Loads the models contained by the given directory in the given
      * ResourceSet.
