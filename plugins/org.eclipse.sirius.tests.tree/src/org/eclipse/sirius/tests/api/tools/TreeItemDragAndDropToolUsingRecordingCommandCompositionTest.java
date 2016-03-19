@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropListener;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
 import org.junit.Assert;
 
 import com.google.common.collect.Sets;
@@ -217,7 +217,7 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
 
         // Step 1 : setting the local transfer selection to simulate dnd
         IStructuredSelection selection = new StructuredSelection(itemSources.toArray());
-        LocalSelectionTransfer.getInstance().setSelection(selection);
+        LocalSelectionTransfer.getTransfer().setSelection(selection);
 
         // Step 2 : checking that the DnD validation provides the same result as
         // expected
@@ -247,8 +247,9 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
      *            the sources of the DnD
      * @param targetContainer
      *            the target of the DnD
-     * @param boolean indicates if the sources of the DnD should be contained in
-     *        the given target Container
+     * @param boolean
+     *            indicates if the sources of the DnD should be contained in the
+     *            given target Container
      */
     private void checkDTreeItemContainment(Set<EObject> itemSources, DTreeItemContainer targetContainer, boolean shouldBeContained) {
 

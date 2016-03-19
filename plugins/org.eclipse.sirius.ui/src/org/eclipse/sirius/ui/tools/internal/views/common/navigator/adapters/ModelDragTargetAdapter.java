@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters;
 
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.util.TransferDragSourceListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
 
 /**
  * A simple drag target adapter for {@link LocalSelectionTransfer}.
@@ -25,7 +25,7 @@ import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
  */
 public class ModelDragTargetAdapter extends DragSourceAdapter implements TransferDragSourceListener {
 
-    private ISelectionProvider provider;
+    private final ISelectionProvider provider;
 
     /**
      * Construct a new drag target adapter from the selection provider given as
@@ -34,50 +34,31 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
      * @param provider
      *            the selection provider
      */
-    public ModelDragTargetAdapter(final ISelectionProvider provider) {
+    public ModelDragTargetAdapter(ISelectionProvider provider) {
         this.provider = provider;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.util.TransferDragSourceListener#getTransfer()
-     */
+    @Override
     public Transfer getTransfer() {
-        return LocalSelectionTransfer.getInstance();
+        return LocalSelectionTransfer.getTransfer();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragStart(org.eclipse.swt.dnd.DragSourceEvent)
-     */
     @Override
-    public void dragStart(final DragSourceEvent event) {
+    public void dragStart(DragSourceEvent event) {
         final ISelection selection = provider.getSelection();
-        LocalSelectionTransfer.getInstance().setSelection(selection);
-        LocalSelectionTransfer.getInstance().setSelectionSetTime(event.time & 0xFFFFFFFFL);
+        LocalSelectionTransfer.getTransfer().setSelection(selection);
+        LocalSelectionTransfer.getTransfer().setSelectionSetTime(event.time & 0xFFFFFFFFL);
         event.doit = true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragSetData(org.eclipse.swt.dnd.DragSourceEvent)
-     */
     @Override
-    public void dragSetData(final DragSourceEvent event) {
-        event.data = LocalSelectionTransfer.getInstance().getSelection();
+    public void dragSetData(DragSourceEvent event) {
+        event.data = LocalSelectionTransfer.getTransfer().getSelection();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.swt.dnd.DragSourceAdapter#dragFinished(org.eclipse.swt.dnd.DragSourceEvent)
-     */
     @Override
-    public void dragFinished(final DragSourceEvent event) {
-        LocalSelectionTransfer.getInstance().setSelection(null);
-        LocalSelectionTransfer.getInstance().setSelectionSetTime(0);
+    public void dragFinished(DragSourceEvent event) {
+        LocalSelectionTransfer.getTransfer().setSelection(null);
+        LocalSelectionTransfer.getTransfer().setSelectionSetTime(0);
     }
 }
