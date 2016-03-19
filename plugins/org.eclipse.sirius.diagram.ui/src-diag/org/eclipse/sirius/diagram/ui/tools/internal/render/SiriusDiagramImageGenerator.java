@@ -68,7 +68,7 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
 
         mm.LPtoDP(rect);
 
-        awtImage = new BufferedImage((int) Math.round(rect.preciseWidth), (int) Math.rint(rect.preciseHeight), BufferedImage.TYPE_4BYTE_ABGR_PRE);
+        awtImage = new BufferedImage((int) Math.round(rect.preciseWidth()), (int) Math.rint(rect.preciseHeight()), BufferedImage.TYPE_4BYTE_ABGR_PRE);
 
         Graphics2D g2d = awtImage.createGraphics();
         g2d.setColor(Color.white);

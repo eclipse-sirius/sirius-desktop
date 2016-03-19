@@ -53,7 +53,7 @@ public class EdgeStabilityOnPortCollapsingTest extends SiriusDiagramTestCase {
      * Port collapsing leads to edge shifting. Very small, but something which
      * can be measured If this shifting is 0, it means that port collapsing is
      * broken !
-     * */
+     */
     private static final int MINIMUM_DELTA_AFTER_COLLAPSE = 1;
 
     private static final int MINIMUM_DELTA_AFTER_UNCOLLAPSE = 0;
@@ -209,13 +209,13 @@ public class EdgeStabilityOnPortCollapsingTest extends SiriusDiagramTestCase {
     }
 
     private void assertPositionIsBetween(String message, Point actual, Point expected, int lower, int higher) {
-        int distance = actual.getDistance2(expected);
-        assertTrue(message, distance <= higher * higher);
+        double distance = actual.getDistance(expected);
+        assertTrue(message, distance <= higher);
 
         // If collapsing feature works, first and last points in pointList must
         // have changed their position. Otherwise, it means collapsing feature
         // is broken
-        boolean lowerCondition = distance >= lower * lower;
+        boolean lowerCondition = distance >= lower;
         assertTrue(message, lowerCondition);
     }
 

@@ -237,15 +237,15 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         PrecisionPoint temp = new PrecisionPoint(p);
         if (p.x < bounds.x || p.x > bounds.x + bounds.width || p.y < bounds.y || p.y > bounds.y + bounds.height) {
             if (p.x < bounds.x || p.x > bounds.x + bounds.width) {
-                temp.preciseX = p.x < bounds.x ? bounds.x : bounds.x + bounds.width;
+                temp.setPreciseX(p.x < bounds.x ? bounds.x : bounds.x + bounds.width);
             }
             if (p.y < bounds.y || p.y > bounds.y + bounds.height) {
-                temp.preciseY = p.y < bounds.y ? bounds.y : bounds.y + bounds.height;
+                temp.setPreciseY(p.y < bounds.y ? bounds.y : bounds.y + bounds.height);
             }
-            relLocation = new PrecisionPoint((temp.preciseX - bounds.x) / bounds.width, (temp.preciseY - bounds.y) / bounds.height);
+            relLocation = new PrecisionPoint((temp.preciseX() - bounds.x) / bounds.width, (temp.preciseY() - bounds.y) / bounds.height);
         } else {
 
-            relLocation = new PrecisionPoint((temp.preciseX - bounds.x) / bounds.width, (temp.preciseY - bounds.y) / bounds.height);
+            relLocation = new PrecisionPoint((temp.preciseX() - bounds.x) / bounds.width, (temp.preciseY() - bounds.y) / bounds.height);
         }
         return relLocation;
     }

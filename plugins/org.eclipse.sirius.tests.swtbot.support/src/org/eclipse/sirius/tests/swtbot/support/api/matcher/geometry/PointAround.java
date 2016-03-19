@@ -65,7 +65,7 @@ public class PointAround extends BaseMatcher<Point> {
      * @return <code>true</code> if actual point is around expected point.
      */
     protected static boolean isAround(Point expected, Point actual, int distance) {
-        return actual.getDistance2(expected) <= distance * distance;
+        return actual.getDistance(expected) <= distance;
     }
 
     /**
