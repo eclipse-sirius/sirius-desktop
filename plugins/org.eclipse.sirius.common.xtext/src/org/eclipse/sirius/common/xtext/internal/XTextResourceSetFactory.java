@@ -94,10 +94,11 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
                     try {
                         final File file = path.toFile();
                         if (file != null && file.exists()) {
-                            JarFile jarFile = new JarFile(file);
-                            Manifest manifest = jarFile.getManifest();
-                            if (manifest != null) {
-                                handleManifest(hashMap, file, manifest);
+                            try (JarFile jarFile = new JarFile(file)) {
+                                Manifest manifest = jarFile.getManifest();
+                                if (manifest != null) {
+                                    handleManifest(hashMap, file, manifest);
+                                }
                             }
                         }
                     } catch (IOException e) {
