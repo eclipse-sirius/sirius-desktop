@@ -89,6 +89,7 @@ public class EObjectQuery {
      */
     public EObjectQuery(EObject eObject, ECrossReferenceAdapter xref) {
         this.eObject = eObject;
+        this.xref = xref;
     }
 
     /**
