@@ -262,8 +262,7 @@
 			<li><span class="label label-danger">Removed</span> The 
 				<code>org.eclipse.sirius.ui</code>, and thus the whole 
 				<code>org.eclipse.sirius.runtime</code> feature no longer depends on the JDT (technically the dependency towards 
-				<code>org.eclipse.jdt.core</code> has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The 
-				<code>org.eclipse.sirius.common.xtext</code> plug-in (which is optional) still depends on the JDT, and the Sirius specification environment (
+				<code>org.eclipse.jdt.core</code> has been removed). If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
@@ -276,6 +275,16 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.utils</code> to retrieve recursively a 
 				<code>SWTBotTreeItem</code> in a 
 				<code>SWTBotTreeItem</code> array.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common.xtext">Changes in 
+			<code>org.eclipse.sirius.common.xtext</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> The dependency from  
+				<code>org.eclipse.sirius.common.xtext</code> to the JDT plug-in 
+				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
+				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
 		<h2 id="sirius3.1.1">Changes in Sirius 3.1.1</h2>
