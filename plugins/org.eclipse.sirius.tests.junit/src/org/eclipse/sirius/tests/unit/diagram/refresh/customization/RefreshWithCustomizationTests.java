@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -122,8 +123,8 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + MODELER_EXTB_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_EXTB_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
-        Collections.addAll(modelerList, TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_EXTA_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/"
-                + MODELER_EXTB_RESOURCE_NAME);
+        Collections.addAll(modelerList, TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_EXTA_RESOURCE_NAME,
+                TEMPORARY_PROJECT_NAME + "/" + MODELER_EXTB_RESOURCE_NAME);
         genericSetUp(Collections.singletonList(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), modelerList, TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
 
         Iterator<DRepresentation> iterator = DialectManager.INSTANCE.getAllRepresentations(session).iterator();
@@ -193,20 +194,36 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         assertMessage = "The backgroundColor mustn't have changed as the EReferenceCustomization is disabled with the predicateExpression";
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(p1OriginalBackgroundColor, (RGBValues) p1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(eClass1OriginalBackgroundColor, (RGBValues) eClass1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
-        assertTrue(assertMessage, AbstractColorUpdater.areEquals(eClass11OriginalBackgroundColor, (RGBValues) eClass11.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(eClass1AttributeOriginalBackgroundColor,
-                        (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(eClass11AttributeOriginalBackgroundColor,
-                        (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage,
+                AbstractColorUpdater.areEquals(eClass11OriginalBackgroundColor, (RGBValues) eClass11.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(eClass1AttributeOriginalBackgroundColor,
+                (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(eClass11AttributeOriginalBackgroundColor,
+                (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
 
         session.save(new NullProgressMonitor());
         refresh(dDiagram);
         assertEquals("A new refresh call should not change the session status", SessionStatus.SYNC, session.getStatus());
 
+    }
+
+    public void testMultiValuatedEAttribute() {
+        changeEAttributeCustomization(eAttributeCustomizationLabelFormat, "aql:OrderedSet{viewpoint::FontFormat::bold, viewpoint::FontFormat::italic}");
+        // Disable the EReferenceCustomization (enabled by default)
+        vsmElementCustomization1 = (VSMElementCustomization) EcoreUtil.resolve(vsmElementCustomization1, session.getTransactionalEditingDomain().getResourceSet());
+        vsmElementCustomization2 = (VSMElementCustomization) EcoreUtil.resolve(vsmElementCustomization2, session.getTransactionalEditingDomain().getResourceSet());
+        enableVSMElementCustomization(vsmElementCustomization2, false);
+        layerContributingCustomization = (AdditionalLayer) EcoreUtil.resolve(layerContributingCustomization, session.getTransactionalEditingDomain().getResourceSet());
+        // Activate layer that contains customizations
+        activateLayer(dDiagram, layerContributingCustomization.getName());
+        TestsUtil.synchronizationWithUIThread();
+        eAttributeCustomizationLabelFormat = (EAttributeCustomization) vsmElementCustomization1.getFeatureCustomizations().get(1);
+
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(FontFormat.ITALIC_LITERAL);
+        fontFormat.add(FontFormat.BOLD_LITERAL);
+        String assertMessage = "The new label Font Format must be that of the EAttributeCustomization.value interpretation result";
+        assertEquals(assertMessage, fontFormat, eClass11Attribute.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT));
     }
 
     /**
@@ -245,14 +262,10 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) p1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) eClass1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) eClass11.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(customizedRGBValues,
-                        (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(customizedRGBValues,
-                        (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues,
+                (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues,
+                (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
 
         session.save(new NullProgressMonitor());
         refresh(dDiagram);
@@ -292,14 +305,10 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) p1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) eClass1.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
         assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues, (RGBValues) eClass11.getStyle().eGet(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(customizedRGBValues,
-                        (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
-        assertTrue(
-                assertMessage,
-                AbstractColorUpdater.areEquals(customizedRGBValues,
-                        (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues,
+                (RGBValues) ((GaugeCompositeStyle) eClass1Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
+        assertTrue(assertMessage, AbstractColorUpdater.areEquals(customizedRGBValues,
+                (RGBValues) ((GaugeCompositeStyle) eClass11Attribute.getStyle()).getSections().get(0).eGet(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR)));
 
         session.save(new NullProgressMonitor());
         refresh(dDiagram);
@@ -317,8 +326,8 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         DNodeContainer p1Bis = (DNodeContainer) dDiagramBis.getOwnedDiagramElements().get(0);
         DNodeList eClass1Bis = (DNodeList) dDiagramBis.getOwnedDiagramElements().get(1);
         DNodeList eClass11Bis = (DNodeList) p1Bis.getOwnedDiagramElements().get(0);
-        DNodeListElement eClass1AttributeBis = (DNodeListElement) eClass1Bis.getOwnedElements().get(0);
-        DNodeListElement eClass11AttributeBis = (DNodeListElement) eClass11Bis.getOwnedElements().get(0);
+        DNodeListElement eClass1AttributeBis = eClass1Bis.getOwnedElements().get(0);
+        DNodeListElement eClass11AttributeBis = eClass11Bis.getOwnedElements().get(0);
         DEdge dEdgeBis = dDiagramBis.getEdges().get(0);
 
         Integer p1BisLabelSize = (Integer) p1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
@@ -389,8 +398,8 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         DNodeContainer p1Bis = (DNodeContainer) dDiagram.getOwnedDiagramElements().get(0);
         DNodeList eClass1Bis = (DNodeList) dDiagram.getOwnedDiagramElements().get(1);
         DNodeList eClass11Bis = (DNodeList) p1Bis.getOwnedDiagramElements().get(0);
-        DNodeListElement eClass1AttributeBis = (DNodeListElement) eClass1Bis.getOwnedElements().get(0);
-        DNodeListElement eClass11AttributeBis = (DNodeListElement) eClass11Bis.getOwnedElements().get(0);
+        DNodeListElement eClass1AttributeBis = eClass1Bis.getOwnedElements().get(0);
+        DNodeListElement eClass11AttributeBis = eClass11Bis.getOwnedElements().get(0);
         DEdge dEdgeBis = dDiagram.getEdges().get(0);
 
         List<FontFormat> p1BisLabelFormat = (List<FontFormat>) p1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
@@ -471,7 +480,28 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         String uriFragment = resource.getURIFragment(vsmElementCustomization);
         URI uri = resource.getURI().appendFragment(uriFragment);
         EObject eObject = new ResourceSetImpl().getEObject(uri, true);
-        eObject.eSet(DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION, "[" + Boolean.valueOf(enable).toString() + "/]");
+        eObject.eSet(DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION, Boolean.valueOf(enable).toString());
+        try {
+            eObject.eResource().save(Collections.emptyMap());
+        } catch (IOException e) {
+            fail(e.getLocalizedMessage());
+        }
+    }
+
+    /**
+     * Change the {@link EAttributeCustomization#getValue()}.
+     * 
+     * @param eAttributeCustomization
+     *            the specified {@link EAttributeCustomization}
+     * @param valueExpression
+     *            the value expression to compute the new value
+     */
+    private void changeEAttributeCustomization(EAttributeCustomization eAttributeCustomization, String valueExpression) {
+        Resource resource = eAttributeCustomization.eResource();
+        String uriFragment = resource.getURIFragment(eAttributeCustomization);
+        URI uri = resource.getURI().appendFragment(uriFragment);
+        EObject eObject = new ResourceSetImpl().getEObject(uri, true);
+        eObject.eSet(DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__VALUE, valueExpression);
         try {
             eObject.eResource().save(Collections.emptyMap());
         } catch (IOException e) {

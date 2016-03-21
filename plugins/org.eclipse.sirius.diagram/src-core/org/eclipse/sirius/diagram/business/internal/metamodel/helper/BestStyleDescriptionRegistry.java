@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -18,9 +19,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -176,27 +179,58 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
         Set<EObject> realEltsToCustomize = getRealElementsToCustomize(styleDescription, customizedStyleDescription, appliedOn, eAttributeCustomization);
         if (!realEltsToCustomize.isEmpty()) {
             EAttributeCustomizationQuery eAttributeCustomizationQuery = new EAttributeCustomizationQuery(eAttributeCustomization);
-            String newAttributeValue = eAttributeCustomizationQuery.getNewAttributeValue(bestStyleDescriptionKey, interpreter);
+            Object newAttributeValue = eAttributeCustomizationQuery.getNewAttributeValue(bestStyleDescriptionKey, interpreter);
             for (EObject realEltToCustomize : realEltsToCustomize) {
                 EStructuralFeature eStructuralFeature = realEltToCustomize.eClass().getEStructuralFeature(attributeName);
                 if (eStructuralFeature instanceof EAttribute && newAttributeValue != null) {
                     EAttribute eAttribute = (EAttribute) eStructuralFeature;
-                    EDataType eAttributeType = eAttribute.getEAttributeType();
-                    Class<?> instanceClass = eAttributeType.getInstanceClass();
-                    if (instanceClass.isPrimitive()) {
+                    Object convertedNewValue = getConvertedValue(newAttributeValue, eAttribute);
+                    Class<?> instanceClass = eAttribute.getEAttributeType().getInstanceClass();
+                    if (eAttribute.isMany()) {
+                        instanceClass = Collection.class;
+                    } else if (instanceClass.isPrimitive()) {
                         instanceClass = Primitives.wrap(instanceClass);
                     }
-                    Object convertedObject = EcoreUtil.createFromString(eAttributeType, newAttributeValue);
-                    if (eAttribute.isMany() && convertedObject != null && instanceClass.isAssignableFrom(convertedObject.getClass())) {
-                        List<Object> manyConvertedObject = new ArrayList<Object>();
-                        manyConvertedObject.add(convertedObject);
-                        realEltToCustomize.eSet(eAttribute, manyConvertedObject);
-                    } else if (convertedObject != null && instanceClass.isAssignableFrom(convertedObject.getClass())) {
-                        realEltToCustomize.eSet(eAttribute, convertedObject);
+                    if (convertedNewValue != null && instanceClass.isAssignableFrom(convertedNewValue.getClass())) {
+                        realEltToCustomize.eSet(eAttribute, convertedNewValue);
                     }
                 }
             }
         }
+    }
+
+    private Object getConvertedValue(Object newAttributeValue, EAttribute eAttribute) {
+        Object convertedValue = newAttributeValue;
+        EDataType eAttributeType = eAttribute.getEAttributeType();
+        if (eAttribute.isMany()) {
+            List<Object> manyConvertedObject = new ArrayList<Object>();
+            if (newAttributeValue instanceof Collection<?>) {
+                Collection<?> newAttributeValues = (Collection<?>) newAttributeValue;
+                for (Object newAttributeStringValue : newAttributeValues) {
+                    manyConvertedObject.add(getConvertedValue(newAttributeStringValue, eAttributeType));
+                }
+            } else {
+                // Even if the newAttributeValue must be a collection, we manage
+                // the singleton value
+                manyConvertedObject.add(getConvertedValue(newAttributeValue, eAttributeType));
+            }
+            convertedValue = manyConvertedObject;
+        } else {
+            convertedValue = getConvertedValue(newAttributeValue, eAttributeType);
+        }
+        return convertedValue;
+    }
+
+    private Object getConvertedValue(Object newAttributeValue, EDataType eAttributeType) {
+        Object convertedValue = newAttributeValue;
+        if (newAttributeValue instanceof String) {
+            String newAttributeStringValue = (String) newAttributeValue;
+            Object convertedObject = EcoreUtil.createFromString(eAttributeType, newAttributeStringValue);
+            convertedValue = convertedObject;
+        } else if (eAttributeType instanceof EEnum & newAttributeValue instanceof Enumerator) {
+            convertedValue = newAttributeValue;
+        }
+        return convertedValue;
     }
 
     private void applyEReferenceCustomization(EReferenceCustomization eReferenceCustomization, StyleDescription styleDescription, StyleDescription customizedStyleDescription, Set<EObject> appliedOn) {

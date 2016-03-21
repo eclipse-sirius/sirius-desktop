@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.in
 
     /**
      * Get the new value computed for the current
-     * {@link EAttributeCustomization} in a string representation.
+     * {@link EAttributeCustomization}.
      * 
      * @param bestStyleDescriptionKey
      *            the {@link BestStyleDescriptionKey} identifying the best
      *            StyleDescription to customize
      * @param interpreter
      *            the interpreter used to get the new value
-     * @return the new value as a string representation
+     * @return the new value
      */
-    public String getNewAttributeValue(BestStyleDescriptionKey bestStyleDescriptionKey, IInterpreter interpreter) {
-        String newAttributeValue = null;
+    public Object getNewAttributeValue(BestStyleDescriptionKey bestStyleDescriptionKey, IInterpreter interpreter) {
+        Object newAttributeValue = null;
         if (eAttributeCustomization.getValue() != null && !StringUtil.isEmpty(eAttributeCustomization.getValue().trim())) {
             interpreter.setVariable(IInterpreterSiriusVariables.VIEW, bestStyleDescriptionKey.getViewVariable());
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, bestStyleDescriptionKey.getContainerVariable());
 
-            newAttributeValue = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateString(bestStyleDescriptionKey.getModelElement(), eAttributeCustomization,
+            newAttributeValue = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluate(bestStyleDescriptionKey.getModelElement(), eAttributeCustomization,
                     DescriptionPackage.eINSTANCE.getEAttributeCustomization_Value());
 
             interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
