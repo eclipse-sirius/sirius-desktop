@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,6 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -24,20 +21,16 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.MultiStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
 import org.eclipse.sirius.ext.base.Option;
@@ -47,41 +40,24 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.statushandlers.StatusManager;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 
 /**
- * A job to load one or more representations files (load the aird file and all
- * the referenced resource). Warning before calling this job you must call
+ * A job to load one representations files (load the aird file and all the
+ * referenced resource). Warning before calling this job you must call
  * waitOtherJobs methods to ensure that there is no job of this kind currently
  * running.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
-    /**
-     * The default label for the job that open a representations file.
-     */
+
+    /** The default label for the job that open a representations file. */
     public static final String JOB_LABEL = Messages.OpenRepresentationsFileJob_label;
 
-    /**
-     * The list of representations files to load. This list is exclusive with
-     * the list of modeling projects.
-     */
-    List<URI> representationsFilesURIs = Lists.newArrayList();
-
-    /**
-     * The list of modeling projects to initialize and for which to load the
-     * main representations file. This list is exclusive with the list of
-     * representations files.
-     */
-    List<ModelingProject> modelingProjects = Lists.newArrayList();
+    /** The {@link URI} of the representations file to open. */
+    private URI representationsFileURI;
 
     /**
      * Constructor to open only one representations file.
@@ -91,23 +67,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      */
     public OpenRepresentationsFileJob(final URI representationsFileURI) {
         super(OpenRepresentationsFileJob.JOB_LABEL);
-        this.representationsFilesURIs.add(representationsFileURI);
-    }
-
-    /**
-     * Constructor to open several representations files.
-     *
-     * @param elements
-     *            A list of URIs of the representations files to open or a list
-     *            of the modeling projects to initialize and open.
-     */
-    public OpenRepresentationsFileJob(List<? extends Object> elements) {
-        super(OpenRepresentationsFileJob.JOB_LABEL);
-        if (!(Iterators.all(elements.iterator(), Predicates.instanceOf(URI.class)) || Iterators.all(elements.iterator(), Predicates.instanceOf(ModelingProject.class)))) {
-            throw new IllegalArgumentException(Messages.OpenRepresentationsFileJob_errorInvalidInputList);
-        }
-        Iterators.addAll(this.representationsFilesURIs, Iterators.filter(elements.iterator(), URI.class));
-        Iterators.addAll(this.modelingProjects, Iterators.filter(elements.iterator(), ModelingProject.class));
+        this.representationsFileURI = representationsFileURI;
     }
 
     /**
@@ -120,143 +80,107 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      *            <code>false</code> otherwise.
      */
     public static void scheduleNewWhenPossible(URI representationsFileURI, boolean user) {
-        // Just wait other job if some are already in progress
-        OpenRepresentationsFileJob.waitOtherJobs();
-
         // Schedule a new job for this representations file.
         Job job = new OpenRepresentationsFileJob(representationsFileURI);
         job.setUser(user);
         job.setPriority(Job.SHORT);
         job.schedule();
-    }
-
-    /**
-     * Launch this job when all other openRepresentationFile's job are finished.
-     *
-     * @param elements
-     *            A list of URIs of the representations files to open or a list
-     *            of the modeling projects to initialize and open.
-     * @param user
-     *            <code>true</code> if this job is a user-initiated job, and
-     *            <code>false</code> otherwise.
-     */
-    public static void scheduleNewWhenPossible(List<? extends Object> elements, boolean user) {
-        if (!(Iterators.all(elements.iterator(), Predicates.instanceOf(URI.class)) || Iterators.all(elements.iterator(), Predicates.instanceOf(ModelingProject.class)))) {
-            throw new IllegalArgumentException(Messages.OpenRepresentationsFileJob_errorInvalidInputList);
+        IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (activeWorkbenchWindow != null) {
+            PlatformUI.getWorkbench().getProgressService().showInDialog(activeWorkbenchWindow.getShell(), job);
         }
-
-        // Just wait other job if some are already in progress
-        OpenRepresentationsFileJob.waitOtherJobs();
-
-        // Schedule a new job for this representations file.
-        Job job = new OpenRepresentationsFileJob(elements);
-        job.setUser(user);
-        job.setPriority(Job.SHORT);
-        job.schedule();
     }
 
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor) {
-        IStatus initializationStatus = Status.OK_STATUS;
-        List<IStatus> openingStatuses = Lists.newArrayList();
+        SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.OpenRepresentationsFileJob_loadingModelsTask, 100);
+        // Clean existing marker if exists
+        IProject project = null;
         try {
-            monitor.beginTask(Messages.OpenRepresentationsFileJob_loadingModelsTask, 11);
-            monitor.subTask(Messages.OpenRepresentationsFileJob_initModelingProjectsTask);
-            if (!modelingProjects.isEmpty()) {
-                // Initialize the modeling projects before open the main
-                // representations files.
-                List<IProject> projects = Lists.newArrayList();
-                for (ModelingProject modelingProject : modelingProjects) {
-                    projects.add(modelingProject.getProject());
-                }
-                initializationStatus = InitializeModelingProjectJob.initializeModelingProjects(projects, true, new SubProgressMonitor(monitor, 2));
-
-                SubProgressMonitor getRepresentationsFilesMonitor = new SubProgressMonitor(monitor, 1);
-                try {
-                    getRepresentationsFilesMonitor.beginTask("", modelingProjects.size()); //$NON-NLS-1$
-                    for (ModelingProject modelingProject : modelingProjects) {
-                        Option<URI> optionalMainSessionFileURI = modelingProject.getMainRepresentationsFileURI(new SubProgressMonitor(getRepresentationsFilesMonitor, 1), false, false);
-                        if (optionalMainSessionFileURI.some()) {
-                            representationsFilesURIs.add(optionalMainSessionFileURI.get());
-                        }
-                    }
-                } finally {
-                    getRepresentationsFilesMonitor.done();
-                }
-            } else {
-                monitor.worked(3);
+            if (representationsFileURI.isPlatform()) {
+                String projectName = URI.decode(representationsFileURI.segment(1));
+                project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
             }
-            SubProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
-                subMonitor.beginTask("", 100 * representationsFilesURIs.size()); //$NON-NLS-1$
-                for (URI representationsFileURI : representationsFilesURIs) {
-                    // Clean existing marker if exists
-                    IProject project = null;
-                    if (representationsFileURI.isPlatform()) {
-                        String projectName = URI.decode(representationsFileURI.segment(1));
-                        project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-                    }
-                    try {
-                        if (project != null) {
-                            project.deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);
-                        }
-                    } catch (final CoreException e) {
-                        SiriusPlugin.getDefault().getLog().log(e.getStatus());
-                    }
+                if (project != null) {
+                    project.deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);
+                }
+            } catch (final CoreException e) {
+                SiriusPlugin.getDefault().getLog().log(e.getStatus());
+            }
 
-                    subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingRepresentationFileTask, representationsFileURI.lastSegment()));
-                    final Set<Session> sessions = performOpenSession(representationsFileURI, new SubProgressMonitor(subMonitor, 90));
-                    if (sessions.isEmpty()) {
-                        subMonitor.worked(10);
-                        String errorMessage = logLoadingProblem(project, representationsFileURI, null);
-                        openingStatuses.add(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, errorMessage, null));
-                    } else {
-                        subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_openingStartRepresentationTask, representationsFileURI.lastSegment()));
-                        // Open the startup representations of each session
-                        for (final Session session : sessions) {
-                            SessionHelper.openStartupRepresentations(session, new SubProgressMonitor(subMonitor, 10 / sessions.size()));
-                        }
+            subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingRepresentationFileTask, representationsFileURI.lastSegment()));
+            Session session = performOpenSession(subMonitor.newChild(90));
+            if (session != null) {
+                monitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_openingStartRepresentationTask, representationsFileURI.lastSegment()));
+                // Open the startup representations of each session
+                SessionHelper.openStartupRepresentations(session, subMonitor.newChild(10));
+            }
+            // CHECKSTYLE:OFF to add a marker on this project
+        } catch (RuntimeException e) {
+            // CHECKSTYLE:ON
+            String message = markeModelingProjectAsInvalid(project, e);
+            throw new RuntimeException(message, e);
+        } finally {
+            monitor.done();
+        }
+        return Status.OK_STATUS;
+    }
+
+    /**
+     * Open session.
+     *
+     * @param monitor
+     *            the progress monitor.
+     * @return the opened session.
+     */
+    private Session performOpenSession(IProgressMonitor monitor) {
+        Session session = null;
+        try {
+            SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
+            if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
+                subMonitor.worked(1);
+                session = SessionManager.INSTANCE.getSession(representationsFileURI, subMonitor.newChild(10));
+                // Open the session if needed (load the referenced models by
+                // a ResolveAll call)
+                subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
+                if (session != null) {
+                    if (!session.isOpen()) {
+                        session.open(subMonitor.newChild(4));
+                    }
+                    IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
+                    if (!editingSession.isOpen()) {
+                        editingSession.open();
                     }
                 }
-            } finally {
-                subMonitor.done();
+                subMonitor.worked(1);
             }
         } finally {
             monitor.done();
         }
-        List<IStatus> allStatuses = Lists.newArrayList(openingStatuses);
-        if (!initializationStatus.isOK()) {
-            if (initializationStatus instanceof MultiStatus) {
-                allStatuses.addAll(0, Lists.newArrayList(((MultiStatus) initializationStatus).getChildren()));
-            } else {
-                allStatuses.add(0, initializationStatus);
-            }
-        }
-
-        IStatus result = Status.OK_STATUS;
-        if (allStatuses.size() == 1) {
-            result = allStatuses.get(0);
-        } else if (allStatuses.size() > 1) {
-            result = new MultiStatus(SiriusEditPlugin.ID, IStatus.ERROR, allStatuses.toArray(new IStatus[0]), Messages.OpenRepresentationsFileJob_invalidModelingProjectsError, null);
-        }
-
-        return result;
+        return session;
     }
 
     /**
-     * Log loading problem (Add a marker on this project, change valid status of
-     * this modeling project, clean the cache of the ModelingProjectManager).
+     * Marks the {@link ModelingProject} associated to the specified
+     * <code>project</code> as invalid :
+     * 
+     * <ul>
+     * <li>add a error marker to the project</li>
+     * <li>mark the associated {@link IProject} as invalid</li>
+     * <li>clear the cache of {@link ModelingProjectManager} about this
+     * {@link ModelingProject}</li>
+     * </ul>
      *
      * @param project
-     *            The project concerned by this problem.
-     * @param representationsFileURI
-     *            The URI of the representations file concerned by this problem.
+     *            the project associated to the {@link ModelingProject}.
      * @param exception
-     *            The thrown exception
-     * @return The error message.
+     *            the {@link RuntimeException} origin of the failing session
+     *            opening
+     * @return the error message to dispatch.
      */
-    protected String logLoadingProblem(IProject project, URI representationsFileURI, Exception exception) {
-        String message = ""; //$NON-NLS-1$
+    private String markeModelingProjectAsInvalid(IProject project, RuntimeException exception) {
+        String message = null;
         if (project != null) {
             boolean isModelingProject = ModelingProject.hasModelingProjectNature(project);
             final String errorDetail;
@@ -284,83 +208,6 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
         // Clear modeling project manager cache for this representations file
         ModelingProjectManager.INSTANCE.clearCache(representationsFileURI);
         return message;
-    }
-
-    /**
-     * Open session.
-     *
-     * @param representationsFileURI
-     *            The URI of the representations file corresponding to the
-     *            session to opened.
-     * @param monitor
-     *            the progress monitor.
-     * @return Resource associated to session.
-     */
-    public Set<Session> performOpenSession(URI representationsFileURI, IProgressMonitor monitor) {
-        Set<Session> openedSessions = new HashSet<Session>();
-        try {
-            monitor.beginTask(Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
-            if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
-                monitor.worked(1);
-                Session session = SessionManager.INSTANCE.getSession(representationsFileURI, new SubProgressMonitor(monitor, 10));
-                // Open the session if needed (load the referenced models by
-                // a ResolveAll call)
-                monitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
-                if (session != null) {
-                    if (!session.isOpen()) {
-                        session.open(new SubProgressMonitor(monitor, 4));
-                    }
-                    IEditingSession editingSession;
-                    // JGO : Do not create an editing session in case the
-                    // session is
-                    // null
-                    // the session could be null if the session is not a local
-                    // session (CDO for example) and
-                    // if the remote CDO server is unreachable
-                    editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
-                    if (!editingSession.isOpen()) {
-                        editingSession.open();
-                    }
-                    if (openedSessions != null) {
-                        openedSessions.add(session);
-                    }
-                }
-                monitor.worked(1);
-            }
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException e) {
-            // CHECKSTYLE:ON
-            SiriusEditPlugin.getPlugin().log(e);
-        } finally {
-            monitor.done();
-        }
-        return openedSessions;
-    }
-
-    /**
-     * Waits until all jobs of this kind are finished. This method must be
-     * called from UI Thread.
-     */
-    public static void waitOtherJobs() {
-        if (OpenRepresentationsFileJob.shouldWaitOtherJobs()) {
-            try {
-                if (Display.getCurrent() != null) {
-                    PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
-                        @Override
-                        public void run(IProgressMonitor monitor) throws InterruptedException {
-                            Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, monitor);
-                        }
-                    });
-                } else {
-                    Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
-                }
-            } catch (InvocationTargetException e) {
-                StatusManager.getManager()
-                        .handle(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, OpenRepresentationsFileJob.getLocalizedMessage(e), OpenRepresentationsFileJob.getCause(e)));
-            } catch (InterruptedException e) {
-                // Do nothing;
-            }
-        }
     }
 
     /**

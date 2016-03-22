@@ -19,6 +19,7 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public final class Messages {
+
     static {
         I18N.initializeMessages(Messages.class, SiriusEditPlugin.INSTANCE);
     }
@@ -580,9 +581,6 @@ public final class Messages {
     public static String OpenRepresentationsFileJob_errorInvalidInputList;
 
     @TranslatableMessage
-    public static String OpenRepresentationsFileJob_initModelingProjectsTask;
-
-    @TranslatableMessage
     public static String OpenRepresentationsFileJob_invalidModelingProjectsError;
 
     @TranslatableMessage
@@ -1025,6 +1023,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ViewpointsSelectionWizardPage_title;
+
+    @TranslatableMessage
+    public static String InvalidModelingProjectMarkerUpdaterJob_updateMarkers;
 
     // CHECKSTYLE:ON
 

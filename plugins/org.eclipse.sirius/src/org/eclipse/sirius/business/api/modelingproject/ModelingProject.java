@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,8 @@
 package org.eclipse.sirius.business.api.modelingproject;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -22,12 +20,10 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A modeling project nature is used to know which projects should be handled in
@@ -178,7 +174,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
      * 
      * @param monitor
      *            the monitor to be used for reporting progress and responding
-     *            to cancelation. The monitor is never <code>null</code>
+     *            to cancellation. The monitor is never <code>null</code>
      * @return an optional URI corresponding to the main session file of this
      *         project.
      * @throws IllegalArgumentException
@@ -193,8 +189,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
      * this project. If the main representations file is not known, it will be
      * computed by a specific SaxParser that analyzes representations files of
      * this project to determine which is never referenced.<BR>
-     * This method marks this project as invalid and adds a marker on it, if it
-     * is considered as invalid.
+     * This method marks this project as invalid.
      * 
      * @param monitor
      *            the monitor to be used for reporting progress and responding
@@ -225,20 +220,6 @@ public class ModelingProject implements IProjectNature, IModelingElement {
                 try {
                     mainRepresentationsFileURI = new ModelingProjectQuery(this).computeMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1));
                 } catch (IllegalArgumentException e) {
-                    // Clean existing marker if exists
-                    try {
-                        getProject().deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);
-                    } catch (final CoreException ce) {
-                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
-                    }
-                    // Add a marker on this project
-                    try {
-                        final IMarker marker = getProject().createMarker(ModelingMarker.MARKER_TYPE);
-                        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-                        marker.setAttribute(IMarker.MESSAGE, e.getMessage());
-                    } catch (final CoreException ce) {
-                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
-                    }
                     // Set this project in invalid state
                     setValid(false);
                     // Throw exception if asked

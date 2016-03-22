@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views.modelexplorerview.resourcelistener;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -30,8 +30,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.InvalidModelingProjectMarkerUpdaterJob;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.collect.Lists;
@@ -68,11 +70,6 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
         workspace.removeResourceChangeListener(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
-     */
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
         IResourceDelta delta = event.getDelta();
@@ -100,8 +97,19 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
                     // Launch the silently job to initialize the modeling
                     // projects and then open the main representations files of
                     // each projects.
-                    OpenRepresentationsFileJob.scheduleNewWhenPossible(new ArrayList<ModelingProject>(visitor.projectsToInitializeAndLoad), false);
-
+                    for (ModelingProject modelingProject : visitor.projectsToInitializeAndLoad) {
+                        try {
+                            Option<URI> mainRepresentationsFileURIOption = modelingProject.getMainRepresentationsFileURI(new NullProgressMonitor(), true, true);
+                            if (mainRepresentationsFileURIOption.some()) {
+                                URI mainRepresentationsFileURI = mainRepresentationsFileURIOption.get();
+                                ModelingProjectManager.INSTANCE.loadAndOpenRepresentationsFile(mainRepresentationsFileURI, true);
+                            }
+                        } catch (IllegalArgumentException e) {
+                            IProject project = modelingProject.getProject();
+                            Job invalidModelingProjectMarkerUpdaterJob = new InvalidModelingProjectMarkerUpdaterJob(project, e.getMessage());
+                            invalidModelingProjectMarkerUpdaterJob.schedule();
+                        }
+                    }
                 }
                 if (!visitor.semanticResourcesURIsToAttachPerSession.isEmpty()) {
                     Job attachSemanticResourcesJob = new AttachSemanticResourcesJob(new LinkedHashMap<Session, Set<URI>>(visitor.semanticResourcesURIsToAttachPerSession));

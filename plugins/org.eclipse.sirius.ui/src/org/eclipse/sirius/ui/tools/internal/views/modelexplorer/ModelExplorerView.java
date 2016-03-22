@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -26,10 +27,12 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.api.views.LockDecorationUpdater;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
+import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.InvalidModelingProjectMarkerUpdaterJob;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.FilteredCommonTree;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.CommonNavigatorTab;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabDescriptor;
@@ -107,6 +110,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
             tabFolder.addSelectionListener(new SelectionAdapter() {
 
+                @Override
                 public void widgetSelected(SelectionEvent e) {
                     selection(e);
                 }
@@ -134,6 +138,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getAdapter(Class type) {
         Object result = null;
         if (type == IPropertySheetPage.class) {
@@ -286,6 +291,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
      * 
      * @see org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget#expand(java.lang.Object)
      */
+    @Override
     public void expand(Object elementOrTreePath) {
         if (getCommonViewer() != null) {
             getCommonViewer().expandToLevel(elementOrTreePath, 1);
@@ -343,7 +349,14 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
         if (element instanceof IProject) {
             Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject((IProject) element);
             if (optionalModelingProject.some()) {
-                Option<URI> optionalMainSessionFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), false, false);
+                Option<URI> optionalMainSessionFileURI = Options.newNone();
+                try {
+                    optionalMainSessionFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), false, true);
+                } catch (IllegalArgumentException e) {
+                    IProject project = optionalModelingProject.get().getProject();
+                    Job invalidModelingProjectMarkerUpdaterJob = new InvalidModelingProjectMarkerUpdaterJob(project, e.getMessage());
+                    invalidModelingProjectMarkerUpdaterJob.schedule();
+                }
                 if (optionalMainSessionFileURI.some()) {
                     // Load the main representations file of this modeling
                     // project if it's not already loaded or during loading.
@@ -362,6 +375,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
         bars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameActionHandler);
 
         this.getCommonViewer().getControl().addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(KeyEvent event) {
                 handleKeyReleased(event);
             }
@@ -390,6 +404,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getContributorId() {
         return ID;
     }

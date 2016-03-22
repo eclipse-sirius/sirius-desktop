@@ -38,9 +38,11 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.getRequiredViewpoints(DRepresentation)@ has been added to have a default implementation of @DialectServices.getRequiredViewpoints(DRepresentation)@ method.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.isRelatedViewpointSelected(Session, RepresentationDescription)@ protected method has been added to check if a @RepresentationDescription@ is usable in the context of the specified session.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String, String)@ method has been added to replace the deprecated @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String)@. This method now uses the description name as title for the wizard. This new method has been implemented by @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback@ and @org.eclipse.sirius.tools.api.command.ui.NoUICallback@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.loadAndOpenRepresentationsFile(URI, boolean)@ has been added to specify if job used to open a session must be considered as launched by the user or not, because by default with @ModelingProjectManager.loadAndOpenRepresentationsFile(URI)@ the job was not considered as launched by the user.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@ now implements @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ methods no more update workspace resource about markers, now this must be done in caller on IllegalArgumentException catch in a workspace aware operation.
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2@ has been deleted and is now @MetamodelDescriptorProvider@.
 
 h4. Changes in @org.eclipse.sirius.common@
@@ -67,6 +69,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 * <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_NewRepresentationNameLabel@ has been replaced by "Name:" (previous value was "Representation name:"). 
 * <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_RepresentationDescriptionLabel@ has been replaced by "Representation description: {0}" (previous value was "Representation description: "). 
 * <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_Title@ has been replaced by "New {0}" (previous value was "New Representation"). 
+* <span class="label label-danger">Removed</span> The internationalizable label @org.eclipse.sirius.viewpoint.provider.Messages.OpenRepresentationsFileJob_initModelingProjectsTask@ has been removed as this message is no more used.
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager@ has been removed. 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@

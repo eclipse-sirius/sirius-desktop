@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 
@@ -55,7 +57,11 @@ public class ManageSessionActionProvider extends CommonActionProvider {
         }
 
         // Wait the end of the loading of the representations file
-        OpenRepresentationsFileJob.waitOtherJobs();
+        try {
+            Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
+        } catch (InterruptedException e) {
+            // Do nothing
+        }
 
         // Differents behavior between win and linux : windows will not
         // display contextual menu if busy cursor while dialog is shown.

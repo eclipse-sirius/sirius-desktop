@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.actions.SelectionListenerAction;
 
 import com.google.common.collect.Iterables;
@@ -69,7 +69,8 @@ public class OpenSessionAction extends SelectionListenerAction {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_SESSION_ACTION_KEY);
             for (IFile selectedFile : selectedFiles) {
                 if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(selectedFile.getFileExtension())) {
-                    OpenRepresentationsFileJob.scheduleNewWhenPossible(URI.createPlatformResourceURI(selectedFile.getFullPath().toOSString(), true), true);
+                    URI sessionResourceURI = URI.createPlatformResourceURI(selectedFile.getFullPath().toOSString(), true);
+                    ModelingProjectManager.INSTANCE.loadAndOpenRepresentationsFile(sessionResourceURI, true);
                 }
             }
         } finally {

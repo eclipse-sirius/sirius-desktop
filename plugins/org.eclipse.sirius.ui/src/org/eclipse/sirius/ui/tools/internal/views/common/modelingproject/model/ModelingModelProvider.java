@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,12 +28,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.InvalidModelingProjectMarkerUpdaterJob;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 
@@ -85,20 +87,20 @@ public class ModelingModelProvider extends ModelProvider {
                 if (visitor.getProjectContainingSessionToSaveToDelete().size() == 1) {
                     result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, Messages.ModelingModelProvider_satusUnsavedDataWillBeLost);
                 } else if (visitor.getProjectContainingSessionToSaveToDelete().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
-                            Messages.ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames, getProjectsName(visitor.getProjectContainingSessionToSaveToDelete())));
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID,
+                            MessageFormat.format(Messages.ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames, getProjectsName(visitor.getProjectContainingSessionToSaveToDelete())));
                 } else if (visitor.getMainRepresentationsFilesToDelete().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
-                            Messages.ModelingModelProvider_mainRepresentationFileDeleted, visitor.getMainRepresentationsFilesToDelete().get(0).getProject().getName()));
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID,
+                            MessageFormat.format(Messages.ModelingModelProvider_mainRepresentationFileDeleted, visitor.getMainRepresentationsFilesToDelete().get(0).getProject().getName()));
                 } else if (visitor.getMainRepresentationsFilesToDelete().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
-                            Messages.ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted, getFilesProjectName(visitor.getMainRepresentationsFilesToDelete())));
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID,
+                            MessageFormat.format(Messages.ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted, getFilesProjectName(visitor.getMainRepresentationsFilesToDelete())));
                 } else if (visitor.getRepresentationsFileToAddOnValidModelingProject().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
-                            Messages.ModelingModelProvider_addAnotherRepresentationFile, visitor.getRepresentationsFileToAddOnValidModelingProject().get(0).getProject().getName()));
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat
+                            .format(Messages.ModelingModelProvider_addAnotherRepresentationFile, visitor.getRepresentationsFileToAddOnValidModelingProject().get(0).getProject().getName()));
                 } else if (visitor.getRepresentationsFileToAddOnValidModelingProject().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
-                            Messages.ModelingModelProvider_addAnotherRepresentationFileSeveralProjects, getFilesProjectName(visitor.getRepresentationsFileToAddOnValidModelingProject())));
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat
+                            .format(Messages.ModelingModelProvider_addAnotherRepresentationFileSeveralProjects, getFilesProjectName(visitor.getRepresentationsFileToAddOnValidModelingProject())));
                 }
             } catch (CoreException e) {
                 /* do nothing */
@@ -246,7 +248,13 @@ public class ModelingModelProvider extends ModelProvider {
                     } else if (new FileQuery(currentFile).isSessionResourceFile()) {
                         // If the project is not valid and the deleted file is a
                         // representations file, validate the project again.
-                        optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), true, false);
+                        try {
+                            optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), true, true);
+                        } catch (IllegalArgumentException e) {
+                            IProject project = optionalModelingProject.get().getProject();
+                            Job invalidModelingProjectMarkerUpdaterJob = new InvalidModelingProjectMarkerUpdaterJob(project, e.getMessage());
+                            invalidModelingProjectMarkerUpdaterJob.schedule();
+                        }
                     }
                 } else if (IResourceDelta.ADDED == delta.getKind()) {
                     // Check that the corresponding project does not already

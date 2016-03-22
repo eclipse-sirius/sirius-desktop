@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.modelingproject.manager;
 
 import java.util.List;
 
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -119,7 +120,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
      *            if it is already known), false otherwise.
      * @param monitor
      *            the monitor to be used for reporting progress and responding
-     *            to cancelation. The monitor is never <code>null</code>
+     *            to cancellation. The monitor is never <code>null</code>
      * @return resulting status of the initialization
      */
     public static IStatus initializeModelingProjects(List<IProject> projects, boolean forceInit, IProgressMonitor monitor) {
@@ -127,13 +128,13 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
         try {
             IProject[] projectsTable;
             if (projects != null) {
-                projectsTable = projects.toArray(new IProject[0]);
+                projectsTable = projects.toArray(new IProject[projects.size()]);
             } else {
                 projectsTable = ResourcesPlugin.getWorkspace().getRoot().getProjects();
             }
             monitor.beginTask("", projectsTable.length); //$NON-NLS-1$
-            for (int i = 0; i < projectsTable.length; i++) {
-                Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(projectsTable[i]);
+            for (IProject project : projectsTable) {
+                Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(project);
                 if (optionalModelingProject.some()) {
                     // Clean existing marker if exists
                     try {
@@ -144,6 +145,14 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
                     try {
                         optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), forceInit, true);
                     } catch (IllegalArgumentException e) {
+                        // Add a marker on this project
+                        try {
+                            final IMarker marker = project.createMarker(ModelingMarker.MARKER_TYPE);
+                            marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+                            marker.setAttribute(IMarker.MESSAGE, e.getMessage());
+                        } catch (final CoreException ce) {
+                            SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                        }
                         // Add the problem to the result status of this job
                         errorStatus.add(new Status(IStatus.ERROR, SiriusPlugin.ID, IStatus.OK, e.getMessage(), null));
                     }

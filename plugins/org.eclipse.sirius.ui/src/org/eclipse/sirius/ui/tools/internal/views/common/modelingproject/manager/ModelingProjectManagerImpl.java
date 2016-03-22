@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -27,6 +28,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -35,6 +37,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
@@ -51,6 +54,7 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
@@ -75,7 +79,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         public void notify(Session updated, int notification) {
             if (notification == SessionListener.OPENING) {
                 // No need to at it again to the sessionFileLoading list because
-                // we add it during the starting of the load 
+                // we add it during the starting of the load
                 // ModelingProjectManager.loadAndOpenSession().
             } else if (notification == SessionListener.OPENED) {
                 sessionFileLoading.remove(updated.getSessionResource().getURI());
@@ -114,11 +118,20 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     @Override
     public void loadAndOpenRepresentationsFile(final URI representationsFileURI) {
-        loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI));
+        loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI), false);
+    }
+
+    @Override
+    public void loadAndOpenRepresentationsFile(final URI representationsFileURI, boolean user) {
+        loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI), user);
     }
 
     @Override
     public void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs) {
+        loadAndOpenRepresentationsFiles(representationsFilesURIs, false);
+    }
+
+    private void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs, boolean user) {
         // Add the specific sessions listener (if not already added).
         SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
 
@@ -137,7 +150,9 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         List<URI> tempRepresentationsFilesURIs = Lists.newArrayList(representationsFilesURIsToLoadIterator);
         sessionFileLoading.addAll(tempRepresentationsFilesURIs);
         // Launch the silently job to open the representations files
-        OpenRepresentationsFileJob.scheduleNewWhenPossible(tempRepresentationsFilesURIs, false);
+        for (URI representationsFilesURI : tempRepresentationsFilesURIs) {
+            OpenRepresentationsFileJob.scheduleNewWhenPossible(representationsFilesURI, user);
+        }
     }
 
     /**
@@ -244,7 +259,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         };
         ResourcesPlugin.getWorkspace().run(create, monitor);
     }
-    
+
     @Override
     public void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException {
         URI representationsURI = URI.createPlatformResourceURI(project.getFullPath().append(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME).toString(), true);
@@ -296,9 +311,23 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     Option<URI> mainRepresentationsFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
                     if (mainRepresentationsFileURI.some()) {
                         // Open the session.
-                        OpenRepresentationsFileJob.scheduleNewWhenPossible(mainRepresentationsFileURI.get(), true);
+                        loadAndOpenRepresentationsFile(mainRepresentationsFileURI.get(), true);
                     }
                 } catch (IllegalArgumentException e) {
+                    // Clean existing marker if exists
+                    try {
+                        project.deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);
+                    } catch (final CoreException ce) {
+                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                    }
+                    // Add a marker on this project
+                    try {
+                        final IMarker marker = project.createMarker(ModelingMarker.MARKER_TYPE);
+                        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+                        marker.setAttribute(IMarker.MESSAGE, e.getMessage());
+                    } catch (final CoreException ce) {
+                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                    }
                     if (e.getCause() != null && ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN.equals(e.getCause().getMessage())) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
@@ -316,7 +345,11 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                 // open session
                 if (OpenRepresentationsFileJob.shouldWaitOtherJobs()) {
                     // We are loading session(s)
-                    OpenRepresentationsFileJob.waitOtherJobs();
+                    try {
+                        Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
+                    } catch (InterruptedException e) {
+                        // Do nothing
+                    }
                 }
                 if (optionalModelingProject.get().getSession() != null) {
                     // add semantic resources if already existing in the project

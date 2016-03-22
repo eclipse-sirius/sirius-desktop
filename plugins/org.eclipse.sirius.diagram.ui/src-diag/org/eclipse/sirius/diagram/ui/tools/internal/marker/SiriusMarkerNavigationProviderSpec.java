@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,13 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -37,7 +39,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerCon
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PartInitException;
@@ -48,15 +50,9 @@ import org.eclipse.ui.ide.IDE;
  * Specification of SiriusMarkerNavigationProvider.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
 public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.internal.providers.SiriusMarkerNavigationProvider#doGotoMarker(org.eclipse.core.resources.IMarker)
-     */
     @Override
     protected void doGotoMarker(final IMarker marker) {
         final String diagramURI = marker.getAttribute(NavigationMarkerConstants.DIAGRAM_URI, null);
@@ -78,7 +74,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             final SiriusDiagramEditor targetEditor = switchToTargetEditor(defaultEditor, markedResource, markedDiagramURI, markedDiagram);
 
             if (targetEditor != null) {
-                final Map editPartRegistry = targetEditor.getDiagramGraphicalViewer().getEditPartRegistry();
+                final Map<?, ?> editPartRegistry = targetEditor.getDiagramGraphicalViewer().getEditPartRegistry();
                 final EObject targetView = targetEditor.getDiagram().eResource().getEObject(elementId);
                 if (targetView == null) {
                     return;
@@ -138,9 +134,13 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
         Session session = SessionManager.INSTANCE.getExistingSession(sessionResourceUri);
         if (session == null) {
             // Try to open a session.
-            OpenRepresentationsFileJob.scheduleNewWhenPossible(sessionResourceUri, true);
+            ModelingProjectManager.INSTANCE.loadAndOpenRepresentationsFile(sessionResourceUri, true);
             // Wait the end of the loading of the representations file
-            OpenRepresentationsFileJob.waitOtherJobs();
+            try {
+                Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
+            } catch (InterruptedException e) {
+                // Do nothing;
+            }
             session = SessionManager.INSTANCE.getExistingSession(sessionResourceUri);
         }
         return session;
