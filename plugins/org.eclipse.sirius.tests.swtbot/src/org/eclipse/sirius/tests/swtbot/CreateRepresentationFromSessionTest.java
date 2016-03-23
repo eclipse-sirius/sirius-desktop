@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,7 +117,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      */
     public void testImportDiagramCreation() {
         // create the representation
-        SWTBotEditor editor = createRepresentation("Diagram Import Import", "p1");
+        SWTBotEditor editor = createRepresentation("Diagram Import Import", "Import", "p1");
         assertNotNull(THE_REPRESENTATION_IS_NOT_CREATED, editor);
 
         Session session = localSession.getOpenedSession();
@@ -216,6 +216,18 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      * @return the opened representation
      */
     private SWTBotEditor createRepresentation(String representation, String semanticElement) {
+        return createRepresentation(representation, representation, semanticElement);
+    }
+
+    /**
+     * Create a representation from the session wizard.
+     * 
+     * @param representation
+     * @param representationDescLabel
+     * @param semanticElement
+     * @return the opened representation
+     */
+    private SWTBotEditor createRepresentation(String representation, String representationDescLabel, String semanticElement) {
         secondWizard(representation);
 
         bot.tree().expandNode("platform:/resource/DesignerTestProject/My.ecore").expandNode(semanticElement).select();
@@ -223,7 +235,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.button(FINISH).click();
 
         // choose the representation name
-        SWTBotShell shell = bot.shell("New Representation");
+        SWTBotShell shell = bot.shell("New " + representationDescLabel);
         shell.activate();
         bot.button(OK).click();
         SWTBotUtils.waitAllUiEvents();

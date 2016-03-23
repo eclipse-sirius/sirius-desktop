@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,14 +63,34 @@ public interface UICallBack {
      * 
      * @param defaultName
      *            the default name.
-     * @param representationDescription
-     *            the description of the new future representation
+     * @param representationDescriptionDoc
+     *            the documentation of the future representation
+     * @return the name that has been inputed by the user.
+     * @throws InterruptedException
+     *             when the process is interrupted (for instance the user
+     *             pressed "cancel".)
+     * @deprecated Replaced by {@link #askForDetailName(String, String, String)}
+     * 
+     */
+    @Deprecated
+    String askForDetailName(String defaultName, String representationDescriptionDoc) throws InterruptedException;
+
+    /**
+     * Called when the user interface should prompt for a name.
+     * 
+     * @param defaultName
+     *            the default name.
+     * @param representationDescriptionName
+     *            the name of the representation description used for the future
+     *            representation
+     * @param representationDescriptionDoc
+     *            the documentation of the future representation
      * @return the name that has been inputed by the user.
      * @throws InterruptedException
      *             when the process is interrupted (for instance the user
      *             pressed "cancel".)
      */
-    String askForDetailName(String defaultName, String representationDescription) throws InterruptedException;
+    String askForDetailName(String defaultName, String representationDescriptionName, String representationDescriptionDoc) throws InterruptedException;
 
     /**
      * Called when the user interface should prompt for a selection of EObject

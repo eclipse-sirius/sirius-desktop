@@ -12,6 +12,8 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> Now if an object is locked and cannot be modified according to @IPermissionAuthority@, the properties view will not be editable if this locked object is selected from the Model Explorer view.
 * <span class="label label-info">Modified</span> When trying to reconnect an edge end on another edge, the edge is now highlighted only if a reconnect tool is found (the precondition of the tool is not tested here).
 * <span class="label label-info">Modified</span> List items now have the same margin whichever their parent is a simple list or a compartmentalized list. The margin in compartmentalized list was incorrectly set to 0 pixel.
+* <span class="label label-info">Modified</span> The wizard to ask the new representation name has been changed. These concerns the title of the wizard and the input label. Example with a new Entities diagram for EcoreTools:
+!images/representationNameWizardChange.png! 
 
 h3. Specifier-Visible Changes
 
@@ -35,6 +37,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.DialectServices.getRequiredViewpoints(DRepresentation)@ has been added to have mean to get required viewpoints to use a representation.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.getRequiredViewpoints(DRepresentation)@ has been added to have a default implementation of @DialectServices.getRequiredViewpoints(DRepresentation)@ method.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.isRelatedViewpointSelected(Session, RepresentationDescription)@ protected method has been added to check if a @RepresentationDescription@ is usable in the context of the specified session.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String, String)@ method has been added to replace the deprecated @org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String)@. This method now uses the description name as title for the wizard. This new method has been implemented by @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback@ and @org.eclipse.sirius.tools.api.command.ui.NoUICallback@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@ now implements @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
@@ -60,6 +63,10 @@ h4. Changes in @org.eclipse.sirius.diagram@
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List<TypedVariable>, List<String>)@ has been created.
+* <span class="label label-info">Added</span> The new internationalizable label @Messages_createRepresentationInputDialog_DefaultRepresentationDescName@ has been added (available through @org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName@. Its value is "Representation".
+* <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_NewRepresentationNameLabel@ has been replaced by "Name:" (previous value was "Representation name:"). 
+* <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_RepresentationDescriptionLabel@ has been replaced by "Representation description: {0}" (previous value was "Representation description: "). 
+* <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_Title@ has been replaced by "New {0}" (previous value was "New Representation"). 
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager@ has been removed. 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
@@ -85,6 +92,8 @@ h4. Changes in @org.eclipse.sirius.ui@
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The method @getTreeItem(final SWTBotTreeItem[], final String)@ has been added in @org.eclipse.sirius.tests.swtbot.support.utils@ to retrieve recursively a @SWTBotTreeItem@ in a @SWTBotTreeItem@ array.
+* <span class="label label-info">Modified</span> A second @String@ parameter has been added to the method @org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession.newDiagramRepresentation(String, String)@. This parameter is the label of the representation description. It is necessary since the change of the wizard to ask the new representation name (see User-Visible Changes for detail).
+* <span class="label label-info">Modified</span> A third @String@ parameter has been added to the constructor of @org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilder@ for the same above reasons.
 
 h4. Changes in @org.eclipse.sirius.common.xtext@
 

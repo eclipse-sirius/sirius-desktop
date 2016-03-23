@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -108,7 +108,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
 
             session.changeViewpointSelection(Sets.newHashSet("Base", "Extension_A", "Extension_B"), Collections.<String> emptySet());
             SWTBotTreeItem mainPackage = session.getSemanticResourceNode(semanticResource).getNode("package");
-            UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
+            UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME, DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
             /*
              * The next line fails (with an NPE) if the bug in VP-2529 is
              * present, as the pseudo-editor which was opened shows an error
@@ -168,10 +168,12 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
                  */
                 bot.waitUntil(new DefaultCondition() {
 
+                    @Override
                     public String getFailureMessage() {
                         return "OK button is enabled";
                     }
 
+                    @Override
                     public boolean test() throws Exception {
                         return !okButton.isEnabled();
                     }
@@ -193,7 +195,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
         bot.button("Cancel").click();
         session.changeViewpointSelection(Sets.newHashSet("Base", "Extension_A"), Collections.<String> emptySet());
         SWTBotTreeItem mainPackage = session.getSemanticResourceNode(semanticResource).getNode("package");
-        UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
+        UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME, DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
 
         /*
          * The next line fails (with an NPE) if the bug in VP-2529 is present,

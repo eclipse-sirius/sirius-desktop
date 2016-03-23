@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *      Obeo - Initial API and implementation
  */
 package org.eclipse.sirius.tests.swtbot.support.api.business;
+
+import java.text.MessageFormat;
 
 import org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilderFlow.EndFlow;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilderFlow.ItemChoice;
@@ -39,6 +41,8 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
 
     private final String representationNameToClick;
 
+    private final String representationDescriptionLabel;
+
     private String newRepresentationName;
 
     private final SWTWorkbenchBot mainBot;
@@ -54,13 +58,17 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
      * 
      * @param clickedRepresentationName
      *            Representation name clicked in contextual menu
+     * @param representationDescriptionLabel
+     *            The label of the representation description corresponding to
+     *            <code>clickedRepresentationName</code>.
      * @param representationType
      *            Java type of representation.
      */
-    public UINewRepresentationBuilder(final String clickedRepresentationName, final Class<R> representationType) {
+    public UINewRepresentationBuilder(final String clickedRepresentationName, final String representationDescriptionLabel, final Class<R> representationType) {
         this.mainBot = new SWTWorkbenchBot();
         this.representationNameToClick = clickedRepresentationName;
         this.representationType = representationType;
+        this.representationDescriptionLabel = representationDescriptionLabel;
     }
 
     /**
@@ -75,7 +83,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
         treeItem.select();
         SWTBotUtils.clickContextMenu(treeItem, representationNameToClick);
 
-        shell = mainBot.shell(Messages.createRepresentationInputDialog_Title);
+        shell = mainBot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionLabel));
         shell.activate();
 
         shellBot = new SWTBot(shell.widget);

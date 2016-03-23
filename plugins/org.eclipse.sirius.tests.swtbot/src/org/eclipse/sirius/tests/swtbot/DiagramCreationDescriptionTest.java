@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
+
+import java.text.MessageFormat;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -32,6 +34,11 @@ import org.eclipse.ui.IEditorReference;
  * @author smonnier
  */
 public class DiagramCreationDescriptionTest extends AbstractSiriusSwtBotGefTestCase {
+
+    /**
+     * 
+     */
+    private static final String REPRESENTATION_DESCRIPTION_LABEL = "TC732 Square representation 2";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "TC732 Square representation 1";
 
@@ -200,7 +207,7 @@ public class DiagramCreationDescriptionTest extends AbstractSiriusSwtBotGefTestC
 
         editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
 
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.createRepresentationInputDialog_Title));
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive(MessageFormat.format(Messages.createRepresentationInputDialog_Title, REPRESENTATION_DESCRIPTION_LABEL)));
 
         bot.button("OK").click();
         assertEditorIsNotError("Right click new representation editor did not opened correctly", bot.activeEditor());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.std;
+
+import java.text.MessageFormat;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -43,6 +45,8 @@ public class STD006 extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME_DIAGRAM = "RootSTDTestCase package entities";
 
     private static final String MODEL_PACKAGE = "RootSTDTestCase";
+
+    private static final String REPRESENTATION_DESCRIPTION_NAME = "Entities";
 
     private static final String REPRESENTATION_PACKAGE_INSTANCE_NAME_DIGRAM = "New Package Entities";
 
@@ -102,7 +106,8 @@ public class STD006 extends AbstractSiriusSwtBotGefTestCase {
 
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
         final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.getNode(MODEL_PACKAGE);
-        final UIDiagramRepresentation representation = localSession.newDiagramRepresentation(REPRESENTATION_INSTANCE_NAME_DIAGRAM).on(ecoreTreeItem).withDefaultName().ok();
+        final UIDiagramRepresentation representation = localSession.newDiagramRepresentation(REPRESENTATION_INSTANCE_NAME_DIAGRAM, REPRESENTATION_DESCRIPTION_NAME).on(ecoreTreeItem).withDefaultName()
+                .ok();
 
         // Eclipse 4.x, set focus.
         final SWTBotSiriusDiagramEditor editor = representation.getEditor();
@@ -123,7 +128,7 @@ public class STD006 extends AbstractSiriusSwtBotGefTestCase {
         /* Navigate to entities diagram */
         editor.click(50, 50);
         editor.clickContextMenu(new Point(50, 50), REPRESENTATION_PACKAGE_INSTANCE_NAME_DIGRAM);
-        bot.shell(Messages.createRepresentationInputDialog_Title).activate();
+        bot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, REPRESENTATION_DESCRIPTION_NAME)).activate();
         bot.button("OK").click();
 
         assertNotSame(editor, bot.activeEditor());

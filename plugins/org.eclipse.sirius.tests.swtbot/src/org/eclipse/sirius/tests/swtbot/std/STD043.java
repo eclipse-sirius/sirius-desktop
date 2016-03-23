@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.std;
+
+import java.text.MessageFormat;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
@@ -80,7 +82,7 @@ public class STD043 extends AbstractSTDTestCase {
 
         SWTBotTreeItem rootSemantic = localSession.getLocalSessionBrowser().perSemantic();
         SWTBotUtils.clickContextMenu(rootSemantic.expandNode("RootPackage").select(), REPRESENTATION_INSTANCE_NAME_DIAGRAM_043); // Category().selectSirius(VIEWPOINT_NAME_043)
-        SWTBotShell confirmBoxDiagram = bot.shell(Messages.createRepresentationInputDialog_Title);
+        SWTBotShell confirmBoxDiagram = bot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, REPRESENTATION_NAME_DIAGRAM_043));
         SWTBotButton ok = bot.button("OK");
         bot.waitUntil(new ItemEnabledCondition(ok));
         ok.click();
@@ -90,7 +92,8 @@ public class STD043 extends AbstractSTDTestCase {
 
         // -feed diagram with functions
         // f =
-        // SWTBotDesignerHelper.getDesignerEditor("RootPackage package entities(EPackage Rootpackage)");
+        // SWTBotDesignerHelper.getDesignerEditor("RootPackage package
+        // entities(EPackage Rootpackage)");
         SWTBotSiriusDiagramEditor editordiagram = diagram.getEditor();
         editordiagram.activateTool("Package");
         editordiagram.click(200, 100);
@@ -143,11 +146,13 @@ public class STD043 extends AbstractSTDTestCase {
     }
 
     private boolean checkNewLocation(final SWTBotSiriusDiagramEditor editordiagram, final SWTBotGefEditPart botPart, final int x, final int y) {
-        if (botPart == null)
+        if (botPart == null) {
             System.out.println("NULL");
+        }
         final EditPart rawPart = botPart.part();
-        if (rawPart == null)
+        if (rawPart == null) {
             System.out.println("rawPart NULL");
+        }
         if (rawPart instanceof IDiagramElementEditPart && !(rawPart instanceof DiagramEditPart)) {
             final IGraphicalEditPart gep = (IGraphicalEditPart) rawPart;
             final Rectangle r = gep.getFigure().getBounds().getCopy();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,8 @@ public class STD005 extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODEL_PACKAGE = "RootSTDTestCase";
 
+    private static final String REPRESENTATION_DESCRIPTION_NAME = "Entities";
+
     private static final String REPRESENTATION_INSTANCE_NAME_DIAGRAM = "RootSTDTestCase package entities";
 
     private static final String NEW_E_CLASS = "NewEClass3";
@@ -68,7 +70,8 @@ public class STD005 extends AbstractSiriusSwtBotGefTestCase {
 
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
         final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.getNode(MODEL_PACKAGE);
-        final UIDiagramRepresentation representation = localSession.newDiagramRepresentation(REPRESENTATION_INSTANCE_NAME_DIAGRAM).on(ecoreTreeItem).withDefaultName().ok();
+        final UIDiagramRepresentation representation = localSession.newDiagramRepresentation(REPRESENTATION_INSTANCE_NAME_DIAGRAM, REPRESENTATION_DESCRIPTION_NAME).on(ecoreTreeItem).withDefaultName()
+                .ok();
 
         // Eclipse 4.x, set focus.
         final SWTBotSiriusDiagramEditor editor = representation.getEditor();

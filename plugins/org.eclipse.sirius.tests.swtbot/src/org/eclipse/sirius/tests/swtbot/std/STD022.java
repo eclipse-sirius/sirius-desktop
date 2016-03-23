@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.std;
 
+import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -89,7 +90,7 @@ public class STD022 extends AbstractSTDTestCase {
 
         SWTBotTreeItem rootSemantic = localSession.getLocalSessionBrowser().perSemantic();
         SWTBotUtils.clickContextMenu(rootSemantic.expandNode("Root").select(), REPRESENTATION_INSTANCE_NAME_TABLE_022); // Category().selectSirius(VIEWPOINT_NAME_043)
-        SWTBotShell confirmBoxDiagram = bot.shell(Messages.createRepresentationInputDialog_Title);
+        SWTBotShell confirmBoxDiagram = bot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, REPRESENTATION_NAME_DIAGRAM_022));
         SWTBotButton ok = bot.button("OK");
         bot.waitUntil(new ItemEnabledCondition(ok));
         ok.click();

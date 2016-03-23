@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -427,7 +427,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
 
         // choose the representation name
-        SWTBotShell shell = bot.shell("New Representation");
+        SWTBotShell shell = bot.shell("New Entities");
         shell.activate();
         bot.button(OK).click();
         SWTBotUtils.waitAllUiEvents();

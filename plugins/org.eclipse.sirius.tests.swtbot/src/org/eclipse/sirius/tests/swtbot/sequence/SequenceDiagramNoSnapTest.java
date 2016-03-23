@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,8 +77,8 @@ public class SequenceDiagramNoSnapTest extends AbstractDefaultModelSequenceTests
         editor.close();
 
         UIResource interactionModel = new UIResource(designerProject, FILE_DIR, getSemanticModel());
-        UIDiagramRepresentation sequenceDiag = localSession.newDiagramRepresentation("Sequence Diagram on Lifelines").on(localSession.getSemanticResourceNode(interactionModel).getNode(0))
-                .withDefaultName().ok();
+        UIDiagramRepresentation sequenceDiag = localSession.newDiagramRepresentation("Sequence Diagram on Lifelines", "Sequence Diagram on Interaction")
+                .on(localSession.getSemanticResourceNode(interactionModel).getNode(0)).withDefaultName().ok();
 
         editor = sequenceDiag.getEditor();
         assertFalse("Snap to grid should be deactivated on the opening of a newly created Sequence diagram.", editor.isSnapToGrid());

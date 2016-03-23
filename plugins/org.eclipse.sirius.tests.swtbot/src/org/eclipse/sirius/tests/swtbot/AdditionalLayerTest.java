@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class AdditionalLayerTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, "/", AIRD);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         SWTBotTreeItem modelElementItem = localSession.getLocalSessionBrowser().perSemantic().expandNode("test").click();
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new vp-4179").on(modelElementItem).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new vp-4179", "vp-4179").on(modelElementItem).withDefaultName().ok();
         editor = diagramRepresentation.open().getEditor();
     }
 

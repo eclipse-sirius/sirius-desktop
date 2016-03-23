@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ public class OpenMultipleRepresentationsTest extends AbstractSiriusSwtBotGefTest
 
     public void testOpenDiagramRepresentation() throws Exception {
         SWTBotTreeItem modelElementItem = localSession.getLocalSessionBrowser().perSemantic().expandNode("root").click();
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("root" + " package entities").on(modelElementItem).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("root" + " package entities", "Entities").on(modelElementItem).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
         assertEditorIsNotError("editor was an error one", editor);
     }
@@ -73,19 +73,29 @@ public class OpenMultipleRepresentationsTest extends AbstractSiriusSwtBotGefTest
     public void testOpenTableRepresentation() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: tree item with text  is not selected
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:407)
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:381)
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:369)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:157)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.selectResource(UIProject.java:122)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.openSessionCreationWizardFromSemanticResource(UIPerspective.java:188)
-            at org.eclipse.sirius.tests.swtbot.OpenMultipleRepresentationsTest.onSetUpAfterOpeningDesignerPerspective(OpenMultipleRepresentationsTest.java:61)
-            */
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
+             * after: 10000 ms.: tree item with text is not selected at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:407) at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:381) at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:369) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * getUIItemFromResource(UIProject.java:157) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * selectResource(UIProject.java:122) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.
+             * UIPerspective.openSessionCreationWizardFromSemanticResource(
+             * UIPerspective.java:188) at
+             * org.eclipse.sirius.tests.swtbot.OpenMultipleRepresentationsTest.
+             * onSetUpAfterOpeningDesignerPerspective(
+             * OpenMultipleRepresentationsTest.java:61)
+             */
             return;
         }
         SWTBotTreeItem modelElementItem = localSession.getLocalSessionBrowser().perSemantic().expandNode("root").click();
-        final UITableRepresentation tableRepresentation = localSession.newTableRepresentation("Classes in root package").on(modelElementItem).withDefaultName().ok();
+        final UITableRepresentation tableRepresentation = localSession.newTableRepresentation("Classes in root package", "Classes").on(modelElementItem).withDefaultName().ok();
         final SWTBotEditor editor = tableRepresentation.open().getEditor();
         assertEditorIsNotError("editor was an error one", editor);
     }
@@ -93,11 +103,11 @@ public class OpenMultipleRepresentationsTest extends AbstractSiriusSwtBotGefTest
     public void testOpenDiagramAndTableRepresentations() throws Exception {
 
         SWTBotTreeItem modelElementItem = localSession.getLocalSessionBrowser().perSemantic().expandNode("root").click();
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("root" + " package entities").on(modelElementItem).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("root" + " package entities", "Entities").on(modelElementItem).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor diagramEditor = diagramRepresentation.open().getEditor();
 
         SWTBotTreeItem modelElementItem2 = localSession.getLocalSessionBrowser().perSemantic().expandNode("root").click();
-        final UITableRepresentation tableRepresentation = localSession.newTableRepresentation("Classes in root package").on(modelElementItem2).withDefaultName().ok();
+        final UITableRepresentation tableRepresentation = localSession.newTableRepresentation("Classes in root package", "Classes").on(modelElementItem2).withDefaultName().ok();
         final SWTBotEditor tableEditor = tableRepresentation.open().getEditor();
         assertEditorIsNotError("editor was an error one", tableEditor);
         assertEditorIsNotError("editor was an error one", diagramEditor);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -121,7 +121,7 @@ public class RenameTableRepresentationTest extends AbstractSiriusSwtBotGefTestCa
     private void createTable(SWTBotTreeItem treeItem) {
         SWTBotUtils.clickContextMenu(treeItem, "new Classes");
 
-        bot.waitUntil(Conditions.shellIsActive("New Representation"));
+        bot.waitUntil(Conditions.shellIsActive("New Classes"));
 
         bot.activeShell().bot().text(0).setText(TABLE_NAME);
         bot.button("OK").click();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -136,7 +136,8 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         }
 
         try {
-            name = commandFactory.getUserInterfaceCallBack().askForDetailName(name, desc.getRepresentationDescription().getEndUserDocumentation());
+            name = commandFactory.getUserInterfaceCallBack().askForDetailName(name, new IdentifiedElementQuery(desc.getRepresentationDescription()).getLabel(),
+                    desc.getRepresentationDescription().getEndUserDocumentation());
         } catch (final InterruptedException e) {
             // the user pressed "cancel", we should exit
             return;
@@ -146,7 +147,8 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         if (target != null) {
             if (!optionalCreatedRepresentation.some()) {
                 final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-                MessageDialog.openWarning(shell, Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_title, Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_message);
+                MessageDialog.openWarning(shell, Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_title,
+                        Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_message);
             } else {
                 DialectUIManager.INSTANCE.openEditor(SessionManager.INSTANCE.getSession(target.getTarget()), optionalCreatedRepresentation.get(), new NullProgressMonitor());
             }

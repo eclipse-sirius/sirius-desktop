@@ -94,7 +94,11 @@
 			</li>
 			<li><span class="label label-info">Modified</span> When trying to reconnect an edge end on another edge, the edge is now highlighted only if a reconnect tool is found (the precondition of the tool is not tested here).</li>
 			<li><span class="label label-info">Modified</span> List items now have the same margin whichever their parent is a simple list or a compartmentalized list. The margin in compartmentalized list was incorrectly set to 0 pixel.</li>
+			<li><span class="label label-info">Modified</span> The wizard to ask the new representation name has been changed. These concerns the title of the wizard and the input label. Example with a new Entities diagram for EcoreTools:</li>
 		</ul>
+		<p>
+			<img border="0" src="images/representationNameWizardChange.png"/> 
+		</p>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.</li>
@@ -146,6 +150,12 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.isRelatedViewpointSelected(Session, RepresentationDescription)</code> protected method has been added to check if a 
 				<code>RepresentationDescription</code> is usable in the context of the specified session.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String, String)</code> method has been added to replace the deprecated 
+				<code>org.eclipse.sirius.tools.api.command.ui.UICallBack.askForDetailName(String, String)</code>. This method now uses the description name as title for the wizard. This new method has been implemented by 
+				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback</code> and 
+				<code>org.eclipse.sirius.tools.api.command.ui.NoUICallback</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable</code> now implements 
@@ -223,6 +233,19 @@
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
+			</li>
+			<li><span class="label label-info">Added</span> The new internationalizable label 
+				<code>Messages_createRepresentationInputDialog_DefaultRepresentationDescName</code> has been added (available through 
+				<code>org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName</code>. Its value is &#171;Representation&#187;.
+			</li>
+			<li><span class="label label-info">Modified</span> The internationalizable label 
+				<code>Messages_createRepresentationInputDialog_NewRepresentationNameLabel</code> has been replaced by &#171;Name:&#187; (previous value was &#171;Representation name:&#187;). 
+			</li>
+			<li><span class="label label-info">Modified</span> The internationalizable label 
+				<code>Messages_createRepresentationInputDialog_RepresentationDescriptionLabel</code> has been replaced by &#171;Representation description: {0}&#187; (previous value was &#171;Representation description: &#187;). 
+			</li>
+			<li><span class="label label-info">Modified</span> The internationalizable label 
+				<code>Messages_createRepresentationInputDialog_Title</code> has been replaced by &#171;New {0}&#187; (previous value was &#171;New Representation&#187;). 
 			</li>
 			<li><span class="label label-danger">Removed</span> The class 
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
@@ -306,6 +329,14 @@
 				<code>org.eclipse.sirius.common.xtext</code> to the JDT plug-in 
 				<code>org.eclipse.jdt.core</code> is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
+			</li>
+			<li><span class="label label-info">Modified</span> A second 
+				<code>String</code> parameter has been added to the method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession.newDiagramRepresentation(String, String)</code>. This parameter is the label of the representation description. It is necessary since the change of the wizard to ask the new representation name (see User-Visible Changes for detail).
+			</li>
+			<li><span class="label label-info">Modified</span> A third 
+				<code>String</code> parameter has been added to the constructor of 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilder</code> for the same above reasons.
 			</li>
 		</ul>
 		<h2 id="sirius3.1.1">Changes in Sirius 3.1.1</h2>

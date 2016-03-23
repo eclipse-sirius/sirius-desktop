@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,15 +65,18 @@ public class LocalSessionViewTest extends AbstractScenarioTestCase {
 
         bot.waitUntil(new ICondition() {
 
+            @Override
             public boolean test() throws Exception {
                 return !localSession.getOpenedSession().isOpen();
             }
 
+            @Override
             public void init(SWTBot bot) {
                 // TODO Auto-generated method stub
 
             }
 
+            @Override
             public String getFailureMessage() {
                 // TODO Auto-generated method stub
                 return null;
@@ -103,7 +106,7 @@ public class LocalSessionViewTest extends AbstractScenarioTestCase {
 
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
         final SWTBotTreeItem ecoreNode = semanticResourceNode.expandNode("ecore");
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("ecore package entities").on(ecoreNode).withName(DIAG1).ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("ecore package entities", "Entities").on(ecoreNode).withName(DIAG1).ok();
 
         SWTBotTreeItem treeItem = localSession.getLocalSessionBrowser().getTreeItem().getNode(UILocalSessionBrowser.PER_CATEGORY_LABEL);
         assertTrue("Tree item is not expanded before saving", isExpanded(treeItem));
@@ -119,6 +122,7 @@ public class LocalSessionViewTest extends AbstractScenarioTestCase {
     // Replace this by treeItem.isExpanded() when it will be available
     private boolean isExpanded(final SWTBotTreeItem treeItem) {
         return UIThreadRunnable.syncExec(treeItem.display, new BoolResult() {
+            @Override
             public Boolean run() {
                 return treeItem.widget.getExpanded();
             }

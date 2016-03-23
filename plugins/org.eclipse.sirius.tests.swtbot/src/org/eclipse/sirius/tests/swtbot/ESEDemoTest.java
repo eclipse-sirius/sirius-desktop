@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         localSession = wizard.fromAlreadySelectedSemanticResource().withDefaultSessionName().finish().selectViewpoints(viewpointsSelection);
         SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
         SWTBotTreeItem ecoreTreeItem = semanticResourceNode.getNode("ecore");
-        localSession.newDiagramRepresentation("ecore package entities").on(ecoreTreeItem).withDefaultName().ok();
+        localSession.newDiagramRepresentation("ecore package entities", "Entities").on(ecoreTreeItem).withDefaultName().ok();
     }
 
     @Override

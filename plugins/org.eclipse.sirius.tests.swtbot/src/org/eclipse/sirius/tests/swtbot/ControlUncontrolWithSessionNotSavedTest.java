@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class ControlUncontrolWithSessionNotSavedTest extends AbstractSiriusSwtBo
     public void testSaveSessionCheckDiagramAndTableSelectionWhenControl() throws Exception {
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(modelUIResource);
         SWTBotTreeItem packageNodeToControl = semanticResourceNode.expandNode("tc1993").expandNode("sp1").select();
-        localSession.newDiagramRepresentation("blank diagram").on(packageNodeToControl).withDefaultName().ok();
+        localSession.newDiagramRepresentation("blank diagram", "").on(packageNodeToControl).withDefaultName().ok();
         localSession.selectView();
         final SWTBotTreeItem semanticResourceNode2 = localSession.getSemanticResourceNode(modelUIResource);
         SWTBotTreeItem packageNodeToControl2 = semanticResourceNode2.expandNode("tc1993").expandNode("sp1").select();
@@ -127,7 +127,7 @@ public class ControlUncontrolWithSessionNotSavedTest extends AbstractSiriusSwtBo
     public void testNoSavingSessionBeforeControl() throws Exception {
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(modelUIResource);
         final SWTBotTreeItem packageNodeToControl = semanticResourceNode.expandNode("tc1993").expandNode("sp1").select();
-        localSession.newDiagramRepresentation("blank diagram").on(packageNodeToControl).withDefaultName().ok();
+        localSession.newDiagramRepresentation("blank diagram", "").on(packageNodeToControl).withDefaultName().ok();
         localSession.selectView();
         final SWTBotTreeItem semanticResourceNode2 = localSession.getSemanticResourceNode(modelUIResource);
         SWTBotTreeItem packageNodeToControl2 = semanticResourceNode2.expandNode("tc1993").expandNode("sp1").select();

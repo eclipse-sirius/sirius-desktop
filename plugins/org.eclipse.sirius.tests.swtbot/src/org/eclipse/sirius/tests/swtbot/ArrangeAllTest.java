@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -105,8 +105,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
 
         arrangeAll(editor);
 
-        final List<IDiagramContainerEditPart> afterArrangeAll = Lists.newArrayList(Iterables.filter(getAllContainerEditParts(editor),
-                Predicates.and(Predicates.instanceOf(IDiagramContainerEditPart.class), new MatchByAutoSizeStatus(true))));
+        final List<IDiagramContainerEditPart> afterArrangeAll = Lists
+                .newArrayList(Iterables.filter(getAllContainerEditParts(editor), Predicates.and(Predicates.instanceOf(IDiagramContainerEditPart.class), new MatchByAutoSizeStatus(true))));
 
         assertEquals("We should have the same number of auto-sized containers before and after the arrange all", originalContainersNumber, afterArrangeAll.size());
     }
@@ -114,10 +114,12 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
     private List<IDiagramContainerEditPart> getAllContainerEditParts(final SWTBotSiriusDiagramEditor editor) {
         final List<IDiagramContainerEditPart> partsToResize = Lists.newArrayList(Iterables.filter(editor.editParts(new BaseMatcher<EditPart>() {
 
+            @Override
             public void describeTo(final Description description) {
 
             }
 
+            @Override
             public boolean matches(final Object item) {
                 return true;
             }
@@ -135,7 +137,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
     private SWTBotSiriusDiagramEditor getEditor(final String defaultPaddingDiagramDescription) {
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(semanticModel);
         mainEPackage = semanticResourceNode.expandNode("Root").expandNode("Main").click();
-        final UIDiagramRepresentation defaultPadding = localSession.newDiagramRepresentation(defaultPaddingDiagramDescription).on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation defaultPadding = localSession.newDiagramRepresentation(defaultPaddingDiagramDescription, "").on(mainEPackage).withDefaultName().ok();
         SWTBotSiriusDiagramEditor editor = defaultPadding.open().getEditor();
         editor.mainEditPart().part().getViewer().setProperty(SnapToGrid.PROPERTY_GRID_ENABLED, Boolean.FALSE);
         return editor;
@@ -170,7 +172,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testAutosizeApplicationOnArrangeAllLeftRight() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right Container Ports And Edges").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right Container Ports And Edges", "").on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         doTestAutosizeOnArrangeAll(editor);
@@ -183,7 +185,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testAutosizeApplicationOnArrangeAllTopBottom() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom Container Ports And Edges").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom Container Ports And Edges", "").on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
         doTestAutosizeOnArrangeAll(editor);
     }
@@ -196,7 +198,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testAutosizeApplicationOnArrangeAllTreeOrdering() throws Exception {
 
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new TreeOrdering").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new TreeOrdering", "TreeOrdering").on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
         doTestAutosizeOnArrangeAll(editor);
     }
@@ -254,7 +256,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testLeftRightSpecifiedLayout() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right MainLikeDiagram").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right MainLikeDiagram", "Left/Right MainLikeDiagram").on(mainEPackage).withDefaultName()
+                .ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         arrangeAll(editor);
@@ -280,7 +283,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testLeftRightSpecifiedLayoutWithContainers() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right Container Ports And Edges").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Left/Right Container Ports And Edges", "Left/Right Container Ports And Edges").on(mainEPackage)
+                .withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         arrangeAll(editor);
@@ -356,7 +360,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testTopBottomSpecifiedLayout() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom MainLikeDiagram").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom MainLikeDiagram", "Top/Bottom MainLikeDiagram").on(mainEPackage).withDefaultName()
+                .ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         arrangeAll(editor);
@@ -381,7 +386,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testTopBottomSpecifiedLayoutWithContainers() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom Container Ports And Edges").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Top/Bottom Container Ports And Edges", "Top/Bottom Container Ports And Edges").on(mainEPackage)
+                .withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
         arrangeAll(editor);
 
@@ -457,7 +463,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testBottomTopSpecifiedLayout() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Bottom/Top MainLikeDiagram").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Bottom/Top MainLikeDiagram", "Bottom/Top MainLikeDiagram").on(mainEPackage).withDefaultName()
+                .ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         arrangeAll(editor);
@@ -482,7 +489,8 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testBottomTopSpecifiedLayoutWithContainers() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Bottom/Top Container Ports And Edges").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new Bottom/Top Container Ports And Edges", "Bottom/Top Container Ports And Edges").on(mainEPackage)
+                .withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
         arrangeAll(editor);
 
@@ -513,7 +521,7 @@ public class ArrangeAllTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testTreeOrdering() throws Exception {
-        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new TreeOrdering").on(mainEPackage).withDefaultName().ok();
+        final UIDiagramRepresentation diagramRepresentation = localSession.newDiagramRepresentation("new TreeOrdering", "TreeOrdering").on(mainEPackage).withDefaultName().ok();
         final SWTBotSiriusDiagramEditor editor = diagramRepresentation.open().getEditor();
 
         arrangeAll(editor);

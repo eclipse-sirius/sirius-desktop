@@ -124,10 +124,16 @@ public abstract class AbstractSWTCallback implements UICallBack {
     }
 
     @Override
-    public String askForDetailName(final String defaultName, final String representationDescription) throws InterruptedException {
+    @Deprecated
+    public String askForDetailName(final String defaultName, final String representationDescriptionDoc) throws InterruptedException {
+        return askForDetailName(defaultName, Messages.createRepresentationInputDialog_DefaultRepresentationDescName, representationDescriptionDoc);
+    }
+
+    @Override
+    public String askForDetailName(final String defaultName, final String representationDescriptionName, final String representationDescriptionDoc) throws InterruptedException {
         String description = null;
-        if (representationDescription != null && representationDescription.trim().length() > 0) {
-            description = Messages.createRepresentationInputDialog_RepresentationDescriptionLabel + representationDescription;
+        if (representationDescriptionDoc != null && representationDescriptionDoc.trim().length() > 0) {
+            description = MessageFormat.format(Messages.createRepresentationInputDialog_RepresentationDescriptionLabel, representationDescriptionDoc);
         }
         if (description == null) {
             description = ""; //$NON-NLS-1$
@@ -135,13 +141,14 @@ public abstract class AbstractSWTCallback implements UICallBack {
             description += "\n\n"; //$NON-NLS-1$
         }
         description += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
-        final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.createRepresentationInputDialog_Title, description, defaultName, new IInputValidator() {
+        final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionName),
+                description, defaultName, new IInputValidator() {
 
-            @Override
-            public String isValid(final String newText) {
-                return null;
-            }
-        });
+                    @Override
+                    public String isValid(final String newText) {
+                        return null;
+                    }
+                });
         if (askSiriusName.open() == Window.OK) {
             return askSiriusName.getValue();
         }

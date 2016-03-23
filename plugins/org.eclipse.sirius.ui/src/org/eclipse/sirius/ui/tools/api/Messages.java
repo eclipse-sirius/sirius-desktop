@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,11 @@ public final class Messages {
      * The title of the input dialog.
      */
     public static String createRepresentationInputDialog_Title = org.eclipse.sirius.viewpoint.provider.Messages.Messages_createRepresentationInputDialog_Title;
+
+    /**
+     * The default representation description name.
+     */
+    public static String createRepresentationInputDialog_DefaultRepresentationDescName = org.eclipse.sirius.viewpoint.provider.Messages.Messages_createRepresentationInputDialog_DefaultRepresentationDescName;
 
     // CHECKSTYLE:ON
 

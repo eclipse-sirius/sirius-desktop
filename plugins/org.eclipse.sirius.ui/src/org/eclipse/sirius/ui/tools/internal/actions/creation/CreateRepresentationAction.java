@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.creation;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -145,8 +146,8 @@ public class CreateRepresentationAction extends Action {
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     try {
                         monitor.beginTask(org.eclipse.sirius.viewpoint.provider.Messages.CreateRepresentationAction_creationTask, 5);
-                        CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, selection, representationName, new SubProgressMonitor(monitor,
-                                4));
+                        CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, selection, representationName,
+                                new SubProgressMonitor(monitor, 4));
 
                         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
                         editingSession.notify(EditingSessionEvent.REPRESENTATION_ABOUT_TO_BE_CREATED_BEFORE_OPENING);
@@ -193,7 +194,7 @@ public class CreateRepresentationAction extends Action {
     protected String getRepresentationName() {
         String descriptionLabel = null;
         if (description.getEndUserDocumentation() != null && description.getEndUserDocumentation().trim().length() > 0) {
-            descriptionLabel = Messages.createRepresentationInputDialog_RepresentationDescriptionLabel + description.getEndUserDocumentation();
+            descriptionLabel = MessageFormat.format(Messages.createRepresentationInputDialog_RepresentationDescriptionLabel, description.getEndUserDocumentation());
         }
         if (descriptionLabel == null) {
             descriptionLabel = ""; //$NON-NLS-1$
@@ -201,14 +202,16 @@ public class CreateRepresentationAction extends Action {
             descriptionLabel += "\n\n"; //$NON-NLS-1$
         }
         descriptionLabel += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
-        final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.createRepresentationInputDialog_Title, descriptionLabel, name, new IInputValidator() {
-            @Override
-            public String isValid(final String newText) {
-                return null;
-            }
-        });
-        if (askSiriusName.open() == Window.OK)
+        final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(),
+                MessageFormat.format(Messages.createRepresentationInputDialog_Title, new IdentifiedElementQuery(description).getLabel()), descriptionLabel, name, new IInputValidator() {
+                    @Override
+                    public String isValid(final String newText) {
+                        return null;
+                    }
+                });
+        if (askSiriusName.open() == Window.OK) {
             return askSiriusName.getValue();
+        }
         return null;
     }
 

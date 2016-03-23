@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -182,10 +182,13 @@ public class UILocalSession {
      * 
      * @param clickedRepresentationName
      *            Representation name where to in contextual menu.
+     * @param representationDescriptionLabel
+     *            The label of the representation description corresponding to
+     *            <code>clickedRepresentationName</code>.
      * @return UI representation builder
      */
-    public ItemChoice<UIDiagramRepresentation> newDiagramRepresentation(final String clickedRepresentationName) {
-        return new UINewRepresentationBuilder<UIDiagramRepresentation>(clickedRepresentationName, UIDiagramRepresentation.class);
+    public ItemChoice<UIDiagramRepresentation> newDiagramRepresentation(final String clickedRepresentationName, final String representationDescriptionLabel) {
+        return new UINewRepresentationBuilder<UIDiagramRepresentation>(clickedRepresentationName, representationDescriptionLabel, UIDiagramRepresentation.class);
     }
 
     /**
@@ -195,10 +198,13 @@ public class UILocalSession {
      * 
      * @param clickedRepresentationName
      *            Representation name where to in contextual menu.
+     * @param representationDescriptionLabel
+     *            The label of the representation description corresponding to
+     *            <code>clickedRepresentationName</code>.
      * @return UI representation builder
      */
-    public ItemChoice<UITableRepresentation> newTableRepresentation(final String clickedRepresentationName) {
-        return new UINewRepresentationBuilder<UITableRepresentation>(clickedRepresentationName, UITableRepresentation.class);
+    public ItemChoice<UITableRepresentation> newTableRepresentation(final String clickedRepresentationName, final String representationDescriptionLabel) {
+        return new UINewRepresentationBuilder<UITableRepresentation>(clickedRepresentationName, representationDescriptionLabel, UITableRepresentation.class);
     }
 
     /**
@@ -208,10 +214,13 @@ public class UILocalSession {
      * 
      * @param clickedRepresentationName
      *            Representation name where to in contextual menu.
+     * @param representationDescriptionLabel
+     *            The label of the representation description corresponding to
+     *            <code>clickedRepresentationName</code>.
      * @return UI representation builder
      */
-    public ItemChoice<UITreeRepresentation> newTreeRepresentation(final String clickedRepresentationName) {
-        return new UINewRepresentationBuilder<UITreeRepresentation>(clickedRepresentationName, UITreeRepresentation.class);
+    public ItemChoice<UITreeRepresentation> newTreeRepresentation(final String clickedRepresentationName, final String representationDescriptionLabel) {
+        return new UINewRepresentationBuilder<UITreeRepresentation>(clickedRepresentationName, representationDescriptionLabel, UITreeRepresentation.class);
     }
 
     /**
