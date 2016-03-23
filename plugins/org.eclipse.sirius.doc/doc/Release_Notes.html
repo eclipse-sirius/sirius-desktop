@@ -90,6 +90,9 @@
 		</p>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<p><span class="label label-success">Added</span> The 
+			<a href="./user/diagrams/Diagrams.html#snap_to_shapes">snap to shape</a> feature is now available on border nodes.
+		</p>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -98,6 +101,17 @@
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)</code> has been added to know if a view is a descendant of another view.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+			<code>org.eclipse.sirius.ext.gmf.runtime</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>SiriusSnapFeedbackPolicy</code> has been copied from 
+				<code>org.eclipse.sirius.ext.gef.editpolicies</code> to 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editpolicies</code>. The old class in plug-in 
+				<code>org.eclipse.sirius.ext.gef</code> is deprecated and will be removed in the next version.
 			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)</code> has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
@@ -500,7 +514,7 @@
 				<code>org.eclipse.sirius.ext.emf.ui.properties.ExtensiblePropertySource.collector</code> field is now in protected visibility to be modifiable and accessible by subclass.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime2">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
 		<ul>
@@ -1118,7 +1132,7 @@
 				<code>org.eclipse.sirius.ext.jface.viewers.IToolTipProvider</code> has been copied from JFace 3.10 from Luna, so that we can use it with Juno and Kepler too.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime3">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
 		<ul>
@@ -2405,7 +2419,7 @@
 				<code>EObject</code> from its container after a check by the permission authority that all changeable feature to modify can be edited.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime4">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
 		<ul>

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2007, 2015 IBM Corporation and others.
+ * Copyright (c) 2007, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.CompoundSnapToHelperEx;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGridEx;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGuidesEx;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToHelperUtil;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 
 /**
  * Utility class for the snapping behavior. This class adds the capability to
@@ -51,44 +52,57 @@ public class SiriusSnapToHelperUtil extends SnapToHelperUtil {
             diagramEditPart = (GraphicalEditPart) diagramEditPart.getParent();
         }
 
-        if (diagramEditPart == null)
+        if (diagramEditPart == null) {
             return null;
+        }
 
         // for snap to geometry, attempt to locate a compartment as a parent
         GraphicalEditPart parent = editPart;
-        while (parent != null && !(parent instanceof ISurfaceEditPart)) {
-            parent = (GraphicalEditPart) parent.getParent();
+        // If the editPart is an AbstractDiagramNodeEditPart, this means that
+        // element to snap is a border node of a DNode, this is an exception
+        // where we do not attempt to locate a compartment as a parent.
+        if (!(parent instanceof AbstractDiagramNodeEditPart)) {
+            while (parent != null && !(parent instanceof ISurfaceEditPart)) {
+                parent = (GraphicalEditPart) parent.getParent();
+            }
         }
 
-        if (parent == null)
+        if (parent == null) {
             parent = diagramEditPart;
+        }
 
         List<SnapToHelper> snapStrategies = new ArrayList<SnapToHelper>();
         EditPartViewer viewer = diagramEditPart.getViewer();
 
         Boolean val = (Boolean) editPart.getViewer().getProperty(RulerProvider.PROPERTY_RULER_VISIBILITY);
 
-        if (val != null && val.booleanValue())
+        if (val != null && val.booleanValue()) {
             snapStrategies.add(new SnapToGuidesEx(diagramEditPart));
+        }
 
         val = (Boolean) viewer.getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED);
-        if (val != null && val.booleanValue())
+        if (val != null && val.booleanValue()) {
             snapStrategies.add(new SiriusSnapToGeometry(parent));
+        }
 
         val = (Boolean) viewer.getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);
 
-        if (val != null && val.booleanValue())
+        if (val != null && val.booleanValue()) {
             snapStrategies.add(new SnapToGridEx(diagramEditPart));
+        }
 
-        if (snapStrategies.size() == 0)
+        if (snapStrategies.size() == 0) {
             return null;
+        }
 
-        if (snapStrategies.size() == 1)
+        if (snapStrategies.size() == 1) {
             return snapStrategies.get(0);
+        }
 
         SnapToHelper ss[] = new SnapToHelper[snapStrategies.size()];
-        for (int i = 0; i < snapStrategies.size(); i++)
+        for (int i = 0; i < snapStrategies.size(); i++) {
             ss[i] = snapStrategies.get(i);
+        }
         return new CompoundSnapToHelperEx(ss);
     }
     // CHECKSTYLE:ON

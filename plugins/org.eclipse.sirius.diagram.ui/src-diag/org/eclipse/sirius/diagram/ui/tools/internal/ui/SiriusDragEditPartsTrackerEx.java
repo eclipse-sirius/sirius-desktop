@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker;
 import org.eclipse.swt.events.MouseEvent;
 
@@ -33,7 +32,7 @@ import org.eclipse.swt.events.MouseEvent;
  * 
  * @author dlecan
  */
-public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx implements MoveInDiagramDragTracker {
+public class SiriusDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker implements MoveInDiagramDragTracker {
 
     /**
      * The x margin used when moving bordered node to not have drag'n drop

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
@@ -74,6 +75,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
@@ -122,6 +124,9 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies(this);
+        // Add the Sirius feedback policy to have a the same lighter color for
+        // guides of snap features for border nodes on Node
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
     @Override
@@ -250,8 +255,8 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(graphicalEditPart.getNotationView()),
-                                new Rectangle(position, dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel,
+                                new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }

@@ -8,6 +8,8 @@ h2(#sirius4.1.0). Changes in Sirius 4.1.0
 
 h3. User-Visible Changes
 
+<span class="label label-success">Added</span> The "snap to shape":./user/diagrams/Diagrams.html#snap_to_shapes feature is now available on border nodes.
+
 h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
@@ -16,6 +18,10 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)@ has been added to know if a view is a descendant of another view.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)@ has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
+
+h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
+
+* <span class="label label-success">Added</span> The class @SiriusSnapFeedbackPolicy@ has been copied from @org.eclipse.sirius.ext.gef.editpolicies@ to @org.eclipse.sirius.ext.gmf.runtime.editpolicies@. The old class in plug-in @org.eclipse.sirius.ext.gef@ is deprecated and will be removed in the next version.
 
 h2(#sirius4.0.0). Changes in Sirius 4.0.0
 

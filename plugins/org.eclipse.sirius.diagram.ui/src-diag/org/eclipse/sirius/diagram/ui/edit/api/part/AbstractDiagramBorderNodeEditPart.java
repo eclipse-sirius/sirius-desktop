@@ -24,6 +24,7 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -39,6 +40,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.BorderedBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
@@ -69,9 +71,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClipping
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.collect.Iterables;
@@ -147,6 +151,9 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies(this);
+        // Add the Sirius feedback policy to have a the same lighter color for
+        // guides of snap features for border nodes on BorderNode
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
     @Override
@@ -475,5 +482,13 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         } else {
             super.performDirectEditRequest(request);
         }
+    }
+
+    @Override
+    public Object getAdapter(Class key) {
+        if (key == SnapToHelper.class) {
+            return SiriusSnapToHelperUtil.getSnapHelper(this);
+        }
+        return super.getAdapter(key);
     }
 }

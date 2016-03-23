@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *     Laurent Redor (Obeo) <laurent.redor@obeo.fr> - Change feedback color
  *******************************************************************************/
-package org.eclipse.sirius.ext.gef.editpolicies;
+package org.eclipse.sirius.ext.gmf.runtime.editpolicies;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
@@ -23,6 +23,7 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.SnapToGeometry;
 import org.eclipse.gef.SnapToGuides;
 import org.eclipse.gef.editpolicies.GraphicalEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -35,11 +36,7 @@ import org.eclipse.swt.widgets.Display;
  * colors.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * @deprecated Use
- *             {@link org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy}
- *             instead
  */
-@Deprecated
 public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
 
     /**
@@ -255,13 +252,7 @@ public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
      */
     @Override
     public void showTargetFeedback(Request req) {
-        // The "drop" type is replaced by
-        // org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_DROP
-        // in
-        // org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy.
-        // This is why this class is now deprecated. It will be removed in
-        // future version.
-        if (req.getType().equals("drop") || req.getType().equals(REQ_MOVE) || req.getType().equals(REQ_RESIZE) || req.getType().equals(REQ_CLONE) || req.getType().equals(REQ_ADD)
+        if (req.getType().equals(RequestConstants.REQ_DROP) || req.getType().equals(REQ_MOVE) || req.getType().equals(REQ_RESIZE) || req.getType().equals(REQ_CLONE) || req.getType().equals(REQ_ADD)
                 || req.getType().equals(REQ_CREATE)) {
             Integer value;
             value = (Integer) req.getExtendedData().get(SnapToGeometry.KEY_WEST_ANCHOR);

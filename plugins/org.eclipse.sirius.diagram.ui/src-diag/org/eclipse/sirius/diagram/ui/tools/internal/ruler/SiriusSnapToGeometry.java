@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.ruler;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,12 +22,15 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGeometryEx;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractBorderedDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SnapChangeBoundsRequest;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SnapBendpointRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gef.query.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -89,15 +91,34 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
     @Override
     protected List generateSnapPartsList(List exclusions) {
         if (!snapToAll) {
-            return super.generateSnapPartsList(exclusions);
+            // Same code as super.generateSnapPartsList(exclusions); but with
+            // border nodes add to children list
+            // Don't snap to any figure that is being dragged
+            List children = Lists.newArrayList(container.getChildren());
+            // Add border nodes
+            Iterables.addAll(children, Iterables.filter(container.getParent().getChildren(), AbstractDiagramBorderNodeEditPart.class));
+            children.removeAll(exclusions);
+            // Remove IStyleEditPart from list of children
+            Iterable<Object> filteredChildren = Iterables.filter(children, Predicates.not(Predicates.instanceOf(IStyleEditPart.class)));
+
+            // Don't snap to hidden figures
+            List hiddenChildren = Lists.newArrayList();
+            for (Iterator iter = filteredChildren.iterator(); iter.hasNext(); /* */) {
+                GraphicalEditPart child = (GraphicalEditPart) iter.next();
+                if (!child.getFigure().isVisible()) {
+                    hiddenChildren.add(child);
+                }
+            }
+            Iterables.removeAll(filteredChildren, hiddenChildren);
+            return Lists.newArrayList(filteredChildren);
         } else {
             // Get all potential snap targets
             List<Class<?>> expectedClasses = Lists.newArrayList();
             expectedClasses.add(AbstractBorderedDiagramElementEditPart.class);
             expectedClasses.add(AbstractDiagramBorderNodeEditPart.class);
-            List<EditPart> snapPartsList = new ArrayList<EditPart>(new EditPartQuery(container.getRoot()).getAllChildren(false, expectedClasses));
+            List<EditPart> snapPartsList = Lists.newArrayList(new EditPartQuery(container.getRoot()).getAllChildren(false, expectedClasses));
             // Add children of elements that are being dragged
-            List<EditPart> exclusionsWithChildren = new ArrayList<EditPart>();
+            List<EditPart> exclusionsWithChildren = Lists.newArrayList();
             for (Object editPart : exclusions) {
                 if (editPart instanceof EditPart) {
                     exclusionsWithChildren.add((EditPart) editPart);
@@ -122,21 +143,39 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
 
     @Override
     protected void populateRowsAndCols(List parts) {
-        if (!snapToAll) {
-            super.populateRowsAndCols(parts);
-        } else {
-            rows = new Entry[parts.size() * 3];
-            cols = new Entry[parts.size() * 3];
-            for (int i = 0; i < parts.size(); i++) {
-                IGraphicalEditPart child = (IGraphicalEditPart) parts.get(i);
-                Rectangle bounds = GraphicalHelper.getAbsoluteBounds(child);
+        // Only center is considered for border nodes (top/middle/bottom and
+        // left/center/right for others).
+        int nbOfBorderNodes = Iterables.size(Iterables.filter(parts, AbstractDiagramBorderNodeEditPart.class));
+        rows = new Entry[(parts.size() - nbOfBorderNodes) * 3 + nbOfBorderNodes];
+        cols = new Entry[(parts.size() - nbOfBorderNodes) * 3 + nbOfBorderNodes];
+        int currentIndex = 0;
+        for (int i = 0; i < parts.size(); i++) {
+            IGraphicalEditPart child = (IGraphicalEditPart) parts.get(i);
+            Rectangle bounds;
+            if (!snapToAll) {
+                if (child instanceof AbstractDiagramBorderNodeEditPart) {
+                    // Handle specific case of Border Node
+                    bounds = GraphicalHelper.getAbsoluteBounds(child);
+                    makeRelative(container.getContentPane(), bounds);
+                } else {
+                    // Same as in super.populateRowsAndCols(parts)
+                    bounds = getFigureBounds(child);
+                }
+            } else {
+                bounds = GraphicalHelper.getAbsoluteBounds(child);
                 makeRelative(container.getContentPane(), bounds);
-                cols[i * 3] = new SiriusEntry(-1, bounds.x);
-                rows[i * 3] = new SiriusEntry(-1, bounds.y);
-                cols[i * 3 + 1] = new SiriusEntry(0, bounds.x + (bounds.width - 1) / 2);
-                rows[i * 3 + 1] = new SiriusEntry(0, bounds.y + (bounds.height - 1) / 2);
-                cols[i * 3 + 2] = new SiriusEntry(1, bounds.right() - 1);
-                rows[i * 3 + 2] = new SiriusEntry(1, bounds.bottom() - 1);
+            }
+            if (!(child instanceof AbstractDiagramBorderNodeEditPart)) {
+                // Only center is considered for border node
+                cols[currentIndex] = new SiriusEntry(-1, bounds.x);
+                rows[currentIndex++] = new SiriusEntry(-1, bounds.y);
+            }
+            cols[currentIndex] = new SiriusEntry(0, bounds.x + (bounds.width - 1) / 2);
+            rows[currentIndex++] = new SiriusEntry(0, bounds.y + (bounds.height - 1) / 2);
+            if (!(child instanceof AbstractDiagramBorderNodeEditPart)) {
+                // Only center is considered for border node
+                cols[currentIndex] = new SiriusEntry(1, bounds.right() - 1);
+                rows[currentIndex++] = new SiriusEntry(1, bounds.bottom() - 1);
             }
         }
     }
