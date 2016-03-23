@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
@@ -130,13 +131,15 @@ public class NodeStyleDescriptionForbiddenSidesPropertySectionSpec extends Abstr
         for (int i = 0; i < button.length; i++) {
             button[i].setSelection(true);
         }
-
-        String[] values = getFeatureAsText().split(", ");
-        for (String sideText : values) {
-            // if the side is forbidden, we remove the selection of the
-            // check-box.
-            Side currentSide = Side.get(sideText);
-            button[currentSide.getValue()].setSelection(false);
+        String featureText = getFeatureAsText();
+        if (!StringUtil.isEmpty(featureText)) {
+            String[] values = featureText.split(", ");
+            for (String sideText : values) {
+                // if the side is forbidden, we remove the selection of the
+                // check-box.
+                Side currentSide = Side.get(sideText);
+                button[currentSide.getValue()].setSelection(false);
+            }
         }
     }
 
