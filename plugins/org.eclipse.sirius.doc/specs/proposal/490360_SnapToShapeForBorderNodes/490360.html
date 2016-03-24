@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="AllowtheSnapToShapesfeatureonbordernodes">Allow the &#171;Snap To Shapes&#187; feature on border nodes</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Allow the &#171;Snap To Shapes&#187; feature on border nodes.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-03-24</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em> :
+		</p>
+		<ul>
+			<li>"Bug 490360 &#8211; Allow the &#171;Snap To Shapes&#187; feature on border nodes":https://bugs.eclipse.org/bugs/show_bug.cgi?id=490360</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>As explained in specification of 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=463485">bug 463485</a>, 
+			<cite>the 
+				<em>Snap To Shapes</em> feature is not operational when moving or resizing a border node.
+			</cite>. The goal of this feature is to make operational the 
+			<em>Snap To Shapes</em> feature even on border nodes, and also to benefit of the same feature as 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=463485">bug 463485</a> (ie &#171;snap to all shapes&#187;, and not only snap to brothers). You can see 
+			<a href="http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/plain/plugins/org.eclipse.sirius.doc/specs/accepted/463485_snapToAllShapes/463485.html?h=v3.1.x">specification</a> of bug 463485 for details about &#171;snap to all shapes&#187; feature.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>The 
+			<em>Snap To Shapes</em> feature is natively not supported by GMF. Probably because the interest is limited. It allows only to snap to another border node on the opposite side:
+			<br/>
+			<img border="0" src="snapToBrotherBorderNode.png"/>
+		</p>
+		<p>But with the option to &#171;snap to all shapes&#187; (with F4 shortcut key), this feature becomes interesting even for border nodes. To align &#171;in&#187; border node with &#171;out&#187; border node for example:
+			<br/>
+			<img border="0" src="snapToAnotherBorderNode.png"/>
+		</p>
+		<h3 id="Collapsedbordernodes">Collapsed border nodes</h3>
+		<p>The border node can be collapsed (with a filter for example). In this case:</p>
+		<ul>
+			<li>If the moved border node is collapsed, the collapsed border node is snapped to other shapes (not its expanded bounds).</li>
+			<li>If the moved border node is snapped to a collapsed border node, the behavior will be the same as other kind of nodes currently. It will be snapped to the collapsed border node (and not to its expanded bounds).</li>
+		</ul>
+		<h3 id="Knownlimitations">Known limitations</h3>
+		<p>As a reminder (See 
+			<a href="https://www.eclipse.org/sirius/doc/user/sequences/Sequence%20Diagrams.html#introduction)">Sequence diagram introduction</a>, the snap features (snap to grid or snap to shapes) are disabled in sequence diagrams. This will obviously also the case for border nodes even with this improvement.
+		</p>
+		<h3 id="Technicaldetails">Technical details</h3>
+		<p>The 
+			<code>SiriusDragEditPartsTrackerEx</code> has the responsibility to find the correct 
+			<code>SnapHelper</code> according to the &#171;targetUnderMouse&#187; (in 
+			<code>org.eclipse.gef.tools.DragEditPartsTracker.setTargetEditPart(EditPart)</code>).
+			<br/>When moving a border node, the &#171;targetUnderMouse&#187; is an 
+			<code>AbstractDiagramNodeEditPart</code> (parent is a Node) or an 
+			<code>AbstractDNodeContainerCompartmentEditPart</code> (parent is a container).
+			<br/>The policy that displays the feedback (guide line) is 
+			<code>SiriusSnapFeedbackPolicy</code>.
+			<br/>The 
+			<code>SiriusSnapToGeometry</code> is responsible to compute the element to snap with (and so x and y coordinates to snap with). 
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel changes.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>All the changes will be mainly internal to the edit part and associated policies. So there will be no API changes for this feature.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>No user interface change.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>This new behavior should be added in the New and Noteworthy documentation. 
+			<br/>The limitation "
+			<cite>This feature is not enabled on border nodes.</cite>" in the diagram documentation should be removed.
+		</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>The class 
+			<code>org.eclipse.sirius.tests.swtbot.SnapAllShapesTest</code> must be completed with border nodes cases:
+		</p>
+		<ul>
+			<li>Border node on node in diagram</li>
+			<li>Border node on node in container</li>
+			<li>Border node on container</li>
+			<li>Border node on list</li>
+			<li>Border node on border node</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>For the case of collapsed border nodes, it would be interesting to snap the expanded bounds (and not the collapsed state). But the &#171;snap to&#187; mechanism is generic to all kind of nodes and associated to the figure representing the node. It would be too impacting to try to manage the expanded state.</p>
+	</body>
+</html>
