@@ -1,0 +1,54 @@
+h1. Sirius Evolution Specification: Make the Copy Appearance Action use the last selection
+
+h2. Preamble
+
+_Summary_: The Copy Appearance Action should consider the last selected element as base style instead of the first one.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-03-25 | fbarbin    | Initial version. |
+| v0.2        | DRAFT    | 2016-04-20 | fbarbin    | Corrections after team review. |
+
+_Relevant tickets_:
+* "Bug 490444 - The Copy Appearance Action should consider the last selected element as base style":https://bugs.eclipse.org/bugs/show_bug.cgi?id=490444
+
+h2. Introduction
+
+Currently, the _Copy Appearance Properties_ action is not consistent with the _Size Both_ action which uses the last selected element as base size. The _Copy Appearance Properties_ action uses the first selected element as base style. Furthermore, the last selected element is highlighted in a way that suggests this one is the reference to copy the style or the size.
+
+h2. Detailed Specification
+
+Taking the following selection:
+!selectionBefore.png!
+The last selected element is the dark border node. We can also notice that the last selection is highlighted with black handles. When applying the _Size Both_ action the two other selected elements take the last selection size:
+!sizeBoth.png!
+However, when applying the _Copy Appearance Properties_ action, its the first selection which is taken into account:
+!copyAppearance.png!
+
+This enhancement aims to modify this action to have a similar behavior to the Size Both Action.
+
+h2. Backward Compatibility and Migration Paths
+
+
+h3. Metamodel Changes
+
+There is no metamodel changes for this feature.
+
+h3. API Changes
+
+We do not intend to change any API.
+
+h3. User Interface Changes
+
+The end-user will see the new behavior of the _Copy Appearance Properties_ action. The tooltip of the action will also be changed.
+
+h3. Documentation Changes
+
+The release note and the end user documentation will be updated.
+
+h2. Tests and Non-regression strategy
+
+We will add a new SWTBot that checks the result of applying the _Copy Appearance Properties_ Action. This test will check with two and several selected elements if at the end, all the elements have the appearance of the last selection.
+
+h2. Implementation choices and tradeoffs
+
+Since this action is defined in GMF we need to duplicate it. A patch will be suggested in GMF to modify this behavior.

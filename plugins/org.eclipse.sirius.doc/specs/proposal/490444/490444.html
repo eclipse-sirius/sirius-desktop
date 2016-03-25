@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>490444</title>
+		<link type="text/css" rel="stylesheet" href="../../../doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../../doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationMaketheCopyAppearanceActionusethelastselection">Sirius Evolution Specification: Make the Copy Appearance Action use the last selection</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: The Copy Appearance Action should consider the last selected element as base style instead of the first one.
+		</p>
+		<table>
+			<tr>
+				<th>Version </th>
+				<th>Status </th>
+				<th>Date        </th>
+				<th>Authors </th>
+				<th>Changes </th>
+			</tr>
+			<tr>
+				<td>v0.1        </td>
+				<td>DRAFT    </td>
+				<td>2016-03-25 </td>
+				<td>fbarbin    </td>
+				<td>Initial version. </td>
+			</tr>
+			<tr>
+				<td>v0.2        </td>
+				<td>DRAFT    </td>
+				<td>2016-04-20 </td>
+				<td>fbarbin    </td>
+				<td>Corrections after team review. </td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=490444">Bug 490444 &#8211; The Copy Appearance Action should consider the last selected element as base style</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>Currently, the 
+			<em>Copy Appearance Properties</em> action is not consistent with the 
+			<em>Size Both</em> action which uses the last selected element as base size. The 
+			<em>Copy Appearance Properties</em> action uses the first selected element as base style. Furthermore, the last selected element is highlighted in a way that suggests this one is the reference to copy the style or the size.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>Taking the following selection:
+			<br/>
+			<img border="0" src="selectionBefore.png"/>
+			<br/>The last selected element is the dark border node. We can also notice that the last selection is highlighted with black handles. When applying the 
+			<em>Size Both</em> action the two other selected elements take the last selection size:
+			<br/>
+			<img border="0" src="sizeBoth.png"/>
+			<br/>However, when applying the 
+			<em>Copy Appearance Properties</em> action, its the first selection which is taken into account:
+			<br/>
+			<img border="0" src="copyAppearance.png"/>
+		</p>
+		<p>This enhancement aims to modify this action to have a similar behavior to the Size Both Action.</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>There is no metamodel changes for this feature.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>We do not intend to change any API.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>The end-user will see the new behavior of the 
+			<em>Copy Appearance Properties</em> action. The tooltip of the action will also be changed.
+		</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>The release note and the end user documentation will be updated.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>We will add a new SWTBot that checks the result of applying the 
+			<em>Copy Appearance Properties</em> Action. This test will check with two and several selected elements if at the end, all the elements have the appearance of the last selection.
+		</p>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>Since this action is defined in GMF we need to duplicate it. A patch will be suggested in GMF to modify this behavior.</p>
+	</body>
+</html>
