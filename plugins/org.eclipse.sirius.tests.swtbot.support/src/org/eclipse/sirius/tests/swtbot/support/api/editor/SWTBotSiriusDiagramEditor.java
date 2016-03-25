@@ -364,6 +364,32 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * 
+     * Uses the generic mouseDrag functionality to drag the item from its
+     * center.
+     * 
+     * @param label
+     *            the label
+     * @param editPartClass
+     *            The type of the expected edit part
+     * @param toXPosition
+     *            the relative x position within the graphical viewer to drag to
+     * @param toYPosition
+     *            the relative y position within the graphical viewer to drag to
+     * 
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String,
+     *      int, int)
+     */
+    public void dragCentered(final String label, final Class<? extends EditPart> editPartClass, final int toXPosition, final int toYPosition) {
+        final SWTBotGefEditPart selectedEP = getEditPart(label, editPartClass);
+        if (selectedEP == null) {
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+        }
+        final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
+        drag(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2, toXPosition, toYPosition);
+    }
+
+    /**
      * Get the EditPartBot representing the EditPart at this location.
      * 
      * @param location

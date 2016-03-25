@@ -19,6 +19,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LayeredPane;
+import org.eclipse.draw2d.TreeSearch;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
@@ -237,7 +238,8 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
         List<IFigure> figuresToRemove = Lists.newArrayList();
         // Collects notification figures that needs to be removed
-        for (DiagramSemanticElementLockedNotificationFigure diagramSemanticElementLockedNotificationFigure : Iterables.filter(pane.getChildren(), DiagramSemanticElementLockedNotificationFigure.class)) {
+        for (DiagramSemanticElementLockedNotificationFigure diagramSemanticElementLockedNotificationFigure : Iterables.filter(pane.getChildren(),
+                DiagramSemanticElementLockedNotificationFigure.class)) {
             figuresToRemove.add(diagramSemanticElementLockedNotificationFigure);
         }
         // Removes these notation figures from Layer
@@ -307,6 +309,11 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      */
     protected void applyTransparency(Graphics g) {
         g.setAlpha(255 - transparency * 255 / 100);
+    }
+
+    @Override
+    public IFigure findFigureAt(int x, int y, TreeSearch search) {
+        return null;
     }
 
 }
