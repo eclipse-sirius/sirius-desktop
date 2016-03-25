@@ -55,6 +55,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorer
 import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAfterSessionReloadTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
+import org.eclipse.sirius.tests.swtbot.tabbar.ResetToDefaultFiltersActionTests;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabbarContributorExtensionTest;
 import org.eclipse.sirius.tests.swtbot.table.SetPropertyOfTableTreeByPropertiesViewTest;
@@ -328,6 +329,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExportDiagramsAsImagesAndHtmlTest.class);
         suite.addTestSuite(TabBarTest.class);
         suite.addTestSuite(NotInvisibleTabBarTest.class);
+        suite.addTestSuite(ResetToDefaultFiltersActionTests.class);
         suite.addTestSuite(LockedTabBarTest.class);
         suite.addTestSuite(LockedRepresentationContainerTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);

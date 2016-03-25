@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,16 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ResetToDefaultFiltersAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.swt.graphics.Image;
 
@@ -38,11 +41,6 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
     /** The filters icon descriptor. */
     private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif"); //$NON-NLS-1$
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractMenuContributionItem#getMenuImage()
-     */
     @Override
     protected Image getMenuImage() {
         return getImage();
@@ -65,23 +63,20 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
         return DiagramUIPlugin.getPlugin().getImage(DESC_FILTER);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getLabel() {
         return Messages.FiltersContributionItem_label;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractMenuContributionItem#menuShow(org.eclipse.jface.action.IMenuManager)
-     */
     @Override
     protected void menuShow(IMenuManager manager) {
         for (final FilterDescription filter : getFilters()) {
             addFilterMenuItem(manager, filter);
+        }
+        ConcernDescription defaultConcern = diagram.getDescription().getDefaultConcern();
+        if (defaultConcern != null) {
+            manager.add(new Separator());
+            manager.add(new ResetToDefaultFiltersAction(session.getTransactionalEditingDomain(), diagram));
         }
     }
 

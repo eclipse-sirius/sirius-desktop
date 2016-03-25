@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="490384" version="11.0.0.201601261200">
+  <ownedViewpoints name="Bug490384_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug490384_DiagWithConcern" domainClass="ecore.EPackage" defaultConcern="//@ownedViewpoints[name='Bug490384_Viewpoint']/@ownedRepresentations[name='Bug490384_DiagWithConcern']/@concerns/@ownedConcernDescriptions.0" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="CompositeFilter1" label="Filter A classes">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not self.name.startsWith('A')"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="CompositeFilter2" label="Filter B classes">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not self.name.startsWith('B')"/>
+      </filters>
+      <concerns>
+        <ownedConcernDescriptions name="Concern1" filters="//@ownedViewpoints[name='Bug490384_Viewpoint']/@ownedRepresentations[name='Bug490384_DiagWithConcern']/@filters[name='CompositeFilter1']"/>
+        <ownedConcernDescriptions name="Concern2" filters="//@ownedViewpoints[name='Bug490384_Viewpoint']/@ownedRepresentations[name='Bug490384_DiagWithConcern']/@filters[name='CompositeFilter2']"/>
+      </concerns>
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassNode" domainClass="ecore.EClass">
+          <style xsi:type="style:BundledImageDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug490384_DiagWithoutConcern" domainClass="ecore.EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="CompositeFilter1" label="Filter A classes">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not self.name.startsWith('A')"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="CompositeFilter2" label="Filter B classes">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not self.name.startsWith('B')"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassNode" domainClass="ecore.EClass">
+          <style xsi:type="style:BundledImageDescription" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
