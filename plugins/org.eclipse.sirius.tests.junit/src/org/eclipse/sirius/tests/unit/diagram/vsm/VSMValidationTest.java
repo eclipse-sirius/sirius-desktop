@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES, and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerForVariableNameValidation;
 
+    private Group modelerForInvalidVariableNameValidation;
+
     private Group modelerForImagePathValidation;
 
     private Group modelerForDefaultLayerValidation;
@@ -60,6 +62,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
         modelerForVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVariableNameVSM.odesign", true), set);
+        modelerForInvalidVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/invalidVariableNameVSM.odesign", true), set);
         modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
         modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
     }
@@ -182,6 +185,17 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Ensure that VSM validation detects blank (missing or empty) variable
+     * names as invalid.
+     */
+    public void testBlankVariableNameValidation() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForInvalidVariableNameValidation);
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+        assertEquals("Validation should have found 2 invalid variable names", 2, diagnostic.getChildren().size());
+    }
+
+    /**
      * Test VSM validation with diferent paths for images (there are valid and
      * invalid paths).
      */
@@ -195,17 +209,16 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
                 "^The image '  /org.eclipse.sirius.tests.junit/images/logo_o.png   ' does not exist.$", "^The image '/test/noimage.gif' does not exist.$",
                 "^The path 'icon' does not correspond to an image.$", "^The image 'icon' does not exist.$", "^The path '/org.eclipse.sirius.tests.junit/plugin.xml' does not correspond to an image.$",
                 "^The image 'C:\\\\images\\\\image.png' does not exist.$", "^The image '/org.eclipse.sirius.tests.junit/images/notexisting.png' does not exist.$",
-                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$"};
-        
-        assertEquals(
-                "The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors. Returned messages were :\n"
-                        + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
+                "^The required feature 'decoratorPath' of 'org.eclipse.sirius.viewpoint.description.impl.SemanticBasedDecorationImpl@.*' must be set$" };
 
-                            @Override
-                            public String apply(Diagnostic input) {
-                                return input.getMessage();
-                            }
-                        })), expectedMessagesPatterns.length, children.size());
+        assertEquals("The diagnostic must contain " + expectedMessagesPatterns.length + " validation errors. Returned messages were :\n"
+                + Joiner.on('\n').join(Iterables.transform(children, new Function<Diagnostic, String>() {
+
+                    @Override
+                    public String apply(Diagnostic input) {
+                        return input.getMessage();
+                    }
+                })), expectedMessagesPatterns.length, children.size());
         for (int i = 0; i < expectedMessagesPatterns.length; i++) {
             assertTrue("Unexpected validation error at position " + i, children.get(i).getMessage().matches(expectedMessagesPatterns[i]));
         }
