@@ -1,0 +1,58 @@
+h1. Sirius Evolution Specification: Have a "Reset to default filters" action in tabbar.
+
+h2. Preamble
+
+_Summary_:  Have a "reset to default filters" action in tabbar.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-03-24 | edugueperoux    | Initial version. |
+
+_Relevant tickets:_
+* "Bug #490384, Have a 'Reset to default filters' action in tabbar":https://bugs.eclipse.org/bugs/show_bug.cgi?id=490384
+
+h2. Introduction
+
+There is a need to have a filters related action to set activated filters on a diagram to their initial state as at diagram creation.
+This need is expressed only in case of Concern use.
+To recall Concern is a odesign concept, specific to diagram description, which allows to group references to filters, validation rules and behavior tools.
+A diagram description can contains several Concern, and defined a default one.
+Having a default concern defined for a diagram description, means that at diagram creation the filters, validation rules and behavior tools will be activated for this diagram.
+
+h2. Detailed Specification
+
+A new action will be available in filters drop down button, at the end of the list of filters, only visible when there is a default concern defined for the diagram description.
+The action would be enabled only if activated filters set is different of the set of filters from default concern.
+This new action will call @SetDefaultConcernCommand@ EMF command to reset diagram to the default concern as defined in its diagram description and consequently will reset activated filters, validation rules and behavior tools to the one defined in the diagram description default concern.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+No metamodel changes.
+  
+h3. API Changes
+
+No API changes.
+
+h3. User Interface Changes
+
+A new tabbar action will be available in filters drop down menu.
+
+No other user interface changes.
+
+h3. Documentation Changes
+
+* Concern feature is an old feature not documented. At long term this feature will be removed or replaced by a better one, then this new action "Reset to default filters" will not be documented. This change will appears only in release notes.
+
+h2. Tests and Non-regression strategy
+
+* JUnit Tests
+** test action availability of action when there is a default concern
+** the non availability when there is no default concern
+** test the result of the action on activated filters 
+** test that the button is gray (disabled) when the state of filter is the same as the default concern.
+
+
+h2. Implementation choices and tradeoffs
+ 
+

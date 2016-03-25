@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationHaveaResettodefaultfiltersactionintabbar.">Sirius Evolution Specification: Have a &#171;Reset to default filters&#187; action in tabbar.</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>:  Have a &#171;reset to default filters&#187; action in tabbar.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-03-24</td>
+				<td>edugueperoux</td>
+				<td>Initial version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets:</em>
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=490384">Bug #490384, Have a &#8249;Reset to default filters&#8250; action in tabbar</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>There is a need to have a filters related action to set activated filters on a diagram to their initial state as at diagram creation.
+			<br/>This need is expressed only in case of Concern use.
+			<br/>To recall Concern is a odesign concept, specific to diagram description, which allows to group references to filters, validation rules and behavior tools.
+			<br/>A diagram description can contains several Concern, and defined a default one.
+			<br/>Having a default concern defined for a diagram description, means that at diagram creation the filters, validation rules and behavior tools will be activated for this diagram.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>A new action will be available in filters drop down button, at the end of the list of filters, only visible when there is a default concern defined for the diagram description.
+			<br/>The action would be enabled only if activated filters set is different of the set of filters from default concern.
+			<br/>This new action will call 
+			<code>SetDefaultConcernCommand</code> EMF command to reset diagram to the default concern as defined in its diagram description and consequently will reset activated filters, validation rules and behavior tools to the one defined in the diagram description default concern.
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel changes.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>No API changes.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>A new tabbar action will be available in filters drop down menu.</p>
+		<p>No other user interface changes.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<ul>
+			<li>Concern feature is an old feature not documented. At long term this feature will be removed or replaced by a better one, then this new action &#171;Reset to default filters&#187; will not be documented. This change will appears only in release notes.</li>
+		</ul>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>JUnit Tests
+				<ul>
+					<li>test action availability of action when there is a default concern</li>
+					<li>the non availability when there is no default concern</li>
+					<li>test the result of the action on activated filters </li>
+					<li>test that the button is gray (disabled) when the state of filter is the same as the default concern.</li>
+				</ul>
+			</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>
