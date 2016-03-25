@@ -39,7 +39,7 @@ public interface TextAreaDescription extends TextDescription {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Count</em>' attribute.
      * @see #setLineCount(int)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextAreaDescription_LineCount()
@@ -53,7 +53,7 @@ public interface TextAreaDescription extends TextDescription {
      * {@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
      * <em>Line Count</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Line Count</em>' attribute.
      * @see #getLineCount()

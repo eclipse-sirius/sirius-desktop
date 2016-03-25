@@ -47,7 +47,7 @@ public interface GroupValidationSetDescription extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Validation Rules</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription_SemanticValidationRules()

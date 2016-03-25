@@ -33,6 +33,7 @@ import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
 import org.eclipse.eef.EEFTextDescription;
+import org.eclipse.eef.EEFTextStyle;
 import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
@@ -42,6 +43,7 @@ import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.CustomDescription;
@@ -58,7 +60,11 @@ import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.TextStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
@@ -79,8 +85,10 @@ public class ViewDescriptionConverter {
 
     private final List<PageDescription> pageDescriptions;
 
+    private EObject semanticElement;
+
     /**
-     * The contrsuctor.
+     * The constructor.
      * 
      * @param pageDescriptions
      *            The description of the pages to convert
@@ -93,9 +101,12 @@ public class ViewDescriptionConverter {
      * Use the description of the pages provided in order to create an
      * {@link EEFViewDescription}.
      * 
+     * @param input
+     *            Semantic element
+     * 
      * @return The {@link EEFViewDescription} computed
      */
-    public EEFViewDescription convert() {
+    public EEFViewDescription convert(SiriusInputDescriptor input) {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
 
         Set<EPackage> ePackages = new LinkedHashSet<>();
@@ -128,7 +139,9 @@ public class ViewDescriptionConverter {
                 }
             }
         }
-
+        if (input != null) {
+            this.semanticElement = input.getSemanticElement();
+        }
         this.widget2eefWidget.clear();
         this.eefPropertyValidationRule2propertyValidationRule.clear();
 
@@ -321,7 +334,55 @@ public class ViewDescriptionConverter {
 
         InitialOperation initialOperation = textDescription.getInitialOperation();
         eefTextDescription.setEditExpression(getExpressionForOperation(initialOperation));
+
+        TextStyle textStyle = textDescription.getStyle();
+        if (textStyle != null) {
+            EEFTextStyle eefTextStyle = EefFactory.eINSTANCE.createEEFTextStyle();
+
+            ColorDescription backgroundColorDescription = textStyle.getBackgroundColor();
+            if (backgroundColorDescription != null) {
+                String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+                if (backgroundColorExpression != null) {
+                    eefTextStyle.setBackgroundColorExpression(backgroundColorExpression);
+                }
+            }
+
+            ColorDescription foregroundColorDescription = textStyle.getForegroundColor();
+            if (foregroundColorDescription != null) {
+                String foregroundColorExpression = getColorExpression(foregroundColorDescription);
+                if (foregroundColorExpression != null) {
+                    eefTextStyle.setForegroundColorExpression(foregroundColorExpression);
+                }
+            }
+
+            eefTextStyle.setFontNameExpression(textStyle.getFontNameExpression());
+            eefTextStyle.setFontSizeExpression(Integer.toString(textStyle.getFontSize()));
+            eefTextStyle.setFontStyleExpression(textStyle.getFontFormat().toString().substring(1, textStyle.getFontFormat().toString().length() - 1));
+
+            eefTextDescription.setStyle(eefTextStyle);
+        }
         return eefTextDescription;
+    }
+
+    /**
+     * Get the rgb color expression from a color description.
+     * 
+     * @param colorDescription
+     *            Color description
+     * @return A string representing the color as 'rgb(0,0,0)'
+     */
+    private String getColorExpression(ColorDescription colorDescription) {
+        // TODO To update when new
+        // ColorQuery(colorDescription).getRGBValues(EObject context,
+        // IInterpreter itp) will be available
+        // See bug 490661:
+        // https://bugs.eclipse.org/bugs/show_bug.cgi?id=490661
+        AbstractColorUpdater colorUpdater = new AbstractColorUpdater();
+        RGBValues rgbValues = colorUpdater.getRGBValuesFromColorDescription(this.semanticElement, colorDescription);
+        if (rgbValues != null) {
+            return "rgb(" + rgbValues.getRed() + "," + rgbValues.getGreen() + "," + rgbValues.getBlue() + ")";
+        }
+        return null;
     }
 
     private String getExpressionForOperation(InitialOperation initialOperation) {
@@ -388,16 +449,13 @@ public class ViewDescriptionConverter {
         eefRadioDescription.setCandidateDisplayExpression(radioDescription.getCandidateDisplayExpression());
         return eefRadioDescription;
     }
-
+    
     private EEFCustomWidgetDescription createEEFCustomDescription(CustomDescription customDescription) {
         EEFCustomWidgetDescription eefCustomDescription = EefFactory.eINSTANCE.createEEFCustomWidgetDescription();
-
         eefCustomDescription.setIdentifier(customDescription.getIdentifier());
         eefCustomDescription.setLabelExpression(customDescription.getLabelExpression());
-
         for (CustomExpression customExpression : customDescription.getCustomExpressions()) {
             EEFCustomExpression eefCustomExpression = EefFactory.eINSTANCE.createEEFCustomExpression();
-
             eefCustomExpression.setIdentifier(customExpression.getIdentifier());
             String expression = customExpression.getCustomExpression();
             eefCustomExpression.setCustomExpression(expression);
@@ -413,5 +471,4 @@ public class ViewDescriptionConverter {
         }
         return eefCustomDescription;
     }
-
 }

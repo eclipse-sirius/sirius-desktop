@@ -261,4 +261,26 @@
    
       </description>
    </context>
+   <context id="WidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code WidgetStyle description -->
+   
+   <!-- End of user code WidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="TextStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code TextStyle description -->
+   
+   <!-- End of user code TextStyle description -->
+   
+      </description>
+   </context>
 </contexts>

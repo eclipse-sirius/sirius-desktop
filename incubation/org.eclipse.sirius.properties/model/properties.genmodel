@@ -58,6 +58,7 @@
     <genClasses ecoreClass="properties.ecore#//TextDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/initialOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//ButtonDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ButtonDescription/buttonLabelExpression"/>
@@ -126,6 +127,14 @@
     <genClasses ecoreClass="properties.ecore#//CustomOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomOperation/identifier"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomOperation/initialOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//WidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//TextStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontSize"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextStyle/backgroundColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontFormat"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

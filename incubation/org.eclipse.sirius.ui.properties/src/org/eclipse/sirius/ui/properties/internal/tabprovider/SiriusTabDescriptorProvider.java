@@ -120,7 +120,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
     }
 
     private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, SiriusInputDescriptor input, List<PageDescription> effectivePageDescriptions) {
-        EEFViewDescription viewDescription = new ViewDescriptionConverter(effectivePageDescriptions).convert();
+        EEFViewDescription viewDescription = new ViewDescriptionConverter(effectivePageDescriptions).convert(input);
         EEFView eefView = createEEFView(session, input, viewDescription);
 
         List<IEEFTabDescriptor> descriptors = new ArrayList<IEEFTabDescriptor>();

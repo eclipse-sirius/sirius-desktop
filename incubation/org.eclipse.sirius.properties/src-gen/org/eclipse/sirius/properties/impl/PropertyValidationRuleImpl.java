@@ -39,7 +39,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
     /**
      * The cached value of the '{@link #getTargets() <em>Targets</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargets()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PropertyValidationRuleImpl() {
@@ -57,7 +57,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -111,7 +111,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class PropertyValidationRuleImpl extends ValidationRuleImpl implements Pr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

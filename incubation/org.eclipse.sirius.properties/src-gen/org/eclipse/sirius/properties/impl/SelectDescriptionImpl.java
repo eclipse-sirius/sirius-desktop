@@ -48,7 +48,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -103,7 +103,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The default value of the '{@link #getCandidateDisplayExpression()
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
      * The cached value of the '{@link #getCandidateDisplayExpression()
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -123,7 +123,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectDescriptionImpl() {
@@ -132,7 +132,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -195,7 +195,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,7 +253,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -281,7 +281,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +301,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,14 +363,14 @@ public class SelectDescriptionImpl extends WidgetDescriptionImpl implements Sele
             return SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !SelectDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
             return SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT == null ? candidateDisplayExpression != null : !SelectDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT
-                    .equals(candidateDisplayExpression);
+            .equals(candidateDisplayExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
