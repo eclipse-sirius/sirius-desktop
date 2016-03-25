@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,13 +42,14 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
  * Compound interpreter.
- * 
+ *
  * @author ymortier
  */
 public final class CompoundInterpreter implements IInterpreter, IProposalProvider, TypedValidation, IInterpreterWithDiagnostic {
@@ -118,30 +119,20 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /**
      * Creates a generic interpreter that will delegate the evaluation to
      * concrete interpreters.
-     * 
+     *
      * @return the created interpreter.
      */
     public static IInterpreter createGenericInterpreter() {
         return new CompoundInterpreter();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluate(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
-     */
+    @Override
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluate(target, expression);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic#evaluateExpression(EObject,
-     *      String)
-     */
+    @Override
     public IEvaluationResult evaluateExpression(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         if (interpreter instanceof IInterpreterWithDiagnostic) {
@@ -166,98 +157,44 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return evaluationResult;
     }
 
-    /**
-     * Evaluates the given expression as a boolean value.
-     * 
-     * @param context
-     *            the context of the evaluation.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the result of the evaluation.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
+    @Override
     public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluateBoolean(context, expression);
     }
 
-    /**
-     * Evaluates the given expression as an {@link EObject} value.
-     * 
-     * @param target
-     *            the context of the evaluation.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the result of the evaluation.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
+    @Override
     public EObject evaluateEObject(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluateEObject(target, expression);
     }
 
-    /**
-     * Evaluates the given expression as an {@link Integer} value.
-     * 
-     * @param target
-     *            the context of the evaluation.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the result of the evaluation.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
+    @Override
     public Integer evaluateInteger(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluateInteger(target, expression);
     }
 
-    /**
-     * Evaluates the given expression as a collection of {@link EObject}s value.
-     * 
-     * @param target
-     *            the context of the evaluation.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the result of the evaluation.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
+    @Override
     public Collection<EObject> evaluateCollection(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluateCollection(target, expression);
     }
 
-    /**
-     * Evaluates the given expression as a value.
-     * 
-     * @param target
-     *            the context of the evaluation.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the result of the evaluation.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
+    @Override
     public String evaluateString(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluateString(target, expression);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#provides(java.lang.String)
-     */
+    @Override
     public boolean provides(final String expression) {
         return getProviderForExpression(expression) != null;
     }
 
     /**
      * Returns the provider to use for the given expression.
-     * 
+     *
      * @param expression
      *            an expression to evaluate.
      * @return the provider to use for the given expression.
@@ -273,7 +210,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Returns the unique identifier associated with the given interpreter.
-     * 
+     *
      * @param interpreter
      *            The interpreter of which we need the unique identifier.
      * @return The unique identifier associated with the given interpreter,
@@ -307,7 +244,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Returns the interpreter for the given expression.
-     * 
+     *
      * @param expression
      *            the expression.
      * @return the interpreter for the given expression.
@@ -345,7 +282,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Returns all registered interpreters.
-     * 
+     *
      * @return all registered interpreters.
      */
     public Set<IInterpreterProvider> getProviders() {
@@ -357,7 +294,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Registers a provider.
-     * 
+     *
      * @param provider
      *            the provider to register.
      */
@@ -369,7 +306,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Removes a provider from the registry.
-     * 
+     *
      * @param provider
      *            the provider to remove.
      */
@@ -411,18 +348,15 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
         IInterpreterProvider desc = null;
         try {
-            desc = (IInterpreterProvider) configElement.createExecutableExtension(ENGINE_ATTRIBUTE_CLASS);
+            desc = (IInterpreterProvider) configElement.createExecutableExtension(CompoundInterpreter.ENGINE_ATTRIBUTE_CLASS);
         } catch (final CoreException e) {
-            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.CompoundInterpreter_impossibleToCreateInterpreter, configElement.getAttribute(ENGINE_ATTRIBUTE_CLASS)), e);
+            DslCommonPlugin.getDefault().error(
+                    MessageFormat.format(Messages.CompoundInterpreter_impossibleToCreateInterpreter, configElement.getAttribute(CompoundInterpreter.ENGINE_ATTRIBUTE_CLASS)), e);
         }
         return desc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#activateMetamodels(java.util.Collection)
-     */
+    @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         this.additionalMetamodels.addAll(metamodels);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -432,11 +366,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addImport(java.lang.String)
-     */
+    @Override
     public void addImport(final String dependency) {
         this.dependencies.add(dependency);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -446,11 +376,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearImports()
-     */
+    @Override
     public void clearImports() {
         this.dependencies.clear();
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -460,12 +386,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setProperty(java.lang.Object,
-     *      java.lang.Object)
-     */
+    @Override
     public void setProperty(final Object key, final Object value) {
         this.properties.put(key, value);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -475,11 +396,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearVariables()
-     */
+    @Override
     public void clearVariables() {
         this.variableManager.clearVariables();
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -489,11 +406,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#dispose()
-     */
+    @Override
     public void dispose() {
         for (final IInterpreter interpreter : this.providers.values()) {
             if (interpreter != null) {
@@ -509,21 +422,12 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         this.modelAccessor = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariable(java.lang.String)
-     */
+    @Override
     public Object getVariable(final String name) {
         return this.variableManager.getVariable(name);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setVariable(java.lang.String,
-     *      java.lang.Object)
-     */
+    @Override
     public void setVariable(final String name, final Object value) {
         this.variableManager.setVariable(name, value);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -533,11 +437,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#unSetVariable(java.lang.String)
-     */
+    @Override
     public void unSetVariable(final String name) {
         this.variableManager.unSetVariable(name);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -547,11 +447,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
+    @Override
     public void addVariableStatusListener(final IVariableStatusListener newListener) {
         this.listeners.add(newListener);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -561,11 +457,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
-     */
+    @Override
     public Map<String, ?> getVariables() {
         final Map<String, Object> result = this.variableManager.getVariables();
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -578,11 +470,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
+    @Override
     public void removeVariableStatusListener(final IVariableStatusListener listener) {
         this.listeners.remove(listener);
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -592,11 +480,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setModelAccessor(org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor)
-     */
+    @Override
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         this.modelAccessor = modelAccessor;
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -608,7 +492,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * The last chance !!!
-     * 
+     *
      * @author ymortier
      */
     private static class DefaultInterpreterProvider implements IInterpreterProvider, IInterpreter, TypedValidation {
@@ -616,98 +500,67 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         /** The shared instance. */
         public static final DefaultInterpreterProvider INSTANCE = new DefaultInterpreterProvider();
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public IInterpreter createInterpreter() {
             return this;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void dispose() {
             // nothing to dispose
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public boolean provides(final String expression) {
             return true;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#activateMetamodels(java.util.Collection)
-         */
+        @Override
         public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
             // empty
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void addImport(final String dependency) {
             // empty.
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void addVariableStatusListener(final IVariableStatusListener newListener) {
             // empty.
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void clearImports() {
             // empty.
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void clearVariables() {
             // empty.
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Object evaluate(final EObject target, final String expression) throws EvaluationException {
-            if (evaluateInteger(target, expression) != null) {
-                return evaluateInteger(target, expression);
-            }
-            return expression;
+            return Objects.firstNonNull(evaluateInteger(target, expression), expression);
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
             return Boolean.parseBoolean(expression);
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
             return Collections.<EObject> emptyList();
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
             return context;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
             try {
                 return new Integer(expression);
@@ -716,92 +569,77 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String evaluateString(final EObject context, final String expression) throws EvaluationException {
             return expression;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Object getVariable(final String name) {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Map<String, Object> getVariables() {
             return Collections.<String, Object> emptyMap();
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void removeVariableStatusListener(final IVariableStatusListener listener) {
             // empty
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void setModelAccessor(final ModelAccessor modelAccessor) {
             // empty
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void setProperty(final Object key, final Object value) {
             // empty
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void setVariable(final String name, final Object value) {
             // empty.
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void unSetVariable(final String name) {
             // empty
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String getPrefix() {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String getVariablePrefix() {
             return null;
         }
 
+        @Override
         public void setCrossReferencer(final ECrossReferenceAdapter crossReferencer) {
             // nothing to do.
         }
 
+        @Override
         public Collection<String> getImports() {
             return Collections.<String> emptyList();
         }
 
+        @Override
         public void removeImport(String dependency) {
             // empty.
         }
 
+        @Override
         public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
             return Sets.newLinkedHashSet();
         }
 
+        @Override
         public boolean supportsValidation() {
             return false;
         }
@@ -815,10 +653,11 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
      *      org.eclipse.sirius.common.tools.api.contentassist.ContentContext)
      */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter extendedInterpreter, ContentContext context) {
         /*
          * "interpreter" parameter is "this". We need the actual interpreter for
@@ -851,10 +690,11 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /**
      * Return allways null. use {@link CompoundInterpreter#getAllPrefixes()}
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getPrefix()
      * @see CompoundInterpreter#getAllPrefixes()
      */
+    @Override
     public String getPrefix() {
         // return null the compound interpreter
         return null;
@@ -863,17 +703,18 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /**
      * Return allways null. use
      * {@link CompoundInterpreter#getAllNewEmtpyExpressions()} {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getNewEmtpyExpression()
      * @see CompoundInterpreter#getAllNewEmtpyExpressions()
      */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
         return null;
     }
 
     /**
      * Get all the available empty expressions proposals.
-     * 
+     *
      * @return the list of all available prefixes. If there is none, the list
      *         will be empty.
      * @since 0.9.0
@@ -895,17 +736,17 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     /**
      * Return always null. use {@link CompoundInterpreter#getVariable(String)}
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariablePrefix()
      */
+    @Override
     public String getVariablePrefix() {
-        // return null
         return null;
     }
 
     /**
      * Get the prefix to use for variables.
-     * 
+     *
      * @param expression
      *            the expression.
      * @return the prefix to use for variables
@@ -918,7 +759,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
     /**
      * Get all the available prefixes.
-     * 
+     *
      * @return the list of all available prefixes. If there is none, the list
      *         will be empty.
      */
@@ -935,10 +776,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return prefixes;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void setCrossReferencer(final ECrossReferenceAdapter crossReferencer) {
         this.crossReferencer = crossReferencer;
         for (final IInterpreter interpreter : this.providers.values()) {
@@ -948,12 +786,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
-     *      org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext)
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter extendedInterpreter, ContentInstanceContext context) {
         /*
          * "interpreter" parameter is "this". We need the actual interpreter for
@@ -983,20 +816,12 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getImports()
-     */
+    @Override
     public Collection<String> getImports() {
         return Collections.<String> unmodifiableCollection(this.dependencies);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeImport(String)
-     */
+    @Override
     public void removeImport(String dependency) {
         this.dependencies.remove(dependency);
         for (IInterpreter interpreter : this.providers.values()) {
@@ -1006,13 +831,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#validateExpression(org.eclipse.emf.ecore.EClass,
-     *      java.lang.String)
-     */
+    @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.validateExpression(context, expression);
@@ -1029,19 +848,14 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#supportsValidation()
-     */
+    @Override
     public boolean supportsValidation() {
         return true;
     }
 
     /**
      * Get proposals that match context for available empty expressions.
-     * 
+     *
      * @param context
      *            context to match
      * @return list of proposal for empty expressions
