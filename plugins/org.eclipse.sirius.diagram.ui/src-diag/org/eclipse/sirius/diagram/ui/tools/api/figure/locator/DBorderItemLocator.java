@@ -38,7 +38,7 @@ import com.google.common.collect.Lists;
 /**
  * A specific
  * {@link org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator} for
- * Designer.
+ * Sirius.
  * 
  * @author ymortier
  */
@@ -316,9 +316,10 @@ public class DBorderItemLocator extends BorderItemLocator {
         boolean isStillFreeSpaceToTheLeft = true;
         int rightHorizontalGap = 0;
         int leftHorizontalGap = 0;
+        int next = getNextAuthorizedSide(PositionConstants.SOUTH, borderItem);
         // The recommendedLocationForEast is set when we detected that there is
         // not free space on right of south side.
-        Point recommendedLocationForEast = recommendedLocation.getLocation();
+        Point recommendedLocationForNextSide = recommendedLocation.getLocation();
         Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
@@ -369,15 +370,17 @@ public class DBorderItemLocator extends BorderItemLocator {
                     } else {
                         resultLocation = optionalConflictingRectangle.get().getTopLeft();
                     }
-                } else {
-                    recommendedLocationForEast = new Point(rightTestPoint.x + rightHorizontalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
+                }
+                // We only compute the new recommended location for the next
+                // side (following the anticlockwise) if it is authorized.
+                else if (next == PositionConstants.EAST) {
+                    recommendedLocationForNextSide = new Point(rightTestPoint.x + rightHorizontalGap, optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                 }
             }
         }
         if (resultLocation == null) {
             // south is full, try the next (east).
-            int next = getNextAuthorizedSide(PositionConstants.SOUTH, borderItem);
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForEast, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -414,9 +417,10 @@ public class DBorderItemLocator extends BorderItemLocator {
         boolean isStillFreeSpaceToTheLeft = true;
         int rightHorizontalGap = 0;
         int leftHorizontalGap = 0;
+        int next = getNextAuthorizedSide(PositionConstants.NORTH, borderItem);
         // The recommendedLocationForWest is set when we detected that there is
         // not free space on left of north side.
-        Point recommendedLocationForWest = recommendedLocation.getLocation();
+        Point recommendedLocationForNextSide = recommendedLocation.getLocation();
         Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
@@ -467,15 +471,17 @@ public class DBorderItemLocator extends BorderItemLocator {
                     } else {
                         resultLocation = optionalConflictingRectangle.get().getTopLeft();
                     }
-                } else {
-                    recommendedLocationForWest = new Point(leftTestPoint.x - leftHorizontalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
+                }
+                // We only compute the new recommended location for the next
+                // side (following the anticlockwise) if it is authorized.
+                else if (next == PositionConstants.WEST) {
+                    recommendedLocationForNextSide = new Point(leftTestPoint.x - leftHorizontalGap, optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height + 1);
                 }
             }
         }
         if (resultLocation == null) {
             // North is full, try the next (west).
-            int next = getNextAuthorizedSide(PositionConstants.NORTH, borderItem);
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForWest, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -512,9 +518,10 @@ public class DBorderItemLocator extends BorderItemLocator {
         boolean isStillFreeSpaceBelow = true;
         int belowVerticalGap = 0;
         int aboveVerticalGap = 0;
+        int next = getNextAuthorizedSide(PositionConstants.WEST, borderItem);
         // The recommendedLocationForSouth is set when we detected that there is
         // not free space on bottom of west side.
-        Point recommendedLocationForSouth = recommendedLocation.getLocation();
+        Point recommendedLocationForNextSide = recommendedLocation.getLocation();
         Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
@@ -564,15 +571,17 @@ public class DBorderItemLocator extends BorderItemLocator {
                     } else {
                         resultLocation = optionalConflictingRectangle.get().getTopLeft();
                     }
-                } else {
-                    recommendedLocationForSouth = new Point(belowTestPoint.x + optionalConflictingRectangle.get().width + 1, belowTestPoint.y + belowVerticalGap);
+                }
+                // We only compute the new recommended location for the next
+                // side (following the anticlockwise) if it is authorized.
+                else if (next == PositionConstants.SOUTH) {
+                    recommendedLocationForNextSide = new Point(belowTestPoint.x + optionalConflictingRectangle.get().width + 1, belowTestPoint.y + belowVerticalGap);
                 }
             }
         }
         if (resultLocation == null) {
             // west is full, try the next (south).
-            int next = getNextAuthorizedSide(PositionConstants.WEST, borderItem);
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForSouth, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
                     additionalFiguresForConflictDetection);
         }
         return resultLocation;
@@ -610,9 +619,10 @@ public class DBorderItemLocator extends BorderItemLocator {
         boolean isStillFreeSpaceBelow = true;
         int belowVerticalGap = 0;
         int aboveVerticalGap = 0;
+        int next = getNextAuthorizedSide(PositionConstants.EAST, borderItem);
         // The recommendedLocationForNorth is set when we detected that there is
         // not free space on top of east side.
-        Point recommendedLocationForNorth = recommendedLocation.getLocation();
+        Point recommendedLocationForNextSide = recommendedLocation.getLocation();
         Option<Rectangle> lastOptionalConflictingRectangleOnSameSide = Options.newNone();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
@@ -662,15 +672,17 @@ public class DBorderItemLocator extends BorderItemLocator {
                     } else {
                         resultLocation = optionalConflictingRectangle.get().getTopLeft();
                     }
-                } else {
-                    recommendedLocationForNorth = new Point(optionalConflictingRectangle.get().x - borderItemSize.width - 1, aboveTestPoint.y - aboveVerticalGap);
+                }
+                // We only compute the new recommended location for the next
+                // side (following the anticlockwise) if it is authorized.
+                else if (next == PositionConstants.NORTH) {
+                    recommendedLocationForNextSide = new Point(optionalConflictingRectangle.get().x - borderItemSize.width - 1, aboveTestPoint.y - aboveVerticalGap);
                 }
             }
         }
         if (resultLocation == null) {
             // East is full, try the next (north).
-            int next = getNextAuthorizedSide(PositionConstants.EAST, borderItem);
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNorth, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
                     additionalFiguresForConflictDetection);
         }
         return resultLocation;
