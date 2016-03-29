@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -59,9 +60,11 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
 
     private ToolBarManager manager;
 
-    private TabbarFiller diagramFiller;
+    private AbstractTabbarFiller diagramFiller;
 
     private IPermissionAuthority permissionAuthority;
+
+    private Collection<Object> currentSelection;
 
     /**
      * Instantiate a new tab bar.
@@ -150,10 +153,28 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         return canBeDynamic;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
-        // nothing to do here. Each item contribution is now responsible for
-        // refresh himself when selection change.
+        if (!(diagramFiller instanceof TabbarFillerWithoutContributions) && partSelected == this.part) {
+            if (currentSelection == null || !sameSelection(selection)) {
+                if (selection instanceof StructuredSelection) {
+                    currentSelection = ((StructuredSelection) selection).toList();
+                }
+                reinitToolBar(selection);
+            }
+        }
+    }
+
+    @SuppressWarnings("rawtypes")
+    private boolean sameSelection(ISelection selection) {
+        if (selection instanceof StructuredSelection) {
+            List newSelection = ((StructuredSelection) selection).toList();
+            if (newSelection.size() == currentSelection.size()) {
+                return currentSelection.containsAll(newSelection);
+            }
+        }
+        return false;
     }
 
     /**
@@ -163,6 +184,9 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      *            the selection
      */
     public void reinitToolBar(ISelection iSelection) {
+        if (!(diagramFiller instanceof TabbarFillerWithoutContributions)) {
+            diagramFiller.update(iSelection);
+        }
         updateAllItems();
     }
 

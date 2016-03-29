@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,18 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
-import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
-import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
@@ -37,25 +27,7 @@ public class DiagramElementHideDeleteExtensionContributionFactory extends Sirius
 
     @Override
     public void createContributionItems(IServiceLocator serviceLocator, IContributionRoot additions) {
-
-        super.createContributionItems(serviceLocator, additions);
-
-        HideDDiagramElementAction hideDDiagramElementAction = new HideDDiagramElementAction(SiriusDiagramActionBarContributor.HIDE_ELEMENT);
-        hideDDiagramElementAction.setEnabled(canEdit());
-        hideDDiagramElementAction.setActionPart(getPart());
-        additions.addContributionItem(new ActionContributionItem(hideDDiagramElementAction), new DDiagramElementTabbarExpression());
-
         createHideDDiagramElementLabelMenu(additions);
-
-        DeleteFromDiagramAction deleteFromDiagramAction = new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram, SiriusDiagramActionBarContributor.DELETE_FROM_DIAGRAM,
-                ActionIds.ACTION_DELETE_FROM_DIAGRAM, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
-        additions.addContributionItem(new TabbarActionContributionItem(deleteFromDiagramAction, getPart()), new DDiagramElementTabbarExpression());
-
-        final DeleteFromModelWithHookAction deleteFromModelAction = new DeleteFromModelWithHookAction(getPage(), getPart());
-        deleteFromModelAction.init();
-
-        additions.addContributionItem(new DiagramActionContributionItem(deleteFromModelAction), new DDiagramElementTabbarExpression());
-
     }
 
     /**
