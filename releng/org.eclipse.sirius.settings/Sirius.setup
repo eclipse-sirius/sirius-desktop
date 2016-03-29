@@ -284,6 +284,8 @@
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
       value="true"/>
   <stream name="master"/>
+  <stream name="v3.1.x"/>
+  <stream name="v3.0.x"/>
   <stream name="v2.0.x"/>
   <stream name="v1.0.x"/>
   <logicalProjectContainer
