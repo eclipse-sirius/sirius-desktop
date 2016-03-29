@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -94,10 +93,6 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * interactionUses, combinedFragments, Lost messages and found messages.
      */
     public void testPinFromTabbarOnSequenceDiagramsComponents() {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testActionFromTabbarOnSequenceDiagramComponents("The pin action in tabbar should not be enabled", PIN);
     }
 
@@ -106,10 +101,6 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * interactionUses, combinedFragments, Lost messages and found messages.
      */
     public void testUnpinFromTabbarOnSequenceDiagramsComponents() {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testActionFromTabbarOnSequenceDiagramComponents("The unPin action in tabbar should not be enabled", UNPIN);
     }
 
@@ -127,10 +118,6 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * messages.
      */
     public void testCopyLayoutFromTabbarOnSequenceDiagramsComponents() {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testActionFromTabbarOnSequenceDiagramComponents("The Copy Layout action in tabbar should not be enabled", COPY_LAYOUT);
     }
 

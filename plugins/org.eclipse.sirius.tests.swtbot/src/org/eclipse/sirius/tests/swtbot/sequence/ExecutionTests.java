@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -68,10 +67,6 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
      * Test method.
      */
     public void test_Zoom() {
-        // Not available in 4.x specific Tabbar
-        if (TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         try {
             ZoomLevel zoom50 = ZoomLevel.ZOOM_50;
             editor.zoom(ZoomLevel.ZOOM_50);
@@ -617,8 +612,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         createExecution(lifelineAPosition, yScreenExecA0);
 
         // Validates the position of the execution
-        Rectangle execA0ScreenBounds = assertExecutionHasValidScreenBounds(LIFELINE_A, 0, new Rectangle(0, yScreenExecA0, LayoutConstants.DEFAULT_EXECUTION_WIDTH,
-                (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
+        Rectangle execA0ScreenBounds = assertExecutionHasValidScreenBounds(LIFELINE_A, 0,
+                new Rectangle(0, yScreenExecA0, LayoutConstants.DEFAULT_EXECUTION_WIDTH, (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
 
         // Creation of an execution
         int yExecA1 = execA0ScreenBounds.getCenter().y;
@@ -639,8 +634,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         // Creation of an execution on lifeline B
         createExecution(lifelineBPosition, yScreenExecB0);
 
-        assertExecutionHasValidScreenBounds(LIFELINE_B, 0, new Rectangle(0, yScreenExecB0, (int) (LayoutConstants.DEFAULT_EXECUTION_WIDTH * zoom),
-                (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
+        assertExecutionHasValidScreenBounds(LIFELINE_B, 0,
+                new Rectangle(0, yScreenExecB0, (int) (LayoutConstants.DEFAULT_EXECUTION_WIDTH * zoom), (int) (LayoutConstants.DEFAULT_EXECUTION_HEIGHT * zoom)), false);
     }
 
     /**
@@ -849,8 +844,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         Rectangle firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x + 15, firstExecutionBoundsA.y, firstExecutionBoundsA.width, firstExecutionBoundsA.height);
-        Rectangle secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, firstExecutionBoundsA.y - 15, secondExecutionBoundsA.width, secondExecutionBoundsA.getBottom().y
-                - (firstExecutionBoundsA.getTop().y - 15));
+        Rectangle secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, firstExecutionBoundsA.y - 15, secondExecutionBoundsA.width,
+                secondExecutionBoundsA.getBottom().y - (firstExecutionBoundsA.getTop().y - 15));
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, firstExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, secondExecutionBoundsAResize, true);
 
@@ -864,8 +859,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         Rectangle thirdExecutionBoundsAResize = new Rectangle(thirdExecutionBoundsA.x + 15, thirdExecutionBoundsA.y, thirdExecutionBoundsA.width, thirdExecutionBoundsA.height);
-        secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width, (thirdExecutionBoundsA.getBottom().y + 15)
-                - secondExecutionBoundsA.getTop().y);
+        secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width,
+                (thirdExecutionBoundsA.getBottom().y + 15) - secondExecutionBoundsA.getTop().y);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 2, thirdExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, secondExecutionBoundsAResize, true);
 
@@ -899,8 +894,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
 
         // The value 20 correspond to half part execution + 5
         thirdExecutionBoundsAResize = new Rectangle(thirdExecutionBoundsA.x, thirdExecutionBoundsA.y + 20, thirdExecutionBoundsA.width, thirdExecutionBoundsA.height);
-        secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width, (thirdExecutionBoundsA.getCenter().y)
-                - secondExecutionBoundsA.getTop().y);
+        secondExecutionBoundsAResize = new Rectangle(secondExecutionBoundsA.x, secondExecutionBoundsA.y, secondExecutionBoundsA.width,
+                (thirdExecutionBoundsA.getCenter().y) - secondExecutionBoundsA.getTop().y);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 2, thirdExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 1, secondExecutionBoundsAResize, true);
 
@@ -965,8 +960,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         editor.drag(firstExecutionBoundsA.getTop(), firstSyncCall.getCenter().x, firstSyncCall.getTop().y - 15);
         bot.waitUntil(done);
 
-        Rectangle firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstSyncCall.y - 15, firstExecutionBoundsA.width, firstExecutionBoundsA.getBottom().y
-                - (firstSyncCall.getTop().y - 15));
+        Rectangle firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstSyncCall.y - 15, firstExecutionBoundsA.width,
+                firstExecutionBoundsA.getBottom().y - (firstSyncCall.getTop().y - 15));
         Rectangle firstExecutionSyncCall = new Rectangle(firstSyncCall.x, firstSyncCall.y, firstSyncCall.width, firstSyncCall.height);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_B, 0, firstExecutionSyncCall, true);
@@ -1011,8 +1006,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         editor.drag(firstExecutionBoundsA.getBottom(), secondSyncCall.getCenter().x, secondSyncCall.getBottom().y + 15);
         bot.waitUntil(done);
 
-        firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstExecutionBoundsA.y, firstExecutionBoundsA.width, (secondSyncCall.getBottom().y + 15)
-                - firstExecutionBoundsA.getTop().y);
+        firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstExecutionBoundsA.y, firstExecutionBoundsA.width,
+                (secondSyncCall.getBottom().y + 15) - firstExecutionBoundsA.getTop().y);
         secondExecutionSyncCall = new Rectangle(secondSyncCall.x, secondSyncCall.y, secondSyncCall.width, secondSyncCall.height);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_B, 1, secondExecutionSyncCall, true);
@@ -1064,8 +1059,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         editor.drag(firstExecutionBoundsA.getTop(), firstAsyncCall.getCenter().x, firstAsyncCall.getCenter().y);
         bot.waitUntil(done);
 
-        Rectangle firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstAsyncCall.getCenter().y, firstExecutionBoundsA.width, firstExecutionBoundsA.getBottom().y
-                - (firstAsyncCall.getCenter().y));
+        Rectangle firstExecutionBoundsAResize = new Rectangle(firstExecutionBoundsA.x, firstAsyncCall.getCenter().y, firstExecutionBoundsA.width,
+                firstExecutionBoundsA.getBottom().y - (firstAsyncCall.getCenter().y));
         Rectangle firstExecutionSyncCall = new Rectangle(firstAsyncCall.x, firstAsyncCall.y, firstAsyncCall.width, firstAsyncCall.height);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecutionBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_B, 0, firstExecutionSyncCall, true);
@@ -1149,8 +1144,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
         editor.drag(firstSyncCall.getTop(), firstExecutionBoundsA.getCenter().x, firstExecutionBoundsA.getTop().y - 15);
         bot.waitUntil(done);
 
-        Rectangle firstSyncCallBoundsAResize = new Rectangle(firstSyncCall.x, firstExecutionBoundsA.getTop().y - 15, firstExecutionBoundsA.width, firstSyncCall.getBottom().y
-                - (firstExecutionBoundsA.getTop().y - 15));
+        Rectangle firstSyncCallBoundsAResize = new Rectangle(firstSyncCall.x, firstExecutionBoundsA.getTop().y - 15, firstExecutionBoundsA.width,
+                firstSyncCall.getBottom().y - (firstExecutionBoundsA.getTop().y - 15));
         Rectangle firstExecution = new Rectangle(firstExecutionBoundsA.x, firstExecutionBoundsA.y, firstExecutionBoundsA.width, firstExecutionBoundsA.height);
         assertExecutionHasValidScreenBounds(LIFELINE_B, 0, firstSyncCallBoundsAResize, true);
         assertExecutionHasValidScreenBounds(LIFELINE_A, 0, firstExecution, true);

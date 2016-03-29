@@ -18,7 +18,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -181,10 +180,6 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
      * Test with opened session. - open and modify VSM with opened editors
      */
     public void testVSMChangesWithOpenedEditor() {
-        // Not available in 4.x specific Tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         // Open diagram editor
         openDiagramEditor();
 

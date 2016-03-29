@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -63,10 +62,6 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
      *            the expected editpart type.
      */
     public void doTestBoldItalicSynchronizationFromTabbar(String name, Class<? extends EditPart> type) {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         editor.click(new Point(0, 0));
         SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
 
@@ -157,11 +152,6 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
 
         editor.click(new Point(0, 0));
         selectAndCheckEditPart(name, type);
-
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
 
         // Verify that buttons italic and bold is also selected on tabbar
         SWTBotToolbarToggleButton boldButtonTabbar = getTabbarBoldButton();

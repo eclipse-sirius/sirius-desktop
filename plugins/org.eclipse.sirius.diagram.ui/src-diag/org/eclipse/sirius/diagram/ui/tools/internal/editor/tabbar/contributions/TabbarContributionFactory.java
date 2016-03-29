@@ -57,8 +57,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.Tabbar
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ZoomContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.SiriusTabbarExtensionContributionFactory.TabbarActionContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ZoomExtensionContributionFactory.ZoomContributionItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IWorkbenchPartSite;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -109,18 +109,13 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
             return;
         }
 
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
 
         // Copy all files necessary for test
-        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + MODEL_FOR_TRANSIENT_SESSION, getProjectName() + "/" + "sub" + "/"
-                + MODEL_FOR_TRANSIENT_SESSION);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + MODEL_FOR_TRANSIENT_SESSION2, getProjectName() + "/" + "sub" + "/"
-                + MODEL_FOR_TRANSIENT_SESSION2);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + MODEL_FOR_TRANSIENT_SESSION,
+                getProjectName() + "/" + "sub" + "/" + MODEL_FOR_TRANSIENT_SESSION);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + MODEL_FOR_TRANSIENT_SESSION2,
+                getProjectName() + "/" + "sub" + "/" + MODEL_FOR_TRANSIENT_SESSION2);
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + TRANSIENT_SESSION, getProjectName() + "/" + "sub" + "/" + TRANSIENT_SESSION);
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + TRANSIENT_SESSION2, getProjectName() + "/" + "sub" + "/" + TRANSIENT_SESSION2);
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
@@ -169,6 +164,7 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
         }
         // Check that files exists
         File filesWithExpectedExtension[] = destinationFolder.listFiles(new FilenameFilter() {
+            @Override
             public boolean accept(File dir, String name) {
                 boolean result = false;
                 for (String filename : expectedFileNames) {

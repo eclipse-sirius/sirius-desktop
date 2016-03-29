@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,6 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -143,11 +142,6 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
      *             thrown cause failure
      */
     public void testSetWorkspaceImageStyleCustomization() throws Exception {
-        // Not available in 4.x specific Tabbar
-        if (TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
         AbstractSWTBot<? extends Widget> setStyleToWorkspaceImageButtonFromTabbar = getSetStyleToWorkspaceImageButton(true, true);
@@ -458,11 +452,6 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     }
 
     private void testStyleCustomization(SWTBotGefEditPart swtBotGefEditPart) throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         // Launch tests from properties view (style tab) and cancel
         // customization from Appearance tab
         if (isSiriusElt(swtBotGefEditPart)) {

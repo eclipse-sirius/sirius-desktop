@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.IContributionItem;
@@ -36,8 +35,6 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.Version;
 
 /**
  * A beautiful tab bar.
@@ -51,11 +48,6 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      * extension point with toolbar scheme.
      */
     public static final String TABBAR_ID = "org.eclipse.sirius.diagram.ui.tabbar"; //$NON-NLS-1$
-
-    /**
-     * Specific id for fixed tabbar ({@link #canBeDynamic()}.
-     */
-    public static final String FIXED_TABBAR_ID = "org.eclipse.sirius.diagram.ui.tabbar.fixed"; //$NON-NLS-1$
 
     private IDiagramWorkbenchPart part;
 
@@ -131,44 +123,16 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         if (tabbarContributorProvider.hasContributor()) {
             diagramFiller = new TabbarFillerWithContributor(manager, page, tabbarContributorProvider);
         } else {
-            if (canBeDynamic()) {
-                diagramFiller = new TabbarFillerWithContributions(manager, page);
-            } else {
-                diagramFiller = new TabbarFillerWithoutContributions(manager, page);
-            }
+            diagramFiller = new TabbarFillerWithContributions(manager, page);
         }
         diagramFiller.setPart(part);
         diagramFiller.fill();
     }
 
-    /**
-     * Indicates if the tabbar can be dynamic (if the workbench version supports
-     * it). Issues exist with visibleWhen and contributions in Juno and Kepler.
-     * 
-     * @return true if the tabbar can be dynamic.
-     */
-    public static boolean canBeDynamic() {
-        boolean canBeDynamic = false;
-
-        // The check is done on org.eclipse.ui.workbench and not on
-        // org.eclipse.core.runtime to be able to differentiate juno3 and juno
-        // (both have 3.8 as version on the org.eclipse.core.runtime plugin).
-        Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
-        if (uiWorkbenchBundle != null) {
-            Version junoStart = Version.parseVersion("3.103"); //$NON-NLS-1$
-            Version lunaStart = Version.parseVersion("3.106"); //$NON-NLS-1$
-            Version currentVersion = uiWorkbenchBundle.getVersion();
-
-            // Range must not be in [3.103..3.106)
-            canBeDynamic = currentVersion.compareTo(junoStart) < 0 || currentVersion.compareTo(lunaStart) >= 0;
-        }
-        return canBeDynamic;
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
-        if (!(diagramFiller instanceof TabbarFillerWithoutContributions) && partSelected == this.part) {
+        if (partSelected == this.part) {
             if (currentSelection == null || !sameSelection(selection)) {
                 if (selection instanceof StructuredSelection) {
                     currentSelection = ((StructuredSelection) selection).toList();
@@ -196,9 +160,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      *            the selection
      */
     public void reinitToolBar(ISelection iSelection) {
-        if (!(diagramFiller instanceof TabbarFillerWithoutContributions)) {
-            diagramFiller.update(iSelection);
-        }
+        diagramFiller.update(iSelection);
 
         updateAllItems();
     }

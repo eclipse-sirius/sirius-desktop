@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -201,11 +201,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleCancelFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         // Tabbar tests
         testSetWkpImageStyleCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true);
         testSetWkpImageStyleCancel(C1_LIST, AbstractDiagramListEditPart.class, true);
@@ -231,10 +226,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleDisabledOnListElementFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testSetWkpImageStyleDisabled(A1C1_LIST, AbstractDiagramNameEditPart.class, true);
     }
 
@@ -245,11 +236,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
     }
 
@@ -260,10 +246,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnListFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
     }
 
@@ -274,10 +256,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainerFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
     }
 
@@ -288,11 +266,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnBorderedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
     }
 
@@ -303,11 +276,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
     }
 
@@ -318,10 +286,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromJpgToSvgOnNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
         testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
 
@@ -336,10 +300,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromJpgToSvgOnListFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
         testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getSvgImagePath());
 
@@ -354,10 +314,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromJpgToSvgOnContainerFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
         testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
 
@@ -372,10 +328,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromJpgToSvgOnBorderedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
         testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
 
@@ -390,10 +342,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromJpgToSvgOnContainedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
         testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
 
@@ -408,10 +356,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromSvgToJpgOnNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
         testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
 
@@ -426,10 +370,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromSvgToJpgOnListFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getSvgImagePath());
         testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
 
@@ -444,10 +384,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromSvgToJpgOnContainerFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
         testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
 
@@ -462,10 +398,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromSvgToJpgOnBorderedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
         testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
 
@@ -480,10 +412,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testChangeWkpImageStyleFromSvgToJpgOnContainedNodeFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
         testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
 

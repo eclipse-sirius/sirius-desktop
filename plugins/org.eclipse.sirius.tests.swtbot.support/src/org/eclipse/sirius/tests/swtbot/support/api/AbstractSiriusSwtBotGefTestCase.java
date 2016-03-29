@@ -39,7 +39,6 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -62,12 +61,10 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
-import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestCaseCleaner;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIProject;
@@ -451,12 +448,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Request an explicit refresh of the current diagram.
      */
     protected void manualRefresh() {
-        if (TestsUtil.isDynamicTabbar()) {
-            bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
-        } else {
-            // Use context menu instead of tabbar
-            new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), bot).clickContextMenu("Refresh");
-        }
+        bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
     }
 
@@ -912,19 +904,14 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void pressZoomInButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
-            if (TestsUtil.isDynamicTabbar()) {
-                // 2 possible values for this tooltip according to the target
-                // platform
-                // No common constant was found, so we try with both possible
-                // values
-                try {
-                    swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl++)").click();
-                } catch (WidgetNotFoundException e) {
-                    swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl+=)").click();
-                }
-            } else {
-                double currentZoom = GraphicalHelper.getZoom(((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
-                swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomInLevel(currentZoom));
+            // 2 possible values for this tooltip according to the target
+            // platform
+            // No common constant was found, so we try with both possible
+            // values
+            try {
+                swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl++)").click();
+            } catch (WidgetNotFoundException e) {
+                swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl+=)").click();
             }
         }
     }
@@ -949,12 +936,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void pressZoomOutButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
-            if (TestsUtil.isDynamicTabbar()) {
-                swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
-            } else {
-                double currentZoom = GraphicalHelper.getZoom(((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
-                swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomOutLevel(currentZoom));
-            }
+            swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
         }
     }
 

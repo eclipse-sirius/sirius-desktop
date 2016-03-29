@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -35,11 +34,6 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
      *             Test error.
      */
     public void testChangeRoutingStyleFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         editor.reveal(referenceEditPartBot.part());
         referenceEditPartBot.select();
 
@@ -64,10 +58,6 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
      *             Test error.
      */
     public void testChangeBackgroundImageFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
 

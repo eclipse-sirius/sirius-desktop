@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -122,11 +121,6 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     public void testTabBarRoutingStyle() throws Exception {
-        // Not available in 4.x specific Tabbar
-        if (TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         // Select a diagram element named "ref"
         CheckSelectedCondition cS = new CheckSelectedCondition(editor, REF, DEdgeEditPart.class);
         editor.reveal(REF);

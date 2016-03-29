@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@
 package org.eclipse.sirius.tests.support.api;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 import org.osgi.framework.Bundle;
@@ -274,16 +273,5 @@ public final class TestsUtil {
      */
     public static void waitUntil(ICondition condition) {
         TestsUtil.waitUntil(condition, 5000, 500);
-    }
-
-    /**
-     * Indicates if the tabbar can be dynamic (ie: is contextual and can receive
-     * contributions). Some issues were detected on Juno and Kepler.
-     * 
-     * @See {@link Tabbar#canBeDynamic()}
-     * @return true if the tabbar is dynamic.
-     */
-    public static boolean isDynamicTabbar() {
-        return Tabbar.canBeDynamic();
     }
 }

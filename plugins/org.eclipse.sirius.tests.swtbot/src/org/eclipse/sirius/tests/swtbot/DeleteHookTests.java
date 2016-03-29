@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -173,10 +173,6 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
      * button.
      */
     public void testDeleteHookOnDeleteFromModelTabbarButton() {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         eClassBot.select();
         SWTBotUtils.waitAllUiEvents();
         deleteFromModelWithTabbarButton();
@@ -202,9 +198,8 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
              * .getNode(SWTBotTreeItem.java:308) at
              * org.eclipse.swtbot.swt.finder
              * .widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse
-             * .swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem
-             * .java:283) at
+             * org.eclipse .swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(
+             * SWTBotTreeItem .java:283) at
              * org.eclipse.sirius.tests.swtbot.support.api.business
              * .sessionbrowser.AbstractUIElementWithNextTreeItem.getNextNode(
              * AbstractUIElementWithNextTreeItem.java:42) at
@@ -256,10 +251,6 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
      * tabbar button.
      */
     public void testDeleteHookOnDeleteFromModelTabbarButtonCancel() {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         ePackageBot.select();
         SWTBotUtils.waitAllUiEvents();
         deleteFromModelWithTabbarButton();
@@ -336,6 +327,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
             return calledCorrectly;
         }
 
+        @Override
         public IStatus beforeDeleteCommandExecution(Collection<DSemanticDecorator> selections, Map<String, Object> parameters) {
             calledCorrectly = selections.contains(dDiagramElementOfEClassToDelete);
             return Status.OK_STATUS;
@@ -351,6 +343,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
             return calledCorrectly;
         }
 
+        @Override
         public IStatus beforeDeleteCommandExecution(Collection<DSemanticDecorator> selections, Map<String, Object> parameters) {
             calledCorrectly = selections.contains(dDiagramElementOfEPackageToDelete);
             return Status.CANCEL_STATUS;

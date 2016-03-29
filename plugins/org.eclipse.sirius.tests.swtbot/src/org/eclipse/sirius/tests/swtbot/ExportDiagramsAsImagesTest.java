@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnable
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -184,10 +183,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportBigRepresesntationAsJPGFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         try {
             setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
@@ -217,11 +212,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportBigRepresesntationAsPNGFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         try {
             setErrorCatchActive(false);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
@@ -245,10 +235,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportBigRepresesntationAsSVGFromTabbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         try {
             setErrorCatchActive(true);
             EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_BIG_MODEL + BIG_MODEL, getProjectName() + "/" + BIG_MODEL);
@@ -341,11 +327,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportDiagramsOfTransientSessionAsJPGFromTabBar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         /* Open a transient session on an ecore file */
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, DATA_UNIT_DIR_FOR_TRANSIENT_SESSION + MODEL_FOR_TRANSIENT_SESSION, getProjectName() + "/" + MODEL_FOR_TRANSIENT_SESSION);
 
@@ -364,11 +345,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportDiagramsOfTransientSessionAsPNGFromTabBar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
              * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
@@ -379,9 +355,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
              * SWTBotTreeItem.java:308) at
              * org.eclipse.swtbot.swt.finder.widgets.
              * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse.sirius
-             * .tests.swtbot.support.api.business.UIProject.getUIItemFromResource
-             * (UIProject.java:152) at
+             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject.
+             * getUIItemFromResource (UIProject.java:152) at
              * org.eclipse.sirius.tests.swtbot.support.api
              * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
              * at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
@@ -409,11 +384,6 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      *             Test error.
      */
     public void testExportDiagramsOfTransientSessionAsSVGFromTabBar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
              * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
@@ -424,9 +394,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
              * SWTBotTreeItem.java:308) at
              * org.eclipse.swtbot.swt.finder.widgets.
              * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse.sirius
-             * .tests.swtbot.support.api.business.UIProject.getUIItemFromResource
-             * (UIProject.java:152) at
+             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject.
+             * getUIItemFromResource (UIProject.java:152) at
              * org.eclipse.sirius.tests.swtbot.support.api
              * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
              * at

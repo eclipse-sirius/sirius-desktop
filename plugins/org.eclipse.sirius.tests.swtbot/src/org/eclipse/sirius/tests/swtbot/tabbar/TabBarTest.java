@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPrefer
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
@@ -185,11 +184,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             return;
         }
 
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         // Select an element on diagram and validate Tabbar tools
         selectDiagramElement0();
         checkDiagramElementTabbarButtons(false);
@@ -255,10 +249,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void doTestToolbarButtonInitialization(boolean activeExtensions) {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
         // Validate tools of the tab bar without any diagram element selected
         checkDiagramTabbarButtons(activeExtensions);
 
@@ -473,11 +463,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
-
         // close the current editor
         editor.close();
 
@@ -554,18 +539,5 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             checkButtonNotPresent(TABBAR_EXTENSION_ON_DIAGRAM);
         }
         checkButtonNotPresent(TABBAR_EXTENSION_ON_DIAGRAM_ELEMENT);
-    }
-
-    /**
-     * This test checks the behavior of Tabbar.canBeDynamic() and
-     * TestsUtil.isDynamicTabbar().
-     */
-    public void testDynamicTabbarEnablement() {
-        boolean tabbarShouldBeDynamic = true;
-        if (TestsUtil.isJuno4Platform() || TestsUtil.isKeplerPlatform()) {
-            tabbarShouldBeDynamic = false;
-        }
-        assertEquals("Check the tabbar dynamic condition.", tabbarShouldBeDynamic, Tabbar.canBeDynamic());
-        assertEquals("Check the tabbar dynamic condition.", tabbarShouldBeDynamic, TestsUtil.isDynamicTabbar());
     }
 }
