@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
 import org.eclipse.ui.IWorkbenchPage;
+
+import com.google.common.collect.Lists;
 
 /**
  * Fill the toolbar when a diagram is selected.
@@ -42,50 +55,166 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
     private static final String SIZE = "org.eclipse.sirius.diagram.ui.tabbar.size"; //$NON-NLS-1$
 
+    private List<IContributionItem> dynamicContributions = new ArrayList<IContributionItem>();
+
+    private ArrayList<IContributionItem> diagramContributionItems = Lists.newArrayList();
+
+    private ArrayList<IContributionItem> diagramElementContributionItems = Lists.newArrayList();
+
+    private TabbarContributionFactory contributionFactory = new TabbarContributionFactory();
+
     /**
-     * Construct a new instance.
+     * Default Constructor.
      * 
      * @param manager
-     *            the toolbar manager
+     *            the {@link ToolBarManager}.
      * @param page
-     *            the workbench page
+     *            the current {@link IWorkbenchPage}.
      */
     public TabbarFillerWithContributions(ToolBarManager manager, IWorkbenchPage page) {
         super(manager, page);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarFiller#doFill()
-     */
     @Override
     protected void doFill() {
 
+        // Add default contributions
         configureGroupSeparators();
+        addDiagramContributionItems();
+        addDiagramElementContributionItems();
 
+        // Add dynamic contributions
+        ArrayList<IContributionItem> currentContributions = new ArrayList<IContributionItem>(Arrays.asList(manager.getItems()));
         addTabbarContributions();
+        dynamicContributions = new ArrayList<IContributionItem>(Arrays.asList(manager.getItems()));
+        dynamicContributions.removeAll(currentContributions);
+
+        update(null);
+    }
+
+    /**
+     * Updates the tabbar according to the given selection.
+     * 
+     * @param iSelection
+     *            the current selection.
+     */
+    @Override
+    public void update(ISelection iSelection) {
+        List<IContributionItem> existingItems = Arrays.asList(manager.getItems());
+        for (IContributionItem current : existingItems) {
+            if (!dynamicContributions.contains(current) && !current.isSeparator()) {
+                current.setVisible(false);
+            }
+        }
+
+        List<IContributionItem> contributionItems = getContributionItems(iSelection);
+        for (IContributionItem item : contributionItems) {
+            if (existingItems.contains(item)) {
+                item.setVisible(true);
+            }
+        }
+
+        manager.update(true);
+    }
+
+    private List<IContributionItem> getContributionItems(ISelection selection) {
+        List<IContributionItem> contributedItems = diagramContributionItems;
+        if (selection instanceof IStructuredSelection) {
+            Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+            if (!(firstElement instanceof AbstractDDiagramEditPart)) {
+                contributedItems = diagramElementContributionItems;
+            }
+        }
+        return contributedItems;
+    }
+
+    private void configureGroupSeparators() {
+        initSeparator(ARRANGE_SELECTION);
+        initSeparator(REFRESH);
+        initSeparator(LAYER_FILTER);
+        initSeparator(HIDE_PIN);
+        initSeparator(PAST);
+        initSeparator(HIDE_DELETE);
+        initSeparator(ZOOM);
+        initSeparator(EXPORT);
+        initSeparator(FONT);
+        initSeparator(STYLE);
+        initSeparator(SIZE);
+    }
+
+    private void initSeparator(String name) {
+        IContributionItem contributionItem = new Separator(name);
+        manager.add(contributionItem);
+    }
+
+    private void addDiagramContributionItems() {
+        addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createSelectMenuManager());
+        addContributionItem(diagramContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
+
+        addContributionItem(diagramContributionItems, REFRESH, contributionFactory.createRefreshContribution());
+
+        addContributionItem(diagramContributionItems, LAYER_FILTER, contributionFactory.createFilterContribution(part, manager));
+        addContributionItem(diagramContributionItems, LAYER_FILTER, contributionFactory.createLayerContribution(part, manager));
+
+        addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectPinnedElementsContribution(part));
+        addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectHiddenElementsContribution(part));
+
+        addContributionItem(diagramContributionItems, PAST, contributionFactory.createPasteLayoutContribution(part));
+
+        addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomContribution(part));
+        addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomOutContribution(part));
+        addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomInContribution(part));
+
+        addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createLayoutingModeContributionItem(part));
+        addContributionItem(diagramContributionItems, EXPORT, contributionFactory.createSaveAsImageContributionItem());
+    }
+
+    private void addContributionItem(Collection<IContributionItem> contributionItems, String separatorName, IContributionItem contributionItem) {
+        if (contributionItem != null) {
+            contributionItems.add(contributionItem);
+            manager.insertAfter(separatorName, contributionItem);
+        }
+    }
+
+    private void addDiagramElementContributionItems() {
+        addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createDistributeContribution());
+        addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createAlignMenuManager());
+        addContributionItem(diagramElementContributionItems, ARRANGE_SELECTION, contributionFactory.createArrangeMenuManager(part));
+
+        IContributionItem pinElementContributionItem = contributionFactory.createPinElementContribution(part);
+        addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
+        addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
+
+        addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createCopyLayoutContribution(part));
+
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromModelContribution(part));
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromDiagramContribution(part));
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createHideElementContribution(part));
+        // The following contribution is dynamically provided because the
+        // default contribution does not handle visibility
+        // addContributionItem(diagramElementContributionItems, HIDE_DELETE,
+        // contributionFactory.createHideElementLabelContribution(part));
+
+        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontDialogContribution(part));
+        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontColorContribution(part));
+        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createItalicFontStyleContribution(part));
+        addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createBoldFontStyleContribution(part));
+
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createCopyAppearancePropertiesContribution(part));
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createResetStylePropertyContribution(part));
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createSetStyleToWorkspaceImageContribution(part));
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createRouterContribution());
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createLineColorPropertyContribution(part));
+        addContributionItem(diagramElementContributionItems, STYLE, contributionFactory.createFillColorContribution(part));
+
+        addContributionItem(diagramElementContributionItems, SIZE, contributionFactory.createAutoSizeContribution(part));
+        addContributionItem(diagramElementContributionItems, SIZE, contributionFactory.createSizeBothContribution(part));
     }
 
     @Override
     public void dispose() {
         releaseTabbarContributions();
-
         super.dispose();
     }
 
-    private void configureGroupSeparators() {
-        addSeparator(ARRANGE_SELECTION);
-        addSeparator(REFRESH);
-        addSeparator(LAYER_FILTER);
-        addSeparator(HIDE_PIN);
-        addSeparator(PAST);
-        addSeparator(HIDE_DELETE);
-        addSeparator(ZOOM);
-        addSeparator(EXPORT);
-        addSeparator(FONT);
-        addSeparator(STYLE);
-        addSeparator(SIZE);
-
-    }
 }

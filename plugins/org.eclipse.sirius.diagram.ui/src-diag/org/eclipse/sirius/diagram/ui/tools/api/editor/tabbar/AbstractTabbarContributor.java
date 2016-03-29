@@ -10,58 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar;
 
-import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.CopyAppearancePropertiesAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontDialogAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontStyleAction;
-import org.eclipse.gmf.runtime.diagram.ui.internal.l10n.DiagramUIPluginImages;
-import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.jface.action.ContributionItem;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.FiltersContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayersContribution;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayoutingModeSwitchingAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarDistributeMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPinElementsEclipseAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarUnpinElementsEclipseAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.SiriusTabbarExtensionContributionFactory.TabbarActionContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ZoomExtensionContributionFactory.ZoomContributionItem;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
-import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.TabbarContributionFactory;
 
 /**
  * Abstract implementation of {@link ITabbarContributor}. Inherit from this
@@ -71,8 +24,9 @@ import org.eclipse.ui.IWorkbenchPartSite;
  * @author Florian Barbin
  *
  */
-@SuppressWarnings("restriction")
 public abstract class AbstractTabbarContributor implements ITabbarContributor {
+
+    private TabbarContributionFactory contributorFactory = new TabbarContributionFactory();
 
     /**
      * Creates the Automatic Layout contribution item. Organized in a drop-down
@@ -84,9 +38,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createArrangeMenuManager(IDiagramWorkbenchPart part) {
-        TabbarArrangeMenuManager arrangeMenu = new TabbarArrangeMenuManager(part);
-        arrangeMenu.setVisible(true);
-        return arrangeMenu;
+        return contributorFactory.createArrangeMenuManager(part);
     }
 
     /**
@@ -99,7 +51,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     protected IContributionItem createSelectMenuManager() {
         TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager();
         selectMenu.setVisible(true);
-        return selectMenu;
+        return contributorFactory.createSelectMenuManager();
     }
 
     /**
@@ -110,9 +62,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createAlignMenuManager() {
-        TabbarAlignMenuManager alignMenu = new TabbarAlignMenuManager();
-        alignMenu.setVisible(true);
-        return alignMenu;
+        return contributorFactory.createAlignMenuManager();
     }
 
     /**
@@ -126,10 +76,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createLayerContribution(IDiagramWorkbenchPart part, ToolBarManager manager) {
-        LayersContribution layersContribution = new LayersContribution();
-        ContributionItem layerItem = layersContribution.createContributionItem(manager);
-        layersContribution.setPart(part);
-        return layerItem;
+        return contributorFactory.createLayerContribution(part, manager);
     }
 
     /**
@@ -142,10 +89,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createFilterContribution(IDiagramWorkbenchPart part, ToolBarManager manager) {
-        FiltersContributionItem filtersContribution = new FiltersContributionItem();
-        ContributionItem filterItem = filtersContribution.createContributionItem(manager);
-        filtersContribution.setPart(part);
-        return filterItem;
+        return contributorFactory.createFilterContribution(part, manager);
     }
 
     /**
@@ -157,12 +101,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createSelectHiddenElementsContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            SelectHiddenElementsAction selectHiddenElementsAction = new SelectHiddenElementsAction(site.getPage(), part);
-            return new DiagramActionContributionItem(selectHiddenElementsAction);
-        }
-        return null;
+        return contributorFactory.createSelectHiddenElementsContribution(part);
     }
 
     /**
@@ -174,9 +113,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createHideElementContribution(IDiagramWorkbenchPart part) {
-        HideDDiagramElementAction hideDDiagramElementAction = new HideDDiagramElementAction(SiriusDiagramActionBarContributor.HIDE_ELEMENT);
-        hideDDiagramElementAction.setActionPart(part);
-        return new TabbarActionContributionItem(hideDDiagramElementAction, part);
+        return contributorFactory.createHideElementContribution(part);
     }
 
     /**
@@ -188,8 +125,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createHideElementLabelContribution(IDiagramWorkbenchPart part) {
-        HideDDiagramElementLabelActionContributionItem contributionItem = new HideDDiagramElementLabelActionContributionItem(part);
-        return contributionItem;
+        return contributorFactory.createHideElementLabelContribution(part);
     }
 
     /**
@@ -202,9 +138,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createDeleteFromDiagramContribution(IDiagramWorkbenchPart part) {
-        DeleteFromDiagramAction deleteFromDiagramAction = new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram, SiriusDiagramActionBarContributor.DELETE_FROM_DIAGRAM,
-                ActionIds.ACTION_DELETE_FROM_DIAGRAM, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
-        return new TabbarActionContributionItem(deleteFromDiagramAction, part);
+        return contributorFactory.createDeleteFromDiagramContribution(part);
     }
 
     /**
@@ -217,13 +151,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createDeleteFromModelContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            DeleteFromModelWithHookAction deleteFromModelAction = new DeleteFromModelWithHookAction(site.getPage(), part);
-            deleteFromModelAction.init();
-            return new DiagramActionContributionItem(deleteFromModelAction);
-        }
-        return null;
+        return contributorFactory.createDeleteFromModelContribution(part);
     }
 
     /**
@@ -235,13 +163,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createSelectPinnedElementsContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            SelectPinnedElementsAction pinnedElementsAction = new SelectPinnedElementsAction(site.getPage(), part);
-
-            return new DiagramActionContributionItem(pinnedElementsAction);
-        }
-        return null;
+        return contributorFactory.createSelectPinnedElementsContribution(part);
     }
 
     /**
@@ -253,8 +175,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createPinElementContribution(IDiagramWorkbenchPart part) {
-        TabbarPinElementsEclipseAction pinAction = new TabbarPinElementsEclipseAction();
-        return new TabbarActionContributionItem(pinAction, part);
+        return contributorFactory.createPinElementContribution(part);
     }
 
     /**
@@ -268,16 +189,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createUnPinElementContribution(IDiagramWorkbenchPart part, IContributionItem pinElementContributionItem) {
-
-        TabbarUnpinElementsEclipseAction unpinAction = new TabbarUnpinElementsEclipseAction();
-        if (pinElementContributionItem instanceof TabbarActionContributionItem) {
-            IAction pinAction = ((TabbarActionContributionItem) pinElementContributionItem).getAction();
-            if (pinAction instanceof TabbarPinElementsEclipseAction) {
-                ((TabbarPinElementsEclipseAction) pinAction).setOppositePinAction(unpinAction);
-            }
-            unpinAction.setOppositePinAction(pinAction);
-        }
-        return new TabbarActionContributionItem(unpinAction, part);
+        return contributorFactory.createUnPinElementContribution(part, pinElementContributionItem);
     }
 
     /**
@@ -289,21 +201,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createZoomContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            ZoomComboContributionItem zoomItem = new ZoomComboContributionItem(site.getPage()) {
-
-                @Override
-                public void fill(ToolBar parent, int index) {
-                    super.fill(parent, index);
-                    ToolItem addedItem = parent.getItem(parent.getItemCount() - 1);
-                    addedItem.setToolTipText(DiagramUIMessages.ZoomActionMenu_ZoomLabel);
-                }
-
-            };
-            return zoomItem;
-        }
-        return null;
+        return contributorFactory.createZoomContribution(part);
     }
 
     /**
@@ -315,14 +213,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createZoomInContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            TabbarZoomAction zoomIn = new TabbarZoomInAction();
-            zoomIn.setImageDescriptor(DiagramUIPluginImages.DESC_ZOOM_IN);
-            zoomIn.setText(DiagramUIMessages.ZoomAction_ZoomIn);
-            return new ZoomContributionItem(zoomIn, site.getPage());
-        }
-        return null;
+        return contributorFactory.createZoomInContribution(part);
     }
 
     /**
@@ -334,14 +225,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createZoomOutContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            TabbarZoomAction zoomOut = new TabbarZoomOutAction();
-            zoomOut.setImageDescriptor(DiagramUIPluginImages.DESC_ZOOM_OUT);
-            zoomOut.setText(DiagramUIMessages.ZoomAction_ZoomOut);
-            return new ZoomContributionItem(zoomOut, site.getPage());
-        }
-        return null;
+        return contributorFactory.createZoomOutContribution(part);
     }
 
     /**
@@ -353,13 +237,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createFontColorContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            TabbarColorPropertyContributionItem fontColorMenu = TabbarColorPropertyContributionItem.createFontColorContributionItem(site.getPage());
-            fontColorMenu.setActionWorkbenchPart(part);
-            return fontColorMenu;
-        }
-        return null;
+        return contributorFactory.createFontColorContribution(part);
     }
 
     /**
@@ -371,12 +249,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createBoldFontStyleContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            FontStyleAction fontStyleBoldAction = FontStyleAction.createBoldFontStyleAction(site.getPage());
-            return new ActionContributionItem(fontStyleBoldAction);
-        }
-        return null;
+        return contributorFactory.createBoldFontStyleContribution(part);
     }
 
     /**
@@ -388,12 +261,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createItalicFontStyleContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            FontStyleAction fontStyleItalicAction = FontStyleAction.createItalicFontStyleAction(site.getPage());
-            return new ActionContributionItem(fontStyleItalicAction);
-        }
-        return null;
+        return contributorFactory.createItalicFontStyleContribution(part);
     }
 
     /**
@@ -405,13 +273,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createFontDialogContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            IAction fontDialogAction = new FontDialogAction(site.getPage());
-            fontDialogAction.setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.FONT_WIZARD));
-            return new ActionContributionItem(fontDialogAction);
-        }
-        return null;
+        return contributorFactory.createFontDialogContribution(part);
     }
 
     /**
@@ -423,13 +285,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createFillColorContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            TabbarColorPropertyContributionItem fillColorMenu = TabbarColorPropertyContributionItem.createFillColorContributionItem(site.getPage());
-            fillColorMenu.setActionWorkbenchPart(part);
-            return fillColorMenu;
-        }
-        return null;
+        return contributorFactory.createFillColorContribution(part);
     }
 
     /**
@@ -441,13 +297,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createLineColorPropertyContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            TabbarColorPropertyContributionItem lineColorMenu = TabbarColorPropertyContributionItem.createLineColorContributionItem(site.getPage());
-            lineColorMenu.setActionWorkbenchPart(part);
-            return lineColorMenu;
-        }
-        return null;
+        return contributorFactory.createLineColorPropertyContribution(part);
     }
 
     /**
@@ -461,12 +311,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createResetStylePropertyContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            ResetStylePropertiesToDefaultValuesAction resetStylePropertiesToDefaultValuesAction = new ResetStylePropertiesToDefaultValuesAction(site.getPage());
-            return new TabbarActionContributionItem(resetStylePropertiesToDefaultValuesAction, part);
-        }
-        return null;
+        return contributorFactory.createResetStylePropertyContribution(part);
     }
 
     /**
@@ -480,7 +325,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createSetStyleToWorkspaceImageContribution(IDiagramWorkbenchPart part) {
-        return new TabbarActionContributionItem(new SetStyleToWorkspaceImageAction(), part);
+        return contributorFactory.createSetStyleToWorkspaceImageContribution(part);
     }
 
     /**
@@ -492,8 +337,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createDistributeContribution() {
-        TabbarDistributeMenuManager distributeMenu = new TabbarDistributeMenuManager();
-        return distributeMenu;
+        return contributorFactory.createDistributeContribution();
     }
 
     /**
@@ -503,8 +347,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createSaveAsImageContributionItem() {
-        SaveAsImageFileAction saveAsImageFileAction = new SaveAsImageFileAction();
-        return new ActionContributionItem(saveAsImageFileAction);
+        return contributorFactory.createSaveAsImageContributionItem();
     }
 
     /**
@@ -519,16 +362,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         mode.
      */
     protected IContributionItem createLayoutingModeContributionItem(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null && part instanceof DDiagramEditor) {
-            final DDiagramEditor editor = (DDiagramEditor) part;
-            DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-            if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
-                LayoutingModeSwitchingAction layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(site.getPage(), editorDiagram);
-                return new TabbarActionContributionItem(layoutingModeSwitchingAction);
-            }
-        }
-        return null;
+        return contributorFactory.createLayoutingModeContributionItem(part);
     }
 
     /**
@@ -538,9 +372,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createRouterContribution() {
-        TabbarRouterMenuManager routerMenu = new TabbarRouterMenuManager();
-        routerMenu.setVisible(true);
-        return routerMenu;
+        return contributorFactory.createRouterContribution();
     }
 
     /**
@@ -553,12 +385,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createCopyAppearancePropertiesContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            CopyAppearancePropertiesAction copyAppearancePropertiesAction = new CopyAppearancePropertiesAction(site.getPage());
-            return new ActionContributionItem(copyAppearancePropertiesAction);
-        }
-        return null;
+        return contributorFactory.createCopyAppearancePropertiesContribution(part);
     }
 
     /**
@@ -572,12 +399,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createCopyLayoutContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            CopyLayoutAction copyLayoutAction = new CopyLayoutAction(site.getPage(), part);
-            return new ActionContributionItem(copyLayoutAction);
-        }
-        return null;
+        return contributorFactory.createCopyLayoutContribution(part);
     }
 
     /**
@@ -589,12 +411,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createPasteLayoutContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            PasteLayoutAction pasteLayoutAction = new PasteLayoutAction(site.getPage(), part);
-            return new ActionContributionItem(pasteLayoutAction);
-        }
-        return null;
+        return contributorFactory.createPasteLayoutContribution(part);
     }
 
     /**
@@ -606,9 +423,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem}.
      */
     protected IContributionItem createRefreshContribution() {
-        RefreshDiagramAction action = new RefreshDiagramAction(SiriusDiagramActionBarContributor.REFRESH_DIAGRAM,
-                DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
-        return new ActionContributionItem(action);
+        return contributorFactory.createRefreshContribution();
     }
 
     /**
@@ -622,13 +437,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createSizeBothContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            SizeBothAction sizeBothAction = new SizeBothAction(site.getPage());
-            sizeBothAction.init();
-            return new ActionContributionItem(sizeBothAction);
-        }
-        return null;
+        return contributorFactory.createSizeBothContribution(part);
     }
 
     /**
@@ -641,12 +450,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      *         being initialized.
      */
     protected IContributionItem createAutoSizeContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            AutoSizeAction autoSizeAction = new AutoSizeAction(site.getPage());
-            return new ActionContributionItem(autoSizeAction);
-        }
-        return null;
+        return contributorFactory.createAutoSizeContribution(part);
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.menus.IMenuService;
@@ -53,6 +54,7 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
      * 
      * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarFiller#setPart(org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart)
      */
+    @Override
     public void setPart(IDiagramWorkbenchPart workbenchPart) {
         this.part = workbenchPart;
     }
@@ -62,6 +64,7 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
      * 
      * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarFiller#fill()
      */
+    @Override
     public void fill() {
         if (!isDisposed()) {
             doFill();
@@ -118,6 +121,15 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
     }
 
     /**
+     * Updates the tabbar according to the given selection.
+     * 
+     * @param iSelection
+     *            the current selection.
+     */
+    protected void update(ISelection iSelection) {
+    }
+
+    /**
      * Release the contributions.
      * 
      * @see AbstractTabbarFiller#addTabbarContributions().
@@ -134,6 +146,7 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
      * 
      * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarFiller#dispose()
      */
+    @Override
     public void dispose() {
         this.manager = null;
         this.page = null;

@@ -1086,77 +1086,82 @@
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DistributeMenuExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.AlignMenutExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementPinUnPinExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementCopyExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.past">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.past">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementHideDeleteExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidedelete">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hideelement">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementHideDeleteExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.hideelement">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementFontExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.font">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.font">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementStyleExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.style">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.style">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementSizeExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.size">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.size">
       </menuContribution>
       <menuContribution
          allPopups="false"
          class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ArrangeAllContributionFactory"
-         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
+         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
       </menuContribution>
       <menuContribution
          allPopups="false"
          class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.LayerFilterExtensionContributionFactory"
-         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.layerfilter">
+         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.layerfilter">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.RefreshExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ShowHidePinUnPinExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.PasteExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.past">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.past">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ZoomExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.zoom">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.zoom">
       </menuContribution>
       <menuContribution
             allPopups="false"
             class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ExportExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.export">
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar.fixed?after=org.eclipse.sirius.diagram.ui.tabbar.export">
       </menuContribution>
    </extension>
 

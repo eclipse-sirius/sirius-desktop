@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.menus.IMenuService;
 
 /**
  * Directly fill the tabbar. This filler does not allows extension and does not
@@ -194,5 +195,25 @@ public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
 
         AutoSizeAction autoSizeAction = new AutoSizeAction(page);
         manager.add(autoSizeAction);
+    }
+
+    /**
+     * Add the additions group and ask the menu service to populate the tabbar
+     * with contributions regarding the toolbar scheme with
+     * {@link Tabbar#FIXED_TABBAR_ID} id.
+     */
+    @Override
+    protected void addTabbarContributions() {
+        addSeparator("additions"); //$NON-NLS-1$
+        ((ToolBarContextService) IToolBarContextService.INSTANCE).setMenuManager(manager);
+        ((ToolBarContextService) IToolBarContextService.INSTANCE).setPage(page);
+        ((ToolBarContextService) IToolBarContextService.INSTANCE).setPart(part);
+
+        // Get the menu service corresponding to the current site (and not the
+        // current workbench window).
+        IMenuService menuService = (IMenuService) part.getSite().getService(IMenuService.class);
+        menuService.populateContributionManager(manager, "toolbar:" + Tabbar.FIXED_TABBAR_ID); //$NON-NLS-1$
+
+        IToolBarContextService.INSTANCE.dispose();
     }
 }

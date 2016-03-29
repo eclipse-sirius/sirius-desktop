@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,11 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      */
     public static final String TABBAR_ID = "org.eclipse.sirius.diagram.ui.tabbar"; //$NON-NLS-1$
 
+    /**
+     * Specific id for fixed tabbar ({@link #canBeDynamic()}.
+     */
+    public static final String FIXED_TABBAR_ID = "org.eclipse.sirius.diagram.ui.tabbar.fixed"; //$NON-NLS-1$
+
     private IDiagramWorkbenchPart part;
 
     private IWorkbenchPage page;
@@ -60,7 +65,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
 
     private ToolBarManager manager;
 
-    private TabbarFiller diagramFiller;
+    private AbstractTabbarFiller diagramFiller;
 
     private IPermissionAuthority permissionAuthority;
 
@@ -163,7 +168,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     @SuppressWarnings("unchecked")
     @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
-        if (diagramFiller instanceof TabbarFillerWithContributor && partSelected == this.part) {
+        if (!(diagramFiller instanceof TabbarFillerWithoutContributions) && partSelected == this.part) {
             if (currentSelection == null || !sameSelection(selection)) {
                 if (selection instanceof StructuredSelection) {
                     currentSelection = ((StructuredSelection) selection).toList();
@@ -191,9 +196,10 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      *            the selection
      */
     public void reinitToolBar(ISelection iSelection) {
-        if (diagramFiller instanceof TabbarFillerWithContributor) {
-            ((TabbarFillerWithContributor) diagramFiller).update(iSelection);
+        if (!(diagramFiller instanceof TabbarFillerWithoutContributions)) {
+            diagramFiller.update(iSelection);
         }
+
         updateAllItems();
     }
 
