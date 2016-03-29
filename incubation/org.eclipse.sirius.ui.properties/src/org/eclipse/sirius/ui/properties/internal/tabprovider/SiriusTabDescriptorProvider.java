@@ -20,7 +20,7 @@ import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
-import org.eclipse.eef.ide.ui.api.EEFTabDescriptor;
+import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
 import org.eclipse.emf.common.util.URI;
