@@ -101,6 +101,7 @@
 		</p>
 		<ul>
 			<li><span class="label label-info">Modified</span> The export of diagram as image handles the gradient color for container background for BMP, JPG, PNG and SVG formats. Before, it only works for JPG format.</li>
+			<li><span class="label label-info">Modified</span> The &#8220;Copy Appearance Properties&#8221; action has been modified to use the last selected element as base style instead of the first one.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -354,6 +355,10 @@
 				<code>getGradientPaintDiag(Rectangle, Color, Color)</code>, 
 				<code>getGradientPaintLeftToRight(Rectangle, Color, Color)</code> and 
 				<code>getGradientPaintTopToBottom(Rectangle, Color, Color)</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES</code> has been added to identify the new 
+				<em>Sirius Copy Appearence Properties</em> action.
 			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure</code> now overrides the method 

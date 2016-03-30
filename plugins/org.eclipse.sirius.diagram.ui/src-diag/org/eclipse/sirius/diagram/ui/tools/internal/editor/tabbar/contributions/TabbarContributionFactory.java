@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.CopyAppearancePropertiesAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontDialogAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontStyleAction;
 import org.eclipse.gmf.runtime.diagram.ui.internal.l10n.DiagramUIPluginImages;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
@@ -70,6 +70,7 @@ import org.eclipse.ui.IWorkbenchPartSite;
  * 
  * @author lfasani
  */
+@SuppressWarnings("restriction")
 public class TabbarContributionFactory {
 
     private static final String HIDE_ELEMENT_ID = "org.eclipse.sirius.diagram.ui.tabbar.hideelement"; //$NON-NLS-1$
@@ -593,7 +594,7 @@ public class TabbarContributionFactory {
     public IContributionItem createCopyAppearancePropertiesContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            CopyAppearancePropertiesAction copyAppearancePropertiesAction = new CopyAppearancePropertiesAction(site.getPage());
+            SiriusCopyAppearancePropertiesAction copyAppearancePropertiesAction = new SiriusCopyAppearancePropertiesAction(site.getPage());
             return new ActionContributionItem(copyAppearancePropertiesAction);
         }
         return null;

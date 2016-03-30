@@ -15,6 +15,7 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> The wizard to ask the new representation name has been changed. These concerns the title of the wizard and the input label. Example with a new Entities diagram for EcoreTools:
 !images/representationNameWizardChange.png!
 * <span class="label label-info">Modified</span> The export of diagram as image handles the gradient color for container background for BMP, JPG, PNG and SVG formats. Before, it only works for JPG format.
+* <span class="label label-info">Modified</span> The "Copy Appearance Properties" action has been modified to use the last selected element as base style instead of the first one.
 
 h3. Specifier-Visible Changes
 
@@ -94,6 +95,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> 2 methods are added in @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService@ to manage gradient color in export to PNG or SVG formats: @DiagramEditPartService.saveSVGToFile(IPath, SiriusDiagramSVGGenerator, IProgressMonitor)@ and @org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.saveToFile(IPath, SiriusDiagramSVGGenerator, ImageFileFormat, IProgressMonitor)@. These 2 methods are copy of parent methods with @SiriusDiagramSVGGenerator@ as parameter instead of a @DiagramSVGGenerator@.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getGradientPaintFromValue(int, int, int, int, Color, Color)@ has been added to handle a cache for @java.awt.GradientPaint@ as it is the case for @org.eclipse.swt.graphics.Pattern@ with @getPatternFromValue()@.
 * <span class="label label-success">Added</span> Methods have been added in @org.eclipse.sirius.diagram.ui.tools.api.figure.GradientHelper@ to handle @java.awt.GradientPaint@ as @org.eclipse.swt.graphics.Pattern@: @getGradientPaintDiag(Rectangle, Color, Color)@, @getGradientPaintLeftToRight(Rectangle, Color, Color)@ and @getGradientPaintTopToBottom(Rectangle, Color, Color)@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES@ has been added to identify the new _Sirius Copy Appearence Properties_ action.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure@ now overrides the method @setBorder(Border border)@. It also provides the accessors for the new field @mainBorderSize@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure@ now inherits directly from @SVGFigure@ instead of @AbstractCachedSVGFigure@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure@  now inherits directly from @SVGFigure@ instead of @AbstractCachedSVGFigure@.

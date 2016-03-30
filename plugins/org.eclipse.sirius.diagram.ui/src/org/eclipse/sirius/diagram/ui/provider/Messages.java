@@ -954,6 +954,9 @@ public final class Messages {
     public static String SiriusContainerDropPolicy_saveEditPartLayoutCommandLabel;
 
     @TranslatableMessage
+    public static String SiriusCopyAppearancePropertiesAction_tooltipMessage;
+
+    @TranslatableMessage
     public static String SiriusCreationWizard_DiagramModelFilePageDescription;
 
     @TranslatableMessage

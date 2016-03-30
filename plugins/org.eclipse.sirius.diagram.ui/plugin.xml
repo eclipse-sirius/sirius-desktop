@@ -153,6 +153,12 @@
                  menubarPath="/diagramMenu/sizeGroup"
                  toolbarPath="/toolbarFormatGroup">
            </partAction>
+           <partAction
+                 global="false"
+                 id="siriusCopyAppearancePropertiesAction"
+                 menubarPath="/diagramMenu/copyAppearanceGroup"
+                 toolbarPath="/toolbarCopyAppearanceGroup">
+           </partAction>
          </partContribution>
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
@@ -177,6 +183,10 @@
             <popupAction
                   id="makeSameSizeBothAction"
                   path="/formatMenu/sizeGroup">
+            </popupAction>
+            <popupAction
+                  id="siriusCopyAppearancePropertiesAction"
+                  path="/formatMenu/applyAppearanceGroup">
             </popupAction>
          </popupContribution>
          <popupContribution
@@ -212,6 +222,17 @@
             class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
             checkPluginLoaded="false">
          <Priority name="High"/>
+         
+      <partContribution
+            class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+         <partPredefinedItem
+               id="copyAppearancePropertiesAction"
+               menubarPath="/diagramMenu/copyAppearanceGroup"
+               removeFromMenubar="true"
+               removeFromToolbar="true"
+               toolbarPath="/toolbarCopyAppearanceGroup">
+         </partPredefinedItem>
+      </partContribution>
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
@@ -362,6 +383,11 @@
             <popupPredefinedItem
                   id="treeRouterAction"
                   path="/formatMenu/routerMenu/routerGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="copyAppearancePropertiesAction"
+                  path="/formatMenu/applyAppearanceGroup"
                   remove="true">
             </popupPredefinedItem>
          </popupContribution>

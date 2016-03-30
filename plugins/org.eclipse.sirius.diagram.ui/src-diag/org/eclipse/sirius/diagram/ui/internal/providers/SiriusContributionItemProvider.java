@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
@@ -79,6 +80,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = DistributeAction.createDistributeCentersVerticallyAction(workbenchPage, false);
         } else if (org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_MAKE_SAME_SIZE_BOTH.equals(actionId)) {
             result = new SizeBothAction(workbenchPage);
+        } else if (actionId.equals(ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES)) {
+            return new SiriusCopyAppearancePropertiesAction(workbenchPage);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }
