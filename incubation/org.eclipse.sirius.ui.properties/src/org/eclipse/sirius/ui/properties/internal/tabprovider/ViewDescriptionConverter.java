@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -38,6 +39,8 @@ import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.eef.EefFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.properties.ButtonDescription;
 import org.eclipse.sirius.properties.CheckboxDescription;
@@ -54,6 +57,7 @@ import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
@@ -93,6 +97,17 @@ public class ViewDescriptionConverter {
      */
     public EEFViewDescription convert() {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
+
+        Set<EPackage> ePackages = new LinkedHashSet<>();
+        for (PageDescription pageDescription : pageDescriptions) {
+            EObject eContainer = pageDescription.eContainer();
+            if (eContainer instanceof ViewExtensionDescription) {
+                ViewExtensionDescription viewExtensionDescription = (ViewExtensionDescription) eContainer;
+                ePackages.addAll(viewExtensionDescription.getMetamodels());
+            }
+        }
+
+        view.getEPackages().addAll(ePackages);
 
         // TODO Replace by the retrieval of the label from the label provider
         view.setLabelExpression("feature:name");
