@@ -109,6 +109,9 @@ public class ViewDescriptionConverter {
     public EEFViewDescription convert(SiriusInputDescriptor input) {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
 
+        // TODO Replace by the retrieval of the image from the label provider
+        view.setImageExpression("service:image");
+
         Set<EPackage> ePackages = new LinkedHashSet<>();
         for (PageDescription pageDescription : pageDescriptions) {
             EObject eContainer = pageDescription.eContainer();

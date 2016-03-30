@@ -14,10 +14,13 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -41,6 +44,26 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * @author sbegaudeau
  */
 public class SiriusToolServices {
+
+    // TODO To be removed in favor of the standard EMF Edit
+    /**
+     * Returns the image representing the given EObject.
+     * 
+     * @param eObject
+     *            The EObject
+     * @return The image representing the given EObject or <code>null</code> if
+     *         none could be found
+     */
+    public Object image(EObject eObject) {
+        ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        Adapter adapter = composedAdapterFactory.adapt(eObject, IItemLabelProvider.class);
+        if (adapter instanceof IItemLabelProvider) {
+            IItemLabelProvider labelProvider = (IItemLabelProvider) adapter;
+            return labelProvider.getImage(eObject);
+        }
+        return null;
+    }
+
     /**
      * Executes the operation with the given URI.
      * 
