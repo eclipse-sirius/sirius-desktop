@@ -45,12 +45,6 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages
  * <em>Pages</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDefaultPage
- * <em>Default Page</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups
  * <em>Groups</em>}</li>
  * </ul>
@@ -98,38 +92,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * @ordered
      */
     protected EList<PageDescription> pages;
-
-    /**
-     * The cached value of the '{@link #getDefaultPage() <em>Default Page</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getDefaultPage()
-     * @generated
-     * @ordered
-     */
-    protected PageDescription defaultPage;
-
-    /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #getLabelExpression()
-     * @generated
-     * @ordered
-     */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #getLabelExpression()
-     * @generated
-     * @ordered
-     */
-    protected String labelExpression = ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}'
@@ -216,72 +178,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      */
     @Override
-    public PageDescription getDefaultPage() {
-        if (defaultPage != null && defaultPage.eIsProxy()) {
-            InternalEObject oldDefaultPage = (InternalEObject) defaultPage;
-            defaultPage = (PageDescription) eResolveProxy(oldDefaultPage);
-            if (defaultPage != oldDefaultPage) {
-                if (eNotificationRequired()) {
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, oldDefaultPage, defaultPage));
-                }
-            }
-        }
-        return defaultPage;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public PageDescription basicGetDefaultPage() {
-        return defaultPage;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setDefaultPage(PageDescription newDefaultPage) {
-        PageDescription oldDefaultPage = defaultPage;
-        defaultPage = newDefaultPage;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, oldDefaultPage, defaultPage));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String getLabelExpression() {
-        return labelExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setLabelExpression(String newLabelExpression) {
-        String oldLabelExpression = labelExpression;
-        labelExpression = newLabelExpression;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EList<GroupDescription> getGroups() {
         if (groups == null) {
             groups = new EObjectContainmentEList<GroupDescription>(GroupDescription.class, this, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS);
@@ -319,13 +215,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return getMetamodels();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
             return getPages();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            if (resolve) {
-                return getDefaultPage();
-            }
-            return basicGetDefaultPage();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            return getLabelExpression();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             return getGroups();
         }
@@ -352,12 +241,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             getPages().clear();
             getPages().addAll((Collection<? extends PageDescription>) newValue);
             return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            setDefaultPage((PageDescription) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression((String) newValue);
-            return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             getGroups().clear();
             getGroups().addAll((Collection<? extends GroupDescription>) newValue);
@@ -383,12 +266,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
             getPages().clear();
             return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            setDefaultPage((PageDescription) null);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
-            return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             getGroups().clear();
             return;
@@ -410,10 +287,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             return metamodels != null && !metamodels.isEmpty();
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
             return pages != null && !pages.isEmpty();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            return defaultPage != null;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            return ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !ViewExtensionDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
             return groups != null && !groups.isEmpty();
         }
@@ -434,8 +307,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");
         result.append(identifier);
-        result.append(", labelExpression: ");
-        result.append(labelExpression);
         result.append(')');
         return result.toString();
     }

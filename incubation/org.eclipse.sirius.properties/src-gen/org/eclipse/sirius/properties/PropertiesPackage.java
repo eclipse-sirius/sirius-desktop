@@ -103,31 +103,13 @@ public interface PropertiesPackage extends EPackage {
     int VIEW_EXTENSION_DESCRIPTION__PAGES = DescriptionPackage.EXTENSION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Default Page</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE = DescriptionPackage.EXTENSION_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION = DescriptionPackage.EXTENSION_FEATURE_COUNT + 4;
-
-    /**
      * The feature id for the '<em><b>Groups</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int VIEW_EXTENSION_DESCRIPTION__GROUPS = DescriptionPackage.EXTENSION_FEATURE_COUNT + 5;
+    int VIEW_EXTENSION_DESCRIPTION__GROUPS = DescriptionPackage.EXTENSION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '
@@ -137,7 +119,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VIEW_EXTENSION_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.EXTENSION_FEATURE_COUNT + 6;
+    int VIEW_EXTENSION_DESCRIPTION_FEATURE_COUNT = DescriptionPackage.EXTENSION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -1574,31 +1556,6 @@ public interface PropertiesPackage extends EPackage {
     EReference getViewExtensionDescription_Pages();
 
     /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getDefaultPage
-     * <em>Default Page</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Default Page</em>'.
-     * @see org.eclipse.sirius.properties.ViewExtensionDescription#getDefaultPage()
-     * @see #getViewExtensionDescription()
-     * @generated
-     */
-    EReference getViewExtensionDescription_DefaultPage();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression
-     * <em>Label Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the attribute '<em>Label Expression</em>'.
-     * @see org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression()
-     * @see #getViewExtensionDescription()
-     * @generated
-     */
-    EAttribute getViewExtensionDescription_LabelExpression();
-
-    /**
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getGroups
      * <em>Groups</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2773,22 +2730,6 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference VIEW_EXTENSION_DESCRIPTION__PAGES = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Pages();
-
-        /**
-         * The meta object literal for the '<em><b>Default Page</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE = PropertiesPackage.eINSTANCE.getViewExtensionDescription_DefaultPage();
-
-        /**
-         * The meta object literal for the '<em><b>Label Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getViewExtensionDescription_LabelExpression();
 
         /**
          * The meta object literal for the '<em><b>Groups</b></em>' containment

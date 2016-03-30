@@ -64,8 +64,6 @@ IItemPropertySource {
 
             addIdentifierPropertyDescriptor(object);
             addMetamodelsPropertyDescriptor(object);
-            addDefaultPagePropertyDescriptor(object);
-            addLabelExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -94,32 +92,6 @@ IItemPropertySource {
                 getString("_UI_ViewExtensionDescription_metamodels_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_metamodels_feature", "_UI_ViewExtensionDescription_type"),
                 PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__METAMODELS, true, false, true, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Default Page feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addDefaultPagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewExtensionDescription_defaultPage_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_defaultPage_feature", "_UI_ViewExtensionDescription_type"),
-                PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, true, false, true, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Label Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewExtensionDescription_labelExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_labelExpression_feature", "_UI_ViewExtensionDescription_type"),
-                PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -193,7 +165,6 @@ IItemPropertySource {
 
         switch (notification.getFeatureID(ViewExtensionDescription.class)) {
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:

@@ -93,6 +93,10 @@ public class ViewDescriptionConverter {
      */
     public EEFViewDescription convert() {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
+
+        // TODO Replace by the retrieval of the label from the label provider
+        view.setLabelExpression("feature:name");
+
         for (PageDescription pageDescription : pageDescriptions) {
             createPage(pageDescription, view);
         }
@@ -394,6 +398,5 @@ public class ViewDescriptionConverter {
         }
         return eefCustomDescription;
     }
-
 
 }

@@ -281,22 +281,6 @@
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionLabelExpressionPropertySection"
-               id="properties.section.viewExtensionDescription.LabelExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionLabelExpressionFilter"
-               afterSection="properties.section.viewExtensionDescription.DefaultPage"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionDefaultPagePropertySection"
-               id="properties.section.viewExtensionDescription.DefaultPage"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionDefaultPageFilter"
-               afterSection="properties.section.viewExtensionDescription.Metamodels"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ViewExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySection"
                id="properties.section.viewExtensionDescription.Metamodels"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsFilter"

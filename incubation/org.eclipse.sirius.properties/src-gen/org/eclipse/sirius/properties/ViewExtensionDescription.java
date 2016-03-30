@@ -30,12 +30,6 @@ import org.eclipse.sirius.viewpoint.description.Extension;
  * <em>Metamodels</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.ViewExtensionDescription#getPages
  * <em>Pages</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getDefaultPage
- * <em>Default Page</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression
- * <em>Label Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.ViewExtensionDescription#getGroups
  * <em>Groups</em>}</li>
  * </ul>
@@ -110,67 +104,6 @@ public interface ViewExtensionDescription extends Extension {
      * @generated
      */
     EList<PageDescription> getPages();
-
-    /**
-     * Returns the value of the '<em><b>Default Page</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Default Page</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @return the value of the '<em>Default Page</em>' reference.
-     * @see #setDefaultPage(PageDescription)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_DefaultPage()
-     * @model
-     * @generated
-     */
-    PageDescription getDefaultPage();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getDefaultPage
-     * <em>Default Page</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Default Page</em>' reference.
-     * @see #getDefaultPage()
-     * @generated
-     */
-    void setDefaultPage(PageDescription value);
-
-    /**
-     * Returns the value of the '<em><b>Label Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Label Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Label Expression</em>' attribute.
-     * @see #setLabelExpression(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription_LabelExpression()
-     * @model dataType=
-     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     * @generated
-     */
-    String getLabelExpression();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Label Expression</em>' attribute.
-     * @see #getLabelExpression()
-     * @generated
-     */
-    void setLabelExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Groups</b></em>' containment reference
