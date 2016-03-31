@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationCrea
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeCreationDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeCreationDescriptionItemProvider extends RepresentationCreationDescriptionItemProvider {
@@ -76,7 +76,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
     /**
      * This returns TreeCreationDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

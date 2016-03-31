@@ -19,11 +19,11 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.tree.description.TreeVariable#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeVariable()
  * @model
@@ -52,7 +52,7 @@ public interface TreeVariable extends AbstractVariable, VariableContainer {
      * {@link org.eclipse.sirius.tree.description.TreeVariable#getDocumentation
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

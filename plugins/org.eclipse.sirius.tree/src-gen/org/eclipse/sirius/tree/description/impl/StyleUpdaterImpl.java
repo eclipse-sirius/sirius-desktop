@@ -31,6 +31,7 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
  * <em><b>Style Updater</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.impl.StyleUpdaterImpl#getDefaultStyle
@@ -39,16 +40,14 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
  * {@link org.eclipse.sirius.tree.description.impl.StyleUpdaterImpl#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements StyleUpdater {
     /**
-     * The cached value of the '{@link #getDefaultStyle()
-     * <em>Default Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getDefaultStyle() <em>Default Style</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getDefaultStyle()
      * @generated
      * @ordered
@@ -68,7 +67,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleUpdaterImpl() {
@@ -77,7 +76,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +86,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +96,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultStyle(TreeItemStyleDescription newDefaultStyle, NotificationChain msgs) {
@@ -116,7 +115,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +139,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +152,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +168,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +184,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -205,7 +204,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +222,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

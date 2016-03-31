@@ -20,19 +20,21 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle <em>Owned Style
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping <em>Actual
- * Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle
+ * <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping
+ * <em>Actual Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater <em>Style
- * Updater</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater
+ * <em>Style Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}
+ * </li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem()
  * @model
@@ -60,7 +62,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expanded</em>' attribute.
      * @see #isExpanded()
@@ -76,7 +78,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(TreeItemStyle)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_OwnedStyle()
@@ -90,7 +92,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * {@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.
@@ -121,7 +123,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * {@link org.eclipse.sirius.tree.DTreeItem#getActualMapping
      * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()
@@ -139,7 +141,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Container</em>' container reference.
      * @see #setContainer(DTreeItemContainer)
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem_Container()
@@ -153,7 +155,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
      * ' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container</em>' container reference.
      * @see #getContainer()
@@ -198,7 +200,7 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Updater</em>' reference.
      * @see #getUpdater()

@@ -40,7 +40,7 @@ import com.google.common.collect.Lists;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -79,10 +79,10 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      * @generated
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemContainerDropTool_dragSource_feature"), //$NON-NLS-1$
-                getString("_UI_TreeItemContainerDropTool_dragSource_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemContainerDropTool_dragSource_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeItemContainerDropTool_dragSource_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -112,7 +112,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
     /**
      * This returns TreeItemContainerDropTool.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

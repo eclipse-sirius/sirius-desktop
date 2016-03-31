@@ -24,12 +24,12 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
  * <em><b>Tree Item Creation Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.impl.TreeItemCreationToolImpl#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemCreationToolImpl() {
@@ -55,7 +55,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -109,7 +109,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeIt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

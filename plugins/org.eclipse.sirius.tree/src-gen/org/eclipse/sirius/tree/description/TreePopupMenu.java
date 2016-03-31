@@ -20,12 +20,12 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreePopupMenu#getMenuItemDescriptions
  * <em>Menu Item Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreePopupMenu()
  * @model

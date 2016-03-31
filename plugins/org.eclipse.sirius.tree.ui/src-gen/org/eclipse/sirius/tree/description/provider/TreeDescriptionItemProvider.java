@@ -80,12 +80,11 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the End User Documentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -96,15 +95,15 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -114,11 +113,11 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -156,11 +155,11 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_metamodel_feature"), //$NON-NLS-1$
-                getString("_UI_RepresentationDescription_metamodel_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RepresentationDescription_metamodel_feature"), //$NON-NLS-1$
+                        getString("_UI_RepresentationDescription_metamodel_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -184,24 +183,22 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_TreeDescription_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_TreeDescription_domainClass_description"), //$NON-NLS-1$
-                org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeDescription_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeDescription_domainClass_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Precondition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TreeDescription_preconditionExpression_feature"), //$NON-NLS-1$
                 getString("_UI_TreeDescription_preconditionExpression_description"), //$NON-NLS-1$
                 org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -216,7 +213,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +231,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +246,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns TreeDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +271,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -357,8 +354,8 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__DROP_TOOLS,
                 DescriptionFactory.eINSTANCE.createTreeItemContainerDropTool()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__CREATE_TREE_ITEM,
-                DescriptionFactory.eINSTANCE.createTreeItemCreationTool()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__CREATE_TREE_ITEM, DescriptionFactory.eINSTANCE.createTreeItemCreationTool()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTreeCreationDescription()));

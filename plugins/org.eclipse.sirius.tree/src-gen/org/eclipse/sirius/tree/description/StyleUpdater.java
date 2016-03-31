@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.tree.description.StyleUpdater#getDefaultStyle
  * <em>Default Style</em>}</li>
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.tree.description.StyleUpdater#getConditionalStyles
  * <em>Conditional Styles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getStyleUpdater()
  * @model
@@ -41,7 +41,7 @@ public interface StyleUpdater extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Style</em>' containment reference.
      * @see #setDefaultStyle(TreeItemStyleDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getStyleUpdater_DefaultStyle()
@@ -55,7 +55,7 @@ public interface StyleUpdater extends EObject {
      * {@link org.eclipse.sirius.tree.description.StyleUpdater#getDefaultStyle
      * <em>Default Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Style</em>' containment
      *            reference.
@@ -74,7 +74,7 @@ public interface StyleUpdater extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getStyleUpdater_ConditionalStyles()

@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getOldContainer
@@ -44,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getDragSource
  * <em>Drag Source</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemContainerDropTool()
  * @model
@@ -59,7 +59,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Old Container</em>' containment reference.
      * @see #setOldContainer(DropContainerVariable)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemContainerDropTool_OldContainer()
@@ -73,7 +73,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getOldContainer
      * <em>Old Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Old Container</em>' containment
      *            reference.
@@ -90,7 +90,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>New Container</em>' containment reference.
      * @see #setNewContainer(DropContainerVariable)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemContainerDropTool_NewContainer()
@@ -104,7 +104,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getNewContainer
      * <em>New Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New Container</em>' containment
      *            reference.
@@ -121,7 +121,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDropVariable)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemContainerDropTool_Element()
@@ -135,7 +135,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -151,7 +151,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>New View Container</em>' containment
      *         reference.
      * @see #setNewViewContainer(ContainerViewVariable)
@@ -166,7 +166,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getNewViewContainer
      * <em>New View Container</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New View Container</em>' containment
      *            reference.
@@ -183,7 +183,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Preceding Siblings</em>' containment
      *         reference.
      * @see #setPrecedingSiblings(PrecedingSiblingsVariables)
@@ -198,7 +198,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getPrecedingSiblings
      * <em>Preceding Siblings</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Preceding Siblings</em>' containment
      *            reference.
@@ -228,7 +228,7 @@ public interface TreeItemContainerDropTool extends MappingBasedToolDescription, 
      * {@link org.eclipse.sirius.tree.description.TreeItemContainerDropTool#getDragSource
      * <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.tree.description.TreeDragSource

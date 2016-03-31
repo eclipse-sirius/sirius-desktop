@@ -48,7 +48,7 @@ import com.google.common.collect.Maps;
 /**
  * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class TreeUIPlugin extends EMFPlugin {
@@ -80,7 +80,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeUIPlugin() {
@@ -90,7 +90,7 @@ public final class TreeUIPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -102,7 +102,7 @@ public final class TreeUIPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -186,7 +186,7 @@ public final class TreeUIPlugin extends EMFPlugin {
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public Implementation() {

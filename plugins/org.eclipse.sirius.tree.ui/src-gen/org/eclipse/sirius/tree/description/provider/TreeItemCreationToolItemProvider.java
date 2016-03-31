@@ -63,17 +63,17 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
      * @generated
      */
     protected void addMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemCreationTool_mapping_feature"), //$NON-NLS-1$
-                getString("_UI_TreeItemCreationTool_mapping_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_ITEM_CREATION_TOOL__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemCreationTool_mapping_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeItemCreationTool_mapping_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_ITEM_CREATION_TOOL__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns TreeItemCreationTool.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

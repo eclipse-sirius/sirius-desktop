@@ -18,12 +18,12 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeCreationDescription#getTreeDescription
  * <em>Tree Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeCreationDescription()
  * @model
@@ -38,7 +38,7 @@ public interface TreeCreationDescription extends RepresentationCreationDescripti
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tree Description</em>' reference.
      * @see #setTreeDescription(TreeDescription)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeCreationDescription_TreeDescription()
@@ -52,7 +52,7 @@ public interface TreeCreationDescription extends RepresentationCreationDescripti
      * {@link org.eclipse.sirius.tree.description.TreeCreationDescription#getTreeDescription
      * <em>Tree Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tree Description</em>' reference.
      * @see #getTreeDescription()

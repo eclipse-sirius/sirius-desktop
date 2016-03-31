@@ -36,16 +36,17 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em><b>DTree</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getTarget <em>Target</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getOwnedTreeItems <em>Owned
- * Tree Items</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getSemanticElements <em>
- * Semantic Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getDescription <em>
- * Description</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getTarget <em>Target</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getOwnedTreeItems
+ * <em>Owned Tree Items</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getSemanticElements
+ * <em>Semantic Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getDescription
+ * <em>Description</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -53,7 +54,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -75,7 +76,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -85,7 +86,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -94,7 +95,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeImpl() {
@@ -103,7 +104,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +114,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +133,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetTarget() {
@@ -141,7 +142,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +156,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +169,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +182,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +201,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeDescription basicGetDescription() {
@@ -209,7 +210,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +224,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -238,7 +239,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +253,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +279,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -305,7 +306,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -329,7 +330,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +350,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +376,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

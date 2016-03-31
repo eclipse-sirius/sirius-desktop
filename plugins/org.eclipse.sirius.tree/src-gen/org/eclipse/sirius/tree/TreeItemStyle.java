@@ -20,11 +20,11 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor <em>
- * Background Color</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor
+ * <em>Background Color</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getTreeItemStyle()
  * @model
@@ -39,7 +39,7 @@ public interface TreeItemStyle extends Style, LabelStyle {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.tree.TreePackage#getTreeItemStyle_BackgroundColor()
@@ -54,7 +54,7 @@ public interface TreeItemStyle extends Style, LabelStyle {
      * {@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()

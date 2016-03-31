@@ -69,11 +69,11 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeMapping_semanticElements_feature"), //$NON-NLS-1$
-                getString("_UI_TreeMapping_semanticElements_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeMapping_semanticElements_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeMapping_semanticElements_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -104,7 +104,7 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

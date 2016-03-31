@@ -78,17 +78,17 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_TreeItemMapping_domainClass_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemMapping_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeItemMapping_domainClass_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_ITEM_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Precondition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
@@ -102,23 +102,21 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This adds a property descriptor for the Semantic Candidates Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TreeItemMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_semanticCandidatesExpression_feature", "_UI_TreeItemMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
     /**
      * This adds a property descriptor for the Reused Tree Item Mappings
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedTreeItemMappingsPropertyDescriptor(Object object) {
@@ -136,11 +134,11 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * @generated
      */
     protected void addSpecializePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_specialize_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_specialize_feature", "_UI_TreeItemMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__SPECIALIZE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemMapping_specialize_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_specialize_feature", "_UI_TreeItemMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.TREE_ITEM_MAPPING__SPECIALIZE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -150,7 +148,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +170,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +185,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     /**
      * This returns TreeItemMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +210,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

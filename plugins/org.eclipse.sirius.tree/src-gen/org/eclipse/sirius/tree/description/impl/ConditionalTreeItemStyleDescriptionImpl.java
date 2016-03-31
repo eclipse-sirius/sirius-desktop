@@ -39,7 +39,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalTreeItemStyleDescriptionImpl() {
@@ -57,7 +57,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(TreeItemStyleDescription newStyle, NotificationChain msgs) {
@@ -96,7 +96,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class ConditionalTreeItemStyleDescriptionImpl extends ConditionalStyleDes
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

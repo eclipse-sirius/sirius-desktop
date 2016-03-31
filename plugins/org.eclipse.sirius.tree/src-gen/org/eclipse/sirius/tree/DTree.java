@@ -21,13 +21,13 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTree#getSemanticElements <em>Semantic
- * Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTree#getSemanticElements
+ * <em>Semantic Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTree()
  * @model
@@ -44,7 +44,7 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' reference list.
      * @see org.eclipse.sirius.tree.TreePackage#getDTree_SemanticElements()
      * @model
@@ -73,7 +73,7 @@ public interface DTree extends DRepresentation, DTreeItemContainer {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
      * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

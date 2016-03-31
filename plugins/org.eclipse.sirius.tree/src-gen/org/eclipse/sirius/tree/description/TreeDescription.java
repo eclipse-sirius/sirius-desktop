@@ -21,9 +21,9 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass
+ * <li>{@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass
  * <em>Domain Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeDescription#getPreconditionExpression
@@ -38,7 +38,6 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * {@link org.eclipse.sirius.tree.description.TreeDescription#getOwnedRepresentationNavigationDescriptions
  * <em>Owned Representation Navigation Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription()
  * @model
@@ -67,7 +66,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * {@link org.eclipse.sirius.tree.description.TreeDescription#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -100,7 +99,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * {@link org.eclipse.sirius.tree.description.TreeDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.

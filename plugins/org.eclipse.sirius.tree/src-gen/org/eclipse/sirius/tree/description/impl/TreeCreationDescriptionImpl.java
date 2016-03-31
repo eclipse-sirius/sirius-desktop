@@ -24,12 +24,12 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreation
  * <em><b>Tree Creation Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.impl.TreeCreationDescriptionImpl#getTreeDescription
  * <em>Tree Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
      * The cached value of the '{@link #getTreeDescription()
      * <em>Tree Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTreeDescription()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeCreationDescriptionImpl() {
@@ -56,7 +56,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeDescription basicGetTreeDescription() {
@@ -94,7 +94,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class TreeCreationDescriptionImpl extends RepresentationCreationDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

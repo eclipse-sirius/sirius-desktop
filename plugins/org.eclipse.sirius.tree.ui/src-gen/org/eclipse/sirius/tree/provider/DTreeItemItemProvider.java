@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.DTreeItem} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
@@ -68,14 +68,14 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,14 +94,14 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     /**
      * This adds a property descriptor for the Tree Element Mapping feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreeElementMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeElement_treeElementMapping_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TreePackage.Literals.DTREE_ELEMENT__TREE_ELEMENT_MAPPING, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTreeElement_treeElementMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TreePackage.Literals.DTREE_ELEMENT__TREE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
     /**
@@ -111,10 +111,10 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * @generated
      */
     protected void addExpandedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_expanded_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_expanded_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TreePackage.Literals.DTREE_ITEM__EXPANDED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTreeItem_expanded_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_expanded_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TreePackage.Literals.DTREE_ITEM__EXPANDED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -124,10 +124,10 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_actualMapping_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_actualMapping_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TreePackage.Literals.DTREE_ITEM__ACTUAL_MAPPING, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTreeItem_actualMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_actualMapping_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TreePackage.Literals.DTREE_ITEM__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
     /**
@@ -137,10 +137,10 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * @generated
      */
     protected void addStyleUpdaterPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_styleUpdater_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_styleUpdater_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TreePackage.Literals.DTREE_ITEM__STYLE_UPDATER, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTreeItem_styleUpdater_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_styleUpdater_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TreePackage.Literals.DTREE_ITEM__STYLE_UPDATER, false, false, false, null, null, null));
     }
 
     /**
@@ -150,8 +150,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * @generated
      */
     protected void addUpdaterPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_updater_feature"), //$NON-NLS-1$
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTreeItem_updater_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_updater_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ITEM__UPDATER, false, false, true, null, null, null));
     }
@@ -163,7 +162,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +176,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +190,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
 
     /**
      * This returns DTreeItem.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +201,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +216,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

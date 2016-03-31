@@ -33,23 +33,23 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em><b>Item Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelSize <em>
- * Label Size</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelFormat <em>
- * Label Format</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#isShowIcon <em>Show
- * Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getIconPath <em>
- * Icon Path</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor <em>
- * Label Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelSize
+ * <em>Label Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelFormat
+ * <em>Label Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#isShowIcon
+ * <em>Show Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getIconPath
+ * <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor
+ * <em>Label Color</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -58,7 +58,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -118,7 +118,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -128,7 +128,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The default value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -138,7 +138,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -149,7 +149,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * The default value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * The cached value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * The default value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -182,7 +182,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -191,7 +191,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemStyleImpl() {
@@ -200,7 +200,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -281,7 +281,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -329,7 +329,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -343,7 +343,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -353,7 +353,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -367,7 +367,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -393,7 +393,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -428,7 +428,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -461,7 +461,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -487,7 +487,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -521,7 +521,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -555,7 +555,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

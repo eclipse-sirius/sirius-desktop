@@ -22,7 +22,7 @@ import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.tree.description.PrecedingSiblingsVariables}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProvider {
@@ -54,7 +54,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
     /**
      * This returns PrecedingSiblingsVariables.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class PrecedingSiblingsVariablesItemProvider extends TreeVariableItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

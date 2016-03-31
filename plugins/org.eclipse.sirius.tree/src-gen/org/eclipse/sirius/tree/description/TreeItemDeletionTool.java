@@ -16,12 +16,12 @@ package org.eclipse.sirius.tree.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemDeletionTool()
  * @model
@@ -38,7 +38,7 @@ public interface TreeItemDeletionTool extends TreeItemTool {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' container reference.
      * @see #setMapping(TreeItemMapping)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemDeletionTool_Mapping()
@@ -53,7 +53,7 @@ public interface TreeItemDeletionTool extends TreeItemTool {
      * {@link org.eclipse.sirius.tree.description.TreeItemDeletionTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

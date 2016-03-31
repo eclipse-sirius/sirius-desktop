@@ -28,12 +28,12 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em><b>DTree Item Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.impl.DTreeItemContainerImpl#getOwnedTreeItems
  * <em>Owned Tree Items</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -51,7 +51,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeItemContainerImpl() {
@@ -60,7 +60,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -98,7 +98,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -143,7 +143,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

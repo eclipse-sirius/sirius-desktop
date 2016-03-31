@@ -40,6 +40,7 @@ import org.eclipse.sirius.tree.description.TreePopupMenu;
  * <em><b>Tree Item Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.impl.TreeItemMappingImpl#getDefaultStyle
@@ -87,16 +88,14 @@ import org.eclipse.sirius.tree.description.TreePopupMenu;
  * {@link org.eclipse.sirius.tree.description.impl.TreeItemMappingImpl#getPopupMenus
  * <em>Popup Menus</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapping {
     /**
-     * The cached value of the '{@link #getDefaultStyle()
-     * <em>Default Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getDefaultStyle() <em>Default Style</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getDefaultStyle()
      * @generated
      * @ordered
@@ -117,7 +116,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDirectEdit()
      * @generated
      * @ordered
@@ -138,7 +137,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getDropTools() <em>Drop Tools</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDropTools()
      * @generated
      * @ordered
@@ -148,7 +147,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -158,7 +157,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -169,7 +168,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The default value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -180,7 +179,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The cached value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -191,7 +190,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The default value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -202,7 +201,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The cached value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -213,7 +212,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
      * The cached value of the '{@link #getReusedTreeItemMappings()
      * <em>Reused Tree Item Mappings</em>}' reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedTreeItemMappings()
      * @generated
      * @ordered
@@ -223,7 +222,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getSpecialize() <em>Specialize</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSpecialize()
      * @generated
      * @ordered
@@ -233,7 +232,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getDelete() <em>Delete</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDelete()
      * @generated
      * @ordered
@@ -243,7 +242,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getCreate() <em>Create</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCreate()
      * @generated
      * @ordered
@@ -253,7 +252,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getDndTools() <em>Dnd Tools</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDndTools()
      * @generated
      * @ordered
@@ -263,7 +262,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     /**
      * The cached value of the '{@link #getPopupMenus() <em>Popup Menus</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPopupMenus()
      * @generated
      * @ordered
@@ -272,7 +271,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeItemMappingImpl() {
@@ -281,7 +280,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -291,7 +290,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +300,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultStyle(TreeItemStyleDescription newDefaultStyle, NotificationChain msgs) {
@@ -320,7 +319,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +343,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +353,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -368,7 +367,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -378,7 +377,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -392,7 +391,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -405,7 +404,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -418,7 +417,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -432,7 +431,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -442,7 +441,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDirectEdit(TreeItemEditionTool newDirectEdit, NotificationChain msgs) {
@@ -461,7 +460,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -485,7 +484,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -495,7 +494,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -509,7 +508,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -522,7 +521,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -540,7 +539,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -559,7 +558,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TreeItemMapping basicGetSpecialize() {
@@ -568,7 +567,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -582,7 +581,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -592,7 +591,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDelete(TreeItemDeletionTool newDelete, NotificationChain msgs) {
@@ -611,7 +610,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -635,7 +634,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -648,7 +647,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -661,7 +660,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -674,7 +673,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -686,7 +685,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -698,7 +697,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -715,7 +714,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -745,7 +744,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -790,7 +789,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -852,7 +851,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -906,7 +905,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -927,8 +926,8 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         case DescriptionPackage.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION:
             return TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !TreeItemMappingImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case DescriptionPackage.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
-                    .equals(semanticCandidatesExpression);
+            return TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null
+                    : !TreeItemMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
         case DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS:
             return reusedTreeItemMappings != null && !reusedTreeItemMappings.isEmpty();
         case DescriptionPackage.TREE_ITEM_MAPPING__ALL_SUB_MAPPINGS:
@@ -949,7 +948,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -987,7 +986,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1025,7 +1024,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

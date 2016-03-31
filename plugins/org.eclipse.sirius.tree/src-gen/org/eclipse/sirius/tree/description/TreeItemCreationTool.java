@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemCreationTool#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemCreationTool()
  * @model

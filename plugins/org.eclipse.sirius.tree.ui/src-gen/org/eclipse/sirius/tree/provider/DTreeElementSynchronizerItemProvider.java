@@ -32,8 +32,8 @@ import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
  *
  * @generated
  */
-public class DTreeElementSynchronizerItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DTreeElementSynchronizerItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -62,7 +62,7 @@ public class DTreeElementSynchronizerItemProvider extends ItemProviderAdapter im
     /**
      * This returns DTreeElementSynchronizer.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class DTreeElementSynchronizerItemProvider extends ItemProviderAdapter im
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class DTreeElementSynchronizerItemProvider extends ItemProviderAdapter im
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

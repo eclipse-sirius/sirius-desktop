@@ -19,15 +19,13 @@ import org.eclipse.sirius.tree.TreePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>DTree Element Synchronizer</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class DTreeElementSynchronizerImpl extends MinimalEObjectImpl.Container implements DTreeElementSynchronizer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTreeElementSynchronizerImpl() {
@@ -36,7 +34,7 @@ public class DTreeElementSynchronizerImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -46,7 +44,7 @@ public class DTreeElementSynchronizerImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -20,14 +20,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation
  * <em>First Model Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getVariables <em>
- * Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getVariables
+ * <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemTool()
  * @model abstract="true"
@@ -43,7 +43,7 @@ public interface TreeItemTool extends AbstractToolDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operation</em>' containment
      *         reference.
      * @see #setFirstModelOperation(ModelOperation)

@@ -18,12 +18,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements
  * <em>Semantic Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping()
  * @model
@@ -38,7 +38,7 @@ public interface TreeMapping extends RepresentationElementMapping {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping_SemanticElements()
@@ -57,7 +57,7 @@ public interface TreeMapping extends RepresentationElementMapping {
      * {@link org.eclipse.sirius.tree.description.TreeMapping#getSemanticElements
      * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.
      * @see #getSemanticElements()

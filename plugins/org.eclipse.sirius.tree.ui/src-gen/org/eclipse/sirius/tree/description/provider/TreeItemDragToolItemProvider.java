@@ -80,11 +80,11 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      * @generated
      */
     protected void addContainersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemDragTool_containers_feature"), //$NON-NLS-1$
-                getString("_UI_TreeItemDragTool_containers_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__CONTAINERS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemDragTool_containers_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeItemDragTool_containers_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__CONTAINERS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -94,11 +94,11 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      * @generated
      */
     protected void addDragSourceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemDragTool_dragSourceType_feature"), //$NON-NLS-1$
-                getString("_UI_TreeItemDragTool_dragSourceType_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TreeItemDragTool_dragSourceType_feature"), //$NON-NLS-1$
+                        getString("_UI_TreeItemDragTool_dragSourceType_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -128,7 +128,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
     /**
      * This returns TreeItemDragTool.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

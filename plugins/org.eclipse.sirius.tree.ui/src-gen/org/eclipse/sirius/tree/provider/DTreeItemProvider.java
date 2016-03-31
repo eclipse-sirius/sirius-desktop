@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
 /**
  * This is the item provider adapter for a {@link org.eclipse.sirius.tree.DTree}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DTreeItemProvider extends DRepresentationItemProvider {
@@ -69,10 +69,10 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
     /**
@@ -82,10 +82,10 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTree_semanticElements_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTree_semanticElements_feature", "_UI_DTree_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TreePackage.Literals.DTREE__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTree_semanticElements_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTree_semanticElements_feature", "_UI_DTree_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TreePackage.Literals.DTREE__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
     }
 
     /**
@@ -95,8 +95,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTree_description_feature"), //$NON-NLS-1$
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTree_description_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DTree_description_feature", "_UI_DTree_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE__DESCRIPTION, true, false, true, null, null, null));
     }
@@ -108,7 +107,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +121,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +135,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
 
     /**
      * This returns DTree.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +160,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

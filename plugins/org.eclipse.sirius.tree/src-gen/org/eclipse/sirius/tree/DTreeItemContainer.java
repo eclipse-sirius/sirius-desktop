@@ -19,11 +19,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems <em>
- * Owned Tree Items</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems
+ * <em>Owned Tree Items</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeItemContainer()
  * @model abstract="true"
@@ -41,7 +41,7 @@ public interface DTreeItemContainer extends DSemanticDecorator {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Tree Items</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeItemContainer_OwnedTreeItems()

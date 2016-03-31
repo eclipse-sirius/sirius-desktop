@@ -19,11 +19,11 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping <em>
- * Tree Element Mapping</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping
+ * <em>Tree Element Mapping</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeElement()
  * @model
@@ -38,7 +38,7 @@ public interface DTreeElement extends DRepresentationElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tree Element Mapping</em>' reference.
      * @see org.eclipse.sirius.tree.TreePackage#getDTreeElement_TreeElementMapping()
      * @model transient="true" changeable="false" volatile="true" derived="true"
