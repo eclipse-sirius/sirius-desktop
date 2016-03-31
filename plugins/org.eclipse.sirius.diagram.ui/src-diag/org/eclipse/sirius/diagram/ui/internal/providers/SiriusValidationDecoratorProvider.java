@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.Label;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditDomain;
@@ -45,6 +46,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
@@ -210,9 +213,21 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             if (elementId == null) {
                 return;
             }
-            int severity = IMarker.SEVERITY_INFO;
-            IMarker foundMarker = null;
-            IResource resource = WorkspaceSynchronizer.getFile(viewResource);
+
+            // Directly retrieve the main Session resource
+            // (session.getSessionResource()) as we know we put the marker on
+            // it.
+            Session currentSession = null;
+            ResourceSet currentRs = viewResource.getResourceSet();
+            for (Session session : SessionManager.INSTANCE.getSessions()) {
+                if (currentRs == session.getTransactionalEditingDomain().getResourceSet()) {
+                    currentSession = session;
+                    break;
+                }
+            }
+            Resource markedResource = currentSession == null ? null : currentSession.getSessionResource();
+            IResource resource = WorkspaceSynchronizer.getFile(markedResource);
+
             if (resource == null || !resource.exists()) {
                 return;
             }
@@ -225,6 +240,9 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             if (markers == null || markers.length == 0) {
                 return;
             }
+
+            int severity = IMarker.SEVERITY_INFO;
+            IMarker foundMarker = null;
             Label toolTip = null;
             for (int i = 0; i < markers.length; i++) {
                 IMarker marker = markers[i];
