@@ -103,6 +103,8 @@
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
     <requirement
         name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.sdk.feature.group"/>
     <repository
         url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
     <repository
