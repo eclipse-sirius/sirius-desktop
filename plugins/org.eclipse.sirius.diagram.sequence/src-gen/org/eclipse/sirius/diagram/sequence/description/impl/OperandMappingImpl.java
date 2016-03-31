@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
  * <em><b>Operand Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl#getStartingEndFinderExpression
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
      * The cached value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
      * The default value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
      * The cached value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandMappingImpl() {
@@ -92,7 +92,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,25 +202,25 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.OPERAND_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return OperandMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !OperandMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
-                    .equals(startingEndFinderExpression);
+            return OperandMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null
+                    : !OperandMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
         case DescriptionPackage.OPERAND_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return OperandMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !OperandMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT
-                    .equals(finishingEndFinderExpression);
+            return OperandMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null
+                    : !OperandMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +272,7 @@ public class OperandMappingImpl extends ContainerMappingImpl implements OperandM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

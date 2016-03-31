@@ -30,13 +30,13 @@ import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequencePackageImpl extends EPackageImpl implements SequencePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sequenceDDiagramEClass = null;
@@ -62,7 +62,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -88,8 +88,8 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         }
 
         // Obtain or create and register package
-        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.get(SequencePackage.eNS_URI) instanceof SequencePackageImpl ? EPackage.Registry.INSTANCE
-                .get(SequencePackage.eNS_URI) : new SequencePackageImpl());
+        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.get(SequencePackage.eNS_URI) instanceof SequencePackageImpl
+                ? EPackage.Registry.INSTANCE.get(SequencePackage.eNS_URI) : new SequencePackageImpl());
 
         SequencePackageImpl.isInited = true;
 
@@ -97,14 +97,14 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(OrderingPackage.eNS_URI) : OrderingPackage.eINSTANCE);
-        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(TemplatePackage.eNS_URI) : TemplatePackage.eINSTANCE);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) : OrderingPackage.eINSTANCE);
+        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) : TemplatePackage.eINSTANCE);
 
         // Create package meta-data objects
         theSequencePackage.createPackageContents();
@@ -130,7 +130,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -189,7 +189,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -207,7 +207,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -250,21 +250,15 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDDiagramEClass, SequenceDDiagram.class, "SequenceDDiagram", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getSequenceDDiagram_SemanticOrdering(),
-                theOrderingPackage.getEventEndsOrdering(),
-                null,
-                "semanticOrdering", null, 0, 1, SequenceDDiagram.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getSequenceDDiagram_GraphicalOrdering(),
-                theOrderingPackage.getEventEndsOrdering(),
-                null,
-                "graphicalOrdering", null, 0, 1, SequenceDDiagram.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getSequenceDDiagram_InstanceRoleSemanticOrdering(),
-                theOrderingPackage.getInstanceRolesOrdering(),
-                null,
-                "instanceRoleSemanticOrdering", null, 0, 1, SequenceDDiagram.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getSequenceDDiagram_SemanticOrdering(), theOrderingPackage.getEventEndsOrdering(), null, "semanticOrdering", null, 0, 1, SequenceDDiagram.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getSequenceDDiagram_GraphicalOrdering(), theOrderingPackage.getEventEndsOrdering(), null, "graphicalOrdering", null, 0, 1, SequenceDDiagram.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getSequenceDDiagram_InstanceRoleSemanticOrdering(), theOrderingPackage.getInstanceRolesOrdering(), null, "instanceRoleSemanticOrdering", null, 0, 1, SequenceDDiagram.class, //$NON-NLS-1$
+                EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
         createResource(SequencePackage.eNS_URI);

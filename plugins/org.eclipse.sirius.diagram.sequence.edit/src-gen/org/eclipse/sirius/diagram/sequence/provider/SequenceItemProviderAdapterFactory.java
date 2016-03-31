@@ -36,14 +36,14 @@ import org.eclipse.sirius.diagram.sequence.util.SequenceAdapterFactory;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -61,7 +61,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -84,7 +84,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceDDiagramItemProvider sequenceDDiagramItemProvider;
@@ -129,7 +129,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

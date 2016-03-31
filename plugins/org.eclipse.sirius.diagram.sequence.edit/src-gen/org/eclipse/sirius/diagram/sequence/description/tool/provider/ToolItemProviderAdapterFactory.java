@@ -36,14 +36,14 @@ import org.eclipse.sirius.diagram.sequence.description.tool.util.ToolAdapterFact
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -61,7 +61,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -84,7 +84,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceDiagramToolDescriptionItemProvider sequenceDiagramToolDescriptionItemProvider;
@@ -93,7 +93,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InstanceRoleCreationToolItemProvider instanceRoleCreationToolItemProvider;
@@ -118,7 +118,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LifelineCreationToolItemProvider lifelineCreationToolItemProvider;
@@ -143,7 +143,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageCreationToolItemProvider messageCreationToolItemProvider;
@@ -168,7 +168,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExecutionCreationToolItemProvider executionCreationToolItemProvider;
@@ -193,7 +193,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateCreationToolItemProvider stateCreationToolItemProvider;
@@ -218,7 +218,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReorderToolItemProvider reorderToolItemProvider;
@@ -243,7 +243,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InstanceRoleReorderToolItemProvider instanceRoleReorderToolItemProvider;
@@ -268,7 +268,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ObservationPointCreationToolItemProvider observationPointCreationToolItemProvider;
@@ -293,7 +293,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseCreationToolItemProvider interactionUseCreationToolItemProvider;
@@ -318,7 +318,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CombinedFragmentCreationToolItemProvider combinedFragmentCreationToolItemProvider;
@@ -343,7 +343,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandCreationToolItemProvider operandCreationToolItemProvider;
@@ -368,7 +368,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -415,7 +415,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -425,7 +425,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -442,7 +442,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -452,7 +452,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

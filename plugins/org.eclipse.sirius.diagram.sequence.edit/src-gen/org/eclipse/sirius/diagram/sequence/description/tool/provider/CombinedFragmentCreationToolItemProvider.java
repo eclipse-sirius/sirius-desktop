@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CombinedFragmentCreationToolItemProvider extends ContainerCreationDescriptionItemProvider {
@@ -67,7 +67,7 @@ public class CombinedFragmentCreationToolItemProvider extends ContainerCreationD
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CombinedFragmentCreationToolItemProvider extends ContainerCreationD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class CombinedFragmentCreationToolItemProvider extends ContainerCreationD
     /**
      * This returns CombinedFragmentCreationTool.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class CombinedFragmentCreationToolItemProvider extends ContainerCreationD
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

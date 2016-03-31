@@ -16,6 +16,7 @@ package org.eclipse.sirius.diagram.sequence.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
@@ -24,7 +25,6 @@ package org.eclipse.sirius.diagram.sequence.description;
  * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping()
  * @model abstract="true"
@@ -39,7 +39,7 @@ public interface DelimitedEventMapping extends EventMapping {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Finder Expression</em>'
      *         attribute.
      * @see #setStartingEndFinderExpression(String)
@@ -57,7 +57,7 @@ public interface DelimitedEventMapping extends EventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Starting End Finder Expression</em>'
      *            attribute.
@@ -75,7 +75,7 @@ public interface DelimitedEventMapping extends EventMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Finder Expression</em>'
      *         attribute.
      * @see #setFinishingEndFinderExpression(String)
@@ -93,7 +93,7 @@ public interface DelimitedEventMapping extends EventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finishing End Finder Expression</em>
      *            ' attribute.

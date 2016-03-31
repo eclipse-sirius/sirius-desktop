@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
@@ -62,7 +62,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds a property descriptor for the Sending End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSendingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds a property descriptor for the Receiving End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReceivingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,14 +124,14 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((TMessageMapping) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_TMessageMapping_type") : //$NON-NLS-1$
-            getString("_UI_TMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_TMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -139,7 +139,7 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

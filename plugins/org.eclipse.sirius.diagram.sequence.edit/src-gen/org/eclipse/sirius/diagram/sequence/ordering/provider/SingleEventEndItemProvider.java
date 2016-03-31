@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SingleEventEndItemProvider extends EventEndItemProvider {
@@ -64,10 +64,10 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      * @generated
      */
     protected void addStartPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleEventEnd_start_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_start_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                OrderingPackage.Literals.SINGLE_EVENT_END__START, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SingleEventEnd_start_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_start_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        OrderingPackage.Literals.SINGLE_EVENT_END__START, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -77,16 +77,16 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      * @generated
      */
     protected void addSemanticEventPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleEventEnd_semanticEvent_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_semanticEvent_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                OrderingPackage.Literals.SINGLE_EVENT_END__SEMANTIC_EVENT, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SingleEventEnd_semanticEvent_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_semanticEvent_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        OrderingPackage.Literals.SINGLE_EVENT_END__SEMANTIC_EVENT, true, false, true, null, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

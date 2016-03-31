@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em><b>TAbstract Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getName
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TAbstractMappingImpl#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * The default value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
      * The cached value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TAbstractMappingImpl() {
@@ -110,7 +110,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +231,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +252,7 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,15 +263,15 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
         case TemplatePackage.TABSTRACT_MAPPING__DOMAIN_CLASS:
             return TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !TAbstractMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case TemplatePackage.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
-                    .equals(semanticCandidatesExpression);
+            return TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null
+                    : !TAbstractMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,6 +18,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderSizeComputationExpression
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle()
  * @model
@@ -91,7 +91,7 @@ public interface TExecutionStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBorderColor
      * <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' reference.
      * @see #getBorderColor()
@@ -107,7 +107,7 @@ public interface TExecutionStyle extends TTransformer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionStyle_BackgroundColor()
@@ -121,7 +121,7 @@ public interface TExecutionStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

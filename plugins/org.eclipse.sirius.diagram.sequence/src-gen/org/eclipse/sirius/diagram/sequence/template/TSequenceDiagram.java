@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getDomainClass
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
  * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getMessageMappings
  * <em>Message Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram()
  * @model
@@ -63,7 +63,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getEndsOrdering
      * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Ends Ordering</em>' attribute.
      * @see #getEndsOrdering()
@@ -81,7 +81,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lifeline Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram_LifelineMappings()
@@ -100,7 +100,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Message Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram_MessageMappings()
@@ -127,7 +127,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()

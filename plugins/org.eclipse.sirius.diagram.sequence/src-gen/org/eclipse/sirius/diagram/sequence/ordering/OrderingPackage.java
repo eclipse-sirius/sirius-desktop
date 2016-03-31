@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingFactory
  * @model kind="package"
  * @generated
@@ -33,21 +33,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface OrderingPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "ordering"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "ordering"; //$NON-NLS-1$
@@ -55,7 +55,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     OrderingPackage eINSTANCE = org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl.init();
@@ -65,7 +65,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl
      * <em>Event Ends Ordering</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getEventEndsOrdering()
      * @generated
@@ -93,7 +93,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Event Ends Ordering</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -103,7 +103,7 @@ public interface OrderingPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndImpl
      * <em>Event End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndImpl
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getEventEnd()
      * @generated
@@ -133,7 +133,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl
      * <em>Single Event End</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getSingleEventEnd()
      * @generated
@@ -170,7 +170,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Single Event End</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -181,7 +181,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl
      * <em>Compound Event End</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getCompoundEventEnd()
      * @generated
@@ -200,7 +200,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Event Ends</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -209,7 +209,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Compound Event End</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -220,7 +220,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.InstanceRolesOrderingImpl
      * <em>Instance Roles Ordering</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.InstanceRolesOrderingImpl
      * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getInstanceRolesOrdering()
      * @generated
@@ -230,7 +230,7 @@ public interface OrderingPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Instance Roles</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -240,7 +240,7 @@ public interface OrderingPackage extends EPackage {
      * The number of structural features of the '
      * <em>Instance Roles Ordering</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -275,7 +275,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering#getEventEnds
      * <em>Event Ends</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Event Ends</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering#getEventEnds()
      * @see #getEventEndsOrdering()
@@ -287,7 +287,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd
      * <em>Event End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Event End</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.EventEnd
      * @generated
@@ -298,7 +298,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
      * <em>Semantic End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Semantic End</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd()
      * @see #getEventEnd()
@@ -322,7 +322,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Start</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart()
      * @see #getSingleEventEnd()
@@ -334,7 +334,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#getSemanticEvent
      * <em>Semantic Event</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Semantic Event</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#getSemanticEvent()
      * @see #getSingleEventEnd()
@@ -358,7 +358,7 @@ public interface OrderingPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd#getEventEnds
      * <em>Event Ends</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Event Ends</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd#getEventEnds()
@@ -372,7 +372,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering
      * <em>Instance Roles Ordering</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Instance Roles Ordering</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering
      * @generated
@@ -384,7 +384,7 @@ public interface OrderingPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering#getSemanticInstanceRoles
      * <em>Semantic Instance Roles</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Semantic Instance Roles</em>'.
      * @see org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering#getSemanticInstanceRoles()
@@ -412,7 +412,7 @@ public interface OrderingPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -421,7 +421,7 @@ public interface OrderingPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl
          * <em>Event Ends Ordering</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.EventEndsOrderingImpl
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getEventEndsOrdering()
          * @generated
@@ -431,7 +431,7 @@ public interface OrderingPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Sequence Diagram</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM = OrderingPackage.eINSTANCE.getEventEndsOrdering_SequenceDiagram();
@@ -439,7 +439,7 @@ public interface OrderingPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Event Ends</b></em>'
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EVENT_ENDS_ORDERING__EVENT_ENDS = OrderingPackage.eINSTANCE.getEventEndsOrdering_EventEnds();
@@ -459,7 +459,7 @@ public interface OrderingPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Semantic End</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EVENT_END__SEMANTIC_END = OrderingPackage.eINSTANCE.getEventEnd_SemanticEnd();
@@ -469,7 +469,7 @@ public interface OrderingPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl
          * <em>Single Event End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getSingleEventEnd()
          * @generated
@@ -479,7 +479,7 @@ public interface OrderingPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Start</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SINGLE_EVENT_END__START = OrderingPackage.eINSTANCE.getSingleEventEnd_Start();
@@ -487,7 +487,7 @@ public interface OrderingPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Semantic Event</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SINGLE_EVENT_END__SEMANTIC_EVENT = OrderingPackage.eINSTANCE.getSingleEventEnd_SemanticEvent();
@@ -497,7 +497,7 @@ public interface OrderingPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl
          * <em>Compound Event End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getCompoundEventEnd()
          * @generated
@@ -508,7 +508,7 @@ public interface OrderingPackage extends EPackage {
          * The meta object literal for the '<em><b>Event Ends</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference COMPOUND_EVENT_END__EVENT_ENDS = OrderingPackage.eINSTANCE.getCompoundEventEnd_EventEnds();
@@ -518,7 +518,7 @@ public interface OrderingPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.InstanceRolesOrderingImpl
          * <em>Instance Roles Ordering</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.InstanceRolesOrderingImpl
          * @see org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl#getInstanceRolesOrdering()
          * @generated

@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider {
@@ -61,12 +61,11 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
     /**
      * This adds a property descriptor for the Invocation Message Finder
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature", "_UI_ReturnMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -77,7 +76,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
     /**
      * This returns ReturnMessageMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +101,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

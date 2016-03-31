@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getInstanceRoleSemanticOrdering
  * <em>Instance Role Semantic Ordering</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.SequencePackage#getSequenceDDiagram()
  * @model
@@ -46,7 +46,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Ordering</em>' containment
      *         reference.
      * @see #setSemanticOrdering(EventEndsOrdering)
@@ -61,7 +61,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getSemanticOrdering
      * <em>Semantic Ordering</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Ordering</em>' containment
      *            reference.
@@ -78,7 +78,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Graphical Ordering</em>' containment
      *         reference.
      * @see #setGraphicalOrdering(EventEndsOrdering)
@@ -93,7 +93,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram#getGraphicalOrdering
      * <em>Graphical Ordering</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Graphical Ordering</em>' containment
      *            reference.
@@ -111,7 +111,7 @@ public interface SequenceDDiagram extends DSemanticDiagram {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Instance Role Semantic Ordering</em>'
      *         containment reference.
      * @see #setInstanceRoleSemanticOrdering(InstanceRolesOrdering)

@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TExecutionStyleItemProvider extends TTransformerItemProvider {
@@ -61,16 +61,14 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     /**
      * This adds a property descriptor for the Border Size Computation
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TExecutionStyle_borderSizeComputationExpression_feature"), //$NON-NLS-1$
                 getString("_UI_TExecutionStyle_borderSizeComputationExpression_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -81,11 +79,11 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionStyle_borderColor_feature"), //$NON-NLS-1$
-                getString("_UI_TExecutionStyle_borderColor_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TExecutionStyle_borderColor_feature"), //$NON-NLS-1$
+                        getString("_UI_TExecutionStyle_borderColor_description"), //$NON-NLS-1$
+                        TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -95,17 +93,17 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionStyle_backgroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_TExecutionStyle_backgroundColor_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TEXECUTION_STYLE__BACKGROUND_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TExecutionStyle_backgroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_TExecutionStyle_backgroundColor_description"), //$NON-NLS-1$
+                        TemplatePackage.Literals.TEXECUTION_STYLE__BACKGROUND_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns TExecutionStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +128,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

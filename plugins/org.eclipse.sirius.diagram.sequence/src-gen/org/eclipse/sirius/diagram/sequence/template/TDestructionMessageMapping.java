@@ -18,12 +18,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping#getTarget
  * <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping()
  * @model
@@ -41,7 +41,7 @@ public interface TDestructionMessageMapping extends TSourceTargetMessageMapping 
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping_Target()
      * @model required="true"

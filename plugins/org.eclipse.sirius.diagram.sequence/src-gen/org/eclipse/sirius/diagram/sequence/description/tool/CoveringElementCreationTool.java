@@ -19,12 +19,12 @@ import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool#getCoveredLifelines
  * <em>Covered Lifelines</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getCoveringElementCreationTool()
  * @model abstract="true"
@@ -39,7 +39,7 @@ public interface CoveringElementCreationTool extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Lifelines</em>' containment
      *         reference.
      * @see #setCoveredLifelines(CoveredLifelinesVariable)
@@ -54,7 +54,7 @@ public interface CoveringElementCreationTool extends EObject {
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool#getCoveredLifelines
      * <em>Covered Lifelines</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Covered Lifelines</em>' containment
      *            reference.

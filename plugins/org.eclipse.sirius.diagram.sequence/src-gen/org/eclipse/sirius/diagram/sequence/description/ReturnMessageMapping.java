@@ -16,12 +16,12 @@ package org.eclipse.sirius.diagram.sequence.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping#getInvocationMessageFinderExpression
  * <em>Invocation Message Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getReturnMessageMapping()
  * @model

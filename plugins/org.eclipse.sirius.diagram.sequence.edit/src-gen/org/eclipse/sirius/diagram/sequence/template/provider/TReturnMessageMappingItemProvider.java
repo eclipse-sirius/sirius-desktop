@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvider {
@@ -74,12 +74,11 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     /**
      * This adds a property descriptor for the Invocation Message Finder
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -90,7 +89,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     /**
      * This returns TReturnMessageMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +114,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

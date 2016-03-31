@@ -36,14 +36,14 @@ import org.eclipse.sirius.diagram.sequence.template.util.TemplateAdapterFactory;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -61,7 +61,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -84,7 +84,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TSequenceDiagramItemProvider tSequenceDiagramItemProvider;
@@ -93,7 +93,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TLifelineMappingItemProvider tLifelineMappingItemProvider;
@@ -118,7 +118,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TLifelineStyleItemProvider tLifelineStyleItemProvider;
@@ -159,7 +159,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TConditionalLifelineStyleItemProvider tConditionalLifelineStyleItemProvider;
@@ -168,7 +168,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TTransformer}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TTransformerItemProvider tTransformerItemProvider;
@@ -209,7 +209,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TExecutionMappingItemProvider tExecutionMappingItemProvider;
@@ -218,7 +218,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TExecutionStyleItemProvider tExecutionStyleItemProvider;
@@ -243,7 +243,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionStyle}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TConditionalExecutionStyleItemProvider tConditionalExecutionStyleItemProvider;
@@ -268,7 +268,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TMessageStyleItemProvider tMessageStyleItemProvider;
@@ -309,7 +309,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TConditionalMessageStyleItemProvider tConditionalMessageStyleItemProvider;
@@ -318,7 +318,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TBasicMessageMappingItemProvider tBasicMessageMappingItemProvider;
@@ -343,7 +343,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TReturnMessageMappingItemProvider tReturnMessageMappingItemProvider;
@@ -368,7 +368,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TCreationMessageMappingItemProvider tCreationMessageMappingItemProvider;
@@ -393,7 +393,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TDestructionMessageMappingItemProvider tDestructionMessageMappingItemProvider;
@@ -418,7 +418,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TAbstractMappingItemProvider tAbstractMappingItemProvider;
@@ -443,7 +443,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -479,7 +479,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -490,7 +490,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -500,7 +500,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -517,7 +517,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -527,7 +527,7 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

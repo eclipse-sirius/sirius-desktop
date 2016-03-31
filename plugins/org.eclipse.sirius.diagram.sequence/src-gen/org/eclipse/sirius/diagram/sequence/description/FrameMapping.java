@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression
@@ -26,7 +27,6 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
  * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression
  * <em>Center Label Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping()
  * @model abstract="true"
@@ -41,7 +41,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Lifelines Expression</em>'
      *         attribute.
      * @see #setCoveredLifelinesExpression(String)
@@ -59,7 +59,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCoveredLifelinesExpression
      * <em>Covered Lifelines Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Covered Lifelines Expression</em>'
      *            attribute.
@@ -76,7 +76,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Center Label Expression</em>' attribute.
      * @see #setCenterLabelExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CenterLabelExpression()
@@ -93,7 +93,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.FrameMapping#getCenterLabelExpression
      * <em>Center Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Center Label Expression</em>'
      *            attribute.

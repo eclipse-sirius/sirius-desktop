@@ -21,12 +21,12 @@ import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
  * <em><b>Return Message Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.ReturnMessageMappingImpl#getInvocationMessageFinderExpression
  * <em>Invocation Message Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -55,7 +55,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReturnMessageMappingImpl() {
@@ -64,7 +64,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

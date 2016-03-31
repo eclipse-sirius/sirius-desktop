@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>TExecution Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl#getBorderSizeComputationExpression
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TExecutionStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -64,7 +64,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TExecutionStyleImpl() {
@@ -93,7 +93,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBorderColor() {
@@ -156,7 +156,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -198,7 +198,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,15 +278,15 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TemplatePackage.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
-            return TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(borderSizeComputationExpression);
+            return TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null
+                    : !TExecutionStyleImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case TemplatePackage.TEXECUTION_STYLE__BORDER_COLOR:
             return borderColor != null;
         case TemplatePackage.TEXECUTION_STYLE__BACKGROUND_COLOR:
@@ -297,7 +297,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

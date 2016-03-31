@@ -50,132 +50,132 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tSequenceDiagramEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageExtremityEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tLifelineMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tLifelineStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalLifelineStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tTransformerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tExecutionMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tExecutionStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalExecutionStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tBasicMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tSourceTargetMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tReturnMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tCreationMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tDestructionMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tAbstractMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tMessageStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass tConditionalMessageStyleEClass = null;
@@ -201,7 +201,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -227,8 +227,8 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         }
 
         // Obtain or create and register package
-        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl ? EPackage.Registry.INSTANCE
-                .get(TemplatePackage.eNS_URI) : new TemplatePackageImpl());
+        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl
+                ? EPackage.Registry.INSTANCE.get(TemplatePackage.eNS_URI) : new TemplatePackageImpl());
 
         TemplatePackageImpl.isInited = true;
 
@@ -236,14 +236,14 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(SequencePackage.eNS_URI) : SequencePackage.eINSTANCE);
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(OrderingPackage.eNS_URI) : OrderingPackage.eINSTANCE);
+        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) : SequencePackage.eINSTANCE);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) : OrderingPackage.eINSTANCE);
 
         // Create package meta-data objects
         theTemplatePackage.createPackageContents();
@@ -269,7 +269,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -329,7 +329,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +339,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -399,7 +399,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -429,7 +429,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -439,7 +439,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +459,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -469,7 +469,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -479,7 +479,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -489,7 +489,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -499,7 +499,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -509,7 +509,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -519,7 +519,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -529,7 +529,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -539,7 +539,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -549,7 +549,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -559,7 +559,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -569,7 +569,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -579,7 +579,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -589,7 +589,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -599,7 +599,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -609,7 +609,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +619,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -629,7 +629,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -639,7 +639,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -649,7 +649,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -659,7 +659,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -669,7 +669,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -679,7 +679,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -689,7 +689,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -699,7 +699,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -709,7 +709,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -719,7 +719,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -729,7 +729,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -739,7 +739,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -749,7 +749,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -759,7 +759,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -769,7 +769,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -779,7 +779,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -789,7 +789,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -799,7 +799,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -809,7 +809,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -819,7 +819,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -829,7 +829,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -839,7 +839,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -849,7 +849,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -859,7 +859,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -869,7 +869,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -879,7 +879,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -889,7 +889,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -899,7 +899,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -909,7 +909,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -919,7 +919,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -929,7 +929,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -939,7 +939,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -949,7 +949,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -958,7 +958,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -1056,7 +1056,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -1113,267 +1113,184 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
         // Initialize classes and features; add operations and parameters
         initEClass(tTransformerEClass, TTransformer.class, "TTransformer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTTransformer_Outputs(),
-                theEcorePackage.getEObject(),
-                null,
-                "outputs", null, 0, -1, TTransformer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getTTransformer_Outputs(), theEcorePackage.getEObject(), null, "outputs", null, 0, -1, TTransformer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(tAbstractMappingEClass, TAbstractMapping.class, "TAbstractMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTAbstractMapping_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, TAbstractMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTAbstractMapping_DomainClass(),
-                theDescriptionPackage_1.getTypeName(),
-                "domainClass", null, 1, 1, TAbstractMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTAbstractMapping_SemanticCandidatesExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "semanticCandidatesExpression", null, 0, 1, TAbstractMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTAbstractMapping_Name(), theEcorePackage.getEString(), "name", null, 1, 1, TAbstractMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTAbstractMapping_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TAbstractMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTAbstractMapping_SemanticCandidatesExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticCandidatesExpression", null, 0, 1, TAbstractMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(tSequenceDiagramEClass, TSequenceDiagram.class, "TSequenceDiagram", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTSequenceDiagram_DomainClass(),
-                theDescriptionPackage_1.getTypeName(),
-                "domainClass", null, 1, 1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTSequenceDiagram_EndsOrdering(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "endsOrdering", null, 1, 1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTSequenceDiagram_LifelineMappings(),
-                this.getTLifelineMapping(),
-                null,
-                "lifelineMappings", null, 0, -1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTSequenceDiagram_MessageMappings(),
-                this.getTMessageMapping(),
-                null,
-                "messageMappings", null, 0, -1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTSequenceDiagram_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTSequenceDiagram_EndsOrdering(), theDescriptionPackage_1.getInterpretedExpression(), "endsOrdering", null, 1, 1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTSequenceDiagram_LifelineMappings(), this.getTLifelineMapping(), null, "lifelineMappings", null, 0, -1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTSequenceDiagram_MessageMappings(), this.getTMessageMapping(), null, "messageMappings", null, 0, -1, TSequenceDiagram.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tMessageExtremityEClass, TMessageExtremity.class, "TMessageExtremity", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(tLifelineMappingEClass, TLifelineMapping.class, "TLifelineMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTLifelineMapping_EolVisibleExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "eolVisibleExpression", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTLifelineMapping_ExecutionMappings(),
-                this.getTExecutionMapping(),
-                null,
-                "executionMappings", null, 0, -1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTLifelineMapping_InstanceRoleStyle(),
-                theStylePackage.getNodeStyleDescription(),
-                null,
-                "instanceRoleStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTLifelineMapping_LifelineStyle(),
-                this.getTLifelineStyle(),
-                null,
-                "lifelineStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTLifelineMapping_EndOfLifeStyle(),
-                theStylePackage.getNodeStyleDescription(),
-                null,
-                "endOfLifeStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTLifelineMapping_ConditionalLifeLineStyles(),
-                this.getTConditionalLifelineStyle(),
-                null,
-                "conditionalLifeLineStyles", null, 0, -1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTLifelineMapping_EolVisibleExpression(), theDescriptionPackage_1.getInterpretedExpression(), "eolVisibleExpression", null, 1, 1, TLifelineMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineMapping_ExecutionMappings(), this.getTExecutionMapping(), null, "executionMappings", null, 0, -1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineMapping_InstanceRoleStyle(), theStylePackage.getNodeStyleDescription(), null, "instanceRoleStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineMapping_LifelineStyle(), this.getTLifelineStyle(), null, "lifelineStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineMapping_EndOfLifeStyle(), theStylePackage.getNodeStyleDescription(), null, "endOfLifeStyle", null, 1, 1, TLifelineMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineMapping_ConditionalLifeLineStyles(), this.getTConditionalLifelineStyle(), null, "conditionalLifeLineStyles", null, 0, -1, TLifelineMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tLifelineStyleEClass, TLifelineStyle.class, "TLifelineStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTLifelineStyle_LifelineWidthComputationExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "lifelineWidthComputationExpression", "0", 0, 1, TLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getTLifelineStyle_LifelineColor(),
-                theDescriptionPackage_1.getColorDescription(),
-                null,
-                "lifelineColor", null, 1, 1, TLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTLifelineStyle_LifelineWidthComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "lifelineWidthComputationExpression", "0", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+                TLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTLifelineStyle_LifelineColor(), theDescriptionPackage_1.getColorDescription(), null, "lifelineColor", null, 1, 1, TLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(tConditionalLifelineStyleEClass, TConditionalLifelineStyle.class,
-                "TConditionalLifelineStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTConditionalLifelineStyle_PredicateExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "predicateExpression", null, 1, 1, TConditionalLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTConditionalLifelineStyle_Style(),
-                this.getTLifelineStyle(),
-                null,
-                "style", null, 1, 1, TConditionalLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(tConditionalLifelineStyleEClass, TConditionalLifelineStyle.class, "TConditionalLifelineStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTConditionalLifelineStyle_PredicateExpression(), theDescriptionPackage_1.getInterpretedExpression(), "predicateExpression", null, 1, 1, TConditionalLifelineStyle.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTConditionalLifelineStyle_Style(), this.getTLifelineStyle(), null, "style", null, 1, 1, TConditionalLifelineStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tExecutionMappingEClass, TExecutionMapping.class, "TExecutionMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTExecutionMapping_StartingEndFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "startingEndFinderExpression", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTExecutionMapping_FinishingEndFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "finishingEndFinderExpression", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTExecutionMapping_Recursive(),
-                ecorePackage.getEBoolean(),
-                "recursive", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTExecutionMapping_ExecutionMappings(),
-                this.getTExecutionMapping(),
-                null,
-                "executionMappings", null, 0, -1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTExecutionMapping_Style(),
-                this.getTExecutionStyle(),
-                null,
-                "style", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTExecutionMapping_ConditionalStyles(),
-                this.getTConditionalExecutionStyle(),
-                null,
-                "conditionalStyles", null, 0, -1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTExecutionMapping_StartingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "startingEndFinderExpression", null, 1, 1, TExecutionMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getTExecutionMapping_FinishingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "finishingEndFinderExpression", null, 1, 1, TExecutionMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getTExecutionMapping_Recursive(), ecorePackage.getEBoolean(), "recursive", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTExecutionMapping_ExecutionMappings(), this.getTExecutionMapping(), null, "executionMappings", null, 0, -1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTExecutionMapping_Style(), this.getTExecutionStyle(), null, "style", null, 1, 1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTExecutionMapping_ConditionalStyles(), this.getTConditionalExecutionStyle(), null, "conditionalStyles", null, 0, -1, TExecutionMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tExecutionStyleEClass, TExecutionStyle.class, "TExecutionStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTExecutionStyle_BorderSizeComputationExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "borderSizeComputationExpression", "1", 0, 1, TExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getTExecutionStyle_BorderColor(),
-                theDescriptionPackage_1.getColorDescription(),
-                null,
-                "borderColor", null, 1, 1, TExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTExecutionStyle_BackgroundColor(),
-                theDescriptionPackage_1.getColorDescription(),
-                null,
-                "backgroundColor", null, 1, 1, TExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTExecutionStyle_BorderSizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "borderSizeComputationExpression", "1", 0, 1, TExecutionStyle.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTExecutionStyle_BorderColor(), theDescriptionPackage_1.getColorDescription(), null, "borderColor", null, 1, 1, TExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTExecutionStyle_BackgroundColor(), theDescriptionPackage_1.getColorDescription(), null, "backgroundColor", null, 1, 1, TExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(tConditionalExecutionStyleEClass, TConditionalExecutionStyle.class,
-                "TConditionalExecutionStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTConditionalExecutionStyle_PredicateExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "predicateExpression", null, 1, 1, TConditionalExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTConditionalExecutionStyle_Style(),
-                this.getTExecutionStyle(),
-                null,
-                "style", null, 1, 1, TConditionalExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(tConditionalExecutionStyleEClass, TConditionalExecutionStyle.class, "TConditionalExecutionStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTConditionalExecutionStyle_PredicateExpression(), theDescriptionPackage_1.getInterpretedExpression(), "predicateExpression", null, 1, 1, TConditionalExecutionStyle.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTConditionalExecutionStyle_Style(), this.getTExecutionStyle(), null, "style", null, 1, 1, TConditionalExecutionStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tMessageMappingEClass, TMessageMapping.class, "TMessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTMessageMapping_SendingEndFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "sendingEndFinderExpression", null, 1, 1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTMessageMapping_ReceivingEndFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "receivingEndFinderExpression", null, 1, 1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTMessageMapping_Style(),
-                this.getTMessageStyle(),
-                null,
-                "style", null, 1, 1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTMessageMapping_ConditionalStyle(),
-                this.getTConditionalMessageStyle(),
-                null,
-                "conditionalStyle", null, 0, -1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTMessageMapping_SendingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sendingEndFinderExpression", null, 1, 1, TMessageMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getTMessageMapping_ReceivingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "receivingEndFinderExpression", null, 1, 1, TMessageMapping.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTMessageMapping_Style(), this.getTMessageStyle(), null, "style", null, 1, 1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTMessageMapping_ConditionalStyle(), this.getTConditionalMessageStyle(), null, "conditionalStyle", null, 0, -1, TMessageMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(tMessageStyleEClass, TMessageStyle.class, "TMessageStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTMessageStyle_StrokeColor(),
-                theDescriptionPackage_1.getColorDescription(),
-                null,
-                "strokeColor", null, 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTMessageStyle_LineStyle(),
-                theDiagramPackage.getLineStyle(),
-                "lineStyle", null, 0, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTMessageStyle_SourceArrow(),
-                theDiagramPackage.getEdgeArrows(),
-                "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getTMessageStyle_TargetArrow(),
-                theDiagramPackage.getEdgeArrows(),
-                "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getTMessageStyle_LabelExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "labelExpression", "feature:name", 0, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEReference(getTMessageStyle_StrokeColor(), theDescriptionPackage_1.getColorDescription(), null, "strokeColor", null, 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTMessageStyle_LineStyle(), theDiagramPackage.getLineStyle(), "lineStyle", null, 0, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTMessageStyle_SourceArrow(), theDiagramPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTMessageStyle_TargetArrow(), theDiagramPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTMessageStyle_LabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "labelExpression", "feature:name", 0, 1, TMessageStyle.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(tConditionalMessageStyleEClass, TConditionalMessageStyle.class,
-                "TConditionalMessageStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTConditionalMessageStyle_PredicateExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "predicateExpression", null, 1, 1, TConditionalMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTConditionalMessageStyle_Style(),
-                this.getTMessageStyle(),
-                null,
-                "style", null, 1, 1, TConditionalMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(tConditionalMessageStyleEClass, TConditionalMessageStyle.class, "TConditionalMessageStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTConditionalMessageStyle_PredicateExpression(), theDescriptionPackage_1.getInterpretedExpression(), "predicateExpression", null, 1, 1, TConditionalMessageStyle.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getTConditionalMessageStyle_Style(), this.getTMessageStyle(), null, "style", null, 1, 1, TConditionalMessageStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(tBasicMessageMappingEClass, TBasicMessageMapping.class, "TBasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTBasicMessageMapping_Target(),
-                this.getTMessageExtremity(),
-                null,
-                "target", null, 1, -1, TBasicMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getTBasicMessageMapping_Target(), this.getTMessageExtremity(), null, "target", null, 1, -1, TBasicMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(tSourceTargetMessageMappingEClass, TSourceTargetMessageMapping.class,
-                "TSourceTargetMessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTSourceTargetMessageMapping_Source(),
-                this.getTMessageExtremity(),
-                null,
-                "source", null, 1, -1, TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTSourceTargetMessageMapping_SourceFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "sourceFinderExpression", null, 0, 1, TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTSourceTargetMessageMapping_TargetFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "targetFinderExpression", null, 1, 1, TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTSourceTargetMessageMapping_UseDomainElement(),
-                theEcorePackage.getEBoolean(),
-                "useDomainElement", "false", 0, 1, TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEClass(tSourceTargetMessageMappingEClass, TSourceTargetMessageMapping.class, "TSourceTargetMessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTSourceTargetMessageMapping_Source(), this.getTMessageExtremity(), null, "source", null, 1, -1, TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTSourceTargetMessageMapping_SourceFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sourceFinderExpression", null, 0, 1, //$NON-NLS-1$
+                TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTSourceTargetMessageMapping_TargetFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "targetFinderExpression", null, 1, 1, //$NON-NLS-1$
+                TSourceTargetMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTSourceTargetMessageMapping_UseDomainElement(), theEcorePackage.getEBoolean(), "useDomainElement", "false", 0, 1, TSourceTargetMessageMapping.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(tReturnMessageMappingEClass, TReturnMessageMapping.class, "TReturnMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTReturnMessageMapping_InvocationMapping(),
-                this.getTBasicMessageMapping(),
-                null,
-                "invocationMapping", null, 1, 1, TReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getTReturnMessageMapping_InvocationMessageFinderExpression(),
-                theDescriptionPackage_1.getInterpretedExpression(),
-                "invocationMessageFinderExpression", null, 1, 1, TReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getTReturnMessageMapping_InvocationMapping(), this.getTBasicMessageMapping(), null, "invocationMapping", null, 1, 1, TReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1, //$NON-NLS-1$
+                TReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(tCreationMessageMappingEClass, TCreationMessageMapping.class,
-                "TCreationMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTCreationMessageMapping_Target(),
-                this.getTLifelineMapping(),
-                null,
-                "target", null, 1, -1, TCreationMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(tCreationMessageMappingEClass, TCreationMessageMapping.class, "TCreationMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTCreationMessageMapping_Target(), this.getTLifelineMapping(), null, "target", null, 1, -1, TCreationMessageMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(tDestructionMessageMappingEClass, TDestructionMessageMapping.class,
-                "TDestructionMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getTDestructionMessageMapping_Target(),
-                this.getTLifelineMapping(),
-                null,
-                "target", null, 1, -1, TDestructionMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(tDestructionMessageMappingEClass, TDestructionMessageMapping.class, "TDestructionMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTDestructionMessageMapping_Target(), this.getTLifelineMapping(), null, "target", null, 1, -1, TDestructionMessageMapping.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
@@ -1386,7 +1303,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/returnType</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createReturnTypeAnnotations() {
@@ -1429,23 +1346,25 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/variables</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
-        addAnnotation(getTAbstractMapping_SemanticCandidatesExpression(), source, new String[] { "containerView", "the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
-                "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getTAbstractMapping_SemanticCandidatesExpression(), source,
+                new String[] { "containerView", "the parent view of potential candidates.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getTSequenceDiagram_EndsOrdering(), source, new String[] { "eventEnds", "a List<EObject> containing the semantic event ends." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getTLifelineMapping_EolVisibleExpression(), source, new String[] { "containerView", "the view that sould contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-                "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getTLifelineMapping_EolVisibleExpression(), source,
+                new String[] { "containerView", "the view that sould contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "the semantic element of $containerView.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "(deprecated) the current DSemanticDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "the current DSemanticDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getTLifelineStyle_LifelineWidthComputationExpression(), source, new String[] {});
         addAnnotation(getTConditionalLifelineStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
@@ -1464,14 +1383,16 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         addAnnotation(getTConditionalMessageStyle_PredicateExpression(), source, new String[] { "view", "the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getTSourceTargetMessageMapping_SourceFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-        });
-        addAnnotation(getTSourceTargetMessageMapping_TargetFinderExpression(), source, new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getTSourceTargetMessageMapping_SourceFinderExpression(), source,
+                new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
+        addAnnotation(getTSourceTargetMessageMapping_TargetFinderExpression(), source,
+                new String[] { "diagram", "the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "(deprecated) the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewPoint", "(deprecated) the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getTReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] {});
     }
 

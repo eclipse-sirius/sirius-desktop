@@ -25,12 +25,12 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em><b>Covering Element Creation Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.CoveringElementCreationToolImpl#getCoveredLifelines
  * <em>Covered Lifelines</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
      * The cached value of the '{@link #getCoveredLifelines()
      * <em>Covered Lifelines</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCoveredLifelines()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CoveringElementCreationToolImpl() {
@@ -57,7 +57,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCoveredLifelines(CoveredLifelinesVariable newCoveredLifelines, NotificationChain msgs) {
@@ -96,7 +96,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public abstract class CoveringElementCreationToolImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

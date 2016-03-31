@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSource
@@ -32,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
  * <em>Use Domain Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping()
  * @model abstract="true"
@@ -49,7 +49,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_Source()
      * @model required="true"
@@ -67,8 +67,8 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * @see #setSourceFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_SourceFinderExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
@@ -82,7 +82,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getSourceFinderExpression
      * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Finder Expression</em>'
      *            attribute.
@@ -101,8 +101,8 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * @see #setTargetFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_TargetFinderExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
@@ -116,7 +116,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#getTargetFinderExpression
      * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Finder Expression</em>'
      *            attribute.
@@ -133,7 +133,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Use Domain Element</em>' attribute.
      * @see #setUseDomainElement(boolean)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSourceTargetMessageMapping_UseDomainElement()
@@ -147,7 +147,7 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping#isUseDomainElement
      * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Use Domain Element</em>' attribute.
      * @see #isUseDomainElement()

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getSendingEndFinderExpression
@@ -32,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getConditionalStyle
  * <em>Conditional Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageMapping()
  * @model abstract="true"
@@ -47,7 +47,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sending End Finder Expression</em>'
      *         attribute.
      * @see #setSendingEndFinderExpression(String)
@@ -65,7 +65,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getSendingEndFinderExpression
      * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sending End Finder Expression</em>'
      *            attribute.
@@ -83,7 +83,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Receiving End Finder Expression</em>'
      *         attribute.
      * @see #setReceivingEndFinderExpression(String)
@@ -101,7 +101,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getReceivingEndFinderExpression
      * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Receiving End Finder Expression</em>
      *            ' attribute.
@@ -118,7 +118,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TMessageStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageMapping_Style()
@@ -132,7 +132,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * {@link org.eclipse.sirius.diagram.sequence.template.TMessageMapping#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -150,7 +150,7 @@ public interface TMessageMapping extends TAbstractMapping {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditional Style</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageMapping_ConditionalStyle()

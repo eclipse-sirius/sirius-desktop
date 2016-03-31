@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd#getEventEnds
  * <em>Event Ends</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getCompoundEventEnd()
  * @model
@@ -52,7 +52,7 @@ public interface CompoundEventEnd extends EventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

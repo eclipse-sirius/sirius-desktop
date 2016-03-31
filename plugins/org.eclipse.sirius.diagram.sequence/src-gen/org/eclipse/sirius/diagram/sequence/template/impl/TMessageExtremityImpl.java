@@ -18,15 +18,13 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>TMessage Extremity</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public abstract class TMessageExtremityImpl extends MinimalEObjectImpl.Container implements TMessageExtremity {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TMessageExtremityImpl() {
@@ -35,7 +33,7 @@ public abstract class TMessageExtremityImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

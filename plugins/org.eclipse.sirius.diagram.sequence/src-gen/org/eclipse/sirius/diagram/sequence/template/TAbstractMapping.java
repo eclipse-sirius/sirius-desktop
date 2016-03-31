@@ -16,6 +16,7 @@ package org.eclipse.sirius.diagram.sequence.template;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getName
@@ -27,7 +28,6 @@ package org.eclipse.sirius.diagram.sequence.template;
  * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getSemanticCandidatesExpression
  * <em>Semantic Candidates Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping()
  * @model
@@ -55,7 +55,7 @@ public interface TAbstractMapping extends TTransformer {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -81,7 +81,7 @@ public interface TAbstractMapping extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -104,8 +104,8 @@ public interface TAbstractMapping extends TTransformer {
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping_SemanticCandidatesExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      * @generated
      */
     String getSemanticCandidatesExpression();
@@ -115,7 +115,7 @@ public interface TAbstractMapping extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>'
      *            attribute.

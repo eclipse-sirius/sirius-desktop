@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
@@ -60,7 +60,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
     /**
      * This returns InstanceRoleMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

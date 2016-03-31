@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InstanceRoleReorderToolItemProvider extends AbstractToolDescriptionItemProvider {
@@ -69,10 +69,10 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InstanceRoleReorderTool_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_InstanceRoleReorderTool_mappings_feature", "_UI_InstanceRoleReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.INSTANCE_ROLE_REORDER_TOOL__MAPPINGS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_InstanceRoleReorderTool_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_InstanceRoleReorderTool_mappings_feature", "_UI_InstanceRoleReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.INSTANCE_ROLE_REORDER_TOOL__MAPPINGS, true, false, true, null, null, null));
     }
 
     /**
@@ -82,7 +82,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
     /**
      * This returns InstanceRoleReorderTool.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

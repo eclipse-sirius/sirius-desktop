@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider {
@@ -70,11 +70,11 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReorderTool_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ReorderTool_mappings_feature", "_UI_ReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.REORDER_TOOL__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ReorderTool_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ReorderTool_mappings_feature", "_UI_ReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.REORDER_TOOL__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -84,7 +84,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

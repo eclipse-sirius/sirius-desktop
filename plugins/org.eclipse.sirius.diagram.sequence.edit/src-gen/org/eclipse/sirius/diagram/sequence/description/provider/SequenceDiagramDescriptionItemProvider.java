@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionItemProvider {
@@ -79,7 +79,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This adds a property descriptor for the Instance Roles Ordering feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInstanceRolesOrderingPropertyDescriptor(Object object) {
@@ -92,7 +92,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     /**
      * This returns SequenceDiagramDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,26 +144,26 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createExecutionMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createStateMapping()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createObservationPointMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createCreationMessageMapping()));
@@ -177,8 +177,8 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createOperandMapping()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
     }
 
     /**

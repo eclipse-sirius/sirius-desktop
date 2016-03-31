@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.ExecutionMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ExecutionMappingItemProvider extends NodeMappingItemProvider {
@@ -66,12 +66,11 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Starting End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -82,12 +81,11 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider {
     /**
      * This adds a property descriptor for the Finishing End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -98,7 +96,7 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider {
     /**
      * This returns ExecutionMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +121,7 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappingItemProvider {
@@ -61,17 +61,17 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TBasicMessageMapping_target_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_target_feature", "_UI_TBasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__TARGET, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TBasicMessageMapping_target_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_target_feature", "_UI_TBasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__TARGET, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns TBasicMessageMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

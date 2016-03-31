@@ -17,15 +17,13 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Combined Fragment Mapping</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class CombinedFragmentMappingImpl extends FrameMappingImpl implements CombinedFragmentMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CombinedFragmentMappingImpl() {
@@ -34,7 +32,7 @@ public class CombinedFragmentMappingImpl extends FrameMappingImpl implements Com
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

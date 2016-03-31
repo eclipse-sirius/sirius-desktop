@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TAbstractMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TAbstractMappingItemProvider extends TTransformerItemProvider {
@@ -61,14 +61,14 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TAbstractMapping_name_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_name_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TemplatePackage.Literals.TABSTRACT_MAPPING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TAbstractMapping_name_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_name_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TemplatePackage.Literals.TABSTRACT_MAPPING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,16 +78,16 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TAbstractMapping_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_domainClass_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TemplatePackage.Literals.TABSTRACT_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TAbstractMapping_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_domainClass_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TemplatePackage.Literals.TABSTRACT_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Semantic Candidates Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
@@ -100,7 +100,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This returns TAbstractMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,14 +111,14 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((TAbstractMapping) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_TAbstractMapping_type") : //$NON-NLS-1$
-            getString("_UI_TAbstractMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_TAbstractMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -126,7 +126,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

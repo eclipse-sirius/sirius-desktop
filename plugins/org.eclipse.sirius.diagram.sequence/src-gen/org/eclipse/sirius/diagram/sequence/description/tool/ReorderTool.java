@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getMappings
@@ -42,7 +43,6 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool#getOnEventMovedOperation
  * <em>On Event Moved Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool()
  * @model
@@ -59,7 +59,7 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_Mappings()
      * @model
@@ -76,13 +76,13 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Predecessor Before</em>'
      *         containment reference.
      * @see #setStartingEndPredecessorBefore(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_StartingEndPredecessorBefore()
-     * @model containment="true"
-     *        annotation="toolVariable name='startingEndPredecessorBefore'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='startingEndPredecessorBefore'"
      * @generated
      */
     MessageEndVariable getStartingEndPredecessorBefore();
@@ -110,13 +110,13 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Predecessor After</em>'
      *         containment reference.
      * @see #setStartingEndPredecessorAfter(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_StartingEndPredecessorAfter()
-     * @model containment="true"
-     *        annotation="toolVariable name='startingEndPredecessorAfter'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='startingEndPredecessorAfter'"
      * @generated
      */
     MessageEndVariable getStartingEndPredecessorAfter();
@@ -145,13 +145,13 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Predecessor Before</em>'
      *         containment reference.
      * @see #setFinishingEndPredecessorBefore(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_FinishingEndPredecessorBefore()
-     * @model containment="true"
-     *        annotation="toolVariable name='finishingEndPredecessorBefore'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='finishingEndPredecessorBefore'"
      * @generated
      */
     MessageEndVariable getFinishingEndPredecessorBefore();
@@ -180,13 +180,13 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Predecessor After</em>'
      *         containment reference.
      * @see #setFinishingEndPredecessorAfter(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool_FinishingEndPredecessorAfter()
-     * @model containment="true"
-     *        annotation="toolVariable name='finishingEndPredecessorAfter'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='finishingEndPredecessorAfter'"
      * @generated
      */
     MessageEndVariable getFinishingEndPredecessorAfter();
@@ -214,7 +214,7 @@ public interface ReorderTool extends AbstractToolDescription, SequenceDiagramToo
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>On Event Moved Operation</em>' containment
      *         reference.
      * @see #setOnEventMovedOperation(InitialOperation)

@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  * <em><b>Instance Role Creation Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.InstanceRoleCreationToolImpl#getPredecessor
  * <em>Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
     /**
      * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPredecessor()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InstanceRoleCreationToolImpl() {
@@ -56,7 +56,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetPredecessor(ElementVariable newPredecessor, NotificationChain msgs) {
@@ -95,7 +95,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

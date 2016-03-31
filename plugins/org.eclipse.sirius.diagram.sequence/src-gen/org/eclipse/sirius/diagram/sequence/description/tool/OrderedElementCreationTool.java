@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getStartingEndPredecessor
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOrderedElementCreationTool()
  * @model abstract="true"
@@ -43,13 +43,13 @@ public interface OrderedElementCreationTool extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Starting End Predecessor</em>' containment
      *         reference.
      * @see #setStartingEndPredecessor(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOrderedElementCreationTool_StartingEndPredecessor()
-     * @model containment="true"
-     *        annotation="toolVariable name='startingEndPredecessor'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='startingEndPredecessor'"
      * @generated
      */
     MessageEndVariable getStartingEndPredecessor();
@@ -77,13 +77,13 @@ public interface OrderedElementCreationTool extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finishing End Predecessor</em>' containment
      *         reference.
      * @see #setFinishingEndPredecessor(MessageEndVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOrderedElementCreationTool_FinishingEndPredecessor()
-     * @model containment="true"
-     *        annotation="toolVariable name='finishingEndPredecessor'"
+     * @model containment="true" annotation=
+     *        "toolVariable name='finishingEndPredecessor'"
      * @generated
      */
     MessageEndVariable getFinishingEndPredecessor();

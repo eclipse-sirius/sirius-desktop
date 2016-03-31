@@ -26,14 +26,14 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingFactory;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static SequenceFactory init() {
@@ -51,7 +51,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SequenceFactoryImpl() {
@@ -60,7 +60,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

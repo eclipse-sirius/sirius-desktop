@@ -25,12 +25,12 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em><b>TTransformer</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TTransformerImpl#getOutputs
  * <em>Outputs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
     /**
      * The cached value of the '{@link #getOutputs() <em>Outputs</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOutputs()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TTransformerImpl() {
@@ -56,7 +56,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -110,7 +110,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * <em><b>Single Event End</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl#isStart
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * {@link org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl#getSemanticEvent
  * <em>Semantic Event</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
     /**
      * The default value of the '{@link #isStart() <em>Start</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isStart()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
     /**
      * The cached value of the '{@link #isStart() <em>Start</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isStart()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
      * The cached value of the '{@link #getSemanticEvent()
      * <em>Semantic Event</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticEvent()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SingleEventEndImpl() {
@@ -78,7 +78,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetSemanticEvent() {
@@ -140,7 +140,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

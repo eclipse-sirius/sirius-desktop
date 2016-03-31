@@ -18,15 +18,13 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Sequence Diagram Tool Description</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class SequenceDiagramToolDescriptionImpl extends MinimalEObjectImpl.Container implements SequenceDiagramToolDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SequenceDiagramToolDescriptionImpl() {
@@ -35,7 +33,7 @@ public class SequenceDiagramToolDescriptionImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

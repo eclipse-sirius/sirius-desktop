@@ -29,11 +29,11 @@ import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlug
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class SequenceDiagramToolDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-IItemLabelProvider, IItemPropertySource {
+public class SequenceDiagramToolDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -62,7 +62,7 @@ IItemLabelProvider, IItemPropertySource {
     /**
      * This returns SequenceDiagramToolDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ IItemLabelProvider, IItemPropertySource {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ IItemLabelProvider, IItemPropertySource {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

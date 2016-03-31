@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreationMessageMappingItemProvider extends MessageMappingItemProvider {
@@ -55,7 +55,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
     /**
      * This returns CreationMessageMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

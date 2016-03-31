@@ -68,15 +68,15 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
      * @generated
      */
     protected void addSemanticEndPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EventEnd_semanticEnd_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_EventEnd_semanticEnd_feature", "_UI_EventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                OrderingPackage.Literals.EVENT_END__SEMANTIC_END, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EventEnd_semanticEnd_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EventEnd_semanticEnd_feature", "_UI_EventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        OrderingPackage.Literals.EVENT_END__SEMANTIC_END, true, false, true, null, null, null));
     }
 
     /**
      * This returns EventEnd.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

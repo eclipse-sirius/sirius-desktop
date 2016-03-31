@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>TMessage Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl#getStrokeColor
@@ -42,7 +43,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TMessageStyleImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -50,7 +50,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStrokeColor()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The default value of the '{@link #getLineStyle() <em>Line Style</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The cached value of the '{@link #getLineStyle() <em>Line Style</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLineStyle()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The cached value of the '{@link #getSourceArrow() <em>Source Arrow</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceArrow()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
     /**
      * The cached value of the '{@link #getTargetArrow() <em>Target Arrow</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetArrow()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -132,7 +132,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TMessageStyleImpl() {
@@ -150,7 +150,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetStrokeColor() {
@@ -188,7 +188,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -298,7 +298,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +350,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -377,7 +377,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -399,7 +399,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

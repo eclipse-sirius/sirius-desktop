@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
  * <em><b>State Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getStartingEndFinderExpression
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * The cached value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * The default value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
      * The cached value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateMappingImpl() {
@@ -92,7 +92,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,25 +202,25 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.STATE_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
-                    .equals(startingEndFinderExpression);
+            return StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null
+                    : !StateMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
         case DescriptionPackage.STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION:
-            return StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null : !StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT
-                    .equals(finishingEndFinderExpression);
+            return StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null
+                    : !StateMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +272,7 @@ public class StateMappingImpl extends NodeMappingImpl implements StateMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

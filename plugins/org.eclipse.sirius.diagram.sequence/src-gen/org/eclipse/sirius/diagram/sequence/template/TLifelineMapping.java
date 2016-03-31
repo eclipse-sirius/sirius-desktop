@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEolVisibleExpression
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getConditionalLifeLineStyles
  * <em>Conditional Life Line Styles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping()
  * @model
@@ -54,7 +54,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Eol Visible Expression</em>' attribute.
      * @see #setEolVisibleExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping_EolVisibleExpression()
@@ -73,7 +73,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEolVisibleExpression
      * <em>Eol Visible Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Eol Visible Expression</em>'
      *            attribute.
@@ -92,7 +92,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Execution Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping_ExecutionMappings()
@@ -110,7 +110,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Instance Role Style</em>' containment
      *         reference.
      * @see #setInstanceRoleStyle(NodeStyleDescription)
@@ -125,7 +125,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getInstanceRoleStyle
      * <em>Instance Role Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Instance Role Style</em>'
      *            containment reference.
@@ -142,7 +142,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lifeline Style</em>' containment reference.
      * @see #setLifelineStyle(TLifelineStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping_LifelineStyle()
@@ -156,7 +156,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getLifelineStyle
      * <em>Lifeline Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Lifeline Style</em>' containment
      *            reference.
@@ -173,7 +173,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>End Of Life Style</em>' containment
      *         reference.
      * @see #setEndOfLifeStyle(NodeStyleDescription)
@@ -188,7 +188,7 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping#getEndOfLifeStyle
      * <em>End Of Life Style</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>End Of Life Style</em>' containment
      *            reference.

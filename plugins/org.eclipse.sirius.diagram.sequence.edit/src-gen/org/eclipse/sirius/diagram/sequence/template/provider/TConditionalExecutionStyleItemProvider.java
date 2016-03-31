@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TConditionalExecutionStyleItemProvider extends TTransformerItemProvider {
@@ -61,7 +61,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
     /**
      * This adds a property descriptor for the Predicate Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
     /**
      * This returns TConditionalExecutionStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

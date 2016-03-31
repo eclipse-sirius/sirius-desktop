@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
  * <em>Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleCreationTool()
  * @model
@@ -39,7 +39,7 @@ public interface InstanceRoleCreationTool extends NodeCreationDescription, Seque
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predecessor</em>' containment reference.
      * @see #setPredecessor(ElementVariable)
      * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleCreationTool_Predecessor()
@@ -53,7 +53,7 @@ public interface InstanceRoleCreationTool extends NodeCreationDescription, Seque
      * {@link org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool#getPredecessor
      * <em>Predecessor</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predecessor</em>' containment
      *            reference.

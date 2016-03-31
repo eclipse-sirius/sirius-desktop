@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DelimitedEventMappingItemProvider extends EventMappingItemProvider {
@@ -60,12 +60,11 @@ public class DelimitedEventMappingItemProvider extends EventMappingItemProvider 
     /**
      * This adds a property descriptor for the Starting End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -76,12 +75,11 @@ public class DelimitedEventMappingItemProvider extends EventMappingItemProvider 
     /**
      * This adds a property descriptor for the Finishing End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -92,14 +90,14 @@ public class DelimitedEventMappingItemProvider extends EventMappingItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((DelimitedEventMapping) object).getStartingEndFinderExpression();
         return label == null || label.length() == 0 ? getString("_UI_DelimitedEventMapping_type") : //$NON-NLS-1$
-            getString("_UI_DelimitedEventMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_DelimitedEventMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -107,7 +105,7 @@ public class DelimitedEventMappingItemProvider extends EventMappingItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

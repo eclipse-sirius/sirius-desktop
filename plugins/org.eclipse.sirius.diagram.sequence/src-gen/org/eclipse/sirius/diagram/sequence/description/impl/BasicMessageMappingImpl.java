@@ -17,15 +17,13 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Basic Message Mapping</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class BasicMessageMappingImpl extends MessageMappingImpl implements BasicMessageMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicMessageMappingImpl() {
@@ -34,7 +32,7 @@ public class BasicMessageMappingImpl extends MessageMappingImpl implements Basic
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

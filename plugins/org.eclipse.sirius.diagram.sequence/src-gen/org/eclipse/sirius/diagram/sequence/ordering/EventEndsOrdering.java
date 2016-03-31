@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering#getSequenceDiagram
@@ -28,7 +29,6 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
  * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering#getEventEnds
  * <em>Event Ends</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEndsOrdering()
  * @model
@@ -43,7 +43,7 @@ public interface EventEndsOrdering extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sequence Diagram</em>' reference.
      * @see #setSequenceDiagram(SequenceDDiagram)
      * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEndsOrdering_SequenceDiagram()
@@ -57,7 +57,7 @@ public interface EventEndsOrdering extends EObject {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering#getSequenceDiagram
      * <em>Sequence Diagram</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sequence Diagram</em>' reference.
      * @see #getSequenceDiagram()

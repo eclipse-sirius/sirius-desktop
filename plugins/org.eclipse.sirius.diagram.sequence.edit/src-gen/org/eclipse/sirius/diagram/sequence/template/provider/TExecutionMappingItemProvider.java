@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider {
@@ -63,7 +63,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds a property descriptor for the Starting End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -77,7 +77,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This adds a property descriptor for the Finishing End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -95,11 +95,11 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      * @generated
      */
     protected void addRecursivePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionMapping_recursive_feature"), //$NON-NLS-1$
-                getString("_UI_TExecutionMapping_recursive_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TEXECUTION_MAPPING__RECURSIVE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TExecutionMapping_recursive_feature"), //$NON-NLS-1$
+                        getString("_UI_TExecutionMapping_recursive_description"), //$NON-NLS-1$
+                        TemplatePackage.Literals.TEXECUTION_MAPPING__RECURSIVE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -109,7 +109,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     /**
      * This returns TExecutionMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

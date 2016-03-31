@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
@@ -26,7 +27,6 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
  * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
  * <em>Instance Roles Ordering</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription()
  * @model
@@ -56,7 +56,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
      * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Ends Ordering</em>' attribute.
      * @see #getEndsOrdering()
@@ -72,7 +72,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Instance Roles Ordering</em>' attribute.
      * @see #setInstanceRolesOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_InstanceRolesOrdering()
@@ -89,7 +89,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
      * <em>Instance Roles Ordering</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Instance Roles Ordering</em>'
      *            attribute.

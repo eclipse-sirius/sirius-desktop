@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * <em><b>Delimited Event Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl#getStartingEndFinderExpression
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * {@link org.eclipse.sirius.diagram.sequence.description.impl.DelimitedEventMappingImpl#getFinishingEndFinderExpression
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * The cached value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStartingEndFinderExpression()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * The default value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
      * The cached value of the '{@link #getFinishingEndFinderExpression()
      * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFinishingEndFinderExpression()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DelimitedEventMappingImpl() {
@@ -89,7 +89,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,15 +201,15 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION:
-            return DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null : !DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT
-                    .equals(startingEndFinderExpression);
+            return DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT == null ? startingEndFinderExpression != null
+                    : !DelimitedEventMappingImpl.STARTING_END_FINDER_EXPRESSION_EDEFAULT.equals(startingEndFinderExpression);
         case DescriptionPackage.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION:
             return DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT == null ? finishingEndFinderExpression != null
                     : !DelimitedEventMappingImpl.FINISHING_END_FINDER_EXPRESSION_EDEFAULT.equals(finishingEndFinderExpression);
@@ -219,7 +219,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

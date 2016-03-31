@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage
  * @generated
  */
@@ -23,7 +23,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     DescriptionFactory eINSTANCE = org.eclipse.sirius.diagram.sequence.description.impl.DescriptionFactoryImpl.init();
@@ -31,7 +31,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Sequence Diagram Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Sequence Diagram Description</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Destruction Message Mapping</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Destruction Message Mapping</em>'.
      * @generated
      */
@@ -166,7 +166,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

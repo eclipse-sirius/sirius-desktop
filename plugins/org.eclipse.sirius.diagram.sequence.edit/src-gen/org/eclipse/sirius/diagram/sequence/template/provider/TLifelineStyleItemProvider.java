@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TLifelineStyleItemProvider extends TTransformerItemProvider {
@@ -60,12 +60,11 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
     /**
      * This adds a property descriptor for the Lifeline Width Computation
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLifelineWidthComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_feature"), //$NON-NLS-1$
                 getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -80,17 +79,17 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addLifelineColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TLifelineStyle_lifelineColor_feature"), //$NON-NLS-1$
-                getString("_UI_TLifelineStyle_lifelineColor_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TLifelineStyle_lifelineColor_feature"), //$NON-NLS-1$
+                        getString("_UI_TLifelineStyle_lifelineColor_description"), //$NON-NLS-1$
+                        TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns TLifelineStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +114,7 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

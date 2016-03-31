@@ -18,15 +18,13 @@ import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Message End Variable</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class MessageEndVariableImpl extends AbstractVariableImpl implements MessageEndVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageEndVariableImpl() {
@@ -35,7 +33,7 @@ public class MessageEndVariableImpl extends AbstractVariableImpl implements Mess
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getSendingEndFinderExpression
@@ -26,7 +27,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
  * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getReceivingEndFinderExpression
  * <em>Receiving End Finder Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getMessageMapping()
  * @model abstract="true"
@@ -42,7 +42,7 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sending End Finder Expression</em>'
      *         attribute.
      * @see #setSendingEndFinderExpression(String)
@@ -60,7 +60,7 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getSendingEndFinderExpression
      * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sending End Finder Expression</em>'
      *            attribute.
@@ -78,7 +78,7 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Receiving End Finder Expression</em>'
      *         attribute.
      * @see #setReceivingEndFinderExpression(String)
@@ -96,7 +96,7 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping#getReceivingEndFinderExpression
      * <em>Receiving End Finder Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Receiving End Finder Expression</em>
      *            ' attribute.

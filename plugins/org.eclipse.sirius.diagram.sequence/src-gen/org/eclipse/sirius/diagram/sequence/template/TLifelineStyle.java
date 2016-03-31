@@ -18,6 +18,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineWidthComputationExpression
@@ -26,7 +27,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor
  * <em>Lifeline Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineStyle()
  * @model
@@ -88,7 +88,7 @@ public interface TLifelineStyle extends TTransformer {
      * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle#getLifelineColor
      * <em>Lifeline Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Lifeline Color</em>' reference.
      * @see #getLifelineColor()

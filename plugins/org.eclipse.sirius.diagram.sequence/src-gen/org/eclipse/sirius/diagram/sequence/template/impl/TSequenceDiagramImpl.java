@@ -34,6 +34,7 @@ import org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl;
  * <em><b>TSequence Diagram</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl#getOutputs
@@ -51,7 +52,6 @@ import org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl;
  * {@link org.eclipse.sirius.diagram.sequence.template.impl.TSequenceDiagramImpl#getMessageMappings
  * <em>Message Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +59,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     /**
      * The cached value of the '{@link #getOutputs() <em>Outputs</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOutputs()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
      * The default value of the '{@link #getEndsOrdering()
      * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndsOrdering()
      * @generated
      * @ordered
@@ -98,10 +98,9 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     protected static final String ENDS_ORDERING_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getEndsOrdering()
-     * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getEndsOrdering() <em>Ends Ordering</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getEndsOrdering()
      * @generated
      * @ordered
@@ -132,7 +131,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TSequenceDiagramImpl() {
@@ -141,7 +140,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +150,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +163,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +173,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +187,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +200,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +213,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +223,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +237,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +253,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +275,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -307,7 +306,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +333,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -356,7 +355,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +373,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -392,7 +391,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

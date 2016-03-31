@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.MessageMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MessageMappingItemProvider extends EdgeMappingItemProvider {
@@ -64,7 +64,7 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
     /**
      * This adds a property descriptor for the Sending End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSendingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -78,7 +78,7 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
     /**
      * This adds a property descriptor for the Receiving End Finder Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReceivingEndFinderExpressionPropertyDescriptor(Object object) {
@@ -106,7 +106,7 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

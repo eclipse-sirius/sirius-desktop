@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em><b>Operand Creation Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OperandCreationToolImpl#getStartingEndPredecessor
@@ -35,7 +36,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.OperandCreationToolImpl#getFinishingEndPredecessor
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -64,7 +64,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandCreationToolImpl() {
@@ -73,7 +73,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStartingEndPredecessor(MessageEndVariable newStartingEndPredecessor, NotificationChain msgs) {
@@ -113,7 +113,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,12 +121,12 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
         if (newStartingEndPredecessor != startingEndPredecessor) {
             NotificationChain msgs = null;
             if (startingEndPredecessor != null) {
-                msgs = ((InternalEObject) startingEndPredecessor)
-                        .eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+                msgs = ((InternalEObject) startingEndPredecessor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR, null,
+                        msgs);
             }
             if (newStartingEndPredecessor != null) {
-                msgs = ((InternalEObject) newStartingEndPredecessor)
-                        .eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR, null, msgs);
+                msgs = ((InternalEObject) newStartingEndPredecessor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR, null,
+                        msgs);
             }
             msgs = basicSetStartingEndPredecessor(newStartingEndPredecessor, msgs);
             if (msgs != null) {
@@ -139,7 +139,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFinishingEndPredecessor(MessageEndVariable newFinishingEndPredecessor, NotificationChain msgs) {
@@ -169,7 +169,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

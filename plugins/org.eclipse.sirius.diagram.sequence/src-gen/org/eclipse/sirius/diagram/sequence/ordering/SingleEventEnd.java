@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#getSemanticEvent
  * <em>Semantic Event</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getSingleEventEnd()
  * @model
@@ -54,7 +54,7 @@ public interface SingleEventEnd extends EventEnd {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#isStart
      * <em>Start</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Start</em>' attribute.
      * @see #isStart()
@@ -84,7 +84,7 @@ public interface SingleEventEnd extends EventEnd {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd#getSemanticEvent
      * <em>Semantic Event</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Event</em>' reference.
      * @see #getSemanticEvent()

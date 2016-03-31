@@ -18,15 +18,13 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>End Of Life Mapping</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class EndOfLifeMappingImpl extends NodeMappingImpl implements EndOfLifeMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndOfLifeMappingImpl() {
@@ -35,7 +33,7 @@ public class EndOfLifeMappingImpl extends NodeMappingImpl implements EndOfLifeMa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

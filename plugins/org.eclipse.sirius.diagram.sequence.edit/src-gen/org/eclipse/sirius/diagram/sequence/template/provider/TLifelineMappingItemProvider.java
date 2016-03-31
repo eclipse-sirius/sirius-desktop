@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
@@ -62,15 +62,15 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This adds a property descriptor for the Eol Visible Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEolVisibleExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TLifelineMapping_eolVisibleExpression_feature"), //$NON-NLS-1$
-                getString("_UI_TLifelineMapping_eolVisibleExpression_description"), //$NON-NLS-1$
-                TemplatePackage.Literals.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TLifelineMapping_eolVisibleExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_TLifelineMapping_eolVisibleExpression_description"), //$NON-NLS-1$
+                        TemplatePackage.Literals.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -80,7 +80,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
     /**
      * This returns TLifelineMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

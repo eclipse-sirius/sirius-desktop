@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.provider.AbstractVariableItemPro
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CoveredLifelinesVariableItemProvider extends AbstractVariableItemProvider {
@@ -56,7 +56,7 @@ public class CoveredLifelinesVariableItemProvider extends AbstractVariableItemPr
     /**
      * This returns CoveredLifelinesVariable.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,14 +67,14 @@ public class CoveredLifelinesVariableItemProvider extends AbstractVariableItemPr
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CoveredLifelinesVariable) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_CoveredLifelinesVariable_type") : //$NON-NLS-1$
-            getString("_UI_CoveredLifelinesVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+                getString("_UI_CoveredLifelinesVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -82,7 +82,7 @@ public class CoveredLifelinesVariableItemProvider extends AbstractVariableItemPr
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
  * <em>Semantic End</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEnd()
  * @model abstract="true"
@@ -52,7 +52,7 @@ public interface EventEnd extends EObject {
      * {@link org.eclipse.sirius.diagram.sequence.ordering.EventEnd#getSemanticEnd
      * <em>Semantic End</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic End</em>' reference.
      * @see #getSemanticEnd()
