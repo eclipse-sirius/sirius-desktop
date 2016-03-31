@@ -23,13 +23,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>DFile</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getName <em>Name</em>}
  * </li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DFileImpl#getPath <em>Path</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
     /**
      * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPath()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DFileImpl() {
@@ -85,7 +85,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

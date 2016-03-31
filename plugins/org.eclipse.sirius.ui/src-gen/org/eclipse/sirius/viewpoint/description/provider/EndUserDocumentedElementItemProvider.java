@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class EndUserDocumentedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class EndUserDocumentedElementItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,12 +69,11 @@ public class EndUserDocumentedElementItemProvider extends ItemProviderAdapter im
     /**
      * This adds a property descriptor for the End User Documentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -85,7 +84,7 @@ public class EndUserDocumentedElementItemProvider extends ItemProviderAdapter im
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +99,7 @@ public class EndUserDocumentedElementItemProvider extends ItemProviderAdapter im
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

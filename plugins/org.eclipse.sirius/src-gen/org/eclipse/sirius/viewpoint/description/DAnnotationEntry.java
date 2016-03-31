@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry#getSource
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry#getDetails
  * <em>Details</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotationEntry()
  * @model
@@ -74,7 +74,7 @@ public interface DAnnotationEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Details</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDAnnotationEntry_Details()
      * @model

@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  * <em><b>User Color</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.UserColorImpl#getName
  * <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserColorImpl() {
@@ -64,7 +64,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public abstract class UserColorImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

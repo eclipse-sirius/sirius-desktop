@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>External Java Action</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionImpl#getSubModelOperations
@@ -43,7 +44,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionImpl#getParameters
  * <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -82,7 +82,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getParameters()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionImpl() {
@@ -100,7 +100,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -218,7 +218,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -281,7 +281,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

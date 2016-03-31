@@ -17,6 +17,7 @@ package org.eclipse.sirius.viewpoint.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName
@@ -25,7 +26,6 @@ package org.eclipse.sirius.viewpoint.description;
  * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue
  * <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization()
  * @model
@@ -54,7 +54,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getAttributeName
      * <em>Attribute Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Attribute Name</em>' attribute.
      * @see #getAttributeName()
@@ -88,7 +88,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

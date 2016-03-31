@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder <em>
- * Inverse Selection Order</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>
- * Elements To Select</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder
+ * <em>Inverse Selection Order</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
+ * <em>Elements To Select</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState()
  * @model
@@ -45,7 +45,7 @@ public interface UIState extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Inverse Selection Order</em>' attribute.
      * @see #setInverseSelectionOrder(boolean)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState_InverseSelectionOrder()
@@ -59,7 +59,7 @@ public interface UIState extends EObject {
      * {@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Inverse Selection Order</em>'
      *            attribute.
@@ -77,7 +77,7 @@ public interface UIState extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Elements To Select</em>' reference list.
      * @see #isSetElementsToSelect()
      * @see #unsetElementsToSelect()
@@ -92,7 +92,7 @@ public interface UIState extends EObject {
      * {@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
      * <em>Elements To Select</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetElementsToSelect()
      * @see #getElementsToSelect()
      * @generated
@@ -104,7 +104,7 @@ public interface UIState extends EObject {
      * {@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
      * <em>Elements To Select</em>}' reference list is set. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Elements To Select</em>' reference
      *         list is set.
      * @see #unsetElementsToSelect()

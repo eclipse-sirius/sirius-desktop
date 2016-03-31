@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.DModelElement#getEAnnotations
  * <em>EAnnotations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDModelElement()
  * @model abstract="true"
@@ -53,7 +53,7 @@ public interface DModelElement extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

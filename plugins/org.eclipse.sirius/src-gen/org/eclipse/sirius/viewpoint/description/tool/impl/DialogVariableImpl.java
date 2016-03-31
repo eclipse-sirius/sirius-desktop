@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Dialog Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.DialogVariableImpl#getDialogPrompt
  * <em>Dialog Prompt</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
      * The default value of the '{@link #getDialogPrompt()
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDialogPrompt()
      * @generated
      * @ordered
@@ -45,10 +45,9 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
     protected static final String DIALOG_PROMPT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getDialogPrompt()
-     * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getDialogPrompt() <em>Dialog Prompt</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getDialogPrompt()
      * @generated
      * @ordered
@@ -57,7 +56,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DialogVariableImpl() {
@@ -66,7 +65,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +75,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +85,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +99,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +113,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +128,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +143,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +157,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

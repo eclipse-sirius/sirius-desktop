@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
  * <em><b>Java Extension</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.JavaExtensionImpl#getQualifiedClassName
  * <em>Qualified Class Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
      * The default value of the '{@link #getQualifiedClassName()
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getQualifiedClassName()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
      * The cached value of the '{@link #getQualifiedClassName()
      * <em>Qualified Class Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getQualifiedClassName()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected JavaExtensionImpl() {
@@ -66,7 +66,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

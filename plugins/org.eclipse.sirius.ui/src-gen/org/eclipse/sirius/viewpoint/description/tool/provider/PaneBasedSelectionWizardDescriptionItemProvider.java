@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
@@ -107,8 +107,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addWindowImagePathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -133,12 +132,11 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Choice Of Values Message feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChoiceOfValuesMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHOICE_OF_VALUES_MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -149,12 +147,11 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Candidates Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -165,7 +162,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Tree feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreePropertyDescriptor(Object object) {
@@ -183,12 +180,10 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_rootExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_rootExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -199,8 +194,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -211,12 +205,11 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Selected Values Message feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSelectedValuesMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__SELECTED_VALUES_MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -227,12 +220,11 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Pre Selected Candidates
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreSelectedCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__PRE_SELECTED_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -247,7 +239,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +256,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +271,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
     /**
      * This returns PaneBasedSelectionWizardDescription.gif. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +296,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

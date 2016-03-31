@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.NameVariable} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NameVariableItemProvider extends AbstractVariableItemProvider {
@@ -67,7 +67,7 @@ public class NameVariableItemProvider extends AbstractVariableItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class NameVariableItemProvider extends AbstractVariableItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em><b>Annotation Entry</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.AnnotationEntryImpl#getSource
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * {@link org.eclipse.sirius.viewpoint.description.impl.AnnotationEntryImpl#getData
  * <em>Data</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getSource() <em>Source</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getData() <em>Data</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getData()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AnnotationEntryImpl() {
@@ -80,7 +80,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetData(EObject newData, NotificationChain msgs) {
@@ -143,7 +143,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

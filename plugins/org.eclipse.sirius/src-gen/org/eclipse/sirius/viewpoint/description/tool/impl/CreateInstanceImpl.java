@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Create Instance</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.CreateInstanceImpl#getTypeName
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.CreateInstanceImpl#getVariableName
  * <em>Variable Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
     /**
      * The default value of the '{@link #getTypeName() <em>Type Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTypeName()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
     /**
      * The cached value of the '{@link #getTypeName() <em>Type Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTypeName()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * The default value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * The cached value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReferenceName()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * The default value of the '{@link #getVariableName()
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -92,10 +92,9 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
     protected static final String VARIABLE_NAME_EDEFAULT = "instance"; //$NON-NLS-1$
 
     /**
-     * The cached value of the '{@link #getVariableName()
-     * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getVariableName() <em>Variable Name</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getVariableName()
      * @generated
      * @ordered
@@ -104,7 +103,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateInstanceImpl() {
@@ -113,7 +112,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +122,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +132,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +146,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +156,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +170,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +180,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +194,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +212,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +233,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +254,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +272,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

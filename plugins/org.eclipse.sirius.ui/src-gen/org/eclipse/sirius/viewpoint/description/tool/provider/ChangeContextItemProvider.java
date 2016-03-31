@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ChangeContextItemProvider extends ContainerModelOperationItemProvider {
@@ -64,11 +64,11 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ChangeContext_browseExpression_feature"), //$NON-NLS-1$
-                getString("_UI_ChangeContext_browseExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ChangeContext_browseExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_ChangeContext_browseExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -85,7 +85,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

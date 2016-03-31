@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em><b>Tooltip Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl#getTooltipExpression
  * <em>Tooltip Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getTooltipExpression()
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTooltipExpression()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getTooltipExpression()
      * <em>Tooltip Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTooltipExpression()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TooltipStyleDescriptionImpl() {
@@ -66,7 +66,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

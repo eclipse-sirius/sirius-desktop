@@ -44,14 +44,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ValidationItemProviderAdapterFactory extends ValidationAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -68,7 +68,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(SiriusEditPlugin.INSTANCE, ValidationPackage.eNS_URI);
@@ -77,7 +77,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -100,7 +100,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationSetItemProvider validationSetItemProvider;
@@ -109,7 +109,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SemanticValidationRuleItemProvider semanticValidationRuleItemProvider;
@@ -134,7 +134,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewValidationRuleItemProvider viewValidationRuleItemProvider;
@@ -159,7 +159,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RuleAuditItemProvider ruleAuditItemProvider;
@@ -184,7 +184,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ValidationFixItemProvider validationFixItemProvider;
@@ -209,7 +209,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -292,7 +292,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -302,7 +302,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -322,7 +322,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

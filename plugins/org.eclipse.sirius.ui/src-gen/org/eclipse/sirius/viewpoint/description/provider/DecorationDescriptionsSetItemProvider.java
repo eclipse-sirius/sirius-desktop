@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -72,7 +72,7 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
     /**
      * This returns DecorationDescriptionsSet.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

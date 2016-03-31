@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em><b>DRepresentation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getEAnnotations
@@ -47,15 +48,14 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements
  * <em>Representation Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getName <em>
- * Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getName
+ * <em>Name</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries
  * <em>Owned Annotation Entries</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getUiState
  * <em>Ui State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -74,7 +74,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getUiState() <em>Ui State</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getUiState()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationImpl() {
@@ -123,7 +123,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetUiState(UIState newUiState, NotificationChain msgs) {
@@ -248,7 +248,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -272,7 +272,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -365,7 +365,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -413,7 +413,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -437,7 +437,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -461,7 +461,7 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider {
@@ -65,7 +65,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -78,12 +78,11 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Color Value Computation
      * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addColorValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_InterpolatedColor_colorValueComputationExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_colorValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -94,12 +93,11 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Min Value Computation Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMinValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_InterpolatedColor_minValueComputationExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_minValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -110,12 +108,11 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Max Value Computation Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMaxValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_InterpolatedColor_maxValueComputationExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_maxValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -130,7 +127,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +141,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +156,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     /**
      * This returns InterpolatedColor.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +181,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -60,20 +60,20 @@ public class IfItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This adds a property descriptor for the Condition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addConditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_If_conditionExpression_feature"), //$NON-NLS-1$
-                getString("_UI_If_conditionExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.IF__CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_If_conditionExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_If_conditionExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.IF__CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns If.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class IfItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class IfItemProvider extends ContainerModelOperationItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

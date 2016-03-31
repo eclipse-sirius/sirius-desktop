@@ -61,16 +61,16 @@ public class DRepresentationContainerItemProvider extends DViewItemProvider {
      * @generated
      */
     protected void addModelsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationContainer_models_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationContainer_models_feature", "_UI_DRepresentationContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DREPRESENTATION_CONTAINER__MODELS, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentationContainer_models_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationContainer_models_feature", "_UI_DRepresentationContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION_CONTAINER__MODELS, false, false, false, null, null, null));
     }
 
     /**
      * This returns DRepresentationContainer.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class DRepresentationContainerItemProvider extends DViewItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class DRepresentationContainerItemProvider extends DViewItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

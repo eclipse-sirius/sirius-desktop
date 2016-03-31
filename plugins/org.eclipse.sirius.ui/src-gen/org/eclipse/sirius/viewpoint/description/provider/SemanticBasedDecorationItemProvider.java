@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SemanticBasedDecorationItemProvider extends DecorationDescriptionItemProvider {
@@ -64,17 +64,17 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SemanticBasedDecoration_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SemanticBasedDecoration_domainClass_feature", "_UI_SemanticBasedDecoration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SemanticBasedDecoration_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SemanticBasedDecoration_domainClass_feature", "_UI_SemanticBasedDecoration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns SemanticBasedDecoration.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

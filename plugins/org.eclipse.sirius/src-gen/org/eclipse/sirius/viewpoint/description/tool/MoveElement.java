@@ -20,6 +20,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression
@@ -28,7 +29,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getFeatureName
  * <em>Feature Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMoveElement()
  * @model
@@ -46,8 +46,8 @@ public interface MoveElement extends ContainerModelOperation {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMoveElement_NewContainerExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -59,7 +59,7 @@ public interface MoveElement extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getNewContainerExpression
      * <em>New Container Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New Container Expression</em>'
      *            attribute.
@@ -88,7 +88,7 @@ public interface MoveElement extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

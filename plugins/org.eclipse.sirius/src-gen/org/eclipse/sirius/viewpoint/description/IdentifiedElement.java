@@ -22,15 +22,14 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getName
+ * <li>{@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getName
  * <em>Name</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getLabel
  * <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIdentifiedElement()
  * @model
@@ -43,7 +42,7 @@ public interface IdentifiedElement extends EObject {
      * <!-- begin-model-doc --> The identifier of this element. Must be unique.
      * Changing this identifier will break existing user models which reference
      * the old identifier. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIdentifiedElement_Name()
@@ -56,7 +55,7 @@ public interface IdentifiedElement extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -82,7 +81,7 @@ public interface IdentifiedElement extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()

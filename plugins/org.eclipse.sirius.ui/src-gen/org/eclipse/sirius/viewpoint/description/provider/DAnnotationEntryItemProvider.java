@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class DAnnotationEntryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DAnnotationEntryItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -74,10 +74,10 @@ public class DAnnotationEntryItemProvider extends ItemProviderAdapter implements
      * @generated
      */
     protected void addSourcePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnnotationEntry_source_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_source_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.DANNOTATION_ENTRY__SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnnotationEntry_source_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_source_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.DANNOTATION_ENTRY__SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -87,16 +87,16 @@ public class DAnnotationEntryItemProvider extends ItemProviderAdapter implements
      * @generated
      */
     protected void addDetailsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnnotationEntry_details_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_details_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.DANNOTATION_ENTRY__DETAILS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnnotationEntry_details_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_details_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.DANNOTATION_ENTRY__DETAILS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns DAnnotationEntry.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class DAnnotationEntryItemProvider extends ItemProviderAdapter implements
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class DAnnotationEntryItemProvider extends ItemProviderAdapter implements
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

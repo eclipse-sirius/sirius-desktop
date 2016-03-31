@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Customizable</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.CustomizableImpl#getCustomFeatures
  * <em>Custom Features</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getCustomFeatures()
      * <em>Custom Features</em>}' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCustomFeatures()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomizableImpl() {
@@ -57,7 +57,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -111,7 +111,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public abstract class CustomizableImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

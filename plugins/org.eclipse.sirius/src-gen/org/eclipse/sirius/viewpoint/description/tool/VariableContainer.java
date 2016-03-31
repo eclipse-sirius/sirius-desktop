@@ -21,12 +21,12 @@ import org.eclipse.sirius.viewpoint.description.SubVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.VariableContainer#getSubVariables
  * <em>Sub Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getVariableContainer()
  * @model abstract="true"

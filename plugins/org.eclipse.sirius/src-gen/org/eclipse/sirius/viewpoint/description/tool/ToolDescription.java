@@ -17,6 +17,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getIconPath
@@ -31,7 +32,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolDescription()
  * @model
@@ -89,7 +89,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -120,7 +120,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getElementView
      * <em>Element View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element View</em>' containment
      *            reference.
@@ -149,7 +149,7 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

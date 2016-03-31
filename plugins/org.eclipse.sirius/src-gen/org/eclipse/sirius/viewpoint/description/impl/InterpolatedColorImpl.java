@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  * <em><b>Interpolated Color</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.InterpolatedColorImpl#getName
@@ -48,7 +49,6 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  * {@link org.eclipse.sirius.viewpoint.description.impl.InterpolatedColorImpl#getColorSteps
  * <em>Color Steps</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -56,7 +56,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -142,7 +142,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     /**
      * The cached value of the '{@link #getColorSteps() <em>Color Steps</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColorSteps()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InterpolatedColorImpl() {
@@ -160,7 +160,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +296,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -347,7 +347,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +374,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -386,11 +386,11 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
             return InterpolatedColorImpl.COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? colorValueComputationExpression != null
                     : !InterpolatedColorImpl.COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT.equals(colorValueComputationExpression);
         case DescriptionPackage.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION:
-            return InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? minValueComputationExpression != null : !InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(minValueComputationExpression);
+            return InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? minValueComputationExpression != null
+                    : !InterpolatedColorImpl.MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT.equals(minValueComputationExpression);
         case DescriptionPackage.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION:
-            return InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? maxValueComputationExpression != null : !InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(maxValueComputationExpression);
+            return InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT == null ? maxValueComputationExpression != null
+                    : !InterpolatedColorImpl.MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT.equals(maxValueComputationExpression);
         case DescriptionPackage.INTERPOLATED_COLOR__COLOR_STEPS:
             return colorSteps != null && !colorSteps.isEmpty();
         }
@@ -399,7 +399,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,7 +417,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -435,7 +435,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

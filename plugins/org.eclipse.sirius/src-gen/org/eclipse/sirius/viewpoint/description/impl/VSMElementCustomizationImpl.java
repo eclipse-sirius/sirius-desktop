@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
  * <em><b>VSM Element Customization</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getPredicateExpression
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
  * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationImpl#getFeatureCustomizations
  * <em>Feature Customizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -48,7 +48,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationImpl() {
@@ -88,7 +88,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -186,7 +186,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,15 +204,15 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION:
-            return VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT
-                    .equals(predicateExpression);
+            return VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null
+                    : !VSMElementCustomizationImpl.PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__FEATURE_CUSTOMIZATIONS:
             return featureCustomizations != null && !featureCustomizations.isEmpty();
         }
@@ -221,7 +221,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>UI State</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#isInverseSelectionOrder
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getElementsToSelect
  * <em>Elements To Select</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -45,7 +45,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * The default value of the '{@link #isInverseSelectionOrder()
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInverseSelectionOrder()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * The cached value of the '{@link #isInverseSelectionOrder()
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInverseSelectionOrder()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * The cached value of the '{@link #getElementsToSelect()
      * <em>Elements To Select</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getElementsToSelect()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UIStateImpl() {
@@ -85,7 +85,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +170,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -190,7 +190,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +224,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

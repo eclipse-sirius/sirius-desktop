@@ -32,11 +32,11 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -66,20 +66,20 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
     /**
      * This adds a property descriptor for the Item feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addItemPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MenuItemDescriptionReference_item_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescriptionReference_item_feature", "_UI_MenuItemDescriptionReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MenuItemDescriptionReference_item_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescriptionReference_item_feature", "_UI_MenuItemDescriptionReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM, true, false, true, null, null, null));
     }
 
     /**
      * This returns MenuItemDescriptionReference.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -65,7 +65,7 @@ public class DeleteViewItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class DeleteViewItemProvider extends ContainerModelOperationItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

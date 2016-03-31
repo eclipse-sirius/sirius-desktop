@@ -60,14 +60,14 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static DescriptionFactory init() {
@@ -85,7 +85,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DescriptionFactoryImpl() {
@@ -94,7 +94,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +256,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,7 +311,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -322,7 +322,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -333,7 +333,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -355,7 +355,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -412,7 +412,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -423,7 +423,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -445,7 +445,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -456,7 +456,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -467,7 +467,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -478,7 +478,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -489,7 +489,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -500,7 +500,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Position createPositionFromString(EDataType eDataType, String initialValue) {
@@ -513,7 +513,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertPositionToString(EDataType eDataType, Object instanceValue) {
@@ -522,7 +522,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SystemColors createSystemColorsFromString(EDataType eDataType, String initialValue) {
@@ -535,7 +535,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertSystemColorsToString(EDataType eDataType, Object instanceValue) {
@@ -544,7 +544,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createTypeNameFromString(EDataType eDataType, String initialValue) {
@@ -553,7 +553,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertTypeNameToString(EDataType eDataType, Object instanceValue) {
@@ -562,7 +562,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createInterpretedExpressionFromString(EDataType eDataType, String initialValue) {
@@ -571,7 +571,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertInterpretedExpressionToString(EDataType eDataType, Object instanceValue) {
@@ -580,7 +580,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createFeatureNameFromString(EDataType eDataType, String initialValue) {
@@ -589,7 +589,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertFeatureNameToString(EDataType eDataType, Object instanceValue) {
@@ -598,7 +598,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createImagePathFromString(EDataType eDataType, String initialValue) {
@@ -607,7 +607,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertImagePathToString(EDataType eDataType, Object instanceValue) {
@@ -634,7 +634,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String createTranslatableMessageFromString(EDataType eDataType, String initialValue) {
@@ -643,7 +643,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertTranslatableMessageToString(EDataType eDataType, Object instanceValue) {
@@ -652,7 +652,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -662,7 +662,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

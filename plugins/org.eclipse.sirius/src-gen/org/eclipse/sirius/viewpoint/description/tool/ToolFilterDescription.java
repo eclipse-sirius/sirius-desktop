@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getPrecondition
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getListeners
  * <em>Listeners</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription()
  * @model
@@ -52,8 +52,8 @@ public interface ToolFilterDescription extends EObject {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription_Precondition()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
@@ -65,7 +65,7 @@ public interface ToolFilterDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -83,8 +83,8 @@ public interface ToolFilterDescription extends EObject {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription_ElementsToListen()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a collection.'"
      * @generated
@@ -96,7 +96,7 @@ public interface ToolFilterDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription#getElementsToListen
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Elements To Listen</em>' attribute.
      * @see #getElementsToListen()
@@ -114,7 +114,7 @@ public interface ToolFilterDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Listeners</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription_Listeners()
      * @model containment="true" resolveProxies="true" required="true"

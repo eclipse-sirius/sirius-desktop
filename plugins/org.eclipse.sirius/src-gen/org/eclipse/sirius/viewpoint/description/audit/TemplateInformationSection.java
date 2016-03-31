@@ -20,12 +20,12 @@ package org.eclipse.sirius.viewpoint.description.audit;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection#getTemplatePath
  * <em>Template Path</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage#getTemplateInformationSection()
  * @model
@@ -50,7 +50,7 @@ public interface TemplateInformationSection extends InformationSection {
      * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection#getTemplatePath
      * <em>Template Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Template Path</em>' attribute.
      * @see #getTemplatePath()

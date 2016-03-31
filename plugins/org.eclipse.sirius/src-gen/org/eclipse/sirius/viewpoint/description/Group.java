@@ -19,9 +19,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getName <em>Name
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getName
+ * <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getOwnedViewpoints
  * <em>Owned Viewpoints</em>}</li>
  * <li>
@@ -30,12 +31,11 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.Group#getUserColorsPalettes
  * <em>User Colors Palettes</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getVersion <em>
- * Version</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getExtensions <em>
- * Extensions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getVersion
+ * <em>Version</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getExtensions
+ * <em>Extensions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup()
  * @model
@@ -50,7 +50,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_Name()
@@ -63,7 +63,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.Group#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -98,7 +98,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>System Colors Palette</em>' reference.
      * @see #setSystemColorsPalette(SytemColorsPalette)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_SystemColorsPalette()
@@ -112,7 +112,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * {@link org.eclipse.sirius.viewpoint.description.Group#getSystemColorsPalette
      * <em>System Colors Palette</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>System Colors Palette</em>'
      *            reference.

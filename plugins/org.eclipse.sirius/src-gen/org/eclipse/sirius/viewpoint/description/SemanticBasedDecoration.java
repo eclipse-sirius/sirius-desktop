@@ -20,12 +20,12 @@ package org.eclipse.sirius.viewpoint.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass
  * <em>Domain Class</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSemanticBasedDecoration()
  * @model
@@ -50,7 +50,7 @@ public interface SemanticBasedDecoration extends DecorationDescription {
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()

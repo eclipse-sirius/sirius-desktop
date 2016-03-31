@@ -22,19 +22,19 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>DRepresentation Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl#getModels
  * <em>Models</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class DRepresentationContainerImpl extends DViewImpl implements DRepresentationContainer {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DRepresentationContainerImpl() {
@@ -43,7 +43,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -53,7 +53,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class DRepresentationContainerImpl extends DViewImpl implements DRepresen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,15 +18,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>DFolder</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class DFolderImpl extends DResourceContainerImpl implements DFolder {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DFolderImpl() {
@@ -35,7 +33,7 @@ public class DFolderImpl extends DResourceContainerImpl implements DFolder {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

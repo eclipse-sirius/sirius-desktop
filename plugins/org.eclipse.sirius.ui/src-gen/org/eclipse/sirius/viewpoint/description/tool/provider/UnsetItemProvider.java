@@ -65,8 +65,7 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Unset_featureName_feature"), //$NON-NLS-1$
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Unset_featureName_feature"), //$NON-NLS-1$
                 getString("_UI_Unset_featureName_description"), //$NON-NLS-1$
                 ToolPackage.Literals.UNSET__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
@@ -79,16 +78,16 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      * @generated
      */
     protected void addElementExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Unset_elementExpression_feature"), //$NON-NLS-1$
-                getString("_UI_Unset_elementExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.UNSET__ELEMENT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Unset_elementExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_Unset_elementExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.UNSET__ELEMENT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns Unset.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +98,7 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +113,7 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -30,13 +30,13 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em><b>Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.StyleImpl#getCustomFeatures <em>
- * Custom Features</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.StyleImpl#getDescription <em>
- * Description</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.StyleImpl#getCustomFeatures
+ * <em>Custom Features</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.StyleImpl#getDescription
+ * <em>Description</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -45,7 +45,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
      * The cached value of the '{@link #getCustomFeatures()
      * <em>Custom Features</em>}' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCustomFeatures()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleImpl() {
@@ -73,7 +73,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public StyleDescription basicGetDescription() {
@@ -124,7 +124,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -189,7 +189,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

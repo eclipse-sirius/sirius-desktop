@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
@@ -38,7 +39,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
  * <em>Inverse Selection Order</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription()
  * @model abstract="true"
@@ -56,8 +56,8 @@ public interface AbstractToolDescription extends ToolEntry {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Precondition()
      * @model default="" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
@@ -71,7 +71,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getPrecondition
      * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition</em>' attribute.
      * @see #getPrecondition()
@@ -99,7 +99,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isForceRefresh
      * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Force Refresh</em>' attribute.
      * @see #isForceRefresh()
@@ -117,7 +117,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filters</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Filters()
      * @model containment="true" resolveProxies="true"
@@ -136,8 +136,8 @@ public interface AbstractToolDescription extends ToolEntry {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_ElementsToSelect()
      * @model default="" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
@@ -151,7 +151,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
      * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Elements To Select</em>' attribute.
      * @see #getElementsToSelect()
@@ -185,7 +185,7 @@ public interface AbstractToolDescription extends ToolEntry {
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Inverse Selection Order</em>'
      *            attribute.

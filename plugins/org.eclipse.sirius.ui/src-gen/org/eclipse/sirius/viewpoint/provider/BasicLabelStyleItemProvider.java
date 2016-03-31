@@ -68,10 +68,10 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyle_labelSize_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelSize_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicLabelStyle_labelSize_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelSize_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -81,10 +81,10 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyle_labelFormat_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelFormat_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicLabelStyle_labelFormat_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelFormat_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,10 +94,10 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addShowIconPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyle_showIcon_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_showIcon_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicLabelStyle_showIcon_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_showIcon_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -107,10 +107,10 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyle_iconPath_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_iconPath_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicLabelStyle_iconPath_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_iconPath_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -120,16 +120,16 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyle_labelColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelColor_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BasicLabelStyle_labelColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelColor_feature", "_UI_BasicLabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns BasicLabelStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

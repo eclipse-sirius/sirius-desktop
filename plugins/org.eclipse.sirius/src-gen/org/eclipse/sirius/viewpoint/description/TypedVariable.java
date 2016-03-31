@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EDataType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EDataType;
  * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType
  * <em>Value Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getTypedVariable()
  * @model
@@ -55,7 +55,7 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
      * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression
      * <em>Default Value Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Value Expression</em>'
      *            attribute.
@@ -86,7 +86,7 @@ public interface TypedVariable extends InteractiveVariableDescription, SubVariab
      * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType
      * <em>Value Type</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Type</em>' reference.
      * @see #getValueType()

@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
@@ -63,17 +63,17 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      * @generated
      */
     protected void addTargetsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewValidationRule_targets_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewValidationRule_targets_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns ViewValidationRule.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

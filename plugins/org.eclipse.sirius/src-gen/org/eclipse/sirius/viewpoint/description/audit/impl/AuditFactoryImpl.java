@@ -23,14 +23,14 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static AuditFactory init() {
@@ -48,7 +48,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AuditFactoryImpl() {
@@ -57,7 +57,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

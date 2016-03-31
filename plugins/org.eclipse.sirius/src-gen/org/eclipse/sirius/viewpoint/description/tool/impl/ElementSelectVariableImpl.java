@@ -19,15 +19,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Element Select Variable</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class ElementSelectVariableImpl extends AbstractVariableImpl implements ElementSelectVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementSelectVariableImpl() {
@@ -36,7 +34,7 @@ public class ElementSelectVariableImpl extends AbstractVariableImpl implements E
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

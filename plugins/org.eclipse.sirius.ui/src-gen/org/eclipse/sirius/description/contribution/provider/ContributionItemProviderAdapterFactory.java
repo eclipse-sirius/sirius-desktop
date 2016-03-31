@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.provider;
 
@@ -37,14 +37,14 @@ import org.eclipse.sirius.description.contribution.util.ContributionAdapterFacto
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContributionItemProviderAdapterFactory extends ContributionAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -53,7 +53,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -62,7 +62,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -70,7 +70,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public ContributionItemProviderAdapterFactory() {
@@ -85,7 +85,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IgnoreFeatureContributionItemProvider ignoreFeatureContributionItemProvider;
@@ -94,7 +94,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SetFeatureContributionItemProvider setFeatureContributionItemProvider;
@@ -119,7 +119,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AddFeatureContributionItemProvider addFeatureContributionItemProvider;
@@ -144,7 +144,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RemoveFeatureContributionItemProvider removeFeatureContributionItemProvider;
@@ -169,7 +169,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ClearFeatureContributionItemProvider clearFeatureContributionItemProvider;
@@ -194,7 +194,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ResetFeatureContributionItemProvider resetFeatureContributionItemProvider;
@@ -219,7 +219,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DirectEObjectReferenceItemProvider directEObjectReferenceItemProvider;
@@ -244,7 +244,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComputedEObjectReferenceItemProvider computedEObjectReferenceItemProvider;
@@ -269,7 +269,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.Contribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContributionItemProvider contributionItemProvider;
@@ -294,7 +294,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.Contribution}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.contribution.ContributionPoint}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContributionPointItemProvider contributionPointItemProvider;
@@ -319,7 +319,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.description.contribution.ContributionPoint}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,9 +334,10 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -344,16 +345,17 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +366,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +376,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,18 +393,20 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -411,9 +415,10 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -425,30 +430,41 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (ignoreFeatureContributionItemProvider != null)
+        if (ignoreFeatureContributionItemProvider != null) {
             ignoreFeatureContributionItemProvider.dispose();
-        if (setFeatureContributionItemProvider != null)
+        }
+        if (setFeatureContributionItemProvider != null) {
             setFeatureContributionItemProvider.dispose();
-        if (addFeatureContributionItemProvider != null)
+        }
+        if (addFeatureContributionItemProvider != null) {
             addFeatureContributionItemProvider.dispose();
-        if (removeFeatureContributionItemProvider != null)
+        }
+        if (removeFeatureContributionItemProvider != null) {
             removeFeatureContributionItemProvider.dispose();
-        if (clearFeatureContributionItemProvider != null)
+        }
+        if (clearFeatureContributionItemProvider != null) {
             clearFeatureContributionItemProvider.dispose();
-        if (resetFeatureContributionItemProvider != null)
+        }
+        if (resetFeatureContributionItemProvider != null) {
             resetFeatureContributionItemProvider.dispose();
-        if (directEObjectReferenceItemProvider != null)
+        }
+        if (directEObjectReferenceItemProvider != null) {
             directEObjectReferenceItemProvider.dispose();
-        if (computedEObjectReferenceItemProvider != null)
+        }
+        if (computedEObjectReferenceItemProvider != null) {
             computedEObjectReferenceItemProvider.dispose();
-        if (contributionItemProvider != null)
+        }
+        if (contributionItemProvider != null) {
             contributionItemProvider.dispose();
-        if (contributionPointItemProvider != null)
+        }
+        if (contributionPointItemProvider != null) {
             contributionPointItemProvider.dispose();
+        }
     }
 
 }

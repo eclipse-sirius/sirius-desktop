@@ -27,6 +27,7 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
  * <em><b>VSM Element Customization Reuse</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationReuseImpl#getReuse
@@ -35,7 +36,6 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
  * {@link org.eclipse.sirius.viewpoint.description.impl.VSMElementCustomizationReuseImpl#getAppliedOn
  * <em>Applied On</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -43,7 +43,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getReuse() <em>Reuse</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReuse()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     /**
      * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAppliedOn()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationReuseImpl() {
@@ -71,7 +71,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -144,7 +144,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

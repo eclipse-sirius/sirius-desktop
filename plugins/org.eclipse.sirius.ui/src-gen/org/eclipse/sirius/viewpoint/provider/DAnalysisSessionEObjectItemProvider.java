@@ -38,8 +38,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -74,14 +74,14 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
     /**
      * This adds a property descriptor for the Open feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOpenPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_open_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_open_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__OPEN, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysisSessionEObject_open_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_open_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__OPEN, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -91,16 +91,16 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addResourcesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_resources_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_resources_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysisSessionEObject_resources_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_resources_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Controlled Resources feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addControlledResourcesPropertyDescriptor(Object object) {
@@ -113,7 +113,7 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
     /**
      * This adds a property descriptor for the Activated Viewpoints feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addActivatedViewpointsPropertyDescriptor(Object object) {
@@ -130,16 +130,16 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addAnalysesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_analyses_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_analyses_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysisSessionEObject_analyses_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_analyses_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Synchronization Status feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSynchronizationStatusPropertyDescriptor(Object object) {
@@ -152,7 +152,7 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
     /**
      * This returns DAnalysisSessionEObject.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -21,11 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.Contribution#getSource
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getSource
  * <em>Source</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.description.contribution.Contribution#getTarget
+ * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getTarget
  * <em>Target</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.Contribution#getFeatureMask

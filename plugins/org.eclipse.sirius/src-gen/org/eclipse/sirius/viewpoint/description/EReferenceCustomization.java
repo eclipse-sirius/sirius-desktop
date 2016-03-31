@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName
@@ -27,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue
  * <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEReferenceCustomization()
  * @model
@@ -56,7 +56,7 @@ public interface EReferenceCustomization extends EStructuralFeatureCustomization
      * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getReferenceName
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Reference Name</em>' attribute.
      * @see #getReferenceName()
@@ -85,7 +85,7 @@ public interface EReferenceCustomization extends EStructuralFeatureCustomization
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization#getValue
      * <em>Value</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' reference.
      * @see #getValue()

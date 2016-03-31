@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.AbstractVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.DialogVariable#getDialogPrompt
  * <em>Dialog Prompt</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDialogVariable()
  * @model abstract="true"
@@ -53,7 +53,7 @@ public interface DialogVariable extends AbstractVariable {
      * {@link org.eclipse.sirius.viewpoint.description.tool.DialogVariable#getDialogPrompt
      * <em>Dialog Prompt</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Dialog Prompt</em>' attribute.
      * @see #getDialogPrompt()

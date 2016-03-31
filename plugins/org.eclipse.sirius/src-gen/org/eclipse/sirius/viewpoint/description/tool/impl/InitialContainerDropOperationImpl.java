@@ -26,12 +26,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Initial Container Drop Operation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.InitialContainerDropOperationImpl#getFirstModelOperations
  * <em>First Model Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -49,7 +49,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitialContainerDropOperationImpl() {
@@ -58,7 +58,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ModelOperation basicGetFirstModelOperations() {
@@ -105,7 +105,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperations(ModelOperation newFirstModelOperations, NotificationChain msgs) {
@@ -125,7 +125,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class InitialContainerDropOperationImpl extends MinimalEObjectImpl.Contai
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

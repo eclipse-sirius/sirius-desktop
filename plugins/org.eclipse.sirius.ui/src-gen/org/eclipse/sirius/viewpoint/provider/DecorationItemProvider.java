@@ -31,11 +31,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.Decoration} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class DecorationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DecorationItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,10 +69,10 @@ public class DecorationItemProvider extends ItemProviderAdapter implements IEdit
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Decoration_description_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Decoration_description_feature", "_UI_Decoration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DECORATION__DESCRIPTION, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Decoration_description_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Decoration_description_feature", "_UI_Decoration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DECORATION__DESCRIPTION, true, false, true, null, null, null));
     }
 
     /**
@@ -89,7 +89,7 @@ public class DecorationItemProvider extends ItemProviderAdapter implements IEdit
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DecorationItemProvider extends ItemProviderAdapter implements IEdit
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

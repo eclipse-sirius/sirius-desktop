@@ -67,17 +67,17 @@ public class GroupItemProvider extends DModelElementItemProvider {
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
-                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
 
     /**
      * This returns Group.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

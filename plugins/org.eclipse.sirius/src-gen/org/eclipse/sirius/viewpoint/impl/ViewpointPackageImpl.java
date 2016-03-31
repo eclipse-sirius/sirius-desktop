@@ -66,224 +66,224 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackag
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFeatureExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dStylizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRefreshableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dMappingBasedEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dSemanticDecoratorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dRepresentationElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dViewEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass metaModelExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass decorationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisCustomDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass styleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnalysisSessionEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sessionManagerEObjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dResourceEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFileEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dResourceContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dProjectEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dFolderEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dModelEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass basicLabelStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customizableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass uiStateEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum fontFormatEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum labelAlignmentEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum syncStatusEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType rgbValuesEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType resourceDescriptorEDataType = null;
@@ -309,7 +309,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -335,8 +335,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         }
 
         // Obtain or create and register package
-        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl ? EPackage.Registry.INSTANCE
-                .get(ViewpointPackage.eNS_URI) : new ViewpointPackageImpl());
+        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
+                ? EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) : new ViewpointPackageImpl());
 
         ViewpointPackageImpl.isInited = true;
 
@@ -344,16 +344,16 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         EcorePackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
-        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
-        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theViewpointPackage.createPackageContents();
@@ -381,7 +381,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +391,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -411,7 +411,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -421,7 +421,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -431,7 +431,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -441,7 +441,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -451,7 +451,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -461,7 +461,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -471,7 +471,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -481,7 +481,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -491,7 +491,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -501,7 +501,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -511,7 +511,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -521,7 +521,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -531,7 +531,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -541,7 +541,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -551,7 +551,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -561,7 +561,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -571,7 +571,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -581,7 +581,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -591,7 +591,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -601,7 +601,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -611,7 +611,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -621,7 +621,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -631,7 +631,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -641,7 +641,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -651,7 +651,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -661,7 +661,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -671,7 +671,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -681,7 +681,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -691,7 +691,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -701,7 +701,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -711,7 +711,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -721,7 +721,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -731,7 +731,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -741,7 +741,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -751,7 +751,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -761,7 +761,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -771,7 +771,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -781,7 +781,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -791,7 +791,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -801,7 +801,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -811,7 +811,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -821,7 +821,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -831,7 +831,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -841,7 +841,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -851,7 +851,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -861,7 +861,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -871,7 +871,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -881,7 +881,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -891,7 +891,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -901,7 +901,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -911,7 +911,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -921,7 +921,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -931,7 +931,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -941,7 +941,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -951,7 +951,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -961,7 +961,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -971,7 +971,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -981,7 +981,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -991,7 +991,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1001,7 +1001,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1011,7 +1011,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1021,7 +1021,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1031,7 +1031,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1041,7 +1041,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1051,7 +1051,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1061,7 +1061,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1071,7 +1071,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1081,7 +1081,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1091,7 +1091,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1101,7 +1101,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1111,7 +1111,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1121,7 +1121,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1131,7 +1131,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1141,7 +1141,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1151,7 +1151,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -1160,7 +1160,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -1279,7 +1279,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -1336,51 +1336,32 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Initialize classes and features; add operations and parameters
         initEClass(dAnalysisEClass, DAnalysis.class, "DAnalysis", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_ReferencedAnalysis(),
-                this.getDAnalysis(),
-                null,
-                "referencedAnalysis", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysis_SemanticResources(),
-                this.getResourceDescriptor(),
-                "semanticResources", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_Models(),
-                theEcorePackage.getEObject(),
-                null,
-                "models", null, 0, -1, DAnalysis.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_EAnnotations(),
-                theDescriptionPackage.getDAnnotationEntry(),
-                null,
-                "eAnnotations", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_OwnedViews(),
-                this.getDView(),
-                null,
-                "ownedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_SelectedViews(),
-                this.getDView(),
-                null,
-                "selectedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysis_OwnedFeatureExtensions(),
-                this.getDFeatureExtension(),
-                null,
-                "ownedFeatureExtensions", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysis_Version(),
-                theEcorePackage.getEString(),
-                "version", null, 0, 1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDAnalysis_ReferencedAnalysis(), this.getDAnalysis(), null, "referencedAnalysis", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysis_SemanticResources(), this.getResourceDescriptor(), "semanticResources", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DAnalysis.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_EAnnotations(), theDescriptionPackage.getDAnnotationEntry(), null, "eAnnotations", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_OwnedViews(), this.getDView(), null, "ownedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_SelectedViews(), this.getDView(), null, "selectedViews", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysis_OwnedFeatureExtensions(), this.getDFeatureExtension(), null, "ownedFeatureExtensions", null, 0, -1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysis_Version(), theEcorePackage.getEString(), "version", null, 0, 1, DAnalysis.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dFeatureExtensionEClass, DFeatureExtension.class, "DFeatureExtension", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDFeatureExtension_Description(),
-                theDescriptionPackage.getFeatureExtensionDescription(),
-                null,
-                "description", null, 1, 1, DFeatureExtension.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDFeatureExtension_Description(), theDescriptionPackage.getFeatureExtensionDescription(), null, "description", null, 1, 1, DFeatureExtension.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dStylizableEClass, DStylizable.class, "DStylizable", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -1394,167 +1375,112 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         addEOperation(dMappingBasedEClass, theDescriptionPackage.getRepresentationElementMapping(), "getMapping", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(dRepresentationContainerEClass, DRepresentationContainer.class,
-                "DRepresentationContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDRepresentationContainer_Models(),
-                theEcorePackage.getEObject(),
-                null,
-                "models", null, 0, -1, DRepresentationContainer.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDRepresentationContainer_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DRepresentationContainer.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dSemanticDecoratorEClass, DSemanticDecorator.class, "DSemanticDecorator", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDSemanticDecorator_Target(),
-                theEcorePackage.getEObject(),
-                null,
-                "target", null, 1, 1, DSemanticDecorator.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDSemanticDecorator_Target(), theEcorePackage.getEObject(), null, "target", null, 1, 1, DSemanticDecorator.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(dRepresentationEClass, DRepresentation.class, "DRepresentation", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDRepresentation_OwnedRepresentationElements(),
-                this.getDRepresentationElement(),
-                null,
-                "ownedRepresentationElements", null, 0, -1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDRepresentation_RepresentationElements(),
-                this.getDRepresentationElement(),
-                null,
-                "representationElements", null, 0, -1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDRepresentation_Name(),
-                theEcorePackage.getEString(),
-                "name", "", 0, 1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getDRepresentation_OwnedAnnotationEntries(),
-                theDescriptionPackage.getAnnotationEntry(),
-                null,
-                "ownedAnnotationEntries", null, 0, -1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDRepresentation_UiState(),
-                this.getUIState(),
-                null,
-                "uiState", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDRepresentation_OwnedRepresentationElements(), this.getDRepresentationElement(), null, "ownedRepresentationElements", null, 0, -1, DRepresentation.class, //$NON-NLS-1$
+                EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentation_RepresentationElements(), this.getDRepresentationElement(), null, "representationElements", null, 0, -1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDRepresentation_Name(), theEcorePackage.getEString(), "name", "", 0, 1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentation_OwnedAnnotationEntries(), theDescriptionPackage.getAnnotationEntry(), null, "ownedAnnotationEntries", null, 0, -1, DRepresentation.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentation_UiState(), this.getUIState(), null, "uiState", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDRepresentationElement_Name(),
-                theEcorePackage.getEString(),
-                "name", "", 0, 1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getDRepresentationElement_SemanticElements(),
-                theEcorePackage.getEObject(),
-                null,
-                "semanticElements", null, 0, -1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDRepresentationElement_Name(), theEcorePackage.getEString(), "name", "", 0, 1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentationElement_SemanticElements(), theEcorePackage.getEObject(), null, "semanticElements", null, 0, -1, DRepresentationElement.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dViewEClass, DView.class, "DView", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDView_OwnedRepresentations(),
-                this.getDRepresentation(),
-                null,
-                "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDView_OwnedExtensions(),
-                this.getMetaModelExtension(),
-                null,
-                "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDView_Viewpoint(),
-                theDescriptionPackage.getViewpoint(),
-                null,
-                "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(metaModelExtensionEClass, MetaModelExtension.class, "MetaModelExtension", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getMetaModelExtension_ExtensionGroup(),
-                theEcorePackage.getEObject(),
-                null,
-                "extensionGroup", null, 1, 1, MetaModelExtension.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getMetaModelExtension_ExtensionGroup(), theEcorePackage.getEObject(), null, "extensionGroup", null, 1, 1, MetaModelExtension.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(decorationEClass, Decoration.class, "Decoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDecoration_Description(),
-                theDescriptionPackage.getDecorationDescription(),
-                null,
-                "description", null, 1, 1, Decoration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDecoration_Description(), theDescriptionPackage.getDecorationDescription(), null, "description", null, 1, 1, Decoration.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dAnalysisCustomDataEClass, DAnalysisCustomData.class, "DAnalysisCustomData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysisCustomData_Key(),
-                theEcorePackage.getEString(),
-                "key", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysisCustomData_Data(),
-                theEcorePackage.getEObject(),
-                null,
-                "data", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDAnalysisCustomData_Key(), theEcorePackage.getEString(), "key", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisCustomData_Data(), theEcorePackage.getEObject(), null, "data", null, 1, 1, DAnalysisCustomData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(labelStyleEClass, LabelStyle.class, "LabelStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getLabelStyle_LabelAlignment(),
-                this.getLabelAlignment(),
-                "labelAlignment", null, 0, 1, LabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getLabelStyle_LabelAlignment(), this.getLabelAlignment(), "labelAlignment", null, 0, 1, LabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(styleEClass, Style.class, "Style", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getStyle_Description(),
-                theStylePackage.getStyleDescription(),
-                null,
-                "description", null, 0, 1, Style.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getStyle_Description(), theStylePackage.getStyleDescription(), null, "description", null, 0, 1, Style.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class,
-                "DAnalysisSessionEObject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysisSessionEObject_Open(),
-                theEcorePackage.getEBoolean(),
-                "open", null, 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysisSessionEObject_Resources(),
-                theEcorePackage.getEResource(),
-                "resources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysisSessionEObject_ControlledResources(),
-                theEcorePackage.getEResource(),
-                "controlledResources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysisSessionEObject_ActivatedViewpoints(),
-                theDescriptionPackage.getViewpoint(),
-                null,
-                "activatedViewpoints", null, 0, -1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnalysisSessionEObject_Analyses(),
-                this.getDAnalysis(),
-                null,
-                "analyses", null, 0, -1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnalysisSessionEObject_SynchronizationStatus(),
-                this.getSyncStatus(),
-                "synchronizationStatus", "dirty", 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class, "DAnalysisSessionEObject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDAnalysisSessionEObject_Open(), theEcorePackage.getEBoolean(), "open", null, 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_Resources(), theEcorePackage.getEResource(), "resources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_ControlledResources(), theEcorePackage.getEResource(), "controlledResources", null, 0, -1, DAnalysisSessionEObject.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisSessionEObject_ActivatedViewpoints(), theDescriptionPackage.getViewpoint(), null, "activatedViewpoints", null, 0, -1, DAnalysisSessionEObject.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnalysisSessionEObject_Analyses(), this.getDAnalysis(), null, "analyses", null, 0, -1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnalysisSessionEObject_SynchronizationStatus(), this.getSyncStatus(), "synchronizationStatus", "dirty", 1, 1, DAnalysisSessionEObject.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(sessionManagerEObjectEClass, SessionManagerEObject.class, "SessionManagerEObject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getSessionManagerEObject_OwnedSessions(),
-                this.getDAnalysisSessionEObject(),
-                null,
-                "ownedSessions", null, 0, -1, SessionManagerEObject.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getSessionManagerEObject_OwnedSessions(), this.getDAnalysisSessionEObject(), null, "ownedSessions", null, 0, -1, SessionManagerEObject.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dResourceEClass, DResource.class, "DResource", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDResource_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDResource_Path(),
-                theEcorePackage.getEString(),
-                "path", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDResource_Name(), theEcorePackage.getEString(), "name", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDResource_Path(), theEcorePackage.getEString(), "path", null, 1, 1, DResource.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dFileEClass, DFile.class, "DFile", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(dResourceContainerEClass, DResourceContainer.class, "DResourceContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDResourceContainer_Members(),
-                this.getDResource(),
-                null,
-                "members", null, 0, -1, DResourceContainer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDResourceContainer_Members(), this.getDResource(), null, "members", null, 0, -1, DResourceContainer.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(dProjectEClass, DProject.class, "DProject", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -1563,43 +1489,27 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dModelEClass, DModel.class, "DModel", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(basicLabelStyleEClass, BasicLabelStyle.class, "BasicLabelStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getBasicLabelStyle_LabelSize(),
-                theEcorePackage.getEInt(),
-                "labelSize", "8", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getBasicLabelStyle_LabelFormat(),
-                this.getFontFormat(),
-                "labelFormat", null, 0, 4, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getBasicLabelStyle_ShowIcon(),
-                theEcorePackage.getEBoolean(),
-                "showIcon", "true", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getBasicLabelStyle_IconPath(),
-                theEcorePackage.getEString(),
-                "iconPath", "", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getBasicLabelStyle_LabelColor(),
-                this.getRGBValues(),
-                "labelColor", "0,0,0", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getBasicLabelStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_LabelFormat(), this.getFontFormat(), "labelFormat", null, 0, 4, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_ShowIcon(), theEcorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_LabelColor(), this.getRGBValues(), "labelColor", "0,0,0", 0, 1, BasicLabelStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(customizableEClass, Customizable.class, "Customizable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getCustomizable_CustomFeatures(),
-                theEcorePackage.getEString(),
-                "customFeatures", null, 0, -1, Customizable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getCustomizable_CustomFeatures(), theEcorePackage.getEString(), "customFeatures", null, 0, -1, Customizable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(uiStateEClass, UIState.class, "UIState", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getUIState_InverseSelectionOrder(),
-                theEcorePackage.getEBoolean(),
-                "inverseSelectionOrder", "false", 0, 1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getUIState_ElementsToSelect(),
-                theEcorePackage.getEObject(),
-                null,
-                "elementsToSelect", null, 0, -1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getUIState_InverseSelectionOrder(), theEcorePackage.getEBoolean(), "inverseSelectionOrder", "false", 0, 1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getUIState_ElementsToSelect(), theEcorePackage.getEObject(), null, "elementsToSelect", null, 0, -1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(fontFormatEEnum, FontFormat.class, "FontFormat"); //$NON-NLS-1$
@@ -1632,7 +1542,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
     /**
      * Initializes the annotations for <b>Tags</b>. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createTagsAnnotations() {

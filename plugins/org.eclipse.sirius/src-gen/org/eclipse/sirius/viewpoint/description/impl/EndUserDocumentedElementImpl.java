@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  * <em><b>End User Documented Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.EndUserDocumentedElementImpl#getEndUserDocumentation
  * <em>End User Documentation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -37,7 +37,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EndUserDocumentedElementImpl() {
@@ -66,7 +66,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,22 +144,22 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
-            return EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT
-                    .equals(endUserDocumentation);
+            return EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null
+                    : !EndUserDocumentedElementImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

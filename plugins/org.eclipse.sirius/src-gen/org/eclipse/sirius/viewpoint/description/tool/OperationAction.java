@@ -17,6 +17,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView
@@ -25,7 +26,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getOperationAction()
  * @model
@@ -40,7 +40,7 @@ public interface OperationAction extends MenuItemDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>View</em>' containment reference.
      * @see #setView(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getOperationAction_View()
@@ -54,7 +54,7 @@ public interface OperationAction extends MenuItemDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getView
      * <em>View</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>View</em>' containment reference.
      * @see #getView()
@@ -70,7 +70,7 @@ public interface OperationAction extends MenuItemDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -85,7 +85,7 @@ public interface OperationAction extends MenuItemDescription {
      * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

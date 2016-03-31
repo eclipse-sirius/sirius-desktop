@@ -20,11 +20,11 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription <em>
- * Description</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
+ * <em>Description</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension()
  * @model abstract="true"
@@ -53,7 +53,7 @@ public interface DFeatureExtension extends EObject {
      * {@link org.eclipse.sirius.viewpoint.DFeatureExtension#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

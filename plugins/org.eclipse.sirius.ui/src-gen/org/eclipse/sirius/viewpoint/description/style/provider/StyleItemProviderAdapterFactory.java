@@ -44,14 +44,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class StyleItemProviderAdapterFactory extends StyleAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -68,7 +68,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(SiriusEditPlugin.INSTANCE, StylePackage.eNS_URI);
@@ -77,7 +77,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -100,7 +100,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicLabelStyleDescriptionItemProvider basicLabelStyleDescriptionItemProvider;
@@ -109,7 +109,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelStyleDescriptionItemProvider labelStyleDescriptionItemProvider;
@@ -134,7 +134,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelBorderStylesItemProvider labelBorderStylesItemProvider;
@@ -159,7 +159,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelBorderStyleDescriptionItemProvider labelBorderStyleDescriptionItemProvider;
@@ -184,7 +184,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -210,7 +210,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +267,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -293,7 +293,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

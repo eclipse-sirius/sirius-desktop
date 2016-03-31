@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getId
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerWidth
  * <em>Corner Width</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription()
  * @model
@@ -64,7 +64,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -93,7 +93,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -123,7 +123,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerHeight
      * <em>Corner Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Corner Height</em>' attribute.
      * @see #getCornerHeight()
@@ -153,7 +153,7 @@ public interface LabelBorderStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription#getCornerWidth
      * <em>Corner Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Corner Width</em>' attribute.
      * @see #getCornerWidth()

@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em><b>Basic Label Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl#getLabelSize
@@ -50,7 +51,6 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * {@link org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescriptionImpl#getIconPath
  * <em>Icon Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +59,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -121,7 +121,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicLabelStyleDescriptionImpl() {
@@ -169,7 +169,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetLabelColor() {
@@ -292,7 +292,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,7 +306,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -316,7 +316,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -330,7 +330,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -357,7 +357,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -389,7 +389,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

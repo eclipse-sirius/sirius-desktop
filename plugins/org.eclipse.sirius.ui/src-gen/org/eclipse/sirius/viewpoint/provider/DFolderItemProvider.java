@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.DFolder;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.DFolder} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DFolderItemProvider extends DResourceContainerItemProvider {
@@ -54,7 +54,7 @@ public class DFolderItemProvider extends DResourceContainerItemProvider {
 
     /**
      * This returns DFolder.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,7 +65,7 @@ public class DFolderItemProvider extends DResourceContainerItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class DFolderItemProvider extends DResourceContainerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

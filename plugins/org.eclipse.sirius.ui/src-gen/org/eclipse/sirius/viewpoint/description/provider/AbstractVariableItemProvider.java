@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class AbstractVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class AbstractVariableItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,20 +69,20 @@ public class AbstractVariableItemProvider extends ItemProviderAdapter implements
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
-                getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
+                        getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class AbstractVariableItemProvider extends ItemProviderAdapter implements
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

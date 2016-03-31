@@ -32,11 +32,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.Customizable} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class CustomizableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class CustomizableItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -70,16 +70,16 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
      * @generated
      */
     protected void addCustomFeaturesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Customizable_customFeatures_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Customizable_customFeatures_feature", "_UI_Customizable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Customizable_customFeatures_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Customizable_customFeatures_feature", "_UI_Customizable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class CustomizableItemProvider extends ItemProviderAdapter implements IEd
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

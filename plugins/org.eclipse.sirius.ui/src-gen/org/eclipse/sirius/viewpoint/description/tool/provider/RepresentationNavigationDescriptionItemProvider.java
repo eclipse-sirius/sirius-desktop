@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationNavigationDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
@@ -71,8 +71,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_RepresentationNavigationDescription_browseExpression_feature"), //$NON-NLS-1$
                 getString("_UI_RepresentationNavigationDescription_browseExpression_description"), //$NON-NLS-1$
                 ToolPackage.Literals.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -83,12 +82,11 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Navigation Name Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNavigationNameExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_RepresentationNavigationDescription_navigationNameExpression_feature"), //$NON-NLS-1$
                 getString("_UI_RepresentationNavigationDescription_navigationNameExpression_description"), //$NON-NLS-1$
                 ToolPackage.Literals.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -99,7 +97,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     /**
      * This adds a property descriptor for the Representation Description
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
@@ -116,7 +114,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +130,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +159,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

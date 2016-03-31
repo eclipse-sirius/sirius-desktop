@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization#getAppliedOn
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization#isApplyOnAll
  * <em>Apply On All</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEStructuralFeatureCustomization()
  * @model abstract="true"
@@ -74,7 +74,7 @@ public interface EStructuralFeatureCustomization extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization#isApplyOnAll
      * <em>Apply On All</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Apply On All</em>' attribute.
      * @see #isApplyOnAll()

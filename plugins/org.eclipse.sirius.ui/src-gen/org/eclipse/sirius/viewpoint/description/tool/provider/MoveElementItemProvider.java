@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MoveElementItemProvider extends ContainerModelOperationItemProvider {
@@ -61,15 +61,15 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
     /**
      * This adds a property descriptor for the New Container Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNewContainerExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MoveElement_newContainerExpression_feature"), //$NON-NLS-1$
-                getString("_UI_MoveElement_newContainerExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MoveElement_newContainerExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_MoveElement_newContainerExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -79,11 +79,11 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MoveElement_featureName_feature"), //$NON-NLS-1$
-                getString("_UI_MoveElement_featureName_description"), //$NON-NLS-1$
-                ToolPackage.Literals.MOVE_ELEMENT__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MoveElement_featureName_feature"), //$NON-NLS-1$
+                        getString("_UI_MoveElement_featureName_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.MOVE_ELEMENT__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -100,7 +100,7 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

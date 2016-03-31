@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getFeatureCustomizations
  * <em>Feature Customizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization()
  * @model
@@ -42,7 +42,7 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Predicate Expression</em>' attribute.
      * @see #setPredicateExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization_PredicateExpression()
@@ -61,7 +61,7 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>'
      *            attribute.
@@ -81,7 +81,7 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Customizations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomization_FeatureCustomizations()

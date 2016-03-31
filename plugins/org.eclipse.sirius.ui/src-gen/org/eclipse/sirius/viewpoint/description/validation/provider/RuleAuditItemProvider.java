@@ -35,10 +35,11 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RuleAuditItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -72,16 +73,16 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addAuditExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RuleAudit_auditExpression_feature"), //$NON-NLS-1$
-                getString("_UI_RuleAudit_auditExpression_description"), //$NON-NLS-1$
-                ValidationPackage.Literals.RULE_AUDIT__AUDIT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RuleAudit_auditExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_RuleAudit_auditExpression_description"), //$NON-NLS-1$
+                        ValidationPackage.Literals.RULE_AUDIT__AUDIT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns RuleAudit.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +93,7 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +108,7 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

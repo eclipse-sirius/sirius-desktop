@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
  * <em><b>Customization</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.CustomizationImpl#getVsmElementCustomizations
  * <em>Vsm Element Customizations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -52,7 +52,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomizationImpl() {
@@ -61,7 +61,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +130,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

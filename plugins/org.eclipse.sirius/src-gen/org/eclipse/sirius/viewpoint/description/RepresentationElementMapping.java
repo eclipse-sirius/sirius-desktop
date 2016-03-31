@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getDetailDescriptions
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping#getNavigationDescriptions
  * <em>Navigation Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationElementMapping()
  * @model abstract="true"

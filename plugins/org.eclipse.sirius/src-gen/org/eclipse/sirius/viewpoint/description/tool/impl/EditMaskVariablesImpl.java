@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Edit Mask Variables</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.EditMaskVariablesImpl#getMask
  * <em>Mask</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getMask() <em>Mask</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditMaskVariablesImpl() {
@@ -64,7 +64,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

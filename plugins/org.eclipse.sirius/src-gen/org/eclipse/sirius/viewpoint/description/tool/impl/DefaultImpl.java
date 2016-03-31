@@ -18,15 +18,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Default</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class DefaultImpl extends SwitchChildImpl implements Default {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DefaultImpl() {
@@ -35,7 +33,7 @@ public class DefaultImpl extends SwitchChildImpl implements Default {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

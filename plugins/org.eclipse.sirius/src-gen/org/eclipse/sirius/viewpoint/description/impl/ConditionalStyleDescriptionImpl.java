@@ -24,12 +24,12 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em><b>Conditional Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalStyleDescriptionImpl() {
@@ -67,7 +67,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,22 +157,22 @@ public abstract class ConditionalStyleDescriptionImpl extends MinimalEObjectImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
-            return ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT
-                    .equals(predicateExpression);
+            return ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null
+                    : !ConditionalStyleDescriptionImpl.PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

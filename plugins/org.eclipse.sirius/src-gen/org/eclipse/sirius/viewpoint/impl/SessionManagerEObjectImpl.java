@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Session Manager EObject</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl#getOwnedSessions
  * <em>Owned Sessions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -43,7 +43,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getOwnedSessions()
      * <em>Owned Sessions</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedSessions()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SessionManagerEObjectImpl() {
@@ -61,7 +61,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -129,7 +129,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.provider;
 
@@ -34,15 +34,15 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.description.contribution.FeatureContribution}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class FeatureContributionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class FeatureContributionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FeatureContributionItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,35 +69,35 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
     /**
      * This adds a property descriptor for the Source Feature feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceFeaturePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_sourceFeature_feature"), //$NON-NLS-1$
-                getString("_UI_FeatureContribution_sourceFeature_description"), //$NON-NLS-1$
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureContribution_sourceFeature_feature"), //$NON-NLS-1$
+                        getString("_UI_FeatureContribution_sourceFeature_description"), //$NON-NLS-1$
+                        ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Target Feature feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetFeaturePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_targetFeature_feature"), //$NON-NLS-1$
-                getString("_UI_FeatureContribution_targetFeature_description"), //$NON-NLS-1$
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureContribution_targetFeature_feature"), //$NON-NLS-1$
+                        getString("_UI_FeatureContribution_targetFeature_description"), //$NON-NLS-1$
+                        ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

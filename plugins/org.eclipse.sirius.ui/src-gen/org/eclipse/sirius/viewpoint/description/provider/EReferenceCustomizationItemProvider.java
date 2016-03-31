@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EReferenceCustomizationItemProvider extends EStructuralFeatureCustomizationItemProvider {
@@ -65,10 +65,10 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      * @generated
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EReferenceCustomization_referenceName_feature"), //$NON-NLS-1$
-                getString("_UI_EReferenceCustomization_referenceName_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EReferenceCustomization_referenceName_feature"), //$NON-NLS-1$
+                        getString("_UI_EReferenceCustomization_referenceName_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,16 +78,16 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EReferenceCustomization_value_feature"), //$NON-NLS-1$
-                getString("_UI_EReferenceCustomization_value_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__VALUE, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EReferenceCustomization_value_feature"), //$NON-NLS-1$
+                        getString("_UI_EReferenceCustomization_value_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__VALUE, true, false, true, null, null, null));
     }
 
     /**
      * This returns EReferenceCustomization.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

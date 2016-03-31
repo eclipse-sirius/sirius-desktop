@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getDomainClass
@@ -27,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getFeatureName
  * <em>Feature Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFeatureChangeListener()
  * @model
@@ -57,7 +57,7 @@ public interface FeatureChangeListener extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -88,7 +88,7 @@ public interface FeatureChangeListener extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

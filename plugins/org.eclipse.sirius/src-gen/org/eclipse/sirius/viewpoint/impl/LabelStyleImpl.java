@@ -23,12 +23,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Label Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.LabelStyleImpl#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.LabelStyleImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -57,7 +56,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelStyleImpl() {
@@ -66,7 +65,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +101,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +115,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +130,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +145,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +159,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

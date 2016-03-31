@@ -29,9 +29,9 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Basic Label Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getLabelSize
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getLabelSize
  * <em>Label Size</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getLabelFormat
@@ -44,7 +44,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * {@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getLabelColor
  * <em>Label Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -53,7 +52,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -63,7 +62,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The cached value of the '{@link #getLabelSize() <em>Label Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelSize()
      * @generated
      * @ordered
@@ -73,7 +72,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The cached value of the '{@link #getLabelFormat() <em>Label Format</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFormat()
      * @generated
      * @ordered
@@ -83,7 +82,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The default value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -93,7 +92,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The cached value of the '{@link #isShowIcon() <em>Show Icon</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isShowIcon()
      * @generated
      * @ordered
@@ -103,7 +102,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -113,7 +112,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIconPath()
      * @generated
      * @ordered
@@ -123,7 +122,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The default value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -133,7 +132,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelColor()
      * @generated
      * @ordered
@@ -142,7 +141,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BasicLabelStyleImpl() {
@@ -151,7 +150,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +160,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +170,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +184,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +197,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +207,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +221,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +231,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +245,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +255,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +269,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +291,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -321,7 +320,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +347,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +369,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

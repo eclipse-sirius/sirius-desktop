@@ -20,12 +20,12 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext#getBrowseExpression
  * <em>Browse Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getChangeContext()
  * @model
@@ -43,8 +43,8 @@ public interface ChangeContext extends ContainerModelOperation {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getChangeContext_BrowseExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -56,7 +56,7 @@ public interface ChangeContext extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext#getBrowseExpression
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Browse Expression</em>' attribute.
      * @see #getBrowseExpression()

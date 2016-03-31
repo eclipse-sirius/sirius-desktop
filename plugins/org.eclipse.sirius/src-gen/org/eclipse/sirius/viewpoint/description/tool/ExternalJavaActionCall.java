@@ -20,12 +20,12 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall#getAction
  * <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaActionCall()
  * @model

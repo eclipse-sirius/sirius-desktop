@@ -21,19 +21,19 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize <em>
- * Label Size</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat <em>
- * Label Format</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#isShowIcon <em>Show
- * Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getIconPath <em>Icon
- * Path</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor <em>
- * Label Color</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize
+ * <em>Label Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelFormat
+ * <em>Label Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#isShowIcon
+ * <em>Show Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getIconPath
+ * <em>Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
+ * <em>Label Color</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle()
  * @model
@@ -59,7 +59,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -132,7 +132,7 @@ public interface BasicLabelStyle extends Customizable {
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Color</em>' attribute.
      * @see #getLabelColor()

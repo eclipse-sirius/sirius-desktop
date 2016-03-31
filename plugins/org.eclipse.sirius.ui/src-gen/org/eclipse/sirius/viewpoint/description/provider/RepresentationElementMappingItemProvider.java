@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationElementMappingItemProvider extends IdentifiedElementItemProvider {
@@ -74,7 +74,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
     /**
      * This adds a property descriptor for the Navigation Descriptions feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNavigationDescriptionsPropertyDescriptor(Object object) {
@@ -102,7 +102,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

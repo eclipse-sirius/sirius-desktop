@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvider {
@@ -65,15 +65,15 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     /**
      * This adds a property descriptor for the Id feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaAction_id_feature"), //$NON-NLS-1$
-                getString("_UI_ExternalJavaAction_id_description"), //$NON-NLS-1$
-                ToolPackage.Literals.EXTERNAL_JAVA_ACTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ExternalJavaAction_id_feature"), //$NON-NLS-1$
+                        getString("_UI_ExternalJavaAction_id_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.EXTERNAL_JAVA_ACTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -83,7 +83,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     /**
      * This returns ExternalJavaAction.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

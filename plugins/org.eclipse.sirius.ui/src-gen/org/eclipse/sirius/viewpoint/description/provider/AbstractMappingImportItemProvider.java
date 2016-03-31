@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class AbstractMappingImportItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class AbstractMappingImportItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -74,33 +74,31 @@ public class AbstractMappingImportItemProvider extends ItemProviderAdapter imple
      * @generated
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractMappingImport_hideSubMappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractMappingImport_hideSubMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Inherits Ancestor Filters
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), //$NON-NLS-1$
                 getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +112,7 @@ public class AbstractMappingImportItemProvider extends ItemProviderAdapter imple
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

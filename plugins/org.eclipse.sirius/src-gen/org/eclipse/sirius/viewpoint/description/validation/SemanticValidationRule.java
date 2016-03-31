@@ -20,12 +20,12 @@ package org.eclipse.sirius.viewpoint.description.validation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
  * <em>Target Class</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule()
  * @model
@@ -51,7 +51,7 @@ public interface SemanticValidationRule extends ValidationRule {
      * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
      * <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Class</em>' attribute.
      * @see #getTargetClass()

@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateInstanceItemProvider extends ContainerModelOperationItemProvider {
@@ -66,11 +66,11 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      * @generated
      */
     protected void addTypeNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_typeName_feature"), //$NON-NLS-1$
-                getString("_UI_CreateInstance_typeName_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CREATE_INSTANCE__TYPE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateInstance_typeName_feature"), //$NON-NLS-1$
+                        getString("_UI_CreateInstance_typeName_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CREATE_INSTANCE__TYPE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -80,11 +80,11 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      * @generated
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_referenceName_feature"), //$NON-NLS-1$
-                getString("_UI_CreateInstance_referenceName_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CREATE_INSTANCE__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateInstance_referenceName_feature"), //$NON-NLS-1$
+                        getString("_UI_CreateInstance_referenceName_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CREATE_INSTANCE__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -94,17 +94,17 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      * @generated
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_variableName_feature"), //$NON-NLS-1$
-                getString("_UI_CreateInstance_variableName_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CREATE_INSTANCE__VARIABLE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateInstance_variableName_feature"), //$NON-NLS-1$
+                        getString("_UI_CreateInstance_variableName_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CREATE_INSTANCE__VARIABLE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns CreateInstance.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

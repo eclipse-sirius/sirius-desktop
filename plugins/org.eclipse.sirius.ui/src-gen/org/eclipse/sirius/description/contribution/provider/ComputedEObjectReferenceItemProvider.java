@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.provider;
 
@@ -36,15 +36,15 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ComputedEObjectReferenceItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +54,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     /**
      * This adds a property descriptor for the Value Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
@@ -84,7 +84,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     /**
      * This returns ComputedEObjectReference.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget <em>
- * Target</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.DSemanticDecorator#getTarget
+ * <em>Target</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSemanticDecorator()
  * @model abstract="true"

@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
  * <em>Predicate Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription()
  * @model abstract="true"
@@ -55,7 +55,7 @@ public interface ConditionalStyleDescription extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription#getPredicateExpression
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Predicate Expression</em>'
      *            attribute.
@@ -66,7 +66,7 @@ public interface ConditionalStyleDescription extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

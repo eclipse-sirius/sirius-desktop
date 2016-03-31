@@ -79,12 +79,11 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the End User Documentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
                 getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -95,15 +94,15 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -113,31 +112,31 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Model File Extension feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addModelFileExtensionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Viewpoint_modelFileExtension_feature"), //$NON-NLS-1$
-                getString("_UI_Viewpoint_modelFileExtension_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.VIEWPOINT__MODEL_FILE_EXTENSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Viewpoint_modelFileExtension_feature"), //$NON-NLS-1$
+                        getString("_UI_Viewpoint_modelFileExtension_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.VIEWPOINT__MODEL_FILE_EXTENSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Icon feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
@@ -154,10 +153,10 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addConflictsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Viewpoint_conflicts_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_conflicts_feature", "_UI_Viewpoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.VIEWPOINT__CONFLICTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Viewpoint_conflicts_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_conflicts_feature", "_UI_Viewpoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.VIEWPOINT__CONFLICTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -179,10 +178,10 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addCustomizesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Viewpoint_customizes_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_customizes_feature", "_UI_Viewpoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.VIEWPOINT__CUSTOMIZES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Viewpoint_customizes_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_customizes_feature", "_UI_Viewpoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.VIEWPOINT__CUSTOMIZES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -192,7 +191,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +211,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +256,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,8 +310,8 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
         // newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS,
         // DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS,
-                org.eclipse.sirius.viewpoint.description.DescriptionFactory.eINSTANCE.createJavaExtension()));
+        newChildDescriptors
+                .add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS, org.eclipse.sirius.viewpoint.description.DescriptionFactory.eINSTANCE.createJavaExtension()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_MM_EXTENSIONS,
                 org.eclipse.sirius.viewpoint.description.DescriptionFactory.eINSTANCE.createMetamodelExtensionSetting()));

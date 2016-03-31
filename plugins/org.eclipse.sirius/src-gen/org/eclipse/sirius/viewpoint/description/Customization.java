@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.Customization#getVsmElementCustomizations
  * <em>Vsm Element Customizations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCustomization()
  * @model
@@ -43,7 +43,7 @@ public interface Customization extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Vsm Element Customizations</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCustomization_VsmElementCustomizations()

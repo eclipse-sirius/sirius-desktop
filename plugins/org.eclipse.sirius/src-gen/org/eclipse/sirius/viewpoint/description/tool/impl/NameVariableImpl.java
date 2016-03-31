@@ -19,15 +19,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Name Variable</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class NameVariableImpl extends AbstractVariableImpl implements NameVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NameVariableImpl() {
@@ -36,7 +34,7 @@ public class NameVariableImpl extends AbstractVariableImpl implements NameVariab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

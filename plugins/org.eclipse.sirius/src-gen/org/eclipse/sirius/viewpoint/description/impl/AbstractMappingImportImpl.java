@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em><b>Abstract Mapping Import</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.AbstractMappingImportImpl#isHideSubMappings
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * {@link org.eclipse.sirius.viewpoint.description.impl.AbstractMappingImportImpl#isInheritsAncestorFilters
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
      * The default value of the '{@link #isHideSubMappings()
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #isHideSubMappings()
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
      * The default value of the '{@link #isInheritsAncestorFilters()
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
      * The cached value of the '{@link #isInheritsAncestorFilters()
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractMappingImportImpl() {
@@ -91,7 +91,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public abstract class AbstractMappingImportImpl extends MinimalEObjectImpl.Conta
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

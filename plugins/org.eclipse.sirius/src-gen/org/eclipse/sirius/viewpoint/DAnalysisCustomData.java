@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey <em>Key
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData <em>Data
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey
+ * <em>Key</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData
+ * <em>Data</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisCustomData()
  * @model
@@ -53,7 +53,7 @@ public interface DAnalysisCustomData extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getKey
      * <em>Key</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Key</em>' attribute.
      * @see #getKey()
@@ -69,7 +69,7 @@ public interface DAnalysisCustomData extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(EObject)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisCustomData_Data()
@@ -83,7 +83,7 @@ public interface DAnalysisCustomData extends EObject {
      * {@link org.eclipse.sirius.viewpoint.DAnalysisCustomData#getData
      * <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()

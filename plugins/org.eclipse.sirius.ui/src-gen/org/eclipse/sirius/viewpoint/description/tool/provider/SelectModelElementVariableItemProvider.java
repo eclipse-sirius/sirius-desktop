@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SelectModelElementVariableItemProvider extends SubVariableItemProvider {
@@ -68,7 +68,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This adds a property descriptor for the Candidates Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
@@ -86,25 +86,25 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
      * @generated
      */
     protected void addMultiplePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_multiple_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_multiple_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SelectionDescription_multiple_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_multiple_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.SELECTION_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Tree feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTreePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_tree_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_tree_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SelectionDescription_tree_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_tree_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.SELECTION_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -114,11 +114,11 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_rootExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_rootExpression_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SelectionDescription_rootExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_rootExpression_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.SELECTION_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -142,11 +142,11 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
      * @generated
      */
     protected void addMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_message_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_message_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SelectionDescription_message_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_message_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.SELECTION_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -165,7 +165,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This returns SelectModelElementVariable.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class SelectModelElementVariableItemProvider extends SubVariableItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

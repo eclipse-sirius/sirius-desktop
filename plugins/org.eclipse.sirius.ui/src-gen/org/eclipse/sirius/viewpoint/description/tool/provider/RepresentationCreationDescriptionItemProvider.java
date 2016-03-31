@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RepresentationCreationDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
@@ -95,7 +95,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
     /**
      * This adds a property descriptor for the Representation Description
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

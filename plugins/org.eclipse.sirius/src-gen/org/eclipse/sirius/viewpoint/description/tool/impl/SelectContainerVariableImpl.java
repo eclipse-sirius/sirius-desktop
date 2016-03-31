@@ -30,21 +30,21 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * <em><b>Select Container Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectContainerVariableImpl#getSubVariables
  * <em>Sub Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class SelectContainerVariableImpl extends AbstractVariableImpl implements SelectContainerVariable {
     /**
-     * The cached value of the '{@link #getSubVariables()
-     * <em>Sub Variables</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getSubVariables() <em>Sub Variables</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getSubVariables()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectContainerVariableImpl() {
@@ -62,7 +62,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -130,7 +130,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class SelectContainerVariableImpl extends AbstractVariableImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

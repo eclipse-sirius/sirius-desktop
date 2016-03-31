@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EAttributeCustomizationItemProvider extends EStructuralFeatureCustomizationItemProvider {
@@ -65,10 +65,10 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      * @generated
      */
     protected void addAttributeNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EAttributeCustomization_attributeName_feature"), //$NON-NLS-1$
-                getString("_UI_EAttributeCustomization_attributeName_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EAttributeCustomization_attributeName_feature"), //$NON-NLS-1$
+                        getString("_UI_EAttributeCustomization_attributeName_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,16 +78,16 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EAttributeCustomization_value_feature"), //$NON-NLS-1$
-                getString("_UI_EAttributeCustomization_value_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EAttributeCustomization_value_feature"), //$NON-NLS-1$
+                        getString("_UI_EAttributeCustomization_value_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns EAttributeCustomization.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

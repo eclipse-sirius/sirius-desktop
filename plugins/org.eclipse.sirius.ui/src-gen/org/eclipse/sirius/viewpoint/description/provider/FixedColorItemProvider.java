@@ -62,7 +62,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This adds a property descriptor for the Red feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addRedPropertyDescriptor(Object object) {
@@ -88,7 +88,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This adds a property descriptor for the Blue feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBluePropertyDescriptor(Object object) {
@@ -112,7 +112,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class FixedColorItemProvider extends ColorDescriptionItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

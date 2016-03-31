@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.description.UserColor#getName <em>
- * Name</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.UserColor#getName
+ * <em>Name</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getUserColor()
  * @model abstract="true"
@@ -48,7 +48,7 @@ public interface UserColor extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.UserColor#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

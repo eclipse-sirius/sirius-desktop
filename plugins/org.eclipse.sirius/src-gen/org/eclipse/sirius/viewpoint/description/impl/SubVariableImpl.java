@@ -18,15 +18,13 @@ import org.eclipse.sirius.viewpoint.description.SubVariable;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Sub Variable</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public abstract class SubVariableImpl extends AbstractVariableImpl implements SubVariable {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SubVariableImpl() {
@@ -35,7 +33,7 @@ public abstract class SubVariableImpl extends AbstractVariableImpl implements Su
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

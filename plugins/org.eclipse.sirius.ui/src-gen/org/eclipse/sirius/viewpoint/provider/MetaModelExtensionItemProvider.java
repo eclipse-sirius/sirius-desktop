@@ -34,8 +34,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  *
  * @generated
  */
-public class MetaModelExtensionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class MetaModelExtensionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,16 +69,16 @@ public class MetaModelExtensionItemProvider extends ItemProviderAdapter implemen
      * @generated
      */
     protected void addExtensionGroupPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MetaModelExtension_extensionGroup_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MetaModelExtension_extensionGroup_feature", "_UI_MetaModelExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.META_MODEL_EXTENSION__EXTENSION_GROUP, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MetaModelExtension_extensionGroup_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MetaModelExtension_extensionGroup_feature", "_UI_MetaModelExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.META_MODEL_EXTENSION__EXTENSION_GROUP, true, false, true, null, null, null));
     }
 
     /**
      * This returns MetaModelExtension.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public class MetaModelExtensionItemProvider extends ItemProviderAdapter implemen
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class MetaModelExtensionItemProvider extends ItemProviderAdapter implemen
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -44,14 +44,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -68,7 +68,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(SiriusEditPlugin.INSTANCE, ToolPackage.eNS_URI);
@@ -77,7 +77,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -100,7 +100,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolDescriptionItemProvider toolDescriptionItemProvider;
@@ -109,7 +109,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PasteDescriptionItemProvider pasteDescriptionItemProvider;
@@ -134,7 +134,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectionWizardDescriptionItemProvider selectionWizardDescriptionItemProvider;
@@ -159,7 +159,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PaneBasedSelectionWizardDescriptionItemProvider paneBasedSelectionWizardDescriptionItemProvider;
@@ -184,7 +184,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MenuItemDescriptionReferenceItemProvider menuItemDescriptionReferenceItemProvider;
@@ -209,7 +209,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -225,7 +225,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperationActionItemProvider operationActionItemProvider;
@@ -234,7 +234,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.OperationAction}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionItemProvider externalJavaActionItemProvider;
@@ -259,7 +259,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionCallItemProvider externalJavaActionCallItemProvider;
@@ -284,7 +284,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PopupMenuItemProvider popupMenuItemProvider;
@@ -325,7 +325,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AcceleoVariableItemProvider acceleoVariableItemProvider;
@@ -334,7 +334,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +350,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementDropVariableItemProvider elementDropVariableItemProvider;
@@ -359,7 +359,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementSelectVariableItemProvider elementSelectVariableItemProvider;
@@ -384,7 +384,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -400,7 +400,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementVariableItemProvider elementVariableItemProvider;
@@ -409,7 +409,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementVariable}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -425,7 +425,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementViewVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementViewVariableItemProvider elementViewVariableItemProvider;
@@ -434,7 +434,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementViewVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -450,7 +450,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDeleteVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementDeleteVariableItemProvider elementDeleteVariableItemProvider;
@@ -459,7 +459,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDeleteVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -475,7 +475,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DropContainerVariableItemProvider dropContainerVariableItemProvider;
@@ -484,7 +484,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -500,7 +500,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectContainerVariableItemProvider selectContainerVariableItemProvider;
@@ -509,7 +509,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -525,7 +525,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerViewVariableItemProvider containerViewVariableItemProvider;
@@ -534,7 +534,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -550,7 +550,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SelectModelElementVariableItemProvider selectModelElementVariableItemProvider;
@@ -559,7 +559,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -575,7 +575,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditMaskVariablesItemProvider editMaskVariablesItemProvider;
@@ -584,7 +584,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -600,7 +600,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitialNodeCreationOperationItemProvider initialNodeCreationOperationItemProvider;
@@ -609,7 +609,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -625,7 +625,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialOperation}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitialOperationItemProvider initialOperationItemProvider;
@@ -634,7 +634,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialOperation}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -650,7 +650,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitEdgeCreationOperationItemProvider initEdgeCreationOperationItemProvider;
@@ -659,7 +659,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -675,7 +675,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InitialContainerDropOperationItemProvider initialContainerDropOperationItemProvider;
@@ -684,7 +684,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -700,7 +700,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateInstanceItemProvider createInstanceItemProvider;
@@ -709,7 +709,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.CreateInstance}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -725,7 +725,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ChangeContext}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChangeContextItemProvider changeContextItemProvider;
@@ -750,7 +750,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SetValueItemProvider setValueItemProvider;
@@ -775,7 +775,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SetObjectItemProvider setObjectItemProvider;
@@ -800,7 +800,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.Unset} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UnsetItemProvider unsetItemProvider;
@@ -825,7 +825,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.MoveElement}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MoveElementItemProvider moveElementItemProvider;
@@ -850,7 +850,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.RemoveElement}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RemoveElementItemProvider removeElementItemProvider;
@@ -925,7 +925,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteView}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteViewItemProvider deleteViewItemProvider;
@@ -950,7 +950,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.NameVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NameVariableItemProvider nameVariableItemProvider;
@@ -975,7 +975,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionParameterItemProvider externalJavaActionParameterItemProvider;
@@ -984,7 +984,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1000,7 +1000,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolFilterDescriptionItemProvider toolFilterDescriptionItemProvider;
@@ -1009,7 +1009,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1025,7 +1025,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureChangeListenerItemProvider featureChangeListenerItemProvider;
@@ -1034,7 +1034,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1050,7 +1050,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.Case} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CaseItemProvider caseItemProvider;
@@ -1075,7 +1075,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.Default} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DefaultItemProvider defaultItemProvider;
@@ -1100,7 +1100,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.Switch} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SwitchItemProvider switchItemProvider;
@@ -1145,7 +1145,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1156,7 +1156,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1166,7 +1166,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1183,7 +1183,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -1192,7 +1192,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1202,7 +1202,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1212,7 +1212,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1222,7 +1222,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,15 +29,15 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations <em>
- * Owned Representations</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions <em>Owned
- * Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations
+ * <em>Owned Representations</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
+ * <em>Owned Extensions</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
+ * }</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView()
  * @model
@@ -79,7 +79,7 @@ public interface DView extends DRefreshable {
      * {@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Extensions</em>' containment
      *            reference.
@@ -103,9 +103,8 @@ public interface DView extends DRefreshable {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint
-     * <em>Viewpoint</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @param value
      *            the new value of the '<em>Viewpoint</em>' reference.

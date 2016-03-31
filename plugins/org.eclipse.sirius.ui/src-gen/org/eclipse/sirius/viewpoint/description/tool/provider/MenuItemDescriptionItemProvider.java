@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
@@ -63,15 +63,15 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     /**
      * This adds a property descriptor for the Icon feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MenuItemDescription_icon_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescription_icon_feature", "_UI_MenuItemDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.MENU_ITEM_DESCRIPTION__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MenuItemDescription_icon_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescription_icon_feature", "_UI_MenuItemDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.MENU_ITEM_DESCRIPTION__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -91,7 +91,7 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

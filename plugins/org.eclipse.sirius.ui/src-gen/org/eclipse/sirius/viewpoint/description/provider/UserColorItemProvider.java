@@ -38,7 +38,8 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  *
  * @generated
  */
-public class UserColorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class UserColorItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -68,7 +69,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -80,7 +81,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
 
     /**
      * This returns UserColor.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +106,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

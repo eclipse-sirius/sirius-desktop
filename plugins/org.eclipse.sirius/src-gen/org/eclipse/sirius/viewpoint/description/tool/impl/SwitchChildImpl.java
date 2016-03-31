@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Switch Child</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SwitchChildImpl#getSubModelOperations
  * <em>Sub Model Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -52,7 +52,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SwitchChildImpl() {
@@ -61,7 +61,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -71,7 +71,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -129,7 +129,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

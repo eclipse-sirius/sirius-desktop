@@ -20,6 +20,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue#getFeatureName
@@ -28,7 +29,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue#getValueExpression
  * <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetValue()
  * @model
@@ -54,7 +54,7 @@ public interface SetValue extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -72,8 +72,8 @@ public interface SetValue extends ContainerModelOperation {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetValue_ValueExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='any type supported by the feature.'"
      * @generated
@@ -85,7 +85,7 @@ public interface SetValue extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetValue#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()

@@ -35,11 +35,11 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class EStructuralFeatureCustomizationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+public class EStructuralFeatureCustomizationItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -96,7 +96,7 @@ public class EStructuralFeatureCustomizationItemProvider extends ItemProviderAda
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class EStructuralFeatureCustomizationItemProvider extends ItemProviderAda
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
  * <em><b>View Validation Rule</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl#getTargets
  * <em>Targets</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     /**
      * The cached value of the '{@link #getTargets() <em>Targets</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargets()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewValidationRuleImpl() {
@@ -56,7 +56,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -110,7 +110,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

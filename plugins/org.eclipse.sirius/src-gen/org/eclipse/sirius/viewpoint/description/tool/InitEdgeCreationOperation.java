@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation#getFirstModelOperations
  * <em>First Model Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getInitEdgeCreationOperation()
  * @model
@@ -40,7 +40,7 @@ public interface InitEdgeCreationOperation extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operations</em>' containment
      *         reference.
      * @see #setFirstModelOperations(ModelOperation)

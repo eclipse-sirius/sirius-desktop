@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedRepresentationElements
@@ -29,15 +30,14 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.DRepresentation#getRepresentationElements
  * <em>Representation Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getName <em>Name
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getName <em>Name</em>
+ * }</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedAnnotationEntries
  * <em>Owned Annotation Entries</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getUiState <em>Ui
- * State</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentation#getUiState
+ * <em>Ui State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation()
  * @model abstract="true"
@@ -80,7 +80,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The name of the representation. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Name()
@@ -91,9 +91,9 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation#getName
-     * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * {@link org.eclipse.sirius.viewpoint.DRepresentation#getName <em>Name</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -129,7 +129,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ui State</em>' containment reference.
      * @see #setUiState(UIState)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_UiState()
@@ -143,7 +143,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * {@link org.eclipse.sirius.viewpoint.DRepresentation#getUiState
      * <em>Ui State</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Ui State</em>' containment
      *            reference.

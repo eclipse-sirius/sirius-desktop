@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getTitleExpression
@@ -41,7 +42,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getRepresentationNameVariable
  * <em>Representation Name Variable</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription()
  * @model abstract="true"
@@ -70,7 +70,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getTitleExpression
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Title Expression</em>' attribute.
      * @see #getTitleExpression()
@@ -100,7 +100,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getBrowseExpression
      * <em>Browse Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Browse Expression</em>' attribute.
      * @see #getBrowseExpression()
@@ -116,7 +116,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Representation Description</em>' reference.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_RepresentationDescription()
      * @model required="true" transient="true" changeable="false"
@@ -133,7 +133,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -148,7 +148,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -222,7 +222,7 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

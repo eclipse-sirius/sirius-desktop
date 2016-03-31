@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TemplateInformationSectionItemProvider extends InformationSectionItemProvider {
@@ -74,7 +74,7 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
     /**
      * This returns TemplateInformationSection.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

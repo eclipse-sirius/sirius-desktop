@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getName
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getOwnedRepresentations
  * <em>Owned Representations</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate()
  * @model abstract="true"
@@ -56,7 +56,7 @@ public interface RepresentationTemplate extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -75,7 +75,7 @@ public interface RepresentationTemplate extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationTemplate_OwnedRepresentations()

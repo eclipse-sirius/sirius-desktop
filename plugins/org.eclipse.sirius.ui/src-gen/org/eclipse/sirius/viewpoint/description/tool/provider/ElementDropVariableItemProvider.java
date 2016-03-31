@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ElementDropVariableItemProvider extends AbstractVariableItemProvider {
@@ -65,7 +65,7 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
     /**
      * This returns ElementDropVariable.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ElementDropVariableItemProvider extends AbstractVariableItemProvide
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

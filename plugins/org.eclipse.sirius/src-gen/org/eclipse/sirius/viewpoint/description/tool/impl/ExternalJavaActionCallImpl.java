@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>External Java Action Call</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionCallImpl#getSubModelOperations
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ExternalJavaActionCallImpl#getAction
  * <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +59,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
     /**
      * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAction()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExternalJavaActionCallImpl() {
@@ -77,7 +77,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ExternalJavaAction basicGetAction() {
@@ -128,7 +128,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -195,7 +195,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,7 +253,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,15 +18,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>DModel</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class DModelImpl extends DFileImpl implements DModel {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DModelImpl() {
@@ -35,7 +33,7 @@ public class DModelImpl extends DFileImpl implements DModel {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

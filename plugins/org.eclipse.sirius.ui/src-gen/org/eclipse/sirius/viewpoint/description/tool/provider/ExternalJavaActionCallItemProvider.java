@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemProvider {
@@ -68,11 +68,11 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      * @generated
      */
     protected void addActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaActionCall_action_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ExternalJavaActionCall_action_feature", "_UI_ExternalJavaActionCall_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.EXTERNAL_JAVA_ACTION_CALL__ACTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ExternalJavaActionCall_action_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ExternalJavaActionCall_action_feature", "_UI_ExternalJavaActionCall_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.EXTERNAL_JAVA_ACTION_CALL__ACTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -82,7 +82,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
     /**
      * This returns ExternalJavaActionCall.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

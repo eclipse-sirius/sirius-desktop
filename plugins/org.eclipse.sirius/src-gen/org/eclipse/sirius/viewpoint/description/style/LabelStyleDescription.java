@@ -21,12 +21,12 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
  * <em>Label Alignment</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelStyleDescription()
  * @model

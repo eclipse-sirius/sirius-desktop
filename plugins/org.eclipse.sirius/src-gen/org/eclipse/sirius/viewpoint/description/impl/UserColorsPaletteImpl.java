@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
  * <em><b>User Colors Palette</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.UserColorsPaletteImpl#getName
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
  * {@link org.eclipse.sirius.viewpoint.description.impl.UserColorsPaletteImpl#getEntries
  * <em>Entries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -47,7 +47,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     /**
      * The cached value of the '{@link #getEntries() <em>Entries</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEntries()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserColorsPaletteImpl() {
@@ -85,7 +85,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +182,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

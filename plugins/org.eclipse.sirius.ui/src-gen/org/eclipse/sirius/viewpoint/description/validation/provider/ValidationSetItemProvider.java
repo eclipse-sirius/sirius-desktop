@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ValidationSetItemProvider extends DocumentedElementItemProvider {
@@ -65,15 +65,15 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_name_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_name_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ValidationPackage.Literals.VALIDATION_SET__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ValidationSet_name_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_name_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ValidationPackage.Literals.VALIDATION_SET__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -83,11 +83,11 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addReusedRulesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_reusedRules_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_reusedRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ValidationPackage.Literals.VALIDATION_SET__REUSED_RULES, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ValidationSet_reusedRules_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_reusedRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ValidationPackage.Literals.VALIDATION_SET__REUSED_RULES, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -97,11 +97,11 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addAllRulesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_allRules_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_allRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ValidationPackage.Literals.VALIDATION_SET__ALL_RULES, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ValidationSet_allRules_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_allRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ValidationPackage.Literals.VALIDATION_SET__ALL_RULES, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -111,7 +111,7 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

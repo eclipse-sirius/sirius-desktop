@@ -35,20 +35,20 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass informationSectionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass templateInformationSectionEClass = null;
@@ -74,7 +74,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -109,16 +109,16 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
         EcorePackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
-        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
 
         // Create package meta-data objects
         theAuditPackage.createPackageContents();
@@ -146,7 +146,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +186,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -195,7 +195,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -213,7 +213,7 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -252,12 +252,10 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
         EOperation op = addEOperation(informationSectionEClass, theEcorePackage.getEString(), "getContent", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "eObj", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(templateInformationSectionEClass, TemplateInformationSection.class,
-                "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTemplateInformationSection_TemplatePath(),
-                theEcorePackage.getEString(),
-                "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(templateInformationSectionEClass, TemplateInformationSection.class, "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTemplateInformationSection_TemplatePath(), theEcorePackage.getEString(), "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
     }
 
 } // AuditPackageImpl

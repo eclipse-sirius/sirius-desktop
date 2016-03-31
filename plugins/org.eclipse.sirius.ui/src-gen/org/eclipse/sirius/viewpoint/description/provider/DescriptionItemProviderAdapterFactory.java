@@ -44,14 +44,14 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -68,7 +68,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This helps manage the child creation extenders. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(SiriusEditPlugin.INSTANCE, DescriptionPackage.eNS_URI);
@@ -77,7 +77,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -125,7 +125,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewpointItemProvider viewpointItemProvider;
@@ -150,7 +150,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MetamodelExtensionSettingItemProvider metamodelExtensionSettingItemProvider;
@@ -159,7 +159,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.JavaExtension} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected JavaExtensionItemProvider javaExtensionItemProvider;
@@ -200,7 +200,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotation} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnnotationItemProvider dAnnotationItemProvider;
@@ -225,7 +225,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DecorationDescriptionsSetItemProvider decorationDescriptionsSetItemProvider;
@@ -234,7 +234,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SemanticBasedDecorationItemProvider semanticBasedDecorationItemProvider;
@@ -259,7 +259,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.Customization} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomizationItemProvider customizationItemProvider;
@@ -300,7 +300,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationItemProvider vsmElementCustomizationItemProvider;
@@ -309,7 +309,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomization}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VSMElementCustomizationReuseItemProvider vsmElementCustomizationReuseItemProvider;
@@ -334,7 +334,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +350,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EAttributeCustomizationItemProvider eAttributeCustomizationItemProvider;
@@ -359,7 +359,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.EAttributeCustomization}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -375,7 +375,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EReferenceCustomizationItemProvider eReferenceCustomizationItemProvider;
@@ -384,7 +384,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This creates an adapter for a
      * {@link org.eclipse.sirius.viewpoint.description.EReferenceCustomization}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -400,7 +400,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.SystemColor} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SystemColorItemProvider systemColorItemProvider;
@@ -425,7 +425,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InterpolatedColorItemProvider interpolatedColorItemProvider;
@@ -450,7 +450,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.ColorStep} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColorStepItemProvider colorStepItemProvider;
@@ -475,7 +475,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.FixedColor} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FixedColorItemProvider fixedColorItemProvider;
@@ -500,7 +500,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.UserFixedColor}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserFixedColorItemProvider userFixedColorItemProvider;
@@ -525,7 +525,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.Environment} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EnvironmentItemProvider environmentItemProvider;
@@ -550,7 +550,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.SytemColorsPalette}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SytemColorsPaletteItemProvider sytemColorsPaletteItemProvider;
@@ -575,7 +575,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.UserColorsPalette}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected UserColorsPaletteItemProvider userColorsPaletteItemProvider;
@@ -600,7 +600,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AnnotationEntryItemProvider annotationEntryItemProvider;
@@ -625,7 +625,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IdentifiedElementItemProvider identifiedElementItemProvider;
@@ -650,7 +650,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.ComputedColor} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComputedColorItemProvider computedColorItemProvider;
@@ -675,7 +675,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnnotationEntryItemProvider dAnnotationEntryItemProvider;
@@ -700,7 +700,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.TypedVariable} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TypedVariableItemProvider typedVariableItemProvider;
@@ -745,7 +745,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -756,7 +756,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -766,7 +766,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -783,7 +783,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public List<IChildCreationExtender> getChildCreationExtenders() {
@@ -792,7 +792,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -802,7 +802,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -812,7 +812,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -822,7 +822,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
@@ -62,34 +62,34 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
-                getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
+                        getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Computation Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AcceleoVariable_computationExpression_feature"), //$NON-NLS-1$
-                getString("_UI_AcceleoVariable_computationExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AcceleoVariable_computationExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_AcceleoVariable_computationExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns AcceleoVariable.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

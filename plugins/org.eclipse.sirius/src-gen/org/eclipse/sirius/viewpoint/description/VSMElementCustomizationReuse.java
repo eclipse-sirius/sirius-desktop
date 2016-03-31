@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse#getReuse
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse#getAppliedOn
  * <em>Applied On</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomizationReuse()
  * @model
@@ -45,7 +45,7 @@ public interface VSMElementCustomizationReuse extends IVSMElementCustomization {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reuse</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getVSMElementCustomizationReuse_Reuse()
      * @model required="true"

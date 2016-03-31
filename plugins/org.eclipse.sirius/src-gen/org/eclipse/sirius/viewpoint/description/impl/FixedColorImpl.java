@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * <em><b>Fixed Color</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl#getRed
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * {@link org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl#getBlue
  * <em>Blue</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -61,7 +61,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
     /**
      * The default value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
     /**
      * The cached value of the '{@link #getGreen() <em>Green</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGreen()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
     /**
      * The default value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
     /**
      * The cached value of the '{@link #getBlue() <em>Blue</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBlue()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FixedColorImpl() {
@@ -109,7 +109,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

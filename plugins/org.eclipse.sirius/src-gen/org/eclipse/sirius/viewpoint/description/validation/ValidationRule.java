@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
@@ -37,7 +38,6 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes
  * <em>Fixes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule()
  * @model abstract="true"
@@ -54,7 +54,7 @@ public interface ValidationRule extends IdentifiedElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Level</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * @see #setLevel(ERROR_LEVEL)
@@ -68,7 +68,7 @@ public interface ValidationRule extends IdentifiedElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
      * <em>Level</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Level</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
@@ -85,7 +85,7 @@ public interface ValidationRule extends IdentifiedElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Message()
@@ -120,7 +120,7 @@ public interface ValidationRule extends IdentifiedElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Audits</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Audits()
      * @model containment="true" resolveProxies="true"
@@ -138,7 +138,7 @@ public interface ValidationRule extends IdentifiedElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Fixes</em>' containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Fixes()
      * @model containment="true" resolveProxies="true"
@@ -159,7 +159,7 @@ public interface ValidationRule extends IdentifiedElement {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

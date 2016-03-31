@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.viewpoint.description.util;
 
@@ -35,7 +35,7 @@ import org.osgi.framework.Version;
 /**
  * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.util.
  *      DescriptionResourceFactoryImpl
  * @not-generated
@@ -55,7 +55,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
     /**
      * Creates an instance of the resource. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param uri
      *            the URI of the new resource.
      * @not-generated
@@ -93,7 +93,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
 
     @Override
     public void load(Map<?, ?> options) throws IOException {
-        useURIFragmentAsId = Boolean.TRUE.equals(options.get(OPTION_USE_URI_FRAGMENT_AS_ID)) && getURI().isPlatformPlugin();
+        useURIFragmentAsId = Boolean.TRUE.equals(options.get(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID)) && getURI().isPlatformPlugin();
         handleMigrationOptions();
         super.load(options);
     }
@@ -117,7 +117,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         // was already installed and the loaded version is different, we
         // update it.
         else if (migrationIsNeeded && (versionOption == null || !versionOption.equals(loadedVersion))) {
-            addMigrationOptions(loadedVersion, this.getDefaultLoadOptions(), this.getDefaultSaveOptions());
+            DescriptionResourceImpl.addMigrationOptions(loadedVersion, this.getDefaultLoadOptions(), this.getDefaultSaveOptions());
         }
     }
 
@@ -131,7 +131,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
 
     /**
      * Add the migration options in the given loadOptions and saveOptions maps.
-     * 
+     *
      * @param loadedVersion
      *            the loadedVersion.
      * @param loadOptions

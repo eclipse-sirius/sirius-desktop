@@ -42,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em><b>Viewpoint</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.ViewpointImpl#getEndUserDocumentation
@@ -89,7 +90,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.viewpoint.description.impl.ViewpointImpl#getCustomizes
  * <em>Customizes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -98,7 +98,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -119,7 +119,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -149,7 +149,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The default value of the '{@link #getModelFileExtension()
      * <em>Model File Extension</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getModelFileExtension()
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getModelFileExtension()
      * <em>Model File Extension</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getModelFileExtension()
      * @generated
      * @ordered
@@ -182,7 +182,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getValidationSet()
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getValidationSet()
      * @generated
      * @ordered
@@ -204,7 +204,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * The cached value of the '{@link #getOwnedRepresentationExtensions()
      * <em>Owned Representation Extensions</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedRepresentationExtensions()
      * @generated
      * @ordered
@@ -247,7 +247,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -257,7 +257,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -278,7 +278,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getConflicts() <em>Conflicts</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConflicts()
      * @generated
      * @ordered
@@ -288,7 +288,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getReuses() <em>Reuses</em>}' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReuses()
      * @generated
      * @ordered
@@ -298,7 +298,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     /**
      * The cached value of the '{@link #getCustomizes() <em>Customizes</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCustomizes()
      * @generated
      * @ordered
@@ -307,7 +307,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewpointImpl() {
@@ -316,7 +316,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -326,7 +326,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +350,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -374,7 +374,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -398,7 +398,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -408,7 +408,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -422,7 +422,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationSet basicGetValidationSet() {
@@ -458,7 +458,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(ValidationSet newValidationSet, NotificationChain msgs) {
@@ -477,7 +477,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -501,7 +501,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -514,7 +514,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -528,7 +528,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -541,7 +541,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,20 +554,21 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public EList<FeatureExtensionDescription> getOwnedFeatureExtensions() {
         if (ownedFeatureExtensions == null) {
-            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<FeatureExtensionDescription>(FeatureExtensionDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS);
+            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<FeatureExtensionDescription>(FeatureExtensionDescription.class, this,
+                    DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS);
         }
         return ownedFeatureExtensions;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -577,7 +578,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -591,7 +592,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +605,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -617,7 +618,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -630,7 +631,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -643,7 +644,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -655,7 +656,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -681,7 +682,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -726,7 +727,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -793,7 +794,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -850,7 +851,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -892,7 +893,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -926,7 +927,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -960,7 +961,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

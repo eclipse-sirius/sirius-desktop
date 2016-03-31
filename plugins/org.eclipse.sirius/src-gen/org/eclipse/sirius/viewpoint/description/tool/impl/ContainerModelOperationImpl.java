@@ -28,12 +28,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Container Model Operation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperationImpl#getSubModelOperations
  * <em>Sub Model Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -51,7 +51,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerModelOperationImpl() {
@@ -60,7 +60,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +128,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

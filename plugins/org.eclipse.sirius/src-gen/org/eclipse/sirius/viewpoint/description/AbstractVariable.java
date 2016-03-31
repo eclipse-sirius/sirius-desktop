@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName
  * <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractVariable()
  * @model abstract="true"
@@ -51,7 +51,7 @@ public interface AbstractVariable extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()

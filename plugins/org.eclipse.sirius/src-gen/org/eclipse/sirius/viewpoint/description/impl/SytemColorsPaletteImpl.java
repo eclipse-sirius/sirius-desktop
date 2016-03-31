@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
  * <em><b>Sytem Colors Palette</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.SytemColorsPaletteImpl#getEntries
  * <em>Entries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getEntries() <em>Entries</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEntries()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SytemColorsPaletteImpl() {
@@ -60,7 +60,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -70,7 +70,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -128,7 +128,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

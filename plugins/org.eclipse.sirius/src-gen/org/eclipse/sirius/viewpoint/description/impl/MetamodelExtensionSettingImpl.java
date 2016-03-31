@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
  * <em><b>Metamodel Extension Setting</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.MetamodelExtensionSettingImpl#getExtensionGroup
  * <em>Extension Group</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
      * The cached value of the '{@link #getExtensionGroup()
      * <em>Extension Group</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getExtensionGroup()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MetamodelExtensionSettingImpl() {
@@ -57,7 +57,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetExtensionGroup() {
@@ -95,7 +95,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class MetamodelExtensionSettingImpl extends MinimalEObjectImpl.Container 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.DFile} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DFileItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -68,7 +68,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -80,7 +80,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
     /**
      * This adds a property descriptor for the Path feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPathPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
 
     /**
      * This returns DFile.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

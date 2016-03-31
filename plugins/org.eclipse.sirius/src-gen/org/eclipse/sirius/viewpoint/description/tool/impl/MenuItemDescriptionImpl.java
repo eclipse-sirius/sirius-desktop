@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Menu Item Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.MenuItemDescriptionImpl#getIcon
  * <em>Icon</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -35,7 +35,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -54,7 +54,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MenuItemDescriptionImpl() {
@@ -63,7 +63,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

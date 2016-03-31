@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.UIState} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class UIStateItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -68,14 +68,14 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This adds a property descriptor for the Inverse Selection Order feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_UIState_inverseSelectionOrder_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_UIState_inverseSelectionOrder_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.UI_STATE__INVERSE_SELECTION_ORDER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UIState_inverseSelectionOrder_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_UIState_inverseSelectionOrder_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.UI_STATE__INVERSE_SELECTION_ORDER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -85,15 +85,15 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
      * @generated
      */
     protected void addElementsToSelectPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_UIState_elementsToSelect_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_UIState_elementsToSelect_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UIState_elementsToSelect_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_UIState_elementsToSelect_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT, true, false, true, null, null, null));
     }
 
     /**
      * This returns UIState.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

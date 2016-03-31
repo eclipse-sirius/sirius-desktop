@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getParameters
  * <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction()
  * @model
@@ -52,7 +52,7 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -70,7 +70,7 @@ public interface ExternalJavaAction extends MenuItemDescription, ContainerModelO
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parameters</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaAction_Parameters()

@@ -43,6 +43,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * <em><b>DAnalysis</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getReferencedAnalysis
@@ -50,21 +51,20 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getSemanticResources
  * <em>Semantic Resources</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getModels <em>
- * Models</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getModels
+ * <em>Models</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getEAnnotations
  * <em>EAnnotations</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getOwnedViews <em>
- * Owned Views</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getOwnedViews
+ * <em>Owned Views</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getSelectedViews
  * <em>Selected Views</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getOwnedFeatureExtensions
  * <em>Owned Feature Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getVersion <em>
- * Version</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DAnalysisImpl#getVersion
+ * <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -73,7 +73,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getReferencedAnalysis()
      * <em>Referenced Analysis</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReferencedAnalysis()
      * @generated
      * @ordered
@@ -84,7 +84,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getSemanticResources()
      * <em>Semantic Resources</em>}' attribute list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticResources()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The cached value of the '{@link #getOwnedViews() <em>Owned Views</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedViews()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
      * The cached value of the '{@link #getSelectedViews()
      * <em>Selected Views</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSelectedViews()
      * @generated
      * @ordered
@@ -137,7 +137,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The default value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -147,7 +147,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
     /**
      * The cached value of the '{@link #getVersion() <em>Version</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVersion()
      * @generated
      * @ordered
@@ -156,7 +156,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DAnalysisImpl() {
@@ -165,7 +165,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -175,7 +175,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -283,7 +283,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +297,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -310,7 +310,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -356,7 +356,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -400,7 +400,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -436,7 +436,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,7 +464,7 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

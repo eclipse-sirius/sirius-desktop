@@ -17,12 +17,12 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
  * <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMenuItemDescriptionReference()
  * @model
@@ -50,7 +50,7 @@ public interface MenuItemDescriptionReference extends MenuItemOrRef {
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference#getItem
      * <em>Item</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Item</em>' reference.
      * @see #getItem()

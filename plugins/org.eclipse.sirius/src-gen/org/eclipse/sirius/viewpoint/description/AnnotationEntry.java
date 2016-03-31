@@ -19,14 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getSource
  * <em>Source</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData
  * <em>Data</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry()
  * @model
@@ -71,7 +70,7 @@ public interface AnnotationEntry extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(EObject)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAnnotationEntry_Data()
@@ -85,7 +84,7 @@ public interface AnnotationEntry extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.AnnotationEntry#getData
      * <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()

@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.LabelStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
@@ -65,10 +65,10 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
      * @generated
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelStyle_labelAlignment_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_LabelStyle_labelAlignment_feature", "_UI_LabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LabelStyle_labelAlignment_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LabelStyle_labelAlignment_feature", "_UI_LabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -85,7 +85,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

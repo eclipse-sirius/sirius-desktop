@@ -22,11 +22,11 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.Style#getDescription <em>Description
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.Style#getDescription
+ * <em>Description</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle()
  * @model abstract="true"
@@ -55,7 +55,7 @@ public interface Style extends DRefreshable, Customizable {
      * {@link org.eclipse.sirius.viewpoint.Style#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()

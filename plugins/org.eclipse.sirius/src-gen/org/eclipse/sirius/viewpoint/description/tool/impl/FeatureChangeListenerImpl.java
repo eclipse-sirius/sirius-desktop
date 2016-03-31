@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Feature Change Listener</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getDomainClass
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.FeatureChangeListenerImpl#getFeatureName
  * <em>Feature Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureChangeListenerImpl() {
@@ -87,7 +87,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

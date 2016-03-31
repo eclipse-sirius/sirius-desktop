@@ -20,13 +20,13 @@ package org.eclipse.sirius.viewpoint.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression
  * <em>Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName
  * <em>Iterator Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor()
  * @model
@@ -43,8 +43,8 @@ public interface For extends ContainerModelOperation {
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor_Expression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated
@@ -56,7 +56,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getExpression
      * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
@@ -83,7 +83,7 @@ public interface For extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.For#getIteratorName
      * <em>Iterator Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Iterator Name</em>' attribute.
      * @see #getIteratorName()

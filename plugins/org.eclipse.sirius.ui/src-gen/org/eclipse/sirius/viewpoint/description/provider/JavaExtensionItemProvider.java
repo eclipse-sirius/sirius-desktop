@@ -38,8 +38,8 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
  *
  * @generated
  */
-public class JavaExtensionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class JavaExtensionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -69,15 +69,15 @@ public class JavaExtensionItemProvider extends ItemProviderAdapter implements IE
     /**
      * This adds a property descriptor for the Qualified Class Name feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addQualifiedClassNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_JavaExtension_qualifiedClassName_feature"), //$NON-NLS-1$
-                getString("_UI_JavaExtension_qualifiedClassName_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.JAVA_EXTENSION__QUALIFIED_CLASS_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_JavaExtension_qualifiedClassName_feature"), //$NON-NLS-1$
+                        getString("_UI_JavaExtension_qualifiedClassName_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.JAVA_EXTENSION__QUALIFIED_CLASS_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -108,7 +108,7 @@ public class JavaExtensionItemProvider extends ItemProviderAdapter implements IE
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

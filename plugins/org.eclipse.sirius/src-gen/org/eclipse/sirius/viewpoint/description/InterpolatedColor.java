@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  *             <p>
  *             The following features are supported:
+ *             </p>
  *             <ul>
  *             <li>
  *             {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor#getColorValueComputationExpression
@@ -40,7 +41,6 @@ import org.eclipse.emf.common.util.EList;
  *             {@link org.eclipse.sirius.viewpoint.description.InterpolatedColor#getColorSteps
  *             <em>Color Steps</em>}</li>
  *             </ul>
- *             </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor()
  * @model
@@ -91,7 +91,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Min Value Computation Expression</em>'
      *         attribute.
      * @see #setMinValueComputationExpression(String)
@@ -128,7 +128,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Max Value Computation Expression</em>'
      *         attribute.
      * @see #setMaxValueComputationExpression(String)

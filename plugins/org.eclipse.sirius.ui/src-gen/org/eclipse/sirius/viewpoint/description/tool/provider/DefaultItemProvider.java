@@ -53,7 +53,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
 
     /**
      * This returns Default.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class DefaultItemProvider extends SwitchChildItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

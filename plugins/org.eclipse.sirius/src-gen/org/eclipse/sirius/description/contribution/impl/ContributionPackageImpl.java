@@ -178,8 +178,8 @@ public class ContributionPackageImpl extends EPackageImpl implements Contributio
         }
 
         // Obtain or create and register package
-        ContributionPackageImpl theContributionPackage = (ContributionPackageImpl) (EPackage.Registry.INSTANCE.get(ContributionPackage.eNS_URI) instanceof ContributionPackageImpl ? EPackage.Registry.INSTANCE
-                .get(ContributionPackage.eNS_URI) : new ContributionPackageImpl());
+        ContributionPackageImpl theContributionPackage = (ContributionPackageImpl) (EPackage.Registry.INSTANCE.get(ContributionPackage.eNS_URI) instanceof ContributionPackageImpl
+                ? EPackage.Registry.INSTANCE.get(ContributionPackage.eNS_URI) : new ContributionPackageImpl());
 
         ContributionPackageImpl.isInited = true;
 
@@ -564,95 +564,71 @@ public class ContributionPackageImpl extends EPackageImpl implements Contributio
 
         // Initialize classes and features; add operations and parameters
         initEClass(featureContributionEClass, FeatureContribution.class, "FeatureContribution", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getFeatureContribution_SourceFeature(),
-                theEcorePackage.getEStructuralFeature(),
-                null,
-                "sourceFeature", null, 1, 1, FeatureContribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getFeatureContribution_TargetFeature(),
-                theEcorePackage.getEStructuralFeature(),
-                null,
-                "targetFeature", null, 1, 1, FeatureContribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getFeatureContribution_SourceFeature(), theEcorePackage.getEStructuralFeature(), null, "sourceFeature", null, 1, 1, FeatureContribution.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getFeatureContribution_TargetFeature(), theEcorePackage.getEStructuralFeature(), null, "targetFeature", null, 1, 1, FeatureContribution.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(ignoreFeatureContributionEClass, IgnoreFeatureContribution.class,
-                "IgnoreFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(ignoreFeatureContributionEClass, IgnoreFeatureContribution.class, "IgnoreFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(setFeatureContributionEClass, SetFeatureContribution.class,
-                "SetFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(setFeatureContributionEClass, SetFeatureContribution.class, "SetFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(addFeatureContributionEClass, AddFeatureContribution.class,
-                "AddFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(addFeatureContributionEClass, AddFeatureContribution.class, "AddFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(removeFeatureContributionEClass, RemoveFeatureContribution.class,
-                "RemoveFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(removeFeatureContributionEClass, RemoveFeatureContribution.class, "RemoveFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(clearFeatureContributionEClass, ClearFeatureContribution.class,
-                "ClearFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(clearFeatureContributionEClass, ClearFeatureContribution.class, "ClearFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(resetFeatureContributionEClass, ResetFeatureContribution.class,
-                "ResetFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(resetFeatureContributionEClass, ResetFeatureContribution.class, "ResetFeatureContribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(eObjectReferenceEClass, EObjectReference.class, "EObjectReference", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(directEObjectReferenceEClass, DirectEObjectReference.class,
-                "DirectEObjectReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDirectEObjectReference_Value(),
-                theEcorePackage.getEObject(),
-                null,
-                "value", null, 1, 1, DirectEObjectReference.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(directEObjectReferenceEClass, DirectEObjectReference.class, "DirectEObjectReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDirectEObjectReference_Value(), theEcorePackage.getEObject(), null, "value", null, 1, 1, DirectEObjectReference.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(computedEObjectReferenceEClass, ComputedEObjectReference.class,
-                "ComputedEObjectReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getComputedEObjectReference_ValueExpression(),
-                theEcorePackage.getEString(),
-                "valueExpression", null, 1, 1, ComputedEObjectReference.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(computedEObjectReferenceEClass, ComputedEObjectReference.class, "ComputedEObjectReference", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getComputedEObjectReference_ValueExpression(), theEcorePackage.getEString(), "valueExpression", null, 1, 1, ComputedEObjectReference.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(contributionEClass, Contribution.class, "Contribution", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getContribution_Source(),
-                this.getEObjectReference(),
-                null,
-                "source", null, 1, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getContribution_Target(),
-                this.getEObjectReference(),
-                null,
-                "target", null, 1, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getContribution_FeatureMask(),
-                this.getFeatureContribution(),
-                null,
-                "featureMask", null, 1, -1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, !EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getContribution_SubContributions(),
-                this.getContribution(),
-                null,
-                "subContributions", null, 0, -1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getContribution_Description(),
-                theEcorePackage.getEString(),
-                "description", null, 0, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getContribution_Source(), this.getEObjectReference(), null, "source", null, 1, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getContribution_Target(), this.getEObjectReference(), null, "target", null, 1, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getContribution_FeatureMask(), this.getFeatureContribution(), null, "featureMask", null, 1, -1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                !EPackageImpl.IS_ORDERED);
+        initEReference(getContribution_SubContributions(), this.getContribution(), null, "subContributions", null, 0, -1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getContribution_Description(), theEcorePackage.getEString(), "description", null, 0, 1, Contribution.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(contributionProviderEClass, ContributionProvider.class, "ContributionProvider", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getContributionProvider_Contributions(),
-                this.getContribution(),
-                null,
-                "contributions", null, 0, -1, ContributionProvider.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getContributionProvider_Contributions(), this.getContribution(), null, "contributions", null, 0, -1, ContributionProvider.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(contributionPointEClass, ContributionPoint.class, "ContributionPoint", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getContributionPoint_Origin(),
-                theEcorePackage.getEString(),
-                "origin", null, 1, 1, ContributionPoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getContributionPoint_Contributed(),
-                theEcorePackage.getEObject(),
-                null,
-                "contributed", null, 1, 1, ContributionPoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getContributionPoint_Origin(), theEcorePackage.getEString(), "origin", null, 1, 1, ContributionPoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getContributionPoint_Contributed(), theEcorePackage.getEObject(), null, "contributed", null, 1, 1, ContributionPoint.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
         createResource(ContributionPackage.eNS_URI);

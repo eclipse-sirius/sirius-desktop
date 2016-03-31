@@ -19,11 +19,11 @@ package org.eclipse.sirius.viewpoint;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment <em>
- * Label Alignment</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.LabelStyle#getLabelAlignment
+ * <em>Label Alignment</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLabelStyle()
  * @model

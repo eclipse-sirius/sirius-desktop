@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Paste Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl#getContainer
@@ -48,7 +49,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -56,7 +56,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainer()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
      * The cached value of the '{@link #getContainerView()
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerView()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
     /**
      * The cached value of the '{@link #getCopiedView() <em>Copied View</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCopiedView()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
      * The cached value of the '{@link #getCopiedElement()
      * <em>Copied Element</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCopiedElement()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PasteDescriptionImpl() {
@@ -117,7 +117,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DropContainerVariable basicGetContainer() {
@@ -163,7 +163,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainer(DropContainerVariable newContainer, NotificationChain msgs) {
@@ -182,7 +182,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +233,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerView() {
@@ -242,7 +242,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerView(ContainerViewVariable newContainerView, NotificationChain msgs) {
@@ -261,7 +261,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -285,7 +285,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementViewVariable basicGetCopiedView() {
@@ -321,7 +321,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCopiedView(ElementViewVariable newCopiedView, NotificationChain msgs) {
@@ -340,7 +340,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +364,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +391,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementVariable basicGetCopiedElement() {
@@ -400,7 +400,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCopiedElement(ElementVariable newCopiedElement, NotificationChain msgs) {
@@ -419,7 +419,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -443,7 +443,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -470,7 +470,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -479,7 +479,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -498,7 +498,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -522,7 +522,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -556,7 +556,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -593,7 +593,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -620,7 +620,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -647,7 +647,7 @@ public class PasteDescriptionImpl extends MappingBasedToolDescriptionImpl implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

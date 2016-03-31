@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getObject
  * <em>Object</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetObject()
  * @model
@@ -52,7 +52,7 @@ public interface SetObject extends ContainerModelOperation {
      * {@link org.eclipse.sirius.viewpoint.description.tool.SetObject#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

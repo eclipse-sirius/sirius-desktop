@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Operation Action</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.OperationActionImpl#getView
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.OperationActionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
     /**
      * The cached value of the '{@link #getView() <em>View</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getView()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperationActionImpl() {
@@ -71,7 +71,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetView() {
@@ -117,7 +117,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetView(ContainerViewVariable newView, NotificationChain msgs) {
@@ -136,7 +136,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -196,7 +196,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -215,7 +215,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -277,7 +277,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class OperationActionImpl extends MenuItemDescriptionImpl implements Oper
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

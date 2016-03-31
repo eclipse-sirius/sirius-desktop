@@ -32,11 +32,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -71,10 +71,10 @@ public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapte
      * @generated
      */
     protected void addReusePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_VSMElementCustomizationReuse_reuse_feature"), //$NON-NLS-1$
-                getString("_UI_VSMElementCustomizationReuse_reuse_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_VSMElementCustomizationReuse_reuse_feature"), //$NON-NLS-1$
+                        getString("_UI_VSMElementCustomizationReuse_reuse_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE, true, false, true, null, null, null));
     }
 
     /**
@@ -93,7 +93,7 @@ public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapte
     /**
      * This returns VSMElementCustomizationReuse.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapte
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class VSMElementCustomizationReuseItemProvider extends ItemProviderAdapte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

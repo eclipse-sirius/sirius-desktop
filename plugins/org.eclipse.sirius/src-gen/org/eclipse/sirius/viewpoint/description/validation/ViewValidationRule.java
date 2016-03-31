@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule#getTargets
  * <em>Targets</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getViewValidationRule()
  * @model

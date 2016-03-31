@@ -37,10 +37,11 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.viewpoint.DAnalysis} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DAnalysisItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -78,10 +79,10 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addReferencedAnalysisPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_referencedAnalysis_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_referencedAnalysis_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_referencedAnalysis_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_referencedAnalysis_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS, true, false, true, null, null, null));
     }
 
     /**
@@ -103,10 +104,10 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addSelectedViewsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_selectedViews_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS__SELECTED_VIEWS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_selectedViews_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS__SELECTED_VIEWS, true, false, true, null, null, null));
     }
 
     /**
@@ -116,8 +117,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_version_feature"), //$NON-NLS-1$
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_version_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
@@ -129,10 +129,10 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addSemanticResourcesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_semanticResources_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_semanticResources_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_semanticResources_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_semanticResources_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -142,7 +142,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
 
     /**
      * This returns DAnalysis.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

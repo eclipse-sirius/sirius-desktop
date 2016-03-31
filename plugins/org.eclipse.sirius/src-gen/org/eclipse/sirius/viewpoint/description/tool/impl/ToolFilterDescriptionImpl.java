@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Filter Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ToolFilterDescriptionImpl#getPrecondition
@@ -42,16 +43,14 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ToolFilterDescriptionImpl#getListeners
  * <em>Listeners</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container implements ToolFilterDescription {
     /**
-     * The default value of the '{@link #getPrecondition()
-     * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The default value of the '{@link #getPrecondition() <em>Precondition</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -61,7 +60,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -72,7 +71,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
      * The default value of the '{@link #getElementsToListen()
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToListen()
      * @generated
      * @ordered
@@ -83,7 +82,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getElementsToListen()
      * <em>Elements To Listen</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToListen()
      * @generated
      * @ordered
@@ -93,7 +92,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
     /**
      * The cached value of the '{@link #getListeners() <em>Listeners</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getListeners()
      * @generated
      * @ordered
@@ -102,7 +101,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolFilterDescriptionImpl() {
@@ -111,7 +110,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +120,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +130,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +144,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +154,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +168,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +181,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +195,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +213,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -237,7 +236,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -258,7 +257,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +275,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

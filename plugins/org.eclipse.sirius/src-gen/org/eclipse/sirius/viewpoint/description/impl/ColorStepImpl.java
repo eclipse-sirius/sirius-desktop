@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * <em><b>Color Step</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.ColorStepImpl#getAssociatedValue
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * {@link org.eclipse.sirius.viewpoint.description.impl.ColorStepImpl#getAssociatedColor
  * <em>Associated Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * The default value of the '{@link #getAssociatedValue()
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedValue()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * The cached value of the '{@link #getAssociatedValue()
      * <em>Associated Value</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedValue()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * The cached value of the '{@link #getAssociatedColor()
      * <em>Associated Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getAssociatedColor()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ColorStepImpl() {
@@ -82,7 +82,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -92,7 +92,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FixedColor basicGetAssociatedColor() {
@@ -144,7 +144,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

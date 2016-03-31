@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.style.LabelBorderStyles#getLabelBorderStyleDescriptions
  * <em>Label Border Style Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyles()
  * @model
@@ -46,7 +46,7 @@ public interface LabelBorderStyles extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Border Style Descriptions</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyles_LabelBorderStyleDescriptions()

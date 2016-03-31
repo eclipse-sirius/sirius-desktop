@@ -86,398 +86,398 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DescriptionPackageImpl extends EPackageImpl implements DescriptionPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass groupEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass extensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass componentEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass viewpointEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass featureExtensionDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass representationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass representationTemplateEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass representationImportDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass representationExtensionDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass metamodelExtensionSettingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass javaExtensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass representationElementMappingEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass abstractMappingImportEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass documentedElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dModelElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnnotationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass conditionalStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass pasteTargetDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass decorationDescriptionsSetEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass decorationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass semanticBasedDecorationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass ivsmElementCustomizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass vsmElementCustomizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass vsmElementCustomizationReuseEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eStructuralFeatureCustomizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eAttributeCustomizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass eReferenceCustomizationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass selectionDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass colorDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass systemColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass interpolatedColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass colorStepEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass fixedColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass userFixedColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass userColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass environmentEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass sytemColorsPaletteEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass userColorsPaletteEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass annotationEntryEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass endUserDocumentedElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass identifiedElementEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass computedColorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dAnnotationEntryEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass abstractVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass subVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass interactiveVariableDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass typedVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum positionEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum systemColorsEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType typeNameEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType interpretedExpressionEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType featureNameEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType imagePathEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType uriEDataType = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EDataType translatableMessageEDataType = null;
@@ -503,7 +503,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -529,8 +529,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         }
 
         // Obtain or create and register package
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
-                .get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
+                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) : new DescriptionPackageImpl());
 
         DescriptionPackageImpl.isInited = true;
 
@@ -538,16 +538,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         EcorePackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
-        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
-        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) : ViewpointPackage.eINSTANCE);
+        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
@@ -575,7 +575,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -585,7 +585,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -595,7 +595,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -605,7 +605,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -615,7 +615,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -625,7 +625,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -635,7 +635,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -645,7 +645,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -655,7 +655,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -665,7 +665,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -675,7 +675,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -685,7 +685,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -695,7 +695,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -705,7 +705,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -715,7 +715,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -725,7 +725,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -735,7 +735,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -745,7 +745,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -755,7 +755,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -765,7 +765,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -775,7 +775,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -785,7 +785,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -795,7 +795,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -805,7 +805,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -815,7 +815,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -825,7 +825,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -835,7 +835,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -845,7 +845,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -855,7 +855,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -865,7 +865,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -875,7 +875,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -885,7 +885,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -895,7 +895,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -905,7 +905,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -915,7 +915,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -925,7 +925,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -935,7 +935,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -945,7 +945,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -955,7 +955,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -965,7 +965,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -975,7 +975,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -985,7 +985,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -995,7 +995,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1005,7 +1005,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1015,7 +1015,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1025,7 +1025,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1035,7 +1035,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1045,7 +1045,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1055,7 +1055,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1065,7 +1065,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1075,7 +1075,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1085,7 +1085,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1095,7 +1095,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1105,7 +1105,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1115,7 +1115,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1125,7 +1125,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1135,7 +1135,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1145,7 +1145,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1155,7 +1155,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1165,7 +1165,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1175,7 +1175,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1185,7 +1185,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1195,7 +1195,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1205,7 +1205,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1215,7 +1215,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1225,7 +1225,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1235,7 +1235,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1245,7 +1245,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1255,7 +1255,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1265,7 +1265,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1275,7 +1275,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1285,7 +1285,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1295,7 +1295,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1305,7 +1305,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1315,7 +1315,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1325,7 +1325,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1335,7 +1335,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1345,7 +1345,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1355,7 +1355,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1365,7 +1365,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1375,7 +1375,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1385,7 +1385,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1395,7 +1395,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1405,7 +1405,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1415,7 +1415,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1425,7 +1425,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1435,7 +1435,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1445,7 +1445,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1455,7 +1455,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1465,7 +1465,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1475,7 +1475,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1485,7 +1485,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1495,7 +1495,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1505,7 +1505,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1515,7 +1515,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1525,7 +1525,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1535,7 +1535,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1545,7 +1545,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1555,7 +1555,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1565,7 +1565,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1575,7 +1575,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1585,7 +1585,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1595,7 +1595,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1605,7 +1605,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1615,7 +1615,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1625,7 +1625,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1635,7 +1635,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1645,7 +1645,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1655,7 +1655,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1665,7 +1665,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1675,7 +1675,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1685,7 +1685,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1695,7 +1695,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1705,7 +1705,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1715,7 +1715,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1725,7 +1725,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1735,7 +1735,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1745,7 +1745,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1755,7 +1755,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1765,7 +1765,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1775,7 +1775,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1785,7 +1785,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1795,7 +1795,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1805,7 +1805,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1815,7 +1815,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1825,7 +1825,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1835,7 +1835,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1845,7 +1845,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1855,7 +1855,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1865,7 +1865,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1875,7 +1875,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1885,7 +1885,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1895,7 +1895,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1905,7 +1905,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1915,7 +1915,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1925,7 +1925,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1935,7 +1935,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1945,7 +1945,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1955,7 +1955,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1965,7 +1965,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1975,7 +1975,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1985,7 +1985,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1995,7 +1995,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2005,7 +2005,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2015,7 +2015,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2025,7 +2025,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2035,7 +2035,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2045,7 +2045,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2055,7 +2055,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2065,7 +2065,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2075,7 +2075,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2085,7 +2085,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -2094,7 +2094,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -2309,7 +2309,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -2380,549 +2380,371 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Initialize classes and features; add operations and parameters
         initEClass(groupEClass, Group.class, "Group", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getGroup_Name(),
-                theEcorePackage.getEString(),
-                "name", "", 0, 1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getGroup_OwnedViewpoints(),
-                this.getViewpoint(),
-                null,
-                "ownedViewpoints", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getGroup_Name(), theEcorePackage.getEString(), "name", "", 0, 1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getGroup_OwnedViewpoints(), this.getViewpoint(), null, "ownedViewpoints", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getGroup_OwnedViewpoints().getEKeys().add(this.getIdentifiedElement_Name());
-        initEReference(
-                getGroup_SystemColorsPalette(),
-                this.getSytemColorsPalette(),
-                null,
-                "systemColorsPalette", null, 1, 1, Group.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getGroup_UserColorsPalettes(),
-                this.getUserColorsPalette(),
-                null,
-                "userColorsPalettes", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getGroup_SystemColorsPalette(), this.getSytemColorsPalette(), null, "systemColorsPalette", null, 1, 1, Group.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getGroup_UserColorsPalettes(), this.getUserColorsPalette(), null, "userColorsPalettes", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getGroup_UserColorsPalettes().getEKeys().add(this.getUserColorsPalette_Name());
-        initEAttribute(
-                getGroup_Version(),
-                theEcorePackage.getEString(),
-                "version", null, 0, 1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getGroup_Extensions(),
-                this.getExtension(),
-                null,
-                "extensions", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getGroup_Version(), theEcorePackage.getEString(), "version", null, 0, 1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getGroup_Extensions(), this.getExtension(), null, "extensions", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(extensionEClass, Extension.class, "Extension", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(componentEClass, Component.class, "Component", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(viewpointEClass, Viewpoint.class, "Viewpoint", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getViewpoint_ModelFileExtension(),
-                theEcorePackage.getEString(),
-                "modelFileExtension", "*", 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getViewpoint_ValidationSet(),
-                theValidationPackage.getValidationSet(),
-                null,
-                "validationSet", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getViewpoint_ModelFileExtension(), theEcorePackage.getEString(), "modelFileExtension", "*", 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewpoint_ValidationSet(), theValidationPackage.getValidationSet(), null, "validationSet", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getViewpoint_ValidationSet().getEKeys().add(theValidationPackage.getValidationSet_Name());
-        initEReference(
-                getViewpoint_OwnedRepresentations(),
-                this.getRepresentationDescription(),
-                null,
-                "ownedRepresentations", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getViewpoint_OwnedRepresentations(), this.getRepresentationDescription(), null, "ownedRepresentations", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getViewpoint_OwnedRepresentations().getEKeys().add(this.getIdentifiedElement_Name());
-        initEReference(
-                getViewpoint_OwnedRepresentationExtensions(),
-                this.getRepresentationExtensionDescription(),
-                null,
-                "ownedRepresentationExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getViewpoint_OwnedRepresentationExtensions(), this.getRepresentationExtensionDescription(), null, "ownedRepresentationExtensions", null, 0, -1, Viewpoint.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getViewpoint_OwnedRepresentationExtensions().getEKeys().add(this.getRepresentationExtensionDescription_Name());
-        initEReference(
-                getViewpoint_OwnedJavaExtensions(),
-                this.getJavaExtension(),
-                null,
-                "ownedJavaExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getViewpoint_OwnedMMExtensions(),
-                this.getMetamodelExtensionSetting(),
-                null,
-                "ownedMMExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getViewpoint_OwnedFeatureExtensions(),
-                this.getFeatureExtensionDescription(),
-                null,
-                "ownedFeatureExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getViewpoint_Icon(),
-                this.getImagePath(),
-                "icon", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getViewpoint_OwnedTemplates(),
-                this.getRepresentationTemplate(),
-                null,
-                "ownedTemplates", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getViewpoint_OwnedJavaExtensions(), this.getJavaExtension(), null, "ownedJavaExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getViewpoint_OwnedMMExtensions(), this.getMetamodelExtensionSetting(), null, "ownedMMExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewpoint_OwnedFeatureExtensions(), this.getFeatureExtensionDescription(), null, "ownedFeatureExtensions", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getViewpoint_Icon(), this.getImagePath(), "icon", null, 0, 1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getViewpoint_OwnedTemplates(), this.getRepresentationTemplate(), null, "ownedTemplates", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getViewpoint_OwnedTemplates().getEKeys().add(this.getRepresentationTemplate_Name());
-        initEAttribute(
-                getViewpoint_Conflicts(),
-                this.getURI(),
-                "conflicts", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getViewpoint_Reuses(),
-                this.getURI(),
-                "reuses", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getViewpoint_Customizes(),
-                this.getURI(),
-                "customizes", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getViewpoint_Conflicts(), this.getURI(), "conflicts", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getViewpoint_Reuses(), this.getURI(), "reuses", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getViewpoint_Customizes(), this.getURI(), "customizes", null, 0, -1, Viewpoint.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         EOperation op = addEOperation(viewpointEClass, null, "initView", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "model", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(featureExtensionDescriptionEClass, FeatureExtensionDescription.class,
-                "FeatureExtensionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(featureExtensionDescriptionEClass, FeatureExtensionDescription.class, "FeatureExtensionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(representationDescriptionEClass, RepresentationDescription.class,
-                "RepresentationDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationDescription_TitleExpression(),
-                this.getInterpretedExpression(),
-                "titleExpression", "", 0, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getRepresentationDescription_Initialisation(),
-                theEcorePackage.getEBoolean(),
-                "initialisation", null, 1, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getRepresentationDescription_Metamodel(),
-                theEcorePackage.getEPackage(),
-                null,
-                "metamodel", null, 0, -1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationDescription_ShowOnStartup(),
-                theEcorePackage.getEBoolean(),
-                "showOnStartup", null, 0, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(representationDescriptionEClass, RepresentationDescription.class, "RepresentationDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getRepresentationDescription_TitleExpression(), this.getInterpretedExpression(), "titleExpression", "", 0, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getRepresentationDescription_Initialisation(), theEcorePackage.getEBoolean(), "initialisation", null, 1, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getRepresentationDescription_Metamodel(), theEcorePackage.getEPackage(), null, "metamodel", null, 0, -1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getRepresentationDescription_ShowOnStartup(), theEcorePackage.getEBoolean(), "showOnStartup", null, 0, 1, RepresentationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(representationTemplateEClass, RepresentationTemplate.class, "RepresentationTemplate", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationTemplate_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, RepresentationTemplate.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getRepresentationTemplate_OwnedRepresentations(),
-                this.getRepresentationDescription(),
-                null,
-                "ownedRepresentations", null, 0, -1, RepresentationTemplate.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(representationTemplateEClass, RepresentationTemplate.class, "RepresentationTemplate", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getRepresentationTemplate_Name(), theEcorePackage.getEString(), "name", null, 1, 1, RepresentationTemplate.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getRepresentationTemplate_OwnedRepresentations(), this.getRepresentationDescription(), null, "ownedRepresentations", null, 0, -1, RepresentationTemplate.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(representationImportDescriptionEClass, RepresentationImportDescription.class,
-                "RepresentationImportDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(representationImportDescriptionEClass, RepresentationImportDescription.class, "RepresentationImportDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(representationExtensionDescriptionEClass, RepresentationExtensionDescription.class,
-                "RepresentationExtensionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationExtensionDescription_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, RepresentationExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationExtensionDescription_ViewpointURI(),
-                theEcorePackage.getEString(),
-                "viewpointURI", null, 1, 1, RepresentationExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getRepresentationExtensionDescription_RepresentationName(),
-                theEcorePackage.getEString(),
-                "representationName", null, 1, 1, RepresentationExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getRepresentationExtensionDescription_Metamodel(),
-                theEcorePackage.getEPackage(),
-                null,
-                "metamodel", null, 0, -1, RepresentationExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(representationExtensionDescriptionEClass, RepresentationExtensionDescription.class, "RepresentationExtensionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getRepresentationExtensionDescription_Name(), theEcorePackage.getEString(), "name", null, 1, 1, RepresentationExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getRepresentationExtensionDescription_ViewpointURI(), theEcorePackage.getEString(), "viewpointURI", null, 1, 1, RepresentationExtensionDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getRepresentationExtensionDescription_RepresentationName(), theEcorePackage.getEString(), "representationName", null, 1, 1, RepresentationExtensionDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getRepresentationExtensionDescription_Metamodel(), theEcorePackage.getEPackage(), null, "metamodel", null, 0, -1, RepresentationExtensionDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(metamodelExtensionSettingEClass, MetamodelExtensionSetting.class,
-                "MetamodelExtensionSetting", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getMetamodelExtensionSetting_ExtensionGroup(),
-                theEcorePackage.getEObject(),
-                null,
-                "extensionGroup", null, 0, 1, MetamodelExtensionSetting.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(metamodelExtensionSettingEClass, MetamodelExtensionSetting.class, "MetamodelExtensionSetting", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getMetamodelExtensionSetting_ExtensionGroup(), theEcorePackage.getEObject(), null, "extensionGroup", null, 0, 1, MetamodelExtensionSetting.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(javaExtensionEClass, JavaExtension.class, "JavaExtension", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getJavaExtension_QualifiedClassName(),
-                theEcorePackage.getEString(),
-                "qualifiedClassName", null, 1, 1, JavaExtension.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getJavaExtension_QualifiedClassName(), theEcorePackage.getEString(), "qualifiedClassName", null, 1, 1, JavaExtension.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(representationElementMappingEClass, RepresentationElementMapping.class,
-                "RepresentationElementMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getRepresentationElementMapping_DetailDescriptions(),
-                theToolPackage.getRepresentationCreationDescription(),
-                null,
-                "detailDescriptions", null, 0, -1, RepresentationElementMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getRepresentationElementMapping_NavigationDescriptions(),
-                theToolPackage.getRepresentationNavigationDescription(),
-                null,
-                "navigationDescriptions", null, 0, -1, RepresentationElementMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(representationElementMappingEClass, RepresentationElementMapping.class, "RepresentationElementMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getRepresentationElementMapping_DetailDescriptions(), theToolPackage.getRepresentationCreationDescription(), null, "detailDescriptions", null, 0, -1, //$NON-NLS-1$
+                RepresentationElementMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getRepresentationElementMapping_NavigationDescriptions(), theToolPackage.getRepresentationNavigationDescription(), null, "navigationDescriptions", null, 0, -1, //$NON-NLS-1$
+                RepresentationElementMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(abstractMappingImportEClass, AbstractMappingImport.class, "AbstractMappingImport", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getAbstractMappingImport_HideSubMappings(),
-                theEcorePackage.getEBoolean(),
-                "hideSubMappings", "false", 0, 1, AbstractMappingImport.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getAbstractMappingImport_InheritsAncestorFilters(),
-                theEcorePackage.getEBoolean(),
-                "inheritsAncestorFilters", "true", 0, 1, AbstractMappingImport.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getAbstractMappingImport_HideSubMappings(), theEcorePackage.getEBoolean(), "hideSubMappings", "false", 0, 1, AbstractMappingImport.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractMappingImport_InheritsAncestorFilters(), theEcorePackage.getEBoolean(), "inheritsAncestorFilters", "true", 0, 1, AbstractMappingImport.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(documentedElementEClass, DocumentedElement.class, "DocumentedElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDocumentedElement_Documentation(),
-                theEcorePackage.getEString(),
-                "documentation", "", 0, 1, DocumentedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getDocumentedElement_Documentation(), theEcorePackage.getEString(), "documentation", "", 0, 1, DocumentedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dModelElementEClass, DModelElement.class, "DModelElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDModelElement_EAnnotations(),
-                this.getDAnnotation(),
-                null,
-                "eAnnotations", null, 0, -1, DModelElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getDModelElement_EAnnotations(), this.getDAnnotation(), null, "eAnnotations", null, 0, -1, DModelElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         op = addEOperation(dModelElementEClass, this.getDAnnotation(), "getDAnnotation", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEString(), "source", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(dAnnotationEClass, DAnnotation.class, "DAnnotation", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDAnnotation_Source(),
-                theEcorePackage.getEString(),
-                "source", null, 0, 1, DAnnotation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getDAnnotation_Details(),
-                theEcorePackage.getEStringToStringMapEntry(),
-                null,
-                "details", null, 0, -1, DAnnotation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDAnnotation_Source(), theEcorePackage.getEString(), "source", null, 0, 1, DAnnotation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDAnnotation_Details(), theEcorePackage.getEStringToStringMapEntry(), null, "details", null, 0, -1, DAnnotation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(conditionalStyleDescriptionEClass, ConditionalStyleDescription.class,
-                "ConditionalStyleDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getConditionalStyleDescription_PredicateExpression(),
-                this.getInterpretedExpression(),
-                "predicateExpression", null, 1, 1, ConditionalStyleDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(conditionalStyleDescriptionEClass, ConditionalStyleDescription.class, "ConditionalStyleDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getConditionalStyleDescription_PredicateExpression(), this.getInterpretedExpression(), "predicateExpression", null, 1, 1, ConditionalStyleDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         op = addEOperation(conditionalStyleDescriptionEClass, theEcorePackage.getEBoolean(), "checkPredicate", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         addEParameter(op, theEcorePackage.getEObject(), "containerVariable", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(pasteTargetDescriptionEClass, PasteTargetDescription.class, "PasteTargetDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getPasteTargetDescription_PasteDescriptions(),
-                theToolPackage.getPasteDescription(),
-                null,
-                "pasteDescriptions", null, 0, -1, PasteTargetDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(pasteTargetDescriptionEClass, PasteTargetDescription.class, "PasteTargetDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getPasteTargetDescription_PasteDescriptions(), theToolPackage.getPasteDescription(), null, "pasteDescriptions", null, 0, -1, PasteTargetDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(decorationDescriptionsSetEClass, DecorationDescriptionsSet.class,
-                "DecorationDescriptionsSet", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getDecorationDescriptionsSet_DecorationDescriptions(),
-                this.getDecorationDescription(),
-                null,
-                "decorationDescriptions", null, 0, -1, DecorationDescriptionsSet.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(decorationDescriptionsSetEClass, DecorationDescriptionsSet.class, "DecorationDescriptionsSet", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDecorationDescriptionsSet_DecorationDescriptions(), this.getDecorationDescription(), null, "decorationDescriptions", null, 0, -1, DecorationDescriptionsSet.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getDecorationDescriptionsSet_DecorationDescriptions().getEKeys().add(this.getDecorationDescription_Name());
 
         initEClass(decorationDescriptionEClass, DecorationDescription.class, "DecorationDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDecorationDescription_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDecorationDescription_Position(),
-                this.getPosition(),
-                "position", "SOUTH_WEST", 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getDecorationDescription_DecoratorPath(),
-                this.getImagePath(),
-                "decoratorPath", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDecorationDescription_PreconditionExpression(),
-                this.getInterpretedExpression(),
-                "preconditionExpression", null, 0, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDecorationDescription_Name(), theEcorePackage.getEString(), "name", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_Position(), this.getPosition(), "position", "SOUTH_WEST", 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_DecoratorPath(), this.getImagePath(), "decoratorPath", null, 1, 1, DecorationDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDecorationDescription_PreconditionExpression(), this.getInterpretedExpression(), "preconditionExpression", null, 0, 1, DecorationDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(semanticBasedDecorationEClass, SemanticBasedDecoration.class,
-                "SemanticBasedDecoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getSemanticBasedDecoration_DomainClass(),
-                this.getTypeName(),
-                "domainClass", null, 1, 1, SemanticBasedDecoration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(semanticBasedDecorationEClass, SemanticBasedDecoration.class, "SemanticBasedDecoration", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSemanticBasedDecoration_DomainClass(), this.getTypeName(), "domainClass", null, 1, 1, SemanticBasedDecoration.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(customizationEClass, Customization.class, "Customization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getCustomization_VsmElementCustomizations(),
-                this.getIVSMElementCustomization(),
-                null,
-                "vsmElementCustomizations", null, 1, -1, Customization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getCustomization_VsmElementCustomizations(), this.getIVSMElementCustomization(), null, "vsmElementCustomizations", null, 1, -1, Customization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(ivsmElementCustomizationEClass, IVSMElementCustomization.class,
-                "IVSMElementCustomization", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEClass(ivsmElementCustomizationEClass, IVSMElementCustomization.class, "IVSMElementCustomization", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(vsmElementCustomizationEClass, VSMElementCustomization.class,
-                "VSMElementCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getVSMElementCustomization_PredicateExpression(),
-                this.getInterpretedExpression(),
-                "predicateExpression", null, 0, 1, VSMElementCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getVSMElementCustomization_FeatureCustomizations(),
-                this.getEStructuralFeatureCustomization(),
-                null,
-                "featureCustomizations", null, 1, -1, VSMElementCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(vsmElementCustomizationEClass, VSMElementCustomization.class, "VSMElementCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getVSMElementCustomization_PredicateExpression(), this.getInterpretedExpression(), "predicateExpression", null, 0, 1, VSMElementCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getVSMElementCustomization_FeatureCustomizations(), this.getEStructuralFeatureCustomization(), null, "featureCustomizations", null, 1, -1, VSMElementCustomization.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(vsmElementCustomizationReuseEClass, VSMElementCustomizationReuse.class,
-                "VSMElementCustomizationReuse", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getVSMElementCustomizationReuse_Reuse(),
-                this.getEStructuralFeatureCustomization(),
-                null,
-                "reuse", null, 1, -1, VSMElementCustomizationReuse.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getVSMElementCustomizationReuse_AppliedOn(),
-                theEcorePackage.getEObject(),
-                null,
-                "appliedOn", null, 1, -1, VSMElementCustomizationReuse.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(vsmElementCustomizationReuseEClass, VSMElementCustomizationReuse.class, "VSMElementCustomizationReuse", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getVSMElementCustomizationReuse_Reuse(), this.getEStructuralFeatureCustomization(), null, "reuse", null, 1, -1, VSMElementCustomizationReuse.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getVSMElementCustomizationReuse_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 1, -1, VSMElementCustomizationReuse.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(eStructuralFeatureCustomizationEClass, EStructuralFeatureCustomization.class,
-                "EStructuralFeatureCustomization", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getEStructuralFeatureCustomization_AppliedOn(),
-                theEcorePackage.getEObject(),
-                null,
-                "appliedOn", null, 0, -1, EStructuralFeatureCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getEStructuralFeatureCustomization_ApplyOnAll(),
-                theEcorePackage.getEBoolean(),
-                "applyOnAll", null, 0, 1, EStructuralFeatureCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(eStructuralFeatureCustomizationEClass, EStructuralFeatureCustomization.class, "EStructuralFeatureCustomization", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getEStructuralFeatureCustomization_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 0, -1, EStructuralFeatureCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEStructuralFeatureCustomization_ApplyOnAll(), theEcorePackage.getEBoolean(), "applyOnAll", null, 0, 1, EStructuralFeatureCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(eAttributeCustomizationEClass, EAttributeCustomization.class,
-                "EAttributeCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getEAttributeCustomization_AttributeName(),
-                theEcorePackage.getEString(),
-                "attributeName", null, 1, 1, EAttributeCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getEAttributeCustomization_Value(),
-                this.getInterpretedExpression(),
-                "value", null, 0, 1, EAttributeCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(eAttributeCustomizationEClass, EAttributeCustomization.class, "EAttributeCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEAttributeCustomization_AttributeName(), theEcorePackage.getEString(), "attributeName", null, 1, 1, EAttributeCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEAttributeCustomization_Value(), this.getInterpretedExpression(), "value", null, 0, 1, EAttributeCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(eReferenceCustomizationEClass, EReferenceCustomization.class,
-                "EReferenceCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getEReferenceCustomization_ReferenceName(),
-                theEcorePackage.getEString(),
-                "referenceName", null, 1, 1, EReferenceCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getEReferenceCustomization_Value(),
-                theEcorePackage.getEObject(),
-                null,
-                "value", null, 0, 1, EReferenceCustomization.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(eReferenceCustomizationEClass, EReferenceCustomization.class, "EReferenceCustomization", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEReferenceCustomization_ReferenceName(), theEcorePackage.getEString(), "referenceName", null, 1, 1, EReferenceCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getEReferenceCustomization_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, EReferenceCustomization.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(selectionDescriptionEClass, SelectionDescription.class, "SelectionDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_CandidatesExpression(), 
-                this.getInterpretedExpression(), 
-                "candidatesExpression", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_Multiple(),
-                theEcorePackage.getEBoolean(),
-                "multiple", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_Tree(),
-                theEcorePackage.getEBoolean(),
-                "tree", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_RootExpression(),
-                this.getInterpretedExpression(),
-                "rootExpression", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_ChildrenExpression(),
-                this.getInterpretedExpression(),
-                "childrenExpression", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getSelectionDescription_Message(),
-                this.getTranslatableMessage(),
-                "message", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getSelectionDescription_CandidatesExpression(), this.getInterpretedExpression(), "candidatesExpression", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionDescription_Multiple(), theEcorePackage.getEBoolean(), "multiple", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionDescription_Tree(), theEcorePackage.getEBoolean(), "tree", null, 1, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionDescription_RootExpression(), this.getInterpretedExpression(), "rootExpression", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionDescription_ChildrenExpression(), this.getInterpretedExpression(), "childrenExpression", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getSelectionDescription_Message(), this.getTranslatableMessage(), "message", null, 0, 1, SelectionDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(colorDescriptionEClass, ColorDescription.class, "ColorDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(systemColorEClass, SystemColor.class, "SystemColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getSystemColor_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, SystemColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getSystemColor_Name(), theEcorePackage.getEString(), "name", null, 1, 1, SystemColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(interpolatedColorEClass, InterpolatedColor.class, "InterpolatedColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getInterpolatedColor_ColorValueComputationExpression(),
-                this.getInterpretedExpression(),
-                "colorValueComputationExpression", "1", 1, 1, InterpolatedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getInterpolatedColor_MinValueComputationExpression(),
-                this.getInterpretedExpression(),
-                "minValueComputationExpression", "0", 1, 1, InterpolatedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getInterpolatedColor_MaxValueComputationExpression(),
-                this.getInterpretedExpression(),
-                "maxValueComputationExpression", "10", 1, 1, InterpolatedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getInterpolatedColor_ColorSteps(),
-                this.getColorStep(),
-                null,
-                "colorSteps", null, 0, -1, InterpolatedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getInterpolatedColor_ColorValueComputationExpression(), this.getInterpretedExpression(), "colorValueComputationExpression", "1", 1, 1, InterpolatedColor.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getInterpolatedColor_MinValueComputationExpression(), this.getInterpretedExpression(), "minValueComputationExpression", "0", 1, 1, InterpolatedColor.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getInterpolatedColor_MaxValueComputationExpression(), this.getInterpretedExpression(), "maxValueComputationExpression", "10", 1, 1, InterpolatedColor.class, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getInterpolatedColor_ColorSteps(), this.getColorStep(), null, "colorSteps", null, 0, -1, InterpolatedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(colorStepEClass, ColorStep.class, "ColorStep", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getColorStep_AssociatedValue(),
-                this.getInterpretedExpression(),
-                "associatedValue", "", 1, 1, ColorStep.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(
-                getColorStep_AssociatedColor(),
-                this.getFixedColor(),
-                null,
-                "associatedColor", null, 1, 1, ColorStep.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getColorStep_AssociatedValue(), this.getInterpretedExpression(), "associatedValue", "", 1, 1, ColorStep.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getColorStep_AssociatedColor(), this.getFixedColor(), null, "associatedColor", null, 1, 1, ColorStep.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(fixedColorEClass, FixedColor.class, "FixedColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getFixedColor_Red(),
-                theEcorePackage.getEInt(),
-                "red", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getFixedColor_Green(),
-                theEcorePackage.getEInt(),
-                "green", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getFixedColor_Blue(),
-                theEcorePackage.getEInt(),
-                "blue", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getFixedColor_Red(), theEcorePackage.getEInt(), "red", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getFixedColor_Green(), theEcorePackage.getEInt(), "green", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getFixedColor_Blue(), theEcorePackage.getEInt(), "blue", "125", 1, 1, FixedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(userFixedColorEClass, UserFixedColor.class, "UserFixedColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(userColorEClass, UserColor.class, "UserColor", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getUserColor_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, UserColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getUserColor_Name(), theEcorePackage.getEString(), "name", null, 1, 1, UserColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(environmentEClass, Environment.class, "Environment", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getEnvironment_SystemColors(),
-                this.getSytemColorsPalette(),
-                null,
-                "systemColors", null, 0, 1, Environment.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getEnvironment_DefaultTools(),
-                theToolPackage.getToolEntry(),
-                null,
-                "defaultTools", null, 0, -1, Environment.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getEnvironment_LabelBorderStyles(),
-                theStylePackage.getLabelBorderStyles(),
-                null,
-                "labelBorderStyles", null, 0, 1, Environment.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getEnvironment_SystemColors(), this.getSytemColorsPalette(), null, "systemColors", null, 0, 1, Environment.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getEnvironment_DefaultTools(), theToolPackage.getToolEntry(), null, "defaultTools", null, 0, -1, Environment.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getEnvironment_LabelBorderStyles(), theStylePackage.getLabelBorderStyles(), null, "labelBorderStyles", null, 0, 1, Environment.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(sytemColorsPaletteEClass, SytemColorsPalette.class, "SytemColorsPalette", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getSytemColorsPalette_Entries(),
-                this.getSystemColor(),
-                null,
-                "entries", null, 0, -1, SytemColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(getSytemColorsPalette_Entries(), this.getSystemColor(), null, "entries", null, 0, -1, SytemColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getSytemColorsPalette_Entries().getEKeys().add(this.getSystemColor_Name());
 
         initEClass(userColorsPaletteEClass, UserColorsPalette.class, "UserColorsPalette", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getUserColorsPalette_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, UserColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getUserColorsPalette_Entries(),
-                this.getUserColor(),
-                null,
-                "entries", null, 0, -1, UserColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getUserColorsPalette_Name(), theEcorePackage.getEString(), "name", null, 1, 1, UserColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getUserColorsPalette_Entries(), this.getUserColor(), null, "entries", null, 0, -1, UserColorsPalette.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         getUserColorsPalette_Entries().getEKeys().add(this.getUserColor_Name());
 
         initEClass(annotationEntryEClass, AnnotationEntry.class, "AnnotationEntry", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getAnnotationEntry_Source(),
-                theEcorePackage.getEString(),
-                "source", null, 0, 1, AnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getAnnotationEntry_Data(),
-                theEcorePackage.getEObject(),
-                null,
-                "data", null, 0, 1, AnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getAnnotationEntry_Source(), theEcorePackage.getEString(), "source", null, 0, 1, AnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAnnotationEntry_Data(), theEcorePackage.getEObject(), null, "data", null, 0, 1, AnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
-        initEClass(endUserDocumentedElementEClass, EndUserDocumentedElement.class,
-                "EndUserDocumentedElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getEndUserDocumentedElement_EndUserDocumentation(),
-                theEcorePackage.getEString(),
-                "endUserDocumentation", "", 0, 1, EndUserDocumentedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEClass(endUserDocumentedElementEClass, EndUserDocumentedElement.class, "EndUserDocumentedElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEndUserDocumentedElement_EndUserDocumentation(), theEcorePackage.getEString(), "endUserDocumentation", "", 0, 1, EndUserDocumentedElement.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getIdentifiedElement_Name(),
-                theEcorePackage.getEString(),
-                "name", "", 1, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getIdentifiedElement_Label(),
-                this.getTranslatableMessage(),
-                "label", null, 0, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getIdentifiedElement_Name(), theEcorePackage.getEString(), "name", "", 1, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getIdentifiedElement_Label(), this.getTranslatableMessage(), "label", null, 0, 1, IdentifiedElement.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(computedColorEClass, ComputedColor.class, "ComputedColor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getComputedColor_Red(),
-                this.getInterpretedExpression(),
-                "red", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getComputedColor_Green(),
-                this.getInterpretedExpression(),
-                "green", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(
-                getComputedColor_Blue(),
-                this.getInterpretedExpression(),
-                "blue", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        initEAttribute(getComputedColor_Red(), this.getInterpretedExpression(), "red", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$//$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getComputedColor_Green(), this.getInterpretedExpression(), "green", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getComputedColor_Blue(), this.getInterpretedExpression(), "blue", "", 1, 1, ComputedColor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dAnnotationEntryEClass, DAnnotationEntry.class, "DAnnotationEntry", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getDAnnotationEntry_Source(),
-                theEcorePackage.getEString(),
-                "source", null, 0, 1, DAnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(
-                getDAnnotationEntry_Details(),
-                theEcorePackage.getEString(),
-                "details", null, 0, -1, DAnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getDAnnotationEntry_Source(), theEcorePackage.getEString(), "source", null, 0, 1, DAnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDAnnotationEntry_Details(), theEcorePackage.getEString(), "details", null, 0, -1, DAnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(abstractVariableEClass, AbstractVariable.class, "AbstractVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getAbstractVariable_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 0, 1, AbstractVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getAbstractVariable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, AbstractVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(subVariableEClass, SubVariable.class, "SubVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(interactiveVariableDescriptionEClass, InteractiveVariableDescription.class,
-                "InteractiveVariableDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getInteractiveVariableDescription_UserDocumentation(),
-                theEcorePackage.getEString(),
-                "userDocumentation", null, 0, 1, InteractiveVariableDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEClass(interactiveVariableDescriptionEClass, InteractiveVariableDescription.class, "InteractiveVariableDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getInteractiveVariableDescription_UserDocumentation(), theEcorePackage.getEString(), "userDocumentation", null, 0, 1, InteractiveVariableDescription.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(typedVariableEClass, TypedVariable.class, "TypedVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getTypedVariable_DefaultValueExpression(),
-                this.getInterpretedExpression(),
-                "defaultValueExpression", null, 0, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getTypedVariable_ValueType(),
-                theEcorePackage.getEDataType(),
-                null,
-                "valueType", null, 1, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(getTypedVariable_DefaultValueExpression(), this.getInterpretedExpression(), "defaultValueExpression", null, 0, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTypedVariable_ValueType(), theEcorePackage.getEDataType(), null, "valueType", null, 1, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(positionEEnum, Position.class, "Position"); //$NON-NLS-1$
@@ -2983,7 +2805,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/returnType</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createReturnTypeAnnotations() {
@@ -2994,9 +2816,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         });
         addAnnotation(getDecorationDescription_PreconditionExpression(), source, new String[] { "returnType", "a boolean." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getVSMElementCustomization_PredicateExpression(), source, new String[] {
-                "returnType", "a boolean result. True to enable the customization, false to disabled it. True by default." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getVSMElementCustomization_PredicateExpression(), source,
+                new String[] { "returnType", "a boolean result. True to enable the customization, false to disabled it. True by default." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getEAttributeCustomization_Value(), source, new String[] { "returnType", "A java Object to affect as new value of a EAttribute, for example a java primitive." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getSelectionDescription_CandidatesExpression(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." //$NON-NLS-1$ //$NON-NLS-2$
@@ -3027,7 +2849,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/variables</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createVariablesAnnotations() {
@@ -3036,30 +2858,33 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getConditionalStyleDescription_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getDecorationDescription_PreconditionExpression(), source, new String[] {
-                "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
-                "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
-                "viewpoint", "diagram.DDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "diagram", "diagram.DDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getDecorationDescription_PreconditionExpression(), source,
+                new String[] { "containerView", "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container view.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "viewpoint", "diagram.DDiagram | (deprecated) the current diagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "diagram", "diagram.DDiagram | the current diagram." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getVSMElementCustomization_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
         addAnnotation(getEAttributeCustomization_Value(), source, new String[] { "view", "ecore.EObject | the current view.", //$NON-NLS-1$ //$NON-NLS-2$
                 "container", "ecore.EObject | the semantic container." //$NON-NLS-1$ //$NON-NLS-2$
         });
-        addAnnotation(getSelectionDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-        });
-        addAnnotation(getSelectionDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-        });
-        addAnnotation(getSelectionDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
-                "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
-                "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
-        });
+        addAnnotation(getSelectionDescription_CandidatesExpression(), source,
+                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+                });
+        addAnnotation(getSelectionDescription_RootExpression(), source,
+                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+                });
+        addAnnotation(getSelectionDescription_ChildrenExpression(), source,
+                new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "containerView", "viewpoint.DSemanticDecorator | the view of the container.", //$NON-NLS-1$ //$NON-NLS-2$
+                        "container", "ecore.EObject | the semantic element of the container." //$NON-NLS-1$ //$NON-NLS-2$
+                });
         addAnnotation(getInterpolatedColor_ColorValueComputationExpression(), source, new String[] {});
         addAnnotation(getInterpolatedColor_MinValueComputationExpression(), source, new String[] {});
         addAnnotation(getInterpolatedColor_MaxValueComputationExpression(), source, new String[] {});

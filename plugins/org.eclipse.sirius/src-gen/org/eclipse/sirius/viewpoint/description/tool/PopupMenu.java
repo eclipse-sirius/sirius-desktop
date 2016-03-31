@@ -19,12 +19,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu#getMenuItemDescription
  * <em>Menu Item Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPopupMenu()
  * @model
@@ -42,7 +42,7 @@ public interface PopupMenu extends AbstractToolDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Menu Item Description</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPopupMenu_MenuItemDescription()
