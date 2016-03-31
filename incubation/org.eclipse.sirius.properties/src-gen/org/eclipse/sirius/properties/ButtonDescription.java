@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.ButtonDescription#getButtonLabelExpression
@@ -26,8 +27,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.ButtonDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.ButtonDescription#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription()
  * @model
@@ -97,5 +99,35 @@ public interface ButtonDescription extends WidgetDescription {
      * @generated
      */
     void setInitialOperation(InitialOperation value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(ButtonWidgetStyle)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    ButtonWidgetStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ButtonDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(ButtonWidgetStyle value);
 
 } // ButtonDescription

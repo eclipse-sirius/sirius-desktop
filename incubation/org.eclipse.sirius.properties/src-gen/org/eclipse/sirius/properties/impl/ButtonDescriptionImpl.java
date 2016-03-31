@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
@@ -25,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em><b>Button Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getButtonLabelExpression
@@ -32,8 +34,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,6 +73,16 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * @ordered
      */
     protected InitialOperation initialOperation;
+
+    /**
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getStyle()
+     * @generated
+     * @ordered
+     */
+    protected ButtonWidgetStyle style;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -173,10 +186,65 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * @generated
      */
     @Override
+    public ButtonWidgetStyle getStyle() {
+        return style;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetStyle(ButtonWidgetStyle newStyle, NotificationChain msgs) {
+        ButtonWidgetStyle oldStyle = style;
+        style = newStyle;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__STYLE, oldStyle, newStyle);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setStyle(ButtonWidgetStyle newStyle) {
+        if (newStyle != style) {
+            NotificationChain msgs = null;
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.BUTTON_DESCRIPTION__STYLE, null, msgs);
+            }
+            msgs = basicSetStyle(newStyle, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.BUTTON_DESCRIPTION__STYLE, newStyle, newStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return basicSetInitialOperation(null, msgs);
+        case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+            return basicSetStyle(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -193,6 +261,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return getButtonLabelExpression();
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return getInitialOperation();
+        case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+            return getStyle();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -210,6 +280,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+            setStyle((ButtonWidgetStyle) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -229,6 +302,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             setInitialOperation((InitialOperation) null);
             return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+            setStyle((ButtonWidgetStyle) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -242,10 +318,12 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION:
-            return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT
-            .equals(buttonLabelExpression);
+            return ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT == null ? buttonLabelExpression != null
+                    : !ButtonDescriptionImpl.BUTTON_LABEL_EXPRESSION_EDEFAULT.equals(buttonLabelExpression);
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return initialOperation != null;
+        case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+            return style != null;
         }
         return super.eIsSet(featureID);
     }

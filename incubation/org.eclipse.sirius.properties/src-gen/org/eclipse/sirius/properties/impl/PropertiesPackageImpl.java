@@ -18,7 +18,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
@@ -28,6 +30,7 @@ import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -36,11 +39,13 @@ import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
-import org.eclipse.sirius.properties.TextStyle;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -229,7 +234,42 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
-    private EClass textStyleEClass = null;
+    private EClass textWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass labelWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass checkboxWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass radioWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass buttonWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass selectWidgetStyleEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -278,8 +318,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         }
 
         // Obtain or create and register package
-        PropertiesPackageImpl thePropertiesPackage = (PropertiesPackageImpl) (EPackage.Registry.INSTANCE.get(PropertiesPackage.eNS_URI) instanceof PropertiesPackageImpl ? EPackage.Registry.INSTANCE
-                .get(PropertiesPackage.eNS_URI) : new PropertiesPackageImpl());
+        PropertiesPackageImpl thePropertiesPackage = (PropertiesPackageImpl) (EPackage.Registry.INSTANCE.get(PropertiesPackage.eNS_URI) instanceof PropertiesPackageImpl
+                ? EPackage.Registry.INSTANCE.get(PropertiesPackage.eNS_URI) : new PropertiesPackageImpl());
 
         PropertiesPackageImpl.isInited = true;
 
@@ -716,6 +756,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EReference getButtonDescription_Style() {
+        return (EReference) buttonDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getLabelDescription() {
         return labelDescriptionEClass;
     }
@@ -728,6 +778,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EAttribute getLabelDescription_BodyExpression() {
         return (EAttribute) labelDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelDescription_Style() {
+        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -758,6 +818,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getCheckboxDescription_InitialOperation() {
         return (EReference) checkboxDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCheckboxDescription_Style() {
+        return (EReference) checkboxDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -808,6 +878,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EAttribute getSelectDescription_CandidateDisplayExpression() {
         return (EAttribute) selectDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getSelectDescription_Style() {
+        return (EReference) selectDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -948,6 +1028,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EAttribute getRadioDescription_CandidateDisplayExpression() {
         return (EAttribute) radioDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getRadioDescription_Style() {
+        return (EReference) radioDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1236,8 +1326,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EClass getTextStyle() {
-        return textStyleEClass;
+    public EAttribute getWidgetStyle_LabelFontNameExpression() {
+        return (EAttribute) widgetStyleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1246,8 +1336,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getTextStyle_FontNameExpression() {
-        return (EAttribute) textStyleEClass.getEStructuralFeatures().get(0);
+    public EAttribute getWidgetStyle_LabelFontSize() {
+        return (EAttribute) widgetStyleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1256,8 +1346,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getTextStyle_FontSize() {
-        return (EAttribute) textStyleEClass.getEStructuralFeatures().get(1);
+    public EReference getWidgetStyle_LabelBackgroundColor() {
+        return (EReference) widgetStyleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1266,8 +1356,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getTextStyle_BackgroundColor() {
-        return (EReference) textStyleEClass.getEStructuralFeatures().get(2);
+    public EReference getWidgetStyle_LabelForegroundColor() {
+        return (EReference) widgetStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1276,8 +1366,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getTextStyle_ForegroundColor() {
-        return (EReference) textStyleEClass.getEStructuralFeatures().get(3);
+    public EAttribute getWidgetStyle_LabelFontFormat() {
+        return (EAttribute) widgetStyleEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1286,8 +1376,158 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getTextStyle_FontFormat() {
-        return (EAttribute) textStyleEClass.getEStructuralFeatures().get(4);
+    public EClass getTextWidgetStyle() {
+        return textWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getTextWidgetStyle_FontNameExpression() {
+        return (EAttribute) textWidgetStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getTextWidgetStyle_FontSize() {
+        return (EAttribute) textWidgetStyleEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getTextWidgetStyle_BackgroundColor() {
+        return (EReference) textWidgetStyleEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getTextWidgetStyle_ForegroundColor() {
+        return (EReference) textWidgetStyleEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getTextWidgetStyle_FontFormat() {
+        return (EAttribute) textWidgetStyleEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getLabelWidgetStyle() {
+        return labelWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLabelWidgetStyle_FontNameExpression() {
+        return (EAttribute) labelWidgetStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLabelWidgetStyle_FontSize() {
+        return (EAttribute) labelWidgetStyleEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelWidgetStyle_BackgroundColor() {
+        return (EReference) labelWidgetStyleEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelWidgetStyle_ForegroundColor() {
+        return (EReference) labelWidgetStyleEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getLabelWidgetStyle_FontFormat() {
+        return (EAttribute) labelWidgetStyleEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getCheckboxWidgetStyle() {
+        return checkboxWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getRadioWidgetStyle() {
+        return radioWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getButtonWidgetStyle() {
+        return buttonWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getSelectWidgetStyle() {
+        return selectWidgetStyleEClass;
     }
 
     /**
@@ -1371,19 +1611,23 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         buttonDescriptionEClass = createEClass(PropertiesPackage.BUTTON_DESCRIPTION);
         createEAttribute(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION);
         createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION);
+        createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__STYLE);
 
         labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
         createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION);
+        createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__STYLE);
 
         checkboxDescriptionEClass = createEClass(PropertiesPackage.CHECKBOX_DESCRIPTION);
         createEAttribute(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
+        createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE);
 
         selectDescriptionEClass = createEClass(PropertiesPackage.SELECT_DESCRIPTION);
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION);
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
+        createEReference(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__STYLE);
 
         dynamicMappingForEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_FOR);
         createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR);
@@ -1402,6 +1646,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION);
         createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION);
         createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
+        createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__STYLE);
 
         singleReferenceDescriptionEClass = createEClass(PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION);
         createEAttribute(singleReferenceDescriptionEClass, PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION);
@@ -1437,13 +1682,33 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(customOperationEClass, PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION);
 
         widgetStyleEClass = createEClass(PropertiesPackage.WIDGET_STYLE);
+        createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION);
+        createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE);
+        createEReference(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR);
+        createEReference(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR);
+        createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT);
 
-        textStyleEClass = createEClass(PropertiesPackage.TEXT_STYLE);
-        createEAttribute(textStyleEClass, PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION);
-        createEAttribute(textStyleEClass, PropertiesPackage.TEXT_STYLE__FONT_SIZE);
-        createEReference(textStyleEClass, PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR);
-        createEReference(textStyleEClass, PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR);
-        createEAttribute(textStyleEClass, PropertiesPackage.TEXT_STYLE__FONT_FORMAT);
+        textWidgetStyleEClass = createEClass(PropertiesPackage.TEXT_WIDGET_STYLE);
+        createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION);
+        createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE);
+        createEReference(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__BACKGROUND_COLOR);
+        createEReference(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FOREGROUND_COLOR);
+        createEAttribute(textWidgetStyleEClass, PropertiesPackage.TEXT_WIDGET_STYLE__FONT_FORMAT);
+
+        labelWidgetStyleEClass = createEClass(PropertiesPackage.LABEL_WIDGET_STYLE);
+        createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION);
+        createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE);
+        createEReference(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR);
+        createEReference(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR);
+        createEAttribute(labelWidgetStyleEClass, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT);
+
+        checkboxWidgetStyleEClass = createEClass(PropertiesPackage.CHECKBOX_WIDGET_STYLE);
+
+        radioWidgetStyleEClass = createEClass(PropertiesPackage.RADIO_WIDGET_STYLE);
+
+        buttonWidgetStyleEClass = createEClass(PropertiesPackage.BUTTON_WIDGET_STYLE);
+
+        selectWidgetStyleEClass = createEClass(PropertiesPackage.SELECT_WIDGET_STYLE);
     }
 
     /**
@@ -1495,7 +1760,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         singleReferenceDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         multipleReferencesDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         customDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
-        textStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        textWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        labelWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        checkboxWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        radioWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        buttonWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        selectWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
@@ -1546,8 +1816,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getGroupDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupDescription_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupDescription_SemanticCandidateExpression(), theDescriptionPackage.getInterpretedExpression(), "semanticCandidateExpression", null, 0, 1, GroupDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
@@ -1591,7 +1861,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getTextDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getTextDescription_Style(), this.getTextStyle(), null, "style", null, 0, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEReference(getTextDescription_Style(), this.getTextWidgetStyle(), null, "style", null, 0, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
@@ -1602,18 +1872,26 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getButtonDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, ButtonDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getButtonDescription_Style(), this.getButtonWidgetStyle(), null, "style", null, 0, 1, ButtonDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getLabelDescription_BodyExpression(), theDescriptionPackage.getInterpretedExpression(), "bodyExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getLabelDescription_Style(), this.getLabelWidgetStyle(), null, "style", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
+        initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getCheckboxDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getCheckboxDescription_Style(), this.getCheckboxWidgetStyle(), null, "style", null, 0, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -1626,6 +1904,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getSelectDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, SelectDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getSelectDescription_Style(), this.getSelectWidgetStyle(), null, "style", null, 0, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
         initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -1660,6 +1941,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getRadioDescription_CandidateDisplayExpression(), theDescriptionPackage.getInterpretedExpression(), "candidateDisplayExpression", null, 0, 1, RadioDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getRadioDescription_Style(), this.getRadioWidgetStyle(), null, "style", null, 0, 1, RadioDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(singleReferenceDescriptionEClass, SingleReferenceDescription.class, "SingleReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -1675,9 +1959,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getSingleReferenceDescription_SearchOperation(), this.getOperationDescription(), null, "searchOperation", null, 0, 1, SingleReferenceDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getSingleReferenceDescription_UnsetOperation(), this.getOperationDescription(), null, "unsetOperation", null, 0, 1, SingleReferenceDescription.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getSingleReferenceDescription_UnsetOperation(), this.getOperationDescription(), null, "unsetOperation", null, 0, 1, SingleReferenceDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getSingleReferenceDescription_OnClickOperation(), this.getOperationDescription(), null, "onClickOperation", null, 0, 1, SingleReferenceDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -1707,9 +1991,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getMultipleReferencesDescription_OnClickOperation(), this.getOperationDescription(), null, "onClickOperation", null, 0, 1, MultipleReferencesDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getMultipleReferencesDescription_UpOperation(), this.getOperationDescription(), null, "upOperation", null, 0, 1, MultipleReferencesDescription.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getMultipleReferencesDescription_UpOperation(), this.getOperationDescription(), null, "upOperation", null, 0, 1, MultipleReferencesDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getMultipleReferencesDescription_DownOperation(), this.getOperationDescription(), null, "downOperation", null, 0, 1, MultipleReferencesDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -1736,20 +2020,54 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(widgetStyleEClass, WidgetStyle.class, "WidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-
-        initEClass(textStyleEClass, TextStyle.class, "TextStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTextStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, TextStyle.class, !EPackageImpl.IS_TRANSIENT,
+        initEAttribute(getWidgetStyle_LabelFontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "labelFontNameExpression", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getTextStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, TextStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
-                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getTextStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, TextStyle.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getTextStyle_ForegroundColor(), theDescriptionPackage.getColorDescription(), null, "foregroundColor", null, 0, 1, TextStyle.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getTextStyle_FontFormat(), theViewpointPackage.getFontFormat(), "fontFormat", null, 0, 4, TextStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEAttribute(getWidgetStyle_LabelFontSize(), ecorePackage.getEInt(), "labelFontSize", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getWidgetStyle_LabelBackgroundColor(), theDescriptionPackage.getColorDescription(), null, "labelBackgroundColor", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getWidgetStyle_LabelForegroundColor(), theDescriptionPackage.getColorDescription(), null, "labelForegroundColor", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getWidgetStyle_LabelFontFormat(), theViewpointPackage.getFontFormat(), "labelFontFormat", null, 0, 4, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(textWidgetStyleEClass, TextWidgetStyle.class, "TextWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getTextWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTextWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTextWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getTextWidgetStyle_ForegroundColor(), theDescriptionPackage.getColorDescription(), null, "foregroundColor", null, 0, 1, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getTextWidgetStyle_FontFormat(), theViewpointPackage.getFontFormat(), "fontFormat", null, 0, 4, TextWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(labelWidgetStyleEClass, LabelWidgetStyle.class, "LabelWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getLabelWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLabelWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getLabelWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getLabelWidgetStyle_ForegroundColor(), theDescriptionPackage.getColorDescription(), null, "foregroundColor", null, 0, 1, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLabelWidgetStyle_FontFormat(), theViewpointPackage.getFontFormat(), "fontFormat", null, 0, 4, LabelWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(checkboxWidgetStyleEClass, CheckboxWidgetStyle.class, "CheckboxWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(radioWidgetStyleEClass, RadioWidgetStyle.class, "RadioWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(buttonWidgetStyleEClass, ButtonWidgetStyle.class, "ButtonWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(selectWidgetStyleEClass, SelectWidgetStyle.class, "SelectWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(PropertiesPackage.eNS_URI);

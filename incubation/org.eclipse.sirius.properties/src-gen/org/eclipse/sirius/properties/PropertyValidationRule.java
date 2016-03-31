@@ -20,11 +20,11 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.PropertyValidationRule#getTargets
  * <em>Targets</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getPropertyValidationRule()
  * @model

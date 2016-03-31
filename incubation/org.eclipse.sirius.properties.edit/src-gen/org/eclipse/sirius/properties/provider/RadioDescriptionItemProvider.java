@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -69,8 +70,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RadioDescription_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_valueExpression_feature", "_UI_RadioDescription_type"),
+                getString("_UI_RadioDescription_valueExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_valueExpression_feature", "_UI_RadioDescription_type"),
                 PropertiesPackage.Literals.RADIO_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -81,10 +81,10 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RadioDescription_candidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidatesExpression_feature", "_UI_RadioDescription_type"),
-                PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RadioDescription_candidatesExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidatesExpression_feature", "_UI_RadioDescription_type"),
+                        PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -115,6 +115,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE);
         }
         return childrenFeatures;
     }
@@ -175,6 +176,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
+        case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -193,6 +195,8 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createRadioWidgetStyle()));
     }
 
 }

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;
 
 // Start of user code imports
 
@@ -26,15 +26,15 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the backgroundColor property of a TextStyle object.
+ * A section for the labelBackgroundColor property of a WidgetStyle object.
  */
-public class TextStyleBackgroundColorPropertySection extends AbstractComboPropertySection {
+public class WidgetStyleLabelBackgroundColorPropertySection extends AbstractComboPropertySection {
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "BackgroundColor"; //$NON-NLS-1$
+        return "LabelBackgroundColor"; //$NON-NLS-1$
     }
 
     /**
@@ -55,7 +55,7 @@ public class TextStyleBackgroundColorPropertySection extends AbstractComboProper
      */
     @Override
     protected EReference getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextStyle_BackgroundColor();
+        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelBackgroundColor();
     }
 
     /**

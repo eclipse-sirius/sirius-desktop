@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.SingleReferenceDescription;
  * <em><b>Single Reference Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.SingleReferenceDescriptionImpl#getValueExpression
@@ -45,7 +46,6 @@ import org.eclipse.sirius.properties.SingleReferenceDescription;
  * {@link org.eclipse.sirius.properties.impl.SingleReferenceDescriptionImpl#getOnClickOperation
  * <em>On Click Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -383,7 +383,8 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
         OperationDescription oldOnClickOperation = onClickOperation;
         onClickOperation = newOnClickOperation;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, oldOnClickOperation, newOnClickOperation);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, oldOnClickOperation,
+                    newOnClickOperation);
             if (msgs == null) {
                 msgs = notification;
             } else {
@@ -534,8 +535,8 @@ public class SingleReferenceDescriptionImpl extends WidgetDescriptionImpl implem
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION:
             return SingleReferenceDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !SingleReferenceDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION:
-            return SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null : !SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT
-            .equals(displayExpression);
+            return SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null
+                    : !SingleReferenceDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT.equals(displayExpression);
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION:
             return createOperation != null;
         case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION:

@@ -656,13 +656,22 @@ public interface PropertiesPackage extends EPackage {
     int BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>Button Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -713,13 +722,22 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Label Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -779,13 +797,22 @@ public interface PropertiesPackage extends EPackage {
     int CHECKBOX_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>Checkbox Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -863,13 +890,22 @@ public interface PropertiesPackage extends EPackage {
     int SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '<em>Select Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int SELECT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -1118,13 +1154,22 @@ public interface PropertiesPackage extends EPackage {
     int RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '<em>Radio Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int RADIO_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int RADIO_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -1537,25 +1582,115 @@ public interface PropertiesPackage extends EPackage {
     int WIDGET_STYLE = 23;
 
     /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = 0;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_STYLE__LABEL_FONT_SIZE = 1;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_STYLE__LABEL_BACKGROUND_COLOR = 2;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_STYLE__LABEL_FOREGROUND_COLOR = 3;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_STYLE__LABEL_FONT_FORMAT = 4;
+
+    /**
      * The number of structural features of the '<em>Widget Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int WIDGET_STYLE_FEATURE_COUNT = 0;
+    int WIDGET_STYLE_FEATURE_COUNT = 5;
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.impl.TextStyleImpl
-     * <em>Text Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
+     * <em>Text Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.impl.TextStyleImpl
-     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextStyle()
+     * @see org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
      * @generated
      */
-    int TEXT_STYLE = 24;
+    int TEXT_WIDGET_STYLE = 24;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
 
     /**
      * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
@@ -1564,7 +1699,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+    int TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
@@ -1573,7 +1708,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+    int TEXT_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -1582,7 +1717,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_STYLE__BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 2;
+    int TEXT_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
@@ -1591,7 +1726,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_STYLE__FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 3;
+    int TEXT_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Font Format</b></em>' attribute list. <!--
@@ -1600,16 +1735,391 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TEXT_STYLE__FONT_FORMAT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 4;
+    int TEXT_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 4;
 
     /**
-     * The number of structural features of the '<em>Text Style</em>' class.
+     * The number of structural features of the '<em>Text Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 5;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
+     * <em>Label Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
+     * @generated
+     */
+    int LABEL_WIDGET_STYLE = 25;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TEXT_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 5;
+    int LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Font Format</b></em>' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 4;
+
+    /**
+     * The number of structural features of the '<em>Label Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 5;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
+     * <em>Checkbox Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
+     * @generated
+     */
+    int CHECKBOX_WIDGET_STYLE = 26;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The number of structural features of the '<em>Checkbox Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
+     * <em>Radio Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
+     * @generated
+     */
+    int RADIO_WIDGET_STYLE = 27;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The number of structural features of the '<em>Radio Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
+     * <em>Button Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
+     * @generated
+     */
+    int BUTTON_WIDGET_STYLE = 28;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The number of structural features of the '<em>Button Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
+     * <em>Select Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
+     * @generated
+     */
+    int SELECT_WIDGET_STYLE = 29;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The number of structural features of the '<em>Select Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
      * Returns the meta object for class '
@@ -2134,6 +2644,18 @@ public interface PropertiesPackage extends EPackage {
     EReference getButtonDescription_InitialOperation();
 
     /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.ButtonDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.ButtonDescription#getStyle()
+     * @see #getButtonDescription()
+     * @generated
+     */
+    EReference getButtonDescription_Style();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.LabelDescription
      * <em>Label Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2156,6 +2678,18 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EAttribute getLabelDescription_BodyExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getStyle()
+     * @see #getLabelDescription()
+     * @generated
+     */
+    EReference getLabelDescription_Style();
 
     /**
      * Returns the meta object for class '
@@ -2195,6 +2729,18 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getCheckboxDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.CheckboxDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.CheckboxDescription#getStyle()
+     * @see #getCheckboxDescription()
+     * @generated
+     */
+    EReference getCheckboxDescription_Style();
 
     /**
      * Returns the meta object for class '
@@ -2262,6 +2808,18 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EAttribute getSelectDescription_CandidateDisplayExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.SelectDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getStyle()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EReference getSelectDescription_Style();
 
     /**
      * Returns the meta object for class '
@@ -2442,6 +3000,18 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EAttribute getRadioDescription_CandidateDisplayExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription#getStyle()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EReference getRadioDescription_Style();
 
     /**
      * Returns the meta object for class '
@@ -2676,79 +3246,272 @@ public interface PropertiesPackage extends EPackage {
     EClass getWidgetStyle();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.TextStyle <em>Text Style</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression
+     * <em>Label Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the meta object for class '<em>Text Style</em>'.
-     * @see org.eclipse.sirius.properties.TextStyle
+     * @return the meta object for the attribute '
+     *         <em>Label Font Name Expression</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression()
+     * @see #getWidgetStyle()
      * @generated
      */
-    EClass getTextStyle();
+    EAttribute getWidgetStyle_LabelFontNameExpression();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.TextStyle#getFontNameExpression
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
+     * <em>Label Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Label Font Size</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize()
+     * @see #getWidgetStyle()
+     * @generated
+     */
+    EAttribute getWidgetStyle_LabelFontSize();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor
+     * <em>Label Background Color</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the reference '
+     *         <em>Label Background Color</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor()
+     * @see #getWidgetStyle()
+     * @generated
+     */
+    EReference getWidgetStyle_LabelBackgroundColor();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor
+     * <em>Label Foreground Color</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the reference '
+     *         <em>Label Foreground Color</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor()
+     * @see #getWidgetStyle()
+     * @generated
+     */
+    EReference getWidgetStyle_LabelForegroundColor();
+
+    /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontFormat
+     * <em>Label Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute list '
+     *         <em>Label Font Format</em>'.
+     * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontFormat()
+     * @see #getWidgetStyle()
+     * @generated
+     */
+    EAttribute getWidgetStyle_LabelFontFormat();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle
+     * <em>Text Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Text Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.TextWidgetStyle
+     * @generated
+     */
+    EClass getTextWidgetStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontNameExpression
      * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Font Name Expression</em>
      *         '.
-     * @see org.eclipse.sirius.properties.TextStyle#getFontNameExpression()
-     * @see #getTextStyle()
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontNameExpression()
+     * @see #getTextWidgetStyle()
      * @generated
      */
-    EAttribute getTextStyle_FontNameExpression();
+    EAttribute getTextWidgetStyle_FontNameExpression();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.TextStyle#getFontSize
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontSize
      * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute '<em>Font Size</em>'.
-     * @see org.eclipse.sirius.properties.TextStyle#getFontSize()
-     * @see #getTextStyle()
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontSize()
+     * @see #getTextWidgetStyle()
      * @generated
      */
-    EAttribute getTextStyle_FontSize();
+    EAttribute getTextWidgetStyle_FontSize();
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.properties.TextStyle#getBackgroundColor
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @return the meta object for the reference '<em>Background Color</em>'.
-     * @see org.eclipse.sirius.properties.TextStyle#getBackgroundColor()
-     * @see #getTextStyle()
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getBackgroundColor()
+     * @see #getTextWidgetStyle()
      * @generated
      */
-    EReference getTextStyle_BackgroundColor();
+    EReference getTextWidgetStyle_BackgroundColor();
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.properties.TextStyle#getForegroundColor
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @return the meta object for the reference '<em>Foreground Color</em>'.
-     * @see org.eclipse.sirius.properties.TextStyle#getForegroundColor()
-     * @see #getTextStyle()
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getForegroundColor()
+     * @see #getTextWidgetStyle()
      * @generated
      */
-    EReference getTextStyle_ForegroundColor();
+    EReference getTextWidgetStyle_ForegroundColor();
 
     /**
      * Returns the meta object for the attribute list '
-     * {@link org.eclipse.sirius.properties.TextStyle#getFontFormat
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontFormat
      * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the attribute list '<em>Font Format</em>'.
-     * @see org.eclipse.sirius.properties.TextStyle#getFontFormat()
-     * @see #getTextStyle()
+     * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontFormat()
+     * @see #getTextWidgetStyle()
      * @generated
      */
-    EAttribute getTextStyle_FontFormat();
+    EAttribute getTextWidgetStyle_FontFormat();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle
+     * <em>Label Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Label Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle
+     * @generated
+     */
+    EClass getLabelWidgetStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression
+     * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Name Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression()
+     * @see #getLabelWidgetStyle()
+     * @generated
+     */
+    EAttribute getLabelWidgetStyle_FontNameExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize
+     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Size</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize()
+     * @see #getLabelWidgetStyle()
+     * @generated
+     */
+    EAttribute getLabelWidgetStyle_FontSize();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getBackgroundColor()
+     * @see #getLabelWidgetStyle()
+     * @generated
+     */
+    EReference getLabelWidgetStyle_BackgroundColor();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getForegroundColor
+     * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Foreground Color</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getForegroundColor()
+     * @see #getLabelWidgetStyle()
+     * @generated
+     */
+    EReference getLabelWidgetStyle_ForegroundColor();
+
+    /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontFormat
+     * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute list '<em>Font Format</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontFormat()
+     * @see #getLabelWidgetStyle()
+     * @generated
+     */
+    EAttribute getLabelWidgetStyle_FontFormat();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetStyle
+     * <em>Checkbox Widget Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Checkbox Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.CheckboxWidgetStyle
+     * @generated
+     */
+    EClass getCheckboxWidgetStyle();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.RadioWidgetStyle
+     * <em>Radio Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Radio Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.RadioWidgetStyle
+     * @generated
+     */
+    EClass getRadioWidgetStyle();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.ButtonWidgetStyle
+     * <em>Button Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Button Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.ButtonWidgetStyle
+     * @generated
+     */
+    EClass getButtonWidgetStyle();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.SelectWidgetStyle
+     * <em>Select Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Select Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.SelectWidgetStyle
+     * @generated
+     */
+    EClass getSelectWidgetStyle();
 
     /**
      * @generated
@@ -3279,6 +4042,14 @@ public interface PropertiesPackage extends EPackage {
         EReference BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getButtonDescription_InitialOperation();
 
         /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference BUTTON_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getButtonDescription_Style();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl
          * <em>Label Description</em>}' class. <!-- begin-user-doc --> <!--
@@ -3297,6 +4068,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_BodyExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference LABEL_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getLabelDescription_Style();
 
         /**
          * The meta object literal for the '
@@ -3326,6 +4105,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference CHECKBOX_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getCheckboxDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CHECKBOX_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getCheckboxDescription_Style();
 
         /**
          * The meta object literal for the '
@@ -3373,6 +4160,14 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getSelectDescription_CandidateDisplayExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SELECT_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getSelectDescription_Style();
 
         /**
          * The meta object literal for the '
@@ -3507,6 +4302,14 @@ public interface PropertiesPackage extends EPackage {
         EAttribute RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getRadioDescription_CandidateDisplayExpression();
 
         /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference RADIO_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getRadioDescription_Style();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.SingleReferenceDescriptionImpl
          * <em>Single Reference Description</em>}' class. <!-- begin-user-doc
@@ -3635,15 +4438,58 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.impl.TextStyleImpl
-         * <em>Text Style</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * <em><b>Label Font Name Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.impl.TextStyleImpl
-         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextStyle()
          * @generated
          */
-        EClass TEXT_STYLE = PropertiesPackage.eINSTANCE.getTextStyle();
+        EAttribute WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontNameExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Label Font Size</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSize();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Label Background Color</b></em>' reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelBackgroundColor();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Label Foreground Color</b></em>' reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelForegroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Label Font Format</b></em>'
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontFormat();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
+         * <em>Text Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
+         * @generated
+         */
+        EClass TEXT_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getTextWidgetStyle();
 
         /**
          * The meta object literal for the '<em><b>Font Name Expression</b></em>
@@ -3651,7 +4497,7 @@ public interface PropertiesPackage extends EPackage {
          *
          * @generated
          */
-        EAttribute TEXT_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getTextStyle_FontNameExpression();
+        EAttribute TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontNameExpression();
 
         /**
          * The meta object literal for the '<em><b>Font Size</b></em>' attribute
@@ -3659,7 +4505,7 @@ public interface PropertiesPackage extends EPackage {
          *
          * @generated
          */
-        EAttribute TEXT_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getTextStyle_FontSize();
+        EAttribute TEXT_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSize();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
@@ -3667,7 +4513,7 @@ public interface PropertiesPackage extends EPackage {
          *
          * @generated
          */
-        EReference TEXT_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextStyle_BackgroundColor();
+        EReference TEXT_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextWidgetStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -3675,7 +4521,7 @@ public interface PropertiesPackage extends EPackage {
          *
          * @generated
          */
-        EReference TEXT_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextStyle_ForegroundColor();
+        EReference TEXT_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextWidgetStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '<em><b>Font Format</b></em>'
@@ -3683,7 +4529,107 @@ public interface PropertiesPackage extends EPackage {
          *
          * @generated
          */
-        EAttribute TEXT_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getTextStyle_FontFormat();
+        EAttribute TEXT_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontFormat();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
+         * <em>Label Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
+         * @generated
+         */
+        EClass LABEL_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getLabelWidgetStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Font Name Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontNameExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LABEL_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontSize();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference LABEL_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_BackgroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Foreground Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference LABEL_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_ForegroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Font Format</b></em>'
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LABEL_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontFormat();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
+         * <em>Checkbox Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
+         * @generated
+         */
+        EClass CHECKBOX_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getCheckboxWidgetStyle();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
+         * <em>Radio Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
+         * @generated
+         */
+        EClass RADIO_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getRadioWidgetStyle();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
+         * <em>Button Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
+         * @generated
+         */
+        EClass BUTTON_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getButtonWidgetStyle();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
+         * <em>Select Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
+         * @generated
+         */
+        EClass SELECT_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getSelectWidgetStyle();
 
         /**
          * The meta object literal for the ' end-user-doc -->

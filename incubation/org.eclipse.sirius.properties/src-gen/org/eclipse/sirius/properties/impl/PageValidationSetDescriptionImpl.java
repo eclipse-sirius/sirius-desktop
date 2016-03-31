@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * <em><b>Page Validation Set Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl#getSemanticValidationRules
  * <em>Semantic Validation Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

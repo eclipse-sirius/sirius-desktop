@@ -38,8 +38,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  *
  * @generated
  */
-public class GroupValidationSetDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class GroupValidationSetDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -154,10 +154,10 @@ IItemPropertySource {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors
-        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
+                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
 
         newChildDescriptors
-        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
+                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
     }
 
     /**

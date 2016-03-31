@@ -39,8 +39,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  *
  * @generated
  */
-public class DynamicMappingIfItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class DynamicMappingIfItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -74,10 +74,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DynamicMappingIf_predicateExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingIf_predicateExpression_feature", "_UI_DynamicMappingIf_type"),
-                PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DynamicMappingIf_predicateExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingIf_predicateExpression_feature", "_UI_DynamicMappingIf_type"),
+                        PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**

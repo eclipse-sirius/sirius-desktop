@@ -20,16 +20,16 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
  * <em>Identifier</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets <em>
- * Widgets</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets
+ * <em>Widgets</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings
  * <em>Dynamic Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription()
  * @model

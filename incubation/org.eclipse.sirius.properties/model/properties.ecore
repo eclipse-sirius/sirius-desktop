@@ -71,7 +71,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//TextStyle"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//TextWidgetStyle"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ButtonDescription" eSuperTypes="#//WidgetDescription">
@@ -80,14 +80,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ButtonWidgetStyle"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelDescription" eSuperTypes="#//WidgetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bodyExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//LabelWidgetStyle"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckboxDescription" eSuperTypes="#//WidgetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//CheckboxWidgetStyle"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectDescription" eSuperTypes="#//WidgetDescription">
@@ -117,6 +123,8 @@
         <details key="documentation" value="Indicates how to display the input value."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//SelectWidgetStyle"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingFor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterator" lowerBound="1"
@@ -166,6 +174,8 @@
         <details key="documentation" value="Indicates how to display the input value."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//RadioWidgetStyle"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SingleReferenceDescription" eSuperTypes="#//WidgetDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -256,8 +266,16 @@
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WidgetStyle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TextStyle" eSuperTypes="#//WidgetStyle">
+  <eClassifiers xsi:type="ecore:EClass" name="WidgetStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontNameExpression"
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelBackgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelForegroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontFormat" upperBound="4"
+        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextWidgetStyle" eSuperTypes="#//WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
@@ -265,4 +283,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
         eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelWidgetStyle" eSuperTypes="#//WidgetStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
+        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckboxWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RadioWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ButtonWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectWidgetStyle" eSuperTypes="#//WidgetStyle"/>
 </ecore:EPackage>

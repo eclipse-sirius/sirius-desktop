@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
@@ -66,10 +67,10 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CheckboxDescription_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CheckboxDescription_valueExpression_feature", "_UI_CheckboxDescription_type"),
-                PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CheckboxDescription_valueExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_CheckboxDescription_valueExpression_feature", "_UI_CheckboxDescription_type"),
+                        PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -87,6 +88,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE);
         }
         return childrenFeatures;
     }
@@ -145,6 +147,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION:
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -163,6 +166,8 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
     }
 
 }

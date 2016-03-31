@@ -7,9 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle;
-
-// Start of user code imports
+package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -27,16 +25,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the fontNameExpression property of a TextStyle object.
+ * A section for the labelFontNameExpression property of a WidgetStyle object.
  */
-public class TextStyleFontNameExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class WidgetStyleLabelFontNameExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "FontNameExpression"; //$NON-NLS-1$
+        return "LabelFontNameExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -57,7 +55,7 @@ public class TextStyleFontNameExpressionPropertySection extends AbstractTextWith
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextStyle_FontNameExpression();
+        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontNameExpression();
     }
 
     /**
@@ -100,7 +98,7 @@ public class TextStyleFontNameExpressionPropertySection extends AbstractTextWith
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TextStyleFontNameExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), WidgetStyleLabelFontNameExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

@@ -39,8 +39,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  *
  * @generated
  */
-public class GroupDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class GroupDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -90,8 +90,7 @@ IItemPropertySource {
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupDescription_labelExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_labelExpression_feature", "_UI_GroupDescription_type"),
+                getString("_UI_GroupDescription_labelExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_labelExpression_feature", "_UI_GroupDescription_type"),
                 PropertiesPackage.Literals.GROUP_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 

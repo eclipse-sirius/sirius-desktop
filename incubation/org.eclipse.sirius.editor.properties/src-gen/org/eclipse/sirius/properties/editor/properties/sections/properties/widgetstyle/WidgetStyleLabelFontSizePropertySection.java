@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractSpinnerPropertySection;
@@ -16,15 +16,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * A section for the fontSize property of a TextStyle object.
+ * A section for the labelFontSize property of a WidgetStyle object.
  */
-public class TextStyleFontSizePropertySection extends AbstractSpinnerPropertySection {
+public class WidgetStyleLabelFontSizePropertySection extends AbstractSpinnerPropertySection {
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "FontSize"; //$NON-NLS-1$
+        return "LabelFontSize"; //$NON-NLS-1$
     }
 
     /**
@@ -45,7 +45,7 @@ public class TextStyleFontSizePropertySection extends AbstractSpinnerPropertySec
      */
     @Override
     protected EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextStyle_FontSize();
+        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSize();
     }
 
     /**

@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * <em><b>Group Validation Set Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getSemanticValidationRules
@@ -38,7 +39,6 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * {@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl#getPropertyValidationRules
  * <em>Property Validation Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

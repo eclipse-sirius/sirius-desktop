@@ -205,8 +205,7 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
         Object childObject = child;
 
         boolean qualify = childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION
-                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION
-                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION
+                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION
                 || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION;
 
         if (qualify) {

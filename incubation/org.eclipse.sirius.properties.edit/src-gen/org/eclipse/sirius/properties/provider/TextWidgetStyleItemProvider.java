@@ -21,23 +21,23 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.TextStyle;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.TextStyle} object. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.properties.TextWidgetStyle} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class TextStyleItemProvider extends WidgetStyleItemProvider {
+public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public TextStyleItemProvider(AdapterFactory adapterFactory) {
+    public TextWidgetStyleItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -68,9 +68,10 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextStyle_fontNameExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextStyle_fontNameExpression_feature", "_UI_TextStyle_type"),
-                PropertiesPackage.Literals.TEXT_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TextWidgetStyle_fontNameExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_fontNameExpression_feature", "_UI_TextWidgetStyle_type"),
+                        PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -81,8 +82,8 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addFontSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextStyle_fontSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextStyle_fontSize_feature", "_UI_TextStyle_type"),
-                PropertiesPackage.Literals.TEXT_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+                getString("_UI_TextWidgetStyle_fontSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_fontSize_feature", "_UI_TextWidgetStyle_type"),
+                PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -93,8 +94,8 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextStyle_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextStyle_backgroundColor_feature", "_UI_TextStyle_type"),
-                PropertiesPackage.Literals.TEXT_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
+                getString("_UI_TextWidgetStyle_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_backgroundColor_feature", "_UI_TextWidgetStyle_type"),
+                PropertiesPackage.Literals.TEXT_WIDGET_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -105,8 +106,8 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextStyle_foregroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextStyle_foregroundColor_feature", "_UI_TextStyle_type"),
-                PropertiesPackage.Literals.TEXT_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
+                getString("_UI_TextWidgetStyle_foregroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_foregroundColor_feature", "_UI_TextWidgetStyle_type"),
+                PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -117,18 +118,19 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addFontFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextStyle_fontFormat_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextStyle_fontFormat_feature", "_UI_TextStyle_type"),
-                PropertiesPackage.Literals.TEXT_STYLE__FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_TextWidgetStyle_fontFormat_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextWidgetStyle_fontFormat_feature", "_UI_TextWidgetStyle_type"),
+                PropertiesPackage.Literals.TEXT_WIDGET_STYLE__FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This returns TextStyle.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This returns TextWidgetStyle.gif. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TextStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TextWidgetStyle"));
     }
 
     /**
@@ -139,8 +141,8 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((TextStyle) object).getFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TextStyle_type") : getString("_UI_TextStyle_type") + " " + label;
+        String label = ((TextWidgetStyle) object).getLabelFontNameExpression();
+        return label == null || label.length() == 0 ? getString("_UI_TextWidgetStyle_type") : getString("_UI_TextWidgetStyle_type") + " " + label;
     }
 
     /**
@@ -155,10 +157,10 @@ public class TextStyleItemProvider extends WidgetStyleItemProvider {
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(TextStyle.class)) {
-        case PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION:
-        case PropertiesPackage.TEXT_STYLE__FONT_SIZE:
-        case PropertiesPackage.TEXT_STYLE__FONT_FORMAT:
+        switch (notification.getFeatureID(TextWidgetStyle.class)) {
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION:
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_SIZE:
+        case PropertiesPackage.TEXT_WIDGET_STYLE__FONT_FORMAT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

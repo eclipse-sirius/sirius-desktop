@@ -29,6 +29,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Custom Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getCustomExpressions
@@ -37,7 +38,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl#getCustomOperations
  * <em>Custom Operations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

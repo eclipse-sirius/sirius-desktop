@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle;
 
 // Start of user code specific imports
 
@@ -20,14 +20,14 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * A filter for the backgroundColor property section.
  */
-public class TextStyleBackgroundColorFilter extends ViewpointPropertyFilter {
+public class TextWidgetStyleBackgroundColorFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextStyle_BackgroundColor();
+        return PropertiesPackage.eINSTANCE.getTextWidgetStyle_BackgroundColor();
     }
 
     /**
@@ -35,7 +35,7 @@ public class TextStyleBackgroundColorFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.TextStyle;
+        return arg0 instanceof org.eclipse.sirius.properties.TextWidgetStyle;
     }
 
     // Start of user code user methods

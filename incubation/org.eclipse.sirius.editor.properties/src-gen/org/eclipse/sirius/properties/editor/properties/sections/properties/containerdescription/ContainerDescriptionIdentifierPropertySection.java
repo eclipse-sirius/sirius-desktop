@@ -9,8 +9,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.properties.editor.properties.sections.properties.containerdescription;
 
-// Start of user code imports
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;

@@ -16,7 +16,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
@@ -26,6 +28,7 @@ import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -33,11 +36,13 @@ import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
-import org.eclipse.sirius.properties.TextStyle;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -221,8 +226,33 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseTextStyle(TextStyle object) {
-            return createTextStyleAdapter();
+        public Adapter caseTextWidgetStyle(TextWidgetStyle object) {
+            return createTextWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseLabelWidgetStyle(LabelWidgetStyle object) {
+            return createLabelWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseCheckboxWidgetStyle(CheckboxWidgetStyle object) {
+            return createCheckboxWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseRadioWidgetStyle(RadioWidgetStyle object) {
+            return createRadioWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseButtonWidgetStyle(ButtonWidgetStyle object) {
+            return createButtonWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseSelectWidgetStyle(SelectWidgetStyle object) {
+            return createSelectWidgetStyleAdapter();
         }
 
         @Override
@@ -629,16 +659,97 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.TextStyle <em>Text Style</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle
+     * <em>Text Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      *
      * @return the new adapter.
-     * @see org.eclipse.sirius.properties.TextStyle
+     * @see org.eclipse.sirius.properties.TextWidgetStyle
      * @generated
      */
-    public Adapter createTextStyleAdapter() {
+    public Adapter createTextWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle
+     * <em>Label Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.LabelWidgetStyle
+     * @generated
+     */
+    public Adapter createLabelWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetStyle
+     * <em>Checkbox Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.CheckboxWidgetStyle
+     * @generated
+     */
+    public Adapter createCheckboxWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.RadioWidgetStyle
+     * <em>Radio Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.RadioWidgetStyle
+     * @generated
+     */
+    public Adapter createRadioWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ButtonWidgetStyle
+     * <em>Button Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ButtonWidgetStyle
+     * @generated
+     */
+    public Adapter createButtonWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.SelectWidgetStyle
+     * <em>Select Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.SelectWidgetStyle
+     * @generated
+     */
+    public Adapter createSelectWidgetStyleAdapter() {
         return null;
     }
 

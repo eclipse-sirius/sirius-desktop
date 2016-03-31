@@ -34,6 +34,7 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  * <em><b>View Extension Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getIdentifier
@@ -48,7 +49,6 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups
  * <em>Groups</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

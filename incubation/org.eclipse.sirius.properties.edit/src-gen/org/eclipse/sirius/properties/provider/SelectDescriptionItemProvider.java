@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -68,10 +69,10 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectDescription_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectDescription_valueExpression_feature", "_UI_SelectDescription_type"),
-                PropertiesPackage.Literals.SELECT_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SelectDescription_valueExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_SelectDescription_valueExpression_feature", "_UI_SelectDescription_type"),
+                        PropertiesPackage.Literals.SELECT_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -115,6 +116,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE);
         }
         return childrenFeatures;
     }
@@ -175,6 +177,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
+        case PropertiesPackage.SELECT_DESCRIPTION__STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -193,6 +196,8 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createSelectWidgetStyle()));
     }
 
 }

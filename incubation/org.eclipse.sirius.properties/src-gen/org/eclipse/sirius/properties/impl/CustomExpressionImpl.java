@@ -23,6 +23,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Custom Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl#getIdentifier
@@ -31,7 +32,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl#getCustomExpression
  * <em>Custom Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -31,6 +31,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Dynamic Mapping For</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIterator
@@ -41,7 +42,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl#getIfs
  * <em>Ifs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -265,8 +265,8 @@ public class DynamicMappingForImpl extends MinimalEObjectImpl.Container implemen
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR:
             return DynamicMappingForImpl.ITERATOR_EDEFAULT == null ? iterator != null : !DynamicMappingForImpl.ITERATOR_EDEFAULT.equals(iterator);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION:
-            return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT
-            .equals(domainClassExpression);
+            return DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT == null ? domainClassExpression != null
+                    : !DynamicMappingForImpl.DOMAIN_CLASS_EXPRESSION_EDEFAULT.equals(domainClassExpression);
         case PropertiesPackage.DYNAMIC_MAPPING_FOR__IFS:
             return ifs != null && !ifs.isEmpty();
         }

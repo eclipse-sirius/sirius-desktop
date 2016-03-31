@@ -31,6 +31,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Page Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getIdentifier
@@ -50,7 +51,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getValidationSet
  * <em>Validation Set</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -456,8 +456,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         case PropertiesPackage.PAGE_DESCRIPTION__DOMAIN_CLASS:
             return PageDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !PageDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
-            return PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null : !PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT
-            .equals(semanticCandidateExpression);
+            return PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null
+                    : !PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             return groups != null && !groups.isEmpty();
         case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:

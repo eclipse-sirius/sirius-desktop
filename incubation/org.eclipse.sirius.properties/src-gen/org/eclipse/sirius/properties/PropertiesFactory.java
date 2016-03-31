@@ -238,13 +238,58 @@ public interface PropertiesFactory extends EFactory {
     WidgetStyle createWidgetStyle();
 
     /**
-     * Returns a new object of class '<em>Text Style</em>'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * Returns a new object of class '<em>Text Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return a new object of class '<em>Text Style</em>'.
+     * @return a new object of class '<em>Text Widget Style</em>'.
      * @generated
      */
-    TextStyle createTextStyle();
+    TextWidgetStyle createTextWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Label Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Label Widget Style</em>'.
+     * @generated
+     */
+    LabelWidgetStyle createLabelWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Checkbox Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Checkbox Widget Style</em>'.
+     * @generated
+     */
+    CheckboxWidgetStyle createCheckboxWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Radio Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Radio Widget Style</em>'.
+     * @generated
+     */
+    RadioWidgetStyle createRadioWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Button Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Button Widget Style</em>'.
+     * @generated
+     */
+    ButtonWidgetStyle createButtonWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Select Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Select Widget Style</em>'.
+     * @generated
+     */
+    SelectWidgetStyle createSelectWidgetStyle();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

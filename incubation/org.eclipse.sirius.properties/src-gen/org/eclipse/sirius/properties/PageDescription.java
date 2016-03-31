@@ -20,22 +20,22 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getIdentifier <em>
- * Identifier</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.PageDescription#getIdentifier
+ * <em>Identifier</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.PageDescription#getLabelExpression
  * <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getDomainClass <em>
- * Domain Class</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.PageDescription#getDomainClass
+ * <em>Domain Class</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getGroups <em>Groups
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.PageDescription#getGroups
+ * <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.PageDescription#getValidationSet
  * <em>Validation Set</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription()
  * @model

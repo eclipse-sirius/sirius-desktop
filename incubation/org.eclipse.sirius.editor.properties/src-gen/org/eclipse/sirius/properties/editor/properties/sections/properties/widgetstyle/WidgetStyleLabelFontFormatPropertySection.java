@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle;
 
 import java.util.Iterator;
 import java.util.List;
@@ -20,15 +20,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * A section for the fontFormat property of a TextStyle object.
+ * A section for the labelFontFormat property of a WidgetStyle object.
  */
-public class TextStyleFontFormatPropertySection extends AbstractEditorDialogPropertySection {
+public class WidgetStyleLabelFontFormatPropertySection extends AbstractEditorDialogPropertySection {
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "FontFormat"; //$NON-NLS-1$
+        return "LabelFontFormat"; //$NON-NLS-1$
     }
 
     /**
@@ -49,7 +49,7 @@ public class TextStyleFontFormatPropertySection extends AbstractEditorDialogProp
      */
     @Override
     protected EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getTextStyle_FontFormat();
+        return PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontFormat();
     }
 
     /**

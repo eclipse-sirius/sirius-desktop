@@ -63,19 +63,23 @@
     <genClasses ecoreClass="properties.ecore#//ButtonDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ButtonDescription/buttonLabelExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/initialOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//LabelDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/bodyExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//CheckboxDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CheckboxDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/initialOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//SelectDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectDescription/initialOperation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidateDisplayExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//DynamicMappingFor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/iterator"/>
@@ -94,6 +98,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/initialOperation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidateDisplayExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/style"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//SingleReferenceDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SingleReferenceDescription/valueExpression"/>
@@ -128,13 +133,30 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomOperation/identifier"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomOperation/initialOperation"/>
     </genClasses>
-    <genClasses ecoreClass="properties.ecore#//WidgetStyle"/>
-    <genClasses ecoreClass="properties.ecore#//TextStyle">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontNameExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontSize"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextStyle/backgroundColor"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextStyle/foregroundColor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextStyle/fontFormat"/>
+    <genClasses ecoreClass="properties.ecore#//WidgetStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontSize"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//WidgetStyle/labelBackgroundColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//WidgetStyle/labelForegroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetStyle/labelFontFormat"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//TextWidgetStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontSize"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextWidgetStyle/backgroundColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//TextWidgetStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextWidgetStyle/fontFormat"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//LabelWidgetStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontSize"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//LabelWidgetStyle/backgroundColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//LabelWidgetStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelWidgetStyle/fontFormat"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CheckboxWidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//RadioWidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//ButtonWidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//SelectWidgetStyle"/>
   </genPackages>
 </genmodel:GenModel>

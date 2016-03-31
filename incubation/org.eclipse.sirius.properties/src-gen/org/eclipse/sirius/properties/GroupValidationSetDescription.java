@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.GroupValidationSetDescription#getSemanticValidationRules
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRul
  * {@link org.eclipse.sirius.properties.GroupValidationSetDescription#getPropertyValidationRules
  * <em>Property Validation Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupValidationSetDescription()
  * @model

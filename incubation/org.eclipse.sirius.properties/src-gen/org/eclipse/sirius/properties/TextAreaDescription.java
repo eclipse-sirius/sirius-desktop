@@ -20,11 +20,11 @@ package org.eclipse.sirius.properties;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
  * <em>Line Count</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getTextAreaDescription()
  * @model

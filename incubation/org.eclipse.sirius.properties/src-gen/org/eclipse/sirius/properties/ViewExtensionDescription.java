@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.Extension;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getIdentifier
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.Extension;
  * <li>{@link org.eclipse.sirius.properties.ViewExtensionDescription#getGroups
  * <em>Groups</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getViewExtensionDescription()
  * @model

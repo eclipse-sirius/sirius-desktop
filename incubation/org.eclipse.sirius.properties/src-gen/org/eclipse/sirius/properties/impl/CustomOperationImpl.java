@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em><b>Custom Operation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl#getIdentifier
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

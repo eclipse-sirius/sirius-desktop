@@ -18,7 +18,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.eef.EEFButtonDescription;
+import org.eclipse.eef.EEFButtonStyle;
 import org.eclipse.eef.EEFCheckboxDescription;
+import org.eclipse.eef.EEFCheckboxStyle;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFCustomExpression;
 import org.eclipse.eef.EEFCustomWidgetDescription;
@@ -26,11 +28,14 @@ import org.eclipse.eef.EEFDynamicMappingFor;
 import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelDescription;
+import org.eclipse.eef.EEFLabelStyle;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFRadioDescription;
+import org.eclipse.eef.EEFRadioStyle;
 import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFSelectDescription;
+import org.eclipse.eef.EEFSelectStyle;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFTextStyle;
@@ -38,6 +43,7 @@ import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.eef.EEFWidgetStyle;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -45,7 +51,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
@@ -53,16 +61,21 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.properties.TextStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -322,11 +335,107 @@ public class ViewDescriptionConverter {
         if (description != null) {
             description.setHelpExpression(widgetDescription.getHelpExpression());
             description.setLabelExpression(widgetDescription.getLabelExpression());
-
             this.widget2eefWidget.put(widgetDescription, description);
         }
 
         return description;
+    }
+
+    private EEFWidgetStyle createEEFWidgetStyle(WidgetStyle widgetStyle) {
+        EEFWidgetStyle eefWidgetStyle = null;
+
+        if (widgetStyle instanceof TextWidgetStyle) {
+            eefWidgetStyle = createEEFTextStyle((TextWidgetStyle) widgetStyle);
+        } else if (widgetStyle instanceof ButtonWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFButtonStyle();
+        } else if (widgetStyle instanceof CheckboxWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFCheckboxStyle();
+        } else if (widgetStyle instanceof RadioWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFRadioStyle();
+        } else if (widgetStyle instanceof SelectWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFSelectStyle();
+        }
+
+        // Set label style
+        if (eefWidgetStyle != null) {
+            ColorDescription backgroundColorDescription = widgetStyle.getLabelBackgroundColor();
+            if (backgroundColorDescription != null) {
+                String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+                if (backgroundColorExpression != null) {
+                    eefWidgetStyle.setLabelBackgroundColorExpression(backgroundColorExpression);
+                }
+            }
+
+            ColorDescription foregroundColorDescription = widgetStyle.getLabelForegroundColor();
+            if (foregroundColorDescription != null) {
+                String foregroundColorExpression = getColorExpression(foregroundColorDescription);
+                if (foregroundColorExpression != null) {
+                    eefWidgetStyle.setLabelForegroundColorExpression(foregroundColorExpression);
+                }
+            }
+
+            eefWidgetStyle.setLabelFontNameExpression(widgetStyle.getLabelFontNameExpression());
+            eefWidgetStyle.setLabelFontSizeExpression(Integer.toString(widgetStyle.getLabelFontSize()));
+            eefWidgetStyle.setLabelFontStyleExpression(getFontStyleExpression(widgetStyle.getLabelFontFormat()));
+        }
+        return eefWidgetStyle;
+    }
+
+    private EEFTextStyle createEEFTextStyle(TextWidgetStyle textStyle) {
+        EEFTextStyle eefTextStyle = EefFactory.eINSTANCE.createEEFTextStyle();
+
+        ColorDescription backgroundColorDescription = textStyle.getBackgroundColor();
+        if (backgroundColorDescription != null) {
+            String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+            if (backgroundColorExpression != null) {
+                eefTextStyle.setBackgroundColorExpression(backgroundColorExpression);
+            }
+        }
+
+        ColorDescription foregroundColorDescription = textStyle.getForegroundColor();
+        if (foregroundColorDescription != null) {
+            String foregroundColorExpression = getColorExpression(foregroundColorDescription);
+            if (foregroundColorExpression != null) {
+                eefTextStyle.setForegroundColorExpression(foregroundColorExpression);
+            }
+        }
+
+        eefTextStyle.setFontNameExpression(textStyle.getFontNameExpression());
+        eefTextStyle.setFontSizeExpression(Integer.toString(textStyle.getFontSize()));
+        eefTextStyle.setFontStyleExpression(getFontStyleExpression(textStyle.getFontFormat()));
+
+        return eefTextStyle;
+    }
+
+    private EEFLabelStyle createEEFLabelStyle(LabelWidgetStyle labelStyle) {
+        EEFLabelStyle eefLabelStyle = EefFactory.eINSTANCE.createEEFLabelStyle();
+
+        ColorDescription backgroundColorDescription = labelStyle.getBackgroundColor();
+        if (backgroundColorDescription != null) {
+            String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+            if (backgroundColorExpression != null) {
+                eefLabelStyle.setBackgroundColorExpression(backgroundColorExpression);
+            }
+        }
+
+        ColorDescription foregroundColorDescription = labelStyle.getForegroundColor();
+        if (foregroundColorDescription != null) {
+            String foregroundColorExpression = getColorExpression(foregroundColorDescription);
+            if (foregroundColorExpression != null) {
+                eefLabelStyle.setForegroundColorExpression(foregroundColorExpression);
+            }
+        }
+
+        eefLabelStyle.setFontNameExpression(labelStyle.getFontNameExpression());
+        eefLabelStyle.setFontSizeExpression(Integer.toString(labelStyle.getFontSize()));
+        eefLabelStyle.setFontStyleExpression(getFontStyleExpression(labelStyle.getFontFormat()));
+
+        return eefLabelStyle;
+    }
+
+    private String getFontStyleExpression(List<FontFormat> fontFormats) {
+        String fontFormat = fontFormats.toString();
+        return fontFormat.substring(1, fontFormat.length() - 1);
     }
 
     private EEFTextDescription createEEFTextDescription(TextDescription textDescription) {
@@ -338,31 +447,9 @@ public class ViewDescriptionConverter {
         InitialOperation initialOperation = textDescription.getInitialOperation();
         eefTextDescription.setEditExpression(getExpressionForOperation(initialOperation));
 
-        TextStyle textStyle = textDescription.getStyle();
+        TextWidgetStyle textStyle = textDescription.getStyle();
         if (textStyle != null) {
-            EEFTextStyle eefTextStyle = EefFactory.eINSTANCE.createEEFTextStyle();
-
-            ColorDescription backgroundColorDescription = textStyle.getBackgroundColor();
-            if (backgroundColorDescription != null) {
-                String backgroundColorExpression = getColorExpression(backgroundColorDescription);
-                if (backgroundColorExpression != null) {
-                    eefTextStyle.setBackgroundColorExpression(backgroundColorExpression);
-                }
-            }
-
-            ColorDescription foregroundColorDescription = textStyle.getForegroundColor();
-            if (foregroundColorDescription != null) {
-                String foregroundColorExpression = getColorExpression(foregroundColorDescription);
-                if (foregroundColorExpression != null) {
-                    eefTextStyle.setForegroundColorExpression(foregroundColorExpression);
-                }
-            }
-
-            eefTextStyle.setFontNameExpression(textStyle.getFontNameExpression());
-            eefTextStyle.setFontSizeExpression(Integer.toString(textStyle.getFontSize()));
-            eefTextStyle.setFontStyleExpression(textStyle.getFontFormat().toString().substring(1, textStyle.getFontFormat().toString().length() - 1));
-
-            eefTextDescription.setStyle(eefTextStyle);
+            eefTextDescription.setStyle((EEFTextStyle) createEEFWidgetStyle(textStyle));
         }
         return eefTextDescription;
     }
@@ -404,6 +491,12 @@ public class ViewDescriptionConverter {
 
         InitialOperation initialOperation = textDescription.getInitialOperation();
         eefTextDescription.setEditExpression(getExpressionForOperation(initialOperation));
+
+        TextWidgetStyle textStyle = textDescription.getStyle();
+        if (textStyle != null) {
+            EEFTextStyle eefTextStyle = createEEFTextStyle(textStyle);
+            eefTextDescription.setStyle(eefTextStyle);
+        }
         return eefTextDescription;
     }
 
@@ -412,6 +505,13 @@ public class ViewDescriptionConverter {
 
         eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
         eefLabelDescription.setBodyExpression(labelDescription.getBodyExpression());
+        LabelWidgetStyle bodyStyle = labelDescription.getStyle();
+        if (bodyStyle != null) {
+            EEFLabelStyle eefLabelStyle = createEEFLabelStyle(bodyStyle);
+            eefLabelDescription.setStyle(eefLabelStyle);
+
+        }
+
         return eefLabelDescription;
     }
 
@@ -422,6 +522,12 @@ public class ViewDescriptionConverter {
         eefButtonDescription.setButtonLabelExpression(buttonDescription.getButtonLabelExpression());
         InitialOperation initialOperation = buttonDescription.getInitialOperation();
         eefButtonDescription.setPushExpression(getExpressionForOperation(initialOperation));
+
+        ButtonWidgetStyle buttonStyle = buttonDescription.getStyle();
+        if (buttonStyle != null) {
+            eefButtonDescription.setStyle((EEFButtonStyle) createEEFWidgetStyle(buttonStyle));
+        }
+
         return eefButtonDescription;
     }
 
@@ -430,6 +536,12 @@ public class ViewDescriptionConverter {
 
         eefCheckboxDescription.setIdentifier(checkboxDescription.getIdentifier());
         eefCheckboxDescription.setValueExpression(checkboxDescription.getValueExpression());
+
+        CheckboxWidgetStyle checkboxStyle = checkboxDescription.getStyle();
+        if (checkboxStyle != null) {
+            eefCheckboxDescription.setStyle((EEFCheckboxStyle) createEEFWidgetStyle(checkboxStyle));
+        }
+
         return eefCheckboxDescription;
     }
 
@@ -440,6 +552,12 @@ public class ViewDescriptionConverter {
         eefSelectDescription.setValueExpression(selectDescription.getValueExpression());
         eefSelectDescription.setCandidatesExpression(selectDescription.getCandidatesExpression());
         eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
+
+        SelectWidgetStyle selectStyle = selectDescription.getStyle();
+        if (selectStyle != null) {
+            eefSelectDescription.setStyle((EEFSelectStyle) createEEFWidgetStyle(selectStyle));
+        }
+
         return eefSelectDescription;
     }
 
@@ -450,9 +568,15 @@ public class ViewDescriptionConverter {
         eefRadioDescription.setValueExpression(radioDescription.getValueExpression());
         eefRadioDescription.setCandidatesExpression(radioDescription.getCandidatesExpression());
         eefRadioDescription.setCandidateDisplayExpression(radioDescription.getCandidateDisplayExpression());
+
+        RadioWidgetStyle radioStyle = radioDescription.getStyle();
+        if (radioStyle != null) {
+            eefRadioDescription.setStyle((EEFRadioStyle) createEEFWidgetStyle(radioStyle));
+        }
+
         return eefRadioDescription;
     }
-    
+
     private EEFCustomWidgetDescription createEEFCustomDescription(CustomDescription customDescription) {
         EEFCustomWidgetDescription eefCustomDescription = EefFactory.eINSTANCE.createEEFCustomWidgetDescription();
         eefCustomDescription.setIdentifier(customDescription.getIdentifier());

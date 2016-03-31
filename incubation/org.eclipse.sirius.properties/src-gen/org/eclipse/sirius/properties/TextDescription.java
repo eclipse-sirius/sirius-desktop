@@ -19,15 +19,15 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.TextDescription#getValueExpression
  * <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.TextDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.TextDescription#getStyle <em>Style
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.TextDescription#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription()
  * @model
@@ -107,12 +107,12 @@ public interface TextDescription extends WidgetDescription {
      * <!-- end-user-doc -->
      *
      * @return the value of the '<em>Style</em>' containment reference.
-     * @see #setStyle(TextStyle)
+     * @see #setStyle(TextWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription_Style()
      * @model containment="true"
      * @generated
      */
-    TextStyle getStyle();
+    TextWidgetStyle getStyle();
 
     /**
      * Sets the value of the '
@@ -125,6 +125,6 @@ public interface TextDescription extends WidgetDescription {
      * @see #getStyle()
      * @generated
      */
-    void setStyle(TextStyle value);
+    void setStyle(TextWidgetStyle value);
 
 } // TextDescription

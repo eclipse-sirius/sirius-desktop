@@ -19,36 +19,38 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.TextStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Text Style</b></em>'. <!-- end-user-doc -->
+ * <em><b>Label Widget Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.TextStyleImpl#getFontNameExpression
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontNameExpression
  * <em>Font Name Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.TextStyleImpl#getFontSize <em>
- * Font Size</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.TextStyleImpl#getBackgroundColor
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontSize
+ * <em>Font Size</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.TextStyleImpl#getForegroundColor
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getForegroundColor
  * <em>Foreground Color</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.impl.TextStyleImpl#getFontFormat
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl#getFontFormat
  * <em>Font Format</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
+public class LabelWidgetStyleImpl extends WidgetStyleImpl implements LabelWidgetStyle {
     /**
      * The default value of the '{@link #getFontNameExpression()
      * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
@@ -69,7 +71,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
      * @generated
      * @ordered
      */
-    protected String fontNameExpression = TextStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
+    protected String fontNameExpression = LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
@@ -89,7 +91,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
      * @generated
      * @ordered
      */
-    protected int fontSize = TextStyleImpl.FONT_SIZE_EDEFAULT;
+    protected int fontSize = LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -128,7 +130,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
      *
      * @generated
      */
-    protected TextStyleImpl() {
+    protected LabelWidgetStyleImpl() {
         super();
     }
 
@@ -139,7 +141,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
      */
     @Override
     protected EClass eStaticClass() {
-        return PropertiesPackage.Literals.TEXT_STYLE;
+        return PropertiesPackage.Literals.LABEL_WIDGET_STYLE;
     }
 
     /**
@@ -162,7 +164,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
         String oldFontNameExpression = fontNameExpression;
         fontNameExpression = newFontNameExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION, oldFontNameExpression, fontNameExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION, oldFontNameExpression, fontNameExpression));
         }
     }
 
@@ -186,7 +188,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
         int oldFontSize = fontSize;
         fontSize = newFontSize;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_STYLE__FONT_SIZE, oldFontSize, fontSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE, oldFontSize, fontSize));
         }
     }
 
@@ -202,7 +204,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
             backgroundColor = (ColorDescription) eResolveProxy(oldBackgroundColor);
             if (backgroundColor != oldBackgroundColor) {
                 if (eNotificationRequired()) {
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
                 }
             }
         }
@@ -228,7 +230,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
         ColorDescription oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
         }
     }
 
@@ -244,7 +246,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
             foregroundColor = (ColorDescription) eResolveProxy(oldForegroundColor);
             if (foregroundColor != oldForegroundColor) {
                 if (eNotificationRequired()) {
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
                 }
             }
         }
@@ -270,7 +272,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
         ColorDescription oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
         }
     }
 
@@ -282,7 +284,7 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
     @Override
     public EList<FontFormat> getFontFormat() {
         if (fontFormat == null) {
-            fontFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, PropertiesPackage.TEXT_STYLE__FONT_FORMAT);
+            fontFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT);
         }
         return fontFormat;
     }
@@ -295,21 +297,21 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             return getFontNameExpression();
-        case PropertiesPackage.TEXT_STYLE__FONT_SIZE:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
             return getFontSize();
-        case PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             if (resolve) {
                 return getBackgroundColor();
             }
             return basicGetBackgroundColor();
-        case PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR:
             if (resolve) {
                 return getForegroundColor();
             }
             return basicGetForegroundColor();
-        case PropertiesPackage.TEXT_STYLE__FONT_FORMAT:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT:
             return getFontFormat();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -324,19 +326,19 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
             setFontNameExpression((String) newValue);
             return;
-        case PropertiesPackage.TEXT_STYLE__FONT_SIZE:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
             setFontSize((Integer) newValue);
             return;
-        case PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) newValue);
             return;
-        case PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR:
             setForegroundColor((ColorDescription) newValue);
             return;
-        case PropertiesPackage.TEXT_STYLE__FONT_FORMAT:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT:
             getFontFormat().clear();
             getFontFormat().addAll((Collection<? extends FontFormat>) newValue);
             return;
@@ -352,19 +354,19 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION:
-            setFontNameExpression(TextStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
+            setFontNameExpression(LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.TEXT_STYLE__FONT_SIZE:
-            setFontSize(TextStyleImpl.FONT_SIZE_EDEFAULT);
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
+            setFontSize(LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT);
             return;
-        case PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             setBackgroundColor((ColorDescription) null);
             return;
-        case PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR:
             setForegroundColor((ColorDescription) null);
             return;
-        case PropertiesPackage.TEXT_STYLE__FONT_FORMAT:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT:
             getFontFormat().clear();
             return;
         }
@@ -379,15 +381,15 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.TEXT_STYLE__FONT_NAME_EXPRESSION:
-            return TextStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !TextStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
-        case PropertiesPackage.TEXT_STYLE__FONT_SIZE:
-            return fontSize != TextStyleImpl.FONT_SIZE_EDEFAULT;
-        case PropertiesPackage.TEXT_STYLE__BACKGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION:
+            return LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT == null ? fontNameExpression != null : !LabelWidgetStyleImpl.FONT_NAME_EXPRESSION_EDEFAULT.equals(fontNameExpression);
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_SIZE:
+            return fontSize != LabelWidgetStyleImpl.FONT_SIZE_EDEFAULT;
+        case PropertiesPackage.LABEL_WIDGET_STYLE__BACKGROUND_COLOR:
             return backgroundColor != null;
-        case PropertiesPackage.TEXT_STYLE__FOREGROUND_COLOR:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FOREGROUND_COLOR:
             return foregroundColor != null;
-        case PropertiesPackage.TEXT_STYLE__FONT_FORMAT:
+        case PropertiesPackage.LABEL_WIDGET_STYLE__FONT_FORMAT:
             return fontFormat != null && !fontFormat.isEmpty();
         }
         return super.eIsSet(featureID);
@@ -415,4 +417,4 @@ public class TextStyleImpl extends WidgetStyleImpl implements TextStyle {
         return result.toString();
     }
 
-} // TextStyleImpl
+} // LabelWidgetStyleImpl

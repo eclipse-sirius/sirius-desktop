@@ -17,13 +17,18 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.WidgetStyle;
 
 /**
  * This is the item provider adapter for a
@@ -32,8 +37,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  *
  * @generated
  */
-public class WidgetStyleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class WidgetStyleItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -55,8 +60,74 @@ IItemPropertySource {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addLabelFontNameExpressionPropertyDescriptor(object);
+            addLabelFontSizePropertyDescriptor(object);
+            addLabelBackgroundColorPropertyDescriptor(object);
+            addLabelForegroundColorPropertyDescriptor(object);
+            addLabelFontFormatPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Label Font Name Expression
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addLabelFontNameExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetStyle_labelFontNameExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontNameExpression_feature", "_UI_WidgetStyle_type"),
+                        PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Label Font Size feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addLabelFontSizePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetStyle_labelFontSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontSize_feature", "_UI_WidgetStyle_type"),
+                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Label Background Color feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addLabelBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetStyle_labelBackgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelBackgroundColor_feature", "_UI_WidgetStyle_type"),
+                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_BACKGROUND_COLOR, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Label Foreground Color feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addLabelForegroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetStyle_labelForegroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelForegroundColor_feature", "_UI_WidgetStyle_type"),
+                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FOREGROUND_COLOR, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Label Font Format feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addLabelFontFormatPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetStyle_labelFontFormat_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetStyle_labelFontFormat_feature", "_UI_WidgetStyle_type"),
+                PropertiesPackage.Literals.WIDGET_STYLE__LABEL_FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,7 +149,8 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_WidgetStyle_type");
+        String label = ((WidgetStyle) object).getLabelFontNameExpression();
+        return label == null || label.length() == 0 ? getString("_UI_WidgetStyle_type") : getString("_UI_WidgetStyle_type") + " " + label;
     }
 
     /**
@@ -92,6 +164,14 @@ IItemPropertySource {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(WidgetStyle.class)) {
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION:
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE:
+        case PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

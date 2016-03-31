@@ -671,27 +671,152 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.TextStyle} instances. <!--
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected TextStyleItemProvider textStyleItemProvider;
+    protected TextWidgetStyleItemProvider textWidgetStyleItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.TextStyle}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.TextWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
-    public Adapter createTextStyleAdapter() {
-        if (textStyleItemProvider == null) {
-            textStyleItemProvider = new TextStyleItemProvider(this);
+    public Adapter createTextWidgetStyleAdapter() {
+        if (textWidgetStyleItemProvider == null) {
+            textWidgetStyleItemProvider = new TextWidgetStyleItemProvider(this);
         }
 
-        return textStyleItemProvider;
+        return textWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected LabelWidgetStyleItemProvider labelWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.LabelWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createLabelWidgetStyleAdapter() {
+        if (labelWidgetStyleItemProvider == null) {
+            labelWidgetStyleItemProvider = new LabelWidgetStyleItemProvider(this);
+        }
+
+        return labelWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CheckboxWidgetStyleItemProvider checkboxWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCheckboxWidgetStyleAdapter() {
+        if (checkboxWidgetStyleItemProvider == null) {
+            checkboxWidgetStyleItemProvider = new CheckboxWidgetStyleItemProvider(this);
+        }
+
+        return checkboxWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.RadioWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected RadioWidgetStyleItemProvider radioWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.RadioWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createRadioWidgetStyleAdapter() {
+        if (radioWidgetStyleItemProvider == null) {
+            radioWidgetStyleItemProvider = new RadioWidgetStyleItemProvider(this);
+        }
+
+        return radioWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ButtonWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ButtonWidgetStyleItemProvider buttonWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ButtonWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createButtonWidgetStyleAdapter() {
+        if (buttonWidgetStyleItemProvider == null) {
+            buttonWidgetStyleItemProvider = new ButtonWidgetStyleItemProvider(this);
+        }
+
+        return buttonWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.SelectWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected SelectWidgetStyleItemProvider selectWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.SelectWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createSelectWidgetStyleAdapter() {
+        if (selectWidgetStyleItemProvider == null) {
+            selectWidgetStyleItemProvider = new SelectWidgetStyleItemProvider(this);
+        }
+
+        return selectWidgetStyleItemProvider;
     }
 
     /**
@@ -867,8 +992,23 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (widgetStyleItemProvider != null) {
             widgetStyleItemProvider.dispose();
         }
-        if (textStyleItemProvider != null) {
-            textStyleItemProvider.dispose();
+        if (textWidgetStyleItemProvider != null) {
+            textWidgetStyleItemProvider.dispose();
+        }
+        if (labelWidgetStyleItemProvider != null) {
+            labelWidgetStyleItemProvider.dispose();
+        }
+        if (checkboxWidgetStyleItemProvider != null) {
+            checkboxWidgetStyleItemProvider.dispose();
+        }
+        if (radioWidgetStyleItemProvider != null) {
+            radioWidgetStyleItemProvider.dispose();
+        }
+        if (buttonWidgetStyleItemProvider != null) {
+            buttonWidgetStyleItemProvider.dispose();
+        }
+        if (selectWidgetStyleItemProvider != null) {
+            selectWidgetStyleItemProvider.dispose();
         }
     }
 

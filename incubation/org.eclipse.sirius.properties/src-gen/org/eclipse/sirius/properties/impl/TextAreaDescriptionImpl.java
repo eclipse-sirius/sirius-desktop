@@ -22,12 +22,12 @@ import org.eclipse.sirius.properties.TextAreaDescription;
  * <em><b>Text Area Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl#getLineCount
  * <em>Line Count</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

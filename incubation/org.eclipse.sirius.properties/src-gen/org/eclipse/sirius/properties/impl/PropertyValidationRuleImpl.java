@@ -26,12 +26,12 @@ import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleIm
  * <em><b>Property Validation Rule</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl#getTargets
  * <em>Targets</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -12,9 +12,12 @@
 package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
@@ -22,12 +25,14 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Label Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getBodyExpression
  * <em>Body Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -53,6 +58,16 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
      * @ordered
      */
     protected String bodyExpression = LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getStyle()
+     * @generated
+     * @ordered
+     */
+    protected LabelWidgetStyle style;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -103,10 +118,79 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
      * @generated
      */
     @Override
+    public LabelWidgetStyle getStyle() {
+        return style;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetStyle(LabelWidgetStyle newStyle, NotificationChain msgs) {
+        LabelWidgetStyle oldStyle = style;
+        style = newStyle;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_DESCRIPTION__STYLE, oldStyle, newStyle);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setStyle(LabelWidgetStyle newStyle) {
+        if (newStyle != style) {
+            NotificationChain msgs = null;
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.LABEL_DESCRIPTION__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.LABEL_DESCRIPTION__STYLE, null, msgs);
+            }
+            msgs = basicSetStyle(newStyle, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_DESCRIPTION__STYLE, newStyle, newStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+            return basicSetStyle(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
             return getBodyExpression();
+        case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+            return getStyle();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -121,6 +205,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
         switch (featureID) {
         case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
             setBodyExpression((String) newValue);
+            return;
+        case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+            setStyle((LabelWidgetStyle) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -137,6 +224,9 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
         case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
             setBodyExpression(LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+            setStyle((LabelWidgetStyle) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -151,6 +241,8 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
         switch (featureID) {
         case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
             return LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT == null ? bodyExpression != null : !LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT.equals(bodyExpression);
+        case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+            return style != null;
         }
         return super.eIsSet(featureID);
     }

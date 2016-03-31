@@ -25,6 +25,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Multiple References Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl#getValueExpression
@@ -51,7 +52,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl#getDownOperation
  * <em>Down Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -692,8 +692,8 @@ public class MultipleReferencesDescriptionImpl extends WidgetDescriptionImpl imp
         case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION__VALUE_EXPRESSION:
             return MultipleReferencesDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !MultipleReferencesDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION__DISPLAY_EXPRESSION:
-            return MultipleReferencesDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null : !MultipleReferencesDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT
-            .equals(displayExpression);
+            return MultipleReferencesDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT == null ? displayExpression != null
+                    : !MultipleReferencesDescriptionImpl.DISPLAY_EXPRESSION_EDEFAULT.equals(displayExpression);
         case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION__CREATE_OPERATION:
             return createOperation != null;
         case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION__SEARCH_OPERATION:

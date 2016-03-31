@@ -64,10 +64,10 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
      * @generated
      */
     protected void addTargetsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PropertyValidationRule_targets_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"),
-                PropertiesPackage.Literals.PROPERTY_VALIDATION_RULE__TARGETS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertyValidationRule_targets_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"),
+                        PropertiesPackage.Literals.PROPERTY_VALIDATION_RULE__TARGETS, true, false, true, null, null, null));
     }
 
     /**

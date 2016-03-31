@@ -20,16 +20,16 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator <em>
- * Iterator</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator
+ * <em>Iterator</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
  * <em>Domain Class Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIfs <em>Ifs
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.DynamicMappingFor#getIfs
+ * <em>Ifs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingFor()
  * @model

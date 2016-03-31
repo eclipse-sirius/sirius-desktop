@@ -27,6 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <em><b>Group Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getIdentifier
@@ -47,7 +48,6 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getValidationSet
  * <em>Validation Set</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -493,8 +493,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS:
             return GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !GroupDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
-            return GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null : !GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT
-            .equals(semanticCandidateExpression);
+            return GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null
+                    : !GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             return container != null;
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:

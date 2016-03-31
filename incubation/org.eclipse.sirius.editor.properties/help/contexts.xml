@@ -272,14 +272,69 @@
    
       </description>
    </context>
-   <context id="TextStyle">
+   <context id="TextWidgetStyle">
      <description>
        
        
          
-   <!-- Start of user code TextStyle description -->
+   <!-- Start of user code TextWidgetStyle description -->
    
-   <!-- End of user code TextStyle description -->
+   <!-- End of user code TextWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="LabelWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code LabelWidgetStyle description -->
+   
+   <!-- End of user code LabelWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="CheckboxWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code CheckboxWidgetStyle description -->
+   
+   <!-- End of user code CheckboxWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="RadioWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code RadioWidgetStyle description -->
+   
+   <!-- End of user code RadioWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="ButtonWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ButtonWidgetStyle description -->
+   
+   <!-- End of user code ButtonWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="SelectWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code SelectWidgetStyle description -->
+   
+   <!-- End of user code SelectWidgetStyle description -->
    
       </description>
    </context>

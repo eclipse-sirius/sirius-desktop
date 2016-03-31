@@ -26,6 +26,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <em><b>Dynamic Mapping If</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getPredicateExpression
@@ -33,7 +34,6 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <li>{@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl#getWidget
  * <em>Widget</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

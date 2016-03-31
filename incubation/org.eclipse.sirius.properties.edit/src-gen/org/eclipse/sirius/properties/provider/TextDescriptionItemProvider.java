@@ -166,7 +166,7 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createTextStyle()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createTextWidgetStyle()));
     }
 
 }

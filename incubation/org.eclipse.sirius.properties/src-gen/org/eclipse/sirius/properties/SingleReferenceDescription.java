@@ -20,6 +20,7 @@ package org.eclipse.sirius.properties;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getValueExpression
@@ -40,7 +41,6 @@ package org.eclipse.sirius.properties;
  * {@link org.eclipse.sirius.properties.SingleReferenceDescription#getOnClickOperation
  * <em>On Click Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getSingleReferenceDescription()
  * @model

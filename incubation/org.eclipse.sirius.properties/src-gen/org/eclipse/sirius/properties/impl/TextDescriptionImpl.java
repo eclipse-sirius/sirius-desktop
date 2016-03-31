@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.TextDescription;
-import org.eclipse.sirius.properties.TextStyle;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em><b>Text Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getValueExpression
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>{@link org.eclipse.sirius.properties.impl.TextDescriptionImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -82,7 +82,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * @generated
      * @ordered
      */
-    protected TextStyle style;
+    protected TextWidgetStyle style;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -186,7 +186,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * @generated
      */
     @Override
-    public TextStyle getStyle() {
+    public TextWidgetStyle getStyle() {
         return style;
     }
 
@@ -195,8 +195,8 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      *
      * @generated
      */
-    public NotificationChain basicSetStyle(TextStyle newStyle, NotificationChain msgs) {
-        TextStyle oldStyle = style;
+    public NotificationChain basicSetStyle(TextWidgetStyle newStyle, NotificationChain msgs) {
+        TextWidgetStyle oldStyle = style;
         style = newStyle;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.TEXT_DESCRIPTION__STYLE, oldStyle, newStyle);
@@ -215,7 +215,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * @generated
      */
     @Override
-    public void setStyle(TextStyle newStyle) {
+    public void setStyle(TextWidgetStyle newStyle) {
         if (newStyle != style) {
             NotificationChain msgs = null;
             if (style != null) {
@@ -282,7 +282,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
             setInitialOperation((InitialOperation) newValue);
             return;
         case PropertiesPackage.TEXT_DESCRIPTION__STYLE:
-            setStyle((TextStyle) newValue);
+            setStyle((TextWidgetStyle) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -303,7 +303,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
             setInitialOperation((InitialOperation) null);
             return;
         case PropertiesPackage.TEXT_DESCRIPTION__STYLE:
-            setStyle((TextStyle) null);
+            setStyle((TextWidgetStyle) null);
             return;
         }
         super.eUnset(featureID);

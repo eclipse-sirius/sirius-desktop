@@ -23,6 +23,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <em><b>Widget Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getIdentifier
@@ -34,7 +35,6 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getHelpExpression
  * <em>Help Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

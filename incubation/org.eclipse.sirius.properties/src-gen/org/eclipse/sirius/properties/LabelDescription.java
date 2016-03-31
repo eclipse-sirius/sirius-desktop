@@ -17,11 +17,13 @@ package org.eclipse.sirius.properties;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
  * <em>Body Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.LabelDescription#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription()
  * @model
@@ -58,5 +60,35 @@ public interface LabelDescription extends WidgetDescription {
      * @generated
      */
     void setBodyExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(LabelWidgetStyle)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    LabelWidgetStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(LabelWidgetStyle value);
 
 } // LabelDescription

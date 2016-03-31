@@ -20,12 +20,12 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.OperationDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getOperationDescription()
  * @model

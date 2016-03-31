@@ -26,12 +26,12 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em><b>Operation Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

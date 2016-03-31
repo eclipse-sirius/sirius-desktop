@@ -17,7 +17,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
@@ -27,6 +29,7 @@ import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -35,11 +38,13 @@ import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
-import org.eclipse.sirius.properties.TextStyle;
+import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 
@@ -132,8 +137,18 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomOperation();
         case PropertiesPackage.WIDGET_STYLE:
             return createWidgetStyle();
-        case PropertiesPackage.TEXT_STYLE:
-            return createTextStyle();
+        case PropertiesPackage.TEXT_WIDGET_STYLE:
+            return createTextWidgetStyle();
+        case PropertiesPackage.LABEL_WIDGET_STYLE:
+            return createLabelWidgetStyle();
+        case PropertiesPackage.CHECKBOX_WIDGET_STYLE:
+            return createCheckboxWidgetStyle();
+        case PropertiesPackage.RADIO_WIDGET_STYLE:
+            return createRadioWidgetStyle();
+        case PropertiesPackage.BUTTON_WIDGET_STYLE:
+            return createButtonWidgetStyle();
+        case PropertiesPackage.SELECT_WIDGET_STYLE:
+            return createSelectWidgetStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -387,9 +402,64 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public TextStyle createTextStyle() {
-        TextStyleImpl textStyle = new TextStyleImpl();
-        return textStyle;
+    public TextWidgetStyle createTextWidgetStyle() {
+        TextWidgetStyleImpl textWidgetStyle = new TextWidgetStyleImpl();
+        return textWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public LabelWidgetStyle createLabelWidgetStyle() {
+        LabelWidgetStyleImpl labelWidgetStyle = new LabelWidgetStyleImpl();
+        return labelWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CheckboxWidgetStyle createCheckboxWidgetStyle() {
+        CheckboxWidgetStyleImpl checkboxWidgetStyle = new CheckboxWidgetStyleImpl();
+        return checkboxWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public RadioWidgetStyle createRadioWidgetStyle() {
+        RadioWidgetStyleImpl radioWidgetStyle = new RadioWidgetStyleImpl();
+        return radioWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ButtonWidgetStyle createButtonWidgetStyle() {
+        ButtonWidgetStyleImpl buttonWidgetStyle = new ButtonWidgetStyleImpl();
+        return buttonWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public SelectWidgetStyle createSelectWidgetStyle() {
+        SelectWidgetStyleImpl selectWidgetStyle = new SelectWidgetStyleImpl();
+        return selectWidgetStyle;
     }
 
     /**

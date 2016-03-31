@@ -32,6 +32,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <em><b>Container Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getIdentifier
@@ -43,7 +44,6 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getDynamicMappings
  * <em>Dynamic Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

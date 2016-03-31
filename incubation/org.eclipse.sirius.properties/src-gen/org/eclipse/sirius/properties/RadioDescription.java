@@ -22,11 +22,11 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.properties.RadioDescription#getValueExpression
  * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.RadioDescription#getInitialOperation
+ * <li>{@link org.eclipse.sirius.properties.RadioDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression
@@ -34,8 +34,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression
  * <em>Candidate Display Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.RadioDescription#getStyle
+ * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription()
  * @model
@@ -156,5 +157,35 @@ public interface RadioDescription extends WidgetDescription {
      * @generated
      */
     void setCandidateDisplayExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(RadioWidgetStyle)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    RadioWidgetStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(RadioWidgetStyle value);
 
 } // RadioDescription

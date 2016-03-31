@@ -19,43 +19,121 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle.TextStyleFontFormatPropertySection"
-               id="properties.section.textStyle.FontFormat"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle.TextStyleFontFormatFilter"
-               afterSection="properties.section.textStyle.ForegroundColor"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySection"
+               id="properties.section.labelWidgetStyle.FontFormat"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontFormatFilter"
+               afterSection="properties.section.labelWidgetStyle.ForegroundColor"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.TextStyle"/>
+        <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle.TextStyleForegroundColorPropertySection"
-               id="properties.section.textStyle.ForegroundColor"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle.TextStyleForegroundColorFilter"
-               afterSection="properties.section.textStyle.BackgroundColor"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleForegroundColorPropertySection"
+               id="properties.section.labelWidgetStyle.ForegroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleForegroundColorFilter"
+               afterSection="properties.section.labelWidgetStyle.BackgroundColor"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.TextStyle"/>
+        <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle.TextStyleBackgroundColorPropertySection"
-               id="properties.section.textStyle.BackgroundColor"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle.TextStyleBackgroundColorFilter"
-               afterSection="properties.section.textStyle.FontSize"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleBackgroundColorPropertySection"
+               id="properties.section.labelWidgetStyle.BackgroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleBackgroundColorFilter"
+               afterSection="properties.section.labelWidgetStyle.FontSize"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.TextStyle"/>
+        <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle.TextStyleFontSizePropertySection"
-               id="properties.section.textStyle.FontSize"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle.TextStyleFontSizeFilter"
-               afterSection="properties.section.textStyle.FontNameExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontSizePropertySection"
+               id="properties.section.labelWidgetStyle.FontSize"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontSizeFilter"
+               afterSection="properties.section.labelWidgetStyle.FontNameExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.TextStyle"/>
+        <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textstyle.TextStyleFontNameExpressionPropertySection"
-               id="properties.section.textStyle.FontNameExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textstyle.TextStyleFontNameExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontNameExpressionPropertySection"
+               id="properties.section.labelWidgetStyle.FontNameExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontNameExpressionFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.TextStyle"/>
+        <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySection"
+               id="properties.section.textWidgetStyle.FontFormat"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontFormatFilter"
+               afterSection="properties.section.textWidgetStyle.ForegroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleForegroundColorPropertySection"
+               id="properties.section.textWidgetStyle.ForegroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleForegroundColorFilter"
+               afterSection="properties.section.textWidgetStyle.BackgroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleBackgroundColorPropertySection"
+               id="properties.section.textWidgetStyle.BackgroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleBackgroundColorFilter"
+               afterSection="properties.section.textWidgetStyle.FontSize"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontSizePropertySection"
+               id="properties.section.textWidgetStyle.FontSize"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontSizeFilter"
+               afterSection="properties.section.textWidgetStyle.FontNameExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontNameExpressionPropertySection"
+               id="properties.section.textWidgetStyle.FontNameExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontNameExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontFormatPropertySection"
+               id="properties.section.widgetStyle.LabelFontFormat"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontFormatFilter"
+               afterSection="properties.section.widgetStyle.LabelForegroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelForegroundColorPropertySection"
+               id="properties.section.widgetStyle.LabelForegroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelForegroundColorFilter"
+               afterSection="properties.section.widgetStyle.LabelBackgroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelBackgroundColorPropertySection"
+               id="properties.section.widgetStyle.LabelBackgroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelBackgroundColorFilter"
+               afterSection="properties.section.widgetStyle.LabelFontSize"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontSizePropertySection"
+               id="properties.section.widgetStyle.LabelFontSize"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontSizeFilter"
+               afterSection="properties.section.widgetStyle.LabelFontNameExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontNameExpressionPropertySection"
+               id="properties.section.widgetStyle.LabelFontNameExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontNameExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.customoperation.CustomOperationIdentifierPropertySection"
