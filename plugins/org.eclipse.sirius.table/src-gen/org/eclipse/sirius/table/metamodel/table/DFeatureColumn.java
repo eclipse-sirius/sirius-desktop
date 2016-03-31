@@ -16,12 +16,12 @@ package org.eclipse.sirius.table.metamodel.table;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
  * <em>Feature Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDFeatureColumn()
  * @model
@@ -51,7 +51,7 @@ public interface DFeatureColumn extends DColumn {
      * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()

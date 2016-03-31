@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getOwnedColumnMappings
@@ -29,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription#getCreateColumn
  * <em>Create Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription()
  * @model
@@ -47,7 +47,7 @@ public interface CrossTableDescription extends TableDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Column Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_OwnedColumnMappings()
@@ -66,7 +66,7 @@ public interface CrossTableDescription extends TableDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Intersection</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_Intersection()
@@ -85,7 +85,7 @@ public interface CrossTableDescription extends TableDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create Column</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCrossTableDescription_CreateColumn()

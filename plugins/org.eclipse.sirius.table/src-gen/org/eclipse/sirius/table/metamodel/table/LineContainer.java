@@ -19,11 +19,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.LineContainer#getLines
  * <em>Lines</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getLineContainer()
  * @model abstract="true"
@@ -42,7 +42,7 @@ public interface LineContainer extends DSemanticDecorator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Lines</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getLineContainer_Lines()
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getContainer

@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableVariable()
  * @model
@@ -53,7 +53,7 @@ public interface TableVariable extends AbstractVariable, VariableContainer {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableVariable#getDocumentation
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Documentation</em>' attribute.
      * @see #getDocumentation()

@@ -28,6 +28,7 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * <em><b>Edition Table Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getOwnedColumnMappings
@@ -39,7 +40,6 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getAllColumnMappings
  * <em>All Column Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +59,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * The cached value of the '{@link #getReusedColumnMappings()
      * <em>Reused Column Mappings</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedColumnMappings()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EditionTableDescriptionImpl() {
@@ -77,7 +77,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -184,7 +184,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

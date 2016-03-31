@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage
  * @generated
  */
@@ -23,7 +23,7 @@ public interface TableFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     TableFactory eINSTANCE = org.eclipse.sirius.table.metamodel.table.impl.TableFactoryImpl.init();
@@ -31,7 +31,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DTable</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DTable</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DLine</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DLine</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DCell</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DCell</em>'.
      * @generated
      */
@@ -58,7 +58,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DCell Style</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DCell Style</em>'.
      * @generated
      */
@@ -94,7 +94,7 @@ public interface TableFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

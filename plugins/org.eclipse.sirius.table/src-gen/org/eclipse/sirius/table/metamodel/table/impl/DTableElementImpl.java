@@ -22,19 +22,19 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <em><b>DTable Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl#getTableElementMapping
  * <em>Table Element Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public abstract class DTableElementImpl extends DRepresentationElementImpl implements DTableElement {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableElementImpl() {
@@ -43,7 +43,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -53,7 +53,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em><b>Create Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl#getVariables
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl#getFirstModelOperation
  * <em>First Model Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -48,7 +48,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
     /**
      * The cached value of the '{@link #getVariables() <em>Variables</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVariables()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateToolImpl() {
@@ -77,7 +77,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -87,7 +87,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperation(ModelOperation newFirstModelOperation, NotificationChain msgs) {
@@ -129,7 +129,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -205,7 +205,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

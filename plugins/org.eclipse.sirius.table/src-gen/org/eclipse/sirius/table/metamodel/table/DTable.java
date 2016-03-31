@@ -20,16 +20,16 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DTable#getColumns <em>
- * Columns</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DTable#getColumns
+ * <em>Columns</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth
  * <em>Header Column Width</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription
  * <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable()
  * @model
@@ -49,7 +49,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Columns</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_Columns()
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getTable
@@ -80,7 +80,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * {@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()
@@ -96,7 +96,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Header Column Width</em>' attribute.
      * @see #setHeaderColumnWidth(int)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTable_HeaderColumnWidth()
@@ -110,7 +110,7 @@ public interface DTable extends DRepresentation, LineContainer {
      * {@link org.eclipse.sirius.table.metamodel.table.DTable#getHeaderColumnWidth
      * <em>Header Column Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Column Width</em>' attribute.
      * @see #getHeaderColumnWidth()

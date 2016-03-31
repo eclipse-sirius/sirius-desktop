@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider {
@@ -73,22 +73,21 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ElementColumnMapping_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_ElementColumnMapping_domainClass_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ElementColumnMapping_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_ElementColumnMapping_domainClass_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Semantic Candidates Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_ElementColumnMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
                 getString("_UI_ElementColumnMapping_semanticCandidatesExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -103,7 +102,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +121,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +136,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This returns ElementColumnMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +161,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

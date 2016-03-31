@@ -16,12 +16,12 @@ package org.eclipse.sirius.table.metamodel.table.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.CreateLineTool#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateLineTool()
  * @model

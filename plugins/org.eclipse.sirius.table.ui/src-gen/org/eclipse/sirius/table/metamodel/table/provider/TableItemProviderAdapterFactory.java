@@ -36,14 +36,14 @@ import org.eclipse.sirius.table.metamodel.table.util.TableAdapterFactory;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableItemProviderAdapterFactory extends TableAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -61,7 +61,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -159,7 +159,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DCellStyleItemProvider dCellStyleItemProvider;
@@ -184,7 +184,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DTargetColumn} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTargetColumnItemProvider dTargetColumnItemProvider;
@@ -209,7 +209,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DFeatureColumnItemProvider dFeatureColumnItemProvider;
@@ -234,7 +234,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTableElementStyleItemProvider dTableElementStyleItemProvider;
@@ -279,7 +279,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +290,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -327,7 +327,7 @@ public class TableItemProviderAdapterFactory extends TableAdapterFactory impleme
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

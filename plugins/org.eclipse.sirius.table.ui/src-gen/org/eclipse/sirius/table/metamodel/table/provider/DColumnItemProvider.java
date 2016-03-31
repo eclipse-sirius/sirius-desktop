@@ -94,10 +94,10 @@ public class DColumnItemProvider extends DTableElementItemProvider {
      * @generated
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DColumn_originMapping_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_originMapping_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DCOLUMN__ORIGIN_MAPPING, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_originMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DColumn_originMapping_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DCOLUMN__ORIGIN_MAPPING, true, false, true, null, null, null));
     }
 
     /**
@@ -107,10 +107,10 @@ public class DColumnItemProvider extends DTableElementItemProvider {
      * @generated
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DColumn_orderedCells_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_orderedCells_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DCOLUMN__ORDERED_CELLS, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_orderedCells_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DColumn_orderedCells_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DCOLUMN__ORDERED_CELLS, false, false, false, null, null, null));
     }
 
     /**
@@ -144,7 +144,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
 
     /**
      * This returns DColumn.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class DColumnItemProvider extends DTableElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

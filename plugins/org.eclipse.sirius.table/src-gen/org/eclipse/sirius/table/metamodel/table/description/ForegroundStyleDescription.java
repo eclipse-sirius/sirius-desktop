@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
  * <em>Fore Ground Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription()
  * @model
@@ -58,7 +58,7 @@ public interface ForegroundStyleDescription extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -90,7 +90,7 @@ public interface ForegroundStyleDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Fore Ground Color</em>' reference.
      * @see #setForeGroundColor(ColorDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription_ForeGroundColor()
@@ -104,7 +104,7 @@ public interface ForegroundStyleDescription extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription#getForeGroundColor
      * <em>Fore Ground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Fore Ground Color</em>' reference.
      * @see #getForeGroundColor()

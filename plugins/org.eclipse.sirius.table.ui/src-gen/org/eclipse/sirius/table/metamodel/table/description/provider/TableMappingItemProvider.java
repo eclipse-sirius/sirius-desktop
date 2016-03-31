@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.provider.RepresentationElementMa
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableMappingItemProvider extends RepresentationElementMappingItemProvider {
@@ -69,11 +69,11 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TableMapping_semanticElements_feature"), //$NON-NLS-1$
-                getString("_UI_TableMapping_semanticElements_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.TABLE_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TableMapping_semanticElements_feature"), //$NON-NLS-1$
+                        getString("_UI_TableMapping_semanticElements_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.TABLE_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -104,7 +104,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

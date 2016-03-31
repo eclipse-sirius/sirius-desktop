@@ -20,6 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getVariables
@@ -28,7 +29,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableTool#getFirstModelOperation
  * <em>First Model Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool()
  * @model
@@ -45,7 +45,7 @@ public interface TableTool extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variables</em>' containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool_Variables()
      * @model containment="true"
@@ -62,7 +62,7 @@ public interface TableTool extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>First Model Operation</em>' containment
      *         reference.
      * @see #setFirstModelOperation(ModelOperation)

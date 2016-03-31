@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Create Cell Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getDocumentation
@@ -69,7 +70,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -78,7 +78,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The cached value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDocumentation()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -119,7 +119,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -137,10 +137,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     protected String label = CreateCellToolImpl.LABEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPrecondition()
-     * <em>Precondition</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The default value of the '{@link #getPrecondition() <em>Precondition</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -150,7 +149,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPrecondition()
      * @generated
      * @ordered
@@ -158,10 +157,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     protected String precondition = CreateCellToolImpl.PRECONDITION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isForceRefresh()
-     * <em>Force Refresh</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The default value of the '{@link #isForceRefresh() <em>Force Refresh</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -171,7 +169,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #isForceRefresh() <em>Force Refresh</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isForceRefresh()
      * @generated
      * @ordered
@@ -181,7 +179,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -192,7 +190,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The default value of the '{@link #getElementsToSelect()
      * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToSelect()
      * @generated
      * @ordered
@@ -203,7 +201,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The cached value of the '{@link #getElementsToSelect()
      * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getElementsToSelect()
      * @generated
      * @ordered
@@ -214,7 +212,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The default value of the '{@link #isInverseSelectionOrder()
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInverseSelectionOrder()
      * @generated
      * @ordered
@@ -225,7 +223,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * The cached value of the '{@link #isInverseSelectionOrder()
      * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInverseSelectionOrder()
      * @generated
      * @ordered
@@ -235,7 +233,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMask()
      * @generated
      * @ordered
@@ -244,7 +242,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateCellToolImpl() {
@@ -253,7 +251,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +261,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +271,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -287,7 +285,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +295,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,7 +309,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,7 +319,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -335,7 +333,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +343,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +357,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -369,7 +367,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +381,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -396,7 +394,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -406,7 +404,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -420,7 +418,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -430,7 +428,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +442,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -454,7 +452,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMask(EditMaskVariables newMask, NotificationChain msgs) {
@@ -473,7 +471,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -497,7 +495,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -510,7 +508,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMapping(IntersectionMapping newMapping, NotificationChain msgs) {
@@ -520,7 +518,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -547,7 +545,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -564,7 +562,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -582,7 +580,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -596,7 +594,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -628,7 +626,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -672,7 +670,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -714,7 +712,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -746,7 +744,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -796,7 +794,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -846,7 +844,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

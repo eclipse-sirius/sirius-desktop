@@ -18,12 +18,12 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
  * <em>Table Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableCreationDescription()
  * @model
@@ -38,7 +38,7 @@ public interface TableCreationDescription extends RepresentationCreationDescript
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Table Description</em>' reference.
      * @see #setTableDescription(TableDescription)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableCreationDescription_TableDescription()
@@ -52,7 +52,7 @@ public interface TableCreationDescription extends RepresentationCreationDescript
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription#getTableDescription
      * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Table Description</em>' reference.
      * @see #getTableDescription()

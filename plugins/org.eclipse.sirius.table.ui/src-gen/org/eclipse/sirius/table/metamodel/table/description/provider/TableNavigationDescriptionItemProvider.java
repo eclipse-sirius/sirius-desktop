@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationNavi
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableNavigationDescriptionItemProvider extends RepresentationNavigationDescriptionItemProvider {
@@ -76,7 +76,7 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     /**
      * This returns TableNavigationDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -63,16 +63,16 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DFeatureColumn_featureName_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DFeatureColumn_featureName_feature", "_UI_DFeatureColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DFEATURE_COLUMN__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DFeatureColumn_featureName_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DFeatureColumn_featureName_feature", "_UI_DFeatureColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DFEATURE_COLUMN__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns DFeatureColumn.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class DFeatureColumnItemProvider extends DColumnItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

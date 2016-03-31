@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
@@ -41,7 +42,6 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle()
  * @model
@@ -67,7 +67,7 @@ public interface DTableElementStyle extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
      * <em>Label Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Size</em>' attribute.
      * @see #getLabelSize()
@@ -99,7 +99,7 @@ public interface DTableElementStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Color</em>' attribute.
      * @see #setForegroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_ForegroundColor()
@@ -113,7 +113,7 @@ public interface DTableElementStyle extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
      * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()
@@ -129,7 +129,7 @@ public interface DTableElementStyle extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_BackgroundColor()
@@ -144,7 +144,7 @@ public interface DTableElementStyle extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -172,7 +172,7 @@ public interface DTableElementStyle extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
      * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Foreground Style</em>'
      *            attribute.
@@ -201,7 +201,7 @@ public interface DTableElementStyle extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
      * <em>Default Background Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Background Style</em>'
      *            attribute.

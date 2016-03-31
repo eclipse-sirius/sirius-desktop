@@ -16,6 +16,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName
@@ -27,7 +28,6 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping()
  * @model
@@ -56,7 +56,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureName
      * <em>Feature Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Name</em>' attribute.
      * @see #getFeatureName()
@@ -72,7 +72,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping_LabelExpression()
@@ -91,7 +91,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -119,7 +119,7 @@ public interface FeatureColumnMapping extends ColumnMapping, CellUpdater, StyleU
      * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping#getFeatureParentExpression
      * <em>Feature Parent Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature Parent Expression</em>'
      *            attribute.

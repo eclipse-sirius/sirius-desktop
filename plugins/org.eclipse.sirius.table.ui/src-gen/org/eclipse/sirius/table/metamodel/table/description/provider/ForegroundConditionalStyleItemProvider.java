@@ -36,11 +36,11 @@ import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -70,12 +70,11 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
     /**
      * This adds a property descriptor for the Predicate Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_ForegroundConditionalStyle_predicateExpression_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_ForegroundConditionalStyle_predicateExpression_feature", "_UI_ForegroundConditionalStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.FOREGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -90,7 +89,7 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +103,7 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +118,7 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
     /**
      * This returns ForegroundConditionalStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +129,7 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +144,7 @@ public class ForegroundConditionalStyleItemProvider extends ItemProviderAdapter 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

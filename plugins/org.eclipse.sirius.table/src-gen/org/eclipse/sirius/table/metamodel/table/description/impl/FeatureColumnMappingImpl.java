@@ -36,6 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em><b>Feature Column Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getDirectEdit
@@ -65,7 +66,6 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getFeatureParentExpression
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -73,7 +73,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     /**
      * The cached value of the '{@link #getDirectEdit() <em>Direct Edit</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDirectEdit()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     /**
      * The default value of the '{@link #getCanEdit() <em>Can Edit</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     /**
      * The cached value of the '{@link #getCanEdit() <em>Can Edit</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCanEdit()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getDefaultForeground()
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultForeground()
      * @generated
      * @ordered
@@ -126,7 +126,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getDefaultBackground()
      * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultBackground()
      * @generated
      * @ordered
@@ -147,7 +147,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     /**
      * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -157,7 +157,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureName()
      * @generated
      * @ordered
@@ -168,7 +168,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -179,7 +179,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -190,7 +190,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The default value of the '{@link #getFeatureParentExpression()
      * <em>Feature Parent Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureParentExpression()
      * @generated
      * @ordered
@@ -201,7 +201,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * The cached value of the '{@link #getFeatureParentExpression()
      * <em>Feature Parent Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureParentExpression()
      * @generated
      * @ordered
@@ -210,7 +210,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureColumnMappingImpl() {
@@ -219,7 +219,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDirectEdit(LabelEditTool newDirectEdit, NotificationChain msgs) {
@@ -258,7 +258,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,7 +306,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -316,7 +316,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultForeground(ForegroundStyleDescription newDefaultForeground, NotificationChain msgs) {
@@ -335,7 +335,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultBackground(BackgroundStyleDescription newDefaultBackground, NotificationChain msgs) {
@@ -402,7 +402,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -426,7 +426,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -440,7 +440,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -450,7 +450,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,7 +464,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -474,7 +474,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -488,7 +488,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -498,7 +498,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -512,7 +512,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -524,7 +524,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -536,7 +536,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -558,7 +558,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -588,7 +588,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -630,7 +630,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -669,7 +669,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -692,15 +692,15 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION:
             return FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !FeatureColumnMappingImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION:
-            return FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT == null ? featureParentExpression != null : !FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT
-                    .equals(featureParentExpression);
+            return FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT == null ? featureParentExpression != null
+                    : !FeatureColumnMappingImpl.FEATURE_PARENT_EXPRESSION_EDEFAULT.equals(featureParentExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -734,7 +734,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -768,7 +768,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

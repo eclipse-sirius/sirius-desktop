@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <em><b>DCell Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getForegroundStyleOrigin
@@ -31,7 +32,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl#getBackgroundStyleOrigin
  * <em>Background Style Origin</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * The cached value of the '{@link #getForegroundStyleOrigin()
      * <em>Foreground Style Origin</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getForegroundStyleOrigin()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
      * The cached value of the '{@link #getBackgroundStyleOrigin()
      * <em>Background Style Origin</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getBackgroundStyleOrigin()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DCellStyleImpl() {
@@ -69,7 +69,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -79,7 +79,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMapping basicGetForegroundStyleOrigin() {
@@ -107,7 +107,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMapping basicGetBackgroundStyleOrigin() {
@@ -149,7 +149,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -185,7 +185,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

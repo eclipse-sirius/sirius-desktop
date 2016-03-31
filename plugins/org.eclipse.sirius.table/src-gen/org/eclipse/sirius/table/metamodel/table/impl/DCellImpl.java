@@ -44,6 +44,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em><b>DCell</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getName
  * <em>Name</em>}</li>
@@ -62,14 +63,12 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getCurrentStyle
  * <em>Current Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getUpdater
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getUpdater
  * <em>Updater</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getIntersectionMapping
  * <em>Intersection Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -77,7 +76,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -87,7 +86,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -98,7 +97,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -108,7 +107,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -118,7 +117,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -128,7 +127,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     /**
      * The cached value of the '{@link #getColumn() <em>Column</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColumn()
      * @generated
      * @ordered
@@ -136,10 +135,9 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     protected DColumn column;
 
     /**
-     * The cached value of the '{@link #getCurrentStyle()
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getCurrentStyle() <em>Current Style</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getCurrentStyle()
      * @generated
      * @ordered
@@ -150,7 +148,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
      * The cached value of the '{@link #getIntersectionMapping()
      * <em>Intersection Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getIntersectionMapping()
      * @generated
      * @ordered
@@ -159,7 +157,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DCellImpl() {
@@ -168,7 +166,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +176,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +186,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +200,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +210,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +224,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -239,7 +237,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +248,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableMapping basicGetTableElementMapping() {
@@ -263,7 +261,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +274,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLine(DLine newLine, NotificationChain msgs) {
@@ -286,7 +284,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +311,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,7 +330,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DColumn basicGetColumn() {
@@ -341,7 +339,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetColumn(DColumn newColumn, NotificationChain msgs) {
@@ -360,7 +358,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +382,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -394,7 +392,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCurrentStyle(DCellStyle newCurrentStyle, NotificationChain msgs) {
@@ -413,7 +411,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -437,7 +435,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -448,7 +446,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CellUpdater basicGetUpdater() {
@@ -460,7 +458,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -472,7 +470,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -491,7 +489,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IntersectionMapping basicGetIntersectionMapping() {
@@ -500,7 +498,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -514,7 +512,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -526,7 +524,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -538,7 +536,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -550,7 +548,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -572,7 +570,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -590,7 +588,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +602,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -646,7 +644,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -684,7 +682,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -720,7 +718,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -750,7 +748,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -796,7 +794,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -842,7 +840,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

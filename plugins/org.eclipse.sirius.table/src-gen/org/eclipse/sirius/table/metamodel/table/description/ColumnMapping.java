@@ -16,6 +16,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
@@ -24,7 +25,6 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth
  * <em>Initial Width</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping()
  * @model
@@ -40,7 +40,7 @@ public interface ColumnMapping extends TableMapping {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping_HeaderLabelExpression()
@@ -57,7 +57,7 @@ public interface ColumnMapping extends TableMapping {
      * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getHeaderLabelExpression
      * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Label Expression</em>'
      *            attribute.
@@ -85,7 +85,7 @@ public interface ColumnMapping extends TableMapping {
      * {@link org.eclipse.sirius.table.metamodel.table.description.ColumnMapping#getInitialWidth
      * <em>Initial Width</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Width</em>' attribute.
      * @see #getInitialWidth()

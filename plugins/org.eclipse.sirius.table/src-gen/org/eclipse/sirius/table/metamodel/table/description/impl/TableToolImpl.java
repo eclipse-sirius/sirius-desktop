@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * <em><b>Table Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getVariables
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl#getFirstModelOperation
  * <em>First Model Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -47,7 +47,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
     /**
      * The cached value of the '{@link #getVariables() <em>Variables</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getVariables()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableToolImpl() {
@@ -76,7 +76,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFirstModelOperation(ModelOperation newFirstModelOperation, NotificationChain msgs) {
@@ -128,7 +128,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -152,7 +152,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -204,7 +204,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

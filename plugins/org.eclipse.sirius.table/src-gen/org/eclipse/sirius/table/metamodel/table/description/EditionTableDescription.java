@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getOwnedColumnMappings
@@ -29,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription#getAllColumnMappings
  * <em>All Column Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription()
  * @model
@@ -47,7 +47,7 @@ public interface EditionTableDescription extends TableDescription {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Column Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription_OwnedColumnMappings()
@@ -66,7 +66,7 @@ public interface EditionTableDescription extends TableDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reused Column Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription_ReusedColumnMappings()
@@ -85,7 +85,7 @@ public interface EditionTableDescription extends TableDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Column Mappings</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getEditionTableDescription_AllColumnMappings()
      * @model keys="name" required="true" transient="true" changeable="false"

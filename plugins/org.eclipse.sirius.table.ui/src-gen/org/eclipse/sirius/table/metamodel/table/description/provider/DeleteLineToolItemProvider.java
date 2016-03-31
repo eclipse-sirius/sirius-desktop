@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DeleteLineToolItemProvider extends DeleteToolItemProvider {
@@ -56,7 +56,7 @@ public class DeleteLineToolItemProvider extends DeleteToolItemProvider {
     /**
      * This returns DeleteLineTool.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class DeleteLineToolItemProvider extends DeleteToolItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElement#getTableElementMapping
  * <em>Table Element Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElement()
  * @model abstract="true"

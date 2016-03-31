@@ -19,25 +19,25 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getLabel <em>
- * Label</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells <em>
- * Cells</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getLabel
+ * <em>Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells
+ * <em>Cells</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
  * <em>Origin Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable <em>
- * Table</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable
+ * <em>Table</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOrderedCells
  * <em>Ordered Cells</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible <em>
- * Visible</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth <em>
- * Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible
+ * <em>Visible</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth
+ * <em>Width</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
  * <em>Current Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn()
  * @model abstract="true"
@@ -65,7 +65,7 @@ public interface DColumn extends DTableElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -118,7 +118,7 @@ public interface DColumn extends DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
      * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Origin Mapping</em>' reference.
      * @see #getOriginMapping()
@@ -136,7 +136,7 @@ public interface DColumn extends DTableElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Table</em>' container reference.
      * @see #setTable(DTable)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Table()
@@ -151,7 +151,7 @@ public interface DColumn extends DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable
      * <em>Table</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Table</em>' container reference.
      * @see #getTable()
@@ -185,7 +185,7 @@ public interface DColumn extends DTableElement {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Visible</em>' attribute.
      * @see #setVisible(boolean)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn_Visible()
@@ -228,7 +228,7 @@ public interface DColumn extends DTableElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -260,7 +260,7 @@ public interface DColumn extends DTableElement {
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
      * <em>Current Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Style</em>' containment
      *            reference.

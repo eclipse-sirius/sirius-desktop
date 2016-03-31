@@ -36,6 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em><b>Element Column Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getDefaultForeground
@@ -62,7 +63,6 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.ElementColumnMappingImpl#getDelete
  * <em>Delete</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -71,7 +71,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The cached value of the '{@link #getDefaultForeground()
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultForeground()
      * @generated
      * @ordered
@@ -93,7 +93,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The cached value of the '{@link #getDefaultBackground()
      * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultBackground()
      * @generated
      * @ordered
@@ -114,7 +114,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -124,7 +124,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The default value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -146,7 +146,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
      * The cached value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -156,7 +156,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     /**
      * The cached value of the '{@link #getCreate() <em>Create</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCreate()
      * @generated
      * @ordered
@@ -166,7 +166,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     /**
      * The cached value of the '{@link #getDelete() <em>Delete</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDelete()
      * @generated
      * @ordered
@@ -175,7 +175,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementColumnMappingImpl() {
@@ -184,7 +184,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultForeground(ForegroundStyleDescription newDefaultForeground, NotificationChain msgs) {
@@ -223,7 +223,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultBackground(BackgroundStyleDescription newDefaultBackground, NotificationChain msgs) {
@@ -290,7 +290,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -352,7 +352,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -362,7 +362,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -377,7 +377,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -391,7 +391,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDelete(DeleteColumnTool newDelete, NotificationChain msgs) {
@@ -420,7 +420,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +444,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -464,7 +464,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -488,7 +488,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -516,7 +516,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -556,7 +556,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -592,7 +592,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -609,8 +609,8 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS:
             return ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !ElementColumnMappingImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
-                    .equals(semanticCandidatesExpression);
+            return ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null
+                    : !ElementColumnMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE:
             return create != null && !create.isEmpty();
         case DescriptionPackage.ELEMENT_COLUMN_MAPPING__DELETE:
@@ -621,7 +621,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -645,7 +645,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -669,7 +669,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

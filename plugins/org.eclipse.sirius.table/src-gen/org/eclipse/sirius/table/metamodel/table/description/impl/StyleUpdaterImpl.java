@@ -33,6 +33,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em><b>Style Updater</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl#getDefaultForeground
@@ -47,7 +48,6 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -56,7 +56,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getDefaultForeground()
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultForeground()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
      * The cached value of the '{@link #getDefaultBackground()
      * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultBackground()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StyleUpdaterImpl() {
@@ -107,7 +107,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultForeground(ForegroundStyleDescription newDefaultForeground, NotificationChain msgs) {
@@ -146,7 +146,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,20 +170,21 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
+            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
+                    DescriptionPackage.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +194,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultBackground(BackgroundStyleDescription newDefaultBackground, NotificationChain msgs) {
@@ -212,7 +213,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -236,20 +237,21 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE);
+            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
+                    DescriptionPackage.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +271,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -289,7 +291,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -316,7 +318,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -340,7 +342,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineMapping
@@ -50,7 +51,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getCreate
  * <em>Create</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping()
  * @model
@@ -67,7 +67,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Mapping</em>' reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LineMapping()
      * @model keys="name" required="true"
@@ -97,7 +97,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnMapping
      * <em>Column Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Column Mapping</em>' reference.
      * @see #getColumnMapping()
@@ -113,7 +113,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LabelExpression()
@@ -132,7 +132,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -148,7 +148,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Use Domain Class</em>' attribute.
      * @see #setUseDomainClass(boolean)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_UseDomainClass()
@@ -162,7 +162,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#isUseDomainClass
      * <em>Use Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Use Domain Class</em>' attribute.
      * @see #isUseDomainClass()
@@ -178,7 +178,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Column Finder Expression</em>' attribute.
      * @see #setColumnFinderExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_ColumnFinderExpression()
@@ -195,7 +195,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getColumnFinderExpression
      * <em>Column Finder Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Column Finder Expression</em>'
      *            attribute.
@@ -212,7 +212,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Line Finder Expression</em>' attribute.
      * @see #setLineFinderExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LineFinderExpression()
@@ -229,7 +229,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getLineFinderExpression
      * <em>Line Finder Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Line Finder Expression</em>'
      *            attribute.
@@ -246,7 +246,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Semantic Candidates Expression</em>'
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
@@ -264,7 +264,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>'
      *            attribute.
@@ -295,7 +295,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -317,8 +317,8 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_PreconditionExpression()
      * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
@@ -332,7 +332,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.
@@ -351,7 +351,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Create</em>' containment reference.
      * @see #setCreate(CreateCellTool)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_Create()
@@ -366,7 +366,7 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * {@link org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping#getCreate
      * <em>Create</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Create</em>' containment reference.
      * @see #getCreate()

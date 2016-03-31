@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getDirectEdit
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCanEdit
  * <em>Can Edit</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater()
  * @model
@@ -41,7 +41,7 @@ public interface CellUpdater extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Direct Edit</em>' containment reference.
      * @see #setDirectEdit(LabelEditTool)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_DirectEdit()
@@ -55,7 +55,7 @@ public interface CellUpdater extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getDirectEdit
      * <em>Direct Edit</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Direct Edit</em>' containment
      *            reference.
@@ -96,7 +96,7 @@ public interface CellUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true"
@@ -106,7 +106,7 @@ public interface CellUpdater extends EObject {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

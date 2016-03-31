@@ -46,6 +46,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em><b>DTarget Column</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getName
@@ -81,7 +82,6 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl#getCurrentStyle
  * <em>Current Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -89,7 +89,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -130,7 +130,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -140,7 +140,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The cached value of the '{@link #getCells() <em>Cells</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCells()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * The cached value of the '{@link #getOriginMapping()
      * <em>Origin Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getOriginMapping()
      * @generated
      * @ordered
@@ -161,7 +161,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The default value of the '{@link #isVisible() <em>Visible</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -171,7 +171,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The cached value of the '{@link #isVisible() <em>Visible</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isVisible()
      * @generated
      * @ordered
@@ -181,7 +181,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -191,7 +191,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -199,10 +199,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     protected int width = DTargetColumnImpl.WIDTH_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getCurrentStyle()
-     * <em>Current Style</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getCurrentStyle() <em>Current Style</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getCurrentStyle()
      * @generated
      * @ordered
@@ -211,7 +210,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DTargetColumnImpl() {
@@ -220,7 +219,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +229,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +239,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +253,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -267,7 +266,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -287,7 +286,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -297,7 +296,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,7 +310,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +323,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -343,7 +342,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColumnMapping basicGetOriginMapping() {
@@ -352,7 +351,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +365,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +378,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTable(DTable newTable, NotificationChain msgs) {
@@ -389,7 +388,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -416,7 +415,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +433,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +443,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -458,7 +457,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -468,7 +467,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -482,7 +481,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -492,7 +491,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCurrentStyle(DTableElementStyle newCurrentStyle, NotificationChain msgs) {
@@ -511,7 +510,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -535,7 +534,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -547,7 +546,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -559,7 +558,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -571,7 +570,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -591,7 +590,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -609,7 +608,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -623,7 +622,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -663,7 +662,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -705,7 +704,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -744,7 +743,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -778,7 +777,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -846,7 +845,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -914,7 +913,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

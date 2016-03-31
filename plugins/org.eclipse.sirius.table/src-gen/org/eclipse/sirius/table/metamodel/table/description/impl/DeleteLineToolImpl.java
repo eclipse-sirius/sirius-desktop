@@ -25,19 +25,19 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  * <em><b>Delete Line Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.DeleteLineToolImpl#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteLineToolImpl() {
@@ -46,7 +46,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -56,7 +56,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetMapping(LineMapping newMapping, NotificationChain msgs) {
@@ -79,7 +79,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +137,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage
  * @generated
  */
@@ -23,7 +23,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     DescriptionFactory eINSTANCE = org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionFactoryImpl.init();
@@ -112,7 +112,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Table Tool</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Table Tool</em>'.
      * @generated
      */
@@ -184,7 +184,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Foreground Style Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Foreground Style Description</em>'.
      * @generated
      */
@@ -193,7 +193,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Background Style Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Background Style Description</em>'.
      * @generated
      */
@@ -202,7 +202,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Foreground Conditional Style</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Foreground Conditional Style</em>'.
      * @generated
      */
@@ -211,7 +211,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Background Conditional Style</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Background Conditional Style</em>'.
      * @generated
      */
@@ -238,7 +238,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Table Navigation Description</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Table Navigation Description</em>'.
      * @generated
      */
@@ -247,7 +247,7 @@ public interface DescriptionFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getBackgroundConditionalStyle
  * <em>Background Conditional Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getStyleUpdater()
  * @model abstract="true"
@@ -48,7 +48,7 @@ public interface StyleUpdater extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Foreground</em>' containment
      *         reference.
      * @see #setDefaultForeground(ForegroundStyleDescription)
@@ -63,7 +63,7 @@ public interface StyleUpdater extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultForeground
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Foreground</em>' containment
      *            reference.
@@ -83,7 +83,7 @@ public interface StyleUpdater extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreground Conditional Style</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getStyleUpdater_ForegroundConditionalStyle()
@@ -100,7 +100,7 @@ public interface StyleUpdater extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Background</em>' containment
      *         reference.
      * @see #setDefaultBackground(BackgroundStyleDescription)
@@ -115,7 +115,7 @@ public interface StyleUpdater extends EObject {
      * {@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater#getDefaultBackground
      * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Background</em>' containment
      *            reference.
@@ -135,7 +135,7 @@ public interface StyleUpdater extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Background Conditional Style</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getStyleUpdater_BackgroundConditionalStyle()

@@ -24,12 +24,12 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  * <em><b>Table Navigation Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl#getTableDescription
  * <em>Table Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -38,7 +38,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
      * The cached value of the '{@link #getTableDescription()
      * <em>Table Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTableDescription()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableNavigationDescriptionImpl() {
@@ -56,7 +56,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TableDescription basicGetTableDescription() {
@@ -94,7 +94,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class TableNavigationDescriptionImpl extends RepresentationNavigationDesc
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

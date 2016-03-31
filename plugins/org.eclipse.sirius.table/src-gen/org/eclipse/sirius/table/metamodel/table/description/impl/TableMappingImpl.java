@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappin
  * <em><b>Table Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.TableMappingImpl#getSemanticElements
  * <em>Semantic Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      * The default value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
      * The cached value of the '{@link #getSemanticElements()
      * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSemanticElements()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableMappingImpl() {
@@ -65,7 +65,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

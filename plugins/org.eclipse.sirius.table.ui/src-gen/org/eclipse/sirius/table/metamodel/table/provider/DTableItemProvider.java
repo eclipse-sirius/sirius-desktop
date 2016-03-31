@@ -71,10 +71,10 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addTargetPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
     /**
@@ -84,10 +84,10 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTable_description_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTable_description_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DTABLE__DESCRIPTION, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTable_description_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTable_description_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DTABLE__DESCRIPTION, true, false, true, null, null, null));
     }
 
     /**
@@ -97,10 +97,10 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * @generated
      */
     protected void addHeaderColumnWidthPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTable_headerColumnWidth_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DTable_headerColumnWidth_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DTable_headerColumnWidth_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DTable_headerColumnWidth_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -110,7 +110,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

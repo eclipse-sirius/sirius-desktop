@@ -25,6 +25,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * <em><b>Background Conditional Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl#getPredicateExpression
@@ -33,7 +34,6 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.BackgroundConditionalStyleImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * The default value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
      * The cached value of the '{@link #getPredicateExpression()
      * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getPredicateExpression()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BackgroundConditionalStyleImpl() {
@@ -81,7 +81,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(BackgroundStyleDescription newStyle, NotificationChain msgs) {
@@ -144,7 +144,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,7 +168,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,15 +234,15 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION:
-            return BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null : !BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT
-                    .equals(predicateExpression);
+            return BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT == null ? predicateExpression != null
+                    : !BackgroundConditionalStyleImpl.PREDICATE_EXPRESSION_EDEFAULT.equals(predicateExpression);
         case DescriptionPackage.BACKGROUND_CONDITIONAL_STYLE__STYLE:
             return style != null;
         }
@@ -251,7 +251,7 @@ public class BackgroundConditionalStyleImpl extends MinimalEObjectImpl.Container
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

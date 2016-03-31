@@ -58,27 +58,27 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This adds a property descriptor for the Foreground Style Origin feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addForegroundStyleOriginPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DCellStyle_foregroundStyleOrigin_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_foregroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCellStyle_foregroundStyleOrigin_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_foregroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Background Style Origin feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addBackgroundStyleOriginPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DCellStyle_backgroundStyleOrigin_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_backgroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                TablePackage.Literals.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCellStyle_backgroundStyleOrigin_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_backgroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        TablePackage.Literals.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
     }
 
     /**
@@ -95,7 +95,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationCrea
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TableCreationDescriptionItemProvider extends RepresentationCreationDescriptionItemProvider {
@@ -76,7 +76,7 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
     /**
      * This returns TableCreationDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

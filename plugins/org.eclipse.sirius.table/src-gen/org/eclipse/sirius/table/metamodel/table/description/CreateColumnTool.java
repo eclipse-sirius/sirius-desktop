@@ -16,12 +16,12 @@ package org.eclipse.sirius.table.metamodel.table.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateColumnTool()
  * @model
@@ -38,7 +38,7 @@ public interface CreateColumnTool extends CreateTool {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' container reference.
      * @see #setMapping(ElementColumnMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateColumnTool_Mapping()
@@ -53,7 +53,7 @@ public interface CreateColumnTool extends CreateTool {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

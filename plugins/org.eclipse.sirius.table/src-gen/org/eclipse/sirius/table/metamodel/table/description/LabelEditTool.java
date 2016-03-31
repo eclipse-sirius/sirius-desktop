@@ -18,12 +18,12 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool#getMask
  * <em>Mask</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLabelEditTool()
  * @model
@@ -49,7 +49,7 @@ public interface LabelEditTool extends TableTool {
      * {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool#getMask
      * <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()

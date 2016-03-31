@@ -36,6 +36,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em><b>Line Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getDefaultForeground
@@ -77,7 +78,6 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.LineMappingImpl#getHeaderLabelExpression
  * <em>Header Label Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -86,7 +86,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getDefaultForeground()
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultForeground()
      * @generated
      * @ordered
@@ -108,7 +108,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getDefaultBackground()
      * <em>Default Background</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDefaultBackground()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getReusedSubLines()
      * <em>Reused Sub Lines</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReusedSubLines()
      * @generated
      * @ordered
@@ -152,7 +152,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getReusedInMappings()
      * <em>Reused In Mappings</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedInMappings()
      * @generated
      * @ordered
@@ -162,7 +162,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -172,7 +172,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -182,7 +182,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     /**
      * The cached value of the '{@link #getCreate() <em>Create</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCreate()
      * @generated
      * @ordered
@@ -192,7 +192,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     /**
      * The cached value of the '{@link #getDelete() <em>Delete</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDelete()
      * @generated
      * @ordered
@@ -203,7 +203,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The default value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -214,7 +214,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getSemanticCandidatesExpression()
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticCandidatesExpression()
      * @generated
      * @ordered
@@ -225,7 +225,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The default value of the '{@link #getHeaderLabelExpression()
      * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeaderLabelExpression()
      * @generated
      * @ordered
@@ -236,7 +236,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
      * The cached value of the '{@link #getHeaderLabelExpression()
      * <em>Header Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeaderLabelExpression()
      * @generated
      * @ordered
@@ -245,7 +245,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LineMappingImpl() {
@@ -254,7 +254,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultForeground(ForegroundStyleDescription newDefaultForeground, NotificationChain msgs) {
@@ -293,7 +293,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -330,7 +330,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -340,7 +340,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultBackground(BackgroundStyleDescription newDefaultBackground, NotificationChain msgs) {
@@ -359,7 +359,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -383,7 +383,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -396,7 +396,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -423,7 +423,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -433,7 +433,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -447,7 +447,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -460,7 +460,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -470,7 +470,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDelete(DeleteLineTool newDelete, NotificationChain msgs) {
@@ -489,7 +489,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -513,7 +513,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -523,7 +523,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -537,7 +537,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -547,7 +547,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -561,7 +561,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -579,7 +579,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -593,7 +593,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -615,7 +615,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -645,7 +645,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -683,7 +683,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -738,7 +738,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -786,7 +786,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -815,8 +815,8 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
         case DescriptionPackage.LINE_MAPPING__DELETE:
             return delete != null;
         case DescriptionPackage.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-            return LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null : !LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT
-                    .equals(semanticCandidatesExpression);
+            return LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT == null ? semanticCandidatesExpression != null
+                    : !LineMappingImpl.SEMANTIC_CANDIDATES_EXPRESSION_EDEFAULT.equals(semanticCandidatesExpression);
         case DescriptionPackage.LINE_MAPPING__HEADER_LABEL_EXPRESSION:
             return LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT == null ? headerLabelExpression != null : !LineMappingImpl.HEADER_LABEL_EXPRESSION_EDEFAULT.equals(headerLabelExpression);
         }
@@ -825,7 +825,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -849,7 +849,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -873,7 +873,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

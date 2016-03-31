@@ -23,12 +23,12 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  * <em><b>Create Line Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateLineToolImpl#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateLineToolImpl() {
@@ -54,7 +54,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LineMapping basicGetMapping() {
@@ -92,7 +92,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class CreateLineToolImpl extends CreateToolImpl implements CreateLineTool
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

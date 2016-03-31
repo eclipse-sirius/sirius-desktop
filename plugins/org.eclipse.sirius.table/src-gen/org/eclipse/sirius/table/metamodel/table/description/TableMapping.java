@@ -18,12 +18,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
  * <em>Semantic Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableMapping()
  * @model
@@ -50,7 +50,7 @@ public interface TableMapping extends RepresentationElementMapping {
      * {@link org.eclipse.sirius.table.metamodel.table.description.TableMapping#getSemanticElements
      * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.
      * @see #getSemanticElements()

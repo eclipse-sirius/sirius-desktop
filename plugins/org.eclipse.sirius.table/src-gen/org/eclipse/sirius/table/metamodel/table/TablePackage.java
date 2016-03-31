@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TableFactory
  * @model kind="package"
  * @generated
@@ -34,21 +34,21 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public interface TablePackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "table"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/table/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "table"; //$NON-NLS-1$
@@ -56,7 +56,7 @@ public interface TablePackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     TablePackage eINSTANCE = org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl.init();
@@ -65,7 +65,7 @@ public interface TablePackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl
      * <em>DTable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DTableImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTable()
      * @generated
@@ -84,7 +84,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -93,7 +93,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -102,7 +102,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -120,7 +120,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -129,7 +129,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ui State</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -147,7 +147,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -156,7 +156,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Columns</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -165,7 +165,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Header Column Width</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -194,7 +194,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl
      * <em>DTable Element</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElement()
      * @generated
@@ -222,7 +222,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -231,7 +231,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -240,7 +240,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DTable Element</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -251,7 +251,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl
      * <em>Line Container</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getLineContainer()
      * @generated
@@ -270,7 +270,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -279,7 +279,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Line Container</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -289,7 +289,7 @@ public interface TablePackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl
      * <em>DLine</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DLineImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDLine()
      * @generated
@@ -308,7 +308,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -326,7 +326,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -335,7 +335,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -380,7 +380,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cells</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -389,7 +389,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Container</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -398,7 +398,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -407,7 +407,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -426,7 +426,7 @@ public interface TablePackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl
      * <em>DCell</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DCellImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCell()
      * @generated
@@ -454,7 +454,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -463,7 +463,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -499,7 +499,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -517,7 +517,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Intersection Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -537,7 +537,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl
      * <em>DTable Element Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementStyle()
      * @generated
@@ -565,7 +565,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -574,7 +574,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Background Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -601,7 +601,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DTable Element Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -640,7 +640,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -649,7 +649,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Default Background Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -676,7 +676,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreground Style Origin</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -685,7 +685,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Style Origin</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -694,7 +694,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DCell Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -704,7 +704,7 @@ public interface TablePackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl
      * <em>DColumn</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DColumnImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDColumn()
      * @generated
@@ -732,7 +732,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -741,7 +741,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -786,7 +786,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -813,7 +813,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -833,7 +833,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl
      * <em>DTarget Column</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTargetColumn()
      * @generated
@@ -861,7 +861,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -870,7 +870,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -915,7 +915,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -942,7 +942,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -951,7 +951,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DTarget Column</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -962,7 +962,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl
      * <em>DFeature Column</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDFeatureColumn()
      * @generated
@@ -990,7 +990,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -999,7 +999,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1044,7 +1044,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1071,7 +1071,7 @@ public interface TablePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1089,7 +1089,7 @@ public interface TablePackage extends EPackage {
     /**
      * The number of structural features of the '<em>DFeature Column</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1100,7 +1100,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementSynchronizerImpl
      * <em>DTable Element Synchronizer</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementSynchronizerImpl
      * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementSynchronizer()
      * @generated
@@ -1111,7 +1111,7 @@ public interface TablePackage extends EPackage {
      * The number of structural features of the '
      * <em>DTable Element Synchronizer</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1121,7 +1121,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DTable <em>DTable</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DTable</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTable
      * @generated
@@ -1132,7 +1132,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.DTable#getColumns
      * <em>Columns</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Columns</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTable#getColumns()
@@ -1145,7 +1145,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DTable#getDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Description</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTable#getDescription()
      * @see #getDTable()
@@ -1170,7 +1170,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElement
      * <em>DTable Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DTable Element</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElement
      * @generated
@@ -1182,7 +1182,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElement#getTableElementMapping
      * <em>Table Element Mapping</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Table Element Mapping</em>
      *         '.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElement#getTableElementMapping()
@@ -1195,7 +1195,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.LineContainer
      * <em>Line Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Line Container</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.LineContainer
      * @generated
@@ -1206,7 +1206,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.LineContainer#getLines
      * <em>Lines</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Lines</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.LineContainer#getLines()
@@ -1219,7 +1219,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine <em>DLine</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DLine</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine
      * @generated
@@ -1230,7 +1230,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getLabel()
      * @see #getDLine()
@@ -1242,7 +1242,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
      * <em>Origin Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Origin Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping()
      * @see #getDLine()
@@ -1254,7 +1254,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible
      * <em>Visible</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Visible</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#isVisible()
      * @see #getDLine()
@@ -1266,7 +1266,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed
      * <em>Collapsed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Collapsed</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed()
      * @see #getDLine()
@@ -1278,7 +1278,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getCells
      * <em>Cells</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cells</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getCells()
@@ -1291,7 +1291,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer
      * <em>Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the container reference '<em>Container</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getContainer()
      * @see #getDLine()
@@ -1303,7 +1303,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getOrderedCells
      * <em>Ordered Cells</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Ordered Cells</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getOrderedCells()
      * @see #getDLine()
@@ -1315,7 +1315,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
      * <em>Current Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Current Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle()
@@ -1328,7 +1328,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell <em>DCell</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DCell</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell
      * @generated
@@ -1339,7 +1339,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getLabel()
      * @see #getDCell()
@@ -1351,7 +1351,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getLine
      * <em>Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the container reference '<em>Line</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getLine()
      * @see #getDCell()
@@ -1363,7 +1363,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getColumn
      * <em>Column</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Column</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getColumn()
      * @see #getDCell()
@@ -1375,7 +1375,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getCurrentStyle
      * <em>Current Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Current Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getCurrentStyle()
@@ -1388,7 +1388,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getUpdater
      * <em>Updater</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Updater</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getUpdater()
      * @see #getDCell()
@@ -1401,7 +1401,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DCell#getIntersectionMapping
      * <em>Intersection Mapping</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Intersection Mapping</em>
      *         '.
      * @see org.eclipse.sirius.table.metamodel.table.DCell#getIntersectionMapping()
@@ -1414,7 +1414,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle
      * <em>DCell Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DCell Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCellStyle
      * @generated
@@ -1426,7 +1426,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin
      * <em>Foreground Style Origin</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '
      *         <em>Foreground Style Origin</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin()
@@ -1440,7 +1440,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin
      * <em>Background Style Origin</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '
      *         <em>Background Style Origin</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin()
@@ -1453,7 +1453,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn <em>DColumn</em>}
      * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DColumn</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn
      * @generated
@@ -1464,7 +1464,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getLabel()
      * @see #getDColumn()
@@ -1476,7 +1476,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells
      * <em>Cells</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Cells</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getCells()
      * @see #getDColumn()
@@ -1488,7 +1488,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
      * <em>Origin Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Origin Mapping</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping()
      * @see #getDColumn()
@@ -1500,7 +1500,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable
      * <em>Table</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the container reference '<em>Table</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getTable()
      * @see #getDColumn()
@@ -1512,7 +1512,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getOrderedCells
      * <em>Ordered Cells</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Ordered Cells</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getOrderedCells()
      * @see #getDColumn()
@@ -1524,7 +1524,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible
      * <em>Visible</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Visible</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#isVisible()
      * @see #getDColumn()
@@ -1536,7 +1536,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getWidth()
      * @see #getDColumn()
@@ -1548,7 +1548,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
      * <em>Current Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Current Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle()
@@ -1561,7 +1561,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DTargetColumn
      * <em>DTarget Column</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DTarget Column</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTargetColumn
      * @generated
@@ -1572,7 +1572,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn
      * <em>DFeature Column</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DFeature Column</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DFeatureColumn
      * @generated
@@ -1583,7 +1583,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName
      * <em>Feature Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Feature Name</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DFeatureColumn#getFeatureName()
      * @see #getDFeatureColumn()
@@ -1596,7 +1596,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer
      * <em>DTable Element Synchronizer</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DTable Element Synchronizer</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer
      * @generated
@@ -1608,7 +1608,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle
      * <em>DTable Element Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>DTable Element Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle
      * @generated
@@ -1619,7 +1619,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize
      * <em>Label Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Size</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelSize()
      * @see #getDTableElementStyle()
@@ -1631,7 +1631,7 @@ public interface TablePackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat
      * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Label Format</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat()
      * @see #getDTableElementStyle()
@@ -1672,7 +1672,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
      * <em>Default Foreground Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Default Foreground Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle()
@@ -1686,7 +1686,7 @@ public interface TablePackage extends EPackage {
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
      * <em>Default Background Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Default Background Style</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle()
@@ -1714,7 +1714,7 @@ public interface TablePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -1733,7 +1733,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Columns</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DTABLE__COLUMNS = TablePackage.eINSTANCE.getDTable_Columns();
@@ -1741,7 +1741,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Description</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DTABLE__DESCRIPTION = TablePackage.eINSTANCE.getDTable_Description();
@@ -1749,7 +1749,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Header Column Width</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DTABLE__HEADER_COLUMN_WIDTH = TablePackage.eINSTANCE.getDTable_HeaderColumnWidth();
@@ -1759,7 +1759,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl
          * <em>DTable Element</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElement()
          * @generated
@@ -1780,7 +1780,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl
          * <em>Line Container</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.LineContainerImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getLineContainer()
          * @generated
@@ -1790,7 +1790,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Lines</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LINE_CONTAINER__LINES = TablePackage.eINSTANCE.getLineContainer_Lines();
@@ -1799,7 +1799,7 @@ public interface TablePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl
          * <em>DLine</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DLineImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDLine()
          * @generated
@@ -1809,7 +1809,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DLINE__LABEL = TablePackage.eINSTANCE.getDLine_Label();
@@ -1817,7 +1817,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Origin Mapping</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DLINE__ORIGIN_MAPPING = TablePackage.eINSTANCE.getDLine_OriginMapping();
@@ -1825,7 +1825,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Visible</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DLINE__VISIBLE = TablePackage.eINSTANCE.getDLine_Visible();
@@ -1833,7 +1833,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Collapsed</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DLINE__COLLAPSED = TablePackage.eINSTANCE.getDLine_Collapsed();
@@ -1841,7 +1841,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Cells</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DLINE__CELLS = TablePackage.eINSTANCE.getDLine_Cells();
@@ -1849,7 +1849,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Container</b></em>' container
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DLINE__CONTAINER = TablePackage.eINSTANCE.getDLine_Container();
@@ -1857,7 +1857,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ordered Cells</b></em>'
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DLINE__ORDERED_CELLS = TablePackage.eINSTANCE.getDLine_OrderedCells();
@@ -1866,7 +1866,7 @@ public interface TablePackage extends EPackage {
          * The meta object literal for the '<em><b>Current Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DLINE__CURRENT_STYLE = TablePackage.eINSTANCE.getDLine_CurrentStyle();
@@ -1875,7 +1875,7 @@ public interface TablePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl
          * <em>DCell</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DCellImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCell()
          * @generated
@@ -1885,7 +1885,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DCELL__LABEL = TablePackage.eINSTANCE.getDCell_Label();
@@ -1893,7 +1893,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Line</b></em>' container
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCELL__LINE = TablePackage.eINSTANCE.getDCell_Line();
@@ -1901,7 +1901,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Column</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCELL__COLUMN = TablePackage.eINSTANCE.getDCell_Column();
@@ -1910,7 +1910,7 @@ public interface TablePackage extends EPackage {
          * The meta object literal for the '<em><b>Current Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCELL__CURRENT_STYLE = TablePackage.eINSTANCE.getDCell_CurrentStyle();
@@ -1918,7 +1918,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Updater</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCELL__UPDATER = TablePackage.eINSTANCE.getDCell_Updater();
@@ -1926,7 +1926,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Intersection Mapping</b></em>
          * ' reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCELL__INTERSECTION_MAPPING = TablePackage.eINSTANCE.getDCell_IntersectionMapping();
@@ -1936,7 +1936,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl
          * <em>DCell Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DCellStyleImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDCellStyle()
          * @generated
@@ -1976,7 +1976,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DCOLUMN__LABEL = TablePackage.eINSTANCE.getDColumn_Label();
@@ -1984,7 +1984,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Cells</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCOLUMN__CELLS = TablePackage.eINSTANCE.getDColumn_Cells();
@@ -1992,7 +1992,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Origin Mapping</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCOLUMN__ORIGIN_MAPPING = TablePackage.eINSTANCE.getDColumn_OriginMapping();
@@ -2000,7 +2000,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Table</b></em>' container
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCOLUMN__TABLE = TablePackage.eINSTANCE.getDColumn_Table();
@@ -2008,7 +2008,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ordered Cells</b></em>'
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCOLUMN__ORDERED_CELLS = TablePackage.eINSTANCE.getDColumn_OrderedCells();
@@ -2016,7 +2016,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Visible</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DCOLUMN__VISIBLE = TablePackage.eINSTANCE.getDColumn_Visible();
@@ -2024,7 +2024,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DCOLUMN__WIDTH = TablePackage.eINSTANCE.getDColumn_Width();
@@ -2033,7 +2033,7 @@ public interface TablePackage extends EPackage {
          * The meta object literal for the '<em><b>Current Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DCOLUMN__CURRENT_STYLE = TablePackage.eINSTANCE.getDColumn_CurrentStyle();
@@ -2043,7 +2043,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl
          * <em>DTarget Column</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTargetColumn()
          * @generated
@@ -2055,7 +2055,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl
          * <em>DFeature Column</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DFeatureColumnImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDFeatureColumn()
          * @generated
@@ -2065,7 +2065,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Feature Name</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DFEATURE_COLUMN__FEATURE_NAME = TablePackage.eINSTANCE.getDFeatureColumn_FeatureName();
@@ -2075,7 +2075,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementSynchronizerImpl
          * <em>DTable Element Synchronizer</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementSynchronizerImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementSynchronizer()
          * @generated
@@ -2087,7 +2087,7 @@ public interface TablePackage extends EPackage {
          * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl
          * <em>DTable Element Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl
          * @see org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl#getDTableElementStyle()
          * @generated
@@ -2097,7 +2097,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Size</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DTABLE_ELEMENT_STYLE__LABEL_SIZE = TablePackage.eINSTANCE.getDTableElementStyle_LabelSize();
@@ -2105,7 +2105,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DTABLE_ELEMENT_STYLE__LABEL_FORMAT = TablePackage.eINSTANCE.getDTableElementStyle_LabelFormat();
@@ -2113,7 +2113,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor();
@@ -2121,7 +2121,7 @@ public interface TablePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor();

@@ -23,12 +23,12 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
  * <em><b>Create Cross Column Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCrossColumnToolImpl#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
     /**
      * The cached value of the '{@link #getMapping() <em>Mapping</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMapping()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateCrossColumnToolImpl() {
@@ -54,7 +54,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,7 +64,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementColumnMapping basicGetMapping() {
@@ -92,7 +92,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateC
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

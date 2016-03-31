@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMask
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMapping
  * <em>Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCellTool()
  * @model
@@ -53,7 +53,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMask
      * <em>Mask</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mask</em>' containment reference.
      * @see #getMask()
@@ -71,7 +71,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mapping</em>' container reference.
      * @see #setMapping(IntersectionMapping)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCellTool_Mapping()
@@ -86,7 +86,7 @@ public interface CreateCellTool extends TableTool, AbstractToolDescription {
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool#getMapping
      * <em>Mapping</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mapping</em>' container reference.
      * @see #getMapping()

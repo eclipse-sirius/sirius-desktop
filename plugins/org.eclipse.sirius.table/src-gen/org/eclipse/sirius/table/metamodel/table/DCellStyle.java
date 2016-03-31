@@ -18,6 +18,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin
@@ -26,7 +27,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin
  * <em>Background Style Origin</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCellStyle()
  * @model
@@ -54,7 +54,7 @@ public interface DCellStyle extends DTableElementStyle {
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getForegroundStyleOrigin
      * <em>Foreground Style Origin</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Style Origin</em>'
      *            reference.
@@ -84,7 +84,7 @@ public interface DCellStyle extends DTableElementStyle {
      * {@link org.eclipse.sirius.table.metamodel.table.DCellStyle#getBackgroundStyleOrigin
      * <em>Background Style Origin</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Style Origin</em>'
      *            reference.
