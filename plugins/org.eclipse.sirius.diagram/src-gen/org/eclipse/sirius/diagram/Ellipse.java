@@ -22,14 +22,14 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter <em>
- * Horizontal Diameter</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter <em>
- * Vertical Diameter</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
+ * <em>Horizontal Diameter</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter
+ * <em>Vertical Diameter</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse()
  * @model
@@ -55,7 +55,7 @@ public interface Ellipse extends NodeStyle {
      * {@link org.eclipse.sirius.diagram.Ellipse#getHorizontalDiameter
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #getHorizontalDiameter()
@@ -82,7 +82,7 @@ public interface Ellipse extends NodeStyle {
      * {@link org.eclipse.sirius.diagram.Ellipse#getVerticalDiameter
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Vertical Diameter</em>' attribute.
      * @see #getVerticalDiameter()
@@ -108,10 +108,9 @@ public interface Ellipse extends NodeStyle {
     RGBValues getColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Ellipse#getColor
+     * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()

@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription()
  * @model
@@ -83,7 +83,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -99,7 +99,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Element View</em>' containment reference.
      * @see #setElementView(ElementDoubleClickVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDoubleClickDescription_ElementView()
@@ -113,7 +113,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getElementView
      * <em>Element View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element View</em>' containment
      *            reference.
@@ -141,7 +141,7 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConcernSetItemProvider extends DocumentedElementItemProvider {
@@ -66,7 +66,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +80,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

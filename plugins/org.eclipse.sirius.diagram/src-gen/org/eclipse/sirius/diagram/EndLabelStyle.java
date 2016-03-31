@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 public interface EndLabelStyle extends BasicLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -36,7 +36,7 @@ public interface EndLabelStyle extends BasicLabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

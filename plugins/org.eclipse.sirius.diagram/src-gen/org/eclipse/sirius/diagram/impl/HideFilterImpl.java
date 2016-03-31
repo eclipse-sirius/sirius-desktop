@@ -19,15 +19,13 @@ import org.eclipse.sirius.diagram.HideFilter;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Hide Filter</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class HideFilterImpl extends MinimalEObjectImpl.Container implements HideFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected HideFilterImpl() {
@@ -36,7 +34,7 @@ public class HideFilterImpl extends MinimalEObjectImpl.Container implements Hide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

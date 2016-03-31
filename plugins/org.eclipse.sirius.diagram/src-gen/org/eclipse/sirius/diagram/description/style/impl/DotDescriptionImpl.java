@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>Dot Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl#getBackgroundColor
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DotDescriptionImpl() {
@@ -81,7 +81,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -119,7 +119,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,13 +151,14 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
         String oldStrokeSizeComputationExpression = strokeSizeComputationExpression;
         strokeSizeComputationExpression = newStrokeSizeComputationExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION, oldStrokeSizeComputationExpression, strokeSizeComputationExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION, oldStrokeSizeComputationExpression,
+                    strokeSizeComputationExpression));
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +177,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +195,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +213,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,15 +222,15 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
         case StylePackage.DOT_DESCRIPTION__BACKGROUND_COLOR:
             return backgroundColor != null;
         case StylePackage.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            return DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(strokeSizeComputationExpression);
+            return DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null
+                    : !DotDescriptionImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(strokeSizeComputationExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

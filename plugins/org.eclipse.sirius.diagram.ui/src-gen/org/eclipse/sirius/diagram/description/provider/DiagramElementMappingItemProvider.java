@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.provider.RepresentationElementMa
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DiagramElementMappingItemProvider extends RepresentationElementMappingItemProvider {
@@ -86,12 +86,11 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Precondition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramElementMapping_preconditionExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DiagramElementMapping_preconditionExpression_description"), //$NON-NLS-1$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -102,7 +101,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Deletion Description feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDeletionDescriptionPropertyDescriptor(Object object) {
@@ -130,12 +129,11 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Semantic Candidates Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramElementMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
                 getString("_UI_DiagramElementMapping_semanticCandidatesExpression_description"), //$NON-NLS-1$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false,
@@ -150,8 +148,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
      * @generated
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramElementMapping_semanticElements_feature"), //$NON-NLS-1$
                 getString("_UI_DiagramElementMapping_semanticElements_description"), //$NON-NLS-1$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -162,12 +159,11 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     /**
      * This adds a property descriptor for the Double Click Description feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addDoubleClickDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramElementMapping_doubleClickDescription_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DiagramElementMapping_doubleClickDescription_feature", "_UI_DiagramElementMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION, true, false, true, null,
@@ -192,7 +188,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

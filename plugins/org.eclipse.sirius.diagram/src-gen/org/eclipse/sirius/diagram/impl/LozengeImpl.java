@@ -25,15 +25,15 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Lozenge</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getWidth <em>Width
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getHeight <em>Height
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getColor <em>Color
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getWidth
+ * <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getHeight
+ * <em>Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.LozengeImpl#getColor
+ * <em>Color</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LozengeImpl() {
@@ -109,7 +109,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

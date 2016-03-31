@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -74,11 +74,11 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerDropDescription_mappings_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerDropDescription_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerDropDescription_mappings_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -88,11 +88,11 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * @generated
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_dragSource_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerDropDescription_dragSource_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerDropDescription_dragSource_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerDropDescription_dragSource_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -102,11 +102,11 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * @generated
      */
     protected void addMoveEdgesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_moveEdges_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerDropDescription_moveEdges_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerDropDescription_moveEdges_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerDropDescription_moveEdges_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -116,7 +116,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
     /**
      * This returns ContainerDropDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

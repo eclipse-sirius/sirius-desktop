@@ -22,11 +22,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DNodeList#getOwnedElements <em>Owned
- * Elements</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeList#getOwnedElements
+ * <em>Owned Elements</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeList()
  * @model

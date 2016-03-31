@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getDomainClass
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getReusedBorderedNodeMappings
  * <em>Reused Bordered Node Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping()
  * @model abstract="true"
@@ -62,7 +62,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -142,7 +142,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */

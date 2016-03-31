@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.FilterVariableHistory#getOwnedValues
  * <em>Owned Values</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableHistory()
  * @model

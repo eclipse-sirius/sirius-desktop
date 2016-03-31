@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 public interface IEdgeMapping extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

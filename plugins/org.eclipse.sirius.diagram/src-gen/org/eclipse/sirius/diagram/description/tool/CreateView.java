@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.CreateView#getMapping
  * <em>Mapping</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName
  * <em>Variable Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView()
  * @model
@@ -74,14 +74,14 @@ public interface CreateView extends ContainerModelOperation {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Container View Expression</em>' attribute.
      * @see #setContainerViewExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView_ContainerViewExpression()
      * @model default="" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).'"
      * @generated
@@ -93,7 +93,7 @@ public interface CreateView extends ContainerModelOperation {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getContainerViewExpression
      * <em>Container View Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Container View Expression</em>'
      *            attribute.
@@ -122,7 +122,7 @@ public interface CreateView extends ContainerModelOperation {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView#getVariableName
      * <em>Variable Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Name</em>' attribute.
      * @see #getVariableName()

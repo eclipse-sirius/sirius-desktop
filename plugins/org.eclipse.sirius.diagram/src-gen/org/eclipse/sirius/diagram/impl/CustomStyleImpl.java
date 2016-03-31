@@ -22,11 +22,11 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em><b>Custom Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.impl.CustomStyleImpl#getId <em>Id</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -53,7 +53,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomStyleImpl() {
@@ -62,7 +62,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,7 +72,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

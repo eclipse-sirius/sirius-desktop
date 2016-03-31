@@ -17,13 +17,13 @@ package org.eclipse.sirius.diagram;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.CollapseFilter#getWidth <em>Width</em>}
  * </li>
- * <li>{@link org.eclipse.sirius.diagram.CollapseFilter#getHeight <em>Height
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.CollapseFilter#getHeight
+ * <em>Height</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getCollapseFilter()
  * @model annotation=
@@ -52,7 +52,7 @@ public interface CollapseFilter extends GraphicalFilter {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.CollapseFilter#getWidth <em>Width</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()

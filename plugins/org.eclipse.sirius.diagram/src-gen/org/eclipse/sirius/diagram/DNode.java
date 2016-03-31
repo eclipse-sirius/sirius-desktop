@@ -23,23 +23,23 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.DNode#getWidth <em>Width</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNode#getHeight <em>Height</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getOwnedStyle <em>Owned Style
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getLabelPosition <em>Label
- * Position</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getResizeKind <em>Resize Kind
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getOriginalStyle <em>Original
- * Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getActualMapping <em>Actual
- * Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getCandidatesMapping <em>
- * Candidates Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getOwnedStyle
+ * <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getLabelPosition
+ * <em>Label Position</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getResizeKind
+ * <em>Resize Kind</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getOriginalStyle
+ * <em>Original Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getActualMapping
+ * <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNode#getCandidatesMapping
+ * <em>Candidates Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode()
  * @model
@@ -66,7 +66,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.DNode#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -121,7 +121,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.DNode#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.
@@ -152,7 +152,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.DNode#getLabelPosition
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
@@ -182,7 +182,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.DNode#getResizeKind
      * <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
@@ -210,7 +210,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.DNode#getOriginalStyle
      * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -236,7 +236,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * {@link org.eclipse.sirius.diagram.DNode#getActualMapping
      * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()

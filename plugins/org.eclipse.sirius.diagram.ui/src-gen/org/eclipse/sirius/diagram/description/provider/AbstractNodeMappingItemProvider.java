@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemProvider {
@@ -72,11 +72,11 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
-                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -86,24 +86,22 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_AbstractNodeMapping_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_AbstractNodeMapping_domainClass_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractNodeMapping_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_AbstractNodeMapping_domainClass_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Reused Bordered Node Mappings
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedBorderedNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature", "_UI_AbstractNodeMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS, true, false, true, null,
@@ -118,7 +116,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +130,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +159,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

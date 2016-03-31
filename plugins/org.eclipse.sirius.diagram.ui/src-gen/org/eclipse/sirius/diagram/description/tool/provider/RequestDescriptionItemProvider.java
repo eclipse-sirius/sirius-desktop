@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemProvider {
@@ -65,21 +65,21 @@ public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemP
     /**
      * This adds a property descriptor for the Type feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RequestDescription_type_feature"), //$NON-NLS-1$
-                getString("_UI_RequestDescription_type_description"), //$NON-NLS-1$
-                ToolPackage.Literals.REQUEST_DESCRIPTION__TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RequestDescription_type_feature"), //$NON-NLS-1$
+                        getString("_UI_RequestDescription_type_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.REQUEST_DESCRIPTION__TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns RequestDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,7 +104,7 @@ public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemP
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

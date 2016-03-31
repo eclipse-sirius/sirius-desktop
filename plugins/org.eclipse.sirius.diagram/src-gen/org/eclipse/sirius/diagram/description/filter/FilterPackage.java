@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.filter.FilterFactory
  * @model kind="package"
  * @generated
@@ -36,21 +36,21 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public interface FilterPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "filter"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "filter"; //$NON-NLS-1$
@@ -58,7 +58,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     FilterPackage eINSTANCE = org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl.init();
@@ -105,7 +105,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Description</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -115,7 +115,7 @@ public interface FilterPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterImpl
      * <em>Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterImpl
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilter()
      * @generated
@@ -145,7 +145,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl
      * <em>Mapping Filter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getMappingFilter()
      * @generated
@@ -173,7 +173,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Condition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -182,7 +182,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>View Condition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -191,7 +191,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Mapping Filter</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -202,7 +202,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl
      * <em>Composite Filter Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getCompositeFilterDescription()
      * @generated
@@ -239,7 +239,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -249,7 +249,7 @@ public interface FilterPackage extends EPackage {
      * The number of structural features of the '
      * <em>Composite Filter Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -260,7 +260,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl
      * <em>Variable Filter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getVariableFilter()
      * @generated
@@ -279,7 +279,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Variables</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -288,7 +288,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Condition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -297,7 +297,7 @@ public interface FilterPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Variable Filter</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -307,7 +307,7 @@ public interface FilterPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.filter.FilterKind
      * <em>Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind
      * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterKind()
      * @generated
@@ -318,7 +318,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Description</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.FilterDescription
      * @generated
@@ -329,7 +329,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.filter.Filter
      * <em>Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Filter</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.Filter
      * @generated
@@ -340,7 +340,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
      * <em>Filter Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Filter Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind()
      * @see #getFilter()
@@ -352,7 +352,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter
      * <em>Mapping Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Mapping Filter</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.MappingFilter
      * @generated
@@ -363,7 +363,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getMappings
      * <em>Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.MappingFilter#getMappings()
      * @see #getMappingFilter()
@@ -376,7 +376,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression
      * <em>Semantic Condition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Semantic Condition Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression()
@@ -390,7 +390,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression
      * <em>View Condition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>View Condition Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression()
@@ -404,7 +404,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription
      * <em>Composite Filter Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Composite Filter Description</em>
      *         '.
      * @see org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription
@@ -416,7 +416,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription#getFilters
      * <em>Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Filters</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription#getFilters()
@@ -429,7 +429,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter
      * <em>Variable Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Variable Filter</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.VariableFilter
      * @generated
@@ -440,7 +440,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getOwnedVariables
      * <em>Owned Variables</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Variables</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.VariableFilter#getOwnedVariables()
@@ -454,7 +454,7 @@ public interface FilterPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression
      * <em>Semantic Condition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Semantic Condition Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression()
@@ -467,7 +467,7 @@ public interface FilterPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.description.filter.FilterKind
      * <em>Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind
      * @generated
@@ -493,7 +493,7 @@ public interface FilterPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -502,7 +502,7 @@ public interface FilterPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterDescriptionImpl
          * <em>Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterDescription()
          * @generated
@@ -524,7 +524,7 @@ public interface FilterPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Filter Kind</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute FILTER__FILTER_KIND = FilterPackage.eINSTANCE.getFilter_FilterKind();
@@ -534,7 +534,7 @@ public interface FilterPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl
          * <em>Mapping Filter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getMappingFilter()
          * @generated
@@ -544,7 +544,7 @@ public interface FilterPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Mappings</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference MAPPING_FILTER__MAPPINGS = FilterPackage.eINSTANCE.getMappingFilter_Mappings();
@@ -553,7 +553,7 @@ public interface FilterPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Condition Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getMappingFilter_SemanticConditionExpression();
@@ -572,7 +572,7 @@ public interface FilterPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl
          * <em>Composite Filter Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.CompositeFilterDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getCompositeFilterDescription()
          * @generated
@@ -582,7 +582,7 @@ public interface FilterPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Filters</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference COMPOSITE_FILTER_DESCRIPTION__FILTERS = FilterPackage.eINSTANCE.getCompositeFilterDescription_Filters();
@@ -592,7 +592,7 @@ public interface FilterPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl
          * <em>Variable Filter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getVariableFilter()
          * @generated
@@ -603,7 +603,7 @@ public interface FilterPackage extends EPackage {
          * The meta object literal for the '<em><b>Owned Variables</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference VARIABLE_FILTER__OWNED_VARIABLES = FilterPackage.eINSTANCE.getVariableFilter_OwnedVariables();
@@ -612,7 +612,7 @@ public interface FilterPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Condition Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION = FilterPackage.eINSTANCE.getVariableFilter_SemanticConditionExpression();
@@ -621,7 +621,7 @@ public interface FilterPackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.filter.FilterKind
          * <em>Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.filter.FilterKind
          * @see org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl#getFilterKind()
          * @generated

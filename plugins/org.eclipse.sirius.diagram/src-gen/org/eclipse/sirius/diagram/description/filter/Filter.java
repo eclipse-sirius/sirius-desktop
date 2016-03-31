@@ -22,12 +22,11 @@ import org.eclipse.sirius.diagram.DDiagramElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
+ * <li>{@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
  * <em>Filter Kind</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilter()
  * @model abstract="true"
@@ -58,7 +57,7 @@ public interface Filter extends EObject {
      * {@link org.eclipse.sirius.diagram.description.filter.Filter#getFilterKind
      * <em>Filter Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Filter Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.filter.FilterKind

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -71,10 +71,10 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DoubleClickDescription_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DoubleClickDescription_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, true, false, true, null, null, null));
     }
 
     /**
@@ -84,7 +84,7 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
     /**
      * This returns DoubleClickDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,8 +172,8 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, ToolFactory.eINSTANCE.createElementDoubleClickVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
     }
 
     /**

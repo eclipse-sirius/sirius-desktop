@@ -25,14 +25,14 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Dot</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DotImpl#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor <em>
- * Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor
+ * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -63,7 +63,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * The default value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DotImpl() {
@@ -92,7 +92,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,15 +202,15 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
-            return DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(strokeSizeComputationExpression);
+            return DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null
+                    : !DotImpl.STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(strokeSizeComputationExpression);
         case DiagramPackage.DOT__BACKGROUND_COLOR:
             return DotImpl.BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !DotImpl.BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
@@ -219,7 +219,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

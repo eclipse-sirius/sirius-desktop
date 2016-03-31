@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationCrea
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DiagramCreationDescriptionItemProvider extends RepresentationCreationDescriptionItemProvider {
@@ -77,7 +77,7 @@ public class DiagramCreationDescriptionItemProvider extends RepresentationCreati
     /**
      * This returns DiagramCreationDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -102,7 +102,7 @@ public class DiagramCreationDescriptionItemProvider extends RepresentationCreati
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

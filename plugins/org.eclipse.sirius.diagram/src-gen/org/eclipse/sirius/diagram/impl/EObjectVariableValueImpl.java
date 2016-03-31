@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
  * <em><b>EObject Variable Value</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl#getVariableDefinition
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
  * {@link org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl#getModelElement
  * <em>Model Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
      * The cached value of the '{@link #getVariableDefinition()
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVariableDefinition()
      * @generated
      * @ordered
@@ -49,10 +49,9 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
     protected SelectModelElementVariable variableDefinition;
 
     /**
-     * The cached value of the '{@link #getModelElement()
-     * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getModelElement() <em>Model Element</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getModelElement()
      * @generated
      * @ordered
@@ -61,7 +60,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EObjectVariableValueImpl() {
@@ -70,7 +69,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -80,7 +79,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +98,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SelectModelElementVariable basicGetVariableDefinition() {
@@ -108,7 +107,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +121,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +140,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetModelElement() {
@@ -150,7 +149,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +163,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -186,7 +185,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +203,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +221,7 @@ public class EObjectVariableValueImpl extends VariableValueImpl implements EObje
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

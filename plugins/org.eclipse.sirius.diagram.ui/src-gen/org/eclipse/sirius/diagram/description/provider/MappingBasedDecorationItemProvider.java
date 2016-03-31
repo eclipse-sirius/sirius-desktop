@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DecorationDescriptionIt
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.MappingBasedDecoration} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MappingBasedDecorationItemProvider extends DecorationDescriptionItemProvider {
@@ -65,17 +65,17 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingBasedDecoration_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_MappingBasedDecoration_mappings_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.MAPPING_BASED_DECORATION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MappingBasedDecoration_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_MappingBasedDecoration_mappings_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.MAPPING_BASED_DECORATION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns MappingBasedDecoration.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

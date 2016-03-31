@@ -37,14 +37,14 @@ import org.eclipse.sirius.diagram.description.concern.util.ConcernAdapterFactory
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -62,7 +62,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -85,7 +85,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernSetItemProvider concernSetItemProvider;
@@ -110,7 +110,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConcernDescriptionItemProvider concernDescriptionItemProvider;
@@ -119,7 +119,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class ConcernItemProviderAdapterFactory extends ConcernAdapterFactory imp
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

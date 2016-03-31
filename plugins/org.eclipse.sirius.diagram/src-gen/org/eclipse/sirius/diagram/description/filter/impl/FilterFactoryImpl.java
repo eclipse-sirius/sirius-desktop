@@ -30,14 +30,14 @@ import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static FilterFactory init() {
@@ -55,7 +55,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FilterFactoryImpl() {
@@ -64,7 +64,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FilterKind createFilterKindFromString(EDataType eDataType, String initialValue) {
@@ -159,7 +159,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertFilterKindToString(EDataType eDataType, Object instanceValue) {
@@ -168,7 +168,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription#getType
  * <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getRequestDescription()
  * @model
@@ -50,7 +50,7 @@ public interface RequestDescription extends AbstractToolDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see #getType()

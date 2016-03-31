@@ -22,13 +22,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment <em>
- * Alignment</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getSections <em>
- * Sections</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getAlignment
+ * <em>Alignment</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeCompositeStyle#getSections
+ * <em>Sections</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeCompositeStyle()
  * @model

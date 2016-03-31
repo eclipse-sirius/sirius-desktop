@@ -15,7 +15,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 
 /**
  * A image descriptor wrapper with a dimension field.
- * 
+ *
  * @author mchauvin
  */
 public interface ImageWithDimensionDescriptor {
@@ -27,14 +27,14 @@ public interface ImageWithDimensionDescriptor {
 
     /**
      * Get the wrapped image descriptor
-     * 
+     *
      * @return
      */
     ImageDescriptor getImageDescriptor();
 
     /**
      * Get the dimension
-     * 
+     *
      * @return dimension
      */
     Dimension getDimension();
@@ -47,7 +47,7 @@ class ImageWithDimensionDescriptorImpl implements ImageWithDimensionDescriptor {
     private ImageDescriptor descriptor;
 
     public ImageWithDimensionDescriptorImpl(final ImageDescriptor descriptor) {
-        this.dimension = NO_RESIZE;
+        this.dimension = ImageWithDimensionDescriptor.NO_RESIZE;
         this.descriptor = descriptor;
     }
 
@@ -58,25 +58,27 @@ class ImageWithDimensionDescriptorImpl implements ImageWithDimensionDescriptor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.provider.ImageWithDimensionDescriptor#getDimension()
      */
+    @Override
     public Dimension getDimension() {
         return this.dimension;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.provider.ImageWithDimensionDescriptor#getImageDescriptor()
      */
+    @Override
     public ImageDescriptor getImageDescriptor() {
         return this.descriptor;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -90,28 +92,35 @@ class ImageWithDimensionDescriptorImpl implements ImageWithDimensionDescriptor {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         ImageWithDimensionDescriptorImpl other = (ImageWithDimensionDescriptorImpl) obj;
         if (descriptor == null) {
-            if (other.descriptor != null)
+            if (other.descriptor != null) {
                 return false;
-        } else if (!descriptor.equals(other.descriptor))
+            }
+        } else if (!descriptor.equals(other.descriptor)) {
             return false;
+        }
         if (dimension == null) {
-            if (other.dimension != null)
+            if (other.dimension != null) {
                 return false;
-        } else if (!dimension.equals(other.dimension))
+            }
+        } else if (!dimension.equals(other.dimension)) {
             return false;
+        }
         return true;
     }
 }

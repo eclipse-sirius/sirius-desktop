@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId <em>
- * Id</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
+ * <em>Id</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getParameters
  * <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHook()
  * @model
@@ -55,7 +55,7 @@ public interface DeleteHook extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -73,7 +73,7 @@ public interface DeleteHook extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parameters</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteHook_Parameters()

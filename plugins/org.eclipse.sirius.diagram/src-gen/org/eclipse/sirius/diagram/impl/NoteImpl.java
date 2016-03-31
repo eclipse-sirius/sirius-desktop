@@ -25,10 +25,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Note</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.NoteImpl#getColor <em>Color</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.impl.NoteImpl#getColor <em>Color</em>}
+ * </li>
+ * </ul>
  *
  * @generated
  */
@@ -36,7 +37,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -46,7 +47,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -55,7 +56,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NoteImpl() {
@@ -64,7 +65,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +75,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +85,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +99,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +113,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +128,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +143,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +157,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

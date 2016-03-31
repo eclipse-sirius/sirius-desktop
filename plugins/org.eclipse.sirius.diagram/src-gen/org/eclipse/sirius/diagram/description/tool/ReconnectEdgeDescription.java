@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind
@@ -52,7 +53,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getEdgeView
  * <em>Edge View</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription()
  * @model
@@ -85,7 +85,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getReconnectionKind
      * <em>Reconnection Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Reconnection Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.tool.ReconnectionKind
@@ -113,7 +113,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSource
      * <em>Source</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source</em>' containment reference.
      * @see #getSource()
@@ -140,7 +140,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTarget
      * <em>Target</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' containment reference.
      * @see #getTarget()
@@ -167,7 +167,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getSourceView
      * <em>Source View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source View</em>' containment
      *            reference.
@@ -195,7 +195,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getTargetView
      * <em>Target View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target View</em>' containment
      *            reference.
@@ -222,7 +222,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -249,7 +249,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -266,7 +266,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Edge View</em>' containment reference.
      * @see #setEdgeView(ElementSelectVariable)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectEdgeDescription_EdgeView()
@@ -280,7 +280,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription#getEdgeView
      * <em>Edge View</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Edge View</em>' containment
      *            reference.
@@ -291,7 +291,7 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

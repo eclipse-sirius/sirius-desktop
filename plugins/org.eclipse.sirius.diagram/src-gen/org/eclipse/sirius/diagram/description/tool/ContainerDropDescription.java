@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings
@@ -58,7 +59,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
  * <em>Move Edges</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription()
  * @model
@@ -100,7 +100,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer
      * <em>Old Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Old Container</em>' containment
      *            reference.
@@ -130,7 +130,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer
      * <em>New Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New Container</em>' containment
      *            reference.
@@ -157,7 +157,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Element</em>' containment reference.
      * @see #getElement()
@@ -187,7 +187,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewViewContainer
      * <em>New View Container</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>New View Container</em>' containment
      *            reference.
@@ -215,7 +215,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -245,7 +245,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource
      * <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.tool.DragSource
@@ -273,7 +273,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
      * <em>Move Edges</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Move Edges</em>' attribute.
      * @see #isMoveEdges()
@@ -283,7 +283,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -291,7 +291,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation" required="true"
      * @generated
      */

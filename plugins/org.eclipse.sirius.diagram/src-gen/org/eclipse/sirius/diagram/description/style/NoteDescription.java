@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
  * <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNoteDescription()
  * @model
@@ -48,7 +48,7 @@ public interface NoteDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

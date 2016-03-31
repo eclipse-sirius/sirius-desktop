@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getMappings
@@ -34,7 +35,6 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
  * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression
  * <em>View Condition Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getMappingFilter()
  * @model
@@ -78,7 +78,7 @@ public interface MappingFilter extends Filter {
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getSemanticConditionExpression
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Condition Expression</em>'
      *            attribute.
@@ -109,7 +109,7 @@ public interface MappingFilter extends Filter {
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter#getViewConditionExpression
      * <em>View Condition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>View Condition Expression</em>'
      *            attribute.

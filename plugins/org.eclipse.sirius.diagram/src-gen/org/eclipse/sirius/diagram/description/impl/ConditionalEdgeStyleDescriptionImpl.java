@@ -26,12 +26,12 @@ import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescription
  * <em><b>Conditional Edge Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.ConditionalEdgeStyleDescriptionImpl#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalEdgeStyleDescriptionImpl() {
@@ -57,7 +57,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeStyleDescription basicGetStyle() {
@@ -103,7 +103,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(EdgeStyleDescription newStyle, NotificationChain msgs) {
@@ -122,7 +122,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -72,11 +72,11 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BehaviorTool_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_BehaviorTool_domainClass_description"), //$NON-NLS-1$
-                ToolPackage.Literals.BEHAVIOR_TOOL__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BehaviorTool_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_BehaviorTool_domainClass_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.BEHAVIOR_TOOL__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -86,7 +86,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

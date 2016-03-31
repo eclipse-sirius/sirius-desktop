@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.DNodeContainer} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DNodeContainerItemProvider extends DDiagramElementContainerItemProvider {
@@ -62,14 +62,14 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
     /**
      * This adds a property descriptor for the Children Presentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChildrenPresentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeContainer_childrenPresentation_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.DNODE_CONTAINER__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DNodeContainer_childrenPresentation_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DNODE_CONTAINER__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -79,7 +79,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,7 +93,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
     /**
      * This returns DNodeContainer.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Side</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSide()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum Side implements Enumerator {
     /**
      * The '<em><b>WEST</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #WEST_VALUE
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum Side implements Enumerator {
     /**
      * The '<em><b>SOUTH</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #SOUTH_VALUE
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public enum Side implements Enumerator {
     /**
      * The '<em><b>EAST</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #EAST_VALUE
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public enum Side implements Enumerator {
     /**
      * The '<em><b>NORTH</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #NORTH_VALUE
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public enum Side implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #WEST
      * @model
      * @generated
@@ -89,7 +89,7 @@ public enum Side implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SOUTH
      * @model
      * @generated
@@ -104,7 +104,7 @@ public enum Side implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #EAST
      * @model
      * @generated
@@ -119,7 +119,7 @@ public enum Side implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NORTH
      * @model
      * @generated
@@ -130,7 +130,7 @@ public enum Side implements Enumerator {
     /**
      * An array of all the '<em><b>Side</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final Side[] VALUES_ARRAY = new Side[] { WEST, SOUTH, EAST, NORTH, };
@@ -138,7 +138,7 @@ public enum Side implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Side</b></em>' enumerators.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<Side> VALUES = Collections.unmodifiableList(Arrays.asList(Side.VALUES_ARRAY));
@@ -146,7 +146,10 @@ public enum Side implements Enumerator {
     /**
      * Returns the '<em><b>Side</b></em>' literal with the specified literal
      * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static Side get(String literal) {
@@ -161,7 +164,7 @@ public enum Side implements Enumerator {
     /**
      * Returns the '<em><b>Side</b></em>' literal with the specified name. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static Side getByName(String name) {
@@ -176,7 +179,10 @@ public enum Side implements Enumerator {
     /**
      * Returns the '<em><b>Side</b></em>' literal with the specified integer
      * value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static Side get(int value) {
@@ -195,21 +201,21 @@ public enum Side implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -217,7 +223,7 @@ public enum Side implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private Side(int value, String name, String literal) {
@@ -228,7 +234,7 @@ public enum Side implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -238,7 +244,7 @@ public enum Side implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -248,7 +254,7 @@ public enum Side implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +265,7 @@ public enum Side implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

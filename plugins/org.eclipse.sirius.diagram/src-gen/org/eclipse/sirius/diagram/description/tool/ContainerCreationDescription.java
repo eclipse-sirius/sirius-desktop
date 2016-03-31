@@ -27,6 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getContainerMappings
@@ -47,7 +48,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getExtraMappings
  * <em>Extra Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerCreationDescription()
  * @model
@@ -89,7 +89,7 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getVariable
      * <em>Variable</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable</em>' containment
      *            reference.
@@ -119,7 +119,7 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getViewVariable
      * <em>View Variable</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>View Variable</em>' containment
      *            reference.
@@ -147,7 +147,7 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

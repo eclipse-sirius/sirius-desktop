@@ -20,12 +20,12 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle
  * <em>Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalEdgeStyleDescription()
  * @model
@@ -40,7 +40,7 @@ public interface ConditionalEdgeStyleDescription extends ConditionalStyleDescrip
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(EdgeStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getConditionalEdgeStyleDescription_Style()
@@ -54,7 +54,7 @@ public interface ConditionalEdgeStyleDescription extends ConditionalStyleDescrip
      * {@link org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

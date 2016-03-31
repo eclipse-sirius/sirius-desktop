@@ -23,12 +23,12 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.AppliedCompositeFilters#getCompositeFilterDescriptions
  * <em>Composite Filter Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAppliedCompositeFilters()
  * @model
@@ -45,7 +45,7 @@ public interface AppliedCompositeFilters extends GraphicalFilter {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Composite Filter Descriptions</em>'
      *         reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAppliedCompositeFilters_CompositeFilterDescriptions()

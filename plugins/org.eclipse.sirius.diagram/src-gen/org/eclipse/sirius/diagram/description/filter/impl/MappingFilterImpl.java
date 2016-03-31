@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
  * <em><b>Mapping Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getMappings
@@ -38,7 +39,6 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
  * {@link org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl#getViewConditionExpression
  * <em>View Condition Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -46,7 +46,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     /**
      * The cached value of the '{@link #getMappings() <em>Mappings</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMappings()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * The default value of the '{@link #getSemanticConditionExpression()
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * The cached value of the '{@link #getSemanticConditionExpression()
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * The default value of the '{@link #getViewConditionExpression()
      * <em>View Condition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewConditionExpression()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
      * The cached value of the '{@link #getViewConditionExpression()
      * <em>View Condition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getViewConditionExpression()
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MappingFilterImpl() {
@@ -108,7 +108,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -220,7 +220,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +241,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,18 +250,18 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
         case FilterPackage.MAPPING_FILTER__MAPPINGS:
             return mappings != null && !mappings.isEmpty();
         case FilterPackage.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
-                    .equals(semanticConditionExpression);
+            return MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null
+                    : !MappingFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
         case FilterPackage.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION:
-            return MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT == null ? viewConditionExpression != null : !MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT
-                    .equals(viewConditionExpression);
+            return MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT == null ? viewConditionExpression != null
+                    : !MappingFilterImpl.VIEW_CONDITION_EXPRESSION_EDEFAULT.equals(viewConditionExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

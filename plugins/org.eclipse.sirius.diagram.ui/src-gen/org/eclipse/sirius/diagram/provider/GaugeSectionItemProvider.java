@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.provider.CustomizableItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.GaugeSection} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class GaugeSectionItemProvider extends CustomizableItemProvider {
@@ -69,11 +69,11 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_label_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_label_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.GAUGE_SECTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GaugeSection_label_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_label_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.GAUGE_SECTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -83,10 +83,10 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_backgroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_backgroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GaugeSection_backgroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_backgroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -96,10 +96,10 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_foregroundColor_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_foregroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GaugeSection_foregroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_foregroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -116,7 +116,7 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

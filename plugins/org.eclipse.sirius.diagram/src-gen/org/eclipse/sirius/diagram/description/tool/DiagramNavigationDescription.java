@@ -20,12 +20,12 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramNavigationDescription()
  * @model
@@ -40,7 +40,7 @@ public interface DiagramNavigationDescription extends RepresentationNavigationDe
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Description</em>' reference.
      * @see #setDiagramDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramNavigationDescription_DiagramDescription()
@@ -54,7 +54,7 @@ public interface DiagramNavigationDescription extends RepresentationNavigationDe
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription#getDiagramDescription
      * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Diagram Description</em>' reference.
      * @see #getDiagramDescription()

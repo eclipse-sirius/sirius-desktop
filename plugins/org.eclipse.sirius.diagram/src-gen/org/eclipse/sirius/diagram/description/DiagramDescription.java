@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getFilters
@@ -111,7 +112,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.diagram.description.DiagramDescription#isEnablePopupBars
  * <em>Enable Popup Bars</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription()
  * @model
@@ -194,7 +194,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment
      *            reference.
@@ -222,7 +222,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getConcerns
      * <em>Concerns</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Concerns</em>' containment
      *            reference.
@@ -264,7 +264,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -294,7 +294,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.
@@ -321,7 +321,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getDefaultConcern
      * <em>Default Concern</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Concern</em>' reference.
      * @see #getDefaultConcern()
@@ -337,7 +337,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Root Expression</em>' attribute.
      * @see #setRootExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_RootExpression()
@@ -356,7 +356,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getRootExpression
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Root Expression</em>' attribute.
      * @see #getRootExpression()
@@ -385,7 +385,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getInit
      * <em>Init</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Init</em>' reference.
      * @see #getInit()
@@ -401,7 +401,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Layout</em>' containment reference.
      * @see #setLayout(Layout)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_Layout()
@@ -415,7 +415,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getLayout
      * <em>Layout</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Layout</em>' containment reference.
      * @see #getLayout()
@@ -432,7 +432,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Initialisation</em>' containment
      *         reference.
      * @see #setDiagramInitialisation(InitialOperation)
@@ -464,7 +464,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Default Layer</em>' containment reference.
      * @see #setDefaultLayer(Layer)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_DefaultLayer()
@@ -478,7 +478,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getDefaultLayer
      * <em>Default Layer</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Default Layer</em>' containment
      *            reference.
@@ -516,7 +516,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Layers</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllLayers()
      * @model transient="true" volatile="true" derived="true"
@@ -534,7 +534,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>All Activated Tools</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllActivatedTools()
      * @model transient="true" volatile="true" derived="true"
@@ -637,7 +637,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#getToolSection
      * <em>Tool Section</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tool Section</em>' containment
      *            reference.
@@ -679,7 +679,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription#isEnablePopupBars
      * <em>Enable Popup Bars</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Enable Popup Bars</em>' attribute.
      * @see #isEnablePopupBars()
@@ -689,7 +689,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

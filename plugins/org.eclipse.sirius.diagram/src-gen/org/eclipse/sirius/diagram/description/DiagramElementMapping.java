@@ -29,6 +29,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getPreconditionExpression
@@ -55,7 +56,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#isSynchronizationLock
  * <em>Synchronization Lock</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping()
  * @model abstract="true"
@@ -73,8 +73,8 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_PreconditionExpression()
      * @model default="" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
@@ -88,7 +88,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.
@@ -116,7 +116,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getDeletionDescription
      * <em>Deletion Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Deletion Description</em>'
      *            reference.
@@ -144,7 +144,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getLabelDirectEdit
      * <em>Label Direct Edit</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Direct Edit</em>' reference.
      * @see #getLabelDirectEdit()
@@ -168,8 +168,8 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_SemanticCandidatesExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
@@ -183,7 +183,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getSemanticCandidatesExpression
      * <em>Semantic Candidates Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Candidates Expression</em>'
      *            attribute.
@@ -212,7 +212,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#isCreateElements
      * <em>Create Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Create Elements</em>' attribute.
      * @see #isCreateElements()
@@ -231,8 +231,8 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_SemanticElements()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        annotation
-     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation =
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
@@ -246,7 +246,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getSemanticElements
      * <em>Semantic Elements</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Elements</em>' attribute.
      * @see #getSemanticElements()
@@ -264,7 +264,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Double Click Description</em>' reference.
      * @see #setDoubleClickDescription(DoubleClickDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_DoubleClickDescription()
@@ -279,7 +279,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription
      * <em>Double Click Description</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Double Click Description</em>'
      *            reference.
@@ -310,7 +310,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#isSynchronizationLock
      * <em>Synchronization Lock</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Synchronization Lock</em>'
      *            attribute.

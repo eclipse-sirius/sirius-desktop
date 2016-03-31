@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon
  * <em>Icon</em>}</li>
@@ -45,7 +46,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getGroupExtensions
  * <em>Group Extensions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection()
  * @model
@@ -70,7 +70,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection#getIcon
      * <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()
@@ -146,7 +146,7 @@ public interface ToolSection extends DocumentedElement, IdentifiedElement {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Group Extensions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolSection_GroupExtensions()

@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em><b>Behavior Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl#getDomainClass
@@ -34,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * {@link org.eclipse.sirius.diagram.description.tool.impl.BehaviorToolImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -52,7 +52,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BehaviorToolImpl() {
@@ -81,7 +81,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +91,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -151,7 +151,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -170,7 +170,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -245,7 +245,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -263,7 +263,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

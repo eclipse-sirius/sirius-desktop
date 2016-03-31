@@ -25,15 +25,15 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Ellipse</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.impl.EllipseImpl#getHorizontalDiameter
  * <em>Horizontal Diameter</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.EllipseImpl#getVerticalDiameter
  * <em>Vertical Diameter</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.EllipseImpl#getColor <em>Color
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EllipseImpl#getColor
+ * <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The default value of the '{@link #getHorizontalDiameter()
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameter()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The cached value of the '{@link #getHorizontalDiameter()
      * <em>Horizontal Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHorizontalDiameter()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The default value of the '{@link #getVerticalDiameter()
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameter()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * The cached value of the '{@link #getVerticalDiameter()
      * <em>Vertical Diameter</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVerticalDiameter()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -95,7 +95,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EllipseImpl() {
@@ -113,7 +113,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +195,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +273,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

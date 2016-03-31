@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>Gauge Section Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl#getMinValueExpression
@@ -45,7 +46,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl#getLabel
  * <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -54,7 +54,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getMinValueExpression()
      * <em>Min Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMinValueExpression()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getMinValueExpression()
      * <em>Min Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMinValueExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getMaxValueExpression()
      * <em>Max Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMaxValueExpression()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getMaxValueExpression()
      * <em>Max Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getMaxValueExpression()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * The cached value of the '{@link #getForegroundColor()
      * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeSectionDescriptionImpl() {
@@ -169,7 +169,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -227,7 +227,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -251,7 +251,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -279,7 +279,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -293,7 +293,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetForegroundColor() {
@@ -321,7 +321,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -335,7 +335,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -345,7 +345,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -449,18 +449,18 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION:
-            return GaugeSectionDescriptionImpl.MIN_VALUE_EXPRESSION_EDEFAULT == null ? minValueExpression != null : !GaugeSectionDescriptionImpl.MIN_VALUE_EXPRESSION_EDEFAULT
-                    .equals(minValueExpression);
+            return GaugeSectionDescriptionImpl.MIN_VALUE_EXPRESSION_EDEFAULT == null ? minValueExpression != null
+                    : !GaugeSectionDescriptionImpl.MIN_VALUE_EXPRESSION_EDEFAULT.equals(minValueExpression);
         case StylePackage.GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION:
-            return GaugeSectionDescriptionImpl.MAX_VALUE_EXPRESSION_EDEFAULT == null ? maxValueExpression != null : !GaugeSectionDescriptionImpl.MAX_VALUE_EXPRESSION_EDEFAULT
-                    .equals(maxValueExpression);
+            return GaugeSectionDescriptionImpl.MAX_VALUE_EXPRESSION_EDEFAULT == null ? maxValueExpression != null
+                    : !GaugeSectionDescriptionImpl.MAX_VALUE_EXPRESSION_EDEFAULT.equals(maxValueExpression);
         case StylePackage.GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION:
             return GaugeSectionDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !GaugeSectionDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case StylePackage.GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR:
@@ -475,7 +475,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

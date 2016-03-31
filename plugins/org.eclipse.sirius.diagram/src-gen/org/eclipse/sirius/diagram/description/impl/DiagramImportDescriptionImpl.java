@@ -56,6 +56,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em><b>Diagram Import Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getEndUserDocumentation
@@ -166,7 +167,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getImportedDiagram
  * <em>Imported Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -175,7 +175,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -186,7 +186,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -196,7 +196,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -206,7 +206,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -216,7 +216,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -226,7 +226,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -237,7 +237,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -248,7 +248,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getTitleExpression()
      * <em>Title Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTitleExpression()
      * @generated
      * @ordered
@@ -259,7 +259,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #isInitialisation()
      * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -270,7 +270,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #isInitialisation()
      * <em>Initialisation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isInitialisation()
      * @generated
      * @ordered
@@ -280,7 +280,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMetamodel()
      * @generated
      * @ordered
@@ -291,7 +291,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #isShowOnStartup()
      * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -302,7 +302,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #isShowOnStartup()
      * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isShowOnStartup()
      * @generated
      * @ordered
@@ -313,7 +313,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getDropDescriptions()
      * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDropDescriptions()
      * @generated
      * @ordered
@@ -324,7 +324,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getPasteDescriptions()
      * <em>Paste Descriptions</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPasteDescriptions()
      * @generated
      * @ordered
@@ -334,7 +334,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getFilters() <em>Filters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFilters()
      * @generated
      * @ordered
@@ -345,7 +345,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getValidationSet()
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getValidationSet()
      * @generated
      * @ordered
@@ -355,7 +355,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getConcerns() <em>Concerns</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConcerns()
      * @generated
      * @ordered
@@ -365,7 +365,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -375,7 +375,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -386,7 +386,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -397,7 +397,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -408,7 +408,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getDefaultConcern()
      * <em>Default Concern</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDefaultConcern()
      * @generated
      * @ordered
@@ -419,7 +419,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -430,7 +430,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -440,7 +440,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getInit() <em>Init</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInit()
      * @generated
      * @ordered
@@ -450,7 +450,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getLayout() <em>Layout</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLayout()
      * @generated
      * @ordered
@@ -469,10 +469,9 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     protected InitialOperation diagramInitialisation;
 
     /**
-     * The cached value of the '{@link #getDefaultLayer()
-     * <em>Default Layer</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getDefaultLayer() <em>Default Layer</em>
+     * }' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getDefaultLayer()
      * @generated
      * @ordered
@@ -491,10 +490,10 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     protected EList<AdditionalLayer> additionalLayers;
 
     /**
-     * The cached value of the '{@link #getNodeMappings()
-     * <em>Node Mappings</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getNodeMappings() <em>Node Mappings</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getNodeMappings()
      * @generated
      * @ordered
@@ -502,10 +501,10 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     protected EList<NodeMapping> nodeMappings;
 
     /**
-     * The cached value of the '{@link #getEdgeMappings()
-     * <em>Edge Mappings</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getEdgeMappings() <em>Edge Mappings</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getEdgeMappings()
      * @generated
      * @ordered
@@ -538,7 +537,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getReusedMappings()
      * <em>Reused Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReusedMappings()
      * @generated
      * @ordered
@@ -548,7 +547,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getToolSection() <em>Tool Section</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getToolSection()
      * @generated
      * @ordered
@@ -558,7 +557,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
     /**
      * The cached value of the '{@link #getReusedTools() <em>Reused Tools</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedTools()
      * @generated
      * @ordered
@@ -569,7 +568,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The default value of the '{@link #isEnablePopupBars()
      * <em>Enable Popup Bars</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isEnablePopupBars()
      * @generated
      * @ordered
@@ -580,7 +579,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #isEnablePopupBars()
      * <em>Enable Popup Bars</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isEnablePopupBars()
      * @generated
      * @ordered
@@ -591,7 +590,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * The cached value of the '{@link #getImportedDiagram()
      * <em>Imported Diagram</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getImportedDiagram()
      * @generated
      * @ordered
@@ -600,7 +599,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramImportDescriptionImpl() {
@@ -609,7 +608,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +618,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -629,7 +628,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -643,7 +642,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -653,7 +652,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -667,7 +666,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -677,7 +676,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -691,7 +690,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -701,7 +700,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -715,7 +714,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -725,7 +724,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -739,7 +738,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -752,7 +751,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -762,7 +761,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -776,7 +775,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -789,7 +788,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -802,7 +801,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -815,7 +814,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -833,7 +832,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -851,7 +850,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -869,7 +868,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -896,7 +895,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ValidationSet basicGetValidationSet() {
@@ -905,7 +904,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetValidationSet(ValidationSet newValidationSet, NotificationChain msgs) {
@@ -924,7 +923,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -948,7 +947,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -975,7 +974,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernSet basicGetConcerns() {
@@ -984,7 +983,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetConcerns(ConcernSet newConcerns, NotificationChain msgs) {
@@ -1003,7 +1002,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1027,7 +1026,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1044,7 +1043,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1054,7 +1053,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1068,7 +1067,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1078,7 +1077,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1092,7 +1091,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1111,7 +1110,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernDescription basicGetDefaultConcern() {
@@ -1120,7 +1119,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1134,7 +1133,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1144,7 +1143,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1158,7 +1157,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1177,7 +1176,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public RepresentationCreationDescription basicGetInit() {
@@ -1186,7 +1185,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1200,7 +1199,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1227,7 +1226,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Layout basicGetLayout() {
@@ -1236,7 +1235,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLayout(Layout newLayout, NotificationChain msgs) {
@@ -1255,7 +1254,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1279,7 +1278,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1307,7 +1306,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetDiagramInitialisation() {
@@ -1316,7 +1315,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDiagramInitialisation(InitialOperation newDiagramInitialisation, NotificationChain msgs) {
@@ -1336,7 +1335,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1362,7 +1361,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1389,7 +1388,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Layer basicGetDefaultLayer() {
@@ -1398,7 +1397,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDefaultLayer(Layer newDefaultLayer, NotificationChain msgs) {
@@ -1417,7 +1416,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1441,7 +1440,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1454,7 +1453,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1471,7 +1470,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1489,7 +1488,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1502,7 +1501,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1515,7 +1514,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1528,7 +1527,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1541,7 +1540,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1554,7 +1553,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1581,7 +1580,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolSection basicGetToolSection() {
@@ -1590,7 +1589,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetToolSection(ToolSection newToolSection, NotificationChain msgs) {
@@ -1609,7 +1608,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1633,7 +1632,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1646,7 +1645,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1656,7 +1655,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1670,7 +1669,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1689,7 +1688,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramDescription basicGetImportedDiagram() {
@@ -1698,7 +1697,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1712,7 +1711,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1724,7 +1723,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1760,7 +1759,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1871,7 +1870,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -1993,7 +1992,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2101,15 +2100,15 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__END_USER_DOCUMENTATION:
-            return DiagramImportDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null : !DiagramImportDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT
-                    .equals(endUserDocumentation);
+            return DiagramImportDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT == null ? endUserDocumentation != null
+                    : !DiagramImportDescriptionImpl.END_USER_DOCUMENTATION_EDEFAULT.equals(endUserDocumentation);
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NAME:
             return DiagramImportDescriptionImpl.NAME_EDEFAULT == null ? name != null : !DiagramImportDescriptionImpl.NAME_EDEFAULT.equals(name);
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__LABEL:
@@ -2143,8 +2142,8 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS:
             return DiagramImportDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DiagramImportDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return DiagramImportDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !DiagramImportDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT
-                    .equals(preconditionExpression);
+            return DiagramImportDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null
+                    : !DiagramImportDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_CONCERN:
             return defaultConcern != null;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ROOT_EXPRESSION:
@@ -2187,7 +2186,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2289,7 +2288,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2391,7 +2390,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

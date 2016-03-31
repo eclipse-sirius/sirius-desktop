@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -86,7 +86,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
     /**
      * This returns ReconnectEdgeDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,14 +189,14 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, ToolFactory.eINSTANCE.createTargetEdgeViewCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__ELEMENT,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__ELEMENT, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
     }
 
     /**

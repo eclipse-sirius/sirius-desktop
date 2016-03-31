@@ -31,7 +31,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * The '<em><b>Border</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #BORDER
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * The '<em><b>Node</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #NODE
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Label Position</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<LabelPosition> VALUES = Collections.unmodifiableList(Arrays.asList(LabelPosition.VALUES_ARRAY));
@@ -91,7 +91,10 @@ public enum LabelPosition implements Enumerator {
     /**
      * Returns the '<em><b>Label Position</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LabelPosition get(String literal) {
@@ -106,7 +109,10 @@ public enum LabelPosition implements Enumerator {
     /**
      * Returns the '<em><b>Label Position</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LabelPosition getByName(String name) {
@@ -121,7 +127,10 @@ public enum LabelPosition implements Enumerator {
     /**
      * Returns the '<em><b>Label Position</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static LabelPosition get(int value) {
@@ -136,21 +145,21 @@ public enum LabelPosition implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -158,7 +167,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private LabelPosition(int value, String name, String literal) {
@@ -169,7 +178,7 @@ public enum LabelPosition implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +188,7 @@ public enum LabelPosition implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +198,7 @@ public enum LabelPosition implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +209,7 @@ public enum LabelPosition implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

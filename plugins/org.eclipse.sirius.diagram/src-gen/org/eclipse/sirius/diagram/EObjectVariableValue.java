@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
@@ -26,7 +27,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
  * <li>{@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
  * <em>Model Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue()
  * @model
@@ -41,7 +41,7 @@ public interface EObjectVariableValue extends VariableValue {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(SelectModelElementVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEObjectVariableValue_VariableDefinition()
@@ -55,7 +55,7 @@ public interface EObjectVariableValue extends VariableValue {
      * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -85,7 +85,7 @@ public interface EObjectVariableValue extends VariableValue {
      * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
      * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Model Element</em>' reference.
      * @see #getModelElement()

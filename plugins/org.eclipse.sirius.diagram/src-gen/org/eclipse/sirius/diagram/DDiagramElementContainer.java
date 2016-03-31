@@ -24,9 +24,10 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getNodes <em>
- * Nodes</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getNodes
+ * <em>Nodes</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getContainers
  * <em>Containers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getElements
@@ -42,12 +43,11 @@ import org.eclipse.sirius.viewpoint.Style;
  * <li>
  * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getCandidatesMapping
  * <em>Candidates Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getWidth <em>
- * Width</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getHeight <em>
- * Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getWidth
+ * <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getHeight
+ * <em>Height</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer()
  * @model abstract="true"
@@ -113,7 +113,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.
@@ -141,7 +141,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOriginalStyle
      * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -167,7 +167,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getActualMapping
      * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()
@@ -211,7 +211,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()

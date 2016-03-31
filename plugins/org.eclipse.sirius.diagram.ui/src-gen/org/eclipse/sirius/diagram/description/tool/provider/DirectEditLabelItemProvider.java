@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -68,14 +68,14 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
     /**
      * This adds a property descriptor for the Input Label Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addInputLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DirectEditLabel_inputLabelExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DirectEditLabel_inputLabelExpression_feature", "_UI_DirectEditLabel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DirectEditLabel_inputLabelExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DirectEditLabel_inputLabelExpression_feature", "_UI_DirectEditLabel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -85,7 +85,7 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
     /**
      * This returns DirectEditLabel.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

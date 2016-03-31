@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Reconnection Kind</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getReconnectionKind()
  * @model
  * @generated
@@ -50,7 +50,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * The '<em><b>RECONNECT BOTH</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_BOTH
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public enum ReconnectionKind implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_TARGET_LITERAL
      * @model
      * @generated
@@ -81,7 +81,7 @@ public enum ReconnectionKind implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_SOURCE_LITERAL
      * @model
      * @generated
@@ -97,7 +97,7 @@ public enum ReconnectionKind implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #RECONNECT_BOTH_LITERAL
      * @model
      * @generated
@@ -116,7 +116,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Reconnection Kind</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<ReconnectionKind> VALUES = Collections.unmodifiableList(Arrays.asList(ReconnectionKind.VALUES_ARRAY));
@@ -124,7 +124,10 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * Returns the '<em><b>Reconnection Kind</b></em>' literal with the
      * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ReconnectionKind get(String literal) {
@@ -139,7 +142,10 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * Returns the '<em><b>Reconnection Kind</b></em>' literal with the
      * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ReconnectionKind getByName(String name) {
@@ -154,7 +160,10 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * Returns the '<em><b>Reconnection Kind</b></em>' literal with the
      * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static ReconnectionKind get(int value) {
@@ -171,21 +180,21 @@ public enum ReconnectionKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -193,7 +202,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private ReconnectionKind(int value, String name, String literal) {
@@ -204,7 +213,7 @@ public enum ReconnectionKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +223,7 @@ public enum ReconnectionKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +233,7 @@ public enum ReconnectionKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -235,7 +244,7 @@ public enum ReconnectionKind implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

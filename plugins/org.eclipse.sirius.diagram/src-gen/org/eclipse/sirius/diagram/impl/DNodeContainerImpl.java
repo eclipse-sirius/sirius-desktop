@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em><b>DNode Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DNodeContainerImpl#getOwnedDiagramElements
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * {@link org.eclipse.sirius.diagram.impl.DNodeContainerImpl#getChildrenPresentation
  * <em>Children Presentation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +59,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * The default value of the '{@link #getChildrenPresentation()
      * <em>Children Presentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenPresentation()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
      * The cached value of the '{@link #getChildrenPresentation()
      * <em>Children Presentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenPresentation()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeContainerImpl() {
@@ -88,7 +88,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -185,7 +185,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class DNodeContainerImpl extends DDiagramElementContainerImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

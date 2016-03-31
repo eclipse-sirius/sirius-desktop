@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * <em><b>Create Edge View</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl#getSourceExpression
@@ -30,7 +31,6 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.diagram.description.tool.impl.CreateEdgeViewImpl#getTargetExpression
  * <em>Target Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * The default value of the '{@link #getSourceExpression()
      * <em>Source Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceExpression()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * The cached value of the '{@link #getSourceExpression()
      * <em>Source Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceExpression()
      * @generated
      * @ordered
@@ -61,7 +61,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * The default value of the '{@link #getTargetExpression()
      * <em>Target Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetExpression()
      * @generated
      * @ordered
@@ -72,7 +72,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
      * The cached value of the '{@link #getTargetExpression()
      * <em>Target Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetExpression()
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateEdgeViewImpl() {
@@ -90,7 +90,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +164,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

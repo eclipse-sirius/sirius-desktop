@@ -21,11 +21,11 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.tool.ToolGroup#getTools
  * <em>Tools</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroup()
  * @model
@@ -42,7 +42,7 @@ public interface ToolGroup extends ToolEntry {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tools</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroup_Tools()
      * @model containment="true" resolveProxies="true"

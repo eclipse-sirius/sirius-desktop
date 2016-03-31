@@ -21,12 +21,12 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry#getComputedStyleDescriptions
  * <em>Computed Style Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry()
  * @model
@@ -44,7 +44,7 @@ public interface ComputedStyleDescriptionRegistry extends EObject {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Computed Style Descriptions</em>'
      *         containment reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry_ComputedStyleDescriptions()

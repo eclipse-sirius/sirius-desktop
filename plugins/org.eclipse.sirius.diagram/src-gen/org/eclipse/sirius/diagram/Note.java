@@ -19,10 +19,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.Note#getColor <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getNote()
  * @model
@@ -49,7 +49,7 @@ public interface Note extends NodeStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.Note#getColor
      * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()

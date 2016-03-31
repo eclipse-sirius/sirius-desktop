@@ -21,13 +21,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.DNodeContainer#getOwnedDiagramElements
  * <em>Owned Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNodeContainer#getChildrenPresentation
  * <em>Children Presentation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeContainer()
  * @model
@@ -59,7 +59,7 @@ public interface DNodeContainer extends DDiagramElementContainer {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Children Presentation</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerLayout
      * @see #setChildrenPresentation(ContainerLayout)
@@ -74,7 +74,7 @@ public interface DNodeContainer extends DDiagramElementContainer {
      * {@link org.eclipse.sirius.diagram.DNodeContainer#getChildrenPresentation
      * <em>Children Presentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Presentation</em>'
      *            attribute.

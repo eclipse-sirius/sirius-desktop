@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
@@ -43,7 +44,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
  * <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription()
  * @model
@@ -58,7 +58,7 @@ public interface GaugeSectionDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Min Value Expression</em>' attribute.
      * @see #setMinValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MinValueExpression()
@@ -75,7 +75,7 @@ public interface GaugeSectionDescription extends EObject {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
      * <em>Min Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Min Value Expression</em>'
      *            attribute.
@@ -92,7 +92,7 @@ public interface GaugeSectionDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Max Value Expression</em>' attribute.
      * @see #setMaxValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MaxValueExpression()
@@ -109,7 +109,7 @@ public interface GaugeSectionDescription extends EObject {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
      * <em>Max Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Max Value Expression</em>'
      *            attribute.
@@ -126,7 +126,7 @@ public interface GaugeSectionDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_ValueExpression()
@@ -143,7 +143,7 @@ public interface GaugeSectionDescription extends EObject {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -169,7 +169,7 @@ public interface GaugeSectionDescription extends EObject {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -195,7 +195,7 @@ public interface GaugeSectionDescription extends EObject {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
      * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -220,7 +220,7 @@ public interface GaugeSectionDescription extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()

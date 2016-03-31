@@ -64,10 +64,10 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
      * @generated
      */
     protected void addVariableDefinitionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TypedVariableValue_variableDefinition_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_variableDefinition_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TypedVariableValue_variableDefinition_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_variableDefinition_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION, true, false, true, null, null, null));
     }
 
     /**
@@ -77,16 +77,16 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TypedVariableValue_value_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_value_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TypedVariableValue_value_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TypedVariableValue_value_feature", "_UI_TypedVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.TYPED_VARIABLE_VALUE__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns TypedVariableValue.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class TypedVariableValueItemProvider extends VariableValueItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.MappingBasedDecoration#getMappings
  * <em>Mappings</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getMappingBasedDecoration()
  * @model
@@ -45,7 +45,7 @@ public interface MappingBasedDecoration extends DecorationDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getMappingBasedDecoration_Mappings()
      * @model required="true"

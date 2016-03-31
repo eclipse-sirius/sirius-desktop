@@ -18,14 +18,14 @@ import org.eclipse.sirius.viewpoint.description.TypedVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
  * <em>Variable Definition</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue <em>Value
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.TypedVariableValue#getValue
+ * <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue()
  * @model
@@ -40,7 +40,7 @@ public interface TypedVariableValue extends VariableValue {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(TypedVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getTypedVariableValue_VariableDefinition()
@@ -54,7 +54,7 @@ public interface TypedVariableValue extends VariableValue {
      * {@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -83,7 +83,7 @@ public interface TypedVariableValue extends VariableValue {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.TypedVariableValue#getValue
      * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()

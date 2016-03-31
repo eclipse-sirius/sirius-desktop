@@ -71,7 +71,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>VERTICAL</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #VERTICAL
      * @generated
      * @ordered
@@ -81,7 +81,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>HORIZONTAL</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #HORIZONTAL
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * The '<em><b>SQUARE</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #SQUARE
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public enum AlignmentKind implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #VERTICAL_LITERAL
      * @model
      * @generated
@@ -120,7 +120,7 @@ public enum AlignmentKind implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #HORIZONTAL_LITERAL
      * @model
      * @generated
@@ -135,7 +135,7 @@ public enum AlignmentKind implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SQUARE_LITERAL
      * @model
      * @generated
@@ -154,7 +154,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Alignment Kind</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<AlignmentKind> VALUES = Collections.unmodifiableList(Arrays.asList(AlignmentKind.VALUES_ARRAY));
@@ -162,7 +162,10 @@ public enum AlignmentKind implements Enumerator {
     /**
      * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static AlignmentKind get(String literal) {
@@ -177,7 +180,10 @@ public enum AlignmentKind implements Enumerator {
     /**
      * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static AlignmentKind getByName(String name) {
@@ -192,7 +198,10 @@ public enum AlignmentKind implements Enumerator {
     /**
      * Returns the '<em><b>Alignment Kind</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static AlignmentKind get(int value) {
@@ -209,21 +218,21 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -231,7 +240,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private AlignmentKind(int value, String name, String literal) {
@@ -242,7 +251,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +261,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +271,7 @@ public enum AlignmentKind implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -273,7 +282,7 @@ public enum AlignmentKind implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
  * <em><b>Variable Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl#getOwnedVariables
@@ -38,7 +39,6 @@ import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
  * {@link org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl#getSemanticConditionExpression
  * <em>Semantic Condition Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -58,7 +58,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * The default value of the '{@link #getSemanticConditionExpression()
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * The cached value of the '{@link #getSemanticConditionExpression()
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSemanticConditionExpression()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VariableFilterImpl() {
@@ -87,7 +87,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -196,7 +196,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,15 +223,15 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         case FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES:
             return ownedVariables != null && !ownedVariables.isEmpty();
         case FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION:
-            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT
-                    .equals(semanticConditionExpression);
+            return VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT == null ? semanticConditionExpression != null
+                    : !VariableFilterImpl.SEMANTIC_CONDITION_EXPRESSION_EDEFAULT.equals(semanticConditionExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

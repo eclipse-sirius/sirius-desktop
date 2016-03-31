@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernFactory
  * @model kind="package"
  * @generated
@@ -34,21 +34,21 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public interface ConcernPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "concern"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "concern"; //$NON-NLS-1$
@@ -56,7 +56,7 @@ public interface ConcernPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     ConcernPackage eINSTANCE = org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl.init();
@@ -65,7 +65,7 @@ public interface ConcernPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl
      * <em>Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl
      * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl#getConcernSet()
      * @generated
@@ -84,7 +84,7 @@ public interface ConcernPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Concern Descriptions</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -168,7 +168,7 @@ public interface ConcernPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Description</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -178,7 +178,7 @@ public interface ConcernPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet
      * <em>Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Set</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernSet
      * @generated
@@ -190,7 +190,7 @@ public interface ConcernPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions
      * <em>Owned Concern Descriptions</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Concern Descriptions</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions()
@@ -203,7 +203,7 @@ public interface ConcernPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Description</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernDescription
      * @generated
@@ -214,7 +214,7 @@ public interface ConcernPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getFilters
      * <em>Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Filters</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernDescription#getFilters()
      * @see #getConcernDescription()
@@ -226,7 +226,7 @@ public interface ConcernPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getRules
      * <em>Rules</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Rules</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernDescription#getRules()
      * @see #getConcernDescription()
@@ -238,7 +238,7 @@ public interface ConcernPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getBehaviors
      * <em>Behaviors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Behaviors</em>'.
      * @see org.eclipse.sirius.diagram.description.concern.ConcernDescription#getBehaviors()
      * @see #getConcernDescription()
@@ -265,7 +265,7 @@ public interface ConcernPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -273,7 +273,7 @@ public interface ConcernPackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl
          * <em>Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernSetImpl
          * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl#getConcernSet()
          * @generated
@@ -284,7 +284,7 @@ public interface ConcernPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Owned Concern Descriptions</b></em>' containment reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS = ConcernPackage.eINSTANCE.getConcernSet_OwnedConcernDescriptions();
@@ -294,7 +294,7 @@ public interface ConcernPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl
          * <em>Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl#getConcernDescription()
          * @generated
@@ -304,7 +304,7 @@ public interface ConcernPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Filters</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONCERN_DESCRIPTION__FILTERS = ConcernPackage.eINSTANCE.getConcernDescription_Filters();
@@ -312,7 +312,7 @@ public interface ConcernPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Rules</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONCERN_DESCRIPTION__RULES = ConcernPackage.eINSTANCE.getConcernDescription_Rules();
@@ -320,7 +320,7 @@ public interface ConcernPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Behaviors</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONCERN_DESCRIPTION__BEHAVIORS = ConcernPackage.eINSTANCE.getConcernDescription_Behaviors();

@@ -20,12 +20,12 @@ package org.eclipse.sirius.diagram.description.style;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
  * <em>Workspace Path</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getWorkspaceImageDescription()
  * @model
@@ -52,7 +52,7 @@ public interface WorkspaceImageDescription extends NodeStyleDescription, Contain
      * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Workspace Path</em>' attribute.
      * @see #getWorkspacePath()

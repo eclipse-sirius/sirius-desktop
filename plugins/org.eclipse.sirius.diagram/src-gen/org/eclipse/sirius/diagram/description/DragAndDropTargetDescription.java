@@ -24,12 +24,12 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
  * <em>Drop Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription()
  * @model abstract="true"
@@ -46,7 +46,7 @@ public interface DragAndDropTargetDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Drop Descriptions</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription_DropDescriptions()
      * @model

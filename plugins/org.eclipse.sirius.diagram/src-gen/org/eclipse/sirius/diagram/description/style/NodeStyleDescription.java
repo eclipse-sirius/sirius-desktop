@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getForbiddenSides
  * <em>Forbidden Sides</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription()
  * @model abstract="true"
@@ -70,7 +70,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression
      * <em>Size Computation Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Size Computation Expression</em>'
      *            attribute.
@@ -100,7 +100,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition
@@ -130,7 +130,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind
      * <em>Resize Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
@@ -151,7 +151,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Forbidden Sides</em>' attribute list.
      * @see org.eclipse.sirius.diagram.description.style.Side
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_ForbiddenSides()

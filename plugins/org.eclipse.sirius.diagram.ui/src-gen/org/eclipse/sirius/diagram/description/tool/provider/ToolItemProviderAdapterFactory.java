@@ -56,14 +56,14 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -81,7 +81,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -104,7 +104,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolSectionItemProvider toolSectionItemProvider;
@@ -129,7 +129,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ToolGroup} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolGroupItemProvider toolGroupItemProvider;
@@ -154,7 +154,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolGroupExtensionItemProvider toolGroupExtensionItemProvider;
@@ -163,7 +163,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeCreationDescriptionItemProvider nodeCreationDescriptionItemProvider;
@@ -188,7 +188,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeCreationDescriptionItemProvider edgeCreationDescriptionItemProvider;
@@ -213,7 +213,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerCreationDescriptionItemProvider containerCreationDescriptionItemProvider;
@@ -238,7 +238,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +254,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteElementDescriptionItemProvider deleteElementDescriptionItemProvider;
@@ -263,7 +263,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteElementDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DoubleClickDescriptionItemProvider doubleClickDescriptionItemProvider;
@@ -288,7 +288,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteHook} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteHookItemProvider deleteHookItemProvider;
@@ -329,7 +329,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteHookParameterItemProvider deleteHookParameterItemProvider;
@@ -338,7 +338,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DeleteHookParameter}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +354,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReconnectEdgeDescriptionItemProvider reconnectEdgeDescriptionItemProvider;
@@ -363,7 +363,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RequestDescriptionItemProvider requestDescriptionItemProvider;
@@ -388,7 +388,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.RequestDescription}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -404,7 +404,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DirectEditLabel}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DirectEditLabelItemProvider directEditLabelItemProvider;
@@ -429,7 +429,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BehaviorToolItemProvider behaviorToolItemProvider;
@@ -454,7 +454,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SourceEdgeCreationVariableItemProvider sourceEdgeCreationVariableItemProvider;
@@ -463,7 +463,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -479,7 +479,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected SourceEdgeViewCreationVariableItemProvider sourceEdgeViewCreationVariableItemProvider;
@@ -488,7 +488,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -504,7 +504,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TargetEdgeCreationVariableItemProvider targetEdgeCreationVariableItemProvider;
@@ -513,7 +513,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -529,7 +529,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TargetEdgeViewCreationVariableItemProvider targetEdgeViewCreationVariableItemProvider;
@@ -538,7 +538,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -554,7 +554,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ElementDoubleClickVariableItemProvider elementDoubleClickVariableItemProvider;
@@ -563,7 +563,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ElementDoubleClickVariable}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -579,7 +579,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeCreationVariableItemProvider nodeCreationVariableItemProvider;
@@ -588,7 +588,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationVariable}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -604,7 +604,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.CreateView} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateViewItemProvider createViewItemProvider;
@@ -629,7 +629,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateEdgeViewItemProvider createEdgeViewItemProvider;
@@ -654,7 +654,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.Navigation} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NavigationItemProvider navigationItemProvider;
@@ -679,7 +679,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramCreationDescriptionItemProvider diagramCreationDescriptionItemProvider;
@@ -688,7 +688,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -704,7 +704,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramNavigationDescriptionItemProvider diagramNavigationDescriptionItemProvider;
@@ -713,7 +713,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -729,7 +729,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerDropDescriptionItemProvider containerDropDescriptionItemProvider;
@@ -738,7 +738,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -774,7 +774,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -785,7 +785,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -795,7 +795,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -812,7 +812,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -822,7 +822,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -944,14 +944,14 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected static class CreationSwitch extends DescriptionSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -959,7 +959,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -967,7 +967,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -977,7 +977,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1013,7 +1013,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -1024,7 +1024,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -1036,7 +1036,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -1055,14 +1055,14 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         /**
          * The switch for creating child descriptors specific to each extended
          * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected static class CreationSwitch extends ToolSwitch<Object> {
             /**
              * The child descriptors being populated. <!-- begin-user-doc -->
              * <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected List<Object> newChildDescriptors;
@@ -1070,7 +1070,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             /**
              * The domain in which to create the children. <!-- begin-user-doc
              * --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected EditingDomain editingDomain;
@@ -1078,7 +1078,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             /**
              * Creates the a switch for populating child descriptors in the
              * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
@@ -1088,7 +1088,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1104,7 +1104,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1120,7 +1120,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1136,7 +1136,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1152,7 +1152,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1168,7 +1168,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             @Override
@@ -1184,7 +1184,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated
              */
             protected CommandParameter createChildParameter(Object feature, Object child) {
@@ -1195,7 +1195,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -1207,7 +1207,7 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override

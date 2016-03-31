@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getBehaviorTool()
  * @model
@@ -59,7 +59,7 @@ public interface BehaviorTool extends AbstractToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -86,7 +86,7 @@ public interface BehaviorTool extends AbstractToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.

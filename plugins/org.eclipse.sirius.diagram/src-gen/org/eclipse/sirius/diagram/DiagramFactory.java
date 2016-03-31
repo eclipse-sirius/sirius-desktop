@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage
  * @generated
  */
@@ -24,7 +24,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     DiagramFactory eINSTANCE = org.eclipse.sirius.diagram.impl.DiagramFactoryImpl.init();
@@ -32,7 +32,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DDiagram</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DDiagram</em>'.
      * @generated
      */
@@ -50,7 +50,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Hide Filter</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Hide Filter</em>'.
      * @generated
      */
@@ -104,7 +104,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DNode</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DNode</em>'.
      * @generated
      */
@@ -122,7 +122,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DNode List</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DNode List</em>'.
      * @generated
      */
@@ -140,7 +140,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>DEdge</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>DEdge</em>'.
      * @generated
      */
@@ -149,7 +149,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Dot</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Dot</em>'.
      * @generated
      */
@@ -185,7 +185,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Square</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Square</em>'.
      * @generated
      */
@@ -194,7 +194,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Ellipse</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Ellipse</em>'.
      * @generated
      */
@@ -203,7 +203,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Lozenge</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Lozenge</em>'.
      * @generated
      */
@@ -239,7 +239,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Style</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Style</em>'.
      * @generated
      */
@@ -266,7 +266,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Note</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Note</em>'.
      * @generated
      */
@@ -339,7 +339,7 @@ public interface DiagramFactory extends EFactory {
      * Returns a new object of class '
      * <em>Computed Style Description Registry</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '
      *         <em>Computed Style Description Registry</em>'.
      * @generated
@@ -376,7 +376,7 @@ public interface DiagramFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceMapping
@@ -43,8 +44,8 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceFinderExpression
  * <em>Source Finder Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getStyle <em>
- * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.EdgeMapping#getStyle
+ * <em>Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getConditionnalStyles
  * <em>Conditionnal Styles</em>}</li>
@@ -66,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getPathNodeMapping
  * <em>Path Node Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping()
  * @model
@@ -138,7 +138,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetFinderExpression
      * <em>Target Finder Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Finder Expression</em>'
      *            attribute.
@@ -176,7 +176,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getSourceFinderExpression
      * <em>Source Finder Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Finder Expression</em>'
      *            attribute.
@@ -203,7 +203,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -253,7 +253,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getTargetExpression
      * <em>Target Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Expression</em>' attribute.
      * @see #getTargetExpression()
@@ -280,7 +280,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -296,7 +296,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Use Domain Element</em>' attribute.
      * @see #setUseDomainElement(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_UseDomainElement()
@@ -310,7 +310,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#isUseDomainElement
      * <em>Use Domain Element</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Use Domain Element</em>' attribute.
      * @see #isUseDomainElement()
@@ -328,7 +328,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Reconnections</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_Reconnections()
      * @model
@@ -344,7 +344,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Path Expression</em>' attribute.
      * @see #setPathExpression(String)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping_PathExpression()
@@ -363,7 +363,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.diagram.description.EdgeMapping#getPathExpression
      * <em>Path Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Path Expression</em>' attribute.
      * @see #getPathExpression()
@@ -391,7 +391,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model sourceRequired="true" targetRequired="true"
      * @generated
      */
@@ -400,7 +400,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model sourceRequired="true" targetRequired="true"
      * @generated
      */
@@ -409,7 +409,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -418,7 +418,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model viewEdgeRequired="true"
      * @generated
      */
@@ -427,7 +427,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -436,7 +436,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */
@@ -445,7 +445,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

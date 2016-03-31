@@ -47,28 +47,29 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getOwnedDiagramElements
  * <em>Owned Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDiagramElements
  * <em>Diagram Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription <em>
- * Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges <em>Edges
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodes <em>Nodes
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription
+ * <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges
+ * <em>Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodes
+ * <em>Nodes</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodeListElements
  * <em>Node List Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getContainers <em>
- * Containers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getContainers
+ * <em>Containers</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getCurrentConcern
  * <em>Current Concern</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedFilters
  * <em>Activated Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getAllFilters <em>All
- * Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getAllFilters
+ * <em>All Filters</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedRules
  * <em>Activated Rules</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivateBehaviors
@@ -78,16 +79,15 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em>Filter Variable History</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getActivatedLayers
  * <em>Activated Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isSynchronized <em>
- * Synchronized</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isSynchronized
+ * <em>Synchronized</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHiddenElements
  * <em>Hidden Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#isIsInLayoutingMode
  * <em>Is In Layouting Mode</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHeaderHeight <em>
- * Header Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getHeaderHeight
+ * <em>Header Height</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -106,7 +106,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -117,7 +117,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getCurrentConcern()
      * <em>Current Concern</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCurrentConcern()
      * @generated
      * @ordered
@@ -128,7 +128,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getActivatedFilters()
      * <em>Activated Filters</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getActivatedFilters()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getActivatedRules()
      * <em>Activated Rules</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getActivatedRules()
      * @generated
      * @ordered
@@ -150,7 +150,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getActivateBehaviors()
      * <em>Activate Behaviors</em>}' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getActivateBehaviors()
      * @generated
      * @ordered
@@ -172,7 +172,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getActivatedLayers()
      * <em>Activated Layers</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getActivatedLayers()
      * @generated
      * @ordered
@@ -182,7 +182,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     /**
      * The default value of the '{@link #isSynchronized() <em>Synchronized</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSynchronized()
      * @generated
      * @ordered
@@ -192,7 +192,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     /**
      * The cached value of the '{@link #isSynchronized() <em>Synchronized</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSynchronized()
      * @generated
      * @ordered
@@ -203,7 +203,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #getHiddenElements()
      * <em>Hidden Elements</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHiddenElements()
      * @generated
      * @ordered
@@ -214,7 +214,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The default value of the '{@link #isIsInLayoutingMode()
      * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsInLayoutingMode()
      * @generated
      * @ordered
@@ -225,7 +225,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The cached value of the '{@link #isIsInLayoutingMode()
      * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isIsInLayoutingMode()
      * @generated
      * @ordered
@@ -236,7 +236,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * The default value of the '{@link #getHeaderHeight()
      * <em>Header Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getHeaderHeight()
      * @generated
      * @ordered
@@ -244,10 +244,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     protected static final int HEADER_HEIGHT_EDEFAULT = 1;
 
     /**
-     * The cached value of the '{@link #getHeaderHeight()
-     * <em>Header Height</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getHeaderHeight() <em>Header Height</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getHeaderHeight()
      * @generated
      * @ordered
@@ -256,7 +255,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DDiagramImpl() {
@@ -265,7 +264,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -275,7 +274,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +287,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,7 +305,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +324,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramDescription basicGetDescription() {
@@ -334,7 +333,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +347,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,7 +364,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -382,7 +381,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -400,7 +399,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -417,7 +416,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -436,7 +435,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ConcernDescription basicGetCurrentConcern() {
@@ -445,7 +444,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +458,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -472,7 +471,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -490,7 +489,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -503,7 +502,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -516,7 +515,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -543,7 +542,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FilterVariableHistory basicGetFilterVariableHistory() {
@@ -552,7 +551,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetFilterVariableHistory(FilterVariableHistory newFilterVariableHistory, NotificationChain msgs) {
@@ -571,7 +570,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -595,7 +594,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -608,7 +607,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -618,7 +617,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -632,7 +631,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -645,7 +644,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -655,7 +654,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -669,7 +668,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -679,7 +678,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -693,7 +692,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -705,7 +704,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -717,7 +716,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -729,7 +728,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -741,7 +740,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -757,7 +756,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -814,7 +813,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -869,7 +868,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -917,7 +916,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -965,7 +964,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

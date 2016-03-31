@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.provider.ConditionalStyleDescrip
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyleDescriptionItemProvider {
@@ -71,7 +71,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
     /**
      * This returns ConditionalNodeStyleDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

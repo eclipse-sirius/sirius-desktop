@@ -20,12 +20,12 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramCreationDescription()
  * @model
@@ -40,7 +40,7 @@ public interface DiagramCreationDescription extends RepresentationCreationDescri
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Diagram Description</em>' reference.
      * @see #setDiagramDescription(DiagramDescription)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramCreationDescription_DiagramDescription()
@@ -54,7 +54,7 @@ public interface DiagramCreationDescription extends RepresentationCreationDescri
      * {@link org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription#getDiagramDescription
      * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Diagram Description</em>' reference.
      * @see #getDiagramDescription()

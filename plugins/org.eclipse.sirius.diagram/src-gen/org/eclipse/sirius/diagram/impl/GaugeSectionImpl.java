@@ -26,15 +26,16 @@ import org.eclipse.sirius.viewpoint.impl.CustomizableImpl;
  * <em><b>Gauge Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMin <em>Min
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMax <em>Max
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getValue <em>
- * Value</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getLabel <em>
- * Label</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMin
+ * <em>Min</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getMax
+ * <em>Max</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getValue
+ * <em>Value</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getLabel
+ * <em>Label</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
@@ -42,7 +43,6 @@ import org.eclipse.sirius.viewpoint.impl.CustomizableImpl;
  * {@link org.eclipse.sirius.diagram.impl.GaugeSectionImpl#getForegroundColor
  * <em>Foreground Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -90,7 +90,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getValue()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * The default value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -142,7 +142,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -153,7 +153,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * The default value of the '{@link #getForegroundColor()
      * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -164,7 +164,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * The cached value of the '{@link #getForegroundColor()
      * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getForegroundColor()
      * @generated
      * @ordered
@@ -173,7 +173,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeSectionImpl() {
@@ -182,7 +182,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -192,7 +192,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -250,7 +250,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -298,7 +298,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -322,7 +322,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -390,7 +390,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -420,7 +420,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -444,7 +444,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.Note;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.Note} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NoteItemProvider extends NodeStyleItemProvider {
@@ -72,7 +72,7 @@ public class NoteItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns Note.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class NoteItemProvider extends NodeStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class NoteItemProvider extends NodeStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

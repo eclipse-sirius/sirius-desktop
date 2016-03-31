@@ -19,13 +19,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getOwnedBorderedNodes
  * <em>Owned Bordered Nodes</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.AbstractDNode#getArrangeConstraints
  * <em>Arrange Constraints</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode()
  * @model interface="true" abstract="true"
@@ -58,7 +58,7 @@ public interface AbstractDNode extends DDiagramElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_ArrangeConstraints()

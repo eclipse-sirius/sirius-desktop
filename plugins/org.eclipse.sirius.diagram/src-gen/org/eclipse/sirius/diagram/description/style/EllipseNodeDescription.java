@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
  * <em>Vertical Diameter Computation Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEllipseNodeDescription()
  * @model
@@ -57,7 +57,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

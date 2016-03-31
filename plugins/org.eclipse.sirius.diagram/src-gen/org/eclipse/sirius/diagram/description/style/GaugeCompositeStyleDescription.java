@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.AlignmentKind;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.AlignmentKind;
  * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getSections
  * <em>Sections</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeCompositeStyleDescription()
  * @model

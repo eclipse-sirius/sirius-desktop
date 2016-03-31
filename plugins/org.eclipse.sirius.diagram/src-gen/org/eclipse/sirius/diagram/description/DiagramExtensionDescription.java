@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getLayers
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getConcerns
  * <em>Concerns</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramExtensionDescription()
  * @model
@@ -76,7 +76,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * {@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment
      *            reference.
@@ -104,7 +104,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * {@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription#getConcerns
      * <em>Concerns</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Concerns</em>' containment
      *            reference.

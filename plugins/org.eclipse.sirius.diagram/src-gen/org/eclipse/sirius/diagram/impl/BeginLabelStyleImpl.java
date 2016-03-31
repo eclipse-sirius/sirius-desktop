@@ -23,15 +23,13 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Begin Label Style</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class BeginLabelStyleImpl extends BasicLabelStyleImpl implements BeginLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BeginLabelStyleImpl() {
@@ -40,7 +38,7 @@ public class BeginLabelStyleImpl extends BasicLabelStyleImpl implements BeginLab
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

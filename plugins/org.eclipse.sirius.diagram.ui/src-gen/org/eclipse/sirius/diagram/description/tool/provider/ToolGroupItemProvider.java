@@ -74,15 +74,15 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -92,11 +92,11 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
-                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                        getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -106,7 +106,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
 
     /**
      * This returns ToolGroup.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -253,8 +253,8 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createSelectionWizardDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPaneBasedSelectionWizardDescription()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPaneBasedSelectionWizardDescription()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createOperationAction()));
 

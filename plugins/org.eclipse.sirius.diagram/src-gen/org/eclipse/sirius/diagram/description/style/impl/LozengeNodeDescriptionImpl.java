@@ -24,6 +24,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>Lozenge Node Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl#getWidthComputationExpression
@@ -35,7 +36,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl#getColor
  * <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -44,7 +44,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * The default value of the '{@link #getWidthComputationExpression()
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * The cached value of the '{@link #getWidthComputationExpression()
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * The default value of the '{@link #getHeightComputationExpression()
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
      * The cached value of the '{@link #getHeightComputationExpression()
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LozengeNodeDescriptionImpl() {
@@ -105,7 +105,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -139,7 +139,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetColor() {
@@ -191,7 +191,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -268,18 +268,18 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case StylePackage.LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
-            return LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null : !LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(widthComputationExpression);
+            return LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT == null ? widthComputationExpression != null
+                    : !LozengeNodeDescriptionImpl.WIDTH_COMPUTATION_EXPRESSION_EDEFAULT.equals(widthComputationExpression);
         case StylePackage.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
-            return LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null : !LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT
-                    .equals(heightComputationExpression);
+            return LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT == null ? heightComputationExpression != null
+                    : !LozengeNodeDescriptionImpl.HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT.equals(heightComputationExpression);
         case StylePackage.LOZENGE_NODE_DESCRIPTION__COLOR:
             return color != null;
         }
@@ -288,7 +288,7 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

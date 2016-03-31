@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
@@ -119,7 +119,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
     /**
      * This returns WorkspaceImageDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

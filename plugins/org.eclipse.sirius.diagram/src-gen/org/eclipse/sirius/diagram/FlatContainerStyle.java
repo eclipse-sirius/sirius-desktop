@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle
  * <em>Background Style</em>}</li>
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <li>{@link org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor
  * <em>Foreground Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getFlatContainerStyle()
  * @model
@@ -55,7 +55,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundStyle
      * <em>Background Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
@@ -83,7 +83,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getBackgroundColor
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -110,7 +110,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * {@link org.eclipse.sirius.diagram.FlatContainerStyle#getForegroundColor
      * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()

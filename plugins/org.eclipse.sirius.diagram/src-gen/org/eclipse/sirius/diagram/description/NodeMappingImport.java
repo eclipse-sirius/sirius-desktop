@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
  * <em>Imported Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMappingImport()
  * @model
@@ -54,7 +54,7 @@ public interface NodeMappingImport extends NodeMapping, AbstractMappingImport {
      * {@link org.eclipse.sirius.diagram.description.NodeMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Imported Mapping</em>' reference.
      * @see #getImportedMapping()

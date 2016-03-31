@@ -22,13 +22,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.EdgeTarget#getOutgoingEdges <em>
- * Outgoing Edges</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.EdgeTarget#getIncomingEdges <em>
- * Incoming Edges</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.EdgeTarget#getOutgoingEdges
+ * <em>Outgoing Edges</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.EdgeTarget#getIncomingEdges
+ * <em>Incoming Edges</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeTarget()
  * @model abstract="true"
@@ -42,7 +42,7 @@ public interface EdgeTarget extends EObject {
      * {@link org.eclipse.sirius.diagram.DEdge#getSourceNode
      * <em>Source Node</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The outgoing view edges. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Outgoing Edges</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeTarget_OutgoingEdges()
      * @see org.eclipse.sirius.diagram.DEdge#getSourceNode
@@ -58,7 +58,7 @@ public interface EdgeTarget extends EObject {
      * {@link org.eclipse.sirius.diagram.DEdge#getTargetNode
      * <em>Target Node</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The incoming view edges. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Incoming Edges</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeTarget_IncomingEdges()
      * @see org.eclipse.sirius.diagram.DEdge#getTargetNode

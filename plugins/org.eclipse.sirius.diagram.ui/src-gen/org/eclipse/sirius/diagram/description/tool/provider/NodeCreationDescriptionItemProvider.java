@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -74,11 +74,11 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * @generated
      */
     protected void addNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_nodeMappings_feature"), //$NON-NLS-1$
-                getString("_UI_NodeCreationDescription_nodeMappings_description"), //$NON-NLS-1$
-                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_NodeCreationDescription_nodeMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_NodeCreationDescription_nodeMappings_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -88,11 +88,11 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_iconPath_feature"), //$NON-NLS-1$
-                getString("_UI_NodeCreationDescription_iconPath_description"), //$NON-NLS-1$
-                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_NodeCreationDescription_iconPath_feature"), //$NON-NLS-1$
+                        getString("_UI_NodeCreationDescription_iconPath_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.NODE_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -102,11 +102,11 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * @generated
      */
     protected void addExtraMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_extraMappings_feature"), //$NON-NLS-1$
-                getString("_UI_NodeCreationDescription_extraMappings_description"), //$NON-NLS-1$
-                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_NodeCreationDescription_extraMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_NodeCreationDescription_extraMappings_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -116,7 +116,7 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
     /**
      * This returns NodeCreationDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,8 +205,8 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VARIABLE, ToolFactory.eINSTANCE.createNodeCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION,
                 org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation()));

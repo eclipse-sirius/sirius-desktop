@@ -35,43 +35,43 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getOwnedDiagramElements <em>
- * Owned Diagram Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDiagramElements <em>Diagram
- * Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDescription <em>Description
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getOwnedDiagramElements
+ * <em>Owned Diagram Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDiagramElements
+ * <em>Diagram Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDescription
+ * <em>Description</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getEdges <em>Edges</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getNodes <em>Nodes</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getNodeListElements <em>Node
- * List Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getContainers <em>Containers
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getCurrentConcern <em>Current
- * Concern</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedFilters <em>
- * Activated Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getAllFilters <em>All Filters
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedRules <em>
- * Activated Rules</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivateBehaviors <em>
- * Activate Behaviors</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getFilterVariableHistory <em>
- * Filter Variable History</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedLayers <em>
- * Activated Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#isSynchronized <em>
- * Synchronized</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHiddenElements <em>Hidden
- * Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode <em>Is In
- * Layouting Mode</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight <em>Header
- * Height</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getNodeListElements
+ * <em>Node List Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getContainers
+ * <em>Containers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getCurrentConcern
+ * <em>Current Concern</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedFilters
+ * <em>Activated Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getAllFilters
+ * <em>All Filters</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedRules
+ * <em>Activated Rules</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivateBehaviors
+ * <em>Activate Behaviors</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getFilterVariableHistory
+ * <em>Filter Variable History</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getActivatedLayers
+ * <em>Activated Layers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#isSynchronized
+ * <em>Synchronized</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHiddenElements
+ * <em>Hidden Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode
+ * <em>Is In Layouting Mode</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight
+ * <em>Header Height</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram()
  * @model
@@ -125,7 +125,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#getDescription
      * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' reference.
      * @see #getDescription()
@@ -208,7 +208,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#getCurrentConcern
      * <em>Current Concern</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Current Concern</em>' reference.
      * @see #getCurrentConcern()
@@ -284,7 +284,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Filter Variable History</em>' containment
      *         reference.
      * @see #setFilterVariableHistory(FilterVariableHistory)
@@ -318,7 +318,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Activated Layers</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_ActivatedLayers()
      * @model
@@ -334,7 +334,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Synchronized</em>' attribute.
      * @see #setSynchronized(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Synchronized()
@@ -348,7 +348,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#isSynchronized
      * <em>Synchronized</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Synchronized</em>' attribute.
      * @see #isSynchronized()
@@ -379,7 +379,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Is In Layouting Mode</em>' attribute.
      * @see #setIsInLayoutingMode(boolean)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_IsInLayoutingMode()
@@ -393,7 +393,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#isIsInLayoutingMode
      * <em>Is In Layouting Mode</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is In Layouting Mode</em>'
      *            attribute.
@@ -423,7 +423,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * {@link org.eclipse.sirius.diagram.DDiagram#getHeaderHeight
      * <em>Header Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Header Height</em>' attribute.
      * @see #getHeaderHeight()

@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getEdgeMappings
@@ -60,7 +61,6 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
  * <em>Connection Start Precondition</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getEdgeCreationDescription()
  * @model
@@ -103,7 +103,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getSourceVariable
      * <em>Source Variable</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Variable</em>' containment
      *            reference.
@@ -134,7 +134,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getTargetVariable
      * <em>Target Variable</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Variable</em>' containment
      *            reference.
@@ -224,7 +224,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -320,7 +320,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription#getConnectionStartPrecondition
      * <em>Connection Start Precondition</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Connection Start Precondition</em>'
      *            attribute.

@@ -31,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em><b>Delete Element Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl#getElement
@@ -48,7 +49,6 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteElementDescriptionImpl#getHook
  * <em>Hook</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -56,7 +56,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getElementView() <em>Element View</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getElementView()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
      * The cached value of the '{@link #getContainerView()
      * <em>Container View</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getContainerView()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getHook() <em>Hook</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHook()
      * @generated
      * @ordered
@@ -107,7 +107,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteElementDescriptionImpl() {
@@ -116,7 +116,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -153,7 +153,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementDeleteVariable basicGetElement() {
@@ -162,7 +162,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementDeleteVariable newElement, NotificationChain msgs) {
@@ -181,7 +181,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -205,7 +205,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +232,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementDeleteVariable basicGetElementView() {
@@ -241,7 +241,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElementView(ElementDeleteVariable newElementView, NotificationChain msgs) {
@@ -260,7 +260,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -311,7 +311,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerViewVariable basicGetContainerView() {
@@ -320,7 +320,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetContainerView(ContainerViewVariable newContainerView, NotificationChain msgs) {
@@ -339,7 +339,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -390,7 +390,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -399,7 +399,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -418,7 +418,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -442,7 +442,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -469,7 +469,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DeleteHook basicGetHook() {
@@ -478,7 +478,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetHook(DeleteHook newHook, NotificationChain msgs) {
@@ -497,7 +497,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -521,7 +521,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -533,7 +533,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -555,7 +555,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -592,7 +592,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -619,7 +619,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -646,7 +646,7 @@ public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

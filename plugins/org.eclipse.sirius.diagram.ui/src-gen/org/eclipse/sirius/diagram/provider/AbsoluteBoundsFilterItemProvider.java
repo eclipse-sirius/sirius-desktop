@@ -38,8 +38,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  *
  * @generated
  */
-public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -72,27 +72,27 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implem
     /**
      * This adds a property descriptor for the X feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addXPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_x_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_x_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__X, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbsoluteBoundsFilter_x_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_x_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__X, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Y feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addYPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_y_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_y_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__Y, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbsoluteBoundsFilter_y_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_y_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__Y, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -102,10 +102,10 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implem
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_height_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_height_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbsoluteBoundsFilter_height_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_height_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -115,16 +115,16 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implem
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_width_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_width_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbsoluteBoundsFilter_width_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_width_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns AbsoluteBoundsFilter.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implem
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class AbsoluteBoundsFilterItemProvider extends ItemProviderAdapter implem
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

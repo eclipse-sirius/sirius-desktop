@@ -19,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
  * <em>Arc Height</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription()
  * @model abstract="true"
@@ -80,7 +80,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
      * <em>Arc Height</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Arc Height</em>' attribute.
      * @see #getArcHeight()

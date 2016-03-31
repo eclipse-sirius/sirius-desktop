@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout#getChildrenExpression
@@ -27,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout#getNodeMapping
  * <em>Node Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getOrderedTreeLayout()
  * @model
@@ -57,7 +57,7 @@ public interface OrderedTreeLayout extends Layout {
      * {@link org.eclipse.sirius.diagram.description.OrderedTreeLayout#getChildrenExpression
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Expression</em>' attribute.
      * @see #getChildrenExpression()

@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.concern.ConcernSet#getOwnedConcernDescriptions
  * <em>Owned Concern Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet()
  * @model

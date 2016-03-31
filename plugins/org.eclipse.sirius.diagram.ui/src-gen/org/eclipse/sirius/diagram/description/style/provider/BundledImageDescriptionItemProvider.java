@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.internal.queries.BundledImageExtensionQuery;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
@@ -70,11 +70,11 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_shape_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BundledImageDescription_shape_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -84,11 +84,11 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_color_feature"), //$NON-NLS-1$
-                getString("_UI_BundledImageDescription_color_description"), //$NON-NLS-1$
-                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BundledImageDescription_color_feature"), //$NON-NLS-1$
+                        getString("_UI_BundledImageDescription_color_description"), //$NON-NLS-1$
+                        StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -107,7 +107,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
     /**
      * This returns BundledImageDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

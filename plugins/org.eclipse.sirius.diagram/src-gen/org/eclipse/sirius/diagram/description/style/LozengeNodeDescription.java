@@ -22,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression
@@ -33,7 +34,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getColor
  * <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getLozengeNodeDescription()
  * @model
@@ -63,7 +63,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width Computation Expression</em>'
      *            attribute.
@@ -95,7 +95,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height Computation Expression</em>'
      *            attribute.
@@ -121,7 +121,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

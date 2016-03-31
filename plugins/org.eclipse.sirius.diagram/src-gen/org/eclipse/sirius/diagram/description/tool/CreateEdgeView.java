@@ -17,6 +17,7 @@ package org.eclipse.sirius.diagram.description.tool;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression
@@ -25,7 +26,6 @@ package org.eclipse.sirius.diagram.description.tool;
  * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression
  * <em>Target Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView()
  * @model
@@ -40,14 +40,14 @@ public interface CreateEdgeView extends CreateView {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Expression</em>' attribute.
      * @see #setSourceExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView_SourceExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -59,7 +59,7 @@ public interface CreateEdgeView extends CreateView {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getSourceExpression
      * <em>Source Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Expression</em>' attribute.
      * @see #getSourceExpression()
@@ -75,14 +75,14 @@ public interface CreateEdgeView extends CreateView {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Expression</em>' attribute.
      * @see #setTargetExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView_TargetExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
-     *        required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -94,7 +94,7 @@ public interface CreateEdgeView extends CreateView {
      * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView#getTargetExpression
      * <em>Target Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Expression</em>' attribute.
      * @see #getTargetExpression()

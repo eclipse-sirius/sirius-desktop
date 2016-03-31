@@ -23,17 +23,17 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle <em>
- * Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle <em>
- * Original Style</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping <em>
- * Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle
+ * <em>Owned Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
+ * <em>Original Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
+ * <em>Actual Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNodeListElement#getCandidatesMapping
  * <em>Candidates Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeListElement()
  * @model
@@ -58,7 +58,7 @@ public interface DNodeListElement extends AbstractDNode {
      * {@link org.eclipse.sirius.diagram.DNodeListElement#getOwnedStyle
      * <em>Owned Style</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owned Style</em>' containment
      *            reference.
@@ -86,7 +86,7 @@ public interface DNodeListElement extends AbstractDNode {
      * {@link org.eclipse.sirius.diagram.DNodeListElement#getOriginalStyle
      * <em>Original Style</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Original Style</em>' reference.
      * @see #getOriginalStyle()
@@ -112,7 +112,7 @@ public interface DNodeListElement extends AbstractDNode {
      * {@link org.eclipse.sirius.diagram.DNodeListElement#getActualMapping
      * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Actual Mapping</em>' reference.
      * @see #getActualMapping()

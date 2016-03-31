@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider {
@@ -88,11 +88,11 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerCreationDescription_iconPath_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerCreationDescription_iconPath_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerCreationDescription_iconPath_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerCreationDescription_iconPath_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -116,7 +116,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
     /**
      * This returns ContainerCreationDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

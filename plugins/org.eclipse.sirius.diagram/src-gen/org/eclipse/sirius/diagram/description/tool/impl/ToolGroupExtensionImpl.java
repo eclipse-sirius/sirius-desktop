@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <em><b>Group Extension</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl#getGroup
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolGroupExtensionImpl#getTools
  * <em>Tools</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -48,7 +48,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getGroup() <em>Group</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getGroup()
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
     /**
      * The cached value of the '{@link #getTools() <em>Tools</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTools()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolGroupExtensionImpl() {
@@ -76,7 +76,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ToolGroup basicGetGroup() {
@@ -114,7 +114,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -194,7 +194,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

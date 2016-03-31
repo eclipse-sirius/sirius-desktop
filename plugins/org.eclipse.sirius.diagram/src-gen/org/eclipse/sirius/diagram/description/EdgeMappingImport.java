@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMappingImport()
  * @model
@@ -58,7 +58,7 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Imported Mapping</em>' reference.
      * @see #getImportedMapping()
@@ -101,7 +101,7 @@ public interface EdgeMappingImport extends DocumentedElement, IEdgeMapping, Iden
      * {@link org.eclipse.sirius.diagram.description.EdgeMappingImport#isInheritsAncestorFilters
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Inherits Ancestor Filters</em>'
      *            attribute.

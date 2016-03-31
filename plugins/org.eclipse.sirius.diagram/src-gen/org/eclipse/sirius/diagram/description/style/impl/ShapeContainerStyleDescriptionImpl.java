@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>Shape Container Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getWidthComputationExpression
@@ -40,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -49,7 +49,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * The default value of the '{@link #getWidthComputationExpression()
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * The cached value of the '{@link #getWidthComputationExpression()
      * <em>Width Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidthComputationExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * The default value of the '{@link #getHeightComputationExpression()
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * The cached value of the '{@link #getHeightComputationExpression()
      * <em>Height Computation Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeightComputationExpression()
      * @generated
      * @ordered
@@ -92,7 +92,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -102,7 +102,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
     /**
      * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -113,7 +113,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -122,7 +122,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ShapeContainerStyleDescriptionImpl() {
@@ -131,7 +131,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -176,7 +176,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -243,7 +243,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -280,7 +280,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +304,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -350,7 +350,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +370,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -390,7 +390,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

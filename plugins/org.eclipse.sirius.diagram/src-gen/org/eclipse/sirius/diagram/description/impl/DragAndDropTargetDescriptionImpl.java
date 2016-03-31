@@ -26,12 +26,12 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
  * <em>Drop Descriptions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
      * The cached value of the '{@link #getDropDescriptions()
      * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDropDescriptions()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DragAndDropTargetDescriptionImpl() {
@@ -58,7 +58,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -112,7 +112,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

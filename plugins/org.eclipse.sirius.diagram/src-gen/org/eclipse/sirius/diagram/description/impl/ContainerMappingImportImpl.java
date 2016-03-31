@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  * <em><b>Container Mapping Import</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImportImpl#isHideSubMappings
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  * {@link org.eclipse.sirius.diagram.description.impl.ContainerMappingImportImpl#getImportedMapping
  * <em>Imported Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -45,7 +45,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * The default value of the '{@link #isHideSubMappings()
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * The cached value of the '{@link #isHideSubMappings()
      * <em>Hide Sub Mappings</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isHideSubMappings()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * The default value of the '{@link #isInheritsAncestorFilters()
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * The cached value of the '{@link #isInheritsAncestorFilters()
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
      * The cached value of the '{@link #getImportedMapping()
      * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getImportedMapping()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContainerMappingImportImpl() {
@@ -107,7 +107,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -117,7 +117,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerMapping basicGetImportedMapping() {
@@ -193,7 +193,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,7 +207,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class ContainerMappingImportImpl extends ContainerMappingImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

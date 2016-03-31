@@ -36,11 +36,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class ToolGroupExtensionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -74,10 +74,10 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
      * @generated
      */
     protected void addGroupPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ToolGroupExtension_group_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ToolGroupExtension_group_feature", "_UI_ToolGroupExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.TOOL_GROUP_EXTENSION__GROUP, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ToolGroupExtension_group_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ToolGroupExtension_group_feature", "_UI_ToolGroupExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.TOOL_GROUP_EXTENSION__GROUP, true, false, true, null, null, null));
     }
 
     /**
@@ -87,7 +87,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
     /**
      * This returns ToolGroupExtension.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,8 +194,8 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPasteDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createSelectionWizardDescription()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createSelectionWizardDescription()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS,
                 org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPaneBasedSelectionWizardDescription()));
@@ -204,8 +204,8 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaAction()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createExternalJavaActionCall()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP_EXTENSION__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPopupMenu()));
     }

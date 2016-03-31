@@ -38,11 +38,11 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -77,7 +77,7 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter imp
     /**
      * This adds a property descriptor for the Min Value Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMinValueExpressionPropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter imp
     /**
      * This adds a property descriptor for the Max Value Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMaxValueExpressionPropertyDescriptor(Object object) {
@@ -148,16 +148,16 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter imp
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSectionDescription_label_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSectionDescription_label_feature", "_UI_GaugeSectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                StylePackage.Literals.GAUGE_SECTION_DESCRIPTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GaugeSectionDescription_label_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GaugeSectionDescription_label_feature", "_UI_GaugeSectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        StylePackage.Literals.GAUGE_SECTION_DESCRIPTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns GaugeSectionDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -190,7 +190,7 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter imp
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -22,12 +22,12 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * <em><b>Custom Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl#getId
  * <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -54,7 +54,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CustomStyleDescriptionImpl() {
@@ -63,7 +63,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -73,7 +73,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -111,7 +111,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +155,7 @@ public class CustomStyleDescriptionImpl extends NodeStyleDescriptionImpl impleme
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

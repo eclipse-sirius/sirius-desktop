@@ -35,8 +35,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  *
  * @generated
  */
-public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -66,7 +66,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter imp
     /**
      * This adds a property descriptor for the Composite Filter Descriptions
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCompositeFilterDescriptionsPropertyDescriptor(Object object) {
@@ -79,7 +79,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter imp
     /**
      * This returns AppliedCompositeFilters.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -90,7 +90,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter imp
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter imp
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

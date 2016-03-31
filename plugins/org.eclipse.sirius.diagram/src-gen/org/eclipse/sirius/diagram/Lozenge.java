@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.Lozenge#getWidth <em>Width</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Lozenge#getHeight <em>Height</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Lozenge#getColor <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getLozenge()
  * @model
@@ -38,7 +38,7 @@ public interface Lozenge extends NodeStyle {
      * Returns the value of the '<em><b>Width</b></em>' attribute. The default
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The width of the lozenge. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getLozenge_Width()
@@ -48,10 +48,9 @@ public interface Lozenge extends NodeStyle {
     Integer getWidth();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Lozenge#getWidth <em>Width</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Lozenge#getWidth
+     * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -64,7 +63,7 @@ public interface Lozenge extends NodeStyle {
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The height of the lozenge. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getLozenge_Height()
@@ -77,7 +76,7 @@ public interface Lozenge extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.Lozenge#getHeight <em>Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -103,10 +102,9 @@ public interface Lozenge extends NodeStyle {
     RGBValues getColor();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Lozenge#getColor <em>Color</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Lozenge#getColor
+     * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()

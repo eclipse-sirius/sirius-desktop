@@ -19,12 +19,12 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
  * <em>Imported Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramImportDescription()
  * @model
@@ -49,7 +49,7 @@ public interface DiagramImportDescription extends RepresentationImportDescriptio
      * {@link org.eclipse.sirius.diagram.description.DiagramImportDescription#getImportedDiagram
      * <em>Imported Diagram</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Imported Diagram</em>' reference.
      * @see #getImportedDiagram()

@@ -20,6 +20,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape
@@ -28,7 +29,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getShapeContainerStyleDescription()
  * @model
@@ -45,7 +45,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
      * @see #setShape(ContainerShape)
@@ -59,7 +59,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape
      * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.ContainerShape
@@ -86,7 +86,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.Lozenge;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.Lozenge} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LozengeItemProvider extends NodeStyleItemProvider {
@@ -97,7 +97,7 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns Lozenge.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

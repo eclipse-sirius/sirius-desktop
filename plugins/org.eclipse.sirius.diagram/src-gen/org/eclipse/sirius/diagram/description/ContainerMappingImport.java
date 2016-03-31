@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.ContainerMappingImport#getImportedMapping
  * <em>Imported Mapping</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMappingImport()
  * @model
@@ -54,7 +54,7 @@ public interface ContainerMappingImport extends ContainerMapping, AbstractMappin
      * {@link org.eclipse.sirius.diagram.description.ContainerMappingImport#getImportedMapping
      * <em>Imported Mapping</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Imported Mapping</em>' reference.
      * @see #getImportedMapping()

@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.style.provider.BasicLabelStyleDe
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptionItemProvider {
@@ -58,7 +58,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
     /**
      * This returns CenterLabelStyleDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

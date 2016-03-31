@@ -40,11 +40,11 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.DiagramExtensionDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -77,7 +77,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
@@ -95,8 +95,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addViewpointURIPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_RepresentationExtensionDescription_viewpointURI_feature"), //$NON-NLS-1$
                 getString("_UI_RepresentationExtensionDescription_viewpointURI_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__VIEWPOINT_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -111,8 +110,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addRepresentationNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_RepresentationExtensionDescription_representationName_feature"), //$NON-NLS-1$
                 getString("_UI_RepresentationExtensionDescription_representationName_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__REPRESENTATION_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -141,7 +139,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +155,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +170,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns DiagramExtensionDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -183,7 +181,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +196,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,8 +229,8 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS,
-                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET,
                 ValidationFactory.eINSTANCE.createValidationSet()));
@@ -252,14 +250,14 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS,
-                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET,
                 ValidationFactory.eINSTANCE.createValidationSet()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS,
-                ConcernFactory.eINSTANCE.createConcernSet()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
     }
 
     /**

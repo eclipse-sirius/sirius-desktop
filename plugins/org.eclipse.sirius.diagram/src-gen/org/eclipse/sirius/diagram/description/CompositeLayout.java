@@ -17,6 +17,7 @@ package org.eclipse.sirius.diagram.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.CompositeLayout#getPadding
  * <em>Padding</em>}</li>
@@ -24,7 +25,6 @@ package org.eclipse.sirius.diagram.description;
  * {@link org.eclipse.sirius.diagram.description.CompositeLayout#getDirection
  * <em>Direction</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCompositeLayout()
  * @model
@@ -39,7 +39,7 @@ public interface CompositeLayout extends Layout {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Padding</em>' attribute.
      * @see #setPadding(int)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getCompositeLayout_Padding()

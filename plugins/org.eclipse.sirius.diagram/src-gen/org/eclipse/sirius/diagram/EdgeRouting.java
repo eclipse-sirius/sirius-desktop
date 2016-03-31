@@ -31,7 +31,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * The '<em><b>Straight</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #STRAIGHT
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * The '<em><b>Manhattan</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #MANHATTAN
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * The '<em><b>Tree</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #TREE
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public enum EdgeRouting implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #STRAIGHT_LITERAL
      * @model name="straight"
      * @generated
@@ -80,7 +80,7 @@ public enum EdgeRouting implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #MANHATTAN_LITERAL
      * @model name="manhattan"
      * @generated
@@ -95,7 +95,7 @@ public enum EdgeRouting implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TREE_LITERAL
      * @model name="tree"
      * @generated
@@ -114,7 +114,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Edge Routing</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<EdgeRouting> VALUES = Collections.unmodifiableList(Arrays.asList(EdgeRouting.VALUES_ARRAY));
@@ -122,7 +122,10 @@ public enum EdgeRouting implements Enumerator {
     /**
      * Returns the '<em><b>Edge Routing</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeRouting get(String literal) {
@@ -137,7 +140,10 @@ public enum EdgeRouting implements Enumerator {
     /**
      * Returns the '<em><b>Edge Routing</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeRouting getByName(String name) {
@@ -152,7 +158,10 @@ public enum EdgeRouting implements Enumerator {
     /**
      * Returns the '<em><b>Edge Routing</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeRouting get(int value) {
@@ -169,21 +178,21 @@ public enum EdgeRouting implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -191,7 +200,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EdgeRouting(int value, String name, String literal) {
@@ -202,7 +211,7 @@ public enum EdgeRouting implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -212,7 +221,7 @@ public enum EdgeRouting implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +231,7 @@ public enum EdgeRouting implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -233,7 +242,7 @@ public enum EdgeRouting implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

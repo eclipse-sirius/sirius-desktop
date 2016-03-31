@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * <em><b>Delete Hook</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl#getId
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.diagram.description.tool.impl.DeleteHookImpl#getParameters
  * <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -67,7 +67,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getParameters()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DeleteHookImpl() {
@@ -85,7 +85,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +182,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

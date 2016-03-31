@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreation
  * <em><b>Diagram Creation Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.DiagramCreationDescriptionImpl#getDiagramDescription
  * <em>Diagram Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
      * The cached value of the '{@link #getDiagramDescription()
      * <em>Diagram Description</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getDiagramDescription()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DiagramCreationDescriptionImpl() {
@@ -57,7 +57,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,7 +67,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramDescription basicGetDiagramDescription() {
@@ -95,7 +95,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -126,7 +126,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -141,7 +141,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class DiagramCreationDescriptionImpl extends RepresentationCreationDescri
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

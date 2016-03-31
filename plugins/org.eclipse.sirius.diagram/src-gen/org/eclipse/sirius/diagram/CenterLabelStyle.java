@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 public interface CenterLabelStyle extends BasicLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model kind="operation"
      * @generated
      */
@@ -36,7 +36,7 @@ public interface CenterLabelStyle extends BasicLabelStyle {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

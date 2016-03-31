@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
@@ -60,21 +60,21 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This adds a property descriptor for the Id feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CustomStyleDescription_id_feature"), //$NON-NLS-1$
-                getString("_UI_CustomStyleDescription_id_description"), //$NON-NLS-1$
-                StylePackage.Literals.CUSTOM_STYLE_DESCRIPTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomStyleDescription_id_feature"), //$NON-NLS-1$
+                        getString("_UI_CustomStyleDescription_id_description"), //$NON-NLS-1$
+                        StylePackage.Literals.CUSTOM_STYLE_DESCRIPTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns CustomStyleDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

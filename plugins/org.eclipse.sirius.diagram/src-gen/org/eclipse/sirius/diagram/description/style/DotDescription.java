@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.DotDescription#getBackgroundColor
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.DotDescription#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getDotDescription()
  * @model
@@ -54,7 +54,7 @@ public interface DotDescription extends NodeStyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.DotDescription#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

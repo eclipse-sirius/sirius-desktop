@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.WorkspaceImage} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
@@ -64,17 +64,17 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addWorkspacePathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_WorkspaceImage_workspacePath_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_WorkspaceImage_workspacePath_feature", "_UI_WorkspaceImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WorkspaceImage_workspacePath_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WorkspaceImage_workspacePath_feature", "_UI_WorkspaceImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns WorkspaceImage.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

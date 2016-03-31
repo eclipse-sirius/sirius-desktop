@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
@@ -63,7 +63,7 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This adds a property descriptor for the Width Computation Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
@@ -76,7 +76,7 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     /**
      * This adds a property descriptor for the Height Computation Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
@@ -93,17 +93,17 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LozengeNodeDescription_color_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_color_feature", "_UI_LozengeNodeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LozengeNodeDescription_color_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_color_feature", "_UI_LozengeNodeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns LozengeNodeDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

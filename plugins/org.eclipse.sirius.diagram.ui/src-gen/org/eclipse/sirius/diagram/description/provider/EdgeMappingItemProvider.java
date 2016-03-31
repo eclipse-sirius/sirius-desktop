@@ -84,11 +84,11 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
-                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -98,11 +98,11 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addSourceMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeMapping_sourceMapping_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_sourceMapping_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__SOURCE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_sourceMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_sourceMapping_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__SOURCE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -112,43 +112,41 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addTargetMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeMapping_targetMapping_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_targetMapping_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_targetMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_targetMapping_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Target Finder Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTargetFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_EdgeMapping_targetFinderExpression_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_targetFinderExpression_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_targetFinderExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_targetFinderExpression_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Source Finder Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSourceFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_EdgeMapping_sourceFinderExpression_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_sourceFinderExpression_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_sourceFinderExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_sourceFinderExpression_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -158,13 +156,12 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_EdgeMapping_targetExpression_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_targetExpression_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_targetExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_targetExpression_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__TARGET_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -174,13 +171,12 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_EdgeMapping_domainClass_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_domainClass_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_domainClass_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -203,11 +199,11 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addReconnectionsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeMapping_reconnections_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeMapping_reconnections_feature", "_UI_EdgeMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__RECONNECTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_reconnections_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeMapping_reconnections_feature", "_UI_EdgeMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__RECONNECTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -217,13 +213,12 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addPathExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_EdgeMapping_pathExpression_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_pathExpression_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__PATH_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_PathPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_pathExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_pathExpression_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__PATH_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_PathPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -233,11 +228,11 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * @generated
      */
     protected void addPathNodeMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeMapping_pathNodeMapping_feature"), //$NON-NLS-1$
-                getString("_UI_EdgeMapping_pathNodeMapping_description"), //$NON-NLS-1$
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__PATH_NODE_MAPPING, true, false, true, null, getString("_UI_PathPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeMapping_pathNodeMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_EdgeMapping_pathNodeMapping_description"), //$NON-NLS-1$
+                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.EDGE_MAPPING__PATH_NODE_MAPPING, true, false, true, null, getString("_UI_PathPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -247,7 +242,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -262,7 +257,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +304,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

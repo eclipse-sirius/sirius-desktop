@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.Square#getWidth <em>Width</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Square#getHeight <em>Height</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Square#getColor <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getSquare()
  * @model
@@ -39,7 +39,7 @@ public interface Square extends NodeStyle {
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Return all nodes that have been created with the
      * specified mapping. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getSquare_Width()
@@ -51,7 +51,7 @@ public interface Square extends NodeStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.Square#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -63,7 +63,7 @@ public interface Square extends NodeStyle {
      * Returns the value of the '<em><b>Height</b></em>' attribute. The default
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> The height of the square. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getSquare_Height()
@@ -73,10 +73,10 @@ public interface Square extends NodeStyle {
     Integer getHeight();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.Square#getHeight <em>Height</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link org.eclipse.sirius.diagram.Square#getHeight
+     * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -104,7 +104,7 @@ public interface Square extends NodeStyle {
     /**
      * Sets the value of the '{@link org.eclipse.sirius.diagram.Square#getColor
      * <em>Color</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()

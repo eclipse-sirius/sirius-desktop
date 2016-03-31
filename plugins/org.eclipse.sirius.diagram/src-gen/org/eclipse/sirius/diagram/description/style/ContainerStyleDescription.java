@@ -22,12 +22,12 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
  * <em>Rounded Corner</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getContainerStyleDescription()
  * @model abstract="true"
@@ -53,7 +53,7 @@ public interface ContainerStyleDescription extends RoundedCornerStyleDescription
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
      * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Rounded Corner</em>' attribute.
      * @see #isRoundedCorner()

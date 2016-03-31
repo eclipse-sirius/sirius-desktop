@@ -23,12 +23,12 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em><b>Request Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.RequestDescriptionImpl#getType
  * <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
     /**
      * The default value of the '{@link #getType() <em>Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getType()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
     /**
      * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getType()
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RequestDescriptionImpl() {
@@ -64,7 +64,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -84,7 +84,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

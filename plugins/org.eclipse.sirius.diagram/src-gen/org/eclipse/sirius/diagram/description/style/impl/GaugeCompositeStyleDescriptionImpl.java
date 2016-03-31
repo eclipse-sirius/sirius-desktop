@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * <em><b>Gauge Composite Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getAlignment
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl#getSections
  * <em>Sections</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -47,7 +47,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     /**
      * The default value of the '{@link #getAlignment() <em>Alignment</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     /**
      * The cached value of the '{@link #getAlignment() <em>Alignment</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getAlignment()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     /**
      * The cached value of the '{@link #getSections() <em>Sections</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSections()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GaugeCompositeStyleDescriptionImpl() {
@@ -85,7 +85,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -182,7 +182,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +216,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

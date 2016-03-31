@@ -34,6 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em><b>Reconnect Edge Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl#getReconnectionKind
@@ -60,7 +61,6 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl#getEdgeView
  * <em>Edge View</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -69,7 +69,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * The default value of the '{@link #getReconnectionKind()
      * <em>Reconnection Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReconnectionKind()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * The cached value of the '{@link #getReconnectionKind()
      * <em>Reconnection Kind</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReconnectionKind()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getSourceView() <em>Source View</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceView()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getTargetView() <em>Target View</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetView()
      * @generated
      * @ordered
@@ -130,7 +130,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getElement() <em>Element</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getElement()
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -151,7 +151,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
     /**
      * The cached value of the '{@link #getEdgeView() <em>Edge View</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEdgeView()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReconnectEdgeDescriptionImpl() {
@@ -169,7 +169,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +203,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeCreationVariable basicGetSource() {
@@ -239,7 +239,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSource(SourceEdgeCreationVariable newSource, NotificationChain msgs) {
@@ -258,7 +258,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeCreationVariable basicGetTarget() {
@@ -318,7 +318,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTarget(TargetEdgeCreationVariable newTarget, NotificationChain msgs) {
@@ -337,7 +337,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -361,7 +361,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -388,7 +388,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public SourceEdgeViewCreationVariable basicGetSourceView() {
@@ -397,7 +397,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceView(SourceEdgeViewCreationVariable newSourceView, NotificationChain msgs) {
@@ -416,7 +416,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -440,7 +440,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -467,7 +467,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TargetEdgeViewCreationVariable basicGetTargetView() {
@@ -476,7 +476,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetView(TargetEdgeViewCreationVariable newTargetView, NotificationChain msgs) {
@@ -495,7 +495,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -519,7 +519,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -546,7 +546,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable basicGetElement() {
@@ -555,7 +555,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetElement(ElementSelectVariable newElement, NotificationChain msgs) {
@@ -574,7 +574,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -598,7 +598,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -625,7 +625,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InitialOperation basicGetInitialOperation() {
@@ -634,7 +634,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -653,7 +653,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -677,7 +677,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -704,7 +704,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ElementSelectVariable basicGetEdgeView() {
@@ -713,7 +713,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetEdgeView(ElementSelectVariable newEdgeView, NotificationChain msgs) {
@@ -732,7 +732,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -756,7 +756,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -768,7 +768,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -794,7 +794,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -843,7 +843,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -879,7 +879,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -915,7 +915,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -943,7 +943,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

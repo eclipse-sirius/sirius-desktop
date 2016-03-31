@@ -67,15 +67,15 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
     /**
      * This adds a property descriptor for the Create If Not Existent feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCreateIfNotExistentPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Navigation_createIfNotExistent_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Navigation_createIfNotExistent_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.NAVIGATION__CREATE_IF_NOT_EXISTENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Navigation_createIfNotExistent_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Navigation_createIfNotExistent_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.NAVIGATION__CREATE_IF_NOT_EXISTENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -85,11 +85,11 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
      * @generated
      */
     protected void addDiagramDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Navigation_diagramDescription_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_Navigation_diagramDescription_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                ToolPackage.Literals.NAVIGATION__DIAGRAM_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Navigation_diagramDescription_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_Navigation_diagramDescription_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ToolPackage.Literals.NAVIGATION__DIAGRAM_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -124,7 +124,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,14 +150,14 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createCreateView()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createCreateEdgeView()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createNavigation()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**

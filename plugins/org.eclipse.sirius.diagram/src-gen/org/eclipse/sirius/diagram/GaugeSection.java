@@ -23,17 +23,19 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getMin <em>Min</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getMax <em>Max</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getValue <em>Value</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getLabel <em>Label</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor <em>
- * Background Color</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getForegroundColor <em>
- * Foreground Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getValue <em>Value</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getLabel <em>Label</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor
+ * <em>Background Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.GaugeSection#getForegroundColor
+ * <em>Foreground Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getGaugeSection()
  * @model
@@ -57,7 +59,7 @@ public interface GaugeSection extends Customizable {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getMin <em>Min</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Min</em>' attribute.
      * @see #getMin()
@@ -82,7 +84,7 @@ public interface GaugeSection extends Customizable {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getMax <em>Max</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Max</em>' attribute.
      * @see #getMax()
@@ -107,7 +109,7 @@ public interface GaugeSection extends Customizable {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getValue <em>Value</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value</em>' attribute.
      * @see #getValue()
@@ -132,7 +134,7 @@ public interface GaugeSection extends Customizable {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getLabel <em>Label</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -159,7 +161,7 @@ public interface GaugeSection extends Customizable {
      * {@link org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor
      * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
@@ -186,7 +188,7 @@ public interface GaugeSection extends Customizable {
      * {@link org.eclipse.sirius.diagram.GaugeSection#getForegroundColor
      * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()

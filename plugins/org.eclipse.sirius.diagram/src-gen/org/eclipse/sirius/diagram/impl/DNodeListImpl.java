@@ -28,11 +28,11 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em><b>DNode List</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.impl.DNodeListImpl#getOwnedElements
  * <em>Owned Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -41,7 +41,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * The cached value of the '{@link #getOwnedElements()
      * <em>Owned Elements</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedElements()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DNodeListImpl() {
@@ -59,7 +59,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -69,7 +69,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +82,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -127,7 +127,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

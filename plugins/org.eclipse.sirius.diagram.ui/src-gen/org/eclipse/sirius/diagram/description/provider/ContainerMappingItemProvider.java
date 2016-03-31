@@ -91,31 +91,31 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * @generated
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_allNodeMappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allNodeMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_NODE_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_allNodeMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allNodeMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_NODE_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Reused Node Mappings feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_reusedNodeMappings_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerMapping_reusedNodeMappings_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_reusedNodeMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerMapping_reusedNodeMappings_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Reused Container Mappings
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReusedContainerMappingsPropertyDescriptor(Object object) {
@@ -129,29 +129,29 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This adds a property descriptor for the All Container Mappings feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAllContainerMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_allContainerMappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allContainerMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_allContainerMappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allContainerMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Children Presentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChildrenPresentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_childrenPresentation_feature"), //$NON-NLS-1$
-                getString("_UI_ContainerMapping_childrenPresentation_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.CONTAINER_MAPPING__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_childrenPresentation_feature"), //$NON-NLS-1$
+                        getString("_UI_ContainerMapping_childrenPresentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.CONTAINER_MAPPING__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -161,7 +161,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     /**
      * This returns ContainerMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -249,7 +249,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated: <UL>
+     * @not-generated:
+     *                 <UL>
      *                 <LI>Add a default semantic candidate expression at
      *                 creation time.</LI>
      *                 <LI>Set to 1 the default borderSizeComputationExpression
@@ -265,8 +266,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, createNodeMapping));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createNodeMappingImport()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMappingImport()));
 
         ContainerMapping createContainerMapping = DescriptionFactory.eINSTANCE.createContainerMapping();
         createContainerMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
@@ -283,8 +284,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         shapeContainerStyleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, shapeContainerStyleDescription));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE,
-                StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalContainerStyleDescription()));

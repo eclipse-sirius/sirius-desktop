@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup
@@ -29,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getTools
  * <em>Tools</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroupExtension()
  * @model
@@ -57,7 +57,7 @@ public interface ToolGroupExtension extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.tool.ToolGroupExtension#getGroup
      * <em>Group</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Group</em>' reference.
      * @see #getGroup()
@@ -75,7 +75,7 @@ public interface ToolGroupExtension extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Tools</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroupExtension_Tools()
      * @model containment="true" resolveProxies="true"

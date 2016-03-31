@@ -37,14 +37,14 @@ import org.eclipse.sirius.diagram.description.filter.util.FilterAdapterFactory;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FilterItemProviderAdapterFactory extends FilterAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -62,7 +62,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -85,7 +85,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MappingFilterItemProvider mappingFilterItemProvider;
@@ -110,7 +110,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CompositeFilterDescriptionItemProvider compositeFilterDescriptionItemProvider;
@@ -119,7 +119,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected VariableFilterItemProvider variableFilterItemProvider;
@@ -144,7 +144,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
      * This creates an adapter for a
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -191,7 +191,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -201,7 +201,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

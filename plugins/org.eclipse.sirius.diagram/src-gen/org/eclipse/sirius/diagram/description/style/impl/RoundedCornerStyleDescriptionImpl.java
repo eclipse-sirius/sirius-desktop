@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * <em><b>Rounded Corner Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl#getArcWidth
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl#getArcHeight
  * <em>Arc Height</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -39,7 +39,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     /**
      * The default value of the '{@link #getArcWidth() <em>Arc Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     /**
      * The cached value of the '{@link #getArcWidth() <em>Arc Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -59,7 +59,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     /**
      * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -69,7 +69,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
     /**
      * The cached value of the '{@link #getArcHeight() <em>Arc Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RoundedCornerStyleDescriptionImpl() {
@@ -87,7 +87,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -107,7 +107,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -131,7 +131,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +179,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

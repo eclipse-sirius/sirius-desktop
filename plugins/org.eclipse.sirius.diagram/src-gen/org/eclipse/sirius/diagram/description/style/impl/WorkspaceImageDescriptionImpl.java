@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * <em><b>Workspace Image Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getArcWidth
@@ -38,7 +39,6 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl#getWorkspacePath
  * <em>Workspace Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -46,7 +46,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     /**
      * The default value of the '{@link #getArcWidth() <em>Arc Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     /**
      * The cached value of the '{@link #getArcWidth() <em>Arc Width</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcWidth()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     /**
      * The default value of the '{@link #getArcHeight() <em>Arc Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
     /**
      * The cached value of the '{@link #getArcHeight() <em>Arc Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getArcHeight()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * The default value of the '{@link #isRoundedCorner()
      * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * The cached value of the '{@link #isRoundedCorner()
      * <em>Rounded Corner</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isRoundedCorner()
      * @generated
      * @ordered
@@ -109,7 +109,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * The default value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
      * The cached value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageDescriptionImpl() {
@@ -138,7 +138,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +148,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -196,7 +196,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +206,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +220,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +230,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +244,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +264,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -288,7 +288,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -332,7 +332,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -360,7 +360,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -388,7 +388,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

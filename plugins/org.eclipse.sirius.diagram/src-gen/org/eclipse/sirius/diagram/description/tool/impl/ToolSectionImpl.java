@@ -36,6 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * <em><b>Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getName
@@ -62,7 +63,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * {@link org.eclipse.sirius.diagram.description.tool.impl.ToolSectionImpl#getGroupExtensions
  * <em>Group Extensions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,7 +70,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -90,7 +90,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -110,7 +110,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -130,7 +130,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getOwnedTools() <em>Owned Tools</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwnedTools()
      * @generated
      * @ordered
@@ -140,7 +140,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getSubSections() <em>Sub Sections</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubSections()
      * @generated
      * @ordered
@@ -150,7 +150,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     /**
      * The cached value of the '{@link #getReusedTools() <em>Reused Tools</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedTools()
      * @generated
      * @ordered
@@ -170,7 +170,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ToolSectionImpl() {
@@ -179,7 +179,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +213,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -223,7 +223,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +261,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +274,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -287,7 +287,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -305,7 +305,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -318,7 +318,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -331,7 +331,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -377,7 +377,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -415,7 +415,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -448,7 +448,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -476,7 +476,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -496,7 +496,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -516,7 +516,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

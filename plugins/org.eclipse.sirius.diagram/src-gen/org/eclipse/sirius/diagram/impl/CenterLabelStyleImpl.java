@@ -23,15 +23,13 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Center Label Style</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class CenterLabelStyleImpl extends BasicLabelStyleImpl implements CenterLabelStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CenterLabelStyleImpl() {
@@ -40,7 +38,7 @@ public class CenterLabelStyleImpl extends BasicLabelStyleImpl implements CenterL
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

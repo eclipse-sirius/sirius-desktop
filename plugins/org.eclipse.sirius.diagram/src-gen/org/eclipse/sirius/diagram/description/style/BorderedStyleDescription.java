@@ -21,6 +21,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
  * <em>Border Line Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription()
  * @model
@@ -94,7 +94,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor
      * <em>Border Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' reference.
      * @see #getBorderColor()
@@ -123,7 +123,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle

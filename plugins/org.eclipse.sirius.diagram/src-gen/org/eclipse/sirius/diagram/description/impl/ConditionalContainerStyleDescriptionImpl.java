@@ -40,7 +40,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConditionalContainerStyleDescriptionImpl() {
@@ -58,7 +58,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,7 +68,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerStyleDescription basicGetStyle() {
@@ -104,7 +104,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(ContainerStyleDescription newStyle, NotificationChain msgs) {
@@ -123,7 +123,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -161,7 +161,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -178,7 +178,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -208,7 +208,7 @@ public class ConditionalContainerStyleDescriptionImpl extends ConditionalStyleDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getFilters
@@ -39,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * {@link org.eclipse.sirius.diagram.description.concern.ConcernDescription#getBehaviors
  * <em>Behaviors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription()
  * @model

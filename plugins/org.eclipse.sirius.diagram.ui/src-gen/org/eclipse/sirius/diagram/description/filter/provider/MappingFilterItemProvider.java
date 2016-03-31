@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.filter.MappingFilter} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MappingFilterItemProvider extends FilterItemProvider {
@@ -67,17 +67,17 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingFilter_mappings_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_mappings_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                FilterPackage.Literals.MAPPING_FILTER__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MappingFilter_mappings_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_mappings_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        FilterPackage.Literals.MAPPING_FILTER__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Semantic Condition Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSemanticConditionExpressionPropertyDescriptor(Object object) {
@@ -91,15 +91,15 @@ public class MappingFilterItemProvider extends FilterItemProvider {
     /**
      * This adds a property descriptor for the View Condition Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addViewConditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingFilter_viewConditionExpression_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_viewConditionExpression_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_MappingFilter_viewConditionExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_viewConditionExpression_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -116,7 +116,7 @@ public class MappingFilterItemProvider extends FilterItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

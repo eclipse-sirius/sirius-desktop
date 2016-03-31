@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getSubNodeMappings
@@ -54,7 +55,6 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
  * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getChildrenPresentation
  * <em>Children Presentation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping()
  * @model
@@ -182,7 +182,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ContainerStyleDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_Style()
@@ -196,7 +196,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -215,7 +215,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping_ConditionnalStyles()
@@ -246,7 +246,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * {@link org.eclipse.sirius.diagram.description.ContainerMapping#getChildrenPresentation
      * <em>Children Presentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Children Presentation</em>'
      *            attribute.
@@ -258,7 +258,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @model
      * @generated
      */

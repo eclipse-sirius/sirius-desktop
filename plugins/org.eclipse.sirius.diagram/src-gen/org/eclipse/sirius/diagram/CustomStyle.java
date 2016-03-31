@@ -17,10 +17,10 @@ package org.eclipse.sirius.diagram;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getCustomStyle()
  * @model
@@ -48,7 +48,7 @@ public interface CustomStyle extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()

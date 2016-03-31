@@ -42,12 +42,13 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <em><b>Layer</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getEndUserDocumentation
  * <em>End User Documentation</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getName <em>
- * Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getName
+ * <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getLabel
  * <em>Label</em>}</li>
  * <li>
@@ -76,8 +77,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getDecorationDescriptionsSet
  * <em>Decoration Descriptions Set</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getIcon <em>
- * Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getIcon
+ * <em>Icon</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
@@ -85,7 +86,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * {@link org.eclipse.sirius.diagram.description.impl.LayerImpl#getCustomization
  * <em>Customization</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -94,7 +94,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The default value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getEndUserDocumentation()
      * <em>End User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getEndUserDocumentation()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -135,7 +135,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -145,7 +145,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -153,10 +153,10 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     protected String label = LayerImpl.LABEL_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getNodeMappings()
-     * <em>Node Mappings</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getNodeMappings() <em>Node Mappings</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getNodeMappings()
      * @generated
      * @ordered
@@ -164,10 +164,10 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     protected EList<NodeMapping> nodeMappings;
 
     /**
-     * The cached value of the '{@link #getEdgeMappings()
-     * <em>Edge Mappings</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getEdgeMappings() <em>Edge Mappings</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getEdgeMappings()
      * @generated
      * @ordered
@@ -200,7 +200,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getReusedMappings()
      * <em>Reused Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReusedMappings()
      * @generated
      * @ordered
@@ -208,10 +208,10 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     protected EList<DiagramElementMapping> reusedMappings;
 
     /**
-     * The cached value of the '{@link #getToolSections()
-     * <em>Tool Sections</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getToolSections() <em>Tool Sections</em>
+     * }' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
      * @see #getToolSections()
      * @generated
      * @ordered
@@ -221,7 +221,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The cached value of the '{@link #getReusedTools() <em>Reused Tools</em>}'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getReusedTools()
      * @generated
      * @ordered
@@ -242,7 +242,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -252,7 +252,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     /**
      * The cached value of the '{@link #getIcon() <em>Icon</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getIcon()
      * @generated
      * @ordered
@@ -263,7 +263,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * The cached value of the '{@link #getCustomization()
      * <em>Customization</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getCustomization()
      * @generated
      * @ordered
@@ -272,7 +272,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayerImpl() {
@@ -281,7 +281,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -291,7 +291,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -301,7 +301,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -315,7 +315,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -339,7 +339,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -376,7 +376,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -402,7 +402,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -415,7 +415,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -428,7 +428,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -445,7 +445,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -458,7 +458,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -471,7 +471,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -498,7 +498,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DecorationDescriptionsSet basicGetDecorationDescriptionsSet() {
@@ -507,7 +507,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetDecorationDescriptionsSet(DecorationDescriptionsSet newDecorationDescriptionsSet, NotificationChain msgs) {
@@ -527,7 +527,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -551,7 +551,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -561,7 +561,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -575,7 +575,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -593,7 +593,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -620,7 +620,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Customization basicGetCustomization() {
@@ -629,7 +629,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetCustomization(Customization newCustomization, NotificationChain msgs) {
@@ -648,7 +648,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -672,7 +672,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -698,7 +698,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -746,7 +746,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -805,7 +805,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -856,7 +856,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -898,7 +898,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -926,7 +926,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -954,7 +954,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

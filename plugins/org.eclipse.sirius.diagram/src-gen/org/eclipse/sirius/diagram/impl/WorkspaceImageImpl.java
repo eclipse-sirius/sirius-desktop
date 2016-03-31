@@ -22,12 +22,12 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
  * <em><b>Workspace Image</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.WorkspaceImageImpl#getWorkspacePath
  * <em>Workspace Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * The default value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
      * The cached value of the '{@link #getWorkspacePath()
      * <em>Workspace Path</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getWorkspacePath()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WorkspaceImageImpl() {
@@ -65,7 +65,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -75,7 +75,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +113,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -128,7 +128,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +143,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,7 +157,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

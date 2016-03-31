@@ -35,11 +35,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -72,7 +72,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +101,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
     /**
      * This returns ComputedStyleDescriptionRegistry.gif. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -168,22 +168,22 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createDotDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createFlatContainerStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createFlatContainerStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createShapeContainerStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createShapeContainerStyleDescription()));
 
         newChildDescriptors
                 .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createEdgeStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
     }
 
     /**

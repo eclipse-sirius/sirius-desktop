@@ -18,15 +18,13 @@ import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Indirectly Collapse Filter</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class IndirectlyCollapseFilterImpl extends CollapseFilterImpl implements IndirectlyCollapseFilter {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IndirectlyCollapseFilterImpl() {
@@ -35,7 +33,7 @@ public class IndirectlyCollapseFilterImpl extends CollapseFilterImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

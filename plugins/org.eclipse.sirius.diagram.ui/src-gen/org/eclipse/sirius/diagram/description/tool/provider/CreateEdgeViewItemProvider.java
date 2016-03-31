@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.description.tool.CreateEdgeView} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
@@ -65,11 +65,11 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      * @generated
      */
     protected void addSourceExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateEdgeView_sourceExpression_feature"), //$NON-NLS-1$
-                getString("_UI_CreateEdgeView_sourceExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CREATE_EDGE_VIEW__SOURCE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateEdgeView_sourceExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_CreateEdgeView_sourceExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CREATE_EDGE_VIEW__SOURCE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -79,17 +79,17 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      * @generated
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateEdgeView_targetExpression_feature"), //$NON-NLS-1$
-                getString("_UI_CreateEdgeView_targetExpression_description"), //$NON-NLS-1$
-                ToolPackage.Literals.CREATE_EDGE_VIEW__TARGET_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateEdgeView_targetExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_CreateEdgeView_targetExpression_description"), //$NON-NLS-1$
+                        ToolPackage.Literals.CREATE_EDGE_VIEW__TARGET_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns CreateEdgeView.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -115,7 +115,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

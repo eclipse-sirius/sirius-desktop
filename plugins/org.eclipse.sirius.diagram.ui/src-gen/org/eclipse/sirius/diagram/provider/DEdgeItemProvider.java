@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvide
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.DEdge} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DEdgeItemProvider extends DDiagramElementItemProvider {
@@ -90,10 +90,10 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_outgoingEdges_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.EDGE_TARGET__OUTGOING_EDGES, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeTarget_outgoingEdges_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.EDGE_TARGET__OUTGOING_EDGES, false, false, false, null, null, null));
     }
 
     /**
@@ -103,16 +103,16 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_incomingEdges_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.EDGE_TARGET__INCOMING_EDGES, false, false, false, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeTarget_incomingEdges_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.EDGE_TARGET__INCOMING_EDGES, false, false, false, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Size feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSizePropertyDescriptor(Object object) {
@@ -152,10 +152,10 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_actualMapping_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_actualMapping_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.DEDGE__ACTUAL_MAPPING, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_actualMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DEdge_actualMapping_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DEDGE__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
     /**
@@ -165,10 +165,10 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_routingStyle_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_routingStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.DEDGE__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_routingStyle_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DEdge_routingStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DEDGE__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -202,16 +202,16 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_originalStyle_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_originalStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.DEDGE__ORIGINAL_STYLE, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_originalStyle_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DEdge_originalStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DEDGE__ORIGINAL_STYLE, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Path feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addPathPropertyDescriptor(Object object) {
@@ -227,10 +227,10 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_arrangeConstraints_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_arrangeConstraints_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.DEDGE__ARRANGE_CONSTRAINTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_arrangeConstraints_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DEdge_arrangeConstraints_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.DEDGE__ARRANGE_CONSTRAINTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -264,7 +264,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -278,7 +278,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
 
     /**
      * This returns DEdge.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -317,7 +317,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -410,29 +410,13 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     private boolean hasRelevantLabelItem(Object object) {
-        return DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object); /*
-                                                                             * ||
-                                                                             * DEdgeBeginLabelItemProvider
-                                                                             * .
-                                                                             * hasRelevantLabelItem
-                                                                             * (
-                                                                             * (
-                                                                             * DEdge
-                                                                             * )
-                                                                             * object
-                                                                             * )
-                                                                             * ||
-                                                                             * DEdgeEndLabelItemProvider
-                                                                             * .
-                                                                             * hasRelevantLabelItem
-                                                                             * (
-                                                                             * (
-                                                                             * DEdge
-                                                                             * )
-                                                                             * object
-                                                                             * )
-                                                                             * ;
-                                                                             */
+        return DEdgeLabelItemProvider.hasRelevantLabelItem(
+                (DEdge) object); /*
+                                  * || DEdgeBeginLabelItemProvider .
+                                  * hasRelevantLabelItem ( ( DEdge ) object ) ||
+                                  * DEdgeEndLabelItemProvider .
+                                  * hasRelevantLabelItem ( ( DEdge ) object ) ;
+                                  */
     }
 
     /**

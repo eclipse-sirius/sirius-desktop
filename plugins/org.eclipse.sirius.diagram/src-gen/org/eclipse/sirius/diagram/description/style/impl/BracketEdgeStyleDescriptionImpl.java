@@ -18,15 +18,13 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Bracket Edge Style Description</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
 public class BracketEdgeStyleDescriptionImpl extends EdgeStyleDescriptionImpl implements BracketEdgeStyleDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BracketEdgeStyleDescriptionImpl() {
@@ -35,7 +33,7 @@ public class BracketEdgeStyleDescriptionImpl extends EdgeStyleDescriptionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

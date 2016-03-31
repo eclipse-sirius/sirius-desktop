@@ -22,11 +22,11 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition <em>Label
- * Position</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition
+ * <em>Label Position</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getNodeStyle()
  * @model abstract="true"
@@ -55,7 +55,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle, HideLabelCa
      * {@link org.eclipse.sirius.diagram.NodeStyle#getLabelPosition
      * <em>Label Position</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.diagram.LabelPosition

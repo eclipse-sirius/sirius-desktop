@@ -68,11 +68,11 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedTreeLayout_childrenExpression_feature"), //$NON-NLS-1$
-                getString("_UI_OrderedTreeLayout_childrenExpression_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OrderedTreeLayout_childrenExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_OrderedTreeLayout_childrenExpression_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -82,17 +82,17 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      * @generated
      */
     protected void addNodeMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedTreeLayout_nodeMapping_feature"), //$NON-NLS-1$
-                getString("_UI_OrderedTreeLayout_nodeMapping_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_OrderedTreeLayout_nodeMapping_feature"), //$NON-NLS-1$
+                        getString("_UI_OrderedTreeLayout_nodeMapping_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This returns OrderedTreeLayout.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -103,7 +103,7 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -118,7 +118,7 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

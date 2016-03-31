@@ -27,14 +27,14 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.NodeMapping#getStyle <em>
- * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.NodeMapping#getStyle
+ * <em>Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.NodeMapping#getConditionnalStyles
  * <em>Conditionnal Styles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMapping()
  * @model
@@ -59,7 +59,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      * {@link org.eclipse.sirius.diagram.description.NodeMapping#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

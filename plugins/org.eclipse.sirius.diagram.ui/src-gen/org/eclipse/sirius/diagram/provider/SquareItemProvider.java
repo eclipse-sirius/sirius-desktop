@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.Square;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.Square} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SquareItemProvider extends NodeStyleItemProvider {
@@ -99,7 +99,7 @@ public class SquareItemProvider extends NodeStyleItemProvider {
 
     /**
      * This returns Square.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class SquareItemProvider extends NodeStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +124,7 @@ public class SquareItemProvider extends NodeStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

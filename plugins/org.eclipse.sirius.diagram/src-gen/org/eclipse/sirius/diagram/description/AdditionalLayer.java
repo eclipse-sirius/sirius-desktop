@@ -17,6 +17,7 @@ package org.eclipse.sirius.diagram.description;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
@@ -24,7 +25,6 @@ package org.eclipse.sirius.diagram.description;
  * <li>{@link org.eclipse.sirius.diagram.description.AdditionalLayer#isOptional
  * <em>Optional</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer()
  * @model
@@ -39,7 +39,7 @@ public interface AdditionalLayer extends Layer {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Active By Default</em>' attribute.
      * @see #setActiveByDefault(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer_ActiveByDefault()
@@ -53,7 +53,7 @@ public interface AdditionalLayer extends Layer {
      * {@link org.eclipse.sirius.diagram.description.AdditionalLayer#isActiveByDefault
      * <em>Active By Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Active By Default</em>' attribute.
      * @see #isActiveByDefault()
@@ -69,7 +69,7 @@ public interface AdditionalLayer extends Layer {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Optional</em>' attribute.
      * @see #setOptional(boolean)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer_Optional()

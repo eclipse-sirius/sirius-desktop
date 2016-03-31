@@ -23,22 +23,22 @@ import org.eclipse.sirius.viewpoint.Decoration;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#isVisible <em>Visible
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getTooltipText <em>
- * Tooltip Text</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getParentLayers <em>
- * Parent Layers</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getDecorations <em>
- * Decorations</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#isVisible
+ * <em>Visible</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getTooltipText
+ * <em>Tooltip Text</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getParentLayers
+ * <em>Parent Layers</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getDecorations
+ * <em>Decorations</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.DDiagramElement#getDiagramElementMapping
  * <em>Diagram Element Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElement#getGraphicalFilters
  * <em>Graphical Filters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement()
  * @model abstract="true"
@@ -90,7 +90,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * {@link org.eclipse.sirius.diagram.DDiagramElement#getTooltipText
      * <em>Tooltip Text</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Tooltip Text</em>' attribute.
      * @see #getTooltipText()
@@ -108,7 +108,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parent Layers</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_ParentLayers()
      * @model
@@ -125,7 +125,7 @@ public interface DDiagramElement extends DRepresentationElement {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Decorations</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement_Decorations()

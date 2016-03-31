@@ -26,35 +26,34 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getNodeMappings <em>
- * Node Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getEdgeMappings <em>
- * Edge Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.Layer#getEdgeMappingImports
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getNodeMappings
+ * <em>Node Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getEdgeMappings
+ * <em>Edge Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getEdgeMappingImports
  * <em>Edge Mapping Imports</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getContainerMappings
  * <em>Container Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getReusedMappings
  * <em>Reused Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllTools <em>All
- * Tools</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getToolSections <em>
- * Tool Sections</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getReusedTools <em>
- * Reused Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllTools
+ * <em>All Tools</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getToolSections
+ * <em>Tool Sections</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getReusedTools
+ * <em>Reused Tools</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.Layer#getDecorationDescriptionsSet
  * <em>Decoration Descriptions Set</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon</em>
+ * }</li>
  * <li>{@link org.eclipse.sirius.diagram.description.Layer#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.Layer#getCustomization <em>
- * Customization</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.Layer#getCustomization
+ * <em>Customization</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer()
  * @model
@@ -190,7 +189,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Decoration Descriptions Set</em>'
      *         containment reference.
      * @see #setDecorationDescriptionsSet(DecorationDescriptionsSet)
@@ -229,9 +228,9 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.Layer#getIcon
-     * <em>Icon</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * {@link org.eclipse.sirius.diagram.description.Layer#getIcon <em>Icon</em>
+     * }' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @param value
      *            the new value of the '<em>Icon</em>' attribute.
      * @see #getIcon()
@@ -262,7 +261,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Customization</em>' containment reference.
      * @see #setCustomization(Customization)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer_Customization()
@@ -276,7 +275,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * {@link org.eclipse.sirius.diagram.description.Layer#getCustomization
      * <em>Customization</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Customization</em>' containment
      *            reference.

@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.provider.BasicLabelStyleItemProvider;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.diagram.EndLabelStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
@@ -69,7 +69,7 @@ public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
