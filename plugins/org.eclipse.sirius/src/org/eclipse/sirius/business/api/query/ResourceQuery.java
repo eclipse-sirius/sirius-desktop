@@ -94,21 +94,13 @@ public class ResourceQuery {
      */
     public boolean isRepresentationsResource() {
         boolean isRepresentationsResource = false;
-        try {
-            isRepresentationsResource = resource.getURI() != null;
-        } catch (IllegalStateException e) {
-            // Silent catch: if an issue occurred while getting this Resource's
-            // URI, then it will not be considered as a representation resource
-        }
-        isRepresentationsResource = isRepresentationsResource && new FileQuery(resource.getURI().fileExtension()).isSessionResourceFile();
+        URI uri = getUri();
+        isRepresentationsResource = uri != null && new FileQuery(uri.fileExtension()).isSessionResourceFile();
         isRepresentationsResource = isRepresentationsResource || resource instanceof AirdResource;
         if (!isRepresentationsResource && !resource.getContents().isEmpty()) {
-            for (EObject contentEObject : resource.getContents()) {
-                if (contentEObject instanceof DAnalysis) {
-                    isRepresentationsResource = true;
-                    break;
-                }
-            }
+            // Bug #490908: only check the 1st root since Sirius always puts
+            // DAnalysis as 1st root of the representation resources.
+            isRepresentationsResource = resource.getContents().get(0) instanceof DAnalysis;
         }
         return isRepresentationsResource;
     }
@@ -120,9 +112,21 @@ public class ResourceQuery {
      * @return true if it is a modeler resource
      */
     public boolean isModelerResource() {
-        if (resource.getURI() != null) {
-            return new FileQuery(resource.getURI().fileExtension()).isVSMFile();
+        URI uri = getUri();
+        if (uri != null) {
+            return new FileQuery(uri.fileExtension()).isVSMFile();
         }
         return false;
+    }
+
+    private URI getUri() {
+        URI uri = null;
+        try {
+            uri = resource.getURI();
+        } catch (IllegalStateException e) {
+            // Silent catch: if an issue occurred while getting this Resource's
+            // URI, then it will not be considered as a representation resource
+        }
+        return uri;
     }
 }
