@@ -58,6 +58,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
             addValueExpressionPropertyDescriptor(object);
             addCandidatesExpressionPropertyDescriptor(object);
             addCandidateDisplayExpressionPropertyDescriptor(object);
+            addNumberOfColumnsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -77,7 +78,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Candidates Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
@@ -90,7 +91,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This adds a property descriptor for the Candidate Display Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
@@ -101,13 +102,25 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     }
 
     /**
+     * This adds a property descriptor for the Number Of Columns feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addNumberOfColumnsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RadioDescription_numberOfColumns_feature"), getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_numberOfColumns_feature", "_UI_RadioDescription_type"),
+                PropertiesPackage.Literals.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to
      * deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand},
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +135,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +150,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns RadioDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +161,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +175,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -173,6 +186,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
         case PropertiesPackage.RADIO_DESCRIPTION__VALUE_EXPRESSION:
         case PropertiesPackage.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION:
         case PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION:
+        case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:

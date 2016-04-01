@@ -64,7 +64,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This adds a property descriptor for the Font Name Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
@@ -125,7 +125,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This returns TextWidgetStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class TextWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

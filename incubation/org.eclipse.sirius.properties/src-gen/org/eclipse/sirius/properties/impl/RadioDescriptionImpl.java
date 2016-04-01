@@ -42,6 +42,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getNumberOfColumns
+ * <em>Number Of Columns</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,7 +54,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -62,7 +65,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -73,7 +76,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -84,7 +87,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -95,7 +98,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -106,7 +109,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The default value of the '{@link #getCandidateDisplayExpression()
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -117,7 +120,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * The cached value of the '{@link #getCandidateDisplayExpression()
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCandidateDisplayExpression()
      * @generated
      * @ordered
@@ -127,7 +130,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -135,8 +138,30 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
     protected RadioWidgetStyle style;
 
     /**
+     * The default value of the '{@link #getNumberOfColumns()
+     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getNumberOfColumns()
+     * @generated
+     * @ordered
+     */
+    protected static final int NUMBER_OF_COLUMNS_EDEFAULT = -1;
+
+    /**
+     * The cached value of the '{@link #getNumberOfColumns()
+     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getNumberOfColumns()
+     * @generated
+     * @ordered
+     */
+    protected int numberOfColumns = RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RadioDescriptionImpl() {
@@ -145,7 +170,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -155,7 +180,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +190,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -179,7 +204,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,7 +214,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -208,7 +233,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -232,7 +257,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +267,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -256,7 +281,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +291,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -280,7 +305,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +315,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(RadioWidgetStyle newStyle, NotificationChain msgs) {
@@ -309,7 +334,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -333,7 +358,31 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public int getNumberOfColumns() {
+        return numberOfColumns;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setNumberOfColumns(int newNumberOfColumns) {
+        int oldNumberOfColumns = numberOfColumns;
+        numberOfColumns = newNumberOfColumns;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS, oldNumberOfColumns, numberOfColumns));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -349,7 +398,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -365,13 +414,15 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return getCandidateDisplayExpression();
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             return getStyle();
+        case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+            return getNumberOfColumns();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -392,13 +443,16 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             setStyle((RadioWidgetStyle) newValue);
             return;
+        case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+            setNumberOfColumns((Integer) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -419,13 +473,16 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             setStyle((RadioWidgetStyle) null);
             return;
+        case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+            setNumberOfColumns(RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -442,13 +499,15 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
                     : !RadioDescriptionImpl.CANDIDATE_DISPLAY_EXPRESSION_EDEFAULT.equals(candidateDisplayExpression);
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             return style != null;
+        case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
+            return numberOfColumns != RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -464,6 +523,8 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         result.append(candidatesExpression);
         result.append(", candidateDisplayExpression: ");
         result.append(candidateDisplayExpression);
+        result.append(", numberOfColumns: ");
+        result.append(numberOfColumns);
         result.append(')');
         return result.toString();
     }

@@ -34,7 +34,7 @@ import org.eclipse.sirius.properties.WidgetStyle;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.WidgetStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WidgetStyleItemProvider extends ItemProviderAdapter
@@ -72,7 +72,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Font Name Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelFontNameExpressionPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Background Color feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelBackgroundColorPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Label Foreground Color feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addLabelForegroundColorPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +158,7 @@ public class WidgetStyleItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

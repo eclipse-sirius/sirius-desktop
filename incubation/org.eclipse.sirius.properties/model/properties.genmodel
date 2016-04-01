@@ -101,6 +101,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidateDisplayExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/style"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/numberOfColumns"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//SingleReferenceDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SingleReferenceDescription/valueExpression"/>

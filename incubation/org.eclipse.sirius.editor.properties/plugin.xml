@@ -186,6 +186,14 @@
         <input type="org.eclipse.sirius.properties.SingleReferenceDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionNumberOfColumnsPropertySection"
+               id="properties.section.radioDescription.NumberOfColumns"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionNumberOfColumnsFilter"
+               afterSection="properties.section.radioDescription.CandidateDisplayExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.RadioDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionCandidateDisplayExpressionPropertySection"
                id="properties.section.radioDescription.CandidateDisplayExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.radiodescription.RadioDescriptionCandidateDisplayExpressionFilter"

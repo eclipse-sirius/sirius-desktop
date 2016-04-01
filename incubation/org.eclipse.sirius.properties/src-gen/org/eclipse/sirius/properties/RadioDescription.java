@@ -36,6 +36,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.RadioDescription#getStyle
  * <em>Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.RadioDescription#getNumberOfColumns
+ * <em>Number Of Columns</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription()
@@ -62,7 +64,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -90,7 +92,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -119,7 +121,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Candidates Expression</em>'
      *            attribute.
@@ -149,7 +151,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Candidate Display Expression</em>'
      *            attribute.
@@ -166,7 +168,7 @@ public interface RadioDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(RadioWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription_Style()
@@ -180,12 +182,39 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
      * @generated
      */
     void setStyle(RadioWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Number Of Columns</b></em>' attribute.
+     * The default value is <code>"-1"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The number of columns to use to
+     * display the candidates. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Number Of Columns</em>' attribute.
+     * @see #setNumberOfColumns(int)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription_NumberOfColumns()
+     * @model default="-1"
+     * @generated
+     */
+    int getNumberOfColumns();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getNumberOfColumns
+     * <em>Number Of Columns</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Number Of Columns</em>' attribute.
+     * @see #getNumberOfColumns()
+     * @generated
+     */
+    void setNumberOfColumns(int value);
 
 } // RadioDescription

@@ -56,7 +56,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The default value of the '{@link #getLabelFontNameExpression()
      * <em>Label Font Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFontNameExpression()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The cached value of the '{@link #getLabelFontNameExpression()
      * <em>Label Font Name Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabelFontNameExpression()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The default value of the '{@link #getLabelFontSize()
      * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelFontSize()
      * @generated
      * @ordered
@@ -89,7 +89,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The cached value of the '{@link #getLabelFontSize()
      * <em>Label Font Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelFontSize()
      * @generated
      * @ordered
@@ -100,7 +100,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The cached value of the '{@link #getLabelBackgroundColor()
      * <em>Label Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelBackgroundColor()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The cached value of the '{@link #getLabelForegroundColor()
      * <em>Label Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelForegroundColor()
      * @generated
      * @ordered
@@ -122,7 +122,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
      * The cached value of the '{@link #getLabelFontFormat()
      * <em>Label Font Format</em>}' attribute list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getLabelFontFormat()
      * @generated
      * @ordered
@@ -131,7 +131,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WidgetStyleImpl() {
@@ -140,7 +140,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -150,7 +150,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +174,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetLabelBackgroundColor() {
@@ -226,7 +226,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -240,7 +240,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetLabelForegroundColor() {
@@ -268,7 +268,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -295,7 +295,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -323,7 +323,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -352,7 +352,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -401,7 +401,7 @@ public class WidgetStyleImpl extends MinimalEObjectImpl.Container implements Wid
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
