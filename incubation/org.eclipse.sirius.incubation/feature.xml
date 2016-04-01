@@ -30,11 +30,15 @@
    </license>
 
    <includes
-         id="org.eclipse.sirius.incubation.properties"
+         id="org.eclipse.sirius.incubation.interpreter"
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.sirius.incubation.interpreter"
+         id="org.eclipse.sirius.specifier.properties.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.properties.feature"
          version="0.0.0"/>
 
 </feature>

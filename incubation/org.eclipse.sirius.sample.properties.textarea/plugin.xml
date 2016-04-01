@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="my.project.design.Activator"
+    <component class="org.eclipse.sirius.sample.properties.textarea.Activator"
                id="my.project.design"
 	       name="project">
     </component>

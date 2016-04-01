@@ -1,9 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: my.project.design
-Bundle-SymbolicName: org.eclipse.sirius.sample.properties.checkbox;singleton:=true
-Bundle-Version: 1.0.0
-Bundle-Activator: my.project.design.Activator
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-SymbolicName: org.eclipse.sirius.sample.properties.textarea;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.eclipse.sirius.sample.properties.textarea.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
