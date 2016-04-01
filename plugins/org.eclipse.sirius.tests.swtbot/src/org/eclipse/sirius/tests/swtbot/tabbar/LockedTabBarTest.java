@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
+import java.io.ByteArrayInputStream;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.core.internal.registry.ExtensionRegistry;
+import org.eclipse.core.runtime.ContributorFactoryOSGi;
+import org.eclipse.core.runtime.IContributor;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.ExtensionPointTabbarContributorProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -100,6 +108,10 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private PermissionProviderDescriptor permissionProviderDescriptor;
 
+    private static final String PLUGIN_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?eclipse version=\"3.4\"?><plugin><extension id=\"customTabbar\" point=\""
+            + ExtensionPointTabbarContributorProvider.EXTENSION_ID
+            + "\"><tabbarContributor class=\"org.eclipse.sirius.tests.swtbot.tabbar.TabbarContributorSample\"></tabbarContributor></extension></plugin>";
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
@@ -111,9 +123,6 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
-        // Open the editor
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
     }
 
     /**
@@ -121,6 +130,56 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
      * permission authority
      */
     public void testTabbarActionsEnablement() {
+        testTabbarActionsEnablement(false);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled depending on the
+     * permission authority
+     */
+    public void testTabbarActionsEnablementWithCustomTabbar() {
+        testTabbarActionsEnablement(true);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for the diagram
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForDiagram() {
+        testTabbarActionsEnablementForDiagram(false);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for the diagram
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForDiagramWithCustomTabbar() {
+        testTabbarActionsEnablementForDiagram(true);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for a selection
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForSelection() {
+        testTabbarActionsEnablementForSelection(false);
+    }
+
+    /**
+     * Check that tabbar actions are enabled or disabled for a selection
+     * depending on the permission authority
+     */
+    public void testTabbarActionsEnablementForSelectionWithCustomTabbar() {
+        testTabbarActionsEnablementForSelection(true);
+    }
+
+    private void testTabbarActionsEnablement(boolean customTabbar) {
+        if (customTabbar) {
+            registerExtension();
+        }
+        // Open the editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
+
         // check that tested buttons are enabled for the diagram
         selectDiagram();
         checkEnabled(true);
@@ -145,7 +204,14 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
      * Check that tabbar actions are enabled or disabled for the diagram
      * depending on the permission authority
      */
-    public void testTabbarActionsEnablementForDiagram() {
+    private void testTabbarActionsEnablementForDiagram(boolean customTabbar) {
+        if (customTabbar) {
+            registerExtension();
+        }
+
+        // Open the editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
+
         selectDiagram();
 
         // check that tested buttons are enabled for the diagram
@@ -162,7 +228,13 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
      * Check that tabbar actions are enabled or disabled for a selection
      * depending on the permission authority
      */
-    public void testTabbarActionsEnablementForSelection() {
+    private void testTabbarActionsEnablementForSelection(boolean customTabbar) {
+        if (customTabbar) {
+            registerExtension();
+        }
+        // Open the editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
+
         selectPackageElement();
 
         // check that tested buttons are enabled for the selected package
@@ -287,6 +359,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     @Override
     protected void tearDown() throws Exception {
         PermissionService.removeExtension(permissionProviderDescriptor);
+        removeExtension();
         permissionProviderDescriptor = null;
         editor = null;
         localSession = null;
@@ -326,4 +399,23 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
+    /**
+     * Installs dynamically the tabbar extension.
+     */
+    private void registerExtension() {
+        IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+        IContributor contributor = ContributorFactoryOSGi.createContributor(Activator.getDefault().getBundle());
+        extensionRegistry.addContribution(new ByteArrayInputStream(PLUGIN_XML.getBytes()), contributor, false, null, null, ((ExtensionRegistry) extensionRegistry).getTemporaryUserToken());
+    }
+
+    /**
+     * Remove the installed extension (if it exists).
+     */
+    private void removeExtension() {
+        IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+        IExtension extension = extensionRegistry.getExtension(ExtensionPointTabbarContributorProvider.EXTENSION_ID, Activator.PLUGIN_ID + ".customTabbar");
+        if (extension != null) {
+            extensionRegistry.removeExtension(extension, ((ExtensionRegistry) extensionRegistry).getTemporaryUserToken());
+        }
+    }
 }

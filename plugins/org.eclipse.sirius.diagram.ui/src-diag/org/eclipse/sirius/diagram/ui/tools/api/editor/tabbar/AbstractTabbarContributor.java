@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,8 +64,8 @@ import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IWorkbenchPartSite;
 
 /**
- * Abstract implementation of {@link ITabbarContributor}. Inherit from this class
- * allows creating one or several contribution items of the default Sirius
+ * Abstract implementation of {@link ITabbarContributor}. Inherit from this
+ * class allows creating one or several contribution items of the default Sirius
  * tabbar.
  * 
  * @author Florian Barbin
@@ -160,7 +160,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
             SelectHiddenElementsAction selectHiddenElementsAction = new SelectHiddenElementsAction(site.getPage(), part);
-            return new ActionContributionItem(selectHiddenElementsAction);
+            return new DiagramActionContributionItem(selectHiddenElementsAction);
         }
         return null;
     }
@@ -239,7 +239,7 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
         if (site != null) {
             SelectPinnedElementsAction pinnedElementsAction = new SelectPinnedElementsAction(site.getPage(), part);
 
-            return new ActionContributionItem(pinnedElementsAction);
+            return new DiagramActionContributionItem(pinnedElementsAction);
         }
         return null;
     }
