@@ -45,6 +45,9 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.PageDescriptionImpl#getGroups
  * <em>Groups</em>}</li>
  * <li>
@@ -58,7 +61,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -68,7 +71,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -79,7 +82,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -90,7 +93,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -100,7 +103,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -110,7 +113,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -121,7 +124,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The default value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -132,7 +135,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The cached value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -140,9 +143,31 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     protected String semanticCandidateExpression = PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getPreconditionExpression()
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getPreconditionExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getPreconditionExpression()
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getPreconditionExpression()
+     * @generated
+     * @ordered
+     */
+    protected String preconditionExpression = PageDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getGroups()
      * @generated
      * @ordered
@@ -153,7 +178,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
      * The cached value of the '{@link #getValidationSet()
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getValidationSet()
      * @generated
      * @ordered
@@ -162,7 +187,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PageDescriptionImpl() {
@@ -171,7 +196,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +206,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -191,7 +216,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,7 +230,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +240,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +254,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,7 +264,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -253,7 +278,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -263,7 +288,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -277,7 +302,31 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    public String getPreconditionExpression() {
+        return preconditionExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setPreconditionExpression(String newPreconditionExpression) {
+        String oldPreconditionExpression = preconditionExpression;
+        preconditionExpression = newPreconditionExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -290,7 +339,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -300,7 +349,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetValidationSet(PageValidationSetDescription newValidationSet, NotificationChain msgs) {
@@ -319,7 +368,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -343,7 +392,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -357,7 +406,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -371,6 +420,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
             return getDomainClass();
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             return getSemanticCandidateExpression();
+        case PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
+            return getPreconditionExpression();
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             return getGroups();
         case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
@@ -381,7 +432,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -400,6 +451,9 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             setSemanticCandidateExpression((String) newValue);
             return;
+        case PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
+            setPreconditionExpression((String) newValue);
+            return;
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             getGroups().clear();
             getGroups().addAll((Collection<? extends GroupDescription>) newValue);
@@ -413,7 +467,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -431,6 +485,9 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             setSemanticCandidateExpression(PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
+            setPreconditionExpression(PageDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             getGroups().clear();
             return;
@@ -443,7 +500,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -458,6 +515,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             return PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null
                     : !PageDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
+        case PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
+            return PageDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PageDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case PropertiesPackage.PAGE_DESCRIPTION__GROUPS:
             return groups != null && !groups.isEmpty();
         case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:
@@ -468,7 +527,7 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -486,6 +545,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         result.append(domainClass);
         result.append(", semanticCandidateExpression: ");
         result.append(semanticCandidateExpression);
+        result.append(", preconditionExpression: ");
+        result.append(preconditionExpression);
         result.append(')');
         return result.toString();
     }

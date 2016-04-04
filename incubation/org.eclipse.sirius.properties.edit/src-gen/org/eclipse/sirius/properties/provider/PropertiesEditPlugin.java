@@ -41,7 +41,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PropertiesEditPlugin() {
@@ -51,7 +51,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return the singleton instance.
      * @generated
      */
@@ -63,7 +63,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @return the singleton instance.
      * @generated
      */
@@ -80,7 +80,7 @@ public final class PropertiesEditPlugin extends EMFPlugin {
     public static class Implementation extends EclipsePlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         public Implementation() {

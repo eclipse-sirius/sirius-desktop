@@ -39,7 +39,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -49,7 +49,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
      * The default value of the '{@link #getCustomExpression()
      * <em>Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCustomExpression()
      * @generated
      * @ordered
@@ -71,7 +71,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
      * The cached value of the '{@link #getCustomExpression()
      * <em>Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getCustomExpression()
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CustomExpressionImpl() {
@@ -89,7 +89,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -123,7 +123,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -163,7 +163,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class CustomExpressionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

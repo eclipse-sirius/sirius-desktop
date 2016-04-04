@@ -24,6 +24,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/labelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/domainClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/semanticCandidateExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//PageDescription/preconditionExpression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//PageDescription/groups"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//PageDescription/validationSet"/>
     </genClasses>
@@ -38,6 +39,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/labelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/domainClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/semanticCandidateExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/preconditionExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/container"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/validationSet"/>
     </genClasses>

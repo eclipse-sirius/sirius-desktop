@@ -30,6 +30,9 @@ import org.eclipse.emf.ecore.EObject;
  * <li>
  * {@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.GroupDescription#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.GroupDescription#getContainer
  * <em>Container</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.GroupDescription#getValidationSet
@@ -63,7 +66,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
@@ -79,7 +82,7 @@ public interface GroupDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_LabelExpression()
@@ -94,7 +97,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -124,7 +127,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -140,7 +143,7 @@ public interface GroupDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Semantic Candidate Expression</em>'
      *         attribute.
      * @see #setSemanticCandidateExpression(String)
@@ -156,7 +159,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Semantic Candidate Expression</em>'
      *            attribute.
@@ -166,6 +169,38 @@ public interface GroupDescription extends EObject {
     void setSemanticCandidateExpression(String value);
 
     /**
+     * Returns the value of the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Precondition Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Precondition Expression</em>' attribute.
+     * @see #setPreconditionExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_PreconditionExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @generated
+     */
+    String getPreconditionExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getPreconditionExpression
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Precondition Expression</em>'
+     *            attribute.
+     * @see #getPreconditionExpression()
+     * @generated
+     */
+    void setPreconditionExpression(String value);
+
+    /**
      * Returns the value of the '<em><b>Container</b></em>' containment
      * reference. <!-- begin-user-doc -->
      * <p>
@@ -173,7 +208,7 @@ public interface GroupDescription extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Container</em>' containment reference.
      * @see #setContainer(ContainerDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Container()
@@ -187,7 +222,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getContainer
      * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Container</em>' containment
      *            reference.
@@ -204,7 +239,7 @@ public interface GroupDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(GroupValidationSetDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_ValidationSet()
@@ -218,7 +253,7 @@ public interface GroupDescription extends EObject {
      * {@link org.eclipse.sirius.properties.GroupDescription#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment
      *            reference.

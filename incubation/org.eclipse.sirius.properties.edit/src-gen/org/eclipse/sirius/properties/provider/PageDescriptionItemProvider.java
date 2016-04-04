@@ -66,6 +66,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
             addLabelExpressionPropertyDescriptor(object);
             addDomainClassPropertyDescriptor(object);
             addSemanticCandidateExpressionPropertyDescriptor(object);
+            addPreconditionExpressionPropertyDescriptor(object);
             addGroupsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -110,7 +111,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This adds a property descriptor for the Semantic Candidate Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
@@ -118,6 +119,19 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
                 getString("_UI_PageDescription_semanticCandidateExpression_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_semanticCandidateExpression_feature", "_UI_PageDescription_type"),
                 PropertiesPackage.Literals.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Precondition Expression feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addPreconditionExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_PageDescription_preconditionExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_preconditionExpression_feature", "_UI_PageDescription_type"),
+                PropertiesPackage.Literals.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -139,7 +153,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -153,7 +167,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +182,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns PageDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +193,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +207,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -205,6 +219,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
         case PropertiesPackage.PAGE_DESCRIPTION__LABEL_EXPRESSION:
         case PropertiesPackage.PAGE_DESCRIPTION__DOMAIN_CLASS:
         case PropertiesPackage.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
+        case PropertiesPackage.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.PAGE_DESCRIPTION__VALIDATION_SET:

@@ -44,7 +44,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCheckboxDescription_ValueExpression()
@@ -59,7 +59,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -75,7 +75,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -90,7 +90,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -107,7 +107,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(CheckboxWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCheckboxDescription_Style()
@@ -121,7 +121,7 @@ public interface CheckboxDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

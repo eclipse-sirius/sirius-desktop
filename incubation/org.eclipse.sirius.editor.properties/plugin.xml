@@ -319,6 +319,14 @@
         <input type="org.eclipse.sirius.properties.ContainerDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionPreconditionExpressionPropertySection"
+               id="properties.section.groupDescription.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionPreconditionExpressionFilter"
+               afterSection="properties.section.groupDescription.SemanticCandidateExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionPropertySection"
                id="properties.section.groupDescription.SemanticCandidateExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionFilter"
@@ -360,6 +368,14 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionGroupsPropertySection"
                id="properties.section.pageDescription.Groups"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionGroupsFilter"
+               afterSection="properties.section.pageDescription.PreconditionExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.PageDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionPreconditionExpressionPropertySection"
+               id="properties.section.pageDescription.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionPreconditionExpressionFilter"
                afterSection="properties.section.pageDescription.SemanticCandidateExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>

@@ -173,6 +173,7 @@ public class ViewDescriptionConverter {
         page.setLabelExpression(pageDescription.getLabelExpression());
         page.setDomainClass(pageDescription.getDomainClass());
         page.setSemanticCandidateExpression(pageDescription.getSemanticCandidateExpression());
+        page.setPreconditionExpression(pageDescription.getPreconditionExpression());
 
         if (page.getIdentifier() == null || page.getIdentifier().trim().length() == 0) {
             page.setIdentifier(EcoreUtil.getURI(pageDescription).toString());
@@ -257,6 +258,7 @@ public class ViewDescriptionConverter {
         group.setLabelExpression(groupDescription.getLabelExpression());
         group.setDomainClass(groupDescription.getDomainClass());
         group.setSemanticCandidateExpression(groupDescription.getSemanticCandidateExpression());
+        group.setPreconditionExpression(groupDescription.getPreconditionExpression());
 
         if (group.getIdentifier() == null || group.getIdentifier().trim().length() == 0) {
             group.setIdentifier(EcoreUtil.getURI(groupDescription).toString());

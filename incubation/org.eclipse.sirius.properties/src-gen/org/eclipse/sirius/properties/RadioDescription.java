@@ -62,7 +62,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -90,7 +90,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -119,7 +119,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Candidates Expression</em>'
      *            attribute.
@@ -149,7 +149,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression
      * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Candidate Display Expression</em>'
      *            attribute.
@@ -166,7 +166,7 @@ public interface RadioDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(RadioWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription_Style()
@@ -180,7 +180,7 @@ public interface RadioDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.RadioDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

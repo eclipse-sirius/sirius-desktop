@@ -46,7 +46,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -68,7 +68,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -78,7 +78,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -87,7 +87,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CheckboxDescriptionImpl() {
@@ -96,7 +96,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -140,7 +140,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -159,7 +159,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(CheckboxWidgetStyle newStyle, NotificationChain msgs) {
@@ -212,7 +212,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -252,7 +252,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -291,7 +291,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -312,7 +312,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -330,7 +330,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

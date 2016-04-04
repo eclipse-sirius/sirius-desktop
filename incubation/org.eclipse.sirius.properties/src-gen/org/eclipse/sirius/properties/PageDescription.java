@@ -31,6 +31,9 @@ import org.eclipse.emf.ecore.EObject;
  * <li>
  * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.PageDescription#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.PageDescription#getGroups
  * <em>Groups</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.PageDescription#getValidationSet
@@ -64,7 +67,7 @@ public interface PageDescription extends EObject {
      * {@link org.eclipse.sirius.properties.PageDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
@@ -80,7 +83,7 @@ public interface PageDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription_LabelExpression()
@@ -95,7 +98,7 @@ public interface PageDescription extends EObject {
      * {@link org.eclipse.sirius.properties.PageDescription#getLabelExpression
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
@@ -125,7 +128,7 @@ public interface PageDescription extends EObject {
      * {@link org.eclipse.sirius.properties.PageDescription#getDomainClass
      * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
@@ -141,7 +144,7 @@ public interface PageDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Semantic Candidate Expression</em>'
      *         attribute.
      * @see #setSemanticCandidateExpression(String)
@@ -157,7 +160,7 @@ public interface PageDescription extends EObject {
      * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Semantic Candidate Expression</em>'
      *            attribute.
@@ -165,6 +168,38 @@ public interface PageDescription extends EObject {
      * @generated
      */
     void setSemanticCandidateExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Precondition Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Precondition Expression</em>' attribute.
+     * @see #setPreconditionExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription_PreconditionExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     * @generated
+     */
+    String getPreconditionExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.PageDescription#getPreconditionExpression
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Precondition Expression</em>'
+     *            attribute.
+     * @see #getPreconditionExpression()
+     * @generated
+     */
+    void setPreconditionExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Groups</b></em>' reference list. The
@@ -192,7 +227,7 @@ public interface PageDescription extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(PageValidationSetDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription_ValidationSet()
@@ -206,7 +241,7 @@ public interface PageDescription extends EObject {
      * {@link org.eclipse.sirius.properties.PageDescription#getValidationSet
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Validation Set</em>' containment
      *            reference.

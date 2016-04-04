@@ -42,6 +42,9 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getSemanticCandidateExpression
  * <em>Semantic Candidate Expression</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getPreconditionExpression
+ * <em>Precondition Expression</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getContainer
  * <em>Container</em>}</li>
  * <li>
@@ -55,7 +58,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -65,7 +68,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -76,7 +79,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -87,7 +90,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -97,7 +100,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -107,7 +110,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -118,7 +121,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * The default value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -129,7 +132,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * The cached value of the '{@link #getSemanticCandidateExpression()
      * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -137,9 +140,31 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     protected String semanticCandidateExpression = GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getPreconditionExpression()
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getPreconditionExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getPreconditionExpression()
+     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getPreconditionExpression()
+     * @generated
+     * @ordered
+     */
+    protected String preconditionExpression = GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
+
+    /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getContainer()
      * @generated
      * @ordered
@@ -150,7 +175,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * The cached value of the '{@link #getValidationSet()
      * <em>Validation Set</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getValidationSet()
      * @generated
      * @ordered
@@ -159,7 +184,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GroupDescriptionImpl() {
@@ -168,7 +193,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -178,7 +203,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +213,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +227,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +237,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +251,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +261,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -250,7 +275,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +285,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -274,7 +299,31 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    public String getPreconditionExpression() {
+        return preconditionExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setPreconditionExpression(String newPreconditionExpression) {
+        String oldPreconditionExpression = preconditionExpression;
+        preconditionExpression = newPreconditionExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -284,7 +333,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetContainer(ContainerDescription newContainer, NotificationChain msgs) {
@@ -303,7 +352,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -327,7 +376,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -337,7 +386,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetValidationSet(GroupValidationSetDescription newValidationSet, NotificationChain msgs) {
@@ -356,7 +405,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -380,7 +429,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -396,7 +445,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -410,6 +459,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
             return getDomainClass();
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             return getSemanticCandidateExpression();
+        case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
+            return getPreconditionExpression();
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             return getContainer();
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
@@ -420,7 +471,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -438,6 +489,9 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             setSemanticCandidateExpression((String) newValue);
             return;
+        case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
+            setPreconditionExpression((String) newValue);
+            return;
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             setContainer((ContainerDescription) newValue);
             return;
@@ -450,7 +504,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -468,6 +522,9 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             setSemanticCandidateExpression(GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
+            setPreconditionExpression(GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
+            return;
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             setContainer((ContainerDescription) null);
             return;
@@ -480,7 +537,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -495,6 +552,9 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION:
             return GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT == null ? semanticCandidateExpression != null
                     : !GroupDescriptionImpl.SEMANTIC_CANDIDATE_EXPRESSION_EDEFAULT.equals(semanticCandidateExpression);
+        case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
+            return GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null
+                    : !GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
         case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
             return container != null;
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
@@ -505,7 +565,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -523,6 +583,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         result.append(domainClass);
         result.append(", semanticCandidateExpression: ");
         result.append(semanticCandidateExpression);
+        result.append(", preconditionExpression: ");
+        result.append(preconditionExpression);
         result.append(')');
         return result.toString();
     }
