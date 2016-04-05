@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,26 +19,31 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
+import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IMarkerResolution;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.ide.IGotoMarker;
 
 /**
  * QuickFix resolution executing a {@link ValidationFix} description.
@@ -69,47 +74,101 @@ public class ValidationFixResolution implements IMarkerResolution {
     @Override
     public void run(IMarker marker) {
         IResource airdFile = marker.getResource();
+        // Goto marker will only work if the marker reference a IResource, and
+        // Sirius marks main aird files.
         if (airdFile instanceof IFile) {
             try {
-                tryToOpenEditor(airdFile, marker);
+                tryToOpenEditorAndApplyFix(airdFile, marker);
             } catch (PartInitException e) {
                 SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ValidationFixResolution_editorOpeningError, airdFile), e);
             }
         }
     }
 
-    private void tryToOpenEditor(IResource airdFile, IMarker marker) throws PartInitException {
-        IEditorPart editor = IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), (IFile) airdFile);
-        if (editor instanceof IGotoMarker) {
-            ((IGotoMarker) editor).gotoMarker(marker);
-            EObject fixTarget = getFixTarget(editor, marker, airdFile);
-            if (fixTarget != null) {
-                executeFix(editor, fixTarget);
-                revalidate(editor);
+    private void tryToOpenEditorAndApplyFix(IResource airdFile, IMarker marker) throws PartInitException {
+        // Open the editor and select the marked element.
+        IEditorPart editor = IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), marker);
+
+        // Apply the fix
+        if (editor != null) {
+            Session currentSession = null;
+            IEditorInput editorInput = editor.getEditorInput();
+            boolean offscreenValidation = false;
+            if (editorInput instanceof SessionEditorInput) {
+                Session editorInputSession = ((SessionEditorInput) editorInput).getSession();
+                if (editorInputSession != null && editorInputSession.isOpen()) {
+                    // Open editor and goto marker were able to open and
+                    // activate the expected editor.
+                    currentSession = editorInputSession;
+                } else {
+                    URI markedResource = URI.createPlatformResourceURI(airdFile.getFullPath().toString(), true);
+                    Session existingSession = SessionManager.INSTANCE.getExistingSession(markedResource);
+                    if (existingSession == null || !existingSession.isOpen()) {
+                        // Goto marker was not able to open the marker and to
+                        // retrieve/init the session.
+                        return;
+                    } else {
+                        currentSession = existingSession;
+
+                        // The current editor is on the current session.
+                        offscreenValidation = true;
+                    }
+                }
+            }
+
+            if (!offscreenValidation) {
+                TransactionalEditingDomain editorDomain = (TransactionalEditingDomain) editor.getAdapter(TransactionalEditingDomain.class);
+                if (editorDomain != currentSession.getTransactionalEditingDomain()) {
+                    // The current editor is on the current session.
+                    offscreenValidation = true;
+                }
+            }
+
+            View markedView = getMarkedView(currentSession, marker);
+            if (markedView != null) {
+                EObject fixTarget = getFixTarget(markedView);
+                if (fixTarget != null) {
+                    executeFix(editor, fixTarget, currentSession.getTransactionalEditingDomain(), offscreenValidation);
+                    revalidate(editor, markedView.getDiagram(), offscreenValidation);
+                }
             }
         }
     }
 
-    private void revalidate(IEditorPart editor) {
-        if (editor instanceof DialectEditor) {
-            ((DialectEditor) editor).validateRepresentation();
-        }
-
-    }
-
-    private EObject getFixTarget(IEditorPart editor, IMarker marker, IResource airdFile) {
+    private View getMarkedView(Session session, IMarker marker) {
         String elementID = marker.getAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, null);
-        URI airdEMFResourceURI = URI.createPlatformResourceURI(airdFile.getFullPath().toString(), true);
-        airdEMFResourceURI = airdEMFResourceURI.appendFragment(elementID);
-        ResourceSet set = ((EditingDomain) editor.getAdapter(EditingDomain.class)).getResourceSet();
-        EObject markerTarget = set.getEObject(airdEMFResourceURI, false);
-        if (markerTarget instanceof View) {
-            markerTarget = ((View) markerTarget).getElement();
-            if (markerTarget instanceof DSemanticDecorator && !isViewValidationRule()) {
-                markerTarget = ((DSemanticDecorator) markerTarget).getTarget();
+        String diagramURI = marker.getAttribute(NavigationMarkerConstants.DIAGRAM_URI, null);
+
+        if (diagramURI == null || elementID == null) {
+            return null;
+        }
+
+        ResourceSet set = session.getTransactionalEditingDomain().getResourceSet();
+        if (set != null) {
+            EObject markedDiagram = set.getEObject(URI.createURI(diagramURI), true);
+            EObject markerTarget = markedDiagram instanceof Diagram ? markedDiagram.eResource().getEObject(elementID) : null;
+            if (markerTarget instanceof View) {
+                return (View) markerTarget;
             }
         }
-        return markerTarget;
+        return null;
+
+    }
+
+    private void revalidate(IEditorPart editor, View view, boolean offscreenValidation) {
+        if (editor instanceof DialectEditor && !offscreenValidation) {
+            ((DialectEditor) editor).validateRepresentation();
+        } else {
+            ValidateAction.runNonUIValidation(view);
+        }
+    }
+
+    private EObject getFixTarget(View markedView) {
+        EObject fixTarget = markedView.getElement();
+        if (fixTarget instanceof DSemanticDecorator && !isViewValidationRule()) {
+            fixTarget = ((DSemanticDecorator) fixTarget).getTarget();
+        }
+        return fixTarget;
     }
 
     private DDiagram getDiagram(IEditorPart editor) {
@@ -123,9 +182,8 @@ public class ValidationFixResolution implements IMarkerResolution {
         return (fix.eContainer() instanceof ViewValidationRule);
     }
 
-    private void executeFix(IEditorPart editor, EObject fixTarget) {
-        TransactionalEditingDomain domain = (TransactionalEditingDomain) editor.getAdapter(TransactionalEditingDomain.class);
-        IDiagramCommandFactory commandFactory = getDiagramCommandFactory(editor, domain);
+    private void executeFix(IEditorPart editor, EObject fixTarget, TransactionalEditingDomain domain, boolean offscreenValidation) {
+        IDiagramCommandFactory commandFactory = getDiagramCommandFactory(editor, domain, offscreenValidation);
 
         if (commandFactory != null && fixTarget != null) {
             Command fixCommand = commandFactory.buildQuickFixOperation(fix, fixTarget, getDiagram(editor));
@@ -152,10 +210,16 @@ public class ValidationFixResolution implements IMarkerResolution {
         return semanticTarget;
     }
 
-    private IDiagramCommandFactory getDiagramCommandFactory(IEditorPart editor, TransactionalEditingDomain domain) {
-        final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
-        final IDiagramCommandFactoryProvider diagramCmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
-        return diagramCmdFactoryProvider.getCommandFactory(domain);
+    private IDiagramCommandFactory getDiagramCommandFactory(IEditorPart editor, TransactionalEditingDomain domain, boolean offscreenValidation) {
+        if (offscreenValidation) {
+            IDiagramCommandFactory diagramCommandFactory = DiagramCommandFactoryService.getInstance().getNewProvider().getCommandFactory(domain);
+            diagramCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
+            return diagramCommandFactory;
+        } else {
+            final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
+            final IDiagramCommandFactoryProvider diagramCmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
+            return diagramCmdFactoryProvider.getCommandFactory(domain);
+        }
     }
 
 }
