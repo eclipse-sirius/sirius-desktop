@@ -41,6 +41,7 @@ import org.eclipse.sirius.ui.properties.internal.Messages;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
 import org.eclipse.sirius.ui.properties.internal.SiriusInterpreter;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
+import org.eclipse.sirius.ui.properties.internal.TransactionalEditingDomainContextAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -131,11 +132,12 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         return descriptors;
     }
 
-    private EEFView createEEFView(Session session, SiriusInputDescriptor input, EEFViewDescription viewDescription) {
+    private EEFView createEEFView(final Session session, SiriusInputDescriptor input, EEFViewDescription viewDescription) {
         IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
         variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
         variableManager.put(EEFExpressionUtils.INPUT, input);
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), session.getTransactionalEditingDomain(), input);
+        TransactionalEditingDomainContextAdapter eca = new TransactionalEditingDomainContextAdapter(session.getTransactionalEditingDomain());
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, input);
         return eefView;
     }
 
