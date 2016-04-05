@@ -42,7 +42,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * @generated
  */
 public interface WidgetStyle extends EObject {
-
     /**
      * Returns the value of the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc -->
@@ -186,4 +185,5 @@ public interface WidgetStyle extends EObject {
      * @generated
      */
     EList<FontFormat> getLabelFontFormat();
+
 } // WidgetStyle

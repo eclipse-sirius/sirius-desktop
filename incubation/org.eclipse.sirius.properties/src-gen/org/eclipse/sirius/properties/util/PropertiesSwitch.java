@@ -22,6 +22,7 @@ import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
@@ -29,11 +30,14 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.FillLayoutDescription;
+import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
+import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -189,9 +193,50 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.CONTROL_DESCRIPTION: {
+            ControlDescription controlDescription = (ControlDescription) theEObject;
+            T result = caseControlDescription(controlDescription);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.CONTAINER_DESCRIPTION: {
             ContainerDescription containerDescription = (ContainerDescription) theEObject;
             T result = caseContainerDescription(containerDescription);
+            if (result == null) {
+                result = caseControlDescription(containerDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.LAYOUT_DESCRIPTION: {
+            LayoutDescription layoutDescription = (LayoutDescription) theEObject;
+            T result = caseLayoutDescription(layoutDescription);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.FILL_LAYOUT_DESCRIPTION: {
+            FillLayoutDescription fillLayoutDescription = (FillLayoutDescription) theEObject;
+            T result = caseFillLayoutDescription(fillLayoutDescription);
+            if (result == null) {
+                result = caseLayoutDescription(fillLayoutDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.GRID_LAYOUT_DESCRIPTION: {
+            GridLayoutDescription gridLayoutDescription = (GridLayoutDescription) theEObject;
+            T result = caseGridLayoutDescription(gridLayoutDescription);
+            if (result == null) {
+                result = caseLayoutDescription(gridLayoutDescription);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -200,6 +245,9 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.WIDGET_DESCRIPTION: {
             WidgetDescription widgetDescription = (WidgetDescription) theEObject;
             T result = caseWidgetDescription(widgetDescription);
+            if (result == null) {
+                result = caseControlDescription(widgetDescription);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -210,6 +258,9 @@ public class PropertiesSwitch<T> {
             T result = caseTextDescription(textDescription);
             if (result == null) {
                 result = caseWidgetDescription(textDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(textDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -223,6 +274,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(buttonDescription);
             }
             if (result == null) {
+                result = caseControlDescription(buttonDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -232,6 +286,9 @@ public class PropertiesSwitch<T> {
             T result = caseLabelDescription(labelDescription);
             if (result == null) {
                 result = caseWidgetDescription(labelDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(labelDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -245,6 +302,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(checkboxDescription);
             }
             if (result == null) {
+                result = caseControlDescription(checkboxDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -256,6 +316,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(selectDescription);
             }
             if (result == null) {
+                result = caseControlDescription(selectDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -263,6 +326,9 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.DYNAMIC_MAPPING_FOR: {
             DynamicMappingFor dynamicMappingFor = (DynamicMappingFor) theEObject;
             T result = caseDynamicMappingFor(dynamicMappingFor);
+            if (result == null) {
+                result = caseControlDescription(dynamicMappingFor);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -286,6 +352,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(textAreaDescription);
             }
             if (result == null) {
+                result = caseControlDescription(textAreaDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -297,6 +366,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(radioDescription);
             }
             if (result == null) {
+                result = caseControlDescription(radioDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -306,6 +378,9 @@ public class PropertiesSwitch<T> {
             T result = caseSingleReferenceDescription(singleReferenceDescription);
             if (result == null) {
                 result = caseWidgetDescription(singleReferenceDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(singleReferenceDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -327,6 +402,9 @@ public class PropertiesSwitch<T> {
                 result = caseWidgetDescription(multipleReferencesDescription);
             }
             if (result == null) {
+                result = caseControlDescription(multipleReferencesDescription);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -336,6 +414,9 @@ public class PropertiesSwitch<T> {
             T result = caseCustomDescription(customDescription);
             if (result == null) {
                 result = caseWidgetDescription(customDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(customDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -637,6 +718,23 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Control Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Control Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseControlDescription(ControlDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Container Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -649,6 +747,57 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseContainerDescription(ContainerDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Layout Description</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Layout Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLayoutDescription(LayoutDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Fill Layout Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Fill Layout Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseFillLayoutDescription(FillLayoutDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Grid Layout Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Grid Layout Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGridLayoutDescription(GridLayoutDescription object) {
         return null;
     }
 
@@ -785,6 +934,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseDynamicMappingIf(DynamicMappingIf object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Text Area Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTextAreaDescription(TextAreaDescription object) {
         return null;
     }
 
@@ -1176,23 +1342,6 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Text Area Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseTextAreaDescription(TextAreaDescription object) {
         return null;
     }
 

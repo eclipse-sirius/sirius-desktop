@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.gridlayoutdescription;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the identifier property section.
+ * A filter for the numberOfColumns property section.
  */
-public class WidgetDescriptionIdentifierFilter extends ViewpointPropertyFilter {
+public class GridLayoutDescriptionNumberOfColumnsFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_Identifier();
+        return PropertiesPackage.eINSTANCE.getGridLayoutDescription_NumberOfColumns();
     }
 
     /**
@@ -35,7 +35,7 @@ public class WidgetDescriptionIdentifierFilter extends ViewpointPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.WidgetDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.GridLayoutDescription;
     }
 
     // Start of user code user methods

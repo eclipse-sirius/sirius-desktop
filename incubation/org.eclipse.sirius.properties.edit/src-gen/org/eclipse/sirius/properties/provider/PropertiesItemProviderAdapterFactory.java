@@ -171,6 +171,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.PropertyValidationRule} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected PropertyValidationRuleItemProvider propertyValidationRuleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.PropertyValidationRule}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createPropertyValidationRuleAdapter() {
+        if (propertyValidationRuleItemProvider == null) {
+            propertyValidationRuleItemProvider = new PropertyValidationRuleItemProvider(this);
+        }
+
+        return propertyValidationRuleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.GroupDescription} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -221,31 +246,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.PropertyValidationRule} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected PropertyValidationRuleItemProvider propertyValidationRuleItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.PropertyValidationRule}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createPropertyValidationRuleAdapter() {
-        if (propertyValidationRuleItemProvider == null) {
-            propertyValidationRuleItemProvider = new PropertyValidationRuleItemProvider(this);
-        }
-
-        return propertyValidationRuleItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.ContainerDescription} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -267,6 +267,56 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return containerDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.FillLayoutDescription} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected FillLayoutDescriptionItemProvider fillLayoutDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.FillLayoutDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createFillLayoutDescriptionAdapter() {
+        if (fillLayoutDescriptionItemProvider == null) {
+            fillLayoutDescriptionItemProvider = new FillLayoutDescriptionItemProvider(this);
+        }
+
+        return fillLayoutDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.GridLayoutDescription} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GridLayoutDescriptionItemProvider gridLayoutDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.GridLayoutDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGridLayoutDescriptionAdapter() {
+        if (gridLayoutDescriptionItemProvider == null) {
+            gridLayoutDescriptionItemProvider = new GridLayoutDescriptionItemProvider(this);
+        }
+
+        return gridLayoutDescriptionItemProvider;
     }
 
     /**
@@ -1143,6 +1193,12 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (containerDescriptionItemProvider != null) {
             containerDescriptionItemProvider.dispose();
+        }
+        if (fillLayoutDescriptionItemProvider != null) {
+            fillLayoutDescriptionItemProvider.dispose();
+        }
+        if (gridLayoutDescriptionItemProvider != null) {
+            gridLayoutDescriptionItemProvider.dispose();
         }
         if (textDescriptionItemProvider != null) {
             textDescriptionItemProvider.dispose();

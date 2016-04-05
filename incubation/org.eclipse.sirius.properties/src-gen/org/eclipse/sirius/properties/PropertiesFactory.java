@@ -94,6 +94,24 @@ public interface PropertiesFactory extends EFactory {
     ContainerDescription createContainerDescription();
 
     /**
+     * Returns a new object of class '<em>Fill Layout Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Fill Layout Description</em>'.
+     * @generated
+     */
+    FillLayoutDescription createFillLayoutDescription();
+
+    /**
+     * Returns a new object of class '<em>Grid Layout Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Grid Layout Description</em>'.
+     * @generated
+     */
+    GridLayoutDescription createGridLayoutDescription();
+
+    /**
      * Returns a new object of class '<em>Text Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *

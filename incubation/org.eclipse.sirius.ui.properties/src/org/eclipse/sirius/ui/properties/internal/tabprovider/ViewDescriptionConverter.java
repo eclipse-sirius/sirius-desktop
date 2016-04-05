@@ -25,12 +25,15 @@ import org.eclipse.eef.EEFCheckboxConditionalStyle;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFCheckboxStyle;
 import org.eclipse.eef.EEFContainerDescription;
+import org.eclipse.eef.EEFControlDescription;
 import org.eclipse.eef.EEFCustomExpression;
 import org.eclipse.eef.EEFCustomWidgetConditionalStyle;
 import org.eclipse.eef.EEFCustomWidgetDescription;
 import org.eclipse.eef.EEFCustomWidgetStyle;
 import org.eclipse.eef.EEFDynamicMappingFor;
 import org.eclipse.eef.EEFDynamicMappingIf;
+import org.eclipse.eef.EEFFillLayoutDescription;
+import org.eclipse.eef.EEFGridLayoutDescription;
 import org.eclipse.eef.EEFGroupDescription;
 import org.eclipse.eef.EEFLabelConditionalStyle;
 import org.eclipse.eef.EEFLabelDescription;
@@ -53,6 +56,7 @@ import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EEFWidgetStyle;
+import org.eclipse.eef.EEF_FILL_LAYOUT_ORIENTATION;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -65,6 +69,8 @@ import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
+import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
@@ -72,10 +78,14 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
+import org.eclipse.sirius.properties.FillLayoutDescription;
+import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
+import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
@@ -300,35 +310,75 @@ public class ViewDescriptionConverter {
     }
 
     private void convertGroupContents(GroupDescription groupDescription, EEFGroupDescription group) {
-        EEFContainerDescription containerDesc = EefFactory.eINSTANCE.createEEFContainerDescription();
-
-        if (groupDescription.getContainer() != null) {
-            for (WidgetDescription widgetDescription : groupDescription.getContainer().getWidgets()) {
-                EEFWidgetDescription description = this.createEEFWidgetDescription(widgetDescription);
-                if (description != null) {
-                    containerDesc.getWidgets().add(description);
-                }
+        List<ControlDescription> controls = groupDescription.getControls();
+        for (ControlDescription controlDescription : controls) {
+            EEFControlDescription eefControlDescription = this.createEEFControlDescription(controlDescription);
+            if (eefControlDescription != null) {
+                group.getControls().add(eefControlDescription);
             }
-            for (DynamicMappingFor dynamicMappingFor : groupDescription.getContainer().getDynamicMappings()) {
-                EEFDynamicMappingFor eefDynamicMappingFor = EefFactory.eINSTANCE.createEEFDynamicMappingFor();
-                eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
-                eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
-
-                List<DynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
-                for (DynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
-                    EEFDynamicMappingIf eefDynamicMappingIf = EefFactory.eINSTANCE.createEEFDynamicMappingIf();
-                    eefDynamicMappingIf.setPredicateExpression(dynamicMappingIf.getPredicateExpression());
-
-                    EEFWidgetDescription eefWidgetDescription = this.createEEFWidgetDescription(dynamicMappingIf.getWidget());
-                    eefDynamicMappingIf.setWidget(eefWidgetDescription);
-
-                    eefDynamicMappingFor.getIfs().add(eefDynamicMappingIf);
-                }
-
-                containerDesc.getDynamicMappings().add(eefDynamicMappingFor);
-            }
-            group.setContainer(containerDesc);
         }
+    }
+
+    private EEFControlDescription createEEFControlDescription(ControlDescription controlDescription) {
+        EEFControlDescription eefControlDescription = null;
+        if (controlDescription instanceof WidgetDescription) {
+            WidgetDescription widgetDescription = (WidgetDescription) controlDescription;
+            eefControlDescription = this.createEEFWidgetDescription(widgetDescription);
+        } else if (controlDescription instanceof ContainerDescription) {
+            ContainerDescription containerDescription = (ContainerDescription) controlDescription;
+            eefControlDescription = this.createEEFContainerDescription(containerDescription);
+        } else if (controlDescription instanceof DynamicMappingFor) {
+            DynamicMappingFor dynamicMappingFor = (DynamicMappingFor) controlDescription;
+            eefControlDescription = this.createEEFDynamicMappingFor(dynamicMappingFor);
+        }
+        return eefControlDescription;
+    }
+
+    private EEFContainerDescription createEEFContainerDescription(ContainerDescription containerDescription) {
+        EEFContainerDescription eefContainerDescription = EefFactory.eINSTANCE.createEEFContainerDescription();
+
+        LayoutDescription layout = containerDescription.getLayout();
+        if (layout instanceof FillLayoutDescription) {
+            EEFFillLayoutDescription eefFillLayoutDescription = EefFactory.eINSTANCE.createEEFFillLayoutDescription();
+            if (((FillLayoutDescription) layout).getOrientation() == FILL_LAYOUT_ORIENTATION.HORIZONTAL) {
+                eefFillLayoutDescription.setOrientation(EEF_FILL_LAYOUT_ORIENTATION.HORIZONTAL);
+            } else if (((FillLayoutDescription) layout).getOrientation() == FILL_LAYOUT_ORIENTATION.VERTICAL) {
+                eefFillLayoutDescription.setOrientation(EEF_FILL_LAYOUT_ORIENTATION.VERTICAL);
+            }
+            eefContainerDescription.setLayout(eefFillLayoutDescription);
+        } else if (layout instanceof GridLayoutDescription) {
+            EEFGridLayoutDescription eefGridLayoutDescription = EefFactory.eINSTANCE.createEEFGridLayoutDescription();
+            eefGridLayoutDescription.setNumberOfColumns(((GridLayoutDescription) layout).getNumberOfColumns());
+            eefGridLayoutDescription.setMakeColumnsWithEqualWidth(((GridLayoutDescription) layout).isMakeColumnsWithEqualWidth());
+            eefContainerDescription.setLayout(eefGridLayoutDescription);
+        }
+
+        List<ControlDescription> controls = containerDescription.getControls();
+        for (ControlDescription controlDescription : controls) {
+            EEFControlDescription eefControlDescription = this.createEEFControlDescription(controlDescription);
+            if (eefControlDescription != null) {
+                eefContainerDescription.getControls().add(eefControlDescription);
+            }
+        }
+        return eefContainerDescription;
+    }
+
+    private EEFDynamicMappingFor createEEFDynamicMappingFor(DynamicMappingFor dynamicMappingFor) {
+        EEFDynamicMappingFor eefDynamicMappingFor = EefFactory.eINSTANCE.createEEFDynamicMappingFor();
+        eefDynamicMappingFor.setDomainClassExpression(dynamicMappingFor.getDomainClassExpression());
+        eefDynamicMappingFor.setIterator(dynamicMappingFor.getIterator());
+
+        List<DynamicMappingIf> dynamicMappingIfs = dynamicMappingFor.getIfs();
+        for (DynamicMappingIf dynamicMappingIf : dynamicMappingIfs) {
+            EEFDynamicMappingIf eefDynamicMappingIf = EefFactory.eINSTANCE.createEEFDynamicMappingIf();
+            eefDynamicMappingIf.setPredicateExpression(dynamicMappingIf.getPredicateExpression());
+
+            EEFWidgetDescription eefWidgetDescription = this.createEEFWidgetDescription(dynamicMappingIf.getWidget());
+            eefDynamicMappingIf.setWidget(eefWidgetDescription);
+
+            eefDynamicMappingFor.getIfs().add(eefDynamicMappingIf);
+        }
+        return eefDynamicMappingFor;
     }
 
     private EEFWidgetDescription createEEFWidgetDescription(WidgetDescription widgetDescription) {

@@ -6,54 +6,40 @@
     xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
     xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
     xsi:schemaLocation="http://www.eclipse.org/sirius/properties/1.0.0 ../../org.eclipse.sirius.properties/model/properties.ecore http://www.eclipse.org/sirius/description/tool/1.1.0 ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool"
-    identifier="org.eclipse.sirius.ui.properties"
-    defaultPage="//@pages.0">
+    identifier="org.eclipse.sirius.ui.properties">
   <pages identifier="org.eclipse.sirius.ui.properties.defaultpage"
       labelExpression="General"
       groups="//@groups.0"/>
   <groups identifier="org.eclipse.sirius.ui.properties.defaultgroup"
-      labelExpression="Properties"
-      semanticCandidateExpression="">
-    <container>
-      <dynamicMappings
-          iterator="eStructuralFeature"
-          domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
-        <ifs
-            predicateExpression="aql:eStructuralFeature.eType = ecore::EString and not(eStructuralFeature.many)">
-          <widget
-              xsi:type="properties:TextDescription"
-              labelExpression="aql:eStructuralFeature.name"
-              valueExpression="aql:self.eGet(eStructuralFeature)">
-            <initialOperation>
-              <firstModelOperations
-                  xsi:type="tool:ChangeContext"
-                  browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
-            </initialOperation>
-          </widget>
-        </ifs>
-        <ifs
-            predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean and not(eStructuralFeature.many)">
-          <widget
-              xsi:type="properties:CheckboxDescription"
-              labelExpression="aql:eStructuralFeature.name"
-              valueExpression="aql:self.eGet(eStructuralFeature)">
-            <initialOperation>
-              <firstModelOperations
-                  xsi:type="tool:ChangeContext"
-                  browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
-            </initialOperation>
-          </widget>
-        </ifs>
-        <ifs
-            predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.many) and not(eStructuralFeature.containment) and not(eStructuralFeature.container) and not(eStructuralFeature.derived)">
-          <widget
-              xsi:type="properties:SelectDescription"
-              labelExpression="aql:eStructuralFeature.name"
-              valueExpression="aql:self.eGet(eStructuralFeature)"
-              candidatesExpression="aql:self.eResource().getContents().eAllContents()->filter(eStructuralFeature.eType)"
-              candidateDisplayExpression="aql:candidate.name"/>
-        </ifs>
-      </dynamicMappings>
-    </container>
+      labelExpression="Properties">
+    <controls
+        xsi:type="properties:DynamicMappingFor"
+        iterator="eStructuralFeature"
+        domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
+      <ifs predicateExpression="aql:eStructuralFeature.eType = ecore::EString and not(eStructuralFeature.many)">
+        <widget
+            xsi:type="properties:TextDescription"
+            labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
+            valueExpression="aql:self.eGet(eStructuralFeature)">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+          </initialOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean and not(eStructuralFeature.many)">
+        <widget
+            xsi:type="properties:CheckboxDescription"
+            labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
+            valueExpression="aql:self.eGet(eStructuralFeature)">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+          </initialOperation>
+        </widget>
+      </ifs>
+    </controls>
   </groups>
 </properties:ViewExtensionDescription>

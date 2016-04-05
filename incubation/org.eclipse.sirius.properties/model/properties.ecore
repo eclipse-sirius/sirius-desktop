@@ -44,8 +44,8 @@
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//ContainerDescription"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controls" upperBound="-1"
+        eType="#//ControlDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//GroupValidationSetDescription"
         containment="true"/>
   </eClassifiers>
@@ -56,17 +56,31 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyValidationRules"
         upperBound="-1" eType="#//PropertyValidationRule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ContainerDescription">
+  <eClassifiers xsi:type="ecore:EClass" name="ControlDescription" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="widgets" upperBound="-1"
-        eType="#//WidgetDescription" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicMappings" upperBound="-1"
-        eType="#//DynamicMappingFor" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WidgetDescription" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerDescription" eSuperTypes="#//ControlDescription">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controls" upperBound="-1"
+        eType="#//ControlDescription" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layout" eType="#//LayoutDescription"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LayoutDescription" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FillLayoutDescription" eSuperTypes="#//LayoutDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="#//FILL_LAYOUT_ORIENTATION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GridLayoutDescription" eSuperTypes="#//LayoutDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfColumns" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="makeColumnsWithEqualWidth"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FILL_LAYOUT_ORIENTATION">
+    <eLiterals name="VERTICAL" literal="VERTICAL"/>
+    <eLiterals name="HORIZONTAL" literal="HORIZONTAL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WidgetDescription" abstract="true" eSuperTypes="#//ControlDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="helpExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
@@ -140,7 +154,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//SelectWidgetConditionalStyle" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingFor">
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingFor" eSuperTypes="#//ControlDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterator" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClassExpression"

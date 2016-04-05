@@ -12,7 +12,6 @@
 package org.eclipse.sirius.properties;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,85 +21,63 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets
- * <em>Widgets</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings
- * <em>Dynamic Mappings</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getControls
+ * <em>Controls</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getLayout
+ * <em>Layout</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription()
  * @model
  * @generated
  */
-public interface ContainerDescription extends EObject {
+public interface ContainerDescription extends ControlDescription {
     /**
-     * Returns the value of the '<em><b>Identifier</b></em>' attribute. <!--
+     * Returns the value of the '<em><b>Controls</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ControlDescription}. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Identifier</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Controls</em>' containment reference list
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Identifier</em>' attribute.
-     * @see #setIdentifier(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Identifier()
-     * @model required="true"
+     * @return the value of the '<em>Controls</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Controls()
+     * @model containment="true"
      * @generated
      */
-    String getIdentifier();
+    EList<ControlDescription> getControls();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
-     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Identifier</em>' attribute.
-     * @see #getIdentifier()
-     * @generated
-     */
-    void setIdentifier(String value);
-
-    /**
-     * Returns the value of the '<em><b>Widgets</b></em>' containment reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.properties.WidgetDescription}. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Layout</b></em>' containment reference.
+     * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Widgets</em>' containment reference list isn't
+     * If the meaning of the '<em>Layout</em>' containment reference isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Widgets</em>' containment reference list.
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Widgets()
+     * @return the value of the '<em>Layout</em>' containment reference.
+     * @see #setLayout(LayoutDescription)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Layout()
      * @model containment="true"
      * @generated
      */
-    EList<WidgetDescription> getWidgets();
+    LayoutDescription getLayout();
 
     /**
-     * Returns the value of the '<em><b>Dynamic Mappings</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.properties.DynamicMappingFor}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Dynamic Mappings</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.ContainerDescription#getLayout
+     * <em>Layout</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return the value of the '<em>Dynamic Mappings</em>' containment
-     *         reference list.
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_DynamicMappings()
-     * @model containment="true"
+     * @param value
+     *            the new value of the '<em>Layout</em>' containment reference.
+     * @see #getLayout()
      * @generated
      */
-    EList<DynamicMappingFor> getDynamicMappings();
+    void setLayout(LayoutDescription value);
 
 } // ContainerDescription

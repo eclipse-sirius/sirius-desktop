@@ -7,10 +7,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
@@ -19,16 +18,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the identifier property of a WidgetDescription object.
+ * A section for the numberOfColumns property of a GridLayoutDescription object.
  */
-public class WidgetDescriptionIdentifierPropertySection extends AbstractTextPropertySection {
+public class GridLayoutDescriptionNumberOfColumnsPropertySection extends AbstractTextPropertySection {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "Identifier"; //$NON-NLS-1$
+        return "NumberOfColumns"; //$NON-NLS-1$
     }
 
     /**
@@ -37,7 +36,7 @@ public class WidgetDescriptionIdentifierPropertySection extends AbstractTextProp
     @Override
     protected String getLabelText() {
         String labelText;
-        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
 
         // End of user code get label text
@@ -49,7 +48,7 @@ public class WidgetDescriptionIdentifierPropertySection extends AbstractTextProp
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getWidgetDescription_Identifier();
+        return PropertiesPackage.eINSTANCE.getGridLayoutDescription_NumberOfColumns();
     }
 
     /**
@@ -74,8 +73,6 @@ public class WidgetDescriptionIdentifierPropertySection extends AbstractTextProp
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-
-        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
         // Start of user code create controls
 

@@ -14,7 +14,6 @@ package org.eclipse.sirius.properties.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
@@ -26,9 +25,6 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * </p>
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getLabelExpression
  * <em>Label Expression</em>}</li>
  * <li>
@@ -38,27 +34,7 @@ import org.eclipse.sirius.properties.WidgetDescription;
  *
  * @generated
  */
-public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container implements WidgetDescription {
-    /**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
-    protected static final String IDENTIFIER_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
-    protected String identifier = WidgetDescriptionImpl.IDENTIFIER_EDEFAULT;
-
+public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl implements WidgetDescription {
     /**
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
@@ -128,30 +104,6 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      */
     @Override
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public void setIdentifier(String newIdentifier) {
-        String oldIdentifier = identifier;
-        identifier = newIdentifier;
-        if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public String getLabelExpression() {
         return labelExpression;
     }
@@ -202,8 +154,6 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            return getIdentifier();
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
@@ -220,9 +170,6 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            setIdentifier((String) newValue);
-            return;
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
             return;
@@ -241,9 +188,6 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            setIdentifier(WidgetDescriptionImpl.IDENTIFIER_EDEFAULT);
-            return;
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression(WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT);
             return;
@@ -262,8 +206,6 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER:
-            return WidgetDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !WidgetDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             return WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
@@ -284,9 +226,7 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (identifier: ");
-        result.append(identifier);
-        result.append(", labelExpression: ");
+        result.append(" (labelExpression: ");
         result.append(labelExpression);
         result.append(", helpExpression: ");
         result.append(helpExpression);

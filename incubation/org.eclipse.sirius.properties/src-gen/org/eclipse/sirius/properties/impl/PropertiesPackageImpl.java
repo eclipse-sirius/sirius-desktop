@@ -13,6 +13,7 @@ package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.properties.CheckboxDescription;
 import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
@@ -31,11 +33,14 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.FillLayoutDescription;
+import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
+import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
@@ -117,7 +122,35 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
+    private EClass controlDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EClass containerDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass layoutDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass fillLayoutDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass gridLayoutDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -342,6 +375,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass customWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum filL_LAYOUT_ORIENTATIONEEnum = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -648,7 +688,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getGroupDescription_Container() {
+    public EReference getGroupDescription_Controls() {
         return (EReference) groupDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
@@ -698,6 +738,26 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getControlDescription() {
+        return controlDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getControlDescription_Identifier() {
+        return (EAttribute) controlDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getContainerDescription() {
         return containerDescriptionEClass;
     }
@@ -708,8 +768,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getContainerDescription_Identifier() {
-        return (EAttribute) containerDescriptionEClass.getEStructuralFeatures().get(0);
+    public EReference getContainerDescription_Controls() {
+        return (EReference) containerDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -718,7 +778,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getContainerDescription_Widgets() {
+    public EReference getContainerDescription_Layout() {
         return (EReference) containerDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
@@ -728,8 +788,58 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EReference getContainerDescription_DynamicMappings() {
-        return (EReference) containerDescriptionEClass.getEStructuralFeatures().get(2);
+    public EClass getLayoutDescription() {
+        return layoutDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getFillLayoutDescription() {
+        return fillLayoutDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getFillLayoutDescription_Orientation() {
+        return (EAttribute) fillLayoutDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getGridLayoutDescription() {
+        return gridLayoutDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGridLayoutDescription_NumberOfColumns() {
+        return (EAttribute) gridLayoutDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGridLayoutDescription_MakeColumnsWithEqualWidth() {
+        return (EAttribute) gridLayoutDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -748,7 +858,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getWidgetDescription_Identifier() {
+    public EAttribute getWidgetDescription_LabelExpression() {
         return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
@@ -758,18 +868,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getWidgetDescription_LabelExpression() {
-        return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EAttribute getWidgetDescription_HelpExpression() {
-        return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(2);
+        return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1888,6 +1988,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EEnum getFILL_LAYOUT_ORIENTATION() {
+        return filL_LAYOUT_ORIENTATIONEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory) getEFactoryInstance();
     }
@@ -1940,20 +2050,30 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__DOMAIN_CLASS);
         createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION);
         createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION);
-        createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER);
+        createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__CONTROLS);
         createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET);
 
         groupValidationSetDescriptionEClass = createEClass(PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION);
         createEReference(groupValidationSetDescriptionEClass, PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES);
         createEReference(groupValidationSetDescriptionEClass, PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES);
 
+        controlDescriptionEClass = createEClass(PropertiesPackage.CONTROL_DESCRIPTION);
+        createEAttribute(controlDescriptionEClass, PropertiesPackage.CONTROL_DESCRIPTION__IDENTIFIER);
+
         containerDescriptionEClass = createEClass(PropertiesPackage.CONTAINER_DESCRIPTION);
-        createEAttribute(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER);
-        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS);
-        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
+        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS);
+        createEReference(containerDescriptionEClass, PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT);
+
+        layoutDescriptionEClass = createEClass(PropertiesPackage.LAYOUT_DESCRIPTION);
+
+        fillLayoutDescriptionEClass = createEClass(PropertiesPackage.FILL_LAYOUT_DESCRIPTION);
+        createEAttribute(fillLayoutDescriptionEClass, PropertiesPackage.FILL_LAYOUT_DESCRIPTION__ORIENTATION);
+
+        gridLayoutDescriptionEClass = createEClass(PropertiesPackage.GRID_LAYOUT_DESCRIPTION);
+        createEAttribute(gridLayoutDescriptionEClass, PropertiesPackage.GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS);
+        createEAttribute(gridLayoutDescriptionEClass, PropertiesPackage.GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH);
 
         widgetDescriptionEClass = createEClass(PropertiesPackage.WIDGET_DESCRIPTION);
-        createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER);
         createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION);
         createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION);
 
@@ -2098,6 +2218,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         customWidgetConditionalStyleEClass = createEClass(PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE);
         createEReference(customWidgetConditionalStyleEClass, PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        // Create enums
+        filL_LAYOUT_ORIENTATIONEEnum = createEEnum(PropertiesPackage.FILL_LAYOUT_ORIENTATION);
     }
 
     /**
@@ -2139,11 +2262,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         // Add supertypes to classes
         viewExtensionDescriptionEClass.getESuperTypes().add(theDescriptionPackage.getExtension());
         propertyValidationRuleEClass.getESuperTypes().add(theValidationPackage.getValidationRule());
+        containerDescriptionEClass.getESuperTypes().add(this.getControlDescription());
+        fillLayoutDescriptionEClass.getESuperTypes().add(this.getLayoutDescription());
+        gridLayoutDescriptionEClass.getESuperTypes().add(this.getLayoutDescription());
+        widgetDescriptionEClass.getESuperTypes().add(this.getControlDescription());
         textDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         buttonDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         labelDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         checkboxDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         selectDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        dynamicMappingForEClass.getESuperTypes().add(this.getControlDescription());
         textAreaDescriptionEClass.getESuperTypes().add(this.getTextDescription());
         radioDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         singleReferenceDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
@@ -2224,7 +2352,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getGroupDescription_PreconditionExpression(), theDescriptionPackage.getInterpretedExpression(), "preconditionExpression", null, 0, 1, GroupDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEReference(getGroupDescription_Container(), this.getContainerDescription(), null, "container", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEReference(getGroupDescription_Controls(), this.getControlDescription(), null, "controls", null, 0, -1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getGroupDescription_ValidationSet(), this.getGroupValidationSetDescription(), null, "validationSet", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -2240,19 +2368,32 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getContainerDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+        initEClass(controlDescriptionEClass, ControlDescription.class, "ControlDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getControlDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ControlDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getContainerDescription_Widgets(), this.getWidgetDescription(), null, "widgets", null, 0, -1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEReference(getContainerDescription_DynamicMappings(), this.getDynamicMappingFor(), null, "dynamicMappings", null, 0, -1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT,
+
+        initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getContainerDescription_Controls(), this.getControlDescription(), null, "controls", null, 0, -1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getContainerDescription_Layout(), this.getLayoutDescription(), null, "layout", null, 0, 1, ContainerDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(layoutDescriptionEClass, LayoutDescription.class, "LayoutDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(fillLayoutDescriptionEClass, FillLayoutDescription.class, "FillLayoutDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getFillLayoutDescription_Orientation(), this.getFILL_LAYOUT_ORIENTATION(), "orientation", null, 0, 1, FillLayoutDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(gridLayoutDescriptionEClass, GridLayoutDescription.class, "GridLayoutDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getGridLayoutDescription_NumberOfColumns(), theEcorePackage.getEInt(), "numberOfColumns", "1", 0, 1, GridLayoutDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGridLayoutDescription_MakeColumnsWithEqualWidth(), theEcorePackage.getEBoolean(), "makeColumnsWithEqualWidth", null, 0, 1, GridLayoutDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(widgetDescriptionEClass, WidgetDescription.class, "WidgetDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getWidgetDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getWidgetDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getWidgetDescription_HelpExpression(), theDescriptionPackage.getInterpretedExpression(), "helpExpression", null, 0, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -2547,6 +2688,11 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getCustomWidgetConditionalStyle_Style(), this.getCustomWidgetStyle(), null, "style", null, 0, 1, CustomWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        // Initialize enums and add enum literals
+        initEEnum(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.class, "FILL_LAYOUT_ORIENTATION");
+        addEEnumLiteral(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.VERTICAL);
+        addEEnumLiteral(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.HORIZONTAL);
 
         // Create resource
         createResource(PropertiesPackage.eNS_URI);

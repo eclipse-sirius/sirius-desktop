@@ -19,13 +19,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.ContainerDescription;
-import org.eclipse.sirius.properties.DynamicMappingFor;
+import org.eclipse.sirius.properties.ControlDescription;
+import org.eclipse.sirius.properties.LayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -35,59 +34,35 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * </p>
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getIdentifier
- * <em>Identifier</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getControls
+ * <em>Controls</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getWidgets
- * <em>Widgets</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getDynamicMappings
- * <em>Dynamic Mappings</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getLayout
+ * <em>Layout</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container implements ContainerDescription {
+public class ContainerDescriptionImpl extends ControlDescriptionImpl implements ContainerDescription {
     /**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
-    protected static final String IDENTIFIER_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
-    protected String identifier = ContainerDescriptionImpl.IDENTIFIER_EDEFAULT;
-
-    /**
-     * The cached value of the '{@link #getWidgets() <em>Widgets</em>}'
+     * The cached value of the '{@link #getControls() <em>Controls</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see #getWidgets()
+     * @see #getControls()
      * @generated
      * @ordered
      */
-    protected EList<WidgetDescription> widgets;
+    protected EList<ControlDescription> controls;
 
     /**
-     * The cached value of the '{@link #getDynamicMappings()
-     * <em>Dynamic Mappings</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getLayout() <em>Layout</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see #getDynamicMappings()
+     * @see #getLayout()
      * @generated
      * @ordered
      */
-    protected EList<DynamicMappingFor> dynamicMappings;
+    protected LayoutDescription layout;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -114,8 +89,11 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      */
     @Override
-    public String getIdentifier() {
-        return identifier;
+    public EList<ControlDescription> getControls() {
+        if (controls == null) {
+            controls = new EObjectContainmentEList<ControlDescription>(ControlDescription.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS);
+        }
+        return controls;
     }
 
     /**
@@ -124,12 +102,27 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      */
     @Override
-    public void setIdentifier(String newIdentifier) {
-        String oldIdentifier = identifier;
-        identifier = newIdentifier;
+    public LayoutDescription getLayout() {
+        return layout;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetLayout(LayoutDescription newLayout, NotificationChain msgs) {
+        LayoutDescription oldLayout = layout;
+        layout = newLayout;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER, oldIdentifier, identifier));
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT, oldLayout, newLayout);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
         }
+        return msgs;
     }
 
     /**
@@ -138,24 +131,22 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      */
     @Override
-    public EList<WidgetDescription> getWidgets() {
-        if (widgets == null) {
-            widgets = new EObjectContainmentEList<WidgetDescription>(WidgetDescription.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS);
+    public void setLayout(LayoutDescription newLayout) {
+        if (newLayout != layout) {
+            NotificationChain msgs = null;
+            if (layout != null) {
+                msgs = ((InternalEObject) layout).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT, null, msgs);
+            }
+            if (newLayout != null) {
+                msgs = ((InternalEObject) newLayout).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT, null, msgs);
+            }
+            msgs = basicSetLayout(newLayout, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT, newLayout, newLayout));
         }
-        return widgets;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<DynamicMappingFor> getDynamicMappings() {
-        if (dynamicMappings == null) {
-            dynamicMappings = new EObjectContainmentEList<DynamicMappingFor>(DynamicMappingFor.class, this, PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS);
-        }
-        return dynamicMappings;
     }
 
     /**
@@ -166,10 +157,10 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return ((InternalEList<?>) getWidgets()).basicRemove(otherEnd, msgs);
-        case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
-            return ((InternalEList<?>) getDynamicMappings()).basicRemove(otherEnd, msgs);
+        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
+            return ((InternalEList<?>) getControls()).basicRemove(otherEnd, msgs);
+        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+            return basicSetLayout(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -182,12 +173,10 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            return getIdentifier();
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return getWidgets();
-        case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
-            return getDynamicMappings();
+        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
+            return getControls();
+        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+            return getLayout();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -201,16 +190,12 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            setIdentifier((String) newValue);
+        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
+            getControls().clear();
+            getControls().addAll((Collection<? extends ControlDescription>) newValue);
             return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            getWidgets().clear();
-            getWidgets().addAll((Collection<? extends WidgetDescription>) newValue);
-            return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
-            getDynamicMappings().clear();
-            getDynamicMappings().addAll((Collection<? extends DynamicMappingFor>) newValue);
+        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+            setLayout((LayoutDescription) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -224,14 +209,11 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            setIdentifier(ContainerDescriptionImpl.IDENTIFIER_EDEFAULT);
+        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
+            getControls().clear();
             return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            getWidgets().clear();
-            return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
-            getDynamicMappings().clear();
+        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+            setLayout((LayoutDescription) null);
             return;
         }
         super.eUnset(featureID);
@@ -245,32 +227,12 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            return ContainerDescriptionImpl.IDENTIFIER_EDEFAULT == null ? identifier != null : !ContainerDescriptionImpl.IDENTIFIER_EDEFAULT.equals(identifier);
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return widgets != null && !widgets.isEmpty();
-        case PropertiesPackage.CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS:
-            return dynamicMappings != null && !dynamicMappings.isEmpty();
+        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
+            return controls != null && !controls.isEmpty();
+        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+            return layout != null;
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (eIsProxy()) {
-            return super.toString();
-        }
-
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (identifier: ");
-        result.append(identifier);
-        result.append(')');
-        return result.toString();
     }
 
 } // ContainerDescriptionImpl

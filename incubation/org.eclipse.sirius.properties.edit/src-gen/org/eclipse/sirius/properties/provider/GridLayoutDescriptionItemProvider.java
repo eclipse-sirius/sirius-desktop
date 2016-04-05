@@ -20,24 +20,24 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
+ * {@link org.eclipse.sirius.properties.GridLayoutDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
+public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public WidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public GridLayoutDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -52,36 +52,47 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addLabelExpressionPropertyDescriptor(object);
-            addHelpExpressionPropertyDescriptor(object);
+            addNumberOfColumnsPropertyDescriptor(object);
+            addMakeColumnsWithEqualWidthPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Label Expression feature. <!--
+     * This adds a property descriptor for the Number Of Columns feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addLabelExpressionPropertyDescriptor(Object object) {
+    protected void addNumberOfColumnsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_labelExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_labelExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GridLayoutDescription_numberOfColumns_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_numberOfColumns_feature", "_UI_GridLayoutDescription_type"),
+                        PropertiesPackage.Literals.GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Help Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Make Columns With Equal Width
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addHelpExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_helpExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    protected void addMakeColumnsWithEqualWidthPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature", "_UI_GridLayoutDescription_type"),
+                PropertiesPackage.Literals.GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This returns GridLayoutDescription.gif. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GridLayoutDescription"));
     }
 
     /**
@@ -92,8 +103,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      */
     @Override
     public String getText(Object object) {
-        String label = ((WidgetDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetDescription_type") : getString("_UI_WidgetDescription_type") + " " + label;
+        GridLayoutDescription gridLayoutDescription = (GridLayoutDescription) object;
+        return getString("_UI_GridLayoutDescription_type") + " " + gridLayoutDescription.getNumberOfColumns();
     }
 
     /**
@@ -108,9 +119,9 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(WidgetDescription.class)) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
-        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+        switch (notification.getFeatureID(GridLayoutDescription.class)) {
+        case PropertiesPackage.GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS:
+        case PropertiesPackage.GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

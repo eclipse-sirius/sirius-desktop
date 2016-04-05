@@ -69,6 +69,17 @@
    
       </description>
    </context>
+   <context id="ControlDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ControlDescription description -->
+   
+   <!-- End of user code ControlDescription description -->
+   
+      </description>
+   </context>
    <context id="ContainerDescription">
      <description>
        
@@ -77,6 +88,39 @@
    <!-- Start of user code ContainerDescription description -->
    
    <!-- End of user code ContainerDescription description -->
+   
+      </description>
+   </context>
+   <context id="LayoutDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code LayoutDescription description -->
+   
+   <!-- End of user code LayoutDescription description -->
+   
+      </description>
+   </context>
+   <context id="FillLayoutDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code FillLayoutDescription description -->
+   
+   <!-- End of user code FillLayoutDescription description -->
+   
+      </description>
+   </context>
+   <context id="GridLayoutDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code GridLayoutDescription description -->
+   
+   <!-- End of user code GridLayoutDescription description -->
    
       </description>
    </context>

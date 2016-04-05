@@ -11,13 +11,18 @@
  */
 package org.eclipse.sirius.properties.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -45,8 +50,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getContainer
- * <em>Container</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getControls
+ * <em>Controls</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getValidationSet
  * <em>Validation Set</em>}</li>
@@ -162,14 +167,14 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     protected String preconditionExpression = GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getContainer() <em>Container</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getControls() <em>Controls</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see #getContainer()
+     * @see #getControls()
      * @generated
      * @ordered
      */
-    protected ContainerDescription container;
+    protected EList<ControlDescription> controls;
 
     /**
      * The cached value of the '{@link #getValidationSet()
@@ -327,51 +332,11 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      */
     @Override
-    public ContainerDescription getContainer() {
-        return container;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    public NotificationChain basicSetContainer(ContainerDescription newContainer, NotificationChain msgs) {
-        ContainerDescription oldContainer = container;
-        container = newContainer;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, oldContainer, newContainer);
-            if (msgs == null) {
-                msgs = notification;
-            } else {
-                msgs.add(notification);
-            }
+    public EList<ControlDescription> getControls() {
+        if (controls == null) {
+            controls = new EObjectContainmentEList<ControlDescription>(ControlDescription.class, this, PropertiesPackage.GROUP_DESCRIPTION__CONTROLS);
         }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public void setContainer(ContainerDescription newContainer) {
-        if (newContainer != container) {
-            NotificationChain msgs = null;
-            if (container != null) {
-                msgs = ((InternalEObject) container).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
-            }
-            if (newContainer != null) {
-                msgs = ((InternalEObject) newContainer).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, null, msgs);
-            }
-            msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__CONTAINER, newContainer, newContainer));
-        }
+        return controls;
     }
 
     /**
@@ -435,8 +400,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
-            return basicSetContainer(null, msgs);
+        case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
+            return ((InternalEList<?>) getControls()).basicRemove(otherEnd, msgs);
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return basicSetValidationSet(null, msgs);
         }
@@ -461,8 +426,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
             return getSemanticCandidateExpression();
         case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
             return getPreconditionExpression();
-        case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
-            return getContainer();
+        case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
+            return getControls();
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return getValidationSet();
         }
@@ -474,6 +439,7 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -492,8 +458,9 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
             setPreconditionExpression((String) newValue);
             return;
-        case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
-            setContainer((ContainerDescription) newValue);
+        case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
+            getControls().clear();
+            getControls().addAll((Collection<? extends ControlDescription>) newValue);
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             setValidationSet((GroupValidationSetDescription) newValue);
@@ -525,8 +492,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
             setPreconditionExpression(GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT);
             return;
-        case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
-            setContainer((ContainerDescription) null);
+        case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
+            getControls().clear();
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             setValidationSet((GroupValidationSetDescription) null);
@@ -555,8 +522,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION:
             return GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null
                     : !GroupDescriptionImpl.PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
-        case PropertiesPackage.GROUP_DESCRIPTION__CONTAINER:
-            return container != null;
+        case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
+            return controls != null && !controls.isEmpty();
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
         }

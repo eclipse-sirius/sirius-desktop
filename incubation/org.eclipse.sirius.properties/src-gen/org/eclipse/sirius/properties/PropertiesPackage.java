@@ -13,6 +13,7 @@ package org.eclipse.sirius.properties;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -379,13 +380,13 @@ public interface PropertiesPackage extends EPackage {
     int GROUP_DESCRIPTION__PRECONDITION_EXPRESSION = 4;
 
     /**
-     * The feature id for the '<em><b>Container</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Controls</b></em>' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int GROUP_DESCRIPTION__CONTAINER = 5;
+    int GROUP_DESCRIPTION__CONTROLS = 5;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -447,15 +448,15 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
-     * <em>Container Description</em>}' class. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.properties.impl.ControlDescriptionImpl
+     * <em>Control Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
-     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getContainerDescription()
+     * @see org.eclipse.sirius.properties.impl.ControlDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getControlDescription()
      * @generated
      */
-    int CONTAINER_DESCRIPTION = 6;
+    int CONTROL_DESCRIPTION = 6;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -464,25 +465,55 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_DESCRIPTION__IDENTIFIER = 0;
+    int CONTROL_DESCRIPTION__IDENTIFIER = 0;
 
     /**
-     * The feature id for the '<em><b>Widgets</b></em>' containment reference
+     * The number of structural features of the '<em>Control Description</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTROL_DESCRIPTION_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
+     * <em>Container Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getContainerDescription()
+     * @generated
+     */
+    int CONTAINER_DESCRIPTION = 7;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DESCRIPTION__IDENTIFIER = PropertiesPackage.CONTROL_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Controls</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CONTAINER_DESCRIPTION__WIDGETS = 1;
+    int CONTAINER_DESCRIPTION__CONTROLS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Dynamic Mappings</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Layout</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = 2;
+    int CONTAINER_DESCRIPTION__LAYOUT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Container Description</em>'
@@ -491,7 +522,99 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_DESCRIPTION_FEATURE_COUNT = 3;
+    int CONTAINER_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
+     * <em>Layout Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLayoutDescription()
+     * @generated
+     */
+    int LAYOUT_DESCRIPTION = 8;
+
+    /**
+     * The number of structural features of the '<em>Layout Description</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LAYOUT_DESCRIPTION_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
+     * <em>Fill Layout Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFillLayoutDescription()
+     * @generated
+     */
+    int FILL_LAYOUT_DESCRIPTION = 9;
+
+    /**
+     * The feature id for the '<em><b>Orientation</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FILL_LAYOUT_DESCRIPTION__ORIENTATION = PropertiesPackage.LAYOUT_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Fill Layout Description</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FILL_LAYOUT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.LAYOUT_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
+     * <em>Grid Layout Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGridLayoutDescription()
+     * @generated
+     */
+    int GRID_LAYOUT_DESCRIPTION = 10;
+
+    /**
+     * The feature id for the '<em><b>Number Of Columns</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.LAYOUT_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Make Columns With Equal Width</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH = PropertiesPackage.LAYOUT_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '
+     * <em>Grid Layout Description</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GRID_LAYOUT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.LAYOUT_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -503,7 +626,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetDescription()
      * @generated
      */
-    int WIDGET_DESCRIPTION = 7;
+    int WIDGET_DESCRIPTION = 11;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -512,7 +635,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WIDGET_DESCRIPTION__IDENTIFIER = 0;
+    int WIDGET_DESCRIPTION__IDENTIFIER = PropertiesPackage.CONTROL_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
@@ -521,7 +644,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WIDGET_DESCRIPTION__LABEL_EXPRESSION = 1;
+    int WIDGET_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Help Expression</b></em>' attribute. <!--
@@ -530,7 +653,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WIDGET_DESCRIPTION__HELP_EXPRESSION = 2;
+    int WIDGET_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Widget Description</em>'
@@ -539,7 +662,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int WIDGET_DESCRIPTION_FEATURE_COUNT = 3;
+    int WIDGET_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -551,7 +674,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextDescription()
      * @generated
      */
-    int TEXT_DESCRIPTION = 8;
+    int TEXT_DESCRIPTION = 12;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -635,7 +758,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonDescription()
      * @generated
      */
-    int BUTTON_DESCRIPTION = 9;
+    int BUTTON_DESCRIPTION = 13;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -719,7 +842,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
      * @generated
      */
-    int LABEL_DESCRIPTION = 10;
+    int LABEL_DESCRIPTION = 14;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -794,7 +917,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxDescription()
      * @generated
      */
-    int CHECKBOX_DESCRIPTION = 11;
+    int CHECKBOX_DESCRIPTION = 15;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -878,7 +1001,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
      * @generated
      */
-    int SELECT_DESCRIPTION = 12;
+    int SELECT_DESCRIPTION = 16;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -980,7 +1103,16 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
      * @generated
      */
-    int DYNAMIC_MAPPING_FOR = 13;
+    int DYNAMIC_MAPPING_FOR = 17;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DYNAMIC_MAPPING_FOR__IDENTIFIER = PropertiesPackage.CONTROL_DESCRIPTION__IDENTIFIER;
 
     /**
      * The feature id for the '<em><b>Iterator</b></em>' attribute. <!--
@@ -989,7 +1121,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR__ITERATOR = 0;
+    int DYNAMIC_MAPPING_FOR__ITERATOR = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Domain Class Expression</b></em>'
@@ -998,7 +1130,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = 1;
+    int DYNAMIC_MAPPING_FOR__DOMAIN_CLASS_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list.
@@ -1007,7 +1139,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR__IFS = 2;
+    int DYNAMIC_MAPPING_FOR__IFS = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Dynamic Mapping For</em>'
@@ -1016,7 +1148,7 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DYNAMIC_MAPPING_FOR_FEATURE_COUNT = 3;
+    int DYNAMIC_MAPPING_FOR_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -1028,7 +1160,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingIf()
      * @generated
      */
-    int DYNAMIC_MAPPING_IF = 14;
+    int DYNAMIC_MAPPING_IF = 18;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -1067,7 +1199,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
      * @generated
      */
-    int TEXT_AREA_DESCRIPTION = 15;
+    int TEXT_AREA_DESCRIPTION = 19;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1160,7 +1292,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioDescription()
      * @generated
      */
-    int RADIO_DESCRIPTION = 16;
+    int RADIO_DESCRIPTION = 20;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1271,7 +1403,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSingleReferenceDescription()
      * @generated
      */
-    int SINGLE_REFERENCE_DESCRIPTION = 17;
+    int SINGLE_REFERENCE_DESCRIPTION = 21;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1374,7 +1506,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getOperationDescription()
      * @generated
      */
-    int OPERATION_DESCRIPTION = 18;
+    int OPERATION_DESCRIPTION = 22;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -1404,7 +1536,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getMultipleReferencesDescription()
      * @generated
      */
-    int MULTIPLE_REFERENCES_DESCRIPTION = 19;
+    int MULTIPLE_REFERENCES_DESCRIPTION = 23;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1525,7 +1657,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomDescription()
      * @generated
      */
-    int CUSTOM_DESCRIPTION = 20;
+    int CUSTOM_DESCRIPTION = 24;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1609,7 +1741,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomExpression()
      * @generated
      */
-    int CUSTOM_EXPRESSION = 21;
+    int CUSTOM_EXPRESSION = 25;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1648,7 +1780,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomOperation()
      * @generated
      */
-    int CUSTOM_OPERATION = 22;
+    int CUSTOM_OPERATION = 26;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1687,7 +1819,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetStyle()
      * @generated
      */
-    int WIDGET_STYLE = 23;
+    int WIDGET_STYLE = 27;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -1753,7 +1885,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
      * @generated
      */
-    int TEXT_WIDGET_STYLE = 24;
+    int TEXT_WIDGET_STYLE = 28;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -1864,7 +1996,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
      * @generated
      */
-    int LABEL_WIDGET_STYLE = 25;
+    int LABEL_WIDGET_STYLE = 29;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -1975,7 +2107,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
      * @generated
      */
-    int CHECKBOX_WIDGET_STYLE = 26;
+    int CHECKBOX_WIDGET_STYLE = 30;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2041,7 +2173,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
      * @generated
      */
-    int RADIO_WIDGET_STYLE = 27;
+    int RADIO_WIDGET_STYLE = 31;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2107,7 +2239,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
      * @generated
      */
-    int BUTTON_WIDGET_STYLE = 28;
+    int BUTTON_WIDGET_STYLE = 32;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2173,7 +2305,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
      * @generated
      */
-    int SELECT_WIDGET_STYLE = 29;
+    int SELECT_WIDGET_STYLE = 33;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2239,7 +2371,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
      * @generated
      */
-    int CUSTOM_WIDGET_STYLE = 30;
+    int CUSTOM_WIDGET_STYLE = 34;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2305,7 +2437,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
      * @generated
      */
-    int WIDGET_CONDITIONAL_STYLE = 31;
+    int WIDGET_CONDITIONAL_STYLE = 35;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2336,7 +2468,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
      * @generated
      */
-    int TEXT_WIDGET_CONDITIONAL_STYLE = 32;
+    int TEXT_WIDGET_CONDITIONAL_STYLE = 36;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2376,7 +2508,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
      * @generated
      */
-    int LABEL_WIDGET_CONDITIONAL_STYLE = 33;
+    int LABEL_WIDGET_CONDITIONAL_STYLE = 37;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2416,7 +2548,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
      * @generated
      */
-    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 34;
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 38;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2456,7 +2588,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
      * @generated
      */
-    int RADIO_WIDGET_CONDITIONAL_STYLE = 35;
+    int RADIO_WIDGET_CONDITIONAL_STYLE = 39;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2496,7 +2628,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
      * @generated
      */
-    int BUTTON_WIDGET_CONDITIONAL_STYLE = 36;
+    int BUTTON_WIDGET_CONDITIONAL_STYLE = 40;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2536,7 +2668,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
      * @generated
      */
-    int SELECT_WIDGET_CONDITIONAL_STYLE = 37;
+    int SELECT_WIDGET_CONDITIONAL_STYLE = 41;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2576,7 +2708,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
      * @generated
      */
-    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 38;
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 42;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2605,6 +2737,18 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+     * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
+     * @generated
+     */
+    int FILL_LAYOUT_ORIENTATION = 43;
 
     /**
      * Returns the meta object for class '
@@ -2899,17 +3043,17 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getGroupDescription_PreconditionExpression();
 
     /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.GroupDescription#getContainer
-     * <em>Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getControls
+     * <em>Controls</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '<em>Container</em>
-     *         '.
-     * @see org.eclipse.sirius.properties.GroupDescription#getContainer()
+     * @return the meta object for the containment reference list '
+     *         <em>Controls</em>'.
+     * @see org.eclipse.sirius.properties.GroupDescription#getControls()
      * @see #getGroupDescription()
      * @generated
      */
-    EReference getGroupDescription_Container();
+    EReference getGroupDescription_Controls();
 
     /**
      * Returns the meta object for the containment reference '
@@ -2967,6 +3111,30 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.ControlDescription
+     * <em>Control Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Control Description</em>'.
+     * @see org.eclipse.sirius.properties.ControlDescription
+     * @generated
+     */
+    EClass getControlDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.ControlDescription#getIdentifier
+     * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Identifier</em>'.
+     * @see org.eclipse.sirius.properties.ControlDescription#getIdentifier()
+     * @see #getControlDescription()
+     * @generated
+     */
+    EAttribute getControlDescription_Identifier();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ContainerDescription
      * <em>Container Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -2978,43 +3146,104 @@ public interface PropertiesPackage extends EPackage {
     EClass getContainerDescription();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
-     * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the attribute '<em>Identifier</em>'.
-     * @see org.eclipse.sirius.properties.ContainerDescription#getIdentifier()
-     * @see #getContainerDescription()
-     * @generated
-     */
-    EAttribute getContainerDescription_Identifier();
-
-    /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.properties.ContainerDescription#getWidgets
-     * <em>Widgets</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ContainerDescription#getControls
+     * <em>Controls</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the meta object for the containment reference list '
-     *         <em>Widgets</em>'.
-     * @see org.eclipse.sirius.properties.ContainerDescription#getWidgets()
+     *         <em>Controls</em>'.
+     * @see org.eclipse.sirius.properties.ContainerDescription#getControls()
      * @see #getContainerDescription()
      * @generated
      */
-    EReference getContainerDescription_Widgets();
+    EReference getContainerDescription_Controls();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings
-     * <em>Dynamic Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.ContainerDescription#getLayout
+     * <em>Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Layout</em>'.
+     * @see org.eclipse.sirius.properties.ContainerDescription#getLayout()
+     * @see #getContainerDescription()
+     * @generated
+     */
+    EReference getContainerDescription_Layout();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.LayoutDescription
+     * <em>Layout Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
-     * @return the meta object for the containment reference list '
-     *         <em>Dynamic Mappings</em>'.
-     * @see org.eclipse.sirius.properties.ContainerDescription#getDynamicMappings()
-     * @see #getContainerDescription()
+     * @return the meta object for class '<em>Layout Description</em>'.
+     * @see org.eclipse.sirius.properties.LayoutDescription
      * @generated
      */
-    EReference getContainerDescription_DynamicMappings();
+    EClass getLayoutDescription();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.FillLayoutDescription
+     * <em>Fill Layout Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Fill Layout Description</em>'.
+     * @see org.eclipse.sirius.properties.FillLayoutDescription
+     * @generated
+     */
+    EClass getFillLayoutDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.FillLayoutDescription#getOrientation
+     * <em>Orientation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Orientation</em>'.
+     * @see org.eclipse.sirius.properties.FillLayoutDescription#getOrientation()
+     * @see #getFillLayoutDescription()
+     * @generated
+     */
+    EAttribute getFillLayoutDescription_Orientation();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.GridLayoutDescription
+     * <em>Grid Layout Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Grid Layout Description</em>'.
+     * @see org.eclipse.sirius.properties.GridLayoutDescription
+     * @generated
+     */
+    EClass getGridLayoutDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GridLayoutDescription#getNumberOfColumns
+     * <em>Number Of Columns</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Number Of Columns</em>'.
+     * @see org.eclipse.sirius.properties.GridLayoutDescription#getNumberOfColumns()
+     * @see #getGridLayoutDescription()
+     * @generated
+     */
+    EAttribute getGridLayoutDescription_NumberOfColumns();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth
+     * <em>Make Columns With Equal Width</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '
+     *         <em>Make Columns With Equal Width</em>'.
+     * @see org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth()
+     * @see #getGridLayoutDescription()
+     * @generated
+     */
+    EAttribute getGridLayoutDescription_MakeColumnsWithEqualWidth();
 
     /**
      * Returns the meta object for class '
@@ -3027,18 +3256,6 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EClass getWidgetDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier
-     * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the attribute '<em>Identifier</em>'.
-     * @see org.eclipse.sirius.properties.WidgetDescription#getIdentifier()
-     * @see #getWidgetDescription()
-     * @generated
-     */
-    EAttribute getWidgetDescription_Identifier();
 
     /**
      * Returns the meta object for the attribute '
@@ -4497,6 +4714,18 @@ public interface PropertiesPackage extends EPackage {
     EReference getCustomWidgetConditionalStyle_Style();
 
     /**
+     * Returns the meta object for enum '
+     * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+     * <em>FILL LAYOUT ORIENTATION</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for enum '<em>FILL LAYOUT ORIENTATION</em>'.
+     * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+     * @generated
+     */
+    EEnum getFILL_LAYOUT_ORIENTATION();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4730,13 +4959,13 @@ public interface PropertiesPackage extends EPackage {
         EAttribute GROUP_DESCRIPTION__PRECONDITION_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupDescription_PreconditionExpression();
 
         /**
-         * The meta object literal for the '<em><b>Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
+         * The meta object literal for the '<em><b>Controls</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          *
          * @generated
          */
-        EReference GROUP_DESCRIPTION__CONTAINER = PropertiesPackage.eINSTANCE.getGroupDescription_Container();
+        EReference GROUP_DESCRIPTION__CONTROLS = PropertiesPackage.eINSTANCE.getGroupDescription_Controls();
 
         /**
          * The meta object literal for the '<em><b>Validation Set</b></em>'
@@ -4779,6 +5008,26 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.ControlDescriptionImpl
+         * <em>Control Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.ControlDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getControlDescription()
+         * @generated
+         */
+        EClass CONTROL_DESCRIPTION = PropertiesPackage.eINSTANCE.getControlDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Identifier</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CONTROL_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getControlDescription_Identifier();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
          * <em>Container Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -4790,29 +5039,82 @@ public interface PropertiesPackage extends EPackage {
         EClass CONTAINER_DESCRIPTION = PropertiesPackage.eINSTANCE.getContainerDescription();
 
         /**
-         * The meta object literal for the '<em><b>Identifier</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute CONTAINER_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getContainerDescription_Identifier();
-
-        /**
-         * The meta object literal for the '<em><b>Widgets</b></em>' containment
-         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference CONTAINER_DESCRIPTION__WIDGETS = PropertiesPackage.eINSTANCE.getContainerDescription_Widgets();
-
-        /**
-         * The meta object literal for the '<em><b>Dynamic Mappings</b></em>'
+         * The meta object literal for the '<em><b>Controls</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          *
          * @generated
          */
-        EReference CONTAINER_DESCRIPTION__DYNAMIC_MAPPINGS = PropertiesPackage.eINSTANCE.getContainerDescription_DynamicMappings();
+        EReference CONTAINER_DESCRIPTION__CONTROLS = PropertiesPackage.eINSTANCE.getContainerDescription_Controls();
+
+        /**
+         * The meta object literal for the '<em><b>Layout</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CONTAINER_DESCRIPTION__LAYOUT = PropertiesPackage.eINSTANCE.getContainerDescription_Layout();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
+         * <em>Layout Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLayoutDescription()
+         * @generated
+         */
+        EClass LAYOUT_DESCRIPTION = PropertiesPackage.eINSTANCE.getLayoutDescription();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
+         * <em>Fill Layout Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFillLayoutDescription()
+         * @generated
+         */
+        EClass FILL_LAYOUT_DESCRIPTION = PropertiesPackage.eINSTANCE.getFillLayoutDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Orientation</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute FILL_LAYOUT_DESCRIPTION__ORIENTATION = PropertiesPackage.eINSTANCE.getFillLayoutDescription_Orientation();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
+         * <em>Grid Layout Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGridLayoutDescription()
+         * @generated
+         */
+        EClass GRID_LAYOUT_DESCRIPTION = PropertiesPackage.eINSTANCE.getGridLayoutDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Number Of Columns</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.eINSTANCE.getGridLayoutDescription_NumberOfColumns();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Make Columns With Equal Width</b></em>' attribute feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH = PropertiesPackage.eINSTANCE.getGridLayoutDescription_MakeColumnsWithEqualWidth();
 
         /**
          * The meta object literal for the '
@@ -4825,14 +5127,6 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EClass WIDGET_DESCRIPTION = PropertiesPackage.eINSTANCE.getWidgetDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Identifier</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute WIDGET_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getWidgetDescription_Identifier();
 
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
@@ -5897,6 +6191,18 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getCustomWidgetConditionalStyle_Style();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+         * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
+         * @generated
+         */
+        EEnum FILL_LAYOUT_ORIENTATION = PropertiesPackage.eINSTANCE.getFILL_LAYOUT_ORIENTATION();
 
     }
 

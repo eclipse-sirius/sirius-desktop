@@ -7,10 +7,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.containerdescription;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
@@ -19,16 +18,17 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the identifier property of a ContainerDescription object.
+ * A section for the makeColumnsWithEqualWidth property of a
+ * GridLayoutDescription object.
  */
-public class ContainerDescriptionIdentifierPropertySection extends AbstractTextPropertySection {
+public class GridLayoutDescriptionMakeColumnsWithEqualWidthPropertySection extends AbstractTextPropertySection {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "Identifier"; //$NON-NLS-1$
+        return "MakeColumnsWithEqualWidth"; //$NON-NLS-1$
     }
 
     /**
@@ -37,7 +37,7 @@ public class ContainerDescriptionIdentifierPropertySection extends AbstractTextP
     @Override
     protected String getLabelText() {
         String labelText;
-        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
 
         // End of user code get label text
@@ -49,7 +49,7 @@ public class ContainerDescriptionIdentifierPropertySection extends AbstractTextP
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getContainerDescription_Identifier();
+        return PropertiesPackage.eINSTANCE.getGridLayoutDescription_MakeColumnsWithEqualWidth();
     }
 
     /**
@@ -74,8 +74,6 @@ public class ContainerDescriptionIdentifierPropertySection extends AbstractTextP
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-
-        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
         // Start of user code create controls
 

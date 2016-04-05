@@ -16,28 +16,36 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.ControlDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
+ * {@link org.eclipse.sirius.properties.ControlDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
+public class ControlDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public WidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public ControlDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -52,36 +60,21 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addLabelExpressionPropertyDescriptor(object);
-            addHelpExpressionPropertyDescriptor(object);
+            addIdentifierPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Label Expression feature. <!--
+     * This adds a property descriptor for the Identifier feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_labelExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_labelExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Help Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addHelpExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_helpExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    protected void addIdentifierPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ControlDescription_identifier_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ControlDescription_identifier_feature", "_UI_ControlDescription_type"),
+                PropertiesPackage.Literals.CONTROL_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -92,8 +85,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      */
     @Override
     public String getText(Object object) {
-        String label = ((WidgetDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetDescription_type") : getString("_UI_WidgetDescription_type") + " " + label;
+        String label = ((ControlDescription) object).getIdentifier();
+        return label == null || label.length() == 0 ? getString("_UI_ControlDescription_type") : getString("_UI_ControlDescription_type") + " " + label;
     }
 
     /**
@@ -108,9 +101,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(WidgetDescription.class)) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
-        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+        switch (notification.getFeatureID(ControlDescription.class)) {
+        case PropertiesPackage.CONTROL_DESCRIPTION__IDENTIFIER:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }
@@ -127,6 +119,17 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
+
+    /**
+     * Return the resource locator for this item provider's resources. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ResourceLocator getResourceLocator() {
+        return PropertiesEditPlugin.INSTANCE;
     }
 
 }

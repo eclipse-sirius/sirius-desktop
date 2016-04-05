@@ -20,24 +20,25 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
+import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.WidgetDescription} object. <!--
+ * {@link org.eclipse.sirius.properties.FillLayoutDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvider {
+public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public WidgetDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public FillLayoutDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -52,36 +53,33 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addLabelExpressionPropertyDescriptor(object);
-            addHelpExpressionPropertyDescriptor(object);
+            addOrientationPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Label Expression feature. <!--
+     * This adds a property descriptor for the Orientation feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addLabelExpressionPropertyDescriptor(Object object) {
+    protected void addOrientationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_labelExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_labelExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FillLayoutDescription_orientation_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_FillLayoutDescription_orientation_feature", "_UI_FillLayoutDescription_type"),
+                        PropertiesPackage.Literals.FILL_LAYOUT_DESCRIPTION__ORIENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Help Expression feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * This returns FillLayoutDescription.gif. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      */
-    protected void addHelpExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_helpExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"),
-                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    @Override
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescription"));
     }
 
     /**
@@ -92,8 +90,9 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      */
     @Override
     public String getText(Object object) {
-        String label = ((WidgetDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetDescription_type") : getString("_UI_WidgetDescription_type") + " " + label;
+        FILL_LAYOUT_ORIENTATION labelValue = ((FillLayoutDescription) object).getOrientation();
+        String label = labelValue == null ? null : labelValue.toString();
+        return label == null || label.length() == 0 ? getString("_UI_FillLayoutDescription_type") : getString("_UI_FillLayoutDescription_type") + " " + label;
     }
 
     /**
@@ -108,9 +107,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(WidgetDescription.class)) {
-        case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
-        case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+        switch (notification.getFeatureID(FillLayoutDescription.class)) {
+        case PropertiesPackage.FILL_LAYOUT_DESCRIPTION__ORIENTATION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

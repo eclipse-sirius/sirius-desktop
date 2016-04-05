@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -33,8 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * <li>
  * {@link org.eclipse.sirius.properties.GroupDescription#getPreconditionExpression
  * <em>Precondition Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.GroupDescription#getContainer
- * <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getControls
+ * <em>Controls</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.GroupDescription#getValidationSet
  * <em>Validation Set</em>}</li>
  * </ul>
@@ -201,35 +202,22 @@ public interface GroupDescription extends EObject {
     void setPreconditionExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Container</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Controls</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ControlDescription}. <!--
+     * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Container</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Controls</em>' containment reference list
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Container</em>' containment reference.
-     * @see #setContainer(ContainerDescription)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Container()
+     * @return the value of the '<em>Controls</em>' containment reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Controls()
      * @model containment="true"
      * @generated
      */
-    ContainerDescription getContainer();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.GroupDescription#getContainer
-     * <em>Container</em>}' containment reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Container</em>' containment
-     *            reference.
-     * @see #getContainer()
-     * @generated
-     */
-    void setContainer(ContainerDescription value);
+    EList<ControlDescription> getControls();
 
     /**
      * Returns the value of the '<em><b>Validation Set</b></em>' containment

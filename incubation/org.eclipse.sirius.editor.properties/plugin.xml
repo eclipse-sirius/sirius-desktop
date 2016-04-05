@@ -315,23 +315,37 @@
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription.WidgetDescriptionLabelExpressionPropertySection"
                id="properties.section.widgetDescription.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription.WidgetDescriptionLabelExpressionFilter"
-               afterSection="properties.section.widgetDescription.Identifier"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.WidgetDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription.WidgetDescriptionIdentifierPropertySection"
-               id="properties.section.widgetDescription.Identifier"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription.WidgetDescriptionIdentifierFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription.GridLayoutDescriptionMakeColumnsWithEqualWidthPropertySection"
+               id="properties.section.gridLayoutDescription.MakeColumnsWithEqualWidth"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.gridlayoutdescription.GridLayoutDescriptionMakeColumnsWithEqualWidthFilter"
+               afterSection="properties.section.gridLayoutDescription.NumberOfColumns"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.WidgetDescription"/>
+        <input type="org.eclipse.sirius.properties.GridLayoutDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.containerdescription.ContainerDescriptionIdentifierPropertySection"
-               id="properties.section.containerDescription.Identifier"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.containerdescription.ContainerDescriptionIdentifierFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription.GridLayoutDescriptionNumberOfColumnsPropertySection"
+               id="properties.section.gridLayoutDescription.NumberOfColumns"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.gridlayoutdescription.GridLayoutDescriptionNumberOfColumnsFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.ContainerDescription"/>
+        <input type="org.eclipse.sirius.properties.GridLayoutDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.filllayoutdescription.FillLayoutDescriptionOrientationPropertySection"
+               id="properties.section.fillLayoutDescription.Orientation"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.filllayoutdescription.FillLayoutDescriptionOrientationFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.FillLayoutDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.controldescription.ControlDescriptionIdentifierPropertySection"
+               id="properties.section.controlDescription.Identifier"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.controldescription.ControlDescriptionIdentifierFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.ControlDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionPreconditionExpressionPropertySection"

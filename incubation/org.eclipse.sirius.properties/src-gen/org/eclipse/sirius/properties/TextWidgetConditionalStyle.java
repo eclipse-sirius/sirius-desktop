@@ -29,18 +29,18 @@ package org.eclipse.sirius.properties;
  */
 public interface TextWidgetConditionalStyle extends WidgetConditionalStyle {
     /**
-     * Returns the value of the '<em><b>Style</b></em>' reference. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Style</em>' reference isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Style</em>' reference.
+     * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(TextWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextWidgetConditionalStyle_Style()
-     * @model
+     * @model containment="true"
      * @generated
      */
     TextWidgetStyle getStyle();

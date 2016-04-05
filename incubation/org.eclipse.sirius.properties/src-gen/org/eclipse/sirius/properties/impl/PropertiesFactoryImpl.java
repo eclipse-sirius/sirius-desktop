@@ -12,6 +12,7 @@
 package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -30,6 +31,9 @@ import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
+import org.eclipse.sirius.properties.FillLayoutDescription;
+import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
@@ -113,6 +117,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createGroupValidationSetDescription();
         case PropertiesPackage.CONTAINER_DESCRIPTION:
             return createContainerDescription();
+        case PropertiesPackage.FILL_LAYOUT_DESCRIPTION:
+            return createFillLayoutDescription();
+        case PropertiesPackage.GRID_LAYOUT_DESCRIPTION:
+            return createGridLayoutDescription();
         case PropertiesPackage.TEXT_DESCRIPTION:
             return createTextDescription();
         case PropertiesPackage.BUTTON_DESCRIPTION:
@@ -175,6 +183,36 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomWidgetConditionalStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Object createFromString(EDataType eDataType, String initialValue) {
+        switch (eDataType.getClassifierID()) {
+        case PropertiesPackage.FILL_LAYOUT_ORIENTATION:
+            return createFILL_LAYOUT_ORIENTATIONFromString(eDataType, initialValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String convertToString(EDataType eDataType, Object instanceValue) {
+        switch (eDataType.getClassifierID()) {
+        case PropertiesPackage.FILL_LAYOUT_ORIENTATION:
+            return convertFILL_LAYOUT_ORIENTATIONToString(eDataType, instanceValue);
+        default:
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
@@ -261,6 +299,28 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
+    public FillLayoutDescription createFillLayoutDescription() {
+        FillLayoutDescriptionImpl fillLayoutDescription = new FillLayoutDescriptionImpl();
+        return fillLayoutDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public GridLayoutDescription createGridLayoutDescription() {
+        GridLayoutDescriptionImpl gridLayoutDescription = new GridLayoutDescriptionImpl();
+        return gridLayoutDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public TextDescription createTextDescription() {
         TextDescriptionImpl textDescription = new TextDescriptionImpl();
         return textDescription;
@@ -330,6 +390,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public DynamicMappingIf createDynamicMappingIf() {
         DynamicMappingIfImpl dynamicMappingIf = new DynamicMappingIfImpl();
         return dynamicMappingIf;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public TextAreaDescription createTextAreaDescription() {
+        TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
+        return textAreaDescription;
     }
 
     /**
@@ -579,10 +650,21 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      *
      * @generated
      */
-    @Override
-    public TextAreaDescription createTextAreaDescription() {
-        TextAreaDescriptionImpl textAreaDescription = new TextAreaDescriptionImpl();
-        return textAreaDescription;
+    public FILL_LAYOUT_ORIENTATION createFILL_LAYOUT_ORIENTATIONFromString(EDataType eDataType, String initialValue) {
+        FILL_LAYOUT_ORIENTATION result = FILL_LAYOUT_ORIENTATION.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertFILL_LAYOUT_ORIENTATIONToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
     }
 
     /**

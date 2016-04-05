@@ -12,7 +12,6 @@
 package org.eclipse.sirius.properties;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -35,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DynamicMappingFor extends EObject {
+public interface DynamicMappingFor extends ControlDescription {
     /**
      * Returns the value of the '<em><b>Iterator</b></em>' attribute. <!--
      * begin-user-doc -->

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.containerdescription;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.controldescription;
 
 // Start of user code specific imports
 
@@ -20,14 +20,14 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 /**
  * A filter for the identifier property section.
  */
-public class ContainerDescriptionIdentifierFilter extends ViewpointPropertyFilter {
+public class ControlDescriptionIdentifierFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getContainerDescription_Identifier();
+        return PropertiesPackage.eINSTANCE.getControlDescription_Identifier();
     }
 
     /**
@@ -35,7 +35,7 @@ public class ContainerDescriptionIdentifierFilter extends ViewpointPropertyFilte
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.ContainerDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.ControlDescription;
     }
 
     // Start of user code user methods
