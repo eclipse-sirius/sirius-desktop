@@ -110,7 +110,14 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
                 // Open the corresponding editor
                 SiriusDiagramEditor openedEditor = null;
                 if (session != null) {
-                    openedEditor = (SiriusDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, (DDiagram) markerDiagram.getElement(), new NullProgressMonitor());
+                    Diagram diagramToOpen = markerDiagram;
+                    if (session.getTransactionalEditingDomain() != null && session.getTransactionalEditingDomain().getResourceSet() != defaultEditor.getEditingDomain().getResourceSet()) {
+                        diagramToOpen = (Diagram) session.getTransactionalEditingDomain().getResourceSet().getEObject(markerDiagramURI, true);
+                    }
+
+                    if (diagramToOpen != null) {
+                        openedEditor = (SiriusDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, (DDiagram) diagramToOpen.getElement(), new NullProgressMonitor());
+                    }
                 }
 
                 if (openedEditor != null) {
