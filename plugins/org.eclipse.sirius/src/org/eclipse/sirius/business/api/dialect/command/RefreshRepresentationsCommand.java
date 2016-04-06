@@ -134,7 +134,16 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
 
     @Override
     public boolean canExecute() {
-        return representations.size() != 0;
+        boolean canExecute = !representations.isEmpty();
+        if (canExecute) {
+            for (DRepresentation dRepresentation : representations) {
+                if (!DialectManager.INSTANCE.canRefresh(dRepresentation)) {
+                    canExecute = false;
+                    break;
+                }
+            }
+        }
+        return canExecute;
     }
 
 }

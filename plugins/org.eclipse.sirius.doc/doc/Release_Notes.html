@@ -176,6 +176,11 @@
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()</code> methods no more update workspace resource about markers, now this must be done in caller on IllegalArgumentException catch in a workspace aware operation.
 			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.canExecute()</code> now returns false if a 
+				<code>DRepresentation</code> cannot be refreshed, by calling 
+				<code>DialectManager.canRefresh(DRepresentation)</code>.
+			</li>
 			<li><span class="label label-danger">Removed</span> The class 
 				<code>org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2</code> has been deleted and is now 
 				<code>MetamodelDescriptorProvider</code>.

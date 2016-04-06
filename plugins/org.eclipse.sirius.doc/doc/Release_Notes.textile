@@ -43,6 +43,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.AbstractVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.AbstractVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ methods no more update workspace resource about markers, now this must be done in caller on IllegalArgumentException catch in a workspace aware operation.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.canExecute()@ now returns false if a @DRepresentation@ cannot be refreshed, by calling @DialectManager.canRefresh(DRepresentation)@.
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2@ has been deleted and is now @MetamodelDescriptorProvider@.
 
 h4. Changes in @org.eclipse.sirius.common@
