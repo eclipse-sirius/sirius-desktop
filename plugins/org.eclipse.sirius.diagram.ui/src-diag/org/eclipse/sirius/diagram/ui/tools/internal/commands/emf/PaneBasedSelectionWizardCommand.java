@@ -95,9 +95,12 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
             shell = new Shell();
             createdShell = true;
         }
-        final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(MessageTranslator.INSTANCE.getMessage(this.tool.getWindowTitle()),
-                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()), getImage(), MessageTranslator.INSTANCE.getMessage(this.tool.getChoiceOfValuesMessage()),
-                MessageTranslator.INSTANCE.getMessage(this.tool.getSelectedValuesMessage()), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+        String windowTitleLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getWindowTitle());
+        String messageLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getMessage());
+        String choiceOfValuesMessageLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getChoiceOfValuesMessage());
+        String selectedValuesMessageLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getSelectedValuesMessage());
+        final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(windowTitleLocalized, messageLocalized, getImage(), choiceOfValuesMessageLocalized,
+                selectedValuesMessageLocalized, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.init(input, preSelection);
         final WizardDialog dlg = new WizardDialog(shell, wizard);
         dlg.setMinimumPageSize(200, 300);

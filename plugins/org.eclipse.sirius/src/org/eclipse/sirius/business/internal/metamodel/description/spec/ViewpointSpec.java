@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.business.internal.metamodel.description.spec;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.viewpoint.description.impl.ViewpointImpl;
 
 /**
@@ -33,10 +32,4 @@ public class ViewpointSpec extends ViewpointImpl {
     public void initView(final EObject model) {
         DialectManager.INSTANCE.initRepresentations(this, model, new NullProgressMonitor());
     }
-
-    @Override
-    public String getLabel() {
-        return MessageTranslator.INSTANCE.getMessage(super.getLabel());
-    }
-
 }

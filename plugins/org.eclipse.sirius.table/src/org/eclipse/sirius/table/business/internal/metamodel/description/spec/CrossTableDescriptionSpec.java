@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -79,10 +78,4 @@ public class CrossTableDescriptionSpec extends CrossTableDescriptionImpl {
     private <T> EList<T> unionReference(EStructuralFeature feature, List<T> values) {
         return new EcoreEList.UnmodifiableEList<T>(this, feature, values.size(), values.toArray());
     }
-
-    @Override
-    public String getLabel() {
-        return MessageTranslator.INSTANCE.getMessage(super.getLabel());
-    }
-
 }

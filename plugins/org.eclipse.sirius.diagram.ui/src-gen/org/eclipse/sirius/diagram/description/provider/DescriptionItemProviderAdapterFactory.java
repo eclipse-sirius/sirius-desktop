@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.diagram.internal.description.provider.DiagramDescriptionItemProviderSpec;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
@@ -110,12 +111,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public Adapter createDiagramDescriptionAdapter() {
         if (diagramDescriptionItemProvider == null) {
-            diagramDescriptionItemProvider = new DiagramDescriptionItemProvider(this);
+            diagramDescriptionItemProvider = new DiagramDescriptionItemProviderSpec(this);
         }
 
         return diagramDescriptionItemProvider;

@@ -43,7 +43,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.EMFMessageDialog;
@@ -80,7 +79,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
         Collection<EObject> variableValues = new ArrayList<EObject>();
         final TreeItemWrapper input = new TreeItemWrapper(null, null);
         computeInput(model, variable, input);
-        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, MessageTranslator.INSTANCE.getMessage(variable.getMessage()), null, input,
+        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, variable.getMessage(), null, input,
                 ViewHelper.INSTANCE.createAdapterFactory());
         wizard.setMany(variable.isMultiple());
         final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);

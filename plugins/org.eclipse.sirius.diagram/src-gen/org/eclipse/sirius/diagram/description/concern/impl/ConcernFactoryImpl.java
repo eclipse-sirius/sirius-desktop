@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.concern.spec.ConcernDescriptionSpec;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
@@ -88,11 +87,11 @@ public class ConcernFactoryImpl extends EFactoryImpl implements ConcernFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ConcernDescription createConcernDescription() {
-        ConcernDescriptionImpl concernDescription = new ConcernDescriptionSpec();
+        ConcernDescriptionImpl concernDescription = new ConcernDescriptionImpl();
         return concernDescription;
     }
 

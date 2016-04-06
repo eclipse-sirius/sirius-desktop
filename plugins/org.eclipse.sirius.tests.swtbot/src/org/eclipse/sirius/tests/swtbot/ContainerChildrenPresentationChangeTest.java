@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -204,7 +203,7 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
         DDiagramElement dDiagramElement = representation.getContainers().get(0);
         DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
 
-        assertTrue("The '" + MessageTranslator.INSTANCE.getMessage(diagramElementMapping.getLabel()) + "' mapping should be a ContainerMapping",
+        assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping",
                 diagramElementMapping instanceof ContainerMapping);
         ContainerMapping containerMapping = (ContainerMapping) diagramElementMapping;
         return containerMapping;

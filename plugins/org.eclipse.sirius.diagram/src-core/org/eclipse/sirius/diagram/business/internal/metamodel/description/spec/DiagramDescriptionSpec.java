@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
@@ -105,10 +104,4 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     public EList<NodeMapping> getAllNodeMappings() {
         return ContentHelper.getAllNodeMappings(this, false);
     }
-
-    @Override
-    public String getLabel() {
-        return MessageTranslator.INSTANCE.getMessage(super.getLabel());
-    }
-
 }

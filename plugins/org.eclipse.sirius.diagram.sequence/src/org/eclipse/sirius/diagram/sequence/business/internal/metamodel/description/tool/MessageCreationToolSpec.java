@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.descript
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl;
@@ -38,10 +37,5 @@ public class MessageCreationToolSpec extends MessageCreationToolImpl {
             }
         }
         return edgeMapping;
-    }
-
-    @Override
-    public String getLabel() {
-        return MessageTranslator.INSTANCE.getMessage(super.getLabel());
     }
 }

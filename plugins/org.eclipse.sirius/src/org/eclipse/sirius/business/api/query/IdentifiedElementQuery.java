@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
@@ -39,7 +38,7 @@ public class IdentifiedElementQuery {
      * @return The label of the <code>representationDescription</code>.
      */
     public String getLabel() {
-        String label = MessageTranslator.INSTANCE.getMessage(this.element.getLabel());
+        String label = this.element.getLabel();
         if (label == null || label.trim().length() == 0) {
             label = this.element.getName();
         }

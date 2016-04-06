@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
@@ -262,7 +263,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public String getText(Object object) {
-        final String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
+        final String label = MessageTranslator.INSTANCE.getMessage((IdentifiedElement) object, new IdentifiedElementQuery((IdentifiedElement) object).getLabel());
         return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label; //$NON-NLS-1$
     }
 

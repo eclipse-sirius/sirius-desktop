@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -178,7 +179,7 @@ public class ViewpointItemImpl implements ViewpointItem, Comparable<ViewpointIte
 
     @Override
     public String getText() {
-        return isSafeViewpoint() ? new IdentifiedElementQuery(viewpoint).getLabel() : Messages.ViewpointItemImpl_notFoundLabel;
+        return isSafeViewpoint() ? MessageTranslator.INSTANCE.getMessage(viewpoint, new IdentifiedElementQuery(viewpoint).getLabel()) : Messages.ViewpointItemImpl_notFoundLabel;
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.ToolSectionQuery;
@@ -277,7 +278,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
             final IDiagramCommandFactory emfCommandFactory, EditPart primarySelection, Point currentMouseLocation) {
 
         final EObject semantic = selectedViews.iterator().next().getTarget();
-        final MenuManager subMenu = new MenuManager(new IdentifiedElementQuery(popupMenu).getLabel(), popupMenu.getName().toLowerCase());
+        final MenuManager subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()), popupMenu.getName().toLowerCase());
         final EList<MenuItemDescription> activatedAction = popupMenu.getMenuItemDescription();
 
         IInterpreter interpreter = null;
@@ -463,7 +464,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon())) { //$NON-NLS-1$
             imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(operationAction.getIcon());
         }
-        return new Action(new IdentifiedElementQuery(operationAction).getLabel(), imageDescriptor) {
+        return new Action(MessageTranslator.INSTANCE.getMessage(operationAction, new IdentifiedElementQuery(operationAction).getLabel()), imageDescriptor) {
             @Override
             public void run() {
                 super.run();

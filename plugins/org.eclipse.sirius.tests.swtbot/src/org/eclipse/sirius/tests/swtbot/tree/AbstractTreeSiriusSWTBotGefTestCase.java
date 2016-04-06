@@ -17,7 +17,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -367,7 +366,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
     public String getLabel(final TreeItem widget) {
         return syncExec(new Result<String>() {
             public String run() {
-                return MessageTranslator.INSTANCE.getMessage(((DTreeItem) widget.getData()).getActualMapping().getLabel());
+                return ((DTreeItem) widget.getData()).getActualMapping().getLabel();
             }
         });
     }

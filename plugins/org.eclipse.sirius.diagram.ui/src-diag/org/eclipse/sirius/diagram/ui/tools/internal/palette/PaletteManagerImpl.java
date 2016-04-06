@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -338,7 +339,8 @@ public class PaletteManagerImpl implements PaletteManager {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
         }
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
-            Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, new IdentifiedElementQuery(section).getLabel(), SectionPaletteDrawer.class);
+            Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, MessageTranslator.INSTANCE.getMessage(section, new IdentifiedElementQuery(section).getLabel()),
+                    SectionPaletteDrawer.class);
             if (!paletteEntry.some()) {
                 final PaletteContainer container = PaletteManagerImpl.createPaletteDrawner(section);
                 updateContainer(session, dDiagram, container, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
@@ -635,7 +637,7 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private static PaletteContainer createPaletteDrawner(final ToolSection section) {
-        final String name = new IdentifiedElementQuery(section).getLabel();
+        final String name = MessageTranslator.INSTANCE.getMessage(section, new IdentifiedElementQuery(section).getLabel());
         String iconPath = section.getIcon();
         final PaletteContainer paletteDrawner = new SectionPaletteDrawer(name);
         paletteDrawner.setId(PaletteManagerImpl.getToolSectionId(section));
@@ -783,7 +785,7 @@ public class PaletteManagerImpl implements PaletteManager {
     protected void addElementToContainer(final PaletteContainer container, final ToolEntry toolEntry, final Option<PaletteEntry> existingPaletteEntry) {
         if (toolEntry instanceof ToolGroup) {
             PaletteStack paletteStack;
-            String newName = new IdentifiedElementQuery(toolEntry).getLabel();
+            String newName = MessageTranslator.INSTANCE.getMessage(toolEntry, new IdentifiedElementQuery(toolEntry).getLabel());
             if (!existingPaletteEntry.some()) {
                 paletteStack = new ToolGroupPaletteStack(newName);
                 paletteStack.setId(PaletteManagerImpl.getToolEntryId(toolEntry));
@@ -801,7 +803,7 @@ public class PaletteManagerImpl implements PaletteManager {
             if (!existingPaletteEntry.some()) {
                 final AbstractToolDescription toolDescription = (AbstractToolDescription) toolEntry;
                 final ImageDescriptor imageEntry = paletteImageProvider.getImageDescriptor(toolDescription);
-                final String nameEntry = new IdentifiedElementQuery(toolDescription).getLabel();
+                final String nameEntry = MessageTranslator.INSTANCE.getMessage(toolDescription, new IdentifiedElementQuery(toolDescription).getLabel());
                 final String descriptionEntry = toolDescription.getDocumentation();
                 final CreationFactory creationFactory = new PaletteToolBasedCreationFactory(toolDescription);
                 CreationToolEntry paletteEntry = null;

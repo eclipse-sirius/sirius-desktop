@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.s
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.DirectEditLabelSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.EdgeCreationDescriptionSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ReconnectEdgeDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ToolGroupSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.ToolSectionSpec;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
@@ -211,11 +210,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated
+     * @generated
      */
     @Override
     public ToolGroup createToolGroup() {
-        ToolGroupImpl toolGroup = new ToolGroupSpec();
+        ToolGroupImpl toolGroup = new ToolGroupImpl();
         return toolGroup;
     }
 

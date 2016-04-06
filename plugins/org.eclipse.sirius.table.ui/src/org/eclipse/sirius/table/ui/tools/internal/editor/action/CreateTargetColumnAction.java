@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -50,7 +51,8 @@ public class CreateTargetColumnAction extends AbstractTargetColumnAction {
      *            The EMF command factory
      */
     public CreateTargetColumnAction(final CreateTool createTool, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
-        super(new IdentifiedElementQuery(createTool).getLabel(), DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.CREATE_COLUMN), editingDomain, tableCommandFactory,
+        super(MessageTranslator.INSTANCE.getMessage(createTool, new IdentifiedElementQuery(createTool).getLabel()),
+                DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.CREATE_COLUMN), editingDomain, tableCommandFactory,
                 createTool);
     }
 

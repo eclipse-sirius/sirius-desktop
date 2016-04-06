@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectPaneBasedSelectionWizardPage;
@@ -71,7 +70,7 @@ public class EObjectPaneBasedSelectionWizard extends Wizard {
      */
     public EObjectPaneBasedSelectionWizard(final String windowTitle, final String wizardPageTitle, final ImageDescriptor wizardPageTitleImage, final String choiceOfValuesMessage,
             final String selectedValuesMessage, final AdapterFactory factory) {
-        setWindowTitle(MessageTranslator.INSTANCE.getMessage(windowTitle));
+        setWindowTitle(windowTitle);
         page = new EObjectPaneBasedSelectionWizardPage(EOBJECT_PANE_BASED_SELECTION_WIZARD_PAGE_NAME, wizardPageTitle, wizardPageTitleImage, choiceOfValuesMessage, selectedValuesMessage, factory);
         addPage(page);
     }

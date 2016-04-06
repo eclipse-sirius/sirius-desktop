@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -63,7 +64,8 @@ public class CreateToolItemAction extends AbstractToolItemAction {
      *            The EMF command factory
      */
     public CreateToolItemAction(final TreeItemCreationTool createTool, final TransactionalEditingDomain editingDomain, final ITreeCommandFactory tableCommandFactory) {
-        super(new IdentifiedElementQuery(createTool).getLabel(), CreateToolItemAction.findImageDescriptor(createTool), editingDomain, tableCommandFactory, createTool);
+        super(MessageTranslator.INSTANCE.getMessage(createTool, new IdentifiedElementQuery(createTool).getLabel()), CreateToolItemAction.findImageDescriptor(createTool), editingDomain,
+                tableCommandFactory, createTool);
     }
 
     private static ImageDescriptor findImageDescriptor(TreeItemCreationTool createTool) {

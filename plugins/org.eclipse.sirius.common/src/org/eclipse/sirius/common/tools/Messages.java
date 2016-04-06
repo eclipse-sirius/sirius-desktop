@@ -161,6 +161,9 @@ public final class Messages {
     @TranslatableMessage
     public static String VariableInterpreter_unkownVariable;
 
+    @TranslatableMessage
+    public static String MessageTranslator_missingResourceMessage;
+
     // CHECKSTYLE:ON
 
     private Messages() {

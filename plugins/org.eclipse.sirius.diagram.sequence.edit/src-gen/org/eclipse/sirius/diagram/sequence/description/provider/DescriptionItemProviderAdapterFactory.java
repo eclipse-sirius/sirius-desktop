@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.sequence.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.diagram.sequence.internal.description.provider.SequenceDiagramDescriptionItemProviderSpec;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -94,12 +95,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public Adapter createSequenceDiagramDescriptionAdapter() {
         if (sequenceDiagramDescriptionItemProvider == null) {
-            sequenceDiagramDescriptionItemProvider = new SequenceDiagramDescriptionItemProvider(this);
+            sequenceDiagramDescriptionItemProvider = new SequenceDiagramDescriptionItemProviderSpec(this);
         }
 
         return sequenceDiagramDescriptionItemProvider;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,12 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
-
-import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -46,7 +45,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+
+import com.google.common.collect.Iterators;
 
 /**
  * A Class that will populate a {@link DTreeItem}'s contextual menu using all
@@ -113,7 +113,8 @@ public final class TreePopupMenuContributionSupport {
             if (menuPrecondition) {
 
                 // We create a subMenu
-                final MenuManager subMenu = new MenuManager(new IdentifiedElementQuery(popupMenu).getLabel(), new IdentifiedElementQuery(popupMenu).getLabel().toLowerCase());
+                final MenuManager subMenu = new MenuManager(MessageTranslator.INSTANCE.getMessage(popupMenu, new IdentifiedElementQuery(popupMenu).getLabel()),
+                        new IdentifiedElementQuery(popupMenu).getLabel().toLowerCase());
                 // and populate it with all menu contributions contained it this
                 // popupMenu
                 buildActionsFromTreePopupMenu(subMenu, selectedItem, popupMenu, interpreter);
@@ -284,7 +285,7 @@ public final class TreePopupMenuContributionSupport {
         if (operationActionCommand.canExecute()) {
             // Step 3 : creating an action that will call the builded
             // command
-            return new Action(new IdentifiedElementQuery(operationAction).getLabel(), imageDescriptor) {
+            return new Action(MessageTranslator.INSTANCE.getMessage(operationAction, new IdentifiedElementQuery(operationAction).getLabel()), imageDescriptor) {
                 @Override
                 public void run() {
                     super.run();

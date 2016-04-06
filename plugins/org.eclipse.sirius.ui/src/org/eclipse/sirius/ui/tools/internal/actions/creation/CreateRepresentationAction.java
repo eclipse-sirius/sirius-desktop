@@ -35,6 +35,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -203,7 +204,8 @@ public class CreateRepresentationAction extends Action {
         }
         descriptionLabel += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
         final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(),
-                MessageFormat.format(Messages.createRepresentationInputDialog_Title, new IdentifiedElementQuery(description).getLabel()), descriptionLabel, name, new IInputValidator() {
+                MessageFormat.format(Messages.createRepresentationInputDialog_Title, MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel())),
+                descriptionLabel, name, new IInputValidator() {
                     @Override
                     public String isValid(final String newText) {
                         return null;
@@ -217,7 +219,7 @@ public class CreateRepresentationAction extends Action {
 
     private void computeRepresentationName() {
         final IInterpreter interpreter = this.session.getInterpreter();
-        name = Messages.createRepresentationInputDialog_NamePrefix + new IdentifiedElementQuery(description).getLabel();
+        name = Messages.createRepresentationInputDialog_NamePrefix + MessageTranslator.INSTANCE.getMessage(description, new IdentifiedElementQuery(description).getLabel());
         if (!StringUtil.isEmpty(description.getTitleExpression())) {
             try {
                 name = interpreter.evaluateString(selection, description.getTitleExpression());

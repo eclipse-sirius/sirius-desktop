@@ -91,8 +91,9 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
             shell = new Shell();
             createdShell = true;
         }
-        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(MessageTranslator.INSTANCE.getMessage(this.tool.getWindowTitle()),
-                MessageTranslator.INSTANCE.getMessage(this.tool.getMessage()), getImage(), input,
+        String windowTitleLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getWindowTitle());
+        String messageLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getMessage());
+        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(windowTitleLocalized, messageLocalized, getImage(), input,
                 DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.setMany(tool.isMultiple());
         final WizardDialog dlg = new WizardDialog(shell, wizard);

@@ -23,7 +23,6 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -107,7 +106,7 @@ public final class FilterTools {
                 FilterTools.computeInput(diagram, model, var, input);
 
                 if (!var.isMultiple()) {
-                    final EObject modelElement = uiCallback.askForEObject(MessageTranslator.INSTANCE.getMessage(var.getMessage()), input,
+                    final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input,
                             DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                     final EObjectVariableValue newValue = DiagramFactory.eINSTANCE.createEObjectVariableValue();
@@ -118,7 +117,8 @@ public final class FilterTools {
                     }
                 } else {
                     EList<EObject> values = new BasicEList<EObject>();
-                    final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+                    final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input,
+                            DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                     values.addAll(modelElements);
                     EList<VariableValue> variables = new BasicEList<VariableValue>();

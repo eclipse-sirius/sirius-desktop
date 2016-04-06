@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.ext.base.Option;
@@ -116,7 +117,7 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
     @Override
     public String getText() {
         final IdentifiedElementQuery query = new IdentifiedElementQuery(desc);
-        return query.getLabel();
+        return MessageTranslator.INSTANCE.getMessage(desc, query.getLabel());
     }
 
     @Override
@@ -136,7 +137,8 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         }
 
         try {
-            name = commandFactory.getUserInterfaceCallBack().askForDetailName(name, new IdentifiedElementQuery(desc.getRepresentationDescription()).getLabel(),
+            name = commandFactory.getUserInterfaceCallBack().askForDetailName(name,
+                    MessageTranslator.INSTANCE.getMessage(desc, new IdentifiedElementQuery(desc.getRepresentationDescription()).getLabel()),
                     desc.getRepresentationDescription().getEndUserDocumentation());
         } catch (final InterruptedException e) {
             // the user pressed "cancel", we should exit

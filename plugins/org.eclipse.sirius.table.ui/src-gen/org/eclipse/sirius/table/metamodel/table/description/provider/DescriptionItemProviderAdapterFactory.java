@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,8 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.table.ui.business.internal.description.provider.CrossTableDescriptionItemProviderSpec;
+import org.eclipse.sirius.table.ui.business.internal.description.provider.EditionTableDescriptionItemProviderSpec;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -94,12 +96,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public Adapter createEditionTableDescriptionAdapter() {
         if (editionTableDescriptionItemProvider == null) {
-            editionTableDescriptionItemProvider = new EditionTableDescriptionItemProvider(this);
+            editionTableDescriptionItemProvider = new EditionTableDescriptionItemProviderSpec(this);
         }
 
         return editionTableDescriptionItemProvider;
@@ -119,12 +121,12 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      * {@link org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated
      */
     @Override
     public Adapter createCrossTableDescriptionAdapter() {
         if (crossTableDescriptionItemProvider == null) {
-            crossTableDescriptionItemProvider = new CrossTableDescriptionItemProvider(this);
+            crossTableDescriptionItemProvider = new CrossTableDescriptionItemProviderSpec(this);
         }
 
         return crossTableDescriptionItemProvider;
