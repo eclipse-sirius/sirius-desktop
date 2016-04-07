@@ -30,7 +30,7 @@
    <feature id="org.eclipse.sirius.samples.properties.feature" version="0.0.0">
       <category name="Sirius Incubation"/>
    </feature>
-   <feature id="org.eclipse.sirius.samples.properties.feature" version="0.0.0">
+   <feature id="org.eclipse.sirius.samples.properties.feature.source" version="0.0.0">
       <category name="Sirius Incubation"/>
    </feature>
    <category-def name="Sirius Incubation" label="Sirius Incubation"/>
