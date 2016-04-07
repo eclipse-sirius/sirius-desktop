@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
@@ -37,6 +38,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Candidate Display Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.SelectDescription#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.SelectDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription()
@@ -188,5 +192,24 @@ public interface SelectDescription extends WidgetDescription {
      * @generated
      */
     void setStyle(SelectWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<SelectWidgetConditionalStyle> getConditionalStyles();
 
 } // SelectDescription

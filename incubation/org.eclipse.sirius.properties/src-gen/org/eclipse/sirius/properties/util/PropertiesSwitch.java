@@ -16,18 +16,23 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
@@ -36,14 +41,18 @@ import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.description.Extension;
@@ -417,6 +426,102 @@ public class PropertiesSwitch<T> {
             T result = caseSelectWidgetStyle(selectWidgetStyle);
             if (result == null) {
                 result = caseWidgetStyle(selectWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.CUSTOM_WIDGET_STYLE: {
+            CustomWidgetStyle customWidgetStyle = (CustomWidgetStyle) theEObject;
+            T result = caseCustomWidgetStyle(customWidgetStyle);
+            if (result == null) {
+                result = caseWidgetStyle(customWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.WIDGET_CONDITIONAL_STYLE: {
+            WidgetConditionalStyle widgetConditionalStyle = (WidgetConditionalStyle) theEObject;
+            T result = caseWidgetConditionalStyle(widgetConditionalStyle);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE: {
+            TextWidgetConditionalStyle textWidgetConditionalStyle = (TextWidgetConditionalStyle) theEObject;
+            T result = caseTextWidgetConditionalStyle(textWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(textWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE: {
+            LabelWidgetConditionalStyle labelWidgetConditionalStyle = (LabelWidgetConditionalStyle) theEObject;
+            T result = caseLabelWidgetConditionalStyle(labelWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(labelWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.CHECKBOX_WIDGET_CONDITIONAL_STYLE: {
+            CheckboxWidgetConditionalStyle checkboxWidgetConditionalStyle = (CheckboxWidgetConditionalStyle) theEObject;
+            T result = caseCheckboxWidgetConditionalStyle(checkboxWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(checkboxWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.RADIO_WIDGET_CONDITIONAL_STYLE: {
+            RadioWidgetConditionalStyle radioWidgetConditionalStyle = (RadioWidgetConditionalStyle) theEObject;
+            T result = caseRadioWidgetConditionalStyle(radioWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(radioWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.BUTTON_WIDGET_CONDITIONAL_STYLE: {
+            ButtonWidgetConditionalStyle buttonWidgetConditionalStyle = (ButtonWidgetConditionalStyle) theEObject;
+            T result = caseButtonWidgetConditionalStyle(buttonWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(buttonWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.SELECT_WIDGET_CONDITIONAL_STYLE: {
+            SelectWidgetConditionalStyle selectWidgetConditionalStyle = (SelectWidgetConditionalStyle) theEObject;
+            T result = caseSelectWidgetConditionalStyle(selectWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(selectWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE: {
+            CustomWidgetConditionalStyle customWidgetConditionalStyle = (CustomWidgetConditionalStyle) theEObject;
+            T result = caseCustomWidgetConditionalStyle(customWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(customWidgetConditionalStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -918,6 +1023,159 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseSelectWidgetStyle(SelectWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Custom Widget Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Custom Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomWidgetStyle(CustomWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWidgetConditionalStyle(WidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Text Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Text Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTextWidgetConditionalStyle(TextWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Label Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Label Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLabelWidgetConditionalStyle(LabelWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Checkbox Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Checkbox Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCheckboxWidgetConditionalStyle(CheckboxWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Radio Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Radio Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRadioWidgetConditionalStyle(RadioWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Button Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Button Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseButtonWidgetConditionalStyle(ButtonWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Select Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Select Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSelectWidgetConditionalStyle(SelectWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Custom Widget Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Custom Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
         return null;
     }
 

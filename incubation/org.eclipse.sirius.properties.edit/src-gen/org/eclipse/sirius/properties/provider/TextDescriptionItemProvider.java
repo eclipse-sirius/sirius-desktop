@@ -88,6 +88,7 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.TEXT_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.TEXT_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.TEXT_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -147,6 +148,7 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
             return;
         case PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.TEXT_DESCRIPTION__STYLE:
+        case PropertiesPackage.TEXT_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -167,6 +169,8 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createTextWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createTextWidgetConditionalStyle()));
     }
 
 }

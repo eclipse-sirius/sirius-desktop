@@ -117,6 +117,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.SELECT_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -178,6 +179,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
             return;
         case PropertiesPackage.SELECT_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.SELECT_DESCRIPTION__STYLE:
+        case PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -198,6 +200,8 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createSelectWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createSelectWidgetConditionalStyle()));
     }
 
 }

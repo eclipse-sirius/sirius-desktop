@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
@@ -38,6 +39,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Style</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.RadioDescription#getNumberOfColumns
  * <em>Number Of Columns</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.RadioDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription()
@@ -216,5 +220,24 @@ public interface RadioDescription extends WidgetDescription {
      * @generated
      */
     void setNumberOfColumns(int value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getRadioDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<RadioWidgetConditionalStyle> getConditionalStyles();
 
 } // RadioDescription

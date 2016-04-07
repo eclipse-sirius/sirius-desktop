@@ -89,6 +89,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -148,6 +149,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
             return;
         case PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -168,6 +170,8 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle()));
     }
 
 }

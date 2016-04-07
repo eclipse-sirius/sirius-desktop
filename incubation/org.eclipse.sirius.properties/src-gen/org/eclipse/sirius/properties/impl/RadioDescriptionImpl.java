@@ -11,13 +11,19 @@
  */
 package org.eclipse.sirius.properties.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
@@ -45,6 +51,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getNumberOfColumns
  * <em>Number Of Columns</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @generated
@@ -158,6 +167,17 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * @ordered
      */
     protected int numberOfColumns = RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getConditionalStyles()
+     * <em>Conditional Styles</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getConditionalStyles()
+     * @generated
+     * @ordered
+     */
+    protected EList<RadioWidgetConditionalStyle> conditionalStyles;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -386,12 +406,27 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      * @generated
      */
     @Override
+    public EList<RadioWidgetConditionalStyle> getConditionalStyles() {
+        if (conditionalStyles == null) {
+            conditionalStyles = new EObjectContainmentEList<RadioWidgetConditionalStyle>(RadioWidgetConditionalStyle.class, this, PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES);
+        }
+        return conditionalStyles;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
             return basicSetInitialOperation(null, msgs);
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
             return basicSetStyle(null, msgs);
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+            return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -416,6 +451,8 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return getStyle();
         case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
             return getNumberOfColumns();
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+            return getConditionalStyles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -425,6 +462,7 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -445,6 +483,10 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return;
         case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
             setNumberOfColumns((Integer) newValue);
+            return;
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            getConditionalStyles().addAll((Collection<? extends RadioWidgetConditionalStyle>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -476,6 +518,9 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
         case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
             setNumberOfColumns(RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT);
             return;
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -501,6 +546,8 @@ public class RadioDescriptionImpl extends WidgetDescriptionImpl implements Radio
             return style != null;
         case PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS:
             return numberOfColumns != RadioDescriptionImpl.NUMBER_OF_COLUMNS_EDEFAULT;
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
+            return conditionalStyles != null && !conditionalStyles.isEmpty();
         }
         return super.eIsSet(featureID);
     }

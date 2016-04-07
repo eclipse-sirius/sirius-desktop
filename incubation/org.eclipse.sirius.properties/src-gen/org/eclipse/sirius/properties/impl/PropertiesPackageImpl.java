@@ -18,18 +18,23 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
@@ -39,14 +44,18 @@ import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -270,6 +279,69 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     private EClass selectWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass customWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass widgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass textWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass labelWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass checkboxWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass radioWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass buttonWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass selectWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass customWidgetConditionalStyleEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -746,6 +818,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EReference getTextDescription_ConditionalStyles() {
+        return (EReference) textDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getButtonDescription() {
         return buttonDescriptionEClass;
     }
@@ -786,6 +868,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EReference getButtonDescription_ConditionalStyles() {
+        return (EReference) buttonDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getLabelDescription() {
         return labelDescriptionEClass;
     }
@@ -808,6 +900,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getLabelDescription_Style() {
         return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelDescription_ConditionalStyles() {
+        return (EReference) labelDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -848,6 +950,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getCheckboxDescription_Style() {
         return (EReference) checkboxDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCheckboxDescription_ConditionalStyles() {
+        return (EReference) checkboxDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -908,6 +1020,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getSelectDescription_Style() {
         return (EReference) selectDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getSelectDescription_ConditionalStyles() {
+        return (EReference) selectDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1068,6 +1190,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EAttribute getRadioDescription_NumberOfColumns() {
         return (EAttribute) radioDescriptionEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getRadioDescription_ConditionalStyles() {
+        return (EReference) radioDescriptionEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -1278,6 +1410,26 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getCustomDescription_CustomOperations() {
         return (EReference) customDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCustomDescription_Style() {
+        return (EReference) customDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCustomDescription_ConditionalStyles() {
+        return (EReference) customDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1566,6 +1718,176 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getCustomWidgetStyle() {
+        return customWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getWidgetConditionalStyle() {
+        return widgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWidgetConditionalStyle_PreconditionExpression() {
+        return (EAttribute) widgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getTextWidgetConditionalStyle() {
+        return textWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getTextWidgetConditionalStyle_Style() {
+        return (EReference) textWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getLabelWidgetConditionalStyle() {
+        return labelWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getLabelWidgetConditionalStyle_Style() {
+        return (EReference) labelWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getCheckboxWidgetConditionalStyle() {
+        return checkboxWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCheckboxWidgetConditionalStyle_Style() {
+        return (EReference) checkboxWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getRadioWidgetConditionalStyle() {
+        return radioWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getRadioWidgetConditionalStyle_Style() {
+        return (EReference) radioWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getButtonWidgetConditionalStyle() {
+        return buttonWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getButtonWidgetConditionalStyle_Style() {
+        return (EReference) buttonWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getSelectWidgetConditionalStyle() {
+        return selectWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getSelectWidgetConditionalStyle_Style() {
+        return (EReference) selectWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getCustomWidgetConditionalStyle() {
+        return customWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getCustomWidgetConditionalStyle_Style() {
+        return (EReference) customWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public PropertiesFactory getPropertiesFactory() {
         return (PropertiesFactory) getEFactoryInstance();
     }
@@ -1639,20 +1961,24 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__INITIAL_OPERATION);
         createEReference(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__STYLE);
+        createEReference(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__CONDITIONAL_STYLES);
 
         buttonDescriptionEClass = createEClass(PropertiesPackage.BUTTON_DESCRIPTION);
         createEAttribute(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__BUTTON_LABEL_EXPRESSION);
         createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION);
         createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__STYLE);
+        createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES);
 
         labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
         createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION);
         createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__STYLE);
+        createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES);
 
         checkboxDescriptionEClass = createEClass(PropertiesPackage.CHECKBOX_DESCRIPTION);
         createEAttribute(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION);
         createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE);
+        createEReference(checkboxDescriptionEClass, PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES);
 
         selectDescriptionEClass = createEClass(PropertiesPackage.SELECT_DESCRIPTION);
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__VALUE_EXPRESSION);
@@ -1660,6 +1986,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATES_EXPRESSION);
         createEAttribute(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
         createEReference(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__STYLE);
+        createEReference(selectDescriptionEClass, PropertiesPackage.SELECT_DESCRIPTION__CONDITIONAL_STYLES);
 
         dynamicMappingForEClass = createEClass(PropertiesPackage.DYNAMIC_MAPPING_FOR);
         createEAttribute(dynamicMappingForEClass, PropertiesPackage.DYNAMIC_MAPPING_FOR__ITERATOR);
@@ -1680,6 +2007,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION);
         createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__STYLE);
         createEAttribute(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS);
+        createEReference(radioDescriptionEClass, PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES);
 
         singleReferenceDescriptionEClass = createEClass(PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION);
         createEAttribute(singleReferenceDescriptionEClass, PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION);
@@ -1705,6 +2033,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         customDescriptionEClass = createEClass(PropertiesPackage.CUSTOM_DESCRIPTION);
         createEReference(customDescriptionEClass, PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS);
         createEReference(customDescriptionEClass, PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS);
+        createEReference(customDescriptionEClass, PropertiesPackage.CUSTOM_DESCRIPTION__STYLE);
+        createEReference(customDescriptionEClass, PropertiesPackage.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES);
 
         customExpressionEClass = createEClass(PropertiesPackage.CUSTOM_EXPRESSION);
         createEAttribute(customExpressionEClass, PropertiesPackage.CUSTOM_EXPRESSION__IDENTIFIER);
@@ -1742,6 +2072,32 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         buttonWidgetStyleEClass = createEClass(PropertiesPackage.BUTTON_WIDGET_STYLE);
 
         selectWidgetStyleEClass = createEClass(PropertiesPackage.SELECT_WIDGET_STYLE);
+
+        customWidgetStyleEClass = createEClass(PropertiesPackage.CUSTOM_WIDGET_STYLE);
+
+        widgetConditionalStyleEClass = createEClass(PropertiesPackage.WIDGET_CONDITIONAL_STYLE);
+        createEAttribute(widgetConditionalStyleEClass, PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION);
+
+        textWidgetConditionalStyleEClass = createEClass(PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE);
+        createEReference(textWidgetConditionalStyleEClass, PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        labelWidgetConditionalStyleEClass = createEClass(PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE);
+        createEReference(labelWidgetConditionalStyleEClass, PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        checkboxWidgetConditionalStyleEClass = createEClass(PropertiesPackage.CHECKBOX_WIDGET_CONDITIONAL_STYLE);
+        createEReference(checkboxWidgetConditionalStyleEClass, PropertiesPackage.CHECKBOX_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        radioWidgetConditionalStyleEClass = createEClass(PropertiesPackage.RADIO_WIDGET_CONDITIONAL_STYLE);
+        createEReference(radioWidgetConditionalStyleEClass, PropertiesPackage.RADIO_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        buttonWidgetConditionalStyleEClass = createEClass(PropertiesPackage.BUTTON_WIDGET_CONDITIONAL_STYLE);
+        createEReference(buttonWidgetConditionalStyleEClass, PropertiesPackage.BUTTON_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        selectWidgetConditionalStyleEClass = createEClass(PropertiesPackage.SELECT_WIDGET_CONDITIONAL_STYLE);
+        createEReference(selectWidgetConditionalStyleEClass, PropertiesPackage.SELECT_WIDGET_CONDITIONAL_STYLE__STYLE);
+
+        customWidgetConditionalStyleEClass = createEClass(PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE);
+        createEReference(customWidgetConditionalStyleEClass, PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE);
     }
 
     /**
@@ -1799,6 +2155,14 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         radioWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         buttonWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         selectWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        customWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        textWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        labelWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        checkboxWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        radioWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        buttonWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        selectWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        customWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
@@ -1903,6 +2267,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getTextDescription_Style(), this.getTextWidgetStyle(), null, "style", null, 0, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getTextDescription_ConditionalStyles(), this.getTextWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, TextDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(buttonDescriptionEClass, ButtonDescription.class, "ButtonDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getButtonDescription_ButtonLabelExpression(), theDescriptionPackage.getInterpretedExpression(), "buttonLabelExpression", null, 0, 1, ButtonDescription.class,
@@ -1914,6 +2281,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getButtonDescription_Style(), this.getButtonWidgetStyle(), null, "style", null, 0, 1, ButtonDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getButtonDescription_ConditionalStyles(), this.getButtonWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, ButtonDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getLabelDescription_BodyExpression(), theDescriptionPackage.getInterpretedExpression(), "bodyExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -1921,6 +2291,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getLabelDescription_Style(), this.getLabelWidgetStyle(), null, "style", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getLabelDescription_ConditionalStyles(), this.getLabelWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(checkboxDescriptionEClass, CheckboxDescription.class, "CheckboxDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCheckboxDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -1931,6 +2304,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getCheckboxDescription_Style(), this.getCheckboxWidgetStyle(), null, "style", null, 0, 1, CheckboxDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getCheckboxDescription_ConditionalStyles(), this.getCheckboxWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, CheckboxDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(selectDescriptionEClass, SelectDescription.class, "SelectDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSelectDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT,
@@ -1947,6 +2323,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEReference(getSelectDescription_Style(), this.getSelectWidgetStyle(), null, "style", null, 0, 1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getSelectDescription_ConditionalStyles(), this.getSelectWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, SelectDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dynamicMappingForEClass, DynamicMappingFor.class, "DynamicMappingFor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDynamicMappingFor_Iterator(), theEcorePackage.getEString(), "iterator", null, 1, 1, DynamicMappingFor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
@@ -1985,6 +2364,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getRadioDescription_NumberOfColumns(), theEcorePackage.getEInt(), "numberOfColumns", "-1", 0, 1, RadioDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getRadioDescription_ConditionalStyles(), this.getRadioWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, RadioDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(singleReferenceDescriptionEClass, SingleReferenceDescription.class, "SingleReferenceDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2044,6 +2426,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getCustomDescription_CustomOperations(), this.getCustomOperation(), null, "customOperations", null, 0, -1, CustomDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getCustomDescription_Style(), this.getCustomWidgetStyle(), null, "style", null, 0, 1, CustomDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getCustomDescription_ConditionalStyles(), this.getCustomWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, CustomDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
@@ -2109,6 +2497,56 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(buttonWidgetStyleEClass, ButtonWidgetStyle.class, "ButtonWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(selectWidgetStyleEClass, SelectWidgetStyle.class, "SelectWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(customWidgetStyleEClass, CustomWidgetStyle.class, "CustomWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(widgetConditionalStyleEClass, WidgetConditionalStyle.class, "WidgetConditionalStyle", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getWidgetConditionalStyle_PreconditionExpression(), theDescriptionPackage.getInterpretedExpression(), "preconditionExpression", null, 0, 1, WidgetConditionalStyle.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
+        initEClass(textWidgetConditionalStyleEClass, TextWidgetConditionalStyle.class, "TextWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getTextWidgetConditionalStyle_Style(), this.getTextWidgetStyle(), null, "style", null, 0, 1, TextWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(labelWidgetConditionalStyleEClass, LabelWidgetConditionalStyle.class, "LabelWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getLabelWidgetConditionalStyle_Style(), this.getLabelWidgetStyle(), null, "style", null, 0, 1, LabelWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(checkboxWidgetConditionalStyleEClass, CheckboxWidgetConditionalStyle.class, "CheckboxWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getCheckboxWidgetConditionalStyle_Style(), this.getCheckboxWidgetStyle(), null, "style", null, 0, 1, CheckboxWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(radioWidgetConditionalStyleEClass, RadioWidgetConditionalStyle.class, "RadioWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getRadioWidgetConditionalStyle_Style(), this.getRadioWidgetStyle(), null, "style", null, 0, 1, RadioWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(buttonWidgetConditionalStyleEClass, ButtonWidgetConditionalStyle.class, "ButtonWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getButtonWidgetConditionalStyle_Style(), this.getButtonWidgetStyle(), null, "style", null, 0, 1, ButtonWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(selectWidgetConditionalStyleEClass, SelectWidgetConditionalStyle.class, "SelectWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getSelectWidgetConditionalStyle_Style(), this.getSelectWidgetStyle(), null, "style", null, 0, 1, SelectWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(customWidgetConditionalStyleEClass, CustomWidgetConditionalStyle.class, "CustomWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getCustomWidgetConditionalStyle_Style(), this.getCustomWidgetStyle(), null, "style", null, 0, 1, CustomWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
         createResource(PropertiesPackage.eNS_URI);

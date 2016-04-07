@@ -129,6 +129,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.RADIO_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -191,6 +192,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
             return;
         case PropertiesPackage.RADIO_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.RADIO_DESCRIPTION__STYLE:
+        case PropertiesPackage.RADIO_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -211,6 +213,8 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createRadioWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.RADIO_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createRadioWidgetConditionalStyle()));
     }
 
 }

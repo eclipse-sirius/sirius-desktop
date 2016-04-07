@@ -608,13 +608,22 @@ public interface PropertiesPackage extends EPackage {
     int TEXT_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Text Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TEXT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int TEXT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -683,13 +692,22 @@ public interface PropertiesPackage extends EPackage {
     int BUTTON_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Button Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int BUTTON_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -749,13 +767,22 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>Label Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int LABEL_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -824,13 +851,22 @@ public interface PropertiesPackage extends EPackage {
     int CHECKBOX_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Checkbox Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int CHECKBOX_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -917,13 +953,22 @@ public interface PropertiesPackage extends EPackage {
     int SELECT_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>Select Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int SELECT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int SELECT_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -1079,6 +1124,15 @@ public interface PropertiesPackage extends EPackage {
     int TEXT_AREA_DESCRIPTION__STYLE = PropertiesPackage.TEXT_DESCRIPTION__STYLE;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.TEXT_DESCRIPTION__CONDITIONAL_STYLES;
+
+    /**
      * The feature id for the '<em><b>Line Count</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1190,13 +1244,22 @@ public interface PropertiesPackage extends EPackage {
     int RADIO_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
+
+    /**
      * The number of structural features of the '<em>Radio Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int RADIO_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 6;
+    int RADIO_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '
@@ -1333,42 +1396,6 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl
-     * <em>Custom Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @see org.eclipse.sirius.properties.impl.CustomDescriptionImpl
-     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomDescription()
-     * @generated
-     */
-    int CUSTOM_DESCRIPTION = 20;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl
-     * <em>Custom Expression</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @see org.eclipse.sirius.properties.impl.CustomExpressionImpl
-     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomExpression()
-     * @generated
-     */
-    int CUSTOM_EXPRESSION = 21;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl
-     * <em>Custom Operation</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @see org.eclipse.sirius.properties.impl.CustomOperationImpl
-     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomOperation()
-     * @generated
-     */
-    int CUSTOM_OPERATION = 22;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl
      * <em>Multiple References Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1489,6 +1516,18 @@ public interface PropertiesPackage extends EPackage {
     int MULTIPLE_REFERENCES_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl
+     * <em>Custom Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CustomDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomDescription()
+     * @generated
+     */
+    int CUSTOM_DESCRIPTION = 20;
+
+    /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1534,13 +1573,43 @@ public interface PropertiesPackage extends EPackage {
     int CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Custom Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CUSTOM_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int CUSTOM_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl
+     * <em>Custom Expression</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CustomExpressionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomExpression()
+     * @generated
+     */
+    int CUSTOM_EXPRESSION = 21;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -1568,6 +1637,18 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_EXPRESSION_FEATURE_COUNT = 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl
+     * <em>Custom Operation</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CustomOperationImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomOperation()
+     * @generated
+     */
+    int CUSTOM_OPERATION = 22;
 
     /**
      * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
@@ -2149,6 +2230,383 @@ public interface PropertiesPackage extends EPackage {
     int SELECT_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
+     * <em>Custom Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
+     * @generated
+     */
+    int CUSTOM_WIDGET_STYLE = 30;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The number of structural features of the '<em>Custom Widget Style</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
+     * <em>Widget Conditional Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
+     * @generated
+     */
+    int WIDGET_CONDITIONAL_STYLE = 31;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Widget Conditional Style</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
+     * <em>Text Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
+     * @generated
+     */
+    int TEXT_WIDGET_CONDITIONAL_STYLE = 32;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Text Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
+     * <em>Label Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
+     * @generated
+     */
+    int LABEL_WIDGET_CONDITIONAL_STYLE = 33;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Label Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
+     * <em>Checkbox Widget Conditional Style</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
+     * @generated
+     */
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 34;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Checkbox Widget Conditional Style</em>' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
+     * <em>Radio Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
+     * @generated
+     */
+    int RADIO_WIDGET_CONDITIONAL_STYLE = 35;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Radio Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
+     * <em>Button Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
+     * @generated
+     */
+    int BUTTON_WIDGET_CONDITIONAL_STYLE = 36;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Button Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
+     * <em>Select Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
+     * @generated
+     */
+    int SELECT_WIDGET_CONDITIONAL_STYLE = 37;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Select Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
+     * <em>Custom Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
+     * @generated
+     */
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 38;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Custom Widget Conditional Style</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription
      * <em>View Extension Description</em>}'. <!-- begin-user-doc --> <!--
@@ -2659,6 +3117,20 @@ public interface PropertiesPackage extends EPackage {
     EReference getTextDescription_Style();
 
     /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.TextDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.TextDescription#getConditionalStyles()
+     * @see #getTextDescription()
+     * @generated
+     */
+    EReference getTextDescription_ConditionalStyles();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ButtonDescription
      * <em>Button Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2711,6 +3183,20 @@ public interface PropertiesPackage extends EPackage {
     EReference getButtonDescription_Style();
 
     /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.ButtonDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.ButtonDescription#getConditionalStyles()
+     * @see #getButtonDescription()
+     * @generated
+     */
+    EReference getButtonDescription_ConditionalStyles();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.LabelDescription
      * <em>Label Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2745,6 +3231,20 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getLabelDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.LabelDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getConditionalStyles()
+     * @see #getLabelDescription()
+     * @generated
+     */
+    EReference getLabelDescription_ConditionalStyles();
 
     /**
      * Returns the meta object for class '
@@ -2796,6 +3296,20 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getCheckboxDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.CheckboxDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.CheckboxDescription#getConditionalStyles()
+     * @see #getCheckboxDescription()
+     * @generated
+     */
+    EReference getCheckboxDescription_ConditionalStyles();
 
     /**
      * Returns the meta object for class '
@@ -2875,6 +3389,20 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getSelectDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.SelectDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.SelectDescription#getConditionalStyles()
+     * @see #getSelectDescription()
+     * @generated
+     */
+    EReference getSelectDescription_ConditionalStyles();
 
     /**
      * Returns the meta object for class '
@@ -3082,6 +3610,20 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getRadioDescription_NumberOfColumns();
 
     /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.RadioDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.RadioDescription#getConditionalStyles()
+     * @see #getRadioDescription()
+     * @generated
+     */
+    EReference getRadioDescription_ConditionalStyles();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.SingleReferenceDescription
      * <em>Single Reference Description</em>}'. <!-- begin-user-doc --> <!--
@@ -3188,6 +3730,140 @@ public interface PropertiesPackage extends EPackage {
     EClass getOperationDescription();
 
     /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.OperationDescription#getInitialOperation
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.properties.OperationDescription#getInitialOperation()
+     * @see #getOperationDescription()
+     * @generated
+     */
+    EReference getOperationDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription
+     * <em>Multiple References Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Multiple References Description</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription
+     * @generated
+     */
+    EClass getMultipleReferencesDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getValueExpression
+     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getValueExpression()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EAttribute getMultipleReferencesDescription_ValueExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDisplayExpression
+     * <em>Display Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Display Expression</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getDisplayExpression()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EAttribute getMultipleReferencesDescription_DisplayExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getCreateOperation
+     * <em>Create Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Create Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getCreateOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_CreateOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getSearchOperation
+     * <em>Search Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Search Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getSearchOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_SearchOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUnsetOperation
+     * <em>Unset Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Unset Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getUnsetOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_UnsetOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getOnClickOperation
+     * <em>On Click Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>On Click Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getOnClickOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_OnClickOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUpOperation
+     * <em>Up Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Up Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getUpOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_UpOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDownOperation
+     * <em>Down Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Down Operation</em>'.
+     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getDownOperation()
+     * @see #getMultipleReferencesDescription()
+     * @generated
+     */
+    EReference getMultipleReferencesDescription_DownOperation();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.CustomDescription
      * <em>Custom Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -3226,6 +3902,32 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getCustomDescription_CustomOperations();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.CustomDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.CustomDescription#getStyle()
+     * @see #getCustomDescription()
+     * @generated
+     */
+    EReference getCustomDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.CustomDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.CustomDescription#getConditionalStyles()
+     * @see #getCustomDescription()
+     * @generated
+     */
+    EReference getCustomDescription_ConditionalStyles();
 
     /**
      * Returns the meta object for class '
@@ -3582,129 +4284,217 @@ public interface PropertiesPackage extends EPackage {
     EClass getSelectWidgetStyle();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.CustomWidgetStyle
+     * <em>Custom Widget Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Custom Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.CustomWidgetStyle
      * @generated
      */
-    EReference getOperationDescription_InitialOperation();
+    EClass getCustomWidgetStyle();
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription
-     * <em>Multiple References Description</em>}'. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.properties.WidgetConditionalStyle
+     * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.WidgetConditionalStyle
+     * @generated
+     */
+    EClass getWidgetConditionalStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
+     * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '
+     *         <em>Precondition Expression</em>'.
+     * @see org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression()
+     * @see #getWidgetConditionalStyle()
+     * @generated
+     */
+    EAttribute getWidgetConditionalStyle_PreconditionExpression();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle
+     * <em>Text Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Text Widget Conditional Style</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.TextWidgetConditionalStyle
+     * @generated
+     */
+    EClass getTextWidgetConditionalStyle();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.TextWidgetConditionalStyle#getStyle()
+     * @see #getTextWidgetConditionalStyle()
+     * @generated
+     */
+    EReference getTextWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle
+     * <em>Label Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @return the meta object for class '
-     *         <em>Multiple References Description</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription
+     *         <em>Label Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetConditionalStyle
      * @generated
      */
-    EClass getMultipleReferencesDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getValueExpression
-     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the attribute '<em>Value Expression</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getValueExpression()
-     * @see #getMultipleReferencesDescription()
-     * @generated
-     */
-    EAttribute getMultipleReferencesDescription_ValueExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDisplayExpression
-     * <em>Display Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the attribute '<em>Display Expression</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getDisplayExpression()
-     * @see #getMultipleReferencesDescription()
-     * @generated
-     */
-    EAttribute getMultipleReferencesDescription_DisplayExpression();
+    EClass getLabelWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getCreateOperation
-     * <em>Create Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>Create Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getCreateOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.LabelWidgetConditionalStyle#getStyle()
+     * @see #getLabelWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_CreateOperation();
+    EReference getLabelWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
+     * <em>Checkbox Widget Conditional Style</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Checkbox Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
+     * @generated
+     */
+    EClass getCheckboxWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getSearchOperation
-     * <em>Search Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>Search Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getSearchOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle#getStyle()
+     * @see #getCheckboxWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_SearchOperation();
+    EReference getCheckboxWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle
+     * <em>Radio Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Radio Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.RadioWidgetConditionalStyle
+     * @generated
+     */
+    EClass getRadioWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUnsetOperation
-     * <em>Unset Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>Unset Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getUnsetOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.RadioWidgetConditionalStyle#getStyle()
+     * @see #getRadioWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_UnsetOperation();
+    EReference getRadioWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
+     * <em>Button Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Button Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
+     * @generated
+     */
+    EClass getButtonWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getOnClickOperation
-     * <em>On Click Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>On Click Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getOnClickOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle()
+     * @see #getButtonWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_OnClickOperation();
+    EReference getButtonWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle
+     * <em>Select Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Select Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.SelectWidgetConditionalStyle
+     * @generated
+     */
+    EClass getSelectWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getUpOperation
-     * <em>Up Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>Up Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getUpOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.SelectWidgetConditionalStyle#getStyle()
+     * @see #getSelectWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_UpOperation();
+    EReference getSelectWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle
+     * <em>Custom Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Custom Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.CustomWidgetConditionalStyle
+     * @generated
+     */
+    EClass getCustomWidgetConditionalStyle();
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription#getDownOperation
-     * <em>Down Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for the containment reference '
-     *         <em>Down Operation</em>'.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription#getDownOperation()
-     * @see #getMultipleReferencesDescription()
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.CustomWidgetConditionalStyle#getStyle()
+     * @see #getCustomWidgetConditionalStyle()
      * @generated
      */
-    EReference getMultipleReferencesDescription_DownOperation();
+    EReference getCustomWidgetConditionalStyle_Style();
 
     /**
      * Returns the factory that creates the instances of the model. <!--
@@ -4098,6 +4888,15 @@ public interface PropertiesPackage extends EPackage {
         EReference TEXT_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getTextDescription_Style();
 
         /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference TEXT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getTextDescription_ConditionalStyles();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
          * <em>Button Description</em>}' class. <!-- begin-user-doc --> <!--
@@ -4136,6 +4935,15 @@ public interface PropertiesPackage extends EPackage {
         EReference BUTTON_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getButtonDescription_Style();
 
         /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getButtonDescription_ConditionalStyles();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl
          * <em>Label Description</em>}' class. <!-- begin-user-doc --> <!--
@@ -4162,6 +4970,15 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference LABEL_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getLabelDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getLabelDescription_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -4199,6 +5016,15 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference CHECKBOX_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getCheckboxDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getCheckboxDescription_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -4254,6 +5080,15 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference SELECT_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getSelectDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SELECT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getSelectDescription_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -4404,6 +5239,15 @@ public interface PropertiesPackage extends EPackage {
         EAttribute RADIO_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.eINSTANCE.getRadioDescription_NumberOfColumns();
 
         /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference RADIO_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getRadioDescription_ConditionalStyles();
+
+        /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.SingleReferenceDescriptionImpl
          * <em>Single Reference Description</em>}' class. <!-- begin-user-doc
@@ -4430,6 +5274,145 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_DisplayExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Create Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_CreateOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Search Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_SearchOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Unset Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_UnsetOperation();
+
+        /**
+         * The meta object literal for the '<em><b>On Click Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_OnClickOperation();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl
+         * <em>Operation Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.OperationDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getOperationDescription()
+         * @generated
+         */
+        EClass OPERATION_DESCRIPTION = PropertiesPackage.eINSTANCE.getOperationDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference OPERATION_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getOperationDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl
+         * <em>Multiple References Description</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getMultipleReferencesDescription()
+         * @generated
+         */
+        EClass MULTIPLE_REFERENCES_DESCRIPTION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Value Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute MULTIPLE_REFERENCES_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_ValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Display Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute MULTIPLE_REFERENCES_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_DisplayExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Create Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__CREATE_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_CreateOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Search Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__SEARCH_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_SearchOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Unset Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__UNSET_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_UnsetOperation();
+
+        /**
+         * The meta object literal for the '<em><b>On Click Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_OnClickOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Up Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__UP_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_UpOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Down Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference MULTIPLE_REFERENCES_DESCRIPTION__DOWN_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_DownOperation();
 
         /**
          * The meta object literal for the '
@@ -4460,6 +5443,23 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS = PropertiesPackage.eINSTANCE.getCustomDescription_CustomOperations();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CUSTOM_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getCustomDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CUSTOM_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getCustomDescription_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -4726,141 +5726,177 @@ public interface PropertiesPackage extends EPackage {
         EClass SELECT_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getSelectWidgetStyle();
 
         /**
-         * The meta object literal for the ' end-user-doc -->
-         *
-         * @generated
-         */
-        EReference SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_CreateOperation();
-
-        /**
-         * The meta object literal for the '<em><b>Search Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
+         * <em>Custom Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          *
+         * @see org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
          * @generated
          */
-        EReference SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_SearchOperation();
-
-        /**
-         * The meta object literal for the '<em><b>Unset Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EReference SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_UnsetOperation();
-
-        /**
-         * The meta object literal for the '<em><b>On Click Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EReference SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.eINSTANCE.getSingleReferenceDescription_OnClickOperation();
+        EClass CUSTOM_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getCustomWidgetStyle();
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl
-         * <em>Operation Description</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * {@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
+         * <em>Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.impl.OperationDescriptionImpl
-         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getOperationDescription()
+         * @see org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
          * @generated
          */
-        EClass OPERATION_DESCRIPTION = PropertiesPackage.eINSTANCE.getOperationDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EReference OPERATION_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getOperationDescription_InitialOperation();
+        EClass WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getWidgetConditionalStyle();
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl
-         * <em>Multiple References Description</em>}' class. <!-- begin-user-doc
+         * <em><b>Precondition Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetConditionalStyle_PreconditionExpression();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
+         * <em>Text Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.properties.impl.MultipleReferencesDescriptionImpl
-         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getMultipleReferencesDescription()
+         * @see org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
          * @generated
          */
-        EClass MULTIPLE_REFERENCES_DESCRIPTION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription();
+        EClass TEXT_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getTextWidgetConditionalStyle();
 
         /**
-         * The meta object literal for the '<em><b>Value Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute MULTIPLE_REFERENCES_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_ValueExpression();
+        EReference TEXT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getTextWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>Display Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
+         * <em>Label Widget Conditional Style</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
+         * @generated
+         */
+        EClass LABEL_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getLabelWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute MULTIPLE_REFERENCES_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_DisplayExpression();
+        EReference LABEL_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getLabelWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>Create Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
+         * <em>Checkbox Widget Conditional Style</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
+         * @generated
+         */
+        EClass CHECKBOX_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getCheckboxWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__CREATE_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_CreateOperation();
+        EReference CHECKBOX_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getCheckboxWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>Search Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
+         * <em>Radio Widget Conditional Style</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
+         * @generated
+         */
+        EClass RADIO_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getRadioWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__SEARCH_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_SearchOperation();
+        EReference RADIO_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getRadioWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>Unset Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
+         * <em>Button Widget Conditional Style</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
+         * @generated
+         */
+        EClass BUTTON_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getButtonWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__UNSET_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_UnsetOperation();
+        EReference BUTTON_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getButtonWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>On Click Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
+         * <em>Select Widget Conditional Style</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
+         * @generated
+         */
+        EClass SELECT_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getSelectWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_OnClickOperation();
+        EReference SELECT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getSelectWidgetConditionalStyle_Style();
 
         /**
-         * The meta object literal for the '<em><b>Up Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
+         * <em>Custom Widget Conditional Style</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
+         * @generated
+         */
+        EClass CUSTOM_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getCustomWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__UP_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_UpOperation();
-
-        /**
-         * The meta object literal for the '<em><b>Down Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EReference MULTIPLE_REFERENCES_DESCRIPTION__DOWN_OPERATION = PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_DownOperation();
+        EReference CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getCustomWidgetConditionalStyle_Style();
 
     }
 

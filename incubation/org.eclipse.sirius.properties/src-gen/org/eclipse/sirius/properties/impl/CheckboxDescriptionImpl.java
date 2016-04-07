@@ -11,12 +11,18 @@
  */
 package org.eclipse.sirius.properties.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -37,6 +43,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,6 +93,17 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      * @ordered
      */
     protected CheckboxWidgetStyle style;
+
+    /**
+     * The cached value of the '{@link #getConditionalStyles()
+     * <em>Conditional Styles</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getConditionalStyles()
+     * @generated
+     * @ordered
+     */
+    protected EList<CheckboxWidgetConditionalStyle> conditionalStyles;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -240,12 +260,27 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      * @generated
      */
     @Override
+    public EList<CheckboxWidgetConditionalStyle> getConditionalStyles() {
+        if (conditionalStyles == null) {
+            conditionalStyles = new EObjectContainmentEList<CheckboxWidgetConditionalStyle>(CheckboxWidgetConditionalStyle.class, this, PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES);
+        }
+        return conditionalStyles;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.CHECKBOX_DESCRIPTION__INITIAL_OPERATION:
             return basicSetInitialOperation(null, msgs);
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             return basicSetStyle(null, msgs);
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
+            return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -264,6 +299,8 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
             return getInitialOperation();
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             return getStyle();
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
+            return getConditionalStyles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -273,6 +310,7 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -284,6 +322,10 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
             return;
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             setStyle((CheckboxWidgetStyle) newValue);
+            return;
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            getConditionalStyles().addAll((Collection<? extends CheckboxWidgetConditionalStyle>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -306,6 +348,9 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             setStyle((CheckboxWidgetStyle) null);
             return;
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -324,6 +369,8 @@ public class CheckboxDescriptionImpl extends WidgetDescriptionImpl implements Ch
             return initialOperation != null;
         case PropertiesPackage.CHECKBOX_DESCRIPTION__STYLE:
             return style != null;
+        case PropertiesPackage.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES:
+            return conditionalStyles != null && !conditionalStyles.isEmpty();
         }
         return super.eIsSet(featureID);
     }

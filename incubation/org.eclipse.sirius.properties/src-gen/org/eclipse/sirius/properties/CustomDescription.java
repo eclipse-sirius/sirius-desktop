@@ -27,6 +27,11 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.properties.CustomDescription#getCustomOperations
  * <em>Custom Operations</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.CustomDescription#getStyle
+ * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.CustomDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomDescription()
@@ -71,5 +76,54 @@ public interface CustomDescription extends WidgetDescription {
      * @generated
      */
     EList<CustomOperation> getCustomOperations();
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(CustomWidgetStyle)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    CustomWidgetStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.CustomDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(CustomWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<CustomWidgetConditionalStyle> getConditionalStyles();
 
 } // CustomDescription

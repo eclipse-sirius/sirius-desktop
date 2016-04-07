@@ -11,6 +11,8 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Label Description</b></em>'. <!-- end-user-doc -->
@@ -23,6 +25,9 @@ package org.eclipse.sirius.properties;
  * <em>Body Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.LabelDescription#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.LabelDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription()
@@ -90,5 +95,24 @@ public interface LabelDescription extends WidgetDescription {
      * @generated
      */
     void setStyle(LabelWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<LabelWidgetConditionalStyle> getConditionalStyles();
 
 } // LabelDescription

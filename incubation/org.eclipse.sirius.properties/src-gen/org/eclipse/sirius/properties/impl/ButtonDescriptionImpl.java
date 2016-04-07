@@ -11,12 +11,18 @@
  */
 package org.eclipse.sirius.properties.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -36,6 +42,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,6 +92,17 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * @ordered
      */
     protected ButtonWidgetStyle style;
+
+    /**
+     * The cached value of the '{@link #getConditionalStyles()
+     * <em>Conditional Styles</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getConditionalStyles()
+     * @generated
+     * @ordered
+     */
+    protected EList<ButtonWidgetConditionalStyle> conditionalStyles;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -239,12 +259,27 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      * @generated
      */
     @Override
+    public EList<ButtonWidgetConditionalStyle> getConditionalStyles() {
+        if (conditionalStyles == null) {
+            conditionalStyles = new EObjectContainmentEList<ButtonWidgetConditionalStyle>(ButtonWidgetConditionalStyle.class, this, PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES);
+        }
+        return conditionalStyles;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
             return basicSetInitialOperation(null, msgs);
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
             return basicSetStyle(null, msgs);
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+            return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -263,6 +298,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return getInitialOperation();
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
             return getStyle();
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+            return getConditionalStyles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -272,6 +309,7 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -283,6 +321,10 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
             setStyle((ButtonWidgetStyle) newValue);
+            return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            getConditionalStyles().addAll((Collection<? extends ButtonWidgetConditionalStyle>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -305,6 +347,9 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
             setStyle((ButtonWidgetStyle) null);
             return;
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -324,6 +369,8 @@ public class ButtonDescriptionImpl extends WidgetDescriptionImpl implements Butt
             return initialOperation != null;
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
             return style != null;
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
+            return conditionalStyles != null && !conditionalStyles.isEmpty();
         }
         return super.eIsSet(featureID);
     }

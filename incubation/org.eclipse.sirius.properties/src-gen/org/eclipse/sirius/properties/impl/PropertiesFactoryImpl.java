@@ -17,18 +17,23 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
@@ -38,12 +43,15 @@ import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -149,6 +157,22 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createButtonWidgetStyle();
         case PropertiesPackage.SELECT_WIDGET_STYLE:
             return createSelectWidgetStyle();
+        case PropertiesPackage.CUSTOM_WIDGET_STYLE:
+            return createCustomWidgetStyle();
+        case PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE:
+            return createTextWidgetConditionalStyle();
+        case PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE:
+            return createLabelWidgetConditionalStyle();
+        case PropertiesPackage.CHECKBOX_WIDGET_CONDITIONAL_STYLE:
+            return createCheckboxWidgetConditionalStyle();
+        case PropertiesPackage.RADIO_WIDGET_CONDITIONAL_STYLE:
+            return createRadioWidgetConditionalStyle();
+        case PropertiesPackage.BUTTON_WIDGET_CONDITIONAL_STYLE:
+            return createButtonWidgetConditionalStyle();
+        case PropertiesPackage.SELECT_WIDGET_CONDITIONAL_STYLE:
+            return createSelectWidgetConditionalStyle();
+        case PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE:
+            return createCustomWidgetConditionalStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -460,6 +484,94 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public SelectWidgetStyle createSelectWidgetStyle() {
         SelectWidgetStyleImpl selectWidgetStyle = new SelectWidgetStyleImpl();
         return selectWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CustomWidgetStyle createCustomWidgetStyle() {
+        CustomWidgetStyleImpl customWidgetStyle = new CustomWidgetStyleImpl();
+        return customWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public TextWidgetConditionalStyle createTextWidgetConditionalStyle() {
+        TextWidgetConditionalStyleImpl textWidgetConditionalStyle = new TextWidgetConditionalStyleImpl();
+        return textWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public LabelWidgetConditionalStyle createLabelWidgetConditionalStyle() {
+        LabelWidgetConditionalStyleImpl labelWidgetConditionalStyle = new LabelWidgetConditionalStyleImpl();
+        return labelWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CheckboxWidgetConditionalStyle createCheckboxWidgetConditionalStyle() {
+        CheckboxWidgetConditionalStyleImpl checkboxWidgetConditionalStyle = new CheckboxWidgetConditionalStyleImpl();
+        return checkboxWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public RadioWidgetConditionalStyle createRadioWidgetConditionalStyle() {
+        RadioWidgetConditionalStyleImpl radioWidgetConditionalStyle = new RadioWidgetConditionalStyleImpl();
+        return radioWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ButtonWidgetConditionalStyle createButtonWidgetConditionalStyle() {
+        ButtonWidgetConditionalStyleImpl buttonWidgetConditionalStyle = new ButtonWidgetConditionalStyleImpl();
+        return buttonWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public SelectWidgetConditionalStyle createSelectWidgetConditionalStyle() {
+        SelectWidgetConditionalStyleImpl selectWidgetConditionalStyle = new SelectWidgetConditionalStyleImpl();
+        return selectWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CustomWidgetConditionalStyle createCustomWidgetConditionalStyle() {
+        CustomWidgetConditionalStyleImpl customWidgetConditionalStyle = new CustomWidgetConditionalStyleImpl();
+        return customWidgetConditionalStyle;
     }
 
     /**

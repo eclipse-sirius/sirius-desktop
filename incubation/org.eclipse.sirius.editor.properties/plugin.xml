@@ -17,6 +17,13 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetconditionalstyle.WidgetConditionalStylePreconditionExpressionPropertySection"
+               id="properties.section.widgetConditionalStyle.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetconditionalstyle.WidgetConditionalStylePreconditionExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetConditionalStyle"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySection"
                id="properties.section.labelWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontFormatFilter"

@@ -338,4 +338,103 @@
    
       </description>
    </context>
+   <context id="CustomWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomWidgetStyle description -->
+   
+   <!-- End of user code CustomWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="WidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code WidgetConditionalStyle description -->
+   
+   <!-- End of user code WidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="TextWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code TextWidgetConditionalStyle description -->
+   
+   <!-- End of user code TextWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="LabelWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code LabelWidgetConditionalStyle description -->
+   
+   <!-- End of user code LabelWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="CheckboxWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code CheckboxWidgetConditionalStyle description -->
+   
+   <!-- End of user code CheckboxWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="RadioWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code RadioWidgetConditionalStyle description -->
+   
+   <!-- End of user code RadioWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="ButtonWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ButtonWidgetConditionalStyle description -->
+   
+   <!-- End of user code ButtonWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="SelectWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code SelectWidgetConditionalStyle description -->
+   
+   <!-- End of user code SelectWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="CustomWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code CustomWidgetConditionalStyle description -->
+   
+   <!-- End of user code CustomWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
 </contexts>

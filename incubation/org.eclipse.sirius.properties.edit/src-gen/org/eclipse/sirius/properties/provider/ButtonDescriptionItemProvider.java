@@ -89,6 +89,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.BUTTON_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(PropertiesPackage.Literals.BUTTON_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.BUTTON_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -148,6 +149,7 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
             return;
         case PropertiesPackage.BUTTON_DESCRIPTION__INITIAL_OPERATION:
         case PropertiesPackage.BUTTON_DESCRIPTION__STYLE:
+        case PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -168,6 +170,8 @@ public class ButtonDescriptionItemProvider extends WidgetDescriptionItemProvider
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createButtonWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.BUTTON_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createButtonWidgetConditionalStyle()));
     }
 
 }

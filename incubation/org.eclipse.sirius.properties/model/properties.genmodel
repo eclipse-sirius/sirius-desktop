@@ -61,20 +61,24 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/initialOperation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//ButtonDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ButtonDescription/buttonLabelExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/initialOperation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//LabelDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/bodyExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//CheckboxDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CheckboxDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/initialOperation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//SelectDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/valueExpression"/>
@@ -82,6 +86,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidatesExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidateDisplayExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//DynamicMappingFor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//DynamicMappingFor/iterator"/>
@@ -102,6 +107,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/candidateDisplayExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/style"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//RadioDescription/numberOfColumns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//SingleReferenceDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SingleReferenceDescription/valueExpression"/>
@@ -127,6 +133,8 @@
     <genClasses ecoreClass="properties.ecore#//CustomDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/customExpressions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/customOperations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//CustomExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CustomExpression/identifier"/>
@@ -161,5 +169,30 @@
     <genClasses ecoreClass="properties.ecore#//RadioWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//ButtonWidgetStyle"/>
     <genClasses ecoreClass="properties.ecore#//SelectWidgetStyle"/>
+    <genClasses ecoreClass="properties.ecore#//CustomWidgetStyle"/>
+    <genClasses image="false" ecoreClass="properties.ecore#//WidgetConditionalStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetConditionalStyle/preconditionExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//TextWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//LabelWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CheckboxWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CheckboxWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//RadioWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//RadioWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//ButtonWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//SelectWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//CustomWidgetConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//CustomWidgetConditionalStyle/style"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

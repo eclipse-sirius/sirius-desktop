@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -17,26 +18,34 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.eef.EEFButtonConditionalStyle;
 import org.eclipse.eef.EEFButtonDescription;
 import org.eclipse.eef.EEFButtonStyle;
+import org.eclipse.eef.EEFCheckboxConditionalStyle;
 import org.eclipse.eef.EEFCheckboxDescription;
 import org.eclipse.eef.EEFCheckboxStyle;
 import org.eclipse.eef.EEFContainerDescription;
 import org.eclipse.eef.EEFCustomExpression;
+import org.eclipse.eef.EEFCustomWidgetConditionalStyle;
 import org.eclipse.eef.EEFCustomWidgetDescription;
+import org.eclipse.eef.EEFCustomWidgetStyle;
 import org.eclipse.eef.EEFDynamicMappingFor;
 import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFLabelConditionalStyle;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFLabelStyle;
 import org.eclipse.eef.EEFPageDescription;
 import org.eclipse.eef.EEFPropertyValidationRuleDescription;
+import org.eclipse.eef.EEFRadioConditionalStyle;
 import org.eclipse.eef.EEFRadioDescription;
 import org.eclipse.eef.EEFRadioStyle;
 import org.eclipse.eef.EEFRuleAuditDescription;
+import org.eclipse.eef.EEFSelectConditionalStyle;
 import org.eclipse.eef.EEFSelectDescription;
 import org.eclipse.eef.EEFSelectStyle;
 import org.eclipse.eef.EEFSemanticValidationRuleDescription;
+import org.eclipse.eef.EEFTextConditionalStyle;
 import org.eclipse.eef.EEFTextDescription;
 import org.eclipse.eef.EEFTextStyle;
 import org.eclipse.eef.EEFValidationFixDescription;
@@ -51,25 +60,33 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetDescription;
@@ -348,6 +365,8 @@ public class ViewDescriptionConverter {
 
         if (widgetStyle instanceof TextWidgetStyle) {
             eefWidgetStyle = createEEFTextStyle((TextWidgetStyle) widgetStyle);
+        } else if (widgetStyle instanceof LabelWidgetStyle) {
+            eefWidgetStyle = createEEFLabelStyle((LabelWidgetStyle) widgetStyle);
         } else if (widgetStyle instanceof ButtonWidgetStyle) {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFButtonStyle();
         } else if (widgetStyle instanceof CheckboxWidgetStyle) {
@@ -356,6 +375,8 @@ public class ViewDescriptionConverter {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFRadioStyle();
         } else if (widgetStyle instanceof SelectWidgetStyle) {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFSelectStyle();
+        } else if (widgetStyle instanceof CustomWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFCustomWidgetStyle();
         }
 
         // Set label style
@@ -453,6 +474,21 @@ public class ViewDescriptionConverter {
         if (textStyle != null) {
             eefTextDescription.setStyle((EEFTextStyle) createEEFWidgetStyle(textStyle));
         }
+
+        List<TextWidgetConditionalStyle> conditionalStyles = textDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFTextConditionalStyle> eefConditionalStyles = new ArrayList<EEFTextConditionalStyle>();
+            for (TextWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFTextConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFTextConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFTextStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefTextDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
         return eefTextDescription;
     }
 
@@ -509,9 +545,22 @@ public class ViewDescriptionConverter {
         eefLabelDescription.setBodyExpression(labelDescription.getBodyExpression());
         LabelWidgetStyle bodyStyle = labelDescription.getStyle();
         if (bodyStyle != null) {
-            EEFLabelStyle eefLabelStyle = createEEFLabelStyle(bodyStyle);
-            eefLabelDescription.setStyle(eefLabelStyle);
+            eefLabelDescription.setStyle((EEFLabelStyle) createEEFWidgetStyle(bodyStyle));
+        }
 
+        List<LabelWidgetConditionalStyle> conditionalStyles = labelDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFLabelConditionalStyle> eefConditionalStyles = new ArrayList<EEFLabelConditionalStyle>();
+            for (LabelWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFLabelConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFLabelConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFLabelStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefLabelDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
         }
 
         return eefLabelDescription;
@@ -530,6 +579,21 @@ public class ViewDescriptionConverter {
             eefButtonDescription.setStyle((EEFButtonStyle) createEEFWidgetStyle(buttonStyle));
         }
 
+        List<ButtonWidgetConditionalStyle> conditionalStyles = buttonDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFButtonConditionalStyle> eefConditionalStyles = new ArrayList<EEFButtonConditionalStyle>();
+            for (ButtonWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFButtonConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFButtonConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFButtonStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefButtonDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+
         return eefButtonDescription;
     }
 
@@ -542,6 +606,21 @@ public class ViewDescriptionConverter {
         CheckboxWidgetStyle checkboxStyle = checkboxDescription.getStyle();
         if (checkboxStyle != null) {
             eefCheckboxDescription.setStyle((EEFCheckboxStyle) createEEFWidgetStyle(checkboxStyle));
+        }
+
+        List<CheckboxWidgetConditionalStyle> conditionalStyles = checkboxDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFCheckboxConditionalStyle> eefConditionalStyles = new ArrayList<EEFCheckboxConditionalStyle>();
+            for (CheckboxWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFCheckboxConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFCheckboxConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFCheckboxStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefCheckboxDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
         }
 
         return eefCheckboxDescription;
@@ -560,6 +639,21 @@ public class ViewDescriptionConverter {
             eefSelectDescription.setStyle((EEFSelectStyle) createEEFWidgetStyle(selectStyle));
         }
 
+        List<SelectWidgetConditionalStyle> conditionalStyles = selectDescription.getConditionalStyles();
+        if (conditionalStyles != null) {
+            List<EEFSelectConditionalStyle> eefConditionalStyles = new ArrayList<EEFSelectConditionalStyle>();
+            for (SelectWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFSelectConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFSelectConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFSelectStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefSelectDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+
         return eefSelectDescription;
     }
 
@@ -574,6 +668,21 @@ public class ViewDescriptionConverter {
         RadioWidgetStyle radioStyle = radioDescription.getStyle();
         if (radioStyle != null) {
             eefRadioDescription.setStyle((EEFRadioStyle) createEEFWidgetStyle(radioStyle));
+        }
+
+        List<RadioWidgetConditionalStyle> conditionalStyles = radioDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFRadioConditionalStyle> eefConditionalStyles = new ArrayList<EEFRadioConditionalStyle>();
+            for (RadioWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFRadioConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFRadioConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFRadioStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefRadioDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
         }
 
         return eefRadioDescription;
@@ -597,6 +706,26 @@ public class ViewDescriptionConverter {
             eefCustomExpression.setIdentifier(customOperation.getIdentifier());
             eefCustomExpression.setCustomExpression(getExpressionForOperation(customOperation.getInitialOperation()));
             eefCustomDescription.getCustomExpressions().add(eefCustomExpression);
+        }
+
+        CustomWidgetStyle customStyle = customDescription.getStyle();
+        if (customStyle != null) {
+            eefCustomDescription.setStyle((EEFCustomWidgetStyle) createEEFWidgetStyle(customStyle));
+        }
+
+        List<CustomWidgetConditionalStyle> conditionalStyles = customDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFCustomWidgetConditionalStyle> eefConditionalStyles = new ArrayList<EEFCustomWidgetConditionalStyle>();
+            for (CustomWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFCustomWidgetConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFCustomWidgetConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFCustomWidgetStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefCustomDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
         }
         return eefCustomDescription;
     }

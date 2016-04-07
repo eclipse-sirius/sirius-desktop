@@ -16,18 +16,23 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.properties.ButtonDescription;
+import org.eclipse.sirius.properties.ButtonWidgetConditionalStyle;
 import org.eclipse.sirius.properties.ButtonWidgetStyle;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.CheckboxWidgetStyle;
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.CustomDescription;
 import org.eclipse.sirius.properties.CustomExpression;
 import org.eclipse.sirius.properties.CustomOperation;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
+import org.eclipse.sirius.properties.CustomWidgetStyle;
 import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
@@ -36,14 +41,18 @@ import org.eclipse.sirius.properties.PageValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
+import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
 import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.viewpoint.description.Extension;
@@ -253,6 +262,51 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseSelectWidgetStyle(SelectWidgetStyle object) {
             return createSelectWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseCustomWidgetStyle(CustomWidgetStyle object) {
+            return createCustomWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseWidgetConditionalStyle(WidgetConditionalStyle object) {
+            return createWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseTextWidgetConditionalStyle(TextWidgetConditionalStyle object) {
+            return createTextWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseLabelWidgetConditionalStyle(LabelWidgetConditionalStyle object) {
+            return createLabelWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseCheckboxWidgetConditionalStyle(CheckboxWidgetConditionalStyle object) {
+            return createCheckboxWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseRadioWidgetConditionalStyle(RadioWidgetConditionalStyle object) {
+            return createRadioWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseButtonWidgetConditionalStyle(ButtonWidgetConditionalStyle object) {
+            return createButtonWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseSelectWidgetConditionalStyle(SelectWidgetConditionalStyle object) {
+            return createSelectWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
+            return createCustomWidgetConditionalStyleAdapter();
         }
 
         @Override
@@ -750,6 +804,150 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSelectWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.CustomWidgetStyle
+     * <em>Custom Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.CustomWidgetStyle
+     * @generated
+     */
+    public Adapter createCustomWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.WidgetConditionalStyle
+     * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.WidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle
+     * <em>Text Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.TextWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createTextWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle
+     * <em>Label Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.LabelWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createLabelWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
+     * <em>Checkbox Widget Conditional Style</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createCheckboxWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle
+     * <em>Radio Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.RadioWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createRadioWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
+     * <em>Button Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createButtonWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle
+     * <em>Select Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.SelectWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createSelectWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle
+     * <em>Custom Widget Conditional Style</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.CustomWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createCustomWidgetConditionalStyleAdapter() {
         return null;
     }
 

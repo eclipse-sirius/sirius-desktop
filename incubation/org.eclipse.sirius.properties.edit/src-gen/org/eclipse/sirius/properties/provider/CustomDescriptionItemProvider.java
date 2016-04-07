@@ -72,6 +72,8 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS);
             childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS);
+            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -128,6 +130,8 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
         switch (notification.getFeatureID(CustomDescription.class)) {
         case PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS:
         case PropertiesPackage.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS:
+        case PropertiesPackage.CUSTOM_DESCRIPTION__STYLE:
+        case PropertiesPackage.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -148,6 +152,10 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS, PropertiesFactory.eINSTANCE.createCustomExpression()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS, PropertiesFactory.eINSTANCE.createCustomOperation()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCustomWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle()));
     }
 
 }

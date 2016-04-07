@@ -86,6 +86,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.LABEL_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -144,6 +145,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
+        case PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -162,6 +164,8 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createLabelWidgetStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createLabelWidgetConditionalStyle()));
     }
 
 }

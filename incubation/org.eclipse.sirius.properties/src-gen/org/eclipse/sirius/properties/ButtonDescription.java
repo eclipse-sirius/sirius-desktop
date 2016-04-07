@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.properties;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
@@ -29,6 +30,9 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Initial Operation</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.ButtonDescription#getStyle
  * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.ButtonDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription()
@@ -129,5 +133,24 @@ public interface ButtonDescription extends WidgetDescription {
      * @generated
      */
     void setStyle(ButtonWidgetStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<ButtonWidgetConditionalStyle> getConditionalStyles();
 
 } // ButtonDescription

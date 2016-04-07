@@ -292,6 +292,79 @@ public interface PropertiesFactory extends EFactory {
     SelectWidgetStyle createSelectWidgetStyle();
 
     /**
+     * Returns a new object of class '<em>Custom Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Custom Widget Style</em>'.
+     * @generated
+     */
+    CustomWidgetStyle createCustomWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Text Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Text Widget Conditional Style</em>'.
+     * @generated
+     */
+    TextWidgetConditionalStyle createTextWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Label Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Label Widget Conditional Style</em>'.
+     * @generated
+     */
+    LabelWidgetConditionalStyle createLabelWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Checkbox Widget Conditional Style</em>
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Checkbox Widget Conditional Style</em>
+     *         '.
+     * @generated
+     */
+    CheckboxWidgetConditionalStyle createCheckboxWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Radio Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Radio Widget Conditional Style</em>'.
+     * @generated
+     */
+    RadioWidgetConditionalStyle createRadioWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Button Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Button Widget Conditional Style</em>'.
+     * @generated
+     */
+    ButtonWidgetConditionalStyle createButtonWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Select Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Select Widget Conditional Style</em>'.
+     * @generated
+     */
+    SelectWidgetConditionalStyle createSelectWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Custom Widget Conditional Style</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Custom Widget Conditional Style</em>'.
+     * @generated
+     */
+    CustomWidgetConditionalStyle createCustomWidgetConditionalStyle();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *

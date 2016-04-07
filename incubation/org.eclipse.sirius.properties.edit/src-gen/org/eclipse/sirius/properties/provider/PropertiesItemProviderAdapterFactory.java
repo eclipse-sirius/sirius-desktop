@@ -820,6 +820,206 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CustomWidgetStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomWidgetStyleItemProvider customWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CustomWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomWidgetStyleAdapter() {
+        if (customWidgetStyleItemProvider == null) {
+            customWidgetStyleItemProvider = new CustomWidgetStyleItemProvider(this);
+        }
+
+        return customWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected TextWidgetConditionalStyleItemProvider textWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createTextWidgetConditionalStyleAdapter() {
+        if (textWidgetConditionalStyleItemProvider == null) {
+            textWidgetConditionalStyleItemProvider = new TextWidgetConditionalStyleItemProvider(this);
+        }
+
+        return textWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected LabelWidgetConditionalStyleItemProvider labelWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createLabelWidgetConditionalStyleAdapter() {
+        if (labelWidgetConditionalStyleItemProvider == null) {
+            labelWidgetConditionalStyleItemProvider = new LabelWidgetConditionalStyleItemProvider(this);
+        }
+
+        return labelWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CheckboxWidgetConditionalStyleItemProvider checkboxWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCheckboxWidgetConditionalStyleAdapter() {
+        if (checkboxWidgetConditionalStyleItemProvider == null) {
+            checkboxWidgetConditionalStyleItemProvider = new CheckboxWidgetConditionalStyleItemProvider(this);
+        }
+
+        return checkboxWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected RadioWidgetConditionalStyleItemProvider radioWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createRadioWidgetConditionalStyleAdapter() {
+        if (radioWidgetConditionalStyleItemProvider == null) {
+            radioWidgetConditionalStyleItemProvider = new RadioWidgetConditionalStyleItemProvider(this);
+        }
+
+        return radioWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ButtonWidgetConditionalStyleItemProvider buttonWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createButtonWidgetConditionalStyleAdapter() {
+        if (buttonWidgetConditionalStyleItemProvider == null) {
+            buttonWidgetConditionalStyleItemProvider = new ButtonWidgetConditionalStyleItemProvider(this);
+        }
+
+        return buttonWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected SelectWidgetConditionalStyleItemProvider selectWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createSelectWidgetConditionalStyleAdapter() {
+        if (selectWidgetConditionalStyleItemProvider == null) {
+            selectWidgetConditionalStyleItemProvider = new SelectWidgetConditionalStyleItemProvider(this);
+        }
+
+        return selectWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CustomWidgetConditionalStyleItemProvider customWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCustomWidgetConditionalStyleAdapter() {
+        if (customWidgetConditionalStyleItemProvider == null) {
+            customWidgetConditionalStyleItemProvider = new CustomWidgetConditionalStyleItemProvider(this);
+        }
+
+        return customWidgetConditionalStyleItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1009,6 +1209,30 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (selectWidgetStyleItemProvider != null) {
             selectWidgetStyleItemProvider.dispose();
+        }
+        if (customWidgetStyleItemProvider != null) {
+            customWidgetStyleItemProvider.dispose();
+        }
+        if (textWidgetConditionalStyleItemProvider != null) {
+            textWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (labelWidgetConditionalStyleItemProvider != null) {
+            labelWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (checkboxWidgetConditionalStyleItemProvider != null) {
+            checkboxWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (radioWidgetConditionalStyleItemProvider != null) {
+            radioWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (buttonWidgetConditionalStyleItemProvider != null) {
+            buttonWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (selectWidgetConditionalStyleItemProvider != null) {
+            selectWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (customWidgetConditionalStyleItemProvider != null) {
+            customWidgetConditionalStyleItemProvider.dispose();
         }
     }
 
