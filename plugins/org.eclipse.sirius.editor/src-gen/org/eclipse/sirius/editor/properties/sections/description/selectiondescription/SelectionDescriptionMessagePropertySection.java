@@ -12,6 +12,7 @@ package org.eclipse.sirius.editor.properties.sections.description.selectiondescr
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.widgets.Composite;
@@ -69,6 +70,10 @@ public class SelectionDescriptionMessagePropertySection extends AbstractTextProp
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+        /*
+         * We set the color as it's a TranslatableMessage
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("light_blue"));
 
         // Start of user code create controls
 

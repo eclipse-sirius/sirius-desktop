@@ -90,6 +90,10 @@ public class SelectionWizardDescriptionWindowTitlePropertySection extends Abstra
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+        /*
+         * We set the color as it's a TranslatableMessage
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("light_blue"));
 
         text.setToolTipText(getToolTipText());
 

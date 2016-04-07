@@ -147,8 +147,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * This is an example of a Viewpoint model editor.
  */
-public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider,
-        ITabbedPropertySheetPageContributor, IGotoMarker {
+public class SiriusEditor extends MultiPageEditorPart
+        implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, ITabbedPropertySheetPageContributor, IGotoMarker {
 
     /**
      * A Color registry for the current editor.
@@ -1357,6 +1357,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
             colorRegistry.put("orange", new RGB(253, 206, 137));
             colorRegistry.put("chocolate", new RGB(238, 201, 142));
             colorRegistry.put("gray", new RGB(209, 210, 208));
+            colorRegistry.put("light_blue", new RGB(212, 229, 247));
             // Start of user code put your own colors here
 
             // End of user code put your own colors here
