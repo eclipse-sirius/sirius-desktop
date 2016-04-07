@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="sirius-evolution-specification-provide-an-easy-way-to-move-in-all-directions-for-large-diagrams">Sirius Evolution Specification: Provide an easy way to move in all directions for large diagrams</h1>
+		<h2 id="preamble">Preamble</h2>
+		<ul>
+			<li>
+				<em>Summary</em>:  Provide an easy way to move in all directions for large diagrams.
+			</li>
+			<li>
+				<em>Version</em>:  V0.2
+			</li>
+			<li>
+				<em>Status</em>: Archived
+			</li>
+			<li>
+				<em>Date</em>: 2016-04-07
+			</li>
+			<li>
+				<em>Authors</em>: edugueperoux
+			</li>
+			<li>
+				<em>Changes</em>: Initial version.
+			</li>
+		</ul>
+		<p>
+			<em>Relevant tickets:</em>
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=491208">Bug #491208, Provide an easy way to move in all directions for large diagrams</a>
+			</li>
+		</ul>
+		<h2 id="introduction">Introduction</h2>
+		<p>Currently to move in a large diagram to see its content, we have the outline view, the horizontal/vertical scroll, the mouse wheel to do easily vertical scroll, and the zoom.
+			This bugzilla is a feature request to have another way to move in large diagram, using mouse middle click, to move in all directions (horizontally and vertically).
+			The direction of the move is as all "new" applications: the natural scrolling (Google maps for example).</p>
+		<h2 id="detailed-specification">Detailed Specification</h2>
+		<p>With MacOS, this feature is natively available, for Windows and Linux, we will provide another GEF tool to manage this feature with a specific cursor representing a hand.</p>
+		<h2 id="backward-compatibility-and-migration-paths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="metamodel-changes">Metamodel Changes</h3>
+		<p>No metamodel changes.</p>
+		<h3 id="api-changes">API Changes</h3>
+		<p>No API changes.</p>
+		<h3 id="user-interface-changes">User Interface Changes</h3>
+		<ul>
+			<li>A new mouse shortcut will be available using mouse middle click.</li>
+			<li>No other user interface changes.</li>
+		</ul>
+		<h3 id="documentation-changes">Documentation Changes</h3>
+		<ul>
+			<li>This new diagram UI feature will be documented. </li>
+			<li>This change will appears only in release notes.</li>
+		</ul>
+		<h2 id="tests-and-non-regression-strategy">Tests and Non-regression strategy</h2>
+		<p>Manual Tests (because this is not correctly handled by SWTBot).</p>
+		<p>Test mouse move with middle click pushed:</p>
+		<ul>
+			<li>on diagram or on all kind of elements (node, container, list, node in container, border nodes, ...)</li>
+			<li>with horizontal or vertically or diagonal move</li>
+			<li>in diagram containing scroll and not</li>
+			<li>in different zoom factor</li>
+		</ul>
+		<h2 id="implementation-choices-and-tradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>
