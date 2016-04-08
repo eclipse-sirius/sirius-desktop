@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -110,9 +110,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         this.transactionalEditingDomain = transactionalEditingDomain;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public int priority() {
         return REFRESH_EDITOR_PRIORITY;
     }
@@ -123,6 +121,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      * Do a refresh only if there is at least one notification that concern
      * another thing that an aird Resource.
      */
+    @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command result = null;
         if (!disabled) {
@@ -209,8 +208,12 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         for (DRepresentation rep : Lists.newArrayList(representationsToRefresh)) {
             if (transactionalEditingDomain != TransactionUtil.getEditingDomain(rep)) {
                 representationsToRefresh.remove(rep);
-            } else if (rep instanceof DSemanticDecorator && transactionalEditingDomain != TransactionUtil.getEditingDomain(((DSemanticDecorator) rep).getTarget())) {
-                representationsToRefresh.remove(rep);
+            } else if (rep instanceof DSemanticDecorator) {
+                DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) rep;
+                EObject target = dSemanticDecorator.getTarget();
+                if (target != null && transactionalEditingDomain != TransactionUtil.getEditingDomain(target)) {
+                    representationsToRefresh.remove(rep);
+                }
             }
         }
     }
@@ -264,11 +267,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
         return Platform.isRunning() && Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionListener#notify(int)
-     */
+    @Override
     public void notify(int changeKind) {
         if (SessionListener.REPLACED == changeKind) {
             if (needsRefresh()) {
