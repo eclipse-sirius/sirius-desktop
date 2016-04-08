@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.ContributionProvider#getContributions
  * <em>Contributions</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContributionProvider()
  * @model abstract="true"

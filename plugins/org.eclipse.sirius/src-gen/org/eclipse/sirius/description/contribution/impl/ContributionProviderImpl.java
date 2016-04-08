@@ -29,12 +29,12 @@ import org.eclipse.sirius.description.contribution.ContributionProvider;
  * <em><b>Provider</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.impl.ContributionProviderImpl#getContributions
  * <em>Contributions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

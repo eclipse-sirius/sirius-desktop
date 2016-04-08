@@ -18,8 +18,6 @@ import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Reset Feature Contribution</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

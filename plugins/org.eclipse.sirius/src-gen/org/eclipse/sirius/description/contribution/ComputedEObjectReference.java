@@ -17,12 +17,12 @@ package org.eclipse.sirius.description.contribution;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference#getValueExpression
  * <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getComputedEObjectReference()
  * @model

@@ -25,6 +25,7 @@ import org.eclipse.sirius.description.contribution.ContributionPoint;
  * <em><b>Point</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getOrigin
@@ -33,7 +34,6 @@ import org.eclipse.sirius.description.contribution.ContributionPoint;
  * {@link org.eclipse.sirius.description.contribution.impl.ContributionPointImpl#getContributed
  * <em>Contributed</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

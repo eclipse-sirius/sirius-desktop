@@ -25,6 +25,7 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * <em><b>Feature Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getSourceFeature
@@ -33,7 +34,6 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * {@link org.eclipse.sirius.description.contribution.impl.FeatureContributionImpl#getTargetFeature
  * <em>Target Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

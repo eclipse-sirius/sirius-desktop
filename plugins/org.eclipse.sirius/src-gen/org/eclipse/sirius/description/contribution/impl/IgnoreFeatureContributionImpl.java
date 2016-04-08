@@ -18,8 +18,6 @@ import org.eclipse.sirius.description.contribution.IgnoreFeatureContribution;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Ignore Feature Contribution</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

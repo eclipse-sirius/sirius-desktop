@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.FeatureContribution#getSourceFeature
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * {@link org.eclipse.sirius.description.contribution.FeatureContribution#getTargetFeature
  * <em>Target Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getFeatureContribution()
  * @model abstract="true"

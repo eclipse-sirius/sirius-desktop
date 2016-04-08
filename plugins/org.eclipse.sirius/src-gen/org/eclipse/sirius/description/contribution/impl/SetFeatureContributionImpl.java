@@ -18,8 +18,6 @@ import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Set Feature Contribution</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -23,12 +23,12 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
  * <em><b>Computed EObject Reference</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.impl.ComputedEObjectReferenceImpl#getValueExpression
  * <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

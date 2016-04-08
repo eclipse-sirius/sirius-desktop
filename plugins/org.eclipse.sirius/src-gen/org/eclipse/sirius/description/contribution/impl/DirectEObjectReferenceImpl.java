@@ -25,12 +25,12 @@ import org.eclipse.sirius.description.contribution.DirectEObjectReference;
  * <em><b>Direct EObject Reference</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.description.contribution.impl.DirectEObjectReferenceImpl#getValue
  * <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

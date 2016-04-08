@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.description.contribution.Contribution#getSource
  * <em>Source</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.EObject;
  * {@link org.eclipse.sirius.description.contribution.Contribution#getDescription
  * <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution()
  * @model
