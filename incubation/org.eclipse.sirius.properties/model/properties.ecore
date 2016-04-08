@@ -213,10 +213,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//RadioWidgetConditionalStyle" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SingleReferenceDescription" eSuperTypes="#//WidgetDescription">
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceDescription" eSuperTypes="#//WidgetDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Represents a single reference in the user interface."/>
+      <details key="documentation" value="Represents a reference in the user interface."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The initial value."/>
@@ -227,61 +228,22 @@
         <details key="documentation" value="Represents how to display the value."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="createOperation" eType="#//OperationDescription"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Defines the expected behavior  when the user clicks on the create button."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="searchOperation" eType="#//OperationDescription"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Defines the expected behavior  when the user clicks on the search button."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="unsetOperation" eType="#//OperationDescription"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Defines the expected behavior  when the user clicks on the unset button."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="#//OperationDescription"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the expected behavior  when the user clicks on the hyperlink."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//WidgetAction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ReferenceWidgetStyle"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
+        eType="#//ReferenceWidgetConditionalStyle" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MultipleReferencesDescription" eSuperTypes="#//WidgetDescription">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Represents a radio button in the user interface."/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The initial values."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Indicates how to display the input value."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="createOperation" eType="#//OperationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="searchOperation" eType="#//OperationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="unsetOperation" eType="#//OperationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="#//OperationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="upOperation" eType="#//OperationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="downOperation" eType="#//OperationDescription"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomDescription" eSuperTypes="#//WidgetDescription">
@@ -336,6 +298,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ButtonWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="SelectWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetConditionalStyle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
@@ -367,5 +330,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="CustomWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//CustomWidgetStyle"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ReferenceWidgetStyle"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WidgetAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the radio."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

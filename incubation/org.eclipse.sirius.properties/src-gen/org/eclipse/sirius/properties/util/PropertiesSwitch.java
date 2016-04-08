@@ -38,7 +38,6 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.LayoutDescription;
-import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -47,15 +46,18 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
+import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
-import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -373,14 +375,14 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION: {
-            SingleReferenceDescription singleReferenceDescription = (SingleReferenceDescription) theEObject;
-            T result = caseSingleReferenceDescription(singleReferenceDescription);
+        case PropertiesPackage.REFERENCE_DESCRIPTION: {
+            ReferenceDescription referenceDescription = (ReferenceDescription) theEObject;
+            T result = caseReferenceDescription(referenceDescription);
             if (result == null) {
-                result = caseWidgetDescription(singleReferenceDescription);
+                result = caseWidgetDescription(referenceDescription);
             }
             if (result == null) {
-                result = caseControlDescription(singleReferenceDescription);
+                result = caseControlDescription(referenceDescription);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -390,20 +392,6 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.OPERATION_DESCRIPTION: {
             OperationDescription operationDescription = (OperationDescription) theEObject;
             T result = caseOperationDescription(operationDescription);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION: {
-            MultipleReferencesDescription multipleReferencesDescription = (MultipleReferencesDescription) theEObject;
-            T result = caseMultipleReferencesDescription(multipleReferencesDescription);
-            if (result == null) {
-                result = caseWidgetDescription(multipleReferencesDescription);
-            }
-            if (result == null) {
-                result = caseControlDescription(multipleReferencesDescription);
-            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -524,6 +512,17 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.REFERENCE_WIDGET_STYLE: {
+            ReferenceWidgetStyle referenceWidgetStyle = (ReferenceWidgetStyle) theEObject;
+            T result = caseReferenceWidgetStyle(referenceWidgetStyle);
+            if (result == null) {
+                result = caseWidgetStyle(referenceWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.WIDGET_CONDITIONAL_STYLE: {
             WidgetConditionalStyle widgetConditionalStyle = (WidgetConditionalStyle) theEObject;
             T result = caseWidgetConditionalStyle(widgetConditionalStyle);
@@ -604,6 +603,25 @@ public class PropertiesSwitch<T> {
             if (result == null) {
                 result = caseWidgetConditionalStyle(customWidgetConditionalStyle);
             }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE: {
+            ReferenceWidgetConditionalStyle referenceWidgetConditionalStyle = (ReferenceWidgetConditionalStyle) theEObject;
+            T result = caseReferenceWidgetConditionalStyle(referenceWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(referenceWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.WIDGET_ACTION: {
+            WidgetAction widgetAction = (WidgetAction) theEObject;
+            T result = caseWidgetAction(widgetAction);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -973,18 +991,18 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Single Reference Description</em>'. <!-- begin-user-doc --> This
+     * <em>Reference Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Single Reference Description</em>'.
+     *         <em>Reference Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseSingleReferenceDescription(SingleReferenceDescription object) {
+    public T caseReferenceDescription(ReferenceDescription object) {
         return null;
     }
 
@@ -1002,23 +1020,6 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseOperationDescription(OperationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Multiple References Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Multiple References Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseMultipleReferencesDescription(MultipleReferencesDescription object) {
         return null;
     }
 
@@ -1342,6 +1343,57 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will
+     * terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Reference Widget Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Widget Action</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Widget Action</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseWidgetAction(WidgetAction object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Reference Widget Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Reference Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
         return null;
     }
 

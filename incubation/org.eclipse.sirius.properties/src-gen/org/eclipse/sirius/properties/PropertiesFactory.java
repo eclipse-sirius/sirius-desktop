@@ -193,13 +193,13 @@ public interface PropertiesFactory extends EFactory {
     RadioDescription createRadioDescription();
 
     /**
-     * Returns a new object of class '<em>Single Reference Description</em>'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '<em>Reference Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return a new object of class '<em>Single Reference Description</em>'.
+     * @return a new object of class '<em>Reference Description</em>'.
      * @generated
      */
-    SingleReferenceDescription createSingleReferenceDescription();
+    ReferenceDescription createReferenceDescription();
 
     /**
      * Returns a new object of class '<em>Operation Description</em>'. <!--
@@ -209,15 +209,6 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     OperationDescription createOperationDescription();
-
-    /**
-     * Returns a new object of class '<em>Multiple References Description</em>'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Multiple References Description</em>'.
-     * @generated
-     */
-    MultipleReferencesDescription createMultipleReferencesDescription();
 
     /**
      * Returns a new object of class '<em>Custom Description</em>'. <!--
@@ -381,6 +372,35 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     CustomWidgetConditionalStyle createCustomWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '
+     * <em>Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return a new object of class '
+     *         <em>Reference Widget Conditional Style</em>'.
+     * @generated
+     */
+    ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Widget Action</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Widget Action</em>'.
+     * @generated
+     */
+    WidgetAction createWidgetAction();
+
+    /**
+     * Returns a new object of class '<em>Reference Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Reference Widget Style</em>'.
+     * @generated
+     */
+    ReferenceWidgetStyle createReferenceWidgetStyle();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

@@ -237,15 +237,15 @@
    
       </description>
    </context>
-   <context id="SingleReferenceDescription">
+   <context id="ReferenceDescription">
      <description>
-       Represents a single reference in the user interface.
+       Represents a reference in the user interface.
 
        
          
-   <!-- Start of user code SingleReferenceDescription description -->
+   <!-- Start of user code ReferenceDescription description -->
    
-   <!-- End of user code SingleReferenceDescription description -->
+   <!-- End of user code ReferenceDescription description -->
    
       </description>
    </context>
@@ -257,18 +257,6 @@
    <!-- Start of user code OperationDescription description -->
    
    <!-- End of user code OperationDescription description -->
-   
-      </description>
-   </context>
-   <context id="MultipleReferencesDescription">
-     <description>
-       Represents a radio button in the user interface.
-
-       
-         
-   <!-- Start of user code MultipleReferencesDescription description -->
-   
-   <!-- End of user code MultipleReferencesDescription description -->
    
       </description>
    </context>
@@ -393,6 +381,17 @@
    
       </description>
    </context>
+   <context id="ReferenceWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ReferenceWidgetStyle description -->
+   
+   <!-- End of user code ReferenceWidgetStyle description -->
+   
+      </description>
+   </context>
    <context id="WidgetConditionalStyle">
      <description>
        
@@ -478,6 +477,28 @@
    <!-- Start of user code CustomWidgetConditionalStyle description -->
    
    <!-- End of user code CustomWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="ReferenceWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code ReferenceWidgetConditionalStyle description -->
+   
+   <!-- End of user code ReferenceWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="WidgetAction">
+     <description>
+       
+       
+         
+   <!-- Start of user code WidgetAction description -->
+   
+   <!-- End of user code WidgetAction description -->
    
       </description>
    </context>

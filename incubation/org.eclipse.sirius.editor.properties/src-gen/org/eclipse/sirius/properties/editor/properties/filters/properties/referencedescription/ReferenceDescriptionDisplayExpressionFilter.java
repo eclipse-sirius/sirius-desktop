@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.singlereferencedescription;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the valueExpression property section.
+ * A filter for the displayExpression property section.
  */
-public class SingleReferenceDescriptionValueExpressionFilter extends ViewpointPropertyFilter {
+public class ReferenceDescriptionDisplayExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getSingleReferenceDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getReferenceDescription_DisplayExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class SingleReferenceDescriptionValueExpressionFilter extends ViewpointPr
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.SingleReferenceDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.ReferenceDescription;
     }
 
     // Start of user code user methods

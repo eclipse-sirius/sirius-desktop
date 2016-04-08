@@ -43,6 +43,9 @@ import org.eclipse.eef.EEFPropertyValidationRuleDescription;
 import org.eclipse.eef.EEFRadioConditionalStyle;
 import org.eclipse.eef.EEFRadioDescription;
 import org.eclipse.eef.EEFRadioStyle;
+import org.eclipse.eef.EEFReferenceConditionalStyle;
+import org.eclipse.eef.EEFReferenceDescription;
+import org.eclipse.eef.EEFReferenceStyle;
 import org.eclipse.eef.EEFRuleAuditDescription;
 import org.eclipse.eef.EEFSelectConditionalStyle;
 import org.eclipse.eef.EEFSelectDescription;
@@ -54,6 +57,7 @@ import org.eclipse.eef.EEFTextStyle;
 import org.eclipse.eef.EEFValidationFixDescription;
 import org.eclipse.eef.EEFValidationRuleDescription;
 import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.eef.EEFWidgetAction;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EEFWidgetStyle;
 import org.eclipse.eef.EEF_FILL_LAYOUT_ORIENTATION;
@@ -91,6 +95,9 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
+import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
@@ -99,6 +106,7 @@ import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
 import org.eclipse.sirius.ui.properties.internal.SiriusInputDescriptor;
@@ -398,6 +406,8 @@ public class ViewDescriptionConverter {
             description = createEEFButtonDescription((ButtonDescription) widgetDescription);
         } else if (widgetDescription instanceof RadioDescription) {
             description = createEEFRadioDescription((RadioDescription) widgetDescription);
+        } else if (widgetDescription instanceof ReferenceDescription) {
+            description = createEEFReferenceDescription((ReferenceDescription) widgetDescription);
         } else if (widgetDescription instanceof CustomDescription) {
             description = createEEFCustomDescription((CustomDescription) widgetDescription);
         }
@@ -428,6 +438,8 @@ public class ViewDescriptionConverter {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFSelectStyle();
         } else if (widgetStyle instanceof CustomWidgetStyle) {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFCustomWidgetStyle();
+        } else if (widgetStyle instanceof ReferenceWidgetStyle) {
+            eefWidgetStyle = EefFactory.eINSTANCE.createEEFReferenceStyle();
         }
 
         // Set label style
@@ -737,6 +749,41 @@ public class ViewDescriptionConverter {
         }
 
         return eefRadioDescription;
+    }
+
+    private EEFReferenceDescription createEEFReferenceDescription(ReferenceDescription referenceDescription) {
+        EEFReferenceDescription eefReferenceDescription = EefFactory.eINSTANCE.createEEFReferenceDescription();
+        eefReferenceDescription.setIdentifier(referenceDescription.getIdentifier());
+        eefReferenceDescription.setValueExpression(referenceDescription.getValueExpression());
+        eefReferenceDescription.setMultiple(referenceDescription.isMultiple());
+        eefReferenceDescription.setDisplayExpression(referenceDescription.getDisplayExpression());
+        eefReferenceDescription.setOnClickExpression(getExpressionForOperation(referenceDescription.getOnClickOperation()));
+        for (WidgetAction action : referenceDescription.getActions()) {
+            EEFWidgetAction eefAction = EefFactory.eINSTANCE.createEEFWidgetAction();
+            eefAction.setLabelExpression(action.getLabelExpression());
+            eefAction.setActionExpression(getExpressionForOperation(action.getInitialOperation()));
+            eefReferenceDescription.getActions().add(eefAction);
+        }
+        ReferenceWidgetStyle referenceStyle = referenceDescription.getStyle();
+        if (referenceStyle != null) {
+            eefReferenceDescription.setStyle((EEFReferenceStyle) createEEFWidgetStyle(referenceStyle));
+        }
+
+        List<ReferenceWidgetConditionalStyle> conditionalStyles = referenceDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFReferenceConditionalStyle> eefConditionalStyles = new ArrayList<EEFReferenceConditionalStyle>();
+            for (ReferenceWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFReferenceConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFReferenceConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFReferenceStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefReferenceDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+        return eefReferenceDescription;
     }
 
     private EEFCustomWidgetDescription createEEFCustomDescription(CustomDescription customDescription) {

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.filters.properties.multiplereferencesdescription;
+package org.eclipse.sirius.properties.editor.properties.filters.properties.widgetaction;
 
 // Start of user code specific imports
 
@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the valueExpression property section.
+ * A filter for the labelExpression property section.
  */
-public class MultipleReferencesDescriptionValueExpressionFilter extends ViewpointPropertyFilter {
+public class WidgetActionLabelExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getWidgetAction_LabelExpression();
     }
 
     /**
@@ -35,7 +35,7 @@ public class MultipleReferencesDescriptionValueExpressionFilter extends Viewpoin
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.properties.MultipleReferencesDescription;
+        return arg0 instanceof org.eclipse.sirius.properties.WidgetAction;
     }
 
     // Start of user code user methods

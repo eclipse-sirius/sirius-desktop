@@ -546,27 +546,27 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.SingleReferenceDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ReferenceDescription} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected SingleReferenceDescriptionItemProvider singleReferenceDescriptionItemProvider;
+    protected ReferenceDescriptionItemProvider referenceDescriptionItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.SingleReferenceDescription}. <!--
+     * {@link org.eclipse.sirius.properties.ReferenceDescription}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
-    public Adapter createSingleReferenceDescriptionAdapter() {
-        if (singleReferenceDescriptionItemProvider == null) {
-            singleReferenceDescriptionItemProvider = new SingleReferenceDescriptionItemProvider(this);
+    public Adapter createReferenceDescriptionAdapter() {
+        if (referenceDescriptionItemProvider == null) {
+            referenceDescriptionItemProvider = new ReferenceDescriptionItemProvider(this);
         }
 
-        return singleReferenceDescriptionItemProvider;
+        return referenceDescriptionItemProvider;
     }
 
     /**
@@ -592,31 +592,6 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return operationDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected MultipleReferencesDescriptionItemProvider multipleReferencesDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createMultipleReferencesDescriptionAdapter() {
-        if (multipleReferencesDescriptionItemProvider == null) {
-            multipleReferencesDescriptionItemProvider = new MultipleReferencesDescriptionItemProvider(this);
-        }
-
-        return multipleReferencesDescriptionItemProvider;
     }
 
     /**
@@ -1070,6 +1045,81 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ReferenceWidgetConditionalStyleItemProvider referenceWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createReferenceWidgetConditionalStyleAdapter() {
+        if (referenceWidgetConditionalStyleItemProvider == null) {
+            referenceWidgetConditionalStyleItemProvider = new ReferenceWidgetConditionalStyleItemProvider(this);
+        }
+
+        return referenceWidgetConditionalStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.WidgetAction} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected WidgetActionItemProvider widgetActionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.WidgetAction}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createWidgetActionAdapter() {
+        if (widgetActionItemProvider == null) {
+            widgetActionItemProvider = new WidgetActionItemProvider(this);
+        }
+
+        return widgetActionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ReferenceWidgetStyleItemProvider referenceWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createReferenceWidgetStyleAdapter() {
+        if (referenceWidgetStyleItemProvider == null) {
+            referenceWidgetStyleItemProvider = new ReferenceWidgetStyleItemProvider(this);
+        }
+
+        return referenceWidgetStyleItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1227,14 +1277,11 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (radioDescriptionItemProvider != null) {
             radioDescriptionItemProvider.dispose();
         }
-        if (singleReferenceDescriptionItemProvider != null) {
-            singleReferenceDescriptionItemProvider.dispose();
+        if (referenceDescriptionItemProvider != null) {
+            referenceDescriptionItemProvider.dispose();
         }
         if (operationDescriptionItemProvider != null) {
             operationDescriptionItemProvider.dispose();
-        }
-        if (multipleReferencesDescriptionItemProvider != null) {
-            multipleReferencesDescriptionItemProvider.dispose();
         }
         if (customDescriptionItemProvider != null) {
             customDescriptionItemProvider.dispose();
@@ -1269,6 +1316,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (customWidgetStyleItemProvider != null) {
             customWidgetStyleItemProvider.dispose();
         }
+        if (referenceWidgetStyleItemProvider != null) {
+            referenceWidgetStyleItemProvider.dispose();
+        }
         if (textWidgetConditionalStyleItemProvider != null) {
             textWidgetConditionalStyleItemProvider.dispose();
         }
@@ -1289,6 +1339,12 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (customWidgetConditionalStyleItemProvider != null) {
             customWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (referenceWidgetConditionalStyleItemProvider != null) {
+            referenceWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (widgetActionItemProvider != null) {
+            widgetActionItemProvider.dispose();
         }
     }
 

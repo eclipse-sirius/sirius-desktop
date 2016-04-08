@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.multiplereferencesdescription;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -25,17 +25,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the valueExpression property of a MultipleReferencesDescription
- * object.
+ * A section for the labelExpression property of a WidgetAction object.
  */
-public class MultipleReferencesDescriptionValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class WidgetActionLabelExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "ValueExpression"; //$NON-NLS-1$
+        return "LabelExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -56,7 +55,7 @@ public class MultipleReferencesDescriptionValueExpressionPropertySection extends
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getMultipleReferencesDescription_ValueExpression();
+        return PropertiesPackage.eINSTANCE.getWidgetAction_LabelExpression();
     }
 
     /**
@@ -99,7 +98,7 @@ public class MultipleReferencesDescriptionValueExpressionPropertySection extends
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), MultipleReferencesDescriptionValueExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), WidgetActionLabelExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

@@ -39,7 +39,6 @@ import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
-import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -49,15 +48,18 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
+import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
-import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetStyle;
 
 /**
@@ -139,12 +141,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createTextAreaDescription();
         case PropertiesPackage.RADIO_DESCRIPTION:
             return createRadioDescription();
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION:
-            return createSingleReferenceDescription();
+        case PropertiesPackage.REFERENCE_DESCRIPTION:
+            return createReferenceDescription();
         case PropertiesPackage.OPERATION_DESCRIPTION:
             return createOperationDescription();
-        case PropertiesPackage.MULTIPLE_REFERENCES_DESCRIPTION:
-            return createMultipleReferencesDescription();
         case PropertiesPackage.CUSTOM_DESCRIPTION:
             return createCustomDescription();
         case PropertiesPackage.CUSTOM_EXPRESSION:
@@ -167,6 +167,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createSelectWidgetStyle();
         case PropertiesPackage.CUSTOM_WIDGET_STYLE:
             return createCustomWidgetStyle();
+        case PropertiesPackage.REFERENCE_WIDGET_STYLE:
+            return createReferenceWidgetStyle();
         case PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE:
             return createTextWidgetConditionalStyle();
         case PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE:
@@ -181,6 +183,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createSelectWidgetConditionalStyle();
         case PropertiesPackage.CUSTOM_WIDGET_CONDITIONAL_STYLE:
             return createCustomWidgetConditionalStyle();
+        case PropertiesPackage.REFERENCE_WIDGET_CONDITIONAL_STYLE:
+            return createReferenceWidgetConditionalStyle();
+        case PropertiesPackage.WIDGET_ACTION:
+            return createWidgetAction();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -420,9 +426,9 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public SingleReferenceDescription createSingleReferenceDescription() {
-        SingleReferenceDescriptionImpl singleReferenceDescription = new SingleReferenceDescriptionImpl();
-        return singleReferenceDescription;
+    public ReferenceDescription createReferenceDescription() {
+        ReferenceDescriptionImpl referenceDescription = new ReferenceDescriptionImpl();
+        return referenceDescription;
     }
 
     /**
@@ -434,17 +440,6 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public OperationDescription createOperationDescription() {
         OperationDescriptionImpl operationDescription = new OperationDescriptionImpl();
         return operationDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public MultipleReferencesDescription createMultipleReferencesDescription() {
-        MultipleReferencesDescriptionImpl multipleReferencesDescription = new MultipleReferencesDescriptionImpl();
-        return multipleReferencesDescription;
     }
 
     /**
@@ -643,6 +638,39 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public CustomWidgetConditionalStyle createCustomWidgetConditionalStyle() {
         CustomWidgetConditionalStyleImpl customWidgetConditionalStyle = new CustomWidgetConditionalStyleImpl();
         return customWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ReferenceWidgetConditionalStyle createReferenceWidgetConditionalStyle() {
+        ReferenceWidgetConditionalStyleImpl referenceWidgetConditionalStyle = new ReferenceWidgetConditionalStyleImpl();
+        return referenceWidgetConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public WidgetAction createWidgetAction() {
+        WidgetActionImpl widgetAction = new WidgetActionImpl();
+        return widgetAction;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ReferenceWidgetStyle createReferenceWidgetStyle() {
+        ReferenceWidgetStyleImpl referenceWidgetStyle = new ReferenceWidgetStyleImpl();
+        return referenceWidgetStyle;
     }
 
     /**

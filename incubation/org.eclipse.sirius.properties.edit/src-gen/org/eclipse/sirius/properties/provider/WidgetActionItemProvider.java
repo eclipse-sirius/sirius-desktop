@@ -28,18 +28,18 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.DynamicMappingIf;
-import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.properties.WidgetAction;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.DynamicMappingIf} object. <!--
+ * {@link org.eclipse.sirius.properties.WidgetAction} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class DynamicMappingIfItemProvider extends ItemProviderAdapter
+public class WidgetActionItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -47,7 +47,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
      *
      * @generated
      */
-    public DynamicMappingIfItemProvider(AdapterFactory adapterFactory) {
+    public WidgetActionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -62,22 +62,21 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addPredicateExpressionPropertyDescriptor(object);
+            addLabelExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Predicate Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Label Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addPredicateExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DynamicMappingIf_predicateExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingIf_predicateExpression_feature", "_UI_DynamicMappingIf_type"),
-                        PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    protected void addLabelExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_WidgetAction_labelExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"),
+                PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,7 +93,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET);
+            childrenFeatures.add(PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION);
         }
         return childrenFeatures;
     }
@@ -114,14 +113,14 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns DynamicMappingIf.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns WidgetAction.gif. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingIf"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/WidgetAction"));
     }
 
     /**
@@ -132,8 +131,8 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingIf) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_DynamicMappingIf_type") : getString("_UI_DynamicMappingIf_type") + " " + label;
+        String label = ((WidgetAction) object).getLabelExpression();
+        return label == null || label.length() == 0 ? getString("_UI_WidgetAction_type") : getString("_UI_WidgetAction_type") + " " + label;
     }
 
     /**
@@ -148,11 +147,11 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DynamicMappingIf.class)) {
-        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+        switch (notification.getFeatureID(WidgetAction.class)) {
+        case PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
+        case PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -170,23 +169,7 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createButtonDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createSelectDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createRadioDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createReferenceDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createCustomDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.WIDGET_ACTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
     }
 
     /**

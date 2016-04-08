@@ -23,23 +23,24 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.SingleReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.SingleReferenceDescription} object. <!--
+ * {@link org.eclipse.sirius.properties.ReferenceDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionItemProvider {
+public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public SingleReferenceDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public ReferenceDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -54,10 +55,23 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addMultiplePropertyDescriptor(object);
             addValueExpressionPropertyDescriptor(object);
             addDisplayExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Multiple feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addMultiplePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ReferenceDescription_multiple_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_multiple_feature", "_UI_ReferenceDescription_type"),
+                PropertiesPackage.Literals.REFERENCE_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -67,10 +81,10 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleReferenceDescription_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceDescription_valueExpression_feature", "_UI_SingleReferenceDescription_type"),
-                PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ReferenceDescription_valueExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_valueExpression_feature", "_UI_ReferenceDescription_type"),
+                        PropertiesPackage.Literals.REFERENCE_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -81,9 +95,9 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
      */
     protected void addDisplayExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleReferenceDescription_displayExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceDescription_displayExpression_feature", "_UI_SingleReferenceDescription_type"),
-                PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_ReferenceDescription_displayExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_displayExpression_feature", "_UI_ReferenceDescription_type"),
+                PropertiesPackage.Literals.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -100,10 +114,10 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION);
-            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION);
-            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION);
-            childrenFeatures.add(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__ON_CLICK_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__ACTIONS);
+            childrenFeatures.add(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -123,14 +137,14 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
     }
 
     /**
-     * This returns SingleReferenceDescription.gif. <!-- begin-user-doc --> <!--
+     * This returns ReferenceDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SingleReferenceDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReferenceDescription"));
     }
 
     /**
@@ -141,8 +155,8 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
      */
     @Override
     public String getText(Object object) {
-        String label = ((SingleReferenceDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_SingleReferenceDescription_type") : getString("_UI_SingleReferenceDescription_type") + " " + label;
+        String label = ((ReferenceDescription) object).getIdentifier();
+        return label == null || label.length() == 0 ? getString("_UI_ReferenceDescription_type") : getString("_UI_ReferenceDescription_type") + " " + label;
     }
 
     /**
@@ -157,15 +171,16 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(SingleReferenceDescription.class)) {
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__VALUE_EXPRESSION:
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION:
+        switch (notification.getFeatureID(ReferenceDescription.class)) {
+        case PropertiesPackage.REFERENCE_DESCRIPTION__MULTIPLE:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__VALUE_EXPRESSION:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION:
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION:
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION:
-        case PropertiesPackage.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__ON_CLICK_OPERATION:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__ACTIONS:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__STYLE:
+        case PropertiesPackage.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -183,35 +198,13 @@ public class SingleReferenceDescriptionItemProvider extends WidgetDescriptionIte
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__ACTIONS, PropertiesFactory.eINSTANCE.createWidgetAction()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createReferenceWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION, PropertiesFactory.eINSTANCE.createOperationDescription()));
-    }
-
-    /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__CREATE_OPERATION
-                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__SEARCH_OPERATION || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__UNSET_OPERATION
-                || childFeature == PropertiesPackage.Literals.SINGLE_REFERENCE_DESCRIPTION__ON_CLICK_OPERATION;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createReferenceWidgetConditionalStyle()));
     }
 
 }

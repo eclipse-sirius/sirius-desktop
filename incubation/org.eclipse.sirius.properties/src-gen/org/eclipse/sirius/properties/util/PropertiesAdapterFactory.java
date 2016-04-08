@@ -38,7 +38,6 @@ import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.LayoutDescription;
-import org.eclipse.sirius.properties.MultipleReferencesDescription;
 import org.eclipse.sirius.properties.OperationDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PageValidationSetDescription;
@@ -47,15 +46,18 @@ import org.eclipse.sirius.properties.PropertyValidationRule;
 import org.eclipse.sirius.properties.RadioDescription;
 import org.eclipse.sirius.properties.RadioWidgetConditionalStyle;
 import org.eclipse.sirius.properties.RadioWidgetStyle;
+import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
+import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 import org.eclipse.sirius.properties.SelectDescription;
 import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.properties.SelectWidgetStyle;
-import org.eclipse.sirius.properties.SingleReferenceDescription;
 import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
+import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
 import org.eclipse.sirius.properties.WidgetDescription;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -224,18 +226,13 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseSingleReferenceDescription(SingleReferenceDescription object) {
-            return createSingleReferenceDescriptionAdapter();
+        public Adapter caseReferenceDescription(ReferenceDescription object) {
+            return createReferenceDescriptionAdapter();
         }
 
         @Override
         public Adapter caseOperationDescription(OperationDescription object) {
             return createOperationDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseMultipleReferencesDescription(MultipleReferencesDescription object) {
-            return createMultipleReferencesDescriptionAdapter();
         }
 
         @Override
@@ -294,6 +291,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
+            return createReferenceWidgetStyleAdapter();
+        }
+
+        @Override
         public Adapter caseWidgetConditionalStyle(WidgetConditionalStyle object) {
             return createWidgetConditionalStyleAdapter();
         }
@@ -331,6 +333,16 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseCustomWidgetConditionalStyle(CustomWidgetConditionalStyle object) {
             return createCustomWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseReferenceWidgetConditionalStyle(ReferenceWidgetConditionalStyle object) {
+            return createReferenceWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseWidgetAction(WidgetAction object) {
+            return createWidgetActionAdapter();
         }
 
         @Override
@@ -706,17 +718,17 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.SingleReferenceDescription
-     * <em>Single Reference Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.ReferenceDescription
+     * <em>Reference Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      *
      * @return the new adapter.
-     * @see org.eclipse.sirius.properties.SingleReferenceDescription
+     * @see org.eclipse.sirius.properties.ReferenceDescription
      * @generated
      */
-    public Adapter createSingleReferenceDescriptionAdapter() {
+    public Adapter createReferenceDescriptionAdapter() {
         return null;
     }
 
@@ -733,22 +745,6 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createOperationDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.MultipleReferencesDescription
-     * <em>Multiple References Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     *
-     * @return the new adapter.
-     * @see org.eclipse.sirius.properties.MultipleReferencesDescription
-     * @generated
-     */
-    public Adapter createMultipleReferencesDescriptionAdapter() {
         return null;
     }
 
@@ -1052,6 +1048,53 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCustomWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle
+     * <em>Reference Widget Conditional Style</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle
+     * @generated
+     */
+    public Adapter createReferenceWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.WidgetAction <em>Widget Action</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so
+     * that we can easily ignore cases; it's useful to ignore a case when
+     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.WidgetAction
+     * @generated
+     */
+    public Adapter createWidgetActionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
+     * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ReferenceWidgetStyle
+     * @generated
+     */
+    public Adapter createReferenceWidgetStyleAdapter() {
         return null;
     }
 

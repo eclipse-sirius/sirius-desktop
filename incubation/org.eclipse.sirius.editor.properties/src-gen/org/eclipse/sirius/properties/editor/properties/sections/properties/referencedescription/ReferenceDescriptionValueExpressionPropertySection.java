@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.singlereferencedescription;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -25,17 +25,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the displayExpression property of a SingleReferenceDescription
- * object.
+ * A section for the valueExpression property of a ReferenceDescription object.
  */
-public class SingleReferenceDescriptionDisplayExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class ReferenceDescriptionValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "DisplayExpression"; //$NON-NLS-1$
+        return "ValueExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -56,7 +55,7 @@ public class SingleReferenceDescriptionDisplayExpressionPropertySection extends 
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getSingleReferenceDescription_DisplayExpression();
+        return PropertiesPackage.eINSTANCE.getReferenceDescription_ValueExpression();
     }
 
     /**
@@ -99,7 +98,7 @@ public class SingleReferenceDescriptionDisplayExpressionPropertySection extends 
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), SingleReferenceDescriptionDisplayExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), ReferenceDescriptionValueExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

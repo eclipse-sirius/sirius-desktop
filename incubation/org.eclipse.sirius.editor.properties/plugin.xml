@@ -17,6 +17,13 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetaction.WidgetActionLabelExpressionPropertySection"
+               id="properties.section.widgetAction.LabelExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetaction.WidgetActionLabelExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetAction"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetconditionalstyle.WidgetConditionalStylePreconditionExpressionPropertySection"
                id="properties.section.widgetConditionalStyle.PreconditionExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetconditionalstyle.WidgetConditionalStylePreconditionExpressionFilter"
@@ -163,34 +170,27 @@
         <input type="org.eclipse.sirius.properties.CustomExpression"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.multiplereferencesdescription.MultipleReferencesDescriptionDisplayExpressionPropertySection"
-               id="properties.section.multipleReferencesDescription.DisplayExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.multiplereferencesdescription.MultipleReferencesDescriptionDisplayExpressionFilter"
-               afterSection="properties.section.multipleReferencesDescription.ValueExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionDisplayExpressionPropertySection"
+               id="properties.section.referenceDescription.DisplayExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionDisplayExpressionFilter"
+               afterSection="properties.section.referenceDescription.ValueExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.MultipleReferencesDescription"/>
+        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.multiplereferencesdescription.MultipleReferencesDescriptionValueExpressionPropertySection"
-               id="properties.section.multipleReferencesDescription.ValueExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.multiplereferencesdescription.MultipleReferencesDescriptionValueExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionValueExpressionPropertySection"
+               id="properties.section.referenceDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionValueExpressionFilter"
+               afterSection="properties.section.referenceDescription.Multiple"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.MultipleReferencesDescription"/>
+        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.singlereferencedescription.SingleReferenceDescriptionDisplayExpressionPropertySection"
-               id="properties.section.singleReferenceDescription.DisplayExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.singlereferencedescription.SingleReferenceDescriptionDisplayExpressionFilter"
-               afterSection="properties.section.singleReferenceDescription.ValueExpression"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.referencedescription.ReferenceDescriptionMultiplePropertySection"
+               id="properties.section.referenceDescription.Multiple"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.referencedescription.ReferenceDescriptionMultipleFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.SingleReferenceDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.singlereferencedescription.SingleReferenceDescriptionValueExpressionPropertySection"
-               id="properties.section.singleReferenceDescription.ValueExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.singlereferencedescription.SingleReferenceDescriptionValueExpressionFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.SingleReferenceDescription"/>
+        <input type="org.eclipse.sirius.properties.ReferenceDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.radiodescription.RadioDescriptionNumberOfColumnsPropertySection"
