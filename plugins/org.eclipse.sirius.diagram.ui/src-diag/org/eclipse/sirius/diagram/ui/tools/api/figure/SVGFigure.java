@@ -39,6 +39,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
+import com.google.common.cache.Weigher;
 import com.google.common.collect.Lists;
 
 //CHECKSTYLE:OFF
@@ -48,14 +49,54 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      */
     private static class ImageCache {
         /**
-         * The rendered bitmaps, organized by key..
+         * The maximum size of the cache, in bytes.
          */
-        private final Cache<String, Image> images = CacheBuilder.newBuilder().maximumSize(10).removalListener(new RemovalListener<String, Image>() {
+        private static final int MAX_WEIGHT;
+
+        static {
+            String s = System.getProperty("org.eclipse.sirius.diagram.ui.svg.maxCacheSizeMB"); //$NON-NLS-1$
+            int mb;
+            try {
+                mb = Integer.parseInt(s);
+            } catch (NumberFormatException nfe) {
+                mb = 50;
+            }
+            MAX_WEIGHT = mb * 1024 * 1024;
+        }
+
+        /**
+         * Computes the weight of a rendered image, as the number of bytes
+         * occupied by the raw raster data (assumes 4 8-bit channels).
+         */
+        private static final class ImageWeigher implements Weigher<String, Image> {
+            @Override
+            public int weigh(String key, Image value) {
+                if (value != null) {
+                    synchronized (value) {
+                        if (!value.isDisposed()) {
+                            org.eclipse.swt.graphics.Rectangle bounds = value.getBounds();
+                            return bounds.width * bounds.height * 4;
+                        }
+                    }
+                }
+                return 0;
+            }
+        }
+
+        private final class ImageRemovalListener implements RemovalListener<String, Image> {
             @Override
             public void onRemoval(RemovalNotification<String, Image> notification) {
-                notification.getValue().dispose();
+                Image img = notification.getValue();
+                synchronized (img) {
+                    img.dispose();
+                }
             }
-        }).build();
+        }
+
+        /**
+         * The rendered bitmaps, organized by key..
+         */
+        private final Cache<String, Image> images = CacheBuilder.newBuilder().maximumWeight(ImageCache.MAX_WEIGHT).removalListener(new ImageRemovalListener()).weigher(new ImageWeigher()).build();
 
         /**
          * Get the image cached or create new one and cache it.
@@ -71,7 +112,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         public synchronized Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
             String key = fig.getKey(graphics);
             Image result = images.getIfPresent(key);
-            if (result == null) {
+            if (result == null || result.isDisposed()) {
                 if (fig.transcoder != null) {
                     result = fig.transcoder.render(fig, clientArea, graphics, CACHE_SCALED_IMAGES);
                 }
@@ -323,12 +364,20 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             scaledArea.performScale(graphics.getAbsoluteScale());
             Image image = getImage(svgArea, graphics);
             if (image != null) {
-                graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                synchronized (image) {
+                    if (!image.isDisposed()) {
+                        graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                    }
+                }
             }
         } else {
             Image image = getImage(svgArea, graphics);
             if (image != null) {
-                graphics.drawImage(image, svgArea.x(), svgArea.y());
+                synchronized (image) {
+                    if (!image.isDisposed()) {
+                        graphics.drawImage(image, svgArea.x(), svgArea.y());
+                    }
+                }
             }
         }
         modifier.popState();
