@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2015 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2016 Borland Software Corporation and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -85,12 +85,14 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public double getAspectRatio() {
         if (canvasHeight == -1 || canvasWidth == -1) {
-            int width = getBufferedImage().getWidth();
-            int height = getBufferedImage().getHeight();
-            return (double) width / (double) height;
-        } else {
-            return (double) canvasWidth / (double) canvasHeight;
+            BufferedImage img = getBufferedImage();
+            if (img != null) {
+                int width = img.getWidth();
+                int height = img.getHeight();
+                return (double) width / (double) height;
+            }
         }
+        return (double) canvasWidth / (double) canvasHeight;
     }
 
     public void contentChanged() {
