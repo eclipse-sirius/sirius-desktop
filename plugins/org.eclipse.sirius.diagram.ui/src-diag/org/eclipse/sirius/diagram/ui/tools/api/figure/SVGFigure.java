@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2015 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2016 Borland Software Corporation and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -34,6 +34,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.w3c.dom.Document;
 
+import com.google.common.base.Objects;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalListener;
@@ -217,7 +218,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     private Document createDocument() {
-        String parser = XMLResourceDescriptor.getXMLParserClassName();
+        String parser = Objects.firstNonNull(XMLResourceDescriptor.getXMLParserClassName(), "org.apache.xerces.parsers.SAXParser"); //$NON-NLS-1$
         SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
         return createDocument(factory, false);
     }
@@ -351,7 +352,6 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             return null;
         }
     }
-
 
     /**
      * Remove all entries whose key begins with the given key. Remove from the
