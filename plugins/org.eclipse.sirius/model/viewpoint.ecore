@@ -57,11 +57,6 @@
       </eAnnotations>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DRepresentationContainer" eSuperTypes="#//DView">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
-        changeable="false" volatile="true" transient="true" derived="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DSemanticDecorator" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An element that has a link to the semantic model."/>
@@ -118,6 +113,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An view is the root element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewpoint" lowerBound="1"
+        eType="#//description/Viewpoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The viewpoint that is used for this view"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentations" upperBound="-1"
         eType="#//DRepresentation" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -130,12 +131,9 @@
         <details key="documentation" value="The Meta Model extension for this analysis. It may be null."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="viewpoint" lowerBound="1"
-        eType="#//description/Viewpoint">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The viewpoint that is used for this view"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+        changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaModelExtension">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

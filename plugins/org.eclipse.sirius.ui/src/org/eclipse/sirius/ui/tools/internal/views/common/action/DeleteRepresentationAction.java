@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
@@ -124,7 +124,8 @@ public class DeleteRepresentationAction extends Action {
                     @Override
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         try {
-                            String taskName = session2DRepresentations.size() > 1 ? Messages.DeleteRepresentationAction_deleteRepresentationTask_plural : Messages.DeleteRepresentationAction_deleteRepresentationTask;
+                            String taskName = session2DRepresentations.size() > 1 ? Messages.DeleteRepresentationAction_deleteRepresentationTask_plural
+                                    : Messages.DeleteRepresentationAction_deleteRepresentationTask;
                             monitor.beginTask(taskName, session2DRepresentations.size());
                             for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
                                 Session session = entry.getKey();
@@ -209,7 +210,7 @@ public class DeleteRepresentationAction extends Action {
             @Override
             public boolean apply(DRepresentation input) {
                 EObject container = input.eContainer();
-                if (container instanceof DRepresentationContainer) {
+                if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                     if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(input)) {
                         return true;

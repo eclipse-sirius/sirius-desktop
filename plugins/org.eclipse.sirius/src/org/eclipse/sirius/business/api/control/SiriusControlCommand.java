@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,6 @@ import org.eclipse.sirius.business.internal.command.control.ControlCommand;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -198,15 +197,15 @@ public class SiriusControlCommand extends ControlCommand {
             // It is allowed to create an aird fragment with no representation
             Resource firstAird = session.getSessionResource();
             newRepresentationsFile = firstAird.getResourceSet().createResource(representationsDestination);
-            // Creation of a DRepresentationContainer for each session
+            // Creation of a DView for each session
             // viewpoint. This way, we will be able to open the empty aird
             // fragment with the viewpoints properly set
             DAnalysis newDAnalysis = getDAnalysis(newRepresentationsFile);
             for (Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
-                DRepresentationContainer createDRepresentationContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
-                createDRepresentationContainer.setViewpoint(viewpoint);
-                newDAnalysis.getOwnedViews().add(createDRepresentationContainer);
-                newDAnalysis.getSelectedViews().add(createDRepresentationContainer);
+                DView createDView = ViewpointFactory.eINSTANCE.createDView();
+                createDView.setViewpoint(viewpoint);
+                newDAnalysis.getOwnedViews().add(createDView);
+                newDAnalysis.getSelectedViews().add(createDView);
             }
 
         } else {
@@ -238,7 +237,8 @@ public class SiriusControlCommand extends ControlCommand {
      * <UL>
      * <LI>If the controlled semantic element contains the first models of a
      * referencedAnalysis of the current analysis, then move this one in the new
-     * analysis (this corresponds to a fragmentation of intermediate level).</LI>
+     * analysis (this corresponds to a fragmentation of intermediate level).
+     * </LI>
      * <LI>Add the new analysis to the referencedAnalysis references</LI>
      * <UL>
      * </UL>
@@ -300,9 +300,7 @@ public class SiriusControlCommand extends ControlCommand {
             for (EObject content : resource.getContents()) {
                 if (content instanceof DAnalysis && !content.equals(analysisToIgnore)) {
                     for (final DView view : ((DAnalysis) content).getOwnedViews()) {
-                        if (view instanceof DRepresentationContainer) {
-                            DAnalysisSessionHelper.updateModelsReferences((DAnalysis) content, Iterators.filter(((DRepresentationContainer) view).eAllContents(), DSemanticDecorator.class));
-                        }
+                        DAnalysisSessionHelper.updateModelsReferences((DAnalysis) content, Iterators.filter(view.eAllContents(), DSemanticDecorator.class));
                     }
                 }
             }

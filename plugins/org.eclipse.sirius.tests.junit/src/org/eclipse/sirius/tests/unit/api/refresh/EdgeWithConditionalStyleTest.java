@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
@@ -54,7 +54,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        this.session.addSelectedView((DRepresentationContainer) this.evoluateDiagram.eContainer(), new NullProgressMonitor());
+        this.session.addSelectedView((DView) this.evoluateDiagram.eContainer(), new NullProgressMonitor());
     }
 
     /**

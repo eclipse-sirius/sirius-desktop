@@ -34,7 +34,6 @@ icons/full/obj16/DFile.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fl
 icons/full/obj16/DFolder.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/DModel.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/DProject.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
-icons/full/obj16/DRepresentationContainer.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/DSourceFileLink.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/DView.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/Decoration.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif

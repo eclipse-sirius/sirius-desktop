@@ -28,7 +28,6 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -153,20 +152,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DMAPPING_BASED: {
             DMappingBased dMappingBased = (DMappingBased) theEObject;
             T result = caseDMappingBased(dMappingBased);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case ViewpointPackage.DREPRESENTATION_CONTAINER: {
-            DRepresentationContainer dRepresentationContainer = (DRepresentationContainer) theEObject;
-            T result = caseDRepresentationContainer(dRepresentationContainer);
-            if (result == null) {
-                result = caseDView(dRepresentationContainer);
-            }
-            if (result == null) {
-                result = caseDRefreshable(dRepresentationContainer);
-            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -482,23 +467,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDMappingBased(DMappingBased object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DRepresentation Container</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DRepresentation Container</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDRepresentationContainer(DRepresentationContainer object) {
         return null;
     }
 

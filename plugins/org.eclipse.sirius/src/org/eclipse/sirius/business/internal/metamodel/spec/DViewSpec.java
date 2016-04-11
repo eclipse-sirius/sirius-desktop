@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,14 +25,14 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl;
+import org.eclipse.sirius.viewpoint.impl.DViewImpl;
 
 /**
- * Implementation of {@link DRepresentationContainerSpec}.
+ * Implementation of {@link DViewSpec}.
  * 
  * @author cbrun
  */
-public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
+public class DViewSpec extends DViewImpl {
 
     /**
      * Refresh the functionnal analysis.
@@ -79,7 +79,7 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
                 models.add(getModel(((DSemanticDecorator) representation).getTarget()));
             }
         }
-        return new EcoreEList.UnmodifiableEList<EObject>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDRepresentationContainer_Models(), models.size(), models.toArray());
+        return new EcoreEList.UnmodifiableEList<EObject>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDView_Models(), models.size(), models.toArray());
     }
 
     private EObject getModel(final EObject target) {

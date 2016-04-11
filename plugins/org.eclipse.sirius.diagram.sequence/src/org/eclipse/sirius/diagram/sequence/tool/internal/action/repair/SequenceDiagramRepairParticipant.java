@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Iterables;
@@ -84,22 +83,22 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
     }
 
     /**
-     * Scan {@link DRepresentationContainer}s for sequence diagrams to repair.
+     * Scan {@link DView}s for sequence diagrams to repair.
      * 
      * @param model
      *            the current session model
      * @param domain
      *            the current {@link TransactionalEditingDomain}
      * @return a {@link CompoundCommand} of sequence diagrams reparing commands
-     *         in each {@link DRepresentationContainer}
+     *         in each {@link DView}
      */
     private Command migrateModel(Resource model, TransactionalEditingDomain domain) {
         CompoundCommand cc = new CompoundCommand(Messages.SequenceDiagramRepairParticipant_repairCommandName);
         EObject eObject = model.getContents().get(0);
         if (eObject instanceof DAnalysis) {
             DAnalysis dAnalysis = (DAnalysis) eObject;
-            for (DRepresentationContainer container : Iterables.filter(dAnalysis.getOwnedViews(), DRepresentationContainer.class)) {
-                CompoundCommand migrateRepresentationContainer = migrateRepresentationContainer(container, domain);
+            for (DView container : Iterables.filter(dAnalysis.getOwnedViews(), DView.class)) {
+                CompoundCommand migrateRepresentationContainer = migrateDView(container, domain);
                 if (!migrateRepresentationContainer.getCommandList().isEmpty()) {
                     cc.append(migrateRepresentationContainer);
                 }
@@ -111,16 +110,15 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
     /**
      * Add a {@link SequenceInstanceRoleRepairCommand} and a
      * {@link FlagSequenceEventsCommand} for each {@link SequenceDDiagram}
-     * founds in the {@link DRepresentationContainer}.
+     * founds in the {@link DView}.
      * 
      * @param container
-     *            a {@link DRepresentationContainer} to scan for
-     *            {@link SequenceDDiagram}
+     *            a {@link DView} to scan for {@link SequenceDDiagram}
      * @param domain
      *            the current {@link TransactionalEditingDomain}
      * @return a {@link CompoundCommand} of sequence diagrams reparing commands
      */
-    private CompoundCommand migrateRepresentationContainer(DRepresentationContainer container, TransactionalEditingDomain domain) {
+    private CompoundCommand migrateDView(DView container, TransactionalEditingDomain domain) {
         CompoundCommand cc = new CompoundCommand(Messages.SequenceDiagramRepairParticipant_repairCommandName);
         for (SequenceDDiagram seqDDiag : Iterables.filter(container.getOwnedRepresentations(), SequenceDDiagram.class)) {
             final Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(seqDDiag);

@@ -422,7 +422,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         ResourceSet rset = new ResourceSetImpl();
         final Resource otherAnalysisResourceInstance = rset.getResource(analysisResource.getURI(), true);
         DAnalysis otherAnalysisRef = (DAnalysis) otherAnalysisResourceInstance.getContents().get(0);
-        otherAnalysisRef.getOwnedViews().add(ViewpointFactory.eINSTANCE.createDRepresentationContainer());
+        otherAnalysisRef.getOwnedViews().add(ViewpointFactory.eINSTANCE.createDView());
         otherAnalysisResourceInstance.setModified(true);
         otherAnalysisResourceInstance.save(Collections.emptyMap());
         TestsUtil.synchronizationWithUIThread();

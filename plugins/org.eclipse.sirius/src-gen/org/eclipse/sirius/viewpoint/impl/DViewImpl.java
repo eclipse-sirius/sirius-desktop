@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -35,18 +36,30 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint
+ * <em>Viewpoint</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedRepresentations
  * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getViewpoint
- * <em>Viewpoint</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getModels
+ * <em>Models</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
+    /**
+     * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getViewpoint()
+     * @generated
+     * @ordered
+     */
+    protected Viewpoint viewpoint;
+
     /**
      * The cached value of the '{@link #getOwnedRepresentations()
      * <em>Owned Representations</em>}' containment reference list. <!--
@@ -68,16 +81,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * @ordered
      */
     protected MetaModelExtension ownedExtensions;
-
-    /**
-     * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getViewpoint()
-     * @generated
-     * @ordered
-     */
-    protected Viewpoint viewpoint;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -238,6 +241,23 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
      * @generated
      */
     @Override
+    public EList<EObject> getModels() {
+        // TODO: implement this method to return the 'Models' reference list
+        // Ensure that you remove @generated or mark it @generated NOT
+        // The list is expected to implement
+        // org.eclipse.emf.ecore.util.InternalEList and
+        // org.eclipse.emf.ecore.EStructuralFeature.Setting
+        // so it's likely that an appropriate subclass of
+        // org.eclipse.emf.ecore.util.EcoreEList should be used.
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public void refresh() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -268,6 +288,11 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case ViewpointPackage.DVIEW__VIEWPOINT:
+            if (resolve) {
+                return getViewpoint();
+            }
+            return basicGetViewpoint();
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
             return getOwnedRepresentations();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
@@ -275,11 +300,8 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
                 return getOwnedExtensions();
             }
             return basicGetOwnedExtensions();
-        case ViewpointPackage.DVIEW__VIEWPOINT:
-            if (resolve) {
-                return getViewpoint();
-            }
-            return basicGetViewpoint();
+        case ViewpointPackage.DVIEW__MODELS:
+            return getModels();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -293,15 +315,15 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case ViewpointPackage.DVIEW__VIEWPOINT:
+            setViewpoint((Viewpoint) newValue);
+            return;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
             getOwnedRepresentations().clear();
             getOwnedRepresentations().addAll((Collection<? extends DRepresentation>) newValue);
             return;
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) newValue);
-            return;
-        case ViewpointPackage.DVIEW__VIEWPOINT:
-            setViewpoint((Viewpoint) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -315,14 +337,14 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case ViewpointPackage.DVIEW__VIEWPOINT:
+            setViewpoint((Viewpoint) null);
+            return;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
             getOwnedRepresentations().clear();
             return;
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) null);
-            return;
-        case ViewpointPackage.DVIEW__VIEWPOINT:
-            setViewpoint((Viewpoint) null);
             return;
         }
         super.eUnset(featureID);
@@ -336,12 +358,14 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case ViewpointPackage.DVIEW__VIEWPOINT:
+            return viewpoint != null;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
             return ownedRepresentations != null && !ownedRepresentations.isEmpty();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return ownedExtensions != null;
-        case ViewpointPackage.DVIEW__VIEWPOINT:
-            return viewpoint != null;
+        case ViewpointPackage.DVIEW__MODELS:
+            return !getModels().isEmpty();
         }
         return super.eIsSet(featureID);
     }

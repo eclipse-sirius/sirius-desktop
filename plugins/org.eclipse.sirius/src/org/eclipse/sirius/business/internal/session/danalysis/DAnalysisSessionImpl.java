@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES, Obeo
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others,
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,6 @@ import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -459,8 +458,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             throw new LockedInstanceException(representation);
         }
         final EObject semantic;
-        if (representation.eContainer() instanceof DRepresentationContainer && !((DRepresentationContainer) representation.eContainer()).getModels().isEmpty()) {
-            semantic = ((DRepresentationContainer) representation.eContainer()).getModels().iterator().next();
+        if (representation.eContainer() instanceof DView && !((DView) representation.eContainer()).getModels().isEmpty()) {
+            semantic = ((DView) representation.eContainer()).getModels().iterator().next();
         } else {
             semantic = null;
         }
@@ -1360,25 +1359,25 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Get collection of available {@link DRepresentationContainer} for the
+     * Get collection of available {@link DView} for the
      * {@link RepresentationDescription}.
      * 
      * @param representationDescription
      *            the representation description.
      * @return available representation containers
      */
-    public Collection<DRepresentationContainer> getAvailableRepresentationContainers(RepresentationDescription representationDescription) {
+    public Collection<DView> getAvailableRepresentationContainers(RepresentationDescription representationDescription) {
         final Viewpoint viewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
         Collection<DAnalysis> allAnalysis = allAnalyses();
 
-        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
+        final List<DView> containers = new ArrayList<DView>();
 
         for (DAnalysis analysis : allAnalysis) {
-            DRepresentationContainer container = null;
+            DView container = null;
 
             for (final DView view : analysis.getOwnedViews()) {
-                if (view instanceof DRepresentationContainer && viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
-                    container = (DRepresentationContainer) view;
+                if (view instanceof DView && viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
+                    container = (DView) view;
                     break;
                 }
             } // for

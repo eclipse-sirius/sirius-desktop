@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
-import org.eclipse.sirius.business.internal.metamodel.spec.DRepresentationContainerSpec;
+import org.eclipse.sirius.business.internal.metamodel.spec.DViewSpec;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -30,7 +30,6 @@ import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
@@ -92,8 +91,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         switch (eClass.getClassifierID()) {
         case ViewpointPackage.DANALYSIS:
             return createDAnalysis();
-        case ViewpointPackage.DREPRESENTATION_CONTAINER:
-            return createDRepresentationContainer();
         case ViewpointPackage.DVIEW:
             return createDView();
         case ViewpointPackage.META_MODEL_EXTENSION:
@@ -190,19 +187,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * @not-generated
      */
     @Override
-    public DRepresentationContainer createDRepresentationContainer() {
-        DRepresentationContainerImpl dRepresentationContainer = new DRepresentationContainerSpec();
-        return dRepresentationContainer;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public DView createDView() {
-        DViewImpl dView = new DViewImpl();
+        DViewImpl dView = new DViewSpec();
         return dView;
     }
 

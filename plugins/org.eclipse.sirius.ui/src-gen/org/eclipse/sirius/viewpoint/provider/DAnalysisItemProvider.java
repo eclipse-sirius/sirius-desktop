@@ -233,8 +233,6 @@ public class DAnalysisItemProvider extends ItemProviderAdapter
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DANALYSIS__EANNOTATIONS, DescriptionFactory.eINSTANCE.createDAnnotationEntry()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS, ViewpointFactory.eINSTANCE.createDView()));
-
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS, ViewpointFactory.eINSTANCE.createDRepresentationContainer()));
     }
 
     /**

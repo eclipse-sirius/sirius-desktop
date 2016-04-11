@@ -108,31 +108,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected DRepresentationContainerItemProvider dRepresentationContainerItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public Adapter createDRepresentationContainerAdapter() {
-        if (dRepresentationContainerItemProvider == null) {
-            dRepresentationContainerItemProvider = new DRepresentationContainerItemProvider(this);
-        }
-
-        return dRepresentationContainerItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.DView} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -584,9 +559,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     public void dispose() {
         if (dAnalysisItemProvider != null) {
             dAnalysisItemProvider.dispose();
-        }
-        if (dRepresentationContainerItemProvider != null) {
-            dRepresentationContainerItemProvider.dispose();
         }
         if (dViewItemProvider != null) {
             dViewItemProvider.dispose();

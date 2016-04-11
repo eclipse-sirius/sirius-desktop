@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,8 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -65,7 +65,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     /** The user has not selected one or more diagrams. */
     private static final int CODE_NO_SEL = 1;
 
-    /** A representation cannot be extracted because the container is read only */
+    /**
+     * A representation cannot be extracted because the container is read only
+     */
     private static final int CODE_ERROR_READONLY = 2;
 
     /** The composite control of the page. */
@@ -176,7 +178,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             for (DRepresentation item : selectedRepresentations) {
                 // check permission authority
                 EObject container = item.eContainer();
-                if (container instanceof DRepresentationContainer) {
+                if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                     if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(item)) {
                         // Cannot remove representation from the container

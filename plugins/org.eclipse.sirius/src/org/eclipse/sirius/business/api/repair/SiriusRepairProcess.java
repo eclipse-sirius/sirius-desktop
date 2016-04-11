@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,6 @@ import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -426,7 +425,7 @@ public class SiriusRepairProcess {
      * @param view
      *            {@link DView} to inform
      */
-    private void informModel(final DRepresentationContainer view) {
+    private void informModel(final DView view) {
         if (view.eContainer() instanceof DAnalysis) {
             DAnalysis analysis = (DAnalysis) view.eContainer();
             // Add all semantic root elements pointed by the target of all
@@ -568,9 +567,7 @@ public class SiriusRepairProcess {
     private void handleView(final DView view) {
         informViewpoint(view);
         // Compute the models references before cleaning the representation.
-        if (view instanceof DRepresentationContainer) {
-            informModel((DRepresentationContainer) view);
-        }
+        informModel(view);
 
         final List<DRepresentation> representationsToRemove = new LinkedList<DRepresentation>();
         for (final IRepairParticipant participant : this.repairParticipants) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
@@ -102,7 +102,7 @@ public class MoveRepresentationAction extends Action {
 
                 // Step 1: Check source representation container
                 EObject container = input.eContainer();
-                if (container instanceof DRepresentationContainer) {
+                if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                     if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(input)) {
                         invalid = true;
@@ -111,7 +111,7 @@ public class MoveRepresentationAction extends Action {
 
                 // Step 2: Check target representation container
                 if (!invalid) {
-                    DRepresentationContainer targetContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(targetAnalysis, input);
+                    DView targetContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(targetAnalysis, input);
                     if (targetContainer != null) {
                         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(targetContainer);
                         if (permissionAuthority != null && !permissionAuthority.canCreateIn(targetContainer)) {

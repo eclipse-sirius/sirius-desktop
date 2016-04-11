@@ -12,6 +12,7 @@
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -31,12 +32,13 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * The following features are supported:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
+ * }</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations
  * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
- * }</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DView#getModels <em>Models</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView()
@@ -112,5 +114,22 @@ public interface DView extends DRefreshable {
      * @generated
      */
     void setViewpoint(Viewpoint value);
+
+    /**
+     * Returns the value of the '<em><b>Models</b></em>' reference list. The
+     * list contents are of type {@link org.eclipse.emf.ecore.EObject}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Models</em>' reference list isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Models</em>' reference list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Models()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    EList<EObject> getModels();
 
 } // DView

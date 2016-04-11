@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES, Obeo
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES, Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -232,7 +232,7 @@ final class DViewOperations {
         if (orphan != null) {
             return orphan;
         } else {
-            return ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+            return ViewpointFactory.eINSTANCE.createDView();
         }
     }
 

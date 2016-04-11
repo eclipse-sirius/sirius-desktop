@@ -58,17 +58,6 @@
    
       </description>
    </context>
-   <context id="DRepresentationContainer">
-     <description>
-       
-       
-         
-   <!-- Start of user code DRepresentationContainer description -->
-   
-   <!-- End of user code DRepresentationContainer description -->
-   
-      </description>
-   </context>
    <context id="DSemanticDecorator">
      <description>
        An element that has a link to the semantic model.

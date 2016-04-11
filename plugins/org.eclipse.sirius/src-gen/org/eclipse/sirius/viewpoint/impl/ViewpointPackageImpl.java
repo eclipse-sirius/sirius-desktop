@@ -33,7 +33,6 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -105,13 +104,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dMappingBasedEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    private EClass dRepresentationContainerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -525,26 +517,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EClass getDRepresentationContainer() {
-        return dRepresentationContainerEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDRepresentationContainer_Models() {
-        return (EReference) dRepresentationContainerEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EClass getDSemanticDecorator() {
         return dSemanticDecoratorEClass;
     }
@@ -666,16 +638,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     @Override
     public EReference getDView_OwnedRepresentations() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDView_OwnedExtensions() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(1);
     }
 
@@ -685,8 +647,28 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDView_Viewpoint() {
+    public EReference getDView_OwnedExtensions() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDView_Viewpoint() {
+        return (EReference) dViewEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDView_Models() {
+        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1189,9 +1171,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dMappingBasedEClass = createEClass(ViewpointPackage.DMAPPING_BASED);
 
-        dRepresentationContainerEClass = createEClass(ViewpointPackage.DREPRESENTATION_CONTAINER);
-        createEReference(dRepresentationContainerEClass, ViewpointPackage.DREPRESENTATION_CONTAINER__MODELS);
-
         dSemanticDecoratorEClass = createEClass(ViewpointPackage.DSEMANTIC_DECORATOR);
         createEReference(dSemanticDecoratorEClass, ViewpointPackage.DSEMANTIC_DECORATOR__TARGET);
 
@@ -1207,9 +1186,10 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEReference(dRepresentationElementEClass, ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
 
         dViewEClass = createEClass(ViewpointPackage.DVIEW);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_EXTENSIONS);
-        createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__MODELS);
 
         metaModelExtensionEClass = createEClass(ViewpointPackage.META_MODEL_EXTENSION);
         createEReference(metaModelExtensionEClass, ViewpointPackage.META_MODEL_EXTENSION__EXTENSION_GROUP);
@@ -1315,7 +1295,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        dRepresentationContainerEClass.getESuperTypes().add(this.getDView());
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
         dRepresentationEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
@@ -1375,12 +1354,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         addEOperation(dMappingBasedEClass, theDescriptionPackage.getRepresentationElementMapping(), "getMapping", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDRepresentationContainer_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DRepresentationContainer.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
-                EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
-                EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-
         initEClass(dSemanticDecoratorEClass, DSemanticDecorator.class, "DSemanticDecorator", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getDSemanticDecorator_Target(), theEcorePackage.getEObject(), null, "target", null, 1, 1, DSemanticDecorator.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
@@ -1411,15 +1384,17 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dViewEClass, DView.class, "DView", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
         initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
-        initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
+        initEReference(getDView_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DView.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(metaModelExtensionEClass, MetaModelExtension.class, "MetaModelExtension", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getMetaModelExtension_ExtensionGroup(), theEcorePackage.getEObject(), null, "extensionGroup", null, 1, 1, MetaModelExtension.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$

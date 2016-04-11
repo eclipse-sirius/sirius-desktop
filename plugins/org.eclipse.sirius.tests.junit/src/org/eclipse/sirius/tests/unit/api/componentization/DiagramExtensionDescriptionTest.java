@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 
 /**
  * Test opening a diagram corresponding to an extension of an extension of a
@@ -56,7 +56,7 @@ public class DiagramExtensionDescriptionTest extends SiriusDiagramTestCase imple
 
         diagram = (DDiagram) getRepresentations(DIAGRAM_DESCRIPTION).toArray()[0];
         assertNotNull(diagram);
-        session.addSelectedView((DRepresentationContainer) this.diagram.eContainer(), new NullProgressMonitor());
+        session.addSelectedView((DView) this.diagram.eContainer(), new NullProgressMonitor());
 
         TestsUtil.emptyEventsFromUIThread();
 

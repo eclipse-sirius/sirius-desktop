@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComp
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 
 /**
  * Useful operations to manipulate a DDiagram model.
@@ -44,11 +44,11 @@ public final class SiriusDiagramUtil {
      *            the viewpoint.
      * @return the found analysis or <code>null</code> if no analysis is found.
      */
-    public static DRepresentationContainer findRepresentationContainer(final DDiagram diagram) {
+    public static DView findRepresentationContainer(final DDiagram diagram) {
         EObject current = diagram;
         while (current != null) {
-            if (current instanceof DRepresentationContainer) {
-                return (DRepresentationContainer) current;
+            if (current instanceof DView) {
+                return (DView) current;
             }
             current = current.eContainer();
         }

@@ -28,7 +28,6 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -123,11 +122,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDMappingBased(DMappingBased object) {
             return createDMappingBasedAdapter();
-        }
-
-        @Override
-        public Adapter caseDRepresentationContainer(DRepresentationContainer object) {
-            return createDRepresentationContainerAdapter();
         }
 
         @Override
@@ -333,22 +327,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDMappingBasedAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer
-     * <em>DRepresentation Container</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     *
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DRepresentationContainer
-     * @generated
-     */
-    public Adapter createDRepresentationContainerAdapter() {
         return null;
     }
 

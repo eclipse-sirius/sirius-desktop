@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,9 +61,9 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 
@@ -107,7 +107,9 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
 
     private static final String E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_LAST = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name ='Chapter')->last()";
 
-    /** Interpreter which can be used by subclasses to avoid instantiating more. */
+    /**
+     * Interpreter which can be used by subclasses to avoid instantiating more.
+     */
     protected static IInterpreter INTERPRETER;
 
     /**
@@ -1287,13 +1289,10 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         domain.getCommandStack().execute(new RecordingCommand(domain) {
             @Override
             protected void doExecute() {
-                for (Object view : ((DAnalysis) EcoreUtil.getRootContainer(anyAnalysisObject)).getOwnedViews()) {
-                    if (view instanceof DRepresentationContainer) {
-                        DRepresentationContainer container = (DRepresentationContainer) view;
-                        for (Object diagram : container.getOwnedRepresentations()) {
-                            if (diagram instanceof DRepresentation) {
-                                DialectManager.INSTANCE.refresh((DRepresentation) diagram, new NullProgressMonitor());
-                            }
+                for (DView view : ((DAnalysis) EcoreUtil.getRootContainer(anyAnalysisObject)).getOwnedViews()) {
+                    for (Object diagram : view.getOwnedRepresentations()) {
+                        if (diagram instanceof DRepresentation) {
+                            DialectManager.INSTANCE.refresh((DRepresentation) diagram, new NullProgressMonitor());
                         }
                     }
                 }

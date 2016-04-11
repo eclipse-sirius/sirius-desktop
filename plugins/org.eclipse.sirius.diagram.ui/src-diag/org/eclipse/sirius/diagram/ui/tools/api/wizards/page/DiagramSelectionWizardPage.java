@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.swt.SWT;
@@ -134,7 +133,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
         pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
         this.treeViewer = createTreeViewer(pageComposite);
-        treeViewer.setInput(((DRepresentationContainer) root).getModels().iterator().next());
+        treeViewer.setInput(root.getModels().iterator().next());
         treeViewer.addFilter(this.diagramSelectionFilter);
         treeViewer.expandAll();
         treeViewer.collapseAll();

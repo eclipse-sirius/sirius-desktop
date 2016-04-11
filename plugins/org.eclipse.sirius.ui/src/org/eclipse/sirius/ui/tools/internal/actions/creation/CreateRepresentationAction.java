@@ -44,7 +44,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -110,14 +110,14 @@ public class CreateRepresentationAction extends Action {
         if (session instanceof DAnalysisSessionImpl) {
             // Disable the action in case of the representation cannot be
             // created
-            Collection<DRepresentationContainer> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(description);
+            Collection<DView> containers = ((DAnalysisSessionImpl) session).getAvailableRepresentationContainers(description);
 
             // If containers is empty, a new one will be created, so the action
             // is enabled
             if (!containers.isEmpty()) {
                 // Try to find one valid container candidate
                 boolean enabled = false;
-                for (DRepresentationContainer container : containers) {
+                for (DView container : containers) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                     if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
                         enabled = true;

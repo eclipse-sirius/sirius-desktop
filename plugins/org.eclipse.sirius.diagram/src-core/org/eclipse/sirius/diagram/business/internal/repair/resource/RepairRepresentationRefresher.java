@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,6 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -83,24 +82,22 @@ public class RepairRepresentationRefresher {
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(dAnalysis);
         boolean hasAlreadyModel = false;
         // The old representations have no a model.
-        if (view instanceof DRepresentationContainer) {
-            if (!((DAnalysis) view.eContainer()).getModels().isEmpty()) {
-                // Set hasAlreadyModel to true only if almost one of the models
-                // is not a proxy
-                for (EObject model : ((DAnalysis) view.eContainer()).getModels()) {
-                    if (!model.eIsProxy()) {
-                        hasAlreadyModel = true;
-                    }
+        if (!((DAnalysis) view.eContainer()).getModels().isEmpty()) {
+            // Set hasAlreadyModel to true only if almost one of the models
+            // is not a proxy
+            for (EObject model : ((DAnalysis) view.eContainer()).getModels()) {
+                if (!model.eIsProxy()) {
+                    hasAlreadyModel = true;
                 }
-            } else if (!hasAlreadyModel) {
-                final Map<EObject, AnyType> extension = ((XMIResource) dAnalysis.eResource()).getEObjectToExtensionMap();
-                final AnyType viewSettings = extension.get(view);
-                if (viewSettings != null) {
-                    for (final FeatureMap.Entry feature : viewSettings.getMixed()) {
-                        if ("model".equals(feature.getEStructuralFeature().getName())) { //$NON-NLS-1$
-                            ((DAnalysis) view.eContainer()).getModels().add(EcoreUtil.resolve((EObject) feature.getValue(), view.eResource().getResourceSet()));
-                            hasAlreadyModel = true;
-                        }
+            }
+        } else if (!hasAlreadyModel) {
+            final Map<EObject, AnyType> extension = ((XMIResource) dAnalysis.eResource()).getEObjectToExtensionMap();
+            final AnyType viewSettings = extension.get(view);
+            if (viewSettings != null) {
+                for (final FeatureMap.Entry feature : viewSettings.getMixed()) {
+                    if ("model".equals(feature.getEStructuralFeature().getName())) { //$NON-NLS-1$
+                        ((DAnalysis) view.eContainer()).getModels().add(EcoreUtil.resolve((EObject) feature.getValue(), view.eResource().getResourceSet()));
+                        hasAlreadyModel = true;
                     }
                 }
             }

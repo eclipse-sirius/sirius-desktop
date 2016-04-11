@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -130,15 +129,15 @@ public final class DAnalysisSessionHelper {
      *            the selector
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findContainer(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector) {
+    public static DView findContainer(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector) {
 
-        final Collection<DRepresentationContainer> containers = getContainers(all, viewpoint);
+        final Collection<DView> containers = getContainers(all, viewpoint);
         if (containers.isEmpty()) {
             return null;
         }
 
         final Collection<DAnalysis> candidates = new ArrayList<DAnalysis>();
-        for (final DRepresentationContainer container : containers) {
+        for (final DView container : containers) {
             if (container.eContainer() instanceof DAnalysis) {
                 candidates.add((DAnalysis) container.eContainer());
             }
@@ -147,9 +146,9 @@ public final class DAnalysisSessionHelper {
         // The first DAnalysis candidates must be the main DAnalysis
         final DAnalysis analysis = candidates.iterator().next();
 
-        DRepresentationContainer freeContainer = null;
+        DView freeContainer = null;
 
-        for (final DRepresentationContainer container : containers) {
+        for (final DView container : containers) {
             if (container.eContainer() == analysis) {
                 freeContainer = container;
                 break;
@@ -175,17 +174,17 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findContainerForAddedRepresentation(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all,
-            final DAnalysisSelector analysisSelector, final DRepresentation representation) {
+    public static DView findContainerForAddedRepresentation(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector,
+            final DRepresentation representation) {
 
-        final Collection<DRepresentationContainer> containers = getContainers(all, viewpoint);
+        final Collection<DView> containers = getContainers(all, viewpoint);
 
         if (containers.isEmpty()) {
             return null;
         }
 
         final Collection<DAnalysis> candidates = Sets.newLinkedHashSet();
-        for (final DRepresentationContainer container : containers) {
+        for (final DView container : containers) {
             if (container.eContainer() instanceof DAnalysis) {
                 candidates.add((DAnalysis) container.eContainer());
             }
@@ -193,16 +192,16 @@ public final class DAnalysisSessionHelper {
 
         final DAnalysis analysis = selectAnalysis(viewpoint, candidates, analysisSelector, representation);
 
-        DRepresentationContainer freeContainer = null;
+        DView freeContainer = null;
 
-        for (final DRepresentationContainer container : containers) {
+        for (final DView container : containers) {
             if (container.eContainer() == analysis) {
                 freeContainer = container;
                 break;
             }
         }
 
-        // if the DRepresentationContainer of the selected DAnalysis does not
+        // if the DView of the selected DAnalysis does not
         // exist yet, and if it is located on a CDORepository
         if (freeContainer == null && URIQuery.CDO_URI_SCHEME.equals(analysis.eResource().getURI().scheme())) {
             // We create this representation container
@@ -221,7 +220,7 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findContainerForAddedRepresentation(DAnalysis analysis, final DRepresentation representation) {
+    public static DView findContainerForAddedRepresentation(DAnalysis analysis, final DRepresentation representation) {
         final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
         return getContainer(analysis, viewpoint);
     }
@@ -238,15 +237,15 @@ public final class DAnalysisSessionHelper {
      * @return the free container if found or <code>null</code> otherwise.
      * @since 0.9.0
      */
-    public static DRepresentationContainer findFreeContainer(final Viewpoint viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
+    public static DView findFreeContainer(final Viewpoint viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
 
-        final Collection<DRepresentationContainer> views = getContainers(analyses, null);
+        final Collection<DView> views = getContainers(analyses, null);
         if (views.isEmpty()) {
             return null;
         }
 
         final Collection<DAnalysis> candidates = new ArrayList<DAnalysis>();
-        for (final DRepresentationContainer view : views) {
+        for (final DView view : views) {
             if (view.eContainer() instanceof DAnalysis) {
                 candidates.add((DAnalysis) view.eContainer());
             }
@@ -255,9 +254,9 @@ public final class DAnalysisSessionHelper {
         // The first DAnalysis candidates must be the main DAnalysis
         final DAnalysis analysis = candidates.iterator().next();
 
-        DRepresentationContainer freeView = null;
+        DView freeView = null;
 
-        for (final DRepresentationContainer view : views) {
+        for (final DView view : views) {
             if (view.eContainer() == analysis) {
                 freeView = view;
                 break;
@@ -282,16 +281,16 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findFreeContainerForAddedRepresentation(final Viewpoint viewpoint, final EObject semantic, final Collection<DAnalysis> analyses,
-            final DAnalysisSelector analysisSelector, final DRepresentation representation) {
+    public static DView findFreeContainerForAddedRepresentation(final Viewpoint viewpoint, final EObject semantic, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector,
+            final DRepresentation representation) {
 
-        final Collection<DRepresentationContainer> views = getContainers(analyses, null);
+        final Collection<DView> views = getContainers(analyses, null);
         if (views.isEmpty()) {
             return null;
         }
 
         final Collection<DAnalysis> candidates = new ArrayList<DAnalysis>();
-        for (final DRepresentationContainer view : views) {
+        for (final DView view : views) {
             if (view.eContainer() instanceof DAnalysis) {
                 candidates.add((DAnalysis) view.eContainer());
             }
@@ -299,9 +298,9 @@ public final class DAnalysisSessionHelper {
 
         final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, candidates, analysisSelector, representation);
 
-        DRepresentationContainer freeView = null;
+        DView freeView = null;
 
-        for (final DRepresentationContainer view : views) {
+        for (final DView view : views) {
             if (view.eContainer() == analysis) {
                 freeView = view;
                 break;
@@ -402,11 +401,11 @@ public final class DAnalysisSessionHelper {
      *            selected viewpoint
      * @return all representation container found
      */
-    private static Collection<DRepresentationContainer> getContainers(Iterable<DAnalysis> allAnalysis, Viewpoint viewpoint) {
-        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
+    private static Collection<DView> getContainers(Iterable<DAnalysis> allAnalysis, Viewpoint viewpoint) {
+        final List<DView> containers = new ArrayList<DView>();
 
         for (DAnalysis analysis : allAnalysis) {
-            DRepresentationContainer container = getContainer(analysis, viewpoint);
+            DView container = getContainer(analysis, viewpoint);
             if (container != null) {
                 containers.add(container);
             }
@@ -424,11 +423,11 @@ public final class DAnalysisSessionHelper {
      *            selected viewpoint
      * @return the first representation container found
      */
-    private static DRepresentationContainer getContainer(DAnalysis analysis, Viewpoint viewpoint) {
-        DRepresentationContainer result = null;
+    private static DView getContainer(DAnalysis analysis, Viewpoint viewpoint) {
+        DView result = null;
         for (final DView view : analysis.getOwnedViews()) {
-            if (view instanceof DRepresentationContainer && viewpoint == view.getViewpoint()) {
-                result = (DRepresentationContainer) view;
+            if (view instanceof DView && viewpoint == view.getViewpoint()) {
+                result = (DView) view;
                 break;
             }
         }
@@ -445,8 +444,8 @@ public final class DAnalysisSessionHelper {
      *            selected viewpoint
      * @return the new representation container
      */
-    private static DRepresentationContainer createContainer(DAnalysis analysis, Viewpoint viewpoint) {
-        DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+    private static DView createContainer(DAnalysis analysis, Viewpoint viewpoint) {
+        DView newContainer = ViewpointFactory.eINSTANCE.createDView();
         newContainer.setViewpoint(viewpoint);
         analysis.getOwnedViews().add(newContainer);
         analysis.getSelectedViews().add(newContainer);

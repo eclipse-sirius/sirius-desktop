@@ -25,7 +25,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tools.internal.command.PrepareNewAnalysisCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -33,7 +33,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * Ensure that some actions on representation are disabled when the
- * {@link DRepresentationContainer} is locked by using the permission authority
+ * {@link DView} is locked by using the permission authority
  * {@link ReadOnlyPermissionAuthority}
  * 
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
@@ -125,8 +125,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
         lockRepresentationContainer();
 
         // After locking the representation container
-        assertFalse("The creation of new representation should be disabled when the representation container is locked", semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME)
-                .isEnabled());
+        assertFalse("The creation of new representation should be disabled when the representation container is locked",
+                semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME).isEnabled());
     }
 
     /**

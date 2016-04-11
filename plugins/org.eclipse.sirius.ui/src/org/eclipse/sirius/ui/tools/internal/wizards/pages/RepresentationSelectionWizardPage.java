@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -88,14 +88,14 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             result = true; // set to true before permission authority check
 
             if (root instanceof DAnalysisSessionImpl) {
-                Collection<DRepresentationContainer> containers = ((DAnalysisSessionImpl) root).getAvailableRepresentationContainers(representationDescription);
+                Collection<DView> containers = ((DAnalysisSessionImpl) root).getAvailableRepresentationContainers(representationDescription);
 
                 // If containers is empty, a new one will be created, so the
                 // wizard is available
                 if (!containers.isEmpty()) {
                     // Try to find one valid container candidate
                     result = false;
-                    for (DRepresentationContainer container : containers) {
+                    for (DView container : containers) {
                         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                         if (permissionAuthority == null || permissionAuthority.canCreateIn(container)) {
                             result = true;

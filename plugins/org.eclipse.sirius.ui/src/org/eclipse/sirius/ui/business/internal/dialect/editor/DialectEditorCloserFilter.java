@@ -61,7 +61,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
             representationDeleted = !(dRepresentation.eContainer() instanceof DView);
         } else if (notification.getFeature() == ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS && wasInOldValue(notification, dRepresentation.eContainer())) {
             // If it is a undo or a rollback but not a
-            // DRepresentationContainer moved from a DAnalysis to another
+            // DView moved from a DAnalysis to another
             representationDeleted = dRepresentation.eContainer() == null || !(dRepresentation.eContainer() != null && dRepresentation.eContainer().eContainer() instanceof DView);
         }
         return representationDeleted;

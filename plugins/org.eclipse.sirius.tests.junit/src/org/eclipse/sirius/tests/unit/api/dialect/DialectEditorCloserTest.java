@@ -37,7 +37,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -82,18 +82,18 @@ public class DialectEditorCloserTest extends SiriusTestCase {
         target = session.getSemanticResources().iterator().next().getContents().get(0);
     }
 
-    public void testDialectEditorCloserOnDRepresentationContainerAdditionUndo() {
+    public void testDialectEditorCloserOnDViewAdditionUndo() {
         DAnalysis dAnalysis = new AirDResouceQuery((AirdResource) session.getSessionResource()).getDAnalysis().get();
         URI designViewpointURI = URI.createURI("viewpoint:/org.eclipse.sirius.sample.ecore.design/Design");
         Viewpoint viewpoint = ViewpointRegistry.getInstance().getViewpoint(designViewpointURI);
         viewpoint = (Viewpoint) domain.getResourceSet().getEObject(EcoreUtil.getURI(viewpoint), true);
 
-        DRepresentationContainer dRepresentationContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+        DView dView = ViewpointFactory.eINSTANCE.createDView();
         DTree dTree = TreeFactory.eINSTANCE.createDTree();
         dTree.setTarget(target);
-        dRepresentationContainer.getOwnedRepresentations().add(dTree);
-        dRepresentationContainer.setViewpoint(viewpoint);
-        Command cmd = AddCommand.create(domain, dAnalysis, ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS, dRepresentationContainer);
+        dView.getOwnedRepresentations().add(dTree);
+        dView.setViewpoint(viewpoint);
+        Command cmd = AddCommand.create(domain, dAnalysis, ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS, dView);
         commandStack.execute(cmd);
 
         IEditorPart openedEditor = DialectUIManager.INSTANCE.openEditor(session, dTree, new NullProgressMonitor());

@@ -61,6 +61,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
             super.getPropertyDescriptors(object);
 
             addViewpointPropertyDescriptor(object);
+            addModelsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -75,6 +76,18 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DView_viewpoint_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DView_viewpoint_feature", "_UI_DView_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DVIEW__VIEWPOINT, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Models feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addModelsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DView_models_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DView_models_feature", "_UI_DView_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.DVIEW__MODELS, false, false, false, null, null, null));
     }
 
     /**
