@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="bugzilla459993" version="11.0.0.201601261200">
+  <ownedViewpoints name="bugzilla459993" label="%bugzillaId" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bugzilla459993Diag" label="%bugzillaDiag" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings/>
+        <containerMappings name="EPackage" detailDescriptions="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@toolSections.0/@ownedTools[name='CreateDiag']" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="toolsSection" label="%toolsSectionLabel">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackageCreationTool" label="%EPackageCreationTool" containerMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']/@defaultLayer/@containerMappings[name='EPackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="SelectionWizard" label="%%SelectionWizard" candidatesExpression="feature:eSubpackages" message="%WizardMessage" windowTitle="%WizardTitle">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="PaneBasedSelectionWizard" windowTitle="%WizardTitle" message="%WizardMessage" choiceOfValuesMessage="%ChoiceOfValues" selectedValuesMessage="%SelectedValues">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="popup_menu" label="%popupMenu">
+            <menuItemDescription xsi:type="tool_1:OperationAction" label="%operationAction1">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="Operation_Action2" label="%operationAction2">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="CreateDiag" label="%bugzillaDiag" diagramDescription="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Diag']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:TreeDescription" name="bugzilla459993Tree" label="%bugzillaTree" domainClass="EPackage">
+      <subItemMappings name="EPackageTree" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages" reusedTreeItemMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Tree']/@subItemMappings[name='EPackageTree']">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="EClassTree" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <create name="CreatePackageToolTree" label="%EPackageCreationTool">
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
+          </firstModelOperation>
+          <variables name="root" documentation="The semantic element of the tree."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        </create>
+        <popupMenus label="%popupMenu">
+          <menuItemDescriptions xsi:type="tool_1:OperationAction" label="%operationAction1">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescriptions>
+        </popupMenus>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="bugzilla459993Table" label="%bugzillaTable" domainClass="EPackage">
+      <ownedLineMappings name="EPackageTable" reusedSubLines="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Table']/@ownedLineMappings[name='EPackageTable']" reusedInMappings="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993Table']/@ownedLineMappings[name='EPackageTable']" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages">
+        <ownedSubLines name="EClassTable" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers"/>
+        <create name="EPackageCreationToolTable" label="%EPackageCreationTool">
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="varible:element ">
+            <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="bugzilla459993CrossTable" label="%bugzillaCrossTable" domainClass="EPackage">
+      <ownedLineMappings name="EPackageCrossTable" domainClass="EPackage" semanticCandidatesExpression="feature:eAllContents"/>
+      <ownedCreateLine label="%EPackageCreationTool" mapping="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993CrossTable']/@ownedLineMappings[name='EPackageCrossTable']">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="varible:element ">
+          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages"/>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="EClassCrossTable" domainClass="EClass" semanticCandidatesExpression="feature:eAllContents"/>
+      <intersection lineMapping="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993CrossTable']/@ownedLineMappings[name='EPackageCrossTable']" columnMapping="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993CrossTable']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="feature:eClassifiers"/>
+      <createColumn label="%EClassCreationTool" mapping="//@ownedViewpoints[name='bugzilla459993']/@ownedRepresentations[name='bugzilla459993CrossTable']/@ownedColumnMappings.0">
+        <variables name="root" documentation="The semantic root element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="varible:element ">
+          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+        </firstModelOperation>
+      </createColumn>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

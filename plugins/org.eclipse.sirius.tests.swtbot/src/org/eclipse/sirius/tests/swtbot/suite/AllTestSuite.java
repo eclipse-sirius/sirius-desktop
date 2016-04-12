@@ -396,6 +396,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RepairTest.class);
         suite.addTestSuite(ValidationEmptyNameTest.class);
         suite.addTestSuite(ControlUncontrolWithOpenedRepresentationTest.class);
+        suite.addTestSuite(SiriusInternationalizationTest.class);
     }
 
     /**

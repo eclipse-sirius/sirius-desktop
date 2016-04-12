@@ -14,19 +14,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
@@ -35,11 +43,15 @@ import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
+
+import com.google.common.collect.Lists;
 
 /**
  * Some utilities.
@@ -47,6 +59,47 @@ import org.hamcrest.Matchers;
  * @author smonnier
  */
 public final class SWTBotUtils {
+
+    private static class LabelChecker implements BoolResult {
+
+        String labelToLookFor;
+
+        Composite compositeToInvestigate;
+
+        public LabelChecker(String label, Composite composite) {
+            super();
+            this.labelToLookFor = label;
+            this.compositeToInvestigate = composite;
+        }
+
+        @Override
+        public Boolean run() {
+            return findLabelAmongChildren(this.compositeToInvestigate);
+        }
+
+        /**
+         * Explore the children element of the {@link Composite} looking for the
+         * expected label.
+         * 
+         * @param composite
+         *            parent {@link Composite}
+         * @return true if the label is found among children, false otherwise
+         */
+        private boolean findLabelAmongChildren(Composite composite) {
+            boolean result = false;
+            for (Control child : composite.getChildren()) {
+                if (child instanceof Composite) {
+                    result = result || findLabelAmongChildren((Composite) child);
+                } else if (child instanceof Label) {
+                    if (labelToLookFor.equals(((Label) child).getText())) {
+                        return true;
+                    }
+                }
+            }
+            return result;
+        }
+
+    }
 
     /**
      * 60 seconds of timeout (long timeout but big session can be long to open).
@@ -504,4 +557,112 @@ public final class SWTBotUtils {
         }
         return foundTreeItem;
     }
+
+    /**
+     * Validate that there is a Label having a specific text in a
+     * {@link SWTBotShell}.
+     * 
+     * @param labelToLookFor
+     *            text to look for
+     * @param shell
+     *            {@link SWTBotShell} to investigate
+     */
+    public static void checkLabelInShell(String labelToLookFor, SWTBotShell shell) {
+        Assert.assertTrue("No label '" + labelToLookFor + "' has been found in the given Composite", UIThreadRunnable.syncExec(bot.getDisplay(), new LabelChecker(labelToLookFor, shell.widget)));
+    }
+
+    /**
+     * Validate that there is a {@link SWTBotShell} having a specific title.
+     * 
+     * @param title
+     *            the expected title
+     * @return the {@link SWTBotShell} having the specific title
+     */
+    public static SWTBotShell checkForShellWithTitle(String title) {
+        // Validate that TOOL_TITLE_LABEL is properly displayed
+        SWTBotShell[] shells = bot.shells();
+        SWTBotShell shellWithTitle = null;
+        for (SWTBotShell swtBotShell : shells) {
+            if (title != null && title.equals(swtBotShell.getText())) {
+                shellWithTitle = swtBotShell;
+            }
+        }
+        Assert.assertNotNull("No shell was found with label: " + title, shellWithTitle);
+        return shellWithTitle;
+    }
+
+    /**
+     * Checks that the tools section label and tools label are displayed as
+     * expected.
+     * 
+     * @param editor
+     *            the current {@link SWTBotSiriusDiagramEditor}
+     * @param labelsToCheck
+     *            the label to check in the palette
+     */
+    public static void checkLabelsInPalette(SWTBotSiriusDiagramEditor editor, List<String> labelsToCheck) {
+        List<SWTBotGefEditPart> children = editor.getPaletteRootEditPartBot().children();
+        for (SWTBotGefEditPart child : children) {
+            child.part();
+            SWTBotUtils.checkLabelsInPalette(child, labelsToCheck);
+        }
+        Assert.assertTrue("The following tools or sections have not been found in the palette: " + labelsToCheck, labelsToCheck.isEmpty());
+    }
+
+    private static void checkLabelsInPalette(SWTBotGefEditPart swtBotGefEditPart, List<String> labelsToCheck) {
+        if (labelsToCheck.isEmpty()) {
+            return;
+        }
+        List<SWTBotGefEditPart> children = swtBotGefEditPart.children();
+        for (SWTBotGefEditPart child : children) {
+            if (child.part() instanceof GraphicalEditPart && ((GraphicalEditPart) child.part()).getModel() instanceof PaletteEntry) {
+                PaletteEntry paletteEntry = (PaletteEntry) ((GraphicalEditPart) child.part()).getModel();
+                if (labelsToCheck.contains(paletteEntry.getLabel())) {
+                    labelsToCheck.remove(paletteEntry.getLabel());
+                }
+            }
+            child.part();
+            checkLabelsInPalette(child, labelsToCheck);
+        }
+    }
+
+    /**
+     * Validate that each of the given label are available among contextual
+     * menus.
+     * 
+     * @param display
+     *            current {@link Display}
+     * @param control
+     *            the {@link Control} on which the contextual menus are checked
+     * @param labelsToCheck
+     *            the labels that should be available among contextual menus
+     * @return the parent menu containing the contextual menus
+     */
+    public static Menu checkContextualMenus(final Display display, final Control control, List<String> labelsToCheck) {
+        final List<String> labelToFind = Lists.newArrayList(labelsToCheck);
+        return UIThreadRunnable.syncExec(display, new WidgetResult<Menu>() {
+            public Menu run() {
+                checkMenu(control.getMenu());
+                Assert.assertTrue("Some label have not been found :" + labelToFind, labelToFind.isEmpty());
+                return control.getMenu();
+            }
+
+            private void checkMenu(Menu menu) {
+                try {
+                    menu.notifyListeners(SWT.Show, new Event());
+                    for (MenuItem menuItem : menu.getItems()) {
+                        if (labelToFind.contains(menuItem.getText())) {
+                            labelToFind.remove(menuItem.getText());
+                        }
+                        if (menuItem.getMenu() != null) {
+                            checkMenu(menuItem.getMenu());
+                        }
+                    }
+                } finally {
+                    menu.notifyListeners(SWT.Hide, new Event());
+                }
+            }
+        });
+    }
+
 }

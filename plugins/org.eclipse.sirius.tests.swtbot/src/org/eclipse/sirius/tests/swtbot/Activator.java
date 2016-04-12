@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -23,6 +28,8 @@ public class Activator extends AbstractUIPlugin {
 
     /** The shared instance */
     private static Activator plugin;
+
+    private static Set<Viewpoint> viewpoints;
 
     /**
      * The constructor
@@ -40,6 +47,8 @@ public class Activator extends AbstractUIPlugin {
     public void start(final BundleContext context) throws Exception {
         super.start(context);
         plugin = this;
+        viewpoints = new HashSet<Viewpoint>();
+        viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/data/unit/internationalization/bugzilla459993.odesign"));
     }
 
     /**
@@ -50,6 +59,13 @@ public class Activator extends AbstractUIPlugin {
     @Override
     public void stop(final BundleContext context) throws Exception {
         plugin = null;
+        if (viewpoints != null) {
+            for (final Viewpoint viewpoint : viewpoints) {
+                ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
+            }
+            viewpoints.clear();
+            viewpoints = null;
+        }
         super.stop(context);
     }
 

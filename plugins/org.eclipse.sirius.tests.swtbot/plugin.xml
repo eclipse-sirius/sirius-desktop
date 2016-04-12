@@ -150,4 +150,10 @@
         </borderSizeAttribute>
      </image>
   </extension>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.eclipse.sirius.tests.swtbot.Activator"
+               id="bugzilla459993.design"
+	       name="bugzilla459993">
+    </component>
+  </extension>
 </plugin>
