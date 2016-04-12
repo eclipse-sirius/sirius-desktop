@@ -119,7 +119,7 @@
 		<p>Diagrams support several kinds of graphical constructs: simple nodes, containers (which can contain other nodes or containers), lists, bordered nodes (nodes which appear on the side of other elements, typically to represent ports), and edges between all of these. Each kind of element supports a rich set of possible styles (shape and color).</p>
 		<p>As the specifier of Sirius diagrams, you have total control on how the elements in your semantic models are 
 			<em>represented</em> using the constructs provided by Sirius, and how they 
-			<em>behave</em>. In particular, this means the structure of the graphical elements shown on a diagram (which element contains which, how they are connected) does not have to match the &#8220;physical&#8221; structure of the semantic model being represented. The two are completely de-correlated, and you can choose to represent your semantic models in ways which make sense from various point of views.
+			<em>behave</em>. In particular, this means the structure of the graphical elements shown on a diagram (which element contains which, how they are connected) does not have to match the &#171;physical&#187; structure of the semantic model being represented. The two are completely de-correlated, and you can choose to represent your semantic models in ways which make sense from various point of views.
 		</p>
 		<h2 id="diagram_description">Diagram Description</h2>
 		<p>Diagrams are configured by creating a 
@@ -545,7 +545,7 @@
 			</tr>
 		</table>
 		<p>Most of the properties used to configure the various styles are self-explanatory. See the 
-			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.
+			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.
 		</p>
 		<p>
 			<strong>Gauge Style.</strong> The gauge style is more complex than the others and deserves a specific description. It is used to represent nodes as a (set of) gauges, which can be used for example as progress indicators.
@@ -599,7 +599,7 @@
 			<a href="../general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>By default, your node creation tools will be available on all the graphical elements which can contain an instance of the 
-			<em>Node Mappings</em> you specified in the tool, and users will see a &#8220;forbidden&#8221; sign if they try to apply the tool on an incompatible type of element. You can specify a 
+			<em>Node Mappings</em> you specified in the tool, and users will see a &#171;forbidden&#187; sign if they try to apply the tool on an incompatible type of element. You can specify a 
 			<em>Precondition</em> to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the 
 			<em>view element</em> on which the user has put the mouse. If it returns a false value, the tool&#8217;s application will be forbidden. Symmetrically, you can specify 
 			<em>Extra Mappings</em> (
@@ -636,7 +636,7 @@
 			<br/></div>
 		</p>
 		<p id="list_containers">
-			<strong>List Containers</strong> You can enable a special &#8220;list mode&#8221; for containers by setting the 
+			<strong>List Containers</strong> You can enable a special &#171;list mode&#187; for containers by setting the 
 			<em>Children Presentation</em> attribute to 
 			<em>List</em> in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes only) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
 		</p>
@@ -644,7 +644,7 @@
 			<img border="0" src="images/styles/List_container_with_items.png"/>
 		</p>
 		<p id="compartments">
-			<strong>Compartments</strong> You can enable a special &#8220;compartment mode&#8221; for containers by setting the 
+			<strong>Compartments</strong> You can enable a special &#171;compartment mode&#187; for containers by setting the 
 			<em>Children Presentation</em> attribute to 
 			<em>Horizontal Stack</em> or 
 			<em>Vertical Stack</em> in the mapping configuration. Region containers presents their children containers and lists as compartments, vertically or horizontally organized. They are sorted following the mapping order and the semantic candidates expression evaluation result of each mapping. The border style attributes of the Region&#8217;s styles are used to specify the compartments separators. The other style properties of Region container or Region mapping are used as usual.
@@ -705,7 +705,7 @@
 			<em>auto-sized</em>.
 		</p>
 		<p>Most of the properties used to configure the various styles are self-explanatory. See the 
-			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.
+			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.
 		</p>
 		<h4 id="container_tools">Container Tools</h4>
 		<p>See the 
@@ -718,7 +718,7 @@
 			<a href="../general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>By default, your container creation tools will be available on all the graphical elements which can contain an instance of the 
-			<em>Container Mappings</em> you specified in the tool, and users will see a &#8220;forbidden&#8221; sign if they try to apply the tool on an incompatible type of element. You can specify a 
+			<em>Container Mappings</em> you specified in the tool, and users will see a &#171;forbidden&#187; sign if they try to apply the tool on an incompatible type of element. You can specify a 
 			<em>Precondition</em> to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the 
 			<em>view element</em> on which the user has put the mouse. If it returns a false value, the tool&#8217;s application will be forbidden. Symmetrically, you can specify 
 			<em>Extra Mappings</em> (
@@ -944,12 +944,12 @@
 			<em>Direct Edit</em> tool is associated to the edge mapping.
 		</p>
 		<p>
-			<strong>Edge Folding.</strong> It can often be useful, from one end of the edge, to be able to hide the elements at the other end. Think for example when and edge is used to represent some kind of containment relationship between elements and you want to hide the &#8220;contents&#8221; of an element to concentrate on the rest of the diagram. You can allow end-users to do this be setting a 
+			<strong>Edge Folding.</strong> It can often be useful, from one end of the edge, to be able to hide the elements at the other end. Think for example when and edge is used to represent some kind of containment relationship between elements and you want to hide the &#171;contents&#187; of an element to concentrate on the rest of the diagram. You can allow end-users to do this be setting a 
 			<em>Folding Style</em> on an edge mapping (in the 
 			<em>Advanced</em> category). When the 
 			<em>Folding Style</em> is set to 
 			<em>Source</em> or 
-			<em>Target</em>, the element (node or container) at the source or target of the edge will have a small &#8220; - &#8221; sign in its top-left corner. If the user clicks on it, the edges instance of this mapping for which the element is a source (resp. target) will fold: the edges and the elements they are connected to at the other side will disappear from view. The behavior is recursive: if the elements hidden were connected to other elements using this kind edges, those too will be hidden. When an element has been folded, the &#8220; - &#8221; sign becomes a &#8220; + &#8221; sign which can be used to unfold the edges. This is useful when representing trees of elements: if you enable folding, users will be able with a single click to hide or reveal complete sub-hierarchies of elements.
+			<em>Target</em>, the element (node or container) at the source or target of the edge will have a small &#171; - &#187; sign in its top-left corner. If the user clicks on it, the edges instance of this mapping for which the element is a source (resp. target) will fold: the edges and the elements they are connected to at the other side will disappear from view. The behavior is recursive: if the elements hidden were connected to other elements using this kind edges, those too will be hidden. When an element has been folded, the &#171; - &#187; sign becomes a &#171; + &#187; sign which can be used to unfold the edges. This is useful when representing trees of elements: if you enable folding, users will be able with a single click to hide or reveal complete sub-hierarchies of elements.
 		</p>
 		<p>
 			<strong>Edge Centering.</strong> The edge source and edge target are not systematically oriented toward the center of the node, depending on where the edge has been created or moved by the end user. You can specify that an edge end (the source, target or both) will always be centered. The 
@@ -1029,7 +1029,7 @@
 		<p>On the opposite, you can specify 
 			<em>Extra Source Mappings</em> and 
 			<em>Extra Target Mappings</em> (
-			<em>Advanced</em> category)  which the user will be able to select as &#8220;virtual&#8221; source and targets, even though the real edge created by the tool will not be between these elements.
+			<em>Advanced</em> category)  which the user will be able to select as &#171;virtual&#187; source and targets, even though the real edge created by the tool will not be between these elements.
 		</p>
 		<p>
 			<strong>Reconnect Edge.</strong> The 
@@ -1074,31 +1074,31 @@
 		</p>
 		<ul>
 			<li>The 
-				<code>sourceView</code> is the graphical node &#8216;A&#8217;.
+				<code>sourceView</code> is the graphical node &#8249;A&#8250;.
 			</li>
 			<li>The 
-				<code>targetView</code> is the graphical node &#8216;B&#8217;.
+				<code>targetView</code> is the graphical node &#8249;B&#8250;.
 			</li>
 			<li>The 
-				<code>otherEnd</code> is the graphical node &#8216;C&#8217;, that has not changed during the reconnection.
+				<code>otherEnd</code> is the graphical node &#8249;C&#8250;, that has not changed during the reconnection.
 			</li>
 			<li>
-				<code>edgeView.sourceNode</code> is the graphical node &#8216;C&#8217;.
+				<code>edgeView.sourceNode</code> is the graphical node &#8249;C&#8250;.
 			</li>
 			<li>
-				<code>edgeView.targetNode</code> is the graphical node &#8216;B&#8217;.
+				<code>edgeView.targetNode</code> is the graphical node &#8249;B&#8250;.
 			</li>
 		</ul>
-		<p>For the semantic, we will consider that we represent &#8220;Box&#8221; and the link means &#8220;is contained in&#8221;:</p>
+		<p>For the semantic, we will consider that we represent &#171;Box&#187; and the link means &#171;is contained in&#187;:</p>
 		<ul>
 			<li>the 
-				<code>source</code> is the box &#8216;A&#8217;.
+				<code>source</code> is the box &#8249;A&#8250;.
 			</li>
 			<li>the 
-				<code>target</code> is the box &#8216;B&#8217;.
+				<code>target</code> is the box &#8249;B&#8250;.
 			</li>
 			<li>
-				<code>element</code> is the link &#8220;is contained&#8221; between &#8216;C&#8217; and &#8216;A&#8217;.
+				<code>element</code> is the link &#171;is contained&#187; between &#8249;C&#8250; and &#8249;A&#8250;.
 			</li>
 		</ul>
 		<h3 id="decorations">Decorations</h3>
@@ -1129,7 +1129,7 @@
 		<ul>
 			<li>NOTE : There is an exception to the rule of Conditional Styles:</li>
 		</ul>
-		<p>if a user customized a Node with a WorkspaceImage style (through the &#8220;Set style to workspace image&#8221; action), then if a new style is computed through the VSM (e.g. through a Conditional Style appliance), this new style will not override the WorkspaceImage style to preserve this last customization (See 
+		<p>if a user customized a Node with a WorkspaceImage style (through the &#171;Set style to workspace image&#187; action), then if a new style is computed through the VSM (e.g. through a Conditional Style appliance), this new style will not override the WorkspaceImage style to preserve this last customization (See 
 			<a href="../../user/diagrams/Diagrams.html#styleCustomizations">
 				<em>Style Customizations</em>
 			</a> ).
@@ -1231,7 +1231,7 @@
 		<p>The 
 			<em>Group Extension</em> elements (defined inside a tool section) allow you to add tools in a existing 
 			<em>Group</em> defined elsewhere. It can be used for example to merge tools defined in an additional layer into a group of tools defined in the default layer. You must select the existing 
-			<em>Group</em> to extend, and any tool declared in a group extension will be added in the targeted group by the &#8216;group&#8217; attribute.
+			<em>Group</em> to extend, and any tool declared in a group extension will be added in the targeted group by the &#8249;group&#8250; attribute.
 		</p>
 		<p>
 			<i>WARNING</i> : It was possible to define a ToolSection directly under a DiagramDescription, outside a layer. Defining tool section outside a layer is discouraged, that&#8217;s why this action has been deleted. The tool sections created before are still present but you should move it into the default layer since it is likely to be deleted in the future.
@@ -1608,7 +1608,7 @@
 			<em>Diagram Extension</em>. You should use regular expressions only to define a 
 			<em>Diagram Extension</em> that contains only 
 			<a href="#customization">style customization</a>.
-			<br/>These fields are considered as regular expressions if they contain at least one of these characters : &#8220;*&#8221;, &#8220;[&#8221;, &#8220;]&#8221;, &#8220;(&#8221;, &#8220;)&#8221; or &#8220;?&#8221;.
+			<br/>These fields are considered as regular expressions if they contain at least one of these characters : &#171;*&#187;, &#171;[&#187;, &#171;]&#187;, &#171;(&#187;, &#171;)&#187; or &#171;?&#187;.
 		</p>
 		<h3 id="mapping_imports">Mapping Imports</h3>
 		<p>A mapping import is used to 
@@ -1621,7 +1621,7 @@
 			<em>M2</em> which imports 
 			<em>M1</em>, then 
 			<em>M2</em> may override/overload some of the features of 
-			<em>M1</em> like a more specific &#8220;Semantic Candidate Expression&#8221; or a conditional style taking into account other specific aspects. When only 
+			<em>M1</em> like a more specific &#171;Semantic Candidate Expression&#187; or a conditional style taking into account other specific aspects. When only 
 			<em>L1</em> is activated the normal definition of 
 			<em>M1</em> is applied. If 
 			<em>L2</em> is also activated, 

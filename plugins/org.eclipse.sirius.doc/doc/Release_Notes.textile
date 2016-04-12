@@ -75,13 +75,21 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* <span class="label label-success">Added</span> A new system property named @org.eclipse.sirius.diagram.ui.svg.maxCacheSizeMB@ has been added. It can be used to tweak the maximum size (in megabytes) of pre-rendered SVG images to keep in cache. The default is 50, corresponding to 50MB of bitmaps of 4 8-bit channels. Increasing the limit can improve performance when using diagrams with a lot of SVG images, at the cost of increased memory usage.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ interface has been added to provide a customized tab-bar for a specific selection.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@ is an abstract implementation of @ITabbarContributor@ that allows reusing one or several of the default Sirius contribution items.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionShapePropertySectionSpec@ has been added to have a custom display in the VSM for provided basic shape.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart.createNodeFigure()@ has been created to factorize the @DNode2EditPart@ and @DNode4EditPart@ constructors.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure.setForbiddenSides(int...)@ has been added to set the figure forbidden sides on its parent.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure.getAuthorizedSides()@ has been added to retrieve the figure authorized side (by default all sides).
+* <span class="label label-success">Added</span> The following protected methods have been added to @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure@ : @String getKey(Graphics)@, @Image getImage(Rectangle, Graphics)@, @static boolean doRemoveFromCache(String)@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure@ now overrides the method @setBorder(Border border)@. It also provides the accessors for the new field @mainBorderSize@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure@ now inherits directly from @SVGFigure@ instead of @AbstractCachedSVGFigure@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure@  now inherits directly from @SVGFigure@ instead of @AbstractCachedSVGFigure@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure@ now implements interfaces @StyledFigure@, @ITransparentFigure@ and @ImageFigureWithAlpha@.
+* <span class="label label-danger">Removed</span> The following mehtods have been removed from @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure@: @NodeList getNodes(String)@, @Color getColor(Element, String)@, @void updateRenderingHints(Graphics)@, @staticImage toSWT(Device, BufferedImage)@, @boolean checkContentAvailable()@, @Rectangle2D getAreaOfInterest()@, @void setAreaOfInterest(Rectangle2D)@, @boolean isSpecifyCanvasWidth()@, @void setSpecifyCanvasWidth(boolean)@, @boolean isSpecifyCanvasHeight()@, @void setSpecifyCanvasHeight(boolean)@, @boolean getSpecifyCanvasWidth()@, @boolean getSpecifyCanvasHeight()@.
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ has been removed. Its functionality was merged directly into @SVGFigure@.
+* <span class="label label-danger">Removed</span> The static @org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure.createImageFigure(ContainerStyle)@ method has been removed; it was broken and not called anywhere.
 
 h4. Changes in @org.eclipse.sirius.ext.emf.ui@
 

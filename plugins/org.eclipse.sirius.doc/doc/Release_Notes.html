@@ -270,6 +270,9 @@
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A new system property named 
+				<code>org.eclipse.sirius.diagram.ui.svg.maxCacheSizeMB</code> has been added. It can be used to tweak the maximum size (in megabytes) of pre-rendered SVG images to keep in cache. The default is 50, corresponding to 50MB of bitmaps of 4 8-bit channels. Increasing the limit can improve performance when using diagrams with a lot of SVG images, at the cost of increased memory usage.
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor</code> interface has been added to provide a customized tab-bar for a specific selection.
 			</li>
@@ -291,10 +294,55 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure.getAuthorizedSides()</code> has been added to retrieve the figure authorized side (by default all sides).
 			</li>
+			<li><span class="label label-success">Added</span> The following protected methods have been added to 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure</code> : 
+				<code>String getKey(Graphics)</code>, 
+				<code>Image getImage(Rectangle, Graphics)</code>, 
+				<code>static boolean doRemoveFromCache(String)</code>.
+			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure</code> now overrides the method 
 				<code>setBorder(Border border)</code>. It also provides the accessors for the new field 
 				<code>mainBorderSize</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure</code> now inherits directly from 
+				<code>SVGFigure</code> instead of 
+				<code>AbstractCachedSVGFigure</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure</code>  now inherits directly from 
+				<code>SVGFigure</code> instead of 
+				<code>AbstractCachedSVGFigure</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure</code> now implements interfaces 
+				<code>StyledFigure</code>, 
+				<code>ITransparentFigure</code> and 
+				<code>ImageFigureWithAlpha</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> The following mehtods have been removed from 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure</code>: 
+				<code>NodeList getNodes(String)</code>, 
+				<code>Color getColor(Element, String)</code>, 
+				<code>void updateRenderingHints(Graphics)</code>, 
+				<code>staticImage toSWT(Device, BufferedImage)</code>, 
+				<code>boolean checkContentAvailable()</code>, 
+				<code>Rectangle2D getAreaOfInterest()</code>, 
+				<code>void setAreaOfInterest(Rectangle2D)</code>, 
+				<code>boolean isSpecifyCanvasWidth()</code>, 
+				<code>void setSpecifyCanvasWidth(boolean)</code>, 
+				<code>boolean isSpecifyCanvasHeight()</code>, 
+				<code>void setSpecifyCanvasHeight(boolean)</code>, 
+				<code>boolean getSpecifyCanvasWidth()</code>, 
+				<code>boolean getSpecifyCanvasHeight()</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> The class 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure</code> has been removed. Its functionality was merged directly into 
+				<code>SVGFigure</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> The static 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure.createImageFigure(ContainerStyle)</code> method has been removed; it was broken and not called anywhere.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.emf.ui">Changes in 
