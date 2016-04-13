@@ -183,7 +183,7 @@
 				<code>aql:name</code> with no explicit receiver will always be interpreted as an access to the 
 				<code>name</code> variable, and may result in an error if the variable in question is not defined. 
 			</li>
-			<li>&#171;Lambda&#187; expressions must always declare their parameters and use them explicitly. Again, there is no implicit 
+			<li>&#8220;Lambda&#8221; expressions must always declare their parameters and use them explicitly. Again, there is no implicit 
 				<code>self</code> in such a context. For example: <code>[self.eContents()&#45;&gt;select(name.startsWith(&apos;A&apos;))/]</code> becomes <code>aql:self.eContents()&#45;&gt;select(i | i.name.startsWith(&apos;A&apos;))</code> with an explicit declaration and usage of 
 				<code>i</code> in AQL.
 			</li>
@@ -241,7 +241,7 @@
 			<code>filter(ExpectedType)</code> to help Sirius. Note that if the actual type at runtime is not compatible with 
 			<code>ExpectedType</code>, the rest of your expression will silently be ignored.
 		</p>
-		<p>In the context of Sirius, you have access to a special feature which can be used to follow &#171;back-links&#187; or &#171;cross-references&#187;. From a given model element, this allows you to easily (and efficiently) find all the elements which refer to it in the scope of the models and representations in the same modeling project. This feature is available through the 
+		<p>In the context of Sirius, you have access to a special feature which can be used to follow &#8220;back-links&#8221; or &#8220;cross-references&#8221;. From a given model element, this allows you to easily (and efficiently) find all the elements which refer to it in the scope of the models and representations in the same modeling project. This feature is available through the 
 			<code>eInverse()</code> method, which can be used on any model element inside an Acceleo expression.
 		</p>
 		<p>Note that in most cases, expressions in Sirius are evaluated in a context where 

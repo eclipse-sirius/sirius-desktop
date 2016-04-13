@@ -69,7 +69,7 @@
 			<code>FileModificationValidator</code>.
 		</p>
 		<h3 id="SemanticAccess">Semantic Access</h3>
-		<p>Every semantic access to model elements is done through the &#171;ModelAccessor&#187;. This accessor is the common facade of the Ecore intrinsic data access and of any kind of extended data access. It also handles the inter-weaving of the elements provided by both the Ecore semantic model and the annotations.</p>
+		<p>Every semantic access to model elements is done through the &#8220;ModelAccessor&#8221;. This accessor is the common facade of the Ecore intrinsic data access and of any kind of extended data access. It also handles the inter-weaving of the elements provided by both the Ecore semantic model and the annotations.</p>
 		<p>Having the permission to set/unset a value or to create an instance of the semantic model are therefore done through instances of this class and a permission authority coupled with this class may be used to prompt for permission or notify changes and element creations.</p>
 		<h3 id="SiriusModelAccess">Sirius Model Access</h3>
 		<p>Every access made to the viewpoint model checks whether it has the rights to create/delete/update an element, which means every possible creation or setting of a value automatically request the permission beforehand.</p>
@@ -77,7 +77,7 @@
 		<p>GMF models should be understood as the Annotation model used by GMF to keep track of the diagram data. It is composed of 
 			<code>Node</code>\ s, 
 			<code>Edge</code>\ s and positions for instance. The GMF model is automatically updated trough the 
-			<code>CannonicalEditPolicy</code> of every edit part in the diagram editor. We have virtually no control on that though we can tell if an edit part&#8217;s &#171;edit mode&#187; is enabled or not. If the edit mode is disabled then nothing 
+			<code>CannonicalEditPolicy</code> of every edit part in the diagram editor. We have virtually no control on that though we can tell if an edit part&#8217;s &#8220;edit mode&#8221; is enabled or not. If the edit mode is disabled then nothing 
 			<strong>should</strong> lead to a change in the GMF model.
 		</p>
 		<p>We ensure that when a 
@@ -90,13 +90,13 @@
 			<code>ModelAccessor</code>, it wouldn&#8217;t really change anything in a locked model. Yet since we don&#8217;t want the tool to be enabled on a locked element either, the EMFCommandFactory asks for permission before allowing the usage of a tool. When no permission is given, it will return an UnexecutableCommand.
 		</p>
 		<h3 id="PropertiesAccess">Properties Access</h3>
-		<p>Properties will ask for permission on a &#171;per instance&#187; basis right now, when not given, no CellEditor will be returned which means the feature won&#8217;t be editable.</p>
+		<p>Properties will ask for permission on a &#8220;per instance&#8221; basis right now, when not given, no CellEditor will be returned which means the feature won&#8217;t be editable.</p>
 		<h3 id="Notifyingthechanges">Notifying the changes</h3>
 		<p>The Permission authority should be notified on instances creation and modification. To this end the PermissionAuthority initialization will install a listener on the ResourceSet and will automatically be notified when a change occurs. This will also help in checking for unauthorized changes. In 
 			<strong>strict</strong> mode the permission authority will throw Exceptions when a change is made to a locked element. If the process was in a transactional environment, a rollback will then happen.
 		</p>
 		<h3 id="Accesserrors">Access errors</h3>
-		<p>The current implementation provides 2 modes for the ModelAccessor. The &#171;silent&#187; mode won&#8217;t complain about an invalid access on a locked element, it will simply ignore it. When not in &#171;silent&#187; mode, an Exception will be thrown in these cases. </p>
+		<p>The current implementation provides 2 modes for the ModelAccessor. The &#8220;silent&#8221; mode won&#8217;t complain about an invalid access on a locked element, it will simply ignore it. When not in &#8220;silent&#8221; mode, an Exception will be thrown in these cases. </p>
 		<h3 id="Status">Status</h3>
 		<p>Semantic Model accesses are handled through the command or properties. Extended information too. Notification are handled through the usual EMF notifiers + the notification of instance creation in the Model Accessor.</p>
 		<p>EditParts are disabled when the corresponding semantic element is locked. Permission listeners are set up to handle dynamic locking/unlocking.</p>

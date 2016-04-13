@@ -165,7 +165,7 @@
 		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The default value of the 
-				<em>Semantic Candidates Expression</em> for Tree Items has changed from an empty string (meaning &#171;any compatible element in the session&#187;) to 
+				<em>Semantic Candidates Expression</em> for Tree Items has changed from an empty string (meaning &#8220;any compatible element in the session&#8221;) to 
 				<code>feature:eAllContents</code> which only looks for compatible candidates inside the current element (recursively). The new behavior is more efficient on large models and consistent with what happens for diagrams. The change does not affect existing VSMs which continue to work as before whatever was the expression they used. Users who want the old behavior on specific mappings can simply remove the expression in the properties view.
 			</li>
 			<li>In the 
@@ -198,7 +198,7 @@
 			<code>org.eclipse.diagram</code> again.
 		</p>
 		<p>Unlike, the 
-			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a>, a simple &#171;Organize Imports&#187; operation is not enough. First, you will probably need to add dependencies to 
+			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a>, a simple &#8220;Organize Imports&#8221; operation is not enough. First, you will probably need to add dependencies to 
 			<code>org.eclipse.sirius.diagram</code>, 
 			<code>org.eclipse.sirius.diagram.ui</code> or 
 			<code>org.eclipse.sirius.editor.diagram</code> in the MANIFEST.MF of your projects that depend on Sirius diagram classes. The dependencies to add depend on what you really use.
@@ -625,7 +625,7 @@
 				<code>Multimap</code>.
 			</li>
 			<li>
-				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()</code> method has been removed. There is no replacement for this method documented as &#171;Not intended to be used by client&#187;.
+				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()</code> method has been removed. There is no replacement for this method documented as &#8220;Not intended to be used by client&#8221;.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
@@ -869,27 +869,27 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
-			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
+			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8216;...&#8217; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
 		<h3 id="APIChanges4">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
-		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
+		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#8220;library extensions&#8221;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
-			<code>LIB</code> is the name of a library or component Sirius depends on. These plug-ins are used to isolate generic code which extends existing libraries with features and helpers needed for Sirius, but which do not depend on Sirius themselves. A relatively large part of the code in Sirius is of this kind: things that could/should be in EMF, GMF, Eclipse itself, etc. and which are not Sirius-specific but which make it easier to build Sirius itself. Sirius 1.0M5 introduces several of these library extensions and starts to fill them with existing classes which were &#171;hidden&#187; inside Sirius and are now exposed in library extensions. Most of the time, existing code which used the Sirius API will only need to:
+			<code>LIB</code> is the name of a library or component Sirius depends on. These plug-ins are used to isolate generic code which extends existing libraries with features and helpers needed for Sirius, but which do not depend on Sirius themselves. A relatively large part of the code in Sirius is of this kind: things that could/should be in EMF, GMF, Eclipse itself, etc. and which are not Sirius-specific but which make it easier to build Sirius itself. Sirius 1.0M5 introduces several of these library extensions and starts to fill them with existing classes which were &#8220;hidden&#8221; inside Sirius and are now exposed in library extensions. Most of the time, existing code which used the Sirius API will only need to:
 		</p>
 		<ol>
 			<li>Add the necessary 
 				<code>Import-Package</code> (recommended) or 
 				<code>Require-Bundle</code> to depend on the library extension(s) where the code they use now lives;
 			</li>
-			<li>Perform a simple &#171;Organize Imports&#187; operation, which should find the classes and interfaces in their new locations.</li>
+			<li>Perform a simple &#8220;Organize Imports&#8221; operation, which should find the classes and interfaces in their new locations.</li>
 		</ol>
 		<h4 id="separationOfDiagramSpecificConcept-step1">Move diagram-specific EClasses into a separate EPackage</h4>
 		<p>For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
 			<br/>This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved.
 		</p>
-		<p>Most of the time, existing code which used these Sirius EClasses will only need to perform a simple &#171;Organize Imports&#187; operation, which should find the classes and interfaces in their new locations.
-			<br/>The &#171;Organize imports&#187; is not sufficient in case of imported classes existing several time in different packages (
+		<p>Most of the time, existing code which used these Sirius EClasses will only need to perform a simple &#8220;Organize Imports&#8221; operation, which should find the classes and interfaces in their new locations.
+			<br/>The &#8220;Organize imports&#8221; is not sufficient in case of imported classes existing several time in different packages (
 			<code>EFactory</code> classes for example with 
 			<code>DescriptionFactory</code>, or 
 			<code>EPackage</code> classes for example with 
@@ -1304,7 +1304,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</li>
 		</ul>
 		<h2 id="sirius0.9">Changes in Sirius 0.9.0</h2>
-		<p>Version 0.9.0 is the first release under the Sirius name and under the Eclipse Foundation umbrella. Except for the few cases mentioned below (in the &#171;Other API Changes&#187;, &#171;Specifier-Visible Changes&#187; and &#171;User-Visible Changes&#187; sections), Sirius 0.9.0 is functionally equivalent to the latest version of Viewpoint (version 6.10), which was the name of the project before it was open sourced at Eclipse. See the rest of the documentation for the complete list of feature of the Sirius platform.</p>
+		<p>Version 0.9.0 is the first release under the Sirius name and under the Eclipse Foundation umbrella. Except for the few cases mentioned below (in the &#8220;Other API Changes&#8221;, &#8220;Specifier-Visible Changes&#8221; and &#8220;User-Visible Changes&#8221; sections), Sirius 0.9.0 is functionally equivalent to the latest version of Viewpoint (version 6.10), which was the name of the project before it was open sourced at Eclipse. See the rest of the documentation for the complete list of feature of the Sirius platform.</p>
 		<h3 id="MigratingfromObeoDesignerorViewpointtoSirius">Migrating from Obeo Designer or Viewpoint to Sirius</h3>
 		<p>If you have existing projects which used this technology before it became Eclipse Sirius and want to migrate to Sirius, you must:</p>
 		<ol>
@@ -1328,9 +1328,9 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.componentization</code> extension point id. The identifier changes for the other extension points follow the same rules as the name changes of the plug-ins they are defined in.
 			</li>
 			<li>The migration of your VSMs (
-				<code>*.odesign</code> files) is automatic: simply open your files once in the VSM editor, perform some no-op change to make the editor &#171;dirty&#187; and save it. The saved version will have been migrated to Sirius.
+				<code>*.odesign</code> files) is automatic: simply open your files once in the VSM editor, perform some no-op change to make the editor &#8220;dirty&#8221; and save it. The saved version will have been migrated to Sirius.
 			</li>
-			<li>If you had Java code which used the Viewpoint APIs, you will need to update it to use the Sirius APIs. A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace. The Viewpoint code base and APIs used the term &#171;Viewpoint&#187; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names were changed to use &#171;Sirius&#187; instead, so you may need to adjust some names in your code beyond just updating the imports (for example, 
+			<li>If you had Java code which used the Viewpoint APIs, you will need to update it to use the Sirius APIs. A simple &#8220;Source &gt; Organize Imports&#8221; on your source folders should find most classes you used in their new namespace. The Viewpoint code base and APIs used the term &#8220;Viewpoint&#8221; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names were changed to use &#8220;Sirius&#8221; instead, so you may need to adjust some names in your code beyond just updating the imports (for example, 
 				<code>ViewpointControlCommand</code> is now 
 				<code>SiriusControlCommand</code>).
 			</li>
@@ -1345,7 +1345,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<h4 id="MigratingModelingProjectsandRepresentationFiles">Migrating Modeling Projects and Representation Files</h4>
 		<ul>
 			<li>First migrate any modeler definitions used by your modeling projects and representation files (see the section above).</li>
-			<li>Modeling projects created using Viewpoint will not be recognized directly by Sirius, because the nature identfier has changed. You must use the &#171;Configure/Convert to Modeling Project&#187; action in the project&#8217;s context menu to make it a Sirius-compatible modeling project (see the section below for the technical details of the change).</li>
+			<li>Modeling projects created using Viewpoint will not be recognized directly by Sirius, because the nature identfier has changed. You must use the &#8220;Configure/Convert to Modeling Project&#8221; action in the project&#8217;s context menu to make it a Sirius-compatible modeling project (see the section below for the technical details of the change).</li>
 			<li>The migration of you representation files (
 				<code>*.aird</code>) is performed automatically when they are loaded in memory. It will become permanent the first time you save it (you can force this by opening a representation, making some arbitrary change and saving the session).
 			</li>
@@ -1521,20 +1521,20 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</tr>
 		</table>
 		<h4 id="JavaPackagesandClassesNames">Java Packages and Classes Names</h4>
-		<p>The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed). A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace.</p>
-		<p>The Viewpoint code base and APIs used the term &#171;Viewpoint&#187; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names where changed to use &#171;Sirius&#187; instead (for example, 
+		<p>The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed). A simple &#8220;Source &gt; Organize Imports&#8221; on your source folders should find most classes you used in their new namespace.</p>
+		<p>The Viewpoint code base and APIs used the term &#8220;Viewpoint&#8221; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names where changed to use &#8220;Sirius&#8221; instead (for example, 
 			<code>ViewpointControlCommand</code> is now 
 			<code>SiriusControlCommand</code>).
 		</p>
 		<h4 id="ModelsnamespaceURIs">Models namespace URIs</h4>
-		<p>All namespace URIs have also been changed from &#171;http://www.obeo.fr/dsl/viewpoint*&#187; to &#171;http://www.eclipse.org/sirius/&#187;.</p>
+		<p>All namespace URIs have also been changed from &#8220;http://www.obeo.fr/dsl/viewpoint*&#8221; to &#8220;http://www.eclipse.org/sirius/&#8221;.</p>
 		<p>If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.</p>
 		<h3 id="NatureID">Nature ID</h3>
 		<p>The modeling project has a specific nature (
 			<code>org.eclipse.sirius.nature.modelingproject</code>).
-			<br/>If you have modeling project created with Viewpoint, you must launch the action &#171;Configure/Convert to Modeling Project&#187; to replace old nature id (
+			<br/>If you have modeling project created with Viewpoint, you must launch the action &#8220;Configure/Convert to Modeling Project&#8221; to replace old nature id (
 			<code>fr.obeo.dsl.viewpoint.nature.modelingproject</code>) by the new one.
-			<br/>If you have many modeling projects to &#171;migrate&#187;, you can easily make a script to replace 
+			<br/>If you have many modeling projects to &#8220;migrate&#8221;, you can easily make a script to replace 
 			<code>fr.obeo.dsl.viewpoint.nature.modelingproject</code> by 
 			<code>org.eclipse.sirius.nature.modelingproject</code> in all 
 			<code>.project</code> file of each modeling projects.

@@ -304,7 +304,7 @@
 			<a href="#line_mappings">line mappings</a>, except that:
 		</p>
 		<ul>
-			<li>they can not be nested (there are no &#171;sub-columns&#187; like there are sub-lines), and thus can not &#171;reuse&#187; column mappings either;</li>
+			<li>they can not be nested (there are no &#8220;sub-columns&#8221; like there are sub-lines), and thus can not &#8220;reuse&#8221; column mappings either;</li>
 			<li>they can have an 
 				<em>Initial width</em> (set in the 
 				<em>Advanced</em> category). 
@@ -329,17 +329,17 @@
 		</p>
 		<p>There are two slightly different use cases for intersection mapping, which use different sub-sets of the remaining properties:</p>
 		<ol>
-			<li>Intersections which represent a relation between the element on a line and the element on a column. For example, if both lines and columns represented UML classes, this could be the &#171;super-class&#187; reference between a class and those it inherits from;</li>
+			<li>Intersections which represent a relation between the element on a line and the element on a column. For example, if both lines and columns represented UML classes, this could be the &#8220;super-class&#8221; reference between a class and those it inherits from;</li>
 			<li>Intersections which represent a semantic element (instead of just a relation) which is itself related to both the element on the line and the element on a column. To continue with the UML example, this would be used to represent UML Associations, which are full-blown objects representing a relationship between classes.</li>
 		</ol>
 		<p>If you are familiar with it, this is similar to 
 			<em>Relation Based Edges</em> and 
 			<em>Element Based Edges</em> in Sirius diagrams.
 		</p>
-		<p>In the first case (&#171;relation-based intersection&#187;), the semantic element of a cell will the the semantic element of the cell&#8217;s line. To configure such an intersection, you must only set the 
+		<p>In the first case (&#8220;relation-based intersection&#8221;), the semantic element of a cell will the the semantic element of the cell&#8217;s line. To configure such an intersection, you must only set the 
 			<em>Column Finder Expression</em>: from a line&#8217;s semantic target element, it should return the semantic element of the column in which the cell should appear.
 		</p>
-		<p>The second use case (&#171;element-based intersection&#187;) is enabled by setting the 
+		<p>The second use case (&#8220;element-based intersection&#8221;) is enabled by setting the 
 			<em>Use Domain Class</em> flag in the 
 			<em>Domain Based</em> category. You must then indicate the 
 			<em>Domain Class</em> of the elements which will be represented by the cells, and the 
@@ -362,7 +362,7 @@
 		<p>Intersection mappings can contain two kinds of tools:</p>
 		<ul>
 			<li>
-				<em>Label Edit</em> tools are standard &#171;direct edit&#187; tools, which allow end-users to edit a cell&#8217;s label. You can specify the actual changes in the model in the tool&#8217;s body.
+				<em>Label Edit</em> tools are standard &#8220;direct edit&#8221; tools, which allow end-users to edit a cell&#8217;s label. You can specify the actual changes in the model in the tool&#8217;s body.
 			</li>
 			<li>
 				<em>Create Cell Tools</em> are used when the user edits an initially empty cell, where there is no relation (or element relating) the line and column. It is defined like a 

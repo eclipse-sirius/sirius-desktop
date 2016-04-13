@@ -116,7 +116,7 @@
 		</ul>
 		<p>Most of the specific features and restrictions of sequence diagrams compared to other diagrams derive from this strong guarantee that at all time, the graphical (vertical) order of the elements you see on the diagram match exactly the semantic order of the events which exist in the underlying model.</p>
 		<h2 id="restrictions">Restrictions and Limitations</h2>
-		<p>In order to guarantee the strong guarantee described above, some of the features present on normal diagrams are not supported, or even completely disabled on sequence diagrams. Basically, anything which would make it possible on a normal diagram to have meaningful semantic elements not visible on the diagram is forbidden. This would make it impossible for Sirius to keep consistent tracking of the &#171;position&#187; of these invisible elements relative to the ones which are visible.</p>
+		<p>In order to guarantee the strong guarantee described above, some of the features present on normal diagrams are not supported, or even completely disabled on sequence diagrams. Basically, anything which would make it possible on a normal diagram to have meaningful semantic elements not visible on the diagram is forbidden. This would make it impossible for Sirius to keep consistent tracking of the &#8220;position&#8221; of these invisible elements relative to the ones which are visible.</p>
 		<ul>
 			<li>
 				<em>Layers</em>: sequence diagrams may define optional layers, as long as they do not make graphical elements appear or disappear on the diagram when they are selected or de-selected. Layers which contribute new tools in the palette for example are fine.
@@ -133,7 +133,7 @@
 		</ul>
 		<h2 id="layout">Automatic Layout</h2>
 		<p>The 
-			<em>Arrange All</em> command which launches an automatic layout of all the elements on a diagram has been completely customized for sequence diagrams. Arranging a sequence diagram will keep the relative positions of all the elements, but reduce any un-needed vertical or horizontal spaces. All elements will be resized to the minimum size necessary, and &#171;packed&#187; towards the top-left corner of the diagram. This results in a diagram which uses the minimum space required to present all the elements, while keeping enough white-space between them to be easy to read.
+			<em>Arrange All</em> command which launches an automatic layout of all the elements on a diagram has been completely customized for sequence diagrams. Arranging a sequence diagram will keep the relative positions of all the elements, but reduce any un-needed vertical or horizontal spaces. All elements will be resized to the minimum size necessary, and &#8220;packed&#8221; towards the top-left corner of the diagram. This results in a diagram which uses the minimum space required to present all the elements, while keeping enough white-space between them to be easy to read.
 		</p>
 		<h2 id="elements">Sequence Diagram Elements</h2>
 		<p>This section presents each type of elements specific to sequence diagrams which are supported by Sirius, and their specificities (if any). Note that not all sequence diagrams will support all kinds of elements; this depends on the diagram&#8217;s configuration.</p>
@@ -189,7 +189,7 @@
 		</p>
 		<p>When you move life-lines horizontally, you can change their left-to-right order. If required, the system may move some other life-lines to ensure there is always some minimal horizontal blank space between two consecutive life-lines.</p>
 		<h3 id="lifelines_header">Life-lines header</h3>
-		<p>When a scenario diagram is higher than the displayed area, reading the last messages of the diagram makes the instance role of the life-lines not visible and does not help to locate the source and the target of a message. You can keep life-line header visible by activating &#171;Display header&#187; into 
+		<p>When a scenario diagram is higher than the displayed area, reading the last messages of the diagram makes the instance role of the life-lines not visible and does not help to locate the source and the target of a message. You can keep life-line header visible by activating &#8220;Display header&#8221; into 
 			<code>Preferences &gt; Sirius &gt; Sirius Diagram &gt; Appearance</code>. This preference is enabled by default.
 		</p>
 		<p>
@@ -205,7 +205,7 @@
 		<p>Executions usually represent a time interval during which one of the participants in the sequence is active. They are represented by vertical rectangles superposed to the corresponding life-line, or to another execution (recursively).</p>
 		<p>The example below show a single life-line with five executions on it: two are top-level executions directly on the life-line itself, while the rest are sub-executions of others.</p> 
 		<img border="0" src="images/executions.png"/>
-		<p>Note that not all sequence diagram modelers will allow for the creation of &#171;raw&#187; executions like these, which are not connected to messages. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
+		<p>Note that not all sequence diagram modelers will allow for the creation of &#8220;raw&#8221; executions like these, which are not connected to messages. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
 		<h3 id="BasicMessages">Basic Messages</h3>
 		<p>Basic messages represent some form of communication between lifelines. They are represented by horizontal arrows between lifelines (or executions on lifelines).</p>
 		<p>The example below shows three lifelines and three messages. Note that the last one, 
@@ -266,7 +266,7 @@
 		<p>A lost/found message can be moved vertically like other messages. Align commands are available for lost and found message ends.</p>
 		<h3 id="InteractionUsesandStates">Interaction Uses and States</h3>
 		<p>
-			<em>Interaction Uses</em> are constructions which usually represent &#171;shortcuts&#187;, indicating that some complex interaction, which may be defined in another sequence diagrams, occurs at some point without cluttering the current diagram. They are represented by rectangles centered on the lifeline(s) which are concerned. They can contain a label in the top-left corner, indicating what kind of shortcut they represent, and another label (not editable directly) centered in the rectangle. Interaction uses may 
+			<em>Interaction Uses</em> are constructions which usually represent &#8220;shortcuts&#8221;, indicating that some complex interaction, which may be defined in another sequence diagrams, occurs at some point without cluttering the current diagram. They are represented by rectangles centered on the lifeline(s) which are concerned. They can contain a label in the top-left corner, indicating what kind of shortcut they represent, and another label (not editable directly) centered in the rectangle. Interaction uses may 
 			<em>cover</em> several lifelines.
 		</p>
 		<p>

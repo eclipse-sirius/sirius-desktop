@@ -134,7 +134,7 @@
 				<em>dialect</em> is a kind of representation supported by Sirius. Out of the box, Sirius supports three dialects: diagrams, tables, and trees. Sequence diagrams and cross-tables, which are special kinds of diagrams (resp. tables) can also be considered of as dialects, although technically they are not.
 			</li>
 			<li>a 
-				<em>representation</em> is a particular diagram, table, or tree which you created on your semantic model. It is simply a more general term than &#171;diagram&#187; which is also usable for other dialects.
+				<em>representation</em> is a particular diagram, table, or tree which you created on your semantic model. It is simply a more general term than &#8220;diagram&#8221; which is also usable for other dialects.
 			</li>
 			<li>a 
 				<em>representation file</em> is a file in which Sirius stores all informations related to which representations you created, what appears on them, the positions and colors of the elements, etc. This files have a 
@@ -161,7 +161,7 @@
 		<p>Representation files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.</p>
 		<h3 id="UICHanges">User Interface Changes</h3>
 		<p>You will notice some radical changes in the user interface. The most important change is the disappearance of the 
-			<em>Model Content</em> view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of &#171;Local Session&#187; has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.
+			<em>Model Content</em> view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of &#8220;Local Session&#8221; has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.
 		</p>
 		<p>The recommended way to use Sirius is now to use the new notion of 
 			<em>Modeling Project</em> described below. If you already have existing Sirius representation files (
@@ -179,7 +179,7 @@
 			<li>A 
 				<a href="#ModelExplorer">
 					<em>Model Explorer</em>
-				</a>, which is the main UI to interact with your models. (For users of previous versions, this explorer includes directly all the features which were found in the &#171;Model Content&#187; view before).
+				</a>, which is the main UI to interact with your models. (For users of previous versions, this explorer includes directly all the features which were found in the &#8220;Model Content&#8221; view before).
 			</li>
 			<li>An 
 				<em>Outline</em> view, which provides a structural overview of the document or model currently opened. For diagrams, it shows a miniature view of the whole diagram on which you can easily navigate to other parts of the diagram for large ones.
@@ -209,13 +209,13 @@
 		</p> 
 		<img border="0" src="images/model_explorer_view.png"/>
 		<p>In the example above, the 
-			<code>example</code> modeling project (note the blue &#171;M&#187; decorator on the project icon) contains a single semantic model, the 
+			<code>example</code> modeling project (note the blue &#8220;M&#8221; decorator on the project icon) contains a single semantic model, the 
 			<code>example.ecore</code> file, and a single representation file 
 			<code>representations.aird</code>. Both can be expanded directly from inside the 
 			<em>Model Explorer</em> view, to discover the structure of the semantic model and the graphical representations which already exist.
 		</p>
 		<p>The 
-			<em>Model Explorer</em> supports the &#171;Link with Editor&#187; feature, which can be enabled by pressing the icon in the top right corner of the view (the one with two horizontal arrows, pressed in the screenshot above). When this mode is enabled, if you have a representation opened, clicking anywhere on it will automatically select the corresponding semantic element(s) inside the 
+			<em>Model Explorer</em> supports the &#8220;Link with Editor&#8221; feature, which can be enabled by pressing the icon in the top right corner of the view (the one with two horizontal arrows, pressed in the screenshot above). When this mode is enabled, if you have a representation opened, clicking anywhere on it will automatically select the corresponding semantic element(s) inside the 
 			<em>Model Explorer</em> (expanding the project and files if necessary). Conversely, if you select one or several semantic element(s) from one of your semantic models in the 
 			<em>Model Explorer</em> view and if these elements are represented somewhere on the opened editor, they will be automatically selected. This can be very useful when you have many projects and representation or large representations to avoid getting lost.
 		</p>
@@ -225,7 +225,7 @@
 			<code>Element</code> in the search box, only the model elements whose name starts with 
 			<code>Element</code> will be shown. You can use the 
 			<code>*</code> and 
-			<code>?</code> special characters in your search string to mean respectively &#171;any text&#187; (including none) and &#171;any single character&#187;. For example the search string 
+			<code>?</code> special characters in your search string to mean respectively &#8220;any text&#8221; (including none) and &#8220;any single character&#8221;. For example the search string 
 			<code>*Element</code> will show all elements whose name 
 			<em>contains</em> the string 
 			<code>Element</code> anywhere.
@@ -280,7 +280,7 @@
 			<em>New &gt; Modeling Project</em>.
 		</p> 
 		<img border="0" src="images/new_project1.png"/>
-		<p>A wizard opens, asking for a mandatory project name. Entering an invalid project name will result in an error message. By default, the modeling project will be created in the workspace&#8217;s location, but this can be changed: just uncheck &#171;Use default location&#187; and enter the path to the location where you want your modeling project to be created.</p> 
+		<p>A wizard opens, asking for a mandatory project name. Entering an invalid project name will result in an error message. By default, the modeling project will be created in the workspace&#8217;s location, but this can be changed: just uncheck &#8220;Use default location&#8221; and enter the path to the location where you want your modeling project to be created.</p> 
 		<img border="0" src="images/new_project2.png"/>
 		<p>When you are done, click 
 			<em>Finish</em> to actually create the modeling project. It will appear in the 
