@@ -93,6 +93,17 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     }
 
     /**
+     * Creates the Concern Selection contribution item, if needed.
+     * 
+     * @param part
+     *            the diagram workbench part.
+     * @return the {@link IContributionItem} or null of it is not needed.
+     */
+    protected IContributionItem createConcernContribution(IDiagramWorkbenchPart part) {
+        return contributorFactory.createConcernContribution(part);
+    }
+
+    /**
      * Creates the Select Hidden Elements contribution item.
      * 
      * @param part

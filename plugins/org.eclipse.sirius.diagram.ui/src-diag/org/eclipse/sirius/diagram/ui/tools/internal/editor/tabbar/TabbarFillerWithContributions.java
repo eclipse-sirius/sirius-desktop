@@ -153,6 +153,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
         addContributionItem(diagramContributionItems, REFRESH, contributionFactory.createRefreshContribution());
 
+        addContributionItem(diagramContributionItems, LAYER_FILTER, contributionFactory.createConcernContribution(part));
         addContributionItem(diagramContributionItems, LAYER_FILTER, contributionFactory.createFilterContribution(part, manager));
         addContributionItem(diagramContributionItems, LAYER_FILTER, contributionFactory.createLayerContribution(part, manager));
 

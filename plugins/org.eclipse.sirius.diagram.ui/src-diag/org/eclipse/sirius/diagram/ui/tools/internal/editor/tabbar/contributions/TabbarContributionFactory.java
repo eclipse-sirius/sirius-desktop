@@ -25,8 +25,10 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
@@ -144,6 +146,42 @@ public class TabbarContributionFactory {
         ContributionItem filterItem = filtersContribution.createContributionItem(manager);
         filtersContribution.setPart(part);
         return filterItem;
+    }
+
+    /**
+     * Creates the Concern Selection contribution item, if needed.
+     * 
+     * @param part
+     *            the diagram workbench part.
+     * @return the {@link IContributionItem} or null of it is not needed.
+     */
+    public IContributionItem createConcernContribution(IDiagramWorkbenchPart part) {
+        if (part instanceof DDiagramEditor) {
+            final DDiagram editorDiagram = (DDiagram) ((DDiagramEditor) part).getRepresentation();
+            DiagramDescription description = null;
+            if (editorDiagram != null) {
+                description = editorDiagram.getDescription();
+            }
+
+            if (description != null) {
+                IWorkbenchPartSite site = part.getSite();
+                if (site != null) {
+                    return createConcernItem(editorDiagram, description, site);
+                }
+            }
+        }
+        return null;
+    }
+
+    private IContributionItem createConcernItem(final DDiagram diagram, final DiagramDescription description, IWorkbenchPartSite site) {
+        if (description.getConcerns() != null && !description.getConcerns().getOwnedConcernDescriptions().isEmpty() && description.getConcerns().getOwnedConcernDescriptions().size() != 1) {
+            ConcernComboContributionItem item = new ConcernComboContributionItem(site.getPage(), ""); //$NON-NLS-1$
+            if (diagram != null) {
+                item.setDiagram(diagram);
+            }
+            return item;
+        }
+        return null;
     }
 
     /**
