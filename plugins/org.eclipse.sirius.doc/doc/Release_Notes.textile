@@ -44,7 +44,13 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.description.tool.SubVariable@ has been moved to @org.eclipse.sirius.viewpoint.description.SubVariable@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ methods no more update workspace resource about markers, now this must be done in caller on IllegalArgumentException catch in a workspace aware operation.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.canExecute()@ now returns false if a @DRepresentation@ cannot be refreshed, by calling @DialectManager.canRefresh(DRepresentation)@.
-* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2@ has been deleted and is now @MetamodelDescriptorProvider@.
+* <span class="label label-info">Modified</span> Several methods of @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper@ now return a @fr.obeo.dsl.viewpoint.DView@ instead of a @fr.obeo.dsl.viewpoint.DRepresentationContainer@:  
+** @findContainer(EObject, Viewpoint, Collection<DAnalysis>, DAnalysisSelector)@,
+** @findContainerForAddedRepresentation(EObject, Viewpoint, Collection<DAnalysis>, DAnalysisSelector, DRepresentation)@,
+** @findContainerForAddedRepresentation(DAnalysis, DRepresentation)@, @findFreeContainer(Viewpoint, Collection<DAnalysis>, DAnalysisSelector)@
+** @findFreeContainer(Viewpoint, Collection<DAnalysis>, DAnalysisSelector)@.
+* <span class="label label-danger">Removed</span> The @org.eclipse.sirius.viewpoint.DRepresentationContainer@ EClass have been removed. It used to be the only implementation of @org.eclipse.sirius.viewpoint.DView@, the @models@ derived transient reference has been moved to @DView@. An automatic migration has been added during the loading of the representation to handle this change.
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2@ has been deleted and is now @MetamodelDescriptorProvider@. 
 
 h4. Changes in @org.eclipse.sirius.common@
 
@@ -60,6 +66,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.business.api.query.DNodeQuery.getForbiddenSide()@ has been added to retrieve the forbidden sides of a DNode (make sense only for Border Nodes).
 * <span class="label label-info">Modified</span> The type of @org.eclipse.sirius.diagram.description.filter.VariableFilter.ownedVariable@ has been changed to @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@.
 * <span class="label label-info">Modified</span> The type of @org.eclipse.sirius.diagram.FilterVariableHistory.ownedValues@ has been changed to @org.eclipse.sirius.diagram.VariableValue@.
+* <span class="label label-info">Modified</span> The return type of @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.findRepresentationContainer(DDiagram)@ has been changed from @org.eclipse.sirius.viewpoint.DRepresentationContainer@ to @org.eclipse.sirius.viewpoint.DView@.
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.description.filter.FilterVariable@ has been removed. It is replaced by @org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable@.
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.setFilterContext()@ has been removed. This method was, in part, useless and is replaced by @org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()@.
 

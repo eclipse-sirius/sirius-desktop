@@ -181,9 +181,35 @@
 				<code>DRepresentation</code> cannot be refreshed, by calling 
 				<code>DialectManager.canRefresh(DRepresentation)</code>.
 			</li>
+			<li><span class="label label-info">Modified</span> Several methods of 
+				<code>org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper</code> now return a 
+				<code>fr.obeo.dsl.viewpoint.DView</code> instead of a 
+				<code>fr.obeo.dsl.viewpoint.DRepresentationContainer</code>:  
+				<ul>
+					<li>
+						<code>findContainer(EObject, Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector)</code>,
+					</li>
+					<li>
+						<code>findContainerForAddedRepresentation(EObject, Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector, DRepresentation)</code>,
+					</li>
+					<li>
+						<code>findContainerForAddedRepresentation(DAnalysis, DRepresentation)</code>, 
+						<code>findFreeContainer(Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector)</code>
+					</li>
+					<li>
+						<code>findFreeContainer(Viewpoint, Collection&lt;DAnalysis&gt;, DAnalysisSelector)</code>.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-danger">Removed</span> The 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationContainer</code> EClass have been removed. It used to be the only implementation of 
+				<code>org.eclipse.sirius.viewpoint.DView</code>, the 
+				<code>models</code> derived transient reference has been moved to 
+				<code>DView</code>. An automatic migration has been added during the loading of the representation to handle this change.
+			</li>
 			<li><span class="label label-danger">Removed</span> The class 
 				<code>org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2</code> has been deleted and is now 
-				<code>MetamodelDescriptorProvider</code>.
+				<code>MetamodelDescriptorProvider</code>. 
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
@@ -229,6 +255,11 @@
 			<li><span class="label label-info">Modified</span> The type of 
 				<code>org.eclipse.sirius.diagram.FilterVariableHistory.ownedValues</code> has been changed to 
 				<code>org.eclipse.sirius.diagram.VariableValue</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> The return type of 
+				<code>org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.findRepresentationContainer(DDiagram)</code> has been changed from 
+				<code>org.eclipse.sirius.viewpoint.DRepresentationContainer</code> to 
+				<code>org.eclipse.sirius.viewpoint.DView</code>.
 			</li>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.diagram.description.filter.FilterVariable</code> has been removed. It is replaced by 
