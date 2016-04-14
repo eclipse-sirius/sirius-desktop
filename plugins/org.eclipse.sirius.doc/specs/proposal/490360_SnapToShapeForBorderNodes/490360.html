@@ -24,6 +24,13 @@
 				<td>lredor</td>
 				<td>Initial version.</td>
 			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-04-14</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
 		</table>
 		<p>
 			<em>Relevant tickets</em> :
@@ -51,12 +58,31 @@
 			<br/>
 			<img border="0" src="snapToAnotherBorderNode.png"/>
 		</p>
+		<p>To avoid too many snap guides, only center guides (horizontal and vertical) will be considered. Indeed, generally, the border nodes are small and the main goal of this feature is to align the center of border nodes. So contrary to other shapes where the guides are for bottom, center and top, or left, middle and right. Only center and middle guides are used for border nodes.</p>
 		<h3 id="Collapsedbordernodes">Collapsed border nodes</h3>
 		<p>The border node can be collapsed (with a filter for example). In this case:</p>
 		<ul>
 			<li>If the moved border node is collapsed, the collapsed border node is snapped to other shapes (not its expanded bounds).</li>
 			<li>If the moved border node is snapped to a collapsed border node, the behavior will be the same as other kind of nodes currently. It will be snapped to the collapsed border node (and not to its expanded bounds).</li>
 		</ul>
+		<p>For example in the below screenshot:</p>
+		<ul>
+			<li>A &#8211; All border nodes are collapsed through a filter. A collapsed border node is aligned to another collapsed border node.</li>
+			<li>B &#8211; This is the result.</li>
+			<li>C &#8211; And if the filter is disabled, border node are expanded and always aligned.</li>
+		</ul>
+		<p>
+			<img border="0" src="collapsedSnapToCollapsed.png"/>
+		</p>
+		<p>Another example with a snap of a normal border node to a collapsed one:</p>
+		<ul>
+			<li>A &#8211; Some border nodes are collapsed through a filter. A standard border node is aligned to a collapsed border node.</li>
+			<li>B &#8211; This is the result.</li>
+			<li>C &#8211; And if the filter is disabled, border node is expanded and always aligned.</li>
+		</ul>
+		<p>
+			<img border="0" src="nonCollapsedSnapToCollapsed.png"/>
+		</p>
 		<h3 id="Knownlimitations">Known limitations</h3>
 		<p>As a reminder (See 
 			<a href="https://www.eclipse.org/sirius/doc/user/sequences/Sequence%20Diagrams.html#introduction)">Sequence diagram introduction</a>, the snap features (snap to grid or snap to shapes) are disabled in sequence diagrams. This will obviously also the case for border nodes even with this improvement.

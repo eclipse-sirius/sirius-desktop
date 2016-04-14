@@ -6,6 +6,7 @@ _Summary_: Allow the "Snap To Shapes" feature on border nodes.
 
 |_. Version |_. Status |_. Date        |_. Authors |_. Changes |
 | v0.1        | DRAFT    | 2016-03-24 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2016-04-14 | lredor    | Initial version. |
 
 _Relevant tickets_ :
 * "Bug 490360 - Allow the "Snap To Shapes" feature on border nodes":https://bugs.eclipse.org/bugs/show_bug.cgi?id=490360
@@ -22,11 +23,25 @@ The _Snap To Shapes_ feature is natively not supported by GMF. Probably because 
 But with the option to "snap to all shapes" (with F4 shortcut key), this feature becomes interesting even for border nodes. To align "in" border node with "out" border node for example:
 !snapToAnotherBorderNode.png!
 
+To avoid too many snap guides, only center guides (horizontal and vertical) will be considered. Indeed, generally, the border nodes are small and the main goal of this feature is to align the center of border nodes. So contrary to other shapes where the guides are for bottom, center and top, or left, middle and right. Only center and middle guides are used for border nodes.
+
 h3. Collapsed border nodes
 
 The border node can be collapsed (with a filter for example). In this case:
 * If the moved border node is collapsed, the collapsed border node is snapped to other shapes (not its expanded bounds).
 * If the moved border node is snapped to a collapsed border node, the behavior will be the same as other kind of nodes currently. It will be snapped to the collapsed border node (and not to its expanded bounds).
+
+For example in the below screenshot:
+* A - All border nodes are collapsed through a filter. A collapsed border node is aligned to another collapsed border node.
+* B - This is the result.
+* C - And if the filter is disabled, border node are expanded and always aligned.
+!collapsedSnapToCollapsed.png!
+
+Another example with a snap of a normal border node to a collapsed one:
+* A - Some border nodes are collapsed through a filter. A standard border node is aligned to a collapsed border node.
+* B - This is the result.
+* C - And if the filter is disabled, border node is expanded and always aligned.
+!nonCollapsedSnapToCollapsed.png!
 
 h3. Known limitations
 
