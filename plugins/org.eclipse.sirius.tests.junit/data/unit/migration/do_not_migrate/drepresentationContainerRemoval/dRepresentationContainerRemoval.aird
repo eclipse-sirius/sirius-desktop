@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_qabOcALgEeabsea8lH150Q" selectedViews="_D-oBcALhEeabsea8lH150Q" version="10.1.0.201509162000">
+  <semanticResources>dRepresentationContainerRemoval.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_D-oBcALhEeabsea8lH150Q">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_GGSRgALhEeabsea8lH150Q" name="DRepresentationContainerRemoval">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_GGSRgQLhEeabsea8lH150Q" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_GGSRggLhEeabsea8lH150Q"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_GG-1EALhEeabsea8lH150Q" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_GG-1EQLhEeabsea8lH150Q" type="Sirius" element="_GGSRgALhEeabsea8lH150Q" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_GHWogALhEeabsea8lH150Q" type="2002" element="_GGSRgwLhEeabsea8lH150Q">
+            <children xmi:type="notation:Node" xmi:id="_GIYjQALhEeabsea8lH150Q" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_GIbmkALhEeabsea8lH150Q" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_GIuhgALhEeabsea8lH150Q" type="3007" element="_GGSRhQLhEeabsea8lH150Q">
+                <children xmi:type="notation:Node" xmi:id="_GIvIkALhEeabsea8lH150Q" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_GIvIkQLhEeabsea8lH150Q" x="31"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_GJG8AALhEeabsea8lH150Q" type="3003" element="_GGSRhgLhEeabsea8lH150Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_GJG8AQLhEeabsea8lH150Q" fontName=".SF NS Text"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GJG8AgLhEeabsea8lH150Q"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_GIuhgQLhEeabsea8lH150Q" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GIuhggLhEeabsea8lH150Q" x="31" y="30" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_GIbmkQLhEeabsea8lH150Q"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_GIbmkgLhEeabsea8lH150Q"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_GHWogQLhEeabsea8lH150Q" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GHWoggLhEeabsea8lH150Q"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_GG-1EgLhEeabsea8lH150Q"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_GGSRgwLhEeabsea8lH150Q" name="P1">
+        <target xmi:type="ecore:EPackage" href="dRepresentationContainerRemoval.ecore#//P1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="dRepresentationContainerRemoval.ecore#//P1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_GGSRhALhEeabsea8lH150Q" borderSize="1" borderSizeComputationExpression="1" backgroundColor="233,185,110" foregroundColor="253,206,137">
+          <description xmi:type="style:FlatContainerStyleDescription" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']/@defaultLayer/@containerMappings[name='EPackage']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']/@defaultLayer/@containerMappings[name='EPackage']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_GGSRhQLhEeabsea8lH150Q" name="C1" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="dRepresentationContainerRemoval.ecore#//P1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="dRepresentationContainerRemoval.ecore#//P1/C1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_GGSRhgLhEeabsea8lH150Q" color="173,127,168">
+            <description xmi:type="style:SquareDescription" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']/@defaultLayer/@containerMappings[name='EPackage']/@subNodeMappings[name='EClass']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']/@defaultLayer/@containerMappings[name='EPackage']/@subNodeMappings[name='EClass']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_GGSRhwLhEeabsea8lH150Q"/>
+      <activatedLayers xmi:type="description_1:Layer" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']/@ownedRepresentations[name='DRepresentationContainerRemoval']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="dRepresentationContainerRemoval.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="dRepresentationContainerRemoval.odesign#//@ownedViewpoints[name='DRepresentationContainerRemoval']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

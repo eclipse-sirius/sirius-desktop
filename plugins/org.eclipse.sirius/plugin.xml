@@ -378,6 +378,10 @@
             class="org.eclipse.sirius.business.internal.migration.ReplaceModelsBySemanticResources"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.business.internal.migration.DRepresentationContainerToDViewMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated contribution -->
