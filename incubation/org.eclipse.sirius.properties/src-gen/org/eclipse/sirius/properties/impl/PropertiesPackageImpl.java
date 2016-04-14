@@ -894,6 +894,16 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EAttribute getWidgetDescription_IsEnabledExpression() {
+        return (EAttribute) widgetDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getTextDescription() {
         return textDescriptionEClass;
     }
@@ -2072,6 +2082,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         widgetDescriptionEClass = createEClass(PropertiesPackage.WIDGET_DESCRIPTION);
         createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION);
         createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION);
+        createEAttribute(widgetDescriptionEClass, PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION);
 
         textDescriptionEClass = createEClass(PropertiesPackage.TEXT_DESCRIPTION);
         createEAttribute(textDescriptionEClass, PropertiesPackage.TEXT_DESCRIPTION__VALUE_EXPRESSION);
@@ -2395,6 +2406,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getWidgetDescription_HelpExpression(), theDescriptionPackage.getInterpretedExpression(), "helpExpression", null, 0, 1, WidgetDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getWidgetDescription_IsEnabledExpression(), theDescriptionPackage.getInterpretedExpression(), "isEnabledExpression", null, 0, 1, WidgetDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(textDescriptionEClass, TextDescription.class, "TextDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTextDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, TextDescription.class, !EPackageImpl.IS_TRANSIENT,

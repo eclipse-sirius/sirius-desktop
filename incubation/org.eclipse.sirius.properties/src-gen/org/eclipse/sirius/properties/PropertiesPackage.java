@@ -656,13 +656,22 @@ public interface PropertiesPackage extends EPackage {
     int WIDGET_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>Widget Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int WIDGET_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 2;
+    int WIDGET_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.CONTROL_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -702,6 +711,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int TEXT_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
@@ -788,6 +806,15 @@ public interface PropertiesPackage extends EPackage {
     int BUTTON_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUTTON_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+
+    /**
      * The feature id for the '<em><b>Button Label Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -872,6 +899,15 @@ public interface PropertiesPackage extends EPackage {
     int LABEL_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LABEL_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+
+    /**
      * The feature id for the '<em><b>Body Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -945,6 +981,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int CHECKBOX_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CHECKBOX_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
@@ -1029,6 +1074,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int SELECT_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SELECT_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
@@ -1229,6 +1283,15 @@ public interface PropertiesPackage extends EPackage {
     int TEXT_AREA_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.TEXT_DESCRIPTION__HELP_EXPRESSION;
 
     /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEXT_AREA_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.TEXT_DESCRIPTION__IS_ENABLED_EXPRESSION;
+
+    /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1320,6 +1383,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int RADIO_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RADIO_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
@@ -1431,6 +1503,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int REFERENCE_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int REFERENCE_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Multiple</b></em>' attribute. <!--
@@ -1572,6 +1653,15 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Custom Expressions</b></em>' containment
@@ -3313,6 +3403,20 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EAttribute getWidgetDescription_HelpExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.WidgetDescription#getIsEnabledExpression
+     * <em>Is Enabled Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Is Enabled Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.WidgetDescription#getIsEnabledExpression()
+     * @see #getWidgetDescription()
+     * @generated
+     */
+    EAttribute getWidgetDescription_IsEnabledExpression();
 
     /**
      * Returns the meta object for class '
@@ -5139,6 +5243,15 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EAttribute WIDGET_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetDescription_HelpExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Is Enabled Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetDescription_IsEnabledExpression();
 
         /**
          * The meta object literal for the '

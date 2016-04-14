@@ -54,6 +54,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
 
             addLabelExpressionPropertyDescriptor(object);
             addHelpExpressionPropertyDescriptor(object);
+            addIsEnabledExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -85,6 +86,19 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
     }
 
     /**
+     * This adds a property descriptor for the Is Enabled Expression feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_isEnabledExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_isEnabledExpression_feature", "_UI_WidgetDescription_type"),
+                        PropertiesPackage.Literals.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -111,6 +125,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
         switch (notification.getFeatureID(WidgetDescription.class)) {
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
+        case PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

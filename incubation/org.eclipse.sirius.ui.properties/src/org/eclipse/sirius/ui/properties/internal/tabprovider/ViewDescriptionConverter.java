@@ -415,6 +415,7 @@ public class ViewDescriptionConverter {
         if (description != null) {
             description.setHelpExpression(widgetDescription.getHelpExpression());
             description.setLabelExpression(widgetDescription.getLabelExpression());
+            description.setIsEnabledExpression(widgetDescription.getIsEnabledExpression());
             this.widget2eefWidget.put(widgetDescription, description);
         }
 

@@ -69,6 +69,7 @@
     <genClasses image="false" ecoreClass="properties.ecore#//WidgetDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/labelExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/helpExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/isEnabledExpression"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>

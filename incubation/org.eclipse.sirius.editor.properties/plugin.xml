@@ -304,6 +304,14 @@
         <input type="org.eclipse.sirius.properties.TextDescription"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription.WidgetDescriptionIsEnabledExpressionPropertySection"
+               id="properties.section.widgetDescription.IsEnabledExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription.WidgetDescriptionIsEnabledExpressionFilter"
+               afterSection="properties.section.widgetDescription.HelpExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.WidgetDescription"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetdescription.WidgetDescriptionHelpExpressionPropertySection"
                id="properties.section.widgetDescription.HelpExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetdescription.WidgetDescriptionHelpExpressionFilter"

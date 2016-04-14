@@ -30,6 +30,9 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getHelpExpression
  * <em>Help Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getIsEnabledExpression
+ * <em>Is Enabled Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +81,28 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * @ordered
      */
     protected String helpExpression = WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getIsEnabledExpression()
+     * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected static final String IS_ENABLED_EXPRESSION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getIsEnabledExpression()
+     * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getIsEnabledExpression()
+     * @generated
+     * @ordered
+     */
+    protected String isEnabledExpression = WidgetDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -152,12 +177,38 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * @generated
      */
     @Override
+    public String getIsEnabledExpression() {
+        return isEnabledExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setIsEnabledExpression(String newIsEnabledExpression) {
+        String oldIsEnabledExpression = isEnabledExpression;
+        isEnabledExpression = newIsEnabledExpression;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION, oldIsEnabledExpression, isEnabledExpression));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
             return getHelpExpression();
+        case PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return getIsEnabledExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -175,6 +226,9 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
             return;
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
             setHelpExpression((String) newValue);
+            return;
+        case PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -194,6 +248,9 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
             setHelpExpression(WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT);
             return;
+        case PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            setIsEnabledExpression(WidgetDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -210,6 +267,8 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
             return WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !WidgetDescriptionImpl.LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
         case PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION:
             return WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT == null ? helpExpression != null : !WidgetDescriptionImpl.HELP_EXPRESSION_EDEFAULT.equals(helpExpression);
+        case PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION:
+            return WidgetDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT == null ? isEnabledExpression != null : !WidgetDescriptionImpl.IS_ENABLED_EXPRESSION_EDEFAULT.equals(isEnabledExpression);
         }
         return super.eIsSet(featureID);
     }
@@ -230,6 +289,8 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
         result.append(labelExpression);
         result.append(", helpExpression: ");
         result.append(helpExpression);
+        result.append(", isEnabledExpression: ");
+        result.append(isEnabledExpression);
         result.append(')');
         return result.toString();
     }
