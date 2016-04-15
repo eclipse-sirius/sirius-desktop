@@ -510,8 +510,10 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             SessionManager.INSTANCE.removeSessionsListener(sessionManagerListener);
             sessionManagerListener = null;
         }
-        linkWithEditorSelectionListener.dispose();
-        linkWithEditorSelectionListener = null;
+        if (linkWithEditorSelectionListener != null) {
+            linkWithEditorSelectionListener.dispose();
+            linkWithEditorSelectionListener = null;
+        }
         ((ViewHelperImpl) ViewHelper.INSTANCE).resetContentProvider();
     }
 
