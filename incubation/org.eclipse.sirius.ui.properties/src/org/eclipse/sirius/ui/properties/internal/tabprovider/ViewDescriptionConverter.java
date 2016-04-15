@@ -34,7 +34,9 @@ import org.eclipse.eef.EEFDynamicMappingFor;
 import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFFillLayoutDescription;
 import org.eclipse.eef.EEFGridLayoutDescription;
+import org.eclipse.eef.EEFGroupConditionalStyle;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFGroupStyle;
 import org.eclipse.eef.EEFHyperlinkConditionalStyle;
 import org.eclipse.eef.EEFHyperlinkDescription;
 import org.eclipse.eef.EEFHyperlinkStyle;
@@ -64,6 +66,8 @@ import org.eclipse.eef.EEFWidgetAction;
 import org.eclipse.eef.EEFWidgetDescription;
 import org.eclipse.eef.EEFWidgetStyle;
 import org.eclipse.eef.EEF_FILL_LAYOUT_ORIENTATION;
+import org.eclipse.eef.EEF_TITLE_BAR_STYLE;
+import org.eclipse.eef.EEF_TOGGLE_STYLE;
 import org.eclipse.eef.EEF_VALIDATION_SEVERITY_DESCRIPTION;
 import org.eclipse.eef.EefFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -88,7 +92,9 @@ import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
 import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
@@ -295,33 +301,84 @@ public class ViewDescriptionConverter {
      * Creates a concrete group instance bound to a specific semantic target.
      */
     private void createGroup(GroupDescription groupDescription, EEFPageDescription page, EEFViewDescription view) {
-        EEFGroupDescription group = EefFactory.eINSTANCE.createEEFGroupDescription();
-        group.setIdentifier(groupDescription.getIdentifier());
-        group.setLabelExpression(groupDescription.getLabelExpression());
-        group.setDomainClass(groupDescription.getDomainClass());
-        group.setSemanticCandidateExpression(groupDescription.getSemanticCandidateExpression());
-        group.setPreconditionExpression(groupDescription.getPreconditionExpression());
+        EEFGroupDescription eefGroup = EefFactory.eINSTANCE.createEEFGroupDescription();
+        eefGroup.setIdentifier(groupDescription.getIdentifier());
+        eefGroup.setLabelExpression(groupDescription.getLabelExpression());
+        eefGroup.setDomainClass(groupDescription.getDomainClass());
+        eefGroup.setSemanticCandidateExpression(groupDescription.getSemanticCandidateExpression());
+        eefGroup.setPreconditionExpression(groupDescription.getPreconditionExpression());
 
-        if (group.getIdentifier() == null || group.getIdentifier().trim().length() == 0) {
-            group.setIdentifier(EcoreUtil.getURI(groupDescription).toString());
+        EEFGroupStyle eefGroupStyle = createEEFGroupStyle(groupDescription.getStyle());
+        if (eefGroupStyle != null) {
+            eefGroup.setStyle(eefGroupStyle);
         }
 
-        convertGroupContents(groupDescription, group);
+        List<GroupConditionalStyle> conditionalStyles = groupDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFGroupConditionalStyle> eefConditionalStyles = new ArrayList<EEFGroupConditionalStyle>();
+            for (GroupConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFGroupConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFGroupConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                EEFGroupStyle eefConditionalStyleGroupStyle = createEEFGroupStyle(conditionalStyle.getStyle());
+                if (eefConditionalStyleGroupStyle != null) {
+                    eefConditionalStyle.setStyle(eefConditionalStyleGroupStyle);
+                }
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefGroup.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+
+        if (eefGroup.getIdentifier() == null || eefGroup.getIdentifier().trim().length() == 0) {
+            eefGroup.setIdentifier(EcoreUtil.getURI(groupDescription).toString());
+        }
+
+        convertGroupContents(groupDescription, eefGroup);
 
         if (groupDescription.getValidationSet() != null) {
             for (SemanticValidationRule semanticValidationRule : groupDescription.getValidationSet().getSemanticValidationRules()) {
-                group.getSemanticValidationRules().add(this.createSemanticValidationRuleDescription(semanticValidationRule));
+                eefGroup.getSemanticValidationRules().add(this.createSemanticValidationRuleDescription(semanticValidationRule));
             }
 
             for (PropertyValidationRule propertyValidationRule : groupDescription.getValidationSet().getPropertyValidationRules()) {
                 EEFPropertyValidationRuleDescription propertyValidationRuleDescription = this.createPropertyValidationRuleDescription(propertyValidationRule);
                 this.eefPropertyValidationRule2propertyValidationRule.put(propertyValidationRuleDescription, propertyValidationRule);
-                group.getPropertyValidationRules().add(propertyValidationRuleDescription);
+                eefGroup.getPropertyValidationRules().add(propertyValidationRuleDescription);
             }
         }
 
-        page.getGroups().add(group);
-        view.getGroups().add(group);
+        page.getGroups().add(eefGroup);
+        view.getGroups().add(eefGroup);
+    }
+
+    private EEFGroupStyle createEEFGroupStyle(GroupStyle groupStyle) {
+        if (groupStyle != null) {
+            EEFGroupStyle eefGroupStyle = EefFactory.eINSTANCE.createEEFGroupStyle();
+            ColorDescription backgroundColorDescription = groupStyle.getBackgroundColor();
+            if (backgroundColorDescription != null) {
+                String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+                if (backgroundColorExpression != null) {
+                    eefGroupStyle.setBackgroundColorExpression(backgroundColorExpression);
+                }
+            }
+            ColorDescription foregroundColorDescription = groupStyle.getForegroundColor();
+            if (foregroundColorDescription != null) {
+                String foregroundColorExpression = getColorExpression(foregroundColorDescription);
+                if (foregroundColorExpression != null) {
+                    eefGroupStyle.setForegroundColorExpression(foregroundColorExpression);
+                }
+            }
+            eefGroupStyle.setFontNameExpression(groupStyle.getFontNameExpression());
+            eefGroupStyle.setFontSizeExpression(Integer.toString(groupStyle.getFontSize()));
+            eefGroupStyle.setBarStyle(EEF_TITLE_BAR_STYLE.get(groupStyle.getBarStyle().getValue()));
+            eefGroupStyle.setToggleStyle(EEF_TOGGLE_STYLE.get(groupStyle.getToggleStyle().getValue()));
+            eefGroupStyle.setExpandedByDefault(groupStyle.isExpandedByDefault());
+
+            return eefGroupStyle;
+        }
+        return null;
     }
 
     private void convertGroupContents(GroupDescription groupDescription, EEFGroupDescription group) {

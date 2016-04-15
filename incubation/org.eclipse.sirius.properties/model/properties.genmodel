@@ -16,6 +16,16 @@
       <genEnumLiterals ecoreEnumLiteral="properties.ecore#//FILL_LAYOUT_ORIENTATION/VERTICAL"/>
       <genEnumLiterals ecoreEnumLiteral="properties.ecore#//FILL_LAYOUT_ORIENTATION/HORIZONTAL"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="properties.ecore#//ToggleStyle">
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//ToggleStyle/TWISTIE"/>
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//ToggleStyle/TREE_NODE"/>
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//ToggleStyle/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="properties.ecore#//TitleBarStyle">
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//TitleBarStyle/TITLE_BAR"/>
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//TitleBarStyle/SHORT_TITLE_BAR"/>
+      <genEnumLiterals ecoreEnumLiteral="properties.ecore#//TitleBarStyle/NO_TITLE"/>
+    </genEnums>
     <genClasses ecoreClass="properties.ecore#//ViewExtensionDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ViewExtensionDescription/identifier"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//ViewExtensionDescription/metamodels"/>
@@ -46,6 +56,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupDescription/preconditionExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/controls"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/validationSet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/style"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//GroupValidationSetDescription">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupValidationSetDescription/semanticValidationRules"/>
@@ -188,6 +200,15 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkWidgetStyle/backgroundColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//HyperlinkWidgetStyle/fontFormat"/>
     </genClasses>
+    <genClasses ecoreClass="properties.ecore#//GroupStyle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//GroupStyle/backgroundColor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//GroupStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/fontNameExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/fontSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/barStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/toggleStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//GroupStyle/expandedByDefault"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="properties.ecore#//WidgetConditionalStyle">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetConditionalStyle/preconditionExpression"/>
     </genClasses>
@@ -221,6 +242,9 @@
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//HyperlinkWidgetConditionalStyle">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//HyperlinkWidgetConditionalStyle/style"/>
+    </genClasses>
+    <genClasses ecoreClass="properties.ecore#//GroupConditionalStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//GroupConditionalStyle/style"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

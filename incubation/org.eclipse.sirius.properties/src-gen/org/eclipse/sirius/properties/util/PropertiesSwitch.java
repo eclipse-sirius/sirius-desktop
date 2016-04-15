@@ -32,7 +32,9 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
@@ -551,6 +553,14 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.GROUP_STYLE: {
+            GroupStyle groupStyle = (GroupStyle) theEObject;
+            T result = caseGroupStyle(groupStyle);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.WIDGET_CONDITIONAL_STYLE: {
             WidgetConditionalStyle widgetConditionalStyle = (WidgetConditionalStyle) theEObject;
             T result = caseWidgetConditionalStyle(widgetConditionalStyle);
@@ -660,6 +670,17 @@ public class PropertiesSwitch<T> {
             T result = caseHyperlinkWidgetConditionalStyle(hyperlinkWidgetConditionalStyle);
             if (result == null) {
                 result = caseWidgetConditionalStyle(hyperlinkWidgetConditionalStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.GROUP_CONDITIONAL_STYLE: {
+            GroupConditionalStyle groupConditionalStyle = (GroupConditionalStyle) theEObject;
+            T result = caseGroupConditionalStyle(groupConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(groupConditionalStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -1302,6 +1323,23 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Group Style</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Group Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGroupStyle(GroupStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -1484,6 +1522,23 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseHyperlinkWidgetConditionalStyle(HyperlinkWidgetConditionalStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Group Conditional Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Group Conditional Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGroupConditionalStyle(GroupConditionalStyle object) {
         return null;
     }
 

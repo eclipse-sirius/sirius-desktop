@@ -946,6 +946,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.GroupStyle} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GroupStyleItemProvider groupStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.GroupStyle}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGroupStyleAdapter() {
+        if (groupStyleItemProvider == null) {
+            groupStyleItemProvider = new GroupStyleItemProvider(this);
+        }
+
+        return groupStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1195,6 +1220,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected GroupConditionalStyleItemProvider groupConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createGroupConditionalStyleAdapter() {
+        if (groupConditionalStyleItemProvider == null) {
+            groupConditionalStyleItemProvider = new GroupConditionalStyleItemProvider(this);
+        }
+
+        return groupConditionalStyleItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1400,6 +1450,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (hyperlinkWidgetStyleItemProvider != null) {
             hyperlinkWidgetStyleItemProvider.dispose();
         }
+        if (groupStyleItemProvider != null) {
+            groupStyleItemProvider.dispose();
+        }
         if (textWidgetConditionalStyleItemProvider != null) {
             textWidgetConditionalStyleItemProvider.dispose();
         }
@@ -1429,6 +1482,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (hyperlinkWidgetConditionalStyleItemProvider != null) {
             hyperlinkWidgetConditionalStyleItemProvider.dispose();
+        }
+        if (groupConditionalStyleItemProvider != null) {
+            groupConditionalStyleItemProvider.dispose();
         }
     }
 

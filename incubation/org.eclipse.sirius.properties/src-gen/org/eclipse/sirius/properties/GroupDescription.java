@@ -38,6 +38,11 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Controls</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.GroupDescription#getValidationSet
  * <em>Validation Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.GroupDescription#getStyle
+ * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.GroupDescription#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription()
@@ -249,5 +254,54 @@ public interface GroupDescription extends EObject {
      * @generated
      */
     void setValidationSet(GroupValidationSetDescription value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(GroupStyle)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_Style()
+     * @model containment="true"
+     * @generated
+     */
+    GroupStyle getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(GroupStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Conditional Styles</em>' containment reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Conditional Styles</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupDescription_ConditionalStyles()
+     * @model containment="true"
+     * @generated
+     */
+    EList<GroupConditionalStyle> getConditionalStyles();
 
 } // GroupDescription

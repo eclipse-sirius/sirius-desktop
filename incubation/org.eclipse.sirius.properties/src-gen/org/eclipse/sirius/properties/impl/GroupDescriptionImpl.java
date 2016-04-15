@@ -23,7 +23,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.properties.ControlDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -55,6 +57,11 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * <li>
  * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getValidationSet
  * <em>Validation Set</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getStyle
+ * <em>Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl#getConditionalStyles
+ * <em>Conditional Styles</em>}</li>
  * </ul>
  *
  * @generated
@@ -186,6 +193,27 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @ordered
      */
     protected GroupValidationSetDescription validationSet;
+
+    /**
+     * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getStyle()
+     * @generated
+     * @ordered
+     */
+    protected GroupStyle style;
+
+    /**
+     * The cached value of the '{@link #getConditionalStyles()
+     * <em>Conditional Styles</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getConditionalStyles()
+     * @generated
+     * @ordered
+     */
+    protected EList<GroupConditionalStyle> conditionalStyles;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -398,12 +426,82 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
      * @generated
      */
     @Override
+    public GroupStyle getStyle() {
+        return style;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetStyle(GroupStyle newStyle, NotificationChain msgs) {
+        GroupStyle oldStyle = style;
+        style = newStyle;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__STYLE, oldStyle, newStyle);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setStyle(GroupStyle newStyle) {
+        if (newStyle != style) {
+            NotificationChain msgs = null;
+            if (style != null) {
+                msgs = ((InternalEObject) style).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__STYLE, null, msgs);
+            }
+            if (newStyle != null) {
+                msgs = ((InternalEObject) newStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - PropertiesPackage.GROUP_DESCRIPTION__STYLE, null, msgs);
+            }
+            msgs = basicSetStyle(newStyle, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.GROUP_DESCRIPTION__STYLE, newStyle, newStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EList<GroupConditionalStyle> getConditionalStyles() {
+        if (conditionalStyles == null) {
+            conditionalStyles = new EObjectContainmentEList<GroupConditionalStyle>(GroupConditionalStyle.class, this, PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES);
+        }
+        return conditionalStyles;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
             return ((InternalEList<?>) getControls()).basicRemove(otherEnd, msgs);
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return basicSetValidationSet(null, msgs);
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+            return basicSetStyle(null, msgs);
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+            return ((InternalEList<?>) getConditionalStyles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -430,6 +528,10 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
             return getControls();
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return getValidationSet();
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+            return getStyle();
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+            return getConditionalStyles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -465,6 +567,13 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             setValidationSet((GroupValidationSetDescription) newValue);
             return;
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+            setStyle((GroupStyle) newValue);
+            return;
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            getConditionalStyles().addAll((Collection<? extends GroupConditionalStyle>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -498,6 +607,12 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             setValidationSet((GroupValidationSetDescription) null);
             return;
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+            setStyle((GroupStyle) null);
+            return;
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+            getConditionalStyles().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -526,6 +641,10 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
             return controls != null && !controls.isEmpty();
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+            return style != null;
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
+            return conditionalStyles != null && !conditionalStyles.isEmpty();
         }
         return super.eIsSet(featureID);
     }

@@ -34,7 +34,9 @@ import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
@@ -61,6 +63,8 @@ import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
+import org.eclipse.sirius.properties.TitleBarStyle;
+import org.eclipse.sirius.properties.ToggleStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetStyle;
@@ -176,6 +180,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createReferenceWidgetStyle();
         case PropertiesPackage.HYPERLINK_WIDGET_STYLE:
             return createHyperlinkWidgetStyle();
+        case PropertiesPackage.GROUP_STYLE:
+            return createGroupStyle();
         case PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE:
             return createTextWidgetConditionalStyle();
         case PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE:
@@ -196,6 +202,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createWidgetAction();
         case PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE:
             return createHyperlinkWidgetConditionalStyle();
+        case PropertiesPackage.GROUP_CONDITIONAL_STYLE:
+            return createGroupConditionalStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -211,6 +219,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
         switch (eDataType.getClassifierID()) {
         case PropertiesPackage.FILL_LAYOUT_ORIENTATION:
             return createFILL_LAYOUT_ORIENTATIONFromString(eDataType, initialValue);
+        case PropertiesPackage.TOGGLE_STYLE:
+            return createToggleStyleFromString(eDataType, initialValue);
+        case PropertiesPackage.TITLE_BAR_STYLE:
+            return createTitleBarStyleFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -226,6 +238,10 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
         switch (eDataType.getClassifierID()) {
         case PropertiesPackage.FILL_LAYOUT_ORIENTATION:
             return convertFILL_LAYOUT_ORIENTATIONToString(eDataType, instanceValue);
+        case PropertiesPackage.TOGGLE_STYLE:
+            return convertToggleStyleToString(eDataType, instanceValue);
+        case PropertiesPackage.TITLE_BAR_STYLE:
+            return convertTitleBarStyleToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -611,6 +627,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
+    public GroupStyle createGroupStyle() {
+        GroupStyleImpl groupStyle = new GroupStyleImpl();
+        return groupStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public TextWidgetConditionalStyle createTextWidgetConditionalStyle() {
         TextWidgetConditionalStyleImpl textWidgetConditionalStyle = new TextWidgetConditionalStyleImpl();
         return textWidgetConditionalStyle;
@@ -720,6 +747,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      *
      * @generated
      */
+    @Override
+    public GroupConditionalStyle createGroupConditionalStyle() {
+        GroupConditionalStyleImpl groupConditionalStyle = new GroupConditionalStyleImpl();
+        return groupConditionalStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     public FILL_LAYOUT_ORIENTATION createFILL_LAYOUT_ORIENTATIONFromString(EDataType eDataType, String initialValue) {
         FILL_LAYOUT_ORIENTATION result = FILL_LAYOUT_ORIENTATION.get(initialValue);
         if (result == null) {
@@ -734,6 +772,50 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     public String convertFILL_LAYOUT_ORIENTATIONToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public ToggleStyle createToggleStyleFromString(EDataType eDataType, String initialValue) {
+        ToggleStyle result = ToggleStyle.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertToggleStyleToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public TitleBarStyle createTitleBarStyleFromString(EDataType eDataType, String initialValue) {
+        TitleBarStyle result = TitleBarStyle.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertTitleBarStyleToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

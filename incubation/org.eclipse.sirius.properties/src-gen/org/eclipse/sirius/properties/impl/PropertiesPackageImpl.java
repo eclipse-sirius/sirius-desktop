@@ -35,7 +35,9 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
@@ -63,6 +65,8 @@ import org.eclipse.sirius.properties.TextAreaDescription;
 import org.eclipse.sirius.properties.TextDescription;
 import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.properties.TextWidgetStyle;
+import org.eclipse.sirius.properties.TitleBarStyle;
+import org.eclipse.sirius.properties.ToggleStyle;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.WidgetAction;
 import org.eclipse.sirius.properties.WidgetConditionalStyle;
@@ -407,6 +411,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
+    private EClass groupConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EClass referenceWidgetStyleEClass = null;
 
     /**
@@ -421,7 +432,28 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
+    private EClass groupStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EEnum filL_LAYOUT_ORIENTATIONEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum toggleStyleEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum titleBarStyleEEnum = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -740,6 +772,26 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
     @Override
     public EReference getGroupDescription_ValidationSet() {
         return (EReference) groupDescriptionEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupDescription_Style() {
+        return (EReference) groupDescriptionEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupDescription_ConditionalStyles() {
+        return (EReference) groupDescriptionEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -2078,6 +2130,26 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getGroupConditionalStyle() {
+        return groupConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupConditionalStyle_Style() {
+        return (EReference) groupConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getReferenceWidgetStyle() {
         return referenceWidgetStyleEClass;
     }
@@ -2138,8 +2210,108 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getGroupStyle() {
+        return groupStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupStyle_BackgroundColor() {
+        return (EReference) groupStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getGroupStyle_ForegroundColor() {
+        return (EReference) groupStyleEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupStyle_FontNameExpression() {
+        return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupStyle_FontSize() {
+        return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupStyle_BarStyle() {
+        return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupStyle_ToggleStyle() {
+        return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getGroupStyle_ExpandedByDefault() {
+        return (EAttribute) groupStyleEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getFILL_LAYOUT_ORIENTATION() {
         return filL_LAYOUT_ORIENTATIONEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EEnum getToggleStyle() {
+        return toggleStyleEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EEnum getTitleBarStyle() {
+        return titleBarStyleEEnum;
     }
 
     /**
@@ -2202,6 +2374,8 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__PRECONDITION_EXPRESSION);
         createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__CONTROLS);
         createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET);
+        createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__STYLE);
+        createEReference(groupDescriptionEClass, PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES);
 
         groupValidationSetDescriptionEClass = createEClass(PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION);
         createEReference(groupValidationSetDescriptionEClass, PropertiesPackage.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES);
@@ -2351,6 +2525,15 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR);
         createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_FORMAT);
 
+        groupStyleEClass = createEClass(PropertiesPackage.GROUP_STYLE);
+        createEReference(groupStyleEClass, PropertiesPackage.GROUP_STYLE__BACKGROUND_COLOR);
+        createEReference(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FOREGROUND_COLOR);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FONT_NAME_EXPRESSION);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__FONT_SIZE);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__BAR_STYLE);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__TOGGLE_STYLE);
+        createEAttribute(groupStyleEClass, PropertiesPackage.GROUP_STYLE__EXPANDED_BY_DEFAULT);
+
         widgetConditionalStyleEClass = createEClass(PropertiesPackage.WIDGET_CONDITIONAL_STYLE);
         createEAttribute(widgetConditionalStyleEClass, PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION);
 
@@ -2385,8 +2568,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         hyperlinkWidgetConditionalStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE);
         createEReference(hyperlinkWidgetConditionalStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE);
 
+        groupConditionalStyleEClass = createEClass(PropertiesPackage.GROUP_CONDITIONAL_STYLE);
+        createEReference(groupConditionalStyleEClass, PropertiesPackage.GROUP_CONDITIONAL_STYLE__STYLE);
+
         // Create enums
         filL_LAYOUT_ORIENTATIONEEnum = createEEnum(PropertiesPackage.FILL_LAYOUT_ORIENTATION);
+        toggleStyleEEnum = createEEnum(PropertiesPackage.TOGGLE_STYLE);
+        titleBarStyleEEnum = createEEnum(PropertiesPackage.TITLE_BAR_STYLE);
     }
 
     /**
@@ -2461,6 +2649,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         customWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         referenceWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         hyperlinkWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        groupConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
@@ -2526,6 +2715,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getGroupDescription_ValidationSet(), this.getGroupValidationSetDescription(), null, "validationSet", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getGroupDescription_Style(), this.getGroupStyle(), null, "style", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getGroupDescription_ConditionalStyles(), this.getGroupConditionalStyle(), null, "conditionalStyles", null, 0, -1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
@@ -2816,6 +3011,24 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getHyperlinkWidgetStyle_FontFormat(), theViewpointPackage.getFontFormat(), "fontFormat", null, 0, 4, HyperlinkWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
+        initEClass(groupStyleEClass, GroupStyle.class, "GroupStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getGroupStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getGroupStyle_ForegroundColor(), theDescriptionPackage.getColorDescription(), null, "foregroundColor", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_BarStyle(), this.getTitleBarStyle(), "barStyle", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_ToggleStyle(), this.getToggleStyle(), "toggleStyle", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getGroupStyle_ExpandedByDefault(), ecorePackage.getEBoolean(), "expandedByDefault", null, 0, 1, GroupStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
         initEClass(widgetConditionalStyleEClass, WidgetConditionalStyle.class, "WidgetConditionalStyle", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWidgetConditionalStyle_PreconditionExpression(), theDescriptionPackage.getInterpretedExpression(), "preconditionExpression", null, 0, 1, WidgetConditionalStyle.class,
@@ -2883,10 +3096,25 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
+        initEClass(groupConditionalStyleEClass, GroupConditionalStyle.class, "GroupConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getGroupConditionalStyle_Style(), this.getGroupStyle(), null, "style", null, 0, 1, GroupConditionalStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+
         // Initialize enums and add enum literals
         initEEnum(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.class, "FILL_LAYOUT_ORIENTATION");
         addEEnumLiteral(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.VERTICAL);
         addEEnumLiteral(filL_LAYOUT_ORIENTATIONEEnum, org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION.HORIZONTAL);
+
+        initEEnum(toggleStyleEEnum, ToggleStyle.class, "ToggleStyle");
+        addEEnumLiteral(toggleStyleEEnum, ToggleStyle.TWISTIE);
+        addEEnumLiteral(toggleStyleEEnum, ToggleStyle.TREE_NODE);
+        addEEnumLiteral(toggleStyleEEnum, ToggleStyle.NONE);
+
+        initEEnum(titleBarStyleEEnum, TitleBarStyle.class, "TitleBarStyle");
+        addEEnumLiteral(titleBarStyleEEnum, TitleBarStyle.TITLE_BAR);
+        addEEnumLiteral(titleBarStyleEEnum, TitleBarStyle.SHORT_TITLE_BAR);
+        addEEnumLiteral(titleBarStyleEEnum, TitleBarStyle.NO_TITLE);
 
         // Create resource
         createResource(PropertiesPackage.eNS_URI);

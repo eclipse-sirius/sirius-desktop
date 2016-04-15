@@ -149,6 +149,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
             super.getChildrenFeatures(object);
             childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS);
             childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__VALIDATION_SET);
+            childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -212,6 +214,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
             return;
         case PropertiesPackage.GROUP_DESCRIPTION__CONTROLS:
         case PropertiesPackage.GROUP_DESCRIPTION__VALIDATION_SET:
+        case PropertiesPackage.GROUP_DESCRIPTION__STYLE:
+        case PropertiesPackage.GROUP_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -254,6 +258,10 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createHyperlinkDescription()));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__VALIDATION_SET, PropertiesFactory.eINSTANCE.createGroupValidationSetDescription()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createGroupStyle()));
+
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createGroupConditionalStyle()));
     }
 
     /**

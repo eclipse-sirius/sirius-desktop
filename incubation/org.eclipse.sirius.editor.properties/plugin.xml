@@ -31,6 +31,61 @@
         <input type="org.eclipse.sirius.properties.WidgetConditionalStyle"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleExpandedByDefaultPropertySection"
+               id="properties.section.groupStyle.ExpandedByDefault"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleExpandedByDefaultFilter"
+               afterSection="properties.section.groupStyle.ToggleStyle"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleToggleStylePropertySection"
+               id="properties.section.groupStyle.ToggleStyle"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleToggleStyleFilter"
+               afterSection="properties.section.groupStyle.BarStyle"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleBarStylePropertySection"
+               id="properties.section.groupStyle.BarStyle"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleBarStyleFilter"
+               afterSection="properties.section.groupStyle.FontSize"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleFontSizePropertySection"
+               id="properties.section.groupStyle.FontSize"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleFontSizeFilter"
+               afterSection="properties.section.groupStyle.FontNameExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleFontNameExpressionPropertySection"
+               id="properties.section.groupStyle.FontNameExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleFontNameExpressionFilter"
+               afterSection="properties.section.groupStyle.ForegroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleForegroundColorPropertySection"
+               id="properties.section.groupStyle.ForegroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleForegroundColorFilter"
+               afterSection="properties.section.groupStyle.BackgroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupstyle.GroupStyleBackgroundColorPropertySection"
+               id="properties.section.groupStyle.BackgroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupstyle.GroupStyleBackgroundColorFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupStyle"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatPropertySection"
                id="properties.section.hyperlinkWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatFilter"

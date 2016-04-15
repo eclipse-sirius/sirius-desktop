@@ -337,6 +337,15 @@ public interface PropertiesFactory extends EFactory {
     HyperlinkWidgetStyle createHyperlinkWidgetStyle();
 
     /**
+     * Returns a new object of class '<em>Group Style</em>'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Group Style</em>'.
+     * @generated
+     */
+    GroupStyle createGroupStyle();
+
+    /**
      * Returns a new object of class '<em>Text Widget Conditional Style</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -430,6 +439,15 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     HyperlinkWidgetConditionalStyle createHyperlinkWidgetConditionalStyle();
+
+    /**
+     * Returns a new object of class '<em>Group Conditional Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Group Conditional Style</em>'.
+     * @generated
+     */
+    GroupConditionalStyle createGroupConditionalStyle();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

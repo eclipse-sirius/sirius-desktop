@@ -398,13 +398,31 @@ public interface PropertiesPackage extends EPackage {
     int GROUP_DESCRIPTION__VALIDATION_SET = 6;
 
     /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_DESCRIPTION__STYLE = 7;
+
+    /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_DESCRIPTION__CONDITIONAL_STYLES = 8;
+
+    /**
      * The number of structural features of the '<em>Group Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int GROUP_DESCRIPTION_FEATURE_COUNT = 7;
+    int GROUP_DESCRIPTION_FEATURE_COUNT = 9;
 
     /**
      * The meta object id for the '
@@ -2507,7 +2525,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
      * @generated
      */
-    int WIDGET_CONDITIONAL_STYLE = 37;
+    int WIDGET_CONDITIONAL_STYLE = 38;
 
     /**
      * The meta object id for the '
@@ -2519,7 +2537,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
      * @generated
      */
-    int TEXT_WIDGET_CONDITIONAL_STYLE = 38;
+    int TEXT_WIDGET_CONDITIONAL_STYLE = 39;
 
     /**
      * The meta object id for the '
@@ -2531,7 +2549,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
      * @generated
      */
-    int LABEL_WIDGET_CONDITIONAL_STYLE = 39;
+    int LABEL_WIDGET_CONDITIONAL_STYLE = 40;
 
     /**
      * The meta object id for the '
@@ -2543,7 +2561,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
      * @generated
      */
-    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 40;
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 41;
 
     /**
      * The meta object id for the '
@@ -2555,7 +2573,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
      * @generated
      */
-    int RADIO_WIDGET_CONDITIONAL_STYLE = 41;
+    int RADIO_WIDGET_CONDITIONAL_STYLE = 42;
 
     /**
      * The meta object id for the '
@@ -2567,7 +2585,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
      * @generated
      */
-    int BUTTON_WIDGET_CONDITIONAL_STYLE = 42;
+    int BUTTON_WIDGET_CONDITIONAL_STYLE = 43;
 
     /**
      * The meta object id for the '
@@ -2579,7 +2597,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
      * @generated
      */
-    int SELECT_WIDGET_CONDITIONAL_STYLE = 43;
+    int SELECT_WIDGET_CONDITIONAL_STYLE = 44;
 
     /**
      * The meta object id for the '
@@ -2591,7 +2609,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
      * @generated
      */
-    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 44;
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 45;
 
     /**
      * The meta object id for the '
@@ -2603,7 +2621,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetConditionalStyle()
      * @generated
      */
-    int REFERENCE_WIDGET_CONDITIONAL_STYLE = 45;
+    int REFERENCE_WIDGET_CONDITIONAL_STYLE = 46;
 
     /**
      * The meta object id for the '
@@ -2615,7 +2633,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetAction()
      * @generated
      */
-    int WIDGET_ACTION = 46;
+    int WIDGET_ACTION = 47;
 
     /**
      * The meta object id for the '
@@ -2784,6 +2802,90 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int HYPERLINK_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.GroupStyleImpl
+     * <em>Group Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see org.eclipse.sirius.properties.impl.GroupStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupStyle()
+     * @generated
+     */
+    int GROUP_STYLE = 37;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__BACKGROUND_COLOR = 0;
+
+    /**
+     * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__FOREGROUND_COLOR = 1;
+
+    /**
+     * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__FONT_NAME_EXPRESSION = 2;
+
+    /**
+     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__FONT_SIZE = 3;
+
+    /**
+     * The feature id for the '<em><b>Bar Style</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__BAR_STYLE = 4;
+
+    /**
+     * The feature id for the '<em><b>Toggle Style</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__TOGGLE_STYLE = 5;
+
+    /**
+     * The feature id for the '<em><b>Expanded By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE__EXPANDED_BY_DEFAULT = 6;
+
+    /**
+     * The number of structural features of the '<em>Group Style</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_STYLE_FEATURE_COUNT = 7;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -3065,7 +3167,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetConditionalStyle()
      * @generated
      */
-    int HYPERLINK_WIDGET_CONDITIONAL_STYLE = 47;
+    int HYPERLINK_WIDGET_CONDITIONAL_STYLE = 48;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -3097,6 +3199,46 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
+     * <em>Group Conditional Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupConditionalStyle()
+     * @generated
+     */
+    int GROUP_CONDITIONAL_STYLE = 49;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Group Conditional Style</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GROUP_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -3105,7 +3247,30 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
      * @generated
      */
-    int FILL_LAYOUT_ORIENTATION = 48;
+    int FILL_LAYOUT_ORIENTATION = 50;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.ToggleStyle <em>Toggle Style</em>}'
+     * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.ToggleStyle
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
+     * @generated
+     */
+    int TOGGLE_STYLE = 51;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.TitleBarStyle
+     * <em>Title Bar Style</em>}' enum. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.TitleBarStyle
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
+     * @generated
+     */
+    int TITLE_BAR_STYLE = 52;
 
     /**
      * Returns the meta object for class '
@@ -3424,6 +3589,32 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EReference getGroupDescription_ValidationSet();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupDescription#getStyle()
+     * @see #getGroupDescription()
+     * @generated
+     */
+    EReference getGroupDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.GroupDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.GroupDescription#getConditionalStyles()
+     * @see #getGroupDescription()
+     * @generated
+     */
+    EReference getGroupDescription_ConditionalStyles();
 
     /**
      * Returns the meta object for class '
@@ -5128,6 +5319,30 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle
+     * <em>Group Conditional Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Group Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupConditionalStyle
+     * @generated
+     */
+    EClass getGroupConditionalStyle();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupConditionalStyle#getStyle()
+     * @see #getGroupConditionalStyle()
+     * @generated
+     */
+    EReference getGroupConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
      * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -5202,6 +5417,106 @@ public interface PropertiesPackage extends EPackage {
     EAttribute getHyperlinkWidgetStyle_FontFormat();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.GroupStyle <em>Group Style</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Group Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle
+     * @generated
+     */
+    EClass getGroupStyle();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#getBackgroundColor()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EReference getGroupStyle_BackgroundColor();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getForegroundColor
+     * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Foreground Color</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#getForegroundColor()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EReference getGroupStyle_ForegroundColor();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getFontNameExpression
+     * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Name Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.GroupStyle#getFontNameExpression()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EAttribute getGroupStyle_FontNameExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getFontSize
+     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Size</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#getFontSize()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EAttribute getGroupStyle_FontSize();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getBarStyle
+     * <em>Bar Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Bar Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#getBarStyle()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EAttribute getGroupStyle_BarStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GroupStyle#getToggleStyle
+     * <em>Toggle Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Toggle Style</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#getToggleStyle()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EAttribute getGroupStyle_ToggleStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.GroupStyle#isExpandedByDefault
+     * <em>Expanded By Default</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Expanded By Default</em>'.
+     * @see org.eclipse.sirius.properties.GroupStyle#isExpandedByDefault()
+     * @see #getGroupStyle()
+     * @generated
+     */
+    EAttribute getGroupStyle_ExpandedByDefault();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}'. <!-- begin-user-doc --> <!--
@@ -5212,6 +5527,28 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EEnum getFILL_LAYOUT_ORIENTATION();
+
+    /**
+     * Returns the meta object for enum '
+     * {@link org.eclipse.sirius.properties.ToggleStyle <em>Toggle Style</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for enum '<em>Toggle Style</em>'.
+     * @see org.eclipse.sirius.properties.ToggleStyle
+     * @generated
+     */
+    EEnum getToggleStyle();
+
+    /**
+     * Returns the meta object for enum '
+     * {@link org.eclipse.sirius.properties.TitleBarStyle
+     * <em>Title Bar Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for enum '<em>Title Bar Style</em>'.
+     * @see org.eclipse.sirius.properties.TitleBarStyle
+     * @generated
+     */
+    EEnum getTitleBarStyle();
 
     /**
      * Returns the factory that creates the instances of the model. <!--
@@ -5463,6 +5800,23 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EReference GROUP_DESCRIPTION__VALIDATION_SET = PropertiesPackage.eINSTANCE.getGroupDescription_ValidationSet();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getGroupDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getGroupDescription_ConditionalStyles();
 
         /**
          * The meta object literal for the '
@@ -6730,6 +7084,26 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
+         * <em>Group Conditional Style</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupConditionalStyle()
+         * @generated
+         */
+        EClass GROUP_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getGroupConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getGroupConditionalStyle_Style();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
          * <em>Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6786,6 +7160,74 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.GroupStyleImpl
+         * <em>Group Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.GroupStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupStyle()
+         * @generated
+         */
+        EClass GROUP_STYLE = PropertiesPackage.eINSTANCE.getGroupStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getGroupStyle_BackgroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Foreground Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference GROUP_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getGroupStyle_ForegroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Font Name Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupStyle_FontNameExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getGroupStyle_FontSize();
+
+        /**
+         * The meta object literal for the '<em><b>Bar Style</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_STYLE__BAR_STYLE = PropertiesPackage.eINSTANCE.getGroupStyle_BarStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Toggle Style</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_STYLE__TOGGLE_STYLE = PropertiesPackage.eINSTANCE.getGroupStyle_ToggleStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Expanded By Default</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute GROUP_STYLE__EXPANDED_BY_DEFAULT = PropertiesPackage.eINSTANCE.getGroupStyle_ExpandedByDefault();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
          * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6795,6 +7237,30 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EEnum FILL_LAYOUT_ORIENTATION = PropertiesPackage.eINSTANCE.getFILL_LAYOUT_ORIENTATION();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.ToggleStyle
+         * <em>Toggle Style</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.ToggleStyle
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
+         * @generated
+         */
+        EEnum TOGGLE_STYLE = PropertiesPackage.eINSTANCE.getToggleStyle();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.TitleBarStyle
+         * <em>Title Bar Style</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.TitleBarStyle
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
+         * @generated
+         */
+        EEnum TITLE_BAR_STYLE = PropertiesPackage.eINSTANCE.getTitleBarStyle();
 
     }
 

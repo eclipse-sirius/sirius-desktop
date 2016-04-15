@@ -414,6 +414,17 @@
    
       </description>
    </context>
+   <context id="GroupStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code GroupStyle description -->
+   
+   <!-- End of user code GroupStyle description -->
+   
+      </description>
+   </context>
    <context id="WidgetConditionalStyle">
      <description>
        
@@ -532,6 +543,17 @@
    <!-- Start of user code HyperlinkWidgetConditionalStyle description -->
    
    <!-- End of user code HyperlinkWidgetConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="GroupConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code GroupConditionalStyle description -->
+   
+   <!-- End of user code GroupConditionalStyle description -->
    
       </description>
    </context>

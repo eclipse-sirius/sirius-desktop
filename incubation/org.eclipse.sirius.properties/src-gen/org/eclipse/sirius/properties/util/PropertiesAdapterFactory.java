@@ -32,7 +32,9 @@ import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.DynamicMappingIf;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
+import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.GroupStyle;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
 import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
@@ -309,6 +311,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseGroupStyle(GroupStyle object) {
+            return createGroupStyleAdapter();
+        }
+
+        @Override
         public Adapter caseWidgetConditionalStyle(WidgetConditionalStyle object) {
             return createWidgetConditionalStyleAdapter();
         }
@@ -361,6 +368,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseHyperlinkWidgetConditionalStyle(HyperlinkWidgetConditionalStyle object) {
             return createHyperlinkWidgetConditionalStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseGroupConditionalStyle(GroupConditionalStyle object) {
+            return createGroupConditionalStyleAdapter();
         }
 
         @Override
@@ -991,6 +1003,21 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.GroupStyle <em>Group Style</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.GroupStyle
+     * @generated
+     */
+    public Adapter createGroupStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.WidgetConditionalStyle
      * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1161,6 +1188,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createHyperlinkWidgetConditionalStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.GroupConditionalStyle
+     * <em>Group Conditional Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.GroupConditionalStyle
+     * @generated
+     */
+    public Adapter createGroupConditionalStyleAdapter() {
         return null;
     }
 

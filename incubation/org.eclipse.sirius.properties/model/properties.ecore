@@ -48,6 +48,10 @@
         eType="#//ControlDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//GroupValidationSetDescription"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//GroupStyle"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
+        eType="#//GroupConditionalStyle" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupValidationSetDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
@@ -317,6 +321,25 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
         eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="barStyle" eType="#//TitleBarStyle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toggleStyle" eType="#//ToggleStyle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expandedByDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ToggleStyle">
+    <eLiterals name="TWISTIE"/>
+    <eLiterals name="TREE_NODE" value="1"/>
+    <eLiterals name="NONE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TitleBarStyle">
+    <eLiterals name="TITLE_BAR"/>
+    <eLiterals name="SHORT_TITLE_BAR" value="1"/>
+    <eLiterals name="NO_TITLE" value="2"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetConditionalStyle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
@@ -365,6 +388,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//HyperlinkWidgetStyle"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//GroupStyle"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
