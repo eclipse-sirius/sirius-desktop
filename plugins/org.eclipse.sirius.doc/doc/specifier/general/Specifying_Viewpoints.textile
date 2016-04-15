@@ -107,6 +107,47 @@ Also, by clicking on the button next to the text field, you can open a dialog wi
 
 !images/textAreaDialog.png!
 
+h3(#translatable_messages). Translatable Messages
+
+Many _VSM_ elements provide text fields that will be displayed when end-users reference the _VSM_ in a modeling project (Viewpoint name, tools...). Starting from Sirius 4.0, the value shown to the end users can be localized according to the user's language.  Fields which support this feature are called _Translatable_ _Messages_ and can be easily identified by their blue background in the _Properties_ sheet of an element. 
+
+!images/common_attributes.png!
+
+Note that on the previous screenshot, the text in the label field is grayish because no label have been set and the ID is used instead.
+
+This feature is available for almost every _VSM_ elements defined in the VSMs which are visible to the end-user of the modeler, like viewpoint and tools names, can now be internationalized, but not to interpreted expressions. Note also that this feature is only available to modelers which are deployed as proper Eclipse plug-ins; it will not work for plain VSMs defined directly in the runtime workspace.
+
+To make use of this feature in your modeler, simply replace the names with a _translation key_ reference of the form @%myUniqueKey@  in the VSM, and define the value in the _Viewpoint Specification Project_'s @plugin.properties@ (for the default value), or @plugin_XX.properties@ for locale @XX@. Note that the key chosen must be globally unique in the context of a whole _Viewpoint Specification Project_.
+
+!images/translatable_message1.png!
+
+The key must be added to the @plugin.properties@ file for each language with the translated message. The default properties file is named @plugin.properties@ and the localized version are identified with a postfixed with the corresponding language code (e.g. for US english @plugin_en_US.properties@, for french @plugin_fr.properties@).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments.
+
+!images/translatable_message2.png!
+
+An Eclipse with localization in english will get the localized messages from @plugin_en.properties@, while an Eclipse with localization in french will get the localized messages from @plugin_fr.properties@.
+
+table(table table-striped table-condensed).
+|!images/translatable_message4.png!|!images/translatable_message3.png!|
+|_. English locale|_. French locale (with corresponding translation in @plugin_fr.properties@ |
+
+Note that an Eclipse with localization in a language that has no dedicated properties file, will get the localized message from the default @plugin.properties@.
+
+If the ID is not found in the localized properties file or if there is no properties file, the ID will be directly displayed.
+
+!images/translatable_message5.png!
+
+As the internationalization is optional, if a _Translatable_ _Message_ does not start with a _%_ it will be directly displayed without consideration of the localization.
+
+!images/translatable_message6.png!
+
+It is still possible to display a non localized label starting with a _%_ however the character needs to be doubled.
+
+!images/translatable_message8.png!
+!images/translatable_message9.png!
+
+_Warning_: _Translatable_ _Messages_ concern only labels set in the _VSM_ that are displayed to the end-users. Sirius is prepared for internationalization but is only available in English. Therefore, the _VSM_ labels can be available in another language but the labels coming from Sirius will stay in English. Moreover, some labels come from some other frameworks (such as EMF or GMF) and if the localization feature (if existing) is not installed, then the labels will stay in English.  
+
 h3(#model_operations). Model Operations
 
 Whenever a _VSM_ requires you to specify a behavior, for example inside any _Tool_ definition, you can use any of the available _Model Operations_ to do so. Refer to the "Model Operations documentation":Model_Operations.html for more details.

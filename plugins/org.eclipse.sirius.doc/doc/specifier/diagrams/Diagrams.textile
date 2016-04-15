@@ -32,6 +32,8 @@ The _Reused Mappings_ and _Reused Tools_ properties in the _Imports_ category ar
 
 The content of the _Diagram Description_ is mostly made of "graphical elements mappings":#graphical_elements, organized in "layers":#layers, and their associated "tools":#tools. In addition, it can also contain "validation rules":#validation, "filters":#filters and "layout configuration":#layout information.
 
+Note that the _Window Title_ label and _Message_ label are "_Translatable Messages_":../general/Specifying_Viewpoints.html#translatable_messages and can therefore be localized.
+
 h3(#layout). Layout Configuration
 
 Sirius provides a default algorithm to perform an automatic layout of all the graphical elements on a diagram (excluding "pinned elements":../../user/diagrams/Diagrams.html#diagram_element_pinning ). If the default algorithm does not fit your needs, you can configure some parameters or request for alternate algorithms (currently only one) directly inside the VSM.
@@ -438,6 +440,8 @@ Tool sections can have _Reused Tools_, which are defined elsewhere (including in
 
 The _Group Extension_ elements (defined inside a tool section) allow you to add tools in a existing _Group_ defined elsewhere. It can be used for example to merge tools defined in an additional layer into a group of tools defined in the default layer. You must select the existing _Group_ to extend, and any tool declared in a group extension will be added in the targeted group by the 'group' attribute.
 
+Note that the Tool Section label and Tool label are "_Translatable Messages_":../general/Specifying_Viewpoints.html#translatable_messages and can therefore be localized.
+
 __WARNING__ : It was possible to define a ToolSection directly under a DiagramDescription, outside a layer. Defining tool section outside a layer is discouraged, that's why this action has been deleted. The tool sections created before are still present but you should move it into the default layer since it is likely to be deleted in the future.
 
 h3(#tools_specification). Tools Specification
@@ -517,6 +521,8 @@ The _Candidates Expression_ should return a list of elements from which the user
 
 !images/styles/Selection_Tool.png!
 
+Note that the _Window Title_ label and _Message_ label are "_Translatable Messages_":../general/Specifying_Viewpoints.html#translatable_messages and can therefore be localized.
+
 h4(#pane_based_selection_wizard). Pane-Based Selection Wizard
 
 The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard":#selection_wizard. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic _Selection Wizard_. On the right is the current selection. The user has buttons to add or remove candidates from the left panel into the right one. The _Pre Selected Candidates Expression_ can be used to define the initial content of the right-side panel.
@@ -526,6 +532,8 @@ The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard":#sel
 </div>
 
 !images/styles/Pane-Based_Selection_Tool.png!
+
+Note that the _Window Title_ label, _Message_ label, _Choice of Values Message_ label and _Selected Values Message_ labels are "_Translatable Messages_":../general/Specifying_Viewpoints.html#translatable_messages and can therefore be localized.
 
 h4(#representation_creation). Representation Creation
 

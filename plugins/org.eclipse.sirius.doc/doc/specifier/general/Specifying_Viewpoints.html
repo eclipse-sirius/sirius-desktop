@@ -37,6 +37,9 @@
 								<a href="#interpreted_expressions">Interpreted Expressions</a>
 							</li>
 							<li>
+								<a href="#translatable_messages">Translatable Messages</a>
+							</li>
+							<li>
 								<a href="#model_operations">Model Operations</a>
 							</li>
 							<li>
@@ -303,6 +306,92 @@
 		<p>Also, by clicking on the button next to the text field, you can open a dialog with a bigger text area (providing auto-completion too) to type your expression more comfortably. Note that you can add line feeds or tabulations if you want, since they are removed when clicking on the &#8220;OK&#8221; button.</p>
 		<p>
 			<img border="0" src="images/textAreaDialog.png"/>
+		</p>
+		<h3 id="translatable_messages">Translatable Messages</h3>
+		<p>Many 
+			<em>VSM</em> elements provide text fields that will be displayed when end-users reference the 
+			<em>VSM</em> in a modeling project (Viewpoint name, tools...). Starting from Sirius 4.0, the value shown to the end users can be localized according to the user&#8217;s language.  Fields which support this feature are called 
+			<em>Translatable</em> 
+			<em>Messages</em> and can be easily identified by their blue background in the 
+			<em>Properties</em> sheet of an element. 
+		</p>
+		<p>
+			<img border="0" src="images/common_attributes.png"/>
+		</p>
+		<p>Note that on the previous screenshot, the text in the label field is grayish because no label have been set and the ID is used instead.</p>
+		<p>This feature is available for almost every 
+			<em>VSM</em> elements defined in the VSMs which are visible to the end-user of the modeler, like viewpoint and tools names, can now be internationalized, but not to interpreted expressions. Note also that this feature is only available to modelers which are deployed as proper Eclipse plug-ins; it will not work for plain VSMs defined directly in the runtime workspace.
+		</p>
+		<p>To make use of this feature in your modeler, simply replace the names with a 
+			<em>translation key</em> reference of the form 
+			<code>%myUniqueKey</code>  in the VSM, and define the value in the 
+			<em>Viewpoint Specification Project</em>'s 
+			<code>plugin.properties</code> (for the default value), or 
+			<code>plugin_XX.properties</code> for locale 
+			<code>XX</code>. Note that the key chosen must be globally unique in the context of a whole 
+			<em>Viewpoint Specification Project</em>.
+		</p>
+		<p>
+			<img border="0" src="images/translatable_message1.png"/>
+		</p>
+		<p>The key must be added to the 
+			<code>plugin.properties</code> file for each language with the translated message. The default properties file is named 
+			<code>plugin.properties</code> and the localized version are identified with a postfixed with the corresponding language code (e.g. for US english 
+			<code>plugin_en_US.properties</code>, for french 
+			<code>plugin_fr.properties</code>).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments.
+		</p>
+		<p>
+			<img border="0" src="images/translatable_message2.png"/>
+		</p>
+		<p>An Eclipse with localization in english will get the localized messages from 
+			<code>plugin_en.properties</code>, while an Eclipse with localization in french will get the localized messages from 
+			<code>plugin_fr.properties</code>.
+		</p>
+		<table class="table table-striped table-condensed">
+			<tr>
+				<td>
+					<img border="0" src="images/translatable_message4.png"/>
+				</td>
+				<td>
+					<img border="0" src="images/translatable_message3.png"/>
+				</td>
+			</tr>
+			<tr>
+				<th>English locale</th>
+				<th>French locale (with corresponding translation in 
+					<code>plugin_fr.properties</code> 
+				</th>
+			</tr>
+		</table>
+		<p>Note that an Eclipse with localization in a language that has no dedicated properties file, will get the localized message from the default 
+			<code>plugin.properties</code>.
+		</p>
+		<p>If the ID is not found in the localized properties file or if there is no properties file, the ID will be directly displayed.</p>
+		<p>
+			<img border="0" src="images/translatable_message5.png"/>
+		</p>
+		<p>As the internationalization is optional, if a 
+			<em>Translatable</em> 
+			<em>Message</em> does not start with a 
+			<em>%</em> it will be directly displayed without consideration of the localization.
+		</p>
+		<p>
+			<img border="0" src="images/translatable_message6.png"/>
+		</p>
+		<p>It is still possible to display a non localized label starting with a 
+			<em>%</em> however the character needs to be doubled.
+		</p>
+		<p>
+			<img border="0" src="images/translatable_message8.png"/>
+			<br/>
+			<img border="0" src="images/translatable_message9.png"/>
+		</p>
+		<p>
+			<em>Warning</em>: 
+			<em>Translatable</em> 
+			<em>Messages</em> concern only labels set in the 
+			<em>VSM</em> that are displayed to the end-users. Sirius is prepared for internationalization but is only available in English. Therefore, the 
+			<em>VSM</em> labels can be available in another language but the labels coming from Sirius will stay in English. Moreover, some labels come from some other frameworks (such as EMF or GMF) and if the localization feature (if existing) is not installed, then the labels will stay in English.  
 		</p>
 		<h3 id="model_operations">Model Operations</h3>
 		<p>Whenever a 

@@ -105,6 +105,14 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> All static strings defined in the VSMs which are visible to the end-user of the modeler, like viewpoint and tools names, can now be internationalized. Simply replace the name with a translation key reference of the form 
+				<code>%myUniqueKey</code>  in the VSM, and define the value in the 
+				<em>Viewpoint Specification Project</em>'s 
+				<code>plugin.properties</code> (for the default value), or 
+				<code>plugin_XX.properties</code> for locale 
+				<code>XX</code>. The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments. See 
+				<a href="specifier/general/Specifying_Viewpoints.html#translatable_messages">the corresponding section</a> in the documentation for more details.
+			</li>
 			<li><span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.</li>
 			<li><span class="label label-info">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the specifier documentation for more details.</li>
 			<li><span class="label label-info">Modified</span> The 
@@ -227,8 +235,9 @@
 				<code>org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter</code> which is an implementation providing this type inference.
 			</li>
 			<li><span class="label label-success">Added</span> A helper 
-				<code>org.eclipse.sirius.common.tools.api.util.MessageTranslator</code> providing a 
-				<code>getMessage(String)</code> service dedicated into processing a translatable message to return the translation in the active language when available. This service returns the String without modification if not translatable or no translation is available.
+				<code>org.eclipse.sirius.common.tools.api.util.MessageTranslator</code> providing 
+				<code>getMessage(EObject, String)</code> and 
+				<code>getMessage(Bundle, String)</code> service dedicated into processing a translatable message to return the translation in the active language when available. This service returns the String without modification if not translatable or no translation is available.
 			</li>
 			<li><span class="label label-success">Added</span> The &#8220;INFO&#8221; severity has been added to 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
