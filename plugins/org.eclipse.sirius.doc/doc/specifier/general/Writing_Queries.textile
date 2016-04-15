@@ -64,7 +64,7 @@ Starting from Sirius 3.1, _AQL_ (Acceleo Query Language, first introduced in Sir
 * AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: @aql:self.anEmptyReference.somethingElse@ will not result in an error as the equivalent Acceleo (or OCL) expression would, but simply return an empty result.
 * AQL provides different services/methods by default compared to Acceleo. In general the set of default services in AQL is better suited to the typically use cases encountered in Sirius.
 
-See "the AQL documentation":https://www.eclipse.org/acceleo/documentation/aql.html for more details about the language itself, the full list of standard services, and the differences with Acceleo/MTL.
+See <a href="https://www.eclipse.org/acceleo/documentation/aql.html" target="_blank">the AQL documentation</a> for more details about the language itself, the full list of standard services, and the differences with Acceleo/MTL.
 
 _Note:_ Viewpoint Specification Projects created with the default wizard will be already setup to use it. Otherwise you need to add a dependency to the @org.eclipse.sirius.common.acceleo.aql@ plug-in to ensure AQL support will be available wherever your modelers are used. When *developing* new VSMs which use AQL, it is recommended to have the  @org.eclipse.sirius.common.acceleo.aql.ide@ plug-in installed as it provides specification-time features like expression completion. However, @org.eclipse.sirius.common.acceleo.aql.ide@ is not needed at runtime for the resulting modelers to function.
 
@@ -72,7 +72,7 @@ _Note:_ Several services like olcIsKindOf() or filter() use type literals and wi
 
 h2(#acceleo). Using Acceleo
 
-Acceleo 3 implements the MTL standard, and provides a query language similar to OCL (with some extensions). It provides relatively good static validation and auto-completion when editing your expressions, but AQL is even better, and faster. For new modelers, prefer AQL over Acceleo/MTL. If you have existing modelers which use Acceleo/MTL, converting them to use AQL is relatively straightforward, see "the AQL documentation":https://www.eclipse.org/acceleo/documentation/aql.html#MigratingfromMTLqueries for details.
+Acceleo 3 implements the MTL standard, and provides a query language similar to OCL (with some extensions). It provides relatively good static validation and auto-completion when editing your expressions, but AQL is even better, and faster. For new modelers, prefer AQL over Acceleo/MTL. If you have existing modelers which use Acceleo/MTL, converting them to use AQL is relatively straightforward, see <a href="https://www.eclipse.org/acceleo/documentation/aql.html#MigratingfromMTLqueries" target="_blank">the AQL documentation</a> for details.
 
 Acceleo expressions are enclosed in brackets: <code>[theExpression/]</code>. Inside the brackets you can write any valid Acceleo expression, including using @if@ and @let@ statements, for example. See <a href="https://wiki.eclipse.org/Acceleo" target="_blank">the Acceleo documentation</a> for the exact syntax and semantics of the language.
 
