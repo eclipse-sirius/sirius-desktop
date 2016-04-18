@@ -1,14 +1,13 @@
 /******************************************************************************
- * Copyright (c) 2004, 2008 IBM Corporation and others.
+ * Copyright (c) 2004, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation 
+ *    IBM Corporation - initial API and implementation
  ****************************************************************************/
-
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
 import java.awt.Image;
@@ -45,7 +44,7 @@ import org.w3c.dom.Element;
 /**
  * Supports generation of an SVG DOM for a diagram or a subset of editparts on a
  * diagram.
- * 
+ *
  * @author jschofie / sshaw
  */
 // CHECKSTYLE:OFF
@@ -59,7 +58,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     /**
      * Creates a new instance.
-     * 
+     *
      * @param diagramEditPart
      *            the diagram editpart
      */
@@ -73,6 +72,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      * org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator#
      * setUpGraphics(int, int)
      */
+    @Override
     protected Graphics setUpGraphics(int width, int height) {
         viewBox = new Rectangle(0, 0, width, height);
         return GraphicsSVG.getInstance(viewBox);
@@ -84,6 +84,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      * org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator#
      * getImageDescriptor(org.eclipse.draw2d.Graphics)
      */
+    @Override
     protected ImageDescriptor getImageDescriptor(Graphics g) {
         try {
             GraphicsSVG svgG = (GraphicsSVG) g;
@@ -107,7 +108,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     /**
      * Writes the SVG Model out to a file.
-     * 
+     *
      * @param outputStream
      *            output stream to store the SVG Model
      */
@@ -141,13 +142,15 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      * org.eclipse.gmf.runtime.diagram.ui.internal.clipboard.DiagramGenerator#
      * createAWTImageForParts(java.util.List)
      */
+    @Override
     public Image createAWTImageForParts(List editparts, org.eclipse.swt.graphics.Rectangle sourceRect) {
         createSWTImageDescriptorForParts(editparts, sourceRect);
         if (getRenderedImage() != null) {
             try {
                 BufferedImage bufImg = (BufferedImage) getRenderedImage().getAdapter(BufferedImage.class);
-                if (bufImg == null)
+                if (bufImg == null) {
                     bufImg = ImageConverter.convert(getRenderedImage().getSWTImage());
+                }
                 return bufImg;
             } catch (Error e) {
                 // log the Error but allow execution to continue

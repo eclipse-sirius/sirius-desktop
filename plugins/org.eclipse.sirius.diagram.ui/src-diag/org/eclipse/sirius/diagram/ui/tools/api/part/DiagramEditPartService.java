@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2015 IBM Corporation and others.
+ * Copyright (c) 2005, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,10 +56,10 @@ import org.eclipse.swt.widgets.Shell;
  * {@link org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer} used
  * by OffscreenEditPartFactory so we therefore use our
  * {@link OffscreenEditPartFactory} in place.
- * 
+ *
  * Many methods are duplicated from {@link CopyToImageUtil} (version
  * org.eclipse.gmf.runtime.diagram.ui.render_1.4.1.v20100909-1300).
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil {
@@ -72,54 +72,30 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     /**
      * Check if GMF is able to export in HTML.
-     * 
+     *
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
     public static boolean canExportToHtml() {
-        if (canExportToHtml == null) {
+        if (DiagramEditPartService.canExportToHtml == null) {
             try {
-                exportToHtmlClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToHTMLImageUtil"); //$NON-NLS-1$
-                canExportToHtml = true;
+                DiagramEditPartService.exportToHtmlClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToHTMLImageUtil"); //$NON-NLS-1$
+                DiagramEditPartService.canExportToHtml = true;
             } catch (ClassNotFoundException e) {
-                canExportToHtml = false;
+                DiagramEditPartService.canExportToHtml = false;
             }
         }
-        return canExportToHtml;
-    }
-
-    /**
-     * Creates a <code>DiagramEditPart</code> given the <code>Diagram</code>
-     * without opening an editor.
-     * 
-     * NOTE : to avoid post-commit canonical refresh, execute
-     * DDiagramCanonicalSynchronizer#synchronize() on the GMF model before.
-     * 
-     * @param diagram
-     *            the <code>Diagram</code>
-     * @param shell
-     *            An out parameter for the shell that must be disposed after the
-     *            copy to image operation has completed.
-     * @param preferencesHint
-     *            The preference hint that is to be used to find the appropriate
-     *            preference store from which to retrieve diagram preference
-     *            values. The preference hint is mapped to a preference store in
-     *            the preference registry <@link DiagramPreferencesRegistry>.
-     * @return the new populated <code>DiagramEditPart</code>
-     */
-    @Override
-    public DiagramEditPart createDiagramEditPart(final Diagram diagram, final Shell shell, final PreferencesHint preferencesHint) {
-        return OffscreenEditPartFactory.getInstance().createDiagramEditPart(diagram, shell, preferencesHint);
+        return DiagramEditPartService.canExportToHtml;
     }
 
     /**
      * Layout GMF views created by a
      * {@link org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()}
      * .
-     * 
+     *
      * NOTE : a set of
      * {@link org.eclipse.emf.common.command.AbstractCommand.NonDirtying}
      * commands will be executed.
-     * 
+     *
      * @param diagramEditPart
      *            the <code>DiagramEditPart</code> to layout.
      */
@@ -135,8 +111,32 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
+     * Creates a <code>DiagramEditPart</code> given the <code>Diagram</code>
+     * without opening an editor.
+     *
+     * NOTE : to avoid post-commit canonical refresh, execute
+     * DDiagramCanonicalSynchronizer#synchronize() on the GMF model before.
+     *
+     * @param diagram
+     *            the <code>Diagram</code>
+     * @param shell
+     *            An out parameter for the shell that must be disposed after the
+     *            copy to image operation has completed.
+     * @param preferencesHint
+     *            The preference hint that is to be used to find the appropriate
+     *            preference store from which to retrieve diagram preference
+     *            values. The preference hint is mapped to a preference store in
+     *            the preference registry <@link DiagramPreferencesRegistry>.
+     * @return the new populated <code>DiagramEditPart</code>
+     */
+    @Override
+    public DiagramEditPart createDiagramEditPart(Diagram diagram, Shell shell, PreferencesHint preferencesHint) {
+        return OffscreenEditPartFactory.getInstance().createDiagramEditPart(diagram, shell, preferencesHint);
+    }
+
+    /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#copyToImage(org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart,
      *      org.eclipse.core.runtime.IPath,
      *      org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
@@ -146,7 +146,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     public DiagramGenerator copyToImage(DiagramEditPart diagramEP, IPath destination, org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
         if (exportToHtml && DiagramEditPartService.canExportToHtml()) {
             try {
-                CopyToImageUtil copyToHmlUtil = (CopyToImageUtil) exportToHtmlClass.newInstance();
+                CopyToImageUtil copyToHmlUtil = (CopyToImageUtil) DiagramEditPartService.exportToHtmlClass.newInstance();
                 return copyToHmlUtil.copyToImage(diagramEP, destination, format, monitor);
             } catch (InstantiationException e) {
                 throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "InstanciationException"), e)); //$NON-NLS-1$
@@ -171,7 +171,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#saveToFile(org.eclipse.core.runtime.IPath,
      *      org.eclipse.swt.graphics.Image,
      *      org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
@@ -202,10 +202,33 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         refreshLocal(destination);
     }
 
+    private void saveToOutputStream(OutputStream stream, Image image, ImageFileFormat imageFormat, IProgressMonitor monitor) {
+        monitor.worked(1);
+
+        ImageData imageData = image.getImageData();
+
+        if (imageFormat.equals(ImageFileFormat.GIF) || imageFormat.equals(ImageFileFormat.BMP)) {
+            imageData = createImageData(image);
+        }
+
+        monitor.worked(1);
+
+        ImageLoader imageLoader = new ImageLoader();
+        imageLoader.data = new ImageData[] { imageData };
+        imageLoader.logicalScreenHeight = image.getBounds().width;
+        imageLoader.logicalScreenHeight = image.getBounds().height;
+        if (imageFormat.equals(ImageFileFormat.JPG)) {
+            imageLoader.compression = 100;
+        }
+        imageLoader.save(stream, imageFormat.getOrdinal());
+
+        monitor.worked(1);
+    }
+
     /**
      * create a file in the workspace if the destination is in a project in the
      * workspace.
-     * 
+     *
      * @param destination
      *            the destination file.
      * @return the status from validating the file for editing
@@ -234,7 +257,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     /**
      * refresh the file in the workspace if the destination is in a project in
      * the workspace.
-     * 
+     *
      * @param destination
      *            the destination file.
      * @exception CoreException
@@ -247,32 +270,10 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         }
     }
 
-    private void saveToOutputStream(OutputStream stream, Image image, ImageFileFormat imageFormat, IProgressMonitor monitor) {
-        monitor.worked(1);
-
-        ImageData imageData = image.getImageData();
-
-        if (imageFormat.equals(ImageFileFormat.GIF) || imageFormat.equals(ImageFileFormat.BMP))
-            imageData = createImageData(image);
-
-        monitor.worked(1);
-
-        ImageLoader imageLoader = new ImageLoader();
-        imageLoader.data = new ImageData[] { imageData };
-        imageLoader.logicalScreenHeight = image.getBounds().width;
-        imageLoader.logicalScreenHeight = image.getBounds().height;
-        if (imageFormat.equals(ImageFileFormat.JPG)) {
-            imageLoader.compression = 100;
-        }
-        imageLoader.save(stream, imageFormat.getOrdinal());
-
-        monitor.worked(1);
-    }
-
     /**
      * Retrieve the image data for the image, using a palette of at most 256
      * colours.
-     * 
+     *
      * @param image
      *            the SWT image.
      * @return new image data.
@@ -308,7 +309,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     /**
      * Retrieve an image data with an 8 bit palette for an image. We assume that
      * the image has less than 256 colours.
-     * 
+     *
      * @param imageData
      *            the imageData for the image.
      * @return the new 8 bit imageData or null if the image has more than 256
@@ -335,8 +336,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
                             colours[newPixel] = colour;
                             break;
                         }
-                        if (colours[newPixel].equals(colour))
+                        if (colours[newPixel].equals(colour)) {
                             break;
+                        }
                     }
 
                     if (newPixel >= 256) {
@@ -353,8 +355,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
         RGB colour = new RGB(0, 0, 0);
         for (int k = 0; k < 256; ++k) {
-            if (colours[k] == null)
+            if (colours[k] == null) {
                 colours[k] = colour;
+            }
         }
 
         return newImageData;
@@ -382,8 +385,9 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
                     RGB colour = palette.getRGB(pixel);
                     RGB webSafeColour = getWebSafeColour(colour);
                     for (newPixel = 0; newPixel < 256; ++newPixel) {
-                        if (webSafePallette[newPixel].equals(webSafeColour))
+                        if (webSafePallette[newPixel].equals(webSafeColour)) {
                             break;
+                        }
                     }
 
                     Assert.isTrue(newPixel < 216);
@@ -396,9 +400,23 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
+     * Retrieves a web safe colour that closely matches the provided colour.
+     *
+     * @param colour
+     *            a colour.
+     * @return the web safe colour.
+     */
+    private RGB getWebSafeColour(RGB colour) {
+        int red = Math.round((colour.red + 25) / 51) * 51;
+        int green = Math.round((colour.green + 25) / 51) * 51;
+        int blue = Math.round((colour.blue + 25) / 51) * 51;
+        return new RGB(red, green, blue);
+    }
+
+    /**
      * Retrieves a web safe pallette. Our palette will be 216 web safe colours
      * and the remaining filled with white.
-     * 
+     *
      * @return array of 256 colours.
      */
     private RGB[] getWebSafePallette() {
@@ -415,24 +433,11 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
         RGB colour = new RGB(0, 0, 0);
         for (int k = 0; k < 256; ++k) {
-            if (colours[k] == null)
+            if (colours[k] == null) {
                 colours[k] = colour;
+            }
         }
 
         return colours;
-    }
-
-    /**
-     * Retrieves a web safe colour that closely matches the provided colour.
-     * 
-     * @param colour
-     *            a colour.
-     * @return the web safe colour.
-     */
-    private RGB getWebSafeColour(RGB colour) {
-        int red = ((colour.red + 25) / 51) * 51;
-        int green = ((colour.green + 25) / 51) * 51;
-        int blue = ((colour.blue + 25) / 51) * 51;
-        return new RGB(red, green, blue);
     }
 }

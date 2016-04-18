@@ -1,12 +1,12 @@
 /******************************************************************************
- * Copyright (c) 2004, 2010 IBM Corporation and others.
+ * Copyright (c) 2004, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation 
+ *    IBM Corporation - initial API and implementation
  ****************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
@@ -34,7 +34,7 @@ import org.w3c.dom.Element;
 
 /**
  * Objects of this class can be used with draw2d to create an SVG DOM.
- * 
+ *
  * @author jschofie / sshaw
  */
 // CHECKSTYLE:OFF
@@ -44,11 +44,11 @@ public class SiriusGraphicsSVG extends GraphicsToGraphics2DAdaptor implements Dr
 
     /**
      * Static initializer that will return an instance of
-     * <code>GraphicsSVG</code>
-     * 
+     * <code>SiriusGraphicsSVG</code>
+     *
      * @param viewPort
      *            the <code>Rectangle</code> area that is to be rendered.
-     * @return a new <code>GraphicsSVG</code> object.
+     * @return a new <code>SiriusGraphicsSVG</code> object.
      */
     public static SiriusGraphicsSVG getInstance(Rectangle viewPort) {
         SVGGraphics2D svgGraphics;
@@ -103,7 +103,7 @@ public class SiriusGraphicsSVG extends GraphicsToGraphics2DAdaptor implements Dr
 
     /**
      * Method used to get the SVG DOM from the Graphics
-     * 
+     *
      * @return SVG document
      */
     public Document getDocument() {
@@ -112,7 +112,7 @@ public class SiriusGraphicsSVG extends GraphicsToGraphics2DAdaptor implements Dr
 
     /**
      * Method used to get the SVG Root element from the document
-     * 
+     *
      * @return DOM Root element
      */
     public Element getRoot() {

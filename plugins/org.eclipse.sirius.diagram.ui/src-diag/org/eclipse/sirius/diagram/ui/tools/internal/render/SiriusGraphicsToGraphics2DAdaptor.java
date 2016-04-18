@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2015 IBM Corporation and others.
+ * Copyright (c) 2004, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,6 @@
  * Contributors:
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
-
 package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
 import java.awt.AlphaComposite;
@@ -701,8 +700,9 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
     @Override
     public void drawString(String s, int x, int y) {
 
-        if (s == null || s.length() == 0)
+        if (s == null || s.length() == 0) {
             return;
+        }
 
         java.awt.FontMetrics metrics = getGraphics2D().getFontMetrics();
         int stringLength = metrics.stringWidth(s);
@@ -1356,12 +1356,13 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
     public int getAntialias() {
         Object antiAlias = getGraphics2D().getRenderingHint(RenderingHints.KEY_ANTIALIASING);
         if (antiAlias != null) {
-            if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_ON))
+            if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_ON)) {
                 return SWT.ON;
-            else if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_OFF))
+            } else if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_OFF)) {
                 return SWT.OFF;
-            else if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_DEFAULT))
+            } else if (antiAlias.equals(RenderingHints.VALUE_ANTIALIAS_DEFAULT)) {
                 return SWT.DEFAULT;
+            }
         }
 
         return SWT.DEFAULT;

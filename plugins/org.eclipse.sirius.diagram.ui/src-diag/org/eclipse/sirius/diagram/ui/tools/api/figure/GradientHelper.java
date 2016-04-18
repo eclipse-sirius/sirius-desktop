@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,9 @@ import org.eclipse.swt.graphics.Pattern;
 
 /**
  * Helper for the creation of gradient from ViewGradientFigureDesc.
- * 
+ *
  * @author mporhel
- * 
+ *
  */
 public final class GradientHelper {
 
@@ -33,7 +33,7 @@ public final class GradientHelper {
 
     /**
      * Set the gradation of colors.
-     * 
+     *
      * @param graphics
      *            the graphics
      * @param figure
@@ -54,13 +54,13 @@ public final class GradientHelper {
 
     /**
      * Returns the pattern corresponding to the wanted gradient.
-     * 
+     *
      * @param backgroundStyle
-     *            the backgroud style
+     *            the background style
      * @param bounds
      *            the bounds
      * @param backgroundColor
-     *            the bachground color
+     *            the background color
      * @param gradientColor
      *            the gradient color
      * @return the wanted pattern
@@ -84,14 +84,14 @@ public final class GradientHelper {
 
     /**
      * Returns the pattern corresponding to the LeftToRight gradient.
-     * 
+     *
      * @param bounds
      *            the bounds
      * @param backgroundColor
      *            the background color
      * @param gradientColor
-     *            teh gradient color
-     * @return the correesponding pattern.
+     *            the gradient color
+     * @return the corresponding pattern.
      */
     public static Pattern getGradientLeftToRight(final Rectangle bounds, final Color backgroundColor, final Color gradientColor) {
         return VisualBindingManager.getDefault().getPatternFromValue(bounds.x, bounds.y, bounds.x + bounds.width, bounds.y, backgroundColor, gradientColor);
@@ -99,7 +99,7 @@ public final class GradientHelper {
 
     /**
      * Returns the pattern corresponding to the diagonal gradient.
-     * 
+     *
      * @param bounds
      *            the bounds
      * @param backgroundColor
@@ -123,19 +123,19 @@ public final class GradientHelper {
         if (gradientZoneHeight != bounds.height) {
             y = bounds.y - (i - bounds.height) / 2;
         }
-       return VisualBindingManager.getDefault().getPatternFromValue(x, y, x + gradientZoneWidth, y + gradientZoneHeight, backgroundColor, gradientColor);
+        return VisualBindingManager.getDefault().getPatternFromValue(x, y, x + gradientZoneWidth, y + gradientZoneHeight, backgroundColor, gradientColor);
     }
 
     /**
      * Returns the pattern corresponding to the TopToBottom gradient.
-     * 
+     *
      * @param bounds
      *            the bounds
      * @param backgroundColor
      *            the background color
      * @param gradientColor
      *            the gradient color
-     * @return the correesponding pattern.
+     * @return the corresponding pattern.
      */
     public static Pattern getGradientTopToBottom(final Rectangle bounds, final Color backgroundColor, final Color gradientColor) {
         return VisualBindingManager.getDefault().getPatternFromValue(bounds.x, bounds.y, bounds.x, bounds.y + bounds.height, backgroundColor, gradientColor);
