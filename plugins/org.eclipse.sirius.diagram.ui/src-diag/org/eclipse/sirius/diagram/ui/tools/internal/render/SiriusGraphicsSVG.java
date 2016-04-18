@@ -23,7 +23,6 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.render.RenderInfo;
 import org.eclipse.gmf.runtime.draw2d.ui.render.RenderedImage;
-import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGColorConverter;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.DrawableRenderedImage;
@@ -33,12 +32,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * Objects of this class can be used with draw2d to create an SVG DOM.
- *
+ * Objects of this class can be used with draw2d to create an SVG DOM.<BR>
+ * Class copied from
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG}
+ * to inherit of {@link SiriusGraphicsToGraphics2DAdaptor} instead of
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor}
+ * and so handles gradient with method
+ * {@link #setBackgroundPattern(java.awt.GradientPaint)}.
+ * 
  * @author jschofie / sshaw
  */
 // CHECKSTYLE:OFF
-public class SiriusGraphicsSVG extends GraphicsToGraphics2DAdaptor implements DrawableRenderedImage {
+public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor implements DrawableRenderedImage {
 
     private Document doc;
 

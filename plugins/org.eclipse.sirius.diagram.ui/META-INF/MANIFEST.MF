@@ -181,6 +181,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.internal.properties.filter;version="2.1.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.providers;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;version="3.0.0";x-internal:=true,
+ org.eclipse.sirius.diagram.ui.tools.internal.render;version="4.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.resource;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.routers;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.ruler;version="3.1.0";x-internal:=true,

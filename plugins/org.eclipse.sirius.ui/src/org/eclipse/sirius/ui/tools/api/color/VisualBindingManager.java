@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.color;
 
+import java.awt.GradientPaint;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.ext.base.cache.LRUCache;
 import org.eclipse.sirius.ext.swt.SWTResourceLRUCache;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -64,6 +66,8 @@ public class VisualBindingManager {
     private Map<Integer, Font> intToFontCache;
 
     private Map<PatternDescriptor, Pattern> patternCache;
+
+    private Map<PatternDescriptor, GradientPaint> gradientPaintCache;
 
     /**
      * Create a new {@link VisualBindingManager}.
@@ -109,6 +113,7 @@ public class VisualBindingManager {
         fontCache = new SWTResourceLRUCache<FontStyleDescriptor, Font>(fontCacheSize, fontCacheSize);
         intToFontCache = new SWTResourceLRUCache<Integer, Font>(fontCacheSize, fontCacheSize);
         patternCache = new SWTResourceLRUCache<PatternDescriptor, Pattern>(colorCacheSize, colorCacheSize);
+        gradientPaintCache = new LRUCache<PatternDescriptor, GradientPaint>(colorCacheSize, colorCacheSize);
     }
 
     /**
@@ -124,6 +129,7 @@ public class VisualBindingManager {
         intToFontCache.clear();
         VisualBindingManager.disposeResources(patternCache.values());
         patternCache.clear();
+        gradientPaintCache.clear();
     }
 
     private static <T extends Resource> void disposeResources(final Collection<T> resources) {
@@ -548,6 +554,11 @@ public class VisualBindingManager {
         public Pattern createPattern() {
             return new Pattern(null, this.x, this.y, this.w, this.h, this.backgroundColor, this.foregroundColor);
         }
+
+        public GradientPaint createGradientPaint() {
+            return new GradientPaint(this.x, this.y, new java.awt.Color(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue()), this.w, this.h,
+                    new java.awt.Color(foregroundColor.getRed(), foregroundColor.getGreen(), foregroundColor.getBlue()));
+        }
     }
 
     private Pattern getPatternFromCache(final PatternDescriptor desc) {
@@ -555,6 +566,13 @@ public class VisualBindingManager {
             patternCache.put(desc, desc.createPattern());
         }
         return patternCache.get(desc);
+    }
+
+    private GradientPaint getGradientPaintFromCache(final PatternDescriptor desc) {
+        if (!gradientPaintCache.containsKey(desc)) {
+            gradientPaintCache.put(desc, desc.createGradientPaint());
+        }
+        return gradientPaintCache.get(desc);
     }
 
     /**
@@ -578,6 +596,29 @@ public class VisualBindingManager {
     public Pattern getPatternFromValue(final int x, final int y, final int w, final int h, final Color backgroundColor, final Color foregrounColor) {
         final PatternDescriptor desc = new PatternDescriptor(x, y, w, h, backgroundColor, foregrounColor);
         return getPatternFromCache(desc);
+    }
+
+    /**
+     * Get a pattern from value.
+     * 
+     * @param x
+     *            the x coordinate
+     * @param y
+     *            the x coordinate
+     * @param w
+     *            the width
+     * @param h
+     *            the height
+     * @param backgroundColor
+     *            the background color
+     * @param foregrounColor
+     *            the foreground color
+     * @return the created or cached pattern, which does not need to be
+     *         disposed.
+     */
+    public GradientPaint getGradientPaintFromValue(int x, int y, int w, int h, Color backgroundColor, Color foregrounColor) {
+        final PatternDescriptor desc = new PatternDescriptor(x, y, w, h, backgroundColor, foregrounColor);
+        return getGradientPaintFromCache(desc);
     }
 
     /**
@@ -754,5 +795,4 @@ public class VisualBindingManager {
         ((InternalEObject) color).eSetProxyURI(colorURI);
         return (SystemColor) color;
     }
-
 }

@@ -60,8 +60,10 @@ import org.eclipse.swt.graphics.TextLayout;
 
 //CHECKSTYLE:OFF
 /**
- * Objects of this class can be used with draw2d to render to a Graphics2D
- * object.
+ * Class copied from
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor}
+ * . But this class handles the gradient background (method
+ * {@link #setBackgroundPattern(GradientPaint)}.
  * 
  * @author jschofie / sshaw
  */
@@ -119,6 +121,11 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
          * cached background color
          */
         public Color bgColor;
+
+        /**
+         * cached background pattern
+         */
+        GradientPaint bgPattern;
 
         /**
          * cached alpha value
@@ -423,7 +430,12 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         Arc2D arc = new Arc2D.Float(x + transX, y + transY, w, h, offset, length, Arc2D.OPEN);
 
         checkState();
-        getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        GradientPaint pattern = getBackgroundPattern();
+        if (pattern == null) {
+            getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        } else {
+            getGraphics2D().setPaint(pattern);
+        }
         getGraphics2D().fill(arc);
     }
 
@@ -562,7 +574,12 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         Ellipse2D ellipse = new Ellipse2D.Float(x + transX, y + transY, w - 1, h - 1);
 
         checkState();
-        getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        GradientPaint pattern = getBackgroundPattern();
+        if (pattern == null) {
+            getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        } else {
+            getGraphics2D().setPaint(pattern);
+        }
         getGraphics2D().fill(ellipse);
     }
 
@@ -601,7 +618,12 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
     public void fillPolygon(PointList pointList) {
 
         checkState();
-        getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        GradientPaint pattern = getBackgroundPattern();
+        if (pattern == null) {
+            getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        } else {
+            getGraphics2D().setPaint(pattern);
+        }
         getGraphics2D().fill(createPolygon(pointList));
     }
 
@@ -649,7 +671,12 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         Rectangle2D rect = new Rectangle2D.Float(x + transX, y + transY, width, height);
 
         checkState();
-        getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        GradientPaint pattern = getBackgroundPattern();
+        if (pattern == null) {
+            getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        } else {
+            getGraphics2D().setPaint(pattern);
+        }
         getGraphics2D().fill(rect);
     }
 
@@ -680,7 +707,13 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         RoundRectangle2D roundRect = new RoundRectangle2D.Float(rect.x + transX, rect.y + transY, rect.width, rect.height, arcWidth, arcHeight);
 
         checkState();
-        getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        GradientPaint pattern = getBackgroundPattern();
+        if (pattern == null) {
+            getGraphics2D().setPaint(getColor(swtGraphics.getBackgroundColor()));
+        } else {
+            getGraphics2D().setPaint(pattern);
+        }
+
         getGraphics2D().fill(roundRect);
     }
 
@@ -942,6 +975,25 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
     public void setBackgroundColor(Color rgb) {
         currentState.bgColor = rgb;
         swtGraphics.setBackgroundColor(rgb);
+    }
+
+    /**
+     * Sets the background pattern.
+     * 
+     * @param gradientPaint
+     *            The pattern to use for gradient background.
+     */
+    public void setBackgroundPattern(GradientPaint gradientPaint) {
+        currentState.bgPattern = gradientPaint;
+    }
+
+    /**
+     * Returns the background pattern used for filling.
+     * 
+     * @return the background pattern
+     */
+    private GradientPaint getBackgroundPattern() {
+        return currentState.bgPattern;
     }
 
     /*

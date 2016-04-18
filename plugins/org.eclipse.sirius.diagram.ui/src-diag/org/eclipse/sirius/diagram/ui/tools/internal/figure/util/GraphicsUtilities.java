@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graphics.ScaledGraphics;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusGraphicsToGraphics2DAdaptor;
 
 /**
  * .
@@ -70,6 +71,25 @@ public final class GraphicsUtilities {
         return swtGrpahics;
     }
 
+    /**
+     * Get the SiriusGraphicsToGraphics2DAdaptor graphic instance.
+     * 
+     * @param graphics
+     *            the wrapped SiriusGraphicsToGraphics2DAdaptor graphics
+     *            instance
+     * @return the wrapped graphic instance
+     */
+    public static SiriusGraphicsToGraphics2DAdaptor getSiriusGraphicsToGraphics2DAdaptor(Graphics graphics) {
+        Graphics internalGraphics = null;
+        if (graphics instanceof ScaledGraphics) {
+            internalGraphics = GraphicsUtilities.getInternalGraphics((ScaledGraphics) graphics);
+        }
+        if (internalGraphics instanceof SiriusGraphicsToGraphics2DAdaptor) {
+            return (SiriusGraphicsToGraphics2DAdaptor) internalGraphics;
+        }
+        return null;
+    }
+
     private static Graphics getInternalGraphics(final ScaledGraphics graphics) {
         try {
             method = ScaledGraphics.class.getDeclaredMethod("getGraphics"); //$NON-NLS-1$
@@ -116,5 +136,4 @@ public final class GraphicsUtilities {
         }
         return null;
     }
-
 }

@@ -35,7 +35,6 @@ import org.eclipse.gmf.runtime.diagram.ui.render.internal.DiagramUIRenderDebugOp
 import org.eclipse.gmf.runtime.diagram.ui.render.internal.DiagramUIRenderPlugin;
 import org.eclipse.gmf.runtime.draw2d.ui.render.RenderedImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.image.ImageConverter;
-import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG;
 import org.eclipse.gmf.runtime.draw2d.ui.render.factory.RenderedImageFactory;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderedImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -43,7 +42,13 @@ import org.w3c.dom.Element;
 
 /**
  * Supports generation of an SVG DOM for a diagram or a subset of editparts on a
- * diagram.
+ * diagram.<BR>
+ * Class copied from
+ * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
+ * to use a specific GraphicsToGraphics2DAdaptor ({@link SiriusGraphicsSVG}
+ * instead of
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG}
+ * ) that handles the gradient.
  *
  * @author jschofie / sshaw
  */
@@ -75,7 +80,8 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     @Override
     protected Graphics setUpGraphics(int width, int height) {
         viewBox = new Rectangle(0, 0, width, height);
-        return GraphicsSVG.getInstance(viewBox);
+        // GraphicsSVG replaced by SiriusGraphicsSVG
+        return SiriusGraphicsSVG.getInstance(viewBox);
     }
 
     /*
@@ -87,7 +93,8 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     @Override
     protected ImageDescriptor getImageDescriptor(Graphics g) {
         try {
-            GraphicsSVG svgG = (GraphicsSVG) g;
+            // GraphicsSVG replaced by SiriusGraphicsSVG
+            SiriusGraphicsSVG svgG = (SiriusGraphicsSVG) g;
             // Get the root element (the svg element)
             svgRoot = svgG.getRoot();
 

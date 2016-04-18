@@ -11,9 +11,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.part;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.MessageFormat;
@@ -29,17 +32,24 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.gmf.runtime.common.core.command.FileModificationValidator;
+import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat;
 import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator;
+import org.eclipse.gmf.runtime.diagram.ui.render.internal.DiagramUIRenderPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.image.ImageExporter;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImageConverter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramImageGenerator;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramSVGGenerator;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.Image;
@@ -135,6 +145,36 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
+     * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
+     * .
+     */
+    @Override
+    public byte[] copyToImageByteArray(DiagramEditPart diagramEP, List editParts, int maxWidth, int maxHeight, ImageFileFormat format, IProgressMonitor monitor, boolean useMargins)
+            throws CoreException {
+        Assert.isNotNull(diagramEP);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        DiagramGenerator gen = getDiagramGenerator(diagramEP, format);
+        if (editParts == null || editParts.isEmpty()) {
+            // CHECKSTYLE:OFF
+            editParts = diagramEP.getPrimaryEditParts();
+            // CHECKSTYLE:ON
+        }
+        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+            gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins);
+            monitor.worked(1);
+            saveToOutputStream(stream, (SiriusDiagramSVGGenerator) gen, format, monitor);
+        } else {
+            Image image = gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins).createImage();
+            monitor.worked(1);
+            saveToOutputStream(stream, image, format, monitor);
+            image.dispose();
+        }
+        monitor.worked(1);
+        return stream.toByteArray();
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#copyToImage(org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart,
@@ -167,6 +207,58 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationName));
         }
         return super.copyToImage(diagramEP, destination, format, monitor);
+    }
+
+    /**
+     * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
+     * and {@link SiriusDiagramImageGenerator} instead of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator}
+     * .
+     */
+    @Override
+    protected DiagramGenerator getDiagramGenerator(DiagramEditPart diagramEP, ImageFileFormat format) {
+        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+            return new SiriusDiagramSVGGenerator(diagramEP);
+        } else {
+            return new SiriusDiagramImageGenerator(diagramEP);
+        }
+    }
+
+    /**
+     * Only overridden to use {@link SiriusDiagramSVGGenerator} instead of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
+     * .
+     */
+    @Override
+    protected void copyToImage(DiagramGenerator gen, List editParts, org.eclipse.swt.graphics.Rectangle imageRect, IPath destination, ImageFileFormat format, IProgressMonitor monitor)
+            throws CoreException {
+        boolean found = false;
+        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+            gen.createSWTImageDescriptorForParts(editParts, imageRect);
+            monitor.worked(1);
+            saveToFile(destination, (SiriusDiagramSVGGenerator) gen, format, monitor);
+            found = true;
+        } else if (format.equals(ImageFileFormat.JPEG) || format.equals(ImageFileFormat.PNG)) {
+
+            String exportFormat = ImageExporter.JPEG_FILE;
+            if (format.equals(ImageFileFormat.PNG))
+                exportFormat = ImageExporter.PNG_FILE;
+
+            java.awt.Image image = gen.createAWTImageForParts(editParts, imageRect);
+            monitor.worked(1);
+            if (image instanceof BufferedImage) {
+                ImageExporter.exportToFile(destination, (BufferedImage) image, exportFormat, monitor, format.getQuality());
+                found = true;
+            }
+        }
+
+        if (!found) {
+            Image image = gen.createSWTImageDescriptorForParts(editParts, imageRect).createImage();
+            monitor.worked(1);
+            saveToFile(destination, image, format, monitor);
+            image.dispose();
+        }
     }
 
     /**
@@ -228,6 +320,85 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         }
         imageLoader.save(stream, imageFormat.getOrdinal());
 
+        monitor.worked(1);
+    }
+
+    /**
+     * Saves an SVG DOM to a file.<BR>
+     * Method duplicated from
+     * {@link #saveSVGToFile(IPath, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, IProgressMonitor)}
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a
+     * DiagramSVGGenerator.
+     * 
+     * @param destination
+     *            the destination file, including path and file name
+     * @param generator
+     *            the svg generator for a diagram, used to write
+     * @param monitor
+     *            the progress monitor
+     * @exception CoreException
+     *                if this method fails
+     */
+    protected void saveSVGToFile(IPath destination, SiriusDiagramSVGGenerator generator, IProgressMonitor monitor) throws CoreException {
+        saveToFile(destination, generator, ImageFileFormat.SVG, monitor);
+    }
+
+    /**
+     * Saves an SVG or PDF files.<BR>
+     * Method duplicated from
+     * {@link #saveToFile(IPath, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, ImageFileFormat, IProgressMonitor)}
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a
+     * DiagramSVGGenerator.
+     * 
+     * @param destination
+     *            the destination file, including path and file name
+     * @param generator
+     *            the svg generator for a diagram, used to write
+     * @param format
+     *            currently supports SVG or PDF
+     * @param monitor
+     *            the progress monitor
+     * @exception CoreException
+     *                if this method fails
+     */
+    protected void saveToFile(IPath destination, SiriusDiagramSVGGenerator generator, ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
+
+        IStatus fileModificationStatus = createFile(destination);
+        if (!fileModificationStatus.isOK()) {
+            // can't write to the file
+            return;
+        }
+        monitor.worked(1);
+
+        try {
+            FileOutputStream os = new FileOutputStream(destination.toOSString());
+            monitor.worked(1);
+            saveToOutputStream(os, generator, format, monitor);
+            os.close();
+            monitor.worked(1);
+            refreshLocal(destination);
+        } catch (IOException ex) {
+            Log.error(DiagramUIRenderPlugin.getInstance(), IStatus.ERROR, ex.getMessage(), ex);
+            IStatus status = new Status(IStatus.ERROR, "exportToFile", IStatus.OK, //$NON-NLS-1$
+                    ex.getMessage(), null);
+            throw new CoreException(status);
+        }
+    }
+
+    /**
+     * Method duplicated from
+     * {@link #saveToOutputStream(OutputStream, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, ImageFileFormat, IProgressMonitor)}
+     * to use a {@link SiriusDiagramSVGGenerator} instead of a
+     * DiagramSVGGenerator.
+     */
+    private void saveToOutputStream(OutputStream stream, SiriusDiagramSVGGenerator generator, ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
+        if (format == ImageFileFormat.PDF) {
+            SVGImageConverter.exportToPDF((SVGImage) generator.getRenderedImage(), stream);
+        } else if (format == ImageFileFormat.SVG) {
+            generator.stream(stream);
+        } else {
+            throw new IllegalArgumentException("Unexpected format: " + format.getName()); //$NON-NLS-1$
+        }
         monitor.worked(1);
     }
 

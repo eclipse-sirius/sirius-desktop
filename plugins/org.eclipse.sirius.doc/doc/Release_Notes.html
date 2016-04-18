@@ -97,14 +97,17 @@
 			<li><span class="label label-info">Modified</span> The wizard to ask the new representation name has been changed. These concerns the title of the wizard and the input label. Example with a new Entities diagram for EcoreTools:</li>
 		</ul>
 		<p>
-			<img border="0" src="images/representationNameWizardChange.png"/> 
+			<img border="0" src="images/representationNameWizardChange.png"/>
 		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> The export of diagram as image handles the gradient color for container background for BMP, JPG, PNG and SVG formats. Before, it only works for JPG format.</li>
+		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.</li>
 			<li><span class="label label-info">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the specifier documentation for more details.</li>
 			<li><span class="label label-info">Modified</span> The 
-				<code>BorderSizeComputationExpression</code> migration has been corrected to recursively handle the sub container mappings. VSM created or migrated with Sirius 3.1.0, 3.1.1 or 3.1.2 might require a manual modification for the style descriptions of sub container mappings with border size computation equals to 0 as we cannot determine if they were added (or updated) after or before the migration: starting with Sirius 3.1.0, no border will be displayed for a 0 pixel value whereas with older version container always had at least a 1 pixel border. 
+				<code>BorderSizeComputationExpression</code> migration has been corrected to recursively handle the sub container mappings. VSM created or migrated with Sirius 3.1.0, 3.1.1 or 3.1.2 might require a manual modification for the style descriptions of sub container mappings with border size computation equals to 0 as we cannot determine if they were added (or updated) after or before the migration: starting with Sirius 3.1.0, no border will be displayed for a 0 pixel value whereas with older version container always had at least a 1 pixel border.
 			</li>
 			<li><span class="label label-info">Modified</span> The variable under VariableFilter, previously named &#8220;Variable&#8221;, is renamed to &#8220;Select Model Element Variable&#8221;. It is functionally equivalent.</li>
 		</ul>
@@ -330,6 +333,27 @@
 				<code>String getKey(Graphics)</code>, 
 				<code>Image getImage(Rectangle, Graphics)</code>, 
 				<code>static boolean doRemoveFromCache(String)</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 2 methods are added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService</code> to manage gradient color in export to PNG or SVG formats: 
+				<code>DiagramEditPartService.saveSVGToFile(IPath, SiriusDiagramSVGGenerator, IProgressMonitor)</code> and 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.saveToFile(IPath, SiriusDiagramSVGGenerator, ImageFileFormat, IProgressMonitor)</code>. These 2 methods are copy of parent methods with 
+				<code>SiriusDiagramSVGGenerator</code> as parameter instead of a 
+				<code>DiagramSVGGenerator</code>.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.tools.api.color.VisualBindingManager.getGradientPaintFromValue(int, int, int, int, Color, Color)</code> has been added to handle a cache for 
+				<code>java.awt.GradientPaint</code> as it is the case for 
+				<code>org.eclipse.swt.graphics.Pattern</code> with 
+				<code>getPatternFromValue()</code>.
+			</li>
+			<li><span class="label label-success">Added</span> Methods have been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.GradientHelper</code> to handle 
+				<code>java.awt.GradientPaint</code> as 
+				<code>org.eclipse.swt.graphics.Pattern</code>: 
+				<code>getGradientPaintDiag(Rectangle, Color, Color)</code>, 
+				<code>getGradientPaintLeftToRight(Rectangle, Color, Color)</code> and 
+				<code>getGradientPaintTopToBottom(Rectangle, Color, Color)</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure</code> now overrides the method 
