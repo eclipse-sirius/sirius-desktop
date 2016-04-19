@@ -34,6 +34,9 @@ import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
+import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
@@ -251,6 +254,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseHyperlinkDescription(HyperlinkDescription object) {
+            return createHyperlinkDescriptionAdapter();
+        }
+
+        @Override
         public Adapter caseWidgetStyle(WidgetStyle object) {
             return createWidgetStyleAdapter();
         }
@@ -293,6 +301,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
             return createReferenceWidgetStyleAdapter();
+        }
+
+        @Override
+        public Adapter caseHyperlinkWidgetStyle(HyperlinkWidgetStyle object) {
+            return createHyperlinkWidgetStyleAdapter();
         }
 
         @Override
@@ -343,6 +356,11 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseWidgetAction(WidgetAction object) {
             return createWidgetActionAdapter();
+        }
+
+        @Override
+        public Adapter caseHyperlinkWidgetConditionalStyle(HyperlinkWidgetConditionalStyle object) {
+            return createHyperlinkWidgetConditionalStyleAdapter();
         }
 
         @Override
@@ -798,6 +816,22 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription
+     * <em>Hyperlink Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription
+     * @generated
+     */
+    public Adapter createHyperlinkDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.properties.WidgetStyle <em>Widget Style</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
@@ -920,6 +954,38 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCustomWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
+     * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.ReferenceWidgetStyle
+     * @generated
+     */
+    public Adapter createReferenceWidgetStyleAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle
+     * <em>Hyperlink Widget Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle
+     * @generated
+     */
+    public Adapter createHyperlinkWidgetStyleAdapter() {
         return null;
     }
 
@@ -1084,17 +1150,17 @@ public class PropertiesAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
-     * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
+     * <em>Hyperlink Widget Conditional Style</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
-     * @see org.eclipse.sirius.properties.ReferenceWidgetStyle
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
      * @generated
      */
-    public Adapter createReferenceWidgetStyleAdapter() {
+    public Adapter createHyperlinkWidgetConditionalStyleAdapter() {
         return null;
     }
 

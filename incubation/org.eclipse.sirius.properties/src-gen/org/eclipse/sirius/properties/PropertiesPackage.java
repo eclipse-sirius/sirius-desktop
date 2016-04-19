@@ -1788,6 +1788,99 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
+     * <em>Hyperlink Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkDescription()
+     * @generated
+     */
+    int HYPERLINK_DESCRIPTION = 26;
+
+    /**
+     * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__IDENTIFIER = PropertiesPackage.WIDGET_DESCRIPTION__IDENTIFIER;
+
+    /**
+     * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Help Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__HELP_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__STYLE = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Conditional Styles</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Hyperlink Description</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_DESCRIPTION_FEATURE_COUNT = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl
      * <em>Widget Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -1796,7 +1889,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetStyle()
      * @generated
      */
-    int WIDGET_STYLE = 26;
+    int WIDGET_STYLE = 27;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -1862,7 +1955,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
      * @generated
      */
-    int TEXT_WIDGET_STYLE = 27;
+    int TEXT_WIDGET_STYLE = 28;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -1973,7 +2066,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
      * @generated
      */
-    int LABEL_WIDGET_STYLE = 28;
+    int LABEL_WIDGET_STYLE = 29;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2084,7 +2177,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
      * @generated
      */
-    int CHECKBOX_WIDGET_STYLE = 29;
+    int CHECKBOX_WIDGET_STYLE = 30;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2150,7 +2243,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
      * @generated
      */
-    int RADIO_WIDGET_STYLE = 30;
+    int RADIO_WIDGET_STYLE = 31;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2216,7 +2309,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
      * @generated
      */
-    int BUTTON_WIDGET_STYLE = 31;
+    int BUTTON_WIDGET_STYLE = 32;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2282,7 +2375,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
      * @generated
      */
-    int SELECT_WIDGET_STYLE = 32;
+    int SELECT_WIDGET_STYLE = 33;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2348,7 +2441,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
      * @generated
      */
-    int CUSTOM_WIDGET_STYLE = 33;
+    int CUSTOM_WIDGET_STYLE = 34;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2414,7 +2507,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
      * @generated
      */
-    int WIDGET_CONDITIONAL_STYLE = 35;
+    int WIDGET_CONDITIONAL_STYLE = 37;
 
     /**
      * The meta object id for the '
@@ -2426,7 +2519,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
      * @generated
      */
-    int TEXT_WIDGET_CONDITIONAL_STYLE = 36;
+    int TEXT_WIDGET_CONDITIONAL_STYLE = 38;
 
     /**
      * The meta object id for the '
@@ -2438,7 +2531,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
      * @generated
      */
-    int LABEL_WIDGET_CONDITIONAL_STYLE = 37;
+    int LABEL_WIDGET_CONDITIONAL_STYLE = 39;
 
     /**
      * The meta object id for the '
@@ -2450,7 +2543,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
      * @generated
      */
-    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 38;
+    int CHECKBOX_WIDGET_CONDITIONAL_STYLE = 40;
 
     /**
      * The meta object id for the '
@@ -2462,7 +2555,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
      * @generated
      */
-    int RADIO_WIDGET_CONDITIONAL_STYLE = 39;
+    int RADIO_WIDGET_CONDITIONAL_STYLE = 41;
 
     /**
      * The meta object id for the '
@@ -2474,7 +2567,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
      * @generated
      */
-    int BUTTON_WIDGET_CONDITIONAL_STYLE = 40;
+    int BUTTON_WIDGET_CONDITIONAL_STYLE = 42;
 
     /**
      * The meta object id for the '
@@ -2486,7 +2579,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
      * @generated
      */
-    int SELECT_WIDGET_CONDITIONAL_STYLE = 41;
+    int SELECT_WIDGET_CONDITIONAL_STYLE = 43;
 
     /**
      * The meta object id for the '
@@ -2498,7 +2591,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
      * @generated
      */
-    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 42;
+    int CUSTOM_WIDGET_CONDITIONAL_STYLE = 44;
 
     /**
      * The meta object id for the '
@@ -2510,7 +2603,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetConditionalStyle()
      * @generated
      */
-    int REFERENCE_WIDGET_CONDITIONAL_STYLE = 43;
+    int REFERENCE_WIDGET_CONDITIONAL_STYLE = 45;
 
     /**
      * The meta object id for the '
@@ -2522,7 +2615,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetAction()
      * @generated
      */
-    int WIDGET_ACTION = 44;
+    int WIDGET_ACTION = 46;
 
     /**
      * The meta object id for the '
@@ -2534,7 +2627,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetStyle()
      * @generated
      */
-    int REFERENCE_WIDGET_STYLE = 34;
+    int REFERENCE_WIDGET_STYLE = 35;
 
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
@@ -2589,6 +2682,108 @@ public interface PropertiesPackage extends EPackage {
      * @ordered
      */
     int REFERENCE_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
+     * <em>Hyperlink Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetStyle()
+     * @generated
+     */
+    int HYPERLINK_WIDGET_STYLE = 36;
+
+    /**
+     * The feature id for the '<em><b>Label Font Name Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Label Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE;
+
+    /**
+     * The feature id for the '<em><b>Label Background Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__LABEL_BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_BACKGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Foreground Color</b></em>'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__LABEL_FOREGROUND_COLOR = PropertiesPackage.WIDGET_STYLE__LABEL_FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Label Font Format</b></em>' attribute
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.WIDGET_STYLE__LABEL_FONT_FORMAT;
+
+    /**
+     * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Font Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Font Format</b></em>' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>Hyperlink Widget Style</em>
+     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_STYLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2862,6 +3057,46 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
+     * <em>Hyperlink Widget Conditional Style</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
+     * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetConditionalStyle()
+     * @generated
+     */
+    int HYPERLINK_WIDGET_CONDITIONAL_STYLE = 47;
+
+    /**
+     * The feature id for the '<em><b>Precondition Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION = PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION;
+
+    /**
+     * The feature id for the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Hyperlink Widget Conditional Style</em>' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HYPERLINK_WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT = PropertiesPackage.WIDGET_CONDITIONAL_STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -2870,7 +3105,7 @@ public interface PropertiesPackage extends EPackage {
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
      * @generated
      */
-    int FILL_LAYOUT_ORIENTATION = 45;
+    int FILL_LAYOUT_ORIENTATION = 48;
 
     /**
      * Returns the meta object for class '
@@ -4248,6 +4483,71 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription
+     * <em>Hyperlink Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Hyperlink Description</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription
+     * @generated
+     */
+    EClass getHyperlinkDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getValueExpression
+     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getValueExpression()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EAttribute getHyperlinkDescription_ValueExpression();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getInitialOperation
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Initial Operation</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getInitialOperation()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EReference getHyperlinkDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getStyle()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EReference getHyperlinkDescription_Style();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription#getConditionalStyles
+     * <em>Conditional Styles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Conditional Styles</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkDescription#getConditionalStyles()
+     * @see #getHyperlinkDescription()
+     * @generated
+     */
+    EReference getHyperlinkDescription_ConditionalStyles();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.WidgetStyle <em>Widget Style</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -4803,6 +5103,31 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
+     * <em>Hyperlink Widget Conditional Style</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @return the meta object for class '
+     *         <em>Hyperlink Widget Conditional Style</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
+     * @generated
+     */
+    EClass getHyperlinkWidgetConditionalStyle();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle#getStyle
+     * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Style</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle#getStyle()
+     * @see #getHyperlinkWidgetConditionalStyle()
+     * @generated
+     */
+    EReference getHyperlinkWidgetConditionalStyle_Style();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
      * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -4812,6 +5137,69 @@ public interface PropertiesPackage extends EPackage {
      * @generated
      */
     EClass getReferenceWidgetStyle();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle
+     * <em>Hyperlink Widget Style</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Hyperlink Widget Style</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle
+     * @generated
+     */
+    EClass getHyperlinkWidgetStyle();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression
+     * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Name Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression()
+     * @see #getHyperlinkWidgetStyle()
+     * @generated
+     */
+    EAttribute getHyperlinkWidgetStyle_FontNameExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize
+     * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Font Size</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize()
+     * @see #getHyperlinkWidgetStyle()
+     * @generated
+     */
+    EAttribute getHyperlinkWidgetStyle_FontSize();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getBackgroundColor()
+     * @see #getHyperlinkWidgetStyle()
+     * @generated
+     */
+    EReference getHyperlinkWidgetStyle_BackgroundColor();
+
+    /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontFormat
+     * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute list '<em>Font Format</em>'.
+     * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontFormat()
+     * @see #getHyperlinkWidgetStyle()
+     * @generated
+     */
+    EAttribute getHyperlinkWidgetStyle_FontFormat();
 
     /**
      * Returns the meta object for enum '
@@ -5847,6 +6235,52 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
+         * <em>Hyperlink Description</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkDescription()
+         * @generated
+         */
+        EClass HYPERLINK_DESCRIPTION = PropertiesPackage.eINSTANCE.getHyperlinkDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Value Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HYPERLINK_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getHyperlinkDescription_Style();
+
+        /**
+         * The meta object literal for the '<em><b>Conditional Styles</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ConditionalStyles();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl
          * <em>Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6276,6 +6710,26 @@ public interface PropertiesPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
+         * <em>Hyperlink Widget Conditional Style</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetConditionalStyle()
+         * @generated
+         */
+        EClass HYPERLINK_WIDGET_CONDITIONAL_STYLE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetConditionalStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Style</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetConditionalStyle_Style();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
          * <em>Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -6285,6 +6739,50 @@ public interface PropertiesPackage extends EPackage {
          * @generated
          */
         EClass REFERENCE_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getReferenceWidgetStyle();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
+         * <em>Hyperlink Widget Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
+         * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetStyle()
+         * @generated
+         */
+        EClass HYPERLINK_WIDGET_STYLE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Font Name Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontNameExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Font Size</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HYPERLINK_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSize();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_BackgroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Font Format</b></em>'
+         * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HYPERLINK_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontFormat();
 
         /**
          * The meta object literal for the '

@@ -37,6 +37,9 @@ import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
+import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
@@ -264,6 +267,13 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
+    private EClass hyperlinkDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EClass widgetStyleEClass = null;
 
     /**
@@ -390,7 +400,21 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      *
      * @generated
      */
+    private EClass hyperlinkWidgetConditionalStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EClass referenceWidgetStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass hyperlinkWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1544,6 +1568,56 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getHyperlinkDescription() {
+        return hyperlinkDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getHyperlinkDescription_ValueExpression() {
+        return (EAttribute) hyperlinkDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkDescription_InitialOperation() {
+        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkDescription_Style() {
+        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkDescription_ConditionalStyles() {
+        return (EReference) hyperlinkDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getWidgetStyle() {
         return widgetStyleEClass;
     }
@@ -1984,8 +2058,78 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
+    public EClass getHyperlinkWidgetConditionalStyle() {
+        return hyperlinkWidgetConditionalStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkWidgetConditionalStyle_Style() {
+        return (EReference) hyperlinkWidgetConditionalStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getReferenceWidgetStyle() {
         return referenceWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getHyperlinkWidgetStyle() {
+        return hyperlinkWidgetStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getHyperlinkWidgetStyle_FontNameExpression() {
+        return (EAttribute) hyperlinkWidgetStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getHyperlinkWidgetStyle_FontSize() {
+        return (EAttribute) hyperlinkWidgetStyleEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getHyperlinkWidgetStyle_BackgroundColor() {
+        return (EReference) hyperlinkWidgetStyleEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getHyperlinkWidgetStyle_FontFormat() {
+        return (EAttribute) hyperlinkWidgetStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -2162,6 +2306,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEAttribute(customOperationEClass, PropertiesPackage.CUSTOM_OPERATION__IDENTIFIER);
         createEReference(customOperationEClass, PropertiesPackage.CUSTOM_OPERATION__INITIAL_OPERATION);
 
+        hyperlinkDescriptionEClass = createEClass(PropertiesPackage.HYPERLINK_DESCRIPTION);
+        createEAttribute(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION);
+        createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION);
+        createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE);
+        createEReference(hyperlinkDescriptionEClass, PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES);
+
         widgetStyleEClass = createEClass(PropertiesPackage.WIDGET_STYLE);
         createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_NAME_EXPRESSION);
         createEAttribute(widgetStyleEClass, PropertiesPackage.WIDGET_STYLE__LABEL_FONT_SIZE);
@@ -2195,6 +2345,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
         referenceWidgetStyleEClass = createEClass(PropertiesPackage.REFERENCE_WIDGET_STYLE);
 
+        hyperlinkWidgetStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_STYLE);
+        createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION);
+        createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_SIZE);
+        createEReference(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR);
+        createEAttribute(hyperlinkWidgetStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_STYLE__FONT_FORMAT);
+
         widgetConditionalStyleEClass = createEClass(PropertiesPackage.WIDGET_CONDITIONAL_STYLE);
         createEAttribute(widgetConditionalStyleEClass, PropertiesPackage.WIDGET_CONDITIONAL_STYLE__PRECONDITION_EXPRESSION);
 
@@ -2225,6 +2381,9 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         widgetActionEClass = createEClass(PropertiesPackage.WIDGET_ACTION);
         createEAttribute(widgetActionEClass, PropertiesPackage.WIDGET_ACTION__LABEL_EXPRESSION);
         createEReference(widgetActionEClass, PropertiesPackage.WIDGET_ACTION__INITIAL_OPERATION);
+
+        hyperlinkWidgetConditionalStyleEClass = createEClass(PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE);
+        createEReference(hyperlinkWidgetConditionalStyleEClass, PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE);
 
         // Create enums
         filL_LAYOUT_ORIENTATIONEEnum = createEEnum(PropertiesPackage.FILL_LAYOUT_ORIENTATION);
@@ -2283,6 +2442,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         radioDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         referenceDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         customDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
+        hyperlinkDescriptionEClass.getESuperTypes().add(this.getWidgetDescription());
         textWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         labelWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         checkboxWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
@@ -2291,6 +2451,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         selectWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         customWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         referenceWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
+        hyperlinkWidgetStyleEClass.getESuperTypes().add(this.getWidgetStyle());
         textWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         labelWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         checkboxWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
@@ -2299,6 +2460,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         selectWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         customWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
         referenceWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
+        hyperlinkWidgetConditionalStyleEClass.getESuperTypes().add(this.getWidgetConditionalStyle());
 
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
@@ -2574,6 +2736,20 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
+        initEClass(hyperlinkDescriptionEClass, HyperlinkDescription.class, "HyperlinkDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getHyperlinkDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, HyperlinkDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getHyperlinkDescription_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, HyperlinkDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getHyperlinkDescription_Style(), this.getHyperlinkWidgetStyle(), null, "style", null, 0, 1, HyperlinkDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEReference(getHyperlinkDescription_ConditionalStyles(), this.getHyperlinkWidgetConditionalStyle(), null, "conditionalStyles", null, 0, -1, HyperlinkDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
         initEClass(widgetStyleEClass, WidgetStyle.class, "WidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWidgetStyle_LabelFontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "labelFontNameExpression", null, 0, 1, WidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2627,6 +2803,18 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEClass(customWidgetStyleEClass, CustomWidgetStyle.class, "CustomWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(referenceWidgetStyleEClass, ReferenceWidgetStyle.class, "ReferenceWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(hyperlinkWidgetStyleEClass, HyperlinkWidgetStyle.class, "HyperlinkWidgetStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getHyperlinkWidgetStyle_FontNameExpression(), theDescriptionPackage.getInterpretedExpression(), "fontNameExpression", null, 0, 1, HyperlinkWidgetStyle.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getHyperlinkWidgetStyle_FontSize(), ecorePackage.getEInt(), "fontSize", null, 0, 1, HyperlinkWidgetStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getHyperlinkWidgetStyle_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 0, 1, HyperlinkWidgetStyle.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getHyperlinkWidgetStyle_FontFormat(), theViewpointPackage.getFontFormat(), "fontFormat", null, 0, 4, HyperlinkWidgetStyle.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(widgetConditionalStyleEClass, WidgetConditionalStyle.class, "WidgetConditionalStyle", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2686,6 +2874,12 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         initEAttribute(getWidgetAction_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, WidgetAction.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getWidgetAction_InitialOperation(), theToolPackage.getInitialOperation(), null, "initialOperation", null, 1, 1, WidgetAction.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(hyperlinkWidgetConditionalStyleEClass, HyperlinkWidgetConditionalStyle.class, "HyperlinkWidgetConditionalStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getHyperlinkWidgetConditionalStyle_Style(), this.getHyperlinkWidgetStyle(), null, "style", null, 0, 1, HyperlinkWidgetConditionalStyle.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 

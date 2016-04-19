@@ -293,6 +293,17 @@
    
       </description>
    </context>
+   <context id="HyperlinkDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code HyperlinkDescription description -->
+   
+   <!-- End of user code HyperlinkDescription description -->
+   
+      </description>
+   </context>
    <context id="WidgetStyle">
      <description>
        
@@ -389,6 +400,17 @@
    <!-- Start of user code ReferenceWidgetStyle description -->
    
    <!-- End of user code ReferenceWidgetStyle description -->
+   
+      </description>
+   </context>
+   <context id="HyperlinkWidgetStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code HyperlinkWidgetStyle description -->
+   
+   <!-- End of user code HyperlinkWidgetStyle description -->
    
       </description>
    </context>
@@ -499,6 +521,17 @@
    <!-- Start of user code WidgetAction description -->
    
    <!-- End of user code WidgetAction description -->
+   
+      </description>
+   </context>
+   <context id="HyperlinkWidgetConditionalStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code HyperlinkWidgetConditionalStyle description -->
+   
+   <!-- End of user code HyperlinkWidgetConditionalStyle description -->
    
       </description>
    </context>

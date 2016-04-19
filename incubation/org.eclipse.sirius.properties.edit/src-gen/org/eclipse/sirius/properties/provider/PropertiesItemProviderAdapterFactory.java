@@ -671,6 +671,31 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected HyperlinkDescriptionItemProvider hyperlinkDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.HyperlinkDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createHyperlinkDescriptionAdapter() {
+        if (hyperlinkDescriptionItemProvider == null) {
+            hyperlinkDescriptionItemProvider = new HyperlinkDescriptionItemProvider(this);
+        }
+
+        return hyperlinkDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.properties.WidgetStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -867,6 +892,56 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
 
         return customWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected ReferenceWidgetStyleItemProvider referenceWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createReferenceWidgetStyleAdapter() {
+        if (referenceWidgetStyleItemProvider == null) {
+            referenceWidgetStyleItemProvider = new ReferenceWidgetStyleItemProvider(this);
+        }
+
+        return referenceWidgetStyleItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected HyperlinkWidgetStyleItemProvider hyperlinkWidgetStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createHyperlinkWidgetStyleAdapter() {
+        if (hyperlinkWidgetStyleItemProvider == null) {
+            hyperlinkWidgetStyleItemProvider = new HyperlinkWidgetStyleItemProvider(this);
+        }
+
+        return hyperlinkWidgetStyleItemProvider;
     }
 
     /**
@@ -1096,27 +1171,27 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle} instances.
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected HyperlinkWidgetConditionalStyleItemProvider hyperlinkWidgetConditionalStyleItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected ReferenceWidgetStyleItemProvider referenceWidgetStyleItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
     @Override
-    public Adapter createReferenceWidgetStyleAdapter() {
-        if (referenceWidgetStyleItemProvider == null) {
-            referenceWidgetStyleItemProvider = new ReferenceWidgetStyleItemProvider(this);
+    public Adapter createHyperlinkWidgetConditionalStyleAdapter() {
+        if (hyperlinkWidgetConditionalStyleItemProvider == null) {
+            hyperlinkWidgetConditionalStyleItemProvider = new HyperlinkWidgetConditionalStyleItemProvider(this);
         }
 
-        return referenceWidgetStyleItemProvider;
+        return hyperlinkWidgetConditionalStyleItemProvider;
     }
 
     /**
@@ -1292,6 +1367,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (customOperationItemProvider != null) {
             customOperationItemProvider.dispose();
         }
+        if (hyperlinkDescriptionItemProvider != null) {
+            hyperlinkDescriptionItemProvider.dispose();
+        }
         if (widgetStyleItemProvider != null) {
             widgetStyleItemProvider.dispose();
         }
@@ -1319,6 +1397,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         if (referenceWidgetStyleItemProvider != null) {
             referenceWidgetStyleItemProvider.dispose();
         }
+        if (hyperlinkWidgetStyleItemProvider != null) {
+            hyperlinkWidgetStyleItemProvider.dispose();
+        }
         if (textWidgetConditionalStyleItemProvider != null) {
             textWidgetConditionalStyleItemProvider.dispose();
         }
@@ -1345,6 +1426,9 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
         }
         if (widgetActionItemProvider != null) {
             widgetActionItemProvider.dispose();
+        }
+        if (hyperlinkWidgetConditionalStyleItemProvider != null) {
+            hyperlinkWidgetConditionalStyleItemProvider.dispose();
         }
     }
 

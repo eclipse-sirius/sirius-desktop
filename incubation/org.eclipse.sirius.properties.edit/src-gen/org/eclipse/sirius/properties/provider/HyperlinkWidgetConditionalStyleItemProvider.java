@@ -19,25 +19,25 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.ContainerDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.ContainerDescription} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class ContainerDescriptionItemProvider extends ControlDescriptionItemProvider {
+public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public ContainerDescriptionItemProvider(AdapterFactory adapterFactory) {
+    public HyperlinkWidgetConditionalStyleItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -70,8 +70,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS);
-            childrenFeatures.add(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT);
+            childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE);
         }
         return childrenFeatures;
     }
@@ -91,14 +90,14 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     }
 
     /**
-     * This returns ContainerDescription.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns HyperlinkWidgetConditionalStyle.gif. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkWidgetConditionalStyle"));
     }
 
     /**
@@ -109,8 +108,8 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContainerDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerDescription_type") : getString("_UI_ContainerDescription_type") + " " + label;
+        String label = ((HyperlinkWidgetConditionalStyle) object).getPreconditionExpression();
+        return label == null || label.length() == 0 ? getString("_UI_HyperlinkWidgetConditionalStyle_type") : getString("_UI_HyperlinkWidgetConditionalStyle_type") + " " + label;
     }
 
     /**
@@ -125,9 +124,8 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ContainerDescription.class)) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__CONTROLS:
-        case PropertiesPackage.CONTAINER_DESCRIPTION__LAYOUT:
+        switch (notification.getFeatureID(HyperlinkWidgetConditionalStyle.class)) {
+        case PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -145,33 +143,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createContainerDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createButtonDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createSelectDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createRadioDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createReferenceDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createCustomDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createHyperlinkDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createFillLayoutDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CONTAINER_DESCRIPTION__LAYOUT, PropertiesFactory.eINSTANCE.createGridLayoutDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE, PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle()));
     }
 
 }

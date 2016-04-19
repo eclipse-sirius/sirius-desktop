@@ -269,6 +269,16 @@
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HyperlinkDescription" eSuperTypes="#//WidgetDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//HyperlinkWidgetStyle"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
+        eType="#//HyperlinkWidgetConditionalStyle" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontNameExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
@@ -300,6 +310,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="SelectWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceWidgetStyle" eSuperTypes="#//WidgetStyle"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetStyle" eSuperTypes="#//WidgetStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
+        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetConditionalStyle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
@@ -345,5 +362,9 @@
         <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the radio."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//HyperlinkWidgetStyle"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

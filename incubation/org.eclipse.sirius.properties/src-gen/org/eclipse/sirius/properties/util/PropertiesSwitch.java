@@ -34,6 +34,9 @@ import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
+import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
@@ -427,6 +430,20 @@ public class PropertiesSwitch<T> {
             }
             return result;
         }
+        case PropertiesPackage.HYPERLINK_DESCRIPTION: {
+            HyperlinkDescription hyperlinkDescription = (HyperlinkDescription) theEObject;
+            T result = caseHyperlinkDescription(hyperlinkDescription);
+            if (result == null) {
+                result = caseWidgetDescription(hyperlinkDescription);
+            }
+            if (result == null) {
+                result = caseControlDescription(hyperlinkDescription);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
         case PropertiesPackage.WIDGET_STYLE: {
             WidgetStyle widgetStyle = (WidgetStyle) theEObject;
             T result = caseWidgetStyle(widgetStyle);
@@ -517,6 +534,17 @@ public class PropertiesSwitch<T> {
             T result = caseReferenceWidgetStyle(referenceWidgetStyle);
             if (result == null) {
                 result = caseWidgetStyle(referenceWidgetStyle);
+            }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE: {
+            HyperlinkWidgetStyle hyperlinkWidgetStyle = (HyperlinkWidgetStyle) theEObject;
+            T result = caseHyperlinkWidgetStyle(hyperlinkWidgetStyle);
+            if (result == null) {
+                result = caseWidgetStyle(hyperlinkWidgetStyle);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -622,6 +650,17 @@ public class PropertiesSwitch<T> {
         case PropertiesPackage.WIDGET_ACTION: {
             WidgetAction widgetAction = (WidgetAction) theEObject;
             T result = caseWidgetAction(widgetAction);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE: {
+            HyperlinkWidgetConditionalStyle hyperlinkWidgetConditionalStyle = (HyperlinkWidgetConditionalStyle) theEObject;
+            T result = caseHyperlinkWidgetConditionalStyle(hyperlinkWidgetConditionalStyle);
+            if (result == null) {
+                result = caseWidgetConditionalStyle(hyperlinkWidgetConditionalStyle);
+            }
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -1076,6 +1115,23 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Hyperlink Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Hyperlink Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseHyperlinkDescription(HyperlinkDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1207,6 +1263,40 @@ public class PropertiesSwitch<T> {
      * @generated
      */
     public T caseCustomWidgetStyle(CustomWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Reference Widget Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Reference Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Hyperlink Widget Style</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Hyperlink Widget Style</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseHyperlinkWidgetStyle(HyperlinkWidgetStyle object) {
         return null;
     }
 
@@ -1382,18 +1472,18 @@ public class PropertiesSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Reference Widget Style</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
+     * <em>Hyperlink Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will
+     * terminate the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Reference Widget Style</em>'.
+     *         <em>Hyperlink Widget Conditional Style</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseReferenceWidgetStyle(ReferenceWidgetStyle object) {
+    public T caseHyperlinkWidgetConditionalStyle(HyperlinkWidgetConditionalStyle object) {
         return null;
     }
 

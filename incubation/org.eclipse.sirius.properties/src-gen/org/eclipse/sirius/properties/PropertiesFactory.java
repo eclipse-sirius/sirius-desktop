@@ -238,6 +238,15 @@ public interface PropertiesFactory extends EFactory {
     CustomOperation createCustomOperation();
 
     /**
+     * Returns a new object of class '<em>Hyperlink Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Hyperlink Description</em>'.
+     * @generated
+     */
+    HyperlinkDescription createHyperlinkDescription();
+
+    /**
      * Returns a new object of class '<em>Widget Style</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -308,6 +317,24 @@ public interface PropertiesFactory extends EFactory {
      * @generated
      */
     CustomWidgetStyle createCustomWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Reference Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Reference Widget Style</em>'.
+     * @generated
+     */
+    ReferenceWidgetStyle createReferenceWidgetStyle();
+
+    /**
+     * Returns a new object of class '<em>Hyperlink Widget Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Hyperlink Widget Style</em>'.
+     * @generated
+     */
+    HyperlinkWidgetStyle createHyperlinkWidgetStyle();
 
     /**
      * Returns a new object of class '<em>Text Widget Conditional Style</em>'.
@@ -394,13 +421,15 @@ public interface PropertiesFactory extends EFactory {
     WidgetAction createWidgetAction();
 
     /**
-     * Returns a new object of class '<em>Reference Widget Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '
+     * <em>Hyperlink Widget Conditional Style</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      *
-     * @return a new object of class '<em>Reference Widget Style</em>'.
+     * @return a new object of class '
+     *         <em>Hyperlink Widget Conditional Style</em>'.
      * @generated
      */
-    ReferenceWidgetStyle createReferenceWidgetStyle();
+    HyperlinkWidgetConditionalStyle createHyperlinkWidgetConditionalStyle();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

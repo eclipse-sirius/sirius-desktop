@@ -35,6 +35,9 @@ import org.eclipse.eef.EEFDynamicMappingIf;
 import org.eclipse.eef.EEFFillLayoutDescription;
 import org.eclipse.eef.EEFGridLayoutDescription;
 import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFHyperlinkConditionalStyle;
+import org.eclipse.eef.EEFHyperlinkDescription;
+import org.eclipse.eef.EEFHyperlinkStyle;
 import org.eclipse.eef.EEFLabelConditionalStyle;
 import org.eclipse.eef.EEFLabelDescription;
 import org.eclipse.eef.EEFLabelStyle;
@@ -86,6 +89,9 @@ import org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION;
 import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
@@ -408,6 +414,8 @@ public class ViewDescriptionConverter {
             description = createEEFRadioDescription((RadioDescription) widgetDescription);
         } else if (widgetDescription instanceof ReferenceDescription) {
             description = createEEFReferenceDescription((ReferenceDescription) widgetDescription);
+        } else if (widgetDescription instanceof HyperlinkDescription) {
+            description = createEEFHyperlinkDescription((HyperlinkDescription) widgetDescription);
         } else if (widgetDescription instanceof CustomDescription) {
             description = createEEFCustomDescription((CustomDescription) widgetDescription);
         }
@@ -437,6 +445,8 @@ public class ViewDescriptionConverter {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFRadioStyle();
         } else if (widgetStyle instanceof SelectWidgetStyle) {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFSelectStyle();
+        } else if (widgetStyle instanceof HyperlinkWidgetStyle) {
+            eefWidgetStyle = createEEFHyperlinkStyle((HyperlinkWidgetStyle) widgetStyle);
         } else if (widgetStyle instanceof CustomWidgetStyle) {
             eefWidgetStyle = EefFactory.eINSTANCE.createEEFCustomWidgetStyle();
         } else if (widgetStyle instanceof ReferenceWidgetStyle) {
@@ -520,6 +530,24 @@ public class ViewDescriptionConverter {
         return eefLabelStyle;
     }
 
+    private EEFHyperlinkStyle createEEFHyperlinkStyle(HyperlinkWidgetStyle hyperlinkStyle) {
+        EEFHyperlinkStyle eefHyperlinkStyle = EefFactory.eINSTANCE.createEEFHyperlinkStyle();
+
+        ColorDescription backgroundColorDescription = hyperlinkStyle.getBackgroundColor();
+        if (backgroundColorDescription != null) {
+            String backgroundColorExpression = getColorExpression(backgroundColorDescription);
+            if (backgroundColorExpression != null) {
+                eefHyperlinkStyle.setBackgroundColorExpression(backgroundColorExpression);
+            }
+        }
+
+        eefHyperlinkStyle.setFontNameExpression(hyperlinkStyle.getFontNameExpression());
+        eefHyperlinkStyle.setFontSizeExpression(Integer.toString(hyperlinkStyle.getFontSize()));
+        eefHyperlinkStyle.setFontStyleExpression(getFontStyleExpression(hyperlinkStyle.getFontFormat()));
+
+        return eefHyperlinkStyle;
+    }
+
     private String getFontStyleExpression(List<FontFormat> fontFormats) {
         String fontFormat = fontFormats.toString();
         return fontFormat.substring(1, fontFormat.length() - 1);
@@ -554,6 +582,37 @@ public class ViewDescriptionConverter {
             }
         }
         return eefTextDescription;
+    }
+
+    private EEFHyperlinkDescription createEEFHyperlinkDescription(HyperlinkDescription hyperlinkDescription) {
+        EEFHyperlinkDescription eefHyperlinkDescription = EefFactory.eINSTANCE.createEEFHyperlinkDescription();
+
+        eefHyperlinkDescription.setIdentifier(hyperlinkDescription.getIdentifier());
+        eefHyperlinkDescription.setValueExpression(hyperlinkDescription.getValueExpression());
+
+        InitialOperation initialOperation = hyperlinkDescription.getInitialOperation();
+        eefHyperlinkDescription.setOnClickExpression(getExpressionForOperation(initialOperation));
+
+        HyperlinkWidgetStyle hyperlinkStyle = hyperlinkDescription.getStyle();
+        if (hyperlinkStyle != null) {
+            eefHyperlinkDescription.setStyle((EEFHyperlinkStyle) createEEFWidgetStyle(hyperlinkStyle));
+        }
+
+        List<HyperlinkWidgetConditionalStyle> conditionalStyles = hyperlinkDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFHyperlinkConditionalStyle> eefConditionalStyles = new ArrayList<EEFHyperlinkConditionalStyle>();
+            for (HyperlinkWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFHyperlinkConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFHyperlinkConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFHyperlinkStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefHyperlinkDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+        return eefHyperlinkDescription;
     }
 
     /**

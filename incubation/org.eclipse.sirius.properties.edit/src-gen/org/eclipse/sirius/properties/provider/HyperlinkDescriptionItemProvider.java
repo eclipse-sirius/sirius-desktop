@@ -16,38 +16,31 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.HyperlinkDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.properties.DynamicMappingIf} object. <!--
+ * {@link org.eclipse.sirius.properties.HyperlinkDescription} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class DynamicMappingIfItemProvider extends ItemProviderAdapter
-        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    public DynamicMappingIfItemProvider(AdapterFactory adapterFactory) {
+    public HyperlinkDescriptionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -62,22 +55,22 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addPredicateExpressionPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Predicate Expression feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Value Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addPredicateExpressionPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DynamicMappingIf_predicateExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_DynamicMappingIf_predicateExpression_feature", "_UI_DynamicMappingIf_type"),
-                        PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkDescription_valueExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkDescription_valueExpression_feature", "_UI_HyperlinkDescription_type"),
+                        PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,7 +87,9 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET);
+            childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__INITIAL_OPERATION);
+            childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__STYLE);
+            childrenFeatures.add(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -114,14 +109,14 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     }
 
     /**
-     * This returns DynamicMappingIf.gif. <!-- begin-user-doc --> <!--
+     * This returns HyperlinkDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DynamicMappingIf"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkDescription"));
     }
 
     /**
@@ -132,8 +127,8 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        String label = ((DynamicMappingIf) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_DynamicMappingIf_type") : getString("_UI_DynamicMappingIf_type") + " " + label;
+        String label = ((HyperlinkDescription) object).getIdentifier();
+        return label == null || label.length() == 0 ? getString("_UI_HyperlinkDescription_type") : getString("_UI_HyperlinkDescription_type") + " " + label;
     }
 
     /**
@@ -148,11 +143,13 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DynamicMappingIf.class)) {
-        case PropertiesPackage.DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION:
+        switch (notification.getFeatureID(HyperlinkDescription.class)) {
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case PropertiesPackage.DYNAMIC_MAPPING_IF__WIDGET:
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__INITIAL_OPERATION:
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__STYLE:
+        case PropertiesPackage.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -170,36 +167,11 @@ public class DynamicMappingIfItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createButtonDescription()));
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createHyperlinkWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createLabelDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createCheckboxDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createSelectDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createRadioDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createReferenceDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createCustomDescription()));
-
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.DYNAMIC_MAPPING_IF__WIDGET, PropertiesFactory.eINSTANCE.createHyperlinkDescription()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createHyperlinkWidgetConditionalStyle()));
     }
 
 }

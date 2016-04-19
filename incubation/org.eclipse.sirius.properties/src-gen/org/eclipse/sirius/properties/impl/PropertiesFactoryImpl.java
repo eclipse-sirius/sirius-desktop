@@ -36,6 +36,9 @@ import org.eclipse.sirius.properties.FillLayoutDescription;
 import org.eclipse.sirius.properties.GridLayoutDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.GroupValidationSetDescription;
+import org.eclipse.sirius.properties.HyperlinkDescription;
+import org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelDescription;
 import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
@@ -151,6 +154,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomExpression();
         case PropertiesPackage.CUSTOM_OPERATION:
             return createCustomOperation();
+        case PropertiesPackage.HYPERLINK_DESCRIPTION:
+            return createHyperlinkDescription();
         case PropertiesPackage.WIDGET_STYLE:
             return createWidgetStyle();
         case PropertiesPackage.TEXT_WIDGET_STYLE:
@@ -169,6 +174,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createCustomWidgetStyle();
         case PropertiesPackage.REFERENCE_WIDGET_STYLE:
             return createReferenceWidgetStyle();
+        case PropertiesPackage.HYPERLINK_WIDGET_STYLE:
+            return createHyperlinkWidgetStyle();
         case PropertiesPackage.TEXT_WIDGET_CONDITIONAL_STYLE:
             return createTextWidgetConditionalStyle();
         case PropertiesPackage.LABEL_WIDGET_CONDITIONAL_STYLE:
@@ -187,6 +194,8 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
             return createReferenceWidgetConditionalStyle();
         case PropertiesPackage.WIDGET_ACTION:
             return createWidgetAction();
+        case PropertiesPackage.HYPERLINK_WIDGET_CONDITIONAL_STYLE:
+            return createHyperlinkWidgetConditionalStyle();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -481,6 +490,17 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
+    public HyperlinkDescription createHyperlinkDescription() {
+        HyperlinkDescriptionImpl hyperlinkDescription = new HyperlinkDescriptionImpl();
+        return hyperlinkDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public WidgetStyle createWidgetStyle() {
         WidgetStyleImpl widgetStyle = new WidgetStyleImpl();
         return widgetStyle;
@@ -561,6 +581,28 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
     public CustomWidgetStyle createCustomWidgetStyle() {
         CustomWidgetStyleImpl customWidgetStyle = new CustomWidgetStyleImpl();
         return customWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public ReferenceWidgetStyle createReferenceWidgetStyle() {
+        ReferenceWidgetStyleImpl referenceWidgetStyle = new ReferenceWidgetStyleImpl();
+        return referenceWidgetStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public HyperlinkWidgetStyle createHyperlinkWidgetStyle() {
+        HyperlinkWidgetStyleImpl hyperlinkWidgetStyle = new HyperlinkWidgetStyleImpl();
+        return hyperlinkWidgetStyle;
     }
 
     /**
@@ -668,9 +710,9 @@ public class PropertiesFactoryImpl extends EFactoryImpl implements PropertiesFac
      * @generated
      */
     @Override
-    public ReferenceWidgetStyle createReferenceWidgetStyle() {
-        ReferenceWidgetStyleImpl referenceWidgetStyle = new ReferenceWidgetStyleImpl();
-        return referenceWidgetStyle;
+    public HyperlinkWidgetConditionalStyle createHyperlinkWidgetConditionalStyle() {
+        HyperlinkWidgetConditionalStyleImpl hyperlinkWidgetConditionalStyle = new HyperlinkWidgetConditionalStyleImpl();
+        return hyperlinkWidgetConditionalStyle;
     }
 
     /**

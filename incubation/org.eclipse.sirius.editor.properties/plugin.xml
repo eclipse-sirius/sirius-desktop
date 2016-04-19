@@ -31,6 +31,37 @@
         <input type="org.eclipse.sirius.properties.WidgetConditionalStyle"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatPropertySection"
+               id="properties.section.hyperlinkWidgetStyle.FontFormat"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatFilter"
+               afterSection="properties.section.hyperlinkWidgetStyle.BackgroundColor"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleBackgroundColorPropertySection"
+               id="properties.section.hyperlinkWidgetStyle.BackgroundColor"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleBackgroundColorFilter"
+               afterSection="properties.section.hyperlinkWidgetStyle.FontSize"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizePropertySection"
+               id="properties.section.hyperlinkWidgetStyle.FontSize"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontSizeFilter"
+               afterSection="properties.section.hyperlinkWidgetStyle.FontNameExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontNameExpressionPropertySection"
+               id="properties.section.hyperlinkWidgetStyle.FontNameExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontNameExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySection"
                id="properties.section.labelWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontFormatFilter"
@@ -146,6 +177,13 @@
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontNameExpressionFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkdescription.HyperlinkDescriptionValueExpressionPropertySection"
+               id="properties.section.hyperlinkDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkdescription.HyperlinkDescriptionValueExpressionFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.HyperlinkDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.customoperation.CustomOperationIdentifierPropertySection"
