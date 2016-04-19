@@ -206,8 +206,14 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         monitor.worked(1);
 
         ImageData imageData = image.getImageData();
-
-        if (imageFormat.equals(ImageFileFormat.GIF) || imageFormat.equals(ImageFileFormat.BMP)) {
+        // In original CopyToImageUtil class, the reduction to a "8BitPalette"
+        // or a "WebSafePallette" is for GIF and BMP. For GIF file, it is
+        // explicitly constraint by the format characteristic and by an
+        // SWT.ERROR_UNSUPPORTED_DEPTH in
+        // org.eclipse.swt.internal.image.GIFFileFormat.unloadIntoByteStream(ImageLoader).
+        // But for BMP, there is no apparent reason so it is remove for this
+        // format.
+        if (imageFormat.equals(ImageFileFormat.GIF)) {
             imageData = createImageData(image);
         }
 
