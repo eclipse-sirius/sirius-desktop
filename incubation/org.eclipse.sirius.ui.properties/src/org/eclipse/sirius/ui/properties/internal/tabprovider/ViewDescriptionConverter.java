@@ -252,6 +252,7 @@ public class ViewDescriptionConverter {
             EEFValidationFixDescription eefValidationFixDescription = EefFactory.eINSTANCE.createEEFValidationFixDescription();
             eefValidationFixDescription.setName(validationFix.getName());
             eefValidationFixDescription.setFixExpression(this.getExpressionForOperation(validationFix.getInitialOperation()));
+            eefValidationRuleDescription.getFixes().add(eefValidationFixDescription);
         }
     }
 
