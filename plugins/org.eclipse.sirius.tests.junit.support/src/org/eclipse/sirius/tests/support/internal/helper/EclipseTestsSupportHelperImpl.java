@@ -11,13 +11,8 @@
 package org.eclipse.sirius.tests.support.internal.helper;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.channels.FileChannel;
-
-import junit.framework.TestCase;
 
 import org.eclipse.core.filebuffers.manipulation.ContainerCreator;
 import org.eclipse.core.resources.IFile;
@@ -37,6 +32,10 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+
+import com.google.common.io.Files;
+
+import junit.framework.TestCase;
 
 /**
  * Eclipse specific operations helper.
@@ -234,21 +233,7 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
         if (!destFile.exists()) {
             destFile.createNewFile();
         }
-
-        FileChannel source = null;
-        FileChannel destination = null;
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        } finally {
-            if (source != null) {
-                source.close();
-            }
-            if (destination != null) {
-                destination.close();
-            }
-        }
+        Files.copy(sourceFile, destFile);
     }
 
     @Override
