@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:WidgetGroup" id="10" measuredWidth="249" measuredHeight="196">
+    <widgets xsi:type="model:Panel" id="2" width="249" height="196" measuredWidth="249" measuredHeight="196"/>
+    <widgets xsi:type="model:TextField" id="3" width="249" text="Paste special" measuredWidth="249" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="5" x="231" width="18" measuredWidth="18" measuredHeight="23" icon="close (small)">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:List" id="6" x="10" y="49" text="[x] all&#xA;~[x] semantic~&#xA;~[ ] layout~&#xA;~[ ] style~&#xA;" measuredWidth="78" measuredHeight="92" border="false" alpha="0">
+      <font/>
+      <items x="0" y="2" width="78" height="22" text="[x] all"/>
+      <items x="0" y="24" width="78" height="22" text="~[x] semantic~"/>
+      <items x="0" y="46" width="78" height="22" text="~[ ] layout~"/>
+      <items x="0" y="68" width="78" height="22" text="~[ ] style~"/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="7" x="24" y="153" width="81" text="OK" measuredWidth="81" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Button" id="8" x="142" y="153" width="81" text="Cancel" measuredWidth="81" measuredHeight="25">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="9" x="11" y="27" text="Select what must be paste:" measuredWidth="146" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="12" x="296" width="249" height="196" measuredWidth="249" measuredHeight="196"/>
+  <widgets xsi:type="model:TextField" id="13" x="296" width="249" text="Paste special" measuredWidth="249" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="14" x="527" width="18" measuredWidth="18" measuredHeight="23" icon="close (small)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:List" id="15" x="306" y="49" text="[] all&#xA;[] semantic&#xA;[x] layout&#xA;[ ] style&#xA;" measuredWidth="78" measuredHeight="92" border="false" alpha="0">
+    <font/>
+    <items x="0" y="2" width="78" height="22" text="[] all"/>
+    <items x="0" y="24" width="78" height="22" text="[] semantic"/>
+    <items x="0" y="46" width="78" height="22" text="[x] layout"/>
+    <items x="0" y="68" width="78" height="22" text="[ ] style"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="16" x="320" y="153" width="81" text="OK" measuredWidth="81" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="17" x="438" y="153" width="81" text="Cancel" measuredWidth="81" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="18" x="307" y="27" text="Select what must be paste:" measuredWidth="146" measuredHeight="23">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

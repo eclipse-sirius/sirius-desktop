@@ -1,0 +1,119 @@
+h1. Sirius Evolution Specification: Have a paste special action
+
+h2. Preamble
+
+_Summary_: Have a unique copy/paste action able to paste the semantic, the layout and/or the style.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-04-18 | fbarbin    | Initial version. |
+| v0.2        | DRAFT    | 2016-05-09 | fbarbin    | modification following a first review. |
+| v0.3        | PROPOSAL    | 2016-06-06 | fbarbin    | Proposal status following the last review |
+
+_Relevant tickets_:
+* "Bug 491895 - Have a paste special in Sirius":https://bugs.eclipse.org/bugs/show_bug.cgi?id=491895
+
+h2. Introduction
+
+Currently there are two kind of copy/paste in Sirius:
+
+* The copy/paste layout: Copies the location and size of elements of a source diagram and paste them to elements of a target diagram. By default, the layout is applied on graphical elements representing the same semantic element (same target reference of DSemanticDecorator). It is possible to apply specific rules for matching between source semantic elements and target semantic elements with the org.eclipse.sirius.diagram.ui.layoutDataManager extension point.
+* The standard copy/paste allows to copy and paste the semantic elements. The paste action can be customized by a paste tool in the VSM on the receiver (see http://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#tools_reference for details). Contrary to the copy/paste layout, the standard copy/paste is also possible by using the same diagram for copy and paste.
+
+Unfortunately it's currently not possible to copy and paste both semantic and layout nor the style of the graphical elements.
+Instead of having several kinds of copy/paste features, it would be interesting to have only one copy action and then a paste special action that will let the choice between paste the semantic, the layout and/or the style.
+
+Example of Paste Special menu:
+!PasteSpecial.png!
+
+h2. Detailed Specification
+
+This enhancement starts from several initial needs:
+* Have a Copy/Paste layout that also copies the styles (optional) .
+* Have a Copy/Paste semantic that also keeps the initial layout (optional).
+
+The idea is to keep only one Copy action (standard Ctrl+C) with a Paste special. By default, the standard Paste action (Ctrl+V) will paste the semantic eObjects, the graphical elements layout and the elements style. But the user will also have the choice to perform a special paste, and choose among several options:
+* Paste semantic
+* Paste layout
+* Paste style
+Or any combination among those choices.
+For more details about the user interface, see the "_User Interface_":#UI section.
+
+h3. Manual refresh
+
+In manual refresh, the changes following a semantic model modification will appear only after a manual refresh. That is disturbing for the user who does not see anything appears after having perform the paste action. After a paste action the diagram will be refreshed even if the automatic refresh is deactivated.
+
+h3. Paste semantic
+
+The behavior of the Paste semantic will stay the same than the current one.
+
+h3. Paste layout
+
+The Paste layout will replicate the layout to the same semantic elements between diagrams. That is the current behavior. In addition, if the paste semantic is applied with the paste layout, the layout of the original graphical elements is applied on the newly created elements (the copies).
+
+h3. Paste style
+
+The Paste style will apply the same style to the target elements. All the source elements style properties (customized or not) will be applied to the target elements as custom styles if they are different than the default ones. That means if the copied element background is different from the one to paste, the background will appear as a custom feature. If the background is the same, nothing is modified. 
+The paste style will have a similar behavior to the _Copy Appearance_ action.
+
+
+h3(#UI). User Interface
+
+To default copy-paste behavior will be a semantic copy-paste by keeping the layout and style of the source graphical elements. A "Paste Special" menu will let the possibility to make its own combination. The more common actions like paste layout or paste semantic and layout will have their own entry in the menu.
+
+!images/copyPasteMenu.png!
+This sketch shows the future context menu.
+
+!images/PasteSpecialDialog.png!
+This sketch shows the paste special dialog.
+
+The old copy layout and paste layout actions will be removed from the tabbar to be consistent with this new feature.
+
+h3. Technical details
+
+The Copy semantic is insured by @org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.CopyToSiriusClipboardCommand@ and the paste by @org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PasteFromSiriusClipboardCommand@.
+The general idea is saving the layout and style data during the semantic copy. After having paste the semantic elements, the new GMF views will be created by the _CanonicalSynchronizer_. The layout and the style should be applied in @org.eclipse.sirius.diagram.ui.internal.refresh.diagram.DDiagramCanonicalSynchronizer.refreshSemantic()@
+GMF insures the Copy Appearance action by using @org.eclipse.gmf.runtime.diagram.core.util.ViewRefactorHelper.copyViewAppearance(View, View, List)@. In the case of the _Copy Appearance_ action, we override the GMF @PropertyHandlerEditPolicy@ to also copy the style in the Sirius model: @org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy.buildApplyAppearancePropertiesCommand(ApplyAppearancePropertiesRequest)@
+
+!images/newPasteDiagram.png!
+
+
+h2. Backward Compatibility and Migration Paths
+
+
+h3. Metamodel Changes
+
+The @org.eclipse.sirius.viewpoint.UIState@ will be enriched to manage saved layout and style data.
+the @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ interface will have a new method to allow applying a layout on a GMF Diagram. Currently, it is only possible on a root EditPart.
+  
+h3. API Changes
+
+The @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ interface will probably evolve to handle GMF Views as layout target (the element on which the layout will be apply) in addition of editParts. The API changes will be detail later.
+
+h3. User Interface Changes
+
+As described in the _Detailed Specification_ section, the diagram contextual menu and edit menu will have additional entries for the paste special options. The old _Copy Layout_ and _Paste Layout_ actions will also be removed from the tabbar.
+
+
+h3. Documentation Changes
+
+The User documentation will be updated to describe the new behavior of the Copy/Paste and all the new paste options.
+
+
+h2. Tests and Non-regression strategy
+
+Starting from a typical diagram with lists, containers, nodes, border-nodes and with an exhaustive list of customized styles, we should test the different combinations of copy/paste:
+* default copy/paste (semantic + layout + style)
+* only paste semantic
+* only paste layout
+* only paste style
+* paste semantic + paste style
+* paste semantic + paste layout
+* paste layout + paste style
+For each combination, check the behavior on the same diagram, on a new empty diagram (except if there is no paste semantic) or a diagram with existing elements (to test the paste layout and paste styles only)
+* Add test with semantic elements already displayed in the target diagram (currently for paste layout, all graphical elements representing the same semantic elements are layout with the same location and size).
+* Add test with customization of the paste semantic and with customization of the paste layout (with the existing extension points).
+
+h2. Implementation choices and tradeoffs
+
+Use the @UIState@ owned by the @DDiagram@ avoid to use a singleton to store information like layout and style data. As the @UIState@ is contextual to one diagram, the canonical synchronizer can retrieve the layout and the style information safely.
+The paste special UI (Wizard and menu) will not be extensible at the end of this work.
