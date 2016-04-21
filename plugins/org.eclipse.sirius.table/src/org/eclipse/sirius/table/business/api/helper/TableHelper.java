@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -410,11 +409,18 @@ public final class TableHelper {
      */
     private static boolean hasTableDescriptionOnlyOneLineMapping(final TableDescription tableDescription) {
         if (tableDescription != null) {
-            final EList<LineMapping> lineMappings = new UniqueEList<LineMapping>(tableDescription.getAllLineMappings());
-            for (LineMapping lineMapping : tableDescription.getAllLineMappings()) {
-                lineMappings.addAll(lineMapping.getAllSubLines());
+            int nbMappings = tableDescription.getOwnedLineMappings().size() + tableDescription.getReusedLineMappings().size();
+            if (nbMappings <= 1) {
+                // We're not sure yet, so we need to dig further
+                for (LineMapping lineMapping : tableDescription.getAllLineMappings()) {
+                    nbMappings += lineMapping.getAllSubLines().size();
+                    if (nbMappings > 1) {
+                        // Stop as soon as we've seen more than one
+                        break;
+                    }
+                }
+                return nbMappings == 1;
             }
-            return lineMappings.size() == 1;
         }
         return false;
     }
