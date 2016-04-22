@@ -299,6 +299,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             disableCrossReferencerResolve(resource);
             resource.eAdapters().clear();
         }
+        // Also disable resolveProxy capability and remove semantic cross
+        // referencer from all resources where it was installed
+        // (SessionLazyCrossReferencer.initialize()).
+        Collection<Resource> semanticResources = getSemanticResources();
+        Collection<Resource> controlledResources = getControlledResources();
+        Set<Resource> allSessionResources = getAllSessionResources();
+        Object semanticCrossReferencer = getSemanticCrossReferencer();
+        Iterable<Resource> resources = Iterables.concat(semanticResources, controlledResources, allSessionResources);
+        for (Resource resource : resources) {
+            if (!(resourceSet.getResources().contains(resource))) {
+                disableCrossReferencerResolve(resource);
+                resource.eAdapters().remove(semanticCrossReferencer);
+            }
+        }
 
         for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
             removeAdaptersOnAnalysis(analysis);
