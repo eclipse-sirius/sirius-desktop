@@ -39,6 +39,15 @@ public interface ViewpointFactory extends EFactory {
     DAnalysis createDAnalysis();
 
     /**
+     * Returns a new object of class '<em>DRepresentation Descriptor</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>DRepresentation Descriptor</em>'.
+     * @generated
+     */
+    DRepresentationDescriptor createDRepresentationDescriptor();
+
+    /**
      * Returns a new object of class '<em>DView</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *

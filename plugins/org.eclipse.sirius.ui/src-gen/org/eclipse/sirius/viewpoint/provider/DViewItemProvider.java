@@ -104,6 +104,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_EXTENSIONS);
         }
@@ -158,6 +159,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         updateChildren(notification);
 
         switch (notification.getFeatureID(DView.class)) {
+        case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -176,6 +178,8 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS, ViewpointFactory.eINSTANCE.createDRepresentationDescriptor()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_EXTENSIONS, ViewpointFactory.eINSTANCE.createMetaModelExtension()));
     }

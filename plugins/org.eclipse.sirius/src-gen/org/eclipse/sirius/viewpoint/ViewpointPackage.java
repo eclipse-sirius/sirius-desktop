@@ -256,7 +256,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDView()
      * @generated
      */
-    int DVIEW = 8;
+    int DVIEW = 9;
 
     /**
      * The meta object id for the '
@@ -290,6 +290,64 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl
+     * <em>DRepresentation Descriptor</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDRepresentationDescriptor()
+     * @generated
+     */
+    int DREPRESENTATION_DESCRIPTOR = 6;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__NAME = 0;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__DESCRIPTION = 1;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__TARGET = 2;
+
+    /**
+     * The feature id for the '<em><b>Representation</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__REPRESENTATION = 3;
+
+    /**
+     * The number of structural features of the '
+     * <em>DRepresentation Descriptor</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = 4;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl
      * <em>DRepresentation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -298,7 +356,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDRepresentation()
      * @generated
      */
-    int DREPRESENTATION = 6;
+    int DREPRESENTATION = 7;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -382,7 +440,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDRepresentationElement()
      * @generated
      */
-    int DREPRESENTATION_ELEMENT = 7;
+    int DREPRESENTATION_ELEMENT = 8;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -431,13 +489,22 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW__VIEWPOINT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Owned Representation Descriptors</b></em>'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DVIEW__OWNED_REPRESENTATION_DESCRIPTORS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Owned Representations</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DVIEW__OWNED_REPRESENTATIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 1;
+    int DVIEW__OWNED_REPRESENTATIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Owned Extensions</b></em>' containment
@@ -446,7 +513,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW__OWNED_EXTENSIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
+    int DVIEW__OWNED_EXTENSIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Models</b></em>' reference list. <!--
@@ -455,7 +522,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW__MODELS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
+    int DVIEW__MODELS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>DView</em>' class. <!--
@@ -464,7 +531,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
+    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -476,7 +543,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getMetaModelExtension()
      * @generated
      */
-    int META_MODEL_EXTENSION = 9;
+    int META_MODEL_EXTENSION = 10;
 
     /**
      * The feature id for the '<em><b>Extension Group</b></em>' reference. <!--
@@ -506,7 +573,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDecoration()
      * @generated
      */
-    int DECORATION = 10;
+    int DECORATION = 11;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
@@ -536,7 +603,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisCustomData()
      * @generated
      */
-    int DANALYSIS_CUSTOM_DATA = 11;
+    int DANALYSIS_CUSTOM_DATA = 12;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' attribute. <!--
@@ -575,7 +642,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getCustomizable()
      * @generated
      */
-    int CUSTOMIZABLE = 23;
+    int CUSTOMIZABLE = 24;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -605,7 +672,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()
      * @generated
      */
-    int BASIC_LABEL_STYLE = 22;
+    int BASIC_LABEL_STYLE = 23;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -680,7 +747,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelStyle()
      * @generated
      */
-    int LABEL_STYLE = 12;
+    int LABEL_STYLE = 13;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -763,7 +830,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getStyle()
      * @generated
      */
-    int STYLE = 13;
+    int STYLE = 14;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -802,7 +869,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 28;
+    int RGB_VALUES = 29;
 
     /**
      * The meta object id for the '<em>Resource Descriptor</em>' data type. <!--
@@ -812,7 +879,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getResourceDescriptor()
      * @generated
      */
-    int RESOURCE_DESCRIPTOR = 29;
+    int RESOURCE_DESCRIPTOR = 30;
 
     /**
      * The meta object id for the '
@@ -824,7 +891,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisSessionEObject()
      * @generated
      */
-    int DANALYSIS_SESSION_EOBJECT = 14;
+    int DANALYSIS_SESSION_EOBJECT = 15;
 
     /**
      * The feature id for the '<em><b>Open</b></em>' attribute. <!--
@@ -900,7 +967,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSessionManagerEObject()
      * @generated
      */
-    int SESSION_MANAGER_EOBJECT = 15;
+    int SESSION_MANAGER_EOBJECT = 16;
 
     /**
      * The feature id for the '<em><b>Owned Sessions</b></em>' containment
@@ -929,7 +996,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResource()
      * @generated
      */
-    int DRESOURCE = 16;
+    int DRESOURCE = 17;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -967,7 +1034,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFile()
      * @generated
      */
-    int DFILE = 17;
+    int DFILE = 18;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1006,7 +1073,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResourceContainer()
      * @generated
      */
-    int DRESOURCE_CONTAINER = 18;
+    int DRESOURCE_CONTAINER = 19;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1053,7 +1120,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDProject()
      * @generated
      */
-    int DPROJECT = 19;
+    int DPROJECT = 20;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1100,7 +1167,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFolder()
      * @generated
      */
-    int DFOLDER = 20;
+    int DFOLDER = 21;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1147,7 +1214,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDModel()
      * @generated
      */
-    int DMODEL = 21;
+    int DMODEL = 22;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1185,7 +1252,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getUIState()
      * @generated
      */
-    int UI_STATE = 24;
+    int UI_STATE = 25;
 
     /**
      * The feature id for the '<em><b>Inverse Selection Order</b></em>'
@@ -1223,7 +1290,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 25;
+    int FONT_FORMAT = 26;
 
     /**
      * The meta object id for the '
@@ -1235,7 +1302,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 26;
+    int LABEL_ALIGNMENT = 27;
 
     /**
      * The meta object id for the '
@@ -1246,7 +1313,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 27;
+    int SYNC_STATUS = 28;
 
     /**
      * Returns the meta object for class '
@@ -1446,6 +1513,66 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor
+     * <em>DRepresentation Descriptor</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>DRepresentation Descriptor</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor
+     * @generated
+     */
+    EClass getDRepresentationDescriptor();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getName()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EAttribute getDRepresentationDescriptor_Name();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation
+     * <em>Representation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Representation</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EReference getDRepresentationDescriptor_Representation();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getDescription
+     * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getDescription()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EReference getDRepresentationDescriptor_Description();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getTarget
+     * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the reference '<em>Target</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getTarget()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EReference getDRepresentationDescriptor_Target();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.DRepresentation
      * <em>DRepresentation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1610,6 +1737,20 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     EReference getDView_Viewpoint();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors
+     * <em>Owned Representation Descriptors</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for the containment reference list '
+     *         <em>Owned Representation Descriptors</em>'.
+     * @see org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors()
+     * @see #getDView()
+     * @generated
+     */
+    EReference getDView_OwnedRepresentationDescriptors();
 
     /**
      * Returns the meta object for the reference list '
@@ -2343,6 +2484,50 @@ public interface ViewpointPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl
+         * <em>DRepresentation Descriptor</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDRepresentationDescriptor()
+         * @generated
+         */
+        EClass DREPRESENTATION_DESCRIPTOR = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DREPRESENTATION_DESCRIPTOR__NAME = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Name();
+
+        /**
+         * The meta object literal for the '<em><b>Representation</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DREPRESENTATION_DESCRIPTOR__REPRESENTATION = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation();
+
+        /**
+         * The meta object literal for the '<em><b>Description</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DREPRESENTATION_DESCRIPTOR__DESCRIPTION = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Description();
+
+        /**
+         * The meta object literal for the '<em><b>Target</b></em>' reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DREPRESENTATION_DESCRIPTOR__TARGET = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Target();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl
          * <em>DRepresentation</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -2461,6 +2646,15 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DVIEW__VIEWPOINT = ViewpointPackage.eINSTANCE.getDView_Viewpoint();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Owned Representation Descriptors</b></em>' containment
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference DVIEW__OWNED_REPRESENTATION_DESCRIPTORS = ViewpointPackage.eINSTANCE.getDView_OwnedRepresentationDescriptors();
 
         /**
          * The meta object literal for the '<em><b>Models</b></em>' reference

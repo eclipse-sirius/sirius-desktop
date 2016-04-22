@@ -54,6 +54,14 @@
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DSemanticDecorator">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DSemanticDecorator/target"/>
     </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DRepresentationDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationDescriptor/name"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationDescriptor/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationDescriptor/target"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationDescriptor/representation"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentation">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedRepresentationElements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/representationElements"/>
@@ -67,9 +75,10 @@
     </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//DView">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/viewpoint"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/models"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/ownedRepresentationDescriptors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/ownedRepresentations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/ownedExtensions"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/models"/>
     </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//MetaModelExtension">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//MetaModelExtension/extensionGroup"/>

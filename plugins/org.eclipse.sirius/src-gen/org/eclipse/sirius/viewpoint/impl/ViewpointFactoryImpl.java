@@ -30,6 +30,7 @@ import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
@@ -91,6 +92,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         switch (eClass.getClassifierID()) {
         case ViewpointPackage.DANALYSIS:
             return createDAnalysis();
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR:
+            return createDRepresentationDescriptor();
         case ViewpointPackage.DVIEW:
             return createDView();
         case ViewpointPackage.META_MODEL_EXTENSION:
@@ -179,6 +182,17 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public DAnalysis createDAnalysis() {
         DAnalysisImpl dAnalysis = new DAnalysisImpl();
         return dAnalysis;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public DRepresentationDescriptor createDRepresentationDescriptor() {
+        DRepresentationDescriptorImpl dRepresentationDescriptor = new DRepresentationDescriptorImpl();
+        return dRepresentationDescriptor;
     }
 
     /**

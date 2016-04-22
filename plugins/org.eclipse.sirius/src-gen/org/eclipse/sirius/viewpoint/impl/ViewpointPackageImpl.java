@@ -33,6 +33,7 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -111,6 +112,13 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dSemanticDecoratorEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass dRepresentationDescriptorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -537,6 +545,56 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EClass getDRepresentationDescriptor() {
+        return dRepresentationDescriptorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDRepresentationDescriptor_Name() {
+        return (EAttribute) dRepresentationDescriptorEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDRepresentationDescriptor_Description() {
+        return (EReference) dRepresentationDescriptorEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDRepresentationDescriptor_Target() {
+        return (EReference) dRepresentationDescriptorEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDRepresentationDescriptor_Representation() {
+        return (EReference) dRepresentationDescriptorEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getDRepresentation() {
         return dRepresentationEClass;
     }
@@ -637,26 +695,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDView_OwnedRepresentations() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getDView_OwnedExtensions() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EReference getDView_Viewpoint() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(0);
     }
@@ -667,8 +705,38 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDView_Models() {
+    public EReference getDView_OwnedRepresentationDescriptors() {
+        return (EReference) dViewEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDView_OwnedRepresentations() {
+        return (EReference) dViewEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDView_OwnedExtensions() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDView_Models() {
+        return (EReference) dViewEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1174,6 +1242,12 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dSemanticDecoratorEClass = createEClass(ViewpointPackage.DSEMANTIC_DECORATOR);
         createEReference(dSemanticDecoratorEClass, ViewpointPackage.DSEMANTIC_DECORATOR__TARGET);
 
+        dRepresentationDescriptorEClass = createEClass(ViewpointPackage.DREPRESENTATION_DESCRIPTOR);
+        createEAttribute(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME);
+        createEReference(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__DESCRIPTION);
+        createEReference(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__TARGET);
+        createEReference(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION);
+
         dRepresentationEClass = createEClass(ViewpointPackage.DREPRESENTATION);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS);
@@ -1187,6 +1261,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dViewEClass = createEClass(ViewpointPackage.DVIEW);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
+        createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_EXTENSIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__MODELS);
@@ -1359,6 +1434,20 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
 
+        initEClass(dRepresentationDescriptorEClass, DRepresentationDescriptor.class, "DRepresentationDescriptor", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
+                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getDRepresentationDescriptor_Name(), theEcorePackage.getEString(), "name", "", 0, 1, DRepresentationDescriptor.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentationDescriptor_Description(), theDescriptionPackage.getRepresentationDescription(), null, "description", null, 1, 1, DRepresentationDescriptor.class, //$NON-NLS-1$
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentationDescriptor_Target(), theEcorePackage.getEObject(), null, "target", null, 1, 1, DRepresentationDescriptor.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getDRepresentationDescriptor_Representation(), this.getDRepresentation(), null, "representation", null, 1, 1, DRepresentationDescriptor.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
         initEClass(dRepresentationEClass, DRepresentation.class, "DRepresentation", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(getDRepresentation_OwnedRepresentationElements(), this.getDRepresentationElement(), null, "ownedRepresentationElements", null, 0, -1, DRepresentation.class, //$NON-NLS-1$
                 EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
@@ -1387,6 +1476,9 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDView_Viewpoint(), theDescriptionPackage.getViewpoint(), null, "viewpoint", null, 1, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEReference(getDView_OwnedRepresentationDescriptors(), this.getDRepresentationDescriptor(), null, "ownedRepresentationDescriptors", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);

@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -127,6 +128,11 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDSemanticDecorator(DSemanticDecorator object) {
             return createDSemanticDecoratorAdapter();
+        }
+
+        @Override
+        public Adapter caseDRepresentationDescriptor(DRepresentationDescriptor object) {
+            return createDRepresentationDescriptorAdapter();
         }
 
         @Override
@@ -343,6 +349,22 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDSemanticDecoratorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor
+     * <em>DRepresentation Descriptor</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor
+     * @generated
+     */
+    public Adapter createDRepresentationDescriptorAdapter() {
         return null;
     }
 

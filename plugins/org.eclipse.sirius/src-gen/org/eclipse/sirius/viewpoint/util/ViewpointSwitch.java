@@ -28,6 +28,7 @@ import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DProject;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DResource;
 import org.eclipse.sirius.viewpoint.DResourceContainer;
@@ -160,6 +161,14 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DSEMANTIC_DECORATOR: {
             DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) theEObject;
             T result = caseDSemanticDecorator(dSemanticDecorator);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR: {
+            DRepresentationDescriptor dRepresentationDescriptor = (DRepresentationDescriptor) theEObject;
+            T result = caseDRepresentationDescriptor(dRepresentationDescriptor);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -484,6 +493,23 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDSemanticDecorator(DSemanticDecorator object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>DRepresentation Descriptor</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>DRepresentation Descriptor</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDRepresentationDescriptor(DRepresentationDescriptor object) {
         return null;
     }
 

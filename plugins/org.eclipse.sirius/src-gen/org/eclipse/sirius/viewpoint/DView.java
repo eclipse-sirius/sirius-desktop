@@ -16,15 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * <!-- begin-user-doc -->
- * <p>
- * A representation of the model object '<em><b>DView</b></em>'.
- * </p>
- * <p>
- * An analysis is the root element of a view (.aird, .airview). It contains
- * viewpoints and Meta Model extensions.
- * </p>
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>DView</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc --> An view is the root element <!-- end-model-doc -->
  *
@@ -34,6 +27,9 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
  * }</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors
+ * <em>Owned Representation Descriptors</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations
  * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
@@ -47,11 +43,53 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  */
 public interface DView extends DRefreshable {
     /**
+     * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * viewpoint that is used for this view <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Viewpoint</em>' reference.
+     * @see #setViewpoint(Viewpoint)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Viewpoint()
+     * @model required="true"
+     * @generated
+     */
+    Viewpoint getViewpoint();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Viewpoint</em>' reference.
+     * @see #getViewpoint()
+     * @generated
+     */
+    void setViewpoint(Viewpoint value);
+
+    /**
+     * Returns the value of the '
+     * <em><b>Owned Representation Descriptors</b></em>' containment reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * representation descriptors that are owned by this DView . <!--
+     * end-model-doc -->
+     *
+     * @return the value of the '<em>Owned Representation Descriptors</em>'
+     *         containment reference list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_OwnedRepresentationDescriptors()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    EList<DRepresentationDescriptor> getOwnedRepresentationDescriptors();
+
+    /**
      * Returns the value of the '<em><b>Owned Representations</b></em>'
      * containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The viewpoints that
-     * are owned by this analysis. <!-- end-model-doc -->
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The representations
+     * that are owned by this DView. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
@@ -89,31 +127,6 @@ public interface DView extends DRefreshable {
      * @generated
      */
     void setOwnedExtensions(MetaModelExtension value);
-
-    /**
-     * Returns the value of the '<em><b>Viewpoint</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * viewpoint that is used for this view <!-- end-model-doc -->
-     *
-     * @return the value of the '<em>Viewpoint</em>' reference.
-     * @see #setViewpoint(Viewpoint)
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Viewpoint()
-     * @model required="true"
-     * @generated
-     */
-    Viewpoint getViewpoint();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DView#getViewpoint <em>Viewpoint</em>
-     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param value
-     *            the new value of the '<em>Viewpoint</em>' reference.
-     * @see #getViewpoint()
-     * @generated
-     */
-    void setViewpoint(Viewpoint value);
 
     /**
      * Returns the value of the '<em><b>Models</b></em>' reference list. The
