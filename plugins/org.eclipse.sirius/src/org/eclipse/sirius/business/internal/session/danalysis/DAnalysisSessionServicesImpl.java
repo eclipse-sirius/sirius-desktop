@@ -30,11 +30,13 @@ import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
+import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -314,7 +316,9 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private void addRepresentationToContainer(final DRepresentation representation, final Resource res) {
         final EObject semanticRoot = res.getContents().iterator().next();
-        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
+        final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation);
+
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(descriptor.getDescription()).getParentViewpoint();
         DView existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, session.allAnalyses(), analysisSelector, representation);
 
         if (existingContainer == null) {
@@ -330,6 +334,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             analysis.getOwnedViews().add(existingContainer);
         }
 
+        existingContainer.getOwnedRepresentationDescriptors().add(descriptor);
         existingContainer.getOwnedRepresentations().add(representation);
     }
 
