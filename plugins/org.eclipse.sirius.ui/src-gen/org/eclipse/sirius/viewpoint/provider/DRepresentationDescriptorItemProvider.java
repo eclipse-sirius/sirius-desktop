@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -29,6 +30,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * This is the item provider adapter for a
@@ -124,24 +126,51 @@ public class DRepresentationDescriptorItemProvider extends ItemProviderAdapter
      * This returns DRepresentationDescriptor.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DRepresentationDescriptor")); //$NON-NLS-1$
+        Object image = null;
+        if (object instanceof DRepresentationDescriptor) {
+            DRepresentationDescriptor descriptor = (DRepresentationDescriptor) object;
+            RepresentationDescription description = descriptor.getDescription();
+            if (description != null) {
+                // Retrieve the dialect image.
+                final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(description, IItemLabelProvider.class);
+                if (labelProvider != null) {
+                    image = labelProvider.getImage(description);
+                }
+            }
+        }
+        if (image == null) {
+            image = getResourceLocator().getImage("full/obj16/DRepresentationDescriptor"); //$NON-NLS-1$
+        }
+        return overlayImage(object, image);
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
         String label = ((DRepresentationDescriptor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DRepresentationDescriptor_type") : //$NON-NLS-1$
-                getString("_UI_DRepresentationDescriptor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        if (label == null || label.isEmpty()) {
+            EObject objectToAdapt = ((DRepresentationDescriptor) object).getRepresentation();
+            if (objectToAdapt == null) {
+                // Retrieve the description name.
+                objectToAdapt = ((DRepresentationDescriptor) object).getDescription();
+            }
+            if (objectToAdapt != null) {
+                final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(objectToAdapt, IItemLabelProvider.class);
+                if (labelProvider != null) {
+                    label = labelProvider.getText(objectToAdapt);
+                }
+            }
+        }
+        return label;
     }
 
     /**
