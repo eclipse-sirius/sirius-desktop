@@ -68,6 +68,12 @@ By pressing the <kdb>F4</kdb> shortcut key, it is possible to temporarily enable
 !images/snap_to_all_shapes.png!
 !images/snap_to_all_shapes_2.png!
 
+h3. Moving the diagram
+
+When the diagram is larger than the editor area, you can move it in all directions by pressing the middle-button and dragging the mouse (keeping the button pressed).
+
+<video height="240" src="videos/moveInAllDirections.mp4" target="_self" autoplay="autoplay" loop="loop"></video>
+
 h3. Resizing elements
 
 If the specifier has authorized it, it is possible to resize a shape by dragging them until they are the size that you want.
