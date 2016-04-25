@@ -16,7 +16,7 @@
         xsi:type="properties:DynamicMappingFor"
         iterator="eStructuralFeature"
         domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
-      <ifs predicateExpression="aql:eStructuralFeature.eType = ecore::EString and not(eStructuralFeature.many)">
+      <ifs predicateExpression="aql:eStructuralFeature.eType.instanceTypeName = 'java.lang.String' and not(eStructuralFeature.many)">
         <widget
             xsi:type="properties:TextDescription"
             labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
@@ -28,7 +28,7 @@
           </initialOperation>
         </widget>
       </ifs>
-      <ifs predicateExpression="aql:eStructuralFeature.eType = ecore::EBoolean and not(eStructuralFeature.many)">
+      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.Boolean' or eStructuralFeature.eType.instanceTypeName = 'boolean') and not(eStructuralFeature.many)">
         <widget
             xsi:type="properties:CheckboxDescription"
             labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
