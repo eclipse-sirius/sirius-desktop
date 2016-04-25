@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            wizardID="org.eclipse.sirius.tests.properties.samples.wizard">
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.text/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.text">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.instance/"
+               name="org.eclipse.sirius.tests.rcptt.properties.instance">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.ui.Examples/org.eclipse.sirius.tests.properties.samples.category"
+            class="org.eclipse.sirius.tests.properties.samples.PropertiesTestsExampleWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            id="org.eclipse.sirius.tests.properties.samples.wizard"
+            name="Sirius Properties Tests Wizard"
+            project="true">
+      </wizard>
+      <category
+            id="org.eclipse.sirius.tests.properties.samples.category"
+            name="Sirius Tests"
+            parentCategory="org.eclipse.ui.Examples">
+      </category>
+   </extension>
+
+</plugin>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:description="http://www.eclipse.org/sirius/description/1.1.0"
+    xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0"
+    xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
+    name="PropertiesTests"
+    version="11.0.0.201601261200">
+  <ownedViewpoints
+      name="PropertiesTestsCheckbox"/>
+  <extensions
+      xsi:type="properties:ViewExtensionDescription">
+    <pages identifier=""
+        labelExpression="Checkbox"
+        groups="//@extensions.0/@groups.0"/>
+    <groups
+        identifier="Checkbox"
+        labelExpression="Checkbox"
+        domainClass="">
+      <controls
+          xsi:type="properties:CheckboxDescription"
+          labelExpression="Checkbox"
+          valueExpression="aql:self.booleanAttribute">
+        <initialOperation>
+          <firstModelOperations
+              xsi:type="tool:SetValue"
+              featureName="booleanAttribute"
+              valueExpression="aql:newValue"/>
+        </initialOperation>
+      </controls>
+      <controls
+          xsi:type="properties:CheckboxDescription"
+          labelExpression="Style Checkbox"
+          valueExpression="aql:self.booleanAttribute">
+        <style
+            labelFontNameExpression="Times new roman"
+            labelFontSize="12">
+          <labelBackgroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+          <labelForegroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <labelFontFormat>italic</labelFontFormat>
+          <labelFontFormat>bold</labelFontFormat>
+          <labelFontFormat>underline</labelFontFormat>
+          <labelFontFormat>strike_through</labelFontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:CheckboxDescription"
+          labelExpression="Conditional Style Checkbox"
+          valueExpression="aql:self.booleanAttribute">
+        <conditionalStyles
+            preconditionExpression="aql:true">
+          <style
+              labelFontNameExpression="Times new roman"
+              labelFontSize="12">
+            <labelBackgroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+            <labelForegroundColor
+                xsi:type="description:SystemColor"
+                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelFontFormat>italic</labelFontFormat>
+            <labelFontFormat>bold</labelFontFormat>
+            <labelFontFormat>underline</labelFontFormat>
+            <labelFontFormat>strike_through</labelFontFormat>
+          </style>
+        </conditionalStyles>
+      </controls>
+      <controls
+          xsi:type="properties:CheckboxDescription"
+          labelExpression="Disable Checkbox"
+          isEnabledExpression="aql:false"
+          valueExpression="aql:self.booleanAttribute"/>
+    </groups>
+  </extensions>
+</description:Group>

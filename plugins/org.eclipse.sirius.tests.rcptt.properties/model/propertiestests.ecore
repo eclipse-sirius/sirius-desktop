@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="propertiestests" nsURI="http://www.eclipse.org/sirius/tests/properties/1.0.0"
+    nsPrefix="propertiestests">
+  <eClassifiers xsi:type="ecore:EClass" name="TestRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//TestElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringAttributes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intAttributes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanAttributes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumAttribute" eType="#//TestEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumAttributes" upperBound="-1"
+        eType="#//TestEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containmentReference" eType="#//TestElement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containmentReferences"
+        upperBound="-1" eType="#//TestElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//TestElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+        eType="#//TestElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TestEnum">
+    <eLiterals name="Literal1"/>
+    <eLiterals name="Literal2" value="1"/>
+    <eLiterals name="Literal3" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

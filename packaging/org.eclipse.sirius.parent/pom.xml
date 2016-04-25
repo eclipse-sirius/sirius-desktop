@@ -415,20 +415,27 @@
         <module>../../plugins/org.eclipse.sirius.tests.junit</module>
         <module>../../plugins/org.eclipse.sirius.tests.tree</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
+        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties</module>
+        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.edit</module>
+        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.editor</module>
+        <module>../../plugins/org.eclipse.sirius.tests.rcptt.properties.samples</module>
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.tests</module>
+        <module>../../packaging/org.eclipse.sirius.tests.rcptt.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
-
+        
     </modules>
-</profile>
+  </profile>
+
     <profile>
-      <id>incubation</id>
+      <id>rcptt</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
+        <module>../../packaging/org.eclipse.sirius.tests.product</module>
       </modules>
     </profile>
     

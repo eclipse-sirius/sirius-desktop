@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<propertiestests:TestRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:propertiestests="http://www.eclipse.org/sirius/tests/properties/1.0.0">
+  <elements stringAttribute="Element1" reference="//@elements.1" references="//@elements.1 //@elements.2">
+    <stringAttributes>Attribute1</stringAttributes>
+    <stringAttributes>Attribute2</stringAttributes>
+    <stringAttributes>Attribute3</stringAttributes>
+    <intAttributes>1</intAttributes>
+    <intAttributes>2</intAttributes>
+    <intAttributes>3</intAttributes>
+    <booleanAttributes>true</booleanAttributes>
+    <booleanAttributes>false</booleanAttributes>
+    <enumAttributes>Literal1</enumAttributes>
+    <enumAttributes>Literal2</enumAttributes>
+    <enumAttributes>Literal3</enumAttributes>
+    <containmentReference stringAttribute="Element11"/>
+    <containmentReferences stringAttribute="Element12"/>
+    <containmentReferences stringAttribute="Element13"/>
+  </elements>
+  <elements stringAttribute="Element2"/>
+  <elements stringAttribute="Element3"/>
+</propertiestests:TestRoot>
