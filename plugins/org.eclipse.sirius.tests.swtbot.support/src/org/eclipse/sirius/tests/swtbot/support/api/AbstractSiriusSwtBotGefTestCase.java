@@ -111,6 +111,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
@@ -382,9 +383,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         bot.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < PlatformUI.getWorkbench().getWorkbenchWindows().length; i++) {
-                    for (int j = 0; j < PlatformUI.getWorkbench().getWorkbenchWindows()[i].getPages().length; j++) {
-                        PlatformUI.getWorkbench().getWorkbenchWindows()[i].getPages()[j].closeAllEditors(false);
+                for (IWorkbenchWindow window : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+                    for (IWorkbenchPage page : window.getPages()) {
+                        page.closeAllEditors(false);
                     }
                 }
             }
