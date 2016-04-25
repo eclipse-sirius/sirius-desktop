@@ -128,8 +128,9 @@ public class ValidationFixResolution implements IMarkerResolution {
             if (markedView != null) {
                 EObject fixTarget = getFixTarget(markedView);
                 if (fixTarget != null) {
-                    executeFix(editor, fixTarget, currentSession.getTransactionalEditingDomain(), offscreenValidation);
-                    revalidate(editor, markedView.getDiagram(), offscreenValidation);
+                    Diagram diagram = markedView.getDiagram();
+                    executeFix(editor, (DDiagram) diagram.getElement(), fixTarget, currentSession.getTransactionalEditingDomain(), offscreenValidation);
+                    revalidate(editor, diagram, offscreenValidation);
                 }
             }
         }
@@ -182,11 +183,11 @@ public class ValidationFixResolution implements IMarkerResolution {
         return (fix.eContainer() instanceof ViewValidationRule);
     }
 
-    private void executeFix(IEditorPart editor, EObject fixTarget, TransactionalEditingDomain domain, boolean offscreenValidation) {
+    private void executeFix(IEditorPart editor, DDiagram diagram, EObject fixTarget, TransactionalEditingDomain domain, boolean offscreenValidation) {
         IDiagramCommandFactory commandFactory = getDiagramCommandFactory(editor, domain, offscreenValidation);
 
         if (commandFactory != null && fixTarget != null) {
-            Command fixCommand = commandFactory.buildQuickFixOperation(fix, fixTarget, getDiagram(editor));
+            Command fixCommand = commandFactory.buildQuickFixOperation(fix, fixTarget, diagram);
 
             // Set the RefreshEditorsListener in forceRefresh mode
             EObject semanticTarget = getSemanticTarget(fixTarget);
