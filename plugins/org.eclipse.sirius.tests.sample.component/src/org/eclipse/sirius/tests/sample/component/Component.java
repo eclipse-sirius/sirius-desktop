@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getName <em>
- * Name</em>}</li>
- * <li>{@link org.eclipse.sirius.tests.sample.component.Component#isPayload <em>
- * Payload</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getName
+ * <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#isPayload
+ * <em>Payload</em>}</li>
  * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getChildren
  * <em>Children</em>}</li>
  * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReferences
@@ -32,9 +32,10 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Reference</em>}</li>
  * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getOpposites
  * <em>Opposites</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tests.sample.component.Component#getReferences2
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getReferences2
  * <em>References2</em>}</li>
+ * <li>{@link org.eclipse.sirius.tests.sample.component.Component#getAliases
+ * <em>Aliases</em>}</li>
  * </ul>
  * </p>
  *
@@ -206,5 +207,22 @@ public interface Component extends EObject {
      * @generated
      */
     EList<Component> getReferences2();
+
+    /**
+     * Returns the value of the '<em><b>Aliases</b></em>' attribute list. The
+     * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of the '<em>Aliases</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Aliases</em>' attribute list.
+     * @see org.eclipse.sirius.tests.sample.component.ComponentPackage#getComponent_Aliases()
+     * @model
+     * @generated
+     */
+    EList<String> getAliases();
 
 } // Component

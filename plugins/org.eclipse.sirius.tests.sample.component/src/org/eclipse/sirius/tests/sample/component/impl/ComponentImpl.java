@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -55,6 +56,9 @@ import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
  * <li>
  * {@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#getReferences2
  * <em>References2</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.tests.sample.component.impl.ComponentImpl#getAliases
+ * <em>Aliases</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +154,16 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
      * @ordered
      */
     protected EList<Component> references2;
+
+    /**
+     * The cached value of the '{@link #getAliases() <em>Aliases</em>}'
+     * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getAliases()
+     * @generated
+     * @ordered
+     */
+    protected EList<String> aliases;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -348,6 +362,18 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
      * 
      * @generated
      */
+    public EList<String> getAliases() {
+        if (aliases == null) {
+            aliases = new EDataTypeUniqueEList<String>(String.class, this, ComponentPackage.COMPONENT__ALIASES);
+        }
+        return aliases;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     @SuppressWarnings("unchecked")
     @Override
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -402,6 +428,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
             return getOpposites();
         case ComponentPackage.COMPONENT__REFERENCES2:
             return getReferences2();
+        case ComponentPackage.COMPONENT__ALIASES:
+            return getAliases();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -440,6 +468,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
             getReferences2().clear();
             getReferences2().addAll((Collection<? extends Component>) newValue);
             return;
+        case ComponentPackage.COMPONENT__ALIASES:
+            getAliases().clear();
+            getAliases().addAll((Collection<? extends String>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -473,6 +505,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         case ComponentPackage.COMPONENT__REFERENCES2:
             getReferences2().clear();
             return;
+        case ComponentPackage.COMPONENT__ALIASES:
+            getAliases().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -499,6 +534,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
             return opposites != null && !opposites.isEmpty();
         case ComponentPackage.COMPONENT__REFERENCES2:
             return references2 != null && !references2.isEmpty();
+        case ComponentPackage.COMPONENT__ALIASES:
+            return aliases != null && !aliases.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -518,6 +555,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         result.append(name);
         result.append(", payload: "); //$NON-NLS-1$
         result.append(payload);
+        result.append(", aliases: "); //$NON-NLS-1$
+        result.append(aliases);
         result.append(')');
         return result.toString();
     }

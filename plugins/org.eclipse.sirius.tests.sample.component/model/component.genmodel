@@ -18,6 +18,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//Component/reference"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//Component/opposites"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//Component/references2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Component/aliases"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

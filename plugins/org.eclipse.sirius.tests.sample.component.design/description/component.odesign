@@ -412,6 +412,11 @@
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
       </createTreeItem>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Aliases" domainClass="Component">
+      <ownedLineMappings name="Aliases_Component" domainClass="Component" semanticCandidatesExpression="feature:children"/>
+      <ownedColumnMappings name="Aliases_Component_Name" headerLabelExpression="Name" featureName="name"/>
+      <ownedColumnMappings name="Aliases_Component_Description" headerLabelExpression="Aliases" featureName="aliases"/>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.component.service.ComponentServices"/>
   </ownedViewpoints>
 </description:Group>
