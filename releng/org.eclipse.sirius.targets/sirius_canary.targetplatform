@@ -71,6 +71,7 @@ location Acceleo-LastSuccessful "https://hudson.eclipse.org/acceleo/job/acceleo-
 	org.eclipse.acceleo.feature.group lazy
 	org.eclipse.acceleo.ide.ui lazy
 	org.eclipse.acceleo.query.feature.group lazy
+	org.eclipse.acceleo.query.source.feature.group lazy
 }
 
 location EMF-Compare-Nightly "http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
