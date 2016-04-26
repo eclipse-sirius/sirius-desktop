@@ -95,6 +95,8 @@
    <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
+   <feature id="org.eclipse.acceleo.query" version="0.0.0"/>
+   <feature id="org.eclipse.acceleo.query.source" version="0.0.0"/>
    <category-def name="Sirius" label="Sirius">
       <description>
          The Sirius Modeling Platform
