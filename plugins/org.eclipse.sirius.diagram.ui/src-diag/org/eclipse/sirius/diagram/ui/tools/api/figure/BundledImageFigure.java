@@ -122,6 +122,11 @@ public class BundledImageFigure extends SVGFigure {
     private String shapeName;
 
     /**
+     * The actual provided shape ID use to draw the SVG figure
+     */
+    private String shapeID;
+
+    /**
      * The actual border color use to draw the SVG figure
      */
     private String mainBorderColor;
@@ -173,7 +178,7 @@ public class BundledImageFigure extends SVGFigure {
         boolean updated = false;
         if (bundledImage != null && bundledImage.getShape() != null) {
             String newShapeName = bundledImage.getShape().getName();
-            if (!StringUtil.isEmpty(newShapeName) && !newShapeName.equals(getShapeName())) {
+            if (!StringUtil.isEmpty(newShapeName) && (!newShapeName.equals(getShapeName()) || bundledImage.getProvidedShapeID() != null && !bundledImage.getProvidedShapeID().equals(getShapeID()))) {
                 if (newShapeName.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName())) {
                     String providedShapeID = bundledImage.getProvidedShapeID();
                     IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(providedShapeID);
@@ -182,6 +187,7 @@ public class BundledImageFigure extends SVGFigure {
                         String imageFileURI = "platform:/plugin" + path; //$NON-NLS-1$
                         this.setURI(imageFileURI, false);
                         this.setShapeName(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName());
+                        this.setShapeID(providedShapeID);
                     }
                 } else {
                     this.setURI(getImageFileURI(newShapeName), false);
@@ -422,6 +428,14 @@ public class BundledImageFigure extends SVGFigure {
 
     protected void setShapeName(String shapeName) {
         this.shapeName = shapeName;
+    }
+
+    protected String getShapeID() {
+        return shapeID;
+    }
+
+    protected void setShapeID(String shapeID) {
+        this.shapeID = shapeID;
     }
 
     protected String getMainBorderColor() {
