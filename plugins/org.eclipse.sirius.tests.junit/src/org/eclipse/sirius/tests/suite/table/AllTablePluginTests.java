@@ -10,15 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.table;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.table.tests.provider.TreeLabelProviderTest;
 import org.eclipse.sirius.tests.unit.table.tests.srs.ExploitArrays_Test;
 import org.eclipse.sirius.tests.unit.table.tests.srs.SpecifyArrays_Test;
 import org.eclipse.sirius.tests.unit.table.unit.TableContentTest;
+import org.eclipse.sirius.tests.unit.table.unit.TableWithMultivaluedAttributeTest;
 import org.eclipse.sirius.tests.unit.table.unit.dialect.DialectManagerTest;
 import org.eclipse.sirius.tests.unit.table.unit.export.ExportToCsvTest;
 import org.eclipse.sirius.tests.unit.table.unit.export.MultiLineExportToCsvTest;
@@ -46,6 +42,11 @@ import org.eclipse.sirius.tests.unit.table.unit.vsm.edit.TableAdapterFactoryRegi
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.DefaultVariablesOnToolsTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.PopupMenuTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.interpreted.expression.variables.VariableOnTableCreationToolsTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * The designer main test suite for the table component.
@@ -103,6 +104,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(TableContentTest.class);
         suite.addTestSuite(VariableOnTableCreationToolsTest.class);
         suite.addTestSuite(TableStyleRefreshTest.class);
+        suite.addTestSuite(TableWithMultivaluedAttributeTest.class);
         return suite;
     }
 
