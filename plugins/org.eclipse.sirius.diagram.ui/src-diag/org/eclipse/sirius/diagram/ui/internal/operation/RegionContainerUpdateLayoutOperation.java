@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -126,8 +126,12 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             LayoutConstraint layoutConstraint = node.getLayoutConstraint();
             if (layoutConstraint instanceof Location) {
                 Location loc = (Location) layoutConstraint;
-                loc.setX(x);
-                loc.setY(y);
+                if (loc.getX() != x) {
+                    loc.setX(x);
+                }
+                if (loc.getY() != y) {
+                    loc.setY(y);
+                }
             }
 
             if (vertical) {
@@ -138,11 +142,11 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
 
             if (layoutConstraint instanceof Size) {
                 Size size = (Size) layoutConstraint;
-                if (size.getWidth() != -1 && vertical) {
+                if (vertical && size.getWidth() != -1 && size.getWidth() != commonWidth) {
                     size.setWidth(commonWidth);
                 }
 
-                if (size.getHeight() != -1 && !vertical) {
+                if (!vertical && size.getHeight() != -1 && size.getHeight() != commonHeight) {
                     size.setHeight(commonHeight);
                 }
             }
@@ -152,12 +156,16 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
         if (layoutConstraint instanceof Size) {
             Size size = (Size) layoutConstraint;
             if (vertical) {
-                size.setHeight(-1);
+                if (size.getHeight() != -1) {
+                    size.setHeight(-1);
+                }
                 if (size.getWidth() != -1 && size.getWidth() < commonWidth) {
                     size.setWidth(-1);
                 }
             } else {
-                size.setWidth(-1);
+                if (size.getWidth() != -1) {
+                    size.setWidth(-1);
+                }
                 if (size.getHeight() != -1 && size.getHeight() < commonHeight) {
                     size.setHeight(-1);
                 }
