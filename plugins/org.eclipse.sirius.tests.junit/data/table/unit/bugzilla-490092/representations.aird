@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:component="http://www.eclipse.org/sirius/sample/component" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description" xmi:id="_fAtUsNOWEeSuFoVE4TCOJg" selectedViews="_CSfnUNOXEeSLVtmbtn12LQ" version="11.0.0.201604141600">
+  <semanticResources>component.component</semanticResources>
+  <semanticResources>platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign</semanticResources>
+  <semanticResources>environment:/viewpoint</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_CSfnUNOXEeSLVtmbtn12LQ">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']"/>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_WmaFwAsBEeaIS93yJg53Yg" name="new Aliases" headerColumnWidth="213">
+      <target xmi:type="component:Component" href="component.component#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_WmaFwQsBEeaIS93yJg53Yg" label="Component Bruce Wayne">
+        <target xmi:type="component:Component" href="component.component#//@children.0"/>
+        <semanticElements xmi:type="component:Component" href="component.component#//@children.0"/>
+        <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Aliases']/@ownedLineMappings[name='Aliases_Component']"/>
+        <cells xmi:type="table:DCell" xmi:id="_WmaFwgsBEeaIS93yJg53Yg" label="Bruce Wayne" column="_WmaFxAsBEeaIS93yJg53Yg">
+          <target xmi:type="component:Component" href="component.component#//@children.0"/>
+          <semanticElements xmi:type="component:Component" href="component.component#//@children.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" xmi:id="_WmaFwwsBEeaIS93yJg53Yg" label="[Batman, The Dark Knight, The world greateast detective]" column="_WmaFxQsBEeaIS93yJg53Yg">
+          <target xmi:type="component:Component" href="component.component#//@children.0"/>
+          <semanticElements xmi:type="component:Component" href="component.component#//@children.0"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_WmaFxAsBEeaIS93yJg53Yg" label="Name" cells="_WmaFwgsBEeaIS93yJg53Yg" width="95" featureName="name">
+        <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Aliases']/@ownedColumnMappings[name='Aliases_Component_Name']"/>
+      </columns>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_WmaFxQsBEeaIS93yJg53Yg" label="Aliases" cells="_WmaFwwsBEeaIS93yJg53Yg" width="387" featureName="aliases">
+        <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Aliases']/@ownedColumnMappings[name='Aliases_Component_Description']"/>
+      </columns>
+      <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.component.design/description/component.odesign#//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Aliases']"/>
+    </ownedRepresentations>
+  </ownedViews>
+</viewpoint:DAnalysis>

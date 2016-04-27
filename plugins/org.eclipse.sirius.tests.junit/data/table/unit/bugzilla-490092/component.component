@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<component:Component xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:component="http://www.eclipse.org/sirius/sample/component" name="DC">
+  <children name="Bruce Wayne">
+    <aliases>Batman</aliases>
+    <aliases>The Dark Knight</aliases>
+    <aliases>The world greateast detective</aliases>
+  </children>
+</component:Component>

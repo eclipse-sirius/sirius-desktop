@@ -136,13 +136,22 @@ public interface ComponentPackage extends EPackage {
     int COMPONENT__REFERENCES2 = 6;
 
     /**
+     * The feature id for the '<em><b>Aliases</b></em>' attribute list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMPONENT__ALIASES = 7;
+
+    /**
      * The number of structural features of the '<em>Component</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int COMPONENT_FEATURE_COUNT = 7;
+    int COMPONENT_FEATURE_COUNT = 8;
 
     /**
      * The number of operations of the '<em>Component</em>' class. <!--
@@ -250,6 +259,18 @@ public interface ComponentPackage extends EPackage {
     EReference getComponent_References2();
 
     /**
+     * Returns the meta object for the attribute list '
+     * {@link org.eclipse.sirius.tests.sample.component.Component#getAliases
+     * <em>Aliases</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute list '<em>Aliases</em>'.
+     * @see org.eclipse.sirius.tests.sample.component.Component#getAliases()
+     * @see #getComponent()
+     * @generated
+     */
+    EAttribute getComponent_Aliases();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -341,6 +362,14 @@ public interface ComponentPackage extends EPackage {
          * @generated
          */
         EReference COMPONENT__REFERENCES2 = eINSTANCE.getComponent_References2();
+
+        /**
+         * The meta object literal for the '<em><b>Aliases</b></em>' attribute
+         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute COMPONENT__ALIASES = eINSTANCE.getComponent_Aliases();
 
     }
 

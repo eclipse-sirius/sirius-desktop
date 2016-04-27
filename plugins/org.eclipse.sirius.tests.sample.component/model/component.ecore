@@ -15,5 +15,7 @@
         eType="#//Component" eOpposite="#//Component/references"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="references2" upperBound="-1"
         eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aliases" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
