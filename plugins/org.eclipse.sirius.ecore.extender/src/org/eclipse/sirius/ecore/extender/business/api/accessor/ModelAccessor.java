@@ -575,7 +575,7 @@ public class ModelAccessor {
             for (Setting setting : refs) {
                 final EObject eObj = setting.getEObject();
                 final EStructuralFeature feature = setting.getEStructuralFeature();
-                // For each reference to the element to deleten we check that it
+                // For each reference to the element to delete we check that it
                 // can be deleted
                 // Check 1: if the containing type of the reference is a type to
                 // ignore, we consider that we can delete it

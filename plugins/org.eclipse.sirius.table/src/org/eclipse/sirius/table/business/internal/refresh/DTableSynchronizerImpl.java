@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -787,6 +787,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      *            the cross referencer to use
      */
     private void updateCells(final IntersectionMapping iMapping, final SetIntersection<DCellCandidate> cellsToUpdate, ECrossReferenceAdapter xref) {
+        // Let's now create the new cells, update the kept ones and remove the
+        // old ones.
         for (final DCellCandidate toCreate : cellsToUpdate.getNewElements()) {
             final Option<DCell> optionalCell = createCell(toCreate.getLine(), toCreate.getColumn(), toCreate.getSemantic(), toCreate.getMapping());
             if (optionalCell.some()) {
@@ -896,30 +898,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             }
         }
 
-        // Let's now create the new cells, update the kept ones and remove the
-        // old ones.
-        for (final DCellCandidate toCreate : status.getNewElements()) {
-            final Option<DCell> optionalCell = createCell(toCreate.getLine(), toCreate.getColumn(), toCreate.getSemantic(), toCreate.getMapping());
-            if (optionalCell.some()) {
-                optionalCell.get().setIntersectionMapping(iMapping);
-                this.sync.refresh(optionalCell.get());
-            }
-
-        }
-        for (final DCellCandidate toUpdate : status.getKeptElements()) {
-            final DCell cell = toUpdate.getOriginalElement();
-            if (cell != null) {
-                if (accessor.getPermissionAuthority().canEditInstance(cell)) {
-                    cell.setTarget(toUpdate.getSemantic());
-                    cell.setIntersectionMapping(iMapping);
-                    this.sync.refresh(cell);
-                }
-            }
-        }
-        for (final DCellCandidate toRemove : status.getRemovedElements()) {
-            final DCell cell = toRemove.getOriginalElement();
-            doDeleteCell(cell, xref);
-        }
+        updateCells(iMapping, status, xref);
     }
 
     /**
