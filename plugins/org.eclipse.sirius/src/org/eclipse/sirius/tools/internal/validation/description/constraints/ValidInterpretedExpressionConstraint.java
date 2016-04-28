@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -127,6 +127,8 @@ public class ValidInterpretedExpressionConstraint extends AbstractConstraint {
             severity = IStatus.WARNING;
         } else if (IInterpreterStatus.ERROR.equals(status.getSeverity())) {
             severity = IStatus.ERROR;
+        } else if (IInterpreterStatus.INFO.equals(status.getSeverity())) {
+            severity = IStatus.INFO;
         }
 
         return ConstraintStatus.createStatus(ctx, null, resultLocus, severity, desc.getStatusCode(), status.getMessage(), messageArguments);

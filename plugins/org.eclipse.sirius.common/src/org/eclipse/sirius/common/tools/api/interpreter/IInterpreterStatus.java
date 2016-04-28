@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public interface IInterpreterStatus {
+
+    /**
+     * Status severity : warning.
+     */
+    String INFO = "info"; //$NON-NLS-1$
 
     /**
      * Status severity : warning.
@@ -56,9 +61,11 @@ public interface IInterpreterStatus {
 
     /**
      * Represents the severity of this error (can be
-     * {@link IInterpreterStatus#WARNING} or {@link IInterpreterStatus#ERROR}).
+     * {@link IInterpreterStatus#INFO} or {@link IInterpreterStatus#WARNING} or
+     * {@link IInterpreterStatus#ERROR}).
      * 
      * @return the severity of this error (can be
+     *         {@link IInterpreterStatus#INFO} or
      *         {@link IInterpreterStatus#WARNING} or
      *         {@link IInterpreterStatus#ERROR})
      */

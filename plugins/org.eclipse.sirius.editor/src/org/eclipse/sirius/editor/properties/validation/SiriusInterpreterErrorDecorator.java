@@ -12,6 +12,7 @@ package org.eclipse.sirius.editor.properties.validation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
@@ -63,9 +64,20 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
 
     /**
      * Default image descriptor for the warning overlay, if the current element
-     * has no error, but at least one of its children has.
+     * has no warning, but at least one of its children has.
      */
     public static final ImageDescriptor WARNING_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/warning_co_children_only.png"); //$NON-NLS-1$ ;
+
+    /**
+     * Image descriptor for info overlay.
+     */
+    public static final ImageDescriptor INFO_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/info_co.png"); //$NON-NLS-1$
+
+    /**
+     * Default image descriptor for the info overlay, if the current element has
+     * no info, but at least one of its children has.
+     */
+    public static final ImageDescriptor INFO_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/info_co_children_only.png"); //$NON-NLS-1$ ;
 
     private List<ILabelProviderListener> listeners = new ArrayList<ILabelProviderListener>(1);
 
@@ -123,29 +135,30 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
         String uriForElement = getURIForElement(element);
         if (uriForElement != null) {
             Collection<IMarker> markersForElementAndChildren = SiriusEditorInterpreterMarkerService.getValidationMarkersForElementAndChildren(this.resource, uriForElement);
-            Collection<IMarker> markersForElementOnly = Lists.newArrayList(SiriusEditorInterpreterMarkerService.getValidationMarkersForElement(this.resource, uriForElement));
-
-            boolean onlyWarning = true;
-            for (IMarker marker : markersForElementAndChildren) {
-
-                Object severity;
-                try {
-                    severity = marker.getAttribute(IMarker.SEVERITY);
-
-                    onlyWarning = onlyWarning && !(severity.equals(IMarker.SEVERITY_ERROR));
-                } catch (CoreException e) {
-                    // Nothing to do, we consider that it is just a warning
-                }
-            }
             if (!markersForElementAndChildren.isEmpty()) {
-                ComposedImage img = null;
-                if (onlyWarning) {
-                    img = decorateSeverity(image, IMarker.SEVERITY_WARNING, markersForElementOnly.isEmpty());
-                } else {
-                    img = decorateSeverity(image, IMarker.SEVERITY_ERROR, markersForElementOnly.isEmpty());
+                Collection<IMarker> markersForElementOnly = Lists.newArrayList(SiriusEditorInterpreterMarkerService.getValidationMarkersForElement(this.resource, uriForElement));
+
+                Iterator<IMarker> iter = markersForElementAndChildren.iterator();
+                int globalSeverity = -1;
+                while ((globalSeverity < IMarker.SEVERITY_ERROR) && iter.hasNext()) {
+                    IMarker marker = iter.next();
+                    int severity;
+                    try {
+                        severity = ((Integer) marker.getAttribute(IMarker.SEVERITY)).intValue();
+                    } catch (CoreException e) {
+                        // We consider that it is just a warning
+                        severity = IMarker.SEVERITY_WARNING;
+                    }
+                    if (severity > globalSeverity) {
+                        globalSeverity = severity;
+                    }
                 }
-                final ImageDescriptor descriptor = new ComposedImageDescriptor(img);
-                return SiriusEditPlugin.getPlugin().getImage(descriptor);
+
+                if (globalSeverity >= IMarker.SEVERITY_INFO) {
+                    ComposedImage img = decorateSeverity(image, globalSeverity, markersForElementOnly.isEmpty());
+                    final ImageDescriptor descriptor = new ComposedImageDescriptor(img);
+                    return SiriusEditPlugin.getPlugin().getImage(descriptor);
+                }
             }
         }
 
@@ -175,15 +188,18 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
             } else {
                 images.add(SiriusEditPlugin.getPlugin().getImage(ERROR_OVERLAY_DESC));
             }
-        } else {
-            if (severity == IMarker.SEVERITY_WARNING) {
-                if (childrenContainsErrorButNotElement) {
-                    images.add(SiriusEditPlugin.getPlugin().getImage(WARNING_OVERLAY_DESC_CHILDREN_ONLY));
-                } else {
-                    images.add(SiriusEditPlugin.getPlugin().getImage(WARNING_OVERLAY_DESC));
-                }
+        } else if (severity == IMarker.SEVERITY_WARNING) {
+            if (childrenContainsErrorButNotElement) {
+                images.add(SiriusEditPlugin.getPlugin().getImage(WARNING_OVERLAY_DESC_CHILDREN_ONLY));
+            } else {
+                images.add(SiriusEditPlugin.getPlugin().getImage(WARNING_OVERLAY_DESC));
             }
-
+        } else if (severity == IMarker.SEVERITY_INFO) {
+            if (childrenContainsErrorButNotElement) {
+                images.add(SiriusEditPlugin.getPlugin().getImage(INFO_OVERLAY_DESC_CHILDREN_ONLY));
+            } else {
+                images.add(SiriusEditPlugin.getPlugin().getImage(INFO_OVERLAY_DESC));
+            }
         }
         ComposedImage ci = new ComposedImage(images) {
 

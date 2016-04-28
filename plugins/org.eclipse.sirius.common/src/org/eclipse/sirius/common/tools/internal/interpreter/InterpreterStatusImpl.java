@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      *            the feature containing the evaluated expression
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR})
      * @param message
@@ -82,6 +83,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @return the message
      */
+    @Override
     public String getMessage() {
         return message;
     }
@@ -91,6 +93,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @return the line of the problem in the file
      */
+    @Override
     public int getLine() {
         return line;
     }
@@ -100,6 +103,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @return the beginning index of the problem in the file
      */
+    @Override
     public int getPosBegin() {
         return posBegin;
     }
@@ -109,6 +113,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @return the ending index of the problem in the file
      */
+    @Override
     public int getPosEnd() {
         return posEnd;
     }
@@ -118,6 +123,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
         return getMessage();
     }
@@ -128,6 +134,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus#getTargetTypes()
      */
+    @Override
     public VariableType getTargetTypes() {
         return targets;
     }
@@ -138,6 +145,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus#getField()
      */
+    @Override
     public EStructuralFeature getField() {
         return field;
     }
@@ -148,6 +156,7 @@ public class InterpreterStatusImpl implements IInterpreterStatus {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus#getSeverity()
      */
+    @Override
     public String getSeverity() {
         return this.severity;
     }

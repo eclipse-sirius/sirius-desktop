@@ -155,6 +155,8 @@ icons/full/validation/error_co.gif - org.eclipse.jdt.ui - icons/full/ovr16/error
 icons/full/validation/error_co.png - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
 icons/full/validation/error_co_children_only.gif - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
 icons/full/validation/error_co_children_only.png - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
+icons/full/validation/info_co.png - org.eclipse.jdt.ui - icons/full/ovr16/info_co.gif
+icons/full/validation/info_co_children_only.png - org.eclipse.jdt.ui - icons/full/ovr16/info_co.gif
 icons/full/validation/warning_co.gif - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
 icons/full/validation/warning_co.png - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
 icons/full/validation/warning_co_children_only.gif - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif

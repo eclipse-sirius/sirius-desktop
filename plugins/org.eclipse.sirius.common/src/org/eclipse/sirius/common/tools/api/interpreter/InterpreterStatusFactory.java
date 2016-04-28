@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ public final class InterpreterStatusFactory {
      *            occurred
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR}).
      * @param message
@@ -58,6 +59,7 @@ public final class InterpreterStatusFactory {
      *            the field containing the incorrect Interpreted Expression
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR}).
      * @param message
@@ -79,6 +81,7 @@ public final class InterpreterStatusFactory {
      *            the field containing the incorrect Interpreted Expression
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR}).
      * @param message
@@ -104,6 +107,7 @@ public final class InterpreterStatusFactory {
      *            the field containing the incorrect Interpreted Expression
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR}).
      * @param message
@@ -131,6 +135,7 @@ public final class InterpreterStatusFactory {
      *            the field containing the incorrect Interpreted Expression
      * @param severity
      *            the severity of this error (can be
+     *            {@link IInterpreterStatus#INFO} or
      *            {@link IInterpreterStatus#WARNING} or
      *            {@link IInterpreterStatus#ERROR}).
      * @param message

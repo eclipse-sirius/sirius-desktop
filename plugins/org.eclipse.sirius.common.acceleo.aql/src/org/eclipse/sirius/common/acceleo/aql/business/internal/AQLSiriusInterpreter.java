@@ -293,6 +293,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 String severity = IInterpreterStatus.WARNING;
                 if (message.getLevel() == ValidationMessageLevel.ERROR) {
                     severity = IInterpreterStatus.ERROR;
+                } else if (message.getLevel() == ValidationMessageLevel.INFO) {
+                    severity = IInterpreterStatus.INFO;
                 }
                 result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, severity, message.getMessage()));
             }

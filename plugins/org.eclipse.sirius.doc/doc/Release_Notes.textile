@@ -58,6 +58,7 @@ h4. Changes in @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> A method @getInferredVariableTypes(Boolean value)@ in @org.eclipse.sirius.common.tools.api.interpreter.ValidationResult@ so that @IInterpreter@ implementations able to infer more specific types based on predicates result provides this information to Sirius which will then use it for validating other expressions. You might want to look at @org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter@ which is an implementation providing this type inference.
 * <span class="label label-success">Added</span> A helper @org.eclipse.sirius.common.tools.api.util.MessageTranslator@ providing a @getMessage(String)@ service dedicated into processing a translatable message to return the translation in the active language when available. This service returns the String without modification if not translatable or no translation is available.
+* <span class="label label-success">Added</span> The "INFO" severity has been added to @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus@ to reflect all kind of language validation severity (of AQL for example).
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
