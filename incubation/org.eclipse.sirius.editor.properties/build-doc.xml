@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<project name="org.eclipse.sirius.editor.properties" default="generate-html">
+	<property name="wikitext.standalone" value="${basedir}/lib" description="Path to the WikiText standalone JARs" />
+
+	<path id="wikitext.classpath">
+		<fileset dir="${wikitext.standalone}">
+			<include name="org.eclipse.mylyn.wikitext.*core*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+
+	<target name="generate-html" description="Generate Eclipse help from textile source">
+		<wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true">
+			<fileset dir="${basedir}">
+				<include name="doc/*.textile" />
+			</fileset>
+			<stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css" />
+			<stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css" />
+		</wikitext-to-html>
+
+		<wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true">
+			<fileset dir="${basedir}">
+				<include name="doc/*/*.textile" />
+			</fileset>
+            <stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css" />
+            <stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css" />
+		</wikitext-to-html>
+
+		<wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true">
+			<fileset dir="${basedir}">
+				<include name="doc/*/*/*.textile" />
+			</fileset>
+            <stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css" />
+            <stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css" />
+		</wikitext-to-html>
+	</target>
+</project>
