@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,6 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
     public void testValidationErrorValue() {
         // Opened VSM
         SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
-        // expand the tree : Node Mapping
         bot.editorByTitle(VSM).setFocus();
         SWTBotTree tree = odesignEditor.bot().tree();
         SWTBotUtils.clickContextMenu(tree, "Validate");

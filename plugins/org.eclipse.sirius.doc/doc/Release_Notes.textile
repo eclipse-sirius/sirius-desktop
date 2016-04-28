@@ -123,9 +123,10 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The method @getTreeItem(final SWTBotTreeItem[], final String)@ has been added in @org.eclipse.sirius.tests.swtbot.support.utils@ to retrieve recursively a @SWTBotTreeItem@ in a @SWTBotTreeItem@ array.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.swtbot.support.api.condition.ShellChangedCondition@ has been added to wait until the current active shell has changed.
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemWithImageCondition@ has been added to wait until the given treeItem has the expected image.
 * <span class="label label-info">Modified</span> A second @String@ parameter has been added to the method @org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession.newDiagramRepresentation(String, String)@. This parameter is the label of the representation description. It is necessary since the change of the wizard to ask the new representation name (see User-Visible Changes for detail).
 * <span class="label label-info">Modified</span> A third @String@ parameter has been added to the constructor of @org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilder@ for the same above reasons.
-
+ 
 h4. Changes in @org.eclipse.sirius.common.xtext@
 
 * <span class="label label-info">Modified</span> The dependency from  @org.eclipse.sirius.common.xtext@ to the JDT plug-in @org.eclipse.jdt.core@ is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (@org.eclipse.sirius.editor@) still depends on PDE (and thus indirectly the JDT too).

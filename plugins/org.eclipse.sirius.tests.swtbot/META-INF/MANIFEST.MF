@@ -51,7 +51,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.diagram.ui.ext,
  org.eclipse.sdk,
  org.eclipse.platform,
- org.eclipse.sirius.tests.sample.migration
+ org.eclipse.sirius.tests.sample.migration,
+ org.eclipse.emf.edit.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-RegisterBuddy: org.apache.log4j
