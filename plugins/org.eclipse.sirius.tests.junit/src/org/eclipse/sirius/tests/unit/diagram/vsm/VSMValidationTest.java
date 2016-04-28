@@ -53,6 +53,9 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerForDefaultLayerValidation;
 
+    private Group modelerWithAllKindOfError;
+
+    @Override
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
         EclipseTestsSupportHelper.INSTANCE.createProject("Project");
@@ -65,6 +68,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerForInvalidVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/invalidVariableNameVSM.odesign", true), set);
         modelerForImagePathValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateImagePathVSM.odesign", true), set);
         modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
+        modelerWithAllKindOfError = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMProblemSeverity.odesign", true), set);
     }
 
     /**
@@ -108,6 +112,34 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         assertEquals("The diagnostic must contain 6 elements invalidated", 6, diagnostic.getChildren().size());
         for (Diagnostic diag : diagnostic.getChildren()) {
             assertEquals("The list of invalidated elements must start by 'A style is missing for' and nothing else", "A style is missing for", diag.getMessage().substring(0, 22));
+        }
+    }
+
+    /**
+     * Test VSM validation with problems of each kind: INFO, WARNING, ERROR and
+     * check the severity.
+     */
+    public void testValidationVSMForEachKindOfProblem() {
+        String infoMessage = "Empty collection: Nothing left after concat:\n Empty OrderedSet defined in extension\n Empty OrderedSet defined in extension";
+        String warningMessage = "EClassifierLiteral=EPackage is duplicated in the type set literal.";
+        String errorMessage = "null or empty string.";
+
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerWithAllKindOfError);
+        // Check that there is a pop up for validation problems
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+        // Check each severity according to the message.
+        assertEquals("The diagnostic must contain 3 elements invalidated", 3, diagnostic.getChildren().size());
+        for (Diagnostic diag : diagnostic.getChildren()) {
+            if (infoMessage.equals(diag.getMessage())) {
+                assertEquals("Wrong severity for INFO message.", Diagnostic.INFO, diag.getSeverity());
+            } else if (warningMessage.equals(diag.getMessage())) {
+                assertEquals("Wrong severity for WARNING message.", Diagnostic.WARNING, diag.getSeverity());
+            } else if (errorMessage.equals(diag.getMessage())) {
+                assertEquals("Wrong severity for ERROR message.", Diagnostic.ERROR, diag.getSeverity());
+            } else {
+                fail("Unexpected message! AQL has changed the message returned for this validation or the VSM has been changed: " + diag.getMessage());
+            }
         }
     }
 
@@ -277,6 +309,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         }
     }
 
+    @Override
     public void tearDown() {
         modeler = null;
     }
