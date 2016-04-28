@@ -72,13 +72,18 @@ public class DeleteLineWithDELShortcutTest extends AbstractTreeSiriusSWTBotGefTe
      * Test table line deletion with DEL shortcut.
      */
     public void testTableLineDeletionWithDELShortcut() {
+        assertEquals("Wrong test data, the current test has been written to check the deletion of a line with one cell only.", 1, dTable.getColumns().size());
+
         int nbLines = dTable.getLines().size();
+        int nbCells = dTable.getColumns().get(0).getCells().size();
+        int nbSubLines = dTable.getLines().get(0).getLines().size();
 
         tableEditorBot.setFocus();
         tableEditorBot.bot().tree().getAllItems()[0].select();
         doLineDeletionWithDELShortcut(tableRepresentation.getTree());
 
         assertEquals(nbLines - 1, dTable.getLines().size());
+        assertEquals("Cells of the deleted lines and sublines should be removed from cells referenced from the column.", nbCells - 1 - nbSubLines, dTable.getColumns().get(0).getCells().size());
     }
 
     private void doLineDeletionWithDELShortcut(SWTBotTree swtBotTree) {

@@ -204,6 +204,15 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      */
     private void refreshCells(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
         if (description instanceof EditionTableDescription) {
+            // Clean orphan cells
+            for (final DColumn column : table.getColumns()) {
+                for (DCell cell : Lists.newArrayList(column.getCells())) {
+                    if (cell.getLine() == null) {
+                        doDeleteCell(cell, xref);
+                    }
+                }
+            }
+
             fillTableDCells(table);
         } else if (description instanceof CrossTableDescription) {
             refreshCellsOfCrossTable(monitor, mappingToElements, xref);

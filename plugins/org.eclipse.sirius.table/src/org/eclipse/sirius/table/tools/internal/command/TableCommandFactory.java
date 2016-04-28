@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.tools.internal.command;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -35,6 +36,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.base.Option;
@@ -69,8 +71,8 @@ import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -259,7 +261,27 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     private void addDeleteTableElementFromTool(final SiriusCommand cmd, final DTableElement element, final DeleteTool deleteTool) {
         final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
         cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
+        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element) {
+            @Override
+            protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator semDec, List<ICommandTask> subTasks) {
+                super.addDialectSpecificAdditionalDeleteSubTasks(semDec, subTasks);
+                if (semDec instanceof DCell) {
+                    final DCell cell = (DCell) semDec;
+                    subTasks.add(new AbstractCommandTask() {
+
+                        @Override
+                        public String getLabel() {
+                            return ""; //$NON-NLS-1$
+                        }
+
+                        @Override
+                        public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
+                            cell.setColumn(null);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     /**

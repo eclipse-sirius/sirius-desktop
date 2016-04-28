@@ -328,10 +328,35 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The cell to removed
      */
     protected void removeUneededCell(DCell cell) {
-        final Session session = SessionManager.INSTANCE.getSession(cell.getTarget());
-        final ECrossReferenceAdapter xref = session != null ? session.getSemanticCrossReferencer() : null;
+        Session session = SessionManager.INSTANCE.getSession(cell.getTarget());
+        if (session == null) {
+            // If session is null, the semantic element might have already been
+            // deleted and/or cell might be partially deleted but still
+            // referenced from its column for example.
+            DLine line = cell.getLine();
+            DColumn column = cell.getColumn();
+            EObject target = null;
+            if (line != null) {
+                target = line.getTarget();
+            } else if (column instanceof DFeatureColumn && column.getTable() != null) {
+                target = column.getTable().getTarget();
+            } else if (column instanceof DTargetColumn) {
+                target = column.getTarget();
+            }
+
+            if (target != null) {
+                session = SessionManager.INSTANCE.getSession(target);
+            }
+        }
+
         if (accessor.getPermissionAuthority().canDeleteInstance(cell)) {
-            accessor.eDelete(cell, xref);
+            if (session != null) {
+                final ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+                accessor.eDelete(cell, xref);
+            } else {
+                cell.setLine(null);
+                cell.setColumn(null);
+            }
         }
     }
 
