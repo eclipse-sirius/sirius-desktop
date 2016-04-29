@@ -100,7 +100,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
             "Hide label", "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
-            "Apply the applicable appearance properties of the first selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
+            "Apply the applicable appearance properties of the last selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
 
     private static final String[] CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Bold Font Style", "Italic Font Style" };
 
