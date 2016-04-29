@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,6 +35,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.sample.interactions.InteractionsFactory;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -63,7 +67,8 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
     private static final String MODELING_PROJECT_NATURE = "Modeling project";
 
     private static final String[] NON_LOADABLE_FILES = { ".checkstyle", ".classpath", ".options", ".project", "about.ini", "build.xml", "classpath.xml", "generate.mtl", "Glossary.html", "image.svg",
-            "MANIFEST.MF", "plugin.xml", "pom.xml", "project.xml", "resourcelocator.exsd", "test.docx", "unknownMM.ummfortest", "web.xml", "representations.aird.old", "vsm.odesign.old", "vsm.odesign" };
+            "MANIFEST.MF", "plugin.xml", "pom.xml", "project.xml", "resourcelocator.exsd", "test.docx", "unknownMM.ummfortest", "web.xml", "representations.aird.old", "vsm.odesign.old",
+            "vsm.odesign" };
 
     @Override
     protected void setUp() throws Exception {
@@ -347,6 +352,18 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
     private IFile checkRepresentationFileExists(IProject project) {
         IFile representationFile = project.getFile(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME);
         assertNotNull("The representation file " + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME + " should exists", representationFile);
+        try {
+            representationFile.refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
+        } catch (CoreException e) {
+            fail("Problem during refresh of the " + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME + ": " + e.getMessage());
+        }
+        try {
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException e) {
+            fail("Fail during waiting of ResourceSyncClientNotifier job: " + e.getMessage());
+        } catch (InterruptedException e) {
+            fail("Fail during waiting of ResourceSyncClientNotifier job: " + e.getMessage());
+        }
         assertTrue("The representation file " + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME + " should exists", representationFile.exists());
         return representationFile;
     }
@@ -418,6 +435,8 @@ public class ConvertProjectToModelingProjectTest extends SiriusTestCase {
             @SuppressWarnings("rawtypes")
             ExecutionEvent event = new ExecutionEvent(null, new HashMap(), null, evaluationContext);
             toogleProject.execute(event);
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
         } catch (Exception e) {
             fail(e.getMessage());
         }
