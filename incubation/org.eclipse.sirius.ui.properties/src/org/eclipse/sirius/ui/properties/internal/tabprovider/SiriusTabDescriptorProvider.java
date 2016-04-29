@@ -20,6 +20,7 @@ import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
+import org.eclipse.eef.core.api.IEEFDomainClassTester;
 import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
@@ -137,7 +138,12 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
         variableManager.put(EEFExpressionUtils.INPUT, input);
         TransactionalEditingDomainContextAdapter eca = new TransactionalEditingDomainContextAdapter(session.getTransactionalEditingDomain());
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, input);
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, new IEEFDomainClassTester() {
+            @Override
+            public boolean eInstanceOf(EObject eObject, String domainClass) {
+                return session.getModelAccessor().eInstanceOf(eObject, domainClass);
+            }
+        }, input);
         return eefView;
     }
 
