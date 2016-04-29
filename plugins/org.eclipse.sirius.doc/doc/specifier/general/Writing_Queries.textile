@@ -151,3 +151,78 @@ _Warning:_ Java service methods should be stateless. There is no guarantee that 
 _Warning:_ There are currently some limitations on the use of Java services from Acceleo:
 * primitive types can not be used as arguments or return types for service methods invoked from Acceleo 3 expressions. The workaround is to use the corresponding wrapper type (e.g. @Integer@ instead of @int@).
 * service methods invoked from Acceleo 3 expressions can not return @void@. You can return any value instead, for example target argument (the service method's first parameter). 
+
+h2(#standard_services). Standard Services
+
+Sirius provides some standard services that can be used from any VSM simply by adding the appropriate reference (as a _Java Extension_) to the implementation class's fully qualified name. When using such a service class, make sure your _Viewpoint Specification Project_ has a dependency towards the Sirius plug-in which provides said class.
+
+h3(#editing_domain_services). Editing Domain Services and EMF Edit Integration
+
+Starting from Sirius 4.0, the @org.eclipse.sirius.ext.emf.edit@ plug-in provides the @org.eclipse.sirius.ext.emf.edit.EditingDomainServices@ service class which can be referenced from any VSM (once properly declared). This class provides a large set of methods which give access to many useful features of the _EMF Edit_ framework, in particular all kinds of _Item Providers_, in a way that is directly accessible as service invocations from interpreted expressions.
+
+h4. General EditingDomain-related Services
+
+The following general services are made available:
+* @getEditingDomain(EObject)@
+* @isStale(EObject)@
+* @isControlled(EObject)@
+* @getAdapterFactory(EObject)@
+* @getAdapter(EObject, Class)@
+
+h4. Item Providers Services
+
+Most public methods of the following interfaces are available as services on any @EObject@ (typically from a Sirius session):
+* @org.eclipse.emf.edit.provider.IItemLabelProvider@
+* @org.eclipse.emf.edit.provider.IItemColorProvider@
+* @org.eclipse.emf.edit.provider.IItemFontProvider@
+* @org.eclipse.emf.edit.provider.IItemStyledLabelProvider@ (only available in EMF 2.10 and later)
+* @org.eclipse.emf.edit.provider.IStructuredItemContentProvider@
+* @org.eclipse.emf.edit.provider.ITreeItemContentProvider@
+* @org.eclipse.emf.edit.provider.ITableItemLabelProvider@
+* @org.eclipse.emf.edit.provider.ITableItemColorProvider@
+* @org.eclipse.emf.edit.provider.ITableItemFontProvider@
+
+In all cases, a @getXXXProvider()@ service method is also made available (for example @getLabelProvider(EObject)@, which returns the item provider itself (or @null@). The item provider is located using the @ItemProviderAdapter@ returned by the @AdapterFactory@ associated to the element's editing domain. This assumes said domain is an @AdapterFactoryEditingDomain@ (which is true in practice in Sirius, which uses a @TransactionalEditingDomain@ that inherits from this).
+
+All service methods return an explicit @null@ value (or @false@ for services that return a boolean) if the corresponding item provider could not be found. Note that this is indistinguishable from an item provider method which actually returns @null@ or @false@.
+
+h4. Item Property-Related Services
+
+The @IItemPropertySource@ associated with an element and its @IItemPropertyDescriptors@ can be obtained using the following services:
+* @getItemPropertySource(EObject)@
+* @getPropertyDescriptors(EObject)@ to obtain *all* the @IItemPropertyDescriptor@ of the element.
+* @getPropertyDescriptorForFeature(EObject, String)@ to obtain the @IItemPropertyDescriptor@ of an element's specific feature
+
+The following services, which all take a feature name as a second argument (the first explicit one when invoked as a service) give access to the corresponding methods in the @IItemPropertyDescriptor@ associated to the corresponding element's feature:
+* @getPropertyDescriptorPropertyValue()@
+* @isPropertyDescriptorPropertySet()@
+* @canSetPropertyDescriptorProperty()@
+* @resetPropertyDescriptorPropertyValue()@
+* @setPropertyDescriptorPropertyValue()@
+* @getPropertyDescriptorCategory()@
+* @getPropertyDescriptorDescription()@
+* @getPropertyDescriptorDisplayName()@
+* @getPropertyDescriptorFilterFlags()@
+* @getPropertyDescriptorHelpContextIds()@
+* @getPropertyDescriptorId()@
+* @getPropertyDescriptorLabelProvider()@
+* @getPropertyDescriptorFeature()@
+* @isPropertyDescriptorMany()@
+* @getPropertyDescriptorChoiceOfValues()@
+* @isPropertyDescriptorMultiLine()@
+* @isPropertyDescriptorSortChoices()@
+
+h4. Command-related Services
+
+A series of service methods can be used to invoke the standard EMF Commands available from @ItemProviderAdapter@ 's various @createXXXCommand()@ methods. Note that contrary to the @createXXXCommand()@ methods which simply returns a @Command@ instance, the service methods exposed in this class will directly *execute* the command on the editing domains @CommandStack@.
+Their names follow the @perfomXXXCommand()@ pattern to reflect this. They all return the @self@ element (the @EObject@ on which the service was invoked.
+
+The command-related services available are:
+* @performSetCommand()@
+* @performUnsetCommand()@
+* @performAddCommand()@
+* @performRemoveCommand()@
+* @performReplaceCommand()@
+* @performMoveCommand()@
+
+The implementation of these services delegate to the @ItemProviderAdapter.createCommand()@ method, so any customization made in the @ItemProviderAdapter@ 's implementation will be taken into account.

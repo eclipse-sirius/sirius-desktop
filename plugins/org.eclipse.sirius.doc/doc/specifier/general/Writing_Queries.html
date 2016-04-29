@@ -36,6 +36,14 @@
 					<li>
 						<a href="#service_methods">Writing Java Services</a>
 					</li>
+					<li>
+						<a href="#standard_services">Standard Services</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#editing_domain_services">Editing Domain Services and EMF Edit Integration</a>
+							</li>
+						</ol>
+					</li>
 				</ol>
 			</li>
 		</ol>
@@ -340,5 +348,197 @@
 				<code>void</code>. You can return any value instead, for example target argument (the service method&#8217;s first parameter). 
 			</li>
 		</ul>
+		<h2 id="standard_services">Standard Services</h2>
+		<p>Sirius provides some standard services that can be used from any VSM simply by adding the appropriate reference (as a 
+			<em>Java Extension</em>) to the implementation class&#8217;s fully qualified name. When using such a service class, make sure your 
+			<em>Viewpoint Specification Project</em> has a dependency towards the Sirius plug-in which provides said class.
+		</p>
+		<h3 id="editing_domain_services">Editing Domain Services and EMF Edit Integration</h3>
+		<p>Starting from Sirius 4.0, the 
+			<code>org.eclipse.sirius.ext.emf.edit</code> plug-in provides the 
+			<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices</code> service class which can be referenced from any VSM (once properly declared). This class provides a large set of methods which give access to many useful features of the 
+			<em>EMF Edit</em> framework, in particular all kinds of 
+			<em>Item Providers</em>, in a way that is directly accessible as service invocations from interpreted expressions.
+		</p>
+		<h4 id="GeneralEditingDomainrelatedServices">General EditingDomain-related Services</h4>
+		<p>The following general services are made available:</p>
+		<ul>
+			<li>
+				<code>getEditingDomain(EObject)</code>
+			</li>
+			<li>
+				<code>isStale(EObject)</code>
+			</li>
+			<li>
+				<code>isControlled(EObject)</code>
+			</li>
+			<li>
+				<code>getAdapterFactory(EObject)</code>
+			</li>
+			<li>
+				<code>getAdapter(EObject, Class)</code>
+			</li>
+		</ul>
+		<h4 id="ItemProvidersServices">Item Providers Services</h4>
+		<p>Most public methods of the following interfaces are available as services on any 
+			<code>EObject</code> (typically from a Sirius session):
+		</p>
+		<ul>
+			<li>
+				<code>org.eclipse.emf.edit.provider.IItemLabelProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.IItemColorProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.IItemFontProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.IItemStyledLabelProvider</code> (only available in EMF 2.10 and later)
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.IStructuredItemContentProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.ITreeItemContentProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.ITableItemLabelProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.ITableItemColorProvider</code>
+			</li>
+			<li>
+				<code>org.eclipse.emf.edit.provider.ITableItemFontProvider</code>
+			</li>
+		</ul>
+		<p>In all cases, a 
+			<code>getXXXProvider()</code> service method is also made available (for example 
+			<code>getLabelProvider(EObject)</code>, which returns the item provider itself (or 
+			<code>null</code>). The item provider is located using the 
+			<code>ItemProviderAdapter</code> returned by the 
+			<code>AdapterFactory</code> associated to the element&#8217;s editing domain. This assumes said domain is an 
+			<code>AdapterFactoryEditingDomain</code> (which is true in practice in Sirius, which uses a 
+			<code>TransactionalEditingDomain</code> that inherits from this).
+		</p>
+		<p>All service methods return an explicit 
+			<code>null</code> value (or 
+			<code>false</code> for services that return a boolean) if the corresponding item provider could not be found. Note that this is indistinguishable from an item provider method which actually returns 
+			<code>null</code> or 
+			<code>false</code>.
+		</p>
+		<h4 id="ItemPropertyRelatedServices">Item Property-Related Services</h4>
+		<p>The 
+			<code>IItemPropertySource</code> associated with an element and its 
+			<code>IItemPropertyDescriptors</code> can be obtained using the following services:
+		</p>
+		<ul>
+			<li>
+				<code>getItemPropertySource(EObject)</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptors(EObject)</code> to obtain 
+				<strong>all</strong> the 
+				<code>IItemPropertyDescriptor</code> of the element.
+			</li>
+			<li>
+				<code>getPropertyDescriptorForFeature(EObject, String)</code> to obtain the 
+				<code>IItemPropertyDescriptor</code> of an element&#8217;s specific feature
+			</li>
+		</ul>
+		<p>The following services, which all take a feature name as a second argument (the first explicit one when invoked as a service) give access to the corresponding methods in the 
+			<code>IItemPropertyDescriptor</code> associated to the corresponding element&#8217;s feature:
+		</p>
+		<ul>
+			<li>
+				<code>getPropertyDescriptorPropertyValue()</code>
+			</li>
+			<li>
+				<code>isPropertyDescriptorPropertySet()</code>
+			</li>
+			<li>
+				<code>canSetPropertyDescriptorProperty()</code>
+			</li>
+			<li>
+				<code>resetPropertyDescriptorPropertyValue()</code>
+			</li>
+			<li>
+				<code>setPropertyDescriptorPropertyValue()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorCategory()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorDescription()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorDisplayName()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorFilterFlags()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorHelpContextIds()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorId()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorLabelProvider()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorFeature()</code>
+			</li>
+			<li>
+				<code>isPropertyDescriptorMany()</code>
+			</li>
+			<li>
+				<code>getPropertyDescriptorChoiceOfValues()</code>
+			</li>
+			<li>
+				<code>isPropertyDescriptorMultiLine()</code>
+			</li>
+			<li>
+				<code>isPropertyDescriptorSortChoices()</code>
+			</li>
+		</ul>
+		<h4 id="CommandrelatedServices">Command-related Services</h4>
+		<p>A series of service methods can be used to invoke the standard EMF Commands available from 
+			<code>ItemProviderAdapter</code> 's various 
+			<code>createXXXCommand()</code> methods. Note that contrary to the 
+			<code>createXXXCommand()</code> methods which simply returns a 
+			<code>Command</code> instance, the service methods exposed in this class will directly 
+			<strong>execute</strong> the command on the editing domains 
+			<code>CommandStack</code>.
+			<br/>Their names follow the 
+			<code>perfomXXXCommand()</code> pattern to reflect this. They all return the 
+			<code>self</code> element (the 
+			<code>EObject</code> on which the service was invoked.
+		</p>
+		<p>The command-related services available are:</p>
+		<ul>
+			<li>
+				<code>performSetCommand()</code>
+			</li>
+			<li>
+				<code>performUnsetCommand()</code>
+			</li>
+			<li>
+				<code>performAddCommand()</code>
+			</li>
+			<li>
+				<code>performRemoveCommand()</code>
+			</li>
+			<li>
+				<code>performReplaceCommand()</code>
+			</li>
+			<li>
+				<code>performMoveCommand()</code>
+			</li>
+		</ul>
+		<p>The implementation of these services delegate to the 
+			<code>ItemProviderAdapter.createCommand()</code> method, so any customization made in the 
+			<code>ItemProviderAdapter</code> 's implementation will be taken into account.
+		</p>
 	</body>
 </html>
