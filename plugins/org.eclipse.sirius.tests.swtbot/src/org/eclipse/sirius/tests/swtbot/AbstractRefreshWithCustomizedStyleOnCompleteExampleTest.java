@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -138,6 +138,8 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
@@ -576,7 +578,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             assertEquals("The label position on draw2d part doesn't corresponds to style labelPosition", labelPosition, draw2dLabelPosition);
         }
         if (figure instanceof SiriusWrapLabel) {
-            SiriusWrapLabel viewpointWrapLabel = (SiriusWrapLabel) figure;
+            final SiriusWrapLabel viewpointWrapLabel = (SiriusWrapLabel) figure;
             Font font = viewpointWrapLabel.getFont();
             FontData[] fontData = font.getFontData();
             if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE) {
@@ -597,9 +599,22 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                         viewpointWrapLabel.getIcon() != null);
             } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH) {
                 String iconPath = (String) viewpointStyle.eGet(feature);
-                Image icon = viewpointWrapLabel.getIcon();
-                Image imageFromStyle = DiagramUIPlugin.Implementation.findImageDescriptor(FileProvider.getDefault().getFile(new Path(iconPath)).toURI().toURL()).createImage();
-                assertTrue("The icon of the figure should corresponds to the iconPath feature value of the customized style", ImageEquality.areEqualImages(imageFromStyle, icon));
+                final Image imageFromStyle = DiagramUIPlugin.Implementation.findImageDescriptor(FileProvider.getDefault().getFile(new Path(iconPath)).toURI().toURL()).createImage();
+                bot.waitUntil(new ICondition() {
+                    @Override
+                    public boolean test() throws Exception {
+                        return ImageEquality.areEqualImages(imageFromStyle, viewpointWrapLabel.getIcon());
+                    }
+
+                    @Override
+                    public void init(SWTBot bot) {
+                    }
+
+                    @Override
+                    public String getFailureMessage() {
+                        return "The icon of the figure should corresponds to the iconPath feature value of the customized style";
+                    }
+                });
             } else if (feature == ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT && (editPart instanceof IDiagramContainerEditPart || editPart instanceof IDiagramListEditPart)) {
                 IGraphicalEditPart abstractDiagramContainerEditPart = (IGraphicalEditPart) editPart;
                 IFigure contentPane = abstractDiagramContainerEditPart.getContentPane();

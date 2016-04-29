@@ -48,6 +48,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
@@ -383,7 +384,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         // Validate the font size from the graphical element
         DNode eClass1WithSquareStyleDNode = (DNode) ((DNodeEditPart) eClass1WithSquareStyleBot.part()).resolveSemanticElement();
         Style style = eClass1WithSquareStyleDNode.getStyle();
-        LabelEditPart labelEditPart = Iterables.getOnlyElement(Iterables.filter(((GraphicalEditPart) eClass1WithSquareStyleBot.part()).getChildren(), LabelEditPart.class));
+        final LabelEditPart labelEditPart = Iterables.getOnlyElement(Iterables.filter(((GraphicalEditPart) eClass1WithSquareStyleBot.part()).getChildren(), LabelEditPart.class));
         FontData[] fontData = labelEditPart.getFigure().getFont().getFontData();
         int labelSize = fontData[0].getHeight();
         assertEquals("Initial value of the Label Size is expected to be 8", 8, labelSize);
@@ -432,9 +433,21 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
                 domain.getCommandStack().execute(customizeStyleCmd);
                 currentValue = style.eGet(feature);
                 assertEquals("Value of the Label Size is expected to have been changed to 3", 3, currentValue);
-                fontData = labelEditPart.getFigure().getFont().getFontData();
-                labelSize = fontData[0].getHeight();
-                assertEquals("Value of the Label Size is expected to have been changed to 3", 3, labelSize);
+                bot.waitUntil(new ICondition() {
+                    @Override
+                    public boolean test() throws Exception {
+                        return 3 == labelEditPart.getFigure().getFont().getFontData()[0].getHeight();
+                    }
+
+                    @Override
+                    public void init(SWTBot bot) {
+                    }
+
+                    @Override
+                    public String getFailureMessage() {
+                        return "Value of the Label Size is expected to have been changed to 3";
+                    }
+                });
 
                 // Set style label size as 0
                 customizeStyleCmd = SetCommand.create(domain, style, feature, 0);
@@ -444,9 +457,21 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
                 // Validate that the style label size is set as 0 but that the
                 // diagram element font is set as 1
                 assertEquals("Value of the Label Size is expected to have been changed to 0", 0, currentValue);
-                fontData = labelEditPart.getFigure().getFont().getFontData();
-                labelSize = fontData[0].getHeight();
-                assertEquals("Value of the Label Size is expected to have been changed to 1", 1, labelSize);
+                bot.waitUntil(new ICondition() {
+                    @Override
+                    public boolean test() throws Exception {
+                        return 1 == labelEditPart.getFigure().getFont().getFontData()[0].getHeight();
+                    }
+
+                    @Override
+                    public void init(SWTBot bot) {
+                    }
+
+                    @Override
+                    public String getFailureMessage() {
+                        return "Value of the Label Size is expected to have been changed to 1";
+                    }
+                });
             }
         }
     }
