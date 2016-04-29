@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -179,7 +180,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
     }
 
     private boolean isChangingContextElement(EObject element) {
-        boolean descCanChange = element instanceof RepresentationDescription || element instanceof RepresentationElementMapping;
+        boolean descCanChange = element instanceof RepresentationDescription || element instanceof RepresentationElementMapping || element instanceof Extension;
         boolean operationCanChange = element instanceof CreateInstance || element instanceof ChangeContext || element instanceof For;
         boolean toolCanChange = element instanceof AbstractToolDescription;
         boolean validationRulecanChange = element instanceof ValidationRule;
