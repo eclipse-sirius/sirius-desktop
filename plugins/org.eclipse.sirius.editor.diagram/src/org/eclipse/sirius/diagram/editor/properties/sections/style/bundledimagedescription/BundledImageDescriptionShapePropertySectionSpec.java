@@ -64,25 +64,22 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
             String identifier = bundledImageExtensionQuery.getIdentifier(configurationElement);
 
             // Selected value without the plugin name
-            String selectedValue = getChoiceOfValues().get(index).toString().split("-")[0].trim();
-            if (selectedValue.equals(bundledImageExtensionQuery.getLabel(configurationElement))) {
-                EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
-                if (eObjectList.size() == 1) {
-                    /* apply the property change to single selected object */
-                    CompoundCommand cc = new CompoundCommand("Set provided shape to Bundle Image Description");
-                    cc.append(SetCommand.create(editingDomain, eObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
-                    cc.append(SetCommand.create(editingDomain, eObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
-                    editingDomain.getCommandStack().execute(cc);
-                } else {
-                    CompoundCommand compoundCommand = new CompoundCommand();
-                    /* apply the property change to all selected elements */
-                    for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
-                        EObject nextObject = i.next();
-                        compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
-                        compoundCommand.append(SetCommand.create(editingDomain, nextObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
-                    }
-                    editingDomain.getCommandStack().execute(compoundCommand);
+            EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();
+            if (eObjectList.size() == 1) {
+                /* apply the property change to single selected object */
+                CompoundCommand cc = new CompoundCommand("Set provided shape to Bundle Image Description");
+                cc.append(SetCommand.create(editingDomain, eObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
+                cc.append(SetCommand.create(editingDomain, eObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
+                editingDomain.getCommandStack().execute(cc);
+            } else {
+                CompoundCommand compoundCommand = new CompoundCommand();
+                /* apply the property change to all selected elements */
+                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
+                    EObject nextObject = i.next();
+                    compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
+                    compoundCommand.append(SetCommand.create(editingDomain, nextObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
                 }
+                editingDomain.getCommandStack().execute(compoundCommand);
             }
         }
     }
