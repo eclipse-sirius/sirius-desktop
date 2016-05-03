@@ -15,9 +15,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
+import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIProject;
@@ -76,7 +82,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String OPERATION_ACTION2_LABEL_ENG = "Bugzilla 459993 Operation 2";
 
-    // Labels coming from the plugin_en.properties file
+    // Labels coming from the plugin_fr.properties file
     private static final String TOOL_SELECTED_VALUES_LABEL_FR = "Voici le choix des valeurs!";
 
     private static final String TOOL_CHOICE_OF_VALUES_LABEL_FR = "Voici les valeurs sélectionnées!";
@@ -149,6 +155,9 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
      */
     @Override
     protected void tearDown() throws Exception {
+        if (editor != null) {
+            editor.close();
+        }
         Locale.setDefault(default_language);
         sessionAirdResource = null;
         localSession = null;
@@ -300,7 +309,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         SWTBotUtils.checkLabelInShell(getToolChoiceOfValuesLabel(), shell);
         SWTBotUtils.checkLabelInShell(getToolSelectedValuesLabel(), shell);
         shell.bot().button("Cancel").click();
-        
+
         editor.getEditPart("p11").click();
         bot.waitUntil(new CheckSelectedCondition(editor, "p11"));
 
@@ -492,19 +501,22 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
         // Initialization of a new modeling project
         designerProject.convertToModelingProject();
-        SWTBotUtils.waitAllUiEvents();
-        // We need to remove and add it again otherwise the second test fails to
-        // create the modeling project properly...Thanks SWTBot
-        SWTBotUtils.clickContextMenu(designerProject.getProjectTreeItem(), "Remove Modeling Project Nature");
-        SWTBotUtils.waitAllUiEvents();
-        designerProject.convertToModelingProject();
-        SWTBotUtils.waitAllUiEvents();
-
+        try {
+            ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName()).refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+        } catch (CoreException e) {
+            fail("Fail during refreshing the new project: " + e.getMessage());
+        }
+        try {
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException e) {
+            fail("Fail during waiting of ResourceSyncClientNotifier job: " + e.getMessage());
+        } catch (InterruptedException e) {
+            fail("Fail during waiting of ResourceSyncClientNotifier job: " + e.getMessage());
+        }
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_VIEWPOINT);
         bot.waitUntil(new DefaultCondition() {
             // This waiting condition is needed otherwise the test fails in run
             // (not in debug)
-
             @Override
             public boolean test() throws Exception {
                 return designerPerspective.getOpenedSession(sessionAirdResource) != null;
