@@ -281,7 +281,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         // set the focus on the Label tab
         SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
         assertEquals("The label expression should be empty", "", labelText.getText());
-        closeAllEditors();
+        odesignEditor.close();
         // Open VSM
         odesignEditor = openViewpointSpecificationModel(VSM);
         // expands the tree : Container style description
@@ -296,6 +296,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         // set the old label expression
         labelText.setText(oldLabelExpression);
         bot.saveAllEditors();
+        odesignEditor.close();
     }
 
     /**
@@ -322,6 +323,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         final MenuItem navigationMenuItem = UIThreadRunnable.syncExec(menuItemGetter);
         boolean menuAvailable = navigationMenuItem != null;
         assertFalse("The provided menu " + operationName + " should not be available", menuAvailable);
+        odesignEditor.close();
     }
 
     /**
