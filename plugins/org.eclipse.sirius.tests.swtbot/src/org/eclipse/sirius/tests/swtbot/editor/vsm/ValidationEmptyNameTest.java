@@ -11,19 +11,23 @@
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.RunnableWithResult;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.tools.internal.presentation.CustomSiriusEditor;
-import org.eclipse.sirius.tests.support.api.ImageComposer;
-import org.eclipse.sirius.tests.support.api.ImageEquality;
+import org.eclipse.emf.edit.provider.ComposedImage;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemWithImageCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -97,22 +101,33 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void checkIconNodeInvalidate(final SWTBotVSMEditor odesignEditor, SWTBotTree tree) {
         final SWTBotTreeItem treeItem = tree.getTreeItem(ODESIGN).getNode("Group").getNode("emptyName").getNode("diagTest").getNode("Default").getNode("Node").select();
-        RunnableWithResult<Boolean> runnable = new RunnableWithResult.Impl<Boolean>() {
+        bot.waitUntil(new TreeItemWithImageCondition(treeItem, getNodeMappingWithErrorImage(), "A red cross must appear on overlay of the node mapping image."));
+    }
+
+    /**
+     * Return the image of the NodeMapping with an error decorator.
+     * 
+     * @return The image of the NodeMapping with an error decorator.
+     */
+    private Image getNodeMappingWithErrorImage() {
+        List<Object> images = new ArrayList<Object>(2);
+        images.add(ExtendedImageRegistry.INSTANCE.getImage(DiagramUIPlugin.INSTANCE.getImage("full/obj16/NodeMapping")));
+        images.add(SiriusEditPlugin.getPlugin().getImage(SiriusInterpreterErrorDecorator.ERROR_OVERLAY_DESC));
+        // The composed image is inspired from
+        // ValidationDecoration.decorateSeverity(Image, Integer).
+        ComposedImage ci = new ComposedImage(images) {
             @Override
-            public void run() {
-                treeItem.widget.getDisplay().syncExec(new Runnable() {
-                    @Override
-                    public void run() {
-                        Image treeItemImageDisplay = treeItem.widget.getImage();
-                        SiriusEditor treeEditor = (CustomSiriusEditor) odesignEditor.getReference().getEditor(false);
-                        ImageComposer imageComposer = new ImageComposer();
-                        Image treeItemImageExpected = imageComposer.getImageOfEditPlugin(treeEditor.getAdapterFactory(), (EObject) treeItem.widget.getData());
-                        setResult(ImageEquality.areEqualImages(treeItemImageExpected, treeItemImageDisplay));
-                    }
-                });
+            public List<Point> getDrawPoints(Size size) {
+                List<Point> results = new ArrayList<Point>();
+                results.add(new Point());
+                Point overlay = new Point();
+                overlay.x = 0;
+                overlay.y = 7;
+                results.add(overlay);
+                return results;
             }
         };
-        treeItem.widget.getDisplay().syncExec(runnable);
-        assertTrue("A red cross must appear on the image of the node mapping.", runnable.getResult().booleanValue());
+        ImageDescriptor descriptor = new ComposedImageDescriptor(ci);
+        return SiriusEditPlugin.getPlugin().getImage(descriptor);
     }
 }
