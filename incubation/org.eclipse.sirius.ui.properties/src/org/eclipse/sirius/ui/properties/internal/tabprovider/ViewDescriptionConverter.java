@@ -845,6 +845,10 @@ public class ViewDescriptionConverter {
         eefRadioDescription.setCandidatesExpression(radioDescription.getCandidatesExpression());
         eefRadioDescription.setCandidateDisplayExpression(radioDescription.getCandidateDisplayExpression());
         eefRadioDescription.setNumberOfColumns(radioDescription.getNumberOfColumns());
+
+        InitialOperation initialOperation = radioDescription.getInitialOperation();
+        eefRadioDescription.setEditExpression(getExpressionForOperation(initialOperation));
+
         RadioWidgetStyle radioStyle = radioDescription.getStyle();
         if (radioStyle != null) {
             eefRadioDescription.setStyle((EEFRadioStyle) createEEFWidgetStyle(radioStyle));
