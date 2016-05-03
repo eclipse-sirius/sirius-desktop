@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -32,6 +33,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
@@ -498,11 +500,12 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     private void initializedModelingProject(Locale locale) {
         Locale.setDefault(locale);
         selected_language = locale.getLanguage();
-
-        // Initialization of a new modeling project
-        designerProject.convertToModelingProject();
         try {
-            ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName()).refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
+            // Initialization of a new modeling project
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+            ModelingProjectManager.INSTANCE.convertToModelingProject(project, new NullProgressMonitor());
+            project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         } catch (CoreException e) {
             fail("Fail during refreshing the new project: " + e.getMessage());
         }
@@ -513,6 +516,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         } catch (InterruptedException e) {
             fail("Fail during waiting of ResourceSyncClientNotifier job: " + e.getMessage());
         }
+
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_VIEWPOINT);
         bot.waitUntil(new DefaultCondition() {
             // This waiting condition is needed otherwise the test fails in run
