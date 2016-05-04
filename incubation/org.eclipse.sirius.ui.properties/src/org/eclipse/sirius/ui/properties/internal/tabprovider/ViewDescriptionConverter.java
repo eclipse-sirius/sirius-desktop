@@ -814,6 +814,9 @@ public class ViewDescriptionConverter {
         eefSelectDescription.setCandidatesExpression(selectDescription.getCandidatesExpression());
         eefSelectDescription.setCandidateDisplayExpression(selectDescription.getCandidateDisplayExpression());
 
+        InitialOperation initialOperation = selectDescription.getInitialOperation();
+        eefSelectDescription.setEditExpression(getExpressionForOperation(initialOperation));
+
         SelectWidgetStyle selectStyle = selectDescription.getStyle();
         if (selectStyle != null) {
             eefSelectDescription.setStyle((EEFSelectStyle) createEEFWidgetStyle(selectStyle));
