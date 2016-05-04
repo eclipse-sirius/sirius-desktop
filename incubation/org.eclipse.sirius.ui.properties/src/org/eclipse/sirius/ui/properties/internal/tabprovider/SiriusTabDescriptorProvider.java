@@ -16,10 +16,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.eef.common.api.utils.Util;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
+import org.eclipse.eef.core.api.IEEFDomainClassTester;
+import org.eclipse.eef.core.internal.EEFDomainClassTester;
 import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
@@ -137,7 +140,18 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
         variableManager.put(EEFExpressionUtils.SELF, input.getSemanticElement());
         variableManager.put(EEFExpressionUtils.INPUT, input);
         TransactionalEditingDomainContextAdapter eca = new TransactionalEditingDomainContextAdapter(session.getTransactionalEditingDomain());
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, input);
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), eca, new IEEFDomainClassTester() {
+            @Override
+            public boolean eInstanceOf(EObject eObject, String domainClass) {
+                /*
+                 * The EEF runtime interprets a blank domainClass as a wildcard,
+                 * and expects eInstance(anything, null) to return 'true', but
+                 * the Sirius ModelAcessor returns 'false' when no domainClass
+                 * is specified.
+                 */
+                return Util.isBlank(domainClass) || session.getModelAccessor().eInstanceOf(eObject, domainClass);
+            }
+        }, input);
         return eefView;
     }
 
