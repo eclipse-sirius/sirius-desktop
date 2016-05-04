@@ -242,6 +242,56 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         moveBendpoint(ZoomLevel.ZOOM_50);
     }
 
+    /**
+     * Move a border node of a node a first time without F4 and check the
+     * location is the expected one (ie the mouse location).<BR>
+     * Move the border node a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     */
+    public void testMoveBorderNodeOnNode() {
+        moveCenterOfElementNearCenterOfAnotherVertically("BNN_C1", AbstractDiagramBorderNodeEditPart.class, "BNC_C1Sub", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
+     * Move a border node of a node in a container a first time without F4 and
+     * check the location is the expected one (ie the mouse location).<BR>
+     * Move the border node a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     */
+    public void testMoveBorderNodeOnNodeInContainer() {
+        moveCenterOfElementNearCenterOfAnotherVertically("BNBNC_att1", AbstractDiagramBorderNodeEditPart.class, "BNNC_att2", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
+     * Move a border node of a container a first time without F4 and check the
+     * location is the expected one (ie the mouse location).<BR>
+     * Move the border node a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     */
+    public void testMoveBorderNodeOnContainer() {
+        moveCenterOfElementNearCenterOfAnotherVertically("BNC_C1", AbstractDiagramBorderNodeEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
+     * Move a border node of a container in a container a first time without F4
+     * and check the location is the expected one (ie the mouse location).<BR>
+     * Move the border node a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     */
+    public void testMoveBorderNodeOnContainerInContainer() {
+        moveCenterOfElementNearCenterOfAnotherVertically("BNC_C1Sub", AbstractDiagramBorderNodeEditPart.class, "Node_p1", AbstractDiagramNodeEditPart.class);
+    }
+
+    /**
+     * Move a border node of another border node a first time without F4 and
+     * check the location is the expected one (ie the mouse location).<BR>
+     * Move the border node a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     */
+    public void testMoveBorderNodeOnBorderNode() {
+        moveCenterOfElementNearCenterOfAnotherVertically("BNBNC_att1", AbstractDiagramBorderNodeEditPart.class, "BNNC_att2", AbstractDiagramBorderNodeEditPart.class);
+    }
+
     private void moveBendpoint(ZoomLevel zoomLevel) {
         editor.zoom(zoomLevel);
         editor.scrollTo(0, 0);
@@ -280,7 +330,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.F4);
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 1,
-                "Second bendpoint of edge is not at expected y location after resize with F4 key pressed", false));
+                "Second bendpoint of edge is not at expected y location after resize with F4 key pressed", !ZoomLevel.ZOOM_100.equals(zoomLevel)));
     }
 
     private void moveTopOfElementNearBottomOfAnother(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
@@ -333,7 +383,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         // precisely where the drag has been done: at 4 pixels of the bottom of
         // the other figure
         Rectangle newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
-        assertEquals("Element \"" + elementNameToMove + "\" is not at expected y location after move without F4 key pressed", targetNodeBounds.getCenter().y - 4, newBounds.getCenter().y);
+        assertEquals("Center of element \"" + elementNameToMove + "\" is not at expected y location after move without F4 key pressed", targetNodeBounds.getCenter().y - 4, newBounds.getCenter().y);
 
         // Move to initial location
         undo(localSession.getOpenedSession());
@@ -348,7 +398,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         // aligned to the bottom of the other figure: at 1 pixel of the bottom
         // as computed guide in SiriusSnapToGeometry.populateRowsAndCols(List)
         newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
-        assertEquals("Element \"" + elementNameToMove + "\" is not at expected location after move with F4 key pressed", targetNodeBounds.getCenter().y, newBounds.getCenter().y);
+        assertEquals("Center of element \"" + elementNameToMove + "\" is not at expected location after move with F4 key pressed", targetNodeBounds.getCenter().y, newBounds.getCenter().y);
     }
 
     /**
