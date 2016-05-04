@@ -783,6 +783,9 @@ public class ViewDescriptionConverter {
         eefCheckboxDescription.setIdentifier(checkboxDescription.getIdentifier());
         eefCheckboxDescription.setValueExpression(checkboxDescription.getValueExpression());
 
+        InitialOperation initialOperation = checkboxDescription.getInitialOperation();
+        eefCheckboxDescription.setEditExpression(getExpressionForOperation(initialOperation));
+
         CheckboxWidgetStyle checkboxStyle = checkboxDescription.getStyle();
         if (checkboxStyle != null) {
             eefCheckboxDescription.setStyle((EEFCheckboxStyle) createEEFWidgetStyle(checkboxStyle));
