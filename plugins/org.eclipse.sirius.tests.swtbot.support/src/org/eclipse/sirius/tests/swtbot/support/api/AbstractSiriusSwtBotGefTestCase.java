@@ -1407,8 +1407,13 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
         if (errorCatchActive) {
-            errors.put(sourcePlugin, status);
+            // Ignore error caused by bugzilla 489335 when tests are launched
+            // with product "org.eclipse.platform.ide".
+            if (!("org.eclipse.core.runtime".equals(sourcePlugin) && status != null && "Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage()))) {
+                errors.put(sourcePlugin, status);
+            }
         }
+
     }
 
     /**
