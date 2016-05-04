@@ -22,7 +22,6 @@ import org.eclipse.eef.core.api.EEFPage;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
 import org.eclipse.eef.core.api.IEEFDomainClassTester;
-import org.eclipse.eef.core.internal.EEFDomainClassTester;
 import org.eclipse.eef.ide.ui.properties.api.EEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptor;
 import org.eclipse.eef.properties.ui.api.IEEFTabDescriptorProvider;
