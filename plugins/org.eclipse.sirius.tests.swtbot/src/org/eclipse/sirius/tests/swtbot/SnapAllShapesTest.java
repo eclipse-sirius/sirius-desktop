@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testMoveContainer() {
-        moveTopOfElementNearBottomOfAnother("Container_p1", AbstractDiagramContainerEditPart.class, "BNBNN_att1", AbstractDiagramBorderNodeEditPart.class);
+        moveCenterOfElementNearCenterOfAnotherVertically("Container_p1", AbstractDiagramContainerEditPart.class, "BNBNN_att1", AbstractDiagramBorderNodeEditPart.class);
     }
 
     /**
@@ -111,7 +111,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testMoveNode() {
-        moveTopOfElementNearBottomOfAnother("Node_p1", AbstractDiagramNodeEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+        moveCenterOfElementNearCenterOfAnotherVertically("Node_p1", AbstractDiagramNodeEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
     }
 
     /**
@@ -147,7 +147,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testMoveNote() {
-        moveTopOfElementNearBottomOfAnother("Note", NoteEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+        moveCenterOfElementNearCenterOfAnotherVertically("Note", NoteEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
     }
 
     /**
@@ -158,7 +158,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testResizeContainer() {
-        resizeTopOfElementNearBottomOfAnother("Container_p1", AbstractDiagramContainerEditPart.class, "BNBNN_att1", AbstractDiagramBorderNodeEditPart.class);
+        resizeTopOfElementNearBottomOfAnother("Container_p1", AbstractDiagramContainerEditPart.class, "NC_C2", AbstractDiagramNodeEditPart.class);
     }
 
     /**
@@ -169,7 +169,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testResizeNode() {
-        resizeTopOfElementNearBottomOfAnother("Node_p1", AbstractDiagramNodeEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+        resizeTopOfElementNearBottomOfAnother("Node_p1", AbstractDiagramNodeEditPart.class, "Container_subP1", AbstractDiagramContainerEditPart.class);
     }
 
     /**
@@ -205,7 +205,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testResizeNote() {
-        resizeTopOfElementNearBottomOfAnother("Note", NoteEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+        resizeTopOfElementNearBottomOfAnother("Note", NoteEditPart.class, "NC_C1", AbstractDiagramNodeEditPart.class);
     }
 
     /**
@@ -216,7 +216,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      * This test also handles the case of scroll bar in diagram.
      */
     public void testResizeText() {
-        resizeTopOfElementNearBottomOfAnother("Text", TextEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+        resizeTopOfElementNearBottomOfAnother("Text", TextEditPart.class, "NC_C1", AbstractDiagramNodeEditPart.class);
     }
 
     /**
@@ -259,15 +259,15 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Compute the drop destination (at 2 pixels of the bottom of another
         // figure)
-        final Rectangle targetNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editor.getEditPart("BNBNC_att1", AbstractDiagramBorderNodeEditPart.class).part());
-        final Point endpoint = new Point(pointToMove.x, targetNodeBounds.getBottom().y - 4);
+        final Rectangle targetNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editor.getEditPart("NC_C2", AbstractDiagramNodeEditPart.class).part());
+        final Point endpoint = new Point(pointToMove.x, targetNodeBounds.getBottom().y - 2);
 
         pointToMove.scale(zoomLevel.getAmount());
         endpoint.scale(zoomLevel.getAmount());
         // First move without F4 key pressed
         editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.None);
         SWTBotUtils.waitAllUiEvents();
-        bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 4,
+        bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 2,
                 "Second bendpoint of edge is not at expected y location after resize without F4 key pressed", !ZoomLevel.ZOOM_100.equals(zoomLevel)));
 
         // Move to initial location
@@ -286,6 +286,69 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
     private void moveTopOfElementNearBottomOfAnother(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
             Class<? extends EditPart> expectedEditPartTypeOfReferenceElement) {
         moveTopOfElementNearBottomOfAnother(elementNameToMove, expectedEditPartTypeOfMovedElement, referenceElementName, expectedEditPartTypeOfReferenceElement, ZoomLevel.ZOOM_100);
+    }
+
+    private void moveCenterOfElementNearCenterOfAnotherVertically(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
+            Class<? extends EditPart> expectedEditPartTypeOfReferenceElement) {
+        moveCenterOfElementNearCenterOfAnotherVertically(elementNameToMove, expectedEditPartTypeOfMovedElement, referenceElementName, expectedEditPartTypeOfReferenceElement, ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Move element a first time without F4 and check the location is the
+     * expected one (ie the mouse location).<BR>
+     * Move element a second time with F4 and check the location is the expected
+     * one (snap to another figure).<BR>
+     */
+    private void moveCenterOfElementNearCenterOfAnotherVertically(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,
+            Class<? extends EditPart> expectedEditPartTypeOfReferenceElement, ZoomLevel zoomLevel) {
+        editor.zoom(zoomLevel);
+        editor.scrollTo(0, 0);
+
+        SWTBotGefEditPart elementToMove = editor.getEditPart(elementNameToMove, expectedEditPartTypeOfMovedElement);
+        // Select the element to move
+        editor.select(elementToMove);
+
+        // Get the top center coordinates, just a little below, of the element
+        // to move
+        final Rectangle originalBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        Point pointToDrag = originalBounds.getTop().getTranslated(0, 3);
+        if (TextEditPart.class.equals(expectedEditPartTypeOfMovedElement)) {
+            pointToDrag = originalBounds.getTop().getTranslated(0, 5);
+        }
+
+        Point scaledPointToDrag = new PrecisionPoint(pointToDrag);
+        GraphicalHelper.logical2screen(scaledPointToDrag, (IGraphicalEditPart) elementToMove.part());
+        // Compute the drop destination (at 4 pixels of the center of another
+        // part)
+
+        final Rectangle targetNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editor.getEditPart(referenceElementName, expectedEditPartTypeOfReferenceElement).part());
+        final Point endpoint = new Point(pointToDrag.x, pointToDrag.y - (originalBounds.getCenter().y - targetNodeBounds.getCenter().y + 4));
+        Point scaledEndpoint = new PrecisionPoint(endpoint);
+        GraphicalHelper.logical2screen(scaledEndpoint, (IGraphicalEditPart) elementToMove.part());
+
+        // First move without F4 key pressed
+        editor.drag(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y);
+        SWTBotUtils.waitAllUiEvents();
+        // Get the new bounds and compare with the expected. It should be
+        // precisely where the drag has been done: at 4 pixels of the bottom of
+        // the other figure
+        Rectangle newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        assertEquals("Element \"" + elementNameToMove + "\" is not at expected y location after move without F4 key pressed", targetNodeBounds.getCenter().y - 4, newBounds.getCenter().y);
+
+        // Move to initial location
+        undo(localSession.getOpenedSession());
+        // Scroll to 0, 0 is needed because the first move can cause a scroll of
+        // the diagram not reverted by the Undo.
+        editor.scrollTo(0, 0);
+
+        // Second move with F4 key pressed
+        editor.dragWithKey(scaledPointToDrag.x, scaledPointToDrag.y, scaledEndpoint.x, scaledEndpoint.y, SWT.F4);
+        SWTBotUtils.waitAllUiEvents();
+        // Get the new bounds and compare with the expected. It should be
+        // aligned to the bottom of the other figure: at 1 pixel of the bottom
+        // as computed guide in SiriusSnapToGeometry.populateRowsAndCols(List)
+        newBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
+        assertEquals("Element \"" + elementNameToMove + "\" is not at expected location after move with F4 key pressed", targetNodeBounds.getCenter().y, newBounds.getCenter().y);
     }
 
     /**

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_mXL0MBWbEeW7GcqVYwuCiQ" selectedViews="_LWb4wBWdEeW7GcqVYwuCiQ" version="10.0.0.201505222000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_mXL0MBWbEeW7GcqVYwuCiQ" selectedViews="_LWb4wBWdEeW7GcqVYwuCiQ" version="11.0.0.201604141600">
   <semanticResources>My.ecore</semanticResources>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_LWb4wBWdEeW7GcqVYwuCiQ">
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_LWb4wBWdEeW7GcqVYwuCiQ">
+    <viewpoint xmi:type="description:Viewpoint" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']"/>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_M0HXsBWdEeW7GcqVYwuCiQ" name="snapToAllDiagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_M0HXsRWdEeW7GcqVYwuCiQ" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_M0HXshWdEeW7GcqVYwuCiQ"/>
@@ -29,7 +30,7 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Orca8haIEeWQ3O79R6E3Ug"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_OrbM0RaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrbM0haIEeWQ3O79R6E3Ug" x="-83" width="91" height="51"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrbM0haIEeWQ3O79R6E3Ug" x="-83" width="91" height="52"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_OrRb0RaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrRb0haIEeWQ3O79R6E3Ug" x="-92" width="100" height="101"/>
@@ -181,7 +182,7 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or68EhaIEeWQ3O79R6E3Ug"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_Or4f0RaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or4f0haIEeWQ3O79R6E3Ug" x="17" y="256" width="251" height="101"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or4f0haIEeWQ3O79R6E3Ug" x="17" y="135" width="251" height="101"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_OrQ0whaIEeWQ3O79R6E3Ug"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_OrQ0wxaIEeWQ3O79R6E3Ug"/>
@@ -206,10 +207,10 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or8xQhaIEeWQ3O79R6E3Ug" x="-175" y="28" width="176" height="26"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_Or1cgRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or1cghaIEeWQ3O79R6E3Ug" x="448" y="150" width="100" height="104"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Or1cghaIEeWQ3O79R6E3Ug" x="448" y="9" width="100" height="104"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_OrQNsRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrQNshaIEeWQ3O79R6E3Ug" x="1024" y="112" width="458" height="578"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrQNshaIEeWQ3O79R6E3Ug" x="1024" y="253" width="458" height="437"/>
           </children>
           <children xmi:type="notation:Shape" xmi:id="_GxWhgBvTEeWBdP4r18ZtPw" type="Note" fontName="Ubuntu" description="Note" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
             <children xmi:type="notation:BasicDecorationNode" xmi:id="_GxcBEBvTEeWBdP4r18ZtPw" type="DiagramName">
@@ -221,7 +222,7 @@
             <styles xmi:type="notation:TextStyle" xmi:id="_GxWhgRvTEeWBdP4r18ZtPw"/>
             <styles xmi:type="notation:LineTypeStyle" xmi:id="_GxWhghvTEeWBdP4r18ZtPw"/>
             <element xsi:nil="true"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GxWhgxvTEeWBdP4r18ZtPw" x="842" y="100" width="67" height="43"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GxWhgxvTEeWBdP4r18ZtPw" x="842" y="100" width="67" height="44"/>
           </children>
           <children xmi:type="notation:Shape" xmi:id="_LMXUQBvTEeWBdP4r18ZtPw" type="Text" fontName="Ubuntu" description="Text">
             <children xmi:type="notation:BasicDecorationNode" xmi:id="_LMX7UBvTEeWBdP4r18ZtPw" type="DiagramName">
@@ -334,7 +335,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Op8mIBaIEeWQ3O79R6E3Ug" borderColor="39,76,114" foregroundColor="194,239,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Op8mIBaIEeWQ3O79R6E3Ug" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" foregroundColor="194,239,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
@@ -355,7 +356,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_OqCswRaIEeWQ3O79R6E3Ug" borderColor="39,76,114" foregroundColor="194,239,255">
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_OqCswRaIEeWQ3O79R6E3Ug" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" foregroundColor="194,239,255">
             <description xmi:type="style:FlatContainerStyleDescription" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
@@ -419,7 +420,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Op9NMRaIEeWQ3O79R6E3Ug" borderColor="39,76,114" foregroundColor="194,239,255">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Op9NMRaIEeWQ3O79R6E3Ug" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" foregroundColor="194,239,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
@@ -460,6 +461,5 @@
       <activatedLayers xmi:type="description_1:Layer" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']/@ownedRepresentations[name='snapToAllDiagram']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="snapToAll.odesign#//@ownedViewpoints[name='snapToAll']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
