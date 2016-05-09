@@ -712,9 +712,24 @@ public class ViewDescriptionConverter {
 
         TextWidgetStyle textStyle = textDescription.getStyle();
         if (textStyle != null) {
-            EEFTextStyle eefTextStyle = createEEFTextStyle(textStyle);
-            eefTextDescription.setStyle(eefTextStyle);
+            eefTextDescription.setStyle((EEFTextStyle) createEEFWidgetStyle(textStyle));
         }
+
+        List<TextWidgetConditionalStyle> conditionalStyles = textDescription.getConditionalStyles();
+        if (conditionalStyles != null && !conditionalStyles.isEmpty()) {
+            List<EEFTextConditionalStyle> eefConditionalStyles = new ArrayList<EEFTextConditionalStyle>();
+            for (TextWidgetConditionalStyle conditionalStyle : conditionalStyles) {
+                EEFTextConditionalStyle eefConditionalStyle = EefFactory.eINSTANCE.createEEFTextConditionalStyle();
+                eefConditionalStyle.setPreconditionExpression(conditionalStyle.getPreconditionExpression());
+                eefConditionalStyle.setStyle((EEFTextStyle) createEEFWidgetStyle(conditionalStyle.getStyle()));
+                eefConditionalStyles.add(eefConditionalStyle);
+            }
+
+            if (eefConditionalStyles != null && !eefConditionalStyles.isEmpty()) {
+                eefTextDescription.getConditionalStyles().addAll(eefConditionalStyles);
+            }
+        }
+
         return eefTextDescription;
     }
 
