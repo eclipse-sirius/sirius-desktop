@@ -90,17 +90,45 @@
 		</p>
 		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
-		<p><span class="label label-success">Added</span> The 
-			<a href="./user/diagrams/Diagrams.html#snap_to_shapes">snap to shape</a> feature is now available on border nodes.
+		<ul>
+			<li><span class="label label-success">Added</span> The 
+				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">snap to shape</a> feature is now available on border nodes.
+			</li>
+			<li><span class="label label-info">Modified</span> When trying to open a session which holds a representation resource or a VSP which was saved using a more recent version of Sirius than the one you are using, the session will be automatically closed displaying an error message. You can overload this behavior by providing you own implementation of 
+				<code>UICallBack</code> in which you can have an UI feedback letting you choose if you want to open the session anyway. Warning: if you choose to proceed, there is no guarantee that the resulting session will be usable. It may even lead to data loss or corruption; use at your own risk.
+			</li>
+		</ul>
+		<p>If a viewpoint  has been defined with a more recent version of Sirius than the one you are using, the 
+			<code>ViewpointRegistry</code> will not register it and a warning is logged in the error log view to inform the user.
 		</p>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException</code> exception has been added to cancel Sirius session opening due to an .aird version mismatch, i.e. when one the of the loaded Representation resources is coming from a newer Sirius release.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> 
+				<code>AbstractSWTCallback</code> provides a default implementation of 
+				<code>UICallBack.askSessionReopeningWithResourceVersionMismatch()</code> method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)</code> has been added to know if a view is a descendant of another view.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)</code> has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
@@ -112,9 +140,6 @@
 				<code>org.eclipse.sirius.ext.gef.editpolicies</code> to 
 				<code>org.eclipse.sirius.ext.gmf.runtime.editpolicies</code>. The old class in plug-in 
 				<code>org.eclipse.sirius.ext.gef</code> is deprecated and will be removed in the next version.
-			</li>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)</code> has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
@@ -216,7 +241,7 @@
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -375,7 +400,7 @@
 				<code>org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl.resetVariables()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -522,7 +547,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.MoveInDiagramDragTracker</code> has been added to declare states used by all DragTrackers which manage move in diagram using mouse middle click.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -926,7 +951,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -965,7 +990,7 @@
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1438,7 +1463,7 @@
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1574,7 +1599,7 @@
 				<code>org.eclipse.sirius.viewpoint.DContainer</code> has been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -2149,7 +2174,7 @@
 			<li>&#8220;Lozenge&#8221; is replaced by &#8220;Diamond&#8221; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -2224,7 +2249,7 @@
 				<code>org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter</code>. However considering the way Sirius uses GMF, this adapter is not needed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui6">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>

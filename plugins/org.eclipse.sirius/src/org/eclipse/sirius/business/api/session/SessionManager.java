@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.internal.session.SessionManagerImpl;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 /**
  * The {@link SessionManager} is responsible for a set of sessions.
@@ -141,5 +142,21 @@ public interface SessionManager {
      * @since 0.9.0
      */
     Session getExistingSession(URI sessionResourceURI);
+
+    /**
+     * Try to open a session. If there is a version mismatch, the user may be
+     * asked if he wants to open the session anyway.
+     * 
+     * @param sessionResourceURI
+     *            a session Resource {@link URI}
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of Session
+     *            getting, especially if there is a resource loading
+     * @param uiCallback
+     *            used to let the user choose if he wants to open the session
+     *            anyway in case of version mismatch
+     * @return the opened session
+     */
+    Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback);
 
 }

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
 import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtende
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
 import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
@@ -118,26 +120,43 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
 
     @Override
     public void load(Map<?, ?> options) throws IOException {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.LOAD_AIRD_KEY);
-        AirDResourceImpl.incrementLoadInProgress();
-        try {
-            handleMigrationOptions();
-            super.load(options);
-        } finally {
-            AirDResourceImpl.decrementLoadInProgress();
+        if (!isLoaded) {
+            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.LOAD_AIRD_KEY);
+            AirDResourceImpl.incrementLoadInProgress();
+            try {
+                Diagnostic migrationMismatchDiagnostic = handleMigrationOptions();
+                super.load(options);
+                if (migrationMismatchDiagnostic != null) {
+                    getErrors().add(migrationMismatchDiagnostic);
+                }
+            } finally {
+                AirDResourceImpl.decrementLoadInProgress();
+            }
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.LOAD_AIRD_KEY);
+            // AirDResourceMigration migration = new
+            // AirDResourceMigration(this);
+            // // Notify user only if there is no more load in progress.
+            // migration.migrate(!AirDResourceImpl.hasLoadInProgress());
         }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.LOAD_AIRD_KEY);
-        // AirDResourceMigration migration = new AirDResourceMigration(this);
-        // // Notify user only if there is no more load in progress.
-        // migration.migrate(!AirDResourceImpl.hasLoadInProgress());
     }
 
-    private void handleMigrationOptions() {
+    /**
+     * Handle migration options and return an error diagnostic in case of
+     * migration version mismatch
+     */
+    private Diagnostic handleMigrationOptions() {
+        Diagnostic migrationMismatchDiagnostic = null;
         RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(uri);
         boolean migrationIsNeeded = true;
         String loadedVersion = parser.getVersion(new NullProgressMonitor());
         if (loadedVersion != null) {
-            migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
+            Version parsedLoadedVersion = Version.parseVersion(loadedVersion);
+            Version lastMigrationVersion = RepresentationsFileMigrationService.getInstance().getLastMigrationVersion();
+            boolean attemptToLoadMoreRecentVSM = lastMigrationVersion.compareTo(parsedLoadedVersion) < 0;
+            if (attemptToLoadMoreRecentVSM && !MigrationUtil.ignoreVersionMismatch) {
+                migrationMismatchDiagnostic = new ResourceVersionMismatchDiagnostic(uri, parsedLoadedVersion, lastMigrationVersion);
+            }
+            migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(parsedLoadedVersion);
         }
         Object versionOption = this.getDefaultLoadOptions().get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
 
@@ -153,7 +172,7 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
         else if (migrationIsNeeded && (versionOption == null || !versionOption.equals(loadedVersion))) {
             addMigrationOptions(loadedVersion, this.getDefaultLoadOptions(), this.getDefaultSaveOptions());
         }
-
+        return migrationMismatchDiagnostic;
     }
 
     private void removeMigrationMechanism() {

@@ -38,6 +38,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -361,4 +362,10 @@ public abstract class AbstractSWTCallback implements UICallBack {
             MessageDialog.openError(getActiveShell(), title, message);
         }
     }
+
+    @Override
+    public boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException e) {
+        return false;
+    }
+
 }

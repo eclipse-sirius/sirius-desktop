@@ -456,6 +456,12 @@ public final class Messages {
     public static String RestoreModelElementStateCommand_label;
 
     @TranslatableMessage
+    public static String ResourceVersionMismatchDiagnostic_airdMessage;
+
+    @TranslatableMessage
+    public static String ResourceVersionMismatchDiagnostic_vsmMessage;
+
+    @TranslatableMessage
     public static String RuntimeLoggerInterpreterImpl_evaluationConditionErrorMsg;
 
     @TranslatableMessage

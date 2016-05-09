@@ -42,6 +42,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
@@ -144,7 +145,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      *
      * @param monitor
      *            the progress monitor.
-     * @return the opened session.
+     * @return the opened {@link Session}.
      */
     private Session performOpenSession(IProgressMonitor monitor) {
         Session session = null;
@@ -152,14 +153,9 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
             SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
             if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
                 subMonitor.worked(1);
-                session = SessionManager.INSTANCE.getSession(representationsFileURI, subMonitor.newChild(10));
-                // Open the session if needed (load the referenced models by
-                // a ResolveAll call)
                 subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
+                session = SessionManager.INSTANCE.openSession(representationsFileURI, subMonitor.newChild(14), SiriusEditPlugin.getPlugin().getUiCallback());
                 if (session != null) {
-                    if (!session.isOpen()) {
-                        session.open(subMonitor.newChild(4));
-                    }
                     IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
                     if (!editingSession.isOpen()) {
                         editingSession.open();

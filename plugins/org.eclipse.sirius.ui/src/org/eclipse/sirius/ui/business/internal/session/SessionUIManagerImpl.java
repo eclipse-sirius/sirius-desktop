@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,6 +69,7 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
      * 
      * {@inheritDoc}
      */
+    @Override
     public IEditingSession createUISession(final Session session) {
         UISessionFactory uiSessionFactory = UISessionFactoryService.INSTANCE.getUISessionFactory();
         IEditingSession editingSession = uiSessionFactory.createUISession(session);
@@ -80,6 +81,7 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
      * 
      * {@inheritDoc}
      */
+    @Override
     public IEditingSession getUISession(final Session session) {
         final IEditingSession editingSession = sessionToUISession.get(session);
         return editingSession;
@@ -89,6 +91,7 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
      * 
      * {@inheritDoc}
      */
+    @Override
     public void remove(final IEditingSession uiSession) {
         final Collection<Session> toRemove = new ArrayList<Session>();
         for (final Map.Entry<Session, IEditingSession> entry : sessionToUISession.entrySet()) {
@@ -101,6 +104,7 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
         }
     }
 
+    @Override
     public Collection<IEditingSession> getUISessions() {
         return sessionToUISession.values();
     }
@@ -265,6 +269,7 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
      * 
      * {@inheritDoc}
      */
+    @Override
     public IEditingSession getOrCreateUISession(final Session session) {
         IEditingSession uiSession = getUISession(session);
         if (uiSession == null) {
@@ -272,5 +277,4 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
         }
         return uiSession;
     }
-
 }

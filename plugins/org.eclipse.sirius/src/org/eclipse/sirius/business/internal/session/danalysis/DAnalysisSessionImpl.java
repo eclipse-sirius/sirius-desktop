@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
@@ -42,6 +43,9 @@ import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
+import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
+import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -1176,6 +1180,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DViewOperations.on(this).updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
             initLocalTriggers();
 
+            checkResourceErrors();
+
             super.setOpen(true);
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
             notifyListeners(SessionListener.OPENED);
@@ -1188,6 +1194,40 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             throw e;
         } finally {
             monitor.done();
+        }
+    }
+
+    /**
+     * Throw an {@link RuntimeException} if one of the resource of the selected
+     * viewpoints or session resources contain an error.
+     */
+    private void checkResourceErrors() {
+        Collection<ResourceVersionMismatchDiagnostic> diagnostics = Lists.newArrayList();
+
+        // Prevent loading a session which VSM resource contains errors
+        Collection<Viewpoint> activatedViewpoints = getSelectedViewpoints(true);
+        for (Viewpoint viewpoint : activatedViewpoints) {
+            for (Diagnostic diagnostic : viewpoint.eResource().getErrors()) {
+                if (diagnostic instanceof ResourceVersionMismatchDiagnostic) {
+                    diagnostics.add((ResourceVersionMismatchDiagnostic) diagnostic);
+                }
+            }
+        }
+        if (!diagnostics.isEmpty()) {
+            throw new DescriptionResourceVersionMismatchException(diagnostics);
+        }
+
+        // Prevent loading a session which Aird resource contains errors
+        Iterable<Resource> representationResources = Iterables.concat(getReferencedSessionResources(), Sets.newHashSet(getSessionResource()));
+        for (Resource resource : representationResources) {
+            for (Diagnostic diagnostic : resource.getErrors()) {
+                if (diagnostic instanceof ResourceVersionMismatchDiagnostic) {
+                    diagnostics.add((ResourceVersionMismatchDiagnostic) diagnostic);
+                }
+            }
+        }
+        if (!diagnostics.isEmpty()) {
+            throw new AirdResourceVersionMismatchException(diagnostics);
         }
     }
 

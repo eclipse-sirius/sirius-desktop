@@ -31,11 +31,13 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.impl.URIMappingRegistryImpl;
@@ -102,16 +104,22 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
             @Override
             public boolean isValid(final EObject descRoot) {
-                boolean result;
-                if (descRoot instanceof Group) {
-                    result = true;
-                } else {
-                    result = false;
-                    if (descRoot == null) {
-                        // Nothing, already been log
+                boolean result = false;
+                EList<Diagnostic> errors = descRoot.eResource().getErrors();
+                if (errors.isEmpty()) {
+                    if (descRoot instanceof Group) {
+                        result = true;
                     } else {
-                        SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_cantLoadVSMErrorMsg, descRoot.eResource().getURI()),
-                                new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
+                        if (descRoot == null) {
+                            // Nothing, already been log
+                        } else {
+                            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_cantLoadVSMErrorMsg, descRoot.eResource().getURI()),
+                                    new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
+                        }
+                    }
+                } else {
+                    for (Diagnostic diagnostic : errors) {
+                        SiriusPlugin.getDefault().warning(diagnostic.getMessage(), new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
                     }
                 }
                 return result;
@@ -539,15 +547,16 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             final IFile file = fileIt.next();
 
             EObject descRoot = load(file, resourceSet);
+            if (descRoot != null) {
+                Option<ViewpointFileCollector> collector = getCollectorFromIFile(file);
 
-            Option<ViewpointFileCollector> collector = getCollectorFromIFile(file);
-
-            if (collector.some() && collector.get().isValid(descRoot)) {
-                viewpoints.addAll(collector.get().collect(descRoot));
-                mapToSiriusProtocol(collector.get().collect(descRoot));
-                resourcesToResolve.add(descRoot.eResource());
-            } else {
-                unloadAndRemove(file);
+                if (collector.some() && collector.get().isValid(descRoot)) {
+                    viewpoints.addAll(collector.get().collect(descRoot));
+                    mapToSiriusProtocol(collector.get().collect(descRoot));
+                    resourcesToResolve.add(descRoot.eResource());
+                } else {
+                    unloadAndRemove(file);
+                }
             }
         }
 

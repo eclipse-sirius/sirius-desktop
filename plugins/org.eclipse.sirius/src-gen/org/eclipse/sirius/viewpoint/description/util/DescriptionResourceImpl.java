@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
@@ -93,17 +94,33 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
 
     @Override
     public void load(Map<?, ?> options) throws IOException {
-        useURIFragmentAsId = Boolean.TRUE.equals(options.get(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID)) && getURI().isPlatformPlugin();
-        handleMigrationOptions();
-        super.load(options);
+        if (!isLoaded) {
+            useURIFragmentAsId = Boolean.TRUE.equals(options.get(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID)) && getURI().isPlatformPlugin();
+            Diagnostic migrationMismatchDiagnostic = handleMigrationOptions();
+            super.load(options);
+            if (migrationMismatchDiagnostic != null) {
+                getErrors().add(migrationMismatchDiagnostic);
+            }
+        }
     }
 
-    private void handleMigrationOptions() {
+    /**
+     * Handle migration options and return an error diagnostic in case of
+     * migration version mismatch
+     */
+    private Diagnostic handleMigrationOptions() {
+        Diagnostic migrationMismatchDiagnostic = null;
         VSMVersionSAXParser parser = new VSMVersionSAXParser(uri);
         String loadedVersion = parser.getVersion(new NullProgressMonitor());
         boolean migrationIsNeeded = true;
         if (loadedVersion != null) {
-            migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
+            Version parsedLoadedVersion = Version.parseVersion(loadedVersion);
+            Version lastMigrationVersion = VSMMigrationService.getInstance().getLastMigrationVersion();
+            boolean attemptToLoadMoreRecentVSM = lastMigrationVersion.compareTo(parsedLoadedVersion) < 0;
+            if (attemptToLoadMoreRecentVSM) {
+                migrationMismatchDiagnostic = new ResourceVersionMismatchDiagnostic(uri, parsedLoadedVersion, lastMigrationVersion);
+            }
+            migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(parsedLoadedVersion);
         }
         Object versionOption = this.getDefaultLoadOptions().get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
 
@@ -119,6 +136,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         else if (migrationIsNeeded && (versionOption == null || !versionOption.equals(loadedVersion))) {
             DescriptionResourceImpl.addMigrationOptions(loadedVersion, this.getDefaultLoadOptions(), this.getDefaultSaveOptions());
         }
+        return migrationMismatchDiagnostic;
     }
 
     private void removeMigrationMechanism() {

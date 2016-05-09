@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,13 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
+import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
 
@@ -56,6 +60,22 @@ public class RepresentationFilesRepairAction extends ActionDelegate {
 
                         @Override
                         public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                            try {
+                                repair(monitor);
+                            } catch (AirdResourceVersionMismatchException e) {
+                                UICallBack uiCallback = SiriusEditPlugin.getPlugin().getUiCallback();
+                                if (uiCallback != null && uiCallback.askSessionReopeningWithResourceVersionMismatch(e)) {
+                                    try {
+                                        MigrationUtil.ignoreVersionMismatch = true;
+                                        repair(monitor);
+                                    } finally {
+                                        MigrationUtil.ignoreVersionMismatch = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        private void repair(IProgressMonitor monitor) throws InterruptedException {
                             SiriusRepairProcess process = new SiriusRepairProcess(file, true);
                             process.run(monitor);
                             process.dispose();

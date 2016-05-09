@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -232,4 +233,17 @@ public interface UICallBack {
      *             pressed "cancel".)
      */
     List<String> askForTypedVariable(List<TypedVariable> typedVariableList, List<String> defaultValues) throws InterruptedException;;
+
+    /**
+     * Ask to end-user if he wants to open the session ignoring the resource
+     * version mismatch or not.
+     * 
+     * @param e
+     *            the {@link AirdResourceVersionMismatchException} holding
+     *            mismatch informations
+     * 
+     * @return true to reopen session false otherwise
+     * @since 4.0
+     */
+    boolean askSessionReopeningWithResourceVersionMismatch(AirdResourceVersionMismatchException e);
 }

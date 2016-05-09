@@ -54,6 +54,7 @@ import org.eclipse.sirius.tests.unit.api.session.SessionServiceTest;
 import org.eclipse.sirius.tests.unit.api.session.SiriusComparatorTests;
 import org.eclipse.sirius.tests.unit.api.session.SiriusRegistryListener2Tests;
 import org.eclipse.sirius.tests.unit.api.session.SiriusRegistryTests;
+import org.eclipse.sirius.tests.unit.api.session.ResourceVersionMismatchTest;
 import org.eclipse.sirius.tests.unit.api.session.ViewpointSelectionTests;
 import org.eclipse.sirius.tests.unit.api.tools.SiriusControlAndCrossReferenceInMultiSessionTest;
 import org.eclipse.sirius.tests.unit.api.vsm.edit.SiriusAdapterFactoryRegistryTest;
@@ -249,6 +250,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SampleSessionTest.class);
         suite.addTestSuite(SessionEditorInputTests.class);
         suite.addTestSuite(SiriusRegistryTests.class);
+        suite.addTestSuite(ResourceVersionMismatchTest.class);
         suite.addTestSuite(SiriusRegistryListener2Tests.class);
         suite.addTestSuite(SessionSemanticResourceTests.class);
         suite.addTestSuite(SessionServiceTest.class);

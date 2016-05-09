@@ -84,6 +84,12 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                 // ModelingProjectManager.loadAndOpenSession().
             } else if (notification == SessionListener.OPENED) {
                 sessionFileLoading.remove(updated.getSessionResource().getURI());
+            } else if (notification == SessionListener.CLOSED) {
+                // make sure that the session is re-openable if CLOSED
+                // That is necessary because the session may not have opened
+                // correctly and the SessionListener.OPENED may not have been
+                // sent.
+                sessionFileLoading.remove(updated.getSessionResource().getURI());
             }
         }
     };

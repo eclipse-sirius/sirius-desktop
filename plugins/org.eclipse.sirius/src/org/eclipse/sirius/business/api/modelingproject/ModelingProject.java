@@ -158,7 +158,7 @@ public class ModelingProject implements IProjectNature, IModelingElement {
         final Option<URI> optionalUri = getMainRepresentationsFileURI(new NullProgressMonitor());
         if (optionalUri.some()) {
             for (Session session : SessionManager.INSTANCE.getSessions()) {
-                if (optionalUri.get().equals(session.getSessionResource().getURI())) {
+                if (session.getSessionResource() != null && optionalUri.get().equals(session.getSessionResource().getURI())) {
                     return session;
                 }
             }

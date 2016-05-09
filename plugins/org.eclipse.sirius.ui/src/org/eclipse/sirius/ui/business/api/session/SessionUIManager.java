@@ -68,4 +68,5 @@ public interface SessionUIManager {
      * @return all ui sessions.
      */
     Collection<IEditingSession> getUISessions();
+
 }

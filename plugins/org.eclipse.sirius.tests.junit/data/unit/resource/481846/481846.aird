@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_CXrBEMBOEeWh0IJrZasdZw" selectedViews="_C3X00MBOEeWh0IJrZasdZw" version="11.0.0.201604141600">
+  <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="481846_P1.aird#_aNO2ABaHEea7dLNhUHPoGg"/>
+  <semanticResources>481846.ecore</semanticResources>
+  <semanticResources>481846_P1.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_C3X00MBOEeWh0IJrZasdZw">
+    <viewpoint xmi:type="description:Viewpoint" href="481846.odesign#//@ownedViewpoints[name='Viewpoint_481846']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

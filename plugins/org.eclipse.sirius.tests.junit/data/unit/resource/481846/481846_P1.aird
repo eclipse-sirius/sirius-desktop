@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_aNO2ABaHEea7dLNhUHPoGg" selectedViews="_aNpswBaHEea7dLNhUHPoGg" version="11.0.0.201604141600">
+  <semanticResources>481846_P1.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_aNpswBaHEea7dLNhUHPoGg">
+    <viewpoint xmi:type="description:Viewpoint" href="481846.odesign#//@ownedViewpoints[name='Viewpoint_481846']"/>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_XM-mgBaGEea7dLNhUHPoGg" name="new DiagDesc">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_XNHwcBaGEea7dLNhUHPoGg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_XNHwcRaGEea7dLNhUHPoGg"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_XO-xoBaGEea7dLNhUHPoGg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_XO-xoRaGEea7dLNhUHPoGg" type="Sirius" element="_XM-mgBaGEea7dLNhUHPoGg" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_XO-xohaGEea7dLNhUHPoGg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="481846.odesign#//@ownedViewpoints[name='Viewpoint_481846']/@ownedRepresentations[name='DiagDesc']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_XNHwchaGEea7dLNhUHPoGg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="481846.odesign#//@ownedViewpoints[name='Viewpoint_481846']/@ownedRepresentations[name='DiagDesc']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="481846_P1.ecore#/"/>
+    </ownedRepresentations>
+  </ownedViews>
+</viewpoint:DAnalysis>

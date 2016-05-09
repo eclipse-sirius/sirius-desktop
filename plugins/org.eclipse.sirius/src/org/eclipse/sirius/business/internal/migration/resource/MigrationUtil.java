@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,16 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author mchauvin
  */
 public final class MigrationUtil {
+
+    /**
+     * Temporary variable to indicate that we want ignore version mismatch at
+     * session opening, waiting for Bug 456326.
+     * 
+     * @provisional
+     */
+    // CHECKSTYLE:OFF
+    public static boolean ignoreVersionMismatch;
+    // CHECKSTYLE:ON
 
     /** The modeler description file extension for designer v3. */
     public static final String MODELER_DESCRIPTION_FILE_EXTENSION_V3 = "air"; //$NON-NLS-1$

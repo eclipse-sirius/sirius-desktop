@@ -130,6 +130,14 @@ public final class Messages {
     @TranslatableMessage
     public static String AddSemanticResourceAction_title;
 
+    public static String AskSessionOpeningRunnable_title;
+
+    @TranslatableMessage
+    public static String AskSessionOpeningRunnable_message_aird;
+
+    @TranslatableMessage
+    public static String AskSessionOpeningRunnable_message_confirm;
+
     @TranslatableMessage
     public static String ChangeViewpointSelectionCommand_activationError;
 
@@ -462,6 +470,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String GenericModelCreationPage_fileExtensionError;
+
+    @TranslatableMessage
+    public static String InvalidModelingProjectMarkerUpdaterJob_updateMarkers;
 
     @TranslatableMessage
     public static String LoadEMFResourceRunnableWithProgress_loadResourceTask;
@@ -1023,9 +1034,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ViewpointsSelectionWizardPage_title;
-
-    @TranslatableMessage
-    public static String InvalidModelingProjectMarkerUpdaterJob_updateMarkers;
 
     // CHECKSTYLE:ON
 

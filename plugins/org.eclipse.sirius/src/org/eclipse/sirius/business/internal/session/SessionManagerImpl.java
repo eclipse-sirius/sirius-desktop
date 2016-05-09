@@ -25,21 +25,26 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
+import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -373,5 +378,33 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             extensionPointListeners.addAll(EclipseUtil.getExtensionPlugins(SessionManagerListener.class, SessionManagerListener.ID, SessionManagerListener.CLASS_ATTRIBUTE));
         }
         return extensionPointListeners;
+    }
+
+    @Override
+    public Session openSession(URI sessionResourceURI, IProgressMonitor monitor, UICallBack uiCallback) {
+        SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
+
+        Session session = this.getSession(sessionResourceURI, subMonitor.newChild(30));
+        if (session != null && !session.isOpen()) {
+            try {
+                session.open(subMonitor.newChild(70));
+            } catch (AirdResourceVersionMismatchException e) {
+                session = null;
+                if (uiCallback != null && uiCallback.askSessionReopeningWithResourceVersionMismatch(e)) {
+                    try {
+                        MigrationUtil.ignoreVersionMismatch = true;
+                        session = this.getSession(sessionResourceURI, new NullProgressMonitor());
+                        session.open(new NullProgressMonitor());
+                    } finally {
+                        MigrationUtil.ignoreVersionMismatch = false;
+                    }
+                } else {
+                    throw e;
+                }
+            }
+        }
+        subMonitor.done();
+
+        return session;
     }
 }
