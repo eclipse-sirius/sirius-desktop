@@ -59,20 +59,27 @@ public class CreateTargetColumnAction extends AbstractTargetColumnAction {
     @Override
     public void run() {
         super.run();
-        EObject target;
+        EObject target = getTarget();
         DTable columnContainer;
         DTargetColumn dTargetColumn = getColumn();
         if (dTargetColumn != null) {
-            target = dTargetColumn.getTarget();
             columnContainer = (DTable) dTargetColumn.eContainer();
         } else {
-            target = table.getTarget();
             columnContainer = table;
         }
         Command cmd = tableCommandFactory.buildCreateColumnCommandFromTool(columnContainer, target, getCreateTool());
         String label = getText();
         cmd = new CommandWrapper(label, label, cmd);
         getEditingDomain().getCommandStack().execute(cmd);
+    }
+
+    private EObject getTarget() {
+        DTargetColumn dTargetColumn = getColumn();
+        if (dTargetColumn != null) {
+            return dTargetColumn.getTarget();
+        } else {
+            return getTable().getTarget();
+        }
     }
 
     @Override
@@ -83,21 +90,19 @@ public class CreateTargetColumnAction extends AbstractTargetColumnAction {
                 canExecute = false;
             } else {
                 if (getCreateTool().getPrecondition() != null && !StringUtil.isEmpty(getCreateTool().getPrecondition().trim())) {
-                    IInterpreter interpreter;
+                    EObject target = getTarget();
+                    IInterpreter interpreter = InterpreterUtil.getInterpreter(target);
+                    interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, target);
                     if (getColumn() != null) {
-                        interpreter = InterpreterUtil.getInterpreter(getColumn().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ROOT, TableHelper.getTable(getColumn()).getTarget());
-                        interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getColumn().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, ((DTable) getColumn().eContainer()).getTarget());
                     } else {
-                        interpreter = InterpreterUtil.getInterpreter(getTable().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.ROOT, getTable().getTarget());
-                        interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, getTable().getTarget());
                         interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, null);
                     }
 
                     try {
-                        canExecute = interpreter.evaluateBoolean(getColumn().getTarget(), getCreateTool().getPrecondition());
+                        canExecute = interpreter.evaluateBoolean(target, getCreateTool().getPrecondition());
                     } catch (final EvaluationException e) {
                         RuntimeLoggerManager.INSTANCE.error(getCreateTool(), ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                     }
