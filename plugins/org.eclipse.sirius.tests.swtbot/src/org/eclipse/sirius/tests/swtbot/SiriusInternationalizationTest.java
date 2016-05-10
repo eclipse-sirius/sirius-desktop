@@ -99,7 +99,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String ECLASS_CREATION_TOOL_LABEL_FR = "Ajouter EClass";
 
-    private static final String VIEWPOINT_LABEL_FR = "Bugzilla 459993";
+    private static final String VIEWPOINT_LABEL_FR = "Bugzilla 459993 FR";
 
     private static final String DIAGRAM_DESCRIPTION_LABEL_FR = "Diagramme Bugzilla 459993";
 
