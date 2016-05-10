@@ -454,6 +454,17 @@
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+			<code>org.eclipse.sirius.tests.junit.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The methods 
+				<code>initLoggers()</code> and 
+				<code>disposeLoggers()</code> of class 
+				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> have now a protected visibility (instead of private) to allow subclasses to use this logger without all the 
+				<code>genericSetUp</code> behavior.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -503,7 +514,7 @@
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()</code> has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -512,7 +523,7 @@
 				<code>IMemento</code> for editor restoration.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -976,7 +987,7 @@
 				<code>RefreshPlan</code> in parameter to have more informations to say if children must be synchronized.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support4">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -1912,7 +1923,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support5">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>

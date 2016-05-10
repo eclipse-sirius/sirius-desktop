@@ -575,9 +575,9 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Initialize the log listener
+     * Initialize the log listener.
      */
-    private void initLoggers() {
+    protected void initLoggers() {
         logListener = new ILogListener() {
 
             @Override
@@ -610,9 +610,9 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Dispose the log listener
+     * Dispose the log listener.
      */
-    private void disposeLoggers() {
+    protected void disposeLoggers() {
         if (logListener != null) {
             Platform.removeLogListener(logListener);
         }
