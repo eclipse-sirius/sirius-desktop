@@ -14,7 +14,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedCreateLine name="TestTableTools_Classes_CreateLine" forceRefresh="true" mapping="//@ownedViewpoints[name='TestTableTools']/@ownedRepresentations[name='TestTableTools_Classes']/@ownedLineMappings[name='classes']">
+      <ownedCreateLine name="TestTableTools_Classes_CreateLine" precondition="true" forceRefresh="true" mapping="//@ownedViewpoints[name='TestTableTools']/@ownedRepresentations[name='TestTableTools_Classes']/@ownedLineMappings[name='classes']">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -55,10 +55,11 @@
           <mask mask="{0}"/>
         </create>
       </intersection>
-      <createColumn mapping="//@ownedViewpoints[name='TestTableTools']/@ownedRepresentations[name='TestTableTools_Columns']/@ownedColumnMappings.0">
+      <createColumn precondition="true" mapping="//@ownedViewpoints[name='TestTableTools']/@ownedRepresentations[name='TestTableTools_Columns']/@ownedColumnMappings.0">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self"/>
       </createColumn>
     </ownedRepresentations>
   </ownedViewpoints>

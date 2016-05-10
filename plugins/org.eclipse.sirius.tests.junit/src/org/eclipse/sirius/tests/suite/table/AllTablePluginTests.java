@@ -38,7 +38,7 @@ import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByColumnTest;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByColumnTestWithEditor;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByLineTest;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByLineWithEditorTests;
-import org.eclipse.sirius.tests.unit.table.unit.tools.CreateLineToolTest;
+import org.eclipse.sirius.tests.unit.table.unit.tools.CreateTableWithToolWithPrecondtionTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.NoVariableDuplicationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.RefreshToolActionBarTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.TableToolPreconditionCompletionTest;
@@ -87,7 +87,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(DefaultVariablesOnToolsTest.class);
         suite.addTestSuite(TableAdapterFactoryRegistryTest.class);
         suite.addTestSuite(SpecifyArrays_Test.class);
-        suite.addTestSuite(CreateLineToolTest.class);
+        suite.addTestSuite(CreateTableWithToolWithPrecondtionTest.class);
         suite.addTestSuite(RefreshToolActionBarTest.class);
         suite.addTestSuite(TableToolPreconditionCompletionTest.class);
         suite.addTestSuite(DTableSynchronizerVSMWithEditorTest.class);
