@@ -149,7 +149,6 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
      */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
-        System.out.println("Default language is " + default_language.toString());
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL);
     }
 
@@ -501,8 +500,6 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
     private void initializedModelingProject(Locale locale) {
         Locale.setDefault(locale);
         selected_language = locale.getLanguage();
-        System.out.println("The current selected language is " + locale.toString() + " --> " + selected_language);
-        System.out.println("The current default language is " + Locale.getDefault().toString());
         try {
             IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getProjectName());
             // Initialization of a new modeling project
