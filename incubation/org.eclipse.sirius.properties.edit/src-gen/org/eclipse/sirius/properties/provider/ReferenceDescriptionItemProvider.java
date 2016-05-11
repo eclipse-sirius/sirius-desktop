@@ -69,9 +69,10 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      * @generated
      */
     protected void addMultiplePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReferenceDescription_multiple_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_multiple_feature", "_UI_ReferenceDescription_type"),
-                PropertiesPackage.Literals.REFERENCE_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ReferenceDescription_multiple_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_multiple_feature", "_UI_ReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.REFERENCE_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -82,8 +83,8 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ReferenceDescription_valueExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_valueExpression_feature", "_UI_ReferenceDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ReferenceDescription_valueExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_valueExpression_feature", "_UI_ReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.REFERENCE_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -95,8 +96,8 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      */
     protected void addDisplayExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReferenceDescription_displayExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_displayExpression_feature", "_UI_ReferenceDescription_type"),
+                getString("_UI_ReferenceDescription_displayExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDescription_displayExpression_feature", "_UI_ReferenceDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -107,7 +108,7 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -124,7 +125,7 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -139,24 +140,25 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This returns ReferenceDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReferenceDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReferenceDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ReferenceDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ReferenceDescription_type") : getString("_UI_ReferenceDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ReferenceDescription_type") : //$NON-NLS-1$
+                getString("_UI_ReferenceDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -164,7 +166,7 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

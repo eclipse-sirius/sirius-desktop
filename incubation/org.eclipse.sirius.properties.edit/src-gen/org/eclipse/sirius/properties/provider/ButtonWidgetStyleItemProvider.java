@@ -55,24 +55,25 @@ public class ButtonWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This returns ButtonWidgetStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ButtonWidgetStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ButtonWidgetStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ButtonWidgetStyle) object).getLabelFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ButtonWidgetStyle_type") : getString("_UI_ButtonWidgetStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ButtonWidgetStyle_type") : //$NON-NLS-1$
+                getString("_UI_ButtonWidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -80,7 +81,7 @@ public class ButtonWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

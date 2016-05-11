@@ -66,9 +66,10 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * @generated
      */
     protected void addBodyExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelDescription_bodyExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LabelDescription_bodyExpression_feature", "_UI_LabelDescription_type"),
-                PropertiesPackage.Literals.LABEL_DESCRIPTION__BODY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LabelDescription_bodyExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LabelDescription_bodyExpression_feature", "_UI_LabelDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.LABEL_DESCRIPTION__BODY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,7 +79,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -93,7 +94,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,24 +109,25 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns LabelDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((LabelDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_LabelDescription_type") : getString("_UI_LabelDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_LabelDescription_type") : //$NON-NLS-1$
+                getString("_UI_LabelDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -133,7 +135,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

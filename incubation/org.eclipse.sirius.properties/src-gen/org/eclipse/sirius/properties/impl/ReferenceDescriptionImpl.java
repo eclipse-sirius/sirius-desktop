@@ -64,7 +64,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -74,7 +74,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
     /**
      * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -107,7 +107,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
      * The default value of the '{@link #getDisplayExpression()
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDisplayExpression()
      * @generated
      * @ordered
@@ -118,7 +118,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
      * The cached value of the '{@link #getDisplayExpression()
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getDisplayExpression()
      * @generated
      * @ordered
@@ -129,7 +129,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
      * The cached value of the '{@link #getOnClickOperation()
      * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getOnClickOperation()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
     /**
      * The cached value of the '{@link #getActions() <em>Actions</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getActions()
      * @generated
      * @ordered
@@ -149,7 +149,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -169,7 +169,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ReferenceDescriptionImpl() {
@@ -178,7 +178,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -188,7 +188,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -260,7 +260,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -270,7 +270,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetOnClickOperation(InitialOperation newOnClickOperation, NotificationChain msgs) {
@@ -289,7 +289,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -326,7 +326,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(ReferenceWidgetStyle newStyle, NotificationChain msgs) {
@@ -355,7 +355,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -392,7 +392,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -412,7 +412,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -438,7 +438,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -474,7 +474,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -507,7 +507,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -533,7 +533,7 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -543,11 +543,11 @@ public class ReferenceDescriptionImpl extends WidgetDescriptionImpl implements R
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (multiple: ");
+        result.append(" (multiple: "); //$NON-NLS-1$
         result.append(multiple);
-        result.append(", valueExpression: ");
+        result.append(", valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
-        result.append(", displayExpression: ");
+        result.append(", displayExpression: "); //$NON-NLS-1$
         result.append(displayExpression);
         result.append(')');
         return result.toString();

@@ -38,7 +38,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected SelectWidgetConditionalStyleImpl() {
@@ -56,7 +56,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,7 +66,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(SelectWidgetStyle newStyle, NotificationChain msgs) {
@@ -95,7 +95,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -133,7 +133,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -177,7 +177,7 @@ public class SelectWidgetConditionalStyleImpl extends WidgetConditionalStyleImpl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

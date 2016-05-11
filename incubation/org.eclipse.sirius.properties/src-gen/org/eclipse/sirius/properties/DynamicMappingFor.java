@@ -73,7 +73,7 @@ public interface DynamicMappingFor extends ControlDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Domain Class Expression</em>' attribute.
      * @see #setDomainClassExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getDynamicMappingFor_DomainClassExpression()
@@ -87,7 +87,7 @@ public interface DynamicMappingFor extends ControlDescription {
      * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
      * <em>Domain Class Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Domain Class Expression</em>'
      *            attribute.

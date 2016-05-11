@@ -37,7 +37,7 @@ public interface CheckboxWidgetConditionalStyle extends WidgetConditionalStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(CheckboxWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCheckboxWidgetConditionalStyle_Style()
@@ -51,7 +51,7 @@ public interface CheckboxWidgetConditionalStyle extends WidgetConditionalStyle {
      * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

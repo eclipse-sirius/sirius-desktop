@@ -39,7 +39,7 @@ public interface WidgetConditionalStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetConditionalStyle_PreconditionExpression()
@@ -54,7 +54,7 @@ public interface WidgetConditionalStyle extends EObject {
      * {@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Precondition Expression</em>'
      *            attribute.

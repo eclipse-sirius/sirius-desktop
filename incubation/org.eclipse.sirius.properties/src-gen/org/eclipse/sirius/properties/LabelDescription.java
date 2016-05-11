@@ -43,7 +43,7 @@ public interface LabelDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Body Expression</em>' attribute.
      * @see #setBodyExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_BodyExpression()
@@ -58,7 +58,7 @@ public interface LabelDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
      * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Body Expression</em>' attribute.
      * @see #getBodyExpression()
@@ -74,7 +74,7 @@ public interface LabelDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(LabelWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_Style()
@@ -88,7 +88,7 @@ public interface LabelDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

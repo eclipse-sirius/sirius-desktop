@@ -48,7 +48,7 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Font Name Expression</em>' attribute.
      * @see #setFontNameExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkWidgetStyle_FontNameExpression()
@@ -63,7 +63,7 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression
      * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Font Name Expression</em>'
      *            attribute.
@@ -110,7 +110,7 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getHyperlinkWidgetStyle_BackgroundColor()
@@ -124,7 +124,7 @@ public interface HyperlinkWidgetStyle extends WidgetStyle {
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()

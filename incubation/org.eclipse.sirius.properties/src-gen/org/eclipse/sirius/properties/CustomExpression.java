@@ -54,7 +54,7 @@ public interface CustomExpression extends EObject {
      * {@link org.eclipse.sirius.properties.CustomExpression#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
@@ -70,7 +70,7 @@ public interface CustomExpression extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Custom Expression</em>' attribute.
      * @see #setCustomExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getCustomExpression_CustomExpression()
@@ -85,7 +85,7 @@ public interface CustomExpression extends EObject {
      * {@link org.eclipse.sirius.properties.CustomExpression#getCustomExpression
      * <em>Custom Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Custom Expression</em>' attribute.
      * @see #getCustomExpression()

@@ -42,7 +42,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The default value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The cached value of the '{@link #getLabelExpression()
      * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The default value of the '{@link #getHelpExpression()
      * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The cached value of the '{@link #getHelpExpression()
      * <em>Help Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getHelpExpression()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The default value of the '{@link #getIsEnabledExpression()
      * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIsEnabledExpression()
      * @generated
      * @ordered
@@ -97,7 +97,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
      * The cached value of the '{@link #getIsEnabledExpression()
      * <em>Is Enabled Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getIsEnabledExpression()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WidgetDescriptionImpl() {
@@ -115,7 +115,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -173,7 +173,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +236,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +257,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -275,7 +275,7 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -285,11 +285,11 @@ public abstract class WidgetDescriptionImpl extends ControlDescriptionImpl imple
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelExpression: ");
+        result.append(" (labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
-        result.append(", helpExpression: ");
+        result.append(", helpExpression: "); //$NON-NLS-1$
         result.append(helpExpression);
-        result.append(", isEnabledExpression: ");
+        result.append(", isEnabledExpression: "); //$NON-NLS-1$
         result.append(isEnabledExpression);
         result.append(')');
         return result.toString();

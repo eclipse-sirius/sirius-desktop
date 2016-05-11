@@ -68,8 +68,8 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkDescription_valueExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkDescription_valueExpression_feature", "_UI_HyperlinkDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkDescription_valueExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkDescription_valueExpression_feature", "_UI_HyperlinkDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.HYPERLINK_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -80,7 +80,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -111,24 +111,25 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
     /**
      * This returns HyperlinkDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((HyperlinkDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_HyperlinkDescription_type") : getString("_UI_HyperlinkDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_HyperlinkDescription_type") : //$NON-NLS-1$
+                getString("_UI_HyperlinkDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -136,7 +137,7 @@ public class HyperlinkDescriptionItemProvider extends WidgetDescriptionItemProvi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

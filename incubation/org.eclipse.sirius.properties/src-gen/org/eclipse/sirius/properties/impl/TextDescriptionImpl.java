@@ -54,7 +54,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * The default value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * The cached value of the '{@link #getValueExpression()
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getValueExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
      * The cached value of the '{@link #getInitialOperation()
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getInitialOperation()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getStyle()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TextDescriptionImpl() {
@@ -115,7 +115,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -125,7 +125,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +135,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
@@ -178,7 +178,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -202,7 +202,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -212,7 +212,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetStyle(TextWidgetStyle newStyle, NotificationChain msgs) {
@@ -231,7 +231,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -255,7 +255,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -268,7 +268,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -286,7 +286,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -306,7 +306,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -332,7 +332,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -356,7 +356,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -376,7 +376,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -386,7 +386,7 @@ public class TextDescriptionImpl extends WidgetDescriptionImpl implements TextDe
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (valueExpression: ");
+        result.append(" (valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
         result.append(')');
         return result.toString();

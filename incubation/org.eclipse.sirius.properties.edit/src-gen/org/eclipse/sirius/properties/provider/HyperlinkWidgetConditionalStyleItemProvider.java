@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
@@ -63,7 +63,7 @@ public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetCondition
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetCondition
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,24 +92,25 @@ public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetCondition
     /**
      * This returns HyperlinkWidgetConditionalStyle.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkWidgetConditionalStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkWidgetConditionalStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((HyperlinkWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_HyperlinkWidgetConditionalStyle_type") : getString("_UI_HyperlinkWidgetConditionalStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_HyperlinkWidgetConditionalStyle_type") : //$NON-NLS-1$
+                getString("_UI_HyperlinkWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -117,7 +118,7 @@ public class HyperlinkWidgetConditionalStyleItemProvider extends WidgetCondition
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -73,9 +73,10 @@ public class CustomExpressionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addIdentifierPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CustomExpression_identifier_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CustomExpression_identifier_feature", "_UI_CustomExpression_type"),
-                PropertiesPackage.Literals.CUSTOM_EXPRESSION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomExpression_identifier_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CustomExpression_identifier_feature", "_UI_CustomExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.CUSTOM_EXPRESSION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -86,32 +87,33 @@ public class CustomExpressionItemProvider extends ItemProviderAdapter
      */
     protected void addCustomExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomExpression_customExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CustomExpression_customExpression_feature", "_UI_CustomExpression_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomExpression_customExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CustomExpression_customExpression_feature", "_UI_CustomExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.CUSTOM_EXPRESSION__CUSTOM_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns CustomExpression.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomExpression"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomExpression")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CustomExpression) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_CustomExpression_type") : getString("_UI_CustomExpression_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CustomExpression_type") : //$NON-NLS-1$
+                getString("_UI_CustomExpression_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -119,7 +121,7 @@ public class CustomExpressionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -34,7 +34,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.GroupStyle} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class GroupStyleItemProvider extends ItemProviderAdapter
@@ -78,9 +78,10 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_backgroundColor_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_backgroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_backgroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
@@ -90,21 +91,23 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_foregroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_foregroundColor_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_foregroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_foregroundColor_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FOREGROUND_COLOR, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Font Name Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_fontNameExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontNameExpression_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontNameExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontNameExpression_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -114,9 +117,10 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addFontSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_fontSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSize_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_fontSize_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_fontSize_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -126,9 +130,10 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addBarStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_barStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_barStyle_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__BAR_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_barStyle_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_barStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__BAR_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -138,9 +143,10 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addToggleStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_toggleStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_toggleStyle_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__TOGGLE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_toggleStyle_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_toggleStyle_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__TOGGLE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -150,9 +156,10 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addExpandedByDefaultPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GroupStyle_expandedByDefault_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_expandedByDefault_feature", "_UI_GroupStyle_type"),
-                PropertiesPackage.Literals.GROUP_STYLE__EXPANDED_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupStyle_expandedByDefault_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GroupStyle_expandedByDefault_feature", "_UI_GroupStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.GROUP_STYLE__EXPANDED_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -163,19 +170,20 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/GroupStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GroupStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((GroupStyle) object).getFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_GroupStyle_type") : getString("_UI_GroupStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_GroupStyle_type") : //$NON-NLS-1$
+                getString("_UI_GroupStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -183,7 +191,7 @@ public class GroupStyleItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

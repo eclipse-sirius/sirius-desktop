@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.PageValidationSetDescription} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapter
@@ -71,7 +71,7 @@ public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapte
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapte
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,23 +100,23 @@ public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapte
     /**
      * This returns PageValidationSetDescription.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PageValidationSetDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PageValidationSetDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_PageValidationSetDescription_type");
+        return getString("_UI_PageValidationSetDescription_type"); //$NON-NLS-1$
     }
 
     /**
@@ -124,7 +124,7 @@ public class PageValidationSetDescriptionItemProvider extends ItemProviderAdapte
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

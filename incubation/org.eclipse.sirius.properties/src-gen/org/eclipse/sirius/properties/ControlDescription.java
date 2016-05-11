@@ -52,7 +52,7 @@ public interface ControlDescription extends EObject {
      * {@link org.eclipse.sirius.properties.ControlDescription#getIdentifier
      * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()

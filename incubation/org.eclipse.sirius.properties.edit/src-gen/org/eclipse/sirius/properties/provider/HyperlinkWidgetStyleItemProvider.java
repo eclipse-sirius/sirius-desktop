@@ -63,13 +63,13 @@ public class HyperlinkWidgetStyleItemProvider extends WidgetStyleItemProvider {
     /**
      * This adds a property descriptor for the Font Name Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addFontNameExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_HyperlinkWidgetStyle_fontNameExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontNameExpression_feature", "_UI_HyperlinkWidgetStyle_type"),
+                getString("_UI_HyperlinkWidgetStyle_fontNameExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontNameExpression_feature", "_UI_HyperlinkWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -80,9 +80,10 @@ public class HyperlinkWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * @generated
      */
     protected void addFontSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_HyperlinkWidgetStyle_fontSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontSize_feature", "_UI_HyperlinkWidgetStyle_type"),
-                PropertiesPackage.Literals.HYPERLINK_WIDGET_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkWidgetStyle_fontSize_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontSize_feature", "_UI_HyperlinkWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.HYPERLINK_WIDGET_STYLE__FONT_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -93,8 +94,8 @@ public class HyperlinkWidgetStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkWidgetStyle_backgroundColor_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_backgroundColor_feature", "_UI_HyperlinkWidgetStyle_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkWidgetStyle_backgroundColor_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_backgroundColor_feature", "_UI_HyperlinkWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR, true, false, true, null, null, null));
     }
 
@@ -106,32 +107,33 @@ public class HyperlinkWidgetStyleItemProvider extends WidgetStyleItemProvider {
      */
     protected void addFontFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkWidgetStyle_fontFormat_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontFormat_feature", "_UI_HyperlinkWidgetStyle_type"),
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HyperlinkWidgetStyle_fontFormat_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_HyperlinkWidgetStyle_fontFormat_feature", "_UI_HyperlinkWidgetStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.HYPERLINK_WIDGET_STYLE__FONT_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns HyperlinkWidgetStyle.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkWidgetStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HyperlinkWidgetStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((HyperlinkWidgetStyle) object).getLabelFontNameExpression();
-        return label == null || label.length() == 0 ? getString("_UI_HyperlinkWidgetStyle_type") : getString("_UI_HyperlinkWidgetStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_HyperlinkWidgetStyle_type") : //$NON-NLS-1$
+                getString("_UI_HyperlinkWidgetStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -139,7 +141,7 @@ public class HyperlinkWidgetStyleItemProvider extends WidgetStyleItemProvider {
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

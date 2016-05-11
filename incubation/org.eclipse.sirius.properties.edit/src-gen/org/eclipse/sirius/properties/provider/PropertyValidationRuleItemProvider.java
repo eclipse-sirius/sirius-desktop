@@ -65,32 +65,33 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
      */
     protected void addTargetsPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertyValidationRule_targets_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"),
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertyValidationRule_targets_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.PROPERTY_VALIDATION_RULE__TARGETS, true, false, true, null, null, null));
     }
 
     /**
      * This returns PropertyValidationRule.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyValidationRule"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyValidationRule")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((PropertyValidationRule) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_PropertyValidationRule_type") : getString("_UI_PropertyValidationRule_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_PropertyValidationRule_type") : //$NON-NLS-1$
+                getString("_UI_PropertyValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -98,7 +99,7 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

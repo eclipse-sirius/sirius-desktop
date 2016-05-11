@@ -67,8 +67,8 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_labelExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_labelExpression_feature", "_UI_WidgetDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_labelExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_labelExpression_feature", "_UI_WidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.WIDGET_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -80,34 +80,35 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      */
     protected void addHelpExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_helpExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"),
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_helpExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_helpExpression_feature", "_UI_WidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.WIDGET_DESCRIPTION__HELP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Is Enabled Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addIsEnabledExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_isEnabledExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_isEnabledExpression_feature", "_UI_WidgetDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetDescription_isEnabledExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetDescription_isEnabledExpression_feature", "_UI_WidgetDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((WidgetDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetDescription_type") : getString("_UI_WidgetDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_WidgetDescription_type") : //$NON-NLS-1$
+                getString("_UI_WidgetDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -115,7 +116,7 @@ public class WidgetDescriptionItemProvider extends ControlDescriptionItemProvide
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

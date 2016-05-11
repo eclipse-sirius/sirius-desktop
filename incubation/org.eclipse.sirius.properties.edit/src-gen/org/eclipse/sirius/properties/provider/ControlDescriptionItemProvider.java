@@ -72,21 +72,23 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addIdentifierPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ControlDescription_identifier_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ControlDescription_identifier_feature", "_UI_ControlDescription_type"),
-                PropertiesPackage.Literals.CONTROL_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ControlDescription_identifier_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ControlDescription_identifier_feature", "_UI_ControlDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.CONTROL_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ControlDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ControlDescription_type") : getString("_UI_ControlDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ControlDescription_type") : //$NON-NLS-1$
+                getString("_UI_ControlDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -94,7 +96,7 @@ public class ControlDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

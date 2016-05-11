@@ -66,45 +66,45 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      */
     protected void addNumberOfColumnsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GridLayoutDescription_numberOfColumns_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_numberOfColumns_feature", "_UI_GridLayoutDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GridLayoutDescription_numberOfColumns_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_numberOfColumns_feature", "_UI_GridLayoutDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Make Columns With Equal Width
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addMakeColumnsWithEqualWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature", "_UI_GridLayoutDescription_type"),
+                getString("_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_GridLayoutDescription_makeColumnsWithEqualWidth_feature", "_UI_GridLayoutDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns GridLayoutDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/GridLayoutDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GridLayoutDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         GridLayoutDescription gridLayoutDescription = (GridLayoutDescription) object;
-        return getString("_UI_GridLayoutDescription_type") + " " + gridLayoutDescription.getNumberOfColumns();
+        return getString("_UI_GridLayoutDescription_type") + " " + gridLayoutDescription.getNumberOfColumns(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -112,7 +112,7 @@ public class GridLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

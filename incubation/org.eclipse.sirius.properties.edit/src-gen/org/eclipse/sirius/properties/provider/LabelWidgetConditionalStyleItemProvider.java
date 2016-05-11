@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class LabelWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
@@ -63,7 +63,7 @@ public class LabelWidgetConditionalStyleItemProvider extends WidgetConditionalSt
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class LabelWidgetConditionalStyleItemProvider extends WidgetConditionalSt
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,24 +92,25 @@ public class LabelWidgetConditionalStyleItemProvider extends WidgetConditionalSt
     /**
      * This returns LabelWidgetConditionalStyle.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelWidgetConditionalStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelWidgetConditionalStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((LabelWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_LabelWidgetConditionalStyle_type") : getString("_UI_LabelWidgetConditionalStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_LabelWidgetConditionalStyle_type") : //$NON-NLS-1$
+                getString("_UI_LabelWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -117,7 +118,7 @@ public class LabelWidgetConditionalStyleItemProvider extends WidgetConditionalSt
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -27,7 +27,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class CustomWidgetConditionalStyleItemProvider extends WidgetConditionalStyleItemProvider {
@@ -63,7 +63,7 @@ public class CustomWidgetConditionalStyleItemProvider extends WidgetConditionalS
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class CustomWidgetConditionalStyleItemProvider extends WidgetConditionalS
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -92,24 +92,25 @@ public class CustomWidgetConditionalStyleItemProvider extends WidgetConditionalS
     /**
      * This returns CustomWidgetConditionalStyle.gif. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomWidgetConditionalStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomWidgetConditionalStyle")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CustomWidgetConditionalStyle) object).getPreconditionExpression();
-        return label == null || label.length() == 0 ? getString("_UI_CustomWidgetConditionalStyle_type") : getString("_UI_CustomWidgetConditionalStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CustomWidgetConditionalStyle_type") : //$NON-NLS-1$
+                getString("_UI_CustomWidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -117,7 +118,7 @@ public class CustomWidgetConditionalStyleItemProvider extends WidgetConditionalS
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

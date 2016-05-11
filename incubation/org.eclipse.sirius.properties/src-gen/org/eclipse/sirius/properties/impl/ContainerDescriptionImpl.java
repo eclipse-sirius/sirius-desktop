@@ -47,7 +47,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
     /**
      * The cached value of the '{@link #getControls() <em>Controls</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getControls()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
     /**
      * The cached value of the '{@link #getLayout() <em>Layout</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getLayout()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ContainerDescriptionImpl() {
@@ -75,7 +75,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -85,7 +85,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetLayout(LayoutDescription newLayout, NotificationChain msgs) {
@@ -127,7 +127,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,7 +151,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +167,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -183,7 +183,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -203,7 +203,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -221,7 +221,7 @@ public class ContainerDescriptionImpl extends ControlDescriptionImpl implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -64,32 +64,34 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
      * @generated
      */
     protected void addLineCountPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TextAreaDescription_lineCount_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TextAreaDescription_lineCount_feature", "_UI_TextAreaDescription_type"),
-                PropertiesPackage.Literals.TEXT_AREA_DESCRIPTION__LINE_COUNT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_TextAreaDescription_lineCount_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_TextAreaDescription_lineCount_feature", "_UI_TextAreaDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.TEXT_AREA_DESCRIPTION__LINE_COUNT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns TextAreaDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TextAreaDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TextAreaDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((TextAreaDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_TextAreaDescription_type") : getString("_UI_TextAreaDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_TextAreaDescription_type") : //$NON-NLS-1$
+                getString("_UI_TextAreaDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -97,7 +99,7 @@ public class TextAreaDescriptionItemProvider extends TextDescriptionItemProvider
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

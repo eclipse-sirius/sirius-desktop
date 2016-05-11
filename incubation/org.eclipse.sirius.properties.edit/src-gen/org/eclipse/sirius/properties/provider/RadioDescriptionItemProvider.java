@@ -70,34 +70,35 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RadioDescription_valueExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_valueExpression_feature", "_UI_RadioDescription_type"),
-                PropertiesPackage.Literals.RADIO_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RadioDescription_valueExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_valueExpression_feature", "_UI_RadioDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.RADIO_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Candidates Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RadioDescription_candidatesExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidatesExpression_feature", "_UI_RadioDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RadioDescription_candidatesExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidatesExpression_feature", "_UI_RadioDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Candidate Display Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addCandidateDisplayExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RadioDescription_candidateDisplayExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidateDisplayExpression_feature", "_UI_RadioDescription_type"),
+                getString("_UI_RadioDescription_candidateDisplayExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_candidateDisplayExpression_feature", "_UI_RadioDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.RADIO_DESCRIPTION__CANDIDATE_DISPLAY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -108,9 +109,10 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * @generated
      */
     protected void addNumberOfColumnsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RadioDescription_numberOfColumns_feature"), getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_numberOfColumns_feature", "_UI_RadioDescription_type"),
-                PropertiesPackage.Literals.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_RadioDescription_numberOfColumns_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_RadioDescription_numberOfColumns_feature", "_UI_RadioDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.RADIO_DESCRIPTION__NUMBER_OF_COLUMNS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -120,7 +122,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,7 +138,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -151,24 +153,25 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns RadioDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RadioDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RadioDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((RadioDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : getString("_UI_RadioDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_RadioDescription_type") : //$NON-NLS-1$
+                getString("_UI_RadioDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -176,7 +179,7 @@ public class RadioDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

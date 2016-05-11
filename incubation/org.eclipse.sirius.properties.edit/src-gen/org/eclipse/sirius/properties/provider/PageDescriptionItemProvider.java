@@ -79,9 +79,10 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addIdentifierPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_identifier_feature"), getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_identifier_feature", "_UI_PageDescription_type"),
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_identifier_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_identifier_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -91,9 +92,10 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_labelExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_labelExpression_feature", "_UI_PageDescription_type"),
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_labelExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_labelExpression_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -103,34 +105,35 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_domainClass_feature"), getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_domainClass_feature", "_UI_PageDescription_type"),
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_domainClass_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_domainClass_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Semantic Candidate Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addSemanticCandidateExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_semanticCandidateExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_semanticCandidateExpression_feature", "_UI_PageDescription_type"),
+                getString("_UI_PageDescription_semanticCandidateExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_semanticCandidateExpression_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Precondition Expression feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_preconditionExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_preconditionExpression_feature", "_UI_PageDescription_type"),
+                getString("_UI_PageDescription_preconditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_preconditionExpression_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 PropertiesPackage.Literals.PAGE_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -141,9 +144,10 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addGroupsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PageDescription_groups_feature"), getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_groups_feature", "_UI_PageDescription_type"),
-                PropertiesPackage.Literals.PAGE_DESCRIPTION__GROUPS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PageDescription_groups_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_PageDescription_groups_feature", "_UI_PageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.PAGE_DESCRIPTION__GROUPS, true, false, true, null, null, null));
     }
 
     /**
@@ -153,7 +157,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -167,7 +171,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,24 +186,25 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns PageDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PageDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PageDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((PageDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_PageDescription_type") : getString("_UI_PageDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_PageDescription_type") : //$NON-NLS-1$
+                getString("_UI_PageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -207,7 +212,7 @@ public class PageDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

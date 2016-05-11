@@ -51,7 +51,7 @@ public interface GroupStyle extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupStyle_BackgroundColor()
@@ -65,7 +65,7 @@ public interface GroupStyle extends EObject {
      * {@link org.eclipse.sirius.properties.GroupStyle#getBackgroundColor
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Background Color</em>' reference.
      * @see #getBackgroundColor()
@@ -81,7 +81,7 @@ public interface GroupStyle extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupStyle_ForegroundColor()
@@ -95,7 +95,7 @@ public interface GroupStyle extends EObject {
      * {@link org.eclipse.sirius.properties.GroupStyle#getForegroundColor
      * <em>Foreground Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Foreground Color</em>' reference.
      * @see #getForegroundColor()
@@ -111,7 +111,7 @@ public interface GroupStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Font Name Expression</em>' attribute.
      * @see #setFontNameExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupStyle_FontNameExpression()
@@ -126,7 +126,7 @@ public interface GroupStyle extends EObject {
      * {@link org.eclipse.sirius.properties.GroupStyle#getFontNameExpression
      * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Font Name Expression</em>'
      *            attribute.
@@ -175,7 +175,7 @@ public interface GroupStyle extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Bar Style</em>' attribute.
      * @see org.eclipse.sirius.properties.TitleBarStyle
      * @see #setBarStyle(TitleBarStyle)
@@ -209,7 +209,7 @@ public interface GroupStyle extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Toggle Style</em>' attribute.
      * @see org.eclipse.sirius.properties.ToggleStyle
      * @see #setToggleStyle(ToggleStyle)
@@ -224,7 +224,7 @@ public interface GroupStyle extends EObject {
      * {@link org.eclipse.sirius.properties.GroupStyle#getToggleStyle
      * <em>Toggle Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Toggle Style</em>' attribute.
      * @see org.eclipse.sirius.properties.ToggleStyle
@@ -241,7 +241,7 @@ public interface GroupStyle extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Expanded By Default</em>' attribute.
      * @see #setExpandedByDefault(boolean)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getGroupStyle_ExpandedByDefault()
@@ -255,7 +255,7 @@ public interface GroupStyle extends EObject {
      * {@link org.eclipse.sirius.properties.GroupStyle#isExpandedByDefault
      * <em>Expanded By Default</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Expanded By Default</em>' attribute.
      * @see #isExpandedByDefault()

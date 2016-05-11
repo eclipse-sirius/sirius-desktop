@@ -37,7 +37,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
      * The default value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -48,7 +48,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
      * The cached value of the '{@link #getPreconditionExpression()
      * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected WidgetConditionalStyleImpl() {
@@ -66,7 +66,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -76,7 +76,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -86,7 +86,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -129,7 +129,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public abstract class WidgetConditionalStyleImpl extends MinimalEObjectImpl.Cont
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (preconditionExpression: ");
+        result.append(" (preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
         result.append(')');
         return result.toString();

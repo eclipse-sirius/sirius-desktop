@@ -52,7 +52,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
      * The default value of the '{@link #getFontNameExpression()
      * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getFontNameExpression()
      * @generated
      * @ordered
@@ -63,7 +63,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
      * The cached value of the '{@link #getFontNameExpression()
      * <em>Font Name Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getFontNameExpression()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     /**
      * The default value of the '{@link #getFontSize() <em>Font Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFontSize()
      * @generated
      * @ordered
@@ -83,7 +83,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     /**
      * The cached value of the '{@link #getFontSize() <em>Font Size</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFontSize()
      * @generated
      * @ordered
@@ -94,7 +94,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
      * The cached value of the '{@link #getBackgroundColor()
      * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
@@ -104,7 +104,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
     /**
      * The cached value of the '{@link #getFontFormat() <em>Font Format</em>}'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFontFormat()
      * @generated
      * @ordered
@@ -113,7 +113,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected HyperlinkWidgetStyleImpl() {
@@ -122,7 +122,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -142,7 +142,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -156,7 +156,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -166,7 +166,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public ColorDescription basicGetBackgroundColor() {
@@ -208,7 +208,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -235,7 +235,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +258,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -284,7 +284,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -308,7 +308,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -328,7 +328,7 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -338,11 +338,11 @@ public class HyperlinkWidgetStyleImpl extends WidgetStyleImpl implements Hyperli
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (fontNameExpression: ");
+        result.append(" (fontNameExpression: "); //$NON-NLS-1$
         result.append(fontNameExpression);
-        result.append(", fontSize: ");
+        result.append(", fontSize: "); //$NON-NLS-1$
         result.append(fontSize);
-        result.append(", fontFormat: ");
+        result.append(", fontFormat: "); //$NON-NLS-1$
         result.append(fontFormat);
         result.append(')');
         return result.toString();

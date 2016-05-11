@@ -48,7 +48,7 @@ public interface ButtonDescription extends WidgetDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Button Label Expression</em>' attribute.
      * @see #setButtonLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription_ButtonLabelExpression()
@@ -63,7 +63,7 @@ public interface ButtonDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ButtonDescription#getButtonLabelExpression
      * <em>Button Label Expression</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Button Label Expression</em>'
      *            attribute.
@@ -80,7 +80,7 @@ public interface ButtonDescription extends WidgetDescription {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialOperation)
@@ -95,7 +95,7 @@ public interface ButtonDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ButtonDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Initial Operation</em>' containment
      *            reference.
@@ -112,7 +112,7 @@ public interface ButtonDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ButtonWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getButtonDescription_Style()
@@ -126,7 +126,7 @@ public interface ButtonDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ButtonDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

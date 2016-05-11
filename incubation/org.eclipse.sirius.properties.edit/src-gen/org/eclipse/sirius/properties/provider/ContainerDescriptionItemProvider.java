@@ -63,7 +63,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -78,7 +78,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -93,24 +93,25 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
     /**
      * This returns ContainerDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ContainerDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerDescription_type") : getString("_UI_ContainerDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ContainerDescription_type") : //$NON-NLS-1$
+                getString("_UI_ContainerDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -118,7 +119,7 @@ public class ContainerDescriptionItemProvider extends ControlDescriptionItemProv
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -74,9 +74,10 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_WidgetAction_labelExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"),
-                PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_WidgetAction_labelExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_WidgetAction_labelExpression_feature", "_UI_WidgetAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.WIDGET_ACTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -86,7 +87,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -100,7 +101,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,19 +121,20 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/WidgetAction"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/WidgetAction")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((WidgetAction) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_WidgetAction_type") : getString("_UI_WidgetAction_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_WidgetAction_type") : //$NON-NLS-1$
+                getString("_UI_WidgetAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -140,7 +142,7 @@ public class WidgetActionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -24,7 +24,7 @@ import org.eclipse.sirius.properties.ReferenceWidgetStyle;
 public class ReferenceWidgetStyleImpl extends WidgetStyleImpl implements ReferenceWidgetStyle {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ReferenceWidgetStyleImpl() {
@@ -33,7 +33,7 @@ public class ReferenceWidgetStyleImpl extends WidgetStyleImpl implements Referen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

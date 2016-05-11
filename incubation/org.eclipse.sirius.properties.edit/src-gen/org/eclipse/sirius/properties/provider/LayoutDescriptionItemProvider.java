@@ -62,12 +62,12 @@ public class LayoutDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_LayoutDescription_type");
+        return getString("_UI_LayoutDescription_type"); //$NON-NLS-1$
     }
 
     /**
@@ -75,7 +75,7 @@ public class LayoutDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

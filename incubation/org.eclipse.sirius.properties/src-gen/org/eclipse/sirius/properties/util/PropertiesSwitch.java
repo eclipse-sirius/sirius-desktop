@@ -77,14 +77,14 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.sirius.properties.PropertiesPackage
  * @generated
  */
 public class PropertiesSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static PropertiesPackage modelPackage;
@@ -92,7 +92,7 @@ public class PropertiesSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PropertiesSwitch() {
@@ -105,7 +105,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -118,7 +118,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -136,7 +136,7 @@ public class PropertiesSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -697,7 +697,7 @@ public class PropertiesSwitch<T> {
      * <em>View Extension Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -714,7 +714,7 @@ public class PropertiesSwitch<T> {
      * <em>Page Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -731,7 +731,7 @@ public class PropertiesSwitch<T> {
      * <em>Page Validation Set Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -748,7 +748,7 @@ public class PropertiesSwitch<T> {
      * <em>Property Validation Rule</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -765,7 +765,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -782,7 +782,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Validation Set Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -799,7 +799,7 @@ public class PropertiesSwitch<T> {
      * <em>Control Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -816,7 +816,7 @@ public class PropertiesSwitch<T> {
      * <em>Container Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -833,7 +833,7 @@ public class PropertiesSwitch<T> {
      * <em>Layout Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -850,7 +850,7 @@ public class PropertiesSwitch<T> {
      * <em>Fill Layout Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -867,7 +867,7 @@ public class PropertiesSwitch<T> {
      * <em>Grid Layout Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -884,7 +884,7 @@ public class PropertiesSwitch<T> {
      * <em>Widget Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -901,7 +901,7 @@ public class PropertiesSwitch<T> {
      * <em>Text Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -918,7 +918,7 @@ public class PropertiesSwitch<T> {
      * <em>Button Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -935,7 +935,7 @@ public class PropertiesSwitch<T> {
      * <em>Label Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -952,7 +952,7 @@ public class PropertiesSwitch<T> {
      * <em>Checkbox Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -969,7 +969,7 @@ public class PropertiesSwitch<T> {
      * <em>Select Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -986,7 +986,7 @@ public class PropertiesSwitch<T> {
      * <em>Dynamic Mapping For</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1003,7 +1003,7 @@ public class PropertiesSwitch<T> {
      * <em>Dynamic Mapping If</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1020,7 +1020,7 @@ public class PropertiesSwitch<T> {
      * <em>Text Area Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1037,7 +1037,7 @@ public class PropertiesSwitch<T> {
      * <em>Radio Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1054,7 +1054,7 @@ public class PropertiesSwitch<T> {
      * <em>Reference Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1071,7 +1071,7 @@ public class PropertiesSwitch<T> {
      * <em>Operation Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1088,7 +1088,7 @@ public class PropertiesSwitch<T> {
      * <em>Custom Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1105,7 +1105,7 @@ public class PropertiesSwitch<T> {
      * <em>Custom Expression</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1122,7 +1122,7 @@ public class PropertiesSwitch<T> {
      * <em>Custom Operation</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1139,7 +1139,7 @@ public class PropertiesSwitch<T> {
      * <em>Hyperlink Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1156,7 +1156,7 @@ public class PropertiesSwitch<T> {
      * <em>Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1173,7 +1173,7 @@ public class PropertiesSwitch<T> {
      * <em>Text Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1190,7 +1190,7 @@ public class PropertiesSwitch<T> {
      * <em>Label Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1207,7 +1207,7 @@ public class PropertiesSwitch<T> {
      * <em>Checkbox Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1224,7 +1224,7 @@ public class PropertiesSwitch<T> {
      * <em>Radio Widget Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1241,7 +1241,7 @@ public class PropertiesSwitch<T> {
      * <em>Button Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1258,7 +1258,7 @@ public class PropertiesSwitch<T> {
      * <em>Select Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1275,7 +1275,7 @@ public class PropertiesSwitch<T> {
      * <em>Custom Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1292,7 +1292,7 @@ public class PropertiesSwitch<T> {
      * <em>Reference Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1309,7 +1309,7 @@ public class PropertiesSwitch<T> {
      * <em>Hyperlink Widget Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1326,7 +1326,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Style</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1343,7 +1343,7 @@ public class PropertiesSwitch<T> {
      * <em>Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1360,7 +1360,7 @@ public class PropertiesSwitch<T> {
      * <em>Text Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1377,7 +1377,7 @@ public class PropertiesSwitch<T> {
      * <em>Label Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1394,7 +1394,7 @@ public class PropertiesSwitch<T> {
      * <em>Checkbox Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1411,7 +1411,7 @@ public class PropertiesSwitch<T> {
      * <em>Radio Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1428,7 +1428,7 @@ public class PropertiesSwitch<T> {
      * <em>Button Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1445,7 +1445,7 @@ public class PropertiesSwitch<T> {
      * <em>Select Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1462,7 +1462,7 @@ public class PropertiesSwitch<T> {
      * <em>Custom Widget Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1479,7 +1479,7 @@ public class PropertiesSwitch<T> {
      * <em>Reference Widget Conditional Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1496,7 +1496,7 @@ public class PropertiesSwitch<T> {
      * <em>Widget Action</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1513,7 +1513,7 @@ public class PropertiesSwitch<T> {
      * <em>Hyperlink Widget Conditional Style</em>'. <!-- begin-user-doc -->
      * This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1530,7 +1530,7 @@ public class PropertiesSwitch<T> {
      * <em>Group Conditional Style</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1547,7 +1547,7 @@ public class PropertiesSwitch<T> {
      * <em>Extension</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1564,7 +1564,7 @@ public class PropertiesSwitch<T> {
      * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -1598,7 +1598,7 @@ public class PropertiesSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

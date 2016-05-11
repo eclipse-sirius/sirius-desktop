@@ -58,7 +58,7 @@ public interface ContainerDescription extends ControlDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Layout</em>' containment reference.
      * @see #setLayout(LayoutDescription)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getContainerDescription_Layout()
@@ -72,7 +72,7 @@ public interface ContainerDescription extends ControlDescription {
      * {@link org.eclipse.sirius.properties.ContainerDescription#getLayout
      * <em>Layout</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Layout</em>' containment reference.
      * @see #getLayout()

@@ -76,8 +76,8 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      */
     protected void addIdentifierPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewExtensionDescription_identifier_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_identifier_feature", "_UI_ViewExtensionDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewExtensionDescription_identifier_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_identifier_feature", "_UI_ViewExtensionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -89,8 +89,8 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      */
     protected void addMetamodelsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewExtensionDescription_metamodels_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_metamodels_feature", "_UI_ViewExtensionDescription_type"),
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ViewExtensionDescription_metamodels_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_ViewExtensionDescription_metamodels_feature", "_UI_ViewExtensionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__METAMODELS, true, false, true, null, null, null));
     }
 
@@ -101,7 +101,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -131,24 +131,25 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
     /**
      * This returns ViewExtensionDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewExtensionDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewExtensionDescription")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((ViewExtensionDescription) object).getIdentifier();
-        return label == null || label.length() == 0 ? getString("_UI_ViewExtensionDescription_type") : getString("_UI_ViewExtensionDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ViewExtensionDescription_type") : //$NON-NLS-1$
+                getString("_UI_ViewExtensionDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -156,7 +157,7 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

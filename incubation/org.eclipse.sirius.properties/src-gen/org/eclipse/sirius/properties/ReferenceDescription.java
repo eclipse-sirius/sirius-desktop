@@ -99,7 +99,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getValueExpression
      * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
@@ -126,7 +126,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getDisplayExpression
      * <em>Display Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Display Expression</em>' attribute.
      * @see #getDisplayExpression()
@@ -154,7 +154,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getOnClickOperation
      * <em>On Click Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>On Click Operation</em>' containment
      *            reference.
@@ -173,7 +173,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Actions</em>' containment reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getReferenceDescription_Actions()
      * @model containment="true"
@@ -189,7 +189,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(ReferenceWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getReferenceDescription_Style()
@@ -203,7 +203,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()
@@ -221,7 +221,7 @@ public interface ReferenceDescription extends WidgetDescription {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Conditional Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.properties.PropertiesPackage#getReferenceDescription_ConditionalStyles()
