@@ -698,3 +698,19 @@ To use this feature, you must first create a _Style Customizations_ element insi
 A _Style Customization_ can define a predicate expression to control whether or not it should apply. If defined, the expression is evaluated in the context of a semantic element to determine whether or not the customizations should be applied. If no expression is defined, the customizations will apply. If a _Style Customization_ applies to a given element, the _base style_ that the element would normally have will be modified by applying all the _Property Customization_ (by expression and by reference) defined in the _Style Customization_ , if they are compatible with that base style.
 
 A _Style Customizations_ group can also contain _Style Customization Reuse_ elements. These can be used to reuse customizations defined elsewhere in a different context (specified using the _Reuse_ property), and apply them to other elements (specified using the _Applied On_ property). They will behave as if they had been defined locally inside a _Style Customization_ with no precondition.
+
+h3(#enum_customization). Style Customization of an Enumerator property 
+
+To customize a property of type Enumerator, the value expression must return an instance of Enumerator. Here is some examples of value expression:
+
+* Examples for sourceArrow property (of kind @EdgeArrows@):
+** @aql:diagram::EdgeArrows::FillDiamond@
+** @aql:'FillDiamond'@ or @FillDiamond@ also works but it is not recommended to use the literal value of an instance of Enumerator.
+* Examples for labelFormat property (of kind @EList<FontFormat>@):
+** @aql:viewpoint::FontFormat::bold@ to set a label in bold
+** @aql:OrderedSet{viewpoint::FontFormat::bold, viewpoint::FontFormat::italic}@ to set a label in bold and italic
+** @service:fontFormatBold()@ with a service like
+
+pre.    public FontFormat fontFormatBold(EObject any) {
+        return FontFormat.BOLD_LITERAL;
+    }

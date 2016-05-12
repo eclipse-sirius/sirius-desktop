@@ -110,6 +110,11 @@
 					</li>
 					<li>
 						<a href="#customization">Diagram Styles Customization</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#enum_customization">Style Customization of an Enumerator property </a>
+							</li>
+						</ol>
 					</li>
 				</ol>
 			</li>
@@ -1731,5 +1736,39 @@
 			<em>Applied On</em> property). They will behave as if they had been defined locally inside a 
 			<em>Style Customization</em> with no precondition.
 		</p>
+		<h3 id="enum_customization">Style Customization of an Enumerator property </h3>
+		<p>To customize a property of type Enumerator, the value expression must return an instance of Enumerator. Here is some examples of value expression:</p>
+		<ul>
+			<li>Examples for sourceArrow property (of kind 
+				<code>EdgeArrows</code>):
+				<ul>
+					<li>
+						<code>aql:diagram::EdgeArrows::FillDiamond</code>
+					</li>
+					<li>
+						<code>aql:'FillDiamond'</code> or 
+						<code>FillDiamond</code> also works but it is not recommended to use the literal value of an instance of Enumerator.
+					</li>
+				</ul>
+			</li>
+			<li>Examples for labelFormat property (of kind 
+				<code>EList&lt;FontFormat&gt;</code>):
+				<ul>
+					<li>
+						<code>aql:viewpoint::FontFormat::bold</code> to set a label in bold
+					</li>
+					<li>
+						<code>aql:OrderedSet{viewpoint::FontFormat::bold, viewpoint::FontFormat::italic}</code> to set a label in bold and italic
+					</li>
+					<li>
+						<code>service:fontFormatBold()</code> with a service like
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<pre>public FontFormat fontFormatBold(EObject any) {
+        return FontFormat.BOLD_LITERAL;
+    }
+</pre>
 	</body>
 </html>
