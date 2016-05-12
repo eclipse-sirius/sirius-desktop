@@ -199,7 +199,7 @@
                id="properties.section.widgetStyle.LabelFontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontFormatFilter"
                afterSection="properties.section.widgetStyle.LabelForegroundColor"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
@@ -207,7 +207,7 @@
                id="properties.section.widgetStyle.LabelForegroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelForegroundColorFilter"
                afterSection="properties.section.widgetStyle.LabelBackgroundColor"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
@@ -215,7 +215,7 @@
                id="properties.section.widgetStyle.LabelBackgroundColor"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelBackgroundColorFilter"
                afterSection="properties.section.widgetStyle.LabelFontSize"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
@@ -223,14 +223,14 @@
                id="properties.section.widgetStyle.LabelFontSize"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontSizeFilter"
                afterSection="properties.section.widgetStyle.LabelFontNameExpression"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontNameExpressionPropertySection"
                id="properties.section.widgetStyle.LabelFontNameExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontNameExpressionFilter"
-                tab="viewpoint.tab.general">
+                tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.properties.WidgetStyle"/>
       </propertySection>
   	  <propertySection
@@ -563,7 +563,13 @@
   </extension>
 
 <!-- Start of user code plugin.xml end specifics  -->
-
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+    <propertyTabs contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
+      <propertyTab category="default" id="viewpoint.tab.label" label="Label" afterTab="viewpoint.tab.general"/>
+      <propertyTab category="default" id="viewpoint.tab.widget" label="Widget" afterTab="viewpoint.tab.label"/>
+    </propertyTabs>
+  </extension>
+  
   <extension point="org.eclipse.sirius.editor.menuBuilder">
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.WidgetsMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
