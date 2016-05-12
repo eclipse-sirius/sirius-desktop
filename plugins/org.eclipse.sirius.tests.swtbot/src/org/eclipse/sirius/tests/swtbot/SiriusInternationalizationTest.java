@@ -544,8 +544,7 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
         }
         // Validate of the Viewpoint label
         Assert.assertNotNull("The viewpoint " + getViewpointLabel() + " isn't available", viewpointToActivate);
-        Assert.assertEquals("The label of the representation description is not as expected.", getViewpointLabel(),
-                MessageTranslator.INSTANCE.getMessage(viewpointToActivate, viewpointToActivate.getLabel()));
+        Assert.assertEquals("The label of the viewpoint is not as expected.", getViewpointLabel(), MessageTranslator.INSTANCE.getMessage(viewpointToActivate, viewpointToActivate.getLabel()));
 
         // Activate the viewpoint
         Assert.assertEquals("There should be no activated viewpoint", 0, localSession.getOpenedSession().getSelectedViewpoints(false).size());
