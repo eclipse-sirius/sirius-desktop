@@ -494,23 +494,23 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PropertyValidationRule"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionGroupsPropertySection"
-               id="properties.section.pageDescription.Groups"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionGroupsFilter"
-               afterSection="properties.section.pageDescription.PreconditionExpression"
+      
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionIdentifierPropertySection"
+               id="properties.section.pageDescription.Identifier"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionIdentifierFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionPreconditionExpressionPropertySection"
-               id="properties.section.pageDescription.PreconditionExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionPreconditionExpressionFilter"
-               afterSection="properties.section.pageDescription.SemanticCandidateExpression"
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionDomainClassPropertySection"
+               id="properties.section.pageDescription.DomainClass"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionDomainClassFilter"
+               afterSection="properties.section.pageDescription.Identifier"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-  	  <propertySection
+      <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionSemanticCandidateExpressionPropertySection"
                id="properties.section.pageDescription.SemanticCandidateExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionSemanticCandidateExpressionFilter"
@@ -518,29 +518,31 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionPreconditionExpressionPropertySection"
+               id="properties.section.pageDescription.PreconditionExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionPreconditionExpressionFilter"
+               afterSection="properties.section.pageDescription.SemanticCandidateExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.PageDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionLabelExpressionPropertySection"
+               id="properties.section.pageDescription.LabelExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionLabelExpressionFilter"
+               afterSection="properties.section.pageDescription.PreconditionExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.PageDescription"/>
+      </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionDomainClassPropertySection"
-               id="properties.section.pageDescription.DomainClass"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionDomainClassFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionGroupsPropertySection"
+               id="properties.section.pageDescription.Groups"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionGroupsFilter"
                afterSection="properties.section.pageDescription.LabelExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.PageDescription"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionLabelExpressionPropertySection"
-               id="properties.section.pageDescription.LabelExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionLabelExpressionFilter"
-               afterSection="properties.section.pageDescription.Identifier"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.PageDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.pagedescription.PageDescriptionIdentifierPropertySection"
-               id="properties.section.pageDescription.Identifier"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.pagedescription.PageDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.PageDescription"/>
-      </propertySection>
+      
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription.ViewExtensionDescriptionMetamodelsPropertySection"
                id="properties.section.viewExtensionDescription.Metamodels"
