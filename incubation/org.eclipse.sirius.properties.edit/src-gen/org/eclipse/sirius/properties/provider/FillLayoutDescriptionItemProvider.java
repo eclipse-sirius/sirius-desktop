@@ -75,11 +75,16 @@ public class FillLayoutDescriptionItemProvider extends LayoutDescriptionItemProv
      * This returns FillLayoutDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescription")); //$NON-NLS-1$
+        FILL_LAYOUT_ORIENTATION labelValue = ((FillLayoutDescription) object).getOrientation();
+        if (labelValue == FILL_LAYOUT_ORIENTATION.HORIZONTAL) {
+            return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescriptionHorizontal")); //$NON-NLS-1$
+        } else {
+            return overlayImage(object, getResourceLocator().getImage("full/obj16/FillLayoutDescriptionVertical")); //$NON-NLS-1$
+        }
     }
 
     /**
