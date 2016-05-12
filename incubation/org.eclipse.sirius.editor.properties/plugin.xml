@@ -448,6 +448,30 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.ControlDescription"/>
       </propertySection>
+      
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionIdentifierPropertySection"
+               id="properties.section.groupDescription.Identifier"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionIdentifierFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionDomainClassPropertySection"
+               id="properties.section.groupDescription.DomainClass"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionDomainClassFilter"
+               afterSection="properties.section.groupDescription.Identifier"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionPropertySection"
+               id="properties.section.groupDescription.SemanticCandidateExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionFilter"
+               afterSection="properties.section.groupDescription.DomainClass"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.properties.GroupDescription"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionPreconditionExpressionPropertySection"
                id="properties.section.groupDescription.PreconditionExpression"
@@ -457,36 +481,14 @@
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionPropertySection"
-               id="properties.section.groupDescription.SemanticCandidateExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionSemanticCandidateExpressionFilter"
-               afterSection="properties.section.groupDescription.DomainClass"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.GroupDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionDomainClassPropertySection"
-               id="properties.section.groupDescription.DomainClass"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionDomainClassFilter"
-               afterSection="properties.section.groupDescription.LabelExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.GroupDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionLabelExpressionPropertySection"
                id="properties.section.groupDescription.LabelExpression"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionLabelExpressionFilter"
-               afterSection="properties.section.groupDescription.Identifier"
+               afterSection="properties.section.groupDescription.PreconditionExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.GroupDescription"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.groupdescription.GroupDescriptionIdentifierPropertySection"
-               id="properties.section.groupDescription.Identifier"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.groupdescription.GroupDescriptionIdentifierFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.properties.GroupDescription"/>
-      </propertySection>
+      
   	  <propertySection
                class="org.eclipse.sirius.properties.editor.properties.sections.properties.propertyvalidationrule.PropertyValidationRuleTargetsPropertySection"
                id="properties.section.propertyValidationRule.Targets"
