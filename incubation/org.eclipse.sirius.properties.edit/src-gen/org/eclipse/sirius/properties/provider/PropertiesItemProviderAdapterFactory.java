@@ -34,7 +34,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.util.PropertiesAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -1532,12 +1535,17 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
              * 
-             * @generated
+             * @generated NOT
              */
             @Override
             public Object caseGroup(Group object) {
-                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.GROUP__EXTENSIONS, PropertiesFactory.eINSTANCE.createViewExtensionDescription()));
-
+                ViewExtensionDescription ved = PropertiesFactory.eINSTANCE.createViewExtensionDescription();
+                PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
+                ved.getPages().add(page);
+                GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
+                ved.getGroups().add(group);
+                page.getGroups().add(group);
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.GROUP__EXTENSIONS, ved));
                 return null;
             }
 
