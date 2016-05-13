@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CheckboxDescription;
+import org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
@@ -162,7 +163,7 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -172,7 +173,9 @@ public class CheckboxDescriptionItemProvider extends WidgetDescriptionItemProvid
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle()));
+        CheckboxWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createCheckboxWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createCheckboxWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

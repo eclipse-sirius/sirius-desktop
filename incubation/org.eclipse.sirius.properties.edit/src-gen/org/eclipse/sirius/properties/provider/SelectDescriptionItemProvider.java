@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.SelectDescription;
+import org.eclipse.sirius.properties.SelectWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
@@ -192,7 +193,7 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -202,7 +203,9 @@ public class SelectDescriptionItemProvider extends WidgetDescriptionItemProvider
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createSelectWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createSelectWidgetConditionalStyle()));
+        SelectWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createSelectWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createSelectWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.SELECT_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

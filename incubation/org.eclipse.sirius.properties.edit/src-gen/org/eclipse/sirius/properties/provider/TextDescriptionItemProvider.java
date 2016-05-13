@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.TextDescription;
+import org.eclipse.sirius.properties.TextWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
@@ -162,7 +163,7 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -172,7 +173,9 @@ public class TextDescriptionItemProvider extends WidgetDescriptionItemProvider {
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createTextWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createTextWidgetConditionalStyle()));
+        TextWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createTextWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createTextWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.TEXT_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

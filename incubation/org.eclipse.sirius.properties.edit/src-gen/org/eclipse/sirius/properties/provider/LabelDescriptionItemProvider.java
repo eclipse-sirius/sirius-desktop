@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.LabelDescription;
+import org.eclipse.sirius.properties.LabelWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -159,7 +160,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -167,7 +168,9 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createLabelWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createLabelWidgetConditionalStyle()));
+        LabelWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createLabelWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createLabelWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.LABEL_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

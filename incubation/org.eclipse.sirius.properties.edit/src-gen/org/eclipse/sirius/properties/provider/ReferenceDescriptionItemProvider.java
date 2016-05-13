@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ReferenceDescription;
+import org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
@@ -194,7 +195,7 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -206,7 +207,9 @@ public class ReferenceDescriptionItemProvider extends WidgetDescriptionItemProvi
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createReferenceWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createReferenceWidgetConditionalStyle()));
+        ReferenceWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createReferenceWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createReferenceWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.REFERENCE_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }

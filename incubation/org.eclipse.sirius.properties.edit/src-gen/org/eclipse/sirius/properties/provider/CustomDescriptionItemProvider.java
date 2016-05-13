@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.properties.CustomDescription;
+import org.eclipse.sirius.properties.CustomWidgetConditionalStyle;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
@@ -144,7 +145,7 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -156,7 +157,9 @@ public class CustomDescriptionItemProvider extends WidgetDescriptionItemProvider
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__STYLE, PropertiesFactory.eINSTANCE.createCustomWidgetStyle()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle()));
+        CustomWidgetConditionalStyle conditionalStyle = PropertiesFactory.eINSTANCE.createCustomWidgetConditionalStyle();
+        conditionalStyle.setStyle(PropertiesFactory.eINSTANCE.createCustomWidgetStyle());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.CUSTOM_DESCRIPTION__CONDITIONAL_STYLES, conditionalStyle));
     }
 
 }
