@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.DynamicMappingFor;
 import org.eclipse.sirius.properties.GroupConditionalStyle;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
@@ -250,7 +251,9 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createSelectDescription()));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createDynamicMappingFor()));
+        DynamicMappingFor dynamicFor = PropertiesFactory.eINSTANCE.createDynamicMappingFor();
+        dynamicFor.getIfs().add(PropertiesFactory.eINSTANCE.createDynamicMappingIf());
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, dynamicFor));
 
         newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.GROUP_DESCRIPTION__CONTROLS, PropertiesFactory.eINSTANCE.createTextAreaDescription()));
 
