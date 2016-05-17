@@ -117,7 +117,7 @@
         <input type="org.eclipse.sirius.properties.HyperlinkWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySectionSpec"
                id="properties.section.labelWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labelwidgetstyle.LabelWidgetStyleFontFormatFilter"
                afterSection="properties.section.labelWidgetStyle.ForegroundColor"
@@ -156,7 +156,7 @@
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySectionSpec"
                id="properties.section.textWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontFormatFilter"
                afterSection="properties.section.textWidgetStyle.ForegroundColor"
@@ -195,7 +195,7 @@
         <input type="org.eclipse.sirius.properties.TextWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontFormatPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.widgetstyle.WidgetStyleLabelFontFormatPropertySectionSpec"
                id="properties.section.widgetStyle.LabelFontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.widgetstyle.WidgetStyleLabelFontFormatFilter"
                afterSection="properties.section.widgetStyle.LabelForegroundColor"
