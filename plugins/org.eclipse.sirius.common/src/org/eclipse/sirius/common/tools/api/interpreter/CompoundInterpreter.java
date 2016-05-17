@@ -42,7 +42,6 @@ import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -542,7 +541,12 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
 
         @Override
         public Object evaluate(final EObject target, final String expression) throws EvaluationException {
-            return Objects.firstNonNull(evaluateInteger(target, expression), expression);
+            Object result = evaluateInteger(target, expression);
+            if (result != null) {
+                return result;
+            } else {
+                return expression;
+            }
         }
 
         @Override
