@@ -259,6 +259,22 @@
                      class="AbstractVariable">
                </target>
             </constraint>
+            <constraint
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.RepresentationDescriptionMetaModelsConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.metaModelConstraint"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="%constraint.metaModels.name"
+                  severity="WARNING"
+                  statusCode="1">
+               <description>
+                  %constraint.metaModels.description
+               </description>
+               <message>
+                  %constraint.metaModels.message
+               </message>
+            </constraint>
          </constraints>
       </constraintProvider>
    </extension>

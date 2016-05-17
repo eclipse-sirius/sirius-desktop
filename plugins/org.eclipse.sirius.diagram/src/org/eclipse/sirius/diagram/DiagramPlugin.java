@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -171,6 +175,16 @@ public class DiagramPlugin extends EMFPlugin {
                 throwable.printStackTrace();
             }
             // CHECKSTYLE:ON
+        }
+
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+
+            // Sets the validator for these model.
+            EValidator.Registry.INSTANCE.put(DiagramPackage.eINSTANCE, new EValidatorAdapter());
+            EValidator.Registry.INSTANCE.put(DescriptionPackage.eINSTANCE, new EValidatorAdapter());
+            EValidator.Registry.INSTANCE.put(ToolPackage.eINSTANCE, new EValidatorAdapter());
         }
 
         @Override
