@@ -175,7 +175,6 @@ Most public methods of the following interfaces are available as services on any
 * @org.eclipse.emf.edit.provider.IItemLabelProvider@
 * @org.eclipse.emf.edit.provider.IItemColorProvider@
 * @org.eclipse.emf.edit.provider.IItemFontProvider@
-* @org.eclipse.emf.edit.provider.IItemStyledLabelProvider@ (only available in EMF 2.10 and later)
 * @org.eclipse.emf.edit.provider.IStructuredItemContentProvider@
 * @org.eclipse.emf.edit.provider.ITreeItemContentProvider@
 * @org.eclipse.emf.edit.provider.ITableItemLabelProvider@

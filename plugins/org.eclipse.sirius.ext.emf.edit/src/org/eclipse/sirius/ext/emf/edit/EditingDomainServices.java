@@ -32,7 +32,6 @@ import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IItemStyledLabelProvider;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemColorProvider;
 import org.eclipse.emf.edit.provider.ITableItemFontProvider;
@@ -65,8 +64,6 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * <li>{@link org.eclipse.emf.edit.provider.IItemLabelProvider}</li>
  * <li>{@link org.eclipse.emf.edit.provider.IItemColorProvider}</li>
  * <li>{@link org.eclipse.emf.edit.provider.IItemFontProvider}</li>
- * <li>{@link org.eclipse.emf.edit.provider.IItemStyledLabelProvider} (only
- * available in EMF 2.10 and later)</li>
  * <li>{@link org.eclipse.emf.edit.provider.IStructuredItemContentProvider}</li>
  * <li>{@link org.eclipse.emf.edit.provider.ITreeItemContentProvider}</li>
  * <li>{@link org.eclipse.emf.edit.provider.ITableItemLabelProvider}</li>
@@ -253,21 +250,6 @@ public class EditingDomainServices {
         IItemFontProvider fp = getFontProvider(self);
         if (fp != null) {
             return fp.getFont(self);
-        } else {
-            return null;
-        }
-    }
-
-    // Services from IItemStyledLabelProvider (EMF 2.10+)
-
-    public IItemStyledLabelProvider getStyledLabelProvider(EObject self) {
-        return getAdapter(self, IItemStyledLabelProvider.class);
-    }
-
-    public Object getStyledProviderStyledText(EObject self) {
-        IItemStyledLabelProvider slp = getStyledLabelProvider(self);
-        if (slp != null) {
-            return slp.getStyledText(self);
         } else {
             return null;
         }
