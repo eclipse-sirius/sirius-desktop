@@ -36,7 +36,6 @@ import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
-import org.eclipse.gmf.runtime.diagram.ui.OffscreenEditPartFactory;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
@@ -56,12 +55,14 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation;
@@ -136,8 +137,10 @@ public class ValidateAction extends Action {
      * @was-generated
      */
     public static void runNonUIValidation(View view) {
-        DiagramEditPart diagramEditPart = OffscreenEditPartFactory.getInstance().createDiagramEditPart(view.getDiagram());
+        Shell shell = new Shell();
+        DiagramEditPart diagramEditPart = OffscreenEditPartFactory.getInstance().createDiagramEditPart(view.getDiagram(), shell);
         runValidation(diagramEditPart, view);
+        shell.dispose();
     }
 
     /**
@@ -235,6 +238,7 @@ public class ValidateAction extends Action {
     /**
      * @was-generated-NOT
      */
+    @SuppressWarnings("rawtypes")
     private static void createMarkers(IFile target, IStatus validationStatus, DiagramEditPart diagramEditPart) {
         if (validationStatus.isOK()) {
             return;
@@ -291,6 +295,7 @@ public class ValidateAction extends Action {
     /**
      * @was-generated-NOT
      */
+    @SuppressWarnings("rawtypes")
     private static void createMarkers(IFile target, Diagnostic emfValidationStatus, DiagramEditPart diagramEditPart) {
         if (emfValidationStatus.getSeverity() == Diagnostic.OK) {
             return;
@@ -304,7 +309,8 @@ public class ValidateAction extends Action {
             if (data != null && !data.isEmpty() && data.get(0) instanceof EObject) {
                 EObject element = (EObject) data.get(0);
                 View view = getCorrespondingView(element, diagramEditPart);
-                addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(), diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
+                addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(),
+                        diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
             }
         }
     }
@@ -367,6 +373,7 @@ public class ValidateAction extends Action {
     /**
      * @was-generated
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private static Set collectTargetElements(IStatus status, Set targetElementCollector, List allConstraintStatuses) {
         if (status instanceof IConstraintStatus) {
             targetElementCollector.add(((IConstraintStatus) status).getTarget());
@@ -384,6 +391,7 @@ public class ValidateAction extends Action {
     /**
      * @was-generated
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private static Set collectTargetElements(Diagnostic diagnostic, Set targetElementCollector, List allDiagnostics) {
         List data = diagnostic.getData();
         EObject target = null;
