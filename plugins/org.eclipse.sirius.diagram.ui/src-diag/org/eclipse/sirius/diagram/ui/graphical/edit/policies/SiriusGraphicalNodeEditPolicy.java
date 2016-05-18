@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -762,12 +762,11 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             INodeEditPart sourceEditPart = (INodeEditPart) request.getSourceEditPart();
 
             // Location relative to the source: Position where the user
-            // clicked, but snap to grid if this feature is enabled
+            // clicked, but snapped to grid if this feature is enabled
             Point sourceLocation = getEdgeLocationSource(request);
             // Location relative to the target: Position where the user
-            // clicked, but snap to grid if this feature is enabled
+            // clicked, but snapped to grid if this feature is enabled
             Point targetLocation = getConvertedLocation(request);
-
             EdgeLayoutData edgeLayoutData;
             if (GraphicalHelper.isSnapToGridEnabled(sourceEditPart)) {
                 edgeLayoutData = getEdgeLayoutDataWithSnapToGrid(request, sourceEditPart, targetEP, sourceLocation, targetLocation);
@@ -994,13 +993,32 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     private Point getConvertedLocation(final CreateRequest request) {
-        return getConvertedLocation(request.getLocation().getCopy(), getHost());
+        return getConvertedLocation(request.getLocation().getCopy(), getHost(), false);
     }
 
-    private Point getConvertedLocation(Point pointToConvert, EditPart referencePart) {
+    /**
+     * Convert a location to a location relative to its parent (
+     * <code>referencePart</code>).
+     * 
+     * @param pointToConvert
+     *            The point to convert
+     * @param referencePart
+     *            The reference edit part.
+     * @param feedbackCoordinates
+     *            true if the pointToConvert is from feedback, false otherwise
+     *            (coordinates from request). The coordinates from feedback must
+     *            be first adapted to remove diagram scrollbar to retrieve same
+     *            coordinates as from request.
+     * @return The converted point.
+     */
+    private Point getConvertedLocation(Point pointToConvert, EditPart referencePart, boolean feedbackCoordinates) {
         Point realLocation;
         if (pointToConvert != null && referencePart instanceof GraphicalEditPart) {
             final IFigure fig = ((GraphicalEditPart) referencePart).getFigure();
+            if (feedbackCoordinates) {
+                // Remove diagram scrollbar
+                pointToConvert.translate(GraphicalHelper.getScrollSize((GraphicalEditPart) referencePart).negate());
+            }
             fig.translateToRelative(pointToConvert);
             final Point containerLocation = fig.getBounds().getLocation();
             realLocation = new Point(pointToConvert.x - containerLocation.x, pointToConvert.y - containerLocation.y);
@@ -1122,10 +1140,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                                     || connectionFeedback.getPoints().getFirstPoint().y == connectionFeedback.getPoints().getLastPoint().y))) {
                         // Override edgeLayoutData
                         Point sourceLocationFromFeedback = connectionFeedback.getPoints().getFirstPoint();
-                        sourceLocationFromFeedback = getConvertedLocation(sourceLocationFromFeedback, request.getSourceEditPart());
+                        sourceLocationFromFeedback = getConvertedLocation(sourceLocationFromFeedback, request.getSourceEditPart(), true);
                         if (sourceLocationFromFeedback != null) {
                             Point targetLocationFromFeedback = connectionFeedback.getPoints().getLastPoint();
-                            targetLocationFromFeedback = getConvertedLocation(targetLocationFromFeedback, request.getTargetEditPart());
+                            targetLocationFromFeedback = getConvertedLocation(targetLocationFromFeedback, request.getTargetEditPart(), true);
                             if (GraphicalHelper.isSnapToGridEnabled(request.getSourceEditPart())) {
                                 feedbackEdgeLayoutData = getEdgeLayoutDataWithSnapToGrid(request, (INodeEditPart) request.getSourceEditPart(), (INodeEditPart) request.getTargetEditPart(),
                                         sourceLocationFromFeedback, targetLocationFromFeedback);
