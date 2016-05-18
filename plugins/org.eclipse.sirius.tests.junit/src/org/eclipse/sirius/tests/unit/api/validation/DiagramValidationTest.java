@@ -22,8 +22,10 @@ import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -36,6 +38,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
@@ -125,6 +128,13 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
             found = message != null && message.indexOf(ECLASS_NAME) > -1;
         }
         assertTrue("Marker created by validation was not found", found);
+
+        int numberOfShellBefore = getShellsNumber();
+        if (editorPart instanceof IDiagramWorkbenchPart) {
+            final IDiagramWorkbenchPart part = (IDiagramWorkbenchPart) editorPart;
+            ValidateAction.runNonUIValidation(part.getDiagram());
+        }
+        assertEquals("A new shell has not been disposed.", numberOfShellBefore, getShellsNumber());
 
         verify(logListener);
     }
@@ -257,6 +267,17 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         }
 
         assertEquals("The semantic element '" + semanticName + "' does not have the expected SemanticValidationRule markers", expectedNbSemanticMarker, semanticMarkers);
+    }
+
+    private int getShellsNumber() {
+        RunnableWithResult<Integer> withResult = new RunnableWithResult.Impl<Integer>() {
+            @Override
+            public void run() {
+                setResult(Display.getDefault().getShells().length);
+            }
+        };
+        Display.getDefault().syncExec(withResult);
+        return withResult.getResult();
     }
 
     @Override
