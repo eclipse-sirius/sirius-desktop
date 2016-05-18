@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.base.Option;
@@ -123,6 +124,72 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
      */
     public void testBorderNodesAreAlignedAnotherCase() {
         testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCase", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 110, true);
+    }
+
+    /**
+     * Same as {@link #testBorderNodesAreAligned()} but with scroll bar on
+     * diagram.
+     */
+    public void testBorderNodesAreAlignedWithScrollOnDiagram() {
+        testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCaseWithScroll", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 109, true);
+    }
+
+    /**
+     * Same as {@link #testBorderNodesAreAlignedAnotherCase()} but with scroll
+     * bar on diagram and zoom at 50%.
+     */
+    public void testBorderNodesAreAlignedWithScrollOnDiagramAndWithZoom() {
+        testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCaseWithScroll", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 110, true, ZoomLevel.ZOOM_50);
+    }
+
+    /**
+     * Case of edge created between 2 border nodes of container with scroll.
+     */
+    public void testBorderNodesOnBorderNodeOnContainerAreAlignedWithScrollOnDiagram() {
+        testBorderNodesAreAligned("TC2185 Bordered Node on Container", "Bordered Node on Container With Scroll", "C", AbstractDiagramBorderNodeEditPart.class, 100, "D",
+                AbstractDiagramBorderNodeEditPart.class, 108, false);
+    }
+
+    /**
+     * Case of edge created between 2 nodes in container with scroll.
+     */
+    public void testBorderNodesOnNodeInContainerAreAlignedWithScrollOnDiagramAndContainer() {
+        testBorderNodesAreAligned("TC2185 Node in Container", "Node in Container With Scroll", "C", AbstractDiagramNodeEditPart.class, 100, "D", AbstractDiagramNodeEditPart.class, 109, false,
+                ZoomLevel.ZOOM_100, Options.newSome("OtherClass"));
+    }
+
+    /**
+     * Case of edge created between 2 containers in container with scroll.
+     */
+    public void testBorderNodesOnContainerInContainerAreAlignedWithScrollOnDiagramAndContainer() {
+        testBorderNodesAreAligned("TC2185 Container in Container", "Container in Container With Scroll", "C", AbstractDiagramContainerEditPart.class, 100, "D", AbstractDiagramContainerEditPart.class,
+                109, false, ZoomLevel.ZOOM_100, Options.newSome("OtherClass"));
+    }
+
+    /**
+     * Case of edge created between 2 border nodes of container with scroll and
+     * zoom.
+     */
+    public void testBorderNodesOnBorderNodeOnContainerAreAlignedWithScrollOnDiagramAndZoom() {
+        testBorderNodesAreAligned("TC2185 Bordered Node on Container", "Bordered Node on Container With Scroll", "C", AbstractDiagramBorderNodeEditPart.class, 100, "D",
+                AbstractDiagramBorderNodeEditPart.class, 108, false, ZoomLevel.ZOOM_50);
+    }
+
+    /**
+     * Case of edge created between 2 nodes in container with scroll and zoom.
+     */
+    public void testBorderNodesOnNodeInContainerAreAlignedWithScrollOnDiagramAndContainerAndZoom() {
+        testBorderNodesAreAligned("TC2185 Node in Container", "Node in Container With Scroll", "C", AbstractDiagramNodeEditPart.class, 100, "D", AbstractDiagramNodeEditPart.class, 109, false,
+                ZoomLevel.ZOOM_50, Options.newSome("OtherClass"));
+    }
+
+    /**
+     * Case of edge created between 2 containers in container with scroll and
+     * zoom.
+     */
+    public void testBorderNodesOnContainerInContainerAreAlignedWithScrollOnDiagramAndContainerAndZoom() {
+        testBorderNodesAreAligned("TC2185 Container in Container", "Container in Container With Scroll", "C", AbstractDiagramContainerEditPart.class, 100, "D", AbstractDiagramContainerEditPart.class,
+                109, false, ZoomLevel.ZOOM_50, Options.newSome("OtherClass"));
     }
 
     /**
