@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 Obeo.
+ * Copyright (c) 2014, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,15 +100,16 @@ public class NewModelingProjectCreationWizardPage extends WizardNewProjectCreati
      */
     private boolean resourceExistsInFolderLocation(IFileStore store, String name, File folder) {
         boolean projectNameExistsInSameCase = false;
-        if (folder.listFiles() != null) {
-            for (int i = 0; i < folder.listFiles().length && !projectNameExistsInSameCase; i++) {
-                if (name != null && folder.listFiles()[i].getName().equals(getProjectName())) {
-                    String msg = MessageFormat.format(Messages.localstore_fileExists, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
+        File[] files = folder.listFiles();
+        if (files != null) {
+            for (int i = 0; i < files.length && !projectNameExistsInSameCase; i++) {
+                if (name != null && files[i].getName().equals(getProjectName())) {
+                    String msg = MessageFormat.format(Messages.localstore_fileExists, new Path(folder.toString()).append(files[i].getName()).toOSString());
                     setMessage(msg, 2);
                     projectNameExistsInSameCase = true;
                 } else {
-                    if (name != null && folder.listFiles()[i].getName().toUpperCase().equals(getProjectName().toUpperCase()) && isMacOrWindowsOS()) {
-                        String msg = MessageFormat.format(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
+                    if (name != null && files[i].getName().toUpperCase().equals(getProjectName().toUpperCase()) && isMacOrWindowsOS()) {
+                        String msg = MessageFormat.format(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).append(files[i].getName()).toOSString());
                         setErrorMessage(msg);
                         return true;
                     }
