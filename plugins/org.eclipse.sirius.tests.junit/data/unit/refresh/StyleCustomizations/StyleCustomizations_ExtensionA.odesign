@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="StyleCustomizations_ExtensionA" version="10.0.0.201505222000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="StyleCustomizations_ExtensionA" version="11.0.0.201601261200">
   <ownedViewpoints name="StyleCustomizations_ExtensionA" modelFileExtension="ecore">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramDescription_ExtA" viewpointURI="viewpoint:/(.*)/StyleCustomizations" representationName="DiagramDescription">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="ExtA">
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="true">
@@ -21,7 +22,7 @@
           <reusedContainerMappings href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
           <reusedContainerMappings href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']"/>
           <conditionnalStyles predicateExpression="true">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

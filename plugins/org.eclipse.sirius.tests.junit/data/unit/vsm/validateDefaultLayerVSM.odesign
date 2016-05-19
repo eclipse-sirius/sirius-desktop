@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" name="empty" version="10.0.0.201411061000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" name="empty" version="11.0.0.201601261200">
   <ownedViewpoints name="V">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D1" showOnStartup="true" domainClass="ecore.EClass"/>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D1" showOnStartup="true" domainClass="ecore.EClass">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D2" domainClass="ecore.EObject">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" name="S1" domainClass="ecore.EAttribute" endsOrdering="[thisEObject/]" instanceRolesOrdering="[thisEObject/]">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" name="S2" domainClass="ecore.EAnnotation" endsOrdering="[thisEObject/]" instanceRolesOrdering="[thisEObject/]"/>
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" name="S2" domainClass="ecore.EAnnotation" endsOrdering="[thisEObject/]" instanceRolesOrdering="[thisEObject/]">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

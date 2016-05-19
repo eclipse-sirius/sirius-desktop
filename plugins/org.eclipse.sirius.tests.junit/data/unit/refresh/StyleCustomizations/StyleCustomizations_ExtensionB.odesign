@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="StyleCustomizations_ExtensionB" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="StyleCustomizations_ExtensionB" version="11.0.0.201601261200">
   <ownedViewpoints name="StyleCustomizations_ExtensionB" modelFileExtension="ecore">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramDescription_ExtB" viewpointURI="viewpoint:/(.*)/StyleCustomizations" representationName="DiagramDescription">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="ExtB">
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="true">

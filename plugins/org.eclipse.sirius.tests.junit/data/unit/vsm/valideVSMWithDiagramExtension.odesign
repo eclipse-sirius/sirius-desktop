@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="11.0.0.201601261200">
   <ownedViewpoints name="VP-3834_Viewpoint" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="aql:self.eContainer() = null">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
@@ -98,6 +98,7 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP-3834_DiagramExtension" viewpointURI="viewpoint:/VP-3834/VP-3834_Viewpoint" representationName="VP-3834_Diagram">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="L2">
         <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingTer" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']">
           <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">

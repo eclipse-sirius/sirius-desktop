@@ -2,6 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="invalidVariableNameVSM" version="11.0.0.201601261200">
   <ownedViewpoints name="invalidVariableNameVSM">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='invalidVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='class']" targetMapping="//@ownedViewpoints[name='invalidVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='class']" targetFinderExpression="feature:eReferences">
           <style sizeComputationExpression="2">
@@ -47,6 +48,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="table" domainClass="EClass">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <ownedLineMappings name="Line" domainClass="EClass"/>
       <ownedColumnMappings name="Column" featureName="feature:eAllContents">
         <directEdit>

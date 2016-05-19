@@ -10,21 +10,33 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.vsm;
 
+import java.text.MessageFormat;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
@@ -36,6 +48,8 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  */
 public class VSMValidationTest extends SiriusDiagramTestCase {
+
+    private static final String VALID_VSM = "valideVSM.odesign";
 
     private Group modeler;
 
@@ -55,12 +69,15 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerWithAllKindOfError;
 
+    private TransactionalEditingDomain editingDomain;
+
     @Override
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
         EclipseTestsSupportHelper.INSTANCE.createProject("Project");
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, "/images/es.png", "/Project/es.png");
-        modeler = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSM.odesign", true), set);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, "/data/unit/vsm/" + VALID_VSM, "/Project/" + VALID_VSM);
+        modeler = (Group) ModelUtils.load(URI.createPlatformResourceURI("/Project/" + VALID_VSM, true), set);
         modelerWithNoStyle = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMWithNoStyle.odesign", true), set);
         modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
@@ -80,6 +97,29 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = diagnostician.validate(modeler);
         assertEquals("The VSM is valid, it should not have popup error message", Diagnostic.OK, diagnostic.getSeverity());
+    }
+
+    /**
+     * Test that there is a warning if meta-models are not declared on
+     * RepresentationDescription.
+     */
+    public void testValidationMetaModelsVSM() {
+        editingDomain = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE), modeler.eResource().getResourceSet());
+
+        CommandStack commandStack = editingDomain.getCommandStack();
+        RepresentationDescription repDescription = modeler.getOwnedViewpoints().iterator().next().getOwnedRepresentations().iterator().next();
+        EList<EPackage> metamodel = repDescription.getMetamodel();
+        Command removeMMCommand = RemoveCommand.create(editingDomain, repDescription, DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, metamodel);
+        assertTrue(removeMMCommand.canExecute());
+        commandStack.execute(removeMMCommand);
+
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(repDescription);
+        List<Diagnostic> children = diagnostic.getChildren();
+        String message = "Bad diagnostic {0} on the RepresentationDescription " + repDescription.getName();
+        assertEquals(MessageFormat.format(message, "number"), 1, children.size());
+        assertEquals(MessageFormat.format(message, "severity"), Diagnostic.WARNING, diagnostic.getSeverity());
+        assertEquals(MessageFormat.format(message, "message"), Messages.RepresentationDescriptionMetaModelsConstraint_noMetaModel, children.get(0).getMessage());
     }
 
     /**
@@ -312,5 +352,9 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     @Override
     public void tearDown() {
         modeler = null;
+        if (editingDomain != null) {
+            editingDomain.dispose();
+            editingDomain = null;
+        }
     }
 }
