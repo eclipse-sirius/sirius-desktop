@@ -34,8 +34,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  * </p>
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getBodyExpression
- * <em>Body Expression</em>}</li>
+ * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getValueExpression
+ * <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl#getStyle
  * <em>Style</em>}</li>
  * <li>
@@ -47,31 +47,31 @@ import org.eclipse.sirius.properties.PropertiesPackage;
  */
 public class LabelDescriptionImpl extends WidgetDescriptionImpl implements LabelDescription {
     /**
-     * The default value of the '{@link #getBodyExpression()
-     * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getValueExpression()
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see #getBodyExpression()
+     *
+     * @see #getValueExpression()
      * @generated
      * @ordered
      */
-    protected static final String BODY_EXPRESSION_EDEFAULT = null;
+    protected static final String VALUE_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getBodyExpression()
-     * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getValueExpression()
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see #getBodyExpression()
+     *
+     * @see #getValueExpression()
      * @generated
      * @ordered
      */
-    protected String bodyExpression = LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT;
+    protected String valueExpression = LabelDescriptionImpl.VALUE_EXPRESSION_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStyle() <em>Style</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStyle()
      * @generated
      * @ordered
@@ -91,7 +91,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LabelDescriptionImpl() {
@@ -100,7 +100,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,31 +110,31 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
-    public String getBodyExpression() {
-        return bodyExpression;
+    public String getValueExpression() {
+        return valueExpression;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
-    public void setBodyExpression(String newBodyExpression) {
-        String oldBodyExpression = bodyExpression;
-        bodyExpression = newBodyExpression;
+    public void setValueExpression(String newValueExpression) {
+        String oldValueExpression = valueExpression;
+        valueExpression = newValueExpression;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION, oldBodyExpression, bodyExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION, oldValueExpression, valueExpression));
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetStyle(LabelWidgetStyle newStyle, NotificationChain msgs) {
@@ -163,7 +163,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -187,7 +187,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -200,7 +200,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,14 +216,14 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
-            return getBodyExpression();
+        case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
+            return getValueExpression();
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
             return getStyle();
         case PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES:
@@ -234,15 +234,15 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
-            setBodyExpression((String) newValue);
+        case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
+            setValueExpression((String) newValue);
             return;
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
             setStyle((LabelWidgetStyle) newValue);
@@ -257,14 +257,14 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
-            setBodyExpression(LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT);
+        case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
+            setValueExpression(LabelDescriptionImpl.VALUE_EXPRESSION_EDEFAULT);
             return;
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
             setStyle((LabelWidgetStyle) null);
@@ -278,14 +278,14 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
-            return LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT == null ? bodyExpression != null : !LabelDescriptionImpl.BODY_EXPRESSION_EDEFAULT.equals(bodyExpression);
+        case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
+            return LabelDescriptionImpl.VALUE_EXPRESSION_EDEFAULT == null ? valueExpression != null : !LabelDescriptionImpl.VALUE_EXPRESSION_EDEFAULT.equals(valueExpression);
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:
             return style != null;
         case PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES:
@@ -296,7 +296,7 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,8 +306,8 @@ public class LabelDescriptionImpl extends WidgetDescriptionImpl implements Label
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (bodyExpression: "); //$NON-NLS-1$
-        result.append(bodyExpression);
+        result.append(" (valueExpression: "); //$NON-NLS-1$
+        result.append(valueExpression);
         result.append(')');
         return result.toString();
     }

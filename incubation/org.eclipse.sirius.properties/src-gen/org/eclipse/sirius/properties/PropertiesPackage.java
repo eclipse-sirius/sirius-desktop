@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.properties.PropertiesFactory
  * @model kind="package"
  * @generated
@@ -37,21 +37,21 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 public interface PropertiesPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "properties"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/properties/1.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "properties"; //$NON-NLS-1$
@@ -59,7 +59,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     PropertiesPackage eINSTANCE = org.eclipse.sirius.properties.impl.PropertiesPackageImpl.init();
@@ -69,7 +69,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl
      * <em>View Extension Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getViewExtensionDescription()
      * @generated
@@ -97,7 +97,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Pages</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -106,7 +106,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Groups</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -116,7 +116,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>View Extension Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -127,7 +127,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl
      * <em>Page Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.PageDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPageDescription()
      * @generated
@@ -164,7 +164,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidate Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -173,7 +173,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -191,7 +191,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -200,7 +200,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Page Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -211,7 +211,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl
      * <em>Page Validation Set Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPageValidationSetDescription()
      * @generated
@@ -221,7 +221,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Validation Rules</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -231,7 +231,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Page Validation Set Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -242,7 +242,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl
      * <em>Property Validation Rule</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPropertyValidationRule()
      * @generated
@@ -288,7 +288,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Audits</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -297,7 +297,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Fixes</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -316,7 +316,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Property Validation Rule</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -327,7 +327,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl
      * <em>Group Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.GroupDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupDescription()
      * @generated
@@ -364,7 +364,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Candidate Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -373,7 +373,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -382,7 +382,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Controls</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -391,7 +391,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -400,7 +400,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -409,7 +409,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -418,7 +418,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Group Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -429,7 +429,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl
      * <em>Group Validation Set Description</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.GroupValidationSetDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupValidationSetDescription()
      * @generated
@@ -439,7 +439,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Semantic Validation Rules</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -448,7 +448,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Property Validation Rules</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -458,7 +458,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Group Validation Set Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -469,7 +469,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ControlDescriptionImpl
      * <em>Control Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ControlDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getControlDescription()
      * @generated
@@ -488,7 +488,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Control Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -499,7 +499,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
      * <em>Container Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getContainerDescription()
      * @generated
@@ -518,7 +518,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Controls</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -527,7 +527,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -536,7 +536,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Container Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -547,7 +547,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
      * <em>Layout Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLayoutDescription()
      * @generated
@@ -557,7 +557,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Layout Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -568,7 +568,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
      * <em>Fill Layout Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFillLayoutDescription()
      * @generated
@@ -588,7 +588,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Fill Layout Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -599,7 +599,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
      * <em>Grid Layout Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGridLayoutDescription()
      * @generated
@@ -609,7 +609,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Number Of Columns</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -618,7 +618,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Make Columns With Equal Width</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -628,7 +628,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Grid Layout Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -639,7 +639,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl
      * <em>Widget Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.WidgetDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetDescription()
      * @generated
@@ -676,7 +676,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -685,7 +685,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Widget Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -696,7 +696,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl
      * <em>Text Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.TextDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextDescription()
      * @generated
@@ -733,7 +733,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -751,7 +751,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -760,7 +760,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -769,7 +769,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -778,7 +778,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Text Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -789,7 +789,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
      * <em>Button Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonDescription()
      * @generated
@@ -826,7 +826,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -835,7 +835,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Button Label Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -844,7 +844,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -853,7 +853,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -862,7 +862,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -871,7 +871,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Button Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -882,7 +882,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl
      * <em>Label Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.LabelDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
      * @generated
@@ -919,25 +919,25 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
     int LABEL_DESCRIPTION__IS_ENABLED_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION__IS_ENABLED_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Body Expression</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Value Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int LABEL_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.WIDGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -946,7 +946,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -955,7 +955,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Label Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -966,7 +966,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl
      * <em>Checkbox Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxDescription()
      * @generated
@@ -1003,7 +1003,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1021,7 +1021,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1030,7 +1030,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1039,7 +1039,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1048,7 +1048,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Checkbox Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1059,7 +1059,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl
      * <em>Select Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.SelectDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
      * @generated
@@ -1096,7 +1096,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1114,7 +1114,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1123,7 +1123,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1132,7 +1132,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Candidate Display Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1141,7 +1141,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1150,7 +1150,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1159,7 +1159,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Select Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1170,7 +1170,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl
      * <em>Dynamic Mapping For</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.DynamicMappingForImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
      * @generated
@@ -1198,7 +1198,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Domain Class Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1207,7 +1207,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ifs</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1216,7 +1216,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Dynamic Mapping For</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1227,7 +1227,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl
      * <em>Dynamic Mapping If</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.DynamicMappingIfImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingIf()
      * @generated
@@ -1237,7 +1237,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1246,7 +1246,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Widget</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1255,7 +1255,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Dynamic Mapping If</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1266,7 +1266,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
      * <em>Text Area Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
      * @generated
@@ -1303,7 +1303,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1321,7 +1321,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1330,7 +1330,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1339,7 +1339,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1357,7 +1357,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Text Area Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1368,7 +1368,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl
      * <em>Radio Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.RadioDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioDescription()
      * @generated
@@ -1405,7 +1405,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1423,7 +1423,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1432,7 +1432,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1441,7 +1441,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Candidate Display Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1450,7 +1450,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1459,7 +1459,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Number Of Columns</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1468,7 +1468,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1477,7 +1477,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Radio Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1488,7 +1488,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ReferenceDescriptionImpl
      * <em>Reference Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ReferenceDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceDescription()
      * @generated
@@ -1525,7 +1525,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1552,7 +1552,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Display Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1561,7 +1561,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>On Click Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1570,7 +1570,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Actions</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1579,7 +1579,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1588,7 +1588,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1597,7 +1597,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Reference Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1608,7 +1608,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl
      * <em>Operation Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.OperationDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getOperationDescription()
      * @generated
@@ -1618,7 +1618,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1627,7 +1627,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Operation Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1638,7 +1638,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl
      * <em>Custom Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CustomDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomDescription()
      * @generated
@@ -1675,7 +1675,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1684,7 +1684,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Custom Expressions</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1693,7 +1693,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Custom Operations</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1702,7 +1702,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1711,7 +1711,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1720,7 +1720,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Custom Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1731,7 +1731,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl
      * <em>Custom Expression</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CustomExpressionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomExpression()
      * @generated
@@ -1750,7 +1750,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Custom Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1759,7 +1759,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Custom Expression</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1770,7 +1770,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl
      * <em>Custom Operation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CustomOperationImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomOperation()
      * @generated
@@ -1789,7 +1789,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1798,7 +1798,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Custom Operation</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1809,7 +1809,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
      * <em>Hyperlink Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkDescription()
      * @generated
@@ -1846,7 +1846,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Is Enabled Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1864,7 +1864,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1873,7 +1873,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1882,7 +1882,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Conditional Styles</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1891,7 +1891,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Hyperlink Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1912,7 +1912,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1930,7 +1930,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1939,7 +1939,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1948,7 +1948,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1957,7 +1957,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Widget Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1968,7 +1968,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
      * <em>Text Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
      * @generated
@@ -1978,7 +1978,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1996,7 +1996,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2005,7 +2005,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2014,7 +2014,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2023,7 +2023,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2068,7 +2068,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Text Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2079,7 +2079,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
      * <em>Label Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
      * @generated
@@ -2089,7 +2089,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2107,7 +2107,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2116,7 +2116,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2125,7 +2125,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2134,7 +2134,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2179,7 +2179,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Label Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2190,7 +2190,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
      * <em>Checkbox Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
      * @generated
@@ -2200,7 +2200,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2218,7 +2218,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2227,7 +2227,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2236,7 +2236,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2245,7 +2245,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Checkbox Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2256,7 +2256,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
      * <em>Radio Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
      * @generated
@@ -2266,7 +2266,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2284,7 +2284,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2293,7 +2293,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2302,7 +2302,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2311,7 +2311,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Radio Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2322,7 +2322,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
      * <em>Button Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
      * @generated
@@ -2332,7 +2332,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2350,7 +2350,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2359,7 +2359,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2368,7 +2368,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2377,7 +2377,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Button Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2388,7 +2388,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
      * <em>Select Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
      * @generated
@@ -2398,7 +2398,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2416,7 +2416,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2425,7 +2425,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2434,7 +2434,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2443,7 +2443,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Select Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2454,7 +2454,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
      * <em>Custom Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
      * @generated
@@ -2464,7 +2464,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2482,7 +2482,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2491,7 +2491,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2500,7 +2500,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2509,7 +2509,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Custom Widget Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2520,7 +2520,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
      * <em>Widget Conditional Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
      * @generated
@@ -2532,7 +2532,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
      * <em>Text Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
      * @generated
@@ -2544,7 +2544,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
      * <em>Label Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
      * @generated
@@ -2556,7 +2556,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
      * <em>Checkbox Widget Conditional Style</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CheckboxWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetConditionalStyle()
      * @generated
@@ -2568,7 +2568,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
      * <em>Radio Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
      * @generated
@@ -2580,7 +2580,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
      * <em>Button Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
      * @generated
@@ -2592,7 +2592,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
      * <em>Select Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
      * @generated
@@ -2604,7 +2604,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
      * <em>Custom Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
      * @generated
@@ -2616,7 +2616,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ReferenceWidgetConditionalStyleImpl
      * <em>Reference Widget Conditional Style</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ReferenceWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetConditionalStyle()
      * @generated
@@ -2640,7 +2640,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
      * <em>Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetStyle()
      * @generated
@@ -2650,7 +2650,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2668,7 +2668,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2677,7 +2677,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2686,7 +2686,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2695,7 +2695,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Reference Widget Style</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2706,7 +2706,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
      * <em>Hyperlink Widget Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetStyle()
      * @generated
@@ -2716,7 +2716,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Name Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2734,7 +2734,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Background Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2743,7 +2743,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Foreground Color</b></em>'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2752,7 +2752,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Font Format</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2761,7 +2761,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2797,7 +2797,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Hyperlink Widget Style</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2836,7 +2836,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Font Name Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2872,7 +2872,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expanded By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2881,7 +2881,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Group Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2890,7 +2890,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2900,7 +2900,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Widget Conditional Style</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2909,7 +2909,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2918,7 +2918,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2928,7 +2928,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Text Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2937,7 +2937,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2946,7 +2946,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2956,7 +2956,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Label Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2965,7 +2965,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2974,7 +2974,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2984,7 +2984,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Checkbox Widget Conditional Style</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2993,7 +2993,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3002,7 +3002,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3012,7 +3012,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Radio Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3021,7 +3021,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3030,7 +3030,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3040,7 +3040,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Button Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3049,7 +3049,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3058,7 +3058,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3068,7 +3068,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Select Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3077,7 +3077,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3086,7 +3086,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3096,7 +3096,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Custom Widget Conditional Style</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3105,7 +3105,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3114,7 +3114,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3124,7 +3124,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Reference Widget Conditional Style</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3142,7 +3142,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3151,7 +3151,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Widget Action</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3162,7 +3162,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
      * <em>Hyperlink Widget Conditional Style</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetConditionalStyle()
      * @generated
@@ -3172,7 +3172,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3181,7 +3181,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3191,7 +3191,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Hyperlink Widget Conditional Style</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3202,7 +3202,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
      * <em>Group Conditional Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupConditionalStyle()
      * @generated
@@ -3212,7 +3212,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3221,7 +3221,7 @@ public interface PropertiesPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3231,7 +3231,7 @@ public interface PropertiesPackage extends EPackage {
      * The number of structural features of the '
      * <em>Group Conditional Style</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3242,7 +3242,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
      * @generated
@@ -3253,7 +3253,7 @@ public interface PropertiesPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.properties.ToggleStyle <em>Toggle Style</em>}'
      * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.ToggleStyle
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
      * @generated
@@ -3265,7 +3265,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TitleBarStyle
      * <em>Title Bar Style</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.properties.TitleBarStyle
      * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
      * @generated
@@ -3277,7 +3277,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription
      * <em>View Extension Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>View Extension Description</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription
      * @generated
@@ -3288,7 +3288,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription#getIdentifier()
      * @see #getViewExtensionDescription()
@@ -3300,7 +3300,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getMetamodels
      * <em>Metamodels</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Metamodels</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription#getMetamodels()
      * @see #getViewExtensionDescription()
@@ -3312,7 +3312,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getPages
      * <em>Pages</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Pages</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription#getPages()
@@ -3325,7 +3325,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.ViewExtensionDescription#getGroups
      * <em>Groups</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Groups</em>'.
      * @see org.eclipse.sirius.properties.ViewExtensionDescription#getGroups()
@@ -3350,7 +3350,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.PageDescription#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getIdentifier()
      * @see #getPageDescription()
@@ -3375,7 +3375,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.PageDescription#getDomainClass
      * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getDomainClass()
      * @see #getPageDescription()
@@ -3388,7 +3388,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
      * <em>Semantic Candidate Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Semantic Candidate Expression</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression()
@@ -3402,7 +3402,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Precondition Expression</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getPreconditionExpression()
@@ -3415,7 +3415,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.properties.PageDescription#getGroups
      * <em>Groups</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Groups</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getGroups()
      * @see #getPageDescription()
@@ -3427,7 +3427,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.PageDescription#getValidationSet
      * <em>Validation Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Validation Set</em>'.
      * @see org.eclipse.sirius.properties.PageDescription#getValidationSet()
@@ -3441,7 +3441,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageValidationSetDescription
      * <em>Page Validation Set Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Page Validation Set Description</em>'.
      * @see org.eclipse.sirius.properties.PageValidationSetDescription
@@ -3454,7 +3454,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PageValidationSetDescription#getSemanticValidationRules
      * <em>Semantic Validation Rules</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Semantic Validation Rules</em>'.
      * @see org.eclipse.sirius.properties.PageValidationSetDescription#getSemanticValidationRules()
@@ -3468,7 +3468,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.PropertyValidationRule
      * <em>Property Validation Rule</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Property Validation Rule</em>'.
      * @see org.eclipse.sirius.properties.PropertyValidationRule
      * @generated
@@ -3479,7 +3479,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.properties.PropertyValidationRule#getTargets
      * <em>Targets</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Targets</em>'.
      * @see org.eclipse.sirius.properties.PropertyValidationRule#getTargets()
      * @see #getPropertyValidationRule()
@@ -3503,7 +3503,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.GroupDescription#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getIdentifier()
      * @see #getGroupDescription()
@@ -3528,7 +3528,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.GroupDescription#getDomainClass
      * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Domain Class</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getDomainClass()
      * @see #getGroupDescription()
@@ -3541,7 +3541,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression
      * <em>Semantic Candidate Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Semantic Candidate Expression</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getSemanticCandidateExpression()
@@ -3555,7 +3555,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupDescription#getPreconditionExpression
      * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Precondition Expression</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getPreconditionExpression()
@@ -3568,7 +3568,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.GroupDescription#getControls
      * <em>Controls</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Controls</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getControls()
@@ -3581,7 +3581,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.GroupDescription#getValidationSet
      * <em>Validation Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Validation Set</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getValidationSet()
@@ -3594,7 +3594,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.GroupDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.GroupDescription#getStyle()
      * @see #getGroupDescription()
@@ -3621,7 +3621,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupValidationSetDescription
      * <em>Group Validation Set Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Group Validation Set Description</em>'.
      * @see org.eclipse.sirius.properties.GroupValidationSetDescription
@@ -3634,7 +3634,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupValidationSetDescription#getSemanticValidationRules
      * <em>Semantic Validation Rules</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Semantic Validation Rules</em>'.
      * @see org.eclipse.sirius.properties.GroupValidationSetDescription#getSemanticValidationRules()
@@ -3648,7 +3648,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupValidationSetDescription#getPropertyValidationRules
      * <em>Property Validation Rules</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Property Validation Rules</em>'.
      * @see org.eclipse.sirius.properties.GroupValidationSetDescription#getPropertyValidationRules()
@@ -3673,7 +3673,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.ControlDescription#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.ControlDescription#getIdentifier()
      * @see #getControlDescription()
@@ -3686,7 +3686,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ContainerDescription
      * <em>Container Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Container Description</em>'.
      * @see org.eclipse.sirius.properties.ContainerDescription
      * @generated
@@ -3697,7 +3697,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.ContainerDescription#getControls
      * <em>Controls</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Controls</em>'.
      * @see org.eclipse.sirius.properties.ContainerDescription#getControls()
@@ -3710,7 +3710,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.ContainerDescription#getLayout
      * <em>Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Layout</em>'.
      * @see org.eclipse.sirius.properties.ContainerDescription#getLayout()
      * @see #getContainerDescription()
@@ -3735,7 +3735,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.FillLayoutDescription
      * <em>Fill Layout Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Fill Layout Description</em>'.
      * @see org.eclipse.sirius.properties.FillLayoutDescription
      * @generated
@@ -3746,7 +3746,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.FillLayoutDescription#getOrientation
      * <em>Orientation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Orientation</em>'.
      * @see org.eclipse.sirius.properties.FillLayoutDescription#getOrientation()
      * @see #getFillLayoutDescription()
@@ -3759,7 +3759,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GridLayoutDescription
      * <em>Grid Layout Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Grid Layout Description</em>'.
      * @see org.eclipse.sirius.properties.GridLayoutDescription
      * @generated
@@ -3784,7 +3784,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth
      * <em>Make Columns With Equal Width</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Make Columns With Equal Width</em>'.
      * @see org.eclipse.sirius.properties.GridLayoutDescription#isMakeColumnsWithEqualWidth()
@@ -3822,7 +3822,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.WidgetDescription#getHelpExpression
      * <em>Help Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Help Expression</em>'.
      * @see org.eclipse.sirius.properties.WidgetDescription#getHelpExpression()
      * @see #getWidgetDescription()
@@ -3835,7 +3835,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetDescription#getIsEnabledExpression
      * <em>Is Enabled Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Is Enabled Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.WidgetDescription#getIsEnabledExpression()
@@ -3887,7 +3887,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.TextDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.TextDescription#getStyle()
      * @see #getTextDescription()
@@ -3926,7 +3926,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ButtonDescription#getButtonLabelExpression
      * <em>Button Label Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Button Label Expression</em>'.
      * @see org.eclipse.sirius.properties.ButtonDescription#getButtonLabelExpression()
@@ -3953,7 +3953,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.ButtonDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.ButtonDescription#getStyle()
      * @see #getButtonDescription()
@@ -3989,21 +3989,22 @@ public interface PropertiesPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
-     * <em>Body Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Body Expression</em>'.
-     * @see org.eclipse.sirius.properties.LabelDescription#getBodyExpression()
+     * {@link org.eclipse.sirius.properties.LabelDescription#getValueExpression
+     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.properties.LabelDescription#getValueExpression()
      * @see #getLabelDescription()
      * @generated
      */
-    EAttribute getLabelDescription_BodyExpression();
+    EAttribute getLabelDescription_ValueExpression();
 
     /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.LabelDescription#getStyle()
      * @see #getLabelDescription()
@@ -4030,7 +4031,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CheckboxDescription
      * <em>Checkbox Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Checkbox Description</em>'.
      * @see org.eclipse.sirius.properties.CheckboxDescription
      * @generated
@@ -4068,7 +4069,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.CheckboxDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.CheckboxDescription#getStyle()
      * @see #getCheckboxDescription()
@@ -4134,7 +4135,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Candidates Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression()
@@ -4148,7 +4149,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression
      * <em>Candidate Display Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Candidate Display Expression</em>'.
      * @see org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression()
@@ -4161,7 +4162,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.SelectDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.SelectDescription#getStyle()
      * @see #getSelectDescription()
@@ -4199,7 +4200,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIterator
      * <em>Iterator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Iterator</em>'.
      * @see org.eclipse.sirius.properties.DynamicMappingFor#getIterator()
      * @see #getDynamicMappingFor()
@@ -4212,7 +4213,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression
      * <em>Domain Class Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Domain Class Expression</em>'.
      * @see org.eclipse.sirius.properties.DynamicMappingFor#getDomainClassExpression()
@@ -4225,7 +4226,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.DynamicMappingFor#getIfs
      * <em>Ifs</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Ifs</em>
      *         '.
      * @see org.eclipse.sirius.properties.DynamicMappingFor#getIfs()
@@ -4251,7 +4252,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.DynamicMappingIf#getPredicateExpression
      * <em>Predicate Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Predicate Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.DynamicMappingIf#getPredicateExpression()
@@ -4264,7 +4265,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.DynamicMappingIf#getWidget
      * <em>Widget</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Widget</em>'.
      * @see org.eclipse.sirius.properties.DynamicMappingIf#getWidget()
      * @see #getDynamicMappingIf()
@@ -4277,7 +4278,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextAreaDescription
      * <em>Text Area Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Text Area Description</em>'.
      * @see org.eclipse.sirius.properties.TextAreaDescription
      * @generated
@@ -4288,7 +4289,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.TextAreaDescription#getLineCount
      * <em>Line Count</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Line Count</em>'.
      * @see org.eclipse.sirius.properties.TextAreaDescription#getLineCount()
      * @see #getTextAreaDescription()
@@ -4340,7 +4341,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression
      * <em>Candidates Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Candidates Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.RadioDescription#getCandidatesExpression()
@@ -4354,7 +4355,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression
      * <em>Candidate Display Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Candidate Display Expression</em>'.
      * @see org.eclipse.sirius.properties.RadioDescription#getCandidateDisplayExpression()
@@ -4367,7 +4368,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.RadioDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.RadioDescription#getStyle()
      * @see #getRadioDescription()
@@ -4407,7 +4408,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ReferenceDescription
      * <em>Reference Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Reference Description</em>'.
      * @see org.eclipse.sirius.properties.ReferenceDescription
      * @generated
@@ -4418,7 +4419,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.ReferenceDescription#isMultiple
      * <em>Multiple</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Multiple</em>'.
      * @see org.eclipse.sirius.properties.ReferenceDescription#isMultiple()
      * @see #getReferenceDescription()
@@ -4470,7 +4471,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getActions
      * <em>Actions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Actions</em>'.
      * @see org.eclipse.sirius.properties.ReferenceDescription#getActions()
@@ -4483,7 +4484,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.ReferenceDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.ReferenceDescription#getStyle()
      * @see #getReferenceDescription()
@@ -4510,7 +4511,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.OperationDescription
      * <em>Operation Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Operation Description</em>'.
      * @see org.eclipse.sirius.properties.OperationDescription
      * @generated
@@ -4575,7 +4576,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.CustomDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.CustomDescription#getStyle()
      * @see #getCustomDescription()
@@ -4613,7 +4614,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.CustomExpression#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.CustomExpression#getIdentifier()
      * @see #getCustomExpression()
@@ -4650,7 +4651,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.CustomOperation#getIdentifier
      * <em>Identifier</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Identifier</em>'.
      * @see org.eclipse.sirius.properties.CustomOperation#getIdentifier()
      * @see #getCustomOperation()
@@ -4677,7 +4678,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.HyperlinkDescription
      * <em>Hyperlink Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Hyperlink Description</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkDescription
      * @generated
@@ -4715,7 +4716,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.HyperlinkDescription#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkDescription#getStyle()
      * @see #getHyperlinkDescription()
@@ -4741,7 +4742,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.WidgetStyle <em>Widget Style</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Widget Style</em>'.
      * @see org.eclipse.sirius.properties.WidgetStyle
      * @generated
@@ -4753,7 +4754,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression
      * <em>Label Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Label Font Name Expression</em>'.
      * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontNameExpression()
@@ -4766,7 +4767,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize
      * <em>Label Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Font Size</em>'.
      * @see org.eclipse.sirius.properties.WidgetStyle#getLabelFontSize()
      * @see #getWidgetStyle()
@@ -4779,7 +4780,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor
      * <em>Label Background Color</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '
      *         <em>Label Background Color</em>'.
      * @see org.eclipse.sirius.properties.WidgetStyle#getLabelBackgroundColor()
@@ -4793,7 +4794,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor
      * <em>Label Foreground Color</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '
      *         <em>Label Foreground Color</em>'.
      * @see org.eclipse.sirius.properties.WidgetStyle#getLabelForegroundColor()
@@ -4833,7 +4834,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontNameExpression
      * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Name Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontNameExpression()
@@ -4846,7 +4847,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontSize
      * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Size</em>'.
      * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontSize()
      * @see #getTextWidgetStyle()
@@ -4884,7 +4885,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.properties.TextWidgetStyle#getFontFormat
      * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Font Format</em>'.
      * @see org.eclipse.sirius.properties.TextWidgetStyle#getFontFormat()
      * @see #getTextWidgetStyle()
@@ -4909,7 +4910,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression
      * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Name Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontNameExpression()
@@ -4922,7 +4923,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize
      * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Size</em>'.
      * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontSize()
      * @see #getLabelWidgetStyle()
@@ -4960,7 +4961,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.properties.LabelWidgetStyle#getFontFormat
      * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Font Format</em>'.
      * @see org.eclipse.sirius.properties.LabelWidgetStyle#getFontFormat()
      * @see #getLabelWidgetStyle()
@@ -4973,7 +4974,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CheckboxWidgetStyle
      * <em>Checkbox Widget Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Checkbox Widget Style</em>'.
      * @see org.eclipse.sirius.properties.CheckboxWidgetStyle
      * @generated
@@ -5033,7 +5034,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetConditionalStyle
      * <em>Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.WidgetConditionalStyle
      * @generated
@@ -5045,7 +5046,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression
      * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Precondition Expression</em>'.
      * @see org.eclipse.sirius.properties.WidgetConditionalStyle#getPreconditionExpression()
@@ -5059,7 +5060,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle
      * <em>Text Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Text Widget Conditional Style</em>
      *         '.
      * @see org.eclipse.sirius.properties.TextWidgetConditionalStyle
@@ -5071,7 +5072,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.TextWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.TextWidgetConditionalStyle#getStyle()
      * @see #getTextWidgetConditionalStyle()
@@ -5084,7 +5085,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle
      * <em>Label Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Label Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.LabelWidgetConditionalStyle
@@ -5096,7 +5097,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.LabelWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.LabelWidgetConditionalStyle#getStyle()
      * @see #getLabelWidgetConditionalStyle()
@@ -5109,7 +5110,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
      * <em>Checkbox Widget Conditional Style</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Checkbox Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle
@@ -5121,7 +5122,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.CheckboxWidgetConditionalStyle#getStyle()
      * @see #getCheckboxWidgetConditionalStyle()
@@ -5134,7 +5135,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle
      * <em>Radio Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Radio Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.RadioWidgetConditionalStyle
@@ -5146,7 +5147,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.RadioWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.RadioWidgetConditionalStyle#getStyle()
      * @see #getRadioWidgetConditionalStyle()
@@ -5159,7 +5160,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
      * <em>Button Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Button Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.ButtonWidgetConditionalStyle
@@ -5171,7 +5172,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.ButtonWidgetConditionalStyle#getStyle()
      * @see #getButtonWidgetConditionalStyle()
@@ -5184,7 +5185,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle
      * <em>Select Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Select Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.SelectWidgetConditionalStyle
@@ -5196,7 +5197,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.SelectWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.SelectWidgetConditionalStyle#getStyle()
      * @see #getSelectWidgetConditionalStyle()
@@ -5209,7 +5210,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle
      * <em>Custom Widget Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Custom Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.CustomWidgetConditionalStyle
@@ -5221,7 +5222,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.CustomWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.CustomWidgetConditionalStyle#getStyle()
      * @see #getCustomWidgetConditionalStyle()
@@ -5234,7 +5235,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle
      * <em>Reference Widget Conditional Style</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Reference Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle
@@ -5246,7 +5247,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.ReferenceWidgetConditionalStyle#getStyle()
      * @see #getReferenceWidgetConditionalStyle()
@@ -5258,7 +5259,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.WidgetAction <em>Widget Action</em>}
      * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Widget Action</em>'.
      * @see org.eclipse.sirius.properties.WidgetAction
      * @generated
@@ -5297,7 +5298,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
      * <em>Hyperlink Widget Conditional Style</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Hyperlink Widget Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle
@@ -5309,7 +5310,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetConditionalStyle#getStyle()
      * @see #getHyperlinkWidgetConditionalStyle()
@@ -5322,7 +5323,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupConditionalStyle
      * <em>Group Conditional Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Group Conditional Style</em>'.
      * @see org.eclipse.sirius.properties.GroupConditionalStyle
      * @generated
@@ -5333,7 +5334,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.properties.GroupConditionalStyle#getStyle
      * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Style</em>'.
      * @see org.eclipse.sirius.properties.GroupConditionalStyle#getStyle()
      * @see #getGroupConditionalStyle()
@@ -5346,7 +5347,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.ReferenceWidgetStyle
      * <em>Reference Widget Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Reference Widget Style</em>'.
      * @see org.eclipse.sirius.properties.ReferenceWidgetStyle
      * @generated
@@ -5358,7 +5359,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle
      * <em>Hyperlink Widget Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Hyperlink Widget Style</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle
      * @generated
@@ -5370,7 +5371,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression
      * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Name Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontNameExpression()
@@ -5383,7 +5384,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize
      * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Size</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontSize()
      * @see #getHyperlinkWidgetStyle()
@@ -5408,7 +5409,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontFormat
      * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Font Format</em>'.
      * @see org.eclipse.sirius.properties.HyperlinkWidgetStyle#getFontFormat()
      * @see #getHyperlinkWidgetStyle()
@@ -5420,7 +5421,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.properties.GroupStyle <em>Group Style</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Group Style</em>'.
      * @see org.eclipse.sirius.properties.GroupStyle
      * @generated
@@ -5458,7 +5459,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.GroupStyle#getFontNameExpression
      * <em>Font Name Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Name Expression</em>
      *         '.
      * @see org.eclipse.sirius.properties.GroupStyle#getFontNameExpression()
@@ -5471,7 +5472,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.GroupStyle#getFontSize
      * <em>Font Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Font Size</em>'.
      * @see org.eclipse.sirius.properties.GroupStyle#getFontSize()
      * @see #getGroupStyle()
@@ -5483,7 +5484,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.GroupStyle#getBarStyle
      * <em>Bar Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Bar Style</em>'.
      * @see org.eclipse.sirius.properties.GroupStyle#getBarStyle()
      * @see #getGroupStyle()
@@ -5495,7 +5496,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.properties.GroupStyle#getToggleStyle
      * <em>Toggle Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Toggle Style</em>'.
      * @see org.eclipse.sirius.properties.GroupStyle#getToggleStyle()
      * @see #getGroupStyle()
@@ -5521,7 +5522,7 @@ public interface PropertiesPackage extends EPackage {
      * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * <em>FILL LAYOUT ORIENTATION</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>FILL LAYOUT ORIENTATION</em>'.
      * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
      * @generated
@@ -5532,7 +5533,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.properties.ToggleStyle <em>Toggle Style</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Toggle Style</em>'.
      * @see org.eclipse.sirius.properties.ToggleStyle
      * @generated
@@ -5543,7 +5544,7 @@ public interface PropertiesPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.properties.TitleBarStyle
      * <em>Title Bar Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Title Bar Style</em>'.
      * @see org.eclipse.sirius.properties.TitleBarStyle
      * @generated
@@ -5569,7 +5570,7 @@ public interface PropertiesPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -5578,7 +5579,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl
          * <em>View Extension Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getViewExtensionDescription()
          * @generated
@@ -5588,7 +5589,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute VIEW_EXTENSION_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Identifier();
@@ -5596,7 +5597,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Metamodels</b></em>'
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference VIEW_EXTENSION_DESCRIPTION__METAMODELS = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Metamodels();
@@ -5604,7 +5605,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Pages</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference VIEW_EXTENSION_DESCRIPTION__PAGES = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Pages();
@@ -5612,7 +5613,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Groups</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference VIEW_EXTENSION_DESCRIPTION__GROUPS = PropertiesPackage.eINSTANCE.getViewExtensionDescription_Groups();
@@ -5622,7 +5623,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.PageDescriptionImpl
          * <em>Page Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.PageDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPageDescription()
          * @generated
@@ -5632,7 +5633,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute PAGE_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getPageDescription_Identifier();
@@ -5640,7 +5641,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute PAGE_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getPageDescription_LabelExpression();
@@ -5648,7 +5649,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute PAGE_DESCRIPTION__DOMAIN_CLASS = PropertiesPackage.eINSTANCE.getPageDescription_DomainClass();
@@ -5657,7 +5658,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Candidate Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute PAGE_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = PropertiesPackage.eINSTANCE.getPageDescription_SemanticCandidateExpression();
@@ -5674,7 +5675,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Groups</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference PAGE_DESCRIPTION__GROUPS = PropertiesPackage.eINSTANCE.getPageDescription_Groups();
@@ -5683,7 +5684,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Validation Set</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference PAGE_DESCRIPTION__VALIDATION_SET = PropertiesPackage.eINSTANCE.getPageDescription_ValidationSet();
@@ -5693,7 +5694,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl
          * <em>Page Validation Set Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.PageValidationSetDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPageValidationSetDescription()
          * @generated
@@ -5704,7 +5705,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Validation Rules</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference PAGE_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES = PropertiesPackage.eINSTANCE.getPageValidationSetDescription_SemanticValidationRules();
@@ -5714,7 +5715,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl
          * <em>Property Validation Rule</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.PropertyValidationRuleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getPropertyValidationRule()
          * @generated
@@ -5724,7 +5725,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Targets</b></em>' reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference PROPERTY_VALIDATION_RULE__TARGETS = PropertiesPackage.eINSTANCE.getPropertyValidationRule_Targets();
@@ -5734,7 +5735,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.GroupDescriptionImpl
          * <em>Group Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.GroupDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupDescription()
          * @generated
@@ -5744,7 +5745,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getGroupDescription_Identifier();
@@ -5752,7 +5753,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupDescription_LabelExpression();
@@ -5760,7 +5761,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Domain Class</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_DESCRIPTION__DOMAIN_CLASS = PropertiesPackage.eINSTANCE.getGroupDescription_DomainClass();
@@ -5769,7 +5770,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Candidate Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_DESCRIPTION__SEMANTIC_CANDIDATE_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupDescription_SemanticCandidateExpression();
@@ -5787,7 +5788,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Controls</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_DESCRIPTION__CONTROLS = PropertiesPackage.eINSTANCE.getGroupDescription_Controls();
@@ -5796,7 +5797,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Validation Set</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_DESCRIPTION__VALIDATION_SET = PropertiesPackage.eINSTANCE.getGroupDescription_ValidationSet();
@@ -5804,7 +5805,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getGroupDescription_Style();
@@ -5813,7 +5814,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getGroupDescription_ConditionalStyles();
@@ -5834,7 +5835,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Semantic Validation Rules</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES = PropertiesPackage.eINSTANCE.getGroupValidationSetDescription_SemanticValidationRules();
@@ -5843,7 +5844,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Property Validation Rules</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES = PropertiesPackage.eINSTANCE.getGroupValidationSetDescription_PropertyValidationRules();
@@ -5853,7 +5854,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ControlDescriptionImpl
          * <em>Control Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ControlDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getControlDescription()
          * @generated
@@ -5863,7 +5864,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CONTROL_DESCRIPTION__IDENTIFIER = PropertiesPackage.eINSTANCE.getControlDescription_Identifier();
@@ -5873,7 +5874,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
          * <em>Container Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ContainerDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getContainerDescription()
          * @generated
@@ -5884,7 +5885,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Controls</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONTAINER_DESCRIPTION__CONTROLS = PropertiesPackage.eINSTANCE.getContainerDescription_Controls();
@@ -5892,7 +5893,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Layout</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CONTAINER_DESCRIPTION__LAYOUT = PropertiesPackage.eINSTANCE.getContainerDescription_Layout();
@@ -5902,7 +5903,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
          * <em>Layout Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.LayoutDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLayoutDescription()
          * @generated
@@ -5914,7 +5915,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
          * <em>Fill Layout Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.FillLayoutDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFillLayoutDescription()
          * @generated
@@ -5924,7 +5925,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Orientation</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute FILL_LAYOUT_DESCRIPTION__ORIENTATION = PropertiesPackage.eINSTANCE.getFillLayoutDescription_Orientation();
@@ -5934,7 +5935,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
          * <em>Grid Layout Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.GridLayoutDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGridLayoutDescription()
          * @generated
@@ -5944,7 +5945,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Number Of Columns</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GRID_LAYOUT_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.eINSTANCE.getGridLayoutDescription_NumberOfColumns();
@@ -5953,7 +5954,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Make Columns With Equal Width</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GRID_LAYOUT_DESCRIPTION__MAKE_COLUMNS_WITH_EQUAL_WIDTH = PropertiesPackage.eINSTANCE.getGridLayoutDescription_MakeColumnsWithEqualWidth();
@@ -5963,7 +5964,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl
          * <em>Widget Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.WidgetDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetDescription()
          * @generated
@@ -5973,7 +5974,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WIDGET_DESCRIPTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetDescription_LabelExpression();
@@ -5981,7 +5982,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Help Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WIDGET_DESCRIPTION__HELP_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetDescription_HelpExpression();
@@ -6000,7 +6001,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.TextDescriptionImpl
          * <em>Text Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.TextDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextDescription()
          * @generated
@@ -6010,7 +6011,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getTextDescription_ValueExpression();
@@ -6019,7 +6020,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getTextDescription_InitialOperation();
@@ -6027,7 +6028,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getTextDescription_Style();
@@ -6036,7 +6037,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getTextDescription_ConditionalStyles();
@@ -6046,7 +6047,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
          * <em>Button Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ButtonDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonDescription()
          * @generated
@@ -6066,7 +6067,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BUTTON_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getButtonDescription_InitialOperation();
@@ -6074,7 +6075,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BUTTON_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getButtonDescription_Style();
@@ -6083,7 +6084,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BUTTON_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getButtonDescription_ConditionalStyles();
@@ -6093,7 +6094,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.LabelDescriptionImpl
          * <em>Label Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.LabelDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelDescription()
          * @generated
@@ -6101,17 +6102,17 @@ public interface PropertiesPackage extends EPackage {
         EClass LABEL_DESCRIPTION = PropertiesPackage.eINSTANCE.getLabelDescription();
 
         /**
-         * The meta object literal for the '<em><b>Body Expression</b></em>'
+         * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LABEL_DESCRIPTION__BODY_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_BodyExpression();
+        EAttribute LABEL_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelDescription_ValueExpression();
 
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LABEL_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getLabelDescription_Style();
@@ -6120,7 +6121,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LABEL_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getLabelDescription_ConditionalStyles();
@@ -6130,7 +6131,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl
          * <em>Checkbox Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CheckboxDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxDescription()
          * @generated
@@ -6140,7 +6141,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CHECKBOX_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getCheckboxDescription_ValueExpression();
@@ -6149,7 +6150,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CHECKBOX_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getCheckboxDescription_InitialOperation();
@@ -6157,7 +6158,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CHECKBOX_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getCheckboxDescription_Style();
@@ -6166,7 +6167,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CHECKBOX_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getCheckboxDescription_ConditionalStyles();
@@ -6176,7 +6177,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.SelectDescriptionImpl
          * <em>Select Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.SelectDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectDescription()
          * @generated
@@ -6186,7 +6187,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SELECT_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getSelectDescription_ValueExpression();
@@ -6195,7 +6196,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SELECT_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getSelectDescription_InitialOperation();
@@ -6221,7 +6222,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SELECT_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getSelectDescription_Style();
@@ -6230,7 +6231,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SELECT_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getSelectDescription_ConditionalStyles();
@@ -6240,7 +6241,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.DynamicMappingForImpl
          * <em>Dynamic Mapping For</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.DynamicMappingForImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingFor()
          * @generated
@@ -6250,7 +6251,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Iterator</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DYNAMIC_MAPPING_FOR__ITERATOR = PropertiesPackage.eINSTANCE.getDynamicMappingFor_Iterator();
@@ -6267,7 +6268,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ifs</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DYNAMIC_MAPPING_FOR__IFS = PropertiesPackage.eINSTANCE.getDynamicMappingFor_Ifs();
@@ -6277,7 +6278,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.DynamicMappingIfImpl
          * <em>Dynamic Mapping If</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.DynamicMappingIfImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getDynamicMappingIf()
          * @generated
@@ -6287,7 +6288,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Predicate Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DYNAMIC_MAPPING_IF__PREDICATE_EXPRESSION = PropertiesPackage.eINSTANCE.getDynamicMappingIf_PredicateExpression();
@@ -6295,7 +6296,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Widget</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DYNAMIC_MAPPING_IF__WIDGET = PropertiesPackage.eINSTANCE.getDynamicMappingIf_Widget();
@@ -6305,7 +6306,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
          * <em>Text Area Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.TextAreaDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextAreaDescription()
          * @generated
@@ -6315,7 +6316,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Line Count</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXT_AREA_DESCRIPTION__LINE_COUNT = PropertiesPackage.eINSTANCE.getTextAreaDescription_LineCount();
@@ -6325,7 +6326,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.RadioDescriptionImpl
          * <em>Radio Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.RadioDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioDescription()
          * @generated
@@ -6335,7 +6336,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute RADIO_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getRadioDescription_ValueExpression();
@@ -6344,7 +6345,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference RADIO_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getRadioDescription_InitialOperation();
@@ -6370,7 +6371,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference RADIO_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getRadioDescription_Style();
@@ -6378,7 +6379,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Number Of Columns</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute RADIO_DESCRIPTION__NUMBER_OF_COLUMNS = PropertiesPackage.eINSTANCE.getRadioDescription_NumberOfColumns();
@@ -6387,7 +6388,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference RADIO_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getRadioDescription_ConditionalStyles();
@@ -6397,7 +6398,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ReferenceDescriptionImpl
          * <em>Reference Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ReferenceDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceDescription()
          * @generated
@@ -6407,7 +6408,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Multiple</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute REFERENCE_DESCRIPTION__MULTIPLE = PropertiesPackage.eINSTANCE.getReferenceDescription_Multiple();
@@ -6415,7 +6416,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute REFERENCE_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getReferenceDescription_ValueExpression();
@@ -6423,7 +6424,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Display Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute REFERENCE_DESCRIPTION__DISPLAY_EXPRESSION = PropertiesPackage.eINSTANCE.getReferenceDescription_DisplayExpression();
@@ -6432,7 +6433,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>On Click Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference REFERENCE_DESCRIPTION__ON_CLICK_OPERATION = PropertiesPackage.eINSTANCE.getReferenceDescription_OnClickOperation();
@@ -6440,7 +6441,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Actions</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference REFERENCE_DESCRIPTION__ACTIONS = PropertiesPackage.eINSTANCE.getReferenceDescription_Actions();
@@ -6448,7 +6449,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference REFERENCE_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getReferenceDescription_Style();
@@ -6457,7 +6458,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference REFERENCE_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getReferenceDescription_ConditionalStyles();
@@ -6467,7 +6468,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.OperationDescriptionImpl
          * <em>Operation Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.OperationDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getOperationDescription()
          * @generated
@@ -6478,7 +6479,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference OPERATION_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getOperationDescription_InitialOperation();
@@ -6488,7 +6489,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CustomDescriptionImpl
          * <em>Custom Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CustomDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomDescription()
          * @generated
@@ -6499,7 +6500,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Custom Expressions</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_DESCRIPTION__CUSTOM_EXPRESSIONS = PropertiesPackage.eINSTANCE.getCustomDescription_CustomExpressions();
@@ -6508,7 +6509,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Custom Operations</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_DESCRIPTION__CUSTOM_OPERATIONS = PropertiesPackage.eINSTANCE.getCustomDescription_CustomOperations();
@@ -6516,7 +6517,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getCustomDescription_Style();
@@ -6525,7 +6526,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getCustomDescription_ConditionalStyles();
@@ -6535,7 +6536,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CustomExpressionImpl
          * <em>Custom Expression</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CustomExpressionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomExpression()
          * @generated
@@ -6545,7 +6546,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CUSTOM_EXPRESSION__IDENTIFIER = PropertiesPackage.eINSTANCE.getCustomExpression_Identifier();
@@ -6553,7 +6554,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Custom Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CUSTOM_EXPRESSION__CUSTOM_EXPRESSION = PropertiesPackage.eINSTANCE.getCustomExpression_CustomExpression();
@@ -6563,7 +6564,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CustomOperationImpl
          * <em>Custom Operation</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CustomOperationImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomOperation()
          * @generated
@@ -6573,7 +6574,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Identifier</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CUSTOM_OPERATION__IDENTIFIER = PropertiesPackage.eINSTANCE.getCustomOperation_Identifier();
@@ -6582,7 +6583,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_OPERATION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getCustomOperation_InitialOperation();
@@ -6592,7 +6593,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
          * <em>Hyperlink Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.HyperlinkDescriptionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkDescription()
          * @generated
@@ -6602,7 +6603,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute HYPERLINK_DESCRIPTION__VALUE_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ValueExpression();
@@ -6611,7 +6612,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference HYPERLINK_DESCRIPTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getHyperlinkDescription_InitialOperation();
@@ -6619,7 +6620,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference HYPERLINK_DESCRIPTION__STYLE = PropertiesPackage.eINSTANCE.getHyperlinkDescription_Style();
@@ -6628,7 +6629,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Conditional Styles</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference HYPERLINK_DESCRIPTION__CONDITIONAL_STYLES = PropertiesPackage.eINSTANCE.getHyperlinkDescription_ConditionalStyles();
@@ -6638,7 +6639,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.WidgetStyleImpl
          * <em>Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.WidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetStyle()
          * @generated
@@ -6657,7 +6658,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Font Size</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WIDGET_STYLE__LABEL_FONT_SIZE = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontSize();
@@ -6683,7 +6684,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Font Format</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WIDGET_STYLE__LABEL_FONT_FORMAT = PropertiesPackage.eINSTANCE.getWidgetStyle_LabelFontFormat();
@@ -6693,7 +6694,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
          * <em>Text Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.TextWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetStyle()
          * @generated
@@ -6703,7 +6704,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Name Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXT_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontNameExpression();
@@ -6711,7 +6712,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Size</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXT_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontSize();
@@ -6719,7 +6720,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextWidgetStyle_BackgroundColor();
@@ -6727,7 +6728,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getTextWidgetStyle_ForegroundColor();
@@ -6735,7 +6736,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Format</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute TEXT_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontFormat();
@@ -6745,7 +6746,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
          * <em>Label Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.LabelWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetStyle()
          * @generated
@@ -6755,7 +6756,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Name Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute LABEL_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontNameExpression();
@@ -6763,7 +6764,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Size</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute LABEL_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontSize();
@@ -6771,7 +6772,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LABEL_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_BackgroundColor();
@@ -6779,7 +6780,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LABEL_WIDGET_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_ForegroundColor();
@@ -6787,7 +6788,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Format</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute LABEL_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontFormat();
@@ -6797,7 +6798,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
          * <em>Checkbox Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CheckboxWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCheckboxWidgetStyle()
          * @generated
@@ -6809,7 +6810,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
          * <em>Radio Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.RadioWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetStyle()
          * @generated
@@ -6821,7 +6822,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
          * <em>Button Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ButtonWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetStyle()
          * @generated
@@ -6833,7 +6834,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
          * <em>Select Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.SelectWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetStyle()
          * @generated
@@ -6845,7 +6846,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
          * <em>Custom Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CustomWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetStyle()
          * @generated
@@ -6857,7 +6858,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
          * <em>Widget Conditional Style</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.WidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetConditionalStyle()
          * @generated
@@ -6878,7 +6879,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
          * <em>Text Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.TextWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTextWidgetConditionalStyle()
          * @generated
@@ -6888,7 +6889,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference TEXT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getTextWidgetConditionalStyle_Style();
@@ -6898,7 +6899,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
          * <em>Label Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.LabelWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getLabelWidgetConditionalStyle()
          * @generated
@@ -6908,7 +6909,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LABEL_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getLabelWidgetConditionalStyle_Style();
@@ -6928,7 +6929,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CHECKBOX_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getCheckboxWidgetConditionalStyle_Style();
@@ -6938,7 +6939,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
          * <em>Radio Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.RadioWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getRadioWidgetConditionalStyle()
          * @generated
@@ -6948,7 +6949,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference RADIO_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getRadioWidgetConditionalStyle_Style();
@@ -6958,7 +6959,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
          * <em>Button Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ButtonWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getButtonWidgetConditionalStyle()
          * @generated
@@ -6968,7 +6969,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BUTTON_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getButtonWidgetConditionalStyle_Style();
@@ -6978,7 +6979,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
          * <em>Select Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.SelectWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getSelectWidgetConditionalStyle()
          * @generated
@@ -6988,7 +6989,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SELECT_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getSelectWidgetConditionalStyle_Style();
@@ -6998,7 +6999,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
          * <em>Custom Widget Conditional Style</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.CustomWidgetConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getCustomWidgetConditionalStyle()
          * @generated
@@ -7008,7 +7009,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference CUSTOM_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getCustomWidgetConditionalStyle_Style();
@@ -7028,7 +7029,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference REFERENCE_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getReferenceWidgetConditionalStyle_Style();
@@ -7038,7 +7039,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.WidgetActionImpl
          * <em>Widget Action</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.WidgetActionImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getWidgetAction()
          * @generated
@@ -7048,7 +7049,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WIDGET_ACTION__LABEL_EXPRESSION = PropertiesPackage.eINSTANCE.getWidgetAction_LabelExpression();
@@ -7057,7 +7058,7 @@ public interface PropertiesPackage extends EPackage {
          * The meta object literal for the '<em><b>Initial Operation</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference WIDGET_ACTION__INITIAL_OPERATION = PropertiesPackage.eINSTANCE.getWidgetAction_InitialOperation();
@@ -7077,7 +7078,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference HYPERLINK_WIDGET_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetConditionalStyle_Style();
@@ -7087,7 +7088,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
          * <em>Group Conditional Style</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.GroupConditionalStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupConditionalStyle()
          * @generated
@@ -7097,7 +7098,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Style</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_CONDITIONAL_STYLE__STYLE = PropertiesPackage.eINSTANCE.getGroupConditionalStyle_Style();
@@ -7107,7 +7108,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
          * <em>Reference Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.ReferenceWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getReferenceWidgetStyle()
          * @generated
@@ -7119,7 +7120,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
          * <em>Hyperlink Widget Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.HyperlinkWidgetStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getHyperlinkWidgetStyle()
          * @generated
@@ -7129,7 +7130,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Name Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute HYPERLINK_WIDGET_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontNameExpression();
@@ -7137,7 +7138,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Size</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute HYPERLINK_WIDGET_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontSize();
@@ -7145,7 +7146,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference HYPERLINK_WIDGET_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_BackgroundColor();
@@ -7153,7 +7154,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Format</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute HYPERLINK_WIDGET_STYLE__FONT_FORMAT = PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontFormat();
@@ -7163,7 +7164,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.impl.GroupStyleImpl
          * <em>Group Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.impl.GroupStyleImpl
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getGroupStyle()
          * @generated
@@ -7173,7 +7174,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_STYLE__BACKGROUND_COLOR = PropertiesPackage.eINSTANCE.getGroupStyle_BackgroundColor();
@@ -7181,7 +7182,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GROUP_STYLE__FOREGROUND_COLOR = PropertiesPackage.eINSTANCE.getGroupStyle_ForegroundColor();
@@ -7189,7 +7190,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Name Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_STYLE__FONT_NAME_EXPRESSION = PropertiesPackage.eINSTANCE.getGroupStyle_FontNameExpression();
@@ -7197,7 +7198,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Font Size</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_STYLE__FONT_SIZE = PropertiesPackage.eINSTANCE.getGroupStyle_FontSize();
@@ -7205,7 +7206,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Bar Style</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_STYLE__BAR_STYLE = PropertiesPackage.eINSTANCE.getGroupStyle_BarStyle();
@@ -7213,7 +7214,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Toggle Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_STYLE__TOGGLE_STYLE = PropertiesPackage.eINSTANCE.getGroupStyle_ToggleStyle();
@@ -7221,7 +7222,7 @@ public interface PropertiesPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Expanded By Default</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GROUP_STYLE__EXPANDED_BY_DEFAULT = PropertiesPackage.eINSTANCE.getGroupStyle_ExpandedByDefault();
@@ -7231,7 +7232,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
          * <em>FILL LAYOUT ORIENTATION</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.FILL_LAYOUT_ORIENTATION
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getFILL_LAYOUT_ORIENTATION()
          * @generated
@@ -7243,7 +7244,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.ToggleStyle
          * <em>Toggle Style</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.ToggleStyle
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getToggleStyle()
          * @generated
@@ -7255,7 +7256,7 @@ public interface PropertiesPackage extends EPackage {
          * {@link org.eclipse.sirius.properties.TitleBarStyle
          * <em>Title Bar Style</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.properties.TitleBarStyle
          * @see org.eclipse.sirius.properties.impl.PropertiesPackageImpl#getTitleBarStyle()
          * @generated

@@ -96,7 +96,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ButtonDescription/conditionalStyles"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//LabelDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/bodyExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//LabelDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/style"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//LabelDescription/conditionalStyles"/>
     </genClasses>

@@ -18,16 +18,16 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 // End of user code specific imports
 
 /**
- * A filter for the bodyExpression property section.
+ * A filter for the valueExpression property section.
  */
-public class LabelDescriptionBodyExpressionFilter extends ViewpointPropertyFilter {
+public class LabelDescriptionValueExpressionFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelDescription_BodyExpression();
+        return PropertiesPackage.eINSTANCE.getLabelDescription_ValueExpression();
     }
 
     /**

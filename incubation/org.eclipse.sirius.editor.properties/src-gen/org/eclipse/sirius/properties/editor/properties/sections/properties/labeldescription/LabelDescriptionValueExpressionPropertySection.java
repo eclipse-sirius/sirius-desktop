@@ -25,16 +25,16 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the bodyExpression property of a LabelDescription object.
+ * A section for the valueExpression property of a LabelDescription object.
  */
-public class LabelDescriptionBodyExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
+public class LabelDescriptionValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /**
      * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
-        return "BodyExpression"; //$NON-NLS-1$
+        return "ValueExpression"; //$NON-NLS-1$
     }
 
     /**
@@ -55,7 +55,7 @@ public class LabelDescriptionBodyExpressionPropertySection extends AbstractTextW
      */
     @Override
     public EAttribute getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelDescription_BodyExpression();
+        return PropertiesPackage.eINSTANCE.getLabelDescription_ValueExpression();
     }
 
     /**
@@ -98,7 +98,7 @@ public class LabelDescriptionBodyExpressionPropertySection extends AbstractTextW
         return new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), LabelDescriptionBodyExpressionPropertySection.this, text.getText());
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), LabelDescriptionValueExpressionPropertySection.this, text.getText());
                 dialog.open();
                 text.setText(dialog.getResult());
                 handleTextModified();

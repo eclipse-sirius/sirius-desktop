@@ -21,8 +21,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
- * <em>Body Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.properties.LabelDescription#getValueExpression
+ * <em>Value Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.properties.LabelDescription#getStyle
  * <em>Style</em>}</li>
  * <li>
@@ -36,35 +36,35 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface LabelDescription extends WidgetDescription {
     /**
-     * Returns the value of the '<em><b>Body Expression</b></em>' attribute.
+     * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Body Expression</em>' attribute isn't clear,
+     * If the meaning of the '<em>Value Expression</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Body Expression</em>' attribute.
-     * @see #setBodyExpression(String)
-     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_BodyExpression()
+     *
+     * @return the value of the '<em>Value Expression</em>' attribute.
+     * @see #setValueExpression(String)
+     * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_ValueExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
-    String getBodyExpression();
+    String getValueExpression();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.LabelDescription#getBodyExpression
-     * <em>Body Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.properties.LabelDescription#getValueExpression
+     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
-     *            the new value of the '<em>Body Expression</em>' attribute.
-     * @see #getBodyExpression()
+     *            the new value of the '<em>Value Expression</em>' attribute.
+     * @see #getValueExpression()
      * @generated
      */
-    void setBodyExpression(String value);
+    void setValueExpression(String value);
 
     /**
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
@@ -74,7 +74,7 @@ public interface LabelDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(LabelWidgetStyle)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getLabelDescription_Style()
@@ -88,7 +88,7 @@ public interface LabelDescription extends WidgetDescription {
      * {@link org.eclipse.sirius.properties.LabelDescription#getStyle
      * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Style</em>' containment reference.
      * @see #getStyle()

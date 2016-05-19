@@ -1090,7 +1090,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * @generated
      */
     @Override
-    public EAttribute getLabelDescription_BodyExpression() {
+    public EAttribute getLabelDescription_ValueExpression() {
         return (EAttribute) labelDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
@@ -2415,7 +2415,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         createEReference(buttonDescriptionEClass, PropertiesPackage.BUTTON_DESCRIPTION__CONDITIONAL_STYLES);
 
         labelDescriptionEClass = createEClass(PropertiesPackage.LABEL_DESCRIPTION);
-        createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION);
+        createEAttribute(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION);
         createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__STYLE);
         createEReference(labelDescriptionEClass, PropertiesPackage.LABEL_DESCRIPTION__CONDITIONAL_STYLES);
 
@@ -2795,7 +2795,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(labelDescriptionEClass, LabelDescription.class, "LabelDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getLabelDescription_BodyExpression(), theDescriptionPackage.getInterpretedExpression(), "bodyExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+        initEAttribute(getLabelDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getLabelDescription_Style(), this.getLabelWidgetStyle(), null, "style", null, 0, 1, LabelDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,

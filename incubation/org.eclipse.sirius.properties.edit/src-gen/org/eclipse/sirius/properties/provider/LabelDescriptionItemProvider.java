@@ -55,22 +55,22 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addBodyExpressionPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Body Expression feature. <!--
+     * This adds a property descriptor for the Value Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    protected void addBodyExpressionPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LabelDescription_bodyExpression_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_LabelDescription_bodyExpression_feature", "_UI_LabelDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.LABEL_DESCRIPTION__BODY_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LabelDescription_valueExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LabelDescription_valueExpression_feature", "_UI_LabelDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        PropertiesPackage.Literals.LABEL_DESCRIPTION__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -80,7 +80,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -95,7 +95,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns LabelDescription.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,7 +136,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class LabelDescriptionItemProvider extends WidgetDescriptionItemProvider 
         updateChildren(notification);
 
         switch (notification.getFeatureID(LabelDescription.class)) {
-        case PropertiesPackage.LABEL_DESCRIPTION__BODY_EXPRESSION:
+        case PropertiesPackage.LABEL_DESCRIPTION__VALUE_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case PropertiesPackage.LABEL_DESCRIPTION__STYLE:

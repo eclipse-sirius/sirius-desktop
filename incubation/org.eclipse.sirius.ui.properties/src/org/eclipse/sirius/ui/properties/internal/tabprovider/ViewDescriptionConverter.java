@@ -735,7 +735,7 @@ public class ViewDescriptionConverter {
         EEFLabelDescription eefLabelDescription = EefFactory.eINSTANCE.createEEFLabelDescription();
 
         eefLabelDescription.setIdentifier(labelDescription.getIdentifier());
-        eefLabelDescription.setBodyExpression(labelDescription.getBodyExpression());
+        eefLabelDescription.setLabelExpression(labelDescription.getLabelExpression());
         LabelWidgetStyle bodyStyle = labelDescription.getStyle();
         if (bodyStyle != null) {
             eefLabelDescription.setStyle((EEFLabelStyle) createEEFWidgetStyle(bodyStyle));

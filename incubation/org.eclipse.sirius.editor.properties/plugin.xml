@@ -376,9 +376,9 @@
         <input type="org.eclipse.sirius.properties.CheckboxDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeldescription.LabelDescriptionBodyExpressionPropertySection"
-               id="properties.section.labelDescription.BodyExpression"
-               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeldescription.LabelDescriptionBodyExpressionFilter"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labeldescription.LabelDescriptionValueExpressionPropertySection"
+               id="properties.section.labelDescription.ValueExpression"
+               filter="org.eclipse.sirius.properties.editor.properties.filters.properties.labeldescription.LabelDescriptionValueExpressionFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.properties.LabelDescription"/>
       </propertySection>
