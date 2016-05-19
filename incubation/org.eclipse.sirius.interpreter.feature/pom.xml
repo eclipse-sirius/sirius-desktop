@@ -21,7 +21,7 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
-  <artifactId>org.eclipse.sirius.incubation.interpreter</artifactId>
+  <artifactId>org.eclipse.sirius.interpreter.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
   <build>

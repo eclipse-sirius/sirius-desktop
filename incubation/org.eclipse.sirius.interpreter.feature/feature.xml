@@ -10,7 +10,7 @@
        Obeo - Initial API and implementation
 -->
 <feature
-      id="org.eclipse.sirius.incubation.interpreter"
+      id="org.eclipse.sirius.interpreter.feature"
       label="%featureName"
       version="4.0.0.qualifier"
       provider-name="%providerName"
