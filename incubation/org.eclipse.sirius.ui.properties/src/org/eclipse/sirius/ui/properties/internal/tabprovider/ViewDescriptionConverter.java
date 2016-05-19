@@ -169,8 +169,7 @@ public class ViewDescriptionConverter {
     public EEFViewDescription convert(SiriusInputDescriptor input) {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
 
-        // TODO Replace by the retrieval of the image from the label provider
-        view.setImageExpression("service:image");
+        view.setImageExpression("service:eefViewImage");
 
         Set<EPackage> ePackages = new LinkedHashSet<>();
         for (PageDescription pageDescription : pageDescriptions) {
@@ -183,8 +182,7 @@ public class ViewDescriptionConverter {
 
         view.getEPackages().addAll(ePackages);
 
-        // TODO Replace by the retrieval of the label from the label provider
-        view.setLabelExpression("feature:name");
+        view.setLabelExpression("service:eefViewText");
 
         for (PageDescription pageDescription : pageDescriptions) {
             createPage(pageDescription, view);

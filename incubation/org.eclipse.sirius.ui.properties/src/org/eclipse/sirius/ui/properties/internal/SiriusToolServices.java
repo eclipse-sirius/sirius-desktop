@@ -14,19 +14,17 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
@@ -44,8 +42,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * @author sbegaudeau
  */
 public class SiriusToolServices {
+    
+    private final EditingDomainServices editServices = new EditingDomainServices();
 
-    // TODO To be removed in favor of the standard EMF Edit
     /**
      * Returns the image representing the given EObject.
      * 
@@ -54,14 +53,20 @@ public class SiriusToolServices {
      * @return The image representing the given EObject or <code>null</code> if
      *         none could be found
      */
-    public Object image(EObject eObject) {
-        ComposedAdapterFactory composedAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-        Adapter adapter = composedAdapterFactory.adapt(eObject, IItemLabelProvider.class);
-        if (adapter instanceof IItemLabelProvider) {
-            IItemLabelProvider labelProvider = (IItemLabelProvider) adapter;
-            return labelProvider.getImage(eObject);
-        }
-        return null;
+    public Object eefViewImage(EObject eObject) {
+        return this.editServices.getLabelProviderImage(eObject);
+    }
+
+    /**
+     * Returns the text representing the given EObject.
+     * 
+     * @param eObject
+     *            The EObject
+     * @return The text representing the given EObject or <code>null</code> if
+     *         none could be found
+     */
+    public Object eefViewText(EObject eObject) {
+        return this.editServices.getLabelProviderText(eObject);
     }
 
     /**
