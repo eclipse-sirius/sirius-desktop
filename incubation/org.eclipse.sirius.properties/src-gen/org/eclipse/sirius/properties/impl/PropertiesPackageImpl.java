@@ -80,377 +80,377 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass viewExtensionDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass pageDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass pageValidationSetDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass propertyValidationRuleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass groupDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass groupValidationSetDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass controlDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass containerDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass layoutDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass fillLayoutDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass gridLayoutDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass widgetDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass textDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass buttonDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass checkboxDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass selectDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dynamicMappingForEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass dynamicMappingIfEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass textAreaDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass radioDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass referenceDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass operationDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customExpressionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customOperationEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hyperlinkDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass widgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass textWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass checkboxWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass radioWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass buttonWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass selectWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass widgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass textWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass labelWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass checkboxWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass radioWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass buttonWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass selectWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass customWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass referenceWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass widgetActionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hyperlinkWidgetConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass groupConditionalStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass referenceWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass hyperlinkWidgetStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass groupStyleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum filL_LAYOUT_ORIENTATIONEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum toggleStyleEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EEnum titleBarStyleEEnum = null;
@@ -476,7 +476,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -526,7 +526,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -536,7 +536,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -546,7 +546,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -556,7 +556,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -566,7 +566,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -576,7 +576,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -586,7 +586,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -596,7 +596,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -606,7 +606,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -616,7 +616,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -626,7 +626,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -636,7 +636,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -646,7 +646,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -656,7 +656,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -666,7 +666,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -676,7 +676,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -686,7 +686,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -696,7 +696,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -706,7 +706,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -716,7 +716,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -726,7 +726,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -736,7 +736,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -746,7 +746,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -756,7 +756,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -766,7 +766,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -776,7 +776,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -786,7 +786,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -796,7 +796,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -806,7 +806,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -816,7 +816,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -826,7 +826,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -836,7 +836,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -846,7 +846,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -856,7 +856,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -866,7 +866,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -876,7 +876,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -886,7 +886,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -896,7 +896,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -906,7 +906,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -916,7 +916,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -926,7 +926,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -936,7 +936,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -946,7 +946,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -956,7 +956,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -966,7 +966,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -976,7 +976,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -986,7 +986,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -996,7 +996,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1006,7 +1006,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1016,7 +1016,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1026,7 +1026,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1036,7 +1036,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1046,7 +1046,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1056,7 +1056,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1066,7 +1066,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1076,7 +1076,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1086,7 +1086,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1096,7 +1096,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1106,7 +1106,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1116,7 +1116,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1126,7 +1126,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1136,7 +1136,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1146,7 +1146,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1156,7 +1156,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1166,7 +1166,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1176,7 +1176,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1186,7 +1186,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1196,7 +1196,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1206,7 +1206,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1216,7 +1216,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1226,7 +1226,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1236,7 +1236,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1246,7 +1246,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1256,7 +1256,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1266,7 +1266,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1276,7 +1276,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1286,7 +1286,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1296,7 +1296,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1306,7 +1306,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1316,7 +1316,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1326,7 +1326,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1336,7 +1336,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1346,7 +1346,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1356,7 +1356,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1366,7 +1366,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1376,7 +1376,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1386,7 +1386,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1396,7 +1396,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1406,7 +1406,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1416,7 +1416,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1426,7 +1426,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1436,7 +1436,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1446,7 +1446,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1456,7 +1456,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1466,7 +1466,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1476,7 +1476,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1486,7 +1486,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1496,7 +1496,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1506,7 +1506,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1516,7 +1516,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1526,7 +1526,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1536,7 +1536,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1546,7 +1546,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1556,7 +1556,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1566,7 +1566,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1576,7 +1576,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1586,7 +1586,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1596,7 +1596,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1606,7 +1606,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1616,7 +1616,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1626,7 +1626,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1636,7 +1636,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1646,7 +1646,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1656,7 +1656,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1666,7 +1666,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1676,7 +1676,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1686,7 +1686,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1696,7 +1696,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1706,7 +1706,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1716,7 +1716,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1726,7 +1726,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1736,7 +1736,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1746,7 +1746,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1756,7 +1756,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1766,7 +1766,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1776,7 +1776,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1786,7 +1786,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1796,7 +1796,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1806,7 +1806,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1816,7 +1816,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1826,7 +1826,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1836,7 +1836,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1846,7 +1846,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1856,7 +1856,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1866,7 +1866,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1876,7 +1876,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1886,7 +1886,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1896,7 +1896,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1906,7 +1906,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1916,7 +1916,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1926,7 +1926,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1936,7 +1936,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1946,7 +1946,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1956,7 +1956,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1966,7 +1966,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1976,7 +1976,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1986,7 +1986,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1996,7 +1996,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2006,7 +2006,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2016,7 +2016,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2026,7 +2026,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2036,7 +2036,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2046,7 +2046,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2056,7 +2056,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2066,7 +2066,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2076,7 +2076,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2086,7 +2086,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2096,7 +2096,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2106,7 +2106,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2116,7 +2116,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2126,7 +2126,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2136,7 +2136,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2146,7 +2146,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2156,7 +2156,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2166,7 +2166,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2176,7 +2176,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2186,7 +2186,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2196,7 +2196,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2206,7 +2206,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2216,7 +2216,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2226,7 +2226,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2236,7 +2236,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2246,7 +2246,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2256,7 +2256,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2266,7 +2266,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2276,7 +2276,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2286,7 +2286,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2296,7 +2296,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2306,7 +2306,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2316,7 +2316,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -2326,7 +2326,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -2335,7 +2335,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
@@ -2579,7 +2579,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -2654,7 +2654,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
         // Initialize classes and features; add operations and parameters
         initEClass(viewExtensionDescriptionEClass, ViewExtensionDescription.class, "ViewExtensionDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getViewExtensionDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+        initEAttribute(getViewExtensionDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getViewExtensionDescription_Metamodels(), theEcorePackage.getEPackage(), null, "metamodels", null, 0, -1, ViewExtensionDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
@@ -2667,7 +2667,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(pageDescriptionEClass, PageDescription.class, "PageDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getPageDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+        initEAttribute(getPageDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getPageDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, PageDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2699,7 +2699,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(groupDescriptionEClass, GroupDescription.class, "GroupDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getGroupDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+        initEAttribute(getGroupDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getGroupDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", null, 0, 1, GroupDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
@@ -2734,7 +2734,7 @@ public class PropertiesPackageImpl extends EPackageImpl implements PropertiesPac
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(controlDescriptionEClass, ControlDescription.class, "ControlDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getControlDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 1, 1, ControlDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+        initEAttribute(getControlDescription_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, ControlDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(containerDescriptionEClass, ContainerDescription.class, "ContainerDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

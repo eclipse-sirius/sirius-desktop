@@ -3,8 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="properties" nsURI="http://www.eclipse.org/sirius/properties/1.0.0"
     nsPrefix="properties">
   <eClassifiers xsi:type="ecore:EClass" name="ViewExtensionDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/Extension">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
@@ -13,8 +12,7 @@
         eType="#//GroupDescription" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
@@ -36,8 +34,7 @@
         eType="#//WidgetDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
@@ -61,8 +58,7 @@
         upperBound="-1" eType="#//PropertyValidationRule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlDescription" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerDescription" eSuperTypes="#//ControlDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="controls" upperBound="-1"

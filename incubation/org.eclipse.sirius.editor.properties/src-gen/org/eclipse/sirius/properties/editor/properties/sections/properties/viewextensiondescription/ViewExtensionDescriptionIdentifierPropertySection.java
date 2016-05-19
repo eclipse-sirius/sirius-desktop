@@ -10,7 +10,6 @@
 package org.eclipse.sirius.properties.editor.properties.sections.properties.viewextensiondescription;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
@@ -37,7 +36,7 @@ public class ViewExtensionDescriptionIdentifierPropertySection extends AbstractT
     @Override
     protected String getLabelText() {
         String labelText;
-        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
 
         // End of user code get label text
@@ -74,8 +73,6 @@ public class ViewExtensionDescriptionIdentifierPropertySection extends AbstractT
     @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-
-        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
         // Start of user code create controls
 
