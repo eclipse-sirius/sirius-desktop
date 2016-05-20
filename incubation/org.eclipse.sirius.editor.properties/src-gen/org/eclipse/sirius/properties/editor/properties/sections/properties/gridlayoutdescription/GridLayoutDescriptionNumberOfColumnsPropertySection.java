@@ -10,20 +10,17 @@
 package org.eclipse.sirius.properties.editor.properties.sections.properties.gridlayoutdescription;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractSpinnerPropertySection;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-// End of user code imports
-
 /**
  * A section for the numberOfColumns property of a GridLayoutDescription object.
  */
-public class GridLayoutDescriptionNumberOfColumnsPropertySection extends AbstractTextPropertySection {
-
+public class GridLayoutDescriptionNumberOfColumnsPropertySection extends AbstractSpinnerPropertySection {
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
@@ -31,7 +28,7 @@ public class GridLayoutDescriptionNumberOfColumnsPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
      */
     @Override
     protected String getLabelText() {
@@ -44,27 +41,61 @@ public class GridLayoutDescriptionNumberOfColumnsPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
      */
     @Override
-    public EAttribute getFeature() {
+    protected EAttribute getFeature() {
         return PropertiesPackage.eINSTANCE.getGridLayoutDescription_NumberOfColumns();
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
      */
     @Override
-    protected Object getFeatureValue(String newText) {
-        return newText;
+    protected String getFeatureAsText() {
+        String value = new String();
+        if (eObject.eGet(getFeature()) != null) {
+            value = toInteger(eObject.eGet(getFeature()).toString()).toString();
+        }
+        return value;
     }
 
     /**
-     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
      */
     @Override
     protected boolean isEqual(String newText) {
-        return getFeatureAsText().equals(newText);
+        boolean equal = true;
+        if (toInteger(newText) != null) {
+            equal = getFeatureAsText().equals(toInteger(newText).toString());
+        } else {
+            refresh();
+        }
+        return equal;
+    }
+
+    /**
+     * @see org.eclipse.sirius.properties.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
+     */
+    @Override
+    protected Object getFeatureValue(String newText) {
+        return toInteger(newText);
+    }
+
+    /**
+     * Converts the given text to the integer it represents if applicable.
+     *
+     * @return The integer the given text represents if applicable,
+     *         <code>null</code> otherwise.
+     */
+    private Integer toInteger(String text) {
+        Integer integerValue = null;
+        try {
+            integerValue = new Integer(text);
+        } catch (NumberFormatException e) {
+            // Not a Integer
+        }
+        return integerValue;
     }
 
     /**
@@ -77,18 +108,5 @@ public class GridLayoutDescriptionNumberOfColumnsPropertySection extends Abstrac
         // Start of user code create controls
 
         // End of user code create controls
-
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getPropertyDescription() {
-        return "";
-    }
-
-    // Start of user code user operations
-
-    // End of user code user operations
 }
