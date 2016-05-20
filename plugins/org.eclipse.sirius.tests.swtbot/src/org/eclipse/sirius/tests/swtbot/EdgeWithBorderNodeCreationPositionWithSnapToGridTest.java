@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.NoSuchElementException;
 
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.NodeEditPart;
@@ -22,10 +23,15 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterables;
@@ -106,7 +112,7 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
      * straighten edge, the result must be also 2 aligned border nodes.
      */
     public void testBorderNodesAreAligned() {
-        testBorderNodesAreAligned(new Point(200, 135), new Point(209, 203));
+        testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCase", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 109, true);
     }
 
     /**
@@ -116,27 +122,196 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
      * {@link #testBorderNodesAreAligned()}.
      */
     public void testBorderNodesAreAlignedAnotherCase() {
-        testBorderNodesAreAligned(new Point(200, 135), new Point(210, 203));
+        testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCase", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 110, true);
     }
 
-    private void testBorderNodesAreAligned(Point source, Point target) {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + "Node", "NodeForStraightCase", DDiagram.class);
+    /**
+     * Create an edge with its associated border nodes between two elements
+     * (zoom 100%).
+     * 
+     * @param diagramDescriptionName
+     *            The diagram description name
+     * @param diagramName
+     *            The diagram name
+     * @param sourceName
+     *            The name of the source node
+     * @param sourceEditPartType
+     *            The type of the source EditPart
+     * @param sourceDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the source node to compute the source
+     *            point of the edge.
+     * @param targetName
+     *            The name of the target node
+     * @param targetEditPartType
+     *            The type of the target EditPart
+     * @param targetDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the target node to compute the target
+     *            point of the edge.
+     * @param verticalEdge
+     *            true if the edge is a vertical edge, false otherwise
+     */
+    private void testBorderNodesAreAligned(String diagramDescriptionName, String diagramName, String sourceName, Class<? extends EditPart> sourceEditPartType, int sourceDelta, String targetName,
+            Class<? extends EditPart> targetEditPartType, int targetDelta, boolean verticalEdge) {
+        testBorderNodesAreAligned(diagramDescriptionName, diagramName, sourceName, sourceEditPartType, sourceDelta, targetName, targetEditPartType, targetDelta, verticalEdge, ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Create an edge with its associated border nodes between two elements.
+     * 
+     * @param diagramDescriptionName
+     *            The diagram description name
+     * @param diagramName
+     *            The diagram name
+     * @param sourceName
+     *            The name of the source node
+     * @param sourceEditPartType
+     *            The type of the source EditPart
+     * @param sourceDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the source node to compute the source
+     *            point of the edge.
+     * @param targetName
+     *            The name of the target node
+     * @param targetEditPartType
+     *            The type of the target EditPart
+     * @param targetDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the target node to compute the target
+     *            point of the edge.
+     * @param verticalEdge
+     *            true if the edge is a vertical edge, false otherwise
+     * @param zoomLevel
+     *            The zoom to apply to the diagram
+     */
+    private void testBorderNodesAreAligned(String diagramDescriptionName, String diagramName, String sourceName, Class<? extends EditPart> sourceEditPartType, int sourceDelta, String targetName,
+            Class<? extends EditPart> targetEditPartType, int targetDelta, boolean xAxis, ZoomLevel zoomLevel) {
+        Option<String> nothinfToRevealFirst = Options.newNone();
+        testBorderNodesAreAligned(diagramDescriptionName, diagramName, sourceName, sourceEditPartType, sourceDelta, targetName, targetEditPartType, targetDelta, xAxis, zoomLevel,
+                nothinfToRevealFirst);
+    }
+
+    /**
+     * Create an edge with its associated border nodes between two elements.
+     * 
+     * @param diagramDescriptionName
+     *            The diagram description name
+     * @param diagramName
+     *            The diagram name
+     * @param sourceName
+     *            The name of the source node
+     * @param sourceEditPartType
+     *            The type of the source EditPart
+     * @param sourceDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the source node to compute the source
+     *            point of the edge.
+     * @param targetName
+     *            The name of the target node
+     * @param targetEditPartType
+     *            The type of the target EditPart
+     * @param targetDelta
+     *            The delta from left if <code>verticalEdge</code> is true, or
+     *            from top otherwise, of the target node to compute the target
+     *            point of the edge.
+     * @param verticalEdge
+     *            true if the edge is a vertical edge, false otherwise
+     * @param zoomLevel
+     *            The zoom to apply to the diagram
+     * @param nameOfElementToRevealInFirst
+     *            The optional name of element to reveal in first if necessary
+     *            (to fully see node in a container node for example).
+     */
+    private void testBorderNodesAreAligned(String diagramDescriptionName, String diagramName, String sourceName, Class<? extends EditPart> sourceEditPartType, int sourceDelta, String targetName,
+            Class<? extends EditPart> targetEditPartType, int targetDelta, final boolean verticalEdge, ZoomLevel zoomLevel, Option<String> nameOfElementToRevealInFirst) {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), diagramDescriptionName, diagramName, DDiagram.class, false, true);
         editor.setSnapToGrid(true, 2, 2);
+        editor.zoom(zoomLevel);
+        try {
+            SWTBotGefEditPart sourceSwtbotPart = editor.getEditPart(sourceName, sourceEditPartType);
+            final IGraphicalEditPart sourcePart = (IGraphicalEditPart) sourceSwtbotPart.part();
+            SWTBotGefEditPart targetSwtbotPart = editor.getEditPart(targetName, targetEditPartType);
+            IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtbotPart.part();
+            if (nameOfElementToRevealInFirst.some()) {
+                editor.reveal(nameOfElementToRevealInFirst.get());
+            }
+            editor.reveal(sourcePart);
+            editor.reveal(targetPart);
 
-        ICondition done = new OperationDoneCondition();
-        editor.activateTool(getCreateEdgeToolName());
-        editor.click(source);
-        editor.click(target, true);
-        SWTBotUtils.waitAllUiEvents();
-        bot.waitUntil(done);
+            ICondition done = new OperationDoneCondition();
+            editor.activateTool(getCreateEdgeToolName());
+            // Click just above the bottom of the source node (if the edge is
+            // vertical), otherwise just before the right side.
+            Rectangle sourceBounds = editor.getBounds(sourceSwtbotPart);
+            Point sourceTranslation;
+            Point targetTranslation;
+            Point absoluteSource;
+            Point absoluteTarget;
+            if (verticalEdge) {
+                Rectangle absoluteSourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourcePart);
+                sourceTranslation = new PrecisionPoint(sourceDelta * zoomLevel.getAmount(), (absoluteSourceBounds.height - 2) * zoomLevel.getAmount());
+                targetTranslation = new PrecisionPoint(targetDelta * zoomLevel.getAmount(), 2 * zoomLevel.getAmount());
+                absoluteSource = absoluteSourceBounds.getLocation().getTranslated(sourceDelta, absoluteSourceBounds.height - 2);
+                absoluteTarget = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourcePart).getLocation().getTranslated(targetDelta, 2);
+            } else {
+                Rectangle absoluteSourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourcePart);
+                sourceTranslation = new PrecisionPoint((absoluteSourceBounds.width - 2) * zoomLevel.getAmount(), sourceDelta * zoomLevel.getAmount());
+                targetTranslation = new PrecisionPoint(2 * zoomLevel.getAmount(), targetDelta * zoomLevel.getAmount());
+                absoluteSource = absoluteSourceBounds.getLocation().getTranslated(absoluteSourceBounds.width - 2, sourceDelta);
+                absoluteTarget = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourcePart).getLocation().getTranslated(2, targetDelta);
+            }
+            Point source = sourceBounds.getLocation().getTranslated(sourceTranslation);
+            editor.click(source);
+            // Click just below the top of the target node (if the edge is
+            // vertical), otherwise just after the left side.
+            Point target = editor.getLocation(targetSwtbotPart).getTranslated(targetTranslation);
+            editor.click(target, true);
+            SWTBotUtils.waitAllUiEvents();
+            bot.waitUntil(done);
 
-        // Get the new source border node
-        IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart("A", AbstractDiagramNodeEditPart.class).part();
-        IGraphicalEditPart sourceBorderNode = getBorderNode(sourcePart);
-        // Get the new target border node
-        IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart("B", AbstractDiagramNodeEditPart.class).part();
-        IGraphicalEditPart targetBorderNode = getBorderNode(targetPart);
-        assertEquals("The source and the target border nodes should be aligned.", GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceBorderNode).getLocation().x,
-                GraphicalHelper.getAbsoluteBoundsIn100Percent(targetBorderNode).getLocation().x);
+            // Get the new source border node (and wait that its figure is
+            // correctly located, ie not at {0, 0})
+            final IGraphicalEditPart sourceBorderNode = getBorderNode(sourcePart);
+            bot.waitUntil(new ICondition() {
+
+                @Override
+                public boolean test() throws Exception {
+                    if (verticalEdge) {
+                        return sourceBorderNode.getFigure().getBounds().x != 0;
+                    } else {
+                        return sourceBorderNode.getFigure().getBounds().y != 0;
+                    }
+                }
+
+                @Override
+                public void init(SWTBot bot) {
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "The border node coordinates are {0, 0}.";
+                }
+            });
+            // Get the new target border node
+            IGraphicalEditPart targetBorderNode = getBorderNode(targetPart);
+            if (verticalEdge) {
+                int sourceXLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceBorderNode).getLocation().x;
+                assertEquals("The source and the target border nodes should be aligned.", sourceXLocation, GraphicalHelper.getAbsoluteBoundsIn100Percent(targetBorderNode).getLocation().x);
+                // The x coordinate must be between source clicked point and
+                // target clicked point.
+                assertTrue("The x coordinate must be between source clicked point and target clicked point: Expected " + absoluteSource.x + "<= x <=" + absoluteTarget.x + " but what "
+                        + sourceXLocation + ".", absoluteSource.x <= sourceXLocation && sourceXLocation <= absoluteTarget.x);
+            } else {
+                int sourceYLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceBorderNode).getLocation().y;
+                assertEquals("The source and the target border nodes should be aligned.", sourceYLocation, GraphicalHelper.getAbsoluteBoundsIn100Percent(targetBorderNode).getLocation().y);
+                // The y coordinate must be between source clicked point and
+                // target clicked point.
+                assertTrue("The y coordinate must be between source clicked point and target clicked point: Expected " + absoluteSource.y + "<= y <=" + absoluteTarget.y + " but what "
+                        + sourceYLocation + ".", absoluteSource.y <= sourceYLocation && sourceYLocation <= absoluteTarget.y);
+            }
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 }
