@@ -119,6 +119,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * A function to compute the sequence events corresponding to an event end.
      */
     protected final Function<EventEnd, Collection<ISequenceEvent>> eventEndToSequenceEvents = new Function<EventEnd, Collection<ISequenceEvent>>() {
+        @Override
         public Collection<ISequenceEvent> apply(EventEnd from) {
             return endToISequencEvents.get(from);
         }
@@ -134,6 +135,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
      * A function to get the instance role height of a lifeline.
      */
     private final Function<Lifeline, Integer> instanceRoleHeight = new Function<Lifeline, Integer>() {
+        @Override
         public Integer apply(Lifeline from) {
             InstanceRole irep = from.getInstanceRole();
             if (irep != null) {
@@ -150,6 +152,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     private final Ordering<Lifeline> heightOrdering = Ordering.natural().onResultOf(instanceRoleHeight);
 
     private final Function<ISequenceEvent, Option<Range>> oldRangeFunction = new Function<ISequenceEvent, Option<Range>>() {
+        @Override
         public Option<Range> apply(ISequenceEvent from) {
             Range range = oldLayoutData.get(from);
             if (range == null) {
@@ -160,6 +163,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
     };
 
     private final Function<ISequenceEvent, Option<Range>> oldFlaggedRange = new Function<ISequenceEvent, Option<Range>>() {
+        @Override
         public Option<Range> apply(ISequenceEvent from) {
             Rectangle rect = oldFlaggedLayoutData.get(from);
             Range result = null;
@@ -807,7 +811,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         int minTimeBounds = getMinTimeBounds();
         int startTime = minTimeBounds;
         int endTime = getMaxTimeBounds(pack, minTimeBounds) - LayoutConstants.TIME_STOP_OFFSET;
-        this.timeRange = new Range(startTime, endTime);
+        this.timeRange = new Range(startTime, Math.max(startTime, endTime));
     }
 
     private int getMaxTimeBounds(boolean pack, int minTimeBounds) {
@@ -818,6 +822,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
             // Avoid to handle lifelines to move up for max computation.
             Predicate<Lifeline> isMaxRangeCandidate = new Predicate<Lifeline>() {
+                @Override
                 public boolean apply(Lifeline input) {
                     InstanceRole irep = input.getInstanceRole();
                     if (irep != null) {
@@ -859,6 +864,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
         int endOfLifeVsize = 0;
 
         List<DNode> endOfLifes = Lists.newArrayList(Iterables.filter(node.getOwnedBorderedNodes(), new Predicate<DNode>() {
+            @Override
             public boolean apply(DNode input) {
                 return input.isVisible() && EndOfLife.viewpointElementPredicate().apply(input);
             }
@@ -887,6 +893,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
 
         // Avoid to handle lifelines to move up for min computation.
         Predicate<Lifeline> isMinRangeCandidate = new Predicate<Lifeline>() {
+            @Override
             public boolean apply(Lifeline input) {
                 InstanceRole irep = input.getInstanceRole();
                 if (irep != null) {
