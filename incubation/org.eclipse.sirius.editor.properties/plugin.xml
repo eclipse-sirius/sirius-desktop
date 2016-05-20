@@ -86,7 +86,7 @@
         <input type="org.eclipse.sirius.properties.GroupStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatPropertySection"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatPropertySectionSpec"
                id="properties.section.hyperlinkWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.hyperlinkwidgetstyle.HyperlinkWidgetStyleFontFormatFilter"
                afterSection="properties.section.hyperlinkWidgetStyle.BackgroundColor"
@@ -156,7 +156,7 @@
         <input type="org.eclipse.sirius.properties.LabelWidgetStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle.LabelWidgetStyleFontFormatPropertySectionSpec"
+               class="org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle.TextWidgetStyleFontFormatPropertySectionSpec"
                id="properties.section.textWidgetStyle.FontFormat"
                filter="org.eclipse.sirius.properties.editor.properties.filters.properties.textwidgetstyle.TextWidgetStyleFontFormatFilter"
                afterSection="properties.section.textWidgetStyle.ForegroundColor"

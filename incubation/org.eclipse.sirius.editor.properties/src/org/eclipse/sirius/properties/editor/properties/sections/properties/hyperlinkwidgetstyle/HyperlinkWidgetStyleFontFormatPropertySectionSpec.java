@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.hyperlinkwidgetstyle;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,9 +24,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
+import org.eclipse.sirius.properties.HyperlinkWidgetStyle;
 import org.eclipse.sirius.properties.LabelWidgetStyle;
 import org.eclipse.sirius.properties.PropertiesPackage;
-import org.eclipse.sirius.properties.TextWidgetStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.SWT;
@@ -39,11 +39,11 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * Use proper checkboxes for labels' font format property.
+ * Use proper checkboxes for hyperlinks' font format property.
  * 
  * @author pcdavid
  */
-public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
+public class HyperlinkWidgetStyleFontFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
 
     private static final String BOLD = "Bold";
 
@@ -55,13 +55,13 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
-    public LabelWidgetStyleFontFormatPropertySectionSpec() {
+    public HyperlinkWidgetStyleFontFormatPropertySectionSpec() {
         buttonGroup = false;
     }
 
     @Override
     protected boolean isEqual(List<?> newList) {
-        List<String> value = LabelWidgetStyleFontFormatPropertySectionSpec.convertPropertiesToUI(((LabelWidgetStyle) eObject).getFontFormat());
+        List<String> value = HyperlinkWidgetStyleFontFormatPropertySectionSpec.convertPropertiesToUI(((HyperlinkWidgetStyle) eObject).getFontFormat());
         return value.equals(newList);
     }
 
@@ -107,7 +107,7 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontFormat();
+        return PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle_FontFormat();
     }
 
     @Override
@@ -131,7 +131,7 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
     protected String getDefaultFeatureAsText() {
         String returnStr = "";
         if (eObject instanceof LabelWidgetStyle) {
-            for (String str : convertPropertiesToUI(((TextWidgetStyle) eObject).getFontFormat())) {
+            for (String str : convertPropertiesToUI(((HyperlinkWidgetStyle) eObject).getFontFormat())) {
                 if (returnStr.length() > 0) {
                     returnStr = returnStr + (", ") + str;
                 } else {
@@ -216,7 +216,7 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : PropertiesPackage.eINSTANCE.getLabelWidgetStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : PropertiesPackage.eINSTANCE.getHyperlinkWidgetStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;
@@ -241,5 +241,4 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
         return formats;
     }
-
 }

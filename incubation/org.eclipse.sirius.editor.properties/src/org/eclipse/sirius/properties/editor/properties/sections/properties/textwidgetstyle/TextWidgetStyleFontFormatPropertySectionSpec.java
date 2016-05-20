@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.properties.editor.properties.sections.properties.labelwidgetstyle;
+package org.eclipse.sirius.properties.editor.properties.sections.properties.textwidgetstyle;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,11 +39,11 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * Use proper checkboxes for labels' font format property.
+ * Custom property section for label format to use more appropriate widgets.
  * 
  * @author pcdavid
  */
-public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
+public class TextWidgetStyleFontFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
 
     private static final String BOLD = "Bold";
 
@@ -55,13 +55,13 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
-    public LabelWidgetStyleFontFormatPropertySectionSpec() {
+    public TextWidgetStyleFontFormatPropertySectionSpec() {
         buttonGroup = false;
     }
 
     @Override
     protected boolean isEqual(List<?> newList) {
-        List<String> value = LabelWidgetStyleFontFormatPropertySectionSpec.convertPropertiesToUI(((LabelWidgetStyle) eObject).getFontFormat());
+        List<String> value = TextWidgetStyleFontFormatPropertySectionSpec.convertPropertiesToUI(((TextWidgetStyle) eObject).getFontFormat());
         return value.equals(newList);
     }
 
@@ -107,7 +107,7 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     @Override
     protected EStructuralFeature getFeature() {
-        return PropertiesPackage.eINSTANCE.getLabelWidgetStyle_FontFormat();
+        return PropertiesPackage.eINSTANCE.getTextWidgetStyle_FontFormat();
     }
 
     @Override
@@ -216,7 +216,7 @@ public class LabelWidgetStyleFontFormatPropertySectionSpec extends AbstractCheck
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : PropertiesPackage.eINSTANCE.getLabelWidgetStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : PropertiesPackage.eINSTANCE.getTextWidgetStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;
