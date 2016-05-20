@@ -27,27 +27,16 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius3.1.1">Changes in Sirius 3.1.1</a>
-						<ol style="list-style: disc;">
-							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
-							</li>
-							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
-							</li>
-						</ol>
-					</li>
-					<li>
 						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -58,10 +47,10 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -72,7 +61,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#APIChanges">API Changes</a>
@@ -122,6 +111,7 @@
 				<a href="specifier/general/Writing_Queries.html#editing_domain_services">the documentation</a> for details.  
 			</li>
 			<li><span class="label label-info">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the specifier documentation for more details.</li>
+			<li><span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.</li>
 			<li><span class="label label-info">Modified</span> 
 				<strong>Warning</strong>: Before this version, a style customization of an 
 				<code>EEnum</code> attribute, like 
@@ -149,6 +139,9 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()</code> has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred. 
+			</li>
 			<li><span class="label label-success">Added</span> A new variant of 
 				<code>org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)</code> has been added, which does not require to specify a 
 				<code>DRepresentation</code> in the context. It allows the creation of a task which executes a behavior specified by 
@@ -472,6 +465,16 @@
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.tests.support.api.DefaultTestMemento</code> has been created. It help to simulate a real 
+				<code>IMemento</code> for editor restoration.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>SiriusTestCase.initViewpoint(String, Session, boolean)</code> has been added to allow viewpoint activation without creating representations.
+			</li>
+			<li><span class="label label-warning">Deprecated</span> The method 
+				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
+			</li>
 			<li><span class="label label-success">Added</span> The methods 
 				<code>initLoggers()</code> and 
 				<code>disposeLoggers()</code> of class 
@@ -514,40 +517,6 @@
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
-		<h2 id="sirius3.1.1">Changes in Sirius 3.1.1</h2>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.</li>
-		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
-			<code>org.eclipse.sirius</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()</code> has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred. 
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
-			<code>org.eclipse.sirius.tests.junit.support</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The class 
-				<code>org.eclipse.sirius.tests.support.api.DefaultTestMemento</code> has been created. It help to simulate a real 
-				<code>IMemento</code> for editor restoration.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
-			<code>org.eclipse.sirius.tests.junit.support</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>SiriusTestCase.initViewpoint(String, Session, boolean)</code> has been added to allow viewpoint activation without creating representations.
-			</li>
-			<li><span class="label label-warning">Deprecated</span> The method 
-				<code>SiriusTestCase.initViewpoint(String, Session, EObject)</code> has been deprecated because the last parameter is useless to activate a viewpoint.
-			</li>
-		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -588,7 +557,7 @@
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
@@ -635,7 +604,7 @@
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
 		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#8220;language packs&#8221; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
@@ -876,7 +845,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1001,7 +970,7 @@
 				<code>RefreshPlan</code> in parameter to have more informations to say if children must be synchronized.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -1118,7 +1087,7 @@
 				<em>Viewpoint Selection</em> dialog and wizard page, the &#8220;plug-in&#8221; decorator for viewpoints loaded from plug-ins is removed, and a &#8220;Folder&#8221; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 
@@ -1193,7 +1162,7 @@
 				<em>EStructuralFeature</em> (inherited or with same name).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<p>The most important and impacting changes in this release are (details below in plug-in specific sections):</p>
 		<ul>
 			<li><span class="label label-success">Added</span>  The new extension point 
@@ -1394,7 +1363,7 @@
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1937,7 +1906,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -2094,7 +2063,7 @@
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#8220;advance&#8221; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
@@ -2105,7 +2074,7 @@
 			<li>&#8220;Lozenge&#8221; is replaced by &#8220;Diamond&#8221; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

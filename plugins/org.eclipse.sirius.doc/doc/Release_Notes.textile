@@ -24,6 +24,7 @@ h3. Specifier-Visible Changes
 * <span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.
 * <span class="label label-success">Added</span> A new class @org.eclipse.sirius.ext.emf.edit.EditingDomainServices@ (from plug-in @org.eclipse.sirius.ext.emf.edit@) has been added with a complete set of service methods to leverage most of the features of the "EMF Edit" framework, for example the various _Item Providers_ associated to semantic elements. See "the documentation":specifier/general/Writing_Queries.html#editing_domain_services for details.  
 * <span class="label label-info">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the specifier documentation for more details.
+* <span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.
 * <span class="label label-info">Modified</span> *Warning*: Before this version, a style customization of an @EEnum@ attribute, like @labelFormat@, worked with a value expression using a Java service returning a @EEnumLiteral@. It is now forbidden. You must return an @Enumerator@. The documentation about "Styles Customization":specifier/diagrams/Diagrams.html#enum_customization now details this case.
 * <span class="label label-info">Modified</span> The @BorderSizeComputationExpression@ migration has been corrected to recursively handle the sub container mappings. VSM created or migrated with Sirius 3.1.0, 3.1.1 or 3.1.2 might require a manual modification for the style descriptions of sub container mappings with border size computation equals to 0 as we cannot determine if they were added (or updated) after or before the migration: starting with Sirius 3.1.0, no border will be displayed for a 0 pixel value whereas with older version container always had at least a 1 pixel border.
 * <span class="label label-info">Modified</span> The variable under VariableFilter, previously named "Variable", is renamed to "Select Model Element Variable". It is functionally equivalent.
@@ -35,6 +36,7 @@ h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius@
 
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()@ has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred. 
 * <span class="label label-success">Added</span> A new variant of @org.eclipse.sirius.business.api.helper.task.TaskHelper.buildTaskFromModelOperation(EObject, ModelOperation)@ has been added, which does not require to specify a @DRepresentation@ in the context. It allows the creation of a task which executes a behavior specified by @ModelOperations@ outside of the context of a specific representation, provided the @ModelOperations@ work in that context.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.TypedVariable@ has been created.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription@ has been created as tag interface for variables that require user interaction to be valued.
@@ -125,6 +127,9 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.support.api.DefaultTestMemento@ has been created. It help to simulate a real @IMemento@ for editor restoration.
+* <span class="label label-success">Added</span> The method @SiriusTestCase.initViewpoint(String, Session, boolean)@ has been added to allow viewpoint activation without creating representations.
+* <span class="label label-warning">Deprecated</span> The method @SiriusTestCase.initViewpoint(String, Session, EObject)@ has been deprecated because the last parameter is useless to activate a viewpoint.
 * <span class="label label-success">Added</span> The methods @initLoggers()@ and @disposeLoggers()@ of class @org.eclipse.sirius.tests.support.api.SiriusTestCase@ have now a protected visibility (instead of private) to allow subclasses to use this logger without all the @genericSetUp@ behavior.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
@@ -139,26 +144,6 @@ h4. Changes in @org.eclipse.sirius.common.xtext@
 
 * <span class="label label-info">Modified</span> The dependency from  @org.eclipse.sirius.common.xtext@ to the JDT plug-in @org.eclipse.jdt.core@ is now optional. If you need the JDT Core in your environment, you will need to add the dependency explicitly.  The Sirius specification environment (@org.eclipse.sirius.editor@) still depends on PDE (and thus indirectly the JDT too).
 
-h2(#sirius3.1.1). Changes in Sirius 3.1.1
-
-h3. Specifier-Visible Changes
-
-* <span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.
-
-h3. Developer-Visible Changes
-
-h4. Changes in @org.eclipse.sirius@
-
-* <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()@ has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred. 
-
-h4. Changes in @org.eclipse.sirius.tests.junit.support@
-
-* <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.support.api.DefaultTestMemento@ has been created. It help to simulate a real @IMemento@ for editor restoration.
-
-h4. Changes in @org.eclipse.sirius.tests.junit.support@
-
-* <span class="label label-success">Added</span> The method @SiriusTestCase.initViewpoint(String, Session, boolean)@ has been added to allow viewpoint activation without creating representations.
-* <span class="label label-warning">Deprecated</span> The method @SiriusTestCase.initViewpoint(String, Session, EObject)@ has been deprecated because the last parameter is useless to activate a viewpoint.
 
 h2(#sirius3.1.0). Changes in Sirius 3.1.0
 
