@@ -537,7 +537,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
         Object result = super.getAdapter(type);
         if (result == null) {
             if (type == IPropertySheetPage.class) {
-                IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+                IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(this, getContributorId());
                 if (contributedPage != null) {
                     currentPropertySheetpage = null;
                     result = contributedPage;

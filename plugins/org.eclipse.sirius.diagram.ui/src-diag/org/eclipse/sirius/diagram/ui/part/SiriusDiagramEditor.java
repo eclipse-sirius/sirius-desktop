@@ -110,7 +110,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
             };
         }
         if (type == IPropertySheetPage.class) {
-            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(this, getContributorId());
             if (contributedPage != null) {
                 return contributedPage;
             }

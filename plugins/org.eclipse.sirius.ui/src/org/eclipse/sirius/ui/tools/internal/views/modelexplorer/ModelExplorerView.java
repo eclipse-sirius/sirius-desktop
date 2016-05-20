@@ -142,7 +142,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
     public Object getAdapter(Class type) {
         Object result = null;
         if (type == IPropertySheetPage.class) {
-            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(type, getContributorId());
+            IPropertySheetPage contributedPage = SiriusEditPlugin.getPlugin().getPropertySheetPage(this, getContributorId());
             if (contributedPage != null) {
                 result = contributedPage;
             } else {
