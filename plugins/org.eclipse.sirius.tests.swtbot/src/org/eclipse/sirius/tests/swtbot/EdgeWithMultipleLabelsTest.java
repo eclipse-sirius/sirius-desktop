@@ -54,8 +54,6 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     // PrecisionPoint(
     // 0.9, 0.9);
 
-    private static final String VIEWPOINT_NAME = "doremi_1551";
-
     private static final String MODEL_FILE = "doremi_1551.ecore";
 
     private static final String SESSION_FILE = "doremi_1551.aird";

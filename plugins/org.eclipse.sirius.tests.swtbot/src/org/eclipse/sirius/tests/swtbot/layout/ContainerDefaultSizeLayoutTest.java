@@ -58,19 +58,11 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String FILE_DIR = "/";
 
-    private static final Dimension LIST_MIN_DIM = new Dimension(56, 41);
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -211,11 +203,9 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         Bounds bounds = getGMFBounds(bot);
         assertEquals("Unexpected gmf width for" + name, -1, bounds.getWidth());
         assertEquals("Unexpected gmf height for" + name, -1, bounds.getHeight());
-
     }
 
     private void createNewEEnum(final EPackage root, final String name) {
-
         EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
         eEnum.setName(name);
         root.getEClassifiers().add(eEnum);
@@ -225,11 +215,9 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         } catch (IOException e) {
             fail("Pb when saving the resource in another resourceSet : " + e.getMessage());
         }
-
     }
 
     private void checkPkgBounds(String name) {
-
         SWTBotGefEditPart bot = editor.getEditPart(name, AbstractDiagramContainerEditPart.class);
         // check gmf size
         Bounds bounds = getGMFBounds(bot);
@@ -269,9 +257,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
     }
 
     private EPackage loadRootPackage() {
-
         ResourceSet set = new ResourceSetImpl();
-
         try {
             final EPackage ePackageInAnotherResourceSet = (EPackage) ModelUtils.load(localSession.getOpenedSession().getSemanticResources().iterator().next().getURI(), set);
             return ePackageInAnotherResourceSet;
@@ -279,11 +265,9 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
             fail("Pb when loading the resource in another resourceSet : " + e.getMessage());
         }
         return null;
-
     }
 
     private void createNewPackage(final EPackage root, final String name) {
-
         EPackage newPackage = EcoreFactory.eINSTANCE.createEPackage();
         newPackage.setName(name);
         root.getESubpackages().add(newPackage);
@@ -293,7 +277,5 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         } catch (IOException e) {
             fail("Pb when saving the resource in another resourceSet : " + e.getMessage());
         }
-
     }
-
 }

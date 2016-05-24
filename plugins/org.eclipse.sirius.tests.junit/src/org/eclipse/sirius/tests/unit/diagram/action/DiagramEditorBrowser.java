@@ -57,15 +57,7 @@ public class DiagramEditorBrowser {
     }
 
     private Iterator<IGraphicalEditPart> filterMatchingEditParts(final Predicate<IGraphicalEditPart> predicate, final Iterator<IGraphicalEditPart> parts) {
-        final Iterator<IGraphicalEditPart> mines = Iterators.filter(parts, new Predicate<IGraphicalEditPart>() {
-
-            public boolean apply(final IGraphicalEditPart input) {
-                return predicate.apply(input);
-
-            }
-        });
-        return mines;
-
+        return Iterators.filter(parts, predicate);
     }
 
     /**

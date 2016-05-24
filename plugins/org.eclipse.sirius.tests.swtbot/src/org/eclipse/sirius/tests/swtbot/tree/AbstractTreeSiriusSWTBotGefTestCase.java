@@ -98,11 +98,6 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
     };
 
     /**
-     * Preferences constants.
-     */
-    private static final String PREFERENCES = "Preferences";
-
-    /**
      * File constants.
      */
     private static final String FILE = "File";

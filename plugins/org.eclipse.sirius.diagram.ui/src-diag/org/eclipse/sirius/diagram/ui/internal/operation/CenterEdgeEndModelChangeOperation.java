@@ -447,9 +447,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     }
 
     private void retrieveAndSetExistingAnchorsAbsoluteLocation(Rectangle sourceBounds, Rectangle targetBounds) {
-
         existingSourceAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(sourceBounds, getAnchorId(edge.getSourceAnchor()));
-
         existingTargetAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(targetBounds, getAnchorId(edge.getTargetAnchor()));
     }
 

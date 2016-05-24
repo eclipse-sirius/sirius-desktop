@@ -23,18 +23,12 @@ public abstract class AbstractSTDTestCase extends AbstractSiriusSwtBotGefTestCas
 
     protected static final String FILE_DIR = "/";
 
-    private static String STD_DIRECTORY;
-
     abstract String[] getFilesUsedForTest();
 
     abstract String getSTDDiretory();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR + getSTDDiretory(), getFilesUsedForTest());
     }
-
 }

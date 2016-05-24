@@ -23,7 +23,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
@@ -75,24 +74,17 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
     /** Bot of the DiagramEditPart */
     protected SWTBotGefEditPart diagramEditPartBot;
 
-    private SWTBotGefEditPart centeredEPackagedBot;
-
     private SWTBotGefEditPart class1ChildOfDiagramBot;
 
     private SWTBotGefEditPart class3ChildOfDiagramBot;
 
     private SWTBotGefEditPart class4ChildOfDiagramBot;
 
-    private Rectangle centeredEPackagedBotBounds;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, SESSION_RESOURCE_NAME, MODELER_RESOURCE_NAME);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean getAutoRefreshMode() {
         return true;
@@ -116,9 +108,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         class1ChildOfDiagramBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeEditPart.class)).get(0);
         class3ChildOfDiagramBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeEditPart.class)).get(2);
         class4ChildOfDiagramBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeEditPart.class)).get(3);
-
-        centeredEPackagedBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeContainerEditPart.class)).get(2);
-        centeredEPackagedBotBounds = editor.getBounds(centeredEPackagedBot);
     }
 
     /**
@@ -238,11 +227,9 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         localSession = null;
         editor = null;
         diagramEditPartBot = null;
-        centeredEPackagedBot = null;
         class1ChildOfDiagramBot = null;
         class3ChildOfDiagramBot = null;
         class4ChildOfDiagramBot = null;
-        centeredEPackagedBotBounds = null;
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
         SWTBotUtils.waitAllUiEvents();

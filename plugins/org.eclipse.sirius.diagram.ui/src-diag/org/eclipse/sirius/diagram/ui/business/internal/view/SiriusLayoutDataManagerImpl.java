@@ -485,25 +485,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerOnOpeningCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
      *      org.eclipse.gmf.runtime.notation.View)
      */
-    public AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
-        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerOnOpeningCommandLabel, null) {
-            @Override
-            protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-                final View view = (View) viewAdapter.getAdapter(View.class);
-                if (view != null && !view.eAdapters().contains(LAYOUT_MARKER_ADAPTER_ON_OPENING)) {
-                    view.eAdapters().add(LAYOUT_MARKER_ADAPTER_ON_OPENING);
-                }
-                return CommandResult.newOKCommandResult();
-            }
-        };
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerOnOpeningCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
-     *      org.eclipse.gmf.runtime.notation.View)
-     */
     @Override
     public AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(final TransactionalEditingDomain domain, final View view) {
         return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerOnOpeningCommandLabel, null) {
@@ -517,9 +498,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         };
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public EdgeLabelLayoutData getLabelData(final DEdge edge) {
         EdgeLabelLayoutData result = null;
@@ -1002,15 +980,5 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     @Override
     public void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         this.createdViewWithCenterLayout.put(gmfDiagram, createdViewsToLayout);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#isSpecialLayout(org.eclipse.gmf.runtime.notation.View)
-     */
-    public boolean isCenterLayout(Diagram gmfDiagram, View view) {
-        Set<View> set = createdViewWithCenterLayout.get(gmfDiagram);
-        return set.contains(view);
     }
 }

@@ -172,13 +172,6 @@ public class ValidationFixResolution implements IMarkerResolution {
         return fixTarget;
     }
 
-    private DDiagram getDiagram(IEditorPart editor) {
-        if (editor instanceof DialectEditor) {
-            return (DDiagram) ((DialectEditor) editor).getRepresentation();
-        }
-        return null;
-    }
-
     private boolean isViewValidationRule() {
         return (fix.eContainer() instanceof ViewValidationRule);
     }

@@ -13,8 +13,6 @@ package org.eclipse.sirius.common.acceleo.aql.business.internal;
 import com.google.common.collect.Sets;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -56,72 +54,29 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
         variables = new VariableManager();
     }
 
-    /**
-     * Returns the last value of the given list.
-     * <p>
-     * Makes no effort to try and check whether the argument is valid.
-     * </p>
-     *
-     * @param values
-     *            List from which we need the last value.
-     * @param <V>
-     *            Type of the list's values.
-     * @return The last value of the given list.
-     */
-    private static <V> V getLast(List<V> values) {
-        final ListIterator<V> iterator = values.listIterator(values.size());
-        return iterator.previous();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
     @Override
     public void addVariableStatusListener(IVariableStatusListener newListener) {
         variableStatusListeners.add(newListener);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearVariables()
-     */
     @Override
     public void clearVariables() {
         variables.clearVariables();
         notifyVariableListeners();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#dispose()
-     */
     @Override
     public void dispose() {
         variables.clearVariables();
         variableStatusListeners.clear();
         this.javaExtensions.dispose();
-
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariable(java.lang.String)
-     */
     @Override
     public Object getVariable(String name) {
         return variables.getVariable(name);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
-     */
     @Override
     public Map<String, Object> getVariables() {
         return variables.getVariables();
@@ -138,22 +93,11 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
-     */
     @Override
     public void removeVariableStatusListener(IVariableStatusListener listener) {
         variableStatusListeners.remove(listener);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setProperty(java.lang.Object,
-     *      java.lang.Object)
-     */
     @Override
     public void setProperty(Object key, Object value) {
         /*
@@ -165,22 +109,11 @@ public abstract class AcceleoAbstractInterpreter extends AbstractInterpreter {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setVariable(java.lang.String,
-     *      java.lang.Object)
-     */
     @Override
     public void setVariable(String name, Object value) {
         variables.setVariable(name, value);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#unSetVariable(java.lang.String)
-     */
     @Override
     public void unSetVariable(String name) {
         variables.unSetVariable(name);

@@ -16,7 +16,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategy.ResourceStrategyType;
 
@@ -94,25 +93,6 @@ public final class ResourceStrategyRegistry {
     private ResourceStrategy getResourceStrategy(ResourceStrategy.ResourceStrategyType resStrategyType, Resource resource) {
         for (ResourceStrategy iResourceStrategy : providedResourceStrategies) {
             if (iResourceStrategy.canHandle(resource, resStrategyType))
-                return iResourceStrategy;
-        }
-        return defaultResourceStrategy;
-    }
-
-    /**
-     * Get the compatible {@link ResourceStrategy}. </br>
-     * If not found among the registered {@link ResourceStrategy} a default is
-     * provided.
-     * 
-     * @param resStrategyType
-     *            the type of resource Strategy
-     * @param resourceURI
-     *            the resource URI if resource is null
-     * @return the corresponding {@link ResourceStrategy}
-     */
-    private ResourceStrategy getResourceStrategy(ResourceStrategy.ResourceStrategyType resStrategyType, URI resourceURI) {
-        for (ResourceStrategy iResourceStrategy : providedResourceStrategies) {
-            if (iResourceStrategy.canHandle(resourceURI, resStrategyType))
                 return iResourceStrategy;
         }
         return defaultResourceStrategy;

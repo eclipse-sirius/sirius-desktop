@@ -58,8 +58,6 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODELER_RESOURCE_NAME = "VP-2091.odesign";
 
-    private static final String VIEWPOINT_NAME = "VP-2091_Viewpoint";
-
     private static final String REPRESENTATION_NAME = "VP-2091_Diagram";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "new " + REPRESENTATION_NAME;

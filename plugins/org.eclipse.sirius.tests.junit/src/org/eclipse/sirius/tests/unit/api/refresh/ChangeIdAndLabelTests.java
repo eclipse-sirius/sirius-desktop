@@ -25,7 +25,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -45,8 +44,6 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
     private static final String REPRESENTATION_DESC_NAME = "Entities";
 
     private DDiagram diagram;
-
-    private static final RGBValues CUSTOM_COLOR = RGBValues.create(33, 33, 33);
 
     @Override
     protected void setUp() throws Exception {

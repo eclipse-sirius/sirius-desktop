@@ -82,7 +82,6 @@ public class ExternalJavaActionSpecificVerticalLayout implements IExternalJavaAc
                 DiagramEditor editor = (DiagramEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
                 IDiagramDialectGraphicalViewer viewer = (IDiagramDialectGraphicalViewer) editor.getDiagramGraphicalViewer();
                 double xCenterReferenceLocation = 0;
-                double xLocation = 0;
                 double width = 0;
                 for (DDiagramElementContainer dContainer : diagram.getContainers()) {
                     Container container = (Container) dContainer.getTarget();
@@ -92,7 +91,6 @@ public class ExternalJavaActionSpecificVerticalLayout implements IExternalJavaAc
                         }
                     } else {
                         for (DNodeContainerEditPart editPart : viewer.findEditPartsForElement(dContainer.getTarget(), DNodeContainerEditPart.class)) {
-                            xLocation = editPart.getFigure().getBounds().preciseX();
                             width = editPart.getFigure().getBounds().preciseWidth();
                         }
                     }

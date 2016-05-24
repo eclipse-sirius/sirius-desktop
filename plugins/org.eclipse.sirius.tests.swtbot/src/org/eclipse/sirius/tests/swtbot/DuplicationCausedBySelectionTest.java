@@ -73,8 +73,6 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
 
     private static final String MODEL_LISTS = "doremi-2440_lists.ecore";
 
-    private static final String VIEWPOINT_NAME = "Design";
-
     private static final String REPRESENTATION_NAME = "Entities";
 
     private static final String REPRESENTATION_NAME_FOR_NODES = "Nodes";

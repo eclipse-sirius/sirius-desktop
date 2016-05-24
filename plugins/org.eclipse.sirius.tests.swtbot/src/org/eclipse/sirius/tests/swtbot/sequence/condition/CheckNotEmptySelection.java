@@ -18,15 +18,12 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 public class CheckNotEmptySelection extends DefaultCondition {
 
-    private int expectedReturnMessageNumber;
-
     private SWTBotSiriusDiagramEditor editor;
 
     private Class<SequenceMessageEditPart> expectedType;
 
     /**
      * Constructor.
-     * 
      */
     public CheckNotEmptySelection(SWTBotSiriusDiagramEditor editor) {
         this.editor = editor;
@@ -49,7 +46,6 @@ public class CheckNotEmptySelection extends DefaultCondition {
     }
 
     public String getFailureMessage() {
-        // TODO Auto-generated method stub
         return null;
     }
 

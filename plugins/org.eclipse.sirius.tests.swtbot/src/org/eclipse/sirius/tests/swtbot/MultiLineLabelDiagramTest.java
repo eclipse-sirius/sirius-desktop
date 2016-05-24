@@ -70,8 +70,6 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODELER_RESOURCE_NAME = "multiLines.odesign";
 
-    private static final String VIEWPOINT_NAME = "multiLines";
-
     private static final String VP_1810_REPRESENTATION_NAME = "Ticket VP-1810 EPackage";
 
     private static final String VP_1810_REPRESENTATION_INSTANCE_NAME = "new Ticket VP-1810 EPackage";

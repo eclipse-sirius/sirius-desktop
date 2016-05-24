@@ -211,9 +211,4 @@ public class WorkspaceDragAndDropSupport {
     public IFile getWorkspaceFile(DFile file) {
         return ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(file.getPath()));
     }
-
-    // private boolean isAird(final IFile obj) {
-    // return obj.getFileExtension() != null &&
-    // SiriusUtil.DIAGRAM_MODEL_EXTENSION.equals(obj.getFileExtension());
-    // }
 }

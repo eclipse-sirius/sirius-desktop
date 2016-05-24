@@ -762,9 +762,5 @@
      <descriptorprovider
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramMetamodelsProvider">
      </descriptorprovider>
-  </extension>
-  <extension
-        point="org.eclipse.sirius.migrationParticipant">
-  </extension>
-  
+  </extension>  
 </plugin>

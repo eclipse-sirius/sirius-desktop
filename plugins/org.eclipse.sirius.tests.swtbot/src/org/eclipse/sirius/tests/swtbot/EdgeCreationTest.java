@@ -42,8 +42,6 @@ public class EdgeCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final PrecisionPoint BOTTOM_RIGHT_CORNER = new PrecisionPoint(0.9, 0.9);
 
-    private static final String VIEWPOINT_NAME = "Ticket_2298";
-
     private static final String MODEL_FILE = "My.ecore";
 
     private static final String SESSION_FILE = "My.aird";

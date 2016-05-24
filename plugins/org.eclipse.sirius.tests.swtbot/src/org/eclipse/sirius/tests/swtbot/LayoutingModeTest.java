@@ -14,7 +14,6 @@ import java.lang.reflect.Field;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -48,29 +47,17 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_NAME = "new " + REPRESENTATION_DESCRIPTION_NAME;
 
-    private Session session;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, SEMANTIC_MODEL_NAME, SESSION_FILE_NAME, MODELER_NAME);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
-
-        session = localSession.getOpenedSession();
-
+        localSession.getOpenedSession();
     }
 
     /**

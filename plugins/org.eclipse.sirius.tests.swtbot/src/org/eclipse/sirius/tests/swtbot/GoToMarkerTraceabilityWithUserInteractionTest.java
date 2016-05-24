@@ -66,9 +66,6 @@ import junit.framework.AssertionFailedError;
  */
 public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScenarioTestCase {
 
-    /**
-     * 
-     */
     private static final String REPRESENTATION_EMPTY_DIAGRAM = "EmptyDiagram";
 
     /**
@@ -83,8 +80,6 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     private static final String SESSION_PATH = "vp1038.aird";
 
     private static final String MODELER_PATH = "vp1038.odesign";
-
-    private static final String VIEWPOINT_NAME = "Traceability";
 
     private static final String REPRESENTATION_DIAGRAM = "Trace Diagram";
 
@@ -118,17 +113,11 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
 
     private AssertionFailedError assertionException;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, SEMANTIC_MODEL_PATH, SESSION_PATH, MODELER_PATH);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();

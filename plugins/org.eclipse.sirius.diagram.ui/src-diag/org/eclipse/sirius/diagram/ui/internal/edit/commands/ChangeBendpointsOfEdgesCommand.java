@@ -305,7 +305,6 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                     if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
                         // Just update the label offset
                         CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_updateLabelsOffsetCmdLabel);
-                        PointList currentPointList = connectionEditPart.getConnectionFigure().getPoints();
                         PointList futurePointList = new BracketConnectionQuery(connectionEditPart.getConnectionFigure()).getPointListFromConstraintAndMove(moveDelta, sourceMove);
                         SetLabelsOffsetCommmand setLabelsOffsetCommand = new SetLabelsOffsetCommmand(transactionalEditingDomain);
                         setLabelsOffsetCommand.setNewPointList(futurePointList);
