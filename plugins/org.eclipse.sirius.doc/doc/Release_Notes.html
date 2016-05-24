@@ -103,14 +103,18 @@
 				<code>XX</code>. The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments. See 
 				<a href="specifier/general/Specifying_Viewpoints.html#translatable_messages">the corresponding section</a> in the documentation for more details.
 			</li>
-			<li><span class="label label-success">Added</span> It is possible to create Typed Variable under Variable Filter.</li>
+			<li><span class="label label-success">Added</span> It is possible to create 
+				<a href="specifier/diagrams/Diagrams.html#filter_with_typed_variable">Typed Variable</a> under Variable Filter.
+			</li>
 			<li><span class="label label-success">Added</span> A new class 
 				<code>org.eclipse.sirius.ext.emf.edit.EditingDomainServices</code> (from plug-in 
 				<code>org.eclipse.sirius.ext.emf.edit</code>) has been added with a complete set of service methods to leverage most of the features of the &#8220;EMF Edit&#8221; framework, for example the various 
 				<em>Item Providers</em> associated to semantic elements. See 
 				<a href="specifier/general/Writing_Queries.html#editing_domain_services">the documentation</a> for details.  
 			</li>
-			<li><span class="label label-info">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the specifier documentation for more details.</li>
+			<li><span class="label label-success">Added</span> The specifier can now restrict the border node authorized sides. This new option is available in the advanced tab of the border node style. See the 
+				<a href="specifier/diagrams/Diagrams.html#authorizedsides">specifier documentation</a> for more details.
+			</li>
 			<li><span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.</li>
 			<li><span class="label label-info">Modified</span> 
 				<strong>Warning</strong>: Before this version, a style customization of an 
@@ -301,7 +305,7 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback.askForTypedVariable(List&lt;TypedVariable&gt;, List&lt;String&gt;)</code> has been created.
 			</li>
-			<li><span class="label label-info">Added</span> The new internationalizable label 
+			<li><span class="label label-success">Added</span> The new internationalizable label 
 				<code>Messages_createRepresentationInputDialog_DefaultRepresentationDescName</code> has been added (available through 
 				<code>org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName</code>. Its value is &#8220;Representation&#8221;.
 			</li>
