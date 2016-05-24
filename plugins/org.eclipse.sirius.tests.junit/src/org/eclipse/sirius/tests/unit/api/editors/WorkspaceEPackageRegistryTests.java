@@ -40,7 +40,7 @@ public class WorkspaceEPackageRegistryTests extends SiriusDiagramTestCase {
 
     private ILogListener warningLogListener;
 
-    private List<IStatus> warnings;
+    private List<IStatus> testWarnings;
 
     @Override
     protected void setUp() throws Exception {
@@ -49,7 +49,7 @@ public class WorkspaceEPackageRegistryTests extends SiriusDiagramTestCase {
         workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
         workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
 
-        warnings = new ArrayList<IStatus>();
+        testWarnings = new ArrayList<IStatus>();
         warningLogListener = new WarningLogRegister();
         Platform.addLogListener(warningLogListener);
     }
@@ -79,7 +79,7 @@ public class WorkspaceEPackageRegistryTests extends SiriusDiagramTestCase {
         String assertMessage = "A new correct EPackage (with a nsURI) must be added to the workspace";
         assertEquals(assertMessage, workspaceEPackageRegistrySizeBeforeNewEcoreResourceAdding + 1, workspaceEPackageRegistrySizeAfterNewEcoreResourceAdding);
         assertTrue(assertMessage, workspaceEPackageRegistry.containsKey(ePackage.getNsURI()));
-        assertEquals(0, warnings.size());
+        assertEquals(0, testWarnings.size());
 
     }
 
@@ -182,7 +182,7 @@ public class WorkspaceEPackageRegistryTests extends SiriusDiagramTestCase {
         workspaceEPackageRegistry = null;
         Platform.removeLogListener(warningLogListener);
         warningLogListener = null;
-        warnings = null;
+        testWarnings = null;
         super.tearDown();
     }
 
@@ -190,7 +190,7 @@ public class WorkspaceEPackageRegistryTests extends SiriusDiagramTestCase {
 
         public void logging(IStatus status, String plugin) {
             if (status.getSeverity() == IStatus.WARNING && DslCommonPlugin.PLUGIN_ID.equals(status.getPlugin())) {
-                warnings.add(status);
+                testWarnings.add(status);
             }
         }
 

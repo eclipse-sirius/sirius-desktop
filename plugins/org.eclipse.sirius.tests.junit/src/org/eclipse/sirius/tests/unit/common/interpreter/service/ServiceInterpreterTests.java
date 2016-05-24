@@ -32,8 +32,6 @@ import org.eclipse.sirius.tools.api.command.ICommandFactory;
  */
 public class ServiceInterpreterTests extends SiriusTestCase {
 
-    private IInterpreter interpreter;
-
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -299,7 +297,7 @@ public class ServiceInterpreterTests extends SiriusTestCase {
         boolean oldIsWarningCatchActive = isWarningCatchActive();
         setWarningCatchActive(true);
         try {
-            // Add a path corresponding to an mlt file
+            // Add a path corresponding to an mtl file
             interpreter.addImport("org::eclipse::sirius::test::a3Querries");
             // Test
             checkServiceInterpreterEvaluationWithSpecificServiceExpression(false);
