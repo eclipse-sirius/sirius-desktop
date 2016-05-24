@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -288,6 +288,18 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         final DialectEditor dialectEditor2 = getDialectEditor(REPRESENTATION_INSTANCE_TREE);
         Assert.assertNull("The editor '" + REPRESENTATION_INSTANCE_DIAGRAM1 + "' should not have been opened", dialectEditor);
         Assert.assertNull("The editor '" + REPRESENTATION_INSTANCE_TREE + "' should not have been opened", dialectEditor2);
+    }
+
+    /**
+     * Ensure that there is no NPE when no representation element exists
+     * (corresponding to the semantic element of the marker).
+     */
+    public void testTraceabilityWhenNoRepresentationElementExists() {
+        setUpMarker(REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", "platform:/resource/DesignerTestProject/vp1038.ecore#/");
+
+        callGoToMarkerOnAllOpenedEditors(traceMarker);
+
+        SWTBotUtils.waitAllUiEvents();
     }
 
     /**
