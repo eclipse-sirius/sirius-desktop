@@ -585,10 +585,8 @@
      </contexts>
   </extension>
 
-<!--
    <extension point="org.eclipse.help.toc">
       <toc file="doc/toc.xml" primary="false" />
    </extension>
--->  
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->

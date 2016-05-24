@@ -4,24 +4,26 @@ h1. Specifying Properties View
 
 h2(#introduction). Introduction
 
-Sirius supports the definition of properties views with support for many features like complex styling, validation, context etc.
+Starting from version 4.0, Sirius supports the definition of properties views with support for many features like complex styling, validation, context etc.
 
-Properties views are defined inside the VSM and identifies a sub-set of the elements in the semantic model and associates an element to them in the properties view: it _maps_ semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element's definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
+Properties views are defined inside the VSM and identify a sub-set of the elements in the semantic model and associates an element to them in the properties view: it _maps_ semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element's definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
 
-h2(#view_extension_description). View Extension Description
+<span class="label label-danger">WARNING</span> This feature is first introduced in Sirius 4.0 as a "preview". While the main mechanisms work, it should be considered in an *experimental*  state with details subject to changes until Sirius 4.1.
 
-Properties view are configured by creating a _View Extension Description_ element (directly under the "_Group_":Specifying_Viewpoints.html#vsm_organization) and its sub-elements (which describe the widgets, the actions, the layout...).
+h2(#properties_view_description). Properties View Description
+
+Properties view are configured by creating a _Properties View Description_ element (directly under the "_Group_":Specifying_Viewpoints.html#vsm_organization) and its sub-elements (which describe the widgets, the actions, the layout...).
 
 Like many elements inside a "_VSM_":../../Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
 
-Inside a _View Extension Description_ element, you can create:
-* "_Page Descriptions_":#pages
+Inside a _Properties View Description_ element, you can create:
+* "_Page Descriptions_":#pages, which correspond to "tab" 
 * "_Group Descriptions_":#groups
 
-It is recommended that the _View Extension Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _View Extension Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
+It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
 
 The descriptions for all the different types of properties view elements share the same common principles:
-* Some of the elements of the semantic model are selected, using a combination of configuration attributes (see below). These elements are called _targets_, and each one has a single widget of this type representing it. 
+* Some of the elements of the semantic model are selected, using a combination of configuration attributes (see below). These elements are called _targets_, and each one has a single widget of this type representing it.
 * The graphical aspect of the properties view is defined by a _style_. Sirius provides a rich set of possible styles, which are described later in this document.
 * Optionally, a behavior for the properties view element depending on the widget kind can be defined (edition for text field, on click action for hyperlink or buttons...).
 
@@ -52,20 +54,11 @@ By default, new properties view elements can be created on _any_ instance of the
 
 p(#precondition_expression). *Precondition Expression.* You can use the _Precondition Expression_ to change this. If such an expression is specified, it will be evaluated in the "context":#context of the semantic element the user has selected, and only if the expression returns @true@ will the user be able to create a new diagram on this element.
 
-p(#label_expression). *Label Expression.* Is used to compute the text of the label describing the element. The label is specified using the _Label expression_, which is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default label is equal to the EMF.Edit label provider result returned for the semantic element.
+p(#label_expression). *Label Expression.* Is used to compute the text of the label describing the element. The label is specified using the _Label expression_, which is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default label is empty.
 
-###. TODO Describe default EMF.Edit service for label
-###. Image of Label
+p(#help_expression). *Help Expression.* The help text of a properties view element is specified using the _Help expression_, which is evaluated in the context of the semantic element and should return a string.
 
-p(#help_expression). *Help Expression.* The help of a properties view element is specified using the _Help expression_, which is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default help is equal to the EMF.Edit property descriptor description provider result returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for help
-###. TODO Image of help
-
-p(#is_enabled_expression). *Is Enabled Expression.* The help of a properties view element is specified using the _Help expression_, which is evaluated in the context of the semantic element and should return a string. If the expression is not specified, the default help is equal to the EMF.Edit property descriptor description provider result returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for help
-###. TODO Image of enabled/disabled text
+p(#is_enabled_expression). *Is Enabled Expression.* Each widget can be enabled or disabled (making it visible but read-only) . The _Is Enabled Expression_ is evaluated in the context of the semantic element and should return a boolean. It the expression is not specified it defaults to _true_ (meaing the widget is enabled).
 
 p(#semantic_candidate_expression). *Semantic Candidate Expression.* The _Semantic Candidate Expression_ defines the model element represented by the properties view element.
 
@@ -73,32 +66,44 @@ p(#styles). *Styles.* Each kind of properties view element supports a rich set o
 
 To find some documentation for each properties, you can also refer to the tool-tips available directly in the editor on the "question mark" icon of each property.
 
+Here is an example of a widget configuration (a single-line "text":#text in this case) which illustrates some of the common attributes:
+
+!images/basic-properties-example-vsm.png!
+
+The _Text Element Name (non-editable)_ element has the exact same configuration except that its _Label Expression_ is @Name (read-only):@ and its _Is Enabled Expression_ is set to @aql:false@.
+
+Here is the resulting properties view rendered for a diagram element:
+
+!images/basic-properties-example-diagram.png! 
+
+We see both label expressions on the left of each widget, help icons which show the computed _Help Expression_ when the user leaves the mouse pointer on them, and the actual widgets. The second text widget is disabled (visible thanks to the light blue background) because of its  _Is Enabled Expression_.
+
 h3(#pages). Pages
 
 A _Page_ is used to represent a *Tab* in the properties view.
 
-###. TODO Add Page image
+!images/pages.png(Properties can be organized in separate tabs, defined by Page Description elements)! 
 
-Pages are configured by creating a _Page Description_ element inside a _View Extension Description_.
+Pages are configured by creating a _Page Description_ element inside a _Properties View Description_. In the illustration above, the two pages _General_ and _Hierarchy_ have been defined from the VSM. They appear above the standard tabs provided by Sirius (_Semantic_, _Advanced_, etc.).
 
 Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression.
 
-The definition of a page follows the general rules described "above":#view_extension_description to determine the semantic elements for which a page should be created.
+The definition of a page follows the general rules described "above":#properties_view_description to determine the semantic elements for which a page should be created.
 
-A page can reference "_Groups_":#groups which are defined directly under the _View Extension Description_.
+A page can reference "_Groups_":#groups which are defined directly under the _Properties View Description_.
 The groups are ordered in the page accordingly to their order in the groups reference list in the VSM.
 
 h3(#groups). Groups
 
 A _Group_ is used to represent a *Section* in a properties view tab.
 
-###. TODO Add Group image
+!images/groups.png(Inside a tab, properties can be grouped in foldable sections)!
 
-Groups are configured by creating a _Group Description_ element inside a _View Extension Description_. 
+Groups are configured by creating a _Group Description_ element inside a _Properties View Description_. 
 
 Much like the other properties view elements, you must specify the "_Identifier_":#identifier, "_Domain Class_":#domain_class, "_Precondition Expression_":precondition_expression, "_Label Expression_":#label_expression, "_Semantic Candidate Expression_":#semantic_candidate_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
 
-The definition of a group follows the general rules described "above":#view_extension_description to determine the semantic elements for which a group should be created.
+The definition of a group follows the general rules described "above":#properties_view_description to determine the semantic elements for which a group should be created.
 
 A group can contain "_controls_":#controls and "_validation rules_":#validation_rules, all of which are defined inside the group description (_New Group Description > Container|Text..._ and _Group Validation Set Description_, respectively).
 
@@ -108,14 +113,22 @@ See the "styles":#styling section for a general presentation of how styles are d
 
 For groups you can define the following style attributes:
 * _Background color_: You can specify the background color using "color":#colors sub-elements.
-* _Bar style_ : Is used to define the section style. It exists 3 different styles : @TITLE BAR@, @SHORT TITLE BAR@, @NO STYLE@.
+* _Bar style_ : Is used to define the section style. It exists 3 different styles : @TITLE BAR@, @SHORT TITLE BAR@, @NO TITLE@ (see the first table below for illusrations of these styles).
 * _Expanded by default_: This flag is used to define if the section should be expanded or collapsed.
 * _Font name expression_: Is used to computes the name of the font to use.
 * _Font size_: Indicates the font size to use in points.
 * _Foreground color_: You can specify the foreground color using "color":#colors sub-elements.
-* _Toggle style_: Is used to define the style of the toggle. It exists 3 different toggles : @TWISTIE@, @TREE NODE@, @NONE@.
+* _Toggle style_: Is used to define the style of the toggle. It exists 3 different toggles : @TWISTIE@, @TREE NODE@, @NONE@ (see the second table below for illusrations of these styles).
 
-###. TODO Images for bar styles and toggle styles
+The following tables illustrate the different _Bar Style_ and _Toggle Style_ available on groups:
+
+table(table table-striped table-condensed).
+|!images/group-style-titlebar.png!|!images/group-style-short-titlebar.png!|!images/group-style-no-title.png!|
+|_. @TITLE BAR@|_. @SHORT TITLE BAR@|_. @NO TITLE@|
+
+table(table table-striped table-condensed).
+|!images/group-style-toggle-twistie.png!|!images/group-style-toggle-treenode.png!|!images/group-style-toggle-none.png!|
+|_. @TWISTIE@|_. @TREE NODE@|_. @NONE@|
 
 h3(#controls). Controls
 
@@ -125,9 +138,7 @@ h3(#widgets). Widgets
 
 A widget is used to represent model elements in the properties view. A widget can not contain other properties view elements. _Widget_ can appear directly inside a group description, a "dynamic mapping":#dynamic_mappings or inside a "container":#containers, in which case you can specify a specific "layout":#layout.
 
-###. TODO Image for Widgets in a group, Image for widgets in a container
-
-The definition of a widget follows the general rules described "above":#view_extension_description to determine the semantic elements for which a widget should be created.
+The definition of a widget follows the general rules described "above":#properties_view_description to determine the semantic elements for which a widget should be created.
 
 Much like the other properties view elements, you must specify for widgets the "_Identifier_":#identifier, "_Label Expression_":#label_expression, "_Help Expression_":#help_expression,  "_Is Enabled Expression_":#is_enabled_expression, "_Styles_":#styles, "_Conditional Styles_":#conditional_styles.
 
@@ -135,17 +146,15 @@ h4(#text). Text / Text area
 
 A _Text Description_ is used to represent a *one line text* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for text
+!images/widget-text.png!
 
 A _Text Area Description_ is used to represent a *multiple lines text* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for text area
+!images/widget-textarea.png!
 
 The definition of a text/text area follows the general rules described "above":#widgets to determine the semantic elements for which a text should be created. It is evaluated in the context of the semantic target element.
 
-For texts and text areas, you must define the _Value Expression_ which is used to compute the text displayed in the text field and should return a string. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value
+For texts and text areas, you must define the _Value Expression_ which is used to compute the text displayed in the text field and should return a string. If the expression is not specified, the default value is an empty string.
 
 For text areas, you must define the _Line Count_ which is represents the height of the text area in number of lines.
 
@@ -155,9 +164,7 @@ To define the behavior of the text when a change occurs, you simply specify the 
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value entered by the user.
 
-###. TODO Describe default EMF.Edit service for set value
-
-Sirius automatically invokes the edit operation a short time after the user performs a change in the text.
+Sirius automatically invokes the edit operation a short time after the user performs a change in the text or when the focus leaves the widget.
 
 h5(#text_styles). Text/Text area styles
 
@@ -170,13 +177,15 @@ One of the responsibility of texts styles is to describe how text fields will be
 * _Foreground Color_: You can specify the foreground color of the text field using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).
 
-###. TODO Images for text styles
+Here are examples of text and text area widgets with some of their style attributes customized:
+
+!images/widget-text-styling.png(Text and TextArea widgets with customized style)!
 
 h4(#button). Button
 
 A _Button Description_ is used to represent a *button* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for button
+!images/widget-button.png(Example of a button widget)!
 
 The definition of a button follows the general rules described "above":#widgets to determine the semantic elements for which a button should be created. It is evaluated in the context of the semantic target element.
 
@@ -194,13 +203,13 @@ h4(#label). Label
 
 A _Label Description_ is used to represent a *non editable text* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for label body
+Here is an example which shows two label widgets:
+
+!images/widget-label.png(Examples of label widgets)!
 
 The definition of a label follows the general rules described "above":#widgets to determine the semantic elements for which a label should be created. It is evaluated in the context of the semantic target element.
 
-For labels, you must define the _Body Expression_ which is used to compute the text displayed in the description and should return a string. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value
+For labels, you must define the _Value Expression_ which is used to compute the text displayed in the description and should return a string. If the expression is not specified, the default value is the empty string.
 
 h5(#label_styles). Label styles
 
@@ -213,27 +222,23 @@ One of the responsibility of labels styles is to describe how descriptions will 
 * _Foreground Color_: You can specify the foreground color of the description using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).
 
-###. TODO Images for label styles
+!images/widget-label-styling.png(Example of labels with customized style)!
 
 h4(#checkbox). Checkbox
 
 A _Checkbox Description_ is used to represent a *checkbox* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for checkbox
+!images/widget-checkbox.png(Examples of checkbox widgets)!
 
 The definition of a checkbox follows the general rules described "above":#widgets to determine the semantic elements for which a checkbox should be created. It is evaluated in the context of the semantic target element.
 
-For checkboxes, you must define the _Value Expression_ which is used to compute the checked/unchecked state of the checkbox and so should return a boolean. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value
+For checkboxes, you must define the _Value Expression_ which is used to compute the checked/unchecked state of the checkbox and so should return a boolean.
 
 h5(#checkbox_change_value). Change value
 
 To define the behavior of the checkbox when the status changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value set by the user.
-
-###. TODO Describe default EMF.Edit service for set value
 
 h5(#checkbox_styles). Checkbox styles
 
@@ -243,25 +248,20 @@ h4(#select). Select
 
 A _Select Description_ is used to represent a *combo* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for select
+!images/widget-select.png(Example of a select widget)!
 
 The definition of a select follows the general rules described "above":#widgets to determine the semantic elements for which a select should be created. It is evaluated in the context of the semantic target element.
 
 For selects, you must define :
-* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the combo and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-* the _Candidates Expression_ which is used to compute the candidates available in the combo and should return a list of elements from which the user can select the select’s value. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor choice of value provider returned for the semantic element.
-* the _Value Expression_ which is used to compute the element selected in the combo and should return an object. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value, choice of values
-###. TODO Image to represent the different expressions
+* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the combo and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
+* the _Candidates Expression_ which is used to compute the candidates available in the combo and should return a list of elements from which the user can select the select’s value.
+* the _Value Expression_ which is used to compute the element selected in the combo and should return an object.
 
 h5(#select_change_value). Change value
 
 To define the behavior of the select when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
-
-###. TODO Describe default EMF.Edit service for set value
 
 h5(#select_styles). Select styles
 
@@ -271,25 +271,20 @@ h4(#radio_group). Radio group
 
 A _Radio Description_ is used to represent a *radio group* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for radio group
+!images/widget-radio.png(Example of a radio group widget)!
 
 The definition of a radio group follows the general rules described "above":#widgets to determine the semantic elements for which a radio group should be created. It is evaluated in the context of the semantic target element.
 
 For radio groups, you must define :
-* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the radio group and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-* the _Candidates Expression_ which is used to compute the candidates available in the radio group and should return a list of elements from which the user can select the radio group’s value. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor choice of value provider returned for the semantic element.
-* the _Value Expression_ which is used to compute the element selected in the radio group and should return an object. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value, choice of values
-###. TODO Image to represent the different expressions
+* the _Candidate Display Expression_ which is used to compute the label displayed for each possible candidate in the radio group and so should return a string. The _Candidate Display Expression_ can use the @candidate@ variable which represents the element currently evaluated.
+* the _Candidates Expression_ which is used to compute the candidates available in the radio group and should return a list of elements from which the user can select the radio group’s value.
+* the _Value Expression_ which is used to compute the element selected in the radio group and should return an object.
 
 h5(#radio_change_value). Change value
 
 To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
-
-###. TODO Describe default EMF.Edit service for set value
 
 h5(#radio_styles). Radio styles
 
@@ -299,13 +294,11 @@ h4(#hyperlink). Hyperlink
 
 A _Hyperlink Description_ is used to represent an *hyperlink* in a "group":#groups or in a "container":#containers.
 
-###. TODO Image for hyperlink
+!images/widget-hyperlink.png(Example of an hyperlink widget)!
 
 The definition of an hyperlink follows the general rules described "above":#widgets to determine the semantic elements for which an hyperlink should be created. It is evaluated in the context of the semantic target element.
 
-For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed and should return a string. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value
+For hyperlinks, you must define the _Value Expression_ which is used to compute the hyperlink displayed and should return a string.
 
 h5(#hyperlink_click_on_value). Click on value
 
@@ -321,35 +314,27 @@ One of the responsibility of hyperlinks styles is to describe how hyperlinks wil
 * _Background Color_: You can specify the background color of the text field using "color":#colors sub-elements.
 * _Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Strike through).
 
-###. TODO Images for text styles
-
 h4(#reference). Reference
 
 A _Reference Description_ is used to represent a *field with buttons* in a "group":#groups or in a "container":#containers.
 
 Depending on the parameters configuration the reference widget can be represented thanks to:
-* label,
-* hyperlink when the "_On Click Expression_"#reference_click_on_value is set,
-* table when the _Multiple_ flags is checked,
+* a label,
+* an hyperlink when the "_On Click Expression_"#reference_click_on_value is set,
+* a table when the _Multiple_ flags is checked,
 * buttons when "_Action Widgets_":#actions are defined.
 
-###. TODO Image for all the references
+!images/widget-references.png(Examples of reference widgets)!
 
-To be more concrete, this widget can be used for example to represent references :
-* a mono valued reference will be represented thanks to a label with 3 buttons associated to 3 actions: _create_, _unset_, _set_.
-* a multi valued reference will be represented thanks to a table (multiple checked) with 5 actions: _create_, _unset_, _set_, _up_, _down_.
+The illustration above shows two reference widgets:
+* the first one (_Superclass_) has a single value, which looks and behaves links an _hyperlink_ widget (with configurable "on click" behavior), and a single _Action Widget_ named _Show hierarchy_ which appears as a button (again, with configurable behavior).
+* the second one (_Attributes_) has multiple values which are displayed inside a list, and four different actions on the right to offer various operations on the elements displayed.
 
 The definition of a reference follows the general rules described "above":#widgets to determine the semantic elements for which a reference should be created. It is evaluated in the context of the semantic target element.
 
 For references, you must define:
-* the _Value Expression_ which is used to compute the element to display and should return an object. If the expression is not specified, the default value is equal to the EMF.Edit property descriptor property value returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for get value
-
-* the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. If the expression is not specified, the default value is equal to the EMF.Edit label provider result returned for the semantic element.
-
-###. TODO Describe default EMF.Edit service for label provider
-
+* the _Value Expression_ which is used to compute the element to display and should return an object.
+* the _Display Expression_ which is used to compute the text displayed in the text field and should return a string. It is evaluated in the context of the semantic target element and has access to the variable @value@ which corresponds to the element to display.
 * the _Multiple_ flag is used to represent multiple valued element. If the flag is checked then the widget is represented thanks to a table, else with an hyperlink or a label (it depends on the "_On Click Expression_":#reference_click_on_value is defined or not).
 * the "_actions_"#actions are used to associate some buttons to the text field.
 
@@ -365,9 +350,7 @@ The expressions defined under the _Begin_ can use the @selection@ variable which
 
 h5(#actions). Actions
 
-A reference can contain _actions_ which represent *buttons* associated to the reference field.
-
-###. TODO Images of action buttons
+A reference can contain _actions_ which represent *buttons* associated to the reference field, as shown in the illustration above.
 
 For actions, you must define the _Label Expression_ which is used to compute the label displayed on the button and should return a string. If the expression is not specified, the default value is equal to @...@.
 
@@ -406,7 +389,7 @@ A _Dynamic Mapping For_ can appear directly inside a group description, or insid
 Sirius will loop on the metamodel element list to try to apply the _Predicate Expression_ which should return a boolean and defined in a _Dynamic Mapping If_.
 The _Dynamic Mapping If_ contains *one widget* which represents all the metamodel elements selected by the previous predicate.
 
-The dynamic mapping mechanism is the one used by Sirius to provide by default properties view even if you do not specify any _View Extension Description_ in your VSM.
+The dynamic mapping mechanism is the one used by Sirius to provide by default properties view even if you do not specify any _Properties View Description_ in your VSM.
 If we take one of the default rules implemented by Sirius we have:
 * a _Dynamic Mapping For_ defining as _Domain Class Expression_ : @aql:self.eClass().eAllStructuralFeatures@ which means get all the structural features available for the current eClass.
 * an _Iterator_ set to @eStructuralFeature@.
@@ -423,9 +406,9 @@ h4(#layout). Layout
 
 Sirius provides a default algorithm to perform an automatic layout of all the controls in a properties view. If the default algorithm does not fit your needs, you can specify some parameters for alternate layouts directly inside the VSM.
 
-p(#fill_layout). Fill layout
+p(#fill_layout). _Fill layout_ can organize elements inside the container either horizontally or vertically (configurable on the _Fill layout_ element).
 
-p(#grid_layout). Grid layout
+p(#grid_layout). _Grid layout_ can organize elements using a fixed number of column (configurable on the _Grid layout_ element), which can optionally be made to all have the same width.
 
 h2(#styling). Styling
 
@@ -441,7 +424,7 @@ One of the responsibility of widgets styles is to describe how labels will be fo
 * _Label Foreground Color_: You can specify the foreground color of the label using "color":#colors sub-elements.
 * _Label Font Format_: Is used to specify the font style attributes (Bold and/or Italic and/or Underline and/or Strike through).
 
-###. TODO Images for Label styles
+!images/label-styles.png(Examples of the style customizations possible on labels)!
 
 h3(#colors). Colors
 
@@ -452,8 +435,6 @@ h3(#conditional_styles). Conditional styles
 Conditional styles make it possible to support different graphical aspects for a single properties view element. The actual style used to render an element is determined dynamically depending on the current state of the models elements.
 
 To use conditional style, you must add one or several conditional styles. Each conditional style is associated to a condition specified as a predicate. If there are conditional styles on a properties view element, their conditions are tested in their order of appearance in the description. The first one for which the condition is true is selected. If none of the conditional styles condition is true, the default style is used instead.
-
-h3(#label_properties). Label properties
 
 h2(#validation_rules). Validation rules
 
