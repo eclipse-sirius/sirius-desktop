@@ -12,17 +12,13 @@ package org.eclipse.sirius.common.xtext.internal;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
-import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.xtext.common.types.access.TypeResource;
 import org.eclipse.xtext.resource.SaveOptions;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
