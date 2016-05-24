@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.BendpointLocator;
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.geometry.PointList;
@@ -21,8 +22,7 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Handle;
 import org.eclipse.gef.editpolicies.SelectionHandlesEditPolicy;
 import org.eclipse.gef.handles.BendpointMoveHandle;
-import org.eclipse.gef.handles.ConnectionEndHandle;
-import org.eclipse.gef.handles.ConnectionStartHandle;
+import org.eclipse.gef.handles.ConnectionEndpointHandle;
 import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.tools.DragEditPartsTracker;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
@@ -104,8 +104,8 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
         final AbstractDiagramEdgeEditPart edgeEditPart = getEdgeEditPart();
 
         if (edgeEditPart != null) {
-            list.add(new ConnectionEndHandle(edgeEditPart));
-            list.add(new ConnectionStartHandle(edgeEditPart));
+            list.add(new ConnectionEndpointHandle(edgeEditPart, ConnectionLocator.TARGET));
+            list.add(new ConnectionEndpointHandle(edgeEditPart, ConnectionLocator.SOURCE));
 
             final PointList points = ((Connection) edgeEditPart.getFigure()).getPoints();
             for (int i = 1; i < points.size() - 1; i++) {
