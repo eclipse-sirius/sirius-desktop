@@ -15,7 +15,7 @@
     <controls
         xsi:type="properties:DynamicMappingFor"
         iterator="eStructuralFeature"
-        domainClassExpression="aql:self.eClass().eAllStructuralFeatures->select(f : ecore::EStructuralFeature | not f.derived and not f.transient)">
+        domainClassExpression="aql:self.eClass().eAllStructuralFeatures->select(f : ecore::EStructuralFeature | not f.derived and not f.transient and (f.oclIsKindOf(ecore::EAttribute)  or not f.oclAsType(ecore::EReference).containment)))">
       <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many)">
         <widget
             xsi:type="properties:TextDescription"
