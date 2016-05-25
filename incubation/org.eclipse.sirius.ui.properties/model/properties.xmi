@@ -15,11 +15,13 @@
     <controls
         xsi:type="properties:DynamicMappingFor"
         iterator="eStructuralFeature"
-        domainClassExpression="aql:self.eClass().eAllStructuralFeatures">
-      <ifs predicateExpression="aql:eStructuralFeature.eType.instanceTypeName = 'java.lang.String' and not(eStructuralFeature.many)">
+        domainClassExpression="aql:self.eClass().eAllStructuralFeatures->select(f : ecore::EStructuralFeature | not f.derived and not f.transient)">
+      <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.String' or eStructuralFeature.eType.instanceTypeName = 'int' or eStructuralFeature.eType.instanceTypeName = 'double' or eStructuralFeature.eType.instanceTypeName = 'char' or eStructuralFeature.eType.instanceTypeName = 'short' or eStructuralFeature.eType.instanceTypeName = 'long' or eStructuralFeature.eType.instanceTypeName = 'float' or eStructuralFeature.eType.instanceTypeName = 'java.util.Date') and not(eStructuralFeature.many)">
         <widget
             xsi:type="properties:TextDescription"
-            labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
+            identifier=""
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
             valueExpression="aql:self.eGet(eStructuralFeature)">
           <initialOperation>
             <firstModelOperations
@@ -31,13 +33,91 @@
       <ifs predicateExpression="aql:(eStructuralFeature.eType.instanceTypeName = 'java.lang.Boolean' or eStructuralFeature.eType.instanceTypeName = 'boolean') and not(eStructuralFeature.many)">
         <widget
             xsi:type="properties:CheckboxDescription"
-            labelExpression="aql:eStructuralFeature.name.toUpperFirst() + ':'"
+            labelExpression="aql:self.eefViewText(eStructuralFeature)"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
             valueExpression="aql:self.eGet(eStructuralFeature)">
           <initialOperation>
             <firstModelOperations
                 xsi:type="tool:ChangeContext"
                 browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
           </initialOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many)">
+        <widget
+            xsi:type="properties:RadioDescription"
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            helpExpression=""
+            isEnabledExpression="aql:eStructuralFeature.changeable"
+            valueExpression="aql:eStructuralFeature.eType.getEEnumLiteral(self.eGet(eStructuralFeature).toString())"
+            candidatesExpression="aql:eStructuralFeature.eType.eLiterals"
+            candidateDisplayExpression="aql:candidate.name"
+            numberOfColumns="5">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="aql:self.eSet(eStructuralFeature, newValue.instance)"/>
+          </initialOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and eStructuralFeature.containment and not(eStructuralFeature.many)">
+        <widget
+            xsi:type="properties:ReferenceDescription"
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
+            valueExpression="aql:self.eGet(eStructuralFeature)"
+            displayExpression="aql:value.eefViewText()">
+          <onClickOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="var:self"/>
+          </onClickOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and not(eStructuralFeature.many)">
+        <widget
+            xsi:type="properties:SelectDescription"
+            identifier=""
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
+            valueExpression="aql:self.eGet(eStructuralFeature)"
+            candidatesExpression="aql:self.eefViewChoiceOfValues(eStructuralFeature)"
+            candidateDisplayExpression="aql:candidate.eefViewText()">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="aql:self.eSet(eStructuralFeature, newValue)"/>
+          </initialOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and eStructuralFeature.containment and eStructuralFeature.many">
+        <widget
+            xsi:type="properties:ReferenceDescription"
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
+            multiple="true"
+            valueExpression="aql:self.eGet(eStructuralFeature)"
+            displayExpression="aql:value.eefViewText()">
+          <onClickOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="var:self"/>
+          </onClickOperation>
+        </widget>
+      </ifs>
+      <ifs predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference) and not(eStructuralFeature.containment) and eStructuralFeature.many">
+        <widget
+            xsi:type="properties:ReferenceDescription"
+            labelExpression="aql:self.eefViewText(eStructuralFeature)+':'"
+            isEnabledExpression="aql:eStructuralFeature.changeable"
+            multiple="true"
+            valueExpression="aql:self.eGet(eStructuralFeature)"
+            displayExpression="aql:value.eefViewText()">
+          <onClickOperation>
+            <firstModelOperations
+                xsi:type="tool:ChangeContext"
+                browseExpression="var:self"/>
+          </onClickOperation>
         </widget>
       </ifs>
     </controls>

@@ -15,9 +15,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -42,7 +44,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * @author sbegaudeau
  */
 public class SiriusToolServices {
-    
+
     private final EditingDomainServices editServices = new EditingDomainServices();
 
     /**
@@ -67,6 +69,42 @@ public class SiriusToolServices {
      */
     public Object eefViewText(EObject eObject) {
         return this.editServices.getLabelProviderText(eObject);
+    }
+
+    /**
+     * Returns the text representing the given EStructuralFeature.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @return The text representing the given EStructuralFeature or
+     *         <code>null</code> if none could be found
+     */
+    public Object eefViewText(EObject eObject, EStructuralFeature eStructuralFeature) {
+        String result = this.editServices.getPropertyDescriptorDisplayName(eObject, eStructuralFeature.getName());
+        if (result == null || result.trim().isEmpty()) {
+            result = this.editServices.getLabelProviderText(eStructuralFeature);
+        }
+        if (result == null || result.trim().isEmpty()) {
+            result = eStructuralFeature.getName();
+        }
+        return result;
+    }
+
+    /**
+     * Returns the choices of all the values that the given EStructuralFeature
+     * may take one.
+     * 
+     * @param eObject
+     *            The EObject
+     * @param eStructuralFeature
+     *            The EStructuralFeature
+     * @return the choices of all the values or <code>null</code> if none could
+     *         be found
+     */
+    public Collection<?> eefViewChoiceOfValues(EObject eObject, EStructuralFeature eStructuralFeature) {
+        return this.editServices.getPropertyDescriptorChoiceOfValues(eObject, eStructuralFeature.getName());
     }
 
     /**
@@ -166,7 +204,11 @@ public class SiriusToolServices {
      * @return the model element on which the service was executed.
      */
     public EObject eSet(EObject eObject, EStructuralFeature eStructuralFeature, Object value) {
-        eObject.eSet(eStructuralFeature, value);
+        Object finalValue = value;
+        if (eStructuralFeature instanceof EAttribute && value instanceof String) {
+            finalValue = EcoreUtil.createFromString(((EAttribute) eStructuralFeature).getEAttributeType(), (String) value);
+        }
+        eObject.eSet(eStructuralFeature, finalValue);
         return eObject;
     }
 
