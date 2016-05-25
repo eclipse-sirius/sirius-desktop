@@ -17,6 +17,7 @@ import java.text.MessageFormat;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -24,6 +25,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.MultiRule;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -47,7 +49,7 @@ import org.eclipse.ui.PlatformUI;
  * A job to load one representations files (load the aird file and all the
  * referenced resource). Warning before calling this job you must call
  * waitOtherJobs methods to ensure that there is no job of this kind currently
- * running.
+ * running.<BR>
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -68,6 +70,16 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     public OpenRepresentationsFileJob(final URI representationsFileURI) {
         super(OpenRepresentationsFileJob.JOB_LABEL);
         this.representationsFileURI = representationsFileURI;
+        // During the execution of this job, some refresh can occurs on files of
+        // this project but also on file of other projects according to
+        // dependencies of this session, so the scheduling rule must include the
+        // scheduling rule
+        // of these files. We use the workspace scheduling rule to have all
+        // files
+        // scheduling rules.
+        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        // Add the workspace rule to the default rule
+        setRule(MultiRule.combine(getRule(), workspace.getRuleFactory().createRule(workspace.getRoot())));
     }
 
     /**
