@@ -22,8 +22,10 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -37,7 +39,6 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
@@ -131,7 +132,45 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         loadAndOpenRepresentationsFiles(representationsFilesURIs, false);
     }
 
+    /**
+     * Load and open representations files by scheduling a new job.
+     * 
+     * @param representationsFilesURIs
+     *            The URIs of the representations files to open.
+     * @param user
+     *            <code>true</code> if this job is a user-initiated job, and
+     *            <code>false</code> otherwise.
+     * @throws CoreException
+     *             Only useful in case of
+     *             <code>alreadyInUserWorkspaceModifyOperation</code> is true.
+     */
     private void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs, boolean user) {
+        try {
+            loadAndOpenRepresentationsFiles(representationsFilesURIs, false, false);
+        } catch (CoreException e) {
+            // Nothing do to, it can not happen as
+            // <code>alreadyInUserWorkspaceModifyOperation</code> is false.
+        }
+    }
+
+    /**
+     * Load and open representations files by scheduling a new job or by
+     * launching directly the job (when
+     * <code>alreadyInUserWorkspaceModifyOperation</code> is true).
+     * 
+     * @param representationsFilesURIs
+     *            The URIs of the representations files to open.
+     * @param user
+     *            <code>true</code> if this job is a user-initiated job, and
+     *            <code>false</code> otherwise.
+     * @param alreadyInUserWorkspaceModifyOperation
+     *            true if the loading and opening of representations files
+     *            already occurs in a WorkspaceModifyOperation launches by user.
+     * @throws CoreException
+     *             Only useful in case of
+     *             <code>alreadyInUserWorkspaceModifyOperation</code> is true.
+     */
+    private void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs, boolean user, boolean alreadyInUserWorkspaceModifyOperation) throws CoreException {
         // Add the specific sessions listener (if not already added).
         SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
 
@@ -151,7 +190,14 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         sessionFileLoading.addAll(tempRepresentationsFilesURIs);
         // Launch the silently job to open the representations files
         for (URI representationsFilesURI : tempRepresentationsFilesURIs) {
-            OpenRepresentationsFileJob.scheduleNewWhenPossible(representationsFilesURI, user);
+            if (alreadyInUserWorkspaceModifyOperation) {
+                WorkspaceJob job = new OpenRepresentationsFileJob(representationsFilesURI);
+                job.setUser(user);
+                job.setPriority(Job.SHORT);
+                job.runInWorkspace(new NullProgressMonitor());
+            } else {
+                OpenRepresentationsFileJob.scheduleNewWhenPossible(representationsFilesURI, user);
+            }
         }
     }
 
@@ -240,7 +286,8 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         if (alreadyIsInWorkspaceModificationOperation()) {
             doAddModelingNature(project, monitor);
         } else {
-            ResourcesPlugin.getWorkspace().run(create, monitor);
+            IWorkspace workspace = ResourcesPlugin.getWorkspace();
+            workspace.run(create, ResourcesPlugin.getWorkspace().getRoot(), IWorkspace.AVOID_UPDATE, monitor);
         }
     }
 
@@ -271,7 +318,9 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     /**
      * Add the modeling nature. Open or create the main aird file. Look for
-     * semantic resources to add.
+     * semantic resources to add.<br>
+     * This method must be called from a WorkspaceModifyOperation with
+     * WorkspaceRoot scheduling rule as it modifies the nature of the project.
      *
      * @param project
      *            the project to convert.
@@ -311,7 +360,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     Option<URI> mainRepresentationsFileURI = optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), false, true);
                     if (mainRepresentationsFileURI.some()) {
                         // Open the session.
-                        loadAndOpenRepresentationsFile(mainRepresentationsFileURI.get(), true);
+                        loadAndOpenRepresentationsFiles(Lists.newArrayList(mainRepresentationsFileURI.get()), true, true);
                     }
                 } catch (IllegalArgumentException e) {
                     // Clean existing marker if exists
@@ -342,15 +391,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     }
                 }
 
-                // open session
-                if (OpenRepresentationsFileJob.shouldWaitOtherJobs()) {
-                    // We are loading session(s)
-                    try {
-                        Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
-                    } catch (InterruptedException e) {
-                        // Do nothing
-                    }
-                }
                 if (optionalModelingProject.get().getSession() != null) {
                     // add semantic resources if already existing in the project
                     addSemanticResources(project, optionalModelingProject.get().getSession(), new SubProgressMonitor(monitor, 1));

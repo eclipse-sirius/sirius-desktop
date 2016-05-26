@@ -19,10 +19,10 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
@@ -31,6 +31,7 @@ import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.google.common.collect.Sets;
@@ -78,10 +79,12 @@ public class ModelingToggleNatureAction extends AbstractHandler {
      */
     private void toggleNature(final IProject project) {
         try {
-            PlatformUI.getWorkbench().getProgressService().run(true, false, new IRunnableWithProgress() {
-
+            // This action modifies the workspace resource. So it must be
+            // launched in a WorkspaceModifyOperation. The WorkspaceRoot
+            // scheduling root is necessary (see Project.setDescription method).
+            PlatformUI.getWorkbench().getProgressService().run(true, false, new WorkspaceModifyOperation(ResourcesPlugin.getWorkspace().getRoot()) {
                 @Override
-                public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                     try {
                         if (ModelingProject.hasModelingProjectNature(project)) {
                             ModelingProjectManager.INSTANCE.removeModelingNature(project, monitor);
