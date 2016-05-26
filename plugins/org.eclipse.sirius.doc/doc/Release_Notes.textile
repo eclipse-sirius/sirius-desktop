@@ -16,7 +16,7 @@ h3. User-Visible Changes
 * <span class="label label-info">Modified</span> The wizard to ask the new representation name has been changed. These concerns the title of the wizard and the input label. Example with a new Entities diagram for EcoreTools:
 !images/representationNameWizardChange.png!
 * <span class="label label-info">Modified</span> The export of diagram as image handles the gradient color for container background for BMP, JPG, PNG and SVG formats. Before, it only works for JPG format.
-* <span class="label label-info">Modified</span> The "Copy Appearance Properties" action has been modified to use the last selected element as base style instead of the first one.
+* <span class="label label-info">Modified</span> The <img src="images/ApplyAppearanceProperties.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> @Apply Appearance Properties@ action has been modified to use the last selected element as base style instead of the first one.
 
 h3. Specifier-Visible Changes
 
