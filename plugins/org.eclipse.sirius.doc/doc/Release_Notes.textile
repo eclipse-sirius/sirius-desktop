@@ -31,7 +31,7 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
-* <span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the @ITabbarContributor@ through the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. See the developer documentation for more details.
+* <span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the @ITabbarContributor@ through the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. See the "developer documentation":developer/extensions-provide_tabbar_extensions.html#contributeFullTabbar for more details.
 * <span class="label label-success">Added</span> It is now possible to provide new shapes for basic shape styles through the @org.eclipse.sirius.diagram.bundledImageShape@ extension-point. See the developer documentation for more details.
 
 h4. Changes in @org.eclipse.sirius@

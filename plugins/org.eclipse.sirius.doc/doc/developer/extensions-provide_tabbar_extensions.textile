@@ -160,7 +160,7 @@ p. The a new button is added to the tab-bar only when the selection contains an 
 	!images/tabbar_extension_result.png!
 
 	
-h2. Contribute a full customized tab-bar
+h2(#contributeFullTabbar). Contribute a full customized tab-bar
 
 Sirius lets the possibility to contribute an entire customized tab-bar. To do so, the developer has to contribute an @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ to the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. An abstract implementation of @ITabbarContributor@ exists: @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tab-bar. See the "Tab-bar":../user/diagrams/Diagrams.html#ref_tabbar section in user manual for more details about each items.
 
