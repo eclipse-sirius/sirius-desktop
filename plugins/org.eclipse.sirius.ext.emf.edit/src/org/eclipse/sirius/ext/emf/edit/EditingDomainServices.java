@@ -38,7 +38,6 @@ import org.eclipse.emf.edit.provider.ITableItemFontProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
  * Provides access to common {@link EditingDomain} and
@@ -74,7 +73,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * In all cases, a {@code getXXXProvider()} service method is also made
  * available (for example {@link #getLabelProvider(EObject)}, which returns the
  * item provider itself (or <code>null</code>). The item provider is located
- * using the {@link ItemProviderAdapter} returned by the {@link AdapterFactory}
+ * using the {@code ItemProviderAdapter} returned by the {@link AdapterFactory}
  * associated to the element's editing domain. This assumes said domain is an
  * {@link AdapterFactoryEditingDomain} (which is true in practice in Sirius,
  * which uses a <code>TransactionalEditingDomain</code> that inherits from
@@ -125,7 +124,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * <h4>Command-related Services</h4>
  * <p>
  * A series of service methods can be used to invoke the standard EMF Commands
- * available from {@link ItemProviderAdapter}'s various
+ * available from {@code ItemProviderAdapter}'s various
  * {@code createXXXCommand()} methods. Note that contrary to the
  * {@code createXXXCommand()} methods which simply returns a {@link Command}
  * instance, the service methods exposed in this class will directly
@@ -145,9 +144,11 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * </ul>
  * <p>
  * The implementation of these services delegate to the
- * {@link ItemProviderAdapter#createCommand(Object, EditingDomain, Class, CommandParameter)}
- * method, so any customization made in the {@link ItemProviderAdapter}'s
- * implementation will be taken into account.
+ * {@link EditingDomain#createCommand(Class, CommandParameter)} which delegates
+ * to the IEditingDomainItemProvider#createCommand(Object, EditingDomain, Class,
+ * CommandParameter) method, so any customization made in the
+ * {@code IEditingDomainItemProvider}'s implementation will be taken into
+ * account.
  * 
  * @author pcdavid
  */
@@ -186,10 +187,6 @@ public class EditingDomainServices {
             }
         }
         return null;
-    }
-
-    public ItemProviderAdapter getItemProviderAdapter(EObject self) {
-        return getAdapter(self, ItemProviderAdapter.class);
     }
 
     // Services from IItemLabelProvider
@@ -567,17 +564,14 @@ public class EditingDomainServices {
         }
     }
 
-    // Commands: createXXXCommand from ItemProviderAdapter
+    // Commands: createXXXCommand from EditingDomain.createCommand
 
     private void performCommand(EObject self, Class<? extends Command> cmdClass, CommandParameter param) {
-        ItemProviderAdapter ipa = getItemProviderAdapter(self);
-        if (ipa != null) {
-            EditingDomain domain = getEditingDomain(self);
-            if (domain != null) {
-                Command cmd = ipa.createCommand(self, domain, cmdClass, param);
-                CommandStack stack = domain.getCommandStack();
-                stack.execute(cmd);
-            }
+        EditingDomain domain = getEditingDomain(self);
+        if (domain != null) {
+            Command cmd = domain.createCommand(cmdClass, param);
+            CommandStack stack = domain.getCommandStack();
+            stack.execute(cmd);
         }
     }
 
