@@ -23,7 +23,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.ext.base.collect.StackEx;
 
 /**
@@ -34,7 +33,7 @@ import org.eclipse.sirius.ext.base.collect.StackEx;
 public class TimeProfiler2 extends TimeProfiler {
 
     /** The Other task. */
-    public static final ProfilerTask OTHER_TASK = new ProfilerTask(Messages.TimeProfiler2_otherCategory, Messages.TimeProfiler2_otherTaskName);
+    public static final ProfilerTask OTHER_TASK = new ProfilerTask("Other", "Other");  //$NON-NLS-1$//$NON-NLS-2$
 
     /** The roots tasks. */
     private List<CompositeTask> roots;
@@ -263,7 +262,7 @@ public class TimeProfiler2 extends TimeProfiler {
                 runningTask.stopTask();
             }
         } catch (final EmptyStackException e) {
-            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.TimeProfiler2_emptyStackError, task.toString()), e);
+            DslCommonPlugin.getDefault().error(MessageFormat.format("Empty stack in stopWork. Stopped task: {0}", task.toString()), e); //$NON-NLS-1$
         }
     }
 

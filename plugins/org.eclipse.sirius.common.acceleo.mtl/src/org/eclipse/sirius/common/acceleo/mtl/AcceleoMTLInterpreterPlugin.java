@@ -61,7 +61,7 @@ public class AcceleoMTLInterpreterPlugin extends EMFPlugin {
          * The registry listener that will be used for extensions to the acceleo
          * interpreter.
          */
-        private final AcceleoRegistryListener registryListener = new AcceleoRegistryListener();
+        private AcceleoRegistryListener registryListener;
 
         /**
          * Creates an instance.
@@ -73,6 +73,7 @@ public class AcceleoMTLInterpreterPlugin extends EMFPlugin {
         @Override
         public void start(final BundleContext context) throws Exception {
             super.start(context);
+            registryListener = new AcceleoRegistryListener();
             Platform.getExtensionRegistry().addListener(registryListener, AcceleoRegistryListener.IMPORT_HANDLER_EXTENSION_POINT);
             registryListener.parseInitialContributions();
         }
@@ -82,6 +83,7 @@ public class AcceleoMTLInterpreterPlugin extends EMFPlugin {
             super.stop(context);
             Platform.getExtensionRegistry().removeListener(registryListener);
             ImportHandlerRegistry.clearRegistry();
+            registryListener = null;
         }
     }
 }

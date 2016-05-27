@@ -69,11 +69,6 @@ public final class SiriusPlugin extends EMFPlugin {
      */
     private static final ModelAccessorsRegistry REGISTRY = new ModelAccessorsRegistry(SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
 
-    /**
-     * create at the initialization to avoid synchronization cost in
-     * ExtendedPackageRegistry
-     */
-    private static final InterpreterRegistry INTER_REGISTRY = new InterpreterRegistry();
 
     /**
      * Creates the instance.
@@ -105,6 +100,10 @@ public final class SiriusPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipsePlugin {
+        /**
+         * Registry of all supported interpreters.
+         */
+        private InterpreterRegistry interRegistry;
 
         /**
          * The registry listener that will be used to listen to sessionFactory
@@ -141,6 +140,7 @@ public final class SiriusPlugin extends EMFPlugin {
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
+            interRegistry = new InterpreterRegistry();
 
             // Sets the validator for these model.
             EValidator.Registry.INSTANCE.put(ViewpointPackage.eINSTANCE, new EValidatorAdapter());
@@ -192,7 +192,7 @@ public final class SiriusPlugin extends EMFPlugin {
          * @return the global instance of {@link ExtendedPackageRegistry}.
          */
         public InterpreterRegistry getInterpreterRegistry() {
-            return INTER_REGISTRY;
+            return interRegistry;
         }
 
         /**

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
-import org.eclipse.sirius.common.tools.Messages;
-
 /**
  * Represents a task.
  * 
@@ -19,9 +17,9 @@ import org.eclipse.sirius.common.tools.Messages;
  */
 public class ProfilerTask {
 
-    private static final String THE_NAME_IS_NULL = Messages.ProfilerTask_nullName;
+    private static final String THE_NAME_IS_NULL = "the name is null"; //$NON-NLS-1$
 
-    private static final String THE_CATEGORY_IS_NULL = Messages.ProfilerTask_nullCategory;
+    private static final String THE_CATEGORY_IS_NULL = "the category is null"; //$NON-NLS-1$
 
     /** The category. */
     private String category;
