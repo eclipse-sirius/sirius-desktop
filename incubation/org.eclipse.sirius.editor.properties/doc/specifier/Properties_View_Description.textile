@@ -8,19 +8,21 @@ Starting from version 4.0, Sirius supports the definition of properties views wi
 
 Properties views are defined inside the VSM and identify a sub-set of the elements in the semantic model and associates an element to them in the properties view: it _maps_ semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element's definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
 
+Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours.
+
 <span class="label label-danger">WARNING</span> This feature is first introduced in Sirius 4.0 as a "preview". While the main mechanisms work, it should be considered in an *experimental*  state with details subject to changes until Sirius 4.1.
 
 h2(#properties_view_description). Properties View Description
 
-Properties view are configured by creating a _Properties View Description_ element (directly under the "_Group_":Specifying_Viewpoints.html#vsm_organization) and its sub-elements (which describe the widgets, the actions, the layout...).
+Properties view are configured by creating a _Properties View Description_ element (directly under the "_Group_":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Specifying_Viewpoints.html#vsm_organization ) and its sub-elements (which describe the widgets, the actions, the layout...).
 
-Like many elements inside a "_VSM_":../../Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
+Like many elements inside a "_VSM_":/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM, _View Extension Description_ have an optional _Identifier_, which should be unique.
 
 Inside a _Properties View Description_ element, you can create:
-* "_Page Descriptions_":#pages, which correspond to "tab" 
-* "_Group Descriptions_":#groups
+* "_Page Descriptions_":#pages, which correspond to "tabs";
+* "_Group Descriptions_":#groups, which represent named sections inside a page/tab which contain the actual widgets;
 
-It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
+It is recommended that the _Properties View Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Properties View Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM.
 
 The descriptions for all the different types of properties view elements share the same common principles:
 * Some of the elements of the semantic model are selected, using a combination of configuration attributes (see below). These elements are called _targets_, and each one has a single widget of this type representing it.
@@ -160,7 +162,7 @@ For text areas, you must define the _Line Count_ which is represents the height 
 
 h5(#edit_text). Edit text
 
-To define the behavior of the text when a change occurs, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the text when a change occurs, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value entered by the user.
 
@@ -193,7 +195,7 @@ For buttons, you must define the _Button Label Expression_ which is used to comp
 
 h5(#pushed_button). Pushed button
 
-To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 h5(#button_styles). Button styles
 
@@ -236,7 +238,7 @@ For checkboxes, you must define the _Value Expression_ which is used to compute 
 
 h5(#checkbox_change_value). Change value
 
-To define the behavior of the checkbox when the status changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the checkbox when the status changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value set by the user.
 
@@ -259,7 +261,7 @@ For selects, you must define :
 
 h5(#select_change_value). Change value
 
-To define the behavior of the select when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the select when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
 
@@ -282,7 +284,7 @@ For radio groups, you must define :
 
 h5(#radio_change_value). Change value
 
-To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @newValue@ variable which represents the value selected by the user.
 
@@ -302,7 +304,7 @@ For hyperlinks, you must define the _Value Expression_ which is used to compute 
 
 h5(#hyperlink_click_on_value). Click on value
 
-To define the behavior of the hyperlinked when is clicked, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the hyperlinked when is clicked, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 h5(#hyperlink_styles). Hyperlink styles
 
@@ -344,7 +346,7 @@ If the _On Click Expression_ is set then:
 * if multiple *is not checked* : an hyperlink is used to represent the value. This expression then defines the behavior executed when the user clicks on the hyperlink.
 * if multiple *is checked* : a table is used to represent the values. This expression then defines the behavior executed when the user double-clicks on an element in the table.
 
-To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user. It could be at least one element or a list of elements in case of multiple flags is checked.
 
@@ -356,7 +358,7 @@ For actions, you must define the _Label Expression_ which is used to compute the
 
 h5(#action_pushed_button). Action pushed button
 
-To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the _Begin_ element using all the standard "model operations":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html.
 
 The expressions defined under the _Begin_ can use the @selection@ variable which represents the values selected by the user in the reference field.
 
@@ -428,7 +430,7 @@ One of the responsibility of widgets styles is to describe how labels will be fo
 
 h3(#colors). Colors
 
-Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. See "the general section on colors":../general/Colors.html for more details.
+Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. See "the general section on colors":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Colors.html for more details.
 
 h3(#conditional_styles). Conditional styles
 

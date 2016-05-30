@@ -117,6 +117,7 @@
         <topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />
       </topic>
     </topic>
+    <anchor id="moreSpecifierDialectRefs" />
     <topic href="doc/specifier/general/ToolsSpecification.html" label="Tools Specification" />
     <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />
     <topic href="doc/specifier/general/Colors.html" label="Color Palettes" />

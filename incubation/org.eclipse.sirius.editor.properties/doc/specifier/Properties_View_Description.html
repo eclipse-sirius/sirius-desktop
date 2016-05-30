@@ -77,18 +77,19 @@
 		<p>Properties views are defined inside the VSM and identify a sub-set of the elements in the semantic model and associates an element to them in the properties view: it 
 			<em>maps</em> semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element&#8217;s definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
 		</p>
+		<p>Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours.</p>
 		<p><span class="label label-danger">WARNING</span> This feature is first introduced in Sirius 4.0 as a &#8220;preview&#8221;. While the main mechanisms work, it should be considered in an 
 			<strong>experimental</strong>  state with details subject to changes until Sirius 4.1.
 		</p>
 		<h2 id="properties_view_description">Properties View Description</h2>
 		<p>Properties view are configured by creating a 
 			<em>Properties View Description</em> element (directly under the 
-			<a href="Specifying_Viewpoints.html#vsm_organization)">
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Specifying_Viewpoints.html#vsm_organization">
 				<em>Group</em>
-			</a> and its sub-elements (which describe the widgets, the actions, the layout...).
+			</a> ) and its sub-elements (which describe the widgets, the actions, the layout...).
 		</p>
 		<p>Like many elements inside a 
-			<a href="../../Glossary.html#VSM">
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM">
 				<em>VSM</em>
 			</a>, 
 			<em>View Extension Description</em> have an optional 
@@ -101,19 +102,19 @@
 			<li>
 				<a href="#pages">
 					<em>Page Descriptions</em>
-				</a>, which correspond to &#8220;tab&#8221; 
+				</a>, which correspond to &#8220;tabs&#8221;;
 			</li>
 			<li>
 				<a href="#groups">
 					<em>Group Descriptions</em>
-				</a>
+				</a>, which represent named sections inside a page/tab which contain the actual widgets;
 			</li>
 		</ul>
 		<p>It is recommended that the 
 			<em>Properties View Description</em> be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the 
 			<em>Metamodels</em> property section of the 
 			<em>Properties View Description</em>. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your 
-			<a href="../../Glossary.html#VSM">
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/Glossary.html#VSM">
 				<em>VSM</em>
 			</a>.
 		</p>
@@ -489,7 +490,7 @@
 		<h5 id="edit_text">Edit text</h5>
 		<p>To define the behavior of the text when a change occurs, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -546,7 +547,7 @@
 		<h5 id="pushed_button">Pushed button</h5>
 		<p>To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<h5 id="button_styles">Button styles</h5>
 		<p>See the 
@@ -619,7 +620,7 @@
 		<h5 id="checkbox_change_value">Change value</h5>
 		<p>To define the behavior of the checkbox when the status changes, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -661,7 +662,7 @@
 		<h5 id="select_change_value">Change value</h5>
 		<p>To define the behavior of the select when the selection changes, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -703,7 +704,7 @@
 		<h5 id="radio_change_value">Change value</h5>
 		<p>To define the behavior of the radio group when the selection changes, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -734,7 +735,7 @@
 		<h5 id="hyperlink_click_on_value">Click on value</h5>
 		<p>To define the behavior of the hyperlinked when is clicked, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<h5 id="hyperlink_styles">Hyperlink styles</h5>
 		<p>See the 
@@ -831,7 +832,7 @@
 		</ul>
 		<p>To define the behavior, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -849,7 +850,7 @@
 		<h5 id="action_pushed_button">Action pushed button</h5>
 		<p>To define the behavior of the button when is pushed, you simply specify the behavior associated to the edition inside the 
 			<em>Begin</em> element using all the standard 
-			<a href="../general/Model_Operations.html">model operations</a>.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Model_Operations.html">model operations</a>.
 		</p>
 		<p>The expressions defined under the 
 			<em>Begin</em> can use the 
@@ -984,7 +985,7 @@
 		<h3 id="colors">Colors</h3>
 		<p>Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a 
 			<em>Users Color Palette</em>. See 
-			<a href="../general/Colors.html">the general section on colors</a> for more details.
+			<a href="/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Colors.html">the general section on colors</a> for more details.
 		</p>
 		<h3 id="conditional_styles">Conditional styles</h3>
 		<p>Conditional styles make it possible to support different graphical aspects for a single properties view element. The actual style used to render an element is determined dynamically depending on the current state of the models elements.</p>

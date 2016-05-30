@@ -9,72 +9,70 @@
   Contributors:
        Obeo - Initial API and implementation
 -->
-<toc label="Sirius Properties Views" link_to="../org.eclipse.sirius.doc/doc/toc.xml#moreSpecifierRefs" topic="doc/specifier/Properties_View_Description.html">
+<toc label="Sirius Properties Views" link_to="../org.eclipse.sirius.doc/doc/toc.xml#moreSpecifierDialectRefs" topic="doc/specifier/Properties_View_Description.html">
   <topic href="doc/specifier/Properties_View_Description.html" label="Properties View">
-    <topic href="doc/specifier/Properties_View_Description.html" label="Properties View">
-        <topic href="doc/specifier/Properties_View_Description.html#introduction" label="Introduction"></topic>
-        <topic href="doc/specifier/Properties_View_Description.html#properties_view_description" label="Properties View Description">
-            <topic href="doc/specifier/Properties_View_Description.html#common_attributes" label="Common attributes"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#pages" label="Pages"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#groups" label="Groups">
-                <topic href="doc/specifier/Properties_View_Description.html#group_styles" label="Group styles"></topic>
-            </topic>
-            <topic href="doc/specifier/Properties_View_Description.html#controls" label="Controls"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#widgets" label="Widgets">
-                <topic href="doc/specifier/Properties_View_Description.html#text" label="Text / Text area">
-                    <topic href="doc/specifier/Properties_View_Description.html#edit_text" label="Edit text"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#text_styles" label="Text/Text area styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#button" label="Button">
-                    <topic href="doc/specifier/Properties_View_Description.html#pushed_button" label="Pushed button"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#button_styles" label="Button styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#label" label="Label">
-                    <topic href="doc/specifier/Properties_View_Description.html#label_styles" label="Label styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#checkbox" label="Checkbox">
-                    <topic href="doc/specifier/Properties_View_Description.html#checkbox_change_value" label="Change value"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#checkbox_styles" label="Checkbox styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#select" label="Select">
-                    <topic href="doc/specifier/Properties_View_Description.html#select_change_value" label="Change value"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#select_styles" label="Select styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#radio_group" label="Radio group">
-                    <topic href="doc/specifier/Properties_View_Description.html#radio_change_value" label="Change value"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#radio_styles" label="Radio styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#hyperlink" label="Hyperlink">
-                    <topic href="doc/specifier/Properties_View_Description.html#hyperlink_click_on_value" label="Click on value"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#hyperlink_styles" label="Hyperlink styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#reference" label="Reference">
-                    <topic href="doc/specifier/Properties_View_Description.html#reference_click_on_value" label="Click on value"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#actions" label="Actions"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#action_pushed_button" label="Action pushed button"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#reference_styles" label="Reference styles"></topic>
-                </topic>
-                <topic href="doc/specifier/Properties_View_Description.html#custom" label="Custom">
-                    <topic href="doc/specifier/Properties_View_Description.html#custom_expression" label="Custom Expression/Operation"></topic>
-                    <topic href="doc/specifier/Properties_View_Description.html#custom_styles" label="Custom styles"></topic>
-                </topic>
-            </topic>
-            <topic href="doc/specifier/Properties_View_Description.html#dynamic_mappings" label="Dynamic mappings"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#containers" label="Containers">
-                <topic href="doc/specifier/Properties_View_Description.html#layout" label="Layout"></topic>
-            </topic>
+    <topic href="doc/specifier/Properties_View_Description.html#introduction" label="Introduction"></topic>
+    <topic href="doc/specifier/Properties_View_Description.html#properties_view_description" label="Properties View Description">
+      <topic href="doc/specifier/Properties_View_Description.html#common_attributes" label="Common attributes"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#pages" label="Pages"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#groups" label="Groups">
+        <topic href="doc/specifier/Properties_View_Description.html#group_styles" label="Group styles"></topic>
+      </topic>
+      <topic href="doc/specifier/Properties_View_Description.html#controls" label="Controls"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#widgets" label="Widgets">
+        <topic href="doc/specifier/Properties_View_Description.html#text" label="Text / Text area">
+          <topic href="doc/specifier/Properties_View_Description.html#edit_text" label="Edit text"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#text_styles" label="Text/Text area styles"></topic>
         </topic>
-        <topic href="doc/specifier/Properties_View_Description.html#styling" label="Styling">
-            <topic href="doc/specifier/Properties_View_Description.html#widgets_styles" label="Widgets styles"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#colors" label="Colors"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#conditional_styles" label="Conditional styles"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#label_properties" label="Label properties"></topic>
+        <topic href="doc/specifier/Properties_View_Description.html#button" label="Button">
+          <topic href="doc/specifier/Properties_View_Description.html#pushed_button" label="Pushed button"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#button_styles" label="Button styles"></topic>
         </topic>
-        <topic href="doc/specifier/Properties_View_Description.html#validation_rules" label="Validation rules">
-            <topic href="doc/specifier/Properties_View_Description.html#page_semantic_validation_rule" label="Page semantic validation rule"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#group_semantic_validation_rule" label="Group semantic validation rule"></topic>
-            <topic href="doc/specifier/Properties_View_Description.html#group_property_validation_rule" label="Group property validation rule"></topic>
+        <topic href="doc/specifier/Properties_View_Description.html#label" label="Label">
+          <topic href="doc/specifier/Properties_View_Description.html#label_styles" label="Label styles"></topic>
         </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#checkbox" label="Checkbox">
+          <topic href="doc/specifier/Properties_View_Description.html#checkbox_change_value" label="Change value"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#checkbox_styles" label="Checkbox styles"></topic>
+        </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#select" label="Select">
+          <topic href="doc/specifier/Properties_View_Description.html#select_change_value" label="Change value"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#select_styles" label="Select styles"></topic>
+        </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#radio_group" label="Radio group">
+          <topic href="doc/specifier/Properties_View_Description.html#radio_change_value" label="Change value"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#radio_styles" label="Radio styles"></topic>
+        </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#hyperlink" label="Hyperlink">
+          <topic href="doc/specifier/Properties_View_Description.html#hyperlink_click_on_value" label="Click on value"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#hyperlink_styles" label="Hyperlink styles"></topic>
+        </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#reference" label="Reference">
+          <topic href="doc/specifier/Properties_View_Description.html#reference_click_on_value" label="Click on value"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#actions" label="Actions"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#action_pushed_button" label="Action pushed button"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#reference_styles" label="Reference styles"></topic>
+        </topic>
+        <topic href="doc/specifier/Properties_View_Description.html#custom" label="Custom">
+          <topic href="doc/specifier/Properties_View_Description.html#custom_expression" label="Custom Expression/Operation"></topic>
+          <topic href="doc/specifier/Properties_View_Description.html#custom_styles" label="Custom styles"></topic>
+        </topic>
+      </topic>
+      <topic href="doc/specifier/Properties_View_Description.html#dynamic_mappings" label="Dynamic mappings"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#containers" label="Containers">
+        <topic href="doc/specifier/Properties_View_Description.html#layout" label="Layout"></topic>
+      </topic>
+    </topic>
+    <topic href="doc/specifier/Properties_View_Description.html#styling" label="Styling">
+      <topic href="doc/specifier/Properties_View_Description.html#widgets_styles" label="Widgets styles"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#colors" label="Colors"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#conditional_styles" label="Conditional styles"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#label_properties" label="Label properties"></topic>
+    </topic>
+    <topic href="doc/specifier/Properties_View_Description.html#validation_rules" label="Validation rules">
+      <topic href="doc/specifier/Properties_View_Description.html#page_semantic_validation_rule" label="Page semantic validation rule"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#group_semantic_validation_rule" label="Group semantic validation rule"></topic>
+      <topic href="doc/specifier/Properties_View_Description.html#group_property_validation_rule" label="Group property validation rule"></topic>
     </topic>
   </topic>
 </toc>
