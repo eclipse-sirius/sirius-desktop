@@ -27,6 +27,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -116,6 +117,37 @@ public interface DialectServices {
      * @return the list of representations contributed by this dialect.
      */
     Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
+
+    /**
+     * Return the representations provided by the dialect.
+     * 
+     * @param semantic
+     *            targeted semantic element.
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session);
+
+    /**
+     * Return all the representations provided by the dialect.
+     * 
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session);
+
+    /**
+     * Return the representations provided by the dialect from a description.
+     * 
+     * @param representationDescription
+     *            the representation description instance
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session);
 
     /**
      * Refresh the actual representation description used for the specified

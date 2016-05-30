@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,11 @@ public interface CustomDataConstants {
     String DREPRESENTATION = "DREPRESENTATION"; //$NON-NLS-1$
 
     /**
+     * custom data key for representation descriptors.
+     */
+    String DREPRESENTATION_DESCRIPTOR = "DREPRESENTATION_DESCRIPTOR"; //$NON-NLS-1$
+
+    /**
      * custom data key for GMF diagrams instances.
      */
     String GMF_DIAGRAMS = "GMF_DIAGRAMS"; //$NON-NLS-1$
@@ -36,4 +41,10 @@ public interface CustomDataConstants {
      * used only to get data, it's a virtual key.
      */
     String DREPRESENTATION_FROM_DESCRIPTION = "DREPRESENTATION_FROM_DESCRIPTION"; //$NON-NLS-1$
+
+    /**
+     * custom data key for representation descriptors from description. This key
+     * should be used only to get data, it's a virtual key.
+     */
+    String DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION = "DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION"; //$NON-NLS-1$
 }

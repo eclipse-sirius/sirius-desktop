@@ -43,6 +43,7 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -151,28 +152,34 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         // only impacted elements.
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<DRepresentation> getRepresentations(EObject semantic, Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION, semantic);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<DRepresentation> getAllRepresentations(Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION, null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION_FROM_DESCRIPTION, representationDescription);
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session) {
+        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR, semantic);
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session) {
+        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR, null);
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session) {
+        return getRepresentationDescriptors(session, CustomDataConstants.DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION, representationDescription);
     }
 
     /**
@@ -236,9 +243,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         return requiredViewpoints;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
         EcoreUtil.Copier copier = new EcoreUtil.Copier();
@@ -330,6 +334,31 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         for (EObject representation : session.getServices().getCustomData(key, value)) {
             if (representation instanceof DRepresentation && isSupported((DRepresentation) representation)) {
                 reps.add((DRepresentation) representation);
+            }
+        }
+        return reps;
+    }
+
+    /**
+     * Finds all the supported representation descriptors in a session which
+     * have the specified key/value pair in their custom data.
+     * 
+     * @param session
+     *            the session in which to look for representation descriptors.
+     * @param key
+     *            the key to look for in the representation descriptors' custom
+     *            data.
+     * @param value
+     *            the value associated to the key in the representation
+     *            descriptors's custom data.
+     * @return all the supported representation descriptors in a session which
+     *         have the specified key/value pair in their custom data.
+     */
+    protected Collection<DRepresentationDescriptor> getRepresentationDescriptors(Session session, String key, EObject value) {
+        Collection<DRepresentationDescriptor> reps = Lists.newArrayList();
+        for (EObject repDescriptor : session.getServices().getCustomData(key, value)) {
+            if (repDescriptor instanceof DRepresentationDescriptor && isSupported(((DRepresentationDescriptor) repDescriptor).getRepresentation())) {
+                reps.add((DRepresentationDescriptor) repDescriptor);
             }
         }
         return reps;

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -287,12 +289,6 @@ public class DialectManagerImpl implements DialectManager {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.business.api.session.Session)
-     */
     @Override
     public synchronized Collection<DRepresentation> getRepresentations(final EObject semantic, final Session session) {
         if (semantic != null) {
@@ -317,12 +313,6 @@ public class DialectManagerImpl implements DialectManager {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
-     *      org.eclipse.sirius.business.api.session.Session)
-     */
     @Override
     public Collection<DRepresentation> getRepresentations(final RepresentationDescription representationDescription, final Session session) {
         final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
@@ -332,16 +322,54 @@ public class DialectManagerImpl implements DialectManager {
         return reps;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getAllRepresentations(org.eclipse.sirius.business.api.session.Session)
-     */
     @Override
     public Collection<DRepresentation> getAllRepresentations(final Session session) {
         final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
         for (final Dialect dialect : dialects.values()) {
             reps.addAll(dialect.getServices().getAllRepresentations(session));
+        }
+        return reps;
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session) {
+        final Collection<DRepresentationDescriptor> repDescriptors = new ArrayList<DRepresentationDescriptor>();
+        if (semantic != null) {
+            return findAllRepresentationDescriptors(semantic, session);
+        } else {
+            for (final Dialect dialect : dialects.values()) {
+                repDescriptors.addAll(dialect.getServices().getRepresentationDescriptors(semantic, session));
+            }
+        }
+        return repDescriptors;
+    }
+
+    private Collection<DRepresentationDescriptor> findAllRepresentationDescriptors(EObject semantic, Session session) {
+        Collection<DRepresentationDescriptor> result = Lists.newArrayList();
+        ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+        for (EStructuralFeature.Setting setting : xref.getInverseReferences(semantic)) {
+            if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
+                    && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET) {
+                result.add((DRepresentationDescriptor) setting.getEObject());
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session) {
+        final Collection<DRepresentationDescriptor> reps = new ArrayList<DRepresentationDescriptor>();
+        for (final Dialect dialect : dialects.values()) {
+            reps.addAll(dialect.getServices().getAllRepresentationDescriptors(session));
+        }
+        return reps;
+    }
+
+    @Override
+    public Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session) {
+        final Collection<DRepresentationDescriptor> reps = new LinkedHashSet<DRepresentationDescriptor>();
+        for (final Dialect dialect : dialects.values()) {
+            reps.addAll(dialect.getServices().getRepresentationDescriptors(representationDescription, session));
         }
         return reps;
     }
@@ -605,4 +633,5 @@ public class DialectManagerImpl implements DialectManager {
         }
         return requiredViewpoints;
     }
+
 }
