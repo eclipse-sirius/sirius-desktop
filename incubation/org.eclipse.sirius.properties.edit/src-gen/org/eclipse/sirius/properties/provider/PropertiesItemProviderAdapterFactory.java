@@ -1541,8 +1541,10 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
             public Object caseGroup(Group object) {
                 ViewExtensionDescription ved = PropertiesFactory.eINSTANCE.createViewExtensionDescription();
                 PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
+                page.setLabelExpression("Page"); //$NON-NLS-1$
                 ved.getPages().add(page);
                 GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
+                group.setLabelExpression("Group"); //$NON-NLS-1$
                 ved.getGroups().add(group);
                 page.getGroups().add(group);
                 newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.GROUP__EXTENSIONS, ved));

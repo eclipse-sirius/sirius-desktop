@@ -28,6 +28,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.properties.GroupDescription;
+import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
@@ -181,15 +183,19 @@ public class ViewExtensionDescriptionItemProvider extends ItemProviderAdapter
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @generated NOT
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, PropertiesFactory.eINSTANCE.createPageDescription()));
+        PageDescription page = PropertiesFactory.eINSTANCE.createPageDescription();
+        page.setLabelExpression("Page"); //$NON-NLS-1$
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__PAGES, page));
 
-        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, PropertiesFactory.eINSTANCE.createGroupDescription()));
+        GroupDescription group = PropertiesFactory.eINSTANCE.createGroupDescription();
+        group.setLabelExpression("Group"); //$NON-NLS-1$
+        newChildDescriptors.add(createChildParameter(PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION__GROUPS, group));
     }
 
     /**
