@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.api.dialect.command;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.Messages;
  */
 public class RenameRepresentationCommand extends RecordingCommand {
 
-    private DRepresentation representation;
+    private DRepresentationDescriptor representationDescriptor;
 
     private String newName;
 
@@ -32,24 +32,27 @@ public class RenameRepresentationCommand extends RecordingCommand {
      * 
      * @param transDomain
      *            the editing domain.
-     * @param selection
-     *            the representation to rename.
+     * @param repDescriptor
+     *            the descriptor of the representation to rename.
      * @param name
      *            the new name.
      */
-    public RenameRepresentationCommand(TransactionalEditingDomain transDomain, DRepresentation selection, String name) {
+    public RenameRepresentationCommand(TransactionalEditingDomain transDomain, DRepresentationDescriptor repDescriptor, String name) {
         super(transDomain, Messages.RenameRepresentationCommand_label);
-        this.representation = selection;
+        this.representationDescriptor = repDescriptor;
         this.newName = name;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public boolean canExecute() {
+        return representationDescriptor.getRepresentation() == null ? false : super.canExecute();
+    }
+
     @Override
     protected void doExecute() {
-        if (representation != null) {
-            representation.setName(newName);
+        if (representationDescriptor != null) {
+            representationDescriptor.setName(newName);
+            representationDescriptor.getRepresentation().setName(newName);
         }
     }
 

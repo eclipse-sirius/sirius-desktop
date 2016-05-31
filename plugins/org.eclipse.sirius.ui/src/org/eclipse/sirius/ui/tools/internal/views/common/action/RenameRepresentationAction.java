@@ -68,7 +68,7 @@ public class RenameRepresentationAction extends Action {
             final String newName = dialog.getNewName();
             if (!oldName.equals(newName)) {
                 final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(repDescriptor);
-                transDomain.getCommandStack().execute(new RenameRepresentationCommand(transDomain, repDescriptor.getRepresentation(), newName));
+                transDomain.getCommandStack().execute(new RenameRepresentationCommand(transDomain, repDescriptor, newName));
             }
         }
     }
