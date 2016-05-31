@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -276,6 +277,16 @@ public class DialectUIManagerImpl implements DialectUIManager {
         return false;
     }
 
+    @Override
+    public boolean canHandle(final DRepresentationDescriptor repDescriptor) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(repDescriptor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * {@inheritDoc}
      * 
@@ -400,13 +411,20 @@ public class DialectUIManagerImpl implements DialectUIManager {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canExport(DRepresentation representation, ExportFormat format) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation) && dialect.getServices().canExport(format)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExport(DRepresentationDescriptor repDescriptor, ExportFormat format) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(repDescriptor) && dialect.getServices().canExport(format)) {
                 return true;
             }
         }

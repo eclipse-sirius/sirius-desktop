@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ResourcesFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -82,6 +81,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
      * 
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
      */
+    @Override
     public Object[] getChildren(final Object parentElement) {
         Collection<Object> allChildren = Lists.newArrayList();
         try {
@@ -133,11 +133,11 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
                     result.addAll(getWrappedChildren(parentElement));
                 }
             }
-        } else if (parentElement instanceof EObject && !(parentElement instanceof DRepresentation)) {
+        } else if (parentElement instanceof EObject && !(parentElement instanceof DRepresentationDescriptor)) {
             // Look for representation with current element as semantic
             // target.
             result.addAll(getWrappedChildren(parentElement));
-            result.addAll(getRepresentationsAssociatedToEObject((EObject) parentElement));
+            result.addAll(getRepresentationDescriptorsAssociatedToEObject((EObject) parentElement));
         }
 
         return result;
@@ -164,7 +164,8 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
     }
 
     /**
-     * Return all the semantic resources of the session : <LI>
+     * Return all the semantic resources of the session :
+     * <LI>
      * <UL>
      * except the aird and GMFResource resources
      * </UL>
@@ -191,14 +192,16 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         return allSemanticRes;
     }
 
-    private Collection<DRepresentation> getRepresentationsAssociatedToEObject(final EObject eObject) {
+    private Collection<DRepresentationDescriptor> getRepresentationDescriptorsAssociatedToEObject(final EObject eObject) {
         final Session session = SessionManager.INSTANCE.getSession(eObject);
         if (session != null && session.isOpen()) {
-            Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(eObject, session);
-            List<DRepresentation> filteredReps = Lists.newArrayList(Iterables.filter(allRepresentations, new InViewpointPredicate(session.getSelectedViewpoints(false))));
-            // Sort the available representations alphabetically by name
-            Collections.sort(filteredReps, Ordering.natural().onResultOf(new Function<DRepresentation, String>() {
-                public String apply(DRepresentation from) {
+            Collection<DRepresentationDescriptor> allRepDescriptors = DialectManager.INSTANCE.getRepresentationDescriptors(eObject, session);
+            List<DRepresentationDescriptor> filteredReps = Lists.newArrayList(Iterables.filter(allRepDescriptors, new InViewpointPredicate(session.getSelectedViewpoints(false))));
+            // Sort the available representation descriptors alphabetically by
+            // name
+            Collections.sort(filteredReps, Ordering.natural().onResultOf(new Function<DRepresentationDescriptor, String>() {
+                @Override
+                public String apply(DRepresentationDescriptor from) {
                     return from.getName();
                 }
             }));
@@ -222,16 +225,13 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         return new ResourceQuery(resource).isRepresentationsResource();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public Object getParent(final Object element) {
         Object parent = getParentFromExtensions(element);
 
         if (parent == null) {
-            if (element instanceof DRepresentation && element instanceof DSemanticDecorator) {
-                parent = ((DSemanticDecorator) element).getTarget();
+            if (element instanceof DRepresentationDescriptor) {
+                parent = ((DRepresentationDescriptor) element).getTarget();
             } else if (element instanceof Resource) {
                 parent = SessionManager.INSTANCE.getSession((Resource) element);
             } else if (element instanceof CommonSessionItem) {
@@ -264,19 +264,13 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         return null;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public boolean hasChildren(final Object element) {
         Object[] children = getChildren(element);
         return children != null && children.length != 0;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public Object[] getElements(final Object inputElement) {
         Object[] result = null;
         if (inputElement instanceof Session) {
@@ -291,10 +285,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         try {
             wrapped.dispose();
@@ -309,23 +300,20 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
         if (wrapped != null) {
             wrapped.inputChanged(viewer, oldInput, newInput);
         }
     }
 
-    private static class InViewpointPredicate implements Predicate<DRepresentation> {
+    private static class InViewpointPredicate implements Predicate<DRepresentationDescriptor> {
 
         private final Collection<Viewpoint> scope;
 
         /**
-         * Filter representations <code>allRepresentations</code> whose
-         * description belongs to one the specified viewpoints.
+         * Filter all {@link DRepresentationDescriptor} whose description
+         * belongs to one of the specified viewpoints.
          * 
          * @param scope
          *            the viewpoints to test.
@@ -334,12 +322,10 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
             this.scope = scope;
         }
 
-        /**
-         * {@inheritDoc}
-         */
-        public boolean apply(DRepresentation input) {
-            if (input.eResource() != null) {
-                RepresentationDescription description = DialectManager.INSTANCE.getDescription(input);
+        @Override
+        public boolean apply(DRepresentationDescriptor repDescriptor) {
+            if (repDescriptor.eResource() != null) {
+                RepresentationDescription description = repDescriptor.getDescription();
                 if (description != null) {
                     Viewpoint reprViewpoint = new RepresentationDescriptionQuery(description).getParentViewpoint();
                     // representationDescription.eContainer() can be null in the

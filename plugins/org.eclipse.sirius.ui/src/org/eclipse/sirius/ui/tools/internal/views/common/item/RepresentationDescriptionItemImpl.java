@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 import com.google.common.base.Function;
@@ -79,16 +79,12 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         this.filterForResource = true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object getWrappedObject() {
         return representationDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public int compareTo(final RepresentationDescriptionItemImpl o) {
         if (representationDescription.getName() != null) {
             return representationDescription.getName().compareTo(o.representationDescription.getName());
@@ -126,9 +122,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         return representationDescription.getName().hashCode() + parent.hashCode();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     @SuppressWarnings("rawtypes")
     public Object getAdapter(Class adapter) {
         if (adapter == EObject.class) {
@@ -137,41 +131,34 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
-     */
+    @Override
     public Option<Session> getSession() {
         return Options.newSome(session);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
-     */
+    @Override
     public Collection<?> getChildren() {
-        final List<DRepresentation> representationsCandidates = Lists.newArrayList(DialectManager.INSTANCE.getRepresentations(representationDescription, session));
+        final List<DRepresentationDescriptor> repDescriptorsCandidates = Lists.newArrayList(DialectManager.INSTANCE.getRepresentationDescriptors(representationDescription, session));
 
         List<RepresentationItemImpl> representations = Lists.newArrayList();
 
         if (filterForResource) {
-            for (final DRepresentation representation : representationsCandidates) {
-                Resource representationResource = representation.eResource();
+            for (final DRepresentationDescriptor repDescriptor : repDescriptorsCandidates) {
+                Resource representationResource = repDescriptor.eResource();
                 if (representationResource != null && representationResource.equals(resource)) {
-                    representations.add(new RepresentationItemImpl(representation, this));
+                    representations.add(new RepresentationItemImpl(repDescriptor, this));
                 }
             }
         } else {
-            for (final DRepresentation representation : representationsCandidates) {
-                representations.add(new RepresentationItemImpl(representation, this));
+            for (final DRepresentationDescriptor repDescriptor : repDescriptorsCandidates) {
+                representations.add(new RepresentationItemImpl(repDescriptor, this));
             }
         }
 
         Collections.sort(representations, Ordering.natural().onResultOf(new Function<RepresentationItemImpl, String>() {
+            @Override
             public String apply(RepresentationItemImpl from) {
-                return from.getRepresentation().getName();
+                return from.getDRepresentationDescriptor().getName();
             }
         }));
         return representations;
@@ -185,11 +172,7 @@ public class RepresentationDescriptionItemImpl implements org.eclipse.sirius.ui.
         this.filterForResource = filterForResource;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
-     */
+    @Override
     public Object getParent() {
         return parent;
     }

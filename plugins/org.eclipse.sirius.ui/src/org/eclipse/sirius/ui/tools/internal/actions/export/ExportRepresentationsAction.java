@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
@@ -40,9 +40,9 @@ import com.google.common.collect.Sets;
  */
 public class ExportRepresentationsAction extends AbstractExportRepresentationsAction {
 
-    private static Predicate<DRepresentation> exportableRepresentation = new Predicate<DRepresentation>() {
+    private static Predicate<DRepresentationDescriptor> exportableRepDescriptorPredicate = new Predicate<DRepresentationDescriptor>() {
         @Override
-        public boolean apply(DRepresentation input) {
+        public boolean apply(DRepresentationDescriptor input) {
             return DialectUIManager.INSTANCE.canExport(input, new ExportFormat(ExportDocumentFormat.NONE, null));
         }
     };
@@ -51,7 +51,7 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
 
     private Collection<EObject> selectedEObjects;
 
-    private Collection<DRepresentation> selectedRepresentations;
+    private Collection<DRepresentationDescriptor> selectedRepDescriptors;
 
     /**
      * Build the action.
@@ -60,19 +60,19 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
      *            the current {@link Session}.
      * @param selectedEObjects
      *            the selected semantic elements.
-     * @param selectedRepresentations
-     *            the selected {@link DRepresentation}.
+     * @param selectedRepDescriptors
+     *            the selected {@link DRepresentationDescriptor}.
      */
-    public ExportRepresentationsAction(Session session, Collection<EObject> selectedEObjects, Collection<DRepresentation> selectedRepresentations) {
+    public ExportRepresentationsAction(Session session, Collection<EObject> selectedEObjects, Collection<DRepresentationDescriptor> selectedRepDescriptors) {
         super(Messages.ExportRepresentationsAction_label, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif")); //$NON-NLS-1$
         this.session = session;
         this.selectedEObjects = selectedEObjects;
-        this.selectedRepresentations = selectedRepresentations;
+        this.selectedRepDescriptors = selectedRepDescriptors;
     }
 
     @Override
     public void run() {
-        if (!getDRepresentationToExport().isEmpty()) {
+        if (!getRepresentationToExport().isEmpty()) {
             super.run();
         } else {
             MessageDialog.openInformation(Display.getCurrent().getActiveShell(), Messages.ExportRepresentationsAction_noRepresentationsDialog_title,
@@ -81,27 +81,27 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
     }
 
     @Override
-    protected Collection<DRepresentation> getDRepresentationToExport() {
-        Collection<DRepresentation> dRepresentationsToExport = Sets.newLinkedHashSet(selectedRepresentations);
-        if (dRepresentationsToExport.isEmpty()) {
-            dRepresentationsToExport.addAll(computeAllRepresentationsUnderSemantic());
+    protected Collection<DRepresentationDescriptor> getRepresentationToExport() {
+        Collection<DRepresentationDescriptor> dRepDescriptorsToExport = Sets.newLinkedHashSet(selectedRepDescriptors);
+        if (dRepDescriptorsToExport.isEmpty()) {
+            dRepDescriptorsToExport.addAll(computeAllRepresentationsUnderSemantic());
         }
-        return Lists.newArrayList(Iterables.filter(dRepresentationsToExport, ExportRepresentationsAction.exportableRepresentation));
+        return Lists.newArrayList(Iterables.filter(dRepDescriptorsToExport, ExportRepresentationsAction.exportableRepDescriptorPredicate));
     }
 
     @Override
-    protected Session getSession(DRepresentation representation) {
+    protected Session getSession(DRepresentationDescriptor repDescriptor) {
         return session;
     }
 
-    private Collection<DRepresentation> computeAllRepresentationsUnderSemantic() {
-        Set<DRepresentation> result = new LinkedHashSet<DRepresentation>();
+    private Collection<DRepresentationDescriptor> computeAllRepresentationsUnderSemantic() {
+        Set<DRepresentationDescriptor> result = new LinkedHashSet<DRepresentationDescriptor>();
         for (EObject eObject : selectedEObjects) {
-            result.addAll(DialectManager.INSTANCE.getRepresentations(eObject, session));
+            result.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(eObject, session));
             Iterator<EObject> iter = eObject.eAllContents();
             while (iter.hasNext()) {
                 EObject child = iter.next();
-                result.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
+                result.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(child, session));
             }
         }
         return result;

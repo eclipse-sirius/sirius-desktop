@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,52 +19,51 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * A double click listener which opens an editor if the clicked element is a representation.
+ * A double click listener which opens an editor if the clicked element is a
+ * representation.
+ * 
  * @author mchauvin
  */
 public class OpenRepresentationListener implements IDoubleClickListener {
-    
-    /**
-     * {@inheritDoc}
-     * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
-     */
+
+    @Override
     public void doubleClick(final DoubleClickEvent event) {
         if (event != null && event.getSelection() instanceof IStructuredSelection) {
             List<?> selection = ((IStructuredSelection) event.getSelection()).toList();
-            Iterable<DRepresentation> representationToOpen = getRepresentationsToOpen(selection);
-            if (!Iterables.isEmpty(representationToOpen)) {
-                new OpenRepresentationsAction(Sets.newLinkedHashSet(representationToOpen)).run();
+            Iterable<DRepresentationDescriptor> repDescriptorToOpen = getRepresentationDescriptorsToOpen(selection);
+            if (!Iterables.isEmpty(repDescriptorToOpen)) {
+                new OpenRepresentationsAction(Sets.newLinkedHashSet(repDescriptorToOpen)).run();
             }
         }
     }
-   
-    private Iterable<DRepresentation> getRepresentationsToOpen(List<?> selection) {
-       
-        final Set<DRepresentation> representations = Sets.newLinkedHashSet();
+
+    private Iterable<DRepresentationDescriptor> getRepresentationDescriptorsToOpen(List<?> selection) {
+
+        final Set<DRepresentationDescriptor> repDescriptors = Sets.newLinkedHashSet();
         for (final Object obj : selection) {
-            if (obj instanceof DRepresentation)
-                representations.add((DRepresentation) obj);
+            if (obj instanceof DRepresentationDescriptor)
+                repDescriptors.add((DRepresentationDescriptor) obj);
             else {
-                DRepresentation adapted = adaptToDRepresentation(obj);
+                DRepresentationDescriptor adapted = adaptToDRepresentationDescriptor(obj);
                 if (adapted != null)
-                    representations.add(adapted);
-            }    
+                    repDescriptors.add(adapted);
+            }
         }
-        return representations;
+        return repDescriptors;
     }
 
-    private DRepresentation  adaptToDRepresentation(Object input) {
+    private DRepresentationDescriptor adaptToDRepresentationDescriptor(Object input) {
         if (input instanceof IAdaptable) {
             Object adapter = ((IAdaptable) input).getAdapter(EObject.class);
-            if (adapter instanceof DRepresentation)
-                return (DRepresentation) adapter;
+            if (adapter instanceof DRepresentationDescriptor)
+                return (DRepresentationDescriptor) adapter;
         }
         return null;
-    }    
+    }
 }

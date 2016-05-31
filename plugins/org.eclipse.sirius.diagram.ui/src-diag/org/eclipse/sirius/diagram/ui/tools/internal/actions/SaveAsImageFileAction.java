@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -47,7 +49,7 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
     }
 
     @Override
-    protected Collection<DRepresentation> getDRepresentationToExport() {
+    protected Collection<DRepresentationDescriptor> getRepresentationToExport() {
         DRepresentation dRepresentationToExport = null;
         ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
         if (selection instanceof IStructuredSelection) {
@@ -73,14 +75,23 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
                 }
             }
         }
-        return dRepresentationToExport == null ? Collections.<DRepresentation> emptyList() : Collections.singleton(dRepresentationToExport);
+
+        if (dRepresentationToExport != null) {
+            Collection<DRepresentationDescriptor> ownedRepresentationDescriptors = ((DView) dRepresentationToExport.eContainer()).getOwnedRepresentationDescriptors();
+            for (DRepresentationDescriptor dRepresentationDescriptor : ownedRepresentationDescriptors) {
+                if (dRepresentationToExport.equals(dRepresentationDescriptor.getRepresentation())) {
+                    return Collections.<DRepresentationDescriptor> singleton(dRepresentationDescriptor);
+                }
+            }
+        }
+        return Collections.<DRepresentationDescriptor> emptyList();
     }
 
     @Override
-    protected Session getSession(DRepresentation representation) {
+    protected Session getSession(DRepresentationDescriptor repDescriptor) {
         Session session = null;
-        if (representation != null) {
-            EObjectQuery eObjectQuery = new EObjectQuery(representation);
+        if (repDescriptor != null) {
+            EObjectQuery eObjectQuery = new EObjectQuery(repDescriptor);
             session = eObjectQuery.getSession();
         }
         return session;

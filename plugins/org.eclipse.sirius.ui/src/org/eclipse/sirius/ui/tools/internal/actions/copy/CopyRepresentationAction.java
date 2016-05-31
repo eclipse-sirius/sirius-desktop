@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
@@ -32,6 +33,7 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * An action to copy selected representations.
@@ -42,7 +44,7 @@ public class CopyRepresentationAction extends Action {
 
     final Session session;
 
-    final Collection<DRepresentation> representations;
+    final Collection<DRepresentationDescriptor> repDescriptors;
 
     /**
      * Construct a new instance.
@@ -52,10 +54,10 @@ public class CopyRepresentationAction extends Action {
      * @param selection
      *            the selected representation to copy
      */
-    public CopyRepresentationAction(final Session session, final Collection<DRepresentation> selection) {
+    public CopyRepresentationAction(final Session session, final Collection<DRepresentationDescriptor> selection) {
         super(Messages.CopyRepresentationAction_name);
         this.session = session;
-        this.representations = selection;
+        this.repDescriptors = selection;
 
         final ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
         this.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
@@ -72,7 +74,7 @@ public class CopyRepresentationAction extends Action {
 
         RenameDialog dialog;
 
-        if (representations.size() == 1) {
+        if (repDescriptors.size() == 1) {
             final String oldName = getOldName();
             dialog = new RenameDialog(Display.getCurrent().getActiveShell(), oldName);
             dialog.setTitle(Messages.CopyRepresentationAction_copyRepresentationDialog_title);
@@ -88,16 +90,20 @@ public class CopyRepresentationAction extends Action {
 
         if (dialog.open() == Window.OK) {
             final String newName = dialog.getNewName();
-            DRepresentation dRepresentation = representations.iterator().next();
-            final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(dRepresentation);
+            DRepresentationDescriptor dRepDescriptor = repDescriptors.iterator().next();
+            final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(dRepDescriptor);
+            Collection<DRepresentation> representations = Lists.newArrayList();
+            for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
+                representations.add(dRepresentationDescriptor.getRepresentation());
+            }
             transDomain.getCommandStack().execute(new CopyRepresentationCommand(transDomain, representations, newName, session));
         }
 
     }
 
     private String getOldName() {
-        final DRepresentation representation = representations.iterator().next();
-        return representation.getName() != null ? representation.getName() : StringUtil.EMPTY_STRING;
+        final DRepresentationDescriptor dRepDescriptor = repDescriptors.iterator().next();
+        return dRepDescriptor.getName() != null ? dRepDescriptor.getName() : StringUtil.EMPTY_STRING;
     }
 
     private String getPrefix() {
@@ -111,10 +117,10 @@ public class CopyRepresentationAction extends Action {
      */
     private boolean isValidSelection() {
 
-        boolean anyInvalidCopy = Iterables.any(representations, new Predicate<DRepresentation>() {
+        boolean anyInvalidCopy = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
 
             @Override
-            public boolean apply(DRepresentation input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

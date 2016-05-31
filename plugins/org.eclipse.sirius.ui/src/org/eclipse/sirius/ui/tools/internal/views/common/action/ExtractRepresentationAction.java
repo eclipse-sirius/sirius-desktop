@@ -24,6 +24,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -33,6 +34,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * An action to extract selected representations.
@@ -42,7 +44,7 @@ import com.google.common.collect.Iterables;
 public class ExtractRepresentationAction extends Action {
     private final Session session;
 
-    private final Collection<DRepresentation> representations;
+    private final Collection<DRepresentationDescriptor> repDescriptors;
 
     /**
      * Construct a new instance.
@@ -52,10 +54,10 @@ public class ExtractRepresentationAction extends Action {
      * @param selection
      *            the selected representations to extract
      */
-    public ExtractRepresentationAction(Session session, Collection<DRepresentation> selection) {
+    public ExtractRepresentationAction(Session session, Collection<DRepresentationDescriptor> selection) {
         super();
         this.session = session;
-        this.representations = selection;
+        this.repDescriptors = selection;
 
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/export.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
@@ -71,6 +73,10 @@ public class ExtractRepresentationAction extends Action {
     @Override
     public void run() {
         final TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
+        Collection<DRepresentation> representations = Lists.newArrayList();
+        for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
+            representations.add(dRepresentationDescriptor.getRepresentation());
+        }
         final ExtractRepresentationsWizard wizard = new ExtractRepresentationsWizard(session, transDomain, representations);
         final Shell defaultShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
         final WizardDialog dialog = new WizardDialog(defaultShell, wizard);
@@ -85,9 +91,9 @@ public class ExtractRepresentationAction extends Action {
      * @return true if the selection is valid
      */
     private boolean isValidSelection() {
-        boolean anyInvalidExtract = Iterables.any(representations, new Predicate<DRepresentation>() {
+        boolean anyInvalidExtract = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
             @Override
-            public boolean apply(DRepresentation input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

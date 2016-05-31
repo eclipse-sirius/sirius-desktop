@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,8 +78,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItem
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -169,7 +168,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
                 Collection<EObject> selectedEObjects = getEObjects(selectedObjects);
                 computeSemanticContextMenu(menu, selectedEObjects);
-                computeRepresentationContextMenu(menu, getRepresentations(selectedObjects), selectedEObjects);
+                computeRepresentationContextMenu(menu, getRepresentationDescriptors(selectedObjects), selectedEObjects);
                 computeRepresentationsResourcesContextMenu(menu, getRepresentationResources(selectedObjects));
                 computeSemanticResourcesContextMenu(menu, getSemanticResources(selectedObjects));
 
@@ -263,16 +262,15 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         }
     }
 
-    private void computeRepresentationContextMenu(IMenuManager menu, final Collection<DRepresentation> selectedRepresentations, Collection<EObject> selectedEObjects) {
-        if (selectedRepresentations == null || selectedEObjects == null) {
+    private void computeRepresentationContextMenu(IMenuManager menu, final Collection<DRepresentationDescriptor> selectedRepDescriptors, Collection<EObject> selectedEObjects) {
+        if (selectedRepDescriptors == null || selectedEObjects == null) {
             return;
         }
 
         Session session = null;
         EObject firstEObject = null;
-        for (DSemanticDecorator dsem : Iterables.filter(Iterables.concat(selectedRepresentations, selectedEObjects), DSemanticDecorator.class)) {
-            firstEObject = dsem.getTarget();
-
+        for (DRepresentationDescriptor repDesc : selectedRepDescriptors) {
+            firstEObject = repDesc.getTarget();
             if (firstEObject != null)
                 break;
         }
@@ -288,31 +286,31 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
             /*
              * representation menu
              */
-            if (!selectedRepresentations.isEmpty()) {
+            if (!selectedRepDescriptors.isEmpty()) {
 
-                addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(selectedRepresentations));
-                addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(selectedRepresentations));
-                addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(selectedRepresentations, session));
+                addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(selectedRepDescriptors));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(selectedRepDescriptors));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(selectedRepDescriptors, session));
             }
 
-            if (!selectedRepresentations.isEmpty() && session.getAllSessionResources().size() >= 1) {
+            if (!selectedRepDescriptors.isEmpty() && session.getAllSessionResources().size() >= 1) {
                 final Collection<Resource> targetResources = new LinkedHashSet<Resource>(session.getAllSessionResources());
-                final Collection<Resource> originResources = collectOriginResources(selectedRepresentations);
+                final Collection<Resource> originResources = collectOriginResources(selectedRepDescriptors);
                 if (originResources.size() == 1) {
                     targetResources.removeAll(originResources);
                 }
                 if (targetResources.size() > 0) {
-                    computeMoveMenu(menu, session, selectedRepresentations, targetResources);
+                    computeMoveMenu(menu, session, selectedRepDescriptors, targetResources);
                 }
-                addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, selectedRepresentations));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, selectedRepDescriptors));
             }
 
-            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, selectedEObjects, selectedRepresentations);
+            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, selectedEObjects, selectedRepDescriptors);
             addActionToMenu(menu, GROUP_PORT, actionExportImage);
         }
 
-        if (!selectedRepresentations.isEmpty()) {
-            addActionToMenu(menu, GROUP_EDIT, buildDeleteRepresentationAction(selectedRepresentations));
+        if (!selectedRepDescriptors.isEmpty()) {
+            addActionToMenu(menu, GROUP_EDIT, buildDeleteRepresentationAction(selectedRepDescriptors));
         }
     }
 
@@ -477,7 +475,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
      * @param movableRepresentations
      * @param targetResources
      */
-    private void computeMoveMenu(IMenuManager menu, final Session session, final Collection<DRepresentation> movableRepresentations, final Collection<Resource> targetResources) {
+    private void computeMoveMenu(IMenuManager menu, final Session session, final Collection<DRepresentationDescriptor> movableRepresentations, final Collection<Resource> targetResources) {
         final MenuManager moveMenu = new MenuManager(Messages.ContextMenuFiller_move, "1"); //$NON-NLS-1$
         for (final Resource target : targetResources) {
             if (!target.getContents().isEmpty() && target.getContents().get(0) instanceof DAnalysis) {
@@ -503,7 +501,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         }
     }
 
-    private IAction buildOpenRepresentationAction(final Collection<DRepresentation> selection) {
+    private IAction buildOpenRepresentationAction(final Collection<DRepresentationDescriptor> selection) {
         return new OpenRepresentationsAction(selection);
     }
 
@@ -519,11 +517,11 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return new RemoveRepresentationResourceAction(diagramResources, session);
     }
 
-    private IAction buildExtractRepresentationsAction(final Session session, final Collection<DRepresentation> movableRepresentations) {
+    private IAction buildExtractRepresentationsAction(final Session session, final Collection<DRepresentationDescriptor> movableRepresentations) {
         return new ExtractRepresentationAction(session, movableRepresentations);
     }
 
-    private Action buildMoveRepresentationsActions(final Session session, final Collection<DRepresentation> movableRepresentations, final DAnalysis targetAnalysis) {
+    private Action buildMoveRepresentationsActions(final Session session, final Collection<DRepresentationDescriptor> movableRepresentations, final DAnalysis targetAnalysis) {
         return new MoveRepresentationAction(session, targetAnalysis, movableRepresentations);
     }
 
@@ -531,11 +529,11 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return new OpenViewpointSelectionAction(session.getSessionResource().getURI());
     }
 
-    private Action buildCopyRepresentationsAction(final Collection<DRepresentation> selection, final Session session) {
+    private Action buildCopyRepresentationsAction(final Collection<DRepresentationDescriptor> selection, final Session session) {
         return new CopyRepresentationAction(session, selection);
     }
 
-    private Action buildRenameRepresentationAction(final Collection<DRepresentation> selection) {
+    private Action buildRenameRepresentationAction(final Collection<DRepresentationDescriptor> selection) {
         Action renameAction = new RenameRepresentationAction(selection);
         renameAction.setActionDefinitionId(IWorkbenchCommandConstants.FILE_RENAME);
         return renameAction;
@@ -549,8 +547,8 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return new AddModelDependencyAction(selectedSession);
     }
 
-    private Action buildDeleteRepresentationAction(final Collection<DRepresentation> representations) {
-        Action deleteAction = new DeleteRepresentationAction(representations);
+    private Action buildDeleteRepresentationAction(final Collection<DRepresentationDescriptor> repDescriptors) {
+        Action deleteAction = new DeleteRepresentationAction(repDescriptors);
         deleteAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_DELETE);
         return deleteAction;
     }
@@ -624,9 +622,9 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         labelProvider = null;
     }
 
-    private Collection<Resource> collectOriginResources(final Collection<DRepresentation> movableRepresentations) {
+    private Collection<Resource> collectOriginResources(final Collection<DRepresentationDescriptor> movableRepresentations) {
         final Collection<Resource> result = new LinkedHashSet<Resource>();
-        for (final DRepresentation representation : movableRepresentations) {
+        for (final DRepresentationDescriptor representation : movableRepresentations) {
             result.add(representation.eResource());
         }
         return result;
@@ -662,14 +660,14 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return projects;
     }
 
-    private Collection<DRepresentation> getRepresentations(Collection<?> selection) {
-        Collection<DRepresentation> selectedReps = Collections.emptyList();
+    private Collection<DRepresentationDescriptor> getRepresentationDescriptors(Collection<?> selection) {
+        Collection<DRepresentationDescriptor> selectedRepDescriptors = Collections.emptyList();
         if (selection != null) {
-            selectedReps = Sets.newLinkedHashSet();
-            Iterables.addAll(selectedReps, Iterables.filter(selection, DRepresentation.class));
-            Iterables.addAll(selectedReps, Iterables.transform(Iterables.filter(selection, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
+            selectedRepDescriptors = Sets.newLinkedHashSet();
+            Iterables.addAll(selectedRepDescriptors, Iterables.filter(selection, DRepresentationDescriptor.class));
+            Iterables.addAll(selectedRepDescriptors, Iterables.transform(Iterables.filter(selection, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
         }
-        return selectedReps;
+        return selectedRepDescriptors;
     }
 
     private Collection<AnalysisResourceItem> getRepresentationResources(final Collection<?> selection) {

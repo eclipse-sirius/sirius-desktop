@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
@@ -45,30 +44,30 @@ import com.google.common.collect.Sets;
  */
 public class OpenRepresentationsAction extends Action {
 
-    private Collection<DRepresentation> representationsToOpen;
+    private Collection<DRepresentationDescriptor> representationsToOpen;
 
     /**
      * Constructor.
      *
-     * @param representations
+     * @param repDesriptors
      *            representations to open.
      */
-    public OpenRepresentationsAction(Collection<DRepresentation> representations) {
+    public OpenRepresentationsAction(Collection<DRepresentationDescriptor> repDesriptors) {
         super(Messages.OpenRepresentationsAction_name);
 
-        if (representations != null) {
-            this.representationsToOpen = Sets.newLinkedHashSet(Iterables.filter(representations, Predicates.notNull()));
+        if (repDesriptors != null) {
+            this.representationsToOpen = Sets.newLinkedHashSet(Iterables.filter(repDesriptors, Predicates.notNull()));
         }
     }
 
     /**
      * Constructor.
      *
-     * @param representation
-     *            representation to open.
+     * @param repDesc
+     *            representation descriptor to open.
      */
-    public OpenRepresentationsAction(DRepresentation representation) {
-        this(Collections.singletonList(representation));
+    public OpenRepresentationsAction(DRepresentationDescriptor repDesc) {
+        this(Collections.singletonList(repDesc));
     }
 
     @Override
@@ -94,7 +93,7 @@ public class OpenRepresentationsAction extends Action {
         }
     }
 
-    private void openRepresentations(final Collection<DRepresentation> selection, final IProgressMonitor monitor) {
+    private void openRepresentations(final Collection<DRepresentationDescriptor> selection, final IProgressMonitor monitor) {
         String taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
         if (selection.size() > 1) {
             taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
@@ -102,20 +101,12 @@ public class OpenRepresentationsAction extends Action {
         try {
             monitor.beginTask(taskName, 5 * selection.size());
 
-            for (DRepresentation rep : selection) {
-                Session session = null;
-                if (rep instanceof DSemanticDecorator) {
-                    // If the semantic target is null or detached, no session
-                    // will be found, allows to prevent NPE during
-                    // representation opening.
-                    session = new EObjectQuery(((DSemanticDecorator) rep).getTarget()).getSession();
-                } else {
-                    session = new EObjectQuery(rep).getSession();
-                }
+            for (DRepresentationDescriptor repDesc : selection) {
+                Session session = new EObjectQuery(repDesc.getTarget()).getSession();
                 monitor.worked(1);
 
                 if (session != null) {
-                    IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, rep, new SubProgressMonitor(monitor, 3));
+                    IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, repDesc.getRepresentation(), new SubProgressMonitor(monitor, 3));
                     if (part instanceof DialectEditor) {
                         updateUISession((DialectEditor) part, session);
                         monitor.worked(1);

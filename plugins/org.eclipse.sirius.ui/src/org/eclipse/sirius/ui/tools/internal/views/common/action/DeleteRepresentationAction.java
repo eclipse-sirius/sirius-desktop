@@ -38,6 +38,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -55,17 +56,17 @@ import com.google.common.collect.Iterables;
  */
 public class DeleteRepresentationAction extends Action {
 
-    private Collection<DRepresentation> selectedRepresentations;
+    private Collection<DRepresentationDescriptor> selectedRepDescriptors;
 
     /**
      * Create a new instance.
      * 
-     * @param representations
-     *            the representations to delete
+     * @param repDescriptors
+     *            holds the representation to delete
      */
-    public DeleteRepresentationAction(Collection<DRepresentation> representations) {
+    public DeleteRepresentationAction(Collection<DRepresentationDescriptor> repDescriptors) {
         super(Messages.DeleteRepresentationAction_name, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif")); //$NON-NLS-1$
-        this.selectedRepresentations = representations;
+        this.selectedRepDescriptors = repDescriptors;
 
         // Disable the action if the selection is not valid
         if (!isValidSelection()) {
@@ -151,7 +152,8 @@ public class DeleteRepresentationAction extends Action {
     private Map<DRepresentation, Session> getRepresentations() {
         final Map<DRepresentation, Session> representations = new HashMap<DRepresentation, Session>();
 
-        for (final DRepresentation dRepresentation : selectedRepresentations) {
+        for (final DRepresentationDescriptor dRepDescription : selectedRepDescriptors) {
+            DRepresentation dRepresentation = dRepDescription.getRepresentation();
             EObjectQuery eObjectQuery = new EObjectQuery(dRepresentation);
             Session currentSession = eObjectQuery.getSession();
             if (currentSession != null) {
@@ -187,9 +189,9 @@ public class DeleteRepresentationAction extends Action {
     public boolean isEnabled() {
         boolean isEnabled = super.isEnabled();
         if (isEnabled) {
-            for (DRepresentation dRepresentation : selectedRepresentations) {
-                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepresentation);
-                if (!permissionAuthority.canDeleteInstance(dRepresentation)) {
+            for (DRepresentationDescriptor dRepDescription : selectedRepDescriptors) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepDescription);
+                if (!permissionAuthority.canDeleteInstance(dRepDescription.getRepresentation())) {
                     isEnabled = false;
                     break;
                 }
@@ -205,10 +207,10 @@ public class DeleteRepresentationAction extends Action {
      */
     private boolean isValidSelection() {
 
-        boolean anyInvalidDelete = Iterables.any(selectedRepresentations, new Predicate<DRepresentation>() {
+        boolean anyInvalidDelete = Iterables.any(selectedRepDescriptors, new Predicate<DRepresentationDescriptor>() {
 
             @Override
-            public boolean apply(DRepresentation input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 EObject container = input.eContainer();
                 if (container instanceof DView) {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);

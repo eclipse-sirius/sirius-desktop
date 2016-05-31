@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.RenameRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -46,24 +46,24 @@ public class RenameActionHandler extends Action {
         this.selectionProvider = selectionProvider;
         this.selectionProvider.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            @Override
             public void selectionChanged(SelectionChangedEvent event) {
 
-                setEnabled(!getRepresentations().isEmpty());
+                setEnabled(!getRepresentationDescriptors().isEmpty());
             }
 
         });
     }
 
-    private Collection<DRepresentation> getRepresentations() {
+    private Collection<DRepresentationDescriptor> getRepresentationDescriptors() {
         ISelection selection = selectionProvider.getSelection();
         if (selection instanceof IStructuredSelection) {
             Collection<?> selections = ((IStructuredSelection) selection).toList();
             if (selections != null && !selections.isEmpty()) {
-                Collection<DRepresentation> selectedRepresentations = Sets.newLinkedHashSet();
-                Iterables.addAll(selectedRepresentations, Iterables.filter(selections, DRepresentation.class));
-                Iterables
-                        .addAll(selectedRepresentations, Iterables.transform(Iterables.filter(selections, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
-                return selectedRepresentations;
+                Collection<DRepresentationDescriptor> selectedRepDescriptors = Sets.newLinkedHashSet();
+                Iterables.addAll(selectedRepDescriptors, Iterables.filter(selections, DRepresentationDescriptor.class));
+                Iterables.addAll(selectedRepDescriptors, Iterables.transform(Iterables.filter(selections, RepresentationItemImpl.class), RepresentationItemImpl.REPRESENTATION_ITEM_TO_REPRESENTATION));
+                return selectedRepDescriptors;
             }
         }
         return Collections.emptyList();
@@ -76,7 +76,7 @@ public class RenameActionHandler extends Action {
      */
     @Override
     public void run() {
-        Action renameAction = new RenameRepresentationAction(getRepresentations());
+        Action renameAction = new RenameRepresentationAction(getRepresentationDescriptors());
         renameAction.run();
     }
 

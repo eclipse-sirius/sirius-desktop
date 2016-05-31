@@ -25,6 +25,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -33,6 +34,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * An action to move selected representations.
@@ -40,7 +42,7 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
 public class MoveRepresentationAction extends Action {
-    private final Collection<DRepresentation> representations;
+    private final Collection<DRepresentationDescriptor> repDescriptors;
 
     private final DAnalysis targetAnalysis;
 
@@ -56,11 +58,11 @@ public class MoveRepresentationAction extends Action {
      * @param selection
      *            the selected representations to move
      */
-    public MoveRepresentationAction(Session session, final DAnalysis targetAnalysis, Collection<DRepresentation> selection) {
+    public MoveRepresentationAction(Session session, final DAnalysis targetAnalysis, Collection<DRepresentationDescriptor> selection) {
         super();
         this.targetAnalysis = targetAnalysis;
         this.session = session;
-        this.representations = selection;
+        this.repDescriptors = selection;
 
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
@@ -77,12 +79,16 @@ public class MoveRepresentationAction extends Action {
     public void run() {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
         if (uiSession != null) {
-            for (final DRepresentation representation : representations) {
-                final IEditorPart editor = uiSession.getEditor(representation);
+            for (final DRepresentationDescriptor repDescriptor : repDescriptors) {
+                final IEditorPart editor = uiSession.getEditor(repDescriptor.getRepresentation());
                 if (editor != null) {
                     editor.getEditorSite().getPage().closeEditor(editor, false);
                 }
             }
+        }
+        Collection<DRepresentation> representations = Lists.newArrayList();
+        for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
+            representations.add(dRepresentationDescriptor.getRepresentation());
         }
         session.getTransactionalEditingDomain().getCommandStack().execute(new MoveRepresentationCommand(session, targetAnalysis, representations));
     }
@@ -94,10 +100,10 @@ public class MoveRepresentationAction extends Action {
      */
     private boolean isValidSelection() {
 
-        boolean anyInvalidMove = Iterables.any(representations, new Predicate<DRepresentation>() {
+        boolean anyInvalidMove = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
 
             @Override
-            public boolean apply(DRepresentation input) {
+            public boolean apply(DRepresentationDescriptor input) {
                 boolean invalid = false; // false is the default value
 
                 // Step 1: Check source representation container
@@ -111,7 +117,7 @@ public class MoveRepresentationAction extends Action {
 
                 // Step 2: Check target representation container
                 if (!invalid) {
-                    DView targetContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(targetAnalysis, input);
+                    DView targetContainer = DAnalysisSessionHelper.findDViewForAddedRepresentation(targetAnalysis, input.getDescription());
                     if (targetContainer != null) {
                         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(targetContainer);
                         if (permissionAuthority != null && !permissionAuthority.canCreateIn(targetContainer)) {

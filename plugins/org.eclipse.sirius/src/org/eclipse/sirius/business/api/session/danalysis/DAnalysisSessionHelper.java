@@ -20,7 +20,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
@@ -216,13 +216,13 @@ public final class DAnalysisSessionHelper {
      * 
      * @param analysis
      *            selected analysis
-     * @param representation
-     *            the added representation.
+     * @param representationDescription
+     *            the representationDescription we are looking the DView for.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DView findContainerForAddedRepresentation(DAnalysis analysis, final DRepresentation representation) {
-        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
-        return getContainer(analysis, viewpoint);
+    public static DView findDViewForAddedRepresentation(DAnalysis analysis, final RepresentationDescription representationDescription) {
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
+        return getDView(analysis, viewpoint);
     }
 
     /**
@@ -405,7 +405,7 @@ public final class DAnalysisSessionHelper {
         final List<DView> containers = new ArrayList<DView>();
 
         for (DAnalysis analysis : allAnalysis) {
-            DView container = getContainer(analysis, viewpoint);
+            DView container = getDView(analysis, viewpoint);
             if (container != null) {
                 containers.add(container);
             }
@@ -415,19 +415,19 @@ public final class DAnalysisSessionHelper {
     }
 
     /**
-     * Get a representation container for a viewpoint.
+     * Get a {@link DView} for a viewpoint.
      * 
      * @param analysis
      *            the analysis to iterate on
      * @param viewpoint
      *            selected viewpoint
-     * @return the first representation container found
+     * @return the first {@link DView} found
      */
-    private static DView getContainer(DAnalysis analysis, Viewpoint viewpoint) {
+    private static DView getDView(DAnalysis analysis, Viewpoint viewpoint) {
         DView result = null;
         for (final DView view : analysis.getOwnedViews()) {
-            if (view instanceof DView && viewpoint == view.getViewpoint()) {
-                result = (DView) view;
+            if (viewpoint == view.getViewpoint()) {
+                result = view;
                 break;
             }
         }

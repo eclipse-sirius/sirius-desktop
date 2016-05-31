@@ -105,6 +105,7 @@ import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -422,6 +423,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
     @Override
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DSemanticDiagram;
+    }
+
+    @Override
+    public boolean canHandle(final DRepresentationDescriptor repDescriptor) {
+        return repDescriptor.getDescription() instanceof DiagramDescription;
     }
 
     /**

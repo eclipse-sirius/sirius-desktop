@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
 
 /**
- * {@link DRepresentation} item wrapper class.
+ * {@link DRepresentationDescriptor} item wrapper class.
  * 
  * @author mporhel
  */
@@ -36,13 +36,14 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
     /**
      * Function to get the representation from a representation item.
      */
-    public static final Function<RepresentationItemImpl, DRepresentation> REPRESENTATION_ITEM_TO_REPRESENTATION = new Function<RepresentationItemImpl, DRepresentation>() {
-        public DRepresentation apply(RepresentationItemImpl from) {
-            return from.getRepresentation();
+    public static final Function<RepresentationItemImpl, DRepresentationDescriptor> REPRESENTATION_ITEM_TO_REPRESENTATION = new Function<RepresentationItemImpl, DRepresentationDescriptor>() {
+        @Override
+        public DRepresentationDescriptor apply(RepresentationItemImpl from) {
+            return from.getDRepresentationDescriptor();
         }
     };
 
-    private final WeakReference<DRepresentation> rep;
+    private final WeakReference<DRepresentationDescriptor> rep;
 
     private final Object parent;
 
@@ -50,20 +51,16 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
      * Construct a new resource item wrapper.
      * 
      * @param rep
-     *            the represented {@link DRepresentation}.
+     *            the represented {@link DRepresentationDescriptor}.
      * @param parent
      *            Parent tree item
      */
-    public RepresentationItemImpl(final DRepresentation rep, final Object parent) {
-        this.rep = new WeakReference<DRepresentation>(rep);
+    public RepresentationItemImpl(final DRepresentationDescriptor rep, final Object parent) {
+        this.rep = new WeakReference<DRepresentationDescriptor>(rep);
         this.parent = parent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper#getWrappedObject()
-     */
+    @Override
     public Object getWrappedObject() {
         return rep.get();
     }
@@ -112,20 +109,12 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
-     */
+    @Override
     public Collection<?> getChildren() {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
-     */
+    @Override
     public Option<Session> getSession() {
         Session session = null;
 
@@ -136,11 +125,7 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
         return Options.newSome(session);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
-     */
+    @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
         if (rep.get() != null && adapter == EObject.class) {
             return rep.get();
@@ -149,21 +134,17 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
-     */
+    @Override
     public Object getParent() {
         return parent;
     }
 
     /**
-     * Get the wrapped {@link DRepresentation}.
+     * Get the wrapped {@link DRepresentationDescriptor}.
      * 
-     * @return the wrapped {@link DRepresentation}.
+     * @return the wrapped {@link DRepresentationDescriptor}.
      */
-    public DRepresentation getRepresentation() {
+    public DRepresentationDescriptor getDRepresentationDescriptor() {
         return rep.get();
     }
 

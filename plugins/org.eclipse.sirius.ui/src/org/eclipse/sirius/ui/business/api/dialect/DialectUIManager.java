@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.business.api.dialect;
 
 import org.eclipse.sirius.ui.business.internal.dialect.DialectUIManagerImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * Instance managing the dialects.
@@ -60,10 +61,25 @@ public interface DialectUIManager extends DialectUIServices {
      * @param format
      *            The desired format.
      * @return true if at least one dialect is able to export this
-     *         <code>representation </code> to this
-     *         <code>format<code>, false otherwise
+     *         <code>representation </code> to this <code>format<code>, false
+     *         otherwise
      */
     boolean canExport(DRepresentation representation, ExportFormat format);
+
+    /**
+     * Return true if at least one dialect is able to export the
+     * <code>representation</code> associated to the <code>repDescriptor</code>
+     * to this <code>format</code>, false otherwise.
+     * 
+     * @param repDescriptor
+     *            Represents the representation to export.
+     * @param format
+     *            The desired format.
+     * @return true if at least one dialect is able to export this
+     *         <code>representation </code> to this <code>format</code>, false
+     *         otherwise
+     */
+    boolean canExport(DRepresentationDescriptor repDescriptor, ExportFormat format);
 
     /**
      * Returns <code>true</code> if the refresh should be done on representation

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -102,24 +103,22 @@ public class SessionLinkHelper implements ILinkHelper {
         return foundElement;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void activateEditor(IWorkbenchPage aPage, IStructuredSelection aSelection) {
         if (aPage == null || aSelection == null || aSelection.isEmpty())
             return;
 
-        DRepresentation selectedRepresentation = getSelectedRepresentation(aSelection.toList());
+        DRepresentationDescriptor selectedRepDescriptor = getSelectedRepresentationDescriptor(aSelection.toList());
 
         IEditorPart activeEditor = aPage.getActiveEditor();
 
-        if (activeEditor != null && selectedRepresentation != null) {
-            Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) selectedRepresentation).getTarget());
+        if (activeEditor != null && selectedRepDescriptor != null) {
+            Session session = SessionManager.INSTANCE.getSession(selectedRepDescriptor.getTarget());
             if (session != null) {
                 IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                if (uiSession != null) {
-                    IEditorPart editor = uiSession.getEditor(selectedRepresentation);
+                DRepresentation representation = selectedRepDescriptor.getRepresentation();
+                if (uiSession != null && representation != null) {
+                    IEditorPart editor = uiSession.getEditor(representation);
                     if (editor != null && editor.getSite() != null && aPage.equals(editor.getSite().getPage())) {
                         activeEditor = editor;
                         aPage.bringToTop(activeEditor);
@@ -129,15 +128,15 @@ public class SessionLinkHelper implements ILinkHelper {
         }
     }
 
-    private DRepresentation getSelectedRepresentation(Collection<?> selection) {
-        DRepresentation rep = null;
-        Iterable<DRepresentation> selectedReps = Iterables.filter(selection, DRepresentation.class);
-        if (selectedReps.iterator().hasNext()) {
-            rep = selectedReps.iterator().next();
+    private DRepresentationDescriptor getSelectedRepresentationDescriptor(Collection<?> selection) {
+        DRepresentationDescriptor rep = null;
+        Iterable<DRepresentationDescriptor> selectedRepDescs = Iterables.filter(selection, DRepresentationDescriptor.class);
+        if (selectedRepDescs.iterator().hasNext()) {
+            rep = selectedRepDescs.iterator().next();
         } else {
             Iterable<RepresentationItemImpl> selectedItems = Iterables.filter(selection, RepresentationItemImpl.class);
             if (selectedItems.iterator().hasNext()) {
-                rep = selectedItems.iterator().next().getRepresentation();
+                rep = selectedItems.iterator().next().getDRepresentationDescriptor();
             }
         }
         return rep;

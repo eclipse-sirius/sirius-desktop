@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,6 +63,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -253,22 +254,16 @@ public class TableDialectUIServices implements DialectUIServices {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
-     */
     @Override
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DTable;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     *      )
-     */
+    @Override
+    public boolean canHandle(final DRepresentationDescriptor representationDescriptor) {
+        return representationDescriptor.getDescription() instanceof TableDescription;
+    }
+
     @Override
     public boolean canHandle(final RepresentationDescription representation) {
         return representation instanceof TableDescription;

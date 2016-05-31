@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -77,6 +78,11 @@ public class TreeDialectUIServices implements DialectUIServices {
     @Override
     public boolean canHandle(DRepresentation representation) {
         return representation instanceof DTree;
+    }
+
+    @Override
+    public boolean canHandle(DRepresentationDescriptor representationDescriptor) {
+        return representationDescriptor.getDescription() instanceof TreeDescription;
     }
 
     @Override
@@ -276,4 +282,5 @@ public class TreeDialectUIServices implements DialectUIServices {
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
     }
+
 }
