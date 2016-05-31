@@ -338,8 +338,18 @@
 			<code>plugin.properties</code> file for each language with the translated message. The default properties file is named 
 			<code>plugin.properties</code> and the localized version are identified with a postfixed with the corresponding language code (e.g. for US english 
 			<code>plugin_en_US.properties</code>, for french 
-			<code>plugin_fr.properties</code>).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments.
+			<code>plugin_fr.properties</code>).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments. For the message values to be found at runtime, do not forget to:
 		</p>
+		<ul>
+			<li>include all the 
+				<code>plugin*.properties</code> files in the binary build (i.e. check them in the plug-in&#8217;s 
+				<code>build.properties</code> file);
+			</li>
+			<li>set the 
+				<code>Bundle-Localization: plugin</code> header in your project&#8217;s 
+				<code>MANIFEST.MF</code>.
+			</li>
+		</ul>
 		<p>
 			<img border="0" src="images/translatable_message2.png"/>
 		</p>

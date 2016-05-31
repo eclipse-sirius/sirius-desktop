@@ -121,7 +121,9 @@ To make use of this feature in your modeler, simply replace the names with a _tr
 
 !images/translatable_message1.png!
 
-The key must be added to the @plugin.properties@ file for each language with the translated message. The default properties file is named @plugin.properties@ and the localized version are identified with a postfixed with the corresponding language code (e.g. for US english @plugin_en_US.properties@, for french @plugin_fr.properties@).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments.
+The key must be added to the @plugin.properties@ file for each language with the translated message. The default properties file is named @plugin.properties@ and the localized version are identified with a postfixed with the corresponding language code (e.g. for US english @plugin_en_US.properties@, for french @plugin_fr.properties@).  The underlying mechanism is the same as for Eclipse/OSGi plug-ins, so translations can even be contributed by physically separate plug-in fragments. For the message values to be found at runtime, do not forget to:
+* include all the @plugin*.properties@ files in the binary build (i.e. check them in the plug-in's @build.properties@ file);
+* set the @Bundle-Localization: plugin@ header in your project's @MANIFEST.MF@.
 
 !images/translatable_message2.png!
 
