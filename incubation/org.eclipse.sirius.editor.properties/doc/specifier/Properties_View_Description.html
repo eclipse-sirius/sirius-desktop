@@ -991,8 +991,16 @@
 		<p>Conditional styles make it possible to support different graphical aspects for a single properties view element. The actual style used to render an element is determined dynamically depending on the current state of the models elements.</p>
 		<p>To use conditional style, you must add one or several conditional styles. Each conditional style is associated to a condition specified as a predicate. If there are conditional styles on a properties view element, their conditions are tested in their order of appearance in the description. The first one for which the condition is true is selected. If none of the conditional styles condition is true, the default style is used instead.</p>
 		<h2 id="validation_rules">Validation rules</h2>
+		<p>There are three kind of validation rules that can be specified. The main difference between the various kind of validation rules available is the location of the validation messages (on a page, a group or a widget). All the validation rules can contains audits used to determine if the validation rule has been broken thanks to an 
+			<code>auditExpression</code> which should return a boolean indicating if the validation of the rule is a success. The validation rules can also contain fixes in order to fix the issue found. Those validation fixes have a name and a fix expression which will be executed once the end user selects a quick fix. The fix expression does not have to return anything. All of those expressions have access to the variables 
+			<code>self</code>, the result of the semantic candidate expression of the page or group and 
+			<code>input</code> the input of the view.
+		</p>
 		<h3 id="page_semantic_validation_rule">Page semantic validation rule</h3>
+		<p>The page semantic validation rule is used to define a validation rule linked to a page.</p>
 		<h3 id="group_semantic_validation_rule">Group semantic validation rule</h3>
+		<p>The group semantic validation rule is used to define a validation rule linked to a group.</p>
 		<h3 id="group_property_validation_rule">Group property validation rule</h3>
+		<p>The group property validation rule is used to define a validation rule linked to a specific widget.</p>
 	</body>
 </html>
