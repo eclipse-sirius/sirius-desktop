@@ -423,7 +423,7 @@ public final class GMFHelper {
      * @param forceFigureAutoSize
      *            if useFigureForAutoSizeConstraint and if the found edit part
      *            supports it, force auto size and validate the parent to get
-     *            the auto-sized dimension (during auto-size for exemple)
+     *            the auto-sized dimension (during auto-size for example)
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
