@@ -63,7 +63,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     protected static final String REGION_RESIZE_PROPAGATOR = "sirius.region.resize.propagator"; //$NON-NLS-1$
 
     /**
-     * Key to store the initial request for resize propragation.
+     * Key to store the initial request for resize propagation.
      */
     protected static final String REGION_RESIZE_INITIAL_REQUEST = "sirius.region.resize.initial.request"; //$NON-NLS-1$
 
