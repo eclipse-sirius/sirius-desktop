@@ -30,6 +30,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -1290,7 +1291,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
             @Override
             protected void doExecute() {
                 for (DView view : ((DAnalysis) EcoreUtil.getRootContainer(anyAnalysisObject)).getOwnedViews()) {
-                    for (Object diagram : view.getOwnedRepresentations()) {
+                    for (Object diagram : new DViewQuery(view).getLoadedRepresentations()) {
                         if (diagram instanceof DRepresentation) {
                             DialectManager.INSTANCE.refresh((DRepresentation) diagram, new NullProgressMonitor());
                         }

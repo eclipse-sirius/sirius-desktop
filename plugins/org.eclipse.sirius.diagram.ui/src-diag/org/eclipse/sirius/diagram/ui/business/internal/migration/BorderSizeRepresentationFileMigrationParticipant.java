@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -50,7 +51,7 @@ public class BorderSizeRepresentationFileMigrationParticipant extends AbstractRe
         // unchanged.
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             for (DView dView : dAnalysis.getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(dView.getOwnedRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     for (DDiagramElementContainer diagramElement : dDiagram.getContainers()) {
                         if (diagramElement.getStyle() instanceof BorderedStyle) {
                             BorderedStyle containerBorderedStyle = (BorderedStyle) diagramElement.getStyle();

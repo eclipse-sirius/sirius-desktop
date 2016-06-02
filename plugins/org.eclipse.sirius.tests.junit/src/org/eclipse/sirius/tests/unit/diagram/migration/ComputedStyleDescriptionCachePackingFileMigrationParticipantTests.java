@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo
+ * Copyright (c) 2015, 2016 Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant;
@@ -71,17 +74,20 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipantTests e
     public void testMigration() {
         assertEquals(1, session.getOwnedViews().size());
         DView dView = session.getOwnedViews().iterator().next();
-        assertEquals(1, dView.getOwnedRepresentations().size());
-        DRepresentation dRepresentation = dView.getOwnedRepresentations().get(0);
+        List<DRepresentation> loadedRepresentations = new DViewQuery(dView).getLoadedRepresentations();
+        assertEquals(1, loadedRepresentations.size());
+        DRepresentation dRepresentation = loadedRepresentations.get(0);
         assertTrue(dRepresentation instanceof DDiagram);
         DDiagram dDiagram = (DDiagram) dRepresentation;
         ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = new DDiagramInternalQuery(dDiagram).getComputedStyleDescriptionRegistry(false);
         assertNotNull(computedStyleDescriptionRegistry);
         /* Without migration we should have had 24 computed StyleDescription. */
         assertEquals("Computed StyleDescriptiosshould have been shared among styles within the DDiagram", 3, computedStyleDescriptionRegistry.getComputedStyleDescriptions().size());
-        /* Without migration we should have had a map of 4 entries in the cache. */
-        assertEquals("As the maps of ComputedStyleDescriptionRegistry are no more used, it should remains only the 3 computed StyleDescriptions", 3, computedStyleDescriptionRegistry.eContents()
-                .size());
+        /*
+         * Without migration we should have had a map of 4 entries in the cache.
+         */
+        assertEquals("As the maps of ComputedStyleDescriptionRegistry are no more used, it should remains only the 3 computed StyleDescriptions", 3,
+                computedStyleDescriptionRegistry.eContents().size());
         XMLResource airdResource = (XMLResource) session.getSessionResource();
         assertEquals("As the migration has done its job, the map of unknown data should be empty", 0, airdResource.getEObjectToExtensionMap().size());
     }

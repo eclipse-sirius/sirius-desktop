@@ -105,7 +105,6 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
-            childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS);
             childrenFeatures.add(ViewpointPackage.Literals.DVIEW__OWNED_EXTENSIONS);
         }
         return childrenFeatures;
@@ -160,7 +159,6 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
 
         switch (notification.getFeatureID(DView.class)) {
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;

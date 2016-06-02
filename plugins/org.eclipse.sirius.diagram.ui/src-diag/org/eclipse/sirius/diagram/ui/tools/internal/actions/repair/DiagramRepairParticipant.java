@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
@@ -177,7 +178,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
      * @param view
      */
     private void refreshVisibility(DView view) {
-        for (final DRepresentation representation : view.getOwnedRepresentations()) {
+        for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
             if (representation instanceof DDiagram) {
 
                 Command refreshAllElementsVisibilityCommand = new IdentityCommand() {
@@ -254,7 +255,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     }
 
     private void setDefaultConcern(final DView view) {
-        for (final DRepresentation representation : view.getOwnedRepresentations()) {
+        for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
             if (representation instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) representation;
                 final DiagramDescription description = diagram.getDescription();
@@ -295,7 +296,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     @Override
     public void startRepairOnView(Session session, DView view) {
 
-        for (DRepresentation representation : view.getOwnedRepresentations()) {
+        for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
             if (representation instanceof DDiagram) {
                 GMFDiagramUpdater updater = new GMFDiagramUpdater(session, (DDiagram) representation);
                 gmfDiagramUpdaters.add(updater);

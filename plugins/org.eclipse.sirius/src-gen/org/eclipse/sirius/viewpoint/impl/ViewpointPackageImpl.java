@@ -715,7 +715,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDView_OwnedRepresentations() {
+    public EReference getDView_OwnedExtensions() {
         return (EReference) dViewEClass.getEStructuralFeatures().get(2);
     }
 
@@ -725,18 +725,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EReference getDView_OwnedExtensions() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EReference getDView_Models() {
-        return (EReference) dViewEClass.getEStructuralFeatures().get(4);
+        return (EReference) dViewEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1262,7 +1252,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dViewEClass = createEClass(ViewpointPackage.DVIEW);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__VIEWPOINT);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
-        createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__OWNED_EXTENSIONS);
         createEReference(dViewEClass, ViewpointPackage.DVIEW__MODELS);
 
@@ -1479,9 +1468,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDView_OwnedRepresentationDescriptors(), this.getDRepresentationDescriptor(), null, "ownedRepresentationDescriptors", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEReference(getDView_OwnedRepresentations(), this.getDRepresentation(), null, "ownedRepresentations", null, 0, -1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
         initEReference(getDView_OwnedExtensions(), this.getMetaModelExtension(), null, "ownedExtensions", null, 0, 1, DView.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);

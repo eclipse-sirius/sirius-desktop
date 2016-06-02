@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -42,7 +43,7 @@ public class DViewSpec extends DViewImpl {
     @Override
     public void refresh() {
         final Set<DRepresentation> representationsToDelete = new HashSet<DRepresentation>();
-        Iterator<DRepresentation> it = getOwnedRepresentations().iterator();
+        Iterator<DRepresentation> it = new DViewQuery(this).getLoadedRepresentations().iterator();
         while (it.hasNext()) {
             final DRepresentation representation = it.next();
             /*
@@ -74,7 +75,7 @@ public class DViewSpec extends DViewImpl {
     @Override
     public EList<EObject> getModels() {
         final Collection<EObject> models = new HashSet<EObject>(3);
-        for (final DRepresentation representation : this.getOwnedRepresentations()) {
+        for (final DRepresentation representation : new DViewQuery(this).getLoadedRepresentations()) {
             if (representation instanceof DSemanticDecorator) {
                 models.add(getModel(((DSemanticDecorator) representation).getTarget()));
             }

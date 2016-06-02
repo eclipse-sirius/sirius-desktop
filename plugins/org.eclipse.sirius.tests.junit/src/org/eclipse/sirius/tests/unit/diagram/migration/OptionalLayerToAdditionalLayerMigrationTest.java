@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -82,12 +83,12 @@ public class OptionalLayerToAdditionalLayerMigrationTest extends SiriusTestCase 
                 secondVsmLoadedVersion == null || secondVsmMigrationVersion.compareTo(secondVsmLoadedVersion) > 0);
 
         Version firstRepresentationsFileMigrationVersion = DiagramRepresentationsFileMigrationParticipantV690.MIGRATION_VERSION;
-        assertTrue("Data corrupted: The representations file should require a migration corresponding to the optional layers.", firstRepresentationsFileloadedVersion == null
-                || firstRepresentationsFileMigrationVersion.compareTo(firstRepresentationsFileloadedVersion) > 0);
+        assertTrue("Data corrupted: The representations file should require a migration corresponding to the optional layers.",
+                firstRepresentationsFileloadedVersion == null || firstRepresentationsFileMigrationVersion.compareTo(firstRepresentationsFileloadedVersion) > 0);
 
         Version secondRepresentationsFileMigrationVersion = DiagramRepresentationsFileMigrationParticipantV690.MIGRATION_VERSION;
-        assertTrue("Data corrupted: The representations file should require a migration corresponding to the optional layers.", secondRepresentationsFileloadedVersion == null
-                || secondRepresentationsFileMigrationVersion.compareTo(secondRepresentationsFileloadedVersion) > 0);
+        assertTrue("Data corrupted: The representations file should require a migration corresponding to the optional layers.",
+                secondRepresentationsFileloadedVersion == null || secondRepresentationsFileMigrationVersion.compareTo(secondRepresentationsFileloadedVersion) > 0);
     }
 
     public void testVSMMigrationInPlugin() {
@@ -222,7 +223,7 @@ public class OptionalLayerToAdditionalLayerMigrationTest extends SiriusTestCase 
     }
 
     private void checkMigrationEffect(DAnalysis modeler, int nbActiveLayers) {
-        Collection<Layer> activatedLayers = ((DDiagram) modeler.getSelectedViews().get(0).getOwnedRepresentations().get(0)).getActivatedLayers();
+        Collection<Layer> activatedLayers = ((DDiagram) new DViewQuery(modeler.getSelectedViews().get(0)).getLoadedRepresentations().get(0)).getActivatedLayers();
         assertEquals("The diagram should contains " + nbActiveLayers + " activated layers.", nbActiveLayers, activatedLayers.size());
         for (Layer layer : activatedLayers) {
             assertFalse("The layer should not be a proxy.", layer.eIsProxy());

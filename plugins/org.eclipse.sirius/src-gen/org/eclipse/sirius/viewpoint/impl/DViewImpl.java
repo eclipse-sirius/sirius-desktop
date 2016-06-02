@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
@@ -42,9 +41,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedRepresentationDescriptors
  * <em>Owned Representation Descriptors</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedRepresentations
- * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DViewImpl#getModels
@@ -76,17 +72,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     protected EList<DRepresentationDescriptor> ownedRepresentationDescriptors;
 
     /**
-     * The cached value of the '{@link #getOwnedRepresentations()
-     * <em>Owned Representations</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getOwnedRepresentations()
-     * @generated
-     * @ordered
-     */
-    protected EList<DRepresentation> ownedRepresentations;
-
-    /**
      * The cached value of the '{@link #getOwnedExtensions()
      * <em>Owned Extensions</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
@@ -114,19 +99,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DVIEW;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<DRepresentation> getOwnedRepresentations() {
-        if (ownedRepresentations == null) {
-            ownedRepresentations = new EObjectContainmentEList.Resolving<DRepresentation>(DRepresentation.class, this, ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS);
-        }
-        return ownedRepresentations;
     }
 
     /**
@@ -303,8 +275,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         switch (featureID) {
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
             return ((InternalEList<?>) getOwnedRepresentationDescriptors()).basicRemove(otherEnd, msgs);
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
-            return ((InternalEList<?>) getOwnedRepresentations()).basicRemove(otherEnd, msgs);
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return basicSetOwnedExtensions(null, msgs);
         }
@@ -326,8 +296,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             return basicGetViewpoint();
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
             return getOwnedRepresentationDescriptors();
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
-            return getOwnedRepresentations();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             if (resolve) {
                 return getOwnedExtensions();
@@ -355,10 +323,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             getOwnedRepresentationDescriptors().clear();
             getOwnedRepresentationDescriptors().addAll((Collection<? extends DRepresentationDescriptor>) newValue);
             return;
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
-            getOwnedRepresentations().clear();
-            getOwnedRepresentations().addAll((Collection<? extends DRepresentation>) newValue);
-            return;
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) newValue);
             return;
@@ -380,9 +344,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
             getOwnedRepresentationDescriptors().clear();
             return;
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
-            getOwnedRepresentations().clear();
-            return;
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             setOwnedExtensions((MetaModelExtension) null);
             return;
@@ -402,8 +363,6 @@ public class DViewImpl extends MinimalEObjectImpl.Container implements DView {
             return viewpoint != null;
         case ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS:
             return ownedRepresentationDescriptors != null && !ownedRepresentationDescriptors.isEmpty();
-        case ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS:
-            return ownedRepresentations != null && !ownedRepresentations.isEmpty();
         case ViewpointPackage.DVIEW__OWNED_EXTENSIONS:
             return ownedExtensions != null;
         case ViewpointPackage.DVIEW__MODELS:

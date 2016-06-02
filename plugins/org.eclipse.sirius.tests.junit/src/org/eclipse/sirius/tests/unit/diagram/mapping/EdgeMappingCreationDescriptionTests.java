@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.mapping;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -24,6 +26,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -70,14 +73,15 @@ public class EdgeMappingCreationDescriptionTests extends SiriusDiagramTestCase {
 
         URI modelerResourceURI = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME, true);
         Resource modelerResource = session.getTransactionalEditingDomain().getResourceSet().getResource(modelerResourceURI, true);
-        Viewpoint viewpoint = (Viewpoint) ((Group) modelerResource.getContents().get(0)).getOwnedViewpoints().get(0);
+        Viewpoint viewpoint = ((Group) modelerResource.getContents().get(0)).getOwnedViewpoints().get(0);
         DiagramDescription diagramDescription = (DiagramDescription) viewpoint.getOwnedRepresentations().get(0);
         edgeCreationDescription = (EdgeCreationDescription) diagramDescription.getDefaultLayer().getAllTools().get(0);
         edgeMapping2 = diagramDescription.getDefaultLayer().getAllEdgeMappings().get(1);
 
         DAnalysis dAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
-        source = (DNode) dAnalysis.getOwnedViews().get(0).getOwnedRepresentations().get(0).getOwnedRepresentationElements().get(0);
-        target = (DNode) dAnalysis.getOwnedViews().get(0).getOwnedRepresentations().get(0).getOwnedRepresentationElements().get(1);
+        EList<DRepresentationElement> ownedRepresentationElements = new DViewQuery(dAnalysis.getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements();
+        source = (DNode) ownedRepresentationElements.get(0);
+        target = (DNode) ownedRepresentationElements.get(1);
 
         EPackage ePackage = (EPackage) session.getSemanticResources().iterator().next().getContents().get(0);
         EClass eClass1 = (EClass) ePackage.getEClassifiers().get(0);

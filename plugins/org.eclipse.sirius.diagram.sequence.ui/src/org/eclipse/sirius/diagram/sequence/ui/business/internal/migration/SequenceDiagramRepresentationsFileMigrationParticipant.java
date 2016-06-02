@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CollapseFilter;
@@ -92,6 +93,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * 
      * @see org.eclipse.sirius.business.api.migration.IMigrationParticipant#getMigrationVersion()
      */
+    @Override
     public Version getMigrationVersion() {
         return MIGRATION_VERSION;
     }
@@ -99,6 +101,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     /**
      * {@inheritDoc}
      */
+    @Override
     public void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         super.postLoad(dAnalysis, loadedVersion);
 
@@ -168,7 +171,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     protected List<SequenceDDiagram> getSequenceDDiagrams(DAnalysis dAnalysis) {
         List<SequenceDDiagram> diagrams = new ArrayList<SequenceDDiagram>();
         for (DView view : dAnalysis.getOwnedViews()) {
-            Iterables.addAll(diagrams, Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class));
+            Iterables.addAll(diagrams, Iterables.filter(new DViewQuery(view).getLoadedRepresentations(), SequenceDDiagram.class));
         }
         return diagrams;
     }
@@ -246,6 +249,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * </UL>
      */
     private static class IsNode implements Predicate<Node> {
+        @Override
         public boolean apply(Node input) {
             int type = SiriusVisualIDRegistry.getVisualID(input.getType());
             return type == DNodeEditPart.VISUAL_ID || type == DNode2EditPart.VISUAL_ID || type == DNode3EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
@@ -259,6 +263,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * handle ObservationPoints.
      */
     private static class IsCollapsedNode implements Predicate<Node> {
+        @Override
         public boolean apply(Node input) {
             return new NodeQuery(input).isCollapsed();
         }
@@ -271,6 +276,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      * handle ObservationPoints.
      */
     private static class IsDirectlyCollapsedNode implements Predicate<Node> {
+        @Override
         public boolean apply(Node input) {
             boolean apply = false;
 

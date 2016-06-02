@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV680;
@@ -86,7 +87,7 @@ public class MigrationCompartmentWithLayoutConstraintsTest extends SiriusDiagram
     private List<Diagram> getGMFDiagrams() {
         List<Diagram> diagrams = new ArrayList<Diagram>();
         for (DView view : session.getOwnedViews()) {
-            for (DRepresentation representation : view.getOwnedRepresentations()) {
+            for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                 if (representation instanceof DDiagram) {
                     DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
                     Option<Diagram> option = query.getAssociatedGMFDiagram();
@@ -117,6 +118,7 @@ public class MigrationCompartmentWithLayoutConstraintsTest extends SiriusDiagram
      */
     private class IsCompartmentPredicate implements Predicate<EObject> {
 
+        @Override
         public boolean apply(EObject arg0) {
             if (arg0 instanceof Node) {
                 int id = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());

@@ -34,6 +34,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
@@ -220,7 +221,7 @@ public class SpecificEditorInputTranformer {
     private Option<DRepresentation> findRepresentation(RepresentationDescription representationDescriptionUsed, EObject semanticElement) {
         if (session != null && representationDescriptionUsed != null && semanticElement != null) {
             for (final DView view : session.getOwnedViews()) {
-                for (final DRepresentation repr : view.getOwnedRepresentations()) {
+                for (final DRepresentation repr : new DViewQuery(view).getLoadedRepresentations()) {
                     RepresentationDescription reprDesc = DialectManager.INSTANCE.getDescription(repr);
                     if (repr instanceof DSemanticDecorator && representationDescriptionUsed.equals(reprDesc) && semanticElement.equals(((DSemanticDecorator) repr).getTarget())) {
                         return Options.newSome(repr);

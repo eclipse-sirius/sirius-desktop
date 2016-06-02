@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
@@ -70,6 +71,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
     private static final String SESSION_MODEL_FILENAME_5 = "fragmentedMigration4.13.aird";
 
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -219,6 +221,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         final String diagramName = "root package entities";
         final DSemanticDiagram diagram = getDiagramFromName(newSession, diagramName);
         final EPackage package2 = Iterables.find(root.getESubpackages(), new Predicate<EPackage>() {
+            @Override
             public boolean apply(EPackage input) {
                 return "p2".equals(input.getName());
             }
@@ -273,7 +276,8 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
             // runRepairProcess("fragmentedMigration.aird");
 
             // Check that 4 backup of aird files has been done.
-            // assertEquals("There should have 4 backup files after migration (one for selected aird file and three for the fragmented aird).",
+            // assertEquals("There should have 4 backup files after migration
+            // (one for selected aird file and three for the fragmented aird).",
             // 4, getNumberOfBackupFiles(project));
         } finally {
             EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(false, p1Fragment, p2Fragment, p1P1Fragment);
@@ -313,13 +317,15 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
             // try {
             // runRepairProcess("fragmentedMigration.aird");
-            // fail("The migration should be cancelled because of read-only files");
+            // fail("The migration should be cancelled because of read-only
+            // files");
             // } catch (Exception e) {
             //
             // } finally {
             // // The backup files are created
             // //
-            // assertEquals("There should have 4 backup files after migration (one for selected aird file and three for the fragmented aird).",
+            // assertEquals("There should have 4 backup files after migration
+            // (one for selected aird file and three for the fragmented aird).",
             // 0, getNumberOfBackupFiles(project));
             // }
         } finally {
@@ -379,7 +385,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
     private DSemanticDiagram getDiagramFromName(final Session sessionToGo, final String name) {
         for (final DView dView : sessionToGo.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = dView.getOwnedRepresentations().iterator(); iterator.hasNext();) {
+            for (final Iterator<DRepresentation> iterator = new DViewQuery(dView).getLoadedRepresentations().iterator(); iterator.hasNext();) {
                 final DSemanticDiagram rep = (DSemanticDiagram) iterator.next();
                 if (name.equals(rep.getName())) {
                     return rep;

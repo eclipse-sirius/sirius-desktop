@@ -498,22 +498,13 @@ public interface ViewpointPackage extends EPackage {
     int DVIEW__OWNED_REPRESENTATION_DESCRIPTORS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Owned Representations</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DVIEW__OWNED_REPRESENTATIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
-
-    /**
      * The feature id for the '<em><b>Owned Extensions</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DVIEW__OWNED_EXTENSIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
+    int DVIEW__OWNED_EXTENSIONS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Models</b></em>' reference list. <!--
@@ -522,7 +513,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW__MODELS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
+    int DVIEW__MODELS = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>DView</em>' class. <!--
@@ -531,7 +522,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 5;
+    int DVIEW_FEATURE_COUNT = ViewpointPackage.DREFRESHABLE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -1699,20 +1690,6 @@ public interface ViewpointPackage extends EPackage {
     EClass getDView();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations
-     * <em>Owned Representations</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Representations</em>'.
-     * @see org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations()
-     * @see #getDView()
-     * @generated
-     */
-    EReference getDView_OwnedRepresentations();
-
-    /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
      * <em>Owned Extensions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2620,15 +2597,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EClass DVIEW = ViewpointPackage.eINSTANCE.getDView();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Owned Representations</b></em>' containment reference list
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
-         * @generated
-         */
-        EReference DVIEW__OWNED_REPRESENTATIONS = ViewpointPackage.eINSTANCE.getDView_OwnedRepresentations();
 
         /**
          * The meta object literal for the '<em><b>Owned Extensions</b></em>'

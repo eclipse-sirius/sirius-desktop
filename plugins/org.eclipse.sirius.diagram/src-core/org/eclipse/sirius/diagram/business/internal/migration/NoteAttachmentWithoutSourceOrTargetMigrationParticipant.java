@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -45,7 +46,7 @@ public class NoteAttachmentWithoutSourceOrTargetMigrationParticipant extends Abs
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             for (DView dView : dAnalysis.getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(dView.getOwnedRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                     if (diagramCreationUtil.findAssociatedGMFDiagram()) {
                         Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();

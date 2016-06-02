@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -55,6 +56,7 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
      * 
      * @see fr.obeo.dsl.viewpoint.business.api.migration.IMigrationParticipant#getMigrationVersion()
      */
+    @Override
     public Version getMigrationVersion() {
         return MIGRATION_VERSION;
     }
@@ -72,7 +74,7 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
             // Step 1: get all views to update
             final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
             for (DView view : dAnalysis.getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(view.getOwnedRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(view).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                     if (diagramCreationUtil.findAssociatedGMFDiagram()) {
                         Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
@@ -91,8 +93,8 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
     /**
      * Returns all {@link View} which {@link NotationPackage#getView_Element()}
      * feature is null, by explicitly setting this feature to null so the
-     * eIsSet() returns true. This simulates the behavior that would occur if
-     * '<element xsi:nil="true"/>' was set (which is the expected behavior).
+     * eIsSet() returns true. This simulates the behavior that would occur if '
+     * <element xsi:nil="true"/>' was set (which is the expected behavior).
      * 
      * @param gmdDiagram
      *            the {@link Diagram} in which Views should be updated

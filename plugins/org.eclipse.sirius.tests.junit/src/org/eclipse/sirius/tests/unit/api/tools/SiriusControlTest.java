@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -142,7 +143,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 2 resources typed Aird and Ecore", 2, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("acceleo", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+            final DRepresentation representation = new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().get(0);
             final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/base/chain_acceleo.ecore", true);
             final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/base/chain_acceleo.aird", true);
             siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
@@ -199,7 +200,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 3 resources typed Aird and Ecore", 3, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("p1", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+            final DRepresentation representation = new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().get(0);
             final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + semantic_model_filename_8_1_controlled, true);
             final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + session_model_filename_8_1_controlled, true);
             siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
@@ -256,7 +257,7 @@ public class SiriusControlTest extends AbstractControlTest {
             assertEquals("The resourceSet should be contains only 2 resources typed Aird and Ecore", 2, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("p1", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+            final DRepresentation representation = new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().get(0);
             final URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.ecore", true);
             final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.aird", true);
             siriusControl(root, controlledModelUri, Collections.singleton(representation), controlledAirdUri);
@@ -304,7 +305,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject root = findPackageNamed("p2", semanticElt);
             DRepresentation representationP2 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
                     if ("p2 package entities".equals(dRepresentation.getName())) {
                         representationP2 = dRepresentation;
                     }
@@ -321,8 +322,8 @@ public class SiriusControlTest extends AbstractControlTest {
 
             assertEquals(controlledAirdUri, representationP2.eResource().getURI());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_5, File.separator + SESSION_MODEL_FILENAME_5, File.separator + SEMANTIC_MODEL_FILENAME_5_1, File.separator
-                    + SESSION_MODEL_FILENAME_5_1, "/VP-2070/part2/root_p2.ecore", "/VP-2070/part2/root_p2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_5, File.separator + SESSION_MODEL_FILENAME_5, File.separator + SEMANTIC_MODEL_FILENAME_5_1,
+                    File.separator + SESSION_MODEL_FILENAME_5_1, "/VP-2070/part2/root_p2.ecore", "/VP-2070/part2/root_p2.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
 
             // Check the number of models and referencedAnalysis in root
@@ -373,8 +374,8 @@ public class SiriusControlTest extends AbstractControlTest {
             assertSame(root, rootP3);
             assertEquals(controlledModelUri, rootP3.eResource().getURI());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_5, File.separator + SESSION_MODEL_FILENAME_5, File.separator + SEMANTIC_MODEL_FILENAME_5_1, File.separator
-                    + SESSION_MODEL_FILENAME_5_1, "/VP-2070/part2/root_p3.ecore", "/VP-2070/part2/root_p3.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_5, File.separator + SESSION_MODEL_FILENAME_5, File.separator + SEMANTIC_MODEL_FILENAME_5_1,
+                    File.separator + SESSION_MODEL_FILENAME_5_1, "/VP-2070/part2/root_p3.ecore", "/VP-2070/part2/root_p3.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
             // Check the number of models and referencedAnalysis in root
             checkRepresentationsFileContent(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + File.separator + SESSION_MODEL_FILENAME_5, true), semanticElt, 1, 2);
@@ -383,8 +384,8 @@ public class SiriusControlTest extends AbstractControlTest {
             // fragment (p1)
             final Resource p1SemanticControlledResource = session.getTransactionalEditingDomain().getResourceSet()
                     .getResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + File.separator + SEMANTIC_MODEL_FILENAME_5_1, true), true);
-            checkRepresentationsFileContent(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + File.separator + SESSION_MODEL_FILENAME_5_1, true), p1SemanticControlledResource.getContents()
-                    .get(0), 2, 0);
+            checkRepresentationsFileContent(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + File.separator + SESSION_MODEL_FILENAME_5_1, true),
+                    p1SemanticControlledResource.getContents().get(0), 2, 0);
 
             // Check the number of models and referencedAnalysis in new fragment
             // (p3)
@@ -514,7 +515,7 @@ public class SiriusControlTest extends AbstractControlTest {
 
             // First control
             final EObject p1 = findPackageNamed("p1", semanticElt);
-            final DRepresentation representation = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+            final DRepresentation representation = new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().get(0);
             final URI p1ControlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.ecore", true);
             final URI p1ControlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/VP-2070/root_p1.aird", true);
             siriusControl(p1, p1ControlledModelUri, Collections.singleton(representation), p1ControlledAirdUri);
@@ -532,7 +533,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
                     if ("p11 package entities".equals(dRepresentation.getName())) {
                         representationP11 = dRepresentation;
                     }
@@ -563,12 +564,12 @@ public class SiriusControlTest extends AbstractControlTest {
     protected void checkRepresentationsFileContent(URI airdRootUri, EObject expectedSemanticRoot, int expectedNumberOfModelsReferences, int expectedNumberOfReferencedAnalysisReferences) {
         Resource representationsFileResource = session.getTransactionalEditingDomain().getResourceSet().getResource(airdRootUri, true);
         assertTrue("This resource must contains a DAnalysis.", representationsFileResource.getContents().get(0) instanceof DAnalysis);
-        assertEquals("Bad number of Models in " + representationsFileResource.getURI().toString(), expectedNumberOfModelsReferences, ((DAnalysis) representationsFileResource.getContents().get(0))
-                .getModels().size());
-        assertEquals("The first models reference must be the root of the semantic controlled resource.", expectedSemanticRoot, ((DAnalysis) representationsFileResource.getContents().get(0))
-                .getModels().get(0));
-        assertEquals("Bad number of ReferencedAnalysis in " + representationsFileResource.getURI().toString(), expectedNumberOfReferencedAnalysisReferences, ((DAnalysis) representationsFileResource
-                .getContents().get(0)).getReferencedAnalysis().size());
+        assertEquals("Bad number of Models in " + representationsFileResource.getURI().toString(), expectedNumberOfModelsReferences,
+                ((DAnalysis) representationsFileResource.getContents().get(0)).getModels().size());
+        assertEquals("The first models reference must be the root of the semantic controlled resource.", expectedSemanticRoot,
+                ((DAnalysis) representationsFileResource.getContents().get(0)).getModels().get(0));
+        assertEquals("Bad number of ReferencedAnalysis in " + representationsFileResource.getURI().toString(), expectedNumberOfReferencedAnalysisReferences,
+                ((DAnalysis) representationsFileResource.getContents().get(0)).getReferencedAnalysis().size());
     }
 
     /**
@@ -628,7 +629,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
                     if ("p11 package entities".equals(dRepresentation.getName())) {
                         representationP11 = dRepresentation;
                     }
@@ -651,7 +652,7 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p1 = findPackageNamed("p1", semanticElt);
             DRepresentation representationP1 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
                     if ("p1 package entities".equals(dRepresentation.getName())) {
                         representationP1 = dRepresentation;
                     }
@@ -688,8 +689,8 @@ public class SiriusControlTest extends AbstractControlTest {
      * @throws Exception
      */
     public void testUncontrolWithTwoRepresentationsFileLinkedToTheUncontrolledElement() throws Exception {
-        genericSetUp(Collections.singletonList(TEMPORARY_PROJECT_NAME + File.separator + SEMANTIC_MODEL_FILENAME_6), Collections.<String> emptyList(), TEMPORARY_PROJECT_NAME + File.separator
-                + SESSION_MODEL_FILENAME_6);
+        genericSetUp(Collections.singletonList(TEMPORARY_PROJECT_NAME + File.separator + SEMANTIC_MODEL_FILENAME_6), Collections.<String> emptyList(),
+                TEMPORARY_PROJECT_NAME + File.separator + SESSION_MODEL_FILENAME_6);
         ResourceSet rs = session.getTransactionalEditingDomain().getResourceSet();
         // Disabling ui callback
         SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
@@ -699,16 +700,16 @@ public class SiriusControlTest extends AbstractControlTest {
         EObject semanticElt = session.getSemanticResources().iterator().next().getContents().get(0);
 
         try {
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SEMANTIC_MODEL_FILENAME_6_2, File.separator
-                    + SESSION_MODEL_FILENAME_6, File.separator + SESSION_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6_2);
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SEMANTIC_MODEL_FILENAME_6_2,
+                    File.separator + SESSION_MODEL_FILENAME_6, File.separator + SESSION_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6_2);
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
 
             final EObject root = findPackageNamed("p2", semanticElt);
             Command vuc = new SiriusUncontrolCommand(root, true, new NullProgressMonitor());
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6, File.separator
-                    + SESSION_MODEL_FILENAME_6_1);
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_6, File.separator + SEMANTIC_MODEL_FILENAME_6_1, File.separator + SESSION_MODEL_FILENAME_6,
+                    File.separator + SESSION_MODEL_FILENAME_6_1);
             assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 5, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + SEMANTIC_MODEL_FILENAME_6_2, File.separator + SESSION_MODEL_FILENAME_6_2));
         } finally {
@@ -721,8 +722,7 @@ public class SiriusControlTest extends AbstractControlTest {
      * Control many elements and unControl in the same order. 1 Time again this
      * operation. Test that the resources are removed from resource set.
      * <ol>
-     * <li>
-     * Control P1</li>
+     * <li>Control P1</li>
      * <li>Control P1.1</li>
      * <li>Control P1.2</li>
      * <li>UnControl P1</li>
@@ -742,8 +742,8 @@ public class SiriusControlTest extends AbstractControlTest {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        genericSetUp(Collections.singletonList(TEMPORARY_PROJECT_NAME + File.separator + SEMANTIC_MODEL_FILENAME_7), Collections.<String> emptyList(), TEMPORARY_PROJECT_NAME + File.separator
-                + SESSION_MODEL_FILENAME_7);
+        genericSetUp(Collections.singletonList(TEMPORARY_PROJECT_NAME + File.separator + SEMANTIC_MODEL_FILENAME_7), Collections.<String> emptyList(),
+                TEMPORARY_PROJECT_NAME + File.separator + SESSION_MODEL_FILENAME_7);
         ResourceSet rs = session.getTransactionalEditingDomain().getResourceSet();
         // Disabling ui callback
         SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
@@ -774,8 +774,8 @@ public class SiriusControlTest extends AbstractControlTest {
 
             siriusControl(root, controlledModelUri, new HashSet<DRepresentation>(), controlledAirdUri);
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore",
-                    File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + SESSION_MODEL_FILENAME_7,
+                    File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
 
             // Control P1.2
@@ -785,9 +785,9 @@ public class SiriusControlTest extends AbstractControlTest {
 
             siriusControl(root, controlledModelUri, new HashSet<DRepresentation>(), controlledAirdUri);
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator
-                    + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator
-                    + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore",
+                    File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird",
+                    File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 8 resources typed Aird and Ecore", 8, getResourceTypeAirdOrEcore(rs).size());
 
             // UnControl P1
@@ -796,8 +796,8 @@ public class SiriusControlTest extends AbstractControlTest {
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator
-                    + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.2.ecore",
+                    File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1.aird"));
 
@@ -807,8 +807,8 @@ public class SiriusControlTest extends AbstractControlTest {
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator
-                    + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7,
+                    File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 4, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.1.aird"));
 
@@ -839,8 +839,8 @@ public class SiriusControlTest extends AbstractControlTest {
 
             siriusControl(root, controlledModelUri, new HashSet<DRepresentation>(), controlledAirdUri);
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore",
-                    File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + SESSION_MODEL_FILENAME_7,
+                    File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
 
             // Control P1.2
@@ -850,9 +850,9 @@ public class SiriusControlTest extends AbstractControlTest {
 
             siriusControl(root, controlledModelUri, new HashSet<DRepresentation>(), controlledAirdUri);
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator
-                    + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator
-                    + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1_P1.1.ecore",
+                    File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1.aird", File.separator + "VP-2818/tc_P1_P1.1.aird",
+                    File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 8 resources typed Aird and Ecore", 8, getResourceTypeAirdOrEcore(rs).size());
 
             // UnControl P1
@@ -861,8 +861,8 @@ public class SiriusControlTest extends AbstractControlTest {
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator
-                    + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.2.ecore",
+                    File.separator + SESSION_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.1.aird", File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 6 resources typed Aird and Ecore", 6, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + "VP-2818/tc_P1.ecore", File.separator + "VP-2818/tc_P1.aird"));
 
@@ -872,8 +872,8 @@ public class SiriusControlTest extends AbstractControlTest {
             session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
 
-            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7, File.separator
-                    + "VP-2818/tc_P1_P1.2.aird");
+            assertFilesExist(File.separator + SEMANTIC_MODEL_FILENAME_7, File.separator + "VP-2818/tc_P1_P1.2.ecore", File.separator + SESSION_MODEL_FILENAME_7,
+                    File.separator + "VP-2818/tc_P1_P1.2.aird");
             assertEquals("The resourceSet should be contains only 4 resources typed Aird and Ecore", 4, getResourceTypeAirdOrEcore(rs).size());
             assertTrue(fileDoesNotExist(File.separator + "VP-2818/tc_P1_P1.1.ecore", File.separator + "VP-2818/tc_P1_P1.1.aird"));
 

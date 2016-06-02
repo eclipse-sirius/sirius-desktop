@@ -151,12 +151,6 @@
         <details key="documentation" value="The representation descriptors that are owned by this DView&#xA;."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentations" upperBound="-1"
-        eType="#//DRepresentation" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The representations that are owned by this DView."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedExtensions" eType="#//MetaModelExtension"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

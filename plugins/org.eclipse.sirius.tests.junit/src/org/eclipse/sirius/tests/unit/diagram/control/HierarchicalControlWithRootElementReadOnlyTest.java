@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -117,10 +118,10 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         openNonControlledSession();
         controlledModelUrip1p1p1 = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/vp-2067/2067_p1p1_p1p1p1.ecore", true);
         controlledAirdUrip1p1p1 = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/vp-2067/2067_p1p1_p1p1p1.aird", true);
-        if (((DView) session.getOwnedViews().toArray()[0]).getOwnedRepresentations().size() == 0) {
-            representationP1 = ((DView) session.getOwnedViews().toArray()[1]).getOwnedRepresentations().get(0);
+        if (new DViewQuery((DView) session.getOwnedViews().toArray()[0]).getLoadedRepresentations().size() == 0) {
+            representationP1 = new DViewQuery((DView) session.getOwnedViews().toArray()[1]).getLoadedRepresentations().get(0);
         } else {
-            representationP1 = ((DView) session.getOwnedViews().toArray()[0]).getOwnedRepresentations().get(0);
+            representationP1 = new DViewQuery((DView) session.getOwnedViews().toArray()[0]).getLoadedRepresentations().get(0);
         }
 
         ResourcesPlugin.getWorkspace().addResourceChangeListener(readonlyValidator);
@@ -153,7 +154,8 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         readonlyValidator.setReadOnly(sessionFile);
 
         // Step 4 control p1p1p1 (grandSon)
-        final SiriusControlCommand vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationP1), controlledAirdUrip1p1p1, true, new NullProgressMonitor());
+        final SiriusControlCommand vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationP1), controlledAirdUrip1p1p1, true,
+                new NullProgressMonitor());
         assertTrue(executeCommand(vccp1p1p1));
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
         ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);
@@ -209,6 +211,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
      * 
      * @throws Exception
      */
+    @Override
     protected void openNonControlledSession() throws Exception {
         copyFilesToTestProject(NON_CONTROLED_RESOURCES_ON_TEST);
         genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/vp-2067/2067.ecore"), Collections.<String> emptySet(), TEMPORARY_PROJECT_NAME + "/vp-2067/2067.aird");

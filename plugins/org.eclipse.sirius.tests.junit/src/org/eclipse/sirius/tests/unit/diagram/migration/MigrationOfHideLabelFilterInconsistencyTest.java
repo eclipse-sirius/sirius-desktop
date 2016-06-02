@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
@@ -64,7 +65,7 @@ public class MigrationOfHideLabelFilterInconsistencyTest extends SiriusDiagramTe
     public void testMigration() {
 
         for (DView view : session.getOwnedViews()) {
-            DDiagram representation = (DDiagram) view.getOwnedRepresentations().get(0);
+            DDiagram representation = (DDiagram) new DViewQuery(view).getLoadedRepresentations().get(0);
 
             DEdge dEdge = representation.getEdges().get(0);
             DNode bNode1 = ((AbstractDNode) representation.getOwnedDiagramElements().get(0)).getOwnedBorderedNodes().get(0);

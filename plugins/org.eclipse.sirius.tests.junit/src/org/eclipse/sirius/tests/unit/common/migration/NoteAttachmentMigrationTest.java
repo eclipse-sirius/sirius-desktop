@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
@@ -110,7 +111,7 @@ public class NoteAttachmentMigrationTest extends SiriusTestCase {
     private void checkMigrationEffect(DAnalysis analysis) {
         Iterator<EObject> noteAttachmentWithoutSourceOrTarget = null;
         for (DView dView : analysis.getOwnedViews()) {
-            for (DDiagram dDiagram : Iterables.filter(dView.getOwnedRepresentations(), DDiagram.class)) {
+            for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                 DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                 if (diagramCreationUtil.findAssociatedGMFDiagram()) {
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();

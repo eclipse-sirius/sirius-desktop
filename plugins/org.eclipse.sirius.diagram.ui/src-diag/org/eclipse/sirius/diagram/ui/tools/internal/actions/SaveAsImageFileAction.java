@@ -15,6 +15,7 @@ import java.util.Collections;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -77,12 +77,7 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
         }
 
         if (dRepresentationToExport != null) {
-            Collection<DRepresentationDescriptor> ownedRepresentationDescriptors = ((DView) dRepresentationToExport.eContainer()).getOwnedRepresentationDescriptors();
-            for (DRepresentationDescriptor dRepresentationDescriptor : ownedRepresentationDescriptors) {
-                if (dRepresentationToExport.equals(dRepresentationDescriptor.getRepresentation())) {
-                    return Collections.<DRepresentationDescriptor> singleton(dRepresentationDescriptor);
-                }
-            }
+            return Collections.<DRepresentationDescriptor> singleton(new DRepresentationQuery(dRepresentationToExport).getRepresentationDescriptor());
         }
         return Collections.<DRepresentationDescriptor> emptyList();
     }

@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
@@ -120,7 +121,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
      */
     private CompoundCommand migrateDView(DView container, TransactionalEditingDomain domain) {
         CompoundCommand cc = new CompoundCommand(Messages.SequenceDiagramRepairParticipant_repairCommandName);
-        for (SequenceDDiagram seqDDiag : Iterables.filter(container.getOwnedRepresentations(), SequenceDDiagram.class)) {
+        for (SequenceDDiagram seqDDiag : Iterables.filter(new DViewQuery(container).getLoadedRepresentations(), SequenceDDiagram.class)) {
             final Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(seqDDiag);
             Option<SequenceDiagram> iSequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
             if (iSequenceDiagram.some()) {

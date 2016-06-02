@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -88,6 +89,7 @@ public class MigrationOfCollapsedBorderedNodeTest extends SiriusDiagramTestCase 
      * </UL>
      */
     private Predicate<Node> isCollapsedNode = new Predicate<Node>() {
+        @Override
         public boolean apply(Node input) {
             boolean apply = false;
 
@@ -130,7 +132,7 @@ public class MigrationOfCollapsedBorderedNodeTest extends SiriusDiagramTestCase 
         List<Diagram> diagrams = new ArrayList<Diagram>();
         // Retrieve all gmf diagram
         for (DView view : session.getOwnedViews()) {
-            for (DRepresentation representation : view.getOwnedRepresentations()) {
+            for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                 if (representation instanceof DDiagram) {
                     DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
                     Option<Diagram> option = query.getAssociatedGMFDiagram();

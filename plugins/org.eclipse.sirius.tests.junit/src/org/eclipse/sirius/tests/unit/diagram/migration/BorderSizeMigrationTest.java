@@ -17,6 +17,7 @@ import java.util.Collections;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -282,10 +283,10 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
 
         while (containerMappings.hasNext()) {
             ContainerMapping cm = containerMappings.next();
-            ContainerStyleDescription style = (ContainerStyleDescription) cm.getStyle();
+            ContainerStyleDescription style = cm.getStyle();
             assertEquals("The VSM migration is expected to migrate the default style of " + cm.getName(), expectedBorderSizeExpression, style.getBorderSizeComputationExpression());
 
-            style = (ContainerStyleDescription) cm.getConditionnalStyles().get(0).getStyle();
+            style = cm.getConditionnalStyles().get(0).getStyle();
             assertEquals(message + "conditional style of " + cm.getName(), expectedBorderSizeExpression, style.getBorderSizeComputationExpression());
         }
 
@@ -302,7 +303,7 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         }
 
         DView view = analysis.getOwnedViews().iterator().next();
-        Collection<DRepresentation> allRepresentations = view.getOwnedRepresentations();
+        Collection<DRepresentation> allRepresentations = new DViewQuery(view).getLoadedRepresentations();
         assertEquals(2, allRepresentations.size());
 
         UnmodifiableIterator<DNodeContainer> containers = Iterators.filter(view.eAllContents(), DNodeContainer.class);

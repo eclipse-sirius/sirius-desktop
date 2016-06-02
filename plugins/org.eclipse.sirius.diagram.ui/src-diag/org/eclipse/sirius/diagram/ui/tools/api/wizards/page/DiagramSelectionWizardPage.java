@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -531,7 +532,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
                 return Collections.emptySet();
             }
             final Collection<DRepresentation> result = new HashSet<DRepresentation>();
-            final Iterator<DRepresentation> itRepresentations = this.representationContainer.getOwnedRepresentations().iterator();
+            final Iterator<DRepresentation> itRepresentations = new DViewQuery(this.representationContainer).getLoadedRepresentations().iterator();
             while (itRepresentations.hasNext()) {
                 final DRepresentation representation = itRepresentations.next();
                 if (representation instanceof DSemanticDecorator) {

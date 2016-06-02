@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,30 +16,29 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A {@link NotificationFilter} to be notifier of deletion of the current
- * {@link DRepresentation} target if it is a DSemanticDecorator.
+ * {@link DRepresentationDescriptor} target if it is a DSemanticDecorator.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
-    private DRepresentation dRepresentation;
+    private DRepresentationDescriptor dRepDescriptor;
 
     /**
      * Default constructor.
      * 
-     * @param dRepresentation
-     *            the {@link DRepresentation} on which to be notifier of target
-     *            deletion
+     * @param dRepresentationDescriptor
+     *            the {@link DRepresentationDescriptor} on which to be notifier
+     *            of target deletion
      */
-    public DialectEditorCloserFilter(DRepresentation dRepresentation) {
-        this.dRepresentation = dRepresentation;
+    public DialectEditorCloserFilter(DRepresentationDescriptor dRepresentationDescriptor) {
+        this.dRepDescriptor = dRepresentationDescriptor;
     }
 
     @Override
@@ -49,20 +48,20 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean isTargetUnset(Notification notification) {
         boolean remove = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.UNSET;
-        return remove && notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
+        return remove && notification.getNotifier() == dRepDescriptor && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET;
     }
 
     private boolean isRepresentationDeletion(Notification notification) {
         boolean representationDeleted = false;
-        if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS && wasInOldValue(notification, dRepresentation)) {
-            // If the representation eContainer is still a DView, this
-            // remove notification does not indicate a delete but a move.
+        if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS && wasInOldValue(notification, dRepDescriptor)) {
+            // If the representation descriptor eContainer is still a DView,
+            // this remove notification does not indicate a delete but a move.
             // No need to close the editor.
-            representationDeleted = !(dRepresentation.eContainer() instanceof DView);
-        } else if (notification.getFeature() == ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS && wasInOldValue(notification, dRepresentation.eContainer())) {
+            representationDeleted = !(dRepDescriptor.eContainer() instanceof DView);
+        } else if (notification.getFeature() == ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS && wasInOldValue(notification, dRepDescriptor.eContainer())) {
             // If it is a undo or a rollback but not a
             // DView moved from a DAnalysis to another
-            representationDeleted = dRepresentation.eContainer() == null || !(dRepresentation.eContainer() != null && dRepresentation.eContainer().eContainer() instanceof DView);
+            representationDeleted = dRepDescriptor.eContainer() == null || !(dRepDescriptor.eContainer() != null && dRepDescriptor.eContainer().eContainer() instanceof DView);
         }
         return representationDeleted;
     }
@@ -86,8 +85,8 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean isTargetDetachment(Notification notification) {
         boolean detachedTarget = false;
-        if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification) && dRepresentation instanceof DSemanticDecorator) {
-            EObject target = ((DSemanticDecorator) dRepresentation).getTarget();
+        if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification)) {
+            EObject target = dRepDescriptor.getTarget();
             detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
         }
 

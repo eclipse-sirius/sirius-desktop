@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.table.unit.refresh;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -43,6 +44,7 @@ public class InvalidParentExpressionTest extends SiriusTestCase {
     /**
      * @return the tableCommandFactory
      */
+    @Override
     protected ITableCommandFactory getCommandFactory() {
         if (tableCommandFactory == null) {
             tableCommandFactory = TableCommandFactoryService.getInstance().getNewProvider().getCommandFactory(session.getTransactionalEditingDomain());
@@ -61,7 +63,7 @@ public class InvalidParentExpressionTest extends SiriusTestCase {
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATION_MODEL_PATH);
 
         // The test model contains a single view with a single representation.
-        DTable table = (DTable) session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+        DTable table = (DTable) new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().get(0);
         refresh(table);
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, table, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();

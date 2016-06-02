@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collections;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.migration.RGBValuesToDataTypeMigrationParticipant;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -144,7 +145,7 @@ public class RgbValuesEDataTypeMigrationTest extends SiriusTestCase {
 
     private void checkMigrationEffect(DAnalysis analysis) {
         DView view = analysis.getOwnedViews().iterator().next();
-        Collection<DRepresentation> allRepresentations = view.getOwnedRepresentations();
+        Collection<DRepresentation> allRepresentations = new DViewQuery(view).getLoadedRepresentations();
         assertEquals(3, allRepresentations.size());
         for (DRepresentation rep : allRepresentations) {
             if (rep instanceof DDiagram) {

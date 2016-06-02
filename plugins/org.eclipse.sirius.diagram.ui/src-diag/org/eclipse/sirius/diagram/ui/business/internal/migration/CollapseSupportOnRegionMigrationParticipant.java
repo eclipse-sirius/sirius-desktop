@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
@@ -64,7 +65,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
             // Step 1: get all view to update
             final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
             for (DView dView : dAnalysis.getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(dView.getOwnedRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                     if (diagramCreationUtil.findAssociatedGMFDiagram()) {
                         Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
@@ -96,6 +97,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
      */
     private class IsRegionCompartmentPredicate implements Predicate<Node> {
 
+        @Override
         public boolean apply(Node node) {
             int id = SiriusVisualIDRegistry.getVisualID(node.getType());
             if (id == DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID || id == DNodeListViewNodeListCompartmentEditPart.VISUAL_ID) {

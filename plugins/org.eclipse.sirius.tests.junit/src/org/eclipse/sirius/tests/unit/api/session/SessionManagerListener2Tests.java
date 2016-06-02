@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -135,10 +135,14 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         final Resource resource = session.getSessionResource();
         final DAnalysis analysis = (DAnalysis) resource.getContents().get(0);
         final DView view = analysis.getOwnedViews().get(0);
-        assertFalse(view.getOwnedRepresentations().isEmpty());
+        assertFalse(new DViewQuery(view).getLoadedRepresentations().isEmpty());
 
-        Command removeRepresentationCmd = RemoveCommand.create(session.getTransactionalEditingDomain(), view, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS,
-                view.getOwnedRepresentations().get(0));
+        Command removeRepresentationCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                session.getSessionResource().getContents().remove(new DViewQuery(view).getLoadedRepresentations().get(0));
+            }
+        };
         session.getTransactionalEditingDomain().getCommandStack().execute(removeRepresentationCmd);
         TestsUtil.synchronizationWithUIThread();
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());

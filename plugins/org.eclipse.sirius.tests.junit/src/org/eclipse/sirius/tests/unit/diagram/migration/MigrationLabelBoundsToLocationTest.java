@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipantV670;
@@ -49,7 +50,6 @@ public class MigrationLabelBoundsToLocationTest extends SiriusDiagramTestCase {
 
     private String AIRD = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/migration/do_not_migrate/VP-3823/VP-3823.aird";
 
-
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -67,7 +67,7 @@ public class MigrationLabelBoundsToLocationTest extends SiriusDiagramTestCase {
         Version migration = DiagramRepresentationsFileMigrationParticipantV670.MIGRATION_VERSION;
         assertTrue("The migration must be required on test data.", loadedVersion == null || migration.compareTo(loadedVersion) > 0);
     }
-    
+
     /**
      * Test that there is no Bounds layout constraint left for GMF Nodes of type
      * 5001, 5002, 5003 and 5010.
@@ -78,7 +78,7 @@ public class MigrationLabelBoundsToLocationTest extends SiriusDiagramTestCase {
         // retrieve all gmf diagram
         for (DView view : session.getOwnedViews()) {
 
-            for (DRepresentation representation : view.getOwnedRepresentations()) {
+            for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                 if (representation instanceof DDiagram) {
                     DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
                     Option<Diagram> option = query.getAssociatedGMFDiagram();

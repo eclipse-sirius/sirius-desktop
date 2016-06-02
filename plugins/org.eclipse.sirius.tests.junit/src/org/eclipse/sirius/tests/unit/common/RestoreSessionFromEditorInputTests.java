@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.common;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -53,7 +54,8 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, "/data/unit/control", SEMANTIC_ROOT, AIRD_ROOT, SEMANTIC_FRAGMENT, AIRD_FRAGMENT);
         genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + SEMANTIC_ROOT), Collections.<String> emptySet(), TEMPORARY_PROJECT_NAME + AIRD_ROOT);
 
-        controledRepresentation = ((DAnalysis) Lists.newArrayList(session.getAllSessionResources()).get(1).getContents().iterator().next()).getOwnedViews().get(0).getOwnedRepresentations().get(0);
+        controledRepresentation = new DViewQuery(((DAnalysis) Lists.newArrayList(session.getAllSessionResources()).get(1).getContents().iterator().next()).getOwnedViews().get(0))
+                .getLoadedRepresentations().get(0);
     }
 
     /**

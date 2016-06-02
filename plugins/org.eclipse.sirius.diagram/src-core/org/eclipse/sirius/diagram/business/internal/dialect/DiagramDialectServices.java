@@ -35,6 +35,7 @@ import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementI
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -426,7 +427,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         final EList<RepresentationExtensionDescription> extensions = viewpoint.getOwnedRepresentationExtensions();
 
         for (final DView view : session.getOwnedViews()) {
-            for (final DRepresentation representation : view.getOwnedRepresentations()) {
+            for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                 if (representation instanceof DSemanticDiagram) {
                     for (final RepresentationExtensionDescription ext : extensions) {
                         if (ComponentizationHelper.extensionAppliesTo(ext, representation) && ext instanceof DiagramExtensionDescription) {

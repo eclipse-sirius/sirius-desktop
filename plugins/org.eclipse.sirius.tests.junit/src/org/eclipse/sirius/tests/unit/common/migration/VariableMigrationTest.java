@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -121,7 +122,7 @@ public class VariableMigrationTest extends SiriusTestCase {
     }
 
     private void checkRepMigrationEffect(DAnalysis analysis) {
-        DRepresentation dView = analysis.getOwnedViews().get(0).getOwnedRepresentations().get(0);
+        DRepresentation dView = new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations().get(0);
         assertTrue("DRepresentation " + dView.getName() + " is not a DDiagram", dView instanceof DDiagram);
         FilterVariableHistory filterVariableHistory = ((DDiagram) dView).getFilterVariableHistory();
         EList<VariableValue> ownedValues = filterVariableHistory.getOwnedValues();

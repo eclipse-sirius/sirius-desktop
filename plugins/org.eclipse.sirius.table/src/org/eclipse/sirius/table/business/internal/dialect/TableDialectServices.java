@@ -29,6 +29,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -161,7 +162,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         if (Movida.isEnabled()) {
             IProgressMonitor monitor = new NullProgressMonitor();
             for (DView view : session.getOwnedViews()) {
-                for (DRepresentation representation : view.getOwnedRepresentations()) {
+                for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                     if (isHandledByMovida(representation)) {
                         RepresentationExtensionsFinder ref = new RepresentationExtensionsFinder(((DTable) representation).getDescription());
                         if (ref.isAffectedBy(viewpoint)) {

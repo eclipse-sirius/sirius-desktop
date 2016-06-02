@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -171,7 +172,8 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2103_AIRD;
 
         List<DAnalysis> data = loadFile(path, DAnalysis.class);
-        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) data.get(0).getOwnedViews().get(0).getOwnedRepresentations().get(0).getOwnedRepresentationElements().get(0);
+        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(data.get(0).getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements()
+                .get(0);
 
         // Remove this mapping to lead to transactional issues if transactions
         // are not correctly handled
@@ -194,7 +196,8 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2077_AIRD;
 
         List<DAnalysis> data = loadFile(path, DAnalysis.class);
-        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) data.get(0).getOwnedViews().get(0).getOwnedRepresentations().get(0).getOwnedRepresentationElements().get(0);
+        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(data.get(0).getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements()
+                .get(0);
 
         // Remove this mapping to lead to NPE issues
         dDiagramElement.setActualMapping(null);
@@ -378,17 +381,17 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         // Get the content of the migrated file
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2369_AIRD;
         List<DAnalysis> data = loadFile(path, DAnalysis.class);
-        DDiagram diagram = (DDiagram) data.get(0).getOwnedViews().get(0).getOwnedRepresentations().get(0);
+        DDiagram diagram = (DDiagram) new DViewQuery(data.get(0).getOwnedViews().get(0)).getLoadedRepresentations().get(0);
         // Check the fold status of the first incoming edge of some packages
-        assertTrue("The package P_2 should be explicitly folded after the repair-migrate (as it was before).", new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(2))
-                .getIncomingEdges().get(0)).isExplicitlyFolded());
+        assertTrue("The package P_2 should be explicitly folded after the repair-migrate (as it was before).",
+                new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(2)).getIncomingEdges().get(0)).isExplicitlyFolded());
         assertTrue("The package P_3 should be indirectly folded after the repair-migrate (as it was before).",
                 !new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(1)).getIncomingEdges().get(0)).isExplicitlyFolded()
                         && new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(1)).getIncomingEdges().get(0)).isIndirectlyFolded());
-        assertTrue("The package P_4 should be explicitly folded after the repair-migrate (as it was before).", new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(0))
-                .getIncomingEdges().get(0)).isExplicitlyFolded());
-        assertTrue("The package P_8 should be explicitly folded after the repair-migrate (as it was before).", new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(7))
-                .getIncomingEdges().get(0)).isExplicitlyFolded());
+        assertTrue("The package P_4 should be explicitly folded after the repair-migrate (as it was before).",
+                new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(0)).getIncomingEdges().get(0)).isExplicitlyFolded());
+        assertTrue("The package P_8 should be explicitly folded after the repair-migrate (as it was before).",
+                new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(7)).getIncomingEdges().get(0)).isExplicitlyFolded());
     }
 
     /**

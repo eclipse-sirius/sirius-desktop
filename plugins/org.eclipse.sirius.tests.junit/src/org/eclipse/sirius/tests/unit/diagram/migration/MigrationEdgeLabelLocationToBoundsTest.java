@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -76,7 +77,7 @@ public class MigrationEdgeLabelLocationToBoundsTest extends SiriusDiagramTestCas
         // retrieve all gmf diagram
         for (DView view : session.getOwnedViews()) {
 
-            for (DRepresentation representation : view.getOwnedRepresentations()) {
+            for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
                 if (representation instanceof DDiagram) {
                     DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
                     Option<Diagram> option = query.getAssociatedGMFDiagram();

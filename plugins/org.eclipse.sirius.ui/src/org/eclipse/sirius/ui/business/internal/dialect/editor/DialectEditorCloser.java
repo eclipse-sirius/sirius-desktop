@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.swt.widgets.Display;
@@ -41,7 +42,7 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
      *            DRepresentation's root semantic deletion
      */
     public DialectEditorCloser(IEditingSession editingSession, DialectEditor dialectEditor) {
-        super(new DialectEditorCloserFilter(dialectEditor.getRepresentation()));
+        super(new DialectEditorCloserFilter(new DRepresentationQuery(dialectEditor.getRepresentation()).getRepresentationDescriptor()));
         this.dialectEditor = dialectEditor;
         this.editingSession = editingSession;
         TransactionalEditingDomain domain = editingSession.getSession().getTransactionalEditingDomain();

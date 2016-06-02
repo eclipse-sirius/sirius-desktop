@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -71,7 +72,7 @@ public class DNodeListChildrenReoderingOnChildDirectEditTests extends SiriusDiag
         diagram = GMFNotationHelper.getGMFDiagrams(sessionResource).iterator().next();
 
         DView dView = session.getOwnedViews().iterator().next();
-        dRepresentation = dView.getOwnedRepresentations().get(0);
+        dRepresentation = new DViewQuery(dView).getLoadedRepresentations().get(0);
         editor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
     }

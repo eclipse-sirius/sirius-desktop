@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.AirDResouceQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
@@ -91,7 +92,7 @@ public class DialectEditorCloserTest extends SiriusTestCase {
         DView dView = ViewpointFactory.eINSTANCE.createDView();
         DTree dTree = TreeFactory.eINSTANCE.createDTree();
         dTree.setTarget(target);
-        dView.getOwnedRepresentations().add(dTree);
+        new DViewQuery(dView).getLoadedRepresentations().add(dTree);
         dView.setViewpoint(viewpoint);
         Command cmd = AddCommand.create(domain, dAnalysis, ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS, dView);
         commandStack.execute(cmd);

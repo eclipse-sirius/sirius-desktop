@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.control;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -25,6 +26,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -232,7 +234,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
         final EObject packageC = findPackageNamed("C", modelResource.getContents().get(0));
         final URI controlledAirdUriC = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_C.aird", true);
         DAnalysis cAird = (DAnalysis) domain.getResourceSet().getResource(controlledAirdUriC, true).getContents().iterator().next();
-        representationC = cAird.getOwnedViews().iterator().next().getOwnedRepresentations().iterator().next();
+        representationC = new DViewQuery(cAird.getOwnedViews().iterator().next()).getLoadedRepresentations().iterator().next();
 
         boolean isControlledC = AdapterFactoryEditingDomain.isControlled(packageC);
         assertTrue(isControlledC);
@@ -275,6 +277,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
      * 
      * @throws Exception
      */
+    @Override
     protected void openNonControlledSession() throws Exception {
         copyFilesToTestProject(NON_CONTROLED_RESOURCES);
         genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/doremi-2436/My.ecore"), Collections.<String> emptySet(), TEMPORARY_PROJECT_NAME + "/doremi-2436/My.aird");
@@ -293,8 +296,9 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
      *         B
      */
     private DAnalysis controlB() throws Exception {
-        representationB = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(1);
-        representationC = session.getOwnedViews().iterator().next().getOwnedRepresentations().get(0);
+        List<DRepresentation> loadedRepresentations = new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations();
+        representationB = loadedRepresentations.get(1);
+        representationC = loadedRepresentations.get(0);
 
         URI controlledModelUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.ecore", true);
         URI controlledAirdUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.aird", true);
@@ -345,6 +349,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
      * @param filePaths
      *            the paths of the files to copy
      */
+    @Override
     protected void copyFilesToTestProject(String... filePaths) {
         EclipseTestsSupportHelper.INSTANCE.createProject(TEMPORARY_PROJECT_NAME);
         for (final String path : filePaths) {

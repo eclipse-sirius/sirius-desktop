@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotSplitEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.dnd.DndUtil;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -118,7 +120,8 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         // Force a refresh of the diagram. This happens automatically when
         // running the test manually, but for some reason in the context of the
         // SWTbot test it must be done explicitly.
-        final DDiagram diag = (DDiagram) localSession.getOpenedSession().getSelectedViews().iterator().next().getOwnedRepresentations().iterator().next();
+        DView dView = localSession.getOpenedSession().getSelectedViews().iterator().next();
+        final DDiagram diag = (DDiagram) new DViewQuery(dView).getLoadedRepresentations().iterator().next();
         TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
         ted.getCommandStack().execute(new RecordingCommand(ted) {
             @Override
@@ -170,7 +173,8 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         // Force a refresh of the diagram. This happens automatically when
         // running the test manually, but for some reason in the context of the
         // SWTbot test it must be done explicitly.
-        final DDiagram diag = (DDiagram) localSession.getOpenedSession().getSelectedViews().iterator().next().getOwnedRepresentations().iterator().next();
+        DView dView = localSession.getOpenedSession().getSelectedViews().iterator().next();
+        final DDiagram diag = (DDiagram) new DViewQuery(dView).getLoadedRepresentations().iterator().next();
         TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
         ted.getCommandStack().execute(new RecordingCommand(ted) {
             @Override

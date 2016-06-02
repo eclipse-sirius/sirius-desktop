@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
@@ -42,7 +43,7 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipant extend
         super.postLoad(dAnalysis, loadedVersion);
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             for (DView dView : dAnalysis.getOwnedViews()) {
-                for (DRepresentation dRepresentation : dView.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
                     if (dRepresentation instanceof DDiagram) {
                         packCustomStyleDescriptionRegistry((DDiagram) dRepresentation);
                     }

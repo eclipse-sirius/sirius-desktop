@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -66,7 +67,7 @@ public class OpenRepresentationTest extends GenericTestCase {
 
     private DSemanticDiagram getDiagramFromDescriptionName(final String name) {
         for (final DView dView : session.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = dView.getOwnedRepresentations().iterator(); iterator.hasNext();) {
+            for (final Iterator<DRepresentation> iterator = new DViewQuery(dView).getLoadedRepresentations().iterator(); iterator.hasNext();) {
                 final DSemanticDiagram rep = (DSemanticDiagram) iterator.next();
                 if (name.equals(rep.getDescription().getName())) {
                     return rep;
@@ -79,7 +80,7 @@ public class OpenRepresentationTest extends GenericTestCase {
     private List<DSemanticDiagram> getDiagramsFromDescriptionName(final String name) {
         List<DSemanticDiagram> result = new ArrayList<DSemanticDiagram>();
         for (final DView dView : session.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = dView.getOwnedRepresentations().iterator(); iterator.hasNext();) {
+            for (final Iterator<DRepresentation> iterator = new DViewQuery(dView).getLoadedRepresentations().iterator(); iterator.hasNext();) {
                 final DSemanticDiagram rep = (DSemanticDiagram) iterator.next();
                 if (name.equals(rep.getDescription().getName())) {
                     result.add(rep);

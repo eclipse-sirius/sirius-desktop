@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -359,7 +360,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         }
         for (final DView dView : session.getOwnedViews()) {
             Assert.assertNotNull("Sirius should not be null", dView.getViewpoint());
-            Assert.assertEquals("We should have 10 representations", 10, dView.getOwnedRepresentations().size());
+            Assert.assertEquals("We should have 10 representations", 10, new DViewQuery(dView).getLoadedRepresentations().size());
         }
     }
 

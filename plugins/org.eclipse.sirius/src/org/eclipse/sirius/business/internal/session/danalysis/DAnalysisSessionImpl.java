@@ -49,6 +49,7 @@ import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMisma
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -500,7 +501,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiver);
         if (receiverAuthority.canCreateIn(receiver)) {
             DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
-            receiver.getOwnedRepresentations().add(representation);
+            new DViewQuery(receiver).getLoadedRepresentations().add(representation);
             receiver.getOwnedRepresentationDescriptors().add(representationDescriptor);
             // Add all semantic root elements pointed by the target of all
             // DSemanticDecorator of this representation (except of this root is

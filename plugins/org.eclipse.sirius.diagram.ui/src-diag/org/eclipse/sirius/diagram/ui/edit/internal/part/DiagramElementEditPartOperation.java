@@ -336,7 +336,7 @@ public final class DiagramElementEditPartOperation {
         Session session = new EObjectQuery(semanticElement).getSession();
         if (session != null && self instanceof NotificationListener) {
             for (DView dView : session.getSelectedViews()) {
-                broker.addNotificationListener(dView, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, (NotificationListener) self);
+                broker.addNotificationListener(dView, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS, (NotificationListener) self);
             }
         }
     }
@@ -346,7 +346,7 @@ public final class DiagramElementEditPartOperation {
         Session session = new EObjectQuery(semanticElement).getSession();
         if (session != null && self instanceof NotificationListener) {
             for (DView dView : session.getSelectedViews()) {
-                broker.removeNotificationListener(dView, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, (NotificationListener) self);
+                broker.removeNotificationListener(dView, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS, (NotificationListener) self);
             }
         }
     }

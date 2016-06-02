@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
@@ -75,11 +76,12 @@ public class MigrationInconsistentGMFVisibilityTest extends SiriusDiagramTestCas
     public void testGMFViewpointVisibilityConsistency() {
 
         DView view = session.getOwnedViews().iterator().next();
-        DDiagram ddiagram = (DDiagram) view.getOwnedRepresentations().get(0);
+        DDiagram ddiagram = (DDiagram) new DViewQuery(view).getLoadedRepresentations().get(0);
         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(ddiagram);
         Option<Diagram> option = query.getAssociatedGMFDiagram();
         if (option.some()) {
             Iterator<EObject> iterator = Iterators.filter(option.get().eAllContents(), new Predicate<EObject>() {
+                @Override
                 public boolean apply(EObject arg0) {
                     if (arg0 instanceof Node) {
                         int typeInt = SiriusVisualIDRegistry.getVisualID(((Node) arg0).getType());

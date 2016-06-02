@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
@@ -38,8 +39,8 @@ import com.google.common.collect.Iterables;
  * A test ensuring that if we have an aird containing corrupted {@link View}s
  * (e.g. views which should have a 'null' element but have the {@link DDiagram}
  * ). This can occur when manipulating diagrams with collaborative mode, the
- * result of the import does dot contain the expected '<element
- * xsi:nil="true"/>' tags.
+ * result of the import does dot contain the expected '
+ * <element xsi:nil="true"/>' tags.
  * 
  * <p>
  * For further information, please refer to
@@ -92,8 +93,8 @@ public class CorruptedViewsMigrationTests extends AbstractMigrationTestCase {
      * Ensures that if we have an aird containing corrupted {@link View}s (e.g.
      * views which should have a 'null' element but have the {@link DDiagram}).
      * This can occur when manipulating diagrams with collaborative mode, the
-     * result of the import does dot contain the expected '<element
-     * xsi:nil="true"/>' tags.
+     * result of the import does dot contain the expected '
+     * <element xsi:nil="true"/>' tags.
      * 
      * @throws Exception
      *             if unexpected issue occur while performing this test
@@ -126,7 +127,7 @@ public class CorruptedViewsMigrationTests extends AbstractMigrationTestCase {
         EReference elementReference = NotationPackage.eINSTANCE.getView_Element();
         for (Resource sessionResource : session.getAllSessionResources()) {
             for (DView view : ((DAnalysis) sessionResource.getContents().iterator().next()).getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(view.getOwnedRepresentations(), DDiagram.class)) {
+                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(view).getLoadedRepresentations(), DDiagram.class)) {
                     DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
                     assertTrue(diagramCreationUtil.findAssociatedGMFDiagram());
                     Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();

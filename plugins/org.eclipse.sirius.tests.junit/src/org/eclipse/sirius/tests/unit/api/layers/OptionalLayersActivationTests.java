@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
@@ -221,7 +222,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
 
     private DDiagram findDiagram(final Session session) {
         for (final DView view : session.getOwnedViews()) {
-            for (final DRepresentation repr : view.getOwnedRepresentations()) {
+            for (final DRepresentation repr : new DViewQuery(view).getLoadedRepresentations()) {
                 if (repr instanceof DDiagram) {
                     return (DDiagram) repr;
                 }

@@ -13,13 +13,13 @@ package org.eclipse.sirius.tests.unit.api.tools;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
@@ -321,12 +322,13 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
     private DRepresentation controlRepresentation() throws Exception {
         // Initially we have a two packages in the same ecore, and two diagrams
         // (one for each package) in the same aird.
-        EList<DRepresentation> allRepresentations = Iterables.find(session.getOwnedViews(), new Predicate<DView>() {
+        DView dView = Iterables.find(session.getOwnedViews(), new Predicate<DView>() {
             @Override
             public boolean apply(DView v) {
-                return v.getOwnedRepresentations().size() == 4;
+                return new DViewQuery(v).getLoadedRepresentations().size() == 4;
             }
-        }).getOwnedRepresentations();
+        });
+        List<DRepresentation> allRepresentations = new DViewQuery(dView).getLoadedRepresentations();
         assertEquals("package1 package entities", allRepresentations.get(0).getName());
         assertEquals("package2 package entities", allRepresentations.get(1).getName());
 

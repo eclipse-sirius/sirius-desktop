@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
@@ -115,7 +117,7 @@ public class AdditionalLayerTest extends AbstractSiriusSwtBotGefTestCase {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
         DAnalysis analysis = (DAnalysis) session.getSessionResource().getContents().get(0);
-        EList<DRepresentation> representations = analysis.getOwnedViews().get(0).getOwnedRepresentations();
+        Collection<DRepresentation> representations = new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations();
 
         RefreshRepresentationsCommand command = new RefreshRepresentationsCommand(domain, new NullProgressMonitor(), representations);
         domain.getCommandStack().execute(command);
@@ -144,7 +146,7 @@ public class AdditionalLayerTest extends AbstractSiriusSwtBotGefTestCase {
 
         session = localSession.getOpenedSession();
         DAnalysis analysis = (DAnalysis) session.getSessionResource().getContents().get(0);
-        EList<Layer> activatedLayers = ((DDiagram) analysis.getOwnedViews().get(0).getOwnedRepresentations().get(0)).getActivatedLayers();
+        EList<Layer> activatedLayers = ((DDiagram) new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations().iterator().next()).getActivatedLayers();
         Iterable<AdditionalLayer> additionalLayers = Iterables.filter(activatedLayers, AdditionalLayer.class);
         assertEquals("There should be " + expectedNumber + " activated additional layers.", expectedNumber, Iterables.size(additionalLayers));
 

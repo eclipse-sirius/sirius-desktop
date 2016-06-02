@@ -35,12 +35,14 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
 import org.eclipse.sirius.business.api.session.Session;
@@ -442,8 +444,9 @@ public class SiriusRepairProcess {
      *            the view to inform
      */
     private void informViewpoint(final DView view) {
-        if (view.getOwnedRepresentations() != null && !view.getOwnedRepresentations().isEmpty()) {
-            final DRepresentation representation = view.getOwnedRepresentations().get(0);
+        List<DRepresentation> loadedRepresentations = new DViewQuery(view).getLoadedRepresentations();
+        if (loadedRepresentations != null && !loadedRepresentations.isEmpty()) {
+            final DRepresentation representation = loadedRepresentations.get(0);
             final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
             if (description != null) {
                 Viewpoint vp = new RepresentationDescriptionQuery(description).getParentViewpoint();
@@ -571,7 +574,7 @@ public class SiriusRepairProcess {
 
         final List<DRepresentation> representationsToRemove = new LinkedList<DRepresentation>();
         for (final IRepairParticipant participant : this.repairParticipants) {
-            representationsToRemove.addAll(participant.cleanRepresentations(view.getOwnedRepresentations()));
+            representationsToRemove.addAll(participant.cleanRepresentations(ECollections.asEList(new DViewQuery(view).getLoadedRepresentations())));
         }
         removeRepresentations(representationsToRemove);
     }

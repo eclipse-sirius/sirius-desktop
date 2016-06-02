@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.eclipse.sirius.tests.unit.diagram.operations;
 
 import java.util.Collections;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -48,10 +46,11 @@ import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.session.UserSession;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 import com.google.common.collect.Lists;
+
+import junit.framework.TestCase;
 
 /**
  * Test elementary operations.
@@ -87,6 +86,7 @@ public class CreateViewOperationTest extends TestCase {
     }
 
     private class Nominal extends Case {
+        @Override
         public void check() throws Exception {
 
             assertEquals("The diagram should contain no node", 0, diagram.getDiagramElements().size());
@@ -124,6 +124,7 @@ public class CreateViewOperationTest extends TestCase {
     }
 
     private class NoContainerViewExpressionNull extends NoContainerViewExpression {
+        @Override
         public void check() throws Exception {
             try {
                 super.check(null);
@@ -134,6 +135,7 @@ public class CreateViewOperationTest extends TestCase {
     }
 
     private class NoContainerViewExpressionEmpty extends NoContainerViewExpression {
+        @Override
         public void check() throws Exception {
             try {
                 super.check("");
@@ -183,7 +185,12 @@ public class CreateViewOperationTest extends TestCase {
         diagram = DiagramFactory.eINSTANCE.createDSemanticDiagram();
         diagram.setDescription(oDesign.group().viewpoint1().diagram1().object());
 
-        Command addDiagramCmd = AddCommand.create(domain, session.getSelectedViews().iterator().next(), ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, diagram);
+        Command addDiagramCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                session.getSessionResource().getContents().add(diagram);
+            }
+        };
         domain.getCommandStack().execute(addDiagramCmd);
     }
 

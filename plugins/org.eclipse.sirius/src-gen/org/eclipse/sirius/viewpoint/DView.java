@@ -30,8 +30,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentationDescriptors
  * <em>Owned Representation Descriptors</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedRepresentations
- * <em>Owned Representations</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getOwnedExtensions
  * <em>Owned Extensions</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DView#getModels <em>Models</em>}</li>
@@ -83,21 +81,6 @@ public interface DView extends DRefreshable {
      * @generated
      */
     EList<DRepresentationDescriptor> getOwnedRepresentationDescriptors();
-
-    /**
-     * Returns the value of the '<em><b>Owned Representations</b></em>'
-     * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The representations
-     * that are owned by this DView. <!-- end-model-doc -->
-     *
-     * @return the value of the '<em>Owned Representations</em>' containment
-     *         reference list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_OwnedRepresentations()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<DRepresentation> getOwnedRepresentations();
 
     /**
      * Returns the value of the '<em><b>Owned Extensions</b></em>' containment

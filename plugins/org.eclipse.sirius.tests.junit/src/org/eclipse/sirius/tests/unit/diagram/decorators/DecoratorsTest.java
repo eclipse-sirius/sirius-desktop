@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -149,8 +150,8 @@ public class DecoratorsTest extends GenericTestCase {
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer);
 
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, defaultLayer.getDecorationDescriptionsSet());
-        final List<MappingBasedDecoration> decorationDescriptions = Lists.newArrayList(Iterables.filter(defaultLayer.getDecorationDescriptionsSet().getDecorationDescriptions(),
-                MappingBasedDecoration.class));
+        final List<MappingBasedDecoration> decorationDescriptions = Lists
+                .newArrayList(Iterables.filter(defaultLayer.getDecorationDescriptionsSet().getDecorationDescriptions(), MappingBasedDecoration.class));
         assertEquals(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, 3, Iterables.size(decorationDescriptions));
 
         MappingBasedDecoration mbd = decorationDescriptions.get(0);
@@ -450,8 +451,9 @@ public class DecoratorsTest extends GenericTestCase {
         Iterable<DSemanticDiagram> matchingDescriptions = Collections.emptySet();
         for (final DView dView : session.getOwnedViews()) {
 
-            Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(dView.getOwnedRepresentations(), DSemanticDiagram.class);
+            Iterable<DSemanticDiagram> allDSemanticDiagrams = Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DSemanticDiagram.class);
             matchingDescriptions = Iterables.filter(allDSemanticDiagrams, new Predicate<DSemanticDiagram>() {
+                @Override
                 public boolean apply(DSemanticDiagram input) {
                     return name.equals(input.getDescription().getName());
                 }
@@ -483,7 +485,7 @@ public class DecoratorsTest extends GenericTestCase {
             sb.append("DView: ");
             sb.append(dView);
             sb.append("\n");
-            for (DRepresentation rep : dView.getOwnedRepresentations()) {
+            for (DRepresentation rep : new DViewQuery(dView).getLoadedRepresentations()) {
                 sb.append("\t");
                 sb.append("DRepresentation: ");
                 sb.append(rep.getName());
@@ -524,6 +526,7 @@ public class DecoratorsTest extends GenericTestCase {
         }
         if (shell != null) {
             Display.getCurrent().asyncExec(new Runnable() {
+                @Override
                 public void run() {
                     shell.dispose();
                 }

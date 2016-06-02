@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,11 +21,12 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.command.MoveCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelection
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -92,8 +92,8 @@ public class SessionEditorInputTests extends TestCase {
         commandStack.execute(new CopyRepresentationCommand(domain, allRepresentations, "copy", session));
         DAnalysis dAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
         dView = dAnalysis.getOwnedViews().get(0);
-        dRepresentation1 = dView.getOwnedRepresentations().get(0);
-        dRepresentation2 = dView.getOwnedRepresentations().get(1);
+        dRepresentation1 = new DViewQuery(dView).getLoadedRepresentations().get(0);
+        dRepresentation2 = new DViewQuery(dView).getLoadedRepresentations().get(1);
         session.save(new NullProgressMonitor());
     }
 
@@ -116,7 +116,12 @@ public class SessionEditorInputTests extends TestCase {
         // xpath based
         URI dRepresentation1URI = EcoreUtil.getURI(dRepresentation1);
         URI dRepresentation2URI = EcoreUtil.getURI(dRepresentation2);
-        Command moveCmd = MoveCommand.create(session.getTransactionalEditingDomain(), dView, ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, dRepresentation2, 0);
+        Command moveCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                dView.eResource().getContents().move(1, dRepresentation2);
+            }
+        };
         session.getTransactionalEditingDomain().getCommandStack().execute(moveCmd);
         String assertMessage = "DRepresentation's URI should have changed as they are stored in a InMemoryResourceImpl with xpath based uriFragment";
         assertEquals(assertMessage, dRepresentation1URI, EcoreUtil.getURI(dRepresentation2));

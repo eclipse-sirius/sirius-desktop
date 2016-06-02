@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -62,7 +63,7 @@ public class VariableOnTableCreationToolsTest extends TableTestCase {
 
         getCommandFactory().setModelAccessor(session.getModelAccessor());
         tableDescription = (CrossTableDescription) session.getSelectedViewpoints(true).iterator().next().getOwnedRepresentations().get(0);
-        tableRepresentation = (DTable) session.getOwnedViews().iterator().next().getOwnedRepresentations().iterator().next();
+        tableRepresentation = (DTable) new DViewQuery(session.getOwnedViews().iterator().next()).getLoadedRepresentations().iterator().next();
         subPackage1 = ((EPackage) session.getSemanticResources().iterator().next().getContents().get(0)).getESubpackages().iterator().next();
     }
 
@@ -95,6 +96,7 @@ public class VariableOnTableCreationToolsTest extends TableTestCase {
      */
     public void testColumnCreationWithToolUsingVariables() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 subPackage1.getEClassifiers().add(EcoreFactory.eINSTANCE.createEClass());
             }

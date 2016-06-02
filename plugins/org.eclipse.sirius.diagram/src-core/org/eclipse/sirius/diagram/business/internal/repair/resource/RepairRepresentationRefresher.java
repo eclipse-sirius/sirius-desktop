@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -117,7 +118,7 @@ public class RepairRepresentationRefresher {
                         InterpreterRegistry.prepareImportsFromSession(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(model), SessionManager.INSTANCE.getSession(model));
                     }
                 }
-                for (DRepresentation dRepresentation : view.getOwnedRepresentations()) {
+                for (DRepresentation dRepresentation : new DViewQuery(view).getLoadedRepresentations()) {
                     DialectManager.INSTANCE.refresh(dRepresentation, new NullProgressMonitor());
                 }
             }
@@ -157,7 +158,7 @@ public class RepairRepresentationRefresher {
      *            {@link RefreshAllElementsVisibilityCommand}
      */
     public void refreshAllElementsVisibility(final DView view, TransactionalEditingDomain transactionalEditingDomain, MigrationCommandExecutor migrationCommandExecutor) {
-        for (final DRepresentation representation : view.getOwnedRepresentations()) {
+        for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
             if (representation instanceof DDiagram) {
                 Command refreshAllElementsVisibilityCommand = new RefreshAllElementsVisibilityCommand((DDiagram) representation);
                 migrationCommandExecutor.execute(transactionalEditingDomain, refreshAllElementsVisibilityCommand);
@@ -171,7 +172,7 @@ public class RepairRepresentationRefresher {
         Command refreshLostDiagramElementsCommand = new IdentityCommand() {
             @Override
             public void execute() {
-                for (final DSemanticDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), DSemanticDiagram.class)) {
+                for (final DSemanticDiagram diagram : Iterables.filter(new DViewQuery(view).getLoadedRepresentations(), DSemanticDiagram.class)) {
                     final DiagramKey diagramKey = DiagramKey.createDiagramKey(diagram);
 
                     final List<LostNodeData> lostNodes = lostNodesByDelete.get(diagramKey);

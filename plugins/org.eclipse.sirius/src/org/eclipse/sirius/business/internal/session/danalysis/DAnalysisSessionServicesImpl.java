@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionService;
@@ -99,7 +100,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         final Collection<DRepresentation> representations = Lists.newArrayList();
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
-                representations.addAll(view.getOwnedRepresentations());
+                representations.addAll(new DViewQuery(view).getLoadedRepresentations());
             }
         }
         return representations;
@@ -170,7 +171,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
                 Collection<EObject> datas = new ArrayList<EObject>();
                 for (DAnalysis analysis : analysisAndReferenced) {
                     for (final DView view : analysis.getOwnedViews()) {
-                        final Iterator<DRepresentation> it = view.getOwnedRepresentations().iterator();
+                        final Iterator<DRepresentation> it = new DViewQuery(view).getLoadedRepresentations().iterator();
                         while (it.hasNext()) {
                             final DRepresentation rep = it.next();
                             if (rep instanceof DSemanticDecorator) {
@@ -249,7 +250,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         final Collection<EObject> datas = Lists.newArrayList();
         for (DAnalysis analysis : analysisAndReferenced) {
             for (final DView view : analysis.getOwnedViews()) {
-                final Iterator<DRepresentation> it = view.getOwnedRepresentations().iterator();
+                final Iterator<DRepresentation> it = new DViewQuery(view).getLoadedRepresentations().iterator();
                 while (it.hasNext()) {
                     final DRepresentation rep = it.next();
                     final RepresentationDescription currentRepresentationDescription = DialectManager.INSTANCE.getDescription(rep);
@@ -379,28 +380,40 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return false;
     }
 
-    private void addRepresentationToContainer(final DRepresentation representation, final Resource res) {
-        final EObject semanticRoot = res.getContents().iterator().next();
+    /**
+     * Create the {@link DRepresentationDescriptor} in the {@link DView} and the
+     * associated {@link DRepresentation} as root object of the
+     * {@link DAnalysis} resource.
+     * 
+     * @param representation
+     *            the {@link DRepresentation} to add
+     * @param semanticResource
+     */
+    private void addRepresentationToContainer(final DRepresentation representation, final Resource semanticResource) {
+        final EObject semanticRoot = semanticResource.getContents().iterator().next();
         final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation);
 
         final Viewpoint viewpoint = new RepresentationDescriptionQuery(descriptor.getDescription()).getParentViewpoint();
-        DView existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, session.allAnalyses(), analysisSelector, representation);
+        DView dView = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, session.allAnalyses(), analysisSelector, representation);
 
-        if (existingContainer == null) {
-            existingContainer = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, session.getAnalyses(), analysisSelector, representation);
-            if (existingContainer != null) {
-                existingContainer.setViewpoint(viewpoint);
+        if (dView == null) {
+            dView = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, session.getAnalyses(), analysisSelector, representation);
+            if (dView != null) {
+                dView.setViewpoint(viewpoint);
             }
         }
-        if (existingContainer == null) {
-            existingContainer = ViewpointFactory.eINSTANCE.createDView();
-            existingContainer.setViewpoint(viewpoint);
+        if (dView == null) {
+            dView = ViewpointFactory.eINSTANCE.createDView();
+            dView.setViewpoint(viewpoint);
             final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, session.allAnalyses(), analysisSelector, representation);
-            analysis.getOwnedViews().add(existingContainer);
+            analysis.getOwnedViews().add(dView);
         }
 
-        existingContainer.getOwnedRepresentationDescriptors().add(descriptor);
-        existingContainer.getOwnedRepresentations().add(representation);
+        dView.getOwnedRepresentationDescriptors().add(descriptor);
+
+        // the DRepresentation is stored as root object in the DAnalysis
+        // resource
+        dView.eResource().getContents().add(representation);
     }
 
     @Override

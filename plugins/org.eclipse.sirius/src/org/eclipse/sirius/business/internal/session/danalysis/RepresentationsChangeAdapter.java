@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,8 +64,10 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
             default:
                 break;
             }
-            /* update editors and views on representation creation or deletion */
-        } else if (notifier instanceof DView && n.getFeatureID(DView.class) == ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS) {
+            /*
+             * update editors and views on representation creation or deletion
+             */
+        } else if (notifier instanceof DView && n.getFeatureID(DView.class) == ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS) {
             switch (n.getEventType()) {
             case Notification.ADD:
                 SessionManager.INSTANCE.notifyRepresentationCreated(session);
