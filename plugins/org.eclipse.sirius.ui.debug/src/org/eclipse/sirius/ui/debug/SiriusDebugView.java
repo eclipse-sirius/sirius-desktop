@@ -1111,7 +1111,7 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private String figureDetails(IFigure figure) {
-        return "Opaque: " + figure.isOpaque() + " Color: " + figure.getBackgroundColor() + " Class: " + figure.getClass().getSimpleName() + " Size: " + figure.getBounds().getSize();
+        return "Opaque: " + figure.isOpaque() + " Color: " + figure.getBackgroundColor() + " Class: " + figure.getClass().getSimpleName() + " Bounds: " + figure.getBounds();
     }
 
     private static class RefreshGraphicalCoverage extends RecordingCommand {
