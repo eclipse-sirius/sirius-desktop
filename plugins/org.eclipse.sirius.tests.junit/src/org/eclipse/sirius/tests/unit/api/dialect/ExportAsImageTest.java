@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,8 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Tests the export of diagrams as image after the migration of the session
@@ -186,9 +188,11 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         Object path = null;
         SaveAsImageFileAction saveAsImageFileAction = new SaveAsImageFileAction();
         try {
-            Method method = AbstractExportRepresentationsAction.class.getDeclaredMethod("getExportPath", DRepresentation.class, Session.class);
+            DRepresentationDescriptor createDRepresentationDescriptor = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
+            createDRepresentationDescriptor.setRepresentation(diag);
+            Method method = AbstractExportRepresentationsAction.class.getDeclaredMethod("getExportPath", DRepresentationDescriptor.class, Session.class);
             method.setAccessible(true);
-            path = method.invoke(saveAsImageFileAction, diag, session);
+            path = method.invoke(saveAsImageFileAction, createDRepresentationDescriptor, session);
         } catch (Exception e) {
             fail("The test should be checked, the tested method could no more exist.");
         }

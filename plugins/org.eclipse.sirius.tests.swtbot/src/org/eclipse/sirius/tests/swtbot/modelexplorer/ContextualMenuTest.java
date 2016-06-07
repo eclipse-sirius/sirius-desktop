@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -67,15 +67,17 @@ public class ContextualMenuTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void test_Delete_Menu_On_DRepresentation() {
         // Get a representation.
-        SWTBotTreeItem diagram = checkAndSelect(localSession.getLocalSessionBrowser().perSemantic().expandNode(TEST_PACKAGE).expandNode(REPRESENTATION_DESC_2298_NAME), DRepresentation.class);
+        SWTBotTreeItem diagram = checkAndSelect(localSession.getLocalSessionBrowser().perSemantic().expandNode(TEST_PACKAGE).expandNode(REPRESENTATION_DESC_2298_NAME),
+                DRepresentationDescriptor.class);
 
-       assertTrue("Delete menu should be present on DDiagram.", SWTBotUtils.hasContextMenu(diagram, DELETE_MENU_LABEL));
-       assertTrue("Delete menu should be present on DDiagram.", SWTBotUtils.isContextMenuEnabled(diagram, DELETE_MENU_LABEL));
+        assertTrue("Delete menu should be present on the DRepresentationDescriptor corresponding to the DDiagram.", SWTBotUtils.hasContextMenu(diagram, DELETE_MENU_LABEL));
+        assertTrue("Delete menu should be present on the DRepresentationDescriptor corresponding to the DDiagram.", SWTBotUtils.isContextMenuEnabled(diagram, DELETE_MENU_LABEL));
     }
 
     private SWTBotTreeItem checkAndSelect(final SWTBotTreeItem item, Class<?> dataType) {
         final Object data = UIThreadRunnable.syncExec(new Result<Object>() {
             /** {@inheritDoc} */
+            @Override
             public Object run() {
                 return item.widget.getData();
             }
