@@ -64,7 +64,7 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
-import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
+import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -90,7 +90,7 @@ public class AllTestSuite extends TestCase {
     }
 
     @SuppressWarnings("javadoc")
-    public static class SWTBotBundlesReport extends AvailableBundlesReportTest {
+    public static class SWTBotBundlesReport extends EnvironmentReportTest {
         public SWTBotBundlesReport() {
             super(Activator.getDefault().getBundle(), "SWTBot");
         }

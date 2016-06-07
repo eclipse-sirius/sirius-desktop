@@ -84,7 +84,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SyncCall3Test;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallInOperandReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SyncCallTest;
-import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
+import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 /**
  * All SWTBot tests on sequence diagram.
@@ -104,7 +104,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
     }
 
     @SuppressWarnings("javadoc")
-    public static class SWTBotSequenceBundlesReport extends AvailableBundlesReportTest {
+    public static class SWTBotSequenceBundlesReport extends EnvironmentReportTest {
         public SWTBotSequenceBundlesReport() {
             super(Activator.getDefault().getBundle(), "SWTBot-Sequence");
         }

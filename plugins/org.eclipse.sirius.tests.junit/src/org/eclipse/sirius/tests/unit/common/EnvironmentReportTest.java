@@ -19,31 +19,35 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.eclipse.ui.internal.about.ConfigurationLogDefaultSection;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
 
 import com.google.common.collect.Lists;
 
 /**
- * Dumps a text file with the list of all OSGi bundles available from the test
- * context, with their full version. Sometimes useful to identify the exact
- * context in which tests failures occured.
+ * Dumps a text file with information about the environment in which the test is
+ * executing. This includes the list of all OSGi bundles available from the test
+ * context, with their full version, and the Eclipse configuration details.
+ * Sometimes useful to identify the exact context in which tests failures
+ * occured.
  * 
  * @author pcdavid
  */
-public abstract class AvailableBundlesReportTest {
+@SuppressWarnings("restriction")
+public abstract class EnvironmentReportTest {
 
     private final Bundle testBundle;
 
     private final String reportName;
 
-    protected AvailableBundlesReportTest(Bundle testBundle, String suite) {
+    protected EnvironmentReportTest(Bundle testBundle, String suite) {
         this.testBundle = testBundle;
         this.reportName = testBundle.getSymbolicName().replaceAll(Pattern.quote("."), "_") + "-" + suite + ".txt";
     }
 
     @Test
-    public void dump_bundles_list() throws IOException {
+    public void dump_environment_data() throws IOException {
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(reportName)));
         try {
             out.println("OSGi bundles available from " + toString(testBundle));
@@ -56,6 +60,11 @@ public abstract class AvailableBundlesReportTest {
             for (String s : bundles) {
                 out.println(s);
             }
+            // Also dump the configuration information from "Help > About >
+            // Installation Details > Configuration"
+            out.println();
+            out.println("Eclipse Configuration Details");
+            new ConfigurationLogDefaultSection().write(out);
         } finally {
             out.close();
         }
@@ -86,7 +95,7 @@ public abstract class AvailableBundlesReportTest {
             state = "[uninstalled]";
             break;
         }
-        
+
         String sourceRef = b.getHeaders().get("Eclipse-SourceReferences");
         if (sourceRef == null) {
             sourceRef = "";

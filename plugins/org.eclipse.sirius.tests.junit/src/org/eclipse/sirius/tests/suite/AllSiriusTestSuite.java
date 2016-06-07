@@ -23,7 +23,7 @@ import org.eclipse.sirius.tests.suite.diagram.AllDiagramPluginsTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramStandaloneTests;
 import org.eclipse.sirius.tests.suite.table.AllTablePluginTests;
 import org.eclipse.sirius.tests.suite.table.AllTableStandaloneTests;
-import org.eclipse.sirius.tests.unit.common.AvailableBundlesReportTest;
+import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 public class AllSiriusTestSuite extends TestCase {
 
@@ -37,7 +37,7 @@ public class AllSiriusTestSuite extends TestCase {
         TestRunner.run(suite());
     }
 
-    public static class JUnitBundlesReport extends AvailableBundlesReportTest {
+    public static class JUnitBundlesReport extends EnvironmentReportTest {
         public JUnitBundlesReport() {
             super(SiriusTestsPlugin.getDefault().getBundle(), "JUnit");
         }
