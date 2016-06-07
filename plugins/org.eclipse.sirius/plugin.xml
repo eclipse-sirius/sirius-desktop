@@ -403,6 +403,10 @@
             class="org.eclipse.sirius.business.internal.migration.DRepresentationDescriptorCreationMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.business.internal.migration.DRepresentationMoveFromDViewToRootObjectsMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated contribution -->
