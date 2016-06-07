@@ -374,24 +374,18 @@ public class DialectManagerImpl implements DialectManager {
         return reps;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#deleteRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      org.eclipse.sirius.business.api.session.Session)
-     */
     @Override
-    public boolean deleteRepresentation(final DRepresentation representation, final Session session) {
+    public boolean deleteRepresentation(final DRepresentationDescriptor representationDescriptor, final Session session) {
         Dialect deleter = null;
         final Iterator<Dialect> it = dialects.values().iterator();
         while (deleter == null && it.hasNext()) {
             final Dialect dialect = it.next();
-            if (dialect.getServices().deleteRepresentation(representation, session)) {
+            if (dialect.getServices().deleteRepresentation(representationDescriptor, session)) {
                 deleter = dialect;
             }
         }
         if (deleter != null) {
-            final RepresentationNotification notif = new RepresentationNotification(representation, RepresentationNotification.REMOVE);
+            final RepresentationNotification notif = new RepresentationNotification(representationDescriptor.getRepresentation(), RepresentationNotification.REMOVE);
             for (final Dialect dialect : dialects.values()) {
                 if (dialect != deleter) {
                     dialect.getServices().notify(notif);

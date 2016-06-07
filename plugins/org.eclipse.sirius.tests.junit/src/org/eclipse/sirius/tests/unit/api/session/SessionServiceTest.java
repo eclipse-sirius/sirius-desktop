@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl;
 
 /**
@@ -82,12 +82,12 @@ public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreMo
     }
 
     public void testClearGMFData() throws Exception {
-        final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
+        final Collection<DRepresentationDescriptor> allRepDescriptor = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
         Command cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                for (final DRepresentation representation : allRepresentations) {
-                    DialectManager.INSTANCE.deleteRepresentation(representation, session);
+                for (final DRepresentationDescriptor descriptor : allRepDescriptor) {
+                    DialectManager.INSTANCE.deleteRepresentation(descriptor, session);
                 }
             }
         };
@@ -107,7 +107,6 @@ public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreMo
     }
 
     private DFeatureExtension createExtension() throws Exception {
-        return new DFeatureExtensionImpl() {
-        };
+        return new DFeatureExtensionImpl() {};
     }
 }

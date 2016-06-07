@@ -52,6 +52,7 @@ import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.tree.tools.internal.command.TreeCommandFactory;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -75,6 +76,11 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DTree;
+    }
+
+    @Override
+    protected boolean isSupported(DRepresentationDescriptor representationDescriptor) {
+        return representationDescriptor.getDescription() instanceof TreeDescription;
     }
 
     @Override

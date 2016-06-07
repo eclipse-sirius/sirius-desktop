@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,15 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
@@ -108,5 +112,27 @@ public class DRepresentationQuery {
             return semDecRep.getTarget() == null || SessionManager.INSTANCE.getSession(semDecRep.getTarget()) == null;
         }
         return false;
+    }
+
+    /**
+     * Get the {@link DRepresentationDescriptor} that references the
+     * {@link DRepresentation}.
+     * 
+     * @return the {@link DRepresentationDescriptor}
+     */
+    public DRepresentationDescriptor getRepresentationDescriptor() {
+        if (representation instanceof DSemanticDecorator) {
+            Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+            if (session != null) {
+                Collection<EStructuralFeature.Setting> usages = session.getSemanticCrossReferencer().getInverseReferences(representation);
+                for (EStructuralFeature.Setting setting : usages) {
+                    if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
+                            && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
+                        return (DRepresentationDescriptor) setting.getEObject();
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

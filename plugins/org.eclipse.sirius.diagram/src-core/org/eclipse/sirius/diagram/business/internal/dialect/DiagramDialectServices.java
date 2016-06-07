@@ -81,6 +81,7 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -105,6 +106,11 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DDiagram;
+    }
+
+    @Override
+    protected boolean isSupported(DRepresentationDescriptor representationDescriptor) {
+        return representationDescriptor.getDescription() instanceof DiagramDescription;
     }
 
     /**
@@ -284,14 +290,13 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         return requiredViewpoints;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public boolean deleteRepresentation(final DRepresentation representation, final Session session) {
+    public boolean deleteRepresentation(final DRepresentationDescriptor representationDescriptor, final Session session) {
+        DRepresentation representation = representationDescriptor.getRepresentation();
         if (representation instanceof DDiagram) {
             session.getServices().clearCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
             SiriusUtil.delete(representation, session);
+            SiriusUtil.delete(representationDescriptor, session);
             return true;
         }
         return false;
@@ -603,4 +608,5 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     private boolean isContainedWithinCurrentDiagram(DDiagramElement diagramElement, DSemanticDiagram diagram) {
         return diagram == new DRepresentationElementQuery(diagramElement).getParentRepresentation();
     }
+
 }

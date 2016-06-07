@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
@@ -263,7 +264,8 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         TestsUtil.synchronizationWithUIThread();
 
         session.addListener(testListener);
-        final DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        final DRepresentationDescriptor repDescriptor = (DRepresentationDescriptor) getRepresentationDescriptors(ENTITIES_DESC_NAME).toArray()[0];
+        DDiagram diagram = (DDiagram) repDescriptor.getRepresentation();
         applyNodeCreationTool("Class", diagram, diagram);
         TestsUtil.synchronizationWithUIThread();
 
@@ -271,7 +273,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
 
             @Override
             protected void doExecute() {
-                DialectManager.INSTANCE.deleteRepresentation(diagram, session);
+                DialectManager.INSTANCE.deleteRepresentation(repDescriptor, session);
             }
         });
 

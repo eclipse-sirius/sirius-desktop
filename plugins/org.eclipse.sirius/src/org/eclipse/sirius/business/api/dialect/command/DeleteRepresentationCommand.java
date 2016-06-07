@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.Set;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.Messages;
  */
 public class DeleteRepresentationCommand extends RecordingCommand {
 
-    private Set<DRepresentation> representations;
+    private Set<DRepresentationDescriptor> repDescriptors;
 
     private Session session;
 
@@ -37,13 +37,14 @@ public class DeleteRepresentationCommand extends RecordingCommand {
      *            WARNING : can only delete only {@link DRepresentation}s owned
      *            by this {@link Session} because we have one
      *            TransactionalEditingDomain per {@link Session}.
-     * @param representations
-     *            {@link Set} of {@link DRepresentation}s to delete.
+     * @param repDescriptors
+     *            {@link Set} of {@link DRepresentationDescriptor}s
+     *            corresponding to {@link DRepresentation}s to delete.
      */
-    public DeleteRepresentationCommand(Session session, Set<DRepresentation> representations) {
+    public DeleteRepresentationCommand(Session session, Set<DRepresentationDescriptor> repDescriptors) {
         super(session.getTransactionalEditingDomain(), Messages.DeleteRepresentationCommand_label);
         this.session = session;
-        this.representations = representations;
+        this.repDescriptors = repDescriptors;
     }
 
     /**
@@ -51,8 +52,8 @@ public class DeleteRepresentationCommand extends RecordingCommand {
      */
     @Override
     protected void doExecute() {
-        for (DRepresentation dRepresentation : representations) {
-            DialectManager.INSTANCE.deleteRepresentation(dRepresentation, session);
+        for (DRepresentationDescriptor repDescriptor : repDescriptors) {
+            DialectManager.INSTANCE.deleteRepresentation(repDescriptor, session);
         }
     }
 

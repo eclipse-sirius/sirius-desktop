@@ -64,6 +64,7 @@ import org.eclipse.sirius.table.tools.internal.command.TableCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -102,6 +103,11 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DTable;
+    }
+
+    @Override
+    protected boolean isSupported(DRepresentationDescriptor representationDescriptor) {
+        return representationDescriptor.getDescription() instanceof TableDescription;
     }
 
     @Override

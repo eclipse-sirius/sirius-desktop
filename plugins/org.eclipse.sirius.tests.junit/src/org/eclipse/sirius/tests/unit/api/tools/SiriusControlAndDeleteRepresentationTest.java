@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.base.Predicate;
@@ -138,12 +140,14 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         ByteArrayOutputStream outdiagramResource = new ByteArrayOutputStream();
         saveInOutputStreamNoSideEffect(diagramResource, outdiagramResource);
 
-        final DRepresentation existingRepresentation = (DRepresentation) Iterables.find(getRepresentations(ENTITIES_DESC_NAME, session), new Predicate<DRepresentation>() {
-            public boolean apply(DRepresentation input) {
+        final DRepresentationDescriptor existingRepresentation = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
+            @Override
+            public boolean apply(DRepresentationDescriptor input) {
                 return input.getName().equals("package2 package entities");
             }
         });
         final DRepresentation newRepresentation = createRepresentation(ENTITIES_DESC_NAME, package2);
+        final DRepresentationDescriptor newrepresentationDescriptor = new DRepresentationQuery(newRepresentation).getRepresentationDescriptor();
         session.save(new NullProgressMonitor());
         TestsUtil.emptyEventsFromUIThread();
         // TestsUtil.synchronizationWithUIThread();
@@ -162,7 +166,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         executeCommand(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                DialectManager.INSTANCE.deleteRepresentation(newRepresentation, session);
+                DialectManager.INSTANCE.deleteRepresentation(newrepresentationDescriptor, session);
             }
         });
         session.save(new NullProgressMonitor());
@@ -256,15 +260,16 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         final Session session3 = session;
         TestsUtil.synchronizationWithUIThread();
         // Delete the diagram created earlier.
-        final DRepresentation representation2 = (DRepresentation) Iterables.find(getRepresentations(ENTITIES_DESC_NAME, session), new Predicate<DRepresentation>() {
-            public boolean apply(DRepresentation input) {
+        final DRepresentationDescriptor repDescriptor2 = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
+            @Override
+            public boolean apply(DRepresentationDescriptor input) {
                 return input.getName().equals("New package2 diagram");
             }
         });
         Command cmd = new RecordingCommand(session3.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                DialectManager.INSTANCE.deleteRepresentation(representation2, session3);
+                DialectManager.INSTANCE.deleteRepresentation(repDescriptor2, session3);
             }
         };
         executeCommand(cmd);
@@ -296,15 +301,16 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // Same as before, but remove a representation which was here already at
         // the beginning, and also not controlled.
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + MAIN_SEMANTIC_MODEL_FILENAME, TEMPORARY_PROJECT_NAME + "/" + "modeler.odesign", TEMPORARY_PROJECT_NAME + "/" + MAIN_SESSION_MODEL_FILENAME);
-        final DRepresentation representation3 = (DRepresentation) Iterables.find(getRepresentations(ENTITIES_DESC_NAME, session), new Predicate<DRepresentation>() {
-            public boolean apply(DRepresentation input) {
+        final DRepresentationDescriptor repDescriptor3 = Iterables.find(getRepresentationDescriptors(ENTITIES_DESC_NAME, session), new Predicate<DRepresentationDescriptor>() {
+            @Override
+            public boolean apply(DRepresentationDescriptor input) {
                 return input.eResource().getURI().equals(mainSessionResourceURI);
             }
         });
         cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                DialectManager.INSTANCE.deleteRepresentation(representation3, session);
+                DialectManager.INSTANCE.deleteRepresentation(repDescriptor3, session);
             }
         };
         executeCommand(cmd);
@@ -316,6 +322,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // Initially we have a two packages in the same ecore, and two diagrams
         // (one for each package) in the same aird.
         EList<DRepresentation> allRepresentations = Iterables.find(session.getOwnedViews(), new Predicate<DView>() {
+            @Override
             public boolean apply(DView v) {
                 return v.getOwnedRepresentations().size() == 4;
             }

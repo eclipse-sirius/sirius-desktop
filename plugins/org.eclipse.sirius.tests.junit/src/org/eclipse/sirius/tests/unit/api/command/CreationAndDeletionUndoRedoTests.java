@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.common.command.EPackageEClassifiersAppenderRecordingCommand;
@@ -30,7 +28,8 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
@@ -43,7 +42,7 @@ import org.eclipse.ui.PlatformUI;
  */
 public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase implements EcoreModeler {
 
-    private DDiagram diagram;
+    private DRepresentationDescriptor repDescriptor;
 
     private Object cmdStack;
 
@@ -58,7 +57,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
         super.setUp();
         genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
-        diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        repDescriptor = (DRepresentationDescriptor) getRepresentationDescriptors(ENTITIES_DESC_NAME).toArray()[0];
         /* on entities container are currently list */
         containerAreListContainer = true;
 
@@ -134,8 +133,8 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
     }
 
     private IEditorPart createNewRepresentation() {
-        final DiagramDescription description = diagram.getDescription();
-        final EObject semanticElement = ((DSemanticDecorator) diagram).getTarget();
+        final RepresentationDescription description = repDescriptor.getDescription();
+        final EObject semanticElement = repDescriptor.getTarget();
         final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, semanticElement, "plop", new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(createRepresentationCommand);
         createdRepresentation = createRepresentationCommand.getCreatedRepresentation();
@@ -218,6 +217,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
             throw new Exception("not a valid command stack");
     }
 
+    @Override
     protected boolean undo() throws Exception {
         if (cmdStack instanceof CommandStack)
             ((CommandStack) cmdStack).undo();
@@ -238,13 +238,13 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
     }
 
     public void testDeletion() throws Exception {
-        assertTrue(DialectManager.INSTANCE.getAllRepresentations(session).contains(diagram));
+        assertTrue(DialectManager.INSTANCE.getAllRepresentationDescriptors(session).contains(repDescriptor));
 
-        session.getTransactionalEditingDomain().getCommandStack().execute(new RepresentationDeleterRecordingCommand(session.getTransactionalEditingDomain(), diagram, session));
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RepresentationDeleterRecordingCommand(session.getTransactionalEditingDomain(), repDescriptor, session));
 
-        assertFalse(DialectManager.INSTANCE.getAllRepresentations(session).contains(diagram));
+        assertFalse(DialectManager.INSTANCE.getAllRepresentationDescriptors(session).contains(repDescriptor));
         session.getTransactionalEditingDomain().getCommandStack().undo();
-        assertTrue(DialectManager.INSTANCE.getAllRepresentations(session).contains(diagram));
+        assertTrue(DialectManager.INSTANCE.getAllRepresentationDescriptors(session).contains(repDescriptor));
     }
 
     public void testDeletionWithEmptyDiagram() throws Exception {
@@ -255,16 +255,16 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
         session.getTransactionalEditingDomain().getCommandStack().flush();
 
-        session.getTransactionalEditingDomain().getCommandStack().execute(new RepresentationDeleterRecordingCommand(session.getTransactionalEditingDomain(), diagram, session));
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RepresentationDeleterRecordingCommand(session.getTransactionalEditingDomain(), repDescriptor, session));
 
         assertTrue(canUndo());
         undo();
-        assertTrue(DialectManager.INSTANCE.getAllRepresentations(session).contains(diagram));
+        assertTrue(DialectManager.INSTANCE.getAllRepresentationDescriptors(session).contains(repDescriptor));
     }
 
     @Override
     protected void tearDown() throws Exception {
-        diagram = null;
+        repDescriptor = null;
         cmdStack = null;
         createdRepresentation = null;
 

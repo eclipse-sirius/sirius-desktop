@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -34,6 +33,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -70,14 +70,14 @@ public class DiagramListenersTests extends SiriusDiagramTestCase {
     }
 
     public void testDeleteElementsAndCheckErrorLog() throws Exception {
-        final DSemanticDiagram diagram = (DSemanticDiagram) getRepresentations("Diagram").toArray()[0];
-        IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        final DRepresentationDescriptor repDescriptor = (DRepresentationDescriptor) getRepresentationDescriptors("Diagram").toArray()[0];
+        IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, repDescriptor.getRepresentation(), new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
         errorCatchActiveOldState = isErrorCatchActive();
         setErrorCatchActive(true);
         try {
 
-            final EObject semanticElement = diagram.getTarget();
+            final EObject semanticElement = repDescriptor.getTarget();
 
             // Execute a command that delete a semantic element after closing
             // corresponding editors and deleting corresponding representations.
@@ -91,9 +91,9 @@ public class DiagramListenersTests extends SiriusDiagramTestCase {
                     realCommand.append(new RecordingCommand(domain, "Delete representation and close it", null) {
                         @Override
                         protected void doExecute() {
-                            closeActiveRepresentationEditor(diagram, session);
+                            closeActiveRepresentationEditor(repDescriptor.getRepresentation(), session);
                             // Delete the current representation.
-                            if (DialectManager.INSTANCE.deleteRepresentation(diagram, session)) {
+                            if (DialectManager.INSTANCE.deleteRepresentation(repDescriptor, session)) {
                                 // Notify changes.
                                 SessionManager.INSTANCE.notifyRepresentationDeleted(session);
                             }

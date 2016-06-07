@@ -87,6 +87,16 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     protected abstract boolean isSupported(DRepresentation representation);
 
     /**
+     * Checks whether a specific representation is supported by this dialect,
+     * i.e. it can delete it, copy it, refresh it, etc.
+     * 
+     * @param representationDescriptor
+     *            the descriptor of the representation.
+     * @return <code>true</code> if this dialect supports the representation.
+     */
+    protected abstract boolean isSupported(DRepresentationDescriptor representationDescriptor);
+
+    /**
      * Checks whether a specific representation description is supported by this
      * dialect, i.e. it can create concrete representations from it, and support
      * the result.
@@ -254,13 +264,11 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         return newRepresentation;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public boolean deleteRepresentation(DRepresentation representation, Session session) {
-        if (isSupported(representation)) {
-            SiriusUtil.delete(representation, session);
+    public boolean deleteRepresentation(DRepresentationDescriptor representationDescriptor, Session session) {
+        if (isSupported(representationDescriptor)) {
+            SiriusUtil.delete(representationDescriptor.getRepresentation(), session);
+            SiriusUtil.delete(representationDescriptor, session);
             return true;
         }
         return false;

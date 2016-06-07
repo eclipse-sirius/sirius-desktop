@@ -250,13 +250,13 @@ public interface DialectServices {
      * Delete the given representation. The implementation should only handle
      * representations it is aware of.
      * 
-     * @param representation
-     *            representation to delete.
+     * @param repDescriptor
+     *            the descriptor of the representation to delete.
      * @param session
      *            the current session.
      * @return true if the dialect did the delete, false otherwise.
      */
-    boolean deleteRepresentation(DRepresentation representation, Session session);
+    boolean deleteRepresentation(DRepresentationDescriptor repDescriptor, Session session);
 
     /**
      * Returns the description of the given representation.

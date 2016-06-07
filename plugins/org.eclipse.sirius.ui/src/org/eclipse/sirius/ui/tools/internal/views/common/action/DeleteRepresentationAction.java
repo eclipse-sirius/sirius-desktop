@@ -76,11 +76,11 @@ public class DeleteRepresentationAction extends Action {
 
     @Override
     public void run() {
-        Map<DRepresentation, Session> dRepresentation2Session = getRepresentations();
-        final Map<Session, Set<DRepresentation>> session2DRepresentations = getSession2DRepresentations(dRepresentation2Session);
+        Map<DRepresentationDescriptor, Session> representation2Session = getRepresentations();
+        final Map<Session, Set<DRepresentationDescriptor>> session2DRepresentations = getSession2Representations(representation2Session);
         String deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title;
         String deletionMessage = Messages.DeleteRepresentationAction_message;
-        if (dRepresentation2Session.size() >= 2) {
+        if (representation2Session.size() >= 2) {
             deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title_plural;
             deletionMessage = Messages.DeleteRepresentationAction_message_plural;
         }
@@ -94,23 +94,23 @@ public class DeleteRepresentationAction extends Action {
                     public void run(final IProgressMonitor monitor) {
                         try {
                             monitor.beginTask(Messages.DeleteRepresentationAction_closeEditorsTask, 1);
-                            for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
+                            for (Entry<Session, Set<DRepresentationDescriptor>> entry : session2DRepresentations.entrySet()) {
                                 Session session = entry.getKey();
-                                Set<DRepresentation> dRepresentations = entry.getValue();
+                                Set<DRepresentationDescriptor> dRepdescriptors = entry.getValue();
 
                                 IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
                                 if (editingSession != null) {
-                                    for (DRepresentation dRepresentation : dRepresentations) {
-                                        DialectEditor editor = editingSession.getEditor(dRepresentation);
-                                        if (editor != null) {
-                                            DialectUIManager.INSTANCE.closeEditor(editor, false);
-                                            editingSession.detachEditor(editor);
+                                    for (DRepresentationDescriptor dRepDescriptor : dRepdescriptors) {
+                                        DRepresentation representation = dRepDescriptor.getRepresentation();
+                                        if (representation != null) {
+                                            DialectEditor editor = editingSession.getEditor(representation);
+                                            if (editor != null) {
+                                                DialectUIManager.INSTANCE.closeEditor(editor, false);
+                                                editingSession.detachEditor(editor);
+                                            }
                                         }
                                     }
                                 }
-
-                                Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
-                                session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
                             }
                         } finally {
                             monitor.done();
@@ -128,11 +128,11 @@ public class DeleteRepresentationAction extends Action {
                             String taskName = session2DRepresentations.size() > 1 ? Messages.DeleteRepresentationAction_deleteRepresentationTask_plural
                                     : Messages.DeleteRepresentationAction_deleteRepresentationTask;
                             monitor.beginTask(taskName, session2DRepresentations.size());
-                            for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
+                            for (Entry<Session, Set<DRepresentationDescriptor>> entry : session2DRepresentations.entrySet()) {
                                 Session session = entry.getKey();
-                                Set<DRepresentation> dRepresentations = entry.getValue();
+                                Set<DRepresentationDescriptor> dRepDescriptors = entry.getValue();
 
-                                Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
+                                Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepDescriptors);
                                 session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
                             }
                         } finally {
@@ -149,31 +149,30 @@ public class DeleteRepresentationAction extends Action {
         }
     }
 
-    private Map<DRepresentation, Session> getRepresentations() {
-        final Map<DRepresentation, Session> representations = new HashMap<DRepresentation, Session>();
+    private Map<DRepresentationDescriptor, Session> getRepresentations() {
+        final Map<DRepresentationDescriptor, Session> representations = new HashMap<DRepresentationDescriptor, Session>();
 
         for (final DRepresentationDescriptor dRepDescription : selectedRepDescriptors) {
-            DRepresentation dRepresentation = dRepDescription.getRepresentation();
-            EObjectQuery eObjectQuery = new EObjectQuery(dRepresentation);
+            EObjectQuery eObjectQuery = new EObjectQuery(dRepDescription);
             Session currentSession = eObjectQuery.getSession();
             if (currentSession != null) {
-                representations.put(dRepresentation, currentSession);
+                representations.put(dRepDescription, currentSession);
             }
         }
         return representations;
     }
 
-    private Map<Session, Set<DRepresentation>> getSession2DRepresentations(Map<DRepresentation, Session> dRepresentation2Session) {
-        Map<Session, Set<DRepresentation>> session2DRepresentations = new HashMap<Session, Set<DRepresentation>>();
-        for (Entry<DRepresentation, Session> entry : dRepresentation2Session.entrySet()) {
-            DRepresentation dRepresentation = entry.getKey();
+    private Map<Session, Set<DRepresentationDescriptor>> getSession2Representations(Map<DRepresentationDescriptor, Session> dRepresentation2Session) {
+        Map<Session, Set<DRepresentationDescriptor>> session2DRepresentations = new HashMap<Session, Set<DRepresentationDescriptor>>();
+        for (Entry<DRepresentationDescriptor, Session> entry : dRepresentation2Session.entrySet()) {
+            DRepresentationDescriptor dRepresentation = entry.getKey();
             Session session = entry.getValue();
-            Set<DRepresentation> dRepresentations = session2DRepresentations.get(session);
-            if (dRepresentations == null) {
-                dRepresentations = new HashSet<DRepresentation>();
-                session2DRepresentations.put(session, dRepresentations);
+            Set<DRepresentationDescriptor> repDescriptors = session2DRepresentations.get(session);
+            if (repDescriptors == null) {
+                repDescriptors = new HashSet<DRepresentationDescriptor>();
+                session2DRepresentations.put(session, repDescriptors);
             }
-            dRepresentations.add(dRepresentation);
+            repDescriptors.add(dRepresentation);
         }
         return session2DRepresentations;
     }

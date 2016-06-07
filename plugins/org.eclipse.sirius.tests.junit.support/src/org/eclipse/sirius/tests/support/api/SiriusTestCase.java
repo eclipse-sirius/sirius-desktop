@@ -96,6 +96,7 @@ import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -438,7 +439,6 @@ public abstract class SiriusTestCase extends TestCase {
                     semanticModel = semanticResource.getContents().get(0);
                 }
             }
-
         }
 
         accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(session.getTransactionalEditingDomain().getResourceSet());
@@ -456,7 +456,6 @@ public abstract class SiriusTestCase extends TestCase {
         commandFactory.setUserInterfaceCallBack(new NoUICallback());
 
         closeWelcomePage();
-
         TestsUtil.emptyEventsFromUIThread();
 
         // Initialize error/warning log and uncaught exception handlers
@@ -464,7 +463,6 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     private void createOrLoadAndOpenSession(final boolean createSession, final URI sessionResourceURI) {
-
         if (createSession) {
             if (sessionResourceURI == null) {
                 if (createModelingProject) {
@@ -478,7 +476,6 @@ public abstract class SiriusTestCase extends TestCase {
         } else {
             session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
         }
-
         if (!session.isOpen()) {
             session.open(new NullProgressMonitor());
         }
@@ -589,7 +586,6 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void initLoggers() {
         logListener = new ILogListener() {
-
             @Override
             public void logging(IStatus status, String plugin) {
                 switch (status.getSeverity()) {
@@ -615,7 +611,6 @@ public abstract class SiriusTestCase extends TestCase {
                 errorOccurs(status, sourcePlugin);
             }
         };
-
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
     }
 
@@ -742,7 +737,6 @@ public abstract class SiriusTestCase extends TestCase {
      */
     private void checkLogs() {
         /* an exception occurs in another thread */
-
         /*
          * TODO: skip checkLoggers when we are in a shouldSkipUnreliableTests
          * mode. We have some unwanted resource notifications during the
@@ -752,7 +746,6 @@ public abstract class SiriusTestCase extends TestCase {
             if (doesAnErrorOccurs()) {
                 Assert.fail(getErrorLoggersMessage());
             }
-
             if (doesAWarningOccurs()) {
                 Assert.fail(getWarningLoggersMessage());
             }
@@ -767,9 +760,7 @@ public abstract class SiriusTestCase extends TestCase {
     protected synchronized String getErrorLoggersMessage() {
         StringBuilder log1 = new StringBuilder();
         String br = "\n";
-
         String testName = getClass().getName();
-
         log1.append("Error(s) raised during test : " + testName).append(br);
         for (Entry<String, Collection<IStatus>> entry : errors.asMap().entrySet()) {
             String reporter = entry.getKey();
@@ -1082,9 +1073,7 @@ public abstract class SiriusTestCase extends TestCase {
      *         representation description could not be found
      */
     protected final DRepresentation createRepresentation(final String representationDescriptionName, final String name, final EObject semantic, final Session sessionToUse) {
-
         final Collection<RepresentationDescription> descriptions = new ArrayList<RepresentationDescription>();
-
         descriptions.addAll(DialectManager.INSTANCE.getAvailableRepresentationDescriptions(viewpoints, semantic));
 
         final Command cmd = new RecordingCommand(sessionToUse.getTransactionalEditingDomain()) {
@@ -1108,7 +1097,6 @@ public abstract class SiriusTestCase extends TestCase {
                 return Collections.singletonList(representation);
             }
         };
-
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(semantic);
         domain.getCommandStack().execute(cmd);
         return (DRepresentation) cmd.getResult().iterator().next();
@@ -1237,8 +1225,22 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all the representation with the given representation description name
-     * in the given session.
+     * Get all representation descriptors with the given representation
+     * description name.
+     * 
+     * @param representationDescriptionName
+     *            the name of the representation description. <code>null</code>
+     *            is not excepted.
+     * @return a {@link Collection} with all representation descriptors
+     *         retrieved.
+     */
+    protected final Collection<DRepresentationDescriptor> getRepresentationDescriptors(final String representationDescriptionName) {
+        return getRepresentationDescriptors(representationDescriptionName, session);
+    }
+
+    /**
+     * Get all representations with the given representation description name in
+     * the given session.
      * 
      * @param name
      *            the name. <code>null</code> is not excepted.
@@ -1261,8 +1263,33 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Get all the representation with the given representation description name
-     * in the given session.
+     * Get all representation descriptors with the given representation
+     * description name in the given session.
+     * 
+     * @param representationDescriptionName
+     *            the name of the representation description. <code>null</code>
+     *            is not excepted.
+     * @param alternateSession
+     *            the session to look for representation
+     * @return a {@link Collection} with all representations retrieved.
+     */
+    protected final Collection<DRepresentationDescriptor> getRepresentationDescriptors(final String representationDescriptionName, final Session alternateSession) {
+        final Collection<DRepresentationDescriptor> allRepDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(alternateSession);
+
+        final Collection<DRepresentationDescriptor> repDescriptors = new HashSet<DRepresentationDescriptor>();
+
+        for (final DRepresentationDescriptor repDescriptor : allRepDescriptors) {
+            final RepresentationDescription desc = repDescriptor.getDescription();
+            if (representationDescriptionName.equals(desc.getName())) {
+                repDescriptors.add(repDescriptor);
+            }
+        }
+        return repDescriptors;
+    }
+
+    /**
+     * Get all representations with the given representation description name in
+     * the given session.
      * 
      * @param name
      *            the name. <code>null</code> is not excepted.
@@ -1276,7 +1303,6 @@ public abstract class SiriusTestCase extends TestCase {
         final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, alternateSession);
 
         final Collection<DRepresentation> representations = new HashSet<DRepresentation>();
-
         for (final DRepresentation representation : allRepresentations) {
             final RepresentationDescription desc = DialectManager.INSTANCE.getDescription(representation);
             if (name.equals(desc.getName())) {
@@ -1763,7 +1789,6 @@ public abstract class SiriusTestCase extends TestCase {
         for (SiriusDiagramUiPreferencesKeys key : SiriusDiagramUiPreferencesKeys.values()) {
             uiKeys.add(key.name());
         }
-
         assertFalse("The Diagram UI preference named " + preferenceKey + " should not be modified in the Diagram core store.", uiKeys.contains(preferenceKey));
     }
 
@@ -2051,7 +2076,6 @@ public abstract class SiriusTestCase extends TestCase {
         } else {
             TestCase.assertFalse("The current test case expect a file which does not need migration : " + fileURI.toPlatformString(true), migrationIsNeeded);
         }
-
         return loadedVersion;
     }
 }
