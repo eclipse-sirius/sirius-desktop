@@ -8,6 +8,7 @@ _Summary_: Have a unique copy/paste action able to paste the semantic, the layou
 | v0.1        | DRAFT    | 2016-04-18 | fbarbin    | Initial version. |
 | v0.2        | DRAFT    | 2016-05-09 | fbarbin    | modification following a first review. |
 | v0.3        | PROPOSAL    | 2016-06-06 | fbarbin    | Proposal status following the last review |
+| v0.4        | PROPOSAL    | 2016-06-08 | lredor    | Add override capability for the "Paste Special" popup |
 
 _Relevant tickets_:
 * "Bug 491895 - Have a paste special in Sirius":https://bugs.eclipse.org/bugs/show_bug.cgi?id=491895
@@ -49,6 +50,7 @@ The behavior of the Paste semantic will stay the same than the current one.
 h3. Paste layout
 
 The Paste layout will replicate the layout to the same semantic elements between diagrams. That is the current behavior. In addition, if the paste semantic is applied with the paste layout, the layout of the original graphical elements is applied on the newly created elements (the copies).
+The current extension point org.eclipse.sirius.diagram.ui.layoutDataManager will be kept.
 
 h3. Paste style
 
@@ -58,13 +60,14 @@ The paste style will have a similar behavior to the _Copy Appearance_ action.
 
 h3(#UI). User Interface
 
-To default copy-paste behavior will be a semantic copy-paste by keeping the layout and style of the source graphical elements. A "Paste Special" menu will let the possibility to make its own combination. The more common actions like paste layout or paste semantic and layout will have their own entry in the menu.
+To default copy-paste behavior will be a semantic copy-paste by keeping the layout and style of the source graphical elements. A "Paste Special" menu will let the possibility to make its own combination. The more common actions like paste layout, paste semantic, or paste style will have their own entry in the menu.
 
 !images/copyPasteMenu.png!
 This sketch shows the future context menu.
 
 !images/PasteSpecialDialog.png!
-This sketch shows the paste special dialog.
+This sketch shows the paste special dialog. This popup will be handled by the @UICallBack@. This will allow to override the default implementation and forbid some combinations for example.
+The @UICallBack@ (@org.eclipse.sirius.tools.api.command.ui.UICallBack@) can be overridden with @SiriusEditPlugin.getPlugin().setUiCallback(UICallBack)@
 
 The old copy layout and paste layout actions will be removed from the tabbar to be consistent with this new feature.
 
@@ -116,4 +119,5 @@ For each combination, check the behavior on the same diagram, on a new empty dia
 h2. Implementation choices and tradeoffs
 
 Use the @UIState@ owned by the @DDiagram@ avoid to use a singleton to store information like layout and style data. As the @UIState@ is contextual to one diagram, the canonical synchronizer can retrieve the layout and the style information safely.
+The "Paste Special" popup can be overridden to hide some entry. But this feature does not allow to extend the "copy/paste" with a new kind of paste (for example). There is no entry point to override/change the menus linked to this feature. This is maybe possible with standard Eclipse capability but it's not in the scope of this feature. 
 The paste special UI (Wizard and menu) will not be extensible at the end of this work.

@@ -2,9 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>491895</title>
-		<link type="text/css" rel="stylesheet" href="../../../doc/resources/bootstrap.css"/>
-		<link type="text/css" rel="stylesheet" href="../../../doc/resources/custom.css"/>
 	</head>
 	<body>
 		<h1 id="SiriusEvolutionSpecificationHaveapastespecialaction">Sirius Evolution Specification: Have a paste special action</h1>
@@ -14,32 +11,39 @@
 		</p>
 		<table>
 			<tr>
-				<th>Version </th>
-				<th>Status </th>
-				<th>Date        </th>
-				<th>Authors </th>
-				<th>Changes </th>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
 			</tr>
 			<tr>
-				<td>v0.1        </td>
-				<td>DRAFT    </td>
-				<td>2016-04-18 </td>
-				<td>fbarbin    </td>
-				<td>Initial version. </td>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-04-18</td>
+				<td>fbarbin</td>
+				<td>Initial version.</td>
 			</tr>
 			<tr>
-				<td>v0.2        </td>
-				<td>DRAFT    </td>
-				<td>2016-05-09 </td>
-				<td>fbarbin    </td>
-				<td>modification following a first review. </td>
+				<td>v0.2</td>
+				<td>DRAFT</td>
+				<td>2016-05-09</td>
+				<td>fbarbin</td>
+				<td>modification following a first review.</td>
 			</tr>
 			<tr>
-				<td>v0.3        </td>
-				<td>PROPOSAL    </td>
-				<td>2016-06-06 </td>
-				<td>fbarbin    </td>
-				<td>Proposal status following the last review </td>
+				<td>v0.3</td>
+				<td>PROPOSAL</td>
+				<td>2016-06-06</td>
+				<td>fbarbin</td>
+				<td>Proposal status following the last review</td>
+			</tr>
+			<tr>
+				<td>v0.4</td>
+				<td>PROPOSAL</td>
+				<td>2016-06-08</td>
+				<td>lredor</td>
+				<td>Add override capability for the &#171;Paste Special&#187; popup</td>
 			</tr>
 		</table>
 		<p>
@@ -86,21 +90,28 @@
 		<h3 id="Pastesemantic">Paste semantic</h3>
 		<p>The behavior of the Paste semantic will stay the same than the current one.</p>
 		<h3 id="Pastelayout">Paste layout</h3>
-		<p>The Paste layout will replicate the layout to the same semantic elements between diagrams. That is the current behavior. In addition, if the paste semantic is applied with the paste layout, the layout of the original graphical elements is applied on the newly created elements (the copies).</p>
+		<p>The Paste layout will replicate the layout to the same semantic elements between diagrams. That is the current behavior. In addition, if the paste semantic is applied with the paste layout, the layout of the original graphical elements is applied on the newly created elements (the copies).
+			<br/>The current extension point org.eclipse.sirius.diagram.ui.layoutDataManager will be kept.
+		</p>
 		<h3 id="Pastestyle">Paste style</h3>
 		<p>The Paste style will apply the same style to the target elements. All the source elements style properties (customized or not) will be applied to the target elements as custom styles if they are different than the default ones. That means if the copied element background is different from the one to paste, the background will appear as a custom feature. If the background is the same, nothing is modified. 
 			<br/>The paste style will have a similar behavior to the 
 			<em>Copy Appearance</em> action.
 		</p>
 		<h3 id="UI">User Interface</h3>
-		<p>To default copy-paste behavior will be a semantic copy-paste by keeping the layout and style of the source graphical elements. A &#8220;Paste Special&#8221; menu will let the possibility to make its own combination. The more common actions like paste layout or paste semantic and layout will have their own entry in the menu.</p>
+		<p>To default copy-paste behavior will be a semantic copy-paste by keeping the layout and style of the source graphical elements. A &#171;Paste Special&#187; menu will let the possibility to make its own combination. The more common actions like paste layout, paste semantic, or paste style will have their own entry in the menu.</p>
 		<p>
 			<img border="0" src="images/copyPasteMenu.png"/>
 			<br/>This sketch shows the future context menu.
 		</p>
 		<p>
 			<img border="0" src="images/PasteSpecialDialog.png"/>
-			<br/>This sketch shows the paste special dialog.
+			<br/>This sketch shows the paste special dialog. This popup will be handled by the 
+			<code>UICallBack</code>. This will allow to override the default implementation and forbid some combinations for example.
+			<br/>The 
+			<code>UICallBack</code> (
+			<code>org.eclipse.sirius.tools.api.command.ui.UICallBack</code>) can be overridden with 
+			<code>SiriusEditPlugin.getPlugin().setUiCallback(UICallBack)</code>
 		</p>
 		<p>The old copy layout and paste layout actions will be removed from the tabbar to be consistent with this new feature.</p>
 		<h3 id="Technicaldetails">Technical details</h3>
@@ -159,6 +170,7 @@
 			<code>UIState</code> owned by the 
 			<code>DDiagram</code> avoid to use a singleton to store information like layout and style data. As the 
 			<code>UIState</code> is contextual to one diagram, the canonical synchronizer can retrieve the layout and the style information safely.
+			<br/>The &#171;Paste Special&#187; popup can be overridden to hide some entry. But this feature does not allow to extend the &#171;copy/paste&#187; with a new kind of paste (for example). There is no entry point to override/change the menus linked to this feature. This is maybe possible with standard Eclipse capability but it&#8217;s not in the scope of this feature. 
 			<br/>The paste special UI (Wizard and menu) will not be extensible at the end of this work.
 		</p>
 	</body>
