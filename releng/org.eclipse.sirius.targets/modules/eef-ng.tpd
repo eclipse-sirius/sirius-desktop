@@ -1,9 +1,9 @@
 target "EEF NG"
 
-location Sirius-Incubation-Nightly "http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/" {
+location Sirius-Interpreter-Neon "http://download.eclipse.org/sirius/updates/releases/4.0.0/neon/incubation/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 
-location EEF-NG-Latest "http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon" {
+location EEF-NG-Latest "http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.6/S20160525090447" {
 	org.eclipse.eef.sdk.feature.feature.group lazy
 }
