@@ -120,4 +120,3 @@ h2. Implementation choices and tradeoffs
 
 Use the @UIState@ owned by the @DDiagram@ avoid to use a singleton to store information like layout and style data. As the @UIState@ is contextual to one diagram, the canonical synchronizer can retrieve the layout and the style information safely.
 The "Paste Special" popup can be overridden to hide some entry. But this feature does not allow to extend the "copy/paste" with a new kind of paste (for example). There is no entry point to override/change the menus linked to this feature. This is maybe possible with standard Eclipse capability but it's not in the scope of this feature. 
-The paste special UI (Wizard and menu) will not be extensible at the end of this work.
