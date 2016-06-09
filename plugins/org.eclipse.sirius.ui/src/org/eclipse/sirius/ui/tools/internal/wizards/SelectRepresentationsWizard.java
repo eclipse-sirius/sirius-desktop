@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.RepresentationsSelectionWizardPage;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
  */
 public class SelectRepresentationsWizard extends Wizard {
 
-    private Collection<DRepresentation> representations;
+    private Collection<DRepresentationDescriptor> representations;
 
     private RepresentationsSelectionWizardPage selectElementPage;
 
@@ -43,7 +43,7 @@ public class SelectRepresentationsWizard extends Wizard {
      * @param preselection
      *            preselected diagrams
      */
-    public SelectRepresentationsWizard(final Session session, final Collection<DRepresentation> preselection) {
+    public SelectRepresentationsWizard(final Session session, final Collection<DRepresentationDescriptor> preselection) {
         this.session = session;
         this.representations = preselection;
     }
@@ -70,7 +70,7 @@ public class SelectRepresentationsWizard extends Wizard {
         addPage(selectElementPage);
     }
 
-    public Collection<DRepresentation> getSelectedRepresentations() {
+    public Collection<DRepresentationDescriptor> getSelectedRepresentations() {
         return representations;
     }
 

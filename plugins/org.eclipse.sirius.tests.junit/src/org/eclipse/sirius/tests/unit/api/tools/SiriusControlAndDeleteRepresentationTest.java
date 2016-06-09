@@ -335,7 +335,8 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // We control package2 and "package1 package entities" into a separate
         // ecore and (resp.) aird
         DRepresentation representation = allRepresentations.get(0);
-        SiriusControlCommand vcc = new SiriusControlCommand(package2, controlledSemanticResourceURI, Collections.singleton(representation), controlledSessionResourceURI, true,
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+        SiriusControlCommand vcc = new SiriusControlCommand(package2, controlledSemanticResourceURI, Collections.singleton(representationDescriptor), controlledSessionResourceURI, true,
                 new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(vcc);
         ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);

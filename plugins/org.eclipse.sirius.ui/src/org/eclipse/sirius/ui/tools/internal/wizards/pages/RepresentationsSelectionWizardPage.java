@@ -35,8 +35,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
@@ -80,7 +79,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     private final Session root;
 
-    private final Collection<DRepresentation> preselection;
+    private final Collection<DRepresentationDescriptor> preselection;
 
     /**
      * Create a new <code>DescDiagramSelectionWizardPage</code>.
@@ -90,7 +89,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * @param representations
      *            the preselection.
      */
-    public RepresentationsSelectionWizardPage(final Session root, final Collection<DRepresentation> representations) {
+    public RepresentationsSelectionWizardPage(final Session root, final Collection<DRepresentationDescriptor> representations) {
         super(RepresentationsSelectionWizardPage.PAGE_TITLE);
         this.setTitle(RepresentationsSelectionWizardPage.PAGE_TITLE);
         this.root = root;
@@ -116,7 +115,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         treeViewer.collapseAll();
         setControl(pageComposite);
 
-        for (final DRepresentation preselected : preselection) {
+        for (final DRepresentationDescriptor preselected : preselection) {
             this.treeViewer.setChecked(preselected, true);
         }
 
@@ -170,12 +169,12 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         }
     }
 
-    private int checkSelection(final Collection<DRepresentation> selectedRepresentations) {
+    private int checkSelection(final Collection<DRepresentationDescriptor> selectedRepresentations) {
         int result = RepresentationsSelectionWizardPage.CODE_OK;
         if (selectedRepresentations.isEmpty()) {
             result = RepresentationsSelectionWizardPage.CODE_NO_SEL;
         } else {
-            for (DRepresentation item : selectedRepresentations) {
+            for (DRepresentationDescriptor item : selectedRepresentations) {
                 // check permission authority
                 EObject container = item.eContainer();
                 if (container instanceof DView) {
@@ -237,7 +236,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             final Widget item = findItem(element);
             if (item instanceof TreeItem) {
                 final TreeItem treeItem = (TreeItem) item;
-                if (!(element instanceof DRepresentation)) {
+                if (!(element instanceof DRepresentationDescriptor)) {
                     final boolean result = updateChildrenItems(treeItem, treeItem.getChecked());
                     if (result) {
                         treeItem.setGrayed(true);
@@ -255,7 +254,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
          * Updates the check / gray state of all parent items
          */
         private void updateParentItems(final TreeItem item) {
-            if (item != null && !(item.getData() instanceof DRepresentation)) {
+            if (item != null && !(item.getData() instanceof DRepresentationDescriptor)) {
                 final Item[] children = getChildren(item);
                 boolean containsChecked = false;
                 for (Item element : children) {
@@ -280,7 +279,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             final Item[] children = getChildren(parent);
             for (Item element : children) {
                 final TreeItem curr = (TreeItem) element;
-                if (curr.getData() instanceof DRepresentation && ((curr.getChecked() != state) || curr.getGrayed())) {
+                if (curr.getData() instanceof DRepresentationDescriptor && ((curr.getChecked() != state) || curr.getGrayed())) {
                     curr.setChecked(state);
                     curr.setGrayed(false);
                     result = result || state;
@@ -307,9 +306,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
      * @return all selected elements.
      */
     @SuppressWarnings("unchecked")
-    public Collection<DRepresentation> getSelectedElements() {
-        final Collection<DRepresentation> result = new HashSet<DRepresentation>();
-        result.addAll((Collection<? extends DRepresentation>) Arrays.asList(treeViewer.getCheckedElements()));
+    public Collection<DRepresentationDescriptor> getSelectedElements() {
+        final Collection<DRepresentationDescriptor> result = new HashSet<DRepresentationDescriptor>();
+        result.addAll((Collection<? extends DRepresentationDescriptor>) Arrays.asList(treeViewer.getCheckedElements()));
         result.removeAll(Arrays.asList(treeViewer.getGrayedElements()));
         return result;
     }
@@ -348,18 +347,18 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
                 // Test Resource before EObject because with CDO a CDOResource
                 // is a EObject
                 children = ((Resource) parentElement).getContents().toArray();
-            } else if (parentElement instanceof EObject && !(parentElement instanceof DRepresentation)) {
+            } else if (parentElement instanceof EObject && !(parentElement instanceof DRepresentationDescriptor)) {
                 final EObject parent = (EObject) parentElement;
-                final Collection<DRepresentation> representations = this.findRepresentations(parent);
+                final Collection<DRepresentationDescriptor> repDescriptors = this.findRepDescriptors(parent);
                 Object[] semantic = this.semanticProvider.getChildren(parentElement);
                 semantic = filtersSemanticFromAnotherResource(parent.eResource(), semantic);
-                final Object[] result = new Object[representations.size() + semantic.length];
+                final Object[] result = new Object[repDescriptors.size() + semantic.length];
                 int i = 0;
-                final Iterator<DRepresentation> iterRepresentation = representations.iterator();
-                while (iterRepresentation.hasNext()) {
-                    result[i++] = iterRepresentation.next();
+                final Iterator<DRepresentationDescriptor> iterRepDescriptor = repDescriptors.iterator();
+                while (iterRepDescriptor.hasNext()) {
+                    result[i++] = iterRepDescriptor.next();
                 }
-                System.arraycopy(semantic, 0, result, representations.size(), semantic.length);
+                System.arraycopy(semantic, 0, result, repDescriptors.size(), semantic.length);
                 children = result;
             }
             return children;
@@ -386,7 +385,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         public Object getParent(final Object element) {
             if (element instanceof EObject) {
                 final EObject current = (EObject) element;
-                final EObject parent = current instanceof DRepresentation ? ((DSemanticDecorator) current).getTarget() : current.eContainer();
+                final EObject parent = current instanceof DRepresentationDescriptor ? ((DRepresentationDescriptor) current).getTarget() : current.eContainer();
                 return parent;
             }
             return null;
@@ -413,17 +412,17 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         }
 
         /**
-         * Return all the diagrams for the specified viewpoint.
+         * Return all the DRepresentationDescriptor for the specified viewpoint.
          *
          * @param semanticElement
          *            the parent semantic element.
          * @return all the diagrams for the specified viewpoint.
          */
-        private Collection<DRepresentation> findRepresentations(final EObject semanticElement) {
+        private Collection<DRepresentationDescriptor> findRepDescriptors(final EObject semanticElement) {
             if (semanticElement == null) {
                 return Collections.emptySet();
             }
-            return DialectManager.INSTANCE.getRepresentations(semanticElement, session);
+            return DialectManager.INSTANCE.getRepresentationDescriptors(semanticElement, session);
         }
     }
 

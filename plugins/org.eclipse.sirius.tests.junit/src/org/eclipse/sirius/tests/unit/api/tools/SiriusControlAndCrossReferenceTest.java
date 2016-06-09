@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
@@ -32,6 +33,7 @@ import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
@@ -77,7 +79,8 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
         final DRepresentation representationTocontrol = DialectManager.INSTANCE.getRepresentations(packageToControl, session).iterator().next();
         URI controlledModelUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/controlled_package.ecore", true);
         final URI controlledAirdUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/controlled_package.aird", true);
-        SiriusControlCommand vcc = new SiriusControlCommand(packageToControl, controlledModelUri, Collections.singleton(representationTocontrol), controlledAirdUri, true, new NullProgressMonitor());
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representationTocontrol).getRepresentationDescriptor();
+        SiriusControlCommand vcc = new SiriusControlCommand(packageToControl, controlledModelUri, Collections.singleton(representationDescriptor), controlledAirdUri, true, new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(vcc);
 
         // Check that control occurs
@@ -107,6 +110,7 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
         // Add a diagram
         ((DAnalysisSession) session).setAnalysisSelector(new SimpleAnalysisSelector(((DAnalysisSessionEObject) session).getAnalyses().get(0).getReferencedAnalysis().get(0)));
         Command crc = new IdentityCommand() {
+            @Override
             public void execute() {
                 DRepresentation rep3 = DialectManager.INSTANCE.createRepresentation("Test Rep", packageToControl, DialectManager.INSTANCE.getDescription(representationTocontrol), session,
                         new NullProgressMonitor());

@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
@@ -357,36 +359,56 @@ public final class DAnalysisSessionHelper {
     }
 
     /**
-     * Complete the models references of the DAnalysis according to the list of
-     * DSemanticDecorator.<BR>
+     * Complete the models references of the DAnalysis according to all the
+     * {@link DSemanticDecorator} of the {@link DRepresentation}
+     * contained(precisely referenced by the DRepresentationDescriptor contained
+     * by the dView) in the dView.<BR>
      * For each {@link DSemanticDecorator} we add the root container of the
      * target to the <code>models</code> references (except if this root is the
      * main semantic root of a referenced analysis).
      * 
+     * @param dView
+     *            An iterator on each DSemanticDecorator to check.
+     */
+    public static void updateModelsReferences(DView dView) {
+        DAnalysis analysis = (DAnalysis) dView.eContainer();
+        List<DRepresentationDescriptor> repDescriptors = dView.getOwnedRepresentationDescriptors();
+        for (DRepresentationDescriptor repDescriptor : repDescriptors) {
+            updateModelsReferences(analysis, repDescriptor.getTarget());
+
+            Iterator<DSemanticDecorator> iterator = Iterators.filter(repDescriptor.getRepresentation().eAllContents(), DSemanticDecorator.class);
+            while (iterator.hasNext()) {
+                EObject semanticTarget = iterator.next().getTarget();
+                updateModelsReferences(analysis, semanticTarget);
+            }
+        }
+    }
+
+    /**
+     * Complete the models references of the DAnalysis according to a semantic
+     * object<BR>
+     * 
      * @param analysis
      *            The DAnalysis for which the <code>models</code> references
      *            must be complete.
-     * @param iterator
-     *            An iterator on each DSemanticDecorator to check.
+     * @param semanticObject
+     *            the semantic object
      */
-    public static void updateModelsReferences(DAnalysis analysis, Iterator<DSemanticDecorator> iterator) {
-        while (iterator.hasNext()) {
-            EObject semanticTarget = iterator.next().getTarget();
-            if (semanticTarget != null) {
-                EObject rootContainerInSameResource = new EObjectQuery(semanticTarget).getResourceContainer();
-                // rootContainerInSameResource can be null in case of
-                // proxy
-                if (rootContainerInSameResource != null) {
-                    boolean isMainModelOfReferencedAnalysis = false;
-                    for (DAnalysis referencedAnalysis : new DAnalysisQuery(analysis).getAllReferencedAnalyses()) {
-                        Option<EObject> optionalMainModel = new DAnalysisQuery(referencedAnalysis).getMainModel();
-                        if (optionalMainModel.some() && optionalMainModel.get().equals(rootContainerInSameResource)) {
-                            isMainModelOfReferencedAnalysis = true;
-                        }
+    private static void updateModelsReferences(DAnalysis analysis, EObject semanticObject) {
+        if (semanticObject != null) {
+            EObject rootContainerInSameResource = new EObjectQuery(semanticObject).getResourceContainer();
+            // rootContainerInSameResource can be null in case of
+            // proxy
+            if (rootContainerInSameResource != null) {
+                boolean isMainModelOfReferencedAnalysis = false;
+                for (DAnalysis referencedAnalysis : new DAnalysisQuery(analysis).getAllReferencedAnalyses()) {
+                    Option<EObject> optionalMainModel = new DAnalysisQuery(referencedAnalysis).getMainModel();
+                    if (optionalMainModel.some() && optionalMainModel.get().equals(rootContainerInSameResource)) {
+                        isMainModelOfReferencedAnalysis = true;
                     }
-                    if (!isMainModelOfReferencedAnalysis) {
-                        analysis.getSemanticResources().add(new ResourceDescriptor(rootContainerInSameResource.eResource().getURI()));
-                    }
+                }
+                if (!isMainModelOfReferencedAnalysis) {
+                    analysis.getSemanticResources().add(new ResourceDescriptor(rootContainerInSameResource.eResource().getURI()));
                 }
             }
         }

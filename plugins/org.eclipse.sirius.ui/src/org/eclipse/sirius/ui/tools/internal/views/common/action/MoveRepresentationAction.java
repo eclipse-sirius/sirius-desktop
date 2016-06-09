@@ -24,7 +24,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -34,7 +33,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * An action to move selected representations.
@@ -86,11 +84,7 @@ public class MoveRepresentationAction extends Action {
                 }
             }
         }
-        Collection<DRepresentation> representations = Lists.newArrayList();
-        for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
-            representations.add(dRepresentationDescriptor.getRepresentation());
-        }
-        session.getTransactionalEditingDomain().getCommandStack().execute(new MoveRepresentationCommand(session, targetAnalysis, representations));
+        session.getTransactionalEditingDomain().getCommandStack().execute(new MoveRepresentationCommand(session, targetAnalysis, repDescriptors));
     }
 
     /**

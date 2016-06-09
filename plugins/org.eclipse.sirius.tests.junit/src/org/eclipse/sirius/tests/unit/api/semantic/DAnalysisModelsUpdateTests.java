@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -60,6 +61,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.ui.PlatformUI;
 
@@ -510,7 +512,8 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
      * @throws OperationCanceledException
      */
     private void fragment(EObject semanticRoot, URI semanticDest, DRepresentation representationDestination, URI representationDest) throws OperationCanceledException, InterruptedException {
-        Command p1EPackageControlCommand = new SiriusControlCommand(semanticRoot, semanticDest, Collections.singleton(representationDestination), representationDest, true, new NullProgressMonitor());
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representationDestination).getRepresentationDescriptor();
+        Command p1EPackageControlCommand = new SiriusControlCommand(semanticRoot, semanticDest, Collections.singleton(representationDescriptor), representationDest, true, new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(p1EPackageControlCommand);
         try {
             ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IWorkspaceRoot.DEPTH_INFINITE, null);

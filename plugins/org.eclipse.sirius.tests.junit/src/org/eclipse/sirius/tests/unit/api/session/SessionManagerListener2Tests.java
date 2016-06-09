@@ -28,6 +28,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -46,7 +47,7 @@ import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceComma
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -355,8 +356,10 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         assertEquals("The session must contains one DAnalysis.", 1, session.getAllSessionResources().size());
         final DDiagram diagram = (DDiagram) createRepresentation(ENTITIES_DESC_NAME, semanticModel);
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
-        assertTrue("The diagram must have a DAnalysis as grandfather.", diagram.eContainer() != null && diagram.eContainer().eContainer() instanceof DAnalysis);
-        final DAnalysis firstAnalysis = (DAnalysis) diagram.eContainer().eContainer();
+        assertTrue("The diagram must be a root object of the aird resource.", diagram.eContainer() == null);
+
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
+        final DAnalysis firstAnalysis = (DAnalysis) representationDescriptor.eContainer().eContainer();
         // Create a second analysis for the move
         final DAnalysis secondAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
         final Resource representationsResource = EclipseTestsSupportHelper.INSTANCE.createResourceInProject(session.getTransactionalEditingDomain().getResourceSet(), TEMPORARY_PROJECT_NAME,
@@ -370,12 +373,12 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         });
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
 
-        Command moveRepresentationCmd = new MoveRepresentationCommand(session, secondAnalysis, Collections.<DRepresentation> singletonList(diagram));
+        Command moveRepresentationCmd = new MoveRepresentationCommand(session, secondAnalysis, Collections.<DRepresentationDescriptor> singletonList(representationDescriptor));
         session.getTransactionalEditingDomain().getCommandStack().execute(moveRepresentationCmd);
         TestsUtil.synchronizationWithUIThread();
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
 
-        moveRepresentationCmd = new MoveRepresentationCommand(session, firstAnalysis, Collections.<DRepresentation> singletonList(diagram));
+        moveRepresentationCmd = new MoveRepresentationCommand(session, firstAnalysis, Collections.<DRepresentationDescriptor> singletonList(representationDescriptor));
         session.getTransactionalEditingDomain().getCommandStack().execute(moveRepresentationCmd);
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         session.save(new NullProgressMonitor());

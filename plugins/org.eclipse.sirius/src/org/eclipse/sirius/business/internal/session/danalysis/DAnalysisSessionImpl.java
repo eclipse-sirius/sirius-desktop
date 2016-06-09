@@ -48,8 +48,6 @@ import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchExce
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
-import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -95,9 +93,7 @@ import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -112,7 +108,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
@@ -475,45 +470,45 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public void moveRepresentation(final DAnalysis newContainer, final DRepresentation representation) {
-        final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.eContainer());
+    public void moveRepresentation(final DAnalysis newDAnalysisContainer, final DRepresentationDescriptor repDescriptor) {
+        final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(repDescriptor.eContainer());
         IProgressMonitor pm = new NullProgressMonitor();
-        if (!authority.canDeleteInstance(representation)) {
-            throw new LockedInstanceException(representation);
+        if (!authority.canDeleteInstance(repDescriptor)) {
+            throw new LockedInstanceException(repDescriptor);
         }
         final EObject semantic;
-        if (representation.eContainer() instanceof DView && !((DView) representation.eContainer()).getModels().isEmpty()) {
-            semantic = ((DView) representation.eContainer()).getModels().iterator().next();
+        DView dView = (DView) repDescriptor.eContainer();
+        if (!dView.getModels().isEmpty()) {
+            semantic = dView.getModels().iterator().next();
         } else {
             semantic = null;
         }
-        Viewpoint viewpoint = ((DView) representation.eContainer()).getViewpoint();
-        DView receiver = findViewForRepresentation(viewpoint, newContainer);
-        if (receiver == null) {
-            final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
-            if (analysisAuthority.canCreateIn(newContainer)) {
+        Viewpoint viewpoint = dView.getViewpoint();
+        DView receiverDView = findViewForRepresentation(viewpoint, newDAnalysisContainer);
+        if (receiverDView == null) {
+            final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newDAnalysisContainer);
+            if (analysisAuthority.canCreateIn(newDAnalysisContainer)) {
                 createView(viewpoint, Lists.newArrayList(semantic), false, pm);
-                receiver = findViewForRepresentation(viewpoint, newContainer);
+                receiverDView = findViewForRepresentation(viewpoint, newDAnalysisContainer);
             } else {
-                throw new LockedInstanceException(newContainer);
+                throw new LockedInstanceException(newDAnalysisContainer);
             }
         }
-        final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiver);
-        if (receiverAuthority.canCreateIn(receiver)) {
-            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
-            new DViewQuery(receiver).getLoadedRepresentations().add(representation);
-            receiver.getOwnedRepresentationDescriptors().add(representationDescriptor);
+        final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiverDView);
+        if (receiverAuthority.canCreateIn(receiverDView)) {
+            receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
+            receiverDView.eResource().getContents().add(repDescriptor.getRepresentation());
             // Add all semantic root elements pointed by the target of all
             // DSemanticDecorator of this representation (except of this root is
             // a root of a referencedAnalysis)
-            if (receiver.eContainer() instanceof DAnalysis) {
-                DAnalysisSessionHelper.updateModelsReferences((DAnalysis) receiver.eContainer(), Iterators.filter(representation.eAllContents(), DSemanticDecorator.class));
+            if (receiverDView.eContainer() instanceof DAnalysis) {
+                DAnalysisSessionHelper.updateModelsReferences(receiverDView);
             }
         } else {
-            throw new LockedInstanceException(receiver);
+            throw new LockedInstanceException(receiverDView);
         }
-        for (EObject object : getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation)) {
-            getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, representation, object);
+        for (EObject object : getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, repDescriptor.getRepresentation())) {
+            getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, repDescriptor.getRepresentation(), object);
         }
     }
 

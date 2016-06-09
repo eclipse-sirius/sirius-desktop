@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
@@ -153,7 +153,7 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         // ######################################
         // A - Control the package P1
         URI controlledModelUri = URI.createPlatformResourceURI("/" + LIBRARY_PROJECT + "/" + SEMANTIC_MODEL_LIB_P1, true);
-        SiriusControlCommand controlCmd = new SiriusControlCommand(packageToControl, controlledModelUri, Collections.<DRepresentation> emptySet(), null, true, new NullProgressMonitor());
+        SiriusControlCommand controlCmd = new SiriusControlCommand(packageToControl, controlledModelUri, Collections.<DRepresentationDescriptor> emptySet(), null, true, new NullProgressMonitor());
         TransactionUtil.getEditingDomain(mainPackage).getCommandStack().execute(controlCmd);
 
         // --------- Library session checks --------

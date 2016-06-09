@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionResourceCreationWizardPage;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -54,7 +55,7 @@ public class ExtractRepresentationsWizard extends Wizard {
 
     private Session session;
 
-    private Collection<DRepresentation> representations;
+    private Collection<DRepresentationDescriptor> repDescriptors;
 
     private SessionResourceCreationWizardPage sessionResourceFilePage;
 
@@ -67,13 +68,13 @@ public class ExtractRepresentationsWizard extends Wizard {
      *            origin session.
      * @param domain
      *            the editing domain
-     * @param movableRepresentations
+     * @param movableRepDescriptors
      *            the DView instance
      */
-    public ExtractRepresentationsWizard(final Session session, final TransactionalEditingDomain domain, final Collection<DRepresentation> movableRepresentations) {
+    public ExtractRepresentationsWizard(final Session session, final TransactionalEditingDomain domain, final Collection<DRepresentationDescriptor> movableRepDescriptors) {
         this.domain = domain;
         this.session = session;
-        this.representations = movableRepresentations;
+        this.repDescriptors = movableRepDescriptors;
     }
 
     /**
@@ -92,7 +93,7 @@ public class ExtractRepresentationsWizard extends Wizard {
     @Override
     public boolean performFinish() {
 
-        closeRepresentations(representations);
+        closeRepresentations();
 
         final IRunnableWithProgress op = new DiagramFileCreationOperation();
         boolean errorCatch = false;
@@ -112,7 +113,7 @@ public class ExtractRepresentationsWizard extends Wizard {
         final IRunnableWithProgress moveReps = new IRunnableWithProgress() {
             @Override
             public void run(final IProgressMonitor mon) {
-                domain.getCommandStack().execute(new MoveRepresentationCommand(session, slaveAnalysis, representations));
+                domain.getCommandStack().execute(new MoveRepresentationCommand(session, slaveAnalysis, repDescriptors));
             }
         };
         try {
@@ -147,11 +148,11 @@ public class ExtractRepresentationsWizard extends Wizard {
         return slaveAnalysis;
     }
 
-    private void closeRepresentations(final Collection<DRepresentation> diagrams) {
+    private void closeRepresentations() {
         final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
         if (uiSession != null) {
-            for (DRepresentation representation : diagrams) {
-                closeOpenedEditor(uiSession, representation);
+            for (DRepresentationDescriptor repDescriptor : repDescriptors) {
+                closeOpenedEditor(uiSession, repDescriptor.getRepresentation());
             }
         }
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * The contract for DAnalysis session.
@@ -50,21 +50,24 @@ public interface DAnalysisSession extends Session {
     void setAnalysisSelector(DAnalysisSelector selector);
 
     /**
-     * Adds the given representation to the given analysis.
+     * Adds the given representation descriptor to the given analysis. The
+     * corresponding representation is moved as root object into the resource of
+     * the target DAnalysis.
      * <p>
-     * If the given representation is already in the given analysis then the
-     * operation has no effect.
+     * If the given representation descriptor is already in the given analysis
+     * then the operation has no effect.
      * </p>
      * The models references of the newContainer are updated according to the
-     * new representation.
+     * new representation descriptor.
      * 
-     * @param newContainer
-     *            the new container of the representation (must not be
+     * @param newDAnalysisContainer
+     *            the new container of the representation descriptor(must not be
      *            <code>null</code>).
-     * @param representation
-     *            the representation to add (must not be <code>null</code>).
+     * @param repDescriptor
+     *            corresponds to the representation to move (must not be
+     *            <code>null</code>).
      */
-    void moveRepresentation(final DAnalysis newContainer, final DRepresentation representation);
+    void moveRepresentation(final DAnalysis newDAnalysisContainer, final DRepresentationDescriptor repDescriptor);
 
     /**
      * Add a referenced analysis.

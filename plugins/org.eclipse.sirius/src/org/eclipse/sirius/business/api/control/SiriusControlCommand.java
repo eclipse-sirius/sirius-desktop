@@ -31,8 +31,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.internal.command.control.ControlCommand;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -40,7 +39,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
@@ -56,10 +54,10 @@ public class SiriusControlCommand extends ControlCommand {
     private final Session session;
 
     /**
-     * The representations which must be controlled in addition to the semantic
-     * element.
+     * The representation descriptors corresponding to representations which
+     * must be controlled in addition to the semantic element.
      */
-    private final Set<DRepresentation> representations;
+    private final Set<DRepresentationDescriptor> repDescriptors;
 
     /**
      * The URI of the <code>.aird</code> resource in which to move the
@@ -83,9 +81,10 @@ public class SiriusControlCommand extends ControlCommand {
      * @param semanticDest
      *            the URI of the resource in which to control the semantic
      *            element.
-     * @param representations
-     *            the set of representations to control in addition to the
-     *            semantic element.
+     * @param repDescriptors
+     *            the set of representation descriptors corresponding to
+     *            representations to control in addition to the semantic
+     *            element.
      * @param representationsDest
      *            the URI of the <code>.aird</code> resource in which to move
      *            the representations.
@@ -98,8 +97,8 @@ public class SiriusControlCommand extends ControlCommand {
      *             the command).
      */
     @Deprecated
-    public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentation> representations, final URI representationsDest, IProgressMonitor monitor) {
-        this(semanticRoot, semanticDest, representations, representationsDest, true, monitor);
+    public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentationDescriptor> repDescriptors, final URI representationsDest, IProgressMonitor monitor) {
+        this(semanticRoot, semanticDest, repDescriptors, representationsDest, true, monitor);
     }
 
     /**
@@ -123,11 +122,11 @@ public class SiriusControlCommand extends ControlCommand {
      *            a {@link IProgressMonitor} to show progression of control
      *            operation
      */
-    public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentation> representations, final URI representationsDest, final boolean shouldEndBySaving,
-            IProgressMonitor monitor) {
+    public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentationDescriptor> representations, final URI representationsDest,
+            final boolean shouldEndBySaving, IProgressMonitor monitor) {
         super(semanticRoot, semanticDest);
         this.session = SessionManager.INSTANCE.getSession(semanticRoot);
-        this.representations = Sets.newHashSet(representations);
+        this.repDescriptors = Sets.newHashSet(representations);
         this.representationsDestination = representationsDest;
         this.shouldEndBySaving = shouldEndBySaving;
         this.monitor = monitor;
@@ -189,11 +188,11 @@ public class SiriusControlCommand extends ControlCommand {
      */
     private void createNewRepresentationsFileAndMoveRepresentations() {
         boolean emptyAirdFragmentOnControl = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false, null);
-        if (representations.isEmpty() && !emptyAirdFragmentOnControl) {
+        if (repDescriptors.isEmpty() && !emptyAirdFragmentOnControl) {
             return;
         }
         final Resource newRepresentationsFile;
-        if (representations.isEmpty() && emptyAirdFragmentOnControl) {
+        if (repDescriptors.isEmpty() && emptyAirdFragmentOnControl) {
             // It is allowed to create an aird fragment with no representation
             Resource firstAird = session.getSessionResource();
             newRepresentationsFile = firstAird.getResourceSet().createResource(representationsDestination);
@@ -283,7 +282,7 @@ public class SiriusControlCommand extends ControlCommand {
      *            The analysis in which the representations must be moved.
      */
     private void moveRepresentations(final DAnalysis targetAnalysis) {
-        for (final DRepresentation representation : representations) {
+        for (final DRepresentationDescriptor representation : repDescriptors) {
             ((DAnalysisSession) session).moveRepresentation(targetAnalysis, representation);
         }
     }
@@ -300,7 +299,7 @@ public class SiriusControlCommand extends ControlCommand {
             for (EObject content : resource.getContents()) {
                 if (content instanceof DAnalysis && !content.equals(analysisToIgnore)) {
                     for (final DView view : ((DAnalysis) content).getOwnedViews()) {
-                        DAnalysisSessionHelper.updateModelsReferences((DAnalysis) content, Iterators.filter(view.eAllContents(), DSemanticDecorator.class));
+                        DAnalysisSessionHelper.updateModelsReferences(view);
                     }
                 }
             }
@@ -311,7 +310,7 @@ public class SiriusControlCommand extends ControlCommand {
      * Returns the current resource containing the representations to move.
      */
     private Resource getParentAird() {
-        return representations.iterator().next().eResource();
+        return repDescriptors.iterator().next().eResource();
     }
 
     /**

@@ -23,7 +23,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -34,7 +33,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * An action to extract selected representations.
@@ -73,11 +71,7 @@ public class ExtractRepresentationAction extends Action {
     @Override
     public void run() {
         final TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
-        Collection<DRepresentation> representations = Lists.newArrayList();
-        for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
-            representations.add(dRepresentationDescriptor.getRepresentation());
-        }
-        final ExtractRepresentationsWizard wizard = new ExtractRepresentationsWizard(session, transDomain, representations);
+        final ExtractRepresentationsWizard wizard = new ExtractRepresentationsWizard(session, transDomain, repDescriptors);
         final Shell defaultShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
         final WizardDialog dialog = new WizardDialog(defaultShell, wizard);
         dialog.create();

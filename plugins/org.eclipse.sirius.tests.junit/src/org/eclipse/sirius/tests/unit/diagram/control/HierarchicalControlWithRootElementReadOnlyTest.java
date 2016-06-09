@@ -32,11 +32,13 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Sets;
@@ -154,7 +156,9 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         readonlyValidator.setReadOnly(sessionFile);
 
         // Step 4 control p1p1p1 (grandSon)
-        final SiriusControlCommand vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationP1), controlledAirdUrip1p1p1, true,
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representationP1).getRepresentationDescriptor();
+
+        final SiriusControlCommand vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationDescriptor), controlledAirdUrip1p1p1, true,
                 new NullProgressMonitor());
         assertTrue(executeCommand(vccp1p1p1));
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
@@ -178,7 +182,8 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         assertFilesExist("/vp-2067/2067.ecore", "/vp-2067/2067.aird", "/vp-2067/2067_p1p1.ecore", "/vp-2067/2067_p1p1.aird");
 
         // Step 2 : control p1p1p1
-        Command vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationP1), controlledAirdUrip1p1p1, true, new NullProgressMonitor());
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representationP1).getRepresentationDescriptor();
+        Command vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationDescriptor), controlledAirdUrip1p1p1, true, new NullProgressMonitor());
         assertTrue(executeCommand(vccp1p1p1));
         Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
         ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);

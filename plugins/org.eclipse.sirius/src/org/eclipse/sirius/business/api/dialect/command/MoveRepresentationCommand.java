@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.Messages;
  */
 public class MoveRepresentationCommand extends RecordingCommand {
 
-    private Collection<DRepresentation> representations;
+    private Collection<DRepresentationDescriptor> repDescriptors;
 
     private Session session;
 
@@ -41,12 +41,12 @@ public class MoveRepresentationCommand extends RecordingCommand {
      *            the current session
      * @param targetAnalysis
      *            the target analysis
-     * @param movableRepresentations
-     *            the representations to move
+     * @param movableRepDescriptors
+     *            corresponds to the representations to move
      */
-    public MoveRepresentationCommand(Session session, DAnalysis targetAnalysis, Collection<DRepresentation> movableRepresentations) {
+    public MoveRepresentationCommand(Session session, DAnalysis targetAnalysis, Collection<DRepresentationDescriptor> movableRepDescriptors) {
         super(session.getTransactionalEditingDomain(), MessageFormat.format(Messages.MoveRepresentationCommand_label, targetAnalysis.eResource().getURI().toString()));
-        this.representations = movableRepresentations;
+        this.repDescriptors = movableRepDescriptors;
         this.targetAnalysis = targetAnalysis;
         this.session = session;
     }
@@ -56,12 +56,12 @@ public class MoveRepresentationCommand extends RecordingCommand {
      */
     @Override
     protected void doExecute() {
-        if (representations == null || representations.isEmpty() || targetAnalysis == null || session == null) {
+        if (repDescriptors == null || repDescriptors.isEmpty() || targetAnalysis == null || session == null) {
             return;
         }
 
-        for (final DRepresentation representation : representations) {
-            ((DAnalysisSession) session).moveRepresentation(targetAnalysis, representation);
+        for (final DRepresentationDescriptor repDesriptor : repDescriptors) {
+            ((DAnalysisSession) session).moveRepresentation(targetAnalysis, repDesriptor);
         }
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -413,9 +413,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     @Override
     public DialectEditor getEditor(final DRepresentation representation) {
-        for (final DialectEditor editorPart : this.editors) {
-            if (DialectUIManager.INSTANCE.isRepresentationManagedByEditor(representation, editorPart)) {
-                return editorPart;
+        if (representation != null) {
+            for (final DialectEditor editorPart : this.editors) {
+                if (DialectUIManager.INSTANCE.isRepresentationManagedByEditor(representation, editorPart)) {
+                    return editorPart;
+                }
             }
         }
         return null;

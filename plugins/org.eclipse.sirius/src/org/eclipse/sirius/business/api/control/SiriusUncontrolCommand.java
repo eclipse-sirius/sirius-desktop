@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.command.control.UncontrolCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -229,13 +230,13 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * <code>parentResource</code>.
      */
     private void moveRepresentations(final Resource childResource, final Resource parentResource, final Resource parentSemanticResource) {
-        final Collection<DRepresentation> representations = collectExistingRepresentations(childResource);
+        final Collection<DRepresentationDescriptor> repDescriptors = collectExistingRepresentations(childResource);
         final DAnalysis parentAnalysis = getDAnalysis(parentResource);
         final DAnalysis childAnalysis = getDAnalysis(childResource);
 
         final DAnalysisSession aSession = (DAnalysisSession) session;
-        for (final DRepresentation representation : representations) {
-            aSession.moveRepresentation(parentAnalysis, representation);
+        for (final DRepresentationDescriptor repDescriptor : repDescriptors) {
+            aSession.moveRepresentation(parentAnalysis, repDescriptor);
         }
 
         if (childAnalysis != null) {
@@ -252,8 +253,8 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
         return null;
     }
 
-    private Collection<DRepresentation> collectExistingRepresentations(final Resource resource) {
-        return Sets.newHashSet(Iterators.filter(EcoreUtil.getAllProperContents(resource, true), DRepresentation.class));
+    private Collection<DRepresentationDescriptor> collectExistingRepresentations(final Resource resource) {
+        return Sets.newHashSet(Iterators.filter(EcoreUtil.getAllProperContents(resource, true), DRepresentationDescriptor.class));
     }
 
     private void markContainerResourceAsModified(final EObject obj) {

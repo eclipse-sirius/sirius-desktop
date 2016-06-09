@@ -59,7 +59,6 @@ import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -68,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
@@ -428,13 +426,10 @@ public class SiriusRepairProcess {
      *            {@link DView} to inform
      */
     private void informModel(final DView view) {
-        if (view.eContainer() instanceof DAnalysis) {
-            DAnalysis analysis = (DAnalysis) view.eContainer();
-            // Add all semantic root elements pointed by the target of all
-            // DSemanticDecorator of this representation (except if they are the
-            // main model of a referenced analysis).
-            DAnalysisSessionHelper.updateModelsReferences(analysis, Iterators.filter(view.eAllContents(), DSemanticDecorator.class));
-        }
+        // Add all semantic root elements pointed by the target of all
+        // DSemanticDecorator of this representation (except if they are the
+        // main model of a referenced analysis).
+        DAnalysisSessionHelper.updateModelsReferences(view);
     }
 
     /**

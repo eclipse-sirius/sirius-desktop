@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -117,12 +117,11 @@ public class SiriusControlHandler extends AbstractHandler {
         if (session != null) {
             final URI semanticDest = getControledResourceURI(shell, semanticRoot);
             if (semanticDest != null) {
-                Set<DRepresentation> representations;
                 try {
-                    representations = Sets.newHashSet(getRepresentationsToMove(shell, session, semanticRoot));
+                    Set<DRepresentationDescriptor> representationDescriptors = Sets.newHashSet(getRepresentationDescriptorsToMove(shell, session, semanticRoot));
                     final URI representationDest = getDefaultCorrespondingAird(semanticDest);
 
-                    Command vcc = new SiriusControlCommand(semanticRoot, semanticDest, representations, representationDest, false, new SubProgressMonitor(monitor, 1));
+                    Command vcc = new SiriusControlCommand(semanticRoot, semanticDest, representationDescriptors, representationDest, false, new SubProgressMonitor(monitor, 1));
                     TransactionUtil.getEditingDomain(semanticRoot).getCommandStack().execute(vcc);
                     session.save(new SubProgressMonitor(monitor, 1));
 
@@ -130,11 +129,11 @@ public class SiriusControlHandler extends AbstractHandler {
                     // update of the editor input with the new DRepresentation
                     // location
                     IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                    for (DRepresentation dRepresentation : representations) {
-                        DialectEditor editor = uiSession.getEditor(dRepresentation);
+                    for (DRepresentationDescriptor dRepDescriptor : representationDescriptors) {
+                        DialectEditor editor = uiSession.getEditor(dRepDescriptor.getRepresentation());
                         if (editor instanceof IReusableEditor) {
                             IReusableEditor iReusableEditor = (IReusableEditor) editor;
-                            SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepresentation), dRepresentation.getName(), session);
+                            SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepDescriptor.getRepresentation()), dRepDescriptor.getRepresentation().getName(), session);
                             iReusableEditor.setInput(updatedEditorInput);
                         }
                     }
@@ -219,9 +218,9 @@ public class SiriusControlHandler extends AbstractHandler {
      * @throws InterruptedException
      *             Exception for cancel
      */
-    protected Collection<DRepresentation> getRepresentationsToMove(final Shell shell, final Session session, final EObject semanticRoot) throws InterruptedException {
-        final Collection<DRepresentation> representations = collectExistingRepresentations(session, semanticRoot);
-        final Collection<DRepresentation> representationsToMove = askUserWhichRepresentationToSplit(shell, session, representations);
+    protected Collection<DRepresentationDescriptor> getRepresentationDescriptorsToMove(final Shell shell, final Session session, final EObject semanticRoot) throws InterruptedException {
+        final Collection<DRepresentationDescriptor> representations = collectExistingRepresentationDescriptors(session, semanticRoot);
+        final Collection<DRepresentationDescriptor> representationsToMove = askUserWhichRepresentationToSplit(shell, session, representations);
         return representationsToMove;
     }
 
@@ -239,8 +238,9 @@ public class SiriusControlHandler extends AbstractHandler {
      * @throws InterruptedException
      *             Exception for cancel
      */
-    protected Collection<DRepresentation> askUserWhichRepresentationToSplit(final Shell shell, final Session session, final Collection<DRepresentation> preselection) throws InterruptedException {
-        if (!DialectManager.INSTANCE.getAllRepresentations(session).isEmpty()) {
+    protected Collection<DRepresentationDescriptor> askUserWhichRepresentationToSplit(final Shell shell, final Session session, final Collection<DRepresentationDescriptor> preselection)
+            throws InterruptedException {
+        if (!DialectManager.INSTANCE.getAllRepresentationDescriptors(session).isEmpty()) {
             final SelectRepresentationsWizard wizard = new SelectRepresentationsWizard(session, preselection);
             wizard.init();
             final WizardDialog dialog = new WizardDialog(shell, wizard);
@@ -256,23 +256,23 @@ public class SiriusControlHandler extends AbstractHandler {
     }
 
     /**
-     * Returns all the existing representations in the given session which are
-     * associated to a semantic element of the specified resource (excluding
-     * elements of sub-resources).
+     * Returns all the existing representation descriptors in the given session
+     * which representation is associated to a semantic element of the specified
+     * resource (excluding elements of sub-resources).
      *
      * @param session
      *            the session opened for semanticRoot.
      * @param semanticRoot
      *            the semantic element to control.
-     * @return a collection of existing representations
+     * @return a collection of existing representation descriptors
      */
-    protected Collection<DRepresentation> collectExistingRepresentations(final Session session, final EObject semanticRoot) {
-        final Collection<DRepresentation> result = new ArrayList<DRepresentation>();
-        result.addAll(DialectManager.INSTANCE.getRepresentations(semanticRoot, session));
+    protected Collection<DRepresentationDescriptor> collectExistingRepresentationDescriptors(final Session session, final EObject semanticRoot) {
+        final Collection<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
+        result.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(semanticRoot, session));
         final Iterator<EObject> it = EcoreUtil.getAllProperContents(semanticRoot, true);
         while (it.hasNext()) {
             final EObject root = it.next();
-            result.addAll(DialectManager.INSTANCE.getRepresentations(root, session));
+            result.addAll(DialectManager.INSTANCE.getRepresentationDescriptors(root, session));
         }
         return result;
     }
