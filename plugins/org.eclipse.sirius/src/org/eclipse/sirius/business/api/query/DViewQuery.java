@@ -31,6 +31,10 @@ import com.google.common.collect.UnmodifiableIterator;
  * @author lfasani
  */
 public final class DViewQuery {
+    private static boolean activateTrace;
+    static {
+        activateTrace = Boolean.parseBoolean(System.getProperty("activate_trace_getLoadedRepresentations", Boolean.FALSE.toString())); //$NON-NLS-1$
+    }
 
     private DView dView;
 
@@ -51,6 +55,9 @@ public final class DViewQuery {
      * @return an unmodifiable list with the loaded {@link DRepresentation}s
      */
     public List<DRepresentation> getLoadedRepresentations() {
+        if (activateTrace) {
+            Thread.dumpStack();
+        }
         List<DRepresentation> representations = Lists.newArrayList();
         for (DRepresentationDescriptor repDescriptor : dView.getOwnedRepresentationDescriptors()) {
             DRepresentation representation = repDescriptor.getRepresentation();
