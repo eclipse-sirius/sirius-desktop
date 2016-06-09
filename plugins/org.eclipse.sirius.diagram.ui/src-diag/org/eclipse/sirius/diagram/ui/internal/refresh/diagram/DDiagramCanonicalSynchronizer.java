@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,8 +46,6 @@ import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.Collap
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.SetBestHeightHeaderCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.AbstractCanonicalSynchronizer;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
@@ -123,23 +121,22 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
             manageCollapse(createdNodeViews);
 
-            manageRegions();
+            manageRegions(createdNodeViews);
         }
     }
 
-    private void manageRegions() {
+    private void manageRegions(Set<View> createdNodeViews) {
         if (regionContainersToLayout.isEmpty()) {
             return;
         }
 
         // Step 1: update regions layout from the deepest ones.
         List<View> newArrayList = Lists.newArrayList(regionContainersToLayout);
-        ListIterator<View> regionToLayoutListIterator = newArrayList.listIterator(newArrayList.size() - 1);
+        ListIterator<View> regionToLayoutListIterator = newArrayList.listIterator(newArrayList.size());
         while (regionToLayoutListIterator.hasPrevious()) {
             View regionContainer = regionToLayoutListIterator.previous();
-            int type = SiriusVisualIDRegistry.getVisualID(regionContainer.getType());
-            if (regionContainer instanceof Node && (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID)) {
-                new RegionContainerUpdateLayoutOperation((Node) regionContainer).execute();
+            if (regionContainer instanceof Node) {
+                new RegionContainerUpdateLayoutOperation((Node) regionContainer, createdNodeViews).execute();
             }
         }
         regionContainersToLayout.clear();
