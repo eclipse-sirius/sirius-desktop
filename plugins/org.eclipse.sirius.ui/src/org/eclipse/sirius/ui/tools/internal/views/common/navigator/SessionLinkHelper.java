@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -81,17 +82,17 @@ public class SessionLinkHelper implements ILinkHelper {
                 // It is possible to get the representation, the associated
                 // semantic element or even the semantic selection. The choice
                 // was made to select representation.
-                Object editorRepresentation = getEditorRepresentation(anInput, editor);
+                DRepresentation editorRepresentation = getEditorRepresentation(anInput, editor);
                 if (editorRepresentation != null) {
-                    returnSelection = new StructuredSelection(editorRepresentation);
+                    returnSelection = new StructuredSelection(new DRepresentationQuery(editorRepresentation).getRepresentationDescriptor());
                 }
             }
         }
         return returnSelection == null ? StructuredSelection.EMPTY : returnSelection;
     }
 
-    private Object getEditorRepresentation(IEditorInput anInput, IEditorPart editor) {
-        Object foundElement = null;
+    private DRepresentation getEditorRepresentation(IEditorInput anInput, IEditorPart editor) {
+        DRepresentation foundElement = null;
 
         if (anInput instanceof SessionEditorInput) {
             SessionEditorInput sessionInput = (SessionEditorInput) anInput;

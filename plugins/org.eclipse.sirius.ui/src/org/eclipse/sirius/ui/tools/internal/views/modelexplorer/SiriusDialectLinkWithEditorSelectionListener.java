@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -239,14 +240,14 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
             if (element instanceof DSemanticDecorator) {
                 decorator = (DSemanticDecorator) element;
             } else if (element instanceof IAdaptable) {
-                decorator = (DSemanticDecorator) ((IAdaptable) element).getAdapter(DSemanticDecorator.class);
+                decorator = ((IAdaptable) element).getAdapter(DSemanticDecorator.class);
             }
 
             if (decorator != null) {
                 // If the selection is the representation, we want to select the
-                // representation node and not its semantic element.
+                // representation descriptor node and not its semantic element.
                 if (decorator instanceof DRepresentation) {
-                    targets.add(decorator);
+                    targets.add(new DRepresentationQuery((DRepresentation) decorator).getRepresentationDescriptor());
                 } else {
                     targets.add(decorator.getTarget());
                 }
@@ -271,7 +272,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     private IPartService getPartService() {
         IViewSite site = navigator.getViewSite();
         if (site != null) {
-            return (IPartService) site.getService(IPartService.class);
+            return site.getService(IPartService.class);
         }
         return null;
     }
