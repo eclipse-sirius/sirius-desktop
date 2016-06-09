@@ -1083,7 +1083,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="additionalLayers" upperBound="-1"
           eType="#//description/AdditionalLayer" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="allLayers" upperBound="-1"
-          eType="#//description/Layer" volatile="true" transient="true" derived="true"/>
+          eType="#//description/Layer" changeable="false" volatile="true" transient="true"
+          derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="allActivatedTools" upperBound="-1"
           eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription"
           volatile="true" transient="true" derived="true"/>

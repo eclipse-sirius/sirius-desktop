@@ -519,7 +519,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      *
      * @return the value of the '<em>All Layers</em>' reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllLayers()
-     * @model transient="true" volatile="true" derived="true"
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<Layer> getAllLayers();

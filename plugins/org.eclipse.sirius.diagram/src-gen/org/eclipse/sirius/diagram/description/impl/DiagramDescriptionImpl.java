@@ -1903,10 +1903,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             getAdditionalLayers().clear();
             getAdditionalLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
             return;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
-            getAllLayers().clear();
-            getAllLayers().addAll((Collection<? extends Layer>) newValue);
-            return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS:
             getAllActivatedTools().clear();
             getAllActivatedTools().addAll((Collection<? extends AbstractToolDescription>) newValue);
@@ -2015,9 +2011,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
             getAdditionalLayers().clear();
-            return;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
-            getAllLayers().clear();
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS:
             getAllActivatedTools().clear();

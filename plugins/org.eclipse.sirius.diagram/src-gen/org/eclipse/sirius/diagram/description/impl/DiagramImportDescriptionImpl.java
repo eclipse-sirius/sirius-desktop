@@ -1945,10 +1945,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             getAdditionalLayers().clear();
             getAdditionalLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
             return;
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS:
-            getAllLayers().clear();
-            getAllLayers().addAll((Collection<? extends Layer>) newValue);
-            return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
             getAllActivatedTools().clear();
             getAllActivatedTools().addAll((Collection<? extends AbstractToolDescription>) newValue);
@@ -2060,9 +2056,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
             getAdditionalLayers().clear();
-            return;
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS:
-            getAllLayers().clear();
             return;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS:
             getAllActivatedTools().clear();

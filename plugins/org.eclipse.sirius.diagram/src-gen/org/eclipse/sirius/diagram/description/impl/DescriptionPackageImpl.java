@@ -1812,7 +1812,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         getDiagramDescription_AdditionalLayers().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
         initEReference(getDiagramDescription_AllLayers(), this.getLayer(), null, "allLayers", null, 0, -1, DiagramDescription.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEReference(getDiagramDescription_AllActivatedTools(), theToolPackage_1.getAbstractToolDescription(), null, "allActivatedTools", null, 0, -1, DiagramDescription.class, //$NON-NLS-1$
                 EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
