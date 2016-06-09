@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsStandaloneTests;
+import org.eclipse.sirius.tests.unit.api.mappings.ImportSpecClassesUnsetTests;
 import org.eclipse.sirius.tests.unit.common.mock.OpaquePixelFinderTest;
 import org.eclipse.sirius.tests.unit.diagram.DDiagramDAnnotationTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.EdgeMappingImportTests;
@@ -40,6 +36,11 @@ import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ViewpointItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ViewpointsFolderItemTest;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 public class AllDiagramStandaloneTests {
 
     /**
@@ -61,6 +62,7 @@ public class AllDiagramStandaloneTests {
         final TestSuite suite = new TestSuite("Diagram Standalone Tests");
 
         suite.addTestSuite(EdgeMappingImportTests.class);
+        suite.addTestSuite(ImportSpecClassesUnsetTests.class);
         suite.addTestSuite(DEdgeCandidateTest.class);
         suite.addTestSuite(AbstractDNodeCandidateTest.class);
         suite.addTestSuite(RefreshIdsHolderTest.class);
