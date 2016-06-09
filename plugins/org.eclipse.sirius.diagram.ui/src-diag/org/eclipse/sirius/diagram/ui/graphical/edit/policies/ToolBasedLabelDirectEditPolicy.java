@@ -27,8 +27,8 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * {@link org.eclipse.gef.EditPolicy} used to handle Labels direct edits.
@@ -72,14 +72,15 @@ public class ToolBasedLabelDirectEditPolicy extends LabelDirectEditPolicy {
             if (getHost() instanceof GraphicalEditPart) {
                 final EObject element = ((GraphicalEditPart) getHost()).resolveSemanticElement();
                 if (element instanceof DRepresentationElement && element instanceof DMappingBased) {
-                    if (getDirectEditTool((DMappingBased) element) != null) {
+                    DirectEditLabel directEditTool = getDirectEditTool((DMappingBased) element);
+                    if (directEditTool != null) {
                         final DRepresentationElement repElement = (DRepresentationElement) element;
                         final DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
                         final Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
                         final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
                         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(element);
                         final IDiagramCommandFactory diagramCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
-                        final org.eclipse.emf.common.command.Command command = diagramCommandFactory.buildDirectEditLabelFromTool(repElement, getDirectEditTool((DMappingBased) repElement), labelText);
+                        final org.eclipse.emf.common.command.Command command = diagramCommandFactory.buildDirectEditLabelFromTool(repElement, directEditTool, labelText);
                         final CompoundCommand cc = new CompoundCommand();
                         cc.add(new ICommandProxy(new GMFCommandWrapper(domain, command)));
                         cmd = cc;
