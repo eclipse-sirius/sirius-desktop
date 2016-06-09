@@ -59,6 +59,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
      * 
      * @see org.eclipse.sirius.viewpoint.description.DiagramDescription#getImportedDiagram()
      */
+    @Override
     public DiagramDescription getImportedDiagram() {
         if (importedDiagramDescription != null && importedDiagramDescription.eIsProxy()) {
             final InternalEObject oldDiagramDescription = (InternalEObject) importedDiagramDescription;
@@ -77,6 +78,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
      * 
      * @see org.eclipse.sirius.viewpoint.description.DiagramImportDescription#setImportedDiagram(org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
+    @Override
     public void setImportedDiagram(final DiagramDescription value) {
         final DiagramDescription oldImportedDescription = importedDiagramDescription;
         importedDiagramDescription = value;
@@ -127,6 +129,23 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
             break;
         }
         super.eSet(featureID, newValue);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#eUnset()
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
+            setImportedDiagram((DiagramDescription) null);
+            return;
+        default:
+            break;
+        }
+        super.eUnset(featureID);
     }
 
     /**

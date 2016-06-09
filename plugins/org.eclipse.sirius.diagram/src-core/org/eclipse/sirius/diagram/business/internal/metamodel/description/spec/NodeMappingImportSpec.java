@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -112,6 +112,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
             getImportedMapping().addDoneNode(node);
         }
     }
+
     /**
      * {@inheritDoc}
      * 
@@ -230,6 +231,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.NodeMappingImport#getImportedMapping()
      */
+    @Override
     public NodeMapping getImportedMapping() {
         if (importedMapping != null && importedMapping.eIsProxy()) {
             final InternalEObject oldImportedMapping = (InternalEObject) importedMapping;
@@ -257,6 +259,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.NodeMappingImport#setImportedMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
      */
+    @Override
     public void setImportedMapping(final NodeMapping newImportedMapping) {
         final NodeMapping oldImportedMapping = importedMapping;
         importedMapping = newImportedMapping;
@@ -384,8 +387,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      *      java.lang.Class)
      */
     @Override
-    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes")
-    final Class baseClass) {
+    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (derivedFeatureID) {
@@ -411,8 +413,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      *      java.lang.Class)
      */
     @Override
-    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes")
-    final Class baseClass) {
+    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (baseFeatureID) {
@@ -436,6 +437,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings()
      */
+    @Override
     public boolean isHideSubMappings() {
         return hideSubMappings;
     }
@@ -445,6 +447,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setHideSubMappings(boolean)
      */
+    @Override
     public void setHideSubMappings(final boolean newHideSubMappings) {
         final boolean oldHideSubMappings = hideSubMappings;
         hideSubMappings = newHideSubMappings;
@@ -458,6 +461,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters()
      */
+    @Override
     public boolean isInheritsAncestorFilters() {
         return inheritsAncestorFilters;
     }
@@ -467,6 +471,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setInheritsAncestorFilters(boolean)
      */
+    @Override
     public void setInheritsAncestorFilters(boolean newInheritsAncestorFilters) {
         boolean oldInheritsAncestorFilters = inheritsAncestorFilters;
         inheritsAncestorFilters = newInheritsAncestorFilters;

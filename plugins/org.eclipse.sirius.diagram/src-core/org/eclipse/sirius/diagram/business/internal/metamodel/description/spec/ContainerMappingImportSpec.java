@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * The default value of the '{@link #isInheritsAncestorFilters()
      * <em>Inherits Ancestor Filters</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #isInheritsAncestorFilters()
      * @generated
      * @ordered
@@ -251,6 +251,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings()
      */
+    @Override
     public boolean isHideSubMappings() {
         return hideSubMappings;
     }
@@ -260,6 +261,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setHideSubMappings(boolean)
      */
+    @Override
     public void setHideSubMappings(final boolean newHideSubMappings) {
         final boolean oldHideSubMappings = hideSubMappings;
         hideSubMappings = newHideSubMappings;
@@ -273,6 +275,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters()
      */
+    @Override
     public boolean isInheritsAncestorFilters() {
         return inheritsAncestorFilters;
     }
@@ -282,6 +285,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setInheritsAncestorFilters(boolean)
      */
+    @Override
     public void setInheritsAncestorFilters(boolean newInheritsAncestorFilters) {
         boolean oldInheritsAncestorFilters = inheritsAncestorFilters;
         inheritsAncestorFilters = newInheritsAncestorFilters;
@@ -295,6 +299,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.ContainerMappingImport#getImportedMapping()
      */
+    @Override
     public ContainerMapping getImportedMapping() {
         if (importedMapping != null && importedMapping.eIsProxy()) {
             final InternalEObject oldImportedMapping = (InternalEObject) importedMapping;
@@ -322,6 +327,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * 
      * @see org.eclipse.sirius.viewpoint.description.ContainerMappingImport#setImportedMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
+    @Override
     public void setImportedMapping(final ContainerMapping newImportedMapping) {
         final ContainerMapping oldImportedMapping = importedMapping;
         importedMapping = newImportedMapping;
@@ -388,8 +394,6 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
         super.eSet(featureID, newValue);
     }
 
-    // CHECKSTYLE:ON
-
     /**
      * {@inheritDoc}
      * 
@@ -401,6 +405,9 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
             setHideSubMappings(HIDE_SUB_MAPPINGS_EDEFAULT);
             return;
+        case DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
+            setInheritsAncestorFilters(INHERITS_ANCESTOR_FILTERS_EDEFAULT);
+            return;
         case DescriptionPackage.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING:
             setImportedMapping((ContainerMapping) null);
             return;
@@ -409,6 +416,8 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
         }
         super.eUnset(featureID);
     }
+
+    // CHECKSTYLE:ON
 
     /**
      * {@inheritDoc}
@@ -442,8 +451,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      *      java.lang.Class)
      */
     @Override
-    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes")
-    final Class baseClass) {
+    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (derivedFeatureID) {
@@ -469,8 +477,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      *      java.lang.Class)
      */
     @Override
-    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes")
-    final Class baseClass) {
+    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (baseFeatureID) {
