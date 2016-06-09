@@ -4,6 +4,18 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius4.1.0). Changes in Sirius 4.1.0
+
+h3. User-Visible Changes
+
+h3. Specifier-Visible Changes
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)@ has been added to know if a view is a descendant of another view.
+
 h2(#sirius4.0.0). Changes in Sirius 4.0.0
 
 h3. User-Visible Changes

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -299,4 +300,27 @@ public class NodeQuery {
         }
         return bounds;
     }
+
+    /**
+     * Tests whether the queried Node is a descendant of <code>container</code>.
+     * 
+     * @param container
+     *            The container
+     * @return true if the queried Node is a descendant of
+     *         <code>container</code>, false otherwise.
+     */
+    public boolean isDescendantOf(View container) {
+        boolean result = false;
+        if (node.eContainer() instanceof Node) {
+            if (container instanceof Node && new NodeQuery((Node) container).isContainer()) {
+                if (container.equals(node.eContainer())) {
+                    result = true;
+                } else {
+                    result = new NodeQuery((Node) node.eContainer()).isDescendantOf(container);
+                }
+            }
+        }
+        return result;
+    }
+
 }

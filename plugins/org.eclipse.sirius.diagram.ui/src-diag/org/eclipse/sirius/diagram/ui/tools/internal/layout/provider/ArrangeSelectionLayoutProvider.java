@@ -139,7 +139,9 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                         addEdgesToNotSelectedUnpinnedList((DiagramEditPart) igep.getRoot().getChildren().get(0));
                     }
 
-                    // Update Layout Hint to find later the list of unselected
+                    // Update Layout Hint to find later (in
+                    // org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.AbstractCompositeLayoutProvider.layoutEditParts(List,
+                    // IAdaptable) for example) the list of unselected
                     // diagram element on diagram that are unpinned as elements
                     // to keep fixed in PinnedElementsHandler
                     final IAdaptable originalHint = layoutHint;

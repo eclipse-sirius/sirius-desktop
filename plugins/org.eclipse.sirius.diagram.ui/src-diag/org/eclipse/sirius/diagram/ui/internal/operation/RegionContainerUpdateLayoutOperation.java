@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -22,6 +24,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
@@ -32,9 +35,13 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
 
 /**
  * Update and keep consistent the GMF Bounds of a Region Container and its
@@ -46,6 +53,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
 
     private final Node regionContainer;
 
+    private Set<View> createdNodeViews = Sets.newHashSet();
+
     /**
      * Constructor.
      * 
@@ -55,6 +64,21 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     public RegionContainerUpdateLayoutOperation(Node regionContainer) {
         super(Messages.RegionContainerUpdateLayoutOperation_name);
         this.regionContainer = extractRealRegionContainer(regionContainer);
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param regionContainer
+     *            The Region Container view to layout.
+     * @param createdNodeViews
+     *            List of views created since the last call to the
+     *            RegionContainerUpdateLayoutOperation (and that can have effect
+     *            on the layout of the regions container).
+     */
+    public RegionContainerUpdateLayoutOperation(Node regionContainer, Set<View> createdNodeViews) {
+        this(regionContainer);
+        this.createdNodeViews = createdNodeViews;
     }
 
     private Node extractRealRegionContainer(Node node) {
@@ -91,17 +115,40 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             EObject element = regionContainer.getElement();
             if (element instanceof DNodeContainer) {
                 DNodeContainer dnc = (DNodeContainer) element;
+                List<Node> regionsToLayoutSortedByLocation = Lists.newArrayList(regionsToLayout);
+                sortRegionsAccordingToLocation(dnc, regionsToLayoutSortedByLocation);
                 sortRegions(dnc, regionsToLayout);
-                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dnc);
-                if (query.isVerticalStackContainer()) {
-                    updateRegionsLayoutContraints(regionsToLayout, true);
-                } else if (query.isHorizontaltackContainer()) {
-                    updateRegionsLayoutContraints(regionsToLayout, false);
+                boolean isOrderChanged = !regionsToLayout.equals(regionsToLayoutSortedByLocation);
+                if (isOrderChanged || isImpactedByNewViews()) {
+                    DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dnc);
+                    if (query.isVerticalStackContainer()) {
+                        updateRegionsLayoutContraints(regionsToLayout, true);
+                    } else if (query.isHorizontaltackContainer()) {
+                        updateRegionsLayoutContraints(regionsToLayout, false);
+                    }
                 }
             }
 
         }
         return null;
+    }
+
+    /**
+     * Check if at least one of the new views concerned the current region
+     * container.
+     * 
+     * @param dnc
+     *            The container to which we want to know if it is impacted
+     * @return true if at least one of the created views is contained by the
+     *         <code>regionContainer</code>, false otherwise.
+     */
+    private boolean isImpactedByNewViews() {
+        return Iterables.any(createdNodeViews, new Predicate<View>() {
+            @Override
+            public boolean apply(View input) {
+                return input instanceof Node && new NodeQuery((Node) input).isDescendantOf(regionContainer);
+            }
+        });
     }
 
     /*
@@ -185,6 +232,35 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      */
     public static void sortRegions(DNodeContainer dNodeContainer, List<? extends View> modelChildren) {
         new RegionComparisonHelper(dNodeContainer).sort(modelChildren);
+    }
+
+    /**
+     * Sort the regions with the current x or y location.
+     * 
+     * @param dNodeContainer
+     *            the {@link DNodeContainer} region container
+     * @param modelChildren
+     *            the regions
+     */
+    public static void sortRegionsAccordingToLocation(DNodeContainer dNodeContainer, List<? extends View> modelChildren) {
+        final DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dNodeContainer);
+        Function<View, Integer> locationIndex = new Function<View, Integer>() {
+            @Override
+            public Integer apply(View view) {
+                if (view instanceof Node) {
+                    LayoutConstraint constraint = ((Node) view).getLayoutConstraint();
+                    if (constraint instanceof Location) {
+                        if (query.isHorizontaltackContainer()) {
+                            return ((Location) constraint).getX();
+                        } else if (query.isVerticalStackContainer()) {
+                            return ((Location) constraint).getY();
+                        }
+                    }
+                }
+                return Integer.MAX_VALUE;
+            }
+        };
+        Collections.sort(modelChildren, Ordering.natural().onResultOf(locationIndex));
     }
 
     private static class RegionComparisonHelper extends ComparisonHelper {

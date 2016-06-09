@@ -13,7 +13,7 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
+						<a href="#sirius4.1.0">Changes in Sirius 4.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -27,7 +27,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
+						<a href="#sirius4.0.0">Changes in Sirius 4.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
@@ -41,7 +41,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius3.0.0">Changes in Sirius 3.0.0</a>
+						<a href="#sirius3.1.0">Changes in Sirius 3.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
@@ -55,13 +55,27 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius2.0.0">Changes in Sirius 2.0.0</a>
+						<a href="#sirius3.0.0">Changes in Sirius 3.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius2.0.0">Changes in Sirius 2.0.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
+							</li>
+							<li>
+								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#APIChanges">API Changes</a>
@@ -74,8 +88,20 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
+		<h2 id="sirius4.1.0">Changes in Sirius 4.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)</code> has been added to know if a view is a descendant of another view.
+			</li>
+		</ul>
+		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The user can now filter elements according to a Typed variable (String, Integer, EEnum or any EDataType). If a user applies a filter containing Typed Variables, a dialog is displayed to allow user entering the Typed Variable values. That values can be used as variables in the Condition Expression of the Variable Filter.</li>
 			<li><span class="label label-success">Added</span> When the diagram is larger than the editor, you can move it in all directions pressing the middle-button and dragging the mouse (keeping the button pressed).</li>
@@ -95,7 +121,7 @@
 				<code>Apply Appearance Properties</code> action has been modified to use the last selected element as base style instead of the first one.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
 				<strong>experimental</strong>  support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying  diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental  state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
@@ -161,7 +187,7 @@
 			</li>
 			<li><span class="label label-info">Modified</span> The variable under VariableFilter, previously named &#8220;Variable&#8221;, is renamed to &#8220;Select Model Element Variable&#8221;. It is functionally equivalent.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the 
 				<code>ITabbarContributor</code> through the 
@@ -359,7 +385,7 @@
 				<code>org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager</code> has been removed. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -556,7 +582,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.
@@ -595,7 +621,7 @@
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
@@ -642,7 +668,7 @@
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
 		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#8220;language packs&#8221; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
@@ -944,7 +970,7 @@
 				<code>IEditorPart</code> through the navigation history view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1100,7 +1126,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> The ability to print table representations has been re-introduced.</li>
 			<li><span class="label label-success">Added</span> The quick outline feature has been added for tree and table editors, see documentation for details.</li>
@@ -1125,7 +1151,7 @@
 				<em>Viewpoint Selection</em> dialog and wizard page, the &#8220;plug-in&#8221; decorator for viewpoints loaded from plug-ins is removed, and a &#8220;Folder&#8221; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 
@@ -1200,7 +1226,7 @@
 				<em>EStructuralFeature</em> (inherited or with same name).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<p>The most important and impacting changes in this release are (details below in plug-in specific sections):</p>
 		<ul>
 			<li><span class="label label-success">Added</span>  The new extension point 
@@ -1638,7 +1664,7 @@
 				<code>ComputedStyleDescriptionRegistry.computedStyleDescriptions</code> list.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -2050,7 +2076,7 @@
 			<code>org.eclipse.sirius.xxx.ui.ext</code>, allowing them not have all that functionalities they may not want.
 		</p>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.</li>
 			<li>The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.</li>
@@ -2101,7 +2127,7 @@
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#8220;advance&#8221; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
@@ -2270,7 +2296,7 @@
 				<code>org.eclipse.sirius.diagram.description.CenteringStyle</code>, to determine whether the edge target or source ends should be centered.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

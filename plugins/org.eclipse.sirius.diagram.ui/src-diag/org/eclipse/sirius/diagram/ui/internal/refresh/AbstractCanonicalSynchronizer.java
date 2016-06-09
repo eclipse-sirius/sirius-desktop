@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,8 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusViewProvider;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.AbstractContainerViewFactory;
@@ -156,7 +158,12 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
         boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
         if (regionContainer) {
-            regionContainersToLayout.add(gmfView);
+            // Only consider DNodeContainerEditPart and DNodeContainer2EditPart
+            // as regionContainer to layout.
+            int type = SiriusVisualIDRegistry.getVisualID(gmfView.getType());
+            if (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID) {
+                regionContainersToLayout.add(gmfView);
+            }
         }
 
         // Manage Nodes ordering in Compartment according to DNodeListElement
