@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -304,8 +304,11 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      */
     protected static class CommandWrapper extends Command {
 
-        /** The wrapped command. */
-        private Command executedCommand;
+        /**
+         * The wrapped command, initialized at the first call to
+         * {@link #getWrappedCommand()}.
+         */
+        private Command wrappedCommand;
 
         /** The request. */
         private final Request request;
@@ -333,9 +336,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
          */
         @Override
         public void execute() {
-            final Command cmd = this.getWrappedCommand();
-            cmd.execute();
-            executedCommand = cmd;
+            this.getWrappedCommand().execute();
         }
 
         /**
@@ -379,18 +380,15 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         }
 
         private Command getWrappedCommand() {
-            final Command result;
-            if (executedCommand == null) {
+            if (wrappedCommand == null) {
                 final Command cmd = editPart.getCommand(request);
                 if (cmd == null) {
-                    result = UnexecutableCommand.INSTANCE;
+                    wrappedCommand = UnexecutableCommand.INSTANCE;
                 } else {
-                    result = cmd;
+                    wrappedCommand = cmd;
                 }
-            } else {
-                result = executedCommand;
             }
-            return result;
+            return wrappedCommand;
         }
 
         /**
@@ -535,7 +533,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     private static void resetWrappedCommand(final Command command) {
         if (command instanceof CommandWrapper) {
-            ((CommandWrapper) command).executedCommand = null;
+            ((CommandWrapper) command).wrappedCommand = null;
         } else if (command instanceof CompoundCommand) {
             final Object[] children = ((CompoundCommand) command).getChildren();
             for (Object element : children) {
