@@ -47,6 +47,7 @@ import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchExce
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -92,6 +93,7 @@ import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -494,7 +496,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiver);
         if (receiverAuthority.canCreateIn(receiver)) {
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
             receiver.getOwnedRepresentations().add(representation);
+            receiver.getOwnedRepresentationDescriptors().add(representationDescriptor);
             // Add all semantic root elements pointed by the target of all
             // DSemanticDecorator of this representation (except of this root is
             // a root of a referencedAnalysis)
@@ -1430,8 +1434,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DView container = null;
 
             for (final DView view : analysis.getOwnedViews()) {
-                if (view instanceof DView && viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
-                    container = (DView) view;
+                if (viewpoint == view.getViewpoint() && view.eContainer() instanceof DAnalysis) {
+                    container = view;
                     break;
                 }
             } // for
