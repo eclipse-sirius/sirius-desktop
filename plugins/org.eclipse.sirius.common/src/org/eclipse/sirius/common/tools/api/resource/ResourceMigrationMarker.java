@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.resource;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
 /**
@@ -49,7 +51,13 @@ public class ResourceMigrationMarker extends AdapterImpl {
      *            resource to clear.
      */
     public static void clearMigrationMarker(Resource res) {
-        Iterables.removeIf(res.eAdapters(), Predicates.instanceOf(ResourceMigrationMarker.class));
+        Iterator<Adapter> iterator = res.eAdapters().iterator();
+        while (iterator.hasNext()) {
+            Adapter adapter = iterator.next();
+            if (adapter instanceof ResourceMigrationMarker) {
+                iterator.remove();
+            }
+        }
     }
 
     /**
