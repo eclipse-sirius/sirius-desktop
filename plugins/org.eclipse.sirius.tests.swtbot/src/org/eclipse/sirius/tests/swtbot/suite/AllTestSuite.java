@@ -123,7 +123,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DiagramCreationDescriptionFromDNodeListElementTest.class);
         suite.addTestSuite(DiagramCreationDescriptionTest.class);
         suite.addTestSuite(DiagramDocumentationTest.class);
-        suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(DirectEditLabelTest.class);
         suite.addTestSuite(SetStyleToWorkspaceImageTests.class);
         suite.addTestSuite(SelectAllAndDeselectionTest.class);
@@ -203,6 +202,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SecurityExceptionPopupTest.class);
         suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
+        suite.addTestSuite(DiagramPrintTest.class);
     }
 
     /**
