@@ -117,9 +117,7 @@ public class AllTestSuite extends TestCase {
     public static void addGerritPart1(TestSuite suite) {
         suite.addTest(new JUnit4TestAdapter(SWTBotBundlesReport.class));
         suite.addTestSuite(ContentAssistTest.class);
-        suite.addTestSuite(MetamodelPropertyTabTests.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
-        suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(CascadingSiriusURITest.class);
         suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);
         suite.addTestSuite(DiagramCreationDescriptionFromDNodeListElementTest.class);
@@ -203,6 +201,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(TabbarContributorExtensionTest.class);
         suite.addTestSuite(BorderNodeSideTest.class);
         suite.addTestSuite(SecurityExceptionPopupTest.class);
+        suite.addTestSuite(CenteredEdgesRepairTest.class);
+        suite.addTestSuite(MetamodelPropertyTabTests.class);
     }
 
     /**
@@ -217,7 +217,6 @@ public class AllTestSuite extends TestCase {
 
         addGerritPart1(suite);
 
-        suite.addTestSuite(CustomizationPropertySectionsTests.class);
         // TheViepointProjectCreationTest should be done before the others ones:
         // to verify the behavior when a specifier first launches the product.
         suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
@@ -252,14 +251,12 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
         suite.addTestSuite(LinkWithEditorFeatureWithModelExplorerViewTest.class);
         suite.addTestSuite(RepresentationVisibilityAfterSessionReloadTest.class);
-        suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
-        suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
         suite.addTest(new JUnit4TestAdapter(PortLocationAfterDragAndDropTest.class));
@@ -300,6 +297,7 @@ public class AllTestSuite extends TestCase {
     public static void addPart2(TestSuite suite) {
 
         addGerritPart2(suite);
+        suite.addTestSuite(CustomizationPropertySectionsTests.class);
         suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
@@ -319,6 +317,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
 
         suite.addTestSuite(DeleteHookTests.class);
 
@@ -386,6 +385,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(LocalSessionViewTest.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
+        suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
