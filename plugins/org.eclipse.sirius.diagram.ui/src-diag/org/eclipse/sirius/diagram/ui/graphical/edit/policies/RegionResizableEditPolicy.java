@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.PinnedElementsLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -139,12 +140,30 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     @Override
+    public Command getCommand(Request request) {
+        Object type = request.getType();
+        if (REQ_MOVE.equals(type) && (isDragAllowed() || isAuthorizedMoveRequest(request))) {
+            return getMoveCommand((ChangeBoundsRequest) request);
+        } else {
+            return super.getCommand(request);
+        }
+    }
+
+    @Override
     protected Command getMoveCommand(final ChangeBoundsRequest request) {
-        if (concernRegion()) {
+        if (concernRegion() && !isAuthorizedMoveRequest(request)) {
             return UnexecutableCommand.INSTANCE;
         }
 
         return super.getMoveCommand(request);
+    }
+
+    private boolean isAuthorizedMoveRequest(Request request) {
+        Object isAuthorizedMoveRequest = request.getExtendedData().get(PinnedElementsLayoutProvider.PINNED_ELEMENTS_MOVE);
+        if (isAuthorizedMoveRequest instanceof Boolean) {
+            return (Boolean) isAuthorizedMoveRequest;
+        }
+        return false;
     }
 
     @Override
