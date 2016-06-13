@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,23 @@ import com.google.common.collect.Maps;
  * @author pcdavid
  */
 public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
+
+    /**
+     * Key to store that the move request is sent from this specific layout
+     * provider to reset bounds of edit part to its origin location and size.
+     * <BR>
+     * The move request sets only the location but has, as side effect, to also
+     * use the same {@link org.eclipse.gmf.runtime.notation.Size} as the origin.
+     * <BR>
+     * For example, the move of a region is forbidden (see
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionResizableEditPolicy#getMoveCommand(ChangeBoundsRequest)}
+     * ). The user has not the authorization to move a region of a container.
+     * But if this flag exists in the extended data of the request, the move is
+     * "forced".
+     * 
+     */
+    public static final String PINNED_ELEMENTS_MOVE = "sirius.pinned.elements.move.request"; //$NON-NLS-1$
+
     /**
      * The layout provider which was executed before us. Needed to obtain the
      * new
@@ -62,6 +79,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
 
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
+        @Override
         public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
@@ -135,6 +153,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
          * Base case: handle pinned elements at this particular level.
          */
         final Map<IGraphicalEditPart, Rectangle> initialBoundsForThisLevel = Maps.filterEntries(initialBounds, new Predicate<Map.Entry<IGraphicalEditPart, Rectangle>>() {
+            @Override
             public boolean apply(final Entry<IGraphicalEditPart, Rectangle> input) {
                 return editParts.contains(input.getKey());
             }
@@ -208,6 +227,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
                 request.setMoveDelta(new Point(delta.width, delta.height));
                 request.setLocation(newPosition);
                 request.setType(org.eclipse.gef.RequestConstants.REQ_MOVE);
+                request.getExtendedData().put(PinnedElementsLayoutProvider.PINNED_ELEMENTS_MOVE, Boolean.TRUE);
             } else {
                 // no move, return null.
                 return null;
