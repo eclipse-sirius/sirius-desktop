@@ -10,28 +10,54 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.Path;
+import org.eclipse.draw2d.FigureUtilities;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -79,7 +105,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     public RegionContainerUpdateLayoutOperation(Node regionsContainer, boolean containsCreatedOrDeletedRegions) {
         super(Messages.RegionContainerUpdateLayoutOperation_name);
         this.regionsContainer = extractRealRegionsContainer(regionsContainer);
-        this.containsCreatedOrDeletedRegions = true;
+        this.containsCreatedOrDeletedRegions = containsCreatedOrDeletedRegions;
     }
 
     private Node extractRealRegionsContainer(Node node) {
@@ -126,9 +152,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                 if (!isSameOrder || containsCreatedOrDeletedRegions) {
                     DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dnc);
                     if (query.isVerticalStackContainer()) {
-                        updateRegionsLayoutContraints(regionsToLayout, true);
+                        updateRegionsLayoutContraints(regionsToLayout, true, new DDiagramElementContainerExperimentalQuery(dnc).isRegion());
                     } else if (query.isHorizontaltackContainer()) {
-                        updateRegionsLayoutContraints(regionsToLayout, false);
+                        updateRegionsLayoutContraints(regionsToLayout, false, new DDiagramElementContainerExperimentalQuery(dnc).isRegion());
                     }
                 }
             }
@@ -137,23 +163,44 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     }
 
     /*
-     * @param vertical : vertical if true, horizontal if false.
+     * @param isVertical : vertical if true, horizontal if false.
      */
-    private void updateRegionsLayoutContraints(List<Node> regionsToLayout, boolean vertical) {
-        Map<Node, Rectangle> regionBounds = Maps.newHashMap();
-        int commonWidth = -1;
-        int commonHeight = -1;
+    private void updateRegionsLayoutContraints(List<Node> regionsToLayout, boolean isVertical, boolean containerIsRegion) {
+        Size regionContainerSize = null;
+        LayoutConstraint regionContainerLayoutConstraint = regionsContainer.getLayoutConstraint();
+        if (regionContainerLayoutConstraint instanceof Size) {
+            regionContainerSize = (Size) regionContainerLayoutConstraint;
+        } else {
+            regionContainerSize = NotationFactory.eINSTANCE.createSize();
+        }
+
+        // The first item of this list is the default size of a region and a the
+        // second (optional) is the size of the last region.
+        List<Dimension> defaultRegionsSizeAndOptionalLastRegionSize = null;
+        Dimension regionsSizeComputedFromContainer = new Dimension(-1, -1);
+        // The regionsSizeComputedFromContainer is useful only when the
+        // regionContainer size has been fixed, by VSM or
+        // by end-user at creation.
+        if (hasRegionContainerFixedSize(regionContainerSize, isVertical)) {
+            defaultRegionsSizeAndOptionalLastRegionSize = computeRegionsSizeAccordingToContainerSize(regionsToLayout.size(), isVertical, containerIsRegion, regionContainerSize);
+            regionsSizeComputedFromContainer = defaultRegionsSizeAndOptionalLastRegionSize.get(0);
+        }
+
+        // The current bounds of the regions.
+        Map<Node, Rectangle> regionsBounds = Maps.newHashMap();
         for (Node node : regionsToLayout) {
             Rectangle bounds = GMFHelper.getBounds(node, true, true);
-            commonWidth = Math.max(commonWidth, bounds.width);
-            commonHeight = Math.max(commonHeight, bounds.height);
-            regionBounds.put(node, bounds);
+            regionsBounds.put(node, bounds);
         }
+        // The default region size is computed according to the VSM defined size
+        // of the corresponding mapping and to the regions size computed from
+        // container size. It is then used according to stack orientation.
+        Dimension defaultRegionsSize = getDefaultRegionsSize(regionsBounds, regionsSizeComputedFromContainer);
 
         int y = 0;
         int x = 0;
         for (Node node : regionsToLayout) {
-            Rectangle bounds = regionBounds.get(node);
+            Rectangle bounds = regionsBounds.get(node);
 
             LayoutConstraint layoutConstraint = node.getLayoutConstraint();
             if (layoutConstraint instanceof Location) {
@@ -166,44 +213,269 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                 }
             }
 
-            if (vertical) {
+            if (layoutConstraint instanceof Size) {
+                Size size = (Size) layoutConstraint;
+                if (isVertical) {
+                    if ((size.getWidth() != -1 || regionsSizeComputedFromContainer.width() != -1) && size.getWidth() != defaultRegionsSize.width()) {
+                        size.setWidth(defaultRegionsSize.width());
+                    }
+                    if (regionsSizeComputedFromContainer.height() != -1) {
+                        if (node.equals(regionsToLayout.get(regionsToLayout.size() - 1)) && defaultRegionsSizeAndOptionalLastRegionSize != null
+                                && defaultRegionsSizeAndOptionalLastRegionSize.size() == 2) {
+                            // Specific height for last region
+                            bounds.height = defaultRegionsSizeAndOptionalLastRegionSize.get(1).height();
+                        } else {
+                            bounds.height = defaultRegionsSize.height();
+                        }
+                        size.setHeight(bounds.height);
+                    }
+                } else {
+                    if ((size.getHeight() != -1 || regionsSizeComputedFromContainer.height() != -1) && size.getHeight() != defaultRegionsSize.height()) {
+                        size.setHeight(defaultRegionsSize.height());
+                    }
+                    if (regionsSizeComputedFromContainer.width() != -1) {
+                        if (node.equals(regionsToLayout.get(regionsToLayout.size() - 1)) && defaultRegionsSizeAndOptionalLastRegionSize != null
+                                && defaultRegionsSizeAndOptionalLastRegionSize.size() == 2) {
+                            // Specific width for last region
+                            bounds.width = defaultRegionsSizeAndOptionalLastRegionSize.get(1).width();
+                        } else {
+                            bounds.width = defaultRegionsSize.width();
+                        }
+                        size.setWidth(bounds.width);
+                    }
+                }
+            }
+
+            if (isVertical) {
                 y += bounds.height;
             } else {
                 x += bounds.width;
             }
 
-            if (layoutConstraint instanceof Size) {
-                Size size = (Size) layoutConstraint;
-                if (vertical && size.getWidth() != -1 && size.getWidth() != commonWidth) {
-                    size.setWidth(commonWidth);
-                }
+        }
 
-                if (!vertical && size.getHeight() != -1 && size.getHeight() != commonHeight) {
-                    size.setHeight(commonHeight);
+        // Set the width and height of the container to -1 as the size is
+        // managed by the region contained in this container.
+        if (isVertical) {
+            if (regionContainerSize.getHeight() != -1) {
+                regionContainerSize.setHeight(-1);
+            }
+            if (regionContainerSize.getWidth() != -1) {
+                regionContainerSize.setWidth(-1);
+            }
+        } else {
+            if (regionContainerSize.getWidth() != -1) {
+                regionContainerSize.setWidth(-1);
+            }
+            if (regionContainerSize.getHeight() != -1) {
+                regionContainerSize.setHeight(-1);
+            }
+        }
+    }
+
+    /**
+     * Check if the current regions container size is a fixed size (fixed in the
+     * VSM or by the end-user):
+     * <ul>
+     * <li>If it is fixed by the end-user both width and height will be
+     * different than -1.</li>
+     * <li>If it is fixed in the VSM, it is possible that only one value is
+     * different that -1, but in this case, only one size is interesting
+     * according to stack orietation.</li>
+     * </ul>
+     * 
+     * @param regionsContainerSize
+     *            The GMF size of the current regions container
+     * @param isVertical
+     *            the stack orientation (true for vertical, false for
+     *            horizontal)
+     * @return true if the <code>regionsContainerSize</code> is considered as
+     *         fixed size, false otherwise.
+     */
+    private boolean hasRegionContainerFixedSize(Size regionsContainerSize, boolean isVertical) {
+        boolean result = regionsContainerSize.getWidth() != -1 && regionsContainerSize.getHeight() != -1;
+        if (!result && (regionsContainerSize.getWidth() != -1 || regionsContainerSize.getHeight() != -1)) {
+            EObject element = regionsContainer.getElement();
+            if (element instanceof DNodeContainer) {
+                DNodeContainer dnc = (DNodeContainer) element;
+                if (isVertical && regionsContainerSize.getHeight() != -1) {
+                    result = regionsContainerSize.getHeight() == dnc.getHeight();
+                } else if (!isVertical && regionsContainerSize.getWidth() != -1) {
+                    result = regionsContainerSize.getWidth() == dnc.getWidth();
                 }
             }
         }
+        return result;
+    }
 
-        LayoutConstraint layoutConstraint = regionsContainer.getLayoutConstraint();
-        if (layoutConstraint instanceof Size) {
-            Size size = (Size) layoutConstraint;
-            if (vertical) {
-                if (size.getHeight() != -1) {
-                    size.setHeight(-1);
-                }
-                if (size.getWidth() != -1 && size.getWidth() < commonWidth) {
-                    size.setWidth(-1);
-                }
-            } else {
-                if (size.getWidth() != -1) {
-                    size.setWidth(-1);
-                }
-                if (size.getHeight() != -1 && size.getHeight() < commonHeight) {
-                    size.setHeight(-1);
+    /**
+     * This method computes the default region size according to all bounds of
+     * the region and to the <code>regionSizeComputedFromContainer</code>.
+     * 
+     * @param regionsBounds
+     *            The bounds of the regions, of the current regions container,
+     *            to layout.
+     * @param regionSizeComputedFromContainer
+     *            The default region size computed from regions container size
+     *            (if it is defined). If the regions container size is not
+     *            defined, the <code>regionSizeComputedFromContainer</code>
+     *            width/height will be "-1". If it is not "-1", it is priority.
+     * @return The default dimension to consider for the region of this regions
+     *         container.
+     */
+    private Dimension getDefaultRegionsSize(Map<Node, Rectangle> regionsBounds, Dimension regionSizeComputedFromContainer) {
+        Dimension result = new Dimension(-1, -1);
+        for (Rectangle bounds : regionsBounds.values()) {
+            result.width = Math.max(result.width, bounds.width);
+            result.height = Math.max(result.height, bounds.height);
+        }
+        if (regionSizeComputedFromContainer.width() != -1) {
+            // The size of the regions container has been fixed, by VSM or
+            // by end-user at creation, this dimension must be kept for the
+            // first region creation. At the next pass in this method, the
+            // size of the regions container will be {-1, -1}: this is done
+            // at the end of the current layout operation.
+            result.width = regionSizeComputedFromContainer.width();
+        }
+        if (regionSizeComputedFromContainer.height() != -1) {
+            // The size of the regions container has been fixed, by VSM or
+            // by end-user at creation, this dimension must be kept for the
+            // first region creation. At the next pass in this method, the
+            // size of the regions container will be {-1, -1}: this is done
+            // at the end of the current layout operation.
+            result.height = regionSizeComputedFromContainer.height();
+        }
+        return result;
+    }
+
+    /**
+     * Compute the default size of regions according to regions container size.
+     * This method is called only when the regions container has not an auto
+     * sized for its GMF size.
+     * 
+     * @param nbRegionsToLayout
+     *            Number of regions to layout
+     * @param vertical
+     *            true if the stack is vertical, false if it is horizontal
+     * @param containerIsRegion
+     *            true if the container is also a region
+     * @param regionsContainerSize
+     *            The size, defined in the VSM or by the end-user at creation,
+     *            of the regions container
+     * @return list of dimension (the first is the size of a region, the second,
+     *         optional, is the size of the last region if different of the
+     *         others)
+     */
+    private List<Dimension> computeRegionsSizeAccordingToContainerSize(int nbRegionsToLayout, boolean vertical, boolean containerIsRegion, Size regionsContainerSize) {
+        List<Dimension> result = Lists.newArrayList();
+        Dimension regionContainerContentPaneSize = new Dimension(regionsContainerSize.getWidth(), regionsContainerSize.getHeight());
+        Dimension regionSize = new Dimension();
+        // headerHeight includes the title height (with the icon), the label
+        // offset, the 1 pixel separator line,
+        int headerHeight = 0;
+        EObject element = regionsContainer.getElement();
+        ViewQuery viewQuery = new ViewQuery(regionsContainer);
+        int borderSize = 0;
+        boolean needShadowBorder = true;
+        if (element instanceof DNodeContainer) {
+            DNodeContainer dnc = (DNodeContainer) element;
+            Style siriusStyle = dnc.getStyle();
+            // Get border size
+            if (siriusStyle instanceof BorderedStyle) {
+                if (((BorderedStyle) siriusStyle).getBorderSize() != null) {
+                    borderSize = ((BorderedStyle) siriusStyle).getBorderSize().intValue();
                 }
             }
+            // Get header size (title and all associated margin)
+            if (!new DDiagramElementQuery(dnc).isLabelHidden()) {
+                int titleHeight = 0;
+                if (siriusStyle instanceof BasicLabelStyle) {
+                    BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
+                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
+                    Dimension titleDimension = FigureUtilities.getStringExtents(dnc.getName(), defaultFont);
+                    titleHeight = titleDimension.height;
+                    if (bls.isShowIcon()) {
+                        // Also consider the icon size
+                        Image icon = null;
+                        ImageDescriptor descriptor = null;
+                        EObject target = dnc.getTarget();
+                        if (!StringUtil.isEmpty(bls.getIconPath())) {
+                            String iconPath = bls.getIconPath();
+                            final File imageFile = FileProvider.getDefault().getFile(new Path(iconPath));
+                            if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
+                                try {
+                                    descriptor = DiagramUIPlugin.Implementation.findImageDescriptor(imageFile.toURI().toURL());
+                                } catch (MalformedURLException e) {
+                                    // Do nothing here
+                                }
+                            }
+                        } else if (target != null) {
+                            final IItemLabelProvider labelProvider = (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
+                            if (labelProvider != null) {
+                                descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(target));
+                            }
+                        }
+
+                        if (descriptor == null) {
+                            descriptor = ImageDescriptor.getMissingImageDescriptor();
+                        }
+                        icon = DiagramUIPlugin.getPlugin().getImage(descriptor);
+                        titleHeight = Math.max(titleHeight, icon.getBounds().height);
+                    }
+                }
+                int separatorLineHeight = 1;
+                int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
+                // As in
+                // org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation.refreshBorder(AbstractDiagramElementContainerEditPart,
+                // ViewNodeContainerFigureDesc, ContainerStyle)
+                if (!containerIsRegion) {
+                    labelOffset -= 1;
+                }
+                headerHeight = labelOffset + titleHeight + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING + separatorLineHeight;
+            }
+            // Compute if the shadow border is needed (as in
+            // AbstractDiagramElementContainerEditPart.addDropShadow(NodeFigure,
+            // IFigure))
+            needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(dnc).isRegion() || dnc.getOwnedStyle() instanceof WorkspaceImage);
         }
 
+        // Adds all the expected margin
+        regionContainerContentPaneSize.setHeight(regionContainerContentPaneSize.height() - (borderSize + headerHeight + borderSize));
+        regionContainerContentPaneSize.setWidth(regionContainerContentPaneSize.width() - (borderSize + borderSize));
+        if (needShadowBorder) {
+            // Remove the 2 pixels corresponding to the shadow insets
+            // (AlphaDropShadowBorder.getInsets(IFigure))
+            regionContainerContentPaneSize.setHeight(regionContainerContentPaneSize.height() - AlphaDropShadowBorder.getDefaultShadowSize());
+            regionContainerContentPaneSize.setWidth(regionContainerContentPaneSize.width() - AlphaDropShadowBorder.getDefaultShadowSize());
+        }
+        if (vertical) {
+            if (regionContainerContentPaneSize.height() != 0) {
+                regionSize.setHeight(regionContainerContentPaneSize.height() / nbRegionsToLayout);
+            }
+            regionSize.setWidth(regionContainerContentPaneSize.width());
+            result.add(regionSize);
+            if (regionContainerContentPaneSize.height() % regionSize.height() != 0) {
+                // Compute the precise last height (the regions container height
+                // is not necessarily exactly divisible by the number of
+                // regions)
+                int lastRegionHeight = regionContainerContentPaneSize.height() - (regionSize.height() * (nbRegionsToLayout - 1));
+                result.add(new Dimension(regionContainerContentPaneSize.width(), lastRegionHeight));
+            }
+        } else {
+            if (regionsContainerSize.getWidth() != 0) {
+                regionSize.setWidth(regionContainerContentPaneSize.width() / nbRegionsToLayout);
+            }
+            regionSize.setHeight(regionContainerContentPaneSize.height());
+            result.add(regionSize);
+            if (regionContainerContentPaneSize.width() % regionSize.width() != 0) {
+                // Compute the precise last width (the regions container width
+                // is not necessarily exactly divisible by the number of
+                // regions)
+                int lastRegionWidth = regionContainerContentPaneSize.width() - (regionSize.width() * (nbRegionsToLayout - 1));
+                result.add(new Dimension(lastRegionWidth, regionContainerContentPaneSize.height()));
+            }
+        }
+        return result;
     }
 
     /**

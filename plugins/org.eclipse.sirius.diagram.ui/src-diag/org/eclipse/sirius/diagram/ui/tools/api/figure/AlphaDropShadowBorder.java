@@ -48,6 +48,15 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
     private IFigure shape;
 
     /**
+     * Get the default shadow size of an {@link AlphaDropShadowBorder} figure.
+     * 
+     * @return The default shadow size
+     */
+    public static int getDefaultShadowSize() {
+        return DEFAULT_SHIFT_VALUE * 2;
+    }
+
+    /**
      * 
      * @param shape
      */
