@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
@@ -53,7 +55,8 @@ public final class DRepresentationDescriptorInternalHelper {
         descriptor.setDescription(description);
         descriptor.setName(representation.getName());
         if (representation instanceof DSemanticDecorator) {
-            descriptor.setTarget(((DSemanticDecorator) representation).getTarget());
+            // avoid the semantic load if not necessary
+            descriptor.setTarget((EObject) representation.eGet(ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, false));
         }
 
         return descriptor;
