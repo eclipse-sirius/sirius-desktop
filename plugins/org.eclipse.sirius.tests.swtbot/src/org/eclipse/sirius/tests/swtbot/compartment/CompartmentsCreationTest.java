@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,35 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.compartment;
 
+import java.io.IOException;
+import java.util.Collections;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Location;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -22,9 +46,14 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Tests defined to ensure that elements are created in compartments and regions
@@ -53,44 +82,44 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
     private void childrenPresentationTest(String representationName, String representationInstanceName, ContainerLayout initialContainerLayout) {
         openRepresentation(representationName, representationInstanceName);
-        
-        ContainerMapping rcMapping = getActualMapping(REGION_CONTAINER_NAME);
-        checkChildrenPresentation(REGION_CONTAINER_NAME, rcMapping, initialContainerLayout);
-    
+
+        ContainerMapping rcMapping = getActualMapping(FIRST_REGION_CONTAINER_NAME);
+        checkChildrenPresentation(FIRST_REGION_CONTAINER_NAME, rcMapping, initialContainerLayout);
+
         ContainerMapping listRegionMapping = getActualMapping(LEFT_CLASS_NAME);
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
-    
+
         ContainerMapping freeFormRegionMapping = getActualMapping(LEFT_PKG_NAME);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
-    
+
         // Change list region presentation to free form
         changeChildrenPresentation(listRegionMapping, ContainerLayout.FREE_FORM);
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.FREE_FORM);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
-    
+
         undo(localSession.getOpenedSession());
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
-    
+
         // Change free form region presentation to list
         changeChildrenPresentation(freeFormRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.LIST);
-    
+
         undo(localSession.getOpenedSession());
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
-    
+
         // Change region container children presentation from VStack to HStack
         // or from HStack to VStack
         ContainerLayout newRCPresentation = initialContainerLayout == ContainerLayout.VERTICAL_STACK ? ContainerLayout.HORIZONTAL_STACK : ContainerLayout.VERTICAL_STACK;
         changeChildrenPresentation(rcMapping, newRCPresentation);
-        checkChildrenPresentation(REGION_CONTAINER_NAME, rcMapping, newRCPresentation);
+        checkChildrenPresentation(FIRST_REGION_CONTAINER_NAME, rcMapping, newRCPresentation);
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
-    
+
         undo(localSession.getOpenedSession());
-        checkChildrenPresentation(REGION_CONTAINER_NAME, rcMapping, initialContainerLayout);
+        checkChildrenPresentation(FIRST_REGION_CONTAINER_NAME, rcMapping, initialContainerLayout);
         checkChildrenPresentation(LEFT_CLASS_NAME, listRegionMapping, ContainerLayout.LIST);
         checkChildrenPresentation(LEFT_PKG_NAME, freeFormRegionMapping, ContainerLayout.FREE_FORM);
     }
@@ -113,8 +142,8 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
     private void doTestContainerListCreation(String representationName, String representationInstanceName) {
         openRepresentation(representationName, representationInstanceName);
-        createElement(CLASS_LIST_CREATION_TOOL_NAME, REGION_CONTAINER_NAME);
-        checkElement(NEW_CLASS_LIST_4_NAME, REGION_CONTAINER_NAME, CLASS_LIST_CREATION_TOOL_NAME);
+        createElement(CLASS_LIST_CREATION_TOOL_NAME, FIRST_REGION_CONTAINER_NAME);
+        checkElement(NEW_CLASS_LIST_4_NAME, FIRST_REGION_CONTAINER_NAME, CLASS_LIST_CREATION_TOOL_NAME);
     }
 
     /**
@@ -130,7 +159,7 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
      * created.
      */
     public void testCompartmentCreationInVerticalStack() {
-        compartmentCreationTest(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME, new Point(400, 200));
+        compartmentCreationTest(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME, new Point(400, 300));
     }
 
     private void compartmentCreationTest(String representationName, String representationInstanceName, Point regionContainerLocation) {
@@ -322,4 +351,145 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
         });
     }
 
+    /**
+     * Test that the refresh of a diagram caused by an external change (and that
+     * creates a new regions container) does not impact existing regions
+     * container (no layout of them).
+     * 
+     * @throws Exception
+     *             In case of problem during semantic modification outside the
+     *             editor.
+     */
+    public void testCreationOfNewHorizontalRegionContainerOutsideEditor() throws Exception {
+        openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        // Check that the existing container is as expected
+        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258));
+
+        // Create a new ePackage (that causes creation of new region container
+        // region at refresh) outside of the current session (as from an
+        // external editor).
+        modifySemanticModelOutsideDiagram();
+
+        // Check that the existing container has not changed
+        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258));
+    }
+
+    /**
+     * Test that the refresh of a diagram caused by an external change (and that
+     * creates a new regions container) does not impact existing regions
+     * container (no layout of them).
+     * 
+     * @throws Exception
+     *             In case of problem during semantic modification outside the
+     *             editor.
+     */
+    public void testCreationOfNewVerticalRegionContainerOutsideEditor() throws Exception {
+        openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        // Check that the existing region is as expected
+        checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
+
+        // Create a new ePackage (that causes creation of new region container
+        // region at refresh) outside of the current session (as from an
+        // external editor).
+        modifySemanticModelOutsideDiagram();
+
+        // Check that the existing container has not changed (or at least one of
+        // its region in current case)
+        checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
+    }
+
+    private void checkSize(String label, Dimension expectedGmfSize, Dimension expectedFigureSize) {
+        checkBounds(label, new Rectangle(0, 0, expectedGmfSize.width(), expectedGmfSize.height()), new Rectangle(0, 0, expectedFigureSize.width(), expectedFigureSize.height()), true);
+    }
+
+    private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
+        checkBounds(label, expectedGmfBounds, expectedFigureBounds, false);
+    }
+
+    private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize) {
+        SWTBotGefEditPart swtBotEditPart = editor.getEditPart(label, AbstractDiagramElementContainerEditPart.class);
+        AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) swtBotEditPart.part();
+
+        IFigure mainFigure = editPart.getMainFigure();
+
+        if (onlyCheckSize) {
+            assertEquals("Wrong GMF size for " + label, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize());
+            assertEquals("Wrong Draw2D size for " + label, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize());
+        } else {
+            assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
+            assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+        }
+
+        ResizableCompartmentEditPart compartmentEditPart = (ResizableCompartmentEditPart) editPart.getChildren().get(1);
+        Border border = compartmentEditPart.getContentPane().getBorder();
+
+        if (editPart instanceof IDiagramListEditPart) {
+            assertEquals("Wrong border margin for " + label, new Insets(0, 4, editPart.isRegion() ? 0 : 1, 4), border.getInsets(null));
+        } else if (editPart instanceof IDiagramContainerEditPart) {
+            assertNull("Wrong border for " + label + ": the BorderItemsAwareFreeFormLayer used as content pane of a freeform region should not have a border.", border);
+        }
+    }
+
+    private Rectangle getBounds(Node notationView) {
+        Rectangle bounds = new Rectangle();
+        LayoutConstraint layoutConstraint = notationView.getLayoutConstraint();
+        if (layoutConstraint instanceof Location) {
+            Location location = (Location) layoutConstraint;
+            bounds.setLocation(location.getX(), location.getY());
+        }
+        if (layoutConstraint instanceof Size) {
+            Size size = (Size) layoutConstraint;
+            bounds.setSize(size.getWidth(), size.getHeight());
+        }
+        return bounds;
+    }
+
+    /**
+     * Add a new package p3 in the root package. The modification is not made in
+     * the same resourceSet, as if this modification is made in another editor
+     * not in Sirius.
+     */
+    private void modifySemanticModelOutsideDiagram() throws Exception {
+        // Load the semantic resource in another resource set, delete the
+        // elements and save the resource.
+        TransactionalEditingDomain domain = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        ResourceSet set = domain.getResourceSet();
+        try {
+            final EPackage ePackageInAnotherResourceSet = (EPackage) ModelUtils.load(localSession.getOpenedSession().getSemanticResources().iterator().next().getURI(), set);
+            assertFalse("The editing domain of each root semantic must be different.", domain.equals(localSession.getOpenedSession().getTransactionalEditingDomain()));
+
+            domain.getCommandStack().execute(new RecordingCommand(domain, "Add new package") {
+
+                @Override
+                protected void doExecute() {
+                    // Remove the package subRoot
+                    EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
+                    ePackage.setName(NEW_REGION_CONTAINER_NAME);
+                    ePackageInAnotherResourceSet.getESubpackages().add(ePackage);
+                }
+            });
+            ePackageInAnotherResourceSet.eResource().save(Collections.EMPTY_MAP);
+        } catch (IOException e) {
+            fail("Pb when saving the resource in another resourceSet : " + e.getMessage());
+        }
+        // Wait job ResourceSyncClientNotifier to ensure the session has been
+        // reloaded.
+        if (Display.getCurrent() != null) {
+            PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
+
+                @Override
+                public void run(IProgressMonitor monitor) throws InterruptedException {
+                    Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, monitor);
+                }
+            });
+        } else {
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        }
+    }
 }

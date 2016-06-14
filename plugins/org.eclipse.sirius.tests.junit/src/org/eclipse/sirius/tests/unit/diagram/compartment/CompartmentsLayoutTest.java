@@ -104,8 +104,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
     private final static int[] VSTACK_LAST_REGION_SPECIFIC_CORNERS = { PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST };
 
-    private final static Collection<Integer> CORNERS = Collections.unmodifiableList(Lists.newArrayList(PositionConstants.NORTH_WEST, PositionConstants.NORTH_EAST, PositionConstants.SOUTH_WEST,
-            PositionConstants.SOUTH_EAST));
+    private final static Collection<Integer> CORNERS = Collections
+            .unmodifiableList(Lists.newArrayList(PositionConstants.NORTH_WEST, PositionConstants.NORTH_EAST, PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST));
 
     private DDiagram diagram;
 
@@ -152,7 +152,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     private void doTestLabelAlignment() {
-        checkAndChangeLabelAlignment(REGION_CONTAINER_NAME, LabelAlignment.CENTER, LabelAlignment.LEFT);
+        checkAndChangeLabelAlignment(FIRST_REGION_CONTAINER_NAME, LabelAlignment.CENTER, LabelAlignment.LEFT);
         checkAndChangeLabelAlignment(LEFT_CLASS_NAME, LabelAlignment.LEFT, LabelAlignment.RIGHT);
         checkAndChangeLabelAlignment(CENTER_CLASS_NAME, LabelAlignment.CENTER, LabelAlignment.LEFT);
         checkAndChangeLabelAlignment(RIGHT_CLASS_NAME, LabelAlignment.RIGHT, LabelAlignment.CENTER);
@@ -202,10 +202,10 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
-       
+
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
-        
-        checkBounds(REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, 165, 211), new Rectangle(0, 0, 165, 211));
         checkBounds(CENTER_CLASS_NAME, new Rectangle(165, 0, 136, 211), new Rectangle(165, 0, 136, 211));
         checkBounds(RIGHT_CLASS_NAME, new Rectangle(301, 0, 130, 211), new Rectangle(301, 0, 130, 211));
@@ -225,8 +225,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         TestsUtil.synchronizationWithUIThread();
 
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
-        
-        checkBounds(REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
         checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 91, -1, -1), new Rectangle(0, 91, 129, 92));
         checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
@@ -277,7 +277,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     private void doTestInitialLayout(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
         int regionCorners = 0;
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -333,10 +333,10 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     private void doTestBorderChanges(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
         int regionCorners = 0;
 
-        changeBorderSpecification(REGION_CONTAINER_NAME, 10, LineStyle.DASH_DOT_LITERAL);
+        changeBorderSpecification(FIRST_REGION_CONTAINER_NAME, 10, LineStyle.DASH_DOT_LITERAL);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, 10, LineStyle.DASH_DOT_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, 10, LineStyle.DASH_DOT_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -344,12 +344,12 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkRegion(CENTER_PKG_NAME, 4, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_PKG_NAME, 5, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
 
-        changeBorderSpecification(REGION_CONTAINER_NAME, 10, LineStyle.DOT_LITERAL);
+        changeBorderSpecification(FIRST_REGION_CONTAINER_NAME, 10, LineStyle.DOT_LITERAL);
         changeBorderSpecification(CENTER_CLASS_NAME, 10, LineStyle.DASH_DOT_LITERAL);
         changeBorderSpecification(RIGHT_PKG_NAME, 10, LineStyle.DASH_DOT_LITERAL);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, 10, LineStyle.DOT_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, 10, LineStyle.DOT_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(CENTER_CLASS_NAME, 1, 10, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -357,12 +357,12 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkRegion(CENTER_PKG_NAME, 4, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_PKG_NAME, 5, 10, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
 
-        changeBorderSpecification(REGION_CONTAINER_NAME, 0, LineStyle.SOLID_LITERAL);
+        changeBorderSpecification(FIRST_REGION_CONTAINER_NAME, 0, LineStyle.SOLID_LITERAL);
         changeBorderSpecification(CENTER_CLASS_NAME, 0, LineStyle.SOLID_LITERAL);
         changeBorderSpecification(RIGHT_PKG_NAME, 0, LineStyle.SOLID_LITERAL);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, 0, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, 0, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(CENTER_CLASS_NAME, 1, 0, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -403,7 +403,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         // tested in initial layout tests.
 
         // Step 1: no rounded corner at all: no overlap
-        changeCornerSpecification(REGION_CONTAINER_NAME, false, regionContainerCorners);
+        changeCornerSpecification(FIRST_REGION_CONTAINER_NAME, false, regionContainerCorners);
         changeCornerSpecification(LEFT_CLASS_NAME, false, regionCorners);
         changeCornerSpecification(CENTER_CLASS_NAME, false, regionCorners);
         changeCornerSpecification(RIGHT_CLASS_NAME, false, regionCorners);
@@ -412,7 +412,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         changeCornerSpecification(RIGHT_PKG_NAME, false, regionCorners);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -430,7 +430,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         changeCornerSpecification(RIGHT_PKG_NAME, true, regionCorners);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -442,10 +442,10 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         // pix): first/last region should not overlap the region container
         // corners.
         regionContainerCorners = 20;
-        changeCornerSpecification(REGION_CONTAINER_NAME, true, regionContainerCorners);
+        changeCornerSpecification(FIRST_REGION_CONTAINER_NAME, true, regionContainerCorners);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -457,7 +457,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         // pix): no specific corner
         regionContainerCorners = 10;
         regionCorners = 20;
-        changeCornerSpecification(REGION_CONTAINER_NAME, true, regionContainerCorners);
+        changeCornerSpecification(FIRST_REGION_CONTAINER_NAME, true, regionContainerCorners);
         changeCornerSpecification(LEFT_CLASS_NAME, true, regionCorners);
         changeCornerSpecification(CENTER_CLASS_NAME, true, regionCorners);
         changeCornerSpecification(RIGHT_CLASS_NAME, true, regionCorners);
@@ -466,7 +466,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         changeCornerSpecification(RIGHT_PKG_NAME, true, regionCorners);
         TestsUtil.synchronizationWithUIThread();
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(CENTER_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -499,7 +499,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
     private void doTestContentPanes(ContainerLayout verticalStack) {
         // Step 1: no rounded corner at all : no overlap
-        checkContentPanes(REGION_CONTAINER_NAME, true, true);
+        checkContentPanes(FIRST_REGION_CONTAINER_NAME, true, true);
         checkContentPanes(LEFT_CLASS_NAME, true, true);
         checkContentPanes(CENTER_CLASS_NAME, true, false);
         checkContentPanes(LEFT_PKG_NAME, false, false);
@@ -519,7 +519,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         changeElementName(CENTER_PKG_NAME, newPkg4Name);
         TestsUtil.synchronizationWithUIThread();
 
-        checkContentPanes(REGION_CONTAINER_NAME, true, true);
+        checkContentPanes(FIRST_REGION_CONTAINER_NAME, true, true);
         checkContentPanes(newClass1Name, true, false);
         checkContentPanes(newClass2Name, true, true);
         checkContentPanes(newPkg3Name, true, true);
@@ -541,7 +541,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestReorderedLayout(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
 
-        checkBounds(REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(136, 0, 165, 211), new Rectangle(136, 0, 165, 211));
         checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, 136, 211), new Rectangle(0, 0, 136, 211));
         checkBounds(RIGHT_CLASS_NAME, new Rectangle(301, 0, 130, 211), new Rectangle(301, 0, 130, 211));
@@ -565,7 +565,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestReorderedLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
 
-        checkBounds(REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 92, -1, -1), new Rectangle(0, 91, 129, 92));
         checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
         checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
@@ -592,7 +592,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     private void doTestReorderedLayout(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
         int regionCorners = 0;
 
-        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
         checkRegion(LEFT_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(CENTER_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
         checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
@@ -744,8 +744,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
 
         View notationView = editPart.getNotationView();
-        assertEquals("The " + label + " notation view index does not correspond to expected order (mapping order and semantic candidates order).", expectedIndex, ((View) notationView.eContainer())
-                .getChildren().indexOf(notationView));
+        assertEquals("The " + label + " notation view index does not correspond to expected order (mapping order and semantic candidates order).", expectedIndex,
+                ((View) notationView.eContainer()).getChildren().indexOf(notationView));
         assertEquals("The " + label + " edit part index does not correspond to model order (mapping order and semantic candidates order).", expectedIndex,
                 editPart.getParent().getChildren().indexOf(editPart));
 
@@ -768,8 +768,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         if (PositionConstants.NONE == parentStackDirection) {
             // RegionContainer case
             assertTrue(ddec.getName() + " is not a region, its primary shape should have a MarginBorder border.", primaryShapeBorder.getClass() == MarginBorder.class);
-            assertEquals("Wrong insets detected for " + ddec.getName() + " non-region primary shape.", new Insets(5 + expectedBorderSize - 1, expectedBorderSize, expectedBorderSize,
-                    expectedBorderSize), primaryShape.getInsets());
+            assertEquals("Wrong insets detected for " + ddec.getName() + " non-region primary shape.",
+                    new Insets(5 + expectedBorderSize - 1, expectedBorderSize, expectedBorderSize, expectedBorderSize), primaryShape.getInsets());
             checkShapeLineStyle(ddec, primaryShape, expectedBorderSize, expectedBorderStyle, true);
         } else {
             checkShapeLineStyle(ddec, primaryShape, expectedBorderSize, expectedBorderStyle, false);
@@ -804,8 +804,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
             Shape shape = (Shape) primaryShape;
             assertEquals("Wrong line width for " + ddec.getName(), expectedBorderSize, shape.getLineWidth());
             assertEquals("Wrong line style for " + ddec.getName(), getSwtLineStyle(expectedBorderStyle), shape.getLineStyle());
-            assertEquals("Wrong outline shape mode for " + ddec.getName(), expectedBorderSize != 0 && regionContainer, ((Boolean) ReflectionHelper.getFieldValueWithoutException(shape, "outline")
-                    .get()).booleanValue());
+            assertEquals("Wrong outline shape mode for " + ddec.getName(), expectedBorderSize != 0 && regionContainer,
+                    ((Boolean) ReflectionHelper.getFieldValueWithoutException(shape, "outline").get()).booleanValue());
         } else if (primaryShape instanceof NodeFigure) {
             fail("Needs to be completed");
         }
