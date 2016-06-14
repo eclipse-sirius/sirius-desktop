@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,12 +74,10 @@ public class SiriusGMFSynchronizerDispatcher {
         Diagram gmfDiagram = null;
         DDiagram dDiagram = null;
         Object notifier = notification.getNotifier();
-        if (notifier instanceof EObject && ((EObject) notifier).eContainer() != null) {
-            if (notifier instanceof DDiagram) {
-                dDiagram = (DDiagram) notifier;
-            } else if (notifier instanceof DDiagramElement) {
-                dDiagram = ((DDiagramElement) notifier).getParentDiagram();
-            }
+        if (notifier instanceof DDiagram) {
+            dDiagram = (DDiagram) notifier;
+        } else if (notifier instanceof DDiagramElement && ((EObject) notifier).eContainer() != null) {
+            dDiagram = ((DDiagramElement) notifier).getParentDiagram();
         } else if (notification.getOldValue() instanceof DDiagramElement) {
             DDiagramElement oldValue = (DDiagramElement) notification.getOldValue();
             dDiagram = DDiagramElementSpecOperations.getParentDiagram(oldValue);
