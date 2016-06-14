@@ -46,6 +46,7 @@ import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceComma
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -139,7 +140,9 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         Command removeRepresentationCmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                session.getSessionResource().getContents().remove(new DViewQuery(view).getLoadedRepresentations().get(0));
+                DRepresentation dRepresentation = new DViewQuery(view).getLoadedRepresentations().get(0);
+                session.getSessionResource().getContents().remove(dRepresentation);
+                view.getOwnedRepresentationDescriptors().remove(new DRepresentationQuery(dRepresentation).getRepresentationDescriptor());
             }
         };
         session.getTransactionalEditingDomain().getCommandStack().execute(removeRepresentationCmd);

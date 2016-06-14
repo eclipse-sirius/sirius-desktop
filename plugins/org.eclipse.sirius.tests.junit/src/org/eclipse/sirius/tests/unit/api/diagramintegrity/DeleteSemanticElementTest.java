@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.diagramintegrity;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
 
 public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
@@ -108,7 +114,8 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no DNode left in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(diagram::DSemanticDiagram)->select( e | e.name = 'evoluate view').eAllContents(diagram::DNode)->size()").intValue();
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(diagram::DSemanticDiagram)->select( e | e.name = 'evoluate view').eAllContents(diagram::DNode)->size()")
+                    .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -127,7 +134,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         addTinySection();
         addNote();
         activateViewpoint("docbook1");
-        // create a diagram based on my semantic model (simple.docbook)        
+        // create a diagram based on my semantic model (simple.docbook)
         myRepresentation = createRepresentation("evoluate view");
 
         // refresh the current representation.
@@ -184,13 +191,15 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         myRepresentation = createRepresentation("chapterDiagram", semanticModel.eContents().get(0));
         refreshRepresentation();
 
-        int eltCount = -1;
+        int eltCount = 0;
 
-        try {
-            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(viewpoint::DRepresentation)->select(r | r.name = 'chapterDiagram')->size()").intValue();
-        } catch (final EvaluationException e) {
-            fail("Exception while trying to get the integer value.");
-            e.printStackTrace();
+        for (DView view : ((DAnalysis) sessionModel).getOwnedViews()) {
+            List<DRepresentation> loadedRepresentations = new DViewQuery(view).getLoadedRepresentations();
+            for (DRepresentation dRepresentation : loadedRepresentations) {
+                if ("chapterDiagram" == dRepresentation.getName()) {
+                    eltCount++;
+                }
+            }
         }
         assertEquals("The diagram is not correctly initialized.", 1, eltCount);
 

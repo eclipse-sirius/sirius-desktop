@@ -131,7 +131,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
         bAird.getReferencedAnalysis().contains(cAird);
 
         // Ensure that Representation C has correctly been moved
-        assertEquals(cAird, representationC.eContainer().eContainer());
+        assertEquals(cAird, new EObjectQuery(representationC).getDAnalysis());
 
         // Ensure that the controlled Aird is its own container
         EObject rootDAnalysis = new EObjectQuery(cAird).getResourceContainer();
@@ -196,7 +196,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
         bAird.getReferencedAnalysis().contains(cAird);
 
         // Ensure that Representation C has not been moved (stays in B)
-        assertEquals(bAird, representationC.eContainer().eContainer());
+        assertEquals(bAird, new EObjectQuery(representationC).getDAnalysis());
 
         // Ensure that the controlled Aird is its own container
         EObject rootDAnalysis = new EObjectQuery(cAird).getResourceContainer();
@@ -263,7 +263,7 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
         // Step 3.3 : representationC should now be held by bAird.
         final URI controlledAirdUriB = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/doremi-2436/My_B.aird", true);
         final DAnalysis bAird = (DAnalysis) domain.getResourceSet().getResource(controlledAirdUriB, true).getContents().iterator().next();
-        assertEquals(bAird, representationC.eContainer().eContainer());
+        assertEquals(bAird, new EObjectQuery(representationC).getDAnalysis());
 
         // Step 3.4 : bAird should not reference any Analysis
         assertTrue(bAird.getReferencedAnalysis().isEmpty());
@@ -334,8 +334,8 @@ public class HierarchicalControlTest extends AbstractHierarchicalControlTest {
         mainAird.getReferencedAnalysis().contains(bAird);
 
         // Ensure that Representation B has correctly been moved
-        assertEquals(bAird, representationB.eContainer().eContainer());
-        assertEquals(bAird, representationC.eContainer().eContainer());
+        assertEquals(bAird, new EObjectQuery(representationB).getDAnalysis());
+        assertEquals(bAird, new EObjectQuery(representationC).getDAnalysis());
 
         // Ensure that the controlled Aird is its own container
         EObject rootDAnalysis = new EObjectQuery(bAird).getResourceContainer();

@@ -30,7 +30,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -60,11 +59,9 @@ import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 
@@ -1285,18 +1282,12 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         return theEdgeMapping;
     }
 
-    public void refreshRepresentations(final EObject anyAnalysisObject) {
-        final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(anyAnalysisObject);
+    public void refreshRepresentation(final DRepresentation diagram) {
+        final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagram);
         domain.getCommandStack().execute(new RecordingCommand(domain) {
             @Override
             protected void doExecute() {
-                for (DView view : ((DAnalysis) EcoreUtil.getRootContainer(anyAnalysisObject)).getOwnedViews()) {
-                    for (Object diagram : new DViewQuery(view).getLoadedRepresentations()) {
-                        if (diagram instanceof DRepresentation) {
-                            DialectManager.INSTANCE.refresh((DRepresentation) diagram, new NullProgressMonitor());
-                        }
-                    }
-                }
+                DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
             }
         });
     }

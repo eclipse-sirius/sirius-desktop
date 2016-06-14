@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -56,7 +57,7 @@ public class DiagramExtensionDescriptionTest extends SiriusDiagramTestCase imple
 
         diagram = (DDiagram) getRepresentations(DIAGRAM_DESCRIPTION).toArray()[0];
         assertNotNull(diagram);
-        session.addSelectedView((DView) this.diagram.eContainer(), new NullProgressMonitor());
+        session.addSelectedView((DView) new DRepresentationQuery(diagram).getRepresentationDescriptor().eContainer(), new NullProgressMonitor());
 
         TestsUtil.emptyEventsFromUIThread();
 

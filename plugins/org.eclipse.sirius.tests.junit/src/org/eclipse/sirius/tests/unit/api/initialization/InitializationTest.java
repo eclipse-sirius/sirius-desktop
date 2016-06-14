@@ -47,11 +47,27 @@ public class InitializationTest extends SiriusDiagramTestCase {
      * Tests the initialization of one diagram and zero mapping.
      */
     public void testSimpleInitialization() {
-        initViewpoint(SIMPLEST_VP_NAME);
+        initialize(SIMPLEST_VP_NAME);
+    }
+
+    private void initialize(String vpName) {
+        initViewpoint(vpName);
         Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
         // The viewpoint activation will create a new representation
-        int nbReps = DialectManager.INSTANCE.getRepresentations(semanticModel, session).size();
+        final int nbReps = DialectManager.INSTANCE.getRepresentations(semanticModel, session).size();
+        try {
+            // In the following initRepresentations call that will create a
+            // DRepresentation in the aird resource, the Cross referencer is not
+            // set on the DRepresentation. It seems linked to when the
+            // SaveSessionJob is executed on how much time it takes. Sleeping
+            // 500ms we ensure that SaveSessionJob have finished before
+            // initRepresentations can start.
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         DialectManager.INSTANCE.initRepresentations(viewpoint, semanticModel, new NullProgressMonitor());
+
         assertEquals("There is no or more than one diagram(s) in the returned view", nbReps + 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
     }
 
@@ -63,13 +79,7 @@ public class InitializationTest extends SiriusDiagramTestCase {
      * 
      */
     public void testInitializationWith3Mappings() {
-        initViewpoint(THREE_MAPPINGS);
-        Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
-        // The viewpoint activation will create a new representation
-        int nbReps = DialectManager.INSTANCE.getRepresentations(semanticModel, session).size();
-        DialectManager.INSTANCE.initRepresentations(viewpoint, semanticModel, new NullProgressMonitor());
-
-        assertEquals("There is no or more than one diagram(s) in the returned view", nbReps + 1, DialectManager.INSTANCE.getRepresentations(semanticModel, session).size());
+        initialize(THREE_MAPPINGS);
 
         final DDiagram diagram = (DDiagram) DialectManager.INSTANCE.getRepresentations(semanticModel, session).toArray()[0];
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,24 +11,28 @@
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Test class to test removal of DDiagramSet during repair/migrate action of
@@ -75,7 +79,7 @@ public class RepairMigratePinStatusTest extends AbstractRepairMigrateTest {
      */
     public void testPinStatusConservation() throws Exception {
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_NAME;
-        List<EObject> data = loadFile(path);
+        List<DAnalysis> data = loadFile(path);
 
         checkData(data);
 
@@ -89,29 +93,31 @@ public class RepairMigratePinStatusTest extends AbstractRepairMigrateTest {
     /**
      * @param data
      */
-    private void checkData(List<EObject> data) {
-        for (EObject dAnalysis : data) {
-            if (dAnalysis instanceof DAnalysis) {
-                for (DView view : ((DAnalysis) dAnalysis).getOwnedViews()) {
-                    Iterator<DNodeList> dNodeListIterator = Iterators.filter(view.eAllContents(), DNodeList.class);
-                    // Check that there is only one DNodeList element
-                    assertTrue("It should be at least have one DNodeList element.", dNodeListIterator.hasNext());
-                    DNodeList dNodeList = dNodeListIterator.next();
-                    assertFalse("Only one DNodeList element should exist.", dNodeListIterator.hasNext());
-                    // Check that the dNodeList element is pinned
-                    assertTrue("The DNodeList element must be pinned.", new PinHelper().isPinned(dNodeList));
+    private void checkData(List<DAnalysis> data) {
+        for (DAnalysis dAnalysis : data) {
+            for (DView view : dAnalysis.getOwnedViews()) {
+                List<DRepresentation> loadedRepresentations = new DViewQuery(view).getLoadedRepresentations();
+                Collection<DNodeList> dNodeLists = Lists.newArrayList();
+                for (DRepresentation dRepresentation : loadedRepresentations) {
+                    Iterators.addAll(dNodeLists, Iterators.filter(dRepresentation.eAllContents(), DNodeList.class));
                 }
+                Iterator<DNodeList> dNodeListIterator = dNodeLists.iterator();
+                // Check that there is only one DNodeList element
+                assertTrue("It should be at least have one DNodeList element.", dNodeListIterator.hasNext());
+                DNodeList dNodeList = dNodeListIterator.next();
+                assertFalse("Only one DNodeList element should exist.", dNodeListIterator.hasNext());
+                // Check that the dNodeList element is pinned
+                assertTrue("The DNodeList element must be pinned.", new PinHelper().isPinned(dNodeList));
             }
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private <E> List<E> loadFile(final String path) throws IOException {
+    private List<DAnalysis> loadFile(final String path) throws IOException {
         final ResourceSet resourceSet = new ResourceSetImpl();
         final URI uri = URI.createPlatformResourceURI(path, true);
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
         resource.load(Collections.EMPTY_MAP);
 
-        return (List<E>) resource.getContents();
+        return Lists.newArrayList(Iterables.filter(resource.getContents(), DAnalysis.class));
     }
 }

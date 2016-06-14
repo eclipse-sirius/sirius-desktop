@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Basic repair tests.
@@ -170,14 +171,14 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     public void testMissingTransactionWhenDoingRepairMigrate() throws Exception {
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2103_AIRD;
 
-        List<DAnalysis> data = loadFile(path, DAnalysis.class);
-        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(data.get(0).getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements()
-                .get(0);
+        List<EObject> rootElements = loadFile(path, EObject.class);
+        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(((DAnalysis) rootElements.get(0)).getOwnedViews().get(0)).getLoadedRepresentations().get(0)
+                .getOwnedRepresentationElements().get(0);
 
         // Remove this mapping to lead to transactional issues if transactions
         // are not correctly handled
         dDiagramElement.setActualMapping(null);
-        saveFile(data, path);
+        saveFile(rootElements, path);
 
         runRepairProcess(TC_2103_AIRD);
 
@@ -194,13 +195,13 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     public void testContainerWithNullMappingWhenDoingRepairMigrate() throws Exception {
         String path = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2077_AIRD;
 
-        List<DAnalysis> data = loadFile(path, DAnalysis.class);
-        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(data.get(0).getOwnedViews().get(0)).getLoadedRepresentations().get(0).getOwnedRepresentationElements()
-                .get(0);
+        List<EObject> rootElements = loadFile(path, EObject.class);
+        DDiagramElementContainer dDiagramElement = (DDiagramElementContainer) new DViewQuery(((DAnalysis) rootElements.get(0)).getOwnedViews().get(0)).getLoadedRepresentations().get(0)
+                .getOwnedRepresentationElements().get(0);
 
         // Remove this mapping to lead to NPE issues
         dDiagramElement.setActualMapping(null);
-        saveFile(data, path);
+        saveFile(rootElements, path);
 
         runRepairProcess(TC_2077_AIRD);
 
@@ -345,21 +346,21 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private <E> List<E> loadFile(final String path, Class<E> type) throws IOException {
         final ResourceSet resourceSet = new ResourceSetImpl();
         final URI uri = URI.createPlatformResourceURI(path, true);
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
         resource.load(Collections.EMPTY_MAP);
 
-        return (List<E>) resource.getContents();
+        List<E> list = Lists.newArrayList(Iterables.filter(resource.getContents(), type));
+        return list;
     }
 
-    private void saveFile(final Collection<? extends EObject> layoutData, final String path) throws IOException {
+    private void saveFile(final Collection<? extends EObject> rootElements, final String path) throws IOException {
         final ResourceSet resourceSet = new ResourceSetImpl();
         final URI uri = URI.createPlatformResourceURI(path, true);
         final Resource resource = ModelUtils.createResource(uri, resourceSet);
-        resource.getContents().addAll(layoutData);
+        resource.getContents().addAll(rootElements);
         resource.save(Collections.EMPTY_MAP);
     }
 

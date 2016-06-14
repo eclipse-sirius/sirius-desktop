@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,8 @@ public class UndoRedoTest extends DocbookTestCase {
 
         // retrieve the edge to reconnect.
         try {
-            edge = INTERPRETER.evaluateEObject(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.eClass().name = 'Chapter' and e.targetNode.target.eClass().name = 'Sect1')->first()");
+            edge = INTERPRETER.evaluateEObject(obviousDiagram,
+                    "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.eClass().name = 'Chapter' and e.targetNode.target.eClass().name = 'Sect1')->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject edge.");
             e.printStackTrace();
@@ -107,7 +108,6 @@ public class UndoRedoTest extends DocbookTestCase {
 
         check(obviousDiagram, after, 0, failureMessage);
         check(obviousDiagram, before, 1, failureMessage);
-
 
         // redo the reconnection command and check that we came back to the
         // final state.
@@ -191,7 +191,8 @@ public class UndoRedoTest extends DocbookTestCase {
 
         Command command = createDiagramThrowNodeNavigationLinkCommand(evoluateDiagram, (DNode) createdElts.get(2));
         assertTrue("Could not create diagram throw node navigation link", execute(command));
-        refreshRepresentations(element);
+        refreshRepresentation(obviousDiagram);
+        refreshRepresentation(evoluateDiagram);
 
         // before applying the tool that delete tiny section and every "Para"
         // type element
@@ -235,7 +236,8 @@ public class UndoRedoTest extends DocbookTestCase {
 
         Command command = createDiagramThrowNodeNavigationLinkCommand(evoluateDiagram, (DNode) createdElts.get(2));
         assertTrue("Could not create diagram throw node navigation link", execute(command));
-        refreshRepresentations(element);
+        refreshRepresentation(obviousDiagram);
+        refreshRepresentation(evoluateDiagram);
 
         // before applying the tool that delete the note edge, check that there
         // are

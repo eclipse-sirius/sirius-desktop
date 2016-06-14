@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -54,7 +55,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        this.session.addSelectedView((DView) this.evoluateDiagram.eContainer(), new NullProgressMonitor());
+        this.session.addSelectedView((DView) new DRepresentationQuery(this.evoluateDiagram).getRepresentationDescriptor().eContainer(), new NullProgressMonitor());
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
 
 /**
  * Test object deletion.
@@ -42,7 +46,13 @@ public class DeleteTest extends DocbookTestCase {
         Command command = createDiagramThrowNodeNavigationLinkCommand(evoluateDiagram, (DNode) createdElts.get(2));
         assertTrue("Could not create diagram throw node navigation link", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        refreshRepresentations(evoluateDiagram);
+        Collection<DView> ownedViews = session.getOwnedViews();
+        for (DView dView : ownedViews) {
+            List<DRepresentation> loadedRepresentations = new DViewQuery(dView).getLoadedRepresentations();
+            for (DRepresentation dRepresentation : loadedRepresentations) {
+                refreshRepresentation(dRepresentation);
+            }
+        }
 
         // before applying the tool that delete tiny section and every "Para"
         // type element
@@ -72,7 +82,8 @@ public class DeleteTest extends DocbookTestCase {
         Command command = createDiagramThrowNodeNavigationLinkCommand(evoluateDiagram, (DNode) createdElts.get(2));
         assertTrue("Could not create diagram throw node navigation link", command.canExecute());
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        refreshRepresentations(element);
+        refreshRepresentation(evoluateDiagram);
+        refreshRepresentation(obviousDiagram);
 
         // before applying the tool that delete the note edge, check that there
         // are

@@ -11,10 +11,10 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -89,8 +89,10 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
 
     private UIResource semanticModel;
 
-    @SuppressWarnings("javadoc")
-    protected EObject representationContainer;
+    /**
+     * The dView
+     */
+    protected DView dView = null;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -105,7 +107,7 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
         // Open the entity diagram & retrieve the representation container
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
 
-        representationContainer = editor.getDRepresentation().eContainer();
+        dView = (DView) new DRepresentationQuery(editor.getDRepresentation()).getRepresentationDescriptor().eContainer();
 
         // Get the semantic model
         semanticModel = new UIResource(designerProject, FILE_DIR, MODEL);
@@ -311,7 +313,7 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     protected void lockRepresentationContainer() {
         // Activate the ReadOnlyPermission Authority on the representation
         // container to lock it
-        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representationContainer)).activate();
+        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dView)).activate();
     }
 
     /**

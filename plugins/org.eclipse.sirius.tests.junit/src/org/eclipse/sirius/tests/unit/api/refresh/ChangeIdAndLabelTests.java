@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -80,7 +81,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
         Collection<DRepresentation> representations = getRepresentations(REPRESENTATION_DESC_NAME);
         if (representations.size() == 1) {
             assertFalse("The rename of the id of the viewpoint should break the existing diagram (bad number of representations).",
-                    newId.equals(((DView) representations.iterator().next().eContainer()).getViewpoint().getName()));
+                    newId.equals(((DView) new DRepresentationQuery(representations.iterator().next()).getRepresentationDescriptor().eContainer()).getViewpoint().getName()));
         } else if (representations.size() != 0) {
             fail("The rename of the id of the viewpoint should break the existing diagram (bad number of representations).");
         }

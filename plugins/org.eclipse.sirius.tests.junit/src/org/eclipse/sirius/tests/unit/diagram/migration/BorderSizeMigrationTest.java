@@ -13,8 +13,10 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.query.DViewQuery;
@@ -37,6 +39,7 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.osgi.framework.Version;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 
@@ -306,11 +309,12 @@ public class BorderSizeMigrationTest extends SiriusTestCase {
         Collection<DRepresentation> allRepresentations = new DViewQuery(view).getLoadedRepresentations();
         assertEquals(2, allRepresentations.size());
 
-        UnmodifiableIterator<DNodeContainer> containers = Iterators.filter(view.eAllContents(), DNodeContainer.class);
-        assertEquals(24, Iterators.size(containers));
+        Iterator<EObject> dNodeContIt = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DNodeContainer.class));
 
-        while (containers.hasNext()) {
-            DNodeContainer container = containers.next();
+        assertEquals(24, Iterators.size(dNodeContIt));
+
+        while (dNodeContIt.hasNext()) {
+            DNodeContainer container = (DNodeContainer) dNodeContIt.next();
             ContainerStyle style = (ContainerStyle) container.getStyle();
             assertEquals(message + container.getName(), expectedBorderSize, style.getBorderSize().intValue());
 
