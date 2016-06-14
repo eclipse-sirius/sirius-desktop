@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2016 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,9 @@ public interface ICompartmentTests {
 
     public static final String ATTRIBUTE_CREATION_TOOL_NAME = "EAttribute";
 
-    public static final String REGION_CONTAINER_NAME = "P1";
+    public static final String FIRST_REGION_CONTAINER_NAME = "P1";
+
+    public static final String SECOND_REGION_CONTAINER_NAME = "az";
 
     public static final String NEW_REGION_CONTAINER_NAME = "p3";
 

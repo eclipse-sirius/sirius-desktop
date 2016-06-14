@@ -152,6 +152,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(LineStyleTest.class);
+        suite.addTestSuite(CompartmentsCreationTest.class);
     }
 
     /**
@@ -286,7 +287,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
-        suite.addTestSuite(CompartmentsCreationTest.class);
     }
 
     /**
