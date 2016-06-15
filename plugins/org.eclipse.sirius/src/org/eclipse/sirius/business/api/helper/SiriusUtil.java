@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
@@ -134,8 +136,13 @@ public final class SiriusUtil {
     public static DView findView(final DRepresentationElement element) {
         EObject current = element;
         while (current != null) {
-            if (current instanceof DView) {
-                return (DView) current;
+            if (current instanceof DRepresentation) {
+                DRepresentationDescriptor representationDescriptor = new DRepresentationQuery((DRepresentation) current).getRepresentationDescriptor();
+                DView dView = null;
+                if (representationDescriptor != null) {
+                    dView = (DView) representationDescriptor.eContainer();
+                }
+                return dView;
             }
             current = current.eContainer();
         }
