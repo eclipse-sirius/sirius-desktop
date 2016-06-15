@@ -10,20 +10,29 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
+import java.io.IOException;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.JavaExtension;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -41,6 +50,10 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
     private static final String VSM_PROJECT_NAME = "org.eclipse.sirius.test.design";
 
     private static final String VSM = "test.odesign";
+
+    private static final String VIEWPOINT_NAME = "MyViewpoint";
+
+    private static final String JAVA_EXTENSION_QUALIFIED_NAME = VSM_PROJECT_NAME + ".Services";
 
     private static final String WIZARD_FILE = "File";
 
@@ -68,8 +81,9 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
 
     /**
      * Check that the VSM project is properly created.
+     * @throws IOException 
      */
-    public void test_ViewpointViewpoint_Specification_Project_Creation() {
+    public void test_ViewpointViewpoint_Specification_Project_Creation() throws IOException {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
@@ -107,14 +121,30 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         assertNotNull(VSP_SHOULD_CONTAIN + ".classpath file.", project.getFile(".classpath"));
         assertNotNull(VSP_SHOULD_CONTAIN + ".project file.", project.getFile(".project"));
         assertNotNull(VSP_SHOULD_CONTAIN + "MANIFEST.MF file.", project.getFile("META-INF/MANIFEST.MF"));
-
+        assertNotNull(VSP_SHOULD_CONTAIN + "Services.java file.", project.getFile("src/" + project.getName() + "/Services.java"));
+        
         // Check that the created odesign does not need migration (version tag
         // must be initialized)
-        VSMVersionSAXParser parser = new VSMVersionSAXParser(URI.createPlatformResourceURI(vsm.getFullPath().toOSString()));
+        URI createPlatformResourceURI = URI.createPlatformResourceURI(vsm.getFullPath().toOSString());
+        VSMVersionSAXParser parser = new VSMVersionSAXParser(createPlatformResourceURI);
         String loadedVersion = parser.getVersion(new NullProgressMonitor());
         assertNotNull("The VSM Group version must be initialized at creation.", loadedVersion);
-        assertFalse("The migration must be required on just created VSM.", VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion)));
-
+        assertFalse("The migration must be required on just created VSM.",
+                VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion)));
+        // Check that the created odesign contains a default viewpoint with one java extension.
+        ResourceSet set = new ResourceSetImpl();
+        Group modeler = (Group) ModelUtils.load(createPlatformResourceURI, set);
+        EList<Viewpoint> ownedViewpoints = modeler.getOwnedViewpoints();
+        assertTrue("The VSM Group must contains a default viewpoint.", ownedViewpoints.size() == 1);
+        Viewpoint viewpoint = ownedViewpoints.get(0);
+        assertTrue("The VSM Group must contains a default viewpoint named " + VIEWPOINT_NAME + ".",
+                VIEWPOINT_NAME.equals(viewpoint.getName()));
+        EList<JavaExtension> ownedJavaExtensions = viewpoint.getOwnedJavaExtensions();
+        assertTrue("The default viewpoint of the VSM should contain a default java extension.",
+                ownedJavaExtensions.size() == 1);
+        JavaExtension javaExtension = ownedJavaExtensions.get(0);
+        assertTrue("The default Java extension name in Viewpoint should be " + JAVA_EXTENSION_QUALIFIED_NAME + ".",
+                JAVA_EXTENSION_QUALIFIED_NAME.equals(javaExtension.getQualifiedClassName()));
         // delete project
         closeAllEditors();
         try {

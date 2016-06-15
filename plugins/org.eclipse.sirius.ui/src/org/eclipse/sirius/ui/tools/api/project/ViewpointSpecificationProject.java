@@ -53,6 +53,8 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.JavaExtension;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
@@ -84,6 +86,11 @@ public final class ViewpointSpecificationProject {
      * The default encoding.
      */
     public static final String ENCODING_DEFAULT = "UTF-8"; //$NON-NLS-1$
+
+    /**
+     * The dot separator path.
+     */
+    private static final String DOT_SEPARATOR_PATH = "\\."; //$NON-NLS-1$
 
     /**
      * The line separator to use on the running platform.
@@ -236,6 +243,7 @@ public final class ViewpointSpecificationProject {
     protected static IFile createODesignFile(final IProject prj, final String modelName, final String modelInitialObjectName, final String encoding, final IRunnableContext runnable)
             throws IOException, InvocationTargetException, InterruptedException {
         final IFile modelFile = ViewpointSpecificationProject.getModelFile(prj, modelName);
+        final String javaExtensionQualifiedName = prj.getName() + ".Services"; //$NON-NLS-1$
         final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
             @Override
             protected void execute(final IProgressMonitor progressMonitor) {
@@ -247,6 +255,12 @@ public final class ViewpointSpecificationProject {
                     if (rootObject != null) {
                         if (rootObject instanceof Group) {
                             ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, "")); //$NON-NLS-1$ //$NON-NLS-2$
+                            Viewpoint viewpoint = DescriptionFactory.eINSTANCE.createViewpoint();
+                            viewpoint.setName("MyViewpoint"); //$NON-NLS-1$
+                            JavaExtension javaExtension = DescriptionFactory.eINSTANCE.createJavaExtension();
+                            javaExtension.setQualifiedClassName(javaExtensionQualifiedName);
+                            viewpoint.getOwnedJavaExtensions().add(javaExtension);
+                            ((Group) rootObject).getOwnedViewpoints().add(viewpoint);
                         }
                         resource.getContents().add(rootObject);
                     }
@@ -317,7 +331,7 @@ public final class ViewpointSpecificationProject {
      *            is the monitor
      */
     private static void convert(final IProject prj, final String modelName, final IProgressMonitor monitor) {
-        final String modelNameWithoutExtension = modelName.replaceAll("\\." + VIEWPOINT_MODEL_EXTENSION + "$", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        final String modelNameWithoutExtension = modelName.replaceAll(DOT_SEPARATOR_PATH + VIEWPOINT_MODEL_EXTENSION + "$", ""); //$NON-NLS-1$ //$NON-NLS-2$
 
         // WARNING: variable names should not share any common prefix.
         // applyReplacements() does not deal with this case.
@@ -339,7 +353,8 @@ public final class ViewpointSpecificationProject {
         replacements.put("packageName", packageName); //$NON-NLS-1$
 
         ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll(DOT_SEPARATOR_PATH, "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll(DOT_SEPARATOR_PATH, "/") + "/Services.java", "resources/Services.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$

@@ -197,6 +197,7 @@ public class JavaExtensionTests extends SiriusDiagramTestCase {
         }
         final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
         assertTrue("The project " + projectName + " was not created correctly.", project.exists());
+        assertTrue("The project " + projectName + " should contain Service.java class.", project.getFile("src/" + projectName + "/Services.java").exists());
         // Copy of representation description file
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, viewpointDescriptionPath, projectName + File.separator + DESCRIPTION_FOLDER_NAME + File.separator
                 + new Path(viewpointDescriptionPath).lastSegment());
