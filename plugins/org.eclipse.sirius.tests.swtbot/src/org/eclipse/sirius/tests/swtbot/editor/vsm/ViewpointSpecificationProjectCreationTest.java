@@ -118,6 +118,7 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         assertNotNull(VSP_SHOULD_CONTAIN + "an odesign in the description folder. The odesign name should be " + VSM, vsm);
         assertNotNull(VSP_SHOULD_CONTAIN + "a plugin.xml file." + VSM, project.getFile("plugin.xml"));
         assertNotNull(VSP_SHOULD_CONTAIN + "a build.properties file." + VSM, project.getFile("build.properties"));
+        assertNotNull(VSP_SHOULD_CONTAIN + "a plugin.properties file." + VSM, project.getFile("plugin.properties"));
         assertNotNull(VSP_SHOULD_CONTAIN + ".classpath file.", project.getFile(".classpath"));
         assertNotNull(VSP_SHOULD_CONTAIN + ".project file.", project.getFile(".project"));
         assertNotNull(VSP_SHOULD_CONTAIN + "MANIFEST.MF file.", project.getFile("META-INF/MANIFEST.MF"));

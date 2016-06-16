@@ -91,6 +91,16 @@ public final class ViewpointSpecificationProject {
      * The dot separator path.
      */
     private static final String DOT_SEPARATOR_PATH = "\\."; //$NON-NLS-1$
+    
+    /**
+     * The default provider name for Manifest.
+     */
+    private static final String DEFAULT_PROVIDER_NAME = "Eclipse Modeling Project"; //$NON-NLS-1$
+    
+    /**
+     * Default viewpoint name used in VSM file..
+     */
+    private static final String MY_VIEWPOINT = "MyViewpoint"; //$NON-NLS-1$
 
     /**
      * The line separator to use on the running platform.
@@ -257,6 +267,7 @@ public final class ViewpointSpecificationProject {
                             ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, "")); //$NON-NLS-1$ //$NON-NLS-2$
                             Viewpoint viewpoint = DescriptionFactory.eINSTANCE.createViewpoint();
                             viewpoint.setName("MyViewpoint"); //$NON-NLS-1$
+                            viewpoint.setLabel("%viewpointName"); //$NON-NLS-1$
                             JavaExtension javaExtension = DescriptionFactory.eINSTANCE.createJavaExtension();
                             javaExtension.setQualifiedClassName(javaExtensionQualifiedName);
                             viewpoint.getOwnedJavaExtensions().add(javaExtension);
@@ -351,14 +362,17 @@ public final class ViewpointSpecificationProject {
         replacements.put("projectName", projectName); //$NON-NLS-1$
         replacements.put("modelName", modelNameWithoutExtension); //$NON-NLS-1$
         replacements.put("packageName", packageName); //$NON-NLS-1$
+        replacements.put("defaultProviderName", DEFAULT_PROVIDER_NAME); //$NON-NLS-1$ 
+        replacements.put("viewpointName", MY_VIEWPOINT); //$NON-NLS-1$ 
 
         ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.properties", "resources/plugin.properties", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll(DOT_SEPARATOR_PATH, "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll(DOT_SEPARATOR_PATH, "/") + "/Services.java", "resources/Services.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$   
     }
 
     /**
