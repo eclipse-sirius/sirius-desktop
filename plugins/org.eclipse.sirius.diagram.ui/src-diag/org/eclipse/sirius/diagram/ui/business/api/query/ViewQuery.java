@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -260,6 +262,30 @@ public class ViewQuery {
                     }
                 }
             }
+        }
+        return result;
+    }
+
+    /**
+     * Get the first ancestor, or itself, that has at least one of the
+     * <code>visualID</code>.
+     * 
+     * @param visualID
+     *            List of visual ID that the ancestor must be.
+     * 
+     * @return An optional {@link View}
+     */
+    public Option<View> getAncestor(int... visualID) {
+        Option<View> result = Options.newNone();
+        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
+        for (int i = 0; i < visualID.length; i++) {
+            if (type == visualID[i]) {
+                result = Options.newSome(view);
+                break;
+            }
+        }
+        if (!result.some() && view.eContainer() instanceof View) {
+            result = new ViewQuery((View) view.eContainer()).getAncestor(visualID);
         }
         return result;
     }
