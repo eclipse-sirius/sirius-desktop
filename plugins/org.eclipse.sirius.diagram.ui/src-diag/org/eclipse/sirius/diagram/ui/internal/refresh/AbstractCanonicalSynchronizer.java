@@ -69,9 +69,11 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -94,9 +96,15 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     protected IViewProvider viewpointViewProvider = new SiriusViewProvider();
 
     /**
-     * Store region containers to layout.
+     * Store regions containers and its impacted status:
+     * <UL>
+     * <LI>A regions container is considered as impacted if it contains at least
+     * one new view or if at least one of its views has been deleted.</LI>
+     * <LI>if impacted, the regions container must be layouted</LI>
+     * </UL>
+     * .
      */
-    protected Collection<View> regionContainersToLayout = Sets.newLinkedHashSet();
+    protected Map<View, Boolean> regionsContainersToLayoutWithImpactStatus = Maps.newHashMap();
 
     /**
      * Default constructor.
@@ -144,6 +152,21 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             return Collections.emptySet();
         }
 
+        // isPartOfRegionsContainer is true for regions container and all its
+        // sub part as CompartmentView.
+        boolean isPartOfRegionsContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
+        // isRegionsContainer is true only for the real regions container view
+        boolean isRegionsContainer = false;
+        if (isPartOfRegionsContainer) {
+            // Only consider DNodeContainerEditPart and DNodeContainer2EditPart
+            // as real regionContainer potentially to layout.
+            int type = SiriusVisualIDRegistry.getVisualID(gmfView.getType());
+            if (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID) {
+                isRegionsContainer = true;
+                regionsContainersToLayoutWithImpactStatus.put(gmfView, Boolean.FALSE);
+            }
+        }
+
         //
         // current views
         final List<View> viewChildren = getViewChildren(gmfView);
@@ -151,28 +174,57 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
         List<View> orphaned = cleanCanonicalSemanticChildren(gmfView, viewChildren, semanticChildren);
 
+        if (!orphaned.isEmpty()) {
+            // Some children views have been deleted, this container must be
+            // layouted if it is a regions container or a sub part of a regions
+            // container
+            setRegionsContainerAsImpacted(gmfView, isRegionsContainer, isPartOfRegionsContainer);
+        }
         deleteViews(orphaned);
 
         // create a view for each remaining semantic element.
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
 
-        boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
-        if (regionContainer) {
-            // Only consider DNodeContainerEditPart and DNodeContainer2EditPart
-            // as regionContainer to layout.
-            int type = SiriusVisualIDRegistry.getVisualID(gmfView.getType());
-            if (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID) {
-                regionContainersToLayout.add(gmfView);
-            }
+        if (!createdViews.isEmpty()) {
+            // There is at least one new child, this container must be
+            // layouted if it is a regions container or a sub part of a regions
+            // container.
+            setRegionsContainerAsImpacted(gmfView, isRegionsContainer, isPartOfRegionsContainer);
         }
-
         // Manage Nodes ordering in Compartment according to DNodeListElement
         // ordering
-        if (semanticView instanceof DNodeList || regionContainer) {
+        if (semanticView instanceof DNodeList || isPartOfRegionsContainer) {
             refreshSemanticChildrenOrdering(gmfView);
         }
 
         return createdViews;
+    }
+
+    /**
+     * Set the gmfView, or its ancestor representation the real regions
+     * container, as impacted by the changes (new views, removed views or order
+     * change).
+     * 
+     * @param gmfView
+     *            The concerned view (corresponding to the regions container
+     *            itself or one of its sub-part)
+     * @param isRegionsContainer
+     *            true is the current view represents the regions container,
+     *            false otherwise
+     * @param isPartOfRegionsContainer
+     *            true is the current view represents the regions container or a
+     *            sub-part of the regions container (as CompartmentView for
+     *            example), false otherwise
+     */
+    private void setRegionsContainerAsImpacted(final View gmfView, boolean isRegionsContainer, boolean isPartOfRegionsContainer) {
+        if (isRegionsContainer) {
+            regionsContainersToLayoutWithImpactStatus.put(gmfView, Boolean.TRUE);
+        } else if (isPartOfRegionsContainer) {
+            Option<View> realRegionsContainer = getAncestor(gmfView, DNodeContainerEditPart.VISUAL_ID, DNodeContainer2EditPart.VISUAL_ID);
+            if (realRegionsContainer.some()) {
+                regionsContainersToLayoutWithImpactStatus.put(realRegionsContainer.get(), Boolean.TRUE);
+            }
+        }
     }
 
     private void markCreatedViewsAsToLayout(Collection<View> createdViews) {
@@ -874,4 +926,29 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         return edgesToDelete;
     }
 
+    /**
+     * Get the first ancestor, or itself, that has at least one of the
+     * <code>visualID</code>.
+     * 
+     * @param view
+     *            The view to query
+     * @param visualID
+     *            List of visual ID that the ancestor must be.
+     * 
+     * @return An optional {@link View}
+     */
+    private Option<View> getAncestor(View view, int... visualID) {
+        Option<View> result = Options.newNone();
+        int type = SiriusVisualIDRegistry.getVisualID(view.getType());
+        for (int i = 0; i < visualID.length; i++) {
+            if (type == visualID[i]) {
+                result = Options.newSome(view);
+                break;
+            }
+        }
+        if (!result.some() && view.eContainer() instanceof View) {
+            result = getAncestor((View) view.eContainer(), visualID);
+        }
+        return result;
+    }
 }

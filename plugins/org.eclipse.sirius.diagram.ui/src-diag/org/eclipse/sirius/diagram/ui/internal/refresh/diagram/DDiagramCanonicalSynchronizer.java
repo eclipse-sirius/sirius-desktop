@@ -121,25 +121,25 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
             manageCollapse(createdNodeViews);
 
-            manageRegions(createdNodeViews);
+            manageRegions();
         }
     }
 
-    private void manageRegions(Set<View> createdNodeViews) {
-        if (regionContainersToLayout.isEmpty()) {
+    private void manageRegions() {
+        if (regionsContainersToLayoutWithImpactStatus.isEmpty()) {
             return;
         }
 
         // Step 1: update regions layout from the deepest ones.
-        List<View> newArrayList = Lists.newArrayList(regionContainersToLayout);
-        ListIterator<View> regionToLayoutListIterator = newArrayList.listIterator(newArrayList.size());
-        while (regionToLayoutListIterator.hasPrevious()) {
-            View regionContainer = regionToLayoutListIterator.previous();
-            if (regionContainer instanceof Node) {
-                new RegionContainerUpdateLayoutOperation((Node) regionContainer, createdNodeViews).execute();
+        List<View> newArrayList = Lists.newArrayList(regionsContainersToLayoutWithImpactStatus.keySet());
+        ListIterator<View> regionsContainersToLayoutListIterator = newArrayList.listIterator(newArrayList.size());
+        while (regionsContainersToLayoutListIterator.hasPrevious()) {
+            View regionsContainer = regionsContainersToLayoutListIterator.previous();
+            if (regionsContainer instanceof Node) {
+                new RegionContainerUpdateLayoutOperation((Node) regionsContainer, regionsContainersToLayoutWithImpactStatus.get(regionsContainer)).execute();
             }
         }
-        regionContainersToLayout.clear();
+        regionsContainersToLayoutWithImpactStatus.clear();
     }
 
     private void manageCreatedViewsLayout(Set<View> createdViews) {
