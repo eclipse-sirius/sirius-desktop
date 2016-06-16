@@ -16,7 +16,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -62,6 +64,8 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
             // If it is a undo or a rollback but not a
             // DView moved from a DAnalysis to another
             representationDeleted = dRepDescriptor.eContainer() == null || !(dRepDescriptor.eContainer() != null && dRepDescriptor.eContainer().eContainer() instanceof DView);
+        } else if (notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
+            representationDeleted = notification.getNewValue() == null && notification.getOldValue() != null && notification.getNotifier() == dRepDescriptor;
         }
         return representationDeleted;
     }
@@ -86,8 +90,11 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
     private boolean isTargetDetachment(Notification notification) {
         boolean detachedTarget = false;
         if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification)) {
-            EObject target = dRepDescriptor.getTarget();
-            detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
+            DRepresentation representation = dRepDescriptor.getRepresentation();
+            if (representation instanceof DSemanticDecorator) {
+                EObject target = ((DSemanticDecorator) dRepDescriptor.getRepresentation()).getTarget();
+                detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
+            }
         }
 
         return detachedTarget;
