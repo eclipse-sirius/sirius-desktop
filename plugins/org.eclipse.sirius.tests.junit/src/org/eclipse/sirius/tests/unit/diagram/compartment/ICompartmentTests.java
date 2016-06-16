@@ -58,6 +58,8 @@ public interface ICompartmentTests {
 
     public static final String LEFT_CLASS_NAME = "Left_class1";
 
+    public static final String LEFT_CLASS2_NAME = "Left_class2";
+
     public static final String CENTER_CLASS_NAME = "Center_class2";
 
     public static final String RIGHT_CLASS_NAME = "Right_class3";
