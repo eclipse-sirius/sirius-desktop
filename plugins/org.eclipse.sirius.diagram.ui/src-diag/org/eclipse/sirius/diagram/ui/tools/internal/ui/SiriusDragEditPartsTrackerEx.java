@@ -183,4 +183,15 @@ public class SiriusDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
     protected void setCloneActive(boolean cloneActive) {
         super.setCloneActive(false);
     }
+
+    @Override
+    protected void reveal(EditPart editpart) {
+        // In Sirius, the drag'n'drop can change (delete and create a new
+        // one) the previous container of the drag'n'droped element. In this
+        // case, the reveal causes a NPE because the hierarchy of edit part is
+        // broken.
+        if (editpart.getRoot() != null) {
+            super.reveal(editpart);
+        }
+    }
 }
