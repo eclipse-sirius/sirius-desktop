@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.internal.operation;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -24,7 +23,6 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
@@ -36,52 +34,55 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
 
 /**
- * Update and keep consistent the GMF Bounds of a Region Container and its
- * Regions.
+ * Update and keep consistent the GMF Bounds of a regions container and its
+ * regions.
  * 
  * @author mporhel
  */
 public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOperation<Void> {
 
-    private final Node regionContainer;
+    private final Node regionsContainer;
 
-    private Set<View> createdNodeViews = Sets.newHashSet();
+    /**
+     * True if this layout operation is caused for a regions container that has
+     * at least one new region or one region less, false otherwise.
+     */
+    private final boolean containsCreatedOrDeletedRegions;
 
     /**
      * Constructor.
      * 
-     * @param regionContainer
-     *            The Region Container view to layout.
+     * @param regionsContainer
+     *            The regions container view to layout.
      */
-    public RegionContainerUpdateLayoutOperation(Node regionContainer) {
+    public RegionContainerUpdateLayoutOperation(Node regionsContainer) {
         super(Messages.RegionContainerUpdateLayoutOperation_name);
-        this.regionContainer = extractRealRegionContainer(regionContainer);
+        this.regionsContainer = extractRealRegionsContainer(regionsContainer);
+        this.containsCreatedOrDeletedRegions = false;
     }
 
     /**
      * Constructor.
      * 
-     * @param regionContainer
-     *            The Region Container view to layout.
-     * @param createdNodeViews
-     *            List of views created since the last call to the
-     *            RegionContainerUpdateLayoutOperation (and that can have effect
-     *            on the layout of the regions container).
+     * @param regionsContainer
+     *            The regions container view to layout.
+     * @param containsCreatedOrDeletedRegions
+     *            true if this layout operation is caused for a regions
+     *            container that has at least one new region or one region less.
      */
-    public RegionContainerUpdateLayoutOperation(Node regionContainer, Set<View> createdNodeViews) {
-        this(regionContainer);
-        this.createdNodeViews = createdNodeViews;
+    public RegionContainerUpdateLayoutOperation(Node regionsContainer, boolean containsCreatedOrDeletedRegions) {
+        super(Messages.RegionContainerUpdateLayoutOperation_name);
+        this.regionsContainer = extractRealRegionsContainer(regionsContainer);
+        this.containsCreatedOrDeletedRegions = true;
     }
 
-    private Node extractRealRegionContainer(Node node) {
+    private Node extractRealRegionsContainer(Node node) {
         if (node != null && node.eContainer() instanceof Node) {
             int visualID = SiriusVisualIDRegistry.getVisualID(node);
             if (DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID == visualID || DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID == visualID) {
@@ -93,9 +94,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
 
     private List<Node> getRegionsToLayout() {
         List<Node> regionsToLayout = Lists.newArrayList();
-        if (regionContainer != null) {
-            Node labelNode = SiriusGMFHelper.getLabelNode(regionContainer);
-            List<Node> nodes = Lists.newArrayList(Iterables.filter(regionContainer.getChildren(), Node.class));
+        if (regionsContainer != null) {
+            Node labelNode = SiriusGMFHelper.getLabelNode(regionsContainer);
+            List<Node> nodes = Lists.newArrayList(Iterables.filter(regionsContainer.getChildren(), Node.class));
             if (labelNode != null && nodes.size() == 2) {
                 nodes.remove(labelNode);
                 Node compartment = nodes.iterator().next();
@@ -112,14 +113,17 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     public Void execute() {
         List<Node> regionsToLayout = getRegionsToLayout();
         if (!regionsToLayout.isEmpty()) {
-            EObject element = regionContainer.getElement();
+            EObject element = regionsContainer.getElement();
             if (element instanceof DNodeContainer) {
                 DNodeContainer dnc = (DNodeContainer) element;
                 List<Node> regionsToLayoutSortedByLocation = Lists.newArrayList(regionsToLayout);
                 sortRegionsAccordingToLocation(dnc, regionsToLayoutSortedByLocation);
                 sortRegions(dnc, regionsToLayout);
-                boolean isOrderChanged = !regionsToLayout.equals(regionsToLayoutSortedByLocation);
-                if (isOrderChanged || isImpactedByNewViews()) {
+                // Check if the order from location (x axis for horizontal stack
+                // and y for vertical) is the same as the stored order. If not a
+                // layout must be launched.
+                boolean isSameOrder = regionsToLayout.equals(regionsToLayoutSortedByLocation);
+                if (!isSameOrder || containsCreatedOrDeletedRegions) {
                     DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(dnc);
                     if (query.isVerticalStackContainer()) {
                         updateRegionsLayoutContraints(regionsToLayout, true);
@@ -128,50 +132,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                     }
                 }
             }
-
         }
         return null;
-    }
-
-    /**
-     * Check if at least one of the new views concerned the current region
-     * container.
-     * 
-     * @param dnc
-     *            The container to which we want to know if it is impacted
-     * @return true if at least one of the created views is contained by the
-     *         <code>regionContainer</code>, false otherwise.
-     */
-    private boolean isImpactedByNewViews() {
-        return Iterables.any(createdNodeViews, new Predicate<View>() {
-            @Override
-            public boolean apply(View input) {
-                return input instanceof Node && isDescendantOf((Node) input, regionContainer);
-            }
-
-            /**
-             * Tests whether the queried Node is a descendant of
-             * <code>container</code>.
-             * 
-             * @param container
-             *            The container
-             * @return true if the queried Node is a descendant of
-             *         <code>container</code>, false otherwise.
-             */
-            private boolean isDescendantOf(Node node, View container) {
-                boolean result = false;
-                if (node.eContainer() instanceof Node) {
-                    if (container instanceof Node && new NodeQuery((Node) container).isContainer()) {
-                        if (container.equals(node.eContainer())) {
-                            result = true;
-                        } else {
-                            result = isDescendantOf((Node) node.eContainer(), container);
-                        }
-                    }
-                }
-                return result;
-            }
-        });
     }
 
     /*
@@ -222,7 +184,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             }
         }
 
-        LayoutConstraint layoutConstraint = regionContainer.getLayoutConstraint();
+        LayoutConstraint layoutConstraint = regionsContainer.getLayoutConstraint();
         if (layoutConstraint instanceof Size) {
             Size size = (Size) layoutConstraint;
             if (vertical) {
@@ -249,7 +211,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      * a mapping comparator.
      * 
      * @param dNodeContainer
-     *            the {@link DNodeContainer} region container
+     *            the {@link DNodeContainer} regions container
      * @param modelChildren
      *            the regions
      */
@@ -261,7 +223,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      * Sort the regions with the current x or y location.
      * 
      * @param dNodeContainer
-     *            the {@link DNodeContainer} region container
+     *            the {@link DNodeContainer} regions container
      * @param modelChildren
      *            the regions
      */
