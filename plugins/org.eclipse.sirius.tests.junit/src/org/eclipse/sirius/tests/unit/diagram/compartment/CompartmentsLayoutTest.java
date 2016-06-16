@@ -31,6 +31,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
@@ -237,18 +238,41 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         doTestInitialLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
     }
 
+    /**
+     * Check that the bounds (GMF and Draw2D) are as expected.
+     * 
+     * @param label
+     *            Label of the container to check.
+     * @param expectedGmfBounds
+     *            The GMF expected bounds
+     * @param expectedFigureBounds
+     *            The draw2d expected bounds. If the x, y , width or height in
+     *            this bounds is equal to -1, we don't check it. This is useful
+     *            in case of size that depends on Font (with different result
+     *            according to OS).
+     */
     private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
         DDiagramElementContainer region = getDiagramElementsFromLabel(diagram, label, DDiagramElementContainer.class).get(0);
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
 
         IFigure mainFigure = editPart.getMainFigure();
-        System.out.println(label);
-        System.out.println(getBounds((Node) editPart.getNotationView()));
-        System.out.println(mainFigure.getBounds());
-        System.out.println("---");
-
         assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
-        assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+        if (expectedFigureBounds.x() != -1 && expectedFigureBounds.y() != -1 && expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
+            assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+        } else {
+            if (expectedFigureBounds.x() != -1) {
+                assertEquals("Wrong Draw2D x for " + label, expectedFigureBounds.x(), mainFigure.getBounds().x());
+            }
+            if (expectedFigureBounds.y() != -1) {
+                assertEquals("Wrong Draw2D y for " + label, expectedFigureBounds.y(), mainFigure.getBounds().y());
+            }
+            if (expectedFigureBounds.width() != -1) {
+                assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width());
+            }
+            if (expectedFigureBounds.height() != -1) {
+                assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height());
+            }
+        }
 
         ResizableCompartmentEditPart compartmentEditPart = (ResizableCompartmentEditPart) editPart.getChildren().get(1);
         Border border = compartmentEditPart.getContentPane().getBorder();
@@ -574,6 +598,94 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 227, -1, -1), new Rectangle(0, 227, 129, 41));
     }
 
+    /**
+     * Test the layout after a deletion of a semantic element represented by the
+     * first region of a HStack container.
+     */
+    public void testRemoveSemanticElementInHorizontalStack() {
+        diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        removeOneSemanticElementRepresentedByRegion();
+
+        doTestRemoveSemantic(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 666, 247));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, 136, 211), new Rectangle(0, 0, 136, 211));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(136, 0, 130, 211), new Rectangle(136, 0, 130, 211));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(266, 0, 122, 211), new Rectangle(266, 0, 122, 211));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(388, 0, 156, 211), new Rectangle(388, 0, 156, 211));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(544, 0, 112, 211), new Rectangle(544, 0, 112, 211));
+    }
+
+    /**
+     * Test the layout after a deletion of a semantic element represented by the
+     * first region of a VStack container.
+     */
+    public void testRemoveSemanticElementInVerticalStack() {
+        diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        removeOneSemanticElementRepresentedByRegion();
+
+        doTestRemoveSemantic(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 322));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 92, -1, -1), new Rectangle(0, 91, 129, 44));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 136, -1, -1), new Rectangle(0, 135, 129, 41));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 177, -1, -1), new Rectangle(0, 176, 129, 67));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 244, -1, -1), new Rectangle(0, 243, 129, 41));
+    }
+
+    /**
+     * Test the layout after an add of a semantic element represented by a
+     * region of a HStack container.
+     */
+    public void testAddSemanticElementInHorizontalStack() {
+        diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        addOneSemanticElementRepresentedByRegion();
+
+        doTestAddSemantic(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, -1, 247));
+        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, 165, 211), new Rectangle(0, 0, 165, 211));
+        checkBounds(LEFT_CLASS2_NAME, new Rectangle(165, 0, -1, -1), new Rectangle(165, 0, -1, 211));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(330, 0, 136, 211), new Rectangle(-1, 0, 136, 211));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(466, 0, 130, 211), new Rectangle(-1, 0, 130, 211));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(596, 0, 122, 211), new Rectangle(-1, 0, 122, 211));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(718, 0, 156, 211), new Rectangle(-1, 0, 156, 211));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(874, 0, 112, 211), new Rectangle(-1, 0, 112, 211));
+    }
+
+    /**
+     * Test the layout after an add of a semantic element represented by a
+     * region of a VStack container.
+     */
+    public void testAddSemanticElementInVerticalStack() {
+        diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        addOneSemanticElementRepresentedByRegion();
+
+        doTestAddSemantic(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
+
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 454));
+        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
+        checkBounds(LEFT_CLASS2_NAME, new Rectangle(0, 91, -1, -1), new Rectangle(0, 91, 129, 40));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 182, -1, -1), new Rectangle(0, 131, 129, 92));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 274, -1, -1), new Rectangle(0, 223, 129, 44));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 318, -1, -1), new Rectangle(0, 267, 129, 41));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 359, -1, -1), new Rectangle(0, 308, 129, 67));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 426, -1, -1), new Rectangle(0, 375, 129, 41));
+    }
+
     private void changeSemanticOrder() {
         final EClass cl2 = (EClass) getDiagramElementsFromLabel(diagram, CENTER_CLASS_NAME).get(0).getTarget();
         final EPackage pkg5 = (EPackage) getDiagramElementsFromLabel(diagram, RIGHT_PKG_NAME).get(0).getTarget();
@@ -589,6 +701,33 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         TestsUtil.synchronizationWithUIThread();
     }
 
+    private void removeOneSemanticElementRepresentedByRegion() {
+        final EClass cl1 = (EClass) getDiagramElementsFromLabel(diagram, LEFT_CLASS_NAME).get(0).getTarget();
+        final EPackage pkg = cl1.getEPackage();
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
+            protected void doExecute() {
+                pkg.getEClassifiers().remove(cl1);
+            }
+        });
+        TestsUtil.synchronizationWithUIThread();
+    }
+
+    private void addOneSemanticElementRepresentedByRegion() {
+        final EPackage pkg = (EPackage) getDiagramElementsFromLabel(diagram, FIRST_REGION_CONTAINER_NAME).get(0).getTarget();
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
+            protected void doExecute() {
+                EClass newClass = EcoreFactory.eINSTANCE.createEClass();
+                newClass.setName(LEFT_CLASS2_NAME);
+                pkg.getEClassifiers().add(1, newClass);
+            }
+        });
+        TestsUtil.synchronizationWithUIThread();
+    }
+
     private void doTestReorderedLayout(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
         int regionCorners = 0;
 
@@ -599,6 +738,30 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkRegion(LEFT_PKG_NAME, 4, regionBorderSize, LineStyle.DOT_LITERAL, regionCorners, regionContainerCorners);
         checkRegion(CENTER_PKG_NAME, 5, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
         checkRegion(RIGHT_PKG_NAME, 3, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
+    }
+
+    private void doTestRemoveSemantic(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
+        int regionCorners = 0;
+
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegion(CENTER_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
+        checkRegion(RIGHT_CLASS_NAME, 1, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(LEFT_PKG_NAME, 2, regionBorderSize, LineStyle.DOT_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(CENTER_PKG_NAME, 3, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(RIGHT_PKG_NAME, 4, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
+    }
+
+    private void doTestAddSemantic(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
+        int regionCorners = 0;
+
+        checkRegionContainer(FIRST_REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegion(LEFT_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
+        checkRegion(LEFT_CLASS2_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(CENTER_CLASS_NAME, 2, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(RIGHT_CLASS_NAME, 3, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(LEFT_PKG_NAME, 4, regionBorderSize, LineStyle.DOT_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(CENTER_PKG_NAME, 5, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(RIGHT_PKG_NAME, 6, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
     }
 
     private void changeElementName(String label, final String newName) {
