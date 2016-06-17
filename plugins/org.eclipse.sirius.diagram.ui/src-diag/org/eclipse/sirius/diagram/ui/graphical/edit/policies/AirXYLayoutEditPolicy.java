@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -231,12 +231,12 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
                  */
                 childEditPolicy = new RegionRegionContainerResizableEditPolicy();
             } else {
-            /*
-             * If the current element is a region container, each added child
-             * will be considered as a region and will receive the expected
-             * resizable edit policy.
-             */
-            childEditPolicy = new RegionResizableEditPolicy();
+                /*
+                 * If the current element is a region container, each added
+                 * child will be considered as a region and will receive the
+                 * expected resizable edit policy.
+                 */
+                childEditPolicy = new RegionResizableEditPolicy();
             }
         } else if (isRegionContainer(child)) {
             /* If the added element is a region container. */
@@ -306,6 +306,7 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         Object constraintFor = super.getConstraintFor(request, child, rect);
         if (constraintFor instanceof Rectangle && isRegionContainer(child)) {
             Rectangle rectangle = (Rectangle) constraintFor;
+            rectangle.setWidth(-1);
             rectangle.setHeight(-1);
         }
         return constraintFor;
