@@ -64,12 +64,12 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
 
 /**
  * General diagram repair participant.
@@ -129,11 +129,11 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // GMF Nodes)
         Resource viewResource = view.eResource();
         DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(viewResource);
-        UnmodifiableIterator<DDiagramElement> analysisIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
+        Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
 
         Map<IDiagramElementState<DDiagramElement>, DDiagramElement> states = new LinkedHashMap<IDiagramElementState<DDiagramElement>, DDiagramElement>();
         while (analysisIterator.hasNext()) {
-            final DDiagramElement diagramElement = analysisIterator.next();
+            final DDiagramElement diagramElement = (DDiagramElement) analysisIterator.next();
 
             final IDiagramElementState<DDiagramElement> state = getElementState(diagramElement);
 
@@ -217,11 +217,12 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(view.eResource());
 
         // Work only with DDiagramElement
-        final UnmodifiableIterator<DDiagramElement> analysisIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
+        final Iterator<EObject> analysisIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
+
         final List<EObject> elementsToRemove = Lists.newArrayList();
 
         while (analysisIterator.hasNext()) {
-            final DDiagramElement diagramElement = analysisIterator.next();
+            final DDiagramElement diagramElement = (DDiagramElement) analysisIterator.next();
 
             if (diagramElementStateFactory.isValid(diagramElement)) {
                 Identifier identifier = Identifier.createIdentifier(diagramElement);
@@ -341,9 +342,10 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // But an element with isCreated sets to false won't be recreated by
         // refresh. Another process will recreate them after.
 
-        final Iterator<DDiagramElement> viewIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
+        final Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(Predicates.instanceOf(DDiagramElement.class));
+
         while (viewIterator.hasNext()) {
-            final DDiagramElement diagElement = viewIterator.next();
+            final DDiagramElement diagElement = (DDiagramElement) viewIterator.next();
             if (new DiagramElementMappingQuery(diagElement.getDiagramElementMapping()).isSynchronizedAndCreateElement(diagElement)) {
                 toBeRemoved.add(diagElement);
             } else {

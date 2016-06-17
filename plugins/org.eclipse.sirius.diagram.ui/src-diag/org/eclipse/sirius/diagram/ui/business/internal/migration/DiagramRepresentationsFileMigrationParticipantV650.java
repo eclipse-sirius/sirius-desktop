@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
+import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
@@ -44,7 +45,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -66,10 +66,12 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      * <LI>The input is a GMF Node,</LI>
      * <LI>This Node has a DNode style description that forbidden to resize
      * DNode,</LI>
-     * <LI>and the size of DNode is not the same of the size of the GMF Node.</LI>
+     * <LI>and the size of DNode is not the same of the size of the GMF Node.
+     * </LI>
      * </UL>
      */
     private Predicate<EObject> nonResizableNodeWithDifferentSizePredicate = new Predicate<EObject>() {
+        @Override
         public boolean apply(EObject input) {
             boolean apply = false;
             if (input instanceof Node) {
@@ -101,6 +103,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      * Predicate to keep only GFM Edge with tree routing style.
      */
     private Predicate<EObject> edgeWithTreeRoutingPredicate = new Predicate<EObject>() {
+        @Override
         public boolean apply(EObject input) {
             boolean apply = false;
             if (input instanceof Edge) {
@@ -183,7 +186,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      *            The view to migrate.
      */
     private void migrationForGMFViewSizeForDNodeNotResizable(final DView view) {
-        Iterator<EObject> viewIterator = Iterators.filter(view.eAllContents(), nonResizableNodeWithDifferentSizePredicate);
+        Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(nonResizableNodeWithDifferentSizePredicate);
         while (viewIterator.hasNext()) {
             final EObject next = viewIterator.next();
             if (next instanceof Node) {
@@ -214,7 +217,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
         // Sort the edges per common source or common target
         Map<View, List<Edge>> edgesSortPerSource = Maps.newHashMap();
         Map<View, List<Edge>> edgesSortPerTarget = Maps.newHashMap();
-        Iterator<EObject> viewIterator = Iterators.filter(view.eAllContents(), edgeWithTreeRoutingPredicate);
+        Iterator<EObject> viewIterator = new DViewQuery(view).getAllContentInRepresentations(edgeWithTreeRoutingPredicate);
         while (viewIterator.hasNext()) {
             final EObject next = viewIterator.next();
             if (next instanceof Edge) {
