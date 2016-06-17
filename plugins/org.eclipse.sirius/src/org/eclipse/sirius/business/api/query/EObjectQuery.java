@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,9 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EClassQuery;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -443,5 +445,29 @@ public class EObjectQuery {
             return viewpoints;
         }
         return Collections.emptySet();
+    }
+
+    /**
+     * Allow to retrieve the father {@link DAnalysis} from an element contained
+     * in a {@link DRepresentation} or from a {@link DRepresentation}
+     * itself.</br>
+     * Browse the model upward (from the leaf to the root) to return the
+     * {@link DAnalysis}</br>
+     * This method manages the fact that the DRepresentation is not owned by the
+     * DView using the session crossReferencer.
+     * 
+     * @return the DAnalysis if found, null otherwise.
+     */
+    public DAnalysis getDAnalysis() {
+        DAnalysis dAnalysis = null;
+        Option<DRepresentation> representation = getRepresentation();
+        if (representation.some()) {
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation.get()).getRepresentationDescriptor();
+            EObject rootContainer = EcoreUtil.getRootContainer(representationDescriptor, false);
+            if (rootContainer instanceof DAnalysis) {
+                dAnalysis = (DAnalysis) rootContainer;
+            }
+        }
+        return dAnalysis;
     }
 }

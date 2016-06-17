@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.task.ExecuteToolOperationTask;
@@ -29,11 +31,14 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -67,7 +72,7 @@ public class TaskHelper {
         this.modelAccessor = modelAccessor;
         this.uiCallback = uiCallback;
     }
-    
+
     /**
      * Create an {@link ExecuteToolOperationTask} with the specified context and
      * operation.
@@ -102,43 +107,57 @@ public class TaskHelper {
     }
 
     /**
-     * Returns all the {@link DSemanticDecorator} elements to delete.
+     * Returns all the {@link DSemanticDecorator} elements to delete inside a
+     * context object.
      * 
-     * @param root
-     *            the root view point element.
+     * @param context
+     *            the context can be a {@link DAnalysis}, a {@link DView} or a
+     *            {@link DRepresentation}.
      * @param semanticElements
      *            semantic elements.
      * @return all the {@link DSemanticDecorator} elements to delete.
      */
-    public Set<DSemanticDecorator> getDElementToClearFromSemanticElements(final EObject root, final Set<EObject> semanticElements) {
+    public Set<DSemanticDecorator> getDElementToClearFromSemanticElements(final EObject context, final Set<EObject> semanticElements) {
         Set<DSemanticDecorator> decoratorsToDestroy = Sets.newHashSet();
-        if (root != null) {
-            final ECrossReferenceAdapter xref = getSemanticCrossReferencer(root);
+        if (context != null) {
+            final ECrossReferenceAdapter xref = getSemanticCrossReferencer(context);
             if (xref != null) {
-                decoratorsToDestroy = getDElementToClearWithXref(root, semanticElements, xref);
+                decoratorsToDestroy = getDElementToClearWithXref(context, semanticElements, xref);
             } else {
-                decoratorsToDestroy = getDElementToClearWithoutXref(root, semanticElements);
+                decoratorsToDestroy = getDElementToClearWithoutXref(context, semanticElements);
             }
         }
         return decoratorsToDestroy;
     }
 
-    private Set<DSemanticDecorator> getDElementToClearWithXref(final EObject root, final Set<EObject> semanticElements, final ECrossReferenceAdapter xref) {
+    private Set<DSemanticDecorator> getDElementToClearWithXref(final EObject context, final Set<EObject> semanticElements, final ECrossReferenceAdapter xref) {
         final Set<DSemanticDecorator> decoratorsToDestroy = new HashSet<DSemanticDecorator>();
-        for (EObject semElt : semanticElements) {
-            for (Setting setting : xref.getInverseReferences(semElt)) {
-                EObject eObj = setting.getEObject();
-                if (setting.getEStructuralFeature().equals(DSEMANTIC_DECORATOR__TARGET) && EcoreUtil.isAncestor(root, eObj)) {
-                    decoratorsToDestroy.add((DSemanticDecorator) eObj);
-                } else if (!decoratorsToDestroy.contains(eObj) && setting.getEStructuralFeature().equals(DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS) && EcoreUtil.isAncestor(root, eObj)) {
-                    DRepresentationElement repElt = (DRepresentationElement) eObj;
-                    if (semanticElements.containsAll(repElt.getSemanticElements())) {
-                        decoratorsToDestroy.add(repElt);
+        if (context instanceof DAnalysis || context instanceof DView || context instanceof DRepresentation) {
+            for (EObject semElt : semanticElements) {
+                for (Setting setting : xref.getInverseReferences(semElt)) {
+                    EObject eObj = setting.getEObject();
+                    if (setting.getEStructuralFeature().equals(DSEMANTIC_DECORATOR__TARGET) && isAncestor(context, eObj)) {
+                        decoratorsToDestroy.add((DSemanticDecorator) eObj);
+                    } else if (!decoratorsToDestroy.contains(eObj) && setting.getEStructuralFeature().equals(DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS) && isAncestor(context, eObj)) {
+                        DRepresentationElement repElt = (DRepresentationElement) eObj;
+                        if (semanticElements.containsAll(repElt.getSemanticElements())) {
+                            decoratorsToDestroy.add(repElt);
+                        }
                     }
                 }
             }
         }
         return decoratorsToDestroy;
+    }
+
+    private boolean isAncestor(EObject context, EObject object) {
+        EObject son = object;
+        if (context instanceof DAnalysis || context instanceof DView) {
+            Option<DRepresentation> representation = new EObjectQuery(object).getRepresentation();
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation.get()).getRepresentationDescriptor();
+            son = representationDescriptor;
+        }
+        return EcoreUtil.isAncestor(context, son);
     }
 
     private ECrossReferenceAdapter getSemanticCrossReferencer(EObject root) {

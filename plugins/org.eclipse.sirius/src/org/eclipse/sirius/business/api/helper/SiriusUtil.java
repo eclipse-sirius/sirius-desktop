@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -259,14 +260,21 @@ public final class SiriusUtil {
     public static void delete(EObject eObject, Session session) {
         Session currentEObjectSession = session;
         if (currentEObjectSession == null) {
+            // try to get the session if eObject is a semantic object
             EObject semanticRootElement = EcoreUtil.getRootContainer(eObject);
-            if (semanticRootElement instanceof DAnalysis) {
-                EObject model = Iterables.getFirst(((DAnalysis) semanticRootElement).getModels(), null);
-                if (model != null) {
-                    semanticRootElement = model;
-                }
-            }
             currentEObjectSession = SessionManager.INSTANCE.getSession(semanticRootElement);
+            if (currentEObjectSession == null) {
+                // try to get the session if eObject is "contained" in a
+                // DAnalysis
+                DAnalysis dAnalysis = new EObjectQuery(eObject).getDAnalysis();
+                if (dAnalysis != null) {
+                    EObject model = Iterables.getFirst(dAnalysis.getModels(), null);
+                    if (model != null) {
+                        semanticRootElement = model;
+                    }
+                }
+                currentEObjectSession = SessionManager.INSTANCE.getSession(semanticRootElement);
+            }
         }
         if (currentEObjectSession != null) {
             Collection<EStructuralFeature.Setting> usages = currentEObjectSession.getSemanticCrossReferencer().getInverseReferences(eObject);

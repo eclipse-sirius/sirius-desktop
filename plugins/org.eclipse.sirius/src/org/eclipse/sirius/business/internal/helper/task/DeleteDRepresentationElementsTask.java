@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -84,7 +83,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
         EObject root = null;
         final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
         if (automaticRefresh) {
-            root = EcoreUtil.getRootContainer(this.repElt);
+            root = new EObjectQuery(this.repElt).getDAnalysis();
         } else {
             EObjectQuery eObjectQuery = new EObjectQuery(repElt);
             root = eObjectQuery.getRepresentation().get();
