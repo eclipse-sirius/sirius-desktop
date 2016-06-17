@@ -14,11 +14,15 @@
 
 	<path id="wikitext.classpath">
 		<fileset dir="${wikitext.standalone}">
-			<include name="org.eclipse.mylyn.wikitext.*core*.jar" />
+			<include name="com.google.guava*.jar" />
+			<include name="org.jsoup*.jar" />
+			<include name="org.eclipse.mylyn.wikitext.core*.jar" />
+			<include name="org.eclipse.mylyn.wikitext.core.ant.*.jar" />
+			<include name="org.eclipse.mylyn.wikitext.textile.core*.jar" />
 		</fileset>
 	</path>
 
-	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/ant/tasks.properties" />
 
 	<target name="generate-html" description="Generate Eclipse help from textile source">
 		<wikitext-to-html markupLanguage="Textile" formatOutput="true" failonvalidationerror="true" failonvalidationwarning="true" validate="true">
