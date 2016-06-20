@@ -14,6 +14,8 @@ If a viewpoint  has been defined with a more recent version of Sirius than the o
 
 h3. Specifier-Visible Changes
 
+* The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
+
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius@

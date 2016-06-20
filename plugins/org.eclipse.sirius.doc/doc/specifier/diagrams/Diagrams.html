@@ -672,6 +672,7 @@
 			<li>The Show/Hide, Hide filter features are disabled on regions (hide filter can be created to the compartment content but not the compartment). The Show/Hide label feature is supported.</li>
 			<li>The move and drag and drop of regions are disabled. Reordering regions can be done by reordering their semantic elements.</li>
 			<li>The resize of compartments might evolve in future versions. The current behavior is to redistribute space between adjacent regions and to resize the first/last region when the region container is resized from top/bottom for a vertical stack and left/right for an horizontal one.</li>
+			<li>A compartment is always considered as auto-sized (except after creation time when it contains no region).</li>
 			<li>The capability to define complex or recursive stack of regions mixing both stack directions has been introduced in Sirius 3.1.0 as an 
 				<em>experimental</em> configuration. Some layout-related actions might produce unexpected result. The limitations only concerns the visual aspects, there is no risk of corrupting the underlying models.
 			</li>
@@ -718,6 +719,81 @@
 		</p>
 		<p>Most of the properties used to configure the various styles are self-explanatory. See the 
 			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#8220;question mark&#8221; icon of each property.
+		</p>
+		<h6 id="compartments_layout">Specific compartments layout</h6>
+		<p>Due to layout specificity of compartments, there are specific rules for this kind of containers:</p>
+		<ul>
+			<li>It is recommended to set to &#8220;-1&#8221; the 
+				<code>Width Computation Expression</code> and 
+				<code>Height Computation Expression</code>. The size of the compartment is expected to be computed from their regions.
+			</li>
+			<li>For the same reason, the 
+				<code>Width Computation Expression</code> should be the same for each region of the same vertical compartment (same 
+				<code>Height Computation Expression</code> for horizontal compartment ). If they are not the same the maximum is used.
+			</li>
+			<li>When a 
+				<code>Width Computation Expression</code> and 
+				<code>Height Computation Expression</code> are defined for the compartments, they are used at the creation time. You have the same effect if the end-user creates a compartment by drawing a rectangle for creation (instead of just clicking on the diagram). This dimension is kept for the first region creation. After the first region creation, the compartment is considered as auto-sized. A second region creation resizes the compartment (in the direction of the stack of the compartment).
+			</li>
+		</ul>
+		<p>Examples of some layout results according to VSM configuration:</p>
+		<ul>
+			<li>1st example:
+				<ul>
+					<li>Compartment with horizontal stack and with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to 10.
+					</li>
+					<li>Regions with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to 5.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/compartmentsLayout-Creation1.png"/>
+			<br/>1- Creation of a compartment: The compartment has a size of 100x100 pixels. The result would be the same if the end-user drawn a rectangle of 100x100 pixels at the creation time.
+			<br/>2- Creation of a first region: The first region uses the free size of the compartment. The compartment keeps its size.
+			<br/>3- Creation of a second region: The second region uses the height of the first region (highest than the 50 pixels defined in the VSM) and has a width of 50 pixels. The compartment is increased in width.
+		</p>
+		<ul>
+			<li>2nd example:
+				<ul>
+					<li>Compartment with horizontal stack and with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to 10.
+					</li>
+					<li>Regions with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to 15.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/compartmentsLayout-Creation2.png"/>
+			<br/>The first and second steps are the same. But the third is different. The second region has a width of 150 pixels and also a height of 150 pixels (highest than the first one). The compartment is increased in both directions.
+		</p>
+		<ul>
+			<li>3rd example:
+				<ul>
+					<li>Compartment with horizontal stack and with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to -1.
+					</li>
+					<li>Regions with 
+						<code>Width Computation Expression</code> and 
+						<code>Height Computation Expression</code> equal to 5.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/compartmentsLayout-Creation3.png"/>
+			<br/>1- Creation of a compartment: The compartment is auto-sized and fits to the title.
+			<br/>2- Creation of a first region: The first region uses the width of the compartment (highest than the 50 pixels defined in the VSM) and has a height of 50 pixels. The compartment is increased in height.
+			<br/>3- Creation of a second region: The second region has a size of 50x50 pixels. The compartment is increased in both directions.
 		</p>
 		<h4 id="container_tools">Container Tools</h4>
 		<p>See the 
