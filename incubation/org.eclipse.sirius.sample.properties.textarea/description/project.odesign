@@ -11,7 +11,7 @@
     name="project"
     version="11.0.0.201601261200">
   <ownedViewpoints
-      name="Design">
+      name="Sirius Properties View Example - Textarea">
     <ownedRepresentations
         xsi:type="description_1:DiagramDescription"
         name="Class Diagram"
