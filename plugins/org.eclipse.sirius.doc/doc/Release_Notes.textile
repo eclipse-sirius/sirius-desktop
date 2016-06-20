@@ -10,6 +10,10 @@ h3. User-Visible Changes
 
 * <span class="label label-info">Modified</span> The shortcut _Ctrl+&_, for "_Reset Origin_":./user/diagrams/Diagrams.html#reset_origin action, has been replaced by _Ctrl+HOME_.
 
+h3. Specifier-Visible Changes
+
+* The rules concerning the layout of compartments have been changed/completed. You can have a look at the "dedicated chapter":specifier/diagrams/Diagrams.html#compartments_layout in the specifier documentation for more details.
+
 h2(#sirius4.0.0). Changes in Sirius 4.0.0
 
 h3. User-Visible Changes

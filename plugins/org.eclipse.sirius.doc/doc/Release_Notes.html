@@ -18,6 +18,9 @@
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
+							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -27,7 +30,7 @@
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
@@ -41,7 +44,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -55,7 +58,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
@@ -69,7 +72,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#APIChanges">API Changes</a>
@@ -93,6 +96,12 @@
 				<em>Ctrl+HOME</em>.
 			</li>
 		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li>The rules concerning the layout of compartments have been changed/completed. You can have a look at the 
+				<a href="specifier/diagrams/Diagrams.html#compartments_layout">dedicated chapter</a> in the specifier documentation for more details.
+			</li>
+		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -114,7 +123,7 @@
 				<code>Apply Appearance Properties</code> action has been modified to use the last selected element as base style instead of the first one.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> Sirius 4.0 introduces 
 				<strong>experimental</strong>  support for specifying the properties views of your modelers directly from inside the VSM. This feature uses the same dynamic approach as for specifying  diagrams, tables and trees, with a very flexible configuration language and no code generation involved (including live preview of any change). As of Sirius 4.0, this feature should be considered in an experimental  state with details subject to changes until Sirius 4.1, and is not installed by default. To install it, make sure either 
@@ -615,7 +624,7 @@
 				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
@@ -1145,7 +1154,7 @@
 				<em>Viewpoint Selection</em> dialog and wizard page, the &#8220;plug-in&#8221; decorator for viewpoints loaded from plug-ins is removed, and a &#8220;Folder&#8221; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 
@@ -2121,7 +2130,7 @@
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#8220;advance&#8221; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
