@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:List" id="1" x="40" y="71" width="200" text="Cut                                            Ctrl+X&#xA;Copy                                         Ctrl+C&#xA;%(color:gray)Paste                                         Ctrl+V%&#xA;" measuredWidth="200" measuredHeight="67">
+    <font/>
+    <items x="0" y="2" width="200" height="21" text="Cut                                            Ctrl+X"/>
+    <items x="0" y="23" width="200" height="21" text="Copy                                         Ctrl+C"/>
+    <items x="0" y="44" width="200" height="21" text="%(color:gray)Paste                                         Ctrl+V%"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="4" x="40" y="26" width="200" text="Undo&#xD;&#xA;%(color:gray)Redo%" measuredWidth="200" measuredHeight="46">
+    <font/>
+    <items x="0" y="2" width="200" height="21" text="Undo"/>
+    <items x="0" y="23" width="200" height="21" text="%(color:gray)Redo%"/>
+  </widgets>
+  <widgets xsi:type="model:Menu" id="5" text="&amp;File,&amp;Edit,&amp;Diagram,&amp;Navigate, ...,&amp;Help" measuredWidth="240" measuredHeight="27">
+    <items x="5" y="0" width="29" height="27" text="&amp;File"/>
+    <items x="34" y="0" width="31" height="27" text="&amp;Edit"/>
+    <items x="65" y="0" width="56" height="27" text="&amp;Diagram"/>
+    <items x="121" y="0" width="58" height="27" text="&amp;Navigate"/>
+    <items x="179" y="0" width="20" height="27" text="..."/>
+    <items x="199" y="0" width="36" height="27" text="&amp;Help"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="7" x="40" y="133" width="200" text="Delete                                        Delete&#xA;Select All                                   Ctrl+A&#xA;Deselect All                               Esc" measuredWidth="200" measuredHeight="67">
+    <font/>
+    <items x="0" y="2" width="200" height="21" text="Delete                                        Delete"/>
+    <items x="0" y="23" width="200" height="21" text="Select All                                   Ctrl+A"/>
+    <items x="0" y="44" width="200" height="21" text="Deselect All                               Esc"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="8" x="40" y="199" width="200" text="Copy Format           Ctrl+Alt+Shift+C&#xA;%(color:gray)Paste Format           Ctrl+Alt+Shift+V%&#xA;%(color:gray)Paste Layout Only%&#xA;%(color:gray)Paste Style Only%" measuredWidth="200" measuredHeight="88">
+    <font/>
+    <items x="0" y="2" width="200" height="21" text="Copy Format           Ctrl+Alt+Shift+C"/>
+    <items x="0" y="23" width="200" height="21" text="%(color:gray)Paste Format           Ctrl+Alt+Shift+V%"/>
+    <items x="0" y="44" width="200" height="21" text="%(color:gray)Paste Layout Only%"/>
+    <items x="0" y="65" width="200" height="21" text="%(color:gray)Paste Style Only%"/>
+  </widgets>
+  <hRuler/>
+  <vRuler>
+    <guides position="133"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

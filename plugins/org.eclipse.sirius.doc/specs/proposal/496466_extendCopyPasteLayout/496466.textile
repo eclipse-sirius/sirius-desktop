@@ -1,0 +1,145 @@
+h1. Sirius Evolution Specification: Extend copy/paste layout feature with style notions
+
+h2. Preamble
+
+_Summary_: Have the capability to also paste style along with the layout.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-06-22 | lredor    | Initial version. |
+| v0.2        | DRAFT    | 2016-06-23 | lredor    | Add improvement and limitations. |
+| v0.3        | PROPOSED    | 2016-06-23 | lredor    | Internal review. |
+
+_Relevant tickets_:
+* "Bug 496466 - Extend copy/paste layout feature with style notions":https://bugs.eclipse.org/bugs/show_bug.cgi?id=496466
+
+h2. Introduction
+
+Currently there are two kinds of copy/paste in Sirius:
+
+* The "copy/paste layout":http://www.eclipse.org/sirius/doc/user/diagrams/Diagrams.html#Copypasteoflayout copies the location and size of elements of a source diagram and pastes them to elements of a target diagram. By default, the layout is applied on graphical elements representing the same semantic element (same @target@ reference of @DSemanticDecorator@). It is possible to apply specific rules for matching between source semantic elements and target semantic elements with the @org.eclipse.sirius.diagram.ui.layoutDataManager@ extension point.
+* The standard copy/paste allows to copy and paste the semantic elements. The paste action can be customized by a "paste tool":http://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html#paste_description in the VSM on the receiver. Contrary to the copy/paste layout, the standard copy/paste is also possible by using the same diagram for copy and paste.
+
+In addition to these, there is also an _Apply Appearance Properties_ action <img src="images/ApplyAppearanceProperties.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> that allows to copy all common style attributes from the last selected shapes to all other selected shapes.
+
+The goal of this evolution is to have a copy/paste format feature (in replacement of the existing copy/paste layout feature). This new feature extends the copy/paste layout feature with the style notions (with the same behavior as _Apply Appearance Properties_ action). The standard copy/paste mechanism is not impacted in any way by this change.
+
+h2. Detailed Specification
+
+The user interaction will be the same as the current _copy/paste layout_ feature. As a reminder, currently the end-user must:
+* Select the source elements in a diagram
+* Copy the layout (Ctrl+Alt+Shift+C, or contextual menu @Edit/Copy layout@, or corresponding icon in tab-bar <img src="images/copyLayout.gif" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>)
+* Select the target elements, or the container of these elements, in another diagram
+* Paste the layout (Ctrl+Alt+Shift+V, or contextual menu @Edit/Paste layout@, or corresponding icon in tab-bar <img src="images/pasteLayout.gif" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>)
+
+The feature will be renamed in @Copy/Paste Format@. There is one action for _Copy_ and 3 actions for _Paste_:
+* Paste Format (ie Layout and Style)
+* Paste Layout Only
+* Paste Style Only
+
+h3. Paste Layout Only
+
+The _Paste Layout Only_ action is equivalent to the current behavior when the user calls the _Paste Layout_ action.
+
+h3. Paste Style Only
+
+The _Paste Style Only_ action will replicate the style, by default, on graphical elements representing the same semantic element (same @target@ reference of @DSemanticDecorator@). All the source elements style properties (customized or not) will be applied to the target elements as custom styles if they are different than the default ones. That means, for example, if the copied element background is different from the one to paste, the background will appear as a custom feature. If the background is the same, nothing is modified. 
+The paste style will have a similar behavior to the _Apply Appearance Properties_ action, but with a different workflow.
+
+It will be also possible to use the same extension point as for _Paste Layout_ action to customize the matching between source elements and target elements.
+
+h3. Paste Format
+
+This action is a combination of both above actions. The layout and the style will be pasted.
+
+h3(#UI). User Interface
+
+To default paste behavior, when called from the keyboard shortcut, will be a paste format (layout and style). In the tab-bar and in the contextual menu, there is the possibility to launch the 3 kinds of paste.
+
+!images/copyPasteMenu.png!
+This sketch shows the future menu.
+
+
+!images/tabbarCopy.png!
+@Copy Format@ button in tab-bar
+
+
+!images/tabbarPaste.png!
+@Paste@ buttons in tab-bar. All 3 actions are represented with a drop-down button. At the opening of a diagram, the action @Paste Format@ is the default one. Then, the drop-down button retains the last used action in the diagram.
+
+h3. Technical details
+
+The current _Apply Appearance Properties_ action is handled by @org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction@ (that creates an @org.eclipse.gmf.runtime.diagram.ui.internal.requests.ApplyAppearancePropertiesRequest@) and then by @org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy@.
+The @SiriusPropertyHandlerEditPolicy@ copies the "Sirius style attributes" (@SiriusPropertyHandlerEditPolicy.buildApplyAppearancePropertiesCommand(ApplyAppearancePropertiesRequest)@) and the "GMF style attributes" by using @org.eclipse.gmf.runtime.diagram.core.util.ViewRefactorHelper.copyViewAppearance(View, View, List)@.
+
+The @CopyLayoutAction@ and @PasteLayoutAction@ from @org.eclipse.sirius.diagram.ui.tools.internal.actions.layout@ will be adapted and renamed to correctly handle this new feature. This is the same for the associated commands @CopyLayoutDataCommand@ and @PasteLayoutDataCommand@. Both of them use the @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ from the extension point @org.eclipse.sirius.diagram.ui.layoutDataManager@.
+
+h3.  Improvement compared to _Copy/Paste Layout_
+
+For the copy/paste layout, if the selection is an edge for the paste, there is no effect. Indeed, apply the layout an edge is a non sense without applying the layout on its source node and target node layout. For the style, it is not the same; it's authorized for an end-user to copy the style of an edge to another. This case must now be handled in the _paste style only_ and if the _paste format_ is launched in this case, only the style will be paste (must be documented in the end-user documentation).
+
+h3(#applyAppearanceLimitation). Known limitation of _Apply Appearance Properties_
+
+There is a limitation in the current  _Apply Appearance Properties_ action. Indeed, if in the selection there are both containers and nodes, the Sirius style is only applied to elements of the same kind as the source. Only the GMF style is applied (and therefore passed to some Sirius style attributes with pre-commit listeners). For example, the color attributes are not copied from a node to a container (and conversely).
+List (non exhastive) of attributes not copied from node to container (and conversely):
+* border coloer
+* border line style
+* border size
+* color
+* icon path
+* label alignment
+* label color
+* show icon
+* ...
+
+In other words, there are only few label attributes that are copied in this case:
+* Font name
+* Font size
+* Font format (normal, bold, italic)
+
+The feature  _Apply Appearance Properties_ is probably, most of time, used for shapes of same type, this is why this limitation was not problematic. In the scope of this feature, we consider that it is the same. Another improvement will be to match individually each style attributes between a node style and a container style.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+The Sirius meta-model is not impacted by this feature.
+
+h3. API Changes
+
+To avoid a too important API break in Sirius 4.1, we can not rename the extension point and all the linked classes that speak about LayoutData. So they will be kept for this version but they will become deprecated. They will be removed in Sirius 5.0 in favor of the new @org.eclipse.sirius.diagram.ui.formatDataManager@ extension point, and associated classes, added in Sirius 4.1.
+We can not just keep the existing extension point and classes because there will be an inconsistency between the naming and the meaning.
+
+The @org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData@ will be completed with:
+* a reference of type @org.eclipse.sirius.viewpoint.Style@ that is a copy of the style of the current @DDiagramElement@
+* a reference of type @org.eclipse.gmf.runtime.notation.View@ that is a copy of the @View@ representing the current  @DDiagramElement@. The @element@ field of this copy will be cleaned to avoid possible cross-references to this copy.
+!images/layoutDataMMChanges.png!
+
+These fields will be set during the copy action with the @SiriusLayoutDataManager.storeLayoutData(IGraphicalEditPart)@. And they are then use when @SiriusLayoutDataManager.applyLayout((IGraphicalEditPart)@ is called.
+
+h3. User Interface Changes
+
+As described in the "_Detailed Specification_":#UI section, the diagram contextual menu and edit menu will have additional entries for the new paste options. The old _Copy Layout_ and _Paste Layout_ actions will also be renamed in _Copy Format_ and _Paste Format_. The Paste actions will appear in a drop-down menu in the tab-bar.
+
+h3. Documentation Changes
+
+The User documentation will be updated to describe the new behavior of the Copy/Paste Format feature (in replacement of the current "Copy/Paste Layout":http://www.eclipse.org/sirius/doc/user/diagrams/Diagrams.html#Copypasteoflayout ).
+
+The documentation of the extension point must also be adapted.
+
+h2. Tests and Non-regression strategy
+
+Starting from a typical diagram with lists, containers, nodes, border-nodes and with an exhaustive list of customized styles, we should test the different combinations of copy/paste:
+* paste format (layout + style)
+* only paste layout
+* only paste style
+For each combination, check the behavior with and without the use of the extension point.
+
+h2. Implementation choices and tradeoffs
+
+Another improvement will be to have a "Brush" action , like in many other tools. We retrieve the same behavior but with a different workflow:
+* A click on the corresponding button copies the current layout and style and enables the "brush" mode. Then another click on element paste the layout and style.
+* A double click on the corresponding button copies the current layout and style and enables the "brush" mode (for many elements). Then it is possible to make several clicks on elements to paste the layout and style on these elements. Escape key must be pressed to leave the "brush" mode.
+
+We can also imagine a global copy/paste mechanism (with semantic part). This is the goal of the "bugzilla 491895":https://bugs.eclipse.org/bugs/show_bug.cgi?id=491895.
+
+As explained in "Known limitation of _Apply Appearance Properties_":#applyAppearanceLimitation chapter, another improvement will be to enhance the copy/paste style between a node and a container (and conversely).

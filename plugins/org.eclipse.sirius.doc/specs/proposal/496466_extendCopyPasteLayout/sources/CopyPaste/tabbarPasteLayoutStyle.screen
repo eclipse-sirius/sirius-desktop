@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Label" id="20" x="48" y="46" text="Paste Layout Only" measuredWidth="117" measuredHeight="23" textAlignment="Center" icon="image (small)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="21" x="48" y="24" text="Paste Format" measuredWidth="91" measuredHeight="23" textAlignment="Center" icon="image (small)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="22" x="48" y="68" text="Paste Style Only" measuredWidth="106" measuredHeight="23" textAlignment="Center" icon="image (small)">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
