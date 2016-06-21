@@ -16,10 +16,8 @@ import java.util.Collections;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -31,7 +29,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -46,9 +43,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.swt.widgets.Display;
@@ -63,6 +58,28 @@ import org.eclipse.ui.PlatformUI;
  *
  */
 public class CompartmentsCreationTest extends AbstractCompartmentTest {
+
+    private String oldFont;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        super.onSetUpAfterOpeningDesignerPerspective();
+        oldFont = changeDefaultFontName("Comic Sans MS");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        if (oldFont != null) {
+            changeDefaultFontName(oldFont);
+        }
+        super.tearDown();
+    }
 
     /**
      * Ensures that containers displays correctly its children in a horizontal
@@ -365,8 +382,9 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
-        // Check that the existing container is as expected
-        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258));
+        // Check that the existing container is as expected (a delta of 1 is
+        // tolerate for height because of font problem in such OS)
+        Rectangle currentDraw2DBounds = checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258), false, 0, 1);
 
         // Create a new ePackage (that causes creation of new region container
         // region at refresh) outside of the current session (as from an
@@ -374,7 +392,7 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
         modifySemanticModelOutsideDiagram();
 
         // Check that the existing container has not changed
-        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258));
+        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), currentDraw2DBounds);
     }
 
     /**
@@ -392,7 +410,7 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
         // Check that the existing region is as expected
-        checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
+        Rectangle currentDraw2DBounds = checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
 
         // Create a new ePackage (that causes creation of new region container
         // region at refresh) outside of the current session (as from an
@@ -401,18 +419,75 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
         // Check that the existing container has not changed (or at least one of
         // its region in current case)
-        checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
+        checkBounds("aaa", new Rectangle(0, 80, 154, 40), currentDraw2DBounds);
     }
 
     private void checkSize(String label, Dimension expectedGmfSize, Dimension expectedFigureSize) {
         checkBounds(label, new Rectangle(0, 0, expectedGmfSize.width(), expectedGmfSize.height()), new Rectangle(0, 0, expectedFigureSize.width(), expectedFigureSize.height()), true);
     }
 
-    private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
-        checkBounds(label, expectedGmfBounds, expectedFigureBounds, false);
+    /**
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given
+     * <code>label</code>.
+     * 
+     * @param label
+     *            The label of the edit part to check
+     * @param expectedGmfBounds
+     *            The expected GMF bounds
+     * @param expectedFigureBounds
+     *            The expected draw2d bounds, if the width or height is equals
+     *            to -1, we ignore it.
+     * 
+     * @return The current Draw2d bounds
+     */
+    private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
+        return checkBounds(label, expectedGmfBounds, expectedFigureBounds, false);
     }
 
-    private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize) {
+    /**
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given
+     * <code>label</code>.
+     * 
+     * @param label
+     *            The label of the edit part to check
+     * @param expectedGmfBounds
+     *            The expected GMF bounds
+     * @param expectedFigureBounds
+     *            The expected draw2d bounds, if the width or height is equals
+     *            to -1, we ignore it.
+     * @param onlyCheckSize
+     *            true if only the size must be check (and not the location),
+     *            false otherwise.
+     * 
+     * @return The current Draw2d bounds
+     */
+    private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize) {
+        return checkBounds(label, expectedGmfBounds, expectedFigureBounds, onlyCheckSize, 0, 0);
+    }
+
+    /**
+     * Check that the bounds (GMF and Draw2D) are as expected.
+     *
+     * @param label
+     *            Label of the container to check.
+     * @param expectedGmfBounds
+     *            The GMF expected bounds
+     * @param expectedFigureBounds
+     *            The draw2d expected bounds. If the x, y , width or height in
+     *            this bounds is equal to -1, we don't check it. This is useful
+     *            in case of size that depends on Font (with different result
+     *            according to OS).
+     * @param onlyCheckSize
+     *            true if only the size must be check (and not the location),
+     *            false otherwise. * @param widthDelta The width delta to
+     *            consider the width as equal (because of font size that can be
+     *            slightly different on each OS).
+     * @param heightDelta
+     *            The height delta to consider the height as equal (because of
+     *            font size that can be slightly different on each OS).
+     * @return the current DrawD2 bounds
+     */
+    private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize, int widthDelta, int heightDelta) {
         SWTBotGefEditPart swtBotEditPart = editor.getEditPart(label, AbstractDiagramElementContainerEditPart.class);
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) swtBotEditPart.part();
 
@@ -420,20 +495,43 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
         if (onlyCheckSize) {
             assertEquals("Wrong GMF size for " + label, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize());
-            assertEquals("Wrong Draw2D size for " + label, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize());
+            if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
+                if (widthDelta == 0 && heightDelta == 0) {
+                    assertEquals("Wrong Draw2D size for " + label, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize());
+                } else {
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                }
+            } else {
+                if (expectedFigureBounds.width() != -1) {
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                }
+                if (expectedFigureBounds.height() != -1) {
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                }
+            }
         } else {
             assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
-            assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+            if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
+                if (widthDelta == 0 && heightDelta == 0) {
+                    assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+                } else {
+                    assertEquals("Wrong Draw2D location for " + label, expectedFigureBounds.getLocation(), mainFigure.getBounds().getLocation());
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                }
+            } else {
+                assertEquals("Wrong Draw2D x for " + label, expectedFigureBounds.x(), mainFigure.getBounds().x());
+                assertEquals("Wrong Draw2D y for " + label, expectedFigureBounds.y(), mainFigure.getBounds().y());
+                if (expectedFigureBounds.width() != -1) {
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                }
+                if (expectedFigureBounds.height() != -1) {
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                }
+            }
         }
-
-        ResizableCompartmentEditPart compartmentEditPart = (ResizableCompartmentEditPart) editPart.getChildren().get(1);
-        Border border = compartmentEditPart.getContentPane().getBorder();
-
-        if (editPart instanceof IDiagramListEditPart) {
-            assertEquals("Wrong border margin for " + label, new Insets(0, 4, editPart.isRegion() ? 0 : 1, 4), border.getInsets(null));
-        } else if (editPart instanceof IDiagramContainerEditPart) {
-            assertNull("Wrong border for " + label + ": the BorderItemsAwareFreeFormLayer used as content pane of a freeform region should not have a border.", border);
-        }
+        return (Rectangle) mainFigure.getBounds();
     }
 
     private Rectangle getBounds(Node notationView) {
