@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.compartment;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
@@ -77,4 +78,37 @@ public interface ICompartmentTests {
     public static final String NEW_PACKAGE_1_NAME = "p1";
 
     public static final String NEW_ATTRIBUTE_NAME = "attr2";
+
+    // The expected bounds can be slightly different according to the size of
+    // Font, so the tests must consider this and not use these bounds as
+    // strictly expected.
+    public static final Rectangle INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS = new Rectangle(64, 16, 141, 414);
+
+    public static final Rectangle INITIAL_VERTICAL_LEFT_CLASS_BOUNDS = new Rectangle(0, 0, 129, 91);
+
+    public static final Rectangle INITIAL_VERTICAL_LEFT_CLASS2_BOUNDS = new Rectangle(0, 91, 129, 40);
+
+    public static final Rectangle INITIAL_VERTICAL_CENTER_CLASS_BOUNDS = new Rectangle(0, 91, 129, 92);
+
+    public static final Rectangle INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS = new Rectangle(0, 183, 129, 44);
+
+    public static final Rectangle INITIAL_VERTICAL_LEFT_PKG_BOUNDS = new Rectangle(0, 227, 129, 41);
+
+    public static final Rectangle INITIAL_VERTICAL_CENTER_PKG_BOUNDS = new Rectangle(0, 268, 129, 67);
+
+    public static final Rectangle INITIAL_VERTICAL_RIGHT_PKG_BOUNDS = new Rectangle(0, 335, 129, 41);
+
+    public static final Rectangle INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS = new Rectangle(0, 0, 831, 247);
+
+    public static final Rectangle INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS = new Rectangle(0, 0, 165, 211);
+
+    public static final Rectangle INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS = new Rectangle(165, 0, 136, 211);
+
+    public static final Rectangle INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS = new Rectangle(301, 0, 130, 211);
+
+    public static final Rectangle INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS = new Rectangle(431, 0, 122, 211);
+
+    public static final Rectangle INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS = new Rectangle(553, 0, 156, 211);
+
+    public static final Rectangle INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS = new Rectangle(709, 0, 112, 211);
 }

@@ -37,6 +37,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -45,6 +46,8 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
@@ -67,10 +70,12 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
@@ -82,6 +87,7 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.FontData;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
@@ -112,6 +118,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
     private DiagramEditor editor;
 
+    private String oldFont;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -119,12 +127,15 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         TestsUtil.synchronizationWithUIThread();
 
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
+        oldFont = changeDefaultFontName("Comic Sans MS");
     }
 
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(editor, false);
-
+        if (oldFont != null) {
+            changeDefaultFontName(oldFont);
+        }
         super.tearDown();
     }
 
@@ -206,13 +217,13 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, 165, 211), new Rectangle(0, 0, 165, 211));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(165, 0, 136, 211), new Rectangle(165, 0, 136, 211));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(301, 0, 130, 211), new Rectangle(301, 0, 130, 211));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(431, 0, 122, 211), new Rectangle(431, 0, 122, 211));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(553, 0, 156, 211), new Rectangle(553, 0, 156, 211));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(709, 0, 112, 211), new Rectangle(709, 0, 112, 211));
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS, 0, 1);
+        checkBounds(LEFT_CLASS_NAME, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS);
+        checkBounds(CENTER_CLASS_NAME, INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS, INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS);
+        checkBounds(RIGHT_CLASS_NAME, INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS, INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS);
+        checkBounds(LEFT_PKG_NAME, INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS, INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS);
+        checkBounds(CENTER_PKG_NAME, INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS, INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS);
+        checkBounds(RIGHT_PKG_NAME, INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS, INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS);
 
         doTestInitialLayout(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
     }
@@ -227,20 +238,45 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 91, -1, -1), new Rectangle(0, 91, 129, 92));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 227, -1, -1), new Rectangle(0, 227, 129, 41));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 268, -1, -1), new Rectangle(0, 268, 129, 67));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 335, -1, -1), new Rectangle(0, 335, 129, 41));
+        // Each vertical region can have a delta according to what is expected
+        // because of font height on each OS. Height deltas of each region have
+        // an incidence on the global container height. We must cumulate them to
+        // make a reasonable assert at the end.
+        int heightDeltas = 0;
+
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle leftClassBounds = checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), INITIAL_VERTICAL_LEFT_CLASS_BOUNDS, 0, 5);
+        heightDeltas += leftClassBounds.height - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height;
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle centerClassBounds = checkBounds(CENTER_CLASS_NAME, new Rectangle(0, INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.y, -1, -1),
+                INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.getTranslated(0, heightDeltas), 0, 5);
+        heightDeltas += centerClassBounds.height - INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height;
+        // Delta of 2 pixels because there are 2 lines (with potential 1 delta
+        // pixel)
+        Rectangle rightClassBounds = checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.y, -1, -1), INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.getTranslated(0, heightDeltas),
+                0, 2);
+        heightDeltas += rightClassBounds.height - INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.height;
+        Rectangle leftPkgBounds = checkBounds(LEFT_PKG_NAME, new Rectangle(0, INITIAL_VERTICAL_LEFT_PKG_BOUNDS.y, -1, -1), INITIAL_VERTICAL_LEFT_PKG_BOUNDS.getTranslated(0, heightDeltas));
+        heightDeltas += leftPkgBounds.height - INITIAL_VERTICAL_LEFT_PKG_BOUNDS.height;
+        // Delta of 1 pixel because there is 1 line (with potential 1 delta
+        // pixel)
+        Rectangle centerPkgBounds = checkBounds(CENTER_PKG_NAME, new Rectangle(0, INITIAL_VERTICAL_CENTER_PKG_BOUNDS.y, -1, -1), INITIAL_VERTICAL_CENTER_PKG_BOUNDS.getTranslated(0, heightDeltas), 0,
+                1);
+        heightDeltas += centerPkgBounds.height - INITIAL_VERTICAL_CENTER_PKG_BOUNDS.height;
+        Rectangle rightPkgBounds = checkBounds(RIGHT_PKG_NAME, new Rectangle(0, INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.y, -1, -1), INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.getTranslated(0, heightDeltas));
+        heightDeltas += rightPkgBounds.height - INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.height;
+        Rectangle firstRegionBounds = checkBounds(FIRST_REGION_CONTAINER_NAME,
+                new Rectangle(INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.x, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.y, -1, -1), new Rectangle(64, 16, 141, -1));
+        assertEquals("Wrong Draw2D height for " + FIRST_REGION_CONTAINER_NAME, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.height + heightDeltas, firstRegionBounds.height(), 1);
 
         doTestInitialLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
     }
 
     /**
      * Check that the bounds (GMF and Draw2D) are as expected.
-     * 
+     *
      * @param label
      *            Label of the container to check.
      * @param expectedGmfBounds
@@ -250,15 +286,46 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
      *            this bounds is equal to -1, we don't check it. This is useful
      *            in case of size that depends on Font (with different result
      *            according to OS).
+     * @return the current DrawD2 bounds
      */
-    private void checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
+    private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
+        return checkBounds(label, expectedGmfBounds, expectedFigureBounds, 0, 0);
+    }
+
+    /**
+     * Check that the bounds (GMF and Draw2D) are as expected.
+     *
+     * @param label
+     *            Label of the container to check.
+     * @param expectedGmfBounds
+     *            The GMF expected bounds
+     * @param expectedFigureBounds
+     *            The draw2d expected bounds. If the x, y , width or height in
+     *            this bounds is equal to -1, we don't check it. This is useful
+     *            in case of size that depends on Font (with different result
+     *            according to OS).
+     * @param widthDelta
+     *            The width delta to consider the width as equal (because of
+     *            font size that can be slightly different on each OS).
+     * @param heightDelta
+     *            The height delta to consider the height as equal (because of
+     *            font size that can be slightly different on each OS).
+     * @return the current DrawD2 bounds
+     */
+    private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, int widthDelta, int heightDelta) {
         DDiagramElementContainer region = getDiagramElementsFromLabel(diagram, label, DDiagramElementContainer.class).get(0);
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
 
         IFigure mainFigure = editPart.getMainFigure();
         assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
         if (expectedFigureBounds.x() != -1 && expectedFigureBounds.y() != -1 && expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
-            assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+            if (widthDelta == 0 && heightDelta == 0) {
+                assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+            } else {
+                assertEquals("Wrong Draw2D location for " + label, expectedFigureBounds.getLocation(), mainFigure.getBounds().getLocation());
+                assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+            }
         } else {
             if (expectedFigureBounds.x() != -1) {
                 assertEquals("Wrong Draw2D x for " + label, expectedFigureBounds.x(), mainFigure.getBounds().x());
@@ -267,10 +334,10 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
                 assertEquals("Wrong Draw2D y for " + label, expectedFigureBounds.y(), mainFigure.getBounds().y());
             }
             if (expectedFigureBounds.width() != -1) {
-                assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width());
+                assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
             }
             if (expectedFigureBounds.height() != -1) {
-                assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height());
+                assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
             }
         }
 
@@ -282,6 +349,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         } else if (editPart instanceof IDiagramContainerEditPart) {
             assertNull("Wrong border for " + label + ": the BorderItemsAwareFreeFormLayer used as content pane of a freeform region should not have a border.", border);
         }
+
+        return mainFigure.getBounds();
     }
 
     private Rectangle getBounds(Node notationView) {
@@ -565,13 +634,24 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestReorderedLayout(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(136, 0, 165, 211), new Rectangle(136, 0, 165, 211));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, 136, 211), new Rectangle(0, 0, 136, 211));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(301, 0, 130, 211), new Rectangle(301, 0, 130, 211));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(543, 0, 122, 211), new Rectangle(543, 0, 122, 211));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(665, 0, 156, 211), new Rectangle(665, 0, 156, 211));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(431, 0, 112, 211), new Rectangle(431, 0, 112, 211));
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS, 0, 1);
+        Rectangle centerClassBoundsExpectedAfterReorder = new Rectangle(INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS.x, INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS.y, INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS.width,
+                INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS.height);
+        checkBounds(CENTER_CLASS_NAME, centerClassBoundsExpectedAfterReorder, centerClassBoundsExpectedAfterReorder);
+        Rectangle leftClassBoundsExpectedAfterReorder = new Rectangle(INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS.width, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS.y, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS.width,
+                INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS.height);
+        checkBounds(LEFT_CLASS_NAME, leftClassBoundsExpectedAfterReorder, leftClassBoundsExpectedAfterReorder);
+        checkBounds(RIGHT_CLASS_NAME, INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS, INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS);
+        Rectangle rightPackageBoundsExpectedAfterReorder = new Rectangle(INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.x, INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.y, INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.width,
+                INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.height);
+        checkBounds(RIGHT_PKG_NAME, rightPackageBoundsExpectedAfterReorder, rightPackageBoundsExpectedAfterReorder);
+        Rectangle leftPackageBoundsExpectedAfterReorder = new Rectangle(INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.x + INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.width, INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.y,
+                INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.width, INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.height);
+        checkBounds(LEFT_PKG_NAME, leftPackageBoundsExpectedAfterReorder, leftPackageBoundsExpectedAfterReorder);
+        Rectangle centerPackageBoundsExpectedAfterReorder = new Rectangle(INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.x + INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.width + INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.width,
+                INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS.y, INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS.width, INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS.height);
+        checkBounds(CENTER_PKG_NAME, centerPackageBoundsExpectedAfterReorder, centerPackageBoundsExpectedAfterReorder);
+
     }
 
     /**
@@ -589,13 +669,43 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestReorderedLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 92, -1, -1), new Rectangle(0, 91, 129, 92));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 268, -1, -1), new Rectangle(0, 268, 129, 41));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 309, -1, -1), new Rectangle(0, 309, 129, 67));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 227, -1, -1), new Rectangle(0, 227, 129, 41));
+        // Each vertical region can have a delta according to what is expected
+        // because of font height on each OS. Height deltas of each region have
+        // an incidence on the global container height. We must cumulate them to
+        // make a reasonable assert at the end.
+        int heightDeltas = 0;
+
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        // 1 is removed to the INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height as
+        // this region is now the first one. This is because of bug 496742 that
+        // will be fixed later.
+        Rectangle centerClassBounds = checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1),
+                new Rectangle(0, 0, INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.width, INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height - 1), 0, 5);
+        heightDeltas += centerClassBounds.height - INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height - 1;
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle leftClassBounds = checkBounds(LEFT_CLASS_NAME, new Rectangle(0, centerClassBounds.y + centerClassBounds.height + 1, -1, -1),
+                INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.getTranslated(0, centerClassBounds.height).getResized(0, 1), 0, 5);
+        heightDeltas += leftClassBounds.height - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height + 1;
+        // Delta of 2 pixels because there are 2 lines (with potential 1 delta
+        // pixel)
+        Rectangle rightClassBounds = checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, leftClassBounds.y + leftClassBounds.height, -1, -1),
+                INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.getTranslated(0, heightDeltas), 0, 2);
+        heightDeltas += rightClassBounds.height - INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.height;
+        Rectangle rightPkgBounds = checkBounds(RIGHT_PKG_NAME, new Rectangle(0, rightClassBounds.y + rightClassBounds.height, -1, -1),
+                INITIAL_VERTICAL_LEFT_PKG_BOUNDS.getTranslated(0, heightDeltas).setSize(INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.width, INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.height));
+        heightDeltas += rightPkgBounds.height - INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.height;
+        Rectangle leftPkgBounds = checkBounds(LEFT_PKG_NAME, new Rectangle(0, rightPkgBounds.y + rightPkgBounds.height, -1, -1),
+                INITIAL_VERTICAL_LEFT_PKG_BOUNDS.getCopy().setLocation(0, rightPkgBounds.y + rightPkgBounds.height));
+        heightDeltas += leftPkgBounds.height - INITIAL_VERTICAL_LEFT_PKG_BOUNDS.height;
+        // Delta of 1 pixel because there is 1 line (with potential 1 delta
+        // pixel)
+        Rectangle centerPkgBounds = checkBounds(CENTER_PKG_NAME, new Rectangle(0, leftPkgBounds.y + leftPkgBounds.height, -1, -1),
+                INITIAL_VERTICAL_CENTER_PKG_BOUNDS.getCopy().setLocation(0, leftPkgBounds.y + leftPkgBounds.height), 0, 1);
+        heightDeltas += centerPkgBounds.height - INITIAL_VERTICAL_CENTER_PKG_BOUNDS.height;
+        Rectangle firstRegionBounds = checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, -1));
+        assertEquals("Wrong Draw2D height for " + FIRST_REGION_CONTAINER_NAME, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.height + heightDeltas, firstRegionBounds.height(), 1);
     }
 
     /**
@@ -611,7 +721,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestRemoveSemantic(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 666, 247));
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS.getResized(-INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS.width, 0), 0, 1);
         checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, 136, 211), new Rectangle(0, 0, 136, 211));
         checkBounds(RIGHT_CLASS_NAME, new Rectangle(136, 0, 130, 211), new Rectangle(136, 0, 130, 211));
         checkBounds(LEFT_PKG_NAME, new Rectangle(266, 0, 122, 211), new Rectangle(266, 0, 122, 211));
@@ -632,12 +742,35 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestRemoveSemantic(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 322));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 92, -1, -1), new Rectangle(0, 91, 129, 44));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 136, -1, -1), new Rectangle(0, 135, 129, 41));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 177, -1, -1), new Rectangle(0, 176, 129, 67));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 244, -1, -1), new Rectangle(0, 243, 129, 41));
+        // Each vertical region can have a delta according to what is expected
+        // because of font height on each OS. Height deltas of each region have
+        // an incidence on the global container height. We must cumulate them to
+        // make a reasonable assert at the end.
+        int heightDeltas = 0;
+
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle centerClassBounds = checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.getCopy().setLocation(0, 0).getResized(0, -1), 0, 5);
+        heightDeltas += centerClassBounds.height - INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height;
+        // Delta of 2 pixels because there are 2 lines (with potential 1 delta
+        // pixel)
+        Rectangle rightClassBounds = checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, centerClassBounds.y + centerClassBounds.height + 1, -1, -1),
+                INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.getTranslated(0, heightDeltas - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height), 0, 2);
+        heightDeltas += rightClassBounds.height - INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.height;
+        Rectangle leftPkgBounds = checkBounds(LEFT_PKG_NAME, new Rectangle(0, rightClassBounds.y + rightClassBounds.height + 1, -1, -1),
+                INITIAL_VERTICAL_LEFT_PKG_BOUNDS.getTranslated(0, heightDeltas - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height));
+        heightDeltas += leftPkgBounds.height - INITIAL_VERTICAL_LEFT_PKG_BOUNDS.height;
+        // Delta of 1 pixel because there is 1 line (with potential 1 delta
+        // pixel)
+        Rectangle centerPkgBounds = checkBounds(CENTER_PKG_NAME, new Rectangle(0, leftPkgBounds.y + leftPkgBounds.height + 1, -1, -1),
+                INITIAL_VERTICAL_CENTER_PKG_BOUNDS.getTranslated(0, heightDeltas - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height), 0, 1);
+        heightDeltas += centerPkgBounds.height - INITIAL_VERTICAL_CENTER_PKG_BOUNDS.height;
+        Rectangle rightPkgBounds = checkBounds(RIGHT_PKG_NAME, new Rectangle(0, centerPkgBounds.y + centerPkgBounds.height + 1, -1, -1),
+                INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.getTranslated(0, heightDeltas - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height));
+        heightDeltas += rightPkgBounds.height - INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.height;
+        Rectangle firstRegionBounds = checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, -1));
+        assertEquals("Wrong Draw2D height for " + FIRST_REGION_CONTAINER_NAME, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.height + heightDeltas - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height,
+                firstRegionBounds.height(), 1);
     }
 
     /**
@@ -653,14 +786,22 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestAddSemantic(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, -1, 247));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, 165, 211), new Rectangle(0, 0, 165, 211));
-        checkBounds(LEFT_CLASS2_NAME, new Rectangle(165, 0, -1, -1), new Rectangle(165, 0, -1, 211));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(330, 0, 136, 211), new Rectangle(-1, 0, 136, 211));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(466, 0, 130, 211), new Rectangle(-1, 0, 130, 211));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(596, 0, 122, 211), new Rectangle(-1, 0, 122, 211));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(718, 0, 156, 211), new Rectangle(-1, 0, 156, 211));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(874, 0, 112, 211), new Rectangle(-1, 0, 112, 211));
+        // We add 40 pixels (default region size for a new list) at each x GMF
+        // location after inserted element.
+        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1),
+                INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS.getResized(-INITIAL_HORIZONTAL_FIRST_REGION_CONTAINER_BOUNDS.width() - 1, 0), 0, 1);
+        Rectangle leftClassBounds = checkBounds(LEFT_CLASS_NAME, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS, INITIAL_HORIZONTAL_LEFT_CLASS_BOUNDS);
+        Rectangle leftClass2Bounds = checkBounds(LEFT_CLASS2_NAME, new Rectangle(leftClassBounds.width, 0, -1, -1), new Rectangle(leftClassBounds.width, 0, -1, 211));
+        Rectangle centerClassBounds = checkBounds(CENTER_CLASS_NAME, new Rectangle(INITIAL_HORIZONTAL_CENTER_CLASS_BOUNDS.x + LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width, 0, 136, 211),
+                new Rectangle(leftClass2Bounds.x + leftClass2Bounds.width, 0, 136, 211));
+        Rectangle rightClassBounds = checkBounds(RIGHT_CLASS_NAME, new Rectangle(INITIAL_HORIZONTAL_RIGHT_CLASS_BOUNDS.x + LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width, 0, 130, 211),
+                new Rectangle(centerClassBounds.x + centerClassBounds.width, 0, 130, 211));
+        Rectangle leftPkgBounds = checkBounds(LEFT_PKG_NAME, new Rectangle(INITIAL_HORIZONTAL_LEFT_PKG_BOUNDS.x + LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width, 0, 122, 211),
+                new Rectangle(rightClassBounds.x + rightClassBounds.width, 0, 122, 211));
+        Rectangle centerPkgBounds = checkBounds(CENTER_PKG_NAME, new Rectangle(INITIAL_HORIZONTAL_CENTER_PKG_BOUNDS.x + LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width, 0, 156, 211),
+                new Rectangle(leftPkgBounds.x + leftPkgBounds.width, 0, 156, 211));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(INITIAL_HORIZONTAL_RIGHT_PKG_BOUNDS.x + LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width, 0, 112, 211),
+                new Rectangle(centerPkgBounds.x + centerPkgBounds.width, 0, 112, 211));
     }
 
     /**
@@ -676,14 +817,44 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
 
         doTestAddSemantic(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
 
-        checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 454));
-        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
-        checkBounds(LEFT_CLASS2_NAME, new Rectangle(0, 91, -1, -1), new Rectangle(0, 91, 129, 40));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 182, -1, -1), new Rectangle(0, 131, 129, 92));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 274, -1, -1), new Rectangle(0, 223, 129, 44));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 318, -1, -1), new Rectangle(0, 267, 129, 41));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 359, -1, -1), new Rectangle(0, 308, 129, 67));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 426, -1, -1), new Rectangle(0, 375, 129, 41));
+        // Each vertical region can have a delta according to what is expected
+        // because of font height on each OS. Height deltas of each region have
+        // an incidence on the global container height. We must cumulate them to
+        // make a reasonable assert at the end.
+        int heightDeltas = 0;
+
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle leftClassBounds = checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), INITIAL_VERTICAL_LEFT_CLASS_BOUNDS, 0, 5);
+        heightDeltas += leftClassBounds.height - INITIAL_VERTICAL_LEFT_CLASS_BOUNDS.height;
+        // Delta of 1 pixel because there is 1 line (with potential 1 delta
+        // pixel)
+        Rectangle leftClass2Bounds = checkBounds(LEFT_CLASS2_NAME, new Rectangle(0, leftClassBounds.height, -1, -1), INITIAL_VERTICAL_LEFT_CLASS2_BOUNDS.getTranslated(0, heightDeltas), 0, 1);
+        heightDeltas += leftClass2Bounds.height - INITIAL_VERTICAL_LEFT_CLASS2_BOUNDS.height;
+        // Delta of 5 pixels because there are 5 lines (with potential 1 delta
+        // pixel)
+        Rectangle centerClassBounds = checkBounds(CENTER_CLASS_NAME, new Rectangle(0, leftClass2Bounds.y + leftClass2Bounds.height, -1, -1),
+                INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.getTranslated(0, heightDeltas + leftClass2Bounds.height), 0, 5);
+        heightDeltas += centerClassBounds.height - INITIAL_VERTICAL_CENTER_CLASS_BOUNDS.height;
+        // Delta of 2 pixels because there are 2 lines (with potential 1 delta
+        // pixel)
+        Rectangle rightClassBounds = checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, centerClassBounds.y + centerClassBounds.height, -1, -1),
+                INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.getTranslated(0, heightDeltas + leftClass2Bounds.height), 0, 2);
+        heightDeltas += rightClassBounds.height - INITIAL_VERTICAL_RIGHT_CLASS_BOUNDS.height;
+        Rectangle leftPkgBounds = checkBounds(LEFT_PKG_NAME, new Rectangle(0, rightClassBounds.y + rightClassBounds.height, -1, -1),
+                INITIAL_VERTICAL_LEFT_PKG_BOUNDS.getTranslated(0, heightDeltas + leftClass2Bounds.height));
+        heightDeltas += leftPkgBounds.height - INITIAL_VERTICAL_LEFT_PKG_BOUNDS.height;
+        // Delta of 1 pixel because there is 1 line (with potential 1 delta
+        // pixel)
+        Rectangle centerPkgBounds = checkBounds(CENTER_PKG_NAME, new Rectangle(0, leftPkgBounds.y + leftPkgBounds.height, -1, -1),
+                INITIAL_VERTICAL_CENTER_PKG_BOUNDS.getTranslated(0, heightDeltas + leftClass2Bounds.height), 0, 1);
+        heightDeltas += centerPkgBounds.height - INITIAL_VERTICAL_CENTER_PKG_BOUNDS.height;
+        Rectangle rightPkgBounds = checkBounds(RIGHT_PKG_NAME, new Rectangle(0, centerPkgBounds.y + centerPkgBounds.height, -1, -1),
+                INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.getTranslated(0, heightDeltas + leftClass2Bounds.height));
+        heightDeltas += rightPkgBounds.height - INITIAL_VERTICAL_RIGHT_PKG_BOUNDS.height;
+        Rectangle firstRegionBounds = checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, -1));
+        assertEquals("Wrong Draw2D height for " + FIRST_REGION_CONTAINER_NAME, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.height + heightDeltas + leftClass2Bounds.height,
+                firstRegionBounds.height(), 1);
     }
 
     private void changeSemanticOrder() {
@@ -1055,5 +1226,25 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
             effectiveExpectedSWTValue = SWT.LINE_DASHDOT;
         }
         return effectiveExpectedSWTValue;
+    }
+
+    /**
+     * Change the default font.
+     *
+     * @param fontName
+     *            the font name to set as default.
+     * @return the previous default font name.
+     */
+    protected String changeDefaultFontName(String fontName) {
+        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
+        FontData fontData = PreferenceConverter.getFontData(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT);
+
+        // Get the actual font.
+        String oldName = fontData.getName();
+
+        // Change the font.
+        fontData.setName(fontName);
+        PreferenceConverter.setDefault(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT, fontData);
+        return oldName;
     }
 }
