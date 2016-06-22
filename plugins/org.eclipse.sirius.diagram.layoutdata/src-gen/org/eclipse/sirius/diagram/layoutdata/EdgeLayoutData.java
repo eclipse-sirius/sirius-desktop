@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceTerminal
@@ -46,11 +47,9 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#isReverseJumpLink
  * <em>Reverse Jump Link</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSmoothness
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSmoothness
  * <em>Smoothness</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getEdgeLayoutData()
  * @model
@@ -78,7 +77,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceTerminal
      * <em>Source Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Terminal</em>' attribute.
      * @see #getSourceTerminal()
@@ -107,7 +106,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetTerminal
      * <em>Target Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Terminal</em>' attribute.
      * @see #getTargetTerminal()
@@ -166,7 +165,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source Ref Point</em>' containment
      *         reference.
      * @see #setSourceRefPoint(Point)
@@ -181,7 +180,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceRefPoint
      * <em>Source Ref Point</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source Ref Point</em>' containment
      *            reference.
@@ -198,7 +197,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target Ref Point</em>' containment
      *         reference.
      * @see #setTargetRefPoint(Point)
@@ -213,7 +212,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetRefPoint
      * <em>Target Ref Point</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target Ref Point</em>' containment
      *            reference.
@@ -242,7 +241,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkStatus
      * <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Jump Link Status</em>' attribute.
      * @see #getJumpLinkStatus()
@@ -270,7 +269,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkType
      * <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Jump Link Type</em>' attribute.
      * @see #getJumpLinkType()
@@ -296,7 +295,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#isReverseJumpLink
      * <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Reverse Jump Link</em>' attribute.
      * @see #isReverseJumpLink()
@@ -324,7 +323,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSmoothness
      * <em>Smoothness</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Smoothness</em>' attribute.
      * @see #getSmoothness()

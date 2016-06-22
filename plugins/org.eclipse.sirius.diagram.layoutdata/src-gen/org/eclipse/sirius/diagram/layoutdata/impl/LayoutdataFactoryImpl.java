@@ -24,14 +24,14 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static LayoutdataFactory init() {
@@ -49,7 +49,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LayoutdataFactoryImpl() {
@@ -58,7 +58,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -77,7 +77,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,7 +99,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -110,7 +110,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -120,7 +120,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * <em><b>Edge Layout Data</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl#getSourceTerminal
@@ -61,7 +62,6 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl#getSmoothness
  * <em>Smoothness</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -70,7 +70,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The default value of the '{@link #getSourceTerminal()
      * <em>Source Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceTerminal()
      * @generated
      * @ordered
@@ -81,18 +81,18 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getSourceTerminal()
      * <em>Source Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceTerminal()
      * @generated
      * @ordered
      */
-    protected String sourceTerminal = SOURCE_TERMINAL_EDEFAULT;
+    protected String sourceTerminal = EdgeLayoutDataImpl.SOURCE_TERMINAL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetTerminal()
      * <em>Target Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetTerminal()
      * @generated
      * @ordered
@@ -103,17 +103,17 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getTargetTerminal()
      * <em>Target Terminal</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetTerminal()
      * @generated
      * @ordered
      */
-    protected String targetTerminal = TARGET_TERMINAL_EDEFAULT;
+    protected String targetTerminal = EdgeLayoutDataImpl.TARGET_TERMINAL_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRouting() <em>Routing</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRouting()
      * @generated
      * @ordered
@@ -123,17 +123,17 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
     /**
      * The cached value of the '{@link #getRouting() <em>Routing</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getRouting()
      * @generated
      * @ordered
      */
-    protected int routing = ROUTING_EDEFAULT;
+    protected int routing = EdgeLayoutDataImpl.ROUTING_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getPointList() <em>Point List</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getPointList()
      * @generated
      * @ordered
@@ -144,7 +144,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getSourceRefPoint()
      * <em>Source Ref Point</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSourceRefPoint()
      * @generated
      * @ordered
@@ -155,7 +155,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getTargetRefPoint()
      * <em>Target Ref Point</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTargetRefPoint()
      * @generated
      * @ordered
@@ -166,7 +166,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The default value of the '{@link #getJumpLinkStatus()
      * <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getJumpLinkStatus()
      * @generated
      * @ordered
@@ -177,18 +177,18 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getJumpLinkStatus()
      * <em>Jump Link Status</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getJumpLinkStatus()
      * @generated
      * @ordered
      */
-    protected int jumpLinkStatus = JUMP_LINK_STATUS_EDEFAULT;
+    protected int jumpLinkStatus = EdgeLayoutDataImpl.JUMP_LINK_STATUS_EDEFAULT;
 
     /**
      * The default value of the '{@link #getJumpLinkType()
      * <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getJumpLinkType()
      * @generated
      * @ordered
@@ -199,18 +199,18 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #getJumpLinkType()
      * <em>Jump Link Type</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getJumpLinkType()
      * @generated
      * @ordered
      */
-    protected int jumpLinkType = JUMP_LINK_TYPE_EDEFAULT;
+    protected int jumpLinkType = EdgeLayoutDataImpl.JUMP_LINK_TYPE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isReverseJumpLink()
      * <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isReverseJumpLink()
      * @generated
      * @ordered
@@ -221,17 +221,17 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * The cached value of the '{@link #isReverseJumpLink()
      * <em>Reverse Jump Link</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isReverseJumpLink()
      * @generated
      * @ordered
      */
-    protected boolean reverseJumpLink = REVERSE_JUMP_LINK_EDEFAULT;
+    protected boolean reverseJumpLink = EdgeLayoutDataImpl.REVERSE_JUMP_LINK_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSmoothness() <em>Smoothness</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSmoothness()
      * @generated
      * @ordered
@@ -241,16 +241,16 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
     /**
      * The cached value of the '{@link #getSmoothness() <em>Smoothness</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSmoothness()
      * @generated
      * @ordered
      */
-    protected int smoothness = SMOOTHNESS_EDEFAULT;
+    protected int smoothness = EdgeLayoutDataImpl.SMOOTHNESS_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EdgeLayoutDataImpl() {
@@ -259,7 +259,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -279,20 +279,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setSourceTerminal(String newSourceTerminal) {
         String oldSourceTerminal = sourceTerminal;
         sourceTerminal = newSourceTerminal;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_TERMINAL, oldSourceTerminal, sourceTerminal));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -302,20 +303,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setTargetTerminal(String newTargetTerminal) {
         String oldTargetTerminal = targetTerminal;
         targetTerminal = newTargetTerminal;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_TERMINAL, oldTargetTerminal, targetTerminal));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,20 +327,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setRouting(int newRouting) {
         int oldRouting = routing;
         routing = newRouting;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__ROUTING, oldRouting, routing));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,7 +354,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -361,14 +364,16 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
             sourceRefPoint = (Point) eResolveProxy(oldSourceRefPoint);
             if (sourceRefPoint != oldSourceRefPoint) {
                 InternalEObject newSourceRefPoint = (InternalEObject) sourceRefPoint;
-                NotificationChain msgs = oldSourceRefPoint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, null);
+                NotificationChain msgs = oldSourceRefPoint.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, null);
                 if (newSourceRefPoint.eInternalContainer() == null) {
-                    msgs = newSourceRefPoint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
+                    msgs = newSourceRefPoint.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, oldSourceRefPoint, sourceRefPoint));
+                }
             }
         }
         return sourceRefPoint;
@@ -376,7 +381,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Point basicGetSourceRefPoint() {
@@ -385,7 +390,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSourceRefPoint(Point newSourceRefPoint, NotificationChain msgs) {
@@ -393,37 +398,42 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
         sourceRefPoint = newSourceRefPoint;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, oldSourceRefPoint, newSourceRefPoint);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setSourceRefPoint(Point newSourceRefPoint) {
         if (newSourceRefPoint != sourceRefPoint) {
             NotificationChain msgs = null;
-            if (sourceRefPoint != null)
-                msgs = ((InternalEObject) sourceRefPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
-            if (newSourceRefPoint != null)
-                msgs = ((InternalEObject) newSourceRefPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
+            if (sourceRefPoint != null) {
+                msgs = ((InternalEObject) sourceRefPoint).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
+            }
+            if (newSourceRefPoint != null) {
+                msgs = ((InternalEObject) newSourceRefPoint).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, null, msgs);
+            }
             msgs = basicSetSourceRefPoint(newSourceRefPoint, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT, newSourceRefPoint, newSourceRefPoint));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -433,14 +443,16 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
             targetRefPoint = (Point) eResolveProxy(oldTargetRefPoint);
             if (targetRefPoint != oldTargetRefPoint) {
                 InternalEObject newTargetRefPoint = (InternalEObject) targetRefPoint;
-                NotificationChain msgs = oldTargetRefPoint.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, null);
+                NotificationChain msgs = oldTargetRefPoint.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, null);
                 if (newTargetRefPoint.eInternalContainer() == null) {
-                    msgs = newTargetRefPoint.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
+                    msgs = newTargetRefPoint.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, oldTargetRefPoint, targetRefPoint));
+                }
             }
         }
         return targetRefPoint;
@@ -448,7 +460,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Point basicGetTargetRefPoint() {
@@ -457,7 +469,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTargetRefPoint(Point newTargetRefPoint, NotificationChain msgs) {
@@ -465,37 +477,42 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
         targetRefPoint = newTargetRefPoint;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, oldTargetRefPoint, newTargetRefPoint);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setTargetRefPoint(Point newTargetRefPoint) {
         if (newTargetRefPoint != targetRefPoint) {
             NotificationChain msgs = null;
-            if (targetRefPoint != null)
-                msgs = ((InternalEObject) targetRefPoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
-            if (newTargetRefPoint != null)
-                msgs = ((InternalEObject) newTargetRefPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
+            if (targetRefPoint != null) {
+                msgs = ((InternalEObject) targetRefPoint).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
+            }
+            if (newTargetRefPoint != null) {
+                msgs = ((InternalEObject) newTargetRefPoint).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, null, msgs);
+            }
             msgs = basicSetTargetRefPoint(newTargetRefPoint, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT, newTargetRefPoint, newTargetRefPoint));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -505,20 +522,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setJumpLinkStatus(int newJumpLinkStatus) {
         int oldJumpLinkStatus = jumpLinkStatus;
         jumpLinkStatus = newJumpLinkStatus;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_STATUS, oldJumpLinkStatus, jumpLinkStatus));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -528,20 +546,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setJumpLinkType(int newJumpLinkType) {
         int oldJumpLinkType = jumpLinkType;
         jumpLinkType = newJumpLinkType;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_TYPE, oldJumpLinkType, jumpLinkType));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -551,20 +570,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setReverseJumpLink(boolean newReverseJumpLink) {
         boolean oldReverseJumpLink = reverseJumpLink;
         reverseJumpLink = newReverseJumpLink;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK, oldReverseJumpLink, reverseJumpLink));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -574,20 +594,21 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setSmoothness(int newSmoothness) {
         int oldSmoothness = smoothness;
         smoothness = newSmoothness;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.EDGE_LAYOUT_DATA__SMOOTHNESS, oldSmoothness, smoothness));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -605,7 +626,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -620,12 +641,14 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
         case LayoutdataPackage.EDGE_LAYOUT_DATA__POINT_LIST:
             return getPointList();
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT:
-            if (resolve)
+            if (resolve) {
                 return getSourceRefPoint();
+            }
             return basicGetSourceRefPoint();
         case LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT:
-            if (resolve)
+            if (resolve) {
                 return getTargetRefPoint();
+            }
             return basicGetTargetRefPoint();
         case LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_STATUS:
             return getJumpLinkStatus();
@@ -641,7 +664,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -685,20 +708,20 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_TERMINAL:
-            setSourceTerminal(SOURCE_TERMINAL_EDEFAULT);
+            setSourceTerminal(EdgeLayoutDataImpl.SOURCE_TERMINAL_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_TERMINAL:
-            setTargetTerminal(TARGET_TERMINAL_EDEFAULT);
+            setTargetTerminal(EdgeLayoutDataImpl.TARGET_TERMINAL_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__ROUTING:
-            setRouting(ROUTING_EDEFAULT);
+            setRouting(EdgeLayoutDataImpl.ROUTING_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__POINT_LIST:
             getPointList().clear();
@@ -710,16 +733,16 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
             setTargetRefPoint((Point) null);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_STATUS:
-            setJumpLinkStatus(JUMP_LINK_STATUS_EDEFAULT);
+            setJumpLinkStatus(EdgeLayoutDataImpl.JUMP_LINK_STATUS_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_TYPE:
-            setJumpLinkType(JUMP_LINK_TYPE_EDEFAULT);
+            setJumpLinkType(EdgeLayoutDataImpl.JUMP_LINK_TYPE_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK:
-            setReverseJumpLink(REVERSE_JUMP_LINK_EDEFAULT);
+            setReverseJumpLink(EdgeLayoutDataImpl.REVERSE_JUMP_LINK_EDEFAULT);
             return;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SMOOTHNESS:
-            setSmoothness(SMOOTHNESS_EDEFAULT);
+            setSmoothness(EdgeLayoutDataImpl.SMOOTHNESS_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -727,18 +750,18 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_TERMINAL:
-            return SOURCE_TERMINAL_EDEFAULT == null ? sourceTerminal != null : !SOURCE_TERMINAL_EDEFAULT.equals(sourceTerminal);
+            return EdgeLayoutDataImpl.SOURCE_TERMINAL_EDEFAULT == null ? sourceTerminal != null : !EdgeLayoutDataImpl.SOURCE_TERMINAL_EDEFAULT.equals(sourceTerminal);
         case LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_TERMINAL:
-            return TARGET_TERMINAL_EDEFAULT == null ? targetTerminal != null : !TARGET_TERMINAL_EDEFAULT.equals(targetTerminal);
+            return EdgeLayoutDataImpl.TARGET_TERMINAL_EDEFAULT == null ? targetTerminal != null : !EdgeLayoutDataImpl.TARGET_TERMINAL_EDEFAULT.equals(targetTerminal);
         case LayoutdataPackage.EDGE_LAYOUT_DATA__ROUTING:
-            return routing != ROUTING_EDEFAULT;
+            return routing != EdgeLayoutDataImpl.ROUTING_EDEFAULT;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__POINT_LIST:
             return pointList != null && !pointList.isEmpty();
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT:
@@ -746,26 +769,27 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
         case LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT:
             return targetRefPoint != null;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_STATUS:
-            return jumpLinkStatus != JUMP_LINK_STATUS_EDEFAULT;
+            return jumpLinkStatus != EdgeLayoutDataImpl.JUMP_LINK_STATUS_EDEFAULT;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_TYPE:
-            return jumpLinkType != JUMP_LINK_TYPE_EDEFAULT;
+            return jumpLinkType != EdgeLayoutDataImpl.JUMP_LINK_TYPE_EDEFAULT;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK:
-            return reverseJumpLink != REVERSE_JUMP_LINK_EDEFAULT;
+            return reverseJumpLink != EdgeLayoutDataImpl.REVERSE_JUMP_LINK_EDEFAULT;
         case LayoutdataPackage.EDGE_LAYOUT_DATA__SMOOTHNESS:
-            return smoothness != SMOOTHNESS_EDEFAULT;
+            return smoothness != EdgeLayoutDataImpl.SMOOTHNESS_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (sourceTerminal: "); //$NON-NLS-1$

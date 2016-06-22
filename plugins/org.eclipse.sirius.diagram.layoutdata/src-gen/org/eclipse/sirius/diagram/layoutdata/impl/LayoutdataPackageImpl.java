@@ -25,34 +25,34 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass abstractLayoutDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass nodeLayoutDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass edgeLayoutDataEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EClass pointEClass = null;
@@ -73,12 +73,12 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
      * @generated
      */
     private LayoutdataPackageImpl() {
-        super(eNS_URI, LayoutdataFactory.eINSTANCE);
+        super(LayoutdataPackage.eNS_URI, LayoutdataFactory.eINSTANCE);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static boolean isInited = false;
@@ -99,14 +99,15 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
      * @generated
      */
     public static LayoutdataPackage init() {
-        if (isInited)
+        if (LayoutdataPackageImpl.isInited) {
             return (LayoutdataPackage) EPackage.Registry.INSTANCE.getEPackage(LayoutdataPackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        LayoutdataPackageImpl theLayoutdataPackage = (LayoutdataPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof LayoutdataPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-                : new LayoutdataPackageImpl());
+        LayoutdataPackageImpl theLayoutdataPackage = (LayoutdataPackageImpl) (EPackage.Registry.INSTANCE.get(LayoutdataPackage.eNS_URI) instanceof LayoutdataPackageImpl
+                ? EPackage.Registry.INSTANCE.get(LayoutdataPackage.eNS_URI) : new LayoutdataPackageImpl());
 
-        isInited = true;
+        LayoutdataPackageImpl.isInited = true;
 
         // Create package meta-data objects
         theLayoutdataPackage.createPackageContents();
@@ -124,7 +125,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +135,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +145,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +155,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -164,7 +165,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +175,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +185,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +195,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -204,7 +205,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +215,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +225,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +235,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -244,7 +245,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -254,7 +255,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -264,7 +265,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -274,7 +275,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +285,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +295,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -304,7 +305,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +315,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +325,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +335,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +345,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -354,7 +355,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -364,7 +365,7 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isCreated = false;
@@ -373,46 +374,47 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
      * Creates the meta-model objects for the package. This method is guarded to
      * have no affect on any invocation but its first. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (isCreated) {
             return;
+        }
         isCreated = true;
 
         // Create classes and their features
-        abstractLayoutDataEClass = createEClass(ABSTRACT_LAYOUT_DATA);
-        createEAttribute(abstractLayoutDataEClass, ABSTRACT_LAYOUT_DATA__ID);
-        createEReference(abstractLayoutDataEClass, ABSTRACT_LAYOUT_DATA__LABEL);
+        abstractLayoutDataEClass = createEClass(LayoutdataPackage.ABSTRACT_LAYOUT_DATA);
+        createEAttribute(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID);
+        createEReference(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL);
 
-        nodeLayoutDataEClass = createEClass(NODE_LAYOUT_DATA);
-        createEAttribute(nodeLayoutDataEClass, NODE_LAYOUT_DATA__WIDTH);
-        createEAttribute(nodeLayoutDataEClass, NODE_LAYOUT_DATA__HEIGHT);
-        createEReference(nodeLayoutDataEClass, NODE_LAYOUT_DATA__CHILDREN);
-        createEReference(nodeLayoutDataEClass, NODE_LAYOUT_DATA__OUTGOING_EDGES);
-        createEReference(nodeLayoutDataEClass, NODE_LAYOUT_DATA__LOCATION);
+        nodeLayoutDataEClass = createEClass(LayoutdataPackage.NODE_LAYOUT_DATA);
+        createEAttribute(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__WIDTH);
+        createEAttribute(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__HEIGHT);
+        createEReference(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__CHILDREN);
+        createEReference(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__OUTGOING_EDGES);
+        createEReference(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION);
 
-        edgeLayoutDataEClass = createEClass(EDGE_LAYOUT_DATA);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__SOURCE_TERMINAL);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__TARGET_TERMINAL);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__ROUTING);
-        createEReference(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__POINT_LIST);
-        createEReference(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__SOURCE_REF_POINT);
-        createEReference(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__TARGET_REF_POINT);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__JUMP_LINK_STATUS);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__JUMP_LINK_TYPE);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK);
-        createEAttribute(edgeLayoutDataEClass, EDGE_LAYOUT_DATA__SMOOTHNESS);
+        edgeLayoutDataEClass = createEClass(LayoutdataPackage.EDGE_LAYOUT_DATA);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_TERMINAL);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_TERMINAL);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__ROUTING);
+        createEReference(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__POINT_LIST);
+        createEReference(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__SOURCE_REF_POINT);
+        createEReference(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__TARGET_REF_POINT);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_STATUS);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__JUMP_LINK_TYPE);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK);
+        createEAttribute(edgeLayoutDataEClass, LayoutdataPackage.EDGE_LAYOUT_DATA__SMOOTHNESS);
 
-        pointEClass = createEClass(POINT);
-        createEAttribute(pointEClass, POINT__X);
-        createEAttribute(pointEClass, POINT__Y);
+        pointEClass = createEClass(LayoutdataPackage.POINT);
+        createEAttribute(pointEClass, LayoutdataPackage.POINT__X);
+        createEAttribute(pointEClass, LayoutdataPackage.POINT__Y);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private boolean isInitialized = false;
@@ -425,14 +427,15 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (isInitialized) {
             return;
+        }
         isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        setName(LayoutdataPackage.eNAME);
+        setNsPrefix(LayoutdataPackage.eNS_PREFIX);
+        setNsURI(LayoutdataPackage.eNS_URI);
 
         // Create type parameters
 
@@ -443,52 +446,71 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
         edgeLayoutDataEClass.getESuperTypes().add(this.getAbstractLayoutData());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(abstractLayoutDataEClass, AbstractLayoutData.class, "AbstractLayoutData", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getAbstractLayoutData_Id(), ecorePackage.getEString(),
-                "id", null, 1, 1, AbstractLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getAbstractLayoutData_Label(), this.getNodeLayoutData(), null,
-                "label", null, 0, 1, AbstractLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEClass(abstractLayoutDataEClass, AbstractLayoutData.class, "AbstractLayoutData", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getAbstractLayoutData_Id(), ecorePackage.getEString(), "id", null, 1, 1, AbstractLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractLayoutData_Label(), this.getNodeLayoutData(), null, "label", null, 0, 1, AbstractLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(nodeLayoutDataEClass, NodeLayoutData.class, "NodeLayoutData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getNodeLayoutData_Width(), ecorePackage.getEInt(),
-                "width", "-2", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEAttribute(getNodeLayoutData_Height(), ecorePackage.getEInt(),
-                "height", "-2", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-        initEReference(getNodeLayoutData_Children(), this.getNodeLayoutData(), null,
-                "children", null, 0, -1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getNodeLayoutData_OutgoingEdges(), this.getEdgeLayoutData(), null,
-                "outgoingEdges", null, 0, -1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getNodeLayoutData_Location(), this.getPoint(), null,
-                "location", null, 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEClass(nodeLayoutDataEClass, NodeLayoutData.class, "NodeLayoutData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getNodeLayoutData_Width(), ecorePackage.getEInt(), "width", "-2", 0, 1, NodeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$ //$NON-NLS-2$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getNodeLayoutData_Height(), ecorePackage.getEInt(), "height", "-2", 0, 1, NodeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$ //$NON-NLS-2$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getNodeLayoutData_Children(), this.getNodeLayoutData(), null, "children", null, 0, -1, NodeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getNodeLayoutData_OutgoingEdges(), this.getEdgeLayoutData(), null, "outgoingEdges", null, 0, -1, NodeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getNodeLayoutData_Location(), this.getPoint(), null, "location", null, 0, 1, NodeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES,
+                !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(edgeLayoutDataEClass, EdgeLayoutData.class, "EdgeLayoutData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_SourceTerminal(), ecorePackage.getEString(),
-                "sourceTerminal", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_TargetTerminal(), ecorePackage.getEString(),
-                "targetTerminal", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_Routing(), ecorePackage.getEInt(),
-                "routing", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getEdgeLayoutData_PointList(), this.getPoint(), null,
-                "pointList", null, 0, -1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getEdgeLayoutData_SourceRefPoint(), this.getPoint(), null,
-                "sourceRefPoint", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEReference(getEdgeLayoutData_TargetRefPoint(), this.getPoint(), null,
-                "targetRefPoint", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_JumpLinkStatus(), ecorePackage.getEInt(),
-                "jumpLinkStatus", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_JumpLinkType(), ecorePackage.getEInt(),
-                "jumpLinkType", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_ReverseJumpLink(), ecorePackage.getEBoolean(),
-                "reverseJumpLink", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getEdgeLayoutData_Smoothness(), ecorePackage.getEInt(),
-                "smoothness", null, 0, 1, EdgeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEClass(edgeLayoutDataEClass, EdgeLayoutData.class, "EdgeLayoutData", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getEdgeLayoutData_SourceTerminal(), ecorePackage.getEString(), "sourceTerminal", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
+                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_TargetTerminal(), ecorePackage.getEString(), "targetTerminal", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
+                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_Routing(), ecorePackage.getEInt(), "routing", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
+                !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getEdgeLayoutData_PointList(), this.getPoint(), null, "pointList", null, 0, -1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getEdgeLayoutData_SourceRefPoint(), this.getPoint(), null, "sourceRefPoint", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getEdgeLayoutData_TargetRefPoint(), this.getPoint(), null, "targetRefPoint", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_JumpLinkStatus(), ecorePackage.getEInt(), "jumpLinkStatus", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
+                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_JumpLinkType(), ecorePackage.getEInt(), "jumpLinkType", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_ReverseJumpLink(), ecorePackage.getEBoolean(), "reverseJumpLink", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE,
+                !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getEdgeLayoutData_Smoothness(), ecorePackage.getEInt(), "smoothness", null, 0, 1, EdgeLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
+                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
-        initEClass(pointEClass, Point.class, "Point", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(getPoint_X(), ecorePackage.getEInt(), "x", null, 0, 1, Point.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-        initEAttribute(getPoint_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Point.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEClass(pointEClass, Point.class, "Point", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getPoint_X(), ecorePackage.getEInt(), "x", null, 0, 1, Point.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getPoint_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Point.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$
+                !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create resource
-        createResource(eNS_URI);
+        createResource(LayoutdataPackage.eNS_URI);
     }
 
 } // LayoutdataPackageImpl

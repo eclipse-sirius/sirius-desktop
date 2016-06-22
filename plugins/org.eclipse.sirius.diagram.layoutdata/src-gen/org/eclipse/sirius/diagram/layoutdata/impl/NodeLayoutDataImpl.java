@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * <em><b>Node Layout Data</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl#getWidth
@@ -47,7 +48,6 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl#getLocation
  * <em>Location</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -55,7 +55,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
     /**
      * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
@@ -65,17 +65,17 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
     /**
      * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getWidth()
      * @generated
      * @ordered
      */
-    protected int width = WIDTH_EDEFAULT;
+    protected int width = NodeLayoutDataImpl.WIDTH_EDEFAULT;
 
     /**
      * The default value of the '{@link #getHeight() <em>Height</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
@@ -85,17 +85,17 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
     /**
      * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getHeight()
      * @generated
      * @ordered
      */
-    protected int height = HEIGHT_EDEFAULT;
+    protected int height = NodeLayoutDataImpl.HEIGHT_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getChildren() <em>Children</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getChildren()
      * @generated
      * @ordered
@@ -106,7 +106,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * The cached value of the '{@link #getOutgoingEdges()
      * <em>Outgoing Edges</em>}' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOutgoingEdges()
      * @generated
      * @ordered
@@ -116,7 +116,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
     /**
      * The cached value of the '{@link #getLocation() <em>Location</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLocation()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected NodeLayoutDataImpl() {
@@ -134,7 +134,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,20 +154,21 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setWidth(int newWidth) {
         int oldWidth = width;
         width = newWidth;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.NODE_LAYOUT_DATA__WIDTH, oldWidth, width));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -177,20 +178,21 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setHeight(int newHeight) {
         int oldHeight = height;
         height = newHeight;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.NODE_LAYOUT_DATA__HEIGHT, oldHeight, height));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -203,7 +205,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -216,7 +218,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -226,14 +228,16 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
             location = (Point) eResolveProxy(oldLocation);
             if (location != oldLocation) {
                 InternalEObject newLocation = (InternalEObject) location;
-                NotificationChain msgs = oldLocation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, null);
+                NotificationChain msgs = oldLocation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, null);
                 if (newLocation.eInternalContainer() == null) {
-                    msgs = newLocation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
+                    msgs = newLocation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, oldLocation, location));
+                }
             }
         }
         return location;
@@ -241,7 +245,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Point basicGetLocation() {
@@ -250,7 +254,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLocation(Point newLocation, NotificationChain msgs) {
@@ -258,37 +262,42 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
         location = newLocation;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, oldLocation, newLocation);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setLocation(Point newLocation) {
         if (newLocation != location) {
             NotificationChain msgs = null;
-            if (location != null)
-                msgs = ((InternalEObject) location).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
-            if (newLocation != null)
-                msgs = ((InternalEObject) newLocation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
+            if (location != null) {
+                msgs = ((InternalEObject) location).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
+            }
+            if (newLocation != null) {
+                msgs = ((InternalEObject) newLocation).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, null, msgs);
+            }
             msgs = basicSetLocation(newLocation, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION, newLocation, newLocation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -306,7 +315,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -321,8 +330,9 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
         case LayoutdataPackage.NODE_LAYOUT_DATA__OUTGOING_EDGES:
             return getOutgoingEdges();
         case LayoutdataPackage.NODE_LAYOUT_DATA__LOCATION:
-            if (resolve)
+            if (resolve) {
                 return getLocation();
+            }
             return basicGetLocation();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -330,7 +340,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -360,17 +370,17 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.NODE_LAYOUT_DATA__WIDTH:
-            setWidth(WIDTH_EDEFAULT);
+            setWidth(NodeLayoutDataImpl.WIDTH_EDEFAULT);
             return;
         case LayoutdataPackage.NODE_LAYOUT_DATA__HEIGHT:
-            setHeight(HEIGHT_EDEFAULT);
+            setHeight(NodeLayoutDataImpl.HEIGHT_EDEFAULT);
             return;
         case LayoutdataPackage.NODE_LAYOUT_DATA__CHILDREN:
             getChildren().clear();
@@ -387,16 +397,16 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.NODE_LAYOUT_DATA__WIDTH:
-            return width != WIDTH_EDEFAULT;
+            return width != NodeLayoutDataImpl.WIDTH_EDEFAULT;
         case LayoutdataPackage.NODE_LAYOUT_DATA__HEIGHT:
-            return height != HEIGHT_EDEFAULT;
+            return height != NodeLayoutDataImpl.HEIGHT_EDEFAULT;
         case LayoutdataPackage.NODE_LAYOUT_DATA__CHILDREN:
             return children != null && !children.isEmpty();
         case LayoutdataPackage.NODE_LAYOUT_DATA__OUTGOING_EDGES:

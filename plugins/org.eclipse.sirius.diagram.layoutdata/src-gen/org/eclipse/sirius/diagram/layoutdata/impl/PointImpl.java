@@ -22,13 +22,13 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * <em><b>Point</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl#getX <em>X
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl#getY <em>Y
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl#getX
+ * <em>X</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl#getY
+ * <em>Y</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -51,7 +51,7 @@ public class PointImpl extends EObjectImpl implements Point {
      * @generated
      * @ordered
      */
-    protected int x = X_EDEFAULT;
+    protected int x = PointImpl.X_EDEFAULT;
 
     /**
      * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!--
@@ -71,11 +71,11 @@ public class PointImpl extends EObjectImpl implements Point {
      * @generated
      * @ordered
      */
-    protected int y = Y_EDEFAULT;
+    protected int y = PointImpl.Y_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PointImpl() {
@@ -84,7 +84,7 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -104,20 +104,21 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setX(int newX) {
         int oldX = x;
         x = newX;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.POINT__X, oldX, x));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -127,20 +128,21 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setY(int newY) {
         int oldY = y;
         y = newY;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.POINT__Y, oldY, y));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -156,7 +158,7 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,17 +176,17 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.POINT__X:
-            setX(X_EDEFAULT);
+            setX(PointImpl.X_EDEFAULT);
             return;
         case LayoutdataPackage.POINT__Y:
-            setY(Y_EDEFAULT);
+            setY(PointImpl.Y_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -192,29 +194,30 @@ public class PointImpl extends EObjectImpl implements Point {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.POINT__X:
-            return x != X_EDEFAULT;
+            return x != PointImpl.X_EDEFAULT;
         case LayoutdataPackage.POINT__Y:
-            return y != Y_EDEFAULT;
+            return y != PointImpl.Y_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (x: "); //$NON-NLS-1$

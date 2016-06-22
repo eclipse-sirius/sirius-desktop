@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory
  * @model kind="package"
  * @generated
@@ -33,21 +33,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface LayoutdataPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "layoutdata"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "layoutdata"; //$NON-NLS-1$
@@ -55,7 +55,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     LayoutdataPackage eINSTANCE = org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl.init();
@@ -65,7 +65,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl
      * <em>Abstract Layout Data</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl
      * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getAbstractLayoutData()
      * @generated
@@ -84,7 +84,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -93,7 +93,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Abstract Layout Data</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -104,7 +104,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl
      * <em>Node Layout Data</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl
      * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getNodeLayoutData()
      * @generated
@@ -118,16 +118,16 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__ID = ABSTRACT_LAYOUT_DATA__ID;
+    int NODE_LAYOUT_DATA__ID = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__LABEL = ABSTRACT_LAYOUT_DATA__LABEL;
+    int NODE_LAYOUT_DATA__LABEL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -136,7 +136,7 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__WIDTH = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 0;
+    int NODE_LAYOUT_DATA__WIDTH = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
@@ -145,50 +145,50 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__HEIGHT = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 1;
+    int NODE_LAYOUT_DATA__HEIGHT = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Children</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__CHILDREN = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 2;
+    int NODE_LAYOUT_DATA__CHILDREN = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__OUTGOING_EDGES = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 3;
+    int NODE_LAYOUT_DATA__OUTGOING_EDGES = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Location</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA__LOCATION = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 4;
+    int NODE_LAYOUT_DATA__LOCATION = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>Node Layout Data</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_LAYOUT_DATA_FEATURE_COUNT = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 5;
+    int NODE_LAYOUT_DATA_FEATURE_COUNT = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl
      * <em>Edge Layout Data</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl
      * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getEdgeLayoutData()
      * @generated
@@ -202,16 +202,16 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__ID = ABSTRACT_LAYOUT_DATA__ID;
+    int EDGE_LAYOUT_DATA__ID = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__LABEL = ABSTRACT_LAYOUT_DATA__LABEL;
+    int EDGE_LAYOUT_DATA__LABEL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL;
 
     /**
      * The feature id for the '<em><b>Source Terminal</b></em>' attribute. <!--
@@ -220,7 +220,7 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__SOURCE_TERMINAL = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 0;
+    int EDGE_LAYOUT_DATA__SOURCE_TERMINAL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Target Terminal</b></em>' attribute. <!--
@@ -229,7 +229,7 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__TARGET_TERMINAL = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 1;
+    int EDGE_LAYOUT_DATA__TARGET_TERMINAL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Routing</b></em>' attribute. <!--
@@ -238,34 +238,34 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__ROUTING = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 2;
+    int EDGE_LAYOUT_DATA__ROUTING = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Point List</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__POINT_LIST = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 3;
+    int EDGE_LAYOUT_DATA__POINT_LIST = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Source Ref Point</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__SOURCE_REF_POINT = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 4;
+    int EDGE_LAYOUT_DATA__SOURCE_REF_POINT = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Target Ref Point</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__TARGET_REF_POINT = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 5;
+    int EDGE_LAYOUT_DATA__TARGET_REF_POINT = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Jump Link Status</b></em>' attribute. <!--
@@ -274,7 +274,7 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__JUMP_LINK_STATUS = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 6;
+    int EDGE_LAYOUT_DATA__JUMP_LINK_STATUS = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Jump Link Type</b></em>' attribute. <!--
@@ -283,16 +283,16 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__JUMP_LINK_TYPE = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 7;
+    int EDGE_LAYOUT_DATA__JUMP_LINK_TYPE = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Reverse Jump Link</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 8;
+    int EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Smoothness</b></em>' attribute. <!--
@@ -301,22 +301,22 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA__SMOOTHNESS = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 9;
+    int EDGE_LAYOUT_DATA__SMOOTHNESS = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>Edge Layout Data</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_LAYOUT_DATA_FEATURE_COUNT = ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 10;
+    int EDGE_LAYOUT_DATA_FEATURE_COUNT = LayoutdataPackage.ABSTRACT_LAYOUT_DATA_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl
      * <em>Point</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.layoutdata.impl.PointImpl
      * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getPoint()
      * @generated
@@ -326,7 +326,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>X</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -335,7 +335,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -355,7 +355,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData
      * <em>Abstract Layout Data</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Abstract Layout Data</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData
      * @generated
@@ -366,7 +366,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getId()
      * @see #getAbstractLayoutData()
@@ -378,7 +378,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Label</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel()
      * @see #getAbstractLayoutData()
@@ -402,7 +402,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth()
      * @see #getNodeLayoutData()
@@ -414,7 +414,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getHeight
      * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getHeight()
      * @see #getNodeLayoutData()
@@ -426,7 +426,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getChildren
      * <em>Children</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Children</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getChildren()
@@ -439,7 +439,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getOutgoingEdges
      * <em>Outgoing Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Outgoing Edges</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getOutgoingEdges()
@@ -452,7 +452,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation
      * <em>Location</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Location</em>
      *         '.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation()
@@ -477,7 +477,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceTerminal
      * <em>Source Terminal</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Source Terminal</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceTerminal()
      * @see #getEdgeLayoutData()
@@ -489,7 +489,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetTerminal
      * <em>Target Terminal</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target Terminal</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetTerminal()
      * @see #getEdgeLayoutData()
@@ -501,7 +501,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getRouting
      * <em>Routing</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Routing</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getRouting()
      * @see #getEdgeLayoutData()
@@ -513,7 +513,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getPointList
      * <em>Point List</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Point List</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getPointList()
@@ -567,7 +567,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkType
      * <em>Jump Link Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Jump Link Type</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkType()
      * @see #getEdgeLayoutData()
@@ -592,7 +592,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSmoothness
      * <em>Smoothness</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Smoothness</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSmoothness()
      * @see #getEdgeLayoutData()
@@ -615,7 +615,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.Point#getX <em>X</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>X</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.Point#getX()
      * @see #getPoint()
@@ -627,7 +627,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.layoutdata.Point#getY <em>Y</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Y</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.Point#getY()
      * @see #getPoint()
@@ -654,7 +654,7 @@ public interface LayoutdataPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -663,205 +663,205 @@ public interface LayoutdataPackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl
          * <em>Abstract Layout Data</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl
          * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getAbstractLayoutData()
          * @generated
          */
-        EClass ABSTRACT_LAYOUT_DATA = eINSTANCE.getAbstractLayoutData();
+        EClass ABSTRACT_LAYOUT_DATA = LayoutdataPackage.eINSTANCE.getAbstractLayoutData();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_LAYOUT_DATA__ID = eINSTANCE.getAbstractLayoutData_Id();
+        EAttribute ABSTRACT_LAYOUT_DATA__ID = LayoutdataPackage.eINSTANCE.getAbstractLayoutData_Id();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ABSTRACT_LAYOUT_DATA__LABEL = eINSTANCE.getAbstractLayoutData_Label();
+        EReference ABSTRACT_LAYOUT_DATA__LABEL = LayoutdataPackage.eINSTANCE.getAbstractLayoutData_Label();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl
          * <em>Node Layout Data</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.layoutdata.impl.NodeLayoutDataImpl
          * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getNodeLayoutData()
          * @generated
          */
-        EClass NODE_LAYOUT_DATA = eINSTANCE.getNodeLayoutData();
+        EClass NODE_LAYOUT_DATA = LayoutdataPackage.eINSTANCE.getNodeLayoutData();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_LAYOUT_DATA__WIDTH = eINSTANCE.getNodeLayoutData_Width();
+        EAttribute NODE_LAYOUT_DATA__WIDTH = LayoutdataPackage.eINSTANCE.getNodeLayoutData_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_LAYOUT_DATA__HEIGHT = eINSTANCE.getNodeLayoutData_Height();
+        EAttribute NODE_LAYOUT_DATA__HEIGHT = LayoutdataPackage.eINSTANCE.getNodeLayoutData_Height();
 
         /**
          * The meta object literal for the '<em><b>Children</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference NODE_LAYOUT_DATA__CHILDREN = eINSTANCE.getNodeLayoutData_Children();
+        EReference NODE_LAYOUT_DATA__CHILDREN = LayoutdataPackage.eINSTANCE.getNodeLayoutData_Children();
 
         /**
          * The meta object literal for the '<em><b>Outgoing Edges</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference NODE_LAYOUT_DATA__OUTGOING_EDGES = eINSTANCE.getNodeLayoutData_OutgoingEdges();
+        EReference NODE_LAYOUT_DATA__OUTGOING_EDGES = LayoutdataPackage.eINSTANCE.getNodeLayoutData_OutgoingEdges();
 
         /**
          * The meta object literal for the '<em><b>Location</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference NODE_LAYOUT_DATA__LOCATION = eINSTANCE.getNodeLayoutData_Location();
+        EReference NODE_LAYOUT_DATA__LOCATION = LayoutdataPackage.eINSTANCE.getNodeLayoutData_Location();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl
          * <em>Edge Layout Data</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.layoutdata.impl.EdgeLayoutDataImpl
          * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getEdgeLayoutData()
          * @generated
          */
-        EClass EDGE_LAYOUT_DATA = eINSTANCE.getEdgeLayoutData();
+        EClass EDGE_LAYOUT_DATA = LayoutdataPackage.eINSTANCE.getEdgeLayoutData();
 
         /**
          * The meta object literal for the '<em><b>Source Terminal</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__SOURCE_TERMINAL = eINSTANCE.getEdgeLayoutData_SourceTerminal();
+        EAttribute EDGE_LAYOUT_DATA__SOURCE_TERMINAL = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_SourceTerminal();
 
         /**
          * The meta object literal for the '<em><b>Target Terminal</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__TARGET_TERMINAL = eINSTANCE.getEdgeLayoutData_TargetTerminal();
+        EAttribute EDGE_LAYOUT_DATA__TARGET_TERMINAL = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_TargetTerminal();
 
         /**
          * The meta object literal for the '<em><b>Routing</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__ROUTING = eINSTANCE.getEdgeLayoutData_Routing();
+        EAttribute EDGE_LAYOUT_DATA__ROUTING = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_Routing();
 
         /**
          * The meta object literal for the '<em><b>Point List</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_LAYOUT_DATA__POINT_LIST = eINSTANCE.getEdgeLayoutData_PointList();
+        EReference EDGE_LAYOUT_DATA__POINT_LIST = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_PointList();
 
         /**
          * The meta object literal for the '<em><b>Source Ref Point</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_LAYOUT_DATA__SOURCE_REF_POINT = eINSTANCE.getEdgeLayoutData_SourceRefPoint();
+        EReference EDGE_LAYOUT_DATA__SOURCE_REF_POINT = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_SourceRefPoint();
 
         /**
          * The meta object literal for the '<em><b>Target Ref Point</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_LAYOUT_DATA__TARGET_REF_POINT = eINSTANCE.getEdgeLayoutData_TargetRefPoint();
+        EReference EDGE_LAYOUT_DATA__TARGET_REF_POINT = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_TargetRefPoint();
 
         /**
          * The meta object literal for the '<em><b>Jump Link Status</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__JUMP_LINK_STATUS = eINSTANCE.getEdgeLayoutData_JumpLinkStatus();
+        EAttribute EDGE_LAYOUT_DATA__JUMP_LINK_STATUS = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_JumpLinkStatus();
 
         /**
          * The meta object literal for the '<em><b>Jump Link Type</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__JUMP_LINK_TYPE = eINSTANCE.getEdgeLayoutData_JumpLinkType();
+        EAttribute EDGE_LAYOUT_DATA__JUMP_LINK_TYPE = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_JumpLinkType();
 
         /**
          * The meta object literal for the '<em><b>Reverse Jump Link</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK = eINSTANCE.getEdgeLayoutData_ReverseJumpLink();
+        EAttribute EDGE_LAYOUT_DATA__REVERSE_JUMP_LINK = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_ReverseJumpLink();
 
         /**
          * The meta object literal for the '<em><b>Smoothness</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_LAYOUT_DATA__SMOOTHNESS = eINSTANCE.getEdgeLayoutData_Smoothness();
+        EAttribute EDGE_LAYOUT_DATA__SMOOTHNESS = LayoutdataPackage.eINSTANCE.getEdgeLayoutData_Smoothness();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.layoutdata.impl.PointImpl
          * <em>Point</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.diagram.layoutdata.impl.PointImpl
          * @see org.eclipse.sirius.diagram.layoutdata.impl.LayoutdataPackageImpl#getPoint()
          * @generated
          */
-        EClass POINT = eINSTANCE.getPoint();
+        EClass POINT = LayoutdataPackage.eINSTANCE.getPoint();
 
         /**
          * The meta object literal for the '<em><b>X</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute POINT__X = eINSTANCE.getPoint_X();
+        EAttribute POINT__X = LayoutdataPackage.eINSTANCE.getPoint_X();
 
         /**
          * The meta object literal for the '<em><b>Y</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute POINT__Y = eINSTANCE.getPoint_Y();
+        EAttribute POINT__Y = LayoutdataPackage.eINSTANCE.getPoint_Y();
 
     }
 

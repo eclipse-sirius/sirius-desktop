@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
  * <em><b>Abstract Layout Data</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl#getId
@@ -33,7 +34,6 @@ import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl#getLabel
  * <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -56,12 +56,12 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * @generated
      * @ordered
      */
-    protected String id = ID_EDEFAULT;
+    protected String id = AbstractLayoutDataImpl.ID_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getLabel() <em>Label</em>}' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getLabel()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AbstractLayoutDataImpl() {
@@ -79,7 +79,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,7 +89,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -99,20 +99,21 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID, oldId, id));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,14 +123,16 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
             label = (NodeLayoutData) eResolveProxy(oldLabel);
             if (label != oldLabel) {
                 InternalEObject newLabel = (InternalEObject) label;
-                NotificationChain msgs = oldLabel.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, null);
+                NotificationChain msgs = oldLabel.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, null);
                 if (newLabel.eInternalContainer() == null) {
-                    msgs = newLabel.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
+                    msgs = newLabel.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, oldLabel, label));
+                }
             }
         }
         return label;
@@ -137,7 +140,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NodeLayoutData basicGetLabel() {
@@ -146,7 +149,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetLabel(NodeLayoutData newLabel, NotificationChain msgs) {
@@ -154,37 +157,42 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
         label = newLabel;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, oldLabel, newLabel);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void setLabel(NodeLayoutData newLabel) {
         if (newLabel != label) {
             NotificationChain msgs = null;
-            if (label != null)
-                msgs = ((InternalEObject) label).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
-            if (newLabel != null)
-                msgs = ((InternalEObject) newLabel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
+            if (label != null) {
+                msgs = ((InternalEObject) label).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
+            }
+            if (newLabel != null) {
+                msgs = ((InternalEObject) newLabel).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, null, msgs);
+            }
             msgs = basicSetLabel(newLabel, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL, newLabel, newLabel));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +206,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,8 +215,9 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID:
             return getId();
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
-            if (resolve)
+            if (resolve) {
                 return getLabel();
+            }
             return basicGetLabel();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -216,7 +225,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,14 +243,14 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID:
-            setId(ID_EDEFAULT);
+            setId(AbstractLayoutDataImpl.ID_EDEFAULT);
             return;
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             setLabel((NodeLayoutData) null);
@@ -252,14 +261,14 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID:
-            return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+            return AbstractLayoutDataImpl.ID_EDEFAULT == null ? id != null : !AbstractLayoutDataImpl.ID_EDEFAULT.equals(id);
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             return label != null;
         }
@@ -268,13 +277,14 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (id: "); //$NON-NLS-1$

@@ -20,9 +20,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth <em>
- * Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth
+ * <em>Width</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getHeight
  * <em>Height</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getChildren
@@ -33,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation
  * <em>Location</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData()
  * @model
@@ -57,7 +57,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth
      * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Width</em>' attribute.
      * @see #getWidth()
@@ -141,7 +141,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation
      * <em>Location</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Location</em>' containment
      *            reference.

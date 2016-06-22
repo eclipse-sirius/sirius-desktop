@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.Point#getX <em>X</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.Point#getY <em>Y</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getPoint()
  * @model
@@ -49,7 +49,7 @@ public interface Point extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.layoutdata.Point#getX <em>X</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>X</em>' attribute.
      * @see #getX()
@@ -74,7 +74,7 @@ public interface Point extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.layoutdata.Point#getY <em>Y</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Y</em>' attribute.
      * @see #getY()

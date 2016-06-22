@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getId
  * <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
  * <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData()
  * @model abstract="true"
@@ -52,7 +52,7 @@ public interface AbstractLayoutData extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -79,7 +79,7 @@ public interface AbstractLayoutData extends EObject {
      * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
      * <em>Label</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' containment reference.
      * @see #getLabel()
