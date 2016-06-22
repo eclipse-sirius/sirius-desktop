@@ -384,57 +384,61 @@ public class DDiagramSynchronizer {
 
                 RefreshExtensionService.getInstance().beforeRefresh(this.diagram);
 
-                final int mappingNumbers = nodeMappings.size() + edgeMappings.size() + containerMappings.size();
-                monitor.beginTask(Messages.DDiagramSynchronizer_refreshMappingsMsg, mappingNumbers);
+                boolean override = RefreshExtensionService.getInstance().aroundRefresh(this.diagram);
 
-                /*
-                 * compute a first time the cache with old mappings => updater
-                 * need the cache
-                 */
-                computePreviousCandidatesCache();
-                /* update mappings */
-                mappingsUpdater.updateMappings();
-                /* compute a second time the cache with updated mapping */
-                computePreviousCandidatesCache();
+                if (!override) {
+                    final int mappingNumbers = nodeMappings.size() + edgeMappings.size() + containerMappings.size();
+                    monitor.beginTask(Messages.DDiagramSynchronizer_refreshMappingsMsg, mappingNumbers);
 
-                fillIgnoredElements();
+                    /*
+                     * compute a first time the cache with old mappings =>
+                     * updater need the cache
+                     */
+                    computePreviousCandidatesCache();
+                    /* update mappings */
+                    mappingsUpdater.updateMappings();
+                    /* compute a second time the cache with updated mapping */
+                    computePreviousCandidatesCache();
 
-                final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
+                    fillIgnoredElements();
 
-                /* Let's refresh the node mappings. */
-                for (final NodeMapping mapping : nodeMappings) {
-                    refreshNodeMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, new SubProgressMonitor(monitor, 1));
+                    final Set<AbstractDNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<AbstractDNodeCandidate>();
+
+                    /* Let's refresh the node mappings. */
+                    for (final NodeMapping mapping : nodeMappings) {
+                        refreshNodeMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, new SubProgressMonitor(monitor, 1));
+                    }
+
+                    /* Let's refresh the container mappings */
+                    if (elementsCreated != null) {
+                        elementsCreated.clear();
+                    }
+
+                    for (final ContainerMapping mapping : containerMappings) {
+                        refreshContainerMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, false, false, new SubProgressMonitor(monitor, 1));
+                    }
+
+                    /* handle multiple importers . */
+                    handleImportersIssues();
+
+                    /* Compute the decorations. */
+                    computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
+
+                    /*
+                     * now all the nodes/containers are done and ready in the
+                     * mappintToEdgeTarget map.
+                     */
+                    edgesDones = new HashSet<DDiagramElement>();
+
+                    processEdgeMappingsRefresh(edgeMappings, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, monitor);
+
+                    edgesDones.clear();
+
+                    deleteIgnoredElementsAndDuplicates();
+
+                    /* Garbage collect orphan computed StyleDescription. */
+                    removeOrphanComputedStyleDescriptions();
                 }
-
-                /* Let's refresh the container mappings */
-                if (elementsCreated != null) {
-                    elementsCreated.clear();
-                }
-
-                for (final ContainerMapping mapping : containerMappings) {
-                    refreshContainerMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, false, false, new SubProgressMonitor(monitor, 1));
-                }
-
-                /* handle multiple importers . */
-                handleImportersIssues();
-
-                /* Compute the decorations. */
-                computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
-
-                /*
-                 * now all the nodes/containers are done and ready in the
-                 * mappintToEdgeTarget map.
-                 */
-                edgesDones = new HashSet<DDiagramElement>();
-
-                processEdgeMappingsRefresh(edgeMappings, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, monitor);
-
-                edgesDones.clear();
-
-                deleteIgnoredElementsAndDuplicates();
-
-                /* Garbage collect orphan computed StyleDescription. */
-                removeOrphanComputedStyleDescriptions();
 
                 RefreshExtensionService.getInstance().postRefresh(this.diagram);
                 /* We can now clear the cache. */

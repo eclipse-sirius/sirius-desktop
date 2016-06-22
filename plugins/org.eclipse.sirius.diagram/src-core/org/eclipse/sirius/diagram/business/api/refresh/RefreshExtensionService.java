@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.business.internal.helper.refresh.RefreshExtens
  * 
  * @author ymortier
  */
-public final class RefreshExtensionService implements IRefreshExtension {
+public final class RefreshExtensionService implements IRefreshExtension, IRefreshOverride {
 
     /** Name of the extension point to parse for refresh extension providers. */
     private static final String REFRESH_EXTENSION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.refreshExtensionProvider"; //$NON-NLS-1$
@@ -109,7 +109,6 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
@@ -128,7 +127,6 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
      */
     public void postRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
@@ -142,6 +140,30 @@ public final class RefreshExtensionService implements IRefreshExtension {
                 RefreshExtensionService.safePostRefresh(refreshExtension, viewPoint);
             }
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     */
+    @Override
+    public boolean aroundRefresh(DDiagram dDiagram) {
+        final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
+
+        boolean oneOverride = false;
+
+        while (iterProviders.hasNext()) {
+            final RefreshExtensionProviderDescriptor currentProviderDecsriptor = iterProviders.next();
+            final IRefreshExtensionProvider refreshExtensionProvider = currentProviderDecsriptor.getProviderInstance();
+
+            if (RefreshExtensionService.safeProvides(refreshExtensionProvider, dDiagram)) {
+                final IRefreshExtension refreshExtension = RefreshExtensionService.safeGetRefreshExtension(refreshExtensionProvider, dDiagram);
+                if (refreshExtension instanceof IRefreshOverride) {
+                    oneOverride = ((IRefreshOverride) refreshExtension).aroundRefresh(dDiagram) || oneOverride;
+                }
+            }
+        }
+        return oneOverride;
     }
 
     /**
