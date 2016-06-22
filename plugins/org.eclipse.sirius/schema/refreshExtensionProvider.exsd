@@ -60,10 +60,10 @@ The provider class is required to implement &lt;samp&gt;org.eclipse.sirius.busin
          <attribute name="providerClass" type="string" use="required">
             <annotation>
                <documentation>
-                  the name of the fully qualified class implementing &lt;samp&gt;org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider&lt;/samp&gt;
+                  the name of the fully qualified class implementing &lt;samp&gt;org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider&lt;/samp&gt;
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider"/>
                </appInfo>
             </annotation>
          </attribute>
