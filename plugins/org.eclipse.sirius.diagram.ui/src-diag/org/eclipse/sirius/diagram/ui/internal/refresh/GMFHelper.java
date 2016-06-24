@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -555,24 +555,30 @@ public final class GMFHelper {
             DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery(ddec);
             boolean isRegion = query.isRegion();
             EList children = ((Node) node.eContainer()).getChildren();
-            int nextIndex = children.indexOf(node) + 1;
-            if (isRegion && nextIndex != 0 && nextIndex < children.size() && children.get(nextIndex) instanceof Node) {
-                Node nextNode = (Node) children.get(nextIndex);
-                int visualID = SiriusVisualIDRegistry.getVisualID(nextNode.getType());
-                if (DNodeContainer2EditPart.VISUAL_ID == visualID || DNodeListEditPart.VISUAL_ID == visualID || DNodeList2EditPart.VISUAL_ID == visualID) {
-                    // DNodeContainerEditPart.VISUAL_ID == visualID is not
-                    // checked as a region cannot be a DNodeContainerEditPart as
-                    // it is directly contained by the diagram part.
-                    LayoutConstraint layoutConstraint = nextNode.getLayoutConstraint();
-                    if (layoutConstraint instanceof Location) {
-                        Location nextLocation = (Location) layoutConstraint;
-                        // Update only the parent stack direction if some layout
-                        // has already been done.
-                        if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
-                            bounds.width = nextLocation.getX() - bounds.x;
-                        }
-                        if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
-                            bounds.height = nextLocation.getY() - bounds.y;
+            int currentIndex = children.indexOf(node);
+            if (!(currentIndex != 0 && bounds.equals(new Rectangle(0, 0, -1, -1)))) {
+                // We are not in the case of a new region insertion (in this
+                // case, we use the default size)
+                int nextIndex = currentIndex + 1;
+                if (isRegion && nextIndex != 0 && nextIndex < children.size() && children.get(nextIndex) instanceof Node) {
+                    Node nextNode = (Node) children.get(nextIndex);
+                    int visualID = SiriusVisualIDRegistry.getVisualID(nextNode.getType());
+                    if (DNodeContainer2EditPart.VISUAL_ID == visualID || DNodeListEditPart.VISUAL_ID == visualID || DNodeList2EditPart.VISUAL_ID == visualID) {
+                        // DNodeContainerEditPart.VISUAL_ID == visualID is not
+                        // checked as a region cannot be a
+                        // DNodeContainerEditPart as it is directly contained by
+                        // the diagram part.
+                        LayoutConstraint layoutConstraint = nextNode.getLayoutConstraint();
+                        if (layoutConstraint instanceof Location) {
+                            Location nextLocation = (Location) layoutConstraint;
+                            // Update only the parent stack direction if some
+                            // layout has already been done.
+                            if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
+                                bounds.width = nextLocation.getX() - bounds.x;
+                            }
+                            if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
+                                bounds.height = nextLocation.getY() - bounds.y;
+                            }
                         }
                     }
                 }
@@ -632,27 +638,27 @@ public final class GMFHelper {
      * @return The optional corresponding edit part.
      */
     public static Option<GraphicalEditPart> getGraphicalEditPart(View view) {
-        Option<GraphicalEditPart> result = Options.newNone();
-        DiagramEditor diagramEditor = null;
         if (view != null) {
-            final IEditorPart editor = EclipseUIUtil.getActiveEditor();
-            Diagram diagram = view.getDiagram();
-            if (editor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() == diagram) {
-                diagramEditor = (DiagramEditor) editor;
-            } else if (diagram.getElement() instanceof DDiagram) {
-                DDiagram diag = (DDiagram) diagram.getElement();
+            Diagram gmfDiagram = view.getDiagram();
+            // Try the active editor first (most likely case in practice)
+            IEditorPart editor = EclipseUIUtil.getActiveEditor();
+            if (isEditorFor(editor, gmfDiagram)) {
+                return getGraphicalEditPart(view, (DiagramEditor) editor);
+            } else if (gmfDiagram.getElement() instanceof DDiagram) {
+                // Otherwise check all active Sirius editors
                 for (IEditingSession uiSession : SessionUIManager.INSTANCE.getUISessions()) {
-                    DialectEditor dialectEditor = uiSession.getEditor(diag);
-                    if (dialectEditor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() != diagram) {
-                        diagramEditor = (DiagramEditor) dialectEditor;
+                    DialectEditor dialectEditor = uiSession.getEditor((DDiagram) gmfDiagram.getElement());
+                    if (isEditorFor(dialectEditor, gmfDiagram)) {
+                        return getGraphicalEditPart(view, (DiagramEditor) dialectEditor);
                     }
                 }
             }
         }
-        if (diagramEditor != null) {
-            return getGraphicalEditPart(view, diagramEditor);
-        }
-        return result;
+        return Options.<GraphicalEditPart> newNone();
+    }
+
+    private static boolean isEditorFor(IEditorPart editor, Diagram diagram) {
+        return editor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() == diagram;
     }
 
     /**
