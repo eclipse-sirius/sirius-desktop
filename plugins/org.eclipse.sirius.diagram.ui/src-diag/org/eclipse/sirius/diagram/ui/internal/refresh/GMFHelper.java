@@ -555,24 +555,30 @@ public final class GMFHelper {
             DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery(ddec);
             boolean isRegion = query.isRegion();
             EList children = ((Node) node.eContainer()).getChildren();
-            int nextIndex = children.indexOf(node) + 1;
-            if (isRegion && nextIndex != 0 && nextIndex < children.size() && children.get(nextIndex) instanceof Node) {
-                Node nextNode = (Node) children.get(nextIndex);
-                int visualID = SiriusVisualIDRegistry.getVisualID(nextNode.getType());
-                if (DNodeContainer2EditPart.VISUAL_ID == visualID || DNodeListEditPart.VISUAL_ID == visualID || DNodeList2EditPart.VISUAL_ID == visualID) {
-                    // DNodeContainerEditPart.VISUAL_ID == visualID is not
-                    // checked as a region cannot be a DNodeContainerEditPart as
-                    // it is directly contained by the diagram part.
-                    LayoutConstraint layoutConstraint = nextNode.getLayoutConstraint();
-                    if (layoutConstraint instanceof Location) {
-                        Location nextLocation = (Location) layoutConstraint;
-                        // Update only the parent stack direction if some layout
-                        // has already been done.
-                        if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
-                            bounds.width = nextLocation.getX() - bounds.x;
-                        }
-                        if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
-                            bounds.height = nextLocation.getY() - bounds.y;
+            int currentIndex = children.indexOf(node);
+            if (!(currentIndex != 0 && bounds.equals(new Rectangle(0, 0, -1, -1)))) {
+                // We are not in the case of a new region insertion (in this
+                // case, we use the default size)
+                int nextIndex = currentIndex + 1;
+                if (isRegion && nextIndex != 0 && nextIndex < children.size() && children.get(nextIndex) instanceof Node) {
+                    Node nextNode = (Node) children.get(nextIndex);
+                    int visualID = SiriusVisualIDRegistry.getVisualID(nextNode.getType());
+                    if (DNodeContainer2EditPart.VISUAL_ID == visualID || DNodeListEditPart.VISUAL_ID == visualID || DNodeList2EditPart.VISUAL_ID == visualID) {
+                        // DNodeContainerEditPart.VISUAL_ID == visualID is not
+                        // checked as a region cannot be a
+                        // DNodeContainerEditPart as it is directly contained by
+                        // the diagram part.
+                        LayoutConstraint layoutConstraint = nextNode.getLayoutConstraint();
+                        if (layoutConstraint instanceof Location) {
+                            Location nextLocation = (Location) layoutConstraint;
+                            // Update only the parent stack direction if some
+                            // layout has already been done.
+                            if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
+                                bounds.width = nextLocation.getX() - bounds.x;
+                            }
+                            if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
+                                bounds.height = nextLocation.getY() - bounds.y;
+                            }
                         }
                     }
                 }
@@ -648,9 +654,9 @@ public final class GMFHelper {
                 }
             }
         }
-        return Options.<GraphicalEditPart>newNone();
+        return Options.<GraphicalEditPart> newNone();
     }
-    
+
     private static boolean isEditorFor(IEditorPart editor, Diagram diagram) {
         return editor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() == diagram;
     }
