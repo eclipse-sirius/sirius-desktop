@@ -108,12 +108,86 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, 
+				<code>org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()</code> has been added as a wrapper of the 
+				<code>DRepresentation</code>. In this step, the main impact is that the Sirius common navigator does not display the 
+				<code>DRepresentation</code> anymore but the 
+				<code>DRepresentationDescriptor</code> instead. All the actions and commands are then based on 
+				<code>DRepresentationDescriptor</code>.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException</code> exception has been added to cancel Sirius session opening due to an .aird version mismatch, i.e. when one the of the loaded Representation resources is coming from a newer Sirius release.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()</code> has been added as the first step to save the DRepresentation in its own resource. In this step, the DRepresentationDescriptor life cycle is the same as the associated DRepresentation.
+				<ul>
+					<li>
+						<code>org.eclipse.sirius.business.api.dialect.command.RenameRepresentationCommand</code>
+					</li>
+					<li>
+						<code>org.eclipse.sirius.business.api.dialect.command.DeleteRepresentationCommand</code>
+					</li>
+					<li>
+						<code>org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand</code>
+					</li>
+					<li>
+						<code>org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand</code>
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>getAvailableRepresentationDescriptions(Collection&lt;Viewpoint&gt;, EObject)</code>, 
+				<code>getAllRepresentationDescriptors(Session )</code>, 
+				<code>getRepresentationDescriptors(EObject, Session)</code> and 
+				<code>getRepresentationDescriptors(RepresentationDescription, Session )</code> have been added in 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices</code> and implemented in 
+				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices</code>. These methods are used, instead of their equivalent with DRepresentation, for every functionality which relies on 
+				<code>DRepresentationDescriptor</code> instead of 
+				<code>DRepresentation</code> such as actions, wizards or views.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.isSupported(DRepresentationDescriptor)</code> has been added because actions, wizards or views that were related to 
+				<code>DRepresentation</code> are now related to 
+				<code>DRepresentationDescriptor</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.canHandle(DRepresentationDescriptor)</code> has been added because actions, wizards or views that were related to 
+				<code>DRepresentation</code> are now related to 
+				<code>DRepresentationDescriptor</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentationDescriptor, ExportFormat)</code> has been added because actions, wizards or views that were related to 
+				<code>DRepresentation</code> are now related to 
+				<code>DRepresentationDescriptor</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.getRepresentationDescriptor()</code> has been added to retrieve the 
+				<code>DRepresentationDescriptor</code> that references the 
+				<code>DRepresentation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.business.api.session.CustomDataConstants.DREPRESENTATION_DESCRIPTOR_FROM_DESCRIPTION</code> and 
+				<code>org.eclipse.sirius.business.api.session.CustomDataConstants.DREPRESENTATION_DESCRIPTOR</code> have been added. They are used to get or put 
+				<code>DRepresentationDescriptor</code> in the model managed by the 
+				<code>Session</code> through the 
+				<code>org.eclipse.sirius.business.api.session.SessionService.putCustomData(String, EObject, EObject)</code> and 
+				<code>SessionService.getCustomData(String, EObject)</code> methods.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper.findContainerForAddedRepresentation(DAnalysis, DRepresentation)</code> has been changed to 
+				<code>findDViewForRepresentationDescription(DAnalysis , final RepresentationDescription)</code> because that API was previously badly defined.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.deleteRepresentation(DRepresentation, Session)</code> has been changed to 
+				<code>deleteRepresentation(DRepresentationDescriptor, Session)</code> because now the 
+				<code>DRepresentationDescriptor</code> is the entry point to delete the 
+				<code>DRepresentation</code> and itself.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
@@ -196,6 +270,18 @@
 				<code>org.eclipse.sirius.ext.gef.editpolicies</code> to 
 				<code>org.eclipse.sirius.ext.gmf.runtime.editpolicies</code>. The old class in plug-in 
 				<code>org.eclipse.sirius.ext.gef</code> is deprecated and will be removed in the next version.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+			<code>org.eclipse.sirius.tests.junit.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The utility methods 
+				<code>getRepresentationDescriptors(final String)</code>, 
+				<code>getRepresentationDescriptors(final String , final Session )</code> and 
+				<code>getRepresentationDescriptorFromRepresentation(DRepresentation)</code> have been added in class 
+				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase</code> to adapt tests considering the 
+				<code>DView.ownedRepresentationDescriptors</code> addition.
 			</li>
 		</ul>
 		<h2 id="sirius4.0.0">Changes in Sirius 4.0.0</h2>
@@ -624,7 +710,7 @@
 				<code>org.eclipse.sirius.editor</code>) still depends on PDE (and thus indirectly the JDT too).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -1133,7 +1219,7 @@
 				<code>RefreshPlan</code> in parameter to have more informations to say if children must be synchronized.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
@@ -2063,7 +2149,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support4">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
 		<ul>
