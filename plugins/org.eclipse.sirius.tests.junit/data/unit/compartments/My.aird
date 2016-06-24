@@ -210,7 +210,7 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_xGlbYkgKEeWO8ekbzmZQXg"/>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x0rQcEgKEeWO8ekbzmZQXg" name="P1" width="5" height="5" childrenPresentation="VerticalStack">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x0rQcEgKEeWO8ekbzmZQXg" name="P1" width="-1" height="-1" childrenPresentation="VerticalStack">
         <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
         <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_-_YwYHfwEeWQo7JxcqP_Mw" borderSize="5" borderSizeComputationExpression="5" borderColor="156,12,12">
@@ -371,7 +371,7 @@
           </ownedDiagramElements>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x0r3gEgKEeWO8ekbzmZQXg" name="az" width="5" height="5" childrenPresentation="VerticalStack">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x0r3gEgKEeWO8ekbzmZQXg" name="az" width="-1" height="-1" childrenPresentation="VerticalStack">
         <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
         <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x0r3gUgKEeWO8ekbzmZQXg" borderSize="5" borderSizeComputationExpression="5" borderColor="156,12,12">
