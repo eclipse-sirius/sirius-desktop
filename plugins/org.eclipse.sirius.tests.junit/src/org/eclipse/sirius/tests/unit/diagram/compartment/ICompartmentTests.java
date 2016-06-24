@@ -57,9 +57,27 @@ public interface ICompartmentTests {
 
     public static final String NEW_REGION_CONTAINER_NAME = "p3";
 
+    public static final String NEW_REGION_CONTAINER_WITH_DEFINED_SIZE_NAME = "Init_p3";
+
+    public static final String PACKAGE_CREATION_DEFINED_SIZE_TOOL_NAME = "EPackageWithDefinedSize";
+
+    public static final String PACKAGE_CREATION_HIDE_LABEL_TOOL_NAME = "EPackageWithHideLabel";
+
+    public static final String PACKAGE_ONE_CLASS_CREATION_TOOL_NAME = "OneClassInEPackage";
+
+    public static final String PACKAGE_TWO_CLASS_CREATION_TOOL_NAME = "TwoClassesInEPackage";
+
+    public static final String PACKAGE_ONE_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME = "OneClassInEPackageWithDefinedSize";
+
+    public static final String PACKAGE_TWO_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME = "TwoClassesInEPackageWithDefinedSize";
+
     public static final String LEFT_CLASS_NAME = "Left_class1";
 
     public static final String LEFT_CLASS2_NAME = "Left_class2";
+
+    public static final String LEFT_CLASS_C0_NAME = "Left_C0";
+
+    public static final String LEFT_CLASS_C1_NAME = "Left_C1";
 
     public static final String CENTER_CLASS_NAME = "Center_class2";
 
