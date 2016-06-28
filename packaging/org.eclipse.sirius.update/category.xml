@@ -95,27 +95,27 @@
    <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.acceleo.query" version="0.0.0" />
-   <feature id="org.eclipse.acceleo.query.source" version="0.0.0" />
-   
    <feature id="org.eclipse.sirius.interpreter.feature" version="0.0.0">
-      <category name="Sirius.Experimental"/>
+      <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.interpreter.feature.source" version="0.0.0">
-      <category name="Sirius.Experimental.SDK"/>
+      <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.properties.feature" version="0.0.0">
-      <category name="Sirius.Experimental"/>
+      <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.properties.feature.source" version="0.0.0">
-      <category name="Sirius.Experimental.SDK"/>
+      <category name="Sirius.SDK"/>
    </feature>
    <feature id="org.eclipse.sirius.specifier.properties.feature" version="0.0.0">
-      <category name="Sirius.Experimental"/>
+      <category name="Sirius"/>
    </feature>
    <feature id="org.eclipse.sirius.specifier.properties.feature.source" version="0.0.0">
-      <category name="Sirius.Experimental.SDK"/>
+      <category name="Sirius.SDK"/>
    </feature>
+    <!-- Non-categorized -->
+   <feature id="org.eclipse.acceleo.query" version="0.0.0" />
+   <feature id="org.eclipse.acceleo.query.source" version="0.0.0" />
    
    <category-def name="Sirius" label="Sirius">
       <description>
@@ -125,16 +125,6 @@
    <category-def name="Sirius.SDK" label="Sirius SDK">
       <description>
          The Sirius Modeling Platform SDK
-      </description>
-   </category-def>
-   <category-def name="Sirius.Experimental" label="Sirius Experimental Features">
-      <description>
-         The Sirius Modeling Platform - Experimental Features
-      </description>
-   </category-def>
-   <category-def name="Sirius.Experimental.SDK" label="Sirius Experimental Features SDK">
-      <description>
-         The Sirius Modeling Platform - Experimental Features SDK
       </description>
    </category-def>
    
