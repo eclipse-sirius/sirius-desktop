@@ -389,11 +389,9 @@
         <module>../../incubation/org.eclipse.sirius.properties.feature</module>
         <module>../../incubation/org.eclipse.sirius.specifier.properties.feature</module>
         <module>../../incubation/org.eclipse.sirius.samples.properties.feature</module>
-        <module>../../incubation/org.eclipse.sirius.incubation</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
-        <module>../../incubation/org.eclipse.sirius.incubation.update</module>
 
         <!-- Test metamodels and modelers -->
         <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>

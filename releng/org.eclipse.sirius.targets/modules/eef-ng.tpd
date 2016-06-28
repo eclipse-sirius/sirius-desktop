@@ -1,6 +1,6 @@
 target "EEF NG"
 
-location Sirius-Incubation-Nightly "http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/" {
+location Sirius-Interpreter-Nightly "http://download.eclipse.org/sirius/updates/nightly/latest/neon/" {
 	org.eclipse.sirius.common.interpreter lazy
 }
 

@@ -137,13 +137,3 @@ if [ "master" = "$GIT_BRANCH" ]; then
     create_redirect "$TARGET_ROOT/latest/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
     cp -a "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
 fi
-
-if [ "master" = "$GIT_BRANCH" ]; then
-  # Also publish the incubation repo right under the main one
-  mkdir -p "$TARGET_DIR/incubation"
-  cp -a "$WKS"/incubation/org.eclipse.sirius.incubation.update/target/repository/* "$TARGET_DIR/incubation"
-  create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM/incubation" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/incubation"
-  create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM/incubation" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/incubation"
-  create_redirect "$TARGET_ROOT/latest/$PLATFORM/incubation" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/incubation"
-fi
-
