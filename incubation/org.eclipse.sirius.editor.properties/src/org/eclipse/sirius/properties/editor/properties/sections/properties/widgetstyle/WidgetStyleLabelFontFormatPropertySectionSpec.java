@@ -43,6 +43,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * 
  * @author pcdavid
  */
+//CHECKSTYLE:OFF
 public class WidgetStyleLabelFontFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
 
     private static final String BOLD = "Bold";
@@ -55,6 +56,9 @@ public class WidgetStyleLabelFontFormatPropertySectionSpec extends AbstractCheck
 
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
+    /**
+     * Constructor.
+     */
     public WidgetStyleLabelFontFormatPropertySectionSpec() {
         buttonGroup = false;
     }
@@ -133,7 +137,7 @@ public class WidgetStyleLabelFontFormatPropertySectionSpec extends AbstractCheck
         if (eObject instanceof LabelWidgetStyle) {
             for (String str : convertPropertiesToUI(((WidgetStyle) eObject).getLabelFontFormat())) {
                 if (returnStr.length() > 0) {
-                    returnStr = returnStr + (", ") + str;
+                    returnStr = returnStr + ", " + str;
                 } else {
                     returnStr = str;
                 }
@@ -205,7 +209,7 @@ public class WidgetStyleLabelFontFormatPropertySectionSpec extends AbstractCheck
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
+                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext(); ) {
                     EObject nextObject = i.next();
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }

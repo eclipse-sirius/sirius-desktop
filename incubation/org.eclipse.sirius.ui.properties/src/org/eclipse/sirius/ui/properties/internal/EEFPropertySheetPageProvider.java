@@ -26,7 +26,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
  * @author pcdavid
  */
 public class EEFPropertySheetPageProvider implements ISiriusPropertySheetPageProvider {
-    private static final String DESCRIPTION_REFERENCE_NAME = "description";
+    private static final String DESCRIPTION_REFERENCE_NAME = "description"; //$NON-NLS-1$
 
     @Override
     public IPropertySheetPage getPropertySheetPage(Object source, String contributorId) {
@@ -52,7 +52,7 @@ public class EEFPropertySheetPageProvider implements ISiriusPropertySheetPagePro
         while (current != null) {
             if (current instanceof DocumentedElement) {
                 String doc = ((DocumentedElement) current).getDocumentation();
-                if (doc != null && doc.contains("FORCE_LEGACY_PROPERTIES")) {
+                if (doc != null && doc.contains("FORCE_LEGACY_PROPERTIES")) { //$NON-NLS-1$
                     return true;
                 }
             }

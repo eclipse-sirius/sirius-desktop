@@ -95,11 +95,11 @@ public class VariableManager implements IVariableManager {
             String name = var.getKey();
             Object value = var.getValue();
             boolean local = variables.containsKey(name);
-            sb.append(name).append(" = ").append(value);
+            sb.append(name).append(" = ").append(value); //$NON-NLS-1$
             if (!local) {
-                sb.append(" [inherited]");
+                sb.append(" [inherited]"); //$NON-NLS-1$
             }
-            sb.append("\n");
+            sb.append("\n"); //$NON-NLS-1$
         }
 	    return sb.toString();
 	}

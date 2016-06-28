@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -169,7 +170,7 @@ public class ViewDescriptionConverter {
     public EEFViewDescription convert(SiriusInputDescriptor input) {
         EEFViewDescription view = EefFactory.eINSTANCE.createEEFViewDescription();
 
-        view.setImageExpression("service:eefViewImage");
+        view.setImageExpression("service:eefViewImage"); //$NON-NLS-1$
 
         Set<EPackage> ePackages = new LinkedHashSet<>();
         for (PageDescription pageDescription : pageDescriptions) {
@@ -182,7 +183,7 @@ public class ViewDescriptionConverter {
 
         view.getEPackages().addAll(ePackages);
 
-        view.setLabelExpression("service:eefViewText");
+        view.setLabelExpression("service:eefViewText"); //$NON-NLS-1$
 
         for (PageDescription pageDescription : pageDescriptions) {
             createPage(pageDescription, view);
@@ -686,14 +687,14 @@ public class ViewDescriptionConverter {
         AbstractColorUpdater colorUpdater = new AbstractColorUpdater();
         RGBValues rgbValues = colorUpdater.getRGBValuesFromColorDescription(this.semanticElement, colorDescription);
         if (rgbValues != null) {
-            return "rgb(" + rgbValues.getRed() + "," + rgbValues.getGreen() + "," + rgbValues.getBlue() + ")";
+            return MessageFormat.format("rgb({0},{1},{2})", rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue()); //$NON-NLS-1$
         }
         return null;
     }
 
     private String getExpressionForOperation(InitialOperation initialOperation) {
         if (initialOperation != null) {
-            return "aql:self.executeOperation('" + EcoreUtil.getURI(initialOperation).toString() + "')";
+            return MessageFormat.format("aql:self.executeOperation(''{0}'')", EcoreUtil.getURI(initialOperation).toString()); //$NON-NLS-1$
         }
         return null;
     }

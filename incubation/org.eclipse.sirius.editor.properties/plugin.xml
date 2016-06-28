@@ -569,8 +569,8 @@
 <!-- Start of user code plugin.xml end specifics  -->
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
     <propertyTabs contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
-      <propertyTab category="default" id="viewpoint.tab.label" label="Label" afterTab="viewpoint.tab.general"/>
-      <propertyTab category="default" id="viewpoint.tab.widget" label="Widget" afterTab="viewpoint.tab.label"/>
+      <propertyTab category="default" id="viewpoint.tab.label" label="%viewpoint.tab.label.name" afterTab="viewpoint.tab.general"/>
+      <propertyTab category="default" id="viewpoint.tab.widget" label="%viewpoint.tab.widget.name" afterTab="viewpoint.tab.label"/>
     </propertyTabs>
   </extension>
   

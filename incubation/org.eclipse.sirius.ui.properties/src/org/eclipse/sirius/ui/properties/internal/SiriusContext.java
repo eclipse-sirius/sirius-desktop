@@ -91,7 +91,7 @@ public final class SiriusContext {
         } else if (input instanceof IAdaptable) {
             Object adapted = ((IAdaptable) input).getAdapter(EObject.class);
             if (adapted instanceof EObject) {
-                result = from((EObject) adapted);
+                result = from(adapted);
                 // Remember the original unadapted input.
                 result.input = input;
             }

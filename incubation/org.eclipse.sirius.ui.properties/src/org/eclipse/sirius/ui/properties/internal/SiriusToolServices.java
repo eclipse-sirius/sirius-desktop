@@ -122,7 +122,7 @@ public class SiriusToolServices {
         if (modelOperation != null) {
             ModelAccessor modelAccessor = session.getModelAccessor();
             ICommandTask task = new TaskHelper(modelAccessor, new NoUICallback()).buildTaskFromModelOperation(eObject, modelOperation);
-            SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation");
+            SiriusCommand command = new SiriusCommand(session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
             command.getTasks().add(task);
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
         }

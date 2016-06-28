@@ -59,7 +59,7 @@ public class SiriusInterpreter implements IInterpreter {
     @Override
     public IEvaluationResult evaluateExpression(Map<String, Object> variables, String expr) {
         IEvaluationResult result = EvaluationResult.noEvaluation();
-        Object self = variables.get("self");
+        Object self = variables.get("self"); //$NON-NLS-1$
         if (self instanceof EObject) {
             try {
                 setupInterpreter(variables);
@@ -74,6 +74,7 @@ public class SiriusInterpreter implements IInterpreter {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     private void setupInterpreter(Map<String, Object> variables) {
         if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
             org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;

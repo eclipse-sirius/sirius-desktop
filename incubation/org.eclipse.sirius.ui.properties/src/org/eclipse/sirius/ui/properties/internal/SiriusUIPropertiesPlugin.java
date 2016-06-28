@@ -24,7 +24,7 @@ public class SiriusUIPropertiesPlugin extends EMFPlugin {
     /**
      * The identifier of the plugin.
      */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.ui.properties";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.ui.properties"; //$NON-NLS-1$
 
     /**
      * The sole instance of the plugin.

@@ -66,7 +66,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      * The URI of the model containing the default value of the properties page
      * to create.
      */
-    private static final URI DEFAULT_PROPERTIES_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi", true);
+    private static final URI DEFAULT_PROPERTIES_URI = URI.createURI("platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi", true); //$NON-NLS-1$
 
     private static final ResourceSet DEFAULT_RULES = new ResourceSetImpl();
 
