@@ -3,8 +3,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Properties_View_Description</title>
-		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
-		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+		<link type="text/css" rel="stylesheet" href="../../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../resources/custom.css"/>
 	</head>
 	<body>
 		<h1 id="SpecifyingPropertiesView">Specifying Properties View</h1>
@@ -78,9 +78,6 @@
 			<em>maps</em> semantic elements onto some properties view elements. At runtime, each active properties element (pages, groups, widgets) will produce zero or more elements in the properties view, depending on how many semantic elements currently match the properties element&#8217;s definition. Whenever the current selection changes Sirius will automatically re-compute which elements should appear in the properties view according to the active widgets, and create or remove the necessary elements in the properties view.
 		</p>
 		<p>Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours.</p>
-		<p><span class="label label-danger">WARNING</span> This feature is first introduced in Sirius 4.0 as a &#8220;preview&#8221;. While the main mechanisms work, it should be considered in an 
-			<strong>experimental</strong>  state with details subject to changes until Sirius 4.1.
-		</p>
 		<h2 id="properties_view_description">Properties View Description</h2>
 		<p>Properties view are configured by creating a 
 			<em>Properties View Description</em> element (directly under the 

@@ -10,8 +10,6 @@ Properties views are defined inside the VSM and identify a sub-set of the elemen
 
 Note that if you have the (optional) support for Sirius-defined properties views correctly installed but do not specify anything inside your VSMs, Sirius will apply default generic rules to provide a canonical properties view for your model elements. As soon as you specify your own configuration, as described in this document, the default rules will be ignored in favor of yours.
 
-<span class="label label-danger">WARNING</span> This feature is first introduced in Sirius 4.0 as a "preview". While the main mechanisms work, it should be considered in an *experimental*  state with details subject to changes until Sirius 4.1.
-
 h2(#properties_view_description). Properties View Description
 
 Properties view are configured by creating a _Properties View Description_ element (directly under the "_Group_":/help/topic/org.eclipse.sirius.doc/doc/specifier/general/Specifying_Viewpoints.html#vsm_organization ) and its sub-elements (which describe the widgets, the actions, the layout...).

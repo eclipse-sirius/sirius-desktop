@@ -579,14 +579,5 @@
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.StyleMenuBuilder" />
      <builder class="org.eclipse.sirius.editor.properties.tools.internal.menu.LayoutMenuBuilder" />
   </extension>
-  
-  <extension point="org.eclipse.help.contexts">
-     <contexts file="help/contexts.xml" plugin="org.eclipse.sirius.properties">
-     </contexts>
-  </extension>
-
-   <extension point="org.eclipse.help.toc">
-      <toc file="doc/toc.xml" primary="false" />
-   </extension>
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->
