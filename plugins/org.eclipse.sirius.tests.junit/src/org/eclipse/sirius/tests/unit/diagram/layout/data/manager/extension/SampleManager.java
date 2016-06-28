@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,6 +66,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     /**
      * {@inheritDoc}
      */
+    @Override
     public AbstractLayoutData getLayoutData(LayoutDataKey key) {
         if (key instanceof AbstractSampleLayouDataKey && validateKey((AbstractSampleLayouDataKey) key)) {
             return getLinkedLayoutData((AbstractSampleLayouDataKey) key);
@@ -75,15 +76,15 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     }
 
     private AbstractLayoutData getLinkedLayoutData(AbstractSampleLayouDataKey key) {
-        AbstractLayoutData layoutData = layoutDataMap.get(key);
+        AbstractLayoutData layoutData = null;
         if (layoutData == null) {
             // Retrieve traceability/refinement information
             EObject foundSemantic = retrieveLinkedEObject(key.getSemantic());
             if (foundSemantic != null) {
                 if (key instanceof SampleNodeLayouDataKey) {
-                    layoutData = getLinkedLayoutData(new SampleNodeLayouDataKey(foundSemantic));
+                    layoutData = layoutDataMap.get(new SampleNodeLayouDataKey(foundSemantic));
                 } else if (key instanceof SampleEdgeLayouDataKey) {
-                    layoutData = getLinkedLayoutData(new SampleEdgeLayouDataKey(foundSemantic));
+                    layoutData = layoutDataMap.get(new SampleEdgeLayouDataKey(foundSemantic));
                 }
             }
         }
@@ -108,6 +109,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     /**
      * {@inheritDoc}
      */
+    @Override
     public LayoutDataKey createKey(DSemanticDecorator semanticDecorator) {
         LayoutDataKey result = null;
         final EObject realSemanticElement = semanticDecorator.getTarget();
@@ -123,6 +125,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addLayoutData(LayoutDataKey key, AbstractLayoutData layoutData) {
         if (key instanceof AbstractSampleLayouDataKey && validateKey((AbstractSampleLayouDataKey) key)) {
             layoutDataMap.put((AbstractSampleLayouDataKey) key, layoutData);
@@ -132,6 +135,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean containsData() {
         return !layoutDataMap.isEmpty();
     }
@@ -139,6 +143,7 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clearLayoutData() {
         layoutDataMap.clear();
     }
@@ -166,10 +171,12 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
      */
     private class SampleSessionManagerListener implements SessionManagerListener {
 
+        @Override
         public void notifyRemoveSession(Session removedSession) {
             cleanCache();
         }
 
+        @Override
         public void notify(Session updated, int notification) {
             switch (notification) {
             case SessionListener.CLOSED:
@@ -186,14 +193,17 @@ public class SampleManager extends AbstractSiriusLayoutDataManager implements Si
             }
         }
 
+        @Override
         public void notifyAddSession(Session newSession) {
             // Nothing to do
         }
 
+        @Override
         public void viewpointSelected(Viewpoint selectedSirius) {
             // Nothing to do
         }
 
+        @Override
         public void viewpointDeselected(Viewpoint deselectedSirius) {
             // Nothing to do
 

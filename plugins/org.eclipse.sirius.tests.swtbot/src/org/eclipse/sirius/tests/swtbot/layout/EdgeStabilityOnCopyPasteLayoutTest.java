@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -88,12 +89,12 @@ public class EdgeStabilityOnCopyPasteLayoutTest extends AbstractSiriusSwtBotGefT
             // Step 1: copy the layout of the first diagram
             diagramToCopy.show();
             diagramToCopy.click(new Point(1, 1));
-            diagramToCopy.clickContextMenu("Copy layout");
+            diagramToCopy.clickContextMenu(Messages.CopyFormatAction_text);
 
             // Step 2: paste the layout on the second diagram
             diagramToPaste.show();
             diagramToPaste.click(new Point(450, 100));
-            diagramToPaste.clickContextMenu("Paste layout");
+            diagramToPaste.clickContextMenu(Messages.PasteLayoutAction_text);
 
             // Step 3: check the stability of the edges
             checkEdgeStability(ECLASS1, ECLASS3, getBendpoints(diagramToCopy, ECLASS1, ECLASS3), getBendpoints(diagramToPaste, ECLASS1, ECLASS3));
@@ -120,11 +121,11 @@ public class EdgeStabilityOnCopyPasteLayoutTest extends AbstractSiriusSwtBotGefT
             PointList originalPointList2 = getBendpoints(diagramToCopyPaste, ECLASS2, ECLASS4).getCopy();
 
             diagramToCopyPaste.click(new Point(1, 1));
-            diagramToCopyPaste.clickContextMenu("Copy layout");
+            diagramToCopyPaste.clickContextMenu(Messages.CopyFormatAction_text);
 
             // Step 2: paste the layout on the same diagram
             diagramToCopyPaste.click(new Point(1, 1));
-            diagramToCopyPaste.clickContextMenu("Paste layout");
+            diagramToCopyPaste.clickContextMenu(Messages.PasteLayoutAction_text);
 
             // Step 3: check the stability of the edges
             checkEdgeStability(ECLASS1, ECLASS3, originalPointList1, getBendpoints(diagramToCopyPaste, ECLASS1, ECLASS3));

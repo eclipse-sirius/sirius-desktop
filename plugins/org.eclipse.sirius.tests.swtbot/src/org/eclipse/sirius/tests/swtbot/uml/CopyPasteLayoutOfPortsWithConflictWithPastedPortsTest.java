@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.uml;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 
 /**
@@ -47,7 +48,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest extends Abstr
      */
     public void testCopyPaste() {
         // Launch copy layout
-        editor.clickContextMenu("Copy layout");
+        editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
         final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "conflictsWithOtherPasteElements-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
@@ -57,7 +58,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest extends Abstr
         assertSameLocation(editor, "Port3", editorForPaste, "Port1", errorMessage);
         assertSameLocation(editor, "Port4", editorForPaste, "Port3", errorMessage);
         // Launch paste layout
-        editorForPaste.clickContextMenu("Paste layout");
+        editorForPaste.clickContextMenu(Messages.PasteLayoutAction_text);
         // Add a click here to avoid the problem describe in VP-3874.
         // This test fails without this click since the commit "0f72210" of
         // VP-3856 that removes a refresh of the figure execute during the

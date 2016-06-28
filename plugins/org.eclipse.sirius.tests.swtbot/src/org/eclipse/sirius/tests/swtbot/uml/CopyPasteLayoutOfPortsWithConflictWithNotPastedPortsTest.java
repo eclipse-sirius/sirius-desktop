@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -67,7 +68,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
      */
     public void testCopyPaste() {
         // Launch copy layout
-        editor.clickContextMenu("Copy layout");
+        editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
         final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "conflictsWithNotPasteElements-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
@@ -77,7 +78,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         assertSameLocation(editor, "Port3", editorForPaste, "Port8", errorMessage);
         assertSameLocation(editor, "Port4", editorForPaste, "Port5", errorMessage);
         // Launch paste layout
-        editorForPaste.clickContextMenu("Paste layout");
+        editorForPaste.clickContextMenu(Messages.PasteLayoutAction_text);
         // Check that the location of pasted ports is near to the original
         // copied location. A delta of 11 is tolerated (because they will be
         // shifted under or above the existing ports).
@@ -101,7 +102,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         editor = openAndGetEditor(getRepresentationDescriptionName(), "collapseWithConflicts1-copy");
 
         // Launch copy layout
-        editor.clickContextMenu("Copy layout");
+        editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
         final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "collapseWithConflicts1-paste", DDiagram.class);
         // Check that the location of ports to paste is the same as other ports
@@ -112,7 +113,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         String errorMessage2 = "The copied {0} bounds should contains the location of the {1} in diagram to paste.";
         assertLocationIsIncludedInBounds(editorForPaste, "Port2", editor, "Port1", errorMessage2);
         // Launch paste layout
-        editorForPaste.clickContextMenu("Paste layout");
+        editorForPaste.clickContextMenu(Messages.PasteLayoutAction_text);
         // Check that the location of pasted ports is near to the original
         // copied location. A delta of 11 is tolerated (because they will be
         // shifted under or above the existing ports).
@@ -139,7 +140,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         editor = openAndGetEditor(getRepresentationDescriptionName(), "collapseWithConflicts2-copy");
 
         // Launch copy layout
-        editor.clickContextMenu("Copy layout");
+        editor.clickContextMenu(Messages.CopyFormatAction_text);
         // Open the second editor to paste in
         final SWTBotSiriusDiagramEditor editorForPaste = openDiagram(localSession.getOpenedSession(), getRepresentationDescriptionName(), "collapseWithConflicts2-paste", DDiagram.class);
         // Check that the location of port to paste is included in one of the
@@ -147,7 +148,7 @@ public class CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest extends Ab
         String errorMessage2 = "The copied {0} location should be contained in the bounds of the {1} in diagram to paste.";
         assertLocationIsIncludedInBounds(editor, "Port2", editorForPaste, "Port1", errorMessage2);
         // Launch paste layout
-        editorForPaste.clickContextMenu("Paste layout");
+        editorForPaste.clickContextMenu(Messages.PasteLayoutAction_text);
         // Check that the location of pasted ports is near to the original
         // copied location. A delta of 11 is tolerated (because they will be
         // shifted under or above the existing ports).

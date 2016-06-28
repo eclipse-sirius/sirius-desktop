@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot.layout;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -30,6 +32,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
@@ -38,7 +41,25 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * 
  * @author fbarbin
  */
-public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestCase {
+public class BorderedNodeCopyPasteFormatTest extends AbstractSiriusSwtBotGefTestCase {
+
+    /** a1 border Node location on second diagram with extension. */
+    private static final Point A1_SECOND_DIAG_GMF_LOCATION = new Point(48, -2);
+
+    /** a1 border Node GMF location on second diagram with extension. */
+    private static final Point A1_SECOND_DIAG_LOCATION = new Point(103, 28);
+
+    /** a1 border Node location on first diagram. */
+    private static final Point B1_FIRST_DIAG_GMF_LOCATION = new Point(1, -2);
+
+    /** a1 border Node GMF location on first diagram. */
+    private static final Point B1_FIRST_DIAG_LOCATION = new Point(56, 28);
+
+    /** First point used to copy format. */
+    private static final Point COPY_POINT = new Point(610, 100);
+
+    /** Second point used to paste format. */
+    private static final Point PASTE_POINT = new Point(400, 400);
 
     private static final String FILE_DIR = "/";
 
@@ -54,19 +75,25 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String REPRESENTATION_NAME2 = "rep2";
 
+    private static final String REPRESENTATION_NAME3 = "rep3AdaptedForCopyPasteFormatTest";
+
+    private static final String REPRESENTATION_NAME4 = "rep4AdaptedForCopyPasteFormatTest";
+
     private static final String REPRESENTATION_DESCRIPTION_NAME = "Diagram";
 
     private static final String FILTER_NAME_INCORRECT = "The filter name is not correct";
 
-    /**
-     * Diagram on first representation.
-     */
+    /** Diagram on first representation. */
     private SWTBotSiriusDiagramEditor diagramEditor1;
 
-    /**
-     * Diagram on second representation.
-     */
+    /** Diagram on second representation. */
     private SWTBotSiriusDiagramEditor diagramEditor2;
+
+    /** Diagram on third representation with extension. */
+    private SWTBotSiriusDiagramEditor diagramEditor3;
+
+    /** Diagram on second representation with extension. */
+    private SWTBotSiriusDiagramEditor diagramEditor4;
 
     private ArrayList<Point> expectedAList, expectedBList, expectedAList_GMF, expectedBList_GMF;
 
@@ -88,8 +115,10 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         // Open the 2 representations
-        diagramEditor1 = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
-        diagramEditor2 = openDiagram(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor1 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1, DDiagram.class);
+        diagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2, DDiagram.class);
+        diagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME3, DDiagram.class);
+        diagramEditor4 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME4, DDiagram.class);
 
         // Set expected bordered nodes locations for first container and second
         // container.
@@ -110,7 +139,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         expectedAList_GMF.add(5, new Point(192, -2));
 
         expectedBList = new ArrayList<Point>();
-        expectedBList.add(0, new Point(56, 28));
+        expectedBList.add(0, B1_FIRST_DIAG_LOCATION);
         expectedBList.add(1, new Point(53, 90));
         expectedBList.add(2, new Point(140, 28));
         expectedBList.add(3, new Point(140, 155));
@@ -120,7 +149,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         expectedBList.add(7, new Point(229, 30));
 
         expectedBList_GMF = new ArrayList<Point>();
-        expectedBList_GMF.add(0, new Point(1, -2));
+        expectedBList_GMF.add(0, B1_FIRST_DIAG_GMF_LOCATION);
         expectedBList_GMF.add(1, new Point(-2, 60));
         expectedBList_GMF.add(2, new Point(85, -2));
         expectedBList_GMF.add(3, new Point(85, 125));
@@ -171,68 +200,81 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
      * <ul>
      * <li>Check bordered node locations before copy-paste on rep1</li>
      * <li>Run copy-paste from rep1 to rep2</li>
-     * <li>Check bordered node locations after copy-paste on rep2</li>
+     * <li>Check bordered node locations after copy-paste on rep2 (also check on
+     * one style attribute that there is non style change)</li>
      * </ul>
      */
     public void testBorderedNodeCopyPasteLayout() {
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
+        // Check the color before copy layout
+        Color yellow = new Color(null, 225, 225, 135);
+        Color lightBlue = new Color(null, 194, 239, 255);
+        try {
+            checkBorderNodeColor("r", diagramEditor1, yellow, "Yellow", 1);
+            checkBorderNodeColor("r", diagramEditor2, lightBlue, "Light Blue", 1);
+            // Check LogicalFunction2 bordered nodes locations before the copy
+            // layout.
+            checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
-        // Check LogicalFunction2 bordered nodes locations before the copy
-        // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+            // Check borderedNode before collapse
+            checkExtendedRBorderedNodes(diagramEditor1);
+            DRepresentation representation = getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1);
 
-        // Check borderedNode before collapse
-        checkExtendedRBorderedNodes(diagramEditor1);
-        DRepresentation representation = getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME1);
+            // collapse r1 and r2 bordered nodes by activating filter "test"
+            activateFilter((DDiagram) representation, "test");
 
-        // collapse r1 and r2 bordered nodes by activating filter "test"
-        activateFilter((DDiagram) representation, "test");
+            SWTBotUtils.waitAllUiEvents();
+            // Check borderedNode after collapse
+            checkCollapsedRBorderedNodes(diagramEditor1);
 
-        SWTBotUtils.waitAllUiEvents();
-        // Check borderedNode after collapse
-        checkCollapsedRBorderedNodes(diagramEditor1);
+            // Copy LC1 layout
+            diagramEditor1.show();
+            diagramEditor1.click(new Point(100, 100));
+            diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
-        // Copy LC1 layout
-        diagramEditor1.show();
-        diagramEditor1.click(new Point(100, 100));
-        diagramEditor1.clickContextMenu("Copy layout");
+            // Paste layout on second representation
+            diagramEditor2.show();
+            diagramEditor2.click(new Point(500, 250));
+            diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
-        // Paste layout on second representation
-        diagramEditor2.show();
-        diagramEditor2.click(new Point(500, 250));
-        diagramEditor2.clickContextMenu("Paste layout");
+            // Copy LC2 layout
+            diagramEditor1.show();
+            diagramEditor1.click(new Point(604, 76));
+            diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
-        // Copy LC2 layout
-        diagramEditor1.show();
-        diagramEditor1.click(new Point(604, 76));
-        diagramEditor1.clickContextMenu("Copy layout");
+            // Paste layout on second representation
+            diagramEditor2.show();
+            diagramEditor2.click(new Point(500, 250));
+            diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
-        // Paste layout on second representation
-        diagramEditor2.show();
-        diagramEditor2.click(new Point(500, 250));
-        diagramEditor2.clickContextMenu("Paste layout");
+            // Check LogicalFunction1 bordered nodes locations after the paste
+            // layout.
+            checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
-        // Check LogicalFunction1 bordered nodes locations after the paste
-        // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+            // Check LogicalFunction2 bordered nodes locations after the paste
+            // layout.
+            checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
-        // Check LogicalFunction2 bordered nodes locations after the paste
-        // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+            // Check the color after paste layout (no change expected)
+            checkBorderNodeColor("r", diagramEditor2, lightBlue, "Light Blue", 1);
 
-        // Check borderedNode before collapse
-        checkExtendedRBorderedNodes(diagramEditor2);
-        representation = getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2);
+            // Check borderedNode before collapse
+            checkExtendedRBorderedNodes(diagramEditor2);
+            representation = getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2);
 
-        // collapse r1 and r2 bordered nodes by activating filter "test"
-        activateFilter((DDiagram) representation, "test");
+            // collapse r1 and r2 bordered nodes by activating filter "test"
+            activateFilter((DDiagram) representation, "test");
 
-        SWTBotUtils.waitAllUiEvents();
-        // Check borderedNode after collapse
-        checkCollapsedRBorderedNodes(diagramEditor2);
+            SWTBotUtils.waitAllUiEvents();
+            // Check borderedNode after collapse
+            checkCollapsedRBorderedNodes(diagramEditor2);
+        } finally {
+            yellow.dispose();
+            lightBlue.dispose();
+        }
     }
 
     /**
@@ -248,11 +290,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -268,20 +310,20 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         // Copy LC1 layout
         diagramEditor1.show();
         diagramEditor1.click(new Point(1, 1));
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         // Paste layout on second representation
         diagramEditor2.show();
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor2);
@@ -309,11 +351,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -332,20 +374,20 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         diagramEditor1.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
 
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         // Paste layout on second representation
         diagramEditor2.show();
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor2);
@@ -376,11 +418,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -390,7 +432,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         diagramEditor1.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
 
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         // activate hide filter on representation 2
 
@@ -400,6 +442,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         SWTBotUtils.waitAllUiEvents();
         // hide b bordered nodes by activating filter "testHide"
         Display.getDefault().syncExec(new Runnable() {
+            @Override
             public void run() {
                 activateFilter((DDiagram) representation2, "testHide");
             }
@@ -409,10 +452,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Paste layout on second representation
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // reveal b bordered nodes by deactivating filter "testHide"
         Display.getDefault().syncExec(new Runnable() {
+            @Override
             public void run() {
                 deactivateFilter((DDiagram) representation2, "testHide");
             }
@@ -421,11 +465,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         checkExtendedRBorderedNodes(diagramEditor2);
 
@@ -447,11 +491,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -461,7 +505,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         diagramEditor1.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
 
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         final DRepresentation representation2 = getRepresentationWithName(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME2);
 
@@ -476,7 +520,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Paste layout on second representation
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // extend bordered nodes by deactivating filter "testHide"
         deactivateFilter((DDiagram) representation2, "testCollapseAtt");
@@ -485,11 +529,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         checkExtendedRBorderedNodes(diagramEditor2);
 
@@ -511,11 +555,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -530,24 +574,24 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         diagramEditor1.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
 
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         diagramEditor2.show();
         SWTBotUtils.waitAllUiEvents();
 
         // Paste layout on second representation
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         SWTBotUtils.waitAllUiEvents();
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         checkExtendedRBorderedNodes(diagramEditor2);
 
@@ -571,11 +615,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -590,7 +634,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         diagramEditor1.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
 
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         diagramEditor2.show();
 
@@ -606,7 +650,7 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Paste layout on second representation
         diagramEditor2.click(new Point(100, 400));
-        diagramEditor2.clickContextMenu("Paste layout");
+        diagramEditor2.clickContextMenu(Messages.PasteLayoutAction_text);
 
         SWTBotUtils.waitAllUiEvents();
         // extend bordered nodes by deactivating filter "testHide"
@@ -616,11 +660,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor2);
+        checkFirstContainerABorderedNodes(diagramEditor2, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor2);
+        checkSecondContainerABorderedNodes(diagramEditor2, expectedBList, expectedBList_GMF);
 
         checkExtendedRBorderedNodes(diagramEditor2);
 
@@ -639,11 +683,11 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor1.show();
         // Check LogicalFunction1 bordered nodes locations before the copy
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations before the copy
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode before collapse
         checkExtendedRBorderedNodes(diagramEditor1);
@@ -659,56 +703,62 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
         // Copy LC1 layout
         diagramEditor1.show();
         diagramEditor1.click(new Point(1, 1));
-        diagramEditor1.clickContextMenu("Copy layout");
+        diagramEditor1.clickContextMenu(Messages.CopyFormatAction_text);
 
         // Paste layout on same representation
         diagramEditor1.click(new Point(1, 1));
-        diagramEditor1.clickContextMenu("Paste layout");
+        diagramEditor1.clickContextMenu(Messages.PasteLayoutAction_text);
 
         // Check LogicalFunction1 bordered nodes locations after the paste
         // layout.
-        checkFirstContainerABorderedNodes(diagramEditor1);
+        checkFirstContainerABorderedNodes(diagramEditor1, expectedAList, expectedAList_GMF);
 
         // Check LogicalFunction2 bordered nodes locations after the paste
         // layout.
-        checkSecondContainerABorderedNodes(diagramEditor1);
+        checkSecondContainerABorderedNodes(diagramEditor1, expectedBList, expectedBList_GMF);
 
         // Check borderedNode after collapse
         checkCollapsedRBorderedNodes(diagramEditor1);
     }
 
-    private void checkSecondContainerABorderedNodes(SWTBotSiriusDiagramEditor editorToCheck) {
+    private void checkSecondContainerABorderedNodes(SWTBotSiriusDiagramEditor editorToCheck, ArrayList<Point> expectedList, ArrayList<Point> expectedList_GMF) {
         for (int i = 1; i <= 8; i++) {
-            SWTBotGefEditPart editPart = editorToCheck.getEditPart("b" + i, AbstractDiagramBorderNodeEditPart.class);
-            if (editPart != null) {
-                AbstractDiagramBorderNodeEditPart part = (AbstractDiagramBorderNodeEditPart) editPart.part();
-                // Check draw2d location
-                Point location = part.getFigure().getBounds().getTopLeft();
-                assertEquals("Wrong expected location for bordered node b" + i, expectedBList.get(i - 1), location);
-                // Check GMF location
-                Point locationGMF = new Point(((Location) ((Node) part.getModel()).getLayoutConstraint()).getX(), ((Location) ((Node) part.getModel()).getLayoutConstraint()).getY());
-                assertEquals("Wrong expected GMF location for bordered node b" + i, expectedBList_GMF.get(i - 1), locationGMF);
-            }
+            checkBorderNode("b", editorToCheck, expectedList.get(i - 1), expectedList_GMF.get(i - 1), i);
         }
     }
 
-    private void checkFirstContainerABorderedNodes(SWTBotSiriusDiagramEditor editorToCheck) {
+    private void checkBorderNode(String label, SWTBotSiriusDiagramEditor editorToCheck, Point expectedPoint, Point expectedPoint_GMF, int i) {
+        SWTBotGefEditPart editPart = editorToCheck.getEditPart(label + i, AbstractDiagramBorderNodeEditPart.class);
+        if (editPart != null) {
+            AbstractDiagramBorderNodeEditPart part = (AbstractDiagramBorderNodeEditPart) editPart.part();
+            // Check draw2d location
+            Point location = part.getFigure().getBounds().getTopLeft();
+            assertEquals("Wrong expected location for bordered node " + label + i, expectedPoint, location);
+            // Check GMF location
+            Point locationGMF = new Point(((Location) ((Node) part.getModel()).getLayoutConstraint()).getX(), ((Location) ((Node) part.getModel()).getLayoutConstraint()).getY());
+            assertEquals("Wrong expected GMF location for bordered node " + label + i, expectedPoint_GMF, locationGMF);
+        }
+    }
+
+    private void checkBorderNodeColor(String label, SWTBotSiriusDiagramEditor editorToCheck, Color color, String nameColor, int i) {
+        SWTBotGefEditPart editPart = editorToCheck.getEditPart(label + i, AbstractDiagramBorderNodeEditPart.class);
+        if (editPart != null) {
+            AbstractDiagramBorderNodeEditPart part = (AbstractDiagramBorderNodeEditPart) editPart.part();
+            // Check color
+            Object shape = part.getStyleEditPart().getFigure().getChildren().get(0);
+            assertEquals("The color of figure for " + label + i + " must be " + nameColor, color, ((Shape) shape).getBackgroundColor());
+        }
+    }
+
+    private void checkFirstContainerABorderedNodes(SWTBotSiriusDiagramEditor editorToCheck, ArrayList<Point> expectedList, ArrayList<Point> expectedList_GMF) {
         for (int i = 1; i <= 6; i++) {
-            SWTBotGefEditPart editPart = editorToCheck.getEditPart("a" + i, AbstractDiagramBorderNodeEditPart.class);
-            if (editPart != null) {
-                AbstractDiagramBorderNodeEditPart part = (AbstractDiagramBorderNodeEditPart) editPart.part();
-                // Check draw2d location
-                Point location = part.getFigure().getBounds().getTopLeft();
-                assertEquals("Wrong expected location for bordered node a" + i, expectedAList.get(i - 1), location);
-                // Check GMF location
-                Point locationGMF = new Point(((Location) ((Node) part.getModel()).getLayoutConstraint()).getX(), ((Location) ((Node) part.getModel()).getLayoutConstraint()).getY());
-                assertEquals("Wrong expected GMF location for bordered node a" + i, expectedAList_GMF.get(i - 1), locationGMF);
-            }
+            checkBorderNode("a", editorToCheck, expectedList.get(i - 1), expectedList_GMF.get(i - 1), i);
         }
     }
 
     private void checkCollapsedRBorderedNodes(SWTBotSiriusDiagramEditor editorToCheck) {
         for (int i = 1; i <= 2; i++) {
+
             SWTBotGefEditPart editPart = editorToCheck.getEditPart("r" + i, AbstractDiagramBorderNodeEditPart.class);
             if (editPart != null) {
                 AbstractDiagramBorderNodeEditPart part = (AbstractDiagramBorderNodeEditPart) editPart.part();
@@ -744,6 +794,81 @@ public class BorderedNodeCopyPastLayoutTest extends AbstractSiriusSwtBotGefTestC
                 assertEquals("Wrong expected GMF location for collapsed bordered node r" + i + " before collapse filter activation", expectedNonCollapsedNodeList_GMF.get(i - 1), locationGMF);
                 assertEquals("Wrong expected GMF dimension for collapsed bordered node r" + i + " before collapse filter activation", new Dimension(10, 10), dimensionGMF);
             }
+        }
+    }
+
+    /**
+     * Test that the paste layout puts the elements at the expected location.
+     * This test uses the copy-paste layout on Diagram using the
+     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
+     * sampleNameDataProvider contributed in oes.tests.junit plug-in).
+     * <ul>
+     * <li>Check container locations before copy-paste on rep3</li>
+     * <li>Run copy-paste from rep3 to rep4</li>
+     * <li>Check border node location after copy-paste on rep4</li>
+     * </ul>
+     */
+    public void testBorderedNodeCopyPasteLayoutOnDiagramWithExtension() {
+        diagramEditor3.show();
+        // Check LogicalFunction1 bordered nodes locations before the copy
+        // layout.
+        checkFirstContainerABorderedNodes(diagramEditor3, expectedAList, expectedAList_GMF);
+
+        // Check LogicalFunction2 bordered nodes locations before the copy
+        // layout.
+        checkSecondContainerABorderedNodes(diagramEditor3, expectedBList, expectedBList_GMF);
+
+        // Copy LC1 layout
+        diagramEditor3.click(COPY_POINT);
+        diagramEditor3.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditor4.show();
+        // Paste layout on second representation
+        diagramEditor4.click(PASTE_POINT);
+        diagramEditor4.clickContextMenu(Messages.PasteLayoutAction_text);
+
+        // Check LogicalFunction1 bordered nodes locations after the paste
+        // layout.
+        checkBorderNode("a", diagramEditor4, B1_FIRST_DIAG_LOCATION, B1_FIRST_DIAG_GMF_LOCATION, 1);
+    }
+
+    /**
+     * Test that the paste style changes style on the expected figure. This test
+     * uses the copy-paste style on Diagram using the
+     * org.eclipse.sirius.diagram.ui.layoutDataManager extension-point (the
+     * sampleNameDataProvider contributed in oes.tests.junit plug-in). Style of
+     * border node a1 from a first diagram is applied on border node LC2 from a
+     * second diagram.
+     * <ul>
+     * <li>Run copy-paste Style from rep7 to rep5</li>
+     * <li>Check node locations and style after copy-paste on rep5. Check style
+     * node changes into yellow.</li>
+     * </ul>
+     */
+    public void testBorderNodeCopyPasteStyleOnDiagramWithExtension() {
+        diagramEditor3.show();
+        // Copy LC1 layout
+        diagramEditor3.click(COPY_POINT);
+        diagramEditor3.clickContextMenu(Messages.CopyFormatAction_text);
+
+        diagramEditor4.show();
+        // Check a1 bordered nodes locations before the paste style.
+        checkBorderNode("a", diagramEditor4, A1_SECOND_DIAG_LOCATION, A1_SECOND_DIAG_GMF_LOCATION, 1);
+
+        // Paste style on second representation
+        diagramEditor4.click(PASTE_POINT);
+        diagramEditor4.clickContextMenu(Messages.PasteStyleAction_text);
+
+        // Check a1 bordered nodes locations does not change after the paste
+        // layout.
+        checkBorderNode("a", diagramEditor4, A1_SECOND_DIAG_LOCATION, A1_SECOND_DIAG_GMF_LOCATION, 1);
+
+        // Check border node color
+        Color yellow = new Color(null, 252, 233, 79);
+        try {
+            checkBorderNodeColor("a", diagramEditor4, yellow, "Yellow", 1);
+        } finally {
+            yellow.dispose();
         }
     }
 

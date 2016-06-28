@@ -35,8 +35,8 @@ public class LayoutDataManagerSelectionTest extends TestCase {
      * Test sample extension presence and deployment.
      */
     public void testSampleExtensionDeployment() {
-        assertEquals("Sample layout data manager extension not found.", 1, LayoutDataManagerRegistry.getRegisteredExtensions().size());
-        assertEquals("Sample layout data manager extension instance not found.", 2, LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers().size());
+        assertEquals("Sample layout data manager extension not found.", 2, LayoutDataManagerRegistry.getRegisteredExtensions().size());
+        assertEquals("Sample layout data manager extension instance not found.", 3, LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers().size());
     }
 
     /**
