@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.eclipse.sirius.tests.rcptt.sample.properties.design
-Bundle-SymbolicName: org.eclipse.sirius.tests.rcptt.sample.properties.design;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Name: org.eclipse.sirius.tests.rcptt.sample.properties.design.radio
+Bundle-SymbolicName: org.eclipse.sirius.tests.rcptt.sample.properties.design.radio;singleton:=true
+Bundle-Version: 4.1.0
 Bundle-Activator: org.eclipse.sirius.tests.rcptt.sample.properties.design.radio.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
