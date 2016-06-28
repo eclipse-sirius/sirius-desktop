@@ -361,15 +361,15 @@
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.design</module>
         <module>../../plugins/org.eclipse.sirius.samples.family</module>
 
-        <module>../../incubation/org.eclipse.sirius.common.interpreter</module>
-        <module>../../incubation/org.eclipse.sirius.properties</module>
-        <module>../../incubation/org.eclipse.sirius.properties.edit</module>
-        <module>../../incubation/org.eclipse.sirius.editor.properties</module>
-        <module>../../incubation/org.eclipse.sirius.ui.properties</module>
-        <module>../../incubation/org.eclipse.sirius.sample.properties</module>
-        <module>../../incubation/org.eclipse.sirius.sample.properties.checkbox</module>
-        <module>../../incubation/org.eclipse.sirius.sample.properties.radio</module>
-        <module>../../incubation/org.eclipse.sirius.sample.properties.textarea</module>
+        <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
+        <module>../../plugins/org.eclipse.sirius.properties</module>
+        <module>../../plugins/org.eclipse.sirius.properties.edit</module>
+        <module>../../plugins/org.eclipse.sirius.editor.properties</module>
+        <module>../../plugins/org.eclipse.sirius.ui.properties</module>
+        <module>../../plugins/org.eclipse.sirius.sample.properties</module>
+        <module>../../plugins/org.eclipse.sirius.sample.properties.checkbox</module>
+        <module>../../plugins/org.eclipse.sirius.sample.properties.radio</module>
+        <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
@@ -385,10 +385,10 @@
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
         
-        <module>../../incubation/org.eclipse.sirius.interpreter.feature</module>
-        <module>../../incubation/org.eclipse.sirius.properties.feature</module>
-        <module>../../incubation/org.eclipse.sirius.specifier.properties.feature</module>
-        <module>../../incubation/org.eclipse.sirius.samples.properties.feature</module>
+        <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
+        <module>../../packaging/org.eclipse.sirius.properties.feature</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.properties.feature</module>
+        <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.update</module>
@@ -423,7 +423,6 @@
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.tests.update</module>
-        
     </modules>
   </profile>
 
