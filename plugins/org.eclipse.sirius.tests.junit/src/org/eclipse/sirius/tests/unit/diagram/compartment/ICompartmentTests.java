@@ -17,7 +17,6 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
  * Interface to regroup common constant for tests on compartments.
  * 
  * @author mporhel
- *
  */
 public interface ICompartmentTests {
 
@@ -39,9 +38,17 @@ public interface ICompartmentTests {
 
     public static final String VERTICAL_STACK_REPRESENTATION_NAME = "Diag with VStack";
 
+    public static final String VERTICAL_STACK_DND_REPRESENTATION_NAME = "Diag with VStack and DnD";
+
+    public static final String HORIZONTAL_STACK_DND_REPRESENTATION_NAME = "Diag with HStack and DnD";
+
     public static final String HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME = "HStackDiag";
 
     public static final String VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME = "VStackDiag";
+
+    public static final String VERTICAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "VStackDiag with DnD";
+
+    public static final String HORIZONTAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "HStackDiag with DnD";
 
     public static final String PACKAGE_CREATION_TOOL_NAME = "EPackage";
 
@@ -54,6 +61,8 @@ public interface ICompartmentTests {
     public static final String FIRST_REGION_CONTAINER_NAME = "P1";
 
     public static final String SECOND_REGION_CONTAINER_NAME = "az";
+
+    public static final String FIRST_REGION_NAME = "cccc";
 
     public static final String NEW_REGION_CONTAINER_NAME = "p3";
 
