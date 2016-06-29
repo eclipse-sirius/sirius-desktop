@@ -47,7 +47,9 @@
       <eSubpackages name="bbbb">
         <eClassifiers xsi:type="ecore:EClass" name="cl4"/>
       </eSubpackages>
-      <eSubpackages name="cccc"/>
+      <eSubpackages name="cccc">
+        <eSubpackages name="eee"/>
+      </eSubpackages>
     </eSubpackages>
   </eSubpackages>
 </ecore:EPackage>
