@@ -136,7 +136,7 @@
       <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="4.1.0.qualifier"/>
       <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="4.1.0.qualifier"/>
       <feature id="org.eclipse.sirius.specifier.properties.feature" version="4.1.0.qualifier"/>
-      <feature id="org.eclipse.eef.sdk.feature" version="1.6.0.qualifier"/>
+      <feature id="org.eclipse.eef.sdk.feature" />
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.sirius.tests.rcptt.feature" version="4.1.0.qualifier"/>
    </features>
