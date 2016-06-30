@@ -60,16 +60,24 @@ public class STDSwtbotTestSuite extends TestCase {
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("STD SWTBOT test suite");
-
+        addPart1(suite);
+        addPart2(suite);
+        return suite;
+    }
+    
+    /**
+     * Add the first part of the SWTbot tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */    
+    public static void addPart1(TestSuite suite) {
         suite.addTestSuite(STD001.class);
         suite.addTestSuite(STD002.class);
         suite.addTestSuite(STD004.class);
         suite.addTestSuite(STD005.class);
-        suite.addTestSuite(STD006.class);
         suite.addTestSuite(STD007.class);
-        suite.addTestSuite(STD008.class);
         suite.addTestSuite(STD009.class);
-        suite.addTestSuite(STD010.class);
         suite.addTestSuite(STD011.class);
         // suite.addTestSuite(STD013.class);
         // suite.addTestSuite(STD017.class);
@@ -84,7 +92,18 @@ public class STDSwtbotTestSuite extends TestCase {
         // suite.addTestSuite(STD047.class);/// broken?=>pe pb du UILocalSession
         // suite.addTestSuite(STD048.class);
         // suite.addTestSuite(STD049.class);
-        return suite;
+    }
+    
+    /**
+     * Add the second part of the SWTbot tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */    
+    public static void addPart2(TestSuite suite) {
+        suite.addTestSuite(STD006.class);
+        suite.addTestSuite(STD008.class);
+        suite.addTestSuite(STD010.class);
     }
 
     /**

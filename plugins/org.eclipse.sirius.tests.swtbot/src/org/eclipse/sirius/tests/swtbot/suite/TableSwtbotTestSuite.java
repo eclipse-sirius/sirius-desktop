@@ -46,7 +46,7 @@ public class TableSwtbotTestSuite extends TestCase {
     public static void main(final String[] args) {
         TestRunner.run(suite());
     }
-
+    
     /**
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
      * 
@@ -54,6 +54,17 @@ public class TableSwtbotTestSuite extends TestCase {
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("Table SWTBOT test suite");
+        addPart1(suite);
+        addPart2(suite);
+        return suite;
+    }
+    /**
+     * Add the first part of the SWTbot tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart1(TestSuite suite) {
         suite.addTestSuite(HideRevealTableColumnsTest.class);
         suite.addTestSuite(HideRevealTableLinesTest.class);
         suite.addTestSuite(RenameTableRepresentationTest.class);
@@ -65,13 +76,20 @@ public class TableSwtbotTestSuite extends TestCase {
         }
         suite.addTestSuite(ContextMenuTableTest.class);
         suite.addTestSuite(TableUIPermissionAuthorityTests.class);
-        suite.addTestSuite(TableUIRefreshTests.class);
         suite.addTestSuite(DeleteLineWithDELShortcutTest.class);
         suite.addTestSuite(TableRefreshWithF5ShortcutTests.class);
-        suite.addTestSuite(NavigationDescriptionFromTableAndTreeTest.class);
         suite.addTestSuite(CellEditionTest.class);
         suite.addTestSuite(ReadOnlyColumnTest.class);
-        return suite;
+    }
+    /**
+     * Add the second part of the SWTbot tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart2(TestSuite suite) {
+        suite.addTestSuite(NavigationDescriptionFromTableAndTreeTest.class);
+        suite.addTestSuite(TableUIRefreshTests.class);
     }
 
     /**

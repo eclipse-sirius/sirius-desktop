@@ -130,7 +130,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LabelAlignmentRefreshTest.class);
         suite.addTestSuite(LabelProviderProviderTests.class);
         suite.addTestSuite(PinnedElementsOnTreeDiagramTest.class);
-        suite.addTestSuite(PinnedElementsTest.class);
         suite.addTestSuite(PinnedNotesTest.class);
         suite.addTestSuite(RemoveEdgeBendpointsTest.class);
         suite.addTestSuite(RemoveNoteTextTest.class);
@@ -149,7 +148,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(LineStyleTest.class);
-        suite.addTestSuite(CompartmentsCreationTest.class);
     }
 
     /**
@@ -204,6 +202,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
         suite.addTestSuite(DiagramPrintTest.class);
+        suite.addTestSuite(CompartmentsCreationTest.class);
+        suite.addTestSuite(PinnedElementsTest.class);
     }
 
     /**
@@ -218,14 +218,10 @@ public class AllTestSuite extends TestCase {
 
         addGerritPart1(suite);
 
-        // TheViepointProjectCreationTest should be done before the others ones:
-        // to verify the behavior when a specifier first launches the product.
-        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
-
         // suite.addTest(PseudoClearcaseSwtbotTestSuite.suite());
-        suite.addTest(STDSwtbotTestSuite.suite());
+        STDSwtbotTestSuite.addPart1(suite);
         suite.addTest(UMLSwtbotTestSuite.suite());
-        suite.addTest(TableSwtbotTestSuite.suite());
+        TableSwtbotTestSuite.addPart1(suite);
 
         suite.addTestSuite(CrossTableIntersectionTest.class);
         suite.addTestSuite(CrossTableIntersectionExpressionTest.class);
@@ -247,10 +243,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeLabelsMoveTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
         suite.addTestSuite(EdgeOnFigureWithAlphaAnchorTest.class);
-        suite.addTestSuite(CenteredEdgesTest.class);
         suite.addTestSuite(EditorSavingTest.class);
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
-        suite.addTestSuite(LinkWithEditorFeatureWithModelExplorerViewTest.class);
         suite.addTestSuite(RepresentationVisibilityAfterSessionReloadTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
@@ -271,16 +265,13 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PortSelectionTest.class);
         suite.addTestSuite(PortNotVisibleSelectionTest.class);
         suite.addTestSuite(RefreshAfterUndoDeletionFromGenericToolTest.class);
-        suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
         suite.addTestSuite(RefreshWithCustomizedStyleFromAppearanceTabTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromTabbarTests.class);
         suite.addTestSuite(ResizeKindRefreshTests.class);
-        suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
         suite.addTestSuite(TreeFoldingTest.class);
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(BackgroundStyleUpdateTest.class);
-        suite.addTestSuite(BorderSizeComputationExpressionTest.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
@@ -295,8 +286,14 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addPart2(TestSuite suite) {
-
+        // The ViewpointProjectCreationTest should be done before the others ones:
+        // to verify the behavior when a specifier first launches the product.
+        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
+        
         addGerritPart2(suite);
+        STDSwtbotTestSuite.addPart2(suite);
+        TableSwtbotTestSuite.addPart2(suite);
+        
         suite.addTestSuite(CustomizationPropertySectionsTests.class);
         suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
@@ -318,6 +315,11 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
+        suite.addTestSuite(LinkWithEditorFeatureWithModelExplorerViewTest.class);
+        suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
+        suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
+        suite.addTestSuite(BorderSizeComputationExpressionTest.class);
+        suite.addTestSuite(CenteredEdgesTest.class);
 
         suite.addTestSuite(DeleteHookTests.class);
 
