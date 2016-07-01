@@ -659,68 +659,60 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         EObject parent = element.eContainer();
         boolean isAlreadylayouted = false;
         if (element instanceof AbstractDNode && parent instanceof DNodeContainer) {
-            if (new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer()) {
-                isAlreadylayouted = true;
-            } else {
-                isAlreadylayouted = updateFreeFormContainerChildButNotBorderedNodeBounds(createdView, previousCreatedView, element);
+            Dimension size = null;
+            Point location = null;
+
+            AbstractDNode abstractDNode = (AbstractDNode) element;
+            LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode);
+            if (layoutData == null) {
+                layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
             }
-        }
-        return isAlreadylayouted;
-    }
-
-    private boolean updateFreeFormContainerChildButNotBorderedNodeBounds(View createdView, View previousCreatedView, EObject element) {
-        boolean isAlreadylayouted = false;
-        Dimension size = null;
-        Point location = null;
-
-        AbstractDNode abstractDNode = (AbstractDNode) element;
-        LayoutData layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode);
-        if (layoutData == null) {
-            layoutData = SiriusLayoutDataManager.INSTANCE.getData(abstractDNode, true);
-        }
-        if (layoutData != null) {
-            location = layoutData.getLocation();
-            size = layoutData.getSize();
-            isAlreadylayouted = true;
-        }
-
-        if (size == null) {
-            size = getDefaultSize(abstractDNode);
-        }
-        if (location == null) {
-            if (previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
-
-                // if a location has been registered in
-                // SiriusLayoutDataManager but we were not able to
-                // retrieve it before -> Set a center location for child
-                // DNode of DNodeContainer
-                // like
-                // in AirXYLayoutEditPolicy#getConstraintFor(request)
-                if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
-                    markCreatedViewsWithCenterLayout(createdView);
-                } else {
-                    Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
-                    location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
-                }
-
+            if (layoutData != null) {
+                location = layoutData.getLocation();
+                size = layoutData.getSize();
                 isAlreadylayouted = true;
-            } else {
-                // if a location has been registered in
-                // SiriusLayoutDataManager but we were not able to
-                // retrieve it before -> Set a center location for child
-                // DNode of DNodeContainer like
-                // in AirXYLayoutEditPolicy#getConstraintFor(request)
-                if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some()) {
-                    // mark with special layout
-                    markCreatedViewsWithCenterLayout(createdView);
+            }
+
+            if (size == null) {
+                size = getDefaultSize(abstractDNode);
+            }
+            if (location == null) {
+                if (previousCreatedView instanceof Node && ((Node) previousCreatedView).getLayoutConstraint() instanceof Bounds) {
+
+                    // if a location has been registered in
+                    // SiriusLayoutDataManager but we were not able to
+                    // retrieve it before -> Set a center location for child
+                    // DNode of DNodeContainer
+                    // like
+                    // in AirXYLayoutEditPolicy#getConstraintFor(request)
+                    if (previousCreatedView.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker())) {
+                        markCreatedViewsWithCenterLayout(createdView);
+                    } else {
+                        Bounds previousBounds = (Bounds) ((Node) previousCreatedView).getLayoutConstraint();
+                        location = new Point(previousBounds.getX(), previousBounds.getY()).getTranslated(SiriusLayoutDataManager.PADDING, SiriusLayoutDataManager.PADDING);
+                    }
+
                     isAlreadylayouted = true;
+                } else {
+                    // if a location has been registered in
+                    // SiriusLayoutDataManager but we were not able to
+                    // retrieve it before -> Set a center location for child
+                    // DNode of DNodeContainer like
+                    // in AirXYLayoutEditPolicy#getConstraintFor(request),
+                    // except for children of regions container for which layout
+                    // is managed with RegionContainerUpdateLayoutOperation.
+                    if (layoutData == null && SiriusLayoutDataManager.INSTANCE.getData().some() && !(new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer())) {
+                        // mark with special layout
+                        markCreatedViewsWithCenterLayout(createdView);
+                        isAlreadylayouted = true;
+                    }
                 }
             }
-        }
 
-        if (createdView instanceof Node) {
-            Node createdNode = (Node) createdView;
-            updateLocationConstraint(createdNode, size, location, abstractDNode);
+            if (createdView instanceof Node) {
+                Node createdNode = (Node) createdView;
+                updateLocationConstraint(createdNode, size, location, abstractDNode);
+            }
         }
         return isAlreadylayouted;
     }
