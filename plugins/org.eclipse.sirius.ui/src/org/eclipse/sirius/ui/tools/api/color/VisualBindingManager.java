@@ -552,11 +552,11 @@ public class VisualBindingManager {
         }
 
         public Pattern createPattern() {
-            return new Pattern(null, this.x, this.y, this.w, this.h, this.backgroundColor, this.foregroundColor);
+            return new Pattern(null, this.x, this.y, this.x + this.w, this.y + this.h, this.backgroundColor, this.foregroundColor);
         }
 
         public GradientPaint createGradientPaint() {
-            return new GradientPaint(this.x, this.y, new java.awt.Color(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue()), this.w, this.h,
+            return new GradientPaint(this.x, this.y, new java.awt.Color(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue()), this.x + this.w, this.y + this.h,
                     new java.awt.Color(foregroundColor.getRed(), foregroundColor.getGreen(), foregroundColor.getBlue()));
         }
     }

@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.metafile.GdiFon
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.DrawableRenderedImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderingListener;
 import org.eclipse.gmf.runtime.draw2d.ui.text.TextUtilitiesEx;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -1555,6 +1556,24 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         getGraphics2D().clipRect(relativeClipRegion.x + transX, relativeClipRegion.y + transY, relativeClipRegion.width, relativeClipRegion.height);
         java.awt.Rectangle bounds = getGraphics2D().getClip().getBounds();
         relativeClipRegion = new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
+    }
+
+    /**
+     * Compute the right pattern according to current translate offset and set
+     * it.
+     * 
+     * @param backgroundStyle
+     *            the background style
+     * @param bounds
+     *            the bounds of the figure (without current translate offset)
+     * @param backgroundColor
+     *            the background color
+     * @param gradientColor
+     *            the gradient color
+     */
+    public void setBackgroundPattern(int backgroundStyle, Rectangle zoomedBounds, Color backgroundColor, Color gradientColor) {
+        GradientPaint gradientPaint = GradientHelper.getGradientPaint(backgroundStyle, zoomedBounds.getTranslated(getTranslationOffset()), backgroundColor, gradientColor);
+        setBackgroundPattern(gradientPaint);
     }
 
 }
