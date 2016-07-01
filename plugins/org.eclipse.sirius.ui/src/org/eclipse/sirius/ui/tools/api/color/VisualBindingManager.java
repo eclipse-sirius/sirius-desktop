@@ -556,7 +556,7 @@ public class VisualBindingManager {
         }
 
         public GradientPaint createGradientPaint() {
-            return new GradientPaint(this.x, this.y, new java.awt.Color(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue()), this.w, this.h,
+            return new GradientPaint(this.x, this.y, new java.awt.Color(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue()), this.x + this.w, this.y + this.h,
                     new java.awt.Color(foregroundColor.getRed(), foregroundColor.getGreen(), foregroundColor.getBlue()));
         }
     }
