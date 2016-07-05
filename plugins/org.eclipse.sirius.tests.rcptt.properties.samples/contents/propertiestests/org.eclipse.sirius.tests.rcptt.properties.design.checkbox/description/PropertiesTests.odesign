@@ -32,47 +32,6 @@
       </controls>
       <controls
           xsi:type="properties:CheckboxDescription"
-          labelExpression="Style Checkbox"
-          valueExpression="aql:self.booleanAttribute">
-        <style
-            labelFontNameExpression="Times new roman"
-            labelFontSize="12">
-          <labelBackgroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-          <labelForegroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <labelFontFormat>italic</labelFontFormat>
-          <labelFontFormat>bold</labelFontFormat>
-          <labelFontFormat>underline</labelFontFormat>
-          <labelFontFormat>strike_through</labelFontFormat>
-        </style>
-      </controls>
-      <controls
-          xsi:type="properties:CheckboxDescription"
-          labelExpression="Conditional Style Checkbox"
-          valueExpression="aql:self.booleanAttribute">
-        <conditionalStyles
-            preconditionExpression="aql:true">
-          <style
-              labelFontNameExpression="Times new roman"
-              labelFontSize="12">
-            <labelBackgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <labelForegroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <labelFontFormat>italic</labelFontFormat>
-            <labelFontFormat>bold</labelFontFormat>
-            <labelFontFormat>underline</labelFontFormat>
-            <labelFontFormat>strike_through</labelFontFormat>
-          </style>
-        </conditionalStyles>
-      </controls>
-      <controls
-          xsi:type="properties:CheckboxDescription"
           labelExpression="Disable Checkbox"
           isEnabledExpression="aql:false"
           valueExpression="aql:self.booleanAttribute"/>

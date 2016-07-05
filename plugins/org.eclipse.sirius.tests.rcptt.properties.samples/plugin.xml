@@ -14,6 +14,50 @@
                name="org.eclipse.sirius.tests.rcptt.properties.design.text">
          </projectDescriptor>
          <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.button/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.button">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.checkbox/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.checkbox">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.container/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.container">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.group/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.group">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.hyperlink/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.hyperlink">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.label/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.label">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.radio/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.radio">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.reference/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.reference">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.select/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.select">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.validation/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.validation">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.design.widget/"
+               name="org.eclipse.sirius.tests.rcptt.properties.design.widget">
+         </projectDescriptor>
+         <projectDescriptor
                contentURI="contents/propertiestests/org.eclipse.sirius.tests.rcptt.properties.instance/"
                name="org.eclipse.sirius.tests.rcptt.properties.instance">
          </projectDescriptor>

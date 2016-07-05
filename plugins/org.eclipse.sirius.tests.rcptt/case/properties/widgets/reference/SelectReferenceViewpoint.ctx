@@ -1,0 +1,45 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: SelectReferenceViewpoint
+Element-Type: context
+Element-Version: 2.0
+Id: _B44asB5xEea-TdrfW8_m6g
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 5/20/16 11:56 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-view "Model Explorer" | get-tree] {
+    select "org.eclipse.sirius.tests.rcptt.properties.instance" | get-menu "Viewpoints Selection" | click
+}
+with [get-window "Viewpoints Selection"] {
+    with [get-table] {
+        get-item PropertiesTests | check
+        select PropertiesTests
+        get-item PropertiesTestsButton | uncheck
+        select PropertiesTestsButton
+        get-item PropertiesTestsCheckbox | uncheck
+        select PropertiesTestsCheckbox
+        get-item PropertiesTestsGroup | uncheck
+        select PropertiesTestsGroup
+        get-item PropertiesTestsHyperlink | uncheck
+        select PropertiesTestsHyperlink
+        get-item PropertiesTestsLabel | uncheck
+        select PropertiesTestsLabel
+        get-item PropertiesTestsRadio | uncheck
+        select PropertiesTestsRadio
+        get-item PropertiesTestsReference | check
+        select PropertiesTestsReference
+        get-item PropertiesTestsSelect | uncheck
+        select PropertiesTestsSelect
+        get-item PropertiesTestsText | uncheck
+        select PropertiesTestsText
+        get-item PropertiesTestsWidget | uncheck
+        select PropertiesTestsWidget
+    }
+    get-button OK | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

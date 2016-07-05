@@ -1,0 +1,54 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _N-iakAicEea7hcZ9Jto1HQ,_Sc0HQAidEea7hcZ9Jto1HQ,_ISVO4AheEea7hcZ9Jto1HQ,_CxvK8AicEea7hcZ9Jto1HQ,_1dc_gAidEea7hcZ9Jto1HQ,_9JimsB3AEeahj7Y4FJ9H9w,_ZuJ8AAifEea7hcZ9Jto1HQ
+Element-Name: LabelWidgetDefault
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _BGAcQB3BEeahj7Y4FJ9H9w
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 5/19/16 5:46 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test aims to check the label widget.
+
+The test :
+* loads the tests projects released with the Sirius test product,
+* opens the test diagram,
+* selects the label viewpoint,
+* selects an element in the diagram,
+* checks the properties view  of a label widget :
+ - checks the label,
+ - checks the value.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Check default label
+with [get-view Properties | get-section Label | get-editbox] {
+	get-property className | equals "org.eclipse.swt.custom.StyledText" | verify-true
+	get-property enablement | equals false | verify-true
+	get-property readOnly | equals false | verify-true
+	get-property text | equals Label | verify-true
+	get-property backgroundColor | equals "#FCFCFC" | verify-true
+	get-property foregroundColor | equals "#212121" | verify-true
+}
+
+// Check default value
+with [get-view Properties | get-section Label | get-editbox -index 1] {
+	get-property className | equals "org.eclipse.swt.custom.StyledText" | verify-true
+	get-property enablement | equals false | verify-true
+	get-property readOnly | equals false | verify-true
+	get-property text | equals "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas ac dui eu ven" +
+		"enatis. Etiam porta, ligula ut sollicitudin porta, elit tortor laoreet velit, sit amet iaculis risus velit a" +
+		" purus." | verify-true
+	get-property backgroundColor | equals "#FCFCFC" | verify-true
+	get-property foregroundColor | equals "#212121" | verify-true
+	get-property "getBounds().height" | equals 17 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -23,7 +23,7 @@
         domainClass="">
       <controls
           xsi:type="properties:ReferenceDescription"
-          labelExpression="Mono containment ref"
+          labelExpression="Default With Actions"
           helpExpression=""
           valueExpression="aql:self.containmentReference"
           displayExpression="aql:self.stringAttribute">
@@ -57,7 +57,7 @@
       </controls>
       <controls
           xsi:type="properties:ReferenceDescription"
-          labelExpression="Mono containment ref"
+          labelExpression="Hyperlink Without Action"
           helpExpression=""
           valueExpression="aql:self.containmentReference"
           displayExpression="aql:self.stringAttribute">
@@ -70,32 +70,7 @@
       </controls>
       <controls
           xsi:type="properties:ReferenceDescription"
-          labelExpression="Mono ref"
-          helpExpression=""
-          valueExpression="aql:self.reference"
-          displayExpression="aql:self.stringAttribute">
-        <actions
-            labelExpression="Action1">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="stringAttribute"
-                valueExpression="Action1"/>
-          </initialOperation>
-        </actions>
-        <actions
-            labelExpression="Action2">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="stringAttribute"
-                valueExpression="Action2"/>
-          </initialOperation>
-        </actions>
-      </controls>
-      <controls
-          xsi:type="properties:ReferenceDescription"
-          labelExpression="Multi containment ref"
+          labelExpression="Multi With Actions"
           helpExpression=""
           multiple="true"
           valueExpression="aql:self.containmentReferences"
@@ -121,21 +96,58 @@
       </controls>
       <controls
           xsi:type="properties:ReferenceDescription"
-          labelExpression="Mono without action"
+          labelExpression="Multi With OnClick Without Action"
           helpExpression=""
+          multiple="true"
+          valueExpression="aql:self.containmentReferences"
+          displayExpression="aql:self.stringAttribute">
+        <onClickOperation>
+          <firstModelOperations
+              xsi:type="tool:SetValue"
+              featureName="stringAttribute"
+              valueExpression="ClickedOnTable"/>
+        </onClickOperation>
+      </controls>
+      <controls
+          xsi:type="properties:ReferenceDescription"
+          labelExpression="Disable Default With Actions"
+          helpExpression=""
+          isEnabledExpression="aql:false"
           valueExpression="aql:self.containmentReference"
-          displayExpression="aql:self.stringAttribute"/>
+          displayExpression="aql:self.stringAttribute">
+        <actions
+            labelExpression="Action1">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:SetValue"
+                featureName="stringAttribute"
+                valueExpression="Action1"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Action2">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:SetValue"
+                featureName="stringAttribute"
+                valueExpression="Action2"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:SetValue"
+                featureName="stringAttribute"
+                valueExpression="NoLabelAction"/>
+          </initialOperation>
+        </actions>
+      </controls>
       <controls
           xsi:type="properties:ReferenceDescription"
-          labelExpression="Multi without action"
+          labelExpression="Disable Multi With Actions"
           helpExpression=""
-          multiple="true"
-          valueExpression="aql:self.containmentReferences"
-          displayExpression="aql:self.stringAttribute"/>
-      <controls
-          xsi:type="properties:ReferenceDescription"
-          labelExpression="Multi containment ref"
-          helpExpression=""
+          isEnabledExpression="aql:false"
           multiple="true"
           valueExpression="aql:self.containmentReferences"
           displayExpression="aql:self.stringAttribute">
@@ -146,6 +158,15 @@
                 xsi:type="tool:SetValue"
                 featureName="stringAttribute"
                 valueExpression="Action1"/>
+          </initialOperation>
+        </actions>
+        <actions
+            labelExpression="Action2">
+          <initialOperation>
+            <firstModelOperations
+                xsi:type="tool:SetValue"
+                featureName="stringAttribute"
+                valueExpression="Action2"/>
           </initialOperation>
         </actions>
       </controls>

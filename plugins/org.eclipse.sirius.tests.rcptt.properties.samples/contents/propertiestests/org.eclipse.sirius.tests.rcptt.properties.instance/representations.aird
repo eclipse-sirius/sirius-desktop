@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:propertiestests="http://www.eclipse.org/sirius/tests/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_n4UK4AhuEea_TaWxXuy80g" selectedViews="_VkPb8AiBEeaRvL3xkYbMuw" version="11.0.0.201604141600">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:propertiestests="http://www.eclipse.org/sirius/tests/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_n4UK4AhuEea_TaWxXuy80g" selectedViews="_VkPb8AiBEeaRvL3xkYbMuw _iLNA0BwnEeajlaFNymgFJw" version="11.0.0.201604141600">
   <semanticResources>PropertiesTestsInstance.propertiestests</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_VjvFoAiBEeaRvL3xkYbMuw">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.text/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsText']"/>
@@ -134,5 +134,41 @@
       <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTests']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
       <target xmi:type="propertiestests:TestRoot" href="PropertiesTestsInstance.propertiestests#/"/>
     </ownedRepresentations>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iLNA0BwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.label/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsLabel']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iLsJABwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.hyperlink/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsHyperlink']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iMFxoBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.select/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsSelect']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iMezMBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.checkbox/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsCheckbox']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iNccgBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.screenshot/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsScreenshot']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iOBEQBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.group/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsGroup']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iOj20BwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.radio/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsRadio']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iPRBcBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.reference/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsReference']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_iQCdgBwnEeajlaFNymgFJw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.button/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsButton']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_uU-rMCJrEeatLuh0gpprQg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.validation/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsValidation']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_uWypECJrEeatLuh0gpprQg">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.widget/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsWidget']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="__F9wkCJ1EeaQIb7FemjCbw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.tests.rcptt.properties.design.container/description/PropertiesTests.odesign#//@ownedViewpoints[name='PropertiesTestsContainer']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

@@ -1,0 +1,78 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _N-iakAicEea7hcZ9Jto1HQ,_Sc0HQAidEea7hcZ9Jto1HQ,_ISVO4AheEea7hcZ9Jto1HQ,_CxvK8AicEea7hcZ9Jto1HQ,_1dc_gAidEea7hcZ9Jto1HQ,_B44asB5xEea-TdrfW8_m6g,_ZuJ8AAifEea7hcZ9Jto1HQ
+Element-Name: ReferenceWidgetDisable
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _B5A9kB5xEea-TdrfW8_m6g
+Runtime-Version: 2.0.2.201511100828
+Save-Time: 5/23/16 5:32 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+This test aims to check the reference widget.
+
+The test :
+* loads the tests projects released with the Sirius test product,
+* opens the test diagram,
+* selects the reference viewpoint,
+* selects an element in the diagram,
+* checks the properties view  of a disabled reference widget :
+ - checks the label,
+ - checks the value.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Check disable label and value
+
+with [get-view Properties | get-section Reference] {
+    with [get-editbox -after [get-label Element1] -index 3] {
+        get-property className | equals "org.eclipse.swt.custom.StyledText" | verify-true
+        get-property text | equals "Disable Default With Actions" | verify-true
+    }
+    with [get-label Element1 -after [get-label Element1]] {
+        get-property className | equals "org.eclipse.swt.widgets.Label" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals Element1 | verify-true
+    }
+    with [get-button Action1 -after [get-label Element1 -after [get-label Element1]]] {
+        get-property className | equals "org.eclipse.swt.widgets.Button" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals Action1 | verify-true
+    }
+    with [get-button Action2 -after [get-label Element1 -after [get-label Element1]]] {
+        get-property className | equals "org.eclipse.swt.widgets.Button" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals Action2 | verify-true
+    }
+    with [get-button "..." -after [get-label Element1 -after [get-label Element1]]] {
+        get-property className | equals "org.eclipse.swt.widgets.Button" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals "..." | verify-true
+    }
+    with [get-editbox -after [get-label Element1 -after [get-label Element1]]] {
+        get-property className | equals "org.eclipse.swt.custom.StyledText" | verify-true
+        get-property text | equals "Disable Multi With Actions" | verify-true
+    }
+    with [get-table -after [get-label Element1 -after [get-label Element1]]] {
+        get-property className | equals "org.eclipse.swt.widgets.Table" | verify-true
+        get-property enablement | equals false | verify-true
+    }
+    with [get-button Action1 -after [get-label Element1 -after [get-label Element1]] -index 1] {
+        get-property className | equals "org.eclipse.swt.widgets.Button" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals Action1 | verify-true
+    }
+    with [get-button Action2 -after [get-label Element1 -after [get-label Element1]] -index 1] {
+        get-property className | equals "org.eclipse.swt.widgets.Button" | verify-true
+        get-property enablement | equals false | verify-true
+        get-property caption | equals Action2 | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

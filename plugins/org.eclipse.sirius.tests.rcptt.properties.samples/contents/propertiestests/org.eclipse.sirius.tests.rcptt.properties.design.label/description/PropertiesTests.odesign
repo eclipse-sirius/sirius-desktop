@@ -22,33 +22,104 @@
           xsi:type="properties:LabelDescription"
           labelExpression="Label"
           helpExpression=""
-          bodyExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas ac dui eu venenatis. Etiam porta, ligula ut sollicitudin porta, elit tortor laoreet velit, sit amet iaculis risus velit a purus."/>
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at."
+          isEnabledExpression="aql:false"/>
       <controls
           xsi:type="properties:LabelDescription"
-          labelExpression="Style Label"
+          identifier=""
+          labelExpression="Style Label Font"
           helpExpression=""
-          bodyExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas ac dui eu venenatis. Etiam porta, ligula ut sollicitudin porta, elit tortor laoreet velit, sit amet iaculis risus velit a purus.">
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
         <style
-            labelFontNameExpression="Times new roman"
-            labelFontSize="12"
+            labelFontNameExpression=""
             fontNameExpression="Times new roman"
-            fontSize="12">
-          <labelBackgroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-          <labelForegroundColor
+            fontSize="12"/>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Italic"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+         <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>italic</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Bold"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>bold</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Underline"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>underline</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Strike"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+         <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>strike_through</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Background Color"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <backgroundColor
               xsi:type="description:SystemColor"
               href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <labelFontFormat>italic</labelFontFormat>
-          <labelFontFormat>bold</labelFontFormat>
-          <labelFontFormat>underline</labelFontFormat>
-          <labelFontFormat>strike_through</labelFontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label Foreground Color"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <foregroundColor
+              xsi:type="description:SystemColor"
+              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Style Label All"
+          helpExpression=""
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="Times new roman"
+            fontSize="12">
           <backgroundColor
               xsi:type="description:SystemColor"
               href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <foregroundColor
               xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
           <fontFormat>italic</fontFormat>
           <fontFormat>bold</fontFormat>
           <fontFormat>underline</fontFormat>
@@ -59,37 +130,24 @@
           xsi:type="properties:LabelDescription"
           labelExpression="Conditional Style Label"
           helpExpression=""
-          bodyExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas ac dui eu venenatis. Etiam porta, ligula ut sollicitudin porta, elit tortor laoreet velit, sit amet iaculis risus velit a purus.">
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at.">
         <conditionalStyles
             preconditionExpression="aql:true">
           <style
-              labelFontNameExpression="Times new roman"
-              labelFontSize="12"
-              fontNameExpression="Times new roman"
-              fontSize="12">
-            <labelBackgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <labelForegroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <labelFontFormat>italic</labelFontFormat>
-            <labelFontFormat>bold</labelFontFormat>
-            <labelFontFormat>underline</labelFontFormat>
-            <labelFontFormat>strike_through</labelFontFormat>
-            <backgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              labelFontNameExpression=""
+              fontNameExpression="">
             <foregroundColor
                 xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <fontFormat>italic</fontFormat>
-            <fontFormat>bold</fontFormat>
-            <fontFormat>underline</fontFormat>
-            <fontFormat>strike_through</fontFormat>
+                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
           </style>
         </conditionalStyles>
       </controls>
+      <controls
+          xsi:type="properties:LabelDescription"
+          labelExpression="Disable Label"
+          helpExpression=""
+          isEnabledExpression="aql:false"
+          valueExpression="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit purus suscipit ante eleifend, eget scelerisque felis malesuada. Sed et orci scelerisque, mattis eros non, scelerisque lacus. Duis at efficitur neque. Proin nec ligula feugiat, molestie leo sed, aliquet mauris. Pellentesque libero augue, sollicitudin vel tortor et, imperdiet tincidunt dui. Duis sapien mauris, fringilla vel sollicitudin a, lobortis vitae leo. Nam sapien ante, auctor ut mauris vitae, posuere congue tortor. Proin scelerisque lectus metus, ac efficitur dolor porttitor non. Duis id finibus orci, eget porta neque. Morbi interdum placerat placerat. Etiam sollicitudin et arcu quis facilisis. Vivamus erat lectus, aliquet eu massa vitae, mollis euismod est. Donec purus purus, hendrerit id tincidunt ut, varius ac magna. Nunc id viverra sem, vitae egestas neque. Maecenas non commodo neque, sit amet ultrices velit. Curabitur consequat ultricies lectus, id efficitur ipsum condimentum at."/>
     </groups>
   </extensions>
 </description:Group>

@@ -46,51 +46,6 @@
           buttonLabelExpression=""/>
       <controls
           xsi:type="properties:ButtonDescription"
-          labelExpression="Style Button"
-          helpExpression=""
-          isEnabledExpression=""
-          buttonLabelExpression="Label">
-        <style
-            labelFontNameExpression="Times new roman"
-            labelFontSize="12">
-          <labelBackgroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-          <labelForegroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <labelFontFormat>italic</labelFontFormat>
-          <labelFontFormat>bold</labelFontFormat>
-          <labelFontFormat>underline</labelFontFormat>
-          <labelFontFormat>strike_through</labelFontFormat>
-        </style>
-      </controls>
-      <controls
-          xsi:type="properties:ButtonDescription"
-          labelExpression="Conditional Style Button"
-          helpExpression=""
-          isEnabledExpression=""
-          buttonLabelExpression="Label">
-        <conditionalStyles
-            preconditionExpression="aql:true">
-          <style
-              labelFontNameExpression="Times new roman"
-              labelFontSize="12">
-            <labelBackgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <labelForegroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <labelFontFormat>italic</labelFontFormat>
-            <labelFontFormat>bold</labelFontFormat>
-            <labelFontFormat>underline</labelFontFormat>
-            <labelFontFormat>strike_through</labelFontFormat>
-          </style>
-        </conditionalStyles>
-      </controls>
-      <controls
-          xsi:type="properties:ButtonDescription"
           labelExpression="Disable Button"
           helpExpression=""
           isEnabledExpression="aql:false"

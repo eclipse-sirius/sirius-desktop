@@ -45,55 +45,6 @@
       </controls>
       <controls
           xsi:type="properties:SelectDescription"
-          labelExpression="Style Select"
-          helpExpression=""
-          isEnabledExpression="aql:true"
-          valueExpression="aql:self.reference"
-          candidatesExpression="aql:self.eResource().getContents().eAllContents()"
-          candidateDisplayExpression="aql:candidate.stringAttribute">
-        <style
-            labelFontNameExpression="Times new roman"
-            labelFontSize="12">
-          <labelBackgroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-          <labelForegroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <labelFontFormat>italic</labelFontFormat>
-          <labelFontFormat>bold</labelFontFormat>
-          <labelFontFormat>underline</labelFontFormat>
-          <labelFontFormat>strike_through</labelFontFormat>
-        </style>
-      </controls>
-      <controls
-          xsi:type="properties:SelectDescription"
-          labelExpression="Conditional Style Select"
-          helpExpression=""
-          isEnabledExpression="aql:true"
-          valueExpression="aql:self.reference"
-          candidatesExpression="aql:self.eResource().getContents().eAllContents()"
-          candidateDisplayExpression="aql:candidate.stringAttribute">
-        <conditionalStyles
-            preconditionExpression="aql:true">
-          <style
-              labelFontNameExpression="Times new roman"
-              labelFontSize="12">
-            <labelBackgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <labelForegroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <labelFontFormat>italic</labelFontFormat>
-            <labelFontFormat>bold</labelFontFormat>
-            <labelFontFormat>underline</labelFontFormat>
-            <labelFontFormat>strike_through</labelFontFormat>
-          </style>
-        </conditionalStyles>
-      </controls>
-      <controls
-          xsi:type="properties:SelectDescription"
           labelExpression="Disable Select"
           helpExpression=""
           isEnabledExpression="aql:false"

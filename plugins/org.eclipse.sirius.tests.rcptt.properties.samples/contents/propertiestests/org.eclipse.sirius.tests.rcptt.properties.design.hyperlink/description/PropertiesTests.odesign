@@ -33,24 +33,80 @@
       </controls>
       <controls
           xsi:type="properties:HyperlinkDescription"
-          labelExpression="Style Hyperlink"
+          labelExpression="Style Hyperlink Font"
           helpExpression=""
           valueExpression="aql:self.stringAttribute">
         <style
-            labelFontNameExpression="Times new roman"
-            labelFontSize="12"
+            labelFontNameExpression=""
             fontNameExpression="Times new roman"
-            fontSize="12">
-          <labelBackgroundColor
-              xsi:type="description:SystemColor"
-              href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-          <labelForegroundColor
+            fontSize="12"/>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink Italic"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>italic</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink Bold"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>bold</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink Underline"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>underline</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink Strike"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <fontFormat>strike_through</fontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink Background Color"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="">
+          <backgroundColor
               xsi:type="description:SystemColor"
               href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <labelFontFormat>italic</labelFontFormat>
-          <labelFontFormat>bold</labelFontFormat>
-          <labelFontFormat>underline</labelFontFormat>
-          <labelFontFormat>strike_through</labelFontFormat>
+        </style>
+      </controls>
+      <controls
+          xsi:type="properties:HyperlinkDescription"
+          labelExpression="Style Hyperlink All"
+          helpExpression=""
+          valueExpression="aql:self.stringAttribute">
+        <style
+            labelFontNameExpression=""
+            fontNameExpression="Times new roman"
+            fontSize="12">
           <backgroundColor
               xsi:type="description:SystemColor"
               href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -68,27 +124,9 @@
         <conditionalStyles
             preconditionExpression="aql:true">
           <style
-              labelFontNameExpression="Times new roman"
-              labelFontSize="12"
-              fontNameExpression="Times new roman"
-              fontSize="12">
-            <labelBackgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
-            <labelForegroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <labelFontFormat>italic</labelFontFormat>
-            <labelFontFormat>bold</labelFontFormat>
-            <labelFontFormat>underline</labelFontFormat>
-            <labelFontFormat>strike_through</labelFontFormat>
-            <backgroundColor
-                xsi:type="description:SystemColor"
-                href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            <fontFormat>italic</fontFormat>
+              labelFontNameExpression=""
+              fontNameExpression="">
             <fontFormat>bold</fontFormat>
-            <fontFormat>underline</fontFormat>
-            <fontFormat>strike_through</fontFormat>
           </style>
         </conditionalStyles>
       </controls>
