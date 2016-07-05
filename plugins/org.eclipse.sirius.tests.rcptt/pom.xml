@@ -42,6 +42,12 @@ Contributors:
         <configuration>
           <runner>
             <version>2.1.0-SNAPSHOT</version>
+            <vmArgs>
+              <vmArg>-Xms256m</vmArg>
+              <vmArg>-Xmx1024m</vmArg>
+              <vmArg>-XX:+UseG1GC</vmArg>
+              <vmArg>-XX:+UseStringDeduplication</vmArg>
+            </vmArgs>
           </runner>
           <aut>
             <explicit>../../packaging/org.eclipse.sirius.tests.product/target/products/SiriusTestsProduct-[platform].zip</explicit>
