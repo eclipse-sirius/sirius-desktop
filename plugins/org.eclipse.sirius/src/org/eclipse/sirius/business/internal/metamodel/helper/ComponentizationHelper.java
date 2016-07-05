@@ -48,6 +48,9 @@ public final class ComponentizationHelper {
     }
 
     private static boolean match(final RepresentationDescription representationDescription, final RepresentationExtensionDescription representationExtensionDescription) {
+        if (representationDescription == null) {
+            return false;
+        }
         return ComponentizationHelper.match(representationDescription, representationDescription.getName(), representationExtensionDescription);
     }
 
