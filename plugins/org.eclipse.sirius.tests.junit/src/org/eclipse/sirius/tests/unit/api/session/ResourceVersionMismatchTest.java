@@ -210,8 +210,18 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
     }
 
     private void setupFileVersionMismatch(boolean setupInvalidVSM, boolean setupInvalidMainAird, boolean setupInvalidReferencedAird) {
-        // Session creation
+        // If the aird or vsm need to be migrated, then, at save, the migration
+        // version is set at the last one.
+        // So, to avoid that the changed version (done below) gets overridden we
+        // make sure the model does not need to be migrated.
         Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
+        session.open(new NullProgressMonitor());
+        session.save(new NullProgressMonitor());
+        Viewpoint viewpoint = session.getSelectedViewpoints(false).iterator().next();
+        saveVSM(viewpoint.eResource());
+        session.close(new NullProgressMonitor());
+
+        session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
         session.open(new NullProgressMonitor());
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         CommandStack commandStack = domain.getCommandStack();
@@ -226,10 +236,8 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
             Command changeVersionCmd = SetCommand.create(domain, group, DescriptionPackage.Literals.GROUP__VERSION, newVersion.toString());
             assertTrue(changeVersionCmd.canExecute());
             commandStack.execute(changeVersionCmd);
-            try {
-                group.eResource().save(null);
-            } catch (IOException e) {
-            }
+
+            saveVSM(group.eResource());
         }
 
         if (setupInvalidMainAird) {
@@ -254,6 +262,14 @@ public class ResourceVersionMismatchTest extends SiriusTestCase {
 
         session.save(new NullProgressMonitor());
         session.close(new NullProgressMonitor());
+    }
+
+    private void saveVSM(Resource resource) {
+        try {
+            resource.save(null);
+        } catch (IOException e) {
+            fail("The save of the viewpoint " + ODESIGN_MODEL_FILENAME + " failed.");
+        }
     }
 
     @Override
