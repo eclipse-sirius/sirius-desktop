@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.IFileQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -69,7 +71,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
     /**
      * Default image descriptor for the "Sirius Modeling" overlay.
      */
-    public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$;
+    public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$ ;
 
     private static final String DIRTY = "*"; //$NON-NLS-1$
 
@@ -95,9 +97,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // If the current element is a dangling representation, its icon
                 // is grayed. The grayed image is computed only once for each
                 // type of representation.
-                if (img != null && isDanglingRepresentation(element)) {
-                    DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element);
-                    String key = MessageFormat.format(Messages.SiriusCommonLabelProvider_eClassDisabled, dSemanticDecorator.eClass().getName());
+                if (img != null && isDanglingRepresentationDescriptor(element)) {
+                    String key = MessageFormat.format(Messages.SiriusCommonLabelProvider_eClassDisabled, DRepresentationDescriptor.class.getName());
                     Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
                     if (disabledImage == null) {
                         ImageDescriptor desc = ImageDescriptor.createFromImage(img);
@@ -135,7 +136,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 if (img == null) {
                     // Get the base image to overlay
                     ImageDescriptor imageDescriptor = null;
-                    IWorkbenchAdapter wbAdapter = (IWorkbenchAdapter) file.getAdapter(IWorkbenchAdapter.class);
+                    IWorkbenchAdapter wbAdapter = file.getAdapter(IWorkbenchAdapter.class);
                     if (wbAdapter != null) {
                         imageDescriptor = wbAdapter.getImageDescriptor(file);
                     }
@@ -152,9 +153,23 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         return img;
     }
 
-    private boolean isDanglingRepresentation(Object element) {
-        DSemanticDecorator semDec = getDSemanticDecorator(element);
-        return semDec instanceof DRepresentation && new DRepresentationQuery((DRepresentation) semDec).isDanglingRepresentation();
+    private boolean isDanglingRepresentationDescriptor(Object element) {
+        DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(element);
+        return representationDescriptor != null && new DRepresentationDescriptorQuery(representationDescriptor).isDangling();
+    }
+
+    private DRepresentationDescriptor getRepresentationDescriptor(Object element) {
+        Object candidateElement = element;
+        if (element instanceof ItemWrapper) {
+            candidateElement = ((ItemWrapper) element).getWrappedObject();
+        }
+        DRepresentationDescriptor repDesc = null;
+        if (candidateElement instanceof DRepresentation) {
+            repDesc = new DRepresentationQuery((DRepresentation) candidateElement).getRepresentationDescriptor();
+        } else if (candidateElement instanceof DRepresentationDescriptor) {
+            repDesc = (DRepresentationDescriptor) candidateElement;
+        }
+        return repDesc;
     }
 
     private DSemanticDecorator getDSemanticDecorator(Object element) {
@@ -299,11 +314,11 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 if (!isInModelingProject((ItemWrapper) element) || !(element instanceof AnalysisResourceItem)) {
                     foreground = VisualBindingManager.getDefault().getColorFromName("dark_gray"); //$NON-NLS-1$
                 }
-            } else if (element instanceof DRepresentation) {
+            } else if (element instanceof DRepresentationDescriptor) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("dark_blue"); //$NON-NLS-1$
             }
 
-            if (isDanglingRepresentation(element)) {
+            if (isDanglingRepresentationDescriptor(element)) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
             }
         } catch (IllegalStateException e) {
