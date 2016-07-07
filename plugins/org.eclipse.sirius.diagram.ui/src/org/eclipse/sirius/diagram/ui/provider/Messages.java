@@ -183,22 +183,22 @@ public final class Messages {
     public static String ConnectionsFactory_edgeNotCreatedMsg;
 
     @TranslatableMessage
-    public static String CopyLayoutAction_clrearPreviousLayoutDateCommandLabel;
+    public static String CopyFormatAction_clearPreviousFormatDateCommandLabel;
 
     @TranslatableMessage
-    public static String CopyLayoutAction_commandLabel;
+    public static String CopyFormatAction_commandLabel;
 
     @TranslatableMessage
-    public static String CopyLayoutAction_storeLayoutCommandLabel;
+    public static String CopyFormatAction_storeFormatCommandLabel;
 
     @TranslatableMessage
-    public static String CopyLayoutAction_text;
+    public static String CopyFormatAction_text;
 
     @TranslatableMessage
-    public static String CopyLayoutAction_toolTipText;
+    public static String CopyFormatAction_toolTipText;
 
     @TranslatableMessage
-    public static String CopyLayoutDataCommand_label;
+    public static String CopyFormatDataCommand_label;
 
     @TranslatableMessage
     public static String CopyToSiriusClipboardCommand_label;
@@ -759,6 +759,21 @@ public final class Messages {
     public static String PasteFromSiriusClipboardCommand_label;
 
     @TranslatableMessage
+    public static String PasteFormatAction_commandLabel;
+
+    @TranslatableMessage
+    public static String PasteFormatAction_restoreFormatCommandLabel;
+
+    @TranslatableMessage
+    public static String PasteFormatAction_text;
+
+    @TranslatableMessage
+    public static String PasteFormatAction_toolTipText;
+
+    @TranslatableMessage
+    public static String PasteFormatDataCommand_label;
+
+    @TranslatableMessage
     public static String PasteLayoutAction_commandLabel;
 
     @TranslatableMessage
@@ -772,6 +787,21 @@ public final class Messages {
 
     @TranslatableMessage
     public static String PasteLayoutDataCommand_label;
+
+    @TranslatableMessage
+    public static String PasteStyleAction_commandLabel;
+
+    @TranslatableMessage
+    public static String PasteStyleAction_restoreStyleCommandLabel;
+
+    @TranslatableMessage
+    public static String PasteStyleAction_text;
+
+    @TranslatableMessage
+    public static String PasteStyleAction_toolTipText;
+
+    @TranslatableMessage
+    public static String PasteStyleDataCommand_label;
 
     @TranslatableMessage
     public static String PinElementsEclipseAction_text;

@@ -145,12 +145,30 @@ public interface IDiagramDescriptionProvider {
      * @param element
      *            the element to check.
      * 
+     * @return true if this provider allows the Copy/Paste Layout actions on the
+     *         specified element, false otherwise.
+     * 
+     * @since 1.0.0M7
+     * @deprecated since 4.1.0 Use
+     *             {@link #allowsCopyPasteFormat(DSemanticDecorator)} instead
+     */
+    @Deprecated
+    boolean allowsCopyPasteLayout(DSemanticDecorator element);
+
+    /**
+     * Indicates if this Diagram description provider allows the Copy/Paste
+     * Format actions on the specified element (including paste style and paste
+     * layout).
+     * 
+     * @param element
+     *            the element to check.
+     * 
      * @return true if this provider allows the Copy/Paster Layout actions on
      *         the specified element, false otherwise.
      * 
-     * @since 1.0.0M7
+     * @since 4.1.0
      */
-    boolean allowsCopyPasteLayout(DSemanticDecorator element);
+    boolean allowsCopyPasteFormat(DSemanticDecorator element);
 
     /**
      * Indicates if the given Diagram description provider support the header
@@ -222,5 +240,6 @@ public interface IDiagramDescriptionProvider {
      *             .IDiagramDescriptionProvider.completeToolTipText(String,
      *             EObject, EStructuralFeature)
      */
+    @Deprecated
     String completeToolTipText(String toolTipText, EObject eObject);
 }

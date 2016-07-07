@@ -132,9 +132,11 @@
       <contributionItemProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider">
          <Priority name="Low" />
          <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
-           <partMenuGroup menubarPath="/edit/" id="copyLayoutGroup" separator="true" />
-           <partAction menubarPath="/edit/copyLayoutGroup" id="copyLayoutAction" />
-           <partAction menubarPath="/edit/copyLayoutGroup" id="pasteLayoutAction" />
+           <partMenuGroup menubarPath="/edit/" id="copyFormatGroup" separator="true" />
+           <partAction menubarPath="/edit/copyFormatGroup" id="copyFormatAction" />
+           <partAction menubarPath="/edit/copyFormatGroup" id="pasteFormatAction" />
+           <partAction menubarPath="/edit/copyFormatGroup" id="pasteLayoutAction" />
+           <partAction menubarPath="/edit/copyFormatGroup" id="pasteStyleAction" />
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
            <!--partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/-->
            <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderNodesActionToolBar"/>
@@ -163,9 +165,11 @@
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
-            <popupMenuGroup path="/editMenu/" id="copyLayoutGroup" separator="true"/>
-            <popupAction path="/editMenu/copyLayoutGroup" id="copyLayoutAction" />
-            <popupAction path="/editMenu/copyLayoutGroup" id="pasteLayoutAction" />
+            <popupMenuGroup path="/editMenu/" id="copyFormatGroup" separator="true"/>
+            <popupAction path="/editMenu/copyFormatGroup" id="copyFormatAction" />
+            <popupAction path="/editMenu/copyFormatGroup" id="pasteFormatAction" />
+            <popupAction path="/editMenu/copyFormatGroup" id="pasteLayoutAction" />
+            <popupAction path="/editMenu/copyFormatGroup" id="pasteStyleAction" />
             <popupAction path="/formatMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
 
             <popupMenuGroup path="/formatMenu/" id="pinGroup" />

@@ -24,8 +24,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
@@ -50,8 +52,12 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
         // } else
         if (actionId.equals(PrintPreviewAction.ID)) {
             result = new SiriusDiagramPrintPreviewAction(new SiriusEnhancedPrintActionHelper());
-        } else if (ActionIds.COPY_LAYOUT.equals(actionId)) {
-            result = new CopyLayoutAction(workbenchPage);
+        } else if (ActionIds.COPY_FORMAT.equals(actionId)) {
+            result = new CopyFormatAction(workbenchPage);
+        } else if (ActionIds.PASTE_FORMAT.equals(actionId)) {
+            result = new PasteFormatAction(workbenchPage);
+        } else if (ActionIds.PASTE_STYLE.equals(actionId)) {
+            result = new PasteStyleAction(workbenchPage);
         } else if (ActionIds.PASTE_LAYOUT.equals(actionId)) {
             result = new PasteLayoutAction(workbenchPage);
         } else if (ActionIds.PIN_ELEMENTS.equals(actionId)) {

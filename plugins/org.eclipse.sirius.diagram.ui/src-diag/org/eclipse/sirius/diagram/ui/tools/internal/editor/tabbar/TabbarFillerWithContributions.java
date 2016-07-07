@@ -160,7 +160,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectPinnedElementsContribution(part));
         addContributionItem(diagramContributionItems, HIDE_PIN, contributionFactory.createSelectHiddenElementsContribution(part));
 
-        addContributionItem(diagramContributionItems, PAST, contributionFactory.createPasteLayoutContribution(part));
+        addContributionItem(diagramContributionItems, PAST, contributionFactory.createPasteFormatContribution(part));
 
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomContribution(part));
         addContributionItem(diagramContributionItems, ZOOM, contributionFactory.createZoomOutContribution(part));
@@ -186,7 +186,7 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
         addContributionItem(diagramElementContributionItems, HIDE_PIN, contributionFactory.createUnPinElementContribution(part, pinElementContributionItem));
         addContributionItem(diagramElementContributionItems, HIDE_PIN, pinElementContributionItem);
 
-        addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createCopyLayoutContribution(part));
+        addContributionItem(diagramElementContributionItems, PAST, contributionFactory.createCopyFormatContribution(part));
 
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromModelContribution(part));
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromDiagramContribution(part));

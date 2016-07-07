@@ -400,8 +400,26 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     }
 
     /**
-     * Creates the copy layout contribution item. This tool can be used to
-     * duplicate the layout of some diagram elements from this diagram into
+     * Creates the copy format contribution item. This tool can be used to
+     * duplicate the format of some diagram elements from this diagram into
+     * another.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @return the {@link IContributionItem} or null if the workbench part is
+     *         being initialized.
+     * @deprecated since 4.1.0 Use
+     *             {@link #createCopyFormatContribution(IDiagramWorkbenchPart)}
+     *             instead.
+     */
+    @Deprecated
+    protected IContributionItem createCopyLayoutContribution(IDiagramWorkbenchPart part) {
+        return createCopyFormatContribution(part);
+    }
+
+    /**
+     * Creates the copy format contribution item. This tool can be used to
+     * duplicate the format of some diagram elements from this diagram into
      * another.
      * 
      * @param part
@@ -409,20 +427,36 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
      * @return the {@link IContributionItem} or null if the workbench part is
      *         being initialized.
      */
-    protected IContributionItem createCopyLayoutContribution(IDiagramWorkbenchPart part) {
-        return contributorFactory.createCopyLayoutContribution(part);
+    protected IContributionItem createCopyFormatContribution(IDiagramWorkbenchPart part) {
+        return contributorFactory.createCopyFormatContribution(part);
     }
 
     /**
-     * Creates the Paste Layout contribution item.
+     * Creates the Paste Format contribution item.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @return the {@link IContributionItem} or null if the workbench part is
+     *         being initialized.
+     * @deprecated since 4.1.0 Use
+     *             {@link #createPasteFormatContribution(IDiagramWorkbenchPart)}
+     *             instead.
+     */
+    @Deprecated
+    protected IContributionItem createPasteLayoutContribution(IDiagramWorkbenchPart part) {
+        return createPasteFormatContribution(part);
+    }
+
+    /**
+     * Creates the Paste Format contribution item.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
      * @return the {@link IContributionItem} or null if the workbench part is
      *         being initialized.
      */
-    protected IContributionItem createPasteLayoutContribution(IDiagramWorkbenchPart part) {
-        return contributorFactory.createPasteLayoutContribution(part);
+    protected IContributionItem createPasteFormatContribution(IDiagramWorkbenchPart part) {
+        return contributorFactory.createPasteFormatContribution(part);
     }
 
     /**

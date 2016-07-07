@@ -37,8 +37,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearance
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -601,8 +601,8 @@ public class TabbarContributionFactory {
     }
 
     /**
-     * Creates the copy layout contribution item. This tool can be used to
-     * duplicate the layout of some diagram elements from this diagram into
+     * Creates the copy format contribution item. This tool can be used to
+     * duplicate the format of some diagram elements from this diagram into
      * another.
      * 
      * @param part
@@ -610,28 +610,28 @@ public class TabbarContributionFactory {
      * @return the {@link IContributionItem} or null if the workbench part is
      *         being initialized.
      */
-    public IContributionItem createCopyLayoutContribution(IDiagramWorkbenchPart part) {
+    public IContributionItem createCopyFormatContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            CopyLayoutAction copyLayoutAction = new CopyLayoutAction(site.getPage(), part);
+            CopyFormatAction copyLayoutAction = new CopyFormatAction(site.getPage(), part);
             return new ActionContributionItem(copyLayoutAction);
         }
         return null;
     }
 
     /**
-     * Creates the Paste Layout contribution item.
+     * Creates the Paste Format contribution item.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
      * @return the {@link IContributionItem} or null if the workbench part is
      *         being initialized.
      */
-    public IContributionItem createPasteLayoutContribution(IDiagramWorkbenchPart part) {
+    public IContributionItem createPasteFormatContribution(IDiagramWorkbenchPart part) {
         IWorkbenchPartSite site = part.getSite();
         if (site != null) {
-            PasteLayoutAction pasteLayoutAction = new PasteLayoutAction(site.getPage(), part);
-            return new ActionContributionItem(pasteLayoutAction);
+            PasteFormatAction pasteFormatAction = new PasteFormatAction(site.getPage(), part);
+            return new ActionContributionItem(pasteFormatAction);
         }
         return null;
     }

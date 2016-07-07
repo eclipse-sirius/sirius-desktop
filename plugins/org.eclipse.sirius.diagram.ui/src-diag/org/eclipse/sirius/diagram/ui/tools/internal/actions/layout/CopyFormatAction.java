@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2015 IBM Corporation and others.
+ * Copyright (c) 2002, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,11 +44,11 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.collect.Lists;
 
 /**
- * Copy the layout of the selected diagram or of the selected diagram elements.
+ * Copy the format of the selected diagram or of the selected diagram elements.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
+public class CopyFormatAction extends AbstractCopyPasteFormatAction {
 
     /**
      * Default constructor.
@@ -58,17 +58,17 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
      * @param actionWorkbenchPart
      *            the part concerned by this action. Could be null.
      */
-    public CopyLayoutAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
+    public CopyFormatAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
         super(workbenchPage, actionWorkbenchPart);
 
-        setText(Messages.CopyLayoutAction_text);
+        setText(Messages.CopyFormatAction_text);
         setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'C');
-        setId(ActionIds.COPY_LAYOUT);
-        setToolTipText(Messages.CopyLayoutAction_toolTipText);
+        setId(ActionIds.COPY_FORMAT);
+        setToolTipText(Messages.CopyFormatAction_toolTipText);
 
-        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_ICON));
-        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_DISABLED_ICON));
-        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_ICON));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_FORMAT_ICON));
+        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_FORMAT_DISABLED_ICON));
+        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_FORMAT_ICON));
     }
 
     /**
@@ -77,7 +77,7 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
      * @param workbenchPage
      *            the active workbench page
      */
-    public CopyLayoutAction(final IWorkbenchPage workbenchPage) {
+    public CopyFormatAction(final IWorkbenchPage workbenchPage) {
         this(workbenchPage, null);
     }
 
@@ -88,7 +88,7 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
      */
     @Override
     protected String getCommandLabel() {
-        return Messages.CopyLayoutAction_commandLabel;
+        return Messages.CopyFormatAction_commandLabel;
     }
 
     /**
@@ -98,9 +98,9 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
      */
     @Override
     protected Command getCommand() {
-        // Create a compound command to hold the store layout commands
-        final CompoundCommand doStoreLayoutsCmd = new CompoundCommand(Messages.CopyLayoutAction_storeLayoutCommandLabel);
-        doStoreLayoutsCmd.add(new Command(Messages.CopyLayoutAction_clrearPreviousLayoutDateCommandLabel) {
+        // Create a compound command to hold the store format commands
+        final CompoundCommand doStoreFormatsCmd = new CompoundCommand(Messages.CopyFormatAction_storeFormatCommandLabel);
+        doStoreFormatsCmd.add(new Command(Messages.CopyFormatAction_clearPreviousFormatDateCommandLabel) {
             /**
              * {@inheritDoc}
              * 
@@ -142,13 +142,13 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
                 // Clean the selection to keep only one data if both node and
                 // its label are selected.
                 List<IGraphicalEditPart> selectedEditParts = cleanSelectedObjects(getSelectedObjects());
-                // For each selected edit part, store its layout.
+                // For each selected edit part, store its format.
                 for (final IGraphicalEditPart toStore : selectedEditParts) {
-                    doStoreLayoutsCmd.add(new ICommandProxy(new CopyLayoutDataCommand(toStore.getEditingDomain(), diagram.get(), toStore)));
+                    doStoreFormatsCmd.add(new ICommandProxy(new CopyFormatDataCommand(toStore.getEditingDomain(), diagram.get(), toStore)));
                 }
             }
         }
-        return doStoreLayoutsCmd.unwrap();
+        return doStoreFormatsCmd.unwrap();
     }
 
     /**
@@ -173,9 +173,9 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
     }
 
     /**
-     * A command allowing to copy layout data.
+     * A command allowing to copy format data.
      */
-    private final class CopyLayoutDataCommand extends AbstractTransactionalCommand {
+    private final class CopyFormatDataCommand extends AbstractTransactionalCommand {
 
         private IGraphicalEditPart toStore;
 
@@ -187,12 +187,12 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
          * @param domain
          *            the editing domain on which this command will be executed
          * @param dDiagram
-         *            the {@link DDiagram} on which layout will be pasted
+         *            the {@link DDiagram} on which format will be pasted
          * @param editPartToStore
          *            the edit part to store
          */
-        public CopyLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToStore) {
-            super(domain, Messages.CopyLayoutDataCommand_label, null);
+        public CopyFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToStore) {
+            super(domain, Messages.CopyFormatDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.toStore = editPartToStore;
         }

@@ -227,6 +227,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
 
     @Override
     public boolean allowsCopyPasteLayout(DSemanticDecorator element) {
+        return allowsCopyPasteFormat(element);
+    }
+
+    @Override
+    public boolean allowsCopyPasteFormat(DSemanticDecorator element) {
         return !isSequenceSemanticDecorator.apply(element);
     }
 

@@ -17,6 +17,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -29,6 +30,7 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
@@ -44,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticEdge
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticNodeLayoutDataKey;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
@@ -131,7 +134,22 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
         location.setY(relativeLocation.y);
         result.setLocation(location);
 
+        // 4-Copy Sirius and GMF styles
+        copyNodeStyleInLayoutData(result, node);
+
         return result;
+    }
+
+    private void copyNodeStyleInLayoutData(AbstractLayoutData layoutData, View view) {
+        // 1-Copy Sirius Style
+        if (view.getElement() instanceof DStylizable) {
+            layoutData.setSiriusStyle(EcoreUtil.copy(((DStylizable) view.getElement()).getStyle()));
+        }
+
+        // 2-Copy GMF view to retrieve GMF style
+        EcoreUtil.Copier copierWithoutElementRef = new EcoreUtil.Copier(false, false);
+        View viewCopy = (View) copierWithoutElementRef.copy(view);
+        layoutData.setGmfView(viewCopy);
     }
 
     /**
@@ -169,6 +187,9 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
         if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
             result.setTargetTerminal(((IdentityAnchor) gmfEdge.getTargetAnchor()).getId());
         }
+
+        // 4-Copy Sirius and GMF styles
+        copyNodeStyleInLayoutData(result, gmfEdge);
 
         return result;
     }

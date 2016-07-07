@@ -79,12 +79,12 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramContributionItems.add(createSelectPinnedElementsContribution(part));
             diagramContributionItems.add(createSelectHiddenElementsContribution(part));
             diagramContributionItems.add(createFilterContribution(part, manager));
-            diagramContributionItems.add(createPasteLayoutContribution(part));
+            diagramContributionItems.add(createPasteFormatContribution(part));
             diagramContributionItems.add(createRefreshContribution());
             diagramContributionItems.add(createSaveAsImageContributionItem());
             diagramContributionItems.add(createLayoutingModeContributionItem(part));
             diagramContributionItems.add(createCopyAppearancePropertiesContribution(part));
-            diagramContributionItems.add(createCopyLayoutContribution(part));
+            diagramContributionItems.add(createCopyFormatContribution(part));
         }
         return diagramContributionItems;
     }
@@ -102,7 +102,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(pinElementContributionItem);
             diagramElementContributionItems.add(createUnPinElementContribution(part, pinElementContributionItem));
             diagramElementContributionItems.add(createFontColorContribution(part));
-            diagramElementContributionItems.add(createPasteLayoutContribution(part));
+            diagramElementContributionItems.add(createPasteFormatContribution(part));
             diagramElementContributionItems.add(createBoldFontStyleContribution(part));
             diagramElementContributionItems.add(createItalicFontStyleContribution(part));
             diagramElementContributionItems.add(createFontDialogContribution(part));
@@ -115,7 +115,7 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems.add(createLayoutingModeContributionItem(part));
             diagramElementContributionItems.add(createRouterContribution());
             diagramElementContributionItems.add(createCopyAppearancePropertiesContribution(part));
-            diagramElementContributionItems.add(createCopyLayoutContribution(part));
+            diagramElementContributionItems.add(createCopyFormatContribution(part));
             diagramElementContributionItems.add(createSizeBothContribution(part));
             diagramElementContributionItems.add(createAutoSizeContribution(part));
         }

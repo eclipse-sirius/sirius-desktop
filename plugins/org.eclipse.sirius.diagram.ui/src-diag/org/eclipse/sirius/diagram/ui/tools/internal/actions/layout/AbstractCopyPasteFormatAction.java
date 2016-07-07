@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ import com.google.common.collect.Lists;
  * 
  * @author mporhel
  */
-public abstract class AbstractCopyPasteLayoutAction extends AbstractDiagramAction {
+public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramAction {
     private IWorkbenchPart representationPart;
 
     /**
@@ -48,7 +48,7 @@ public abstract class AbstractCopyPasteLayoutAction extends AbstractDiagramActio
      * @param actionWorkbenchPart
      *            the part concerned by this action. Could be null.
      */
-    public AbstractCopyPasteLayoutAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
+    public AbstractCopyPasteFormatAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
         super(workbenchPage);
         this.representationPart = actionWorkbenchPart;
 
@@ -107,8 +107,8 @@ public abstract class AbstractCopyPasteLayoutAction extends AbstractDiagramActio
         }
 
         if (parentDiagram != null) {
-            Predicate<DSemanticDecorator> allowsPasteLayout = allowsCopyPasteLayout(parentDiagram);
-            if (Iterables.all(dSelection, allowsPasteLayout)) {
+            Predicate<DSemanticDecorator> allowsPasteFormat = allowsCopyPasteFormat(parentDiagram);
+            if (Iterables.all(dSelection, allowsPasteFormat)) {
                 enable = super.calculateEnabled();
             }
         }
@@ -139,14 +139,14 @@ public abstract class AbstractCopyPasteLayoutAction extends AbstractDiagramActio
     }
 
     /**
-     * Indicates if the given ddiagram is allowing copy/paste layout.
+     * Indicates if the given ddiagram is allowing copy/paste format.
      * 
      * @param diagram
      *            the diagram to inspect
-     * @return true if the given ddiagram is allowing copy/paste layout actions,
+     * @return true if the given ddiagram is allowing copy/paste format actions,
      *         false otherwise
      */
-    public static Predicate<DSemanticDecorator> allowsCopyPasteLayout(DDiagram diagram) {
+    public static Predicate<DSemanticDecorator> allowsCopyPasteFormat(DDiagram diagram) {
         // default return value is true (for basic DDiagram that are not handled
         // by any DiagramDescriptionProvider).
         Predicate<DSemanticDecorator> result = Predicates.alwaysTrue();
@@ -161,12 +161,12 @@ public abstract class AbstractCopyPasteLayoutAction extends AbstractDiagramActio
         // DiagramDescriptionProvider handling this type of diagram
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
-                // This DiagramDescriptionProvider may forbid copy/paste layout.
+                // This DiagramDescriptionProvider may forbid copy/paste format.
                 final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
                 result = new Predicate<DSemanticDecorator>() {
                     @Override
                     public boolean apply(DSemanticDecorator input) {
-                        return provider.allowsCopyPasteLayout(input);
+                        return provider.allowsCopyPasteFormat(input);
                     }
                 };
                 break;

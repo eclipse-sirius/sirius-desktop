@@ -55,6 +55,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#addLayoutData(org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey,
      *      org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData)
      */
+    @Override
     public void addLayoutData(final LayoutDataKey key, final AbstractLayoutData layoutData) {
         if (!checkKeyType(key)) {
             // Kind of key not manage
@@ -82,6 +83,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#getLayoutData(org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey)
      */
+    @Override
     public AbstractLayoutData getLayoutData(final LayoutDataKey key) {
         AbstractLayoutData result = null;
         if (checkKeyType(key)) {
@@ -119,6 +121,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#createKey(org.eclipse.sirius.viewpoint.DSemanticDecorator)
      */
+    @Override
     public LayoutDataKey createKey(final DSemanticDecorator semanticDecorator) {
         LayoutDataKey result = null;
         final EObject realSemanticElement = semanticDecorator.getTarget();
@@ -135,6 +138,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#containsData()
      */
+    @Override
     public boolean containsData() {
         return !nodeLayoutDataMap.isEmpty() || !edgeLayoutDataMap.isEmpty();
     }
@@ -144,6 +148,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#clearLayoutData()
      */
+    @Override
     public void clearLayoutData() {
         nodeLayoutDataMap.clear();
         edgeLayoutDataMap.clear();
@@ -152,6 +157,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<SemanticEdgeLayoutDataKey, EdgeLayoutData> getEdgeLayoutData() {
         return edgeLayoutDataMap;
     }
@@ -159,6 +165,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<? extends LayoutDataKey, ? extends NodeLayoutData> getRootNodeLayoutData() {
         return (Map<? extends LayoutDataKey, ? extends NodeLayoutData>) LayoutDataHelper.INSTANCE.getRootLayoutData(nodeLayoutDataMap);
     }
@@ -166,6 +173,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<SemanticNodeLayoutDataKey, NodeLayoutData> getNodeLayoutData() {
         return nodeLayoutDataMap;
     }

@@ -125,10 +125,61 @@
 				<code>UICallBack.askSessionReopeningWithResourceVersionMismatch()</code> method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.allowsCopyPasteFormat(DSemanticDecorator)</code> has been added in replacement of 
+				<code>allowsCopyPasteLayout(DSemanticDecorator)</code> that is now deprecated. This 2 methods must return the same result. 
+				<code>allowsCopyPasteLayout(DSemanticDecorator)</code> will be removed in the new major version.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> 2 methods are added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager</code> (and also in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager</code>):
+				<ul>
+					<li>
+						<code>applyFormat(IGraphicalEditPart)</code>: Apply the current format data (layout data and style data) to the given edit part.
+					</li>
+					<li>
+						<code>applyStyle(IGraphicalEditPart)</code>: Apply the current style data to the give edit part.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-success">Added</span> 2 methods are added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor</code>:
+				<ul>
+					<li>
+						<code>createCopyFormatContribution(IDiagramWorkbenchPart)</code>: In replacement of 
+						<code>createCopyLayoutContribution(IDiagramWorkbenchPart)</code> that is now deprecated.
+					</li>
+					<li>
+						<code>createPasteFormatContribution(IDiagramWorkbenchPart)</code>: In replacement of 
+						<code>createPasteLayoutContribution(IDiagramWorkbenchPart)</code> that is now deprecated.
+					</li>
+				</ul>
+			</li>
+			<li><span class="label label-success">Added</span> New action ids have been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds</code>:
+				<ul>
+					<li>
+						<code>COPY_FORMAT</code>: Action contribution id for the copy format. It replaces the old 
+						<code>COPY_LAYOUT</code>.
+					</li>
+					<li>
+						<code>PASTE_FORMAT</code>: Action contribution id for the paste format. It does not replace the old 
+						<code>PASTE_LAYOUT</code>. The paste format paste the layout and the style. The paste layout only paste layout.
+					</li>
+					<li>
+						<code>PASTE_STYLE</code>: Action contribution id for the paste style.
+					</li>
+				</ul>
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isDescendantOf(View)</code> has been added to know if a view is a descendant of another view.
 			</li>
@@ -362,7 +413,7 @@
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1665,7 +1716,7 @@
 				<code>org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider.bindCompletionProcessor(AbstractPropertySection, Text)</code>, the difference is that it binds the completion processors available in plugins to the text.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -2307,7 +2358,7 @@
 				<code>IServiceLocator.getService()</code> on the site.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

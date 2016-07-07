@@ -1,14 +1,13 @@
-/******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+/*******************************************************************************
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation
- ****************************************************************************/
-
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Iterator;
@@ -37,15 +36,16 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * Paste the layout on the selected diagram or on the selected container.
+ * Paste the format on the selected diagram or on the selected container.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
+public class PasteFormatAction extends AbstractCopyPasteFormatAction {
 
     /**
      * Default constructor.
@@ -55,16 +55,17 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
      * @param actionWorkbenchPart
      *            the part concerned by this action. Could be null.
      */
-    public PasteLayoutAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
+    public PasteFormatAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
         super(workbenchPage, actionWorkbenchPart);
 
-        setText(Messages.PasteLayoutAction_text);
-        setId(ActionIds.PASTE_LAYOUT);
-        setToolTipText(Messages.PasteLayoutAction_toolTipText);
+        setText(Messages.PasteFormatAction_text);
+        setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'V');
+        setId(ActionIds.PASTE_FORMAT);
+        setToolTipText(Messages.PasteFormatAction_toolTipText);
 
-        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_LAYOUT_ICON));
-        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_LAYOUT_DISABLED_ICON));
-        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_LAYOUT_ICON));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON));
+        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_DISABLED_ICON));
+        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_FORMAT_ICON));
     }
 
     /**
@@ -73,7 +74,7 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
      * @param workbenchPage
      *            the active workbench page
      */
-    public PasteLayoutAction(final IWorkbenchPage workbenchPage) {
+    public PasteFormatAction(final IWorkbenchPage workbenchPage) {
         this(workbenchPage, null);
     }
 
@@ -84,7 +85,7 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
      */
     @Override
     protected String getCommandLabel() {
-        return Messages.PasteLayoutAction_commandLabel;
+        return Messages.PasteFormatAction_commandLabel;
     }
 
     /**
@@ -94,11 +95,11 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
      */
     @Override
     protected Command getCommand() {
-        Command pasteLayoutCommand = UnexecutableCommand.INSTANCE;
+        Command pasteFormatCommand = UnexecutableCommand.INSTANCE;
         if (SiriusLayoutDataManagerForSemanticElementsFactory.getInstance().getSiriusLayoutDataManager().containsData()) {
 
             // Create a compound command to hold the resize commands
-            CompoundCommand doStoreLayoutsCmd = new CompoundCommand(Messages.PasteLayoutAction_restoreLayoutCommandLabel);
+            CompoundCommand doStoreFormatsCmd = new CompoundCommand(Messages.PasteFormatAction_restoreFormatCommandLabel);
 
             // Create an iterator for the selection
             final Iterator<?> iter = getSelectedObjects().iterator();
@@ -113,23 +114,23 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
                         final Object next = iter.next();
                         if (next instanceof IGraphicalEditPart) {
                             final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doStoreLayoutsCmd.add(new ICommandProxy(new PasteLayoutDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
+                            doStoreFormatsCmd.add(new ICommandProxy(new PasteFormatDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
                         }
                     }
                 }
             }
-            pasteLayoutCommand = doStoreLayoutsCmd.unwrap();
+            pasteFormatCommand = doStoreFormatsCmd.unwrap();
         }
-        return pasteLayoutCommand;
+        return pasteFormatCommand;
     }
 
     /**
-     * A command allowing to paste layout data.
+     * A command allowing to paste format data.
      * 
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 
      */
-    private final class PasteLayoutDataCommand extends AbstractTransactionalCommand {
+    private final class PasteFormatDataCommand extends AbstractTransactionalCommand {
 
         private IGraphicalEditPart editPartToRestore;
 
@@ -141,12 +142,12 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
          * @param domain
          *            the editing domain on which this command will be executed
          * @param dDiagram
-         *            the {@link DDiagram} on which layout will be pasted
+         *            the {@link DDiagram} on which format will be pasted
          * @param editPartToRestore
          *            the edit part to restore
          */
-        public PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
-            super(domain, Messages.PasteLayoutDataCommand_label, null);
+        public PasteFormatDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
+            super(domain, Messages.PasteFormatDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;
         }
@@ -163,7 +164,7 @@ public class PasteLayoutAction extends AbstractCopyPasteFormatAction {
             List<SiriusLayoutDataManager> layoutDataManagers = LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram);
 
             if (!layoutDataManagers.isEmpty()) {
-                layoutDataManagers.get(0).applyLayout(editPartToRestore);
+                layoutDataManagers.get(0).applyFormat(editPartToRestore);
             }
 
             return CommandResult.newOKCommandResult();

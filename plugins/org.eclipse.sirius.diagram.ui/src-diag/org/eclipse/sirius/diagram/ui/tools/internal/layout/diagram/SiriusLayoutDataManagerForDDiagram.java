@@ -22,8 +22,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * SiriusLayoutDataManager drives by the DDiagram (DNode, DEdge, ...). Use
- * for drag'n'drop and creation process.
+ * SiriusLayoutDataManager drives by the DDiagram (DNode, DEdge, ...). Use for
+ * drag'n'drop and creation process.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -39,6 +39,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#addLayoutData(org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey,
      *      org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData)
      */
+    @Override
     public void addLayoutData(final LayoutDataKey key, final AbstractLayoutData layoutData) {
         if (!checkKeyType(key)) {
             // Kind of key not manage
@@ -64,6 +65,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#getLayoutData(org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey)
      */
+    @Override
     public AbstractLayoutData getLayoutData(final LayoutDataKey key) {
         AbstractLayoutData result = null;
         if (checkKeyType(key)) {
@@ -90,9 +92,32 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
     /**
      * {@inheritDoc}
      * 
+     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyFormat(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
+     */
+    @Override
+    public void applyFormat(final IGraphicalEditPart rootEditPart) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyLayout(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public void applyLayout(final IGraphicalEditPart rootEditPart) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyStyle(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
+     */
+    @Override
+    public void applyStyle(final IGraphicalEditPart rootEditPart) {
         // TODO Auto-generated method stub
 
     }
@@ -102,6 +127,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#clearLayoutData()
      */
+    @Override
     public void clearLayoutData() {
         // TODO Auto-generated method stub
 
@@ -112,6 +138,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#containsData()
      */
+    @Override
     public boolean containsData() {
         // TODO Auto-generated method stub
         return false;
@@ -122,6 +149,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#createKey(org.eclipse.sirius.viewpoint.DSemanticDecorator)
      */
+    @Override
     public LayoutDataKey createKey(final DSemanticDecorator semanticDecorator) {
         // TODO Auto-generated method stub
         return null;
@@ -142,6 +170,7 @@ public class SiriusLayoutDataManagerForDDiagram implements SiriusLayoutDataManag
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#storeLayoutData(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public void storeLayoutData(final IGraphicalEditPart rootEditPart) {
         // TODO Auto-generated method stub
 

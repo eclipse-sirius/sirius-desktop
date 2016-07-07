@@ -26,11 +26,17 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 public interface ActionIds {
     // CHECKSTYLE:ON
 
-    /** Action contribution id for the copy layout. */
-    String COPY_LAYOUT = "copyLayoutAction"; //$NON-NLS-1$
+    /** Action contribution id for the copy format (layout and style). */
+    String COPY_FORMAT = "copyFormatAction"; //$NON-NLS-1$
 
-    /** Action contribution id for the paste layout. */
+    /** Action contribution id for the paste format (layout and style). */
+    String PASTE_FORMAT = "pasteFormatAction"; //$NON-NLS-1$
+
+    /** Action contribution id for the paste style. */
     String PASTE_LAYOUT = "pasteLayoutAction"; //$NON-NLS-1$
+
+    /** Action contribution id for the copy style. */
+    String PASTE_STYLE = "pasteStyleAction"; //$NON-NLS-1$
 
     /** Action id for pin elements action. */
     String PIN_ELEMENTS = "pinElementsAction"; //$NON-NLS-1$

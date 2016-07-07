@@ -162,9 +162,13 @@ icons/wizban/NewSiriusWizard.gif - org.eclipse.uml2.diagram.deploy - org.eclipse
 icons/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
 icons/HasLink.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
 icons/Layer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
-icons/copyLayout.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
-icons/copyLayoutDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/copyFormat.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/copyFormatDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
 icons/label_obj.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/icons/obj16/label_obj.gif
 icons/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
+icons/pasteFormat.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteFormatDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/pasteLayout.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/pasteLayoutDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteStyle.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteStyleDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif

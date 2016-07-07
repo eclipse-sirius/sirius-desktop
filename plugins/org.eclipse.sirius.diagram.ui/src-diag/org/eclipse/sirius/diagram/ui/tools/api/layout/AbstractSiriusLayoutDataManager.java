@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewRefactorHelper;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Bendpoints;
@@ -48,15 +49,19 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
@@ -121,22 +126,60 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *      org.eclipse.gef.EditPartViewer)
      */
     @Override
+    public void applyFormat(final IGraphicalEditPart rootEditPart) {
+        applyFormat(rootEditPart, true, true);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyLayout(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
+     *      org.eclipse.gef.EditPartViewer)
+     */
+    @Override
     public void applyLayout(final IGraphicalEditPart rootEditPart) {
+        applyFormat(rootEditPart, true, false);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyStyle(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
+     *      org.eclipse.gef.EditPartViewer)
+     */
+    @Override
+    public void applyStyle(final IGraphicalEditPart rootEditPart) {
+        applyFormat(rootEditPart, false, true);
+    }
+
+    /**
+     * Apply the format to the <code>rootEditPart</code>.
+     * 
+     * @param rootEditPart
+     *            The root edit from which we would try to apply the current
+     *            stored format
+     * @param applyLayout
+     *            true if the layout must be applied, false otherwise
+     * @param applyStyle
+     *            true if the layout must be applied, false otherwise
+     */
+    protected void applyFormat(final IGraphicalEditPart rootEditPart, boolean applyLayout, boolean applyStyle) {
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
         if (toStoreView instanceof Edge) {
-            // TODOLRE : Manage the edge as root ?
+            // TODO LRE : Manage the edge as root ?
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
-            applyLayout((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer());
+            applyFormat((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer(), applyLayout, applyStyle);
             centerEdgesEnds(toStoreView);
         } else if (toStoreView instanceof Node) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
-                applyLayout((DSemanticDecorator) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null);
+                applyFormat((DSemanticDecorator) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null, applyLayout, applyStyle);
             }
             centerEdgesEnds(toStoreView);
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void centerEdgesEnds(View view) {
         Set<Edge> edges = new HashSet<Edge>();
         if (view instanceof Diagram) {
@@ -157,13 +200,13 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyLayout(final DDiagram diagram, final Diagram toStoreView, final EditPartViewer editPartViewer) {
+    private void applyFormat(final DDiagram diagram, final Diagram toStoreView, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
         // We don't apply layout on diagram but only on its node children (the
         // edge is applied during source node).
         for (final AbstractDNode node : Iterables.filter(diagram.getOwnedDiagramElements(), AbstractDNode.class)) {
             final Node gmfNode = SiriusGMFHelper.getGmfNode(node);
             if (gmfNode != null) {
-                applyLayout(node, gmfNode, editPartViewer, null);
+                applyFormat(node, gmfNode, editPartViewer, null, applyLayout, applyStyle);
             }
         }
     }
@@ -172,11 +215,11 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param sourceNode
      * @param editPartViewer
      */
-    private void applyLayoutToOutgoingEdge(final EdgeTarget sourceNode, final EditPartViewer editPartViewer) {
+    private void applyFormatToOutgoingEdge(final EdgeTarget sourceNode, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
         for (final DEdge edge : sourceNode.getOutgoingEdges()) {
             final Edge gmfEdge = SiriusGMFHelper.getGmfEdge(edge);
             if (gmfEdge != null) {
-                applyLayout(edge, gmfEdge, editPartViewer);
+                applyFormat(edge, gmfEdge, editPartViewer, applyLayout, applyStyle);
             }
         }
     }
@@ -186,63 +229,77 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param gmfEdge
      * @param editPartViewer
      */
-    private void applyLayout(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer) {
+    private void applyFormat(final DEdge edge, final Edge gmfEdge, final EditPartViewer editPartViewer, boolean applyLayout, boolean applyStyle) {
         final EdgeLayoutData layoutData = (EdgeLayoutData) getLayoutData(createKey(edge));
         if (layoutData != null) {
+            if (applyLayout) {
+                final Bendpoints bendpoints = convertPointsToGMFBendpoint(layoutData);
+                gmfEdge.setBendpoints(bendpoints);
 
-            final Bendpoints bendpoints = convertPointsToGMFBendpoint(layoutData);
-            gmfEdge.setBendpoints(bendpoints);
+                if (layoutData.getSourceTerminal() != null) {
+                    if (gmfEdge.getSourceAnchor() == null) {
+                        gmfEdge.setSourceAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
+                    }
+                    if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
+                        ((IdentityAnchor) gmfEdge.getSourceAnchor()).setId(layoutData.getSourceTerminal());
+                    }
+                } else if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
+                    gmfEdge.setSourceAnchor(null);
+                }
+                if (layoutData.getTargetTerminal() != null) {
+                    if (gmfEdge.getTargetAnchor() == null) {
+                        gmfEdge.setTargetAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
+                    }
+                    if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
+                        ((IdentityAnchor) gmfEdge.getTargetAnchor()).setId(layoutData.getTargetTerminal());
+                    }
+                } else if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
+                    gmfEdge.setTargetAnchor(null);
+                }
+                final RoutingStyle routingStyle = (RoutingStyle) gmfEdge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
+                if (routingStyle != null) {
+                    routingStyle.setRouting(Routing.get(layoutData.getRouting()));
+                    routingStyle.setJumpLinkStatus(JumpLinkStatus.get(layoutData.getJumpLinkStatus()));
+                    routingStyle.setJumpLinkType(JumpLinkType.get(layoutData.getJumpLinkType()));
+                    routingStyle.setJumpLinksReverse(layoutData.isReverseJumpLink());
+                    routingStyle.setSmoothness(Smoothness.get(layoutData.getSmoothness()));
+                }
+            }
+            if (applyStyle) {
+                // Apply Sirius style properties
+                applySiriusStyle(edge, layoutData);
+                // Apply GMF style properties
+                applyGMFStyle(gmfEdge, layoutData);
+            }
 
-            if (layoutData.getSourceTerminal() != null) {
-                if (gmfEdge.getSourceAnchor() == null) {
-                    gmfEdge.setSourceAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
-                }
-                if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
-                    ((IdentityAnchor) gmfEdge.getSourceAnchor()).setId(layoutData.getSourceTerminal());
-                }
-            } else if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
-                gmfEdge.setSourceAnchor(null);
-            }
-            if (layoutData.getTargetTerminal() != null) {
-                if (gmfEdge.getTargetAnchor() == null) {
-                    gmfEdge.setTargetAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
-                }
-                if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
-                    ((IdentityAnchor) gmfEdge.getTargetAnchor()).setId(layoutData.getTargetTerminal());
-                }
-            } else if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
-                gmfEdge.setTargetAnchor(null);
-            }
-            final RoutingStyle routingStyle = (RoutingStyle) gmfEdge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-            if (routingStyle != null) {
-                routingStyle.setRouting(Routing.get(layoutData.getRouting()));
-                routingStyle.setJumpLinkStatus(JumpLinkStatus.get(layoutData.getJumpLinkStatus()));
-                routingStyle.setJumpLinkType(JumpLinkType.get(layoutData.getJumpLinkType()));
-                routingStyle.setJumpLinksReverse(layoutData.isReverseJumpLink());
-                routingStyle.setSmoothness(Smoothness.get(layoutData.getSmoothness()));
-            }
+            applyLabelFormat(gmfEdge, layoutData, applyLayout, applyStyle);
 
-            applyLabelLayout(gmfEdge, layoutData);
         }
     }
 
-    private void applyLabelLayout(final View gmfView, final AbstractLayoutData parentLayoutData) {
+    private void applyLabelFormat(final View gmfView, final AbstractLayoutData parentLayoutData, boolean applyLayout, boolean applyStyle) {
         if (parentLayoutData != null) {
             final Node labelNode = SiriusGMFHelper.getLabelNode(gmfView);
             if (parentLayoutData.getLabel() != null && labelNode != null) {
-                if (!parentLayoutData.getLabel().eIsSet(LayoutdataPackage.eINSTANCE.getNodeLayoutData_Width())
-                        && !parentLayoutData.getLabel().eIsSet(LayoutdataPackage.eINSTANCE.getNodeLayoutData_Height())) {
-                    Location location = NotationFactory.eINSTANCE.createLocation();
-                    location.setX(parentLayoutData.getLabel().getLocation().getX());
-                    location.setY(parentLayoutData.getLabel().getLocation().getY());
-                    labelNode.setLayoutConstraint(location);
-                } else {
-                    Bounds bounds = NotationFactory.eINSTANCE.createBounds();
-                    bounds.setX(parentLayoutData.getLabel().getLocation().getX());
-                    bounds.setY(parentLayoutData.getLabel().getLocation().getY());
-                    bounds.setWidth(parentLayoutData.getLabel().getWidth());
-                    bounds.setHeight(parentLayoutData.getLabel().getHeight());
-                    labelNode.setLayoutConstraint(bounds);
+                if (applyLayout) {
+                    if (!parentLayoutData.getLabel().eIsSet(LayoutdataPackage.eINSTANCE.getNodeLayoutData_Width())
+                            && !parentLayoutData.getLabel().eIsSet(LayoutdataPackage.eINSTANCE.getNodeLayoutData_Height())) {
+                        Location location = NotationFactory.eINSTANCE.createLocation();
+                        location.setX(parentLayoutData.getLabel().getLocation().getX());
+                        location.setY(parentLayoutData.getLabel().getLocation().getY());
+                        labelNode.setLayoutConstraint(location);
+                    } else {
+                        Bounds bounds = NotationFactory.eINSTANCE.createBounds();
+                        bounds.setX(parentLayoutData.getLabel().getLocation().getX());
+                        bounds.setY(parentLayoutData.getLabel().getLocation().getY());
+                        bounds.setWidth(parentLayoutData.getLabel().getWidth());
+                        bounds.setHeight(parentLayoutData.getLabel().getHeight());
+                        labelNode.setLayoutConstraint(bounds);
+                    }
+                }
+                if (applyStyle) {
+                    // Apply GMF style properties
+                    applyGMFStyle(labelNode, parentLayoutData.getLabel());
                 }
             }
         }
@@ -290,7 +347,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The viewer responsible for the current editparts lifecycle.
      * @parentLayoutData the layout of the parent of <code>toRestoreView<code>
      */
-    private void applyLayout(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeLayoutData parentLayoutData) {
+    private void applyFormat(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeLayoutData parentLayoutData, boolean applyLayout,
+            boolean applyStyle) {
         LayoutDataKey key = createKey(semanticDecorator);
         NodeLayoutData layoutData = (NodeLayoutData) getLayoutData(key);
 
@@ -313,7 +371,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
             }
         }
 
-        if (layoutData != null) {
+        if (layoutData != null && applyLayout) {
+
             final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
             final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPartViewer.getEditPartRegistry().get(toRestoreView);
             Point locationToApply;
@@ -363,18 +422,81 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
             }
             toRestoreView.setLayoutConstraint(bounds);
         }
+        if (layoutData != null && applyStyle) {
+            // Apply Sirius style properties
+            applySiriusStyle(semanticDecorator, layoutData);
+            // Apply GMF style properties
+            applyGMFStyle(toRestoreView, layoutData);
+        }
+
         if (semanticDecorator instanceof DNode) {
-            applyLayoutToNodeChildren((DNode) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else if (semanticDecorator instanceof DNodeContainer) {
-            applyLayoutToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else if (semanticDecorator instanceof DNodeList) {
-            applyLayoutToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else {
             logWarnMessage(semanticDecorator);
         }
         // Deal with the outgoing edges
         if (semanticDecorator instanceof EdgeTarget) {
-            applyLayoutToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer);
+            applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyLayout, applyStyle);
+        }
+    }
+
+    /**
+     * Apply the Sirius style contained in <code>layoutData</code> on the
+     * <code>semanticDecorator</code>.
+     * 
+     * @param semanticDecorator
+     *            The {@link DSemanticDecorator} on which to apply the style.
+     * @param layoutData
+     *            The layout data containing the sirius style
+     */
+    protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractLayoutData layoutData) {
+        if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && layoutData.getSiriusStyle() instanceof NodeStyle) {
+            NodeStyle style = (NodeStyle) layoutData.getSiriusStyle();
+            if (semanticDecorator instanceof DNode) {
+                DNode node = (DNode) semanticDecorator;
+                node.setOwnedStyle(style);
+            } else {
+                DNodeListElement nodeListElement = (DNodeListElement) semanticDecorator;
+                nodeListElement.setOwnedStyle(style);
+            }
+        } else if (semanticDecorator instanceof DDiagramElementContainer && layoutData.getSiriusStyle() instanceof ContainerStyle) {
+            final DDiagramElementContainer container = (DDiagramElementContainer) semanticDecorator;
+            final ContainerStyle style = (ContainerStyle) layoutData.getSiriusStyle();
+            container.setOwnedStyle(style);
+        } else if (semanticDecorator instanceof DEdge && layoutData.getSiriusStyle() instanceof EdgeStyle) {
+            final DEdge edge = (DEdge) semanticDecorator;
+            final EdgeStyle style = (EdgeStyle) layoutData.getSiriusStyle();
+            edge.setOwnedStyle(style);
+        }
+    }
+
+    /**
+     * Copies the appearance of the old view to the new view. Typically this
+     * means copying the visibility and the styles of the root and it's
+     * children.
+     * 
+     * @param newView
+     *            The new view to copy style features to
+     * @param layoutData
+     *            The layout data containing the old view to copy style features
+     *            from
+     */
+    @SuppressWarnings("unchecked")
+    protected void applyGMFStyle(View newView, AbstractLayoutData layoutData) {
+        if (newView != null && layoutData.getGmfView() != null) {
+            @SuppressWarnings("rawtypes")
+            List excludedStyles = Lists.newArrayList();
+            if (newView instanceof Edge) {
+                // The style of RoutingStyle class is considered as layout
+                // properties. So they have already been pasted during paste
+                // layout.
+                excludedStyles.add(NotationPackage.eINSTANCE.getRoutingStyle());
+            }
+            new ViewRefactorHelper().copyViewAppearance(layoutData.getGmfView(), newView, excludedStyles);
         }
     }
 
@@ -402,12 +524,12 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyLayoutToNodeChildren(final DNode parentNode, final EditPartViewer editPartViewer, final NodeLayoutData layoutData) {
+    private void applyFormatToNodeChildren(final DNode parentNode, final EditPartViewer editPartViewer, final NodeLayoutData layoutData, boolean applyLayout, boolean applyStyle) {
         // Restore Bordered nodes
-        applyLayoutForBorderedNodes(parentNode.getOwnedBorderedNodes(), editPartViewer, layoutData);
+        applyFormatForBorderedNodes(parentNode.getOwnedBorderedNodes(), editPartViewer, layoutData, applyLayout, applyStyle);
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(parentNode);
-        applyLabelLayout(gmfNode, layoutData);
+        applyLabelFormat(gmfNode, layoutData, applyLayout, applyStyle);
     }
 
     /**
@@ -418,22 +540,22 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyLayoutToNodeContainerChildren(final DNodeContainer container, final EditPartViewer editPartViewer, final NodeLayoutData layoutData) {
+    private void applyFormatToNodeContainerChildren(final DNodeContainer container, final EditPartViewer editPartViewer, final NodeLayoutData layoutData, boolean applyLayout, boolean applyStyle) {
         // Restore children
         for (final DDiagramElement child : container.getOwnedDiagramElements()) {
             if (child instanceof AbstractDNode) {
                 // Search the GMF node corresponding to the child
                 final Node gmfNode = SiriusGMFHelper.getGmfNode(child);
                 if (gmfNode != null) {
-                    applyLayout(child, gmfNode, editPartViewer, layoutData);
+                    applyFormat(child, gmfNode, editPartViewer, layoutData, applyLayout, applyStyle);
                 }
             }
         }
         // Restore Bordered nodes
-        applyLayoutForBorderedNodes(container.getOwnedBorderedNodes(), editPartViewer, layoutData);
+        applyFormatForBorderedNodes(container.getOwnedBorderedNodes(), editPartViewer, layoutData, applyLayout, applyStyle);
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(container);
-        applyLabelLayout(gmfNode, layoutData);
+        applyLabelFormat(gmfNode, layoutData, applyLayout, applyStyle);
     }
 
     /**
@@ -446,7 +568,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param parentLayoutData
      *            The layoutData of the parent of the borderedNodes
      */
-    private void applyLayoutForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeLayoutData parentLayoutData) {
+    private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeLayoutData parentLayoutData, boolean applyLayout, boolean applyStyle) {
         HashMap<Node, NodeLayoutData> nodesWithLayoutDataToApply = Maps.newHashMap();
         HashMap<Node, DSemanticDecorator> nodesWithCoresspondingDSemanticDecorator = Maps.newHashMap();
         // Search each bordered nodes that have layoutData to apply
@@ -485,7 +607,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         Set<Node> toIgnore = nodesWithLayoutDataToApply.keySet();
         for (Entry<Node, NodeLayoutData> entry : nodesWithLayoutDataToApply.entrySet()) {
             Node node = entry.getKey();
-            applyLayoutForBorderedNode(nodesWithCoresspondingDSemanticDecorator.get(node), node, editPartViewer, entry.getValue(), toIgnore);
+            applyFormatForBorderedNode(nodesWithCoresspondingDSemanticDecorator.get(node), node, editPartViewer, entry.getValue(), toIgnore, applyLayout, applyStyle);
         }
     }
 
@@ -503,88 +625,97 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param portsNodesToIgnore
      *            The list of bordered nodes to ignore in the conflict detection
      */
-    private void applyLayoutForBorderedNode(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeLayoutData layoutData,
-            final Set<Node> portsNodesToIgnore) {
-        final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
-        Point locationToApply;
-        boolean isCollapsed = false;
-        if (!(toRestoreView.eContainer() instanceof Node)) {
-            return;
-        }
-        Node parentNode = (Node) toRestoreView.eContainer();
+    private void applyFormatForBorderedNode(final DSemanticDecorator semanticDecorator, final Node toRestoreView, final EditPartViewer editPartViewer, final NodeLayoutData layoutData,
+            final Set<Node> portsNodesToIgnore, boolean applyLayout, boolean applyStyle) {
+        if (applyLayout) {
+            final Bounds bounds = NotationFactory.eINSTANCE.createBounds();
+            Point locationToApply;
+            boolean isCollapsed = false;
+            if (!(toRestoreView.eContainer() instanceof Node)) {
+                return;
+            }
+            Node parentNode = (Node) toRestoreView.eContainer();
 
-        Object parentGraphicalEditPart = editPartViewer.getEditPartRegistry().get(parentNode);
-        NodeQuery nodeQuery = new NodeQuery(toRestoreView);
+            Object parentGraphicalEditPart = editPartViewer.getEditPartRegistry().get(parentNode);
+            NodeQuery nodeQuery = new NodeQuery(toRestoreView);
 
-        if (nodeQuery.isBorderedNode() && parentGraphicalEditPart instanceof IGraphicalEditPart) {
-            // Specific treatment for border node
-            // Compute absolute location
-            locationToApply = LayoutDataHelper.INSTANCE.getAbsoluteLocation(layoutData);
-            // Compute the best location according to other existing
-            // bordered nodes.
+            if (nodeQuery.isBorderedNode() && parentGraphicalEditPart instanceof IGraphicalEditPart) {
+                // Specific treatment for border node
+                // Compute absolute location
+                locationToApply = LayoutDataHelper.INSTANCE.getAbsoluteLocation(layoutData);
+                // Compute the best location according to other existing
+                // bordered nodes.
 
-            CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
-            if (semanticDecorator instanceof DDiagramElement) {
-                if (new DDiagramElementQuery((DDiagramElement) semanticDecorator).isIndirectlyCollapsed()) {
-                    isCollapsed = true;
-                    locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
+                CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
+                if (semanticDecorator instanceof DDiagramElement) {
+                    if (new DDiagramElementQuery((DDiagramElement) semanticDecorator).isIndirectlyCollapsed()) {
+                        isCollapsed = true;
+                        locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
+                    } else {
+                        locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                    }
                 } else {
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
+
+                // CanonicalDBorderItemLocator works with absolute GMF parent
+                // location so we need to translate BorderedNode absolute
+                // location
+                // from Draw2D to GMF.
+
+                Point delta = getGMFDraw2DDelta(parentNode, (IGraphicalEditPart) parentGraphicalEditPart);
+                final Rectangle rect = new Rectangle(locationToApply.getX() - delta.getX(), locationToApply.getY() - delta.getY(), layoutData.getWidth(), layoutData.getHeight());
+
+                final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
+
+                // Compute the new relative position to the parent
+                final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode).getTopLeft();
+                locationToApply.setX(realLocation.x);
+                locationToApply.setY(realLocation.y);
+                locationToApply = LayoutDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
+
             } else {
-                locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                Object graphicalEditPart = editPartViewer.getEditPartRegistry().get(toRestoreView);
+                if (graphicalEditPart instanceof IGraphicalEditPart) {
+                    locationToApply = LayoutDataHelper.INSTANCE.getRelativeLocation(layoutData, (IGraphicalEditPart) graphicalEditPart);
+                    // Apply the location to the figure to, to correctly compute
+                    // the relative location of the children
+                    ((GraphicalEditPart) graphicalEditPart).getFigure().setLocation(new org.eclipse.draw2d.geometry.Point(locationToApply.getX(), locationToApply.getY()));
+                } else {
+                    locationToApply = LayoutdataFactory.eINSTANCE.createPoint();
+                }
+            }
+            bounds.setX(locationToApply.getX());
+            bounds.setY(locationToApply.getY());
+            if (isCollapsed) {
+                Dimension dim = new NodeQuery(toRestoreView).getCollapsedSize();
+                bounds.setHeight(dim.height);
+                bounds.setWidth(dim.width);
+            } else {
+                bounds.setHeight(layoutData.getHeight());
+                bounds.setWidth(layoutData.getWidth());
             }
 
-            // CanonicalDBorderItemLocator works with absolute GMF parent
-            // location so we need to translate BorderedNode absolute location
-            // from Draw2D to GMF.
-
-            Point delta = getGMFDraw2DDelta(parentNode, (IGraphicalEditPart) parentGraphicalEditPart);
-            final Rectangle rect = new Rectangle(locationToApply.getX() - delta.getX(), locationToApply.getY() - delta.getY(), layoutData.getWidth(), layoutData.getHeight());
-
-            final org.eclipse.draw2d.geometry.Point realLocation = locator.getValidLocation(rect, toRestoreView, portsNodesToIgnore);
-
-            // Compute the new relative position to the parent
-            final org.eclipse.draw2d.geometry.Point parentAbsoluteLocation = GMFHelper.getAbsoluteBounds(parentNode).getTopLeft();
-            locationToApply.setX(realLocation.x);
-            locationToApply.setY(realLocation.y);
-            locationToApply = LayoutDataHelper.INSTANCE.getTranslated(locationToApply, parentAbsoluteLocation.negate());
-
-        } else {
-            Object graphicalEditPart = editPartViewer.getEditPartRegistry().get(toRestoreView);
-            if (graphicalEditPart instanceof IGraphicalEditPart) {
-                locationToApply = LayoutDataHelper.INSTANCE.getRelativeLocation(layoutData, (IGraphicalEditPart) graphicalEditPart);
-                // Apply the location to the figure to, to correctly compute
-                // the relative location of the children
-                ((GraphicalEditPart) graphicalEditPart).getFigure().setLocation(new org.eclipse.draw2d.geometry.Point(locationToApply.getX(), locationToApply.getY()));
-            } else {
-                locationToApply = LayoutdataFactory.eINSTANCE.createPoint();
-            }
+            toRestoreView.setLayoutConstraint(bounds);
         }
-        bounds.setX(locationToApply.getX());
-        bounds.setY(locationToApply.getY());
-        if (isCollapsed) {
-            Dimension dim = new NodeQuery(toRestoreView).getCollapsedSize();
-            bounds.setHeight(dim.height);
-            bounds.setWidth(dim.width);
-        } else {
-            bounds.setHeight(layoutData.getHeight());
-            bounds.setWidth(layoutData.getWidth());
+        if (applyStyle) {
+            // Apply Sirius style properties
+            applySiriusStyle(semanticDecorator, layoutData);
+            // Apply GMF style properties
+            applyGMFStyle(toRestoreView, layoutData);
         }
-
-        toRestoreView.setLayoutConstraint(bounds);
 
         if (semanticDecorator instanceof DNode) {
-            applyLayoutToNodeChildren((DNode) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeChildren((DNode) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else if (semanticDecorator instanceof DNodeContainer) {
-            applyLayoutToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeContainerChildren((DNodeContainer) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else if (semanticDecorator instanceof DNodeList) {
-            applyLayoutToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, layoutData);
+            applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, layoutData, applyLayout, applyStyle);
         } else {
             logWarnMessage(semanticDecorator);
         }
         if (semanticDecorator instanceof EdgeTarget) {
-            applyLayoutToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer);
+            applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyLayout, applyStyle);
         }
     }
 
@@ -610,13 +741,13 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      */
-    private void applyLayoutToNodeListChildren(final DNodeList nodeList, final EditPartViewer editPartViewer, final NodeLayoutData layoutData) {
+    private void applyFormatToNodeListChildren(final DNodeList nodeList, final EditPartViewer editPartViewer, final NodeLayoutData layoutData, boolean applyLayout, boolean applyStyle) {
         // Restore Bordered nodes
-        applyLayoutForBorderedNodes(nodeList.getOwnedBorderedNodes(), editPartViewer, layoutData);
+        applyFormatForBorderedNodes(nodeList.getOwnedBorderedNodes(), editPartViewer, layoutData, applyLayout, applyStyle);
 
         // Restore label
         final Node gmfNode = SiriusGMFHelper.getGmfNode(nodeList);
-        applyLabelLayout(gmfNode, layoutData);
+        applyLabelFormat(gmfNode, layoutData, applyLayout, applyStyle);
     }
 
     /**

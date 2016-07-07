@@ -62,6 +62,16 @@ public interface SiriusLayoutDataManager {
     void storeLayoutData(IGraphicalEditPart rootEditPart);
 
     /**
+     * Apply the current format data (layout data and style data) to the
+     * rootEditPart.
+     * 
+     * @param rootEditPart
+     *            the root edit from which we would try to apply the current
+     *            stored format
+     */
+    void applyFormat(IGraphicalEditPart rootEditPart);
+
+    /**
      * Apply the current layout data to the rootEditPart.
      * 
      * @param rootEditPart
@@ -69,6 +79,15 @@ public interface SiriusLayoutDataManager {
      *            stored layout
      */
     void applyLayout(IGraphicalEditPart rootEditPart);
+
+    /**
+     * Apply the current style data to the rootEditPart.
+     * 
+     * @param rootEditPart
+     *            the root edit from which we would try to apply the current
+     *            stored style
+     */
+    void applyStyle(IGraphicalEditPart rootEditPart);
 
     /**
      * Check if the manager contains data.

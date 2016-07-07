@@ -33,8 +33,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElements
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteStyleAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
@@ -139,14 +141,20 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
         addAction(deleteFromModelAction);
 
-        final IAction copyLayoutAction = new CopyLayoutAction(getPage());
+        final IAction copyLayoutAction = new CopyFormatAction(getPage());
         addAction(copyLayoutAction);
 
         final IAction routerAction = TabbarRouterAction.createTreeRouterAction(getPage());
         addAction(routerAction);
 
+        final IAction pasteFormatAction = new PasteFormatAction(getPage());
+        addAction(pasteFormatAction);
+
         final IAction pasteLayoutAction = new PasteLayoutAction(getPage());
         addAction(pasteLayoutAction);
+
+        final IAction pasteStyleAction = new PasteStyleAction(getPage());
+        addAction(pasteStyleAction);
 
         final IAction selectHiddenElementsAction = new SelectHiddenElementsAction(getPage());
         addAction(selectHiddenElementsAction);
@@ -171,8 +179,8 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.add(getActionRegistry().getAction(HIDE_LABEL));
             toolBarManager.add(getActionRegistry().getAction(REVEAL_ELEMENTS));
             toolBarManager.add(getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_LAYOUT));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_LAYOUT));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_FORMAT));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_FORMAT));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE));
         }

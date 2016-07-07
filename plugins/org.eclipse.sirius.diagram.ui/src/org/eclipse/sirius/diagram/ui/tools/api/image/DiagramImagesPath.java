@@ -81,16 +81,28 @@ public interface DiagramImagesPath {
     String DELETE_FROM_MODEL_ICON = "icons/deleteModel.gif"; //$NON-NLS-1$
 
     /** path of the copy layout icon image. */
-    String COPY_LAYOUT_ICON = "icons/copyLayout.gif"; //$NON-NLS-1$
+    String COPY_FORMAT_ICON = "icons/copyFormat.gif"; //$NON-NLS-1$
 
     /** path of the copy layout icon image. */
-    String COPY_LAYOUT_DISABLED_ICON = "icons/copyLayoutDisabled.gif"; //$NON-NLS-1$
+    String COPY_FORMAT_DISABLED_ICON = "icons/copyFormatDisabled.gif"; //$NON-NLS-1$
+
+    /** paste format icon. */
+    String PASTE_FORMAT_ICON = "icons/pasteFormat.gif"; //$NON-NLS-1$
+
+    /** paste format disabled icon. */
+    String PASTE_FORMAT_DISABLED_ICON = "icons/pasteFormatDisabled.gif"; //$NON-NLS-1$
 
     /** paste layout icon. */
     String PASTE_LAYOUT_ICON = "icons/pasteLayout.gif"; //$NON-NLS-1$
 
     /** paste layout disabled icon. */
     String PASTE_LAYOUT_DISABLED_ICON = "icons/pasteLayoutDisabled.gif"; //$NON-NLS-1$
+
+    /** paste style icon. */
+    String PASTE_STYLE_ICON = "icons/pasteStyle.gif"; //$NON-NLS-1$
+
+    /** paste style disabled icon. */
+    String PASTE_STYLE_DISABLED_ICON = "icons/pasteStyleDisabled.gif"; //$NON-NLS-1$
 
     /** pin elements icon. */
     String PIN_ELEMENTS_ICON = "icons/pin.gif"; //$NON-NLS-1$
@@ -164,6 +176,8 @@ public interface DiagramImagesPath {
      */
     String DISTRIBUTE_CENTERS_VERTICALLY = "icons/distributeCentersVertical.gif"; //$NON-NLS-1$
 
-    /** Path of the action's image to distribute with uniform gaps vertically. */
+    /**
+     * Path of the action's image to distribute with uniform gaps vertically.
+     */
     String DISTRIBUTE_WITH_UNIFORM_GAPS_VERTICALLY = "icons/distributeWithUniformGapVertical.gif"; //$NON-NLS-1$
 }
