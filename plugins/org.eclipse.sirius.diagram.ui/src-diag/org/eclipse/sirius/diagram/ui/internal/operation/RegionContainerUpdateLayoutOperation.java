@@ -56,6 +56,7 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
@@ -392,7 +393,15 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                 if (siriusStyle instanceof BasicLabelStyle) {
                     BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
                     Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
-                    Dimension titleDimension = FigureUtilities.getStringExtents(dnc.getName(), defaultFont);
+                    Dimension titleDimension;
+                    try {
+                        titleDimension = FigureUtilities.getStringExtents(dnc.getName(), defaultFont);
+                    } catch (SWTException e) {
+                        // Probably an "Invalid thread access" (FigureUtilities
+                        // creates a new Shell to compute the label size). So in
+                        // this case, we use a default size.
+                        titleDimension = new Dimension(20, 12);
+                    }
                     titleHeight = titleDimension.height;
                     if (bls.isShowIcon()) {
                         // Also consider the icon size
