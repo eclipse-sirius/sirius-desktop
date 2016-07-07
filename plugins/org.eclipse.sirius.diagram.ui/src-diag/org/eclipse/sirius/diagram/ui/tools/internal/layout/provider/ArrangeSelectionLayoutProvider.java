@@ -63,6 +63,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      */
     private Predicate<EditPart> editPartIsNotSelected = new Predicate<EditPart>() {
 
+        @Override
         public boolean apply(EditPart input) {
             return input.getSelected() == EditPart.SELECTED_NONE;
         }
@@ -73,6 +74,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      */
     private Predicate<IDiagramElementEditPart> diagramElementEditPartIsUnpinned = new Predicate<IDiagramElementEditPart>() {
 
+        @Override
         public boolean apply(IDiagramElementEditPart input) {
             EObject diagramElement = input.resolveDiagramElement();
             if (diagramElement instanceof DDiagramElement) {
@@ -124,8 +126,8 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                     // parent) that are unpinned
                     List<ShapeNodeEditPart> notSelectedShapeNodeEditPart = Lists.newArrayList(Iterables.filter(topLevelEditParts, editPartIsNotSelected));
                     notSelectedShapeNodeEditPart.removeAll(selectedObjectsLinkedList);
-                    notSelectedShapeNodeEditPartAndUnpinned = Lists.newArrayList(Iterables.filter(Iterables.filter(notSelectedShapeNodeEditPart, IDiagramElementEditPart.class),
-                            diagramElementEditPartIsUnpinned));
+                    notSelectedShapeNodeEditPartAndUnpinned = Lists
+                            .newArrayList(Iterables.filter(Iterables.filter(notSelectedShapeNodeEditPart, IDiagramElementEditPart.class), diagramElementEditPartIsUnpinned));
                     // Add all children of not selected editPart in the unpinned
                     // list (indeed this avoid a move of children
                     // and
@@ -141,11 +143,14 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
 
                     // Update Layout Hint to find later (in
                     // org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.AbstractCompositeLayoutProvider.layoutEditParts(List,
-                    // IAdaptable) for example) the list of unselected
+                    // IAdaptable) or
+                    // org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider.layoutEditParts(List,
+                    // IAdaptable, boolean) for example) the list of unselected
                     // diagram element on diagram that are unpinned as elements
                     // to keep fixed in PinnedElementsHandler
                     final IAdaptable originalHint = layoutHint;
                     updatedLayoutHint = new IAdaptable() {
+                        @Override
                         public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
                             if (Collection.class.equals(adapter)) {
                                 return notSelectedShapeNodeEditPartAndUnpinned;
@@ -182,8 +187,8 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
         for (EditPart editPart : notSelectedParent) {
             ArrayList<EditPart> notSelectedChildrenShapeNodeEditPart = Lists.newArrayList(Iterables.filter(editPart.getChildren(), editPartIsNotSelected));
             if (!notSelectedChildrenShapeNodeEditPart.isEmpty()) {
-                notSelectedShapeNodeEditPartAndUnpinned.addAll(Lists.newArrayList(Iterables.filter(
-                        Iterables.filter(Iterables.filter(notSelectedChildrenShapeNodeEditPart, ShapeNodeEditPart.class), IDiagramElementEditPart.class), diagramElementEditPartIsUnpinned)));
+                notSelectedShapeNodeEditPartAndUnpinned.addAll(Lists.newArrayList(Iterables
+                        .filter(Iterables.filter(Iterables.filter(notSelectedChildrenShapeNodeEditPart, ShapeNodeEditPart.class), IDiagramElementEditPart.class), diagramElementEditPartIsUnpinned)));
                 addChildrenToNotSelectedUnpinnedList(notSelectedChildrenShapeNodeEditPart);
             }
         }
