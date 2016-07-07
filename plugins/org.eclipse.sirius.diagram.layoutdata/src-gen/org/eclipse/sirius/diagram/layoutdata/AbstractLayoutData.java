@@ -11,6 +11,8 @@
 package org.eclipse.sirius.diagram.layoutdata;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -27,6 +29,12 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
  * <em>Label</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getSiriusStyle
+ * <em>Sirius Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getGmfView
+ * <em>Gmf View</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData()
@@ -86,5 +94,62 @@ public interface AbstractLayoutData extends EObject {
      * @generated
      */
     void setLabel(NodeLayoutData value);
+
+    /**
+     * Returns the value of the '<em><b>Sirius Style</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> A copy of the original Sirius style of this
+     * DDiagramElement. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Sirius Style</em>' containment reference.
+     * @see #setSiriusStyle(Style)
+     * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData_SiriusStyle()
+     * @model containment="true" resolveProxies="true" required="true"
+     * @generated
+     */
+    Style getSiriusStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getSiriusStyle
+     * <em>Sirius Style</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Sirius Style</em>' containment
+     *            reference.
+     * @see #getSiriusStyle()
+     * @generated
+     */
+    void setSiriusStyle(Style value);
+
+    /**
+     * Returns the value of the '<em><b>Gmf View</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> A copy of the original GMF View corresponding to this
+     * DDiagramElement (without copying the element reference). <!--
+     * end-model-doc -->
+     *
+     * @return the value of the '<em>Gmf View</em>' containment reference.
+     * @see #setGmfView(View)
+     * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData_GmfView()
+     * @model containment="true" resolveProxies="true" required="true"
+     * @generated
+     */
+    View getGmfView();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getGmfView
+     * <em>Gmf View</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Gmf View</em>' containment
+     *            reference.
+     * @see #getGmfView()
+     * @generated
+     */
+    void setGmfView(View value);
 
 } // AbstractLayoutData

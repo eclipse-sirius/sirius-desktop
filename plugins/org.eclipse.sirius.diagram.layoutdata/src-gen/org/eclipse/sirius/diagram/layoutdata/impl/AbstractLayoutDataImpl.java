@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -33,6 +35,12 @@ import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl#getLabel
  * <em>Label</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl#getSiriusStyle
+ * <em>Sirius Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.layoutdata.impl.AbstractLayoutDataImpl#getGmfView
+ * <em>Gmf View</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +75,26 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * @ordered
      */
     protected NodeLayoutData label;
+
+    /**
+     * The cached value of the '{@link #getSiriusStyle() <em>Sirius Style</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getSiriusStyle()
+     * @generated
+     * @ordered
+     */
+    protected Style siriusStyle;
+
+    /**
+     * The cached value of the '{@link #getGmfView() <em>Gmf View</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getGmfView()
+     * @generated
+     * @ordered
+     */
+    protected View gmfView;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -196,10 +224,172 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * @generated
      */
     @Override
+    public Style getSiriusStyle() {
+        if (siriusStyle != null && siriusStyle.eIsProxy()) {
+            InternalEObject oldSiriusStyle = (InternalEObject) siriusStyle;
+            siriusStyle = (Style) eResolveProxy(oldSiriusStyle);
+            if (siriusStyle != oldSiriusStyle) {
+                InternalEObject newSiriusStyle = (InternalEObject) siriusStyle;
+                NotificationChain msgs = oldSiriusStyle.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, null, null);
+                if (newSiriusStyle.eInternalContainer() == null) {
+                    msgs = newSiriusStyle.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, null, msgs);
+                }
+                if (msgs != null) {
+                    msgs.dispatch();
+                }
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, oldSiriusStyle, siriusStyle));
+                }
+            }
+        }
+        return siriusStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public Style basicGetSiriusStyle() {
+        return siriusStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetSiriusStyle(Style newSiriusStyle, NotificationChain msgs) {
+        Style oldSiriusStyle = siriusStyle;
+        siriusStyle = newSiriusStyle;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, oldSiriusStyle, newSiriusStyle);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setSiriusStyle(Style newSiriusStyle) {
+        if (newSiriusStyle != siriusStyle) {
+            NotificationChain msgs = null;
+            if (siriusStyle != null) {
+                msgs = ((InternalEObject) siriusStyle).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, null, msgs);
+            }
+            if (newSiriusStyle != null) {
+                msgs = ((InternalEObject) newSiriusStyle).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, null, msgs);
+            }
+            msgs = basicSetSiriusStyle(newSiriusStyle, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE, newSiriusStyle, newSiriusStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public View getGmfView() {
+        if (gmfView != null && gmfView.eIsProxy()) {
+            InternalEObject oldGmfView = (InternalEObject) gmfView;
+            gmfView = (View) eResolveProxy(oldGmfView);
+            if (gmfView != oldGmfView) {
+                InternalEObject newGmfView = (InternalEObject) gmfView;
+                NotificationChain msgs = oldGmfView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, null, null);
+                if (newGmfView.eInternalContainer() == null) {
+                    msgs = newGmfView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, null, msgs);
+                }
+                if (msgs != null) {
+                    msgs.dispatch();
+                }
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, oldGmfView, gmfView));
+                }
+            }
+        }
+        return gmfView;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public View basicGetGmfView() {
+        return gmfView;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetGmfView(View newGmfView, NotificationChain msgs) {
+        View oldGmfView = gmfView;
+        gmfView = newGmfView;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, oldGmfView, newGmfView);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setGmfView(View newGmfView) {
+        if (newGmfView != gmfView) {
+            NotificationChain msgs = null;
+            if (gmfView != null) {
+                msgs = ((InternalEObject) gmfView).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, null, msgs);
+            }
+            if (newGmfView != null) {
+                msgs = ((InternalEObject) newGmfView).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, null, msgs);
+            }
+            msgs = basicSetGmfView(newGmfView, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW, newGmfView, newGmfView));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             return basicSetLabel(null, msgs);
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE:
+            return basicSetSiriusStyle(null, msgs);
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW:
+            return basicSetGmfView(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -219,6 +409,16 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
                 return getLabel();
             }
             return basicGetLabel();
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE:
+            if (resolve) {
+                return getSiriusStyle();
+            }
+            return basicGetSiriusStyle();
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW:
+            if (resolve) {
+                return getGmfView();
+            }
+            return basicGetGmfView();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -236,6 +436,12 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
             return;
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             setLabel((NodeLayoutData) newValue);
+            return;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE:
+            setSiriusStyle((Style) newValue);
+            return;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW:
+            setGmfView((View) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -255,6 +461,12 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             setLabel((NodeLayoutData) null);
             return;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE:
+            setSiriusStyle((Style) null);
+            return;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW:
+            setGmfView((View) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -271,6 +483,10 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
             return AbstractLayoutDataImpl.ID_EDEFAULT == null ? id != null : !AbstractLayoutDataImpl.ID_EDEFAULT.equals(id);
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL:
             return label != null;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE:
+            return siriusStyle != null;
+        case LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW:
+            return gmfView != null;
         }
         return super.eIsSet(featureID);
     }

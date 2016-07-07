@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
-    modelDirectory="/org.eclipse.sirius.diagram.layoutdata/src-gen" editDirectory="/org.eclipse.sirius.diagram.layoutdata.edit/src-gen"
-    modelPluginID="org.eclipse.sirius.diagram.layoutdata" modelName="Layoutdata" editPluginClass="org.eclipse.sirius.diagram.layoutdata.provider.LayoutdataEditPlugin"
+    modelDirectory="/org.eclipse.sirius.diagram.layoutdata/src-gen" editDirectory=""
+    editorDirectory="" modelPluginID="org.eclipse.sirius.diagram.layoutdata" modelName="Layoutdata"
+    editPluginClass="org.eclipse.sirius.diagram.layoutdata.provider.LayoutdataEditPlugin"
     editorPluginClass="org.eclipse.sirius.diagram.layoutdata.presentation.LayoutdataEditorPlugin"
-    nonNLSMarkers="true" testsDirectory="/org.eclipse.sirius.diagram.layoutdata.tests/src-gen"
-    testSuiteClass="org.eclipse.sirius.diagram.layoutdata.tests.LayoutdataAllTests"
+    nonNLSMarkers="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.layoutdata.tests.LayoutdataAllTests"
     importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" complianceLevel="5.0"
-    copyrightFields="false" runtimeVersion="2.6" language="">
+    copyrightFields="false" runtimeVersion="2.6" language="" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
   <foreignModel>layoutdata.ecore</foreignModel>
   <genPackages prefix="Layoutdata" basePackage="org.eclipse.sirius.diagram" disposableProviderFactory="true"
       ecorePackage="layoutdata.ecore#/">
     <genClasses image="false" ecoreClass="layoutdata.ecore#//AbstractLayoutData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute layoutdata.ecore#//AbstractLayoutData/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference layoutdata.ecore#//AbstractLayoutData/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference layoutdata.ecore#//AbstractLayoutData/siriusStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference layoutdata.ecore#//AbstractLayoutData/gmfView"/>
     </genClasses>
     <genClasses ecoreClass="layoutdata.ecore#//NodeLayoutData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute layoutdata.ecore#//NodeLayoutData/width"/>

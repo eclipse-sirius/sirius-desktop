@@ -15,12 +15,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.Point;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -109,6 +111,10 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
 
         LayoutdataPackageImpl.isInited = true;
 
+        // Initialize simple dependencies
+        NotationPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
+
         // Create package meta-data objects
         theLayoutdataPackage.createPackageContents();
 
@@ -151,6 +157,26 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
     @Override
     public EReference getAbstractLayoutData_Label() {
         return (EReference) abstractLayoutDataEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractLayoutData_SiriusStyle() {
+        return (EReference) abstractLayoutDataEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getAbstractLayoutData_GmfView() {
+        return (EReference) abstractLayoutDataEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -387,6 +413,8 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
         abstractLayoutDataEClass = createEClass(LayoutdataPackage.ABSTRACT_LAYOUT_DATA);
         createEAttribute(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__ID);
         createEReference(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL);
+        createEReference(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE);
+        createEReference(abstractLayoutDataEClass, LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW);
 
         nodeLayoutDataEClass = createEClass(LayoutdataPackage.NODE_LAYOUT_DATA);
         createEAttribute(nodeLayoutDataEClass, LayoutdataPackage.NODE_LAYOUT_DATA__WIDTH);
@@ -437,6 +465,10 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
         setNsPrefix(LayoutdataPackage.eNS_PREFIX);
         setNsURI(LayoutdataPackage.eNS_URI);
 
+        // Obtain other dependent packages
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        NotationPackage theNotationPackage = (NotationPackage) EPackage.Registry.INSTANCE.getEPackage(NotationPackage.eNS_URI);
+
         // Create type parameters
 
         // Set bounds for type parameters
@@ -451,6 +483,12 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getAbstractLayoutData_Label(), this.getNodeLayoutData(), null, "label", null, 0, 1, AbstractLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
+                EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractLayoutData_SiriusStyle(), theViewpointPackage.getStyle(), null, "siriusStyle", null, 1, 1, AbstractLayoutData.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE,
+                EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getAbstractLayoutData_GmfView(), theNotationPackage.getView(), null, "gmfView", null, 1, 1, AbstractLayoutData.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE,
                 EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 

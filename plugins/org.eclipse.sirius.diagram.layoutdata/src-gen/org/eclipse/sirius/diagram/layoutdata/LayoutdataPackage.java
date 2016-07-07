@@ -91,13 +91,31 @@ public interface LayoutdataPackage extends EPackage {
     int ABSTRACT_LAYOUT_DATA__LABEL = 1;
 
     /**
+     * The feature id for the '<em><b>Sirius Style</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE = 2;
+
+    /**
+     * The feature id for the '<em><b>Gmf View</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_LAYOUT_DATA__GMF_VIEW = 3;
+
+    /**
      * The number of structural features of the '<em>Abstract Layout Data</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int ABSTRACT_LAYOUT_DATA_FEATURE_COUNT = 2;
+    int ABSTRACT_LAYOUT_DATA_FEATURE_COUNT = 4;
 
     /**
      * The meta object id for the '
@@ -128,6 +146,24 @@ public interface LayoutdataPackage extends EPackage {
      * @ordered
      */
     int NODE_LAYOUT_DATA__LABEL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Sirius Style</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NODE_LAYOUT_DATA__SIRIUS_STYLE = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE;
+
+    /**
+     * The feature id for the '<em><b>Gmf View</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NODE_LAYOUT_DATA__GMF_VIEW = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -212,6 +248,24 @@ public interface LayoutdataPackage extends EPackage {
      * @ordered
      */
     int EDGE_LAYOUT_DATA__LABEL = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Sirius Style</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EDGE_LAYOUT_DATA__SIRIUS_STYLE = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE;
+
+    /**
+     * The feature id for the '<em><b>Gmf View</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EDGE_LAYOUT_DATA__GMF_VIEW = LayoutdataPackage.ABSTRACT_LAYOUT_DATA__GMF_VIEW;
 
     /**
      * The feature id for the '<em><b>Source Terminal</b></em>' attribute. <!--
@@ -385,6 +439,32 @@ public interface LayoutdataPackage extends EPackage {
      * @generated
      */
     EReference getAbstractLayoutData_Label();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getSiriusStyle
+     * <em>Sirius Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '
+     *         <em>Sirius Style</em>'.
+     * @see org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getSiriusStyle()
+     * @see #getAbstractLayoutData()
+     * @generated
+     */
+    EReference getAbstractLayoutData_SiriusStyle();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getGmfView
+     * <em>Gmf View</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Gmf View</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getGmfView()
+     * @see #getAbstractLayoutData()
+     * @generated
+     */
+    EReference getAbstractLayoutData_GmfView();
 
     /**
      * Returns the meta object for class '
@@ -685,6 +765,24 @@ public interface LayoutdataPackage extends EPackage {
          * @generated
          */
         EReference ABSTRACT_LAYOUT_DATA__LABEL = LayoutdataPackage.eINSTANCE.getAbstractLayoutData_Label();
+
+        /**
+         * The meta object literal for the '<em><b>Sirius Style</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference ABSTRACT_LAYOUT_DATA__SIRIUS_STYLE = LayoutdataPackage.eINSTANCE.getAbstractLayoutData_SiriusStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Gmf View</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EReference ABSTRACT_LAYOUT_DATA__GMF_VIEW = LayoutdataPackage.eINSTANCE.getAbstractLayoutData_GmfView();
 
         /**
          * The meta object literal for the '
