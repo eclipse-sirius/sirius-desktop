@@ -119,33 +119,37 @@ public interface DialectServices {
     Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
 
     /**
-     * Return the representations provided by the dialect.
+     * Return the representation descriptors provided by the dialect.
      * 
      * @param semantic
      *            targeted semantic element.
      * @param session
      *            the current session.
-     * @return the list of representations contributed by this dialect.
+     * @return the list of representation descriptors contributed by this
+     *         dialect.
      */
     Collection<DRepresentationDescriptor> getRepresentationDescriptors(EObject semantic, Session session);
 
     /**
-     * Return all the representations provided by the dialect.
+     * Return all the representation descriptors provided by the dialect.
      * 
      * @param session
      *            the current session.
-     * @return the list of representations contributed by this dialect.
+     * @return the list of representation descriptors contributed by this
+     *         dialect.
      */
     Collection<DRepresentationDescriptor> getAllRepresentationDescriptors(Session session);
 
     /**
-     * Return the representations provided by the dialect from a description.
+     * Return the representation descriptors provided by the dialect from a
+     * description.
      * 
      * @param representationDescription
      *            the representation description instance
      * @param session
      *            the current session.
-     * @return the list of representations contributed by this dialect.
+     * @return the list of representation descriptors contributed by this
+     *         dialect.
      */
     Collection<DRepresentationDescriptor> getRepresentationDescriptors(RepresentationDescription representationDescription, Session session);
 
