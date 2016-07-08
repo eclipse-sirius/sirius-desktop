@@ -331,6 +331,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String InterpreterRegistry_sessionNotFoundErrorMsg;
+    
+    @TranslatableMessage
+    public static String InterpretedExpressionQueryProviderRegistry_instanciationError;
 
     @TranslatableMessage
     public static String InterpreterRegistry_nullModelElementErrorMsg;

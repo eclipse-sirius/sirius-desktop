@@ -28,6 +28,7 @@
    <extension-point id="migrationParticipant" name="%extension-point.migration.name" schema="schema/migrationParticipant.exsd"/>
    <extension-point id="repairParticipant" name="%extension-point.repairParticipant.name" schema="schema/repairParticipant.exsd"/>
    <extension-point id="resourceStrategy" name="%extension-point.resourceStrategy.name" schema="schema/resourceStrategy.exsd"/>
+   <extension-point id="interpretedExpressionQueryProvider" name="%extension-point.interpretedExpressionQueryProvider.name" schema="schema/interpretedExpressionQueryProvider.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->

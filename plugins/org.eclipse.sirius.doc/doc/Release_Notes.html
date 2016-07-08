@@ -160,6 +160,12 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A new extension point named 
+				<code>org.eclipse.sirius.interpretedExpressionQueryProvider</code> (with the associated new interface 
+				<code>org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider</code>) allows external contribution of 
+				<code>IInterpretedExpressionQuery</code> specific to some particular expression occurrences in the VSM. This is used in particular for VSM extensions which do not fit well into the hard-coded assumptions about 
+				<code>IInterpretedExpressionQuery</code>. In Sirius 4.1, this is used to add completion and validation support for expressions used in properties views descriptions.
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException</code> exception has been added to cancel Sirius session opening due to an .aird version mismatch, i.e. when one the of the loaded Representation resources is coming from a newer Sirius release.
 			</li>

@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -32,8 +31,10 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -47,6 +48,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -81,10 +83,6 @@ public class DialectManagerImpl implements DialectManager {
         return manager;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(final Collection<Viewpoint> vp, final EObject semantic) {
         final Collection<RepresentationDescription> descs = new ArrayList<RepresentationDescription>();
@@ -94,9 +92,6 @@ public class DialectManagerImpl implements DialectManager {
         return descs;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
         if (Movida.isEnabled()) {
@@ -106,17 +101,11 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh(final DRepresentation representation, final IProgressMonitor monitor) {
         refresh(representation, false, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh(DRepresentation representation, boolean doFullRefresh, IProgressMonitor monitor) {
         try {
@@ -145,17 +134,6 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final IProgressMonitor monitor) {
-        return createRepresentation(name, semantic, description, null, monitor);
-    }
-
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
         DRepresentation created = null;
@@ -190,13 +168,6 @@ public class DialectManagerImpl implements DialectManager {
         return created;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#copyRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      java.lang.String, org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
         Dialect invokedDialect = null;
@@ -222,10 +193,6 @@ public class DialectManagerImpl implements DialectManager {
         return copy;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean canRefresh(final DRepresentation representation) {
         for (final Dialect dialect : dialects.values()) {
@@ -236,10 +203,6 @@ public class DialectManagerImpl implements DialectManager {
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean canCreate = false;
@@ -256,31 +219,16 @@ public class DialectManagerImpl implements DialectManager {
         return canCreate;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectManager#disableDialect(org.eclipse.sirius.business.api.dialect.Dialect)
-     */
     @Override
     public void disableDialect(final Dialect dialect) {
         dialects.remove(dialect.getName());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectManager#enableDialect(org.eclipse.sirius.business.api.dialect.Dialect)
-     */
     @Override
     public void enableDialect(final Dialect dialect) {
         dialects.put(dialect.getName(), dialect);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#notify(org.eclipse.sirius.business.api.dialect.RepresentationNotification)
-     */
     @Override
     public void notify(final RepresentationNotification representation) {
         for (final Dialect dialect : dialects.values()) {
@@ -396,11 +344,6 @@ public class DialectManagerImpl implements DialectManager {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getDescription(org.eclipse.sirius.viewpoint.DRepresentation)
-     */
     @Override
     public RepresentationDescription getDescription(final DRepresentation representation) {
         RepresentationDescription result = null;
@@ -411,16 +354,6 @@ public class DialectManagerImpl implements DialectManager {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void initRepresentations(Viewpoint vp, EObject semantic) {
-        initRepresentations(vp, semantic, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         for (final Dialect dialect : dialects.values()) {
@@ -428,11 +361,6 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#canCreateIdentifier(org.eclipse.emf.ecore.EObject)
-     */
     @Override
     public boolean canCreateIdentifier(final EObject representationElement) {
         for (final Dialect dialect : dialects.values()) {
@@ -443,12 +371,6 @@ public class DialectManagerImpl implements DialectManager {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#createIdentifier(org.eclipse.emf.ecore.EObject,
-     *      java.util.Map)
-     */
     @Override
     public RepresentationElementIdentifier createIdentifier(final EObject representationElement, final Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
         for (final Dialect dialect : dialects.values()) {
@@ -460,12 +382,6 @@ public class DialectManagerImpl implements DialectManager {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#updateRepresentationsExtendedBy(Session,
-     *      Viewpoint, boolean)
-     */
     @Override
     public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         for (final Dialect dialect : dialects.values()) {
@@ -473,24 +389,28 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#createInterpretedExpressionQuery(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
     @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         IInterpretedExpressionQuery returnedQuery = null;
-
-        // Step 1 : we search for a Dialect compatible with
-        // the given target
-        Dialect dialect = getDialectFromEObjectAccordingToRepresentationDescription(target);
-        if (dialect != null) {
-            // Step 2 : we delegate the query creation to the found
-            // DialectDescription
-            returnedQuery = dialect.getServices().createInterpretedExpressionQuery(target, feature);
+        // Ask registered providers first
+        for (IInterpretedExpressionQueryProvider provider : SiriusPlugin.getDefault().getInterpretedExpressionQueryProviders()) {
+            Option<IInterpretedExpressionQuery> answer = provider.getExpressionQueryFor(target, feature);
+            if (answer.some()) {
+                returnedQuery = answer.get();
+                break;
+            }
+        }
+        if (returnedQuery == null) {
+            // Step 1 : we search for a Dialect compatible with
+            // the given target
+            Dialect dialect = getDialectFromEObjectAccordingToRepresentationDescription(target);
+            if (dialect != null) {
+                // Step 2 : we delegate the query creation to the found
+                // DialectDescription
+                returnedQuery = dialect.getServices().createInterpretedExpressionQuery(target, feature);
+            } else if (new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.Literals.EXTENSION).some()) {
+                // We are not inside a dialect, but inside an extension
+            }
         }
         if (returnedQuery != null) {
             return returnedQuery;
@@ -500,12 +420,6 @@ public class DialectManagerImpl implements DialectManager {
         return new DefaultInterpretedExpressionQuery(target, feature);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     */
     @Override
     public boolean handles(RepresentationDescription representationDescription) {
         for (Dialect dialect : dialects.values()) {
@@ -560,12 +474,6 @@ public class DialectManagerImpl implements DialectManager {
         return foundDialect;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
-     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         for (Dialect dialect : dialects.values()) {
@@ -576,12 +484,6 @@ public class DialectManagerImpl implements DialectManager {
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#invalidateMappingCache()
-     */
     @Override
     public void invalidateMappingCache() {
         for (Dialect dialect : dialects.values()) {
@@ -589,9 +491,6 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
         Option<? extends AbstractCommandTask> task = Options.newNone();
@@ -603,9 +502,6 @@ public class DialectManagerImpl implements DialectManager {
         return task;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean allowsEStructuralFeatureCustomization(EObject element) {
         boolean customizationAllowed = false;

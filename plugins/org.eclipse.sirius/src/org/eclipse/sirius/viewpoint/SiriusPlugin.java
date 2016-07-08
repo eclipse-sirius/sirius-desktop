@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.viewpoint;
 
+import java.util.Collection;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -19,8 +21,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpressionQueryProviderRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
@@ -68,7 +72,6 @@ public final class SiriusPlugin extends EMFPlugin {
      * ExtendedPackageRegistry
      */
     private static final ModelAccessorsRegistry REGISTRY = new ModelAccessorsRegistry(SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
-
 
     /**
      * Creates the instance.
@@ -130,6 +133,11 @@ public final class SiriusPlugin extends EMFPlugin {
         private ResourceStrategyRegistryListener resourceStrategyRegistryListener;
 
         /**
+         * The registry for {@link IInterpretedExpressionQueryProvider}.
+         */
+        private InterpretedExpressionQueryProviderRegistry expressionQueryProviderRegistry;
+
+        /**
          * Creates an instance.
          */
         public Implementation() {
@@ -155,6 +163,17 @@ public final class SiriusPlugin extends EMFPlugin {
             javaActionRegistryListener.init();
             resourceStrategyRegistryListener = new ResourceStrategyRegistryListener();
             resourceStrategyRegistryListener.init();
+            expressionQueryProviderRegistry = new InterpretedExpressionQueryProviderRegistry(Platform.getExtensionRegistry(), this);
+            expressionQueryProviderRegistry.init();
+        }
+
+        /**
+         * Returns all the registered IInterpretedExpressionQueryProvider.
+         * 
+         * @return the registered IInterpretedExpressionQueryProvider.
+         */
+        public Collection<IInterpretedExpressionQueryProvider> getInterpretedExpressionQueryProviders() {
+            return expressionQueryProviderRegistry.getEntries();
         }
 
         @Override
@@ -169,6 +188,8 @@ public final class SiriusPlugin extends EMFPlugin {
             javaActionRegistryListener = null;
             resourceStrategyRegistryListener.dispose();
             resourceStrategyRegistryListener = null;
+            expressionQueryProviderRegistry.dispose();
+            expressionQueryProviderRegistry = null;
 
             ViewpointRegistry.getInstance().dispose();
 
