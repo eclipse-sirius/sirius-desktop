@@ -51,6 +51,12 @@ Contributors:
           </runner>
           <aut>
             <explicit>../../packaging/org.eclipse.sirius.tests.product/target/products/SiriusTestsProduct-[platform].zip</explicit>
+            <vmArgs>
+              <vmArg>-Xms256m</vmArg>
+              <vmArg>-Xmx1024m</vmArg>
+              <vmArg>-XX:+UseG1GC</vmArg>
+              <vmArg>-XX:+UseStringDeduplication</vmArg>
+            </vmArgs>
           </aut>
         </configuration>
       </plugin>
