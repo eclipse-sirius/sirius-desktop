@@ -44,7 +44,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     @Override
     public boolean matches(Notification notification) {
-        return isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification);
+        return !notification.isTouch() && (isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification));
     }
 
     private boolean isTargetUnset(Notification notification) {
