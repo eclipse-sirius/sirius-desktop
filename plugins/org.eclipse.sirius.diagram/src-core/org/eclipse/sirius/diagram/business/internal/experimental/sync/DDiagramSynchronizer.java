@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
+import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -728,8 +729,8 @@ public class DDiagramSynchronizer {
                 values.remove(referencer);
                 values.add(newNode);
                 setting.set(values);
-            }  else {
-               setting.set(newNode);
+            } else {
+                setting.set(newNode);
             }
 
             convertType(referencer);
@@ -1073,7 +1074,10 @@ public class DDiagramSynchronizer {
 
                 if (keptNode instanceof DNodeContainer) {
                     DNodeContainer dnc = (DNodeContainer) keptNode;
-                    dnc.setChildrenPresentation(dnc.getActualMapping().getChildrenPresentation());
+                    ContainerLayout childrenPresentation = dnc.getActualMapping().getChildrenPresentation();
+                    if (dnc.getChildrenPresentation() != childrenPresentation) {
+                        dnc.setChildrenPresentation(childrenPresentation);
+                    }
                 }
             } else if (!border && viewContainer instanceof DDiagramElementContainer && nodeMapping instanceof NodeMapping) {
                 /* Handle list attribute change on container mapping */

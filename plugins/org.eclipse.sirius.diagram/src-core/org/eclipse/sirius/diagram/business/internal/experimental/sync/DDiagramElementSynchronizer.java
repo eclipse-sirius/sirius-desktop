@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -433,17 +433,13 @@ public class DDiagramElementSynchronizer {
      * @param edgeStyleDescription
      */
     private void refreshEndLabel(final DEdge edge, final EdgeStyleDescription edgeStyleDescription) {
-        if (edgeStyleDescription.getEndLabelStyleDescription() != null) {
-            if (!StringUtil.isEmpty(edgeStyleDescription.getEndLabelStyleDescription().getLabelExpression())) {
-                final String label = computeLabel(edge, edgeStyleDescription.getEndLabelStyleDescription());
+        if (edgeStyleDescription.getEndLabelStyleDescription() != null && !StringUtil.isEmpty(edgeStyleDescription.getEndLabelStyleDescription().getLabelExpression())) {
+            final String label = computeLabel(edge, edgeStyleDescription.getEndLabelStyleDescription());
+            edge.setEndLabel(label);
+            if (!("".equals(edge.getEndLabel()) && label == null) && !StringUtil.equals(edge.getEndLabel(), label)) { //$NON-NLS-1$
+                // This is a workaround for a CDO issue in legacy mode
+                // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                 edge.setEndLabel(label);
-                if (!("".equals(edge.getEndLabel()) && label == null)) { //$NON-NLS-1$
-                    // This is a workaround for a CDO issue in legacy mode
-                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    edge.setEndLabel(label);
-                }
-            } else if (!StringUtil.isEmpty(edge.getName())) {
-                edge.setName(""); //$NON-NLS-1$
             }
         } else if (!StringUtil.isEmpty(edge.getEndLabel())) {
             edge.setEndLabel(""); //$NON-NLS-1$
@@ -455,17 +451,12 @@ public class DDiagramElementSynchronizer {
      * @param edgeStyleDescription
      */
     private void refreshBeginLabel(final DEdge edge, final EdgeStyleDescription edgeStyleDescription) {
-        if (edgeStyleDescription.getBeginLabelStyleDescription() != null) {
-            if (!StringUtil.isEmpty(edgeStyleDescription.getBeginLabelStyleDescription().getLabelExpression())) {
-                final String label = computeLabel(edge, edgeStyleDescription.getBeginLabelStyleDescription());
-                if (!("".equals(edge.getBeginLabel()) && label == null)) { //$NON-NLS-1$
-                    // This is a workaround for a CDO issue in legacy mode
-                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    edge.setBeginLabel(label);
-                }
-
-            } else if (!StringUtil.isEmpty(edge.getName())) {
-                edge.setName(""); //$NON-NLS-1$
+        if (edgeStyleDescription.getBeginLabelStyleDescription() != null && !StringUtil.isEmpty(edgeStyleDescription.getBeginLabelStyleDescription().getLabelExpression())) {
+            final String label = computeLabel(edge, edgeStyleDescription.getBeginLabelStyleDescription());
+            if (!("".equals(edge.getBeginLabel()) && label == null) && !StringUtil.equals(edge.getBeginLabel(), label)) { //$NON-NLS-1$
+                // This is a workaround for a CDO issue in legacy mode
+                // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
+                edge.setBeginLabel(label);
             }
         } else if (!StringUtil.isEmpty(edge.getBeginLabel())) {
             edge.setBeginLabel(""); //$NON-NLS-1$
@@ -477,16 +468,12 @@ public class DDiagramElementSynchronizer {
      * @param edgeStyleDescription
      */
     private void refreshCenterLabel(final DEdge edge, final EdgeStyleDescription edgeStyleDescription) {
-        if (edgeStyleDescription.getCenterLabelStyleDescription() != null) {
-            if (!StringUtil.isEmpty(edgeStyleDescription.getCenterLabelStyleDescription().getLabelExpression())) {
-                final String label = computeLabel(edge, edgeStyleDescription.getCenterLabelStyleDescription());
-                if (!("".equals(edge.getName()) && label == null)) { //$NON-NLS-1$
-                    // This is a workaround for a CDO issue in legacy mode
-                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    edge.setName(label);
-                }
-            } else if (!StringUtil.isEmpty(edge.getName())) {
-                edge.setName(""); //$NON-NLS-1$
+        if (edgeStyleDescription.getCenterLabelStyleDescription() != null && !StringUtil.isEmpty(edgeStyleDescription.getCenterLabelStyleDescription().getLabelExpression())) {
+            final String label = computeLabel(edge, edgeStyleDescription.getCenterLabelStyleDescription());
+            if (!("".equals(edge.getName()) && label == null) && !StringUtil.equals(edge.getName(), label)) { //$NON-NLS-1$
+                // This is a workaround for a CDO issue in legacy mode
+                // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
+                edge.setName(label);
             }
         } else if (!StringUtil.isEmpty(edge.getName())) {
             edge.setName(""); //$NON-NLS-1$
@@ -525,10 +512,13 @@ public class DDiagramElementSynchronizer {
             final NodeStyleDescription style = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(newNode.getActualMapping(), newNode.getTarget(), newNode, container.getTarget(),
                     diagram);
             if (style != null) {
-                if (!StringUtil.isEmpty(style.getLabelExpression()) && !("".equals(newNode.getName()) && computeLabel(newNode, style) == null)) { //$NON-NLS-1$
-                    // This is a workaround for a CDO issue in legacy mode
-                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    newNode.setName(computeLabel(newNode, style));
+                if (!StringUtil.isEmpty(style.getLabelExpression())) {
+                    String computeLabel = computeLabel(newNode, style);
+                    if (!("".equals(newNode.getName()) && computeLabel == null) && !StringUtil.equals(newNode.getName(), computeLabel)) { //$NON-NLS-1$
+                        // This is a workaround for a CDO issue in legacy mode
+                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
+                        newNode.setName(computeLabel);
+                    }
                 }
                 refreshTooltip(newNode, style);
             }
@@ -557,7 +547,7 @@ public class DDiagramElementSynchronizer {
             if (containerStyleDescription != null) {
                 if (!StringUtil.isEmpty(containerStyleDescription.getLabelExpression())) {
                     String computeLabel = computeLabel(container, containerStyleDescription);
-                    if (!("".equals(container.getName()) && computeLabel == null)) { //$NON-NLS-1$
+                    if (!("".equals(container.getName()) && computeLabel == null) && !StringUtil.equals(container.getName(), computeLabel)) { //$NON-NLS-1$
                         // This is a workaround for a CDO issue in legacy mode
                         // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                         container.setName(computeLabel);
@@ -600,7 +590,7 @@ public class DDiagramElementSynchronizer {
             if (nodeStyleDescription != null) {
                 if (!StringUtil.isEmpty(nodeStyleDescription.getLabelExpression())) {
                     String computeLabel = computeLabel(newNode, nodeStyleDescription);
-                    if (!("".equals(newNode.getName()) && computeLabel == null)) { //$NON-NLS-1$
+                    if (!("".equals(newNode.getName()) && computeLabel == null) && !StringUtil.equals(newNode.getName(), computeLabel)) { //$NON-NLS-1$
                         // This is a workaround for a CDO issue in legacy mode
                         // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                         newNode.setName(computeLabel);

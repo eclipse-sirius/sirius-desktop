@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,6 +65,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * @param diagram
      *            the given diagram..
      */
+    @Override
     public void refreshAllElementsVisibility(final DDiagram diagram) {
         deactivateCache();
         activateCache();
@@ -75,7 +76,10 @@ public final class DisplayServiceImpl implements DisplayService {
         NotificationUtil.sendNotification(diagram, Notification.Kind.START, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
         for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
-            diagramElement.setVisible(computeVisibility(mappingManager, diagram, diagramElement));
+            boolean visibility = computeVisibility(mappingManager, diagram, diagramElement);
+            if (visibility != diagramElement.isVisible()) {
+                diagramElement.setVisible(visibility);
+            }
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_VISIBLE_KEY);
         NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
@@ -88,6 +92,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#isDisplayed(DDiagram,
      *      DDiagramElement)
      */
+    @Override
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
         final boolean result = element.isVisible();
@@ -114,6 +119,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * 
      * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#activateCache()
      */
+    @Override
     public void activateCache() {
         if (cache == null) {
             cache = new HashMap<DDiagramElement, Boolean>();
@@ -125,6 +131,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * 
      * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#deactivateCache()
      */
+    @Override
     public void deactivateCache() {
         if (cache != null) {
             cache.clear();
@@ -138,6 +145,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#computeVisibility(DiagramMappingsManager,
      *      DDiagram, DDiagramElement)
      */
+    @Override
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_VISIBILITY_KEY);
         final boolean result = doIsVisible(session, diagram, element);
@@ -151,6 +159,7 @@ public final class DisplayServiceImpl implements DisplayService {
      * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#computeLabelVisibility(DDiagram,
      *      DDiagramElement)
      */
+    @Override
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
         return !(new DDiagramElementQuery(element).isLabelHidden());
     }
@@ -212,6 +221,7 @@ public final class DisplayServiceImpl implements DisplayService {
 
     private boolean isFold(final DDiagramElement element) {
         return Iterables.any(element.getGraphicalFilters(), new Predicate<GraphicalFilter>() {
+            @Override
             public boolean apply(GraphicalFilter input) {
                 return DiagramPackage.eINSTANCE.getFoldingFilter().isInstance(input) || DiagramPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
             }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -349,9 +349,8 @@ public final class LayerHelper {
      */
     public static boolean isInActivatedLayer(final DDiagram diagram, final IEdgeMapping mapping) {
         boolean found = false;
-        if (!found
-                && (diagram.getDescription().getEdgeMappings().contains(mapping) || diagram.getDescription().getEdgeMappingImports().contains(mapping) || LayerHelper.containsWrapped(diagram
-                        .getDescription().getEdgeMappingImports(), mapping))) {
+        if (!found && (diagram.getDescription().getEdgeMappings().contains(mapping) || diagram.getDescription().getEdgeMappingImports().contains(mapping)
+                || LayerHelper.containsWrapped(diagram.getDescription().getEdgeMappingImports(), mapping))) {
             found = true;
         }
         for (Layer layer : diagram.getActivatedLayers()) {
@@ -410,9 +409,15 @@ public final class LayerHelper {
      */
     public static void updateActualMapping(final DDiagramElement element, final DiagramElementMapping mapping) {
         if (element instanceof DNode && mapping instanceof NodeMapping) {
-            ((DNode) element).setActualMapping((NodeMapping) mapping);
+            DNode node = (DNode) element;
+            if (node.getActualMapping() != mapping) {
+                node.setActualMapping((NodeMapping) mapping);
+            }
         } else if (element instanceof DDiagramElementContainer && mapping instanceof ContainerMapping) {
-            ((DDiagramElementContainer) element).setActualMapping((ContainerMapping) mapping);
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            if (ddec.getActualMapping() != mapping) {
+                ddec.setActualMapping((ContainerMapping) mapping);
+            }
         }
     }
 

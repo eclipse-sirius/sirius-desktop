@@ -92,9 +92,9 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
     }
 
     private void updateColorReflectively(final EObject context, final Customizable style, final EObject description, Option<? extends Customizable> previousStyle) {
-        List<EAttribute> eAllReferences = getAllStyleReferences(style);
+        List<EAttribute> eAllAttributes = getAllStyleAttributes(style);
 
-        for (final EAttribute feature : eAllReferences) {
+        for (final EAttribute feature : eAllAttributes) {
             if (descToStyleForColorFeatures.containsValue(feature) && description != null) {
                 if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(feature.getName())) {
                     EStructuralFeature eStructuralFeature = previousStyle.get().eClass().getEStructuralFeature(feature.getName());
@@ -128,7 +128,9 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
         final Object descValue = description.eGet(descToStyleForColorFeatures.inverse().get(feature));
         if (descValue instanceof ColorDescription) {
             final RGBValues newValues = getRGBValuesFromColorDescription(context, (ColorDescription) descValue);
-            style.eSet(feature, newValues);
+            if (style.eGet(feature) != newValues) {
+                style.eSet(feature, newValues);
+            }
         }
     }
 
@@ -136,11 +138,11 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
      * @param style
      * @param eAllReferences
      */
-    private List<EAttribute> getAllStyleReferences(final EObject style) {
-        List<EAttribute> eAllReferences = Lists.newArrayList();
+    private List<EAttribute> getAllStyleAttributes(final EObject style) {
+        List<EAttribute> eAllAttributes = Lists.newArrayList();
         EList<EAttribute> styleReferences = style.eClass().getEAllAttributes();
-        eAllReferences.addAll(styleReferences);
-        return eAllReferences;
+        eAllAttributes.addAll(styleReferences);
+        return eAllAttributes;
     }
 
     /**

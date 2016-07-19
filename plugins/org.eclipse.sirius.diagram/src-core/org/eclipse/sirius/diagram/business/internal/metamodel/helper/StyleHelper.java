@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,6 +101,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+
+import com.google.common.base.Objects;
 
 /**
  * This helper class contains utility methods to create and update (refresh)
@@ -240,8 +242,9 @@ public final class StyleHelper {
     }
 
     private void updateEdgeStyle(final EdgeStyleDescription edgeDescription, final EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
-        Integer size = Integer.valueOf(1);
-
+        if (edgeStyle.getDescription() != edgeDescription) {
+            edgeStyle.setDescription(edgeDescription);
+        }
         if (edgeDescription != null) {
             if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
                 edgeStyle.setSourceArrow(previousStyle.get().getSourceArrow());
@@ -286,12 +289,15 @@ public final class StyleHelper {
             } else {
                 if (edgeDescription.getSizeComputationExpression() != null && edgeStyle.eContainer() != null
                         && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__SIZE.getName())) {
+                    Integer size = Integer.valueOf(1);
                     try {
                         size = interpreter.evaluateInteger(((DSemanticDecorator) edgeStyle.eContainer()).getTarget(), edgeDescription.getSizeComputationExpression());
                     } catch (final EvaluationException e) {
                         // silent.
                     }
-                    edgeStyle.setSize(size);
+                    if (!Objects.equal(size, edgeStyle.getSize())) {
+                        edgeStyle.setSize(size);
+                    }
                 }
             }
             // Get the override edge routing from the diagram preferences. If
@@ -381,29 +387,32 @@ public final class StyleHelper {
             edgeStyle.getCustomFeatures().add(DiagramPackage.Literals.EDGE_STYLE__CENTERED.getName());
         } else {
             if (!edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__CENTERED.getName())) {
-
-                computeCentered(edgeDescription, edgeStyle);
+                CenteringStyle style = computeCentered(edgeDescription, edgeStyle);
+                if (edgeStyle.getCentered() != style) {
+                    edgeStyle.setCentered(style);
+                }
             }
         }
     }
 
-    private void computeCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+    private CenteringStyle computeCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+        CenteringStyle style = CenteringStyle.NONE;
         switch (edgeDescription.getEndsCentering().getValue()) {
         case CenteringStyle.BOTH_VALUE:
-            edgeStyle.setCentered(CenteringStyle.BOTH);
+            style = CenteringStyle.BOTH;
             break;
         case CenteringStyle.SOURCE_VALUE:
             if (isTargetCentered(edgeDescription, edgeStyle)) {
-                edgeStyle.setCentered(CenteringStyle.BOTH);
+                style = CenteringStyle.BOTH;
             } else {
-                edgeStyle.setCentered(CenteringStyle.SOURCE);
+                style = CenteringStyle.SOURCE;
             }
             break;
         case CenteringStyle.TARGET_VALUE:
             if (isSourceCentered(edgeDescription, edgeStyle)) {
-                edgeStyle.setCentered(CenteringStyle.BOTH);
+                style = CenteringStyle.BOTH;
             } else {
-                edgeStyle.setCentered(CenteringStyle.TARGET);
+                style = CenteringStyle.TARGET;
             }
 
             break;
@@ -411,19 +420,20 @@ public final class StyleHelper {
             boolean isSourceCentered = isSourceCentered(edgeDescription, edgeStyle);
             boolean isTargetCentered = isTargetCentered(edgeDescription, edgeStyle);
             if (isSourceCentered && isTargetCentered) {
-                edgeStyle.setCentered(CenteringStyle.BOTH);
+                style = CenteringStyle.BOTH;
             } else if (isSourceCentered) {
-                edgeStyle.setCentered(CenteringStyle.SOURCE);
+                style = CenteringStyle.SOURCE;
             } else if (isTargetCentered) {
-                edgeStyle.setCentered(CenteringStyle.TARGET);
+                style = CenteringStyle.TARGET;
             } else {
-                edgeStyle.setCentered(CenteringStyle.NONE);
+                style = CenteringStyle.NONE;
             }
             break;
         default:
             // This case should not append
             break;
         }
+        return style;
     }
 
     private boolean isTargetCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
@@ -483,14 +493,6 @@ public final class StyleHelper {
         }
 
         if (description != null && style != null) {
-            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
-                style.setShowIcon(description.isShowIcon());
-            }
-            if (style.getIconPath() != null && !style.getIconPath().equals(description.getIconPath())
-                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
-                style.setIconPath(description.getIconPath());
-            }
-
             Option<NodeStyle> noPreviousStyle = Options.newNone();
             updateBasicLabelStyleFeatures(description, style, noPreviousStyle);
         }
@@ -591,29 +593,6 @@ public final class StyleHelper {
      *            ContainerStyle.
      */
     private void updateContainerStyle(final ContainerStyleDescription description, final ContainerStyle style, Option<? extends Style> previousStyle) {
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
-            if (previousStyle.get() instanceof BasicLabelStyle) {
-                style.setShowIcon(((BasicLabelStyle) previousStyle.get()).isShowIcon());
-            }
-            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName());
-        } else {
-            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
-                style.setShowIcon(description.isShowIcon());
-            }
-        }
-
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
-            if (previousStyle.get() instanceof BasicLabelStyle) {
-                style.setIconPath(((BasicLabelStyle) previousStyle.get()).getIconPath());
-            }
-            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName());
-        } else {
-            if (style.getIconPath() != null && !style.getIconPath().equals(description.getIconPath())
-                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
-                style.setIconPath(description.getIconPath());
-            }
-        }
-
         if (description instanceof FlatContainerStyleDescription && style instanceof FlatContainerStyle) {
             updateFlatContainerStyle((FlatContainerStyle) style, (FlatContainerStyleDescription) description, (Option<ContainerStyle>) previousStyle);
         } else if (description instanceof ShapeContainerStyleDescription && style instanceof ShapeContainerStyle) {
@@ -651,7 +630,8 @@ public final class StyleHelper {
             if (style instanceof Customizable) {
                 ((Customizable) style).getCustomFeatures().add(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName());
             }
-        } else if (style instanceof Customizable && !((Customizable) style).getCustomFeatures().contains(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
+        } else if (style.isHideLabelByDefault() != description.isHideLabelByDefault() && style instanceof Customizable
+                && !((Customizable) style).getCustomFeatures().contains(DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
             style.setHideLabelByDefault(description.isHideLabelByDefault());
         }
     }
@@ -710,13 +690,6 @@ public final class StyleHelper {
      */
     private void updateNodeStyle(final NodeStyleDescription description, final NodeStyle style, Option<? extends Style> previousStyle) {
         boolean brokenStyle = false;
-
-        if (previousStyle.get() instanceof BasicLabelStyle) {
-            updateBasicLabelStyleFeatures(description, style, (Option<BasicLabelStyle>) previousStyle);
-        } else {
-            Option<BasicLabelStyle> noPreviousBasicLabelStyle = Options.newNone();
-            updateBasicLabelStyleFeatures(description, style, noPreviousBasicLabelStyle);
-        }
 
         if (description instanceof CustomStyleDescription) {
             if (style instanceof CustomStyle) {
@@ -792,7 +765,7 @@ public final class StyleHelper {
             }
             style.getCustomFeatures().add(DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION.getName());
         } else {
-            if (!style.getCustomFeatures().contains(DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
+            if (style.getLabelPosition() != description.getLabelPosition() && !style.getCustomFeatures().contains(DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
                 style.setLabelPosition(description.getLabelPosition());
             }
         }
@@ -813,7 +786,10 @@ public final class StyleHelper {
             if (style.eContainer() instanceof AbstractDNode && style.getBorderSizeComputationExpression() != null
                     && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
                 try {
-                    style.setBorderSize(interpreter.evaluateInteger(((AbstractDNode) style.eContainer()).getTarget(), description.getBorderSizeComputationExpression()));
+                    Integer borderSize = interpreter.evaluateInteger(((AbstractDNode) style.eContainer()).getTarget(), description.getBorderSizeComputationExpression());
+                    if (!Objects.equal(borderSize, style.getBorderSize())) {
+                        style.setBorderSize(borderSize);
+                    }
                 } catch (final EvaluationException e) {
                     RuntimeLoggerManager.INSTANCE.error(description, StylePackage.eINSTANCE.getBorderedStyleDescription_BorderSizeComputationExpression(), e);
                 }
@@ -1007,10 +983,14 @@ public final class StyleHelper {
         if (image.eContainer() instanceof DNode && description.getSizeComputationExpression() != null) {
             final DNode node = (DNode) image.eContainer();
             Integer size = computeStyleSize(node.getTarget(), description);
-            if (size.intValue() == -1) {
+            if (Objects.equal(-1, size)) {
                 // real image size
-                node.setHeight(size);
-                node.setWidth(size);
+                if (!size.equals(node.getHeight())) {
+                    node.setHeight(size);
+                }
+                if (!size.equals(node.getWidth())) {
+                    node.setWidth(size);
+                }
             } else {
                 safeSetComputedSize(node, size);
             }

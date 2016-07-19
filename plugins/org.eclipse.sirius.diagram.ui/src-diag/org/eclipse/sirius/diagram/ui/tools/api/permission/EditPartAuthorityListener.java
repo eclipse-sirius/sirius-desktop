@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007-2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -87,18 +88,19 @@ public class EditPartAuthorityListener implements IAuthorityListener {
 
     private boolean shouldRefresh(EObject instance) {
         // Do not call part.resolveSemanticElement() if the part is not active
-        boolean shouldRefresh = instance != null && part.isActive() && part.resolveSemanticElement() instanceof DSemanticDecorator;
+        boolean shouldRefresh = false;
+        if (instance != null && part.isActive()) {
+            EObject element = part.resolveSemanticElement();
+            if (element instanceof DSemanticDecorator) {
+                DSemanticDecorator semanticDecorator = (DSemanticDecorator) element;
+                EObject target = semanticDecorator.getTarget();
 
-        if (shouldRefresh) {
-            DSemanticDecorator semanticDecorator = (DSemanticDecorator) part.resolveSemanticElement();
-            EObject target = semanticDecorator.getTarget();
-
-            boolean isConcerningEditPart = instance.equals(target) || instance.equals(semanticDecorator);
-            boolean isConcerningDiagramEditPart = semanticDecorator instanceof DDiagramElement && target != null && instance.equals(((DDiagramElement) semanticDecorator).getParentDiagram());
-
-            shouldRefresh = isConcerningEditPart || isConcerningDiagramEditPart;
+                boolean isConcerningEditPart = instance.equals(target) || instance.equals(semanticDecorator);
+                boolean isConcerningDiagramEditPart = target != null && instance instanceof DDiagram && semanticDecorator instanceof DDiagramElement
+                        && instance.equals(((DDiagramElement) semanticDecorator).getParentDiagram());
+                shouldRefresh = isConcerningEditPart || isConcerningDiagramEditPart;
+            }
         }
-
         return shouldRefresh;
     }
 
