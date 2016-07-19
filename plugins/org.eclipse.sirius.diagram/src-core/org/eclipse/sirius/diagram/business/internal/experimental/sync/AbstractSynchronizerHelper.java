@@ -28,7 +28,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -39,6 +38,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+
 /**
  * A common helper for nodes and edges.
  * 
@@ -96,17 +96,6 @@ public abstract class AbstractSynchronizerHelper {
     }
 
     /**
-     * Check if the target of this decorator is not null and is in a eResource.
-     * 
-     * @param decorator
-     *            The decorator to check
-     * @return true if the target is OK, false otherwise.
-     */
-    public static boolean isTargetDying(final DSemanticDecorator decorator) {
-        return decorator.getTarget() != null && (decorator.getTarget().eContainer() != null || decorator.getTarget().eResource() != null);
-    }
-
-    /**
      * 
      * Evaluate the semantic candidates for the given context.
      * 
@@ -158,12 +147,14 @@ public abstract class AbstractSynchronizerHelper {
      */
     protected Collection<EObject> getPreviousSemanticsElements(DragAndDropTarget container, DiagramElementMapping mapping) {
         Collection<EObject> transformed = Collections2.transform(sync.getPreviousDiagramElements(container, mapping), new Function<DDiagramElement, EObject>() {
+            @Override
             public EObject apply(final DDiagramElement from) {
                 return from.getTarget();
             }
         });
         return ImmutableSet.copyOf(Collections2.filter(transformed, Predicates.and(Predicates.notNull(), new Predicate<EObject>() {
             // We don't keep semantic element that is invalid
+            @Override
             public boolean apply(final EObject input) {
                 return (input.eContainer() != null && input.eContainer().eResource() != null) || input.eResource() != null;
             }
@@ -192,6 +183,7 @@ public abstract class AbstractSynchronizerHelper {
                 final Option<String> domainClassOption = new DiagramElementMappingQuery(mapping).getDomainClass();
                 if (domainClassOption.some()) {
                     Predicate<EObject> domainClass = new Predicate<EObject>() {
+                        @Override
                         public boolean apply(EObject input) {
                             return accessor.eInstanceOf(input, domainClassOption.get());
                         }
@@ -203,6 +195,7 @@ public abstract class AbstractSynchronizerHelper {
                 final Collection<EObject> previousSemanticsElements = getPreviousSemanticsElements(container, mapping);
                 sync.resetforceRetrieve();
                 final Predicate<EObject> stillCandidate = new Predicate<EObject>() {
+                    @Override
                     public boolean apply(final EObject input) {
                         return allCandidates.contains(input);
                     }

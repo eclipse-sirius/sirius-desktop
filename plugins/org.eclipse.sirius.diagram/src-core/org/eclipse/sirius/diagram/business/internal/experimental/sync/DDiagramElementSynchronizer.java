@@ -537,7 +537,7 @@ public class DDiagramElementSynchronizer {
         ContainerMapping containerMapping = container.getActualMapping();
         if (cContainer != null) {
             ContainerStyleDescription containerStyleDescription = null;
-            if (AbstractSynchronizerHelper.isTargetDying(container) && AbstractSynchronizerHelper.isTargetDying(cContainer)) {
+            if (hasSafeTarget(container) && hasSafeTarget(cContainer)) {
                 containerStyleDescription = (ContainerStyleDescription) this.mappingHelper.getBestStyleDescription(containerMapping, container.getTarget(), container, cContainer.getTarget(), diagram);
             }
             if (containerStyleDescription != null) {
@@ -574,7 +574,7 @@ public class DDiagramElementSynchronizer {
         if (container != null) {
             NodeStyleDescription nodeStyleDescription = null;
             NodeMapping nodeMapping = newNode.getActualMapping();
-            if (AbstractSynchronizerHelper.isTargetDying(newNode)) {
+            if (hasSafeTarget(newNode) && hasSafeTarget(container)) {
                 nodeStyleDescription = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(nodeMapping, newNode.getTarget(), newNode, container.getTarget(), diagram);
             }
             if (nodeStyleDescription != null) {
@@ -647,7 +647,7 @@ public class DDiagramElementSynchronizer {
         this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, node);
 
         StyleDescription bestStyleDescription = null;
-        if (AbstractSynchronizerHelper.isTargetDying(node)) {
+        if (hasSafeTarget(node)) {
             bestStyleDescription = this.mappingHelper.getBestStyleDescription(mapping, node.getTarget(), node, containerVariable, diagram);
         }
         Style style = node.getStyle();
@@ -963,5 +963,17 @@ public class DDiagramElementSynchronizer {
 
     private void refreshSemanticElements(final DDiagramElement element, final DiagramElementMapping mapping) {
         DiagramElementMappingHelper.refreshSemanticElements(mapping, element, this.interpreter);
+    }
+
+    /**
+     * Check if the target of this decorator is not null and is in a eResource.
+     * 
+     * @param decorator
+     *            The decorator to check
+     * @return true if the target is OK, false otherwise.
+     */
+    private boolean hasSafeTarget(DSemanticDecorator semDec) {
+        EObject target = semDec.getTarget();
+        return target != null && (target.eContainer() != null || target.eResource() != null);
     }
 }
