@@ -119,7 +119,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             if (!StringUtil.isEmpty(mapping.getHeaderLabelExpression())) {
                 try {
                     final String label = interpreter.evaluateString(line.getTarget(), mapping.getHeaderLabelExpression());
-                    if (isDifferent(line.getLabel(), label)) {
+                    if (!StringUtil.equals(line.getLabel(), label)) {
                         line.setLabel(label);
                     }
                 } catch (final EvaluationException e) {
@@ -131,7 +131,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // to get label to display
                 final String label = getText(line.getTarget());
                 // We change the value only if it's different
-                if (isDifferent(line.getLabel(), label)) {
+                if (!StringUtil.equals(line.getLabel(), label)) {
                     line.setLabel(label);
                 }
             }
@@ -192,7 +192,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             if (!StringUtil.isEmpty(mapping.getHeaderLabelExpression())) {
                 try {
                     final String label = interpreter.evaluateString(column.getTarget(), mapping.getHeaderLabelExpression());
-                    if (isDifferent(column.getLabel(), label)) {
+                    if (!StringUtil.equals(column.getLabel(), label)) {
                         column.setLabel(label);
                     }
                 } catch (final EvaluationException e) {
@@ -204,7 +204,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // to get label to display
                 final String label = getText(column.getTarget());
                 // We change the value only if it's different
-                if (isDifferent(column.getLabel(), label)) {
+                if (!StringUtil.equals(column.getLabel(), label)) {
                     column.setLabel(label);
                 }
             }
@@ -224,7 +224,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     public void refresh(final DFeatureColumn column) {
         final ColumnMapping mapping = column.getOriginMapping();
         if (accessor.getPermissionAuthority().canEditInstance(column)) {
-            if (isDifferent(column.getLabel(), mapping.getHeaderLabelExpression())) {
+            if (!StringUtil.equals(column.getLabel(), mapping.getHeaderLabelExpression())) {
                 column.setLabel(mapping.getHeaderLabelExpression());
             }
             if (mapping.getInitialWidth() != 0 && column.getWidth() == 0) {
@@ -478,7 +478,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                     final String label = interpreter.evaluateString(cell.getTarget(), labelExpression);
                     cellNeeded = true;
                     // We change the value only if it's different
-                    if (isDifferent(cell.getLabel(), label)) {
+                    if (!StringUtil.equals(cell.getLabel(), label)) {
                         cell.setLabel(label);
                     }
                 } catch (final EvaluationException e) {
@@ -513,7 +513,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             } else {
                 cellNeeded = true;
                 // We change the value only if it's different
-                if (isDifferent(cell.getLabel(), null)) {
+                if (!StringUtil.equals(cell.getLabel(), null)) {
                     cell.setLabel(null);
                 }
             }
@@ -548,7 +548,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             }
             if (init) {
                 // We change the value only if it's different
-                if (isDifferent(cell.getLabel(), label)) {
+                if (!StringUtil.equals(cell.getLabel(), label)) {
                     cell.setLabel(label);
                 }
             }
@@ -1055,20 +1055,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             bestForegroundStyleDescription = styleUpdater.getDefaultForeground();
         }
         return bestForegroundStyleDescription;
-    }
-
-    /**
-     * @param oldObject
-     *            The old object to test
-     * @param newObject
-     *            The new object to test
-     * @return true if newObject is different from oldObject, false otherwise
-     */
-    private boolean isDifferent(final Object oldObject, final Object newObject) {
-        if (newObject == null && oldObject == null) {
-            return false;
-        }
-        return (newObject != null && !newObject.equals(oldObject)) || (newObject == null && oldObject != null);
     }
 
     /**
