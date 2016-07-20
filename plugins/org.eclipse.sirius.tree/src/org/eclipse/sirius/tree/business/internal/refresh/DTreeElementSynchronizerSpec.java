@@ -236,7 +236,9 @@ public class DTreeElementSynchronizerSpec extends DTreeElementSynchronizerImpl {
                         this.interpreter.setVariable(IInterpreterSiriusVariables.ROOT, tree.getTarget());
                     }
                     final String label = interpreter.evaluateString(treeItem.getTarget(), labelExpression);
-                    treeItem.setName(label);
+                    if (!StringUtil.equals(treeItem.getName(), label)) {
+                        treeItem.setName(label);
+                    }
                 } catch (final EvaluationException e) {
                     // Silent catch if many line mappings
                 } finally {
