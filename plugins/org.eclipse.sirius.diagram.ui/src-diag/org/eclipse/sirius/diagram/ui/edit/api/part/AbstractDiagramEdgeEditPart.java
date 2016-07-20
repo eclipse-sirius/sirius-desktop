@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.SiriusConnectionEndPointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -76,6 +77,19 @@ import org.eclipse.swt.graphics.Image;
  */
 @SuppressWarnings("restriction")
 public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart implements IDiagramEdgeEditPart {
+
+    /**
+     * The minimum length(width or height) the edge box must have to be
+     * considered as selectable.
+     */
+    private static final int EDGE_MINIMUM_LENGTH = 20;
+
+    /**
+     * The minimum thickness the edge box at top, bottom, left or right position
+     * of the union of the nodes boxes must have to be considered as selectable
+     * zone.
+     */
+    private static final int EDGE_MINIMUM_THICKNESS = 20;
 
     /**
      * Define the minimum selection box size for the source and target of the
@@ -712,7 +726,12 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
      * CreateUnspecifiedTypeConnectionRequest is used to create a NoteAtachment
      * directly from the Note.
      * 
+     * The returned edit part can be this edge one or the target or source's one
+     * if this edge part is over the nodes ones.
+     * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart#getTargetEditPart(org.eclipse.gef.Request)
+     * 
+     *      T
      */
     @Override
     public EditPart getTargetEditPart(final Request request) {
@@ -726,40 +745,156 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         if (tool instanceof RequestDescription || tool instanceof SelectionWizardDescription || tool instanceof PaneBasedSelectionWizardDescription) {
             return this;
         } else if (request instanceof SelectionRequest) {
-            // if there is the source of the target near this edge select it.
+            boolean expandSource = false;
+            boolean expandTarget = false;
+            Rectangle sourceBoundsWithMargin = null;
+            Rectangle targetBoundsWithMargin = null;
+            int horizontalSourceIncrement = 0;
+            int verticalSourceIncrement = 0;
+            int horizontalTargetIncrement = 0;
+            int verticalTargetIncrement = 0;
+            Rectangle sourceBounds = null;
+            Rectangle targetBounds = null;
+
+            // We compute the bounds of the source edit part with margins if it
+            // is too small.
             if (getSource() instanceof AbstractBorderItemEditPart) {
-                final IFigure sourceFigure = ((AbstractBorderItemEditPart) getSource()).getFigure();
-                final int horizontalIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > sourceFigure.getSize().width ? SOURCE_TARGET_MINIMUM_SIZE_SELECTION - sourceFigure.getSize().width : 0;
-                final int verticalIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > sourceFigure.getSize().height ? SOURCE_TARGET_MINIMUM_SIZE_SELECTION - sourceFigure.getSize().height : 0;
-                final Rectangle rectWithMarges = sourceFigure.getBounds().getExpanded(horizontalIncrement, verticalIncrement);
-                sourceFigure.translateToAbsolute(rectWithMarges);
-                // in very specific cases (Note attachment on specific
-                // edges)
-                // request.getLocation() can be null
-                Point location = ((SelectionRequest) request).getLocation();
-                if (location != null && rectWithMarges.contains(location)) {
+                sourceBounds = GraphicalHelper.getAbsoluteBounds((IGraphicalEditPart) getSource());
+                // The method used to add margins doubles the given horizontal
+                // and vertical so we divide these values to always have the
+                // same minimum selection box.
+                horizontalSourceIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > sourceBounds.width ? Math.round((SOURCE_TARGET_MINIMUM_SIZE_SELECTION - sourceBounds.width) / 2) : 0;
+                verticalSourceIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > sourceBounds.height ? Math.round((SOURCE_TARGET_MINIMUM_SIZE_SELECTION - sourceBounds.height) / 2) : 0;
+
+                if (horizontalSourceIncrement > 0 || verticalSourceIncrement > 0) {
+                    expandSource = true;
+                    sourceBoundsWithMargin = sourceBounds.getExpanded(horizontalSourceIncrement, verticalSourceIncrement);
+                } else {
+                    sourceBoundsWithMargin = sourceBounds;
+                }
+            }
+            // We compute the bounds of the target edit part with margins if it
+            // is too small.
+            if (getTarget() instanceof AbstractBorderItemEditPart) {
+                targetBounds = GraphicalHelper.getAbsoluteBounds((IGraphicalEditPart) getTarget());
+                horizontalTargetIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > targetBounds.width ? Math.round((SOURCE_TARGET_MINIMUM_SIZE_SELECTION - targetBounds.width) / 2) : 0;
+                verticalTargetIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > targetBounds.height ? Math.round((SOURCE_TARGET_MINIMUM_SIZE_SELECTION - targetBounds.height) / 2) : 0;
+
+                if (horizontalTargetIncrement > 0 || verticalTargetIncrement > 0) {
+                    expandTarget = true;
+                    targetBoundsWithMargin = targetBounds.getExpanded(horizontalTargetIncrement, verticalTargetIncrement);
+                } else {
+                    targetBoundsWithMargin = targetBounds;
+                }
+
+            }
+
+            // We test if an edge selectable zone exists with the margined
+            // source and target edit part. Margins can be zero if parts are big
+            // enough.
+            boolean isEdgeSelectableZonePresent = false;
+            if (expandTarget || expandSource) {
+                Rectangle edgeBounds = GraphicalHelper.getAbsoluteBounds(this);
+                isEdgeSelectableZonePresent = isEdgeSelectableZonePresent(edgeBounds, sourceBoundsWithMargin, targetBoundsWithMargin);
+            }
+
+            Point location = ((SelectionRequest) request).getLocation();
+            if (location != null) {
+                boolean returnSource = isEdgeSelectableZonePresent && sourceBoundsWithMargin != null && sourceBoundsWithMargin.contains(location);
+                returnSource = returnSource || (sourceBounds != null && sourceBounds.contains(location));
+                if (returnSource) {
+                    // The mouse is located in the margined source part and an
+                    // edge selectable zone is present. So the considered
+                    // selection is the source one.
                     result = getSource();
+                } else if (result == null) {
+                    boolean returnTarget = isEdgeSelectableZonePresent && targetBoundsWithMargin != null && targetBoundsWithMargin.contains(location);
+                    returnTarget = returnTarget || (targetBounds != null && targetBounds.contains(location));
+                    if (returnTarget) {
+                        // The mouse is located in the margined target part and
+                        // an edge selectable zone is present. So the considered
+                        // selection is the target one.
+                        result = getTarget();
+                    }
                 }
             }
-            if (result == null && getTarget() instanceof AbstractBorderItemEditPart) {
-                final IFigure targetFigure = ((AbstractBorderItemEditPart) getTarget()).getFigure();
-                final int horizontalIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > targetFigure.getSize().width ? SOURCE_TARGET_MINIMUM_SIZE_SELECTION - targetFigure.getSize().width : 0;
-                final int verticalIncrement = SOURCE_TARGET_MINIMUM_SIZE_SELECTION > targetFigure.getSize().height ? SOURCE_TARGET_MINIMUM_SIZE_SELECTION - targetFigure.getSize().height : 0;
-                final Rectangle rectWithMarges = targetFigure.getBounds().getExpanded(horizontalIncrement, verticalIncrement);
-                targetFigure.translateToAbsolute(rectWithMarges);
-                // in very specific cases (Note attachment on specific
-                // edges)
-                // request.getLocation() can be null
-                Point location = ((SelectionRequest) request).getLocation();
-                if (location != null && rectWithMarges.contains(((SelectionRequest) request).getLocation())) {
-                    result = getTarget();
-                }
-            }
+
         }
         if (result == null) {
+            // The mouse is located in the edge bounds but not in the margined
+            // source and target one so we return it.
             result = super.getTargetEditPart(request);
         }
         return result;
+    }
+
+    /**
+     * Returns true if the edge represented by the given bounds has a zone with
+     * the minimum width or height allowing its selection.
+     * 
+     * Either the edge has a box outside the one formed by the union of the
+     * nodes boxes that meets the minimum requirement that is a thickness of
+     * {@link AbstractDiagramEdgeEditPart#EDGE_MINIMUM_THICKNESS}.
+     * 
+     * Or it does not. In this case we compute the edge length from its box by
+     * taking in consideration the margin expansions of the nodes boxes. The
+     * computing is done based on the worst scenario of nodes occupation over
+     * the edge. The computing depends on the existence of source and target
+     * bounds. If both exist, then the worst scenario is the boxes of the two
+     * nodes are upon the edge's one. In this case, the edge's box is considered
+     * as selectable if its bound width or height is greater than the minimum
+     * considered when removed from the width or height of the margined nodes.
+     * If only one node exists, then the worst scenario is one node is
+     * completely over the edge. In this case, the edge's box is considered as
+     * selectable if its width or height is greater than the minimum considered
+     * when removed from the minimum width or height of the unique margined
+     * node.
+     * 
+     * @param edgeBounds
+     *            the {@link Rectangle} encapsulating the selected edge.
+     * @param sourceBoundsWithMargins
+     *            the {@link Rectangle} encapsulating the source part of the
+     *            selected edge.
+     * @param targetBoundsWithMargins
+     *            the {@link Rectangle} encapsulating the target part of the
+     *            selected edge.
+     * @return true if the edge represented by the given bounds has the minimum
+     *         width or height allowing its selection. False otherwise.
+     */
+    private boolean isEdgeSelectableZonePresent(Rectangle edgeBounds, Rectangle sourceBoundsWithMargins, Rectangle targetBoundsWithMargins) {
+        if (sourceBoundsWithMargins == null && targetBoundsWithMargins == null) {
+            return true;
+        } else {
+            boolean isEdgeSelectableZonePresent = false;
+            if (sourceBoundsWithMargins != null && targetBoundsWithMargins != null) {
+                // We check that the edge is selectable on the edge boxes not in
+                // the union of nodes boxes in all directions (top, bottom,
+                // left, right).
+                Rectangle sourceTargetUnionBox = sourceBoundsWithMargins.getUnion(targetBoundsWithMargins);
+                // compute left box
+                isEdgeSelectableZonePresent = isEdgeSelectableZonePresent || (sourceTargetUnionBox.x - edgeBounds.x > EDGE_MINIMUM_THICKNESS);
+
+                // compute right box
+                isEdgeSelectableZonePresent = isEdgeSelectableZonePresent || ((edgeBounds.x + edgeBounds.width) - (sourceTargetUnionBox.x + sourceTargetUnionBox.width) > EDGE_MINIMUM_THICKNESS);
+
+                // compute top box
+                isEdgeSelectableZonePresent = isEdgeSelectableZonePresent || (sourceTargetUnionBox.y - edgeBounds.y > EDGE_MINIMUM_THICKNESS);
+
+                // compute bottom box
+                isEdgeSelectableZonePresent = isEdgeSelectableZonePresent || ((edgeBounds.y + edgeBounds.height) - (sourceTargetUnionBox.y + sourceTargetUnionBox.height) > EDGE_MINIMUM_THICKNESS);
+
+            }
+            if (!isEdgeSelectableZonePresent) {
+                // there are no edge boxes selectable outside of the box made of
+                // the union of the nodes boxes. So we checks we have the
+                // minimum width or height between the two nodes boxes with
+                // maximum margins.
+                isEdgeSelectableZonePresent = sourceBoundsWithMargins == null || targetBoundsWithMargins == null
+                        ? edgeBounds.width - SOURCE_TARGET_MINIMUM_SIZE_SELECTION >= EDGE_MINIMUM_LENGTH || edgeBounds.height - SOURCE_TARGET_MINIMUM_SIZE_SELECTION > EDGE_MINIMUM_LENGTH
+                        : edgeBounds.width - (SOURCE_TARGET_MINIMUM_SIZE_SELECTION * 2) >= EDGE_MINIMUM_LENGTH || edgeBounds.height - (SOURCE_TARGET_MINIMUM_SIZE_SELECTION * 2) >= EDGE_MINIMUM_LENGTH;
+            }
+            return isEdgeSelectableZonePresent;
+        }
     }
 
     @Override

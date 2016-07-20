@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="package" nsURI="package" nsPrefix="package">
+  <eSubpackages name="subpackage1" nsURI="subpackage1" nsPrefix="subpackage1">
+    <eSubpackages name="sp3">
+      <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+    </eSubpackages>
+    <eSubpackages name="sp4">
+      <eClassifiers xsi:type="ecore:EClass" name="C2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref2" eType="#//subpackage1/sp3/C1"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp5"/>
+    <eSubpackages name="sp6">
+      <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+    </eSubpackages>
+    <eSubpackages name="sp7">
+      <eClassifiers xsi:type="ecore:EClass" name="C3">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref3" eType="#//subpackage1/sp6/C4"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp8">
+      <eClassifiers xsi:type="ecore:EClass" name="C6">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref4" eType="#//subpackage1/sp9/C7"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp9">
+      <eClassifiers xsi:type="ecore:EClass" name="C7"/>
+    </eSubpackages>
+    <eSubpackages name="sp10">
+      <eClassifiers xsi:type="ecore:EClass" name="C9">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref5" eType="#//subpackage1/sp11/C8"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp11">
+      <eClassifiers xsi:type="ecore:EClass" name="C8"/>
+    </eSubpackages>
+    <eSubpackages name="sp12">
+      <eClassifiers xsi:type="ecore:EClass" name="C10"/>
+    </eSubpackages>
+    <eSubpackages name="sp13">
+      <eClassifiers xsi:type="ecore:EClass" name="C11">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref6" eType="#//subpackage1/sp12/C10"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp14">
+      <eClassifiers xsi:type="ecore:EClass" name="C12">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref7" eType="#//subpackage1/sp15/C13"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp15">
+      <eClassifiers xsi:type="ecore:EClass" name="C13"/>
+    </eSubpackages>
+    <eSubpackages name="sp16">
+      <eClassifiers xsi:type="ecore:EClass" name="C15"/>
+    </eSubpackages>
+    <eSubpackages name="sp17">
+      <eClassifiers xsi:type="ecore:EClass" name="C14">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref8" eType="#//subpackage1/sp16/C15"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp18">
+      <eClassifiers xsi:type="ecore:EClass" name="C17">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref9" eType="#//subpackage1/sp19/C16"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="sp19">
+      <eClassifiers xsi:type="ecore:EClass" name="C16"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

@@ -152,6 +152,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LineStyleTest.class);
         suite.addTestSuite(CompartmentsCreationTest.class);
         suite.addTestSuite(CompartmentsDragAndDropTest.class);
+        suite.addTestSuite(EdgeSelectionTest.class);
     }
 
     /**
@@ -289,14 +290,15 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addPart2(TestSuite suite) {
-        // The ViewpointProjectCreationTest should be done before the others ones:
+        // The ViewpointProjectCreationTest should be done before the others
+        // ones:
         // to verify the behavior when a specifier first launches the product.
         suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
-        
+
         addGerritPart2(suite);
         STDSwtbotTestSuite.addPart2(suite);
         TableSwtbotTestSuite.addPart2(suite);
-        
+
         suite.addTestSuite(CustomizationPropertySectionsTests.class);
         suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);

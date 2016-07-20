@@ -47,6 +47,11 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
         ZOOM_50("50%", 0.5),
 
         /**
+         * Zoom 75%.
+         */
+        ZOOM_75("75%", 0.75),
+
+        /**
          * Zoom 100%.
          */
         ZOOM_100("100%", 1.0),

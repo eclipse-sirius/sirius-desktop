@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="SmallBorderedNodes" version="11.0.0.201601261200">
+  <ownedViewpoints name="3358" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram_3358" domainClass="ecore.EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference" sourceMapping="//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass'] //@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='container']/@subContainerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass'] //@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='container']/@subContainerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore.EReference" useDomainElement="true">
+          <style sizeComputationExpression="2" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="container" semanticCandidatesExpression="aql:self.eContents()->first()" domainClass="ecore.EPackage">
+          <subContainerMappings name="SubPackage" semanticCandidatesExpression="aql:self.eContents()" domainClass="ecore.EPackage">
+            <borderedNodeMappings name="EClass" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
+              <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.swtbot/data/unit/edgeSelection/smallImage.png">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="SubPackage" semanticCandidatesExpression="aql:self.eContents()->excluding(self.eContents()->first())" domainClass="ecore.EPackage">
+          <borderedNodeMappings name="EClass" semanticCandidatesExpression="aql:self.eContents()" domainClass="ecore.EClass">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.swtbot/data/unit/edgeSelection/smallImage.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreatePackage" containerMappings="//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='container'] //@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='SubPackage'] //@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='container']/@subContainerMappings[name='SubPackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'sp'.concat((self.eResource().getContents()->first().eAllContents()->filter(ecore::EPackage)->size()+1).toString())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateEClass" nodeMappings="//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass'] //@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@containerMappings[name='container']/@subContainerMappings[name='SubPackage']/@borderedNodeMappings[name='EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'C'.concat((self.eResource().getContents()->first().eAllContents()->filter(ecore::EClass)->size()+1).toString())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Creation Edge" edgeMappings="//@ownedViewpoints[name='3358']/@ownedRepresentations[name='diagram_3358']/@defaultLayer/@edgeMappings[name='EReference']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EReference" referenceName="eReferences">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'ref'.concat((self.eResource().getContents()->first().eAllContents()->filter(ecore::EReference)->size()+1).toString())"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
