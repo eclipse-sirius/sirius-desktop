@@ -371,6 +371,7 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.checkbox</module>
         <module>../../plugins/org.eclipse.sirius.sample.properties.radio</module>
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
+        <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>

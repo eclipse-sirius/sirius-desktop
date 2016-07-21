@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
+         <propertySection
+               afterSection="properties.section.widgetDescription.IsEnabledExpression"
+               class="org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.ExtReferenceDescriptionReferenceOwnerExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.ExtReferenceDescriptionReferenceOwnerExpressionFilter"
+               id="properties.section.extReferenceDescription.referenceOwnerExpression"
+               tab="viewpoint.tab.general">
+            <input
+                  type="org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription">
+            </input>
+         </propertySection>
+         <propertySection
+               afterSection="properties.section.extReferenceDescription.referenceOwnerExpression"
+               class="org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.ExtReferenceDescriptionReferenceNameExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.ext.widgets.reference.internal.ExtReferenceDescriptionReferenceNameExpressionFilter"
+               id="properties.section.extReferenceDescription.referenceNameExpression"
+               tab="viewpoint.tab.general">
+            <input
+                  type="org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+</plugin>

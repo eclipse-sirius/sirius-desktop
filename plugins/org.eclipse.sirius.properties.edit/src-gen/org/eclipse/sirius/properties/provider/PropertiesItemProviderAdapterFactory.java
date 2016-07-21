@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
+import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
@@ -37,6 +38,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesFactory;
+import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.util.PropertiesAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -56,7 +58,7 @@ import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch
  * 
  * @generated
  */
-public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -73,6 +75,14 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
+
+    /**
+     * This helps manage the child creation extenders. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(PropertiesEditPlugin.INSTANCE, PropertiesPackage.eNS_URI);
 
     /**
      * This keeps track of all the supported types checked by
@@ -1308,6 +1318,35 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
     }
 
     /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public List<IChildCreationExtender> getChildCreationExtenders() {
+        return childCreationExtenderManager.getChildCreationExtenders();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+        return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public ResourceLocator getResourceLocator() {
+        return childCreationExtenderManager;
+    }
+
+    /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -1534,7 +1573,7 @@ public class PropertiesItemProviderAdapterFactory extends PropertiesAdapterFacto
 
             /**
              * <!-- begin-user-doc --> <!-- end-user-doc -->
-             * 
+             *
              * @generated NOT
              */
             @Override

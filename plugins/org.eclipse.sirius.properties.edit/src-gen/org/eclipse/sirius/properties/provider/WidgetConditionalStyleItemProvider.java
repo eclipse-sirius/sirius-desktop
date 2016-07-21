@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -88,7 +89,7 @@ public class WidgetConditionalStyleItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((WidgetConditionalStyle) object).getPreconditionExpression();
         return label == null || label.length() == 0 ? getString("_UI_WidgetConditionalStyle_type") : //$NON-NLS-1$
-                getString("_UI_WidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+            getString("_UI_WidgetConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -131,7 +132,7 @@ public class WidgetConditionalStyleItemProvider extends ItemProviderAdapter
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+        return ((IChildCreationExtender) adapterFactory).getResourceLocator();
     }
 
 }

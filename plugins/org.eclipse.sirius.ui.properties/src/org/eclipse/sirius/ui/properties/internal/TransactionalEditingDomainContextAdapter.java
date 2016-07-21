@@ -16,6 +16,7 @@ import org.eclipse.eef.core.api.EditingContextAdapter;
 import org.eclipse.eef.core.api.controllers.IConsumer;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -68,6 +69,7 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     @Override
     public void performModelChange(final Runnable effect) {
         RecordingCommand cmd = new RecordingCommand(ted) {
+            @Override
             protected void doExecute() {
                 effect.run();
             };
@@ -87,6 +89,11 @@ public class TransactionalEditingDomainContextAdapter implements EditingContextA
     public void removeModelChangeConsumer() {
         this.callback = null;
         ted.removeResourceSetListener(preCommitListener);
+    }
+
+    @Override
+    public EditingDomain getEditingDomain() {
+        return this.ted;
     }
 
     /**

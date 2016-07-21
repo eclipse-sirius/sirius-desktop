@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -154,10 +155,10 @@ public class GroupValidationSetDescriptionItemProvider extends ItemProviderAdapt
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors
-                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
+        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__SEMANTIC_VALIDATION_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
 
         newChildDescriptors
-                .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
+        .add(createChildParameter(PropertiesPackage.Literals.GROUP_VALIDATION_SET_DESCRIPTION__PROPERTY_VALIDATION_RULES, PropertiesFactory.eINSTANCE.createPropertyValidationRule()));
     }
 
     /**
@@ -168,7 +169,7 @@ public class GroupValidationSetDescriptionItemProvider extends ItemProviderAdapt
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+        return ((IChildCreationExtender) adapterFactory).getResourceLocator();
     }
 
 }

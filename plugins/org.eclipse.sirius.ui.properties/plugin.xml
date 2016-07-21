@@ -12,6 +12,8 @@
  
 -->
 <plugin>
+   <extension-point id="descriptionConverter" name="%descriptionConverterExtensionPoint.Name" schema="schema/descriptionConverter.exsd"/>
+   <extension-point id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name" schema="schema/descriptionLinkResolver.exsd"/>
   <extension point="org.eclipse.core.runtime.adapters">
     <factory adaptableType="org.eclipse.gef.GraphicalEditPart"
              class="org.eclipse.sirius.ui.properties.internal.SiriusInputAdapter">
@@ -35,9 +37,9 @@
         point="org.eclipse.eef.properties.ui.eefTabDescriptorProvider">
      <descriptor
            class="org.eclipse.sirius.ui.properties.internal.tabprovider.SiriusTabDescriptorProvider"
-           description="Provides EEF tab descriptors according to what is defined in the view properties extension"
+           description="%siriusTabDescriptorProvider.Description"
            id="org.eclipse.sirius.eefTabDescriptorProvider"
-           label="Sirius EEF Tab Descriptor Provider">
+           label="%siriusTabDescriptorProvider.Label">
      </descriptor>
   </extension>
   

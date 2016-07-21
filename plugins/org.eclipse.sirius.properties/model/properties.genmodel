@@ -11,7 +11,7 @@
     importOrganizing="true" cleanup="true">
   <foreignModel>properties.ecore</foreignModel>
   <genPackages prefix="Properties" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
-      childCreationExtenders="true" ecorePackage="properties.ecore#/">
+      extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="properties.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="properties.ecore#//FILL_LAYOUT_ORIENTATION">
       <genEnumLiterals ecoreEnumLiteral="properties.ecore#//FILL_LAYOUT_ORIENTATION/VERTICAL"/>
       <genEnumLiterals ecoreEnumLiteral="properties.ecore#//FILL_LAYOUT_ORIENTATION/HORIZONTAL"/>

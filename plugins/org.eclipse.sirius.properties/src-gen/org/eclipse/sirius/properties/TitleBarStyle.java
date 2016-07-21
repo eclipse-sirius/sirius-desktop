@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Title Bar Style</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getTitleBarStyle()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * The '<em><b>TITLE BAR</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TITLE_BAR_VALUE
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * The '<em><b>SHORT TITLE BAR</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #SHORT_TITLE_BAR_VALUE
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * The '<em><b>NO TITLE</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NO_TITLE_VALUE
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public enum TitleBarStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TITLE_BAR
      * @model
      * @generated
@@ -80,7 +80,7 @@ public enum TitleBarStyle implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SHORT_TITLE_BAR
      * @model
      * @generated
@@ -95,7 +95,7 @@ public enum TitleBarStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NO_TITLE
      * @model
      * @generated
@@ -114,7 +114,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Title Bar Style</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<TitleBarStyle> VALUES = Collections.unmodifiableList(Arrays.asList(TitleBarStyle.VALUES_ARRAY));
@@ -122,10 +122,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param literal
-     *            the literal.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static TitleBarStyle get(String literal) {
@@ -140,10 +137,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param name
-     *            the name.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static TitleBarStyle getByName(String name) {
@@ -158,10 +152,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * Returns the '<em><b>Title Bar Style</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the integer value.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static TitleBarStyle get(int value) {
@@ -178,21 +169,21 @@ public enum TitleBarStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -200,7 +191,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private TitleBarStyle(int value, String name, String literal) {
@@ -211,7 +202,7 @@ public enum TitleBarStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -221,7 +212,7 @@ public enum TitleBarStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -231,7 +222,7 @@ public enum TitleBarStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +233,7 @@ public enum TitleBarStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

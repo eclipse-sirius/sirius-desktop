@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.ui.properties" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.sirius.ui.properties" id="descriptionConverter" name="%descriptionConverter.Name"/>
+      </appinfo>
+      <documentation>
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.ui.properties.api.IDescriptionConverter&lt;/code&gt; which can be used to convert the description of an element from the Sirius Properties DSL to the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL, for example new widgets.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="descriptor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="descriptor">
+      <complexType>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The identifier of the contribution.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  The label of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  The implementation of the IDescriptionConverter.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.ui.properties.api.IDescriptionConverter"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         This extension point has been available since Eclipse Sirius 4.1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension
+      point=&quot;org.eclipse.sirius.ui.properties.descriptionConverter&quot;&gt;
+   &lt;descriptor
+         class=&quot;org.eclipse.sirius.ui.properties.ext.widgets.reference.internal.ExtReferenceDescriptionConverter&quot;
+         description=&quot;%referenceDescriptionConverter.Description&quot;
+         id=&quot;org.eclipse.sirius.ui.properties.ext.widgets.reference.descriptionConverter&quot;
+         label=&quot;%referenceDescriptionConverter.Label&quot;&gt;
+   &lt;/descriptor&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+Example of an IDescriptionConverter contribution. In this example, we are providing a contribution to convert the definition of the custom widget from the Sirius DSL integrated in the odesign to the EEF DSL interpreted by the EEF runtime. This extension point will let us control how the transformation of the Sirius DSL to the EEF DSL occurs. During the transformation it is important to populate the description cache with the mappings from Sirius and the EEF mapping created from it in order to have all the information necessary to perform the link resolutions later. Using this extension point, a developer can:
+&lt;ul&gt;
+  &lt;li&gt;Convert her/his definition of a custom widget from definition of the custom widget in the Sirius DSL to the definition of her/his custom widget in the EEF DSL&lt;/li&gt;
+  &lt;li&gt;Replace the transformation of any existing element from properties part of the Sirius DSL to the EEF DSL&lt;/li&gt;
+&lt;/ul&gt;
+The second capability allows a developer to replace the way text widgets, container or even pages and groups are transformed from the Sirius DSL to the EEF DSL. Using this mechanism, one could even &quot;patch&quot; the default rules provided by the Sirius bridge for EEF. Here is a simple example of the transformation of a custom widget:
+&lt;pre&gt;
+import java.util.Map;
+
+import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EEFExtReferenceDescription;
+import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.properties.ext.widgets.reference.propertiesextwidgetsreference.ExtReferenceDescription;
+import org.eclipse.sirius.ui.properties.api.DescriptionCache;
+import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
+
+public class ExtReferenceDescriptionConverter implements IDescriptionConverter {
+
+    @Override
+    public boolean canHandle(EObject description) {
+        return description instanceof ExtReferenceDescription;
+    }
+
+    @Override
+    public EObject convert(EObject description, Map&lt;String, Object&gt; parameters, DescriptionCache cache) {
+        if (description instanceof ExtReferenceDescription) {
+            ExtReferenceDescription extReferenceDescription = (ExtReferenceDescription) description;
+            
+            // Let&apos;s create an instance of the custom widget description using the EEF DSL
+            EEFExtReferenceDescription eefExtReferenceDescription = EefExtWidgetsReferenceFactory.eINSTANCE.createEEFExtReferenceDescription();
+            eefExtReferenceDescription.setIdentifier(extReferenceDescription.getIdentifier());
+            eefExtReferenceDescription.setHelpExpression(extReferenceDescription.getHelpExpression());
+            eefExtReferenceDescription.setIsEnabledExpression(extReferenceDescription.getIsEnabledExpression());
+            eefExtReferenceDescription.setLabelExpression(extReferenceDescription.getLabelExpression());
+            eefExtReferenceDescription.setReferenceNameExpression(extReferenceDescription.getReferenceNameExpression());
+            eefExtReferenceDescription.setSemanticCandidateExpression(extReferenceDescription.getSemanticCandidateExpression());
+
+            cache.put(extReferenceDescription, eefExtReferenceDescription);
+
+            return eefExtReferenceDescription;
+        }
+        return null;
+    }
+}
+&lt;/pre&gt;
+And here is a basic example of the modification of the default rules from the Sirius bridge:
+&lt;pre&gt;
+import java.util.Arrays;
+import java.util.Map;
+
+import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EEFExtReferenceDescription;
+import org.eclipse.eef.ext.widgets.reference.eefextwidgetsreference.EefExtWidgetsReferenceFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.properties.DynamicMappingIf;
+import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.ui.properties.api.DescriptionCache;
+import org.eclipse.sirius.ui.properties.api.IDescriptionConverter;
+
+public class DefaultRulesReferenceDescriptionConverter implements IDescriptionConverter {
+    /**
+     * The identifier of the widget description for mono-valued containment
+     * references.
+     */
+    private static final String MONO_CONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_mono_containment_reference&quot;; //$NON-NLS-1$
+
+    /**
+     * The identifier of the widget description for mono-valued non-containment
+     * references.
+     */
+    private static final String MONO_NONCONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_mono_noncontainment_reference&quot;; //$NON-NLS-1$
+
+    /**
+     * The identifier of the widget description if for multi-valued containment
+     * references.
+     */
+    private static final String MULTI_CONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_multi_containment_reference&quot;; //$NON-NLS-1$
+
+    /**
+     * The identifier of the widget description if for multi-valued
+     * non-containment references.
+     */
+    private static final String MULTI_NONCONTAINMENT_REFERENCE_ID = &quot;sirius_default_rules_multi_noncontainment_reference&quot;; //$NON-NLS-1$
+
+    /**
+     * The identifier of the descriptions supported by this
+     * {@link IDescriptionConverter}.
+     */
+    private static final String[] SUPPORTED_IDS = new String[] { MONO_CONTAINMENT_REFERENCE_ID, MONO_NONCONTAINMENT_REFERENCE_ID, MULTI_CONTAINMENT_REFERENCE_ID, MULTI_NONCONTAINMENT_REFERENCE_ID };
+
+    /**
+     * The URI of the default rules resource.
+     */
+    private static final String SUPPORTED_URI = &quot;platform:/plugin/org.eclipse.sirius.ui.properties/model/properties.xmi&quot;; //$NON-NLS-1$
+
+    @Override
+    public boolean canHandle(EObject description) {
+        if (description.eResource() != null &amp;&amp; SUPPORTED_URI.equals(description.eResource().getURI().toString())) {
+            if (description instanceof WidgetDescription &amp;&amp; ((WidgetDescription) description).eContainer() instanceof DynamicMappingIf) {
+                WidgetDescription widgetDescription = (WidgetDescription) description;
+                return Arrays.asList(SUPPORTED_IDS).contains(widgetDescription.getIdentifier());
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public EObject convert(EObject description, Map&lt;String, Object&gt; parameters, DescriptionCache cache) {
+        if (description instanceof WidgetDescription &amp;&amp; ((WidgetDescription) description).eContainer() instanceof DynamicMappingIf) {
+            WidgetDescription widgetDescription = (WidgetDescription) description;
+
+            if (Arrays.asList(SUPPORTED_IDS).contains(widgetDescription.getIdentifier())) {
+                EEFExtReferenceDescription eefExtReferenceDescription = EefExtWidgetsReferenceFactory.eINSTANCE.createEEFExtReferenceDescription();
+                eefExtReferenceDescription.setIdentifier(widgetDescription.getIdentifier());
+                eefExtReferenceDescription.setReferenceNameExpression(&quot;aql:eStructuralFeature.name&quot;); //$NON-NLS-1$
+                cache.put(widgetDescription, eefExtReferenceDescription);
+                return eefExtReferenceDescription;
+            }
+        }
+        return null;
+    }
+}
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         The IDescriptionConverter lets you convert concepts from the Sirius Properties DSL to the EEF DSL.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         This plugin does not supply any implementation of the IDescriptionConverter interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2016 Obeo&lt;br/&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

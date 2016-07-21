@@ -34,6 +34,9 @@ public final class Messages {
     @TranslatableMessage
     public static String SiriusTabDescriptorProvider_DefaultPropertiesNotFound;
 
+    @TranslatableMessage
+    public static String IDescriptionConverter_InvalidDescriptionType;
+
     // CHECKSTYLE:ON
 
     private Messages() {

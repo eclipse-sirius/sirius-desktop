@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Toggle Style</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.properties.PropertiesPackage#getToggleStyle()
  * @model
  * @generated
@@ -30,7 +30,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * The '<em><b>TWISTIE</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TWISTIE_VALUE
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * The '<em><b>TREE NODE</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TREE_NODE_VALUE
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * The '<em><b>NONE</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #NONE_VALUE
      * @generated
      * @ordered
@@ -64,7 +64,7 @@ public enum ToggleStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TWISTIE
      * @model
      * @generated
@@ -79,7 +79,7 @@ public enum ToggleStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TREE_NODE
      * @model
      * @generated
@@ -94,7 +94,7 @@ public enum ToggleStyle implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NONE
      * @model
      * @generated
@@ -113,7 +113,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Toggle Style</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<ToggleStyle> VALUES = Collections.unmodifiableList(Arrays.asList(ToggleStyle.VALUES_ARRAY));
@@ -121,10 +121,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * Returns the '<em><b>Toggle Style</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param literal
-     *            the literal.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static ToggleStyle get(String literal) {
@@ -139,10 +136,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * Returns the '<em><b>Toggle Style</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param name
-     *            the name.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static ToggleStyle getByName(String name) {
@@ -157,10 +151,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * Returns the '<em><b>Toggle Style</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the integer value.
-     * @return the matching enumerator or <code>null</code>.
+     *
      * @generated
      */
     public static ToggleStyle get(int value) {
@@ -177,21 +168,21 @@ public enum ToggleStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -199,7 +190,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private ToggleStyle(int value, String name, String literal) {
@@ -210,7 +201,7 @@ public enum ToggleStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -220,7 +211,7 @@ public enum ToggleStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -230,7 +221,7 @@ public enum ToggleStyle implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,7 +232,7 @@ public enum ToggleStyle implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

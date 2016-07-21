@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.properties.PropertiesPackage;
@@ -66,8 +65,8 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
     protected void addTargetsPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_PropertyValidationRule_targets_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.PROPERTY_VALIDATION_RULE__TARGETS, true, false, true, null, null, null));
+                getString("_UI_PropertyDescriptor_description", "_UI_PropertyValidationRule_targets_feature", "_UI_PropertyValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.PROPERTY_VALIDATION_RULE__TARGETS, true, false, true, null, null, null));
     }
 
     /**
@@ -91,7 +90,7 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
     public String getText(Object object) {
         String label = ((PropertyValidationRule) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_PropertyValidationRule_type") : //$NON-NLS-1$
-                getString("_UI_PropertyValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+            getString("_UI_PropertyValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -118,17 +117,6 @@ public class PropertyValidationRuleItemProvider extends ValidationRuleItemProvid
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
     }
 
 }

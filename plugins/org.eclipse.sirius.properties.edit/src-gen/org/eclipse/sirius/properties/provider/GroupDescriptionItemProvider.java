@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -82,8 +83,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     protected void addIdentifierPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupDescription_identifier_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_identifier_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.GROUP_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_identifier_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.GROUP_DESCRIPTION__IDENTIFIER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -95,8 +96,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupDescription_labelExpression_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_labelExpression_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.GROUP_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_labelExpression_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.GROUP_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -108,8 +109,8 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_GroupDescription_domainClass_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_domainClass_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        PropertiesPackage.Literals.GROUP_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_PropertyDescriptor_description", "_UI_GroupDescription_domainClass_feature", "_UI_GroupDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                PropertiesPackage.Literals.GROUP_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -195,7 +196,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
     public String getText(Object object) {
         String label = ((GroupDescription) object).getIdentifier();
         return label == null || label.length() == 0 ? getString("_UI_GroupDescription_type") : //$NON-NLS-1$
-                getString("_UI_GroupDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+            getString("_UI_GroupDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -282,7 +283,7 @@ public class GroupDescriptionItemProvider extends ItemProviderAdapter
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return PropertiesEditPlugin.INSTANCE;
+        return ((IChildCreationExtender) adapterFactory).getResourceLocator();
     }
 
 }

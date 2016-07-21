@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.ui.properties" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.sirius.ui.properties" id="descriptionLinkResolver" name="%descriptionLinkResolverExtensionPoint.Name"/>
+      </appinfo>
+      <documentation>
+         This extension point allows the contribution of an &lt;code&gt;org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver&lt;/code&gt; which can be used after the transformation of the Sirius Properties model into the EEF model in order to resolve some links between elements.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="descriptor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="descriptor">
+      <complexType>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The identifier of the contribution.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  The label of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  The description of the provider, this information may be used in the user interface and as such it may be visible by the end user. It should be internationalized if possible.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  The implementation of the IDescriptionConverter.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         This extension point has been available since Eclipse Sirius 4.1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;/pre&gt;
+Example of an IDescriptionLinkResolver contribution. In this example we are providing a contribution to resolve the links in the EEF DSL after the transformation of the Sirius DSL to the EEF DSL. This extension points will often be used along with the contribution of an IDescriptionConverter. The transformation of a &quot;graph&quot; of objects often involve at least two steps:
+&lt;ul&gt;
+  &lt;li&gt;Transform the objects&lt;/li&gt;
+  &lt;li&gt;Resolves the links between the transformed objects&lt;/li&gt;
+&lt;/ul&gt;
+Since the resolution of the links between the newly created objects requires that those objects exist, this step of resolution of the links is executed after the transformation of the objects. The description link resolver has access to a desciption cache containing the mapping between the Sirius objects and the EEF ones. Here is an example of the resolution of the links between the validation rules and the widgets after the transformation from the Sirius DSL to the EEF one:
+&lt;pre&gt;
+import java.util.List;
+
+import org.eclipse.eef.EEFGroupDescription;
+import org.eclipse.eef.EEFPageDescription;
+import org.eclipse.eef.EEFPropertyValidationRuleDescription;
+import org.eclipse.eef.EEFViewDescription;
+import org.eclipse.eef.EEFWidgetDescription;
+import org.eclipse.sirius.properties.PropertyValidationRule;
+import org.eclipse.sirius.properties.WidgetDescription;
+import org.eclipse.sirius.ui.properties.api.DescriptionCache;
+import org.eclipse.sirius.ui.properties.api.IDescriptionLinkResolver;
+
+public class PropertyValidationRuleLinkResolver implements IDescriptionLinkResolver {
+
+    @Override
+    public void resolve(EEFViewDescription view, DescriptionCache cache) {
+        List&lt;EEFPageDescription&gt; pages = view.getPages();
+        for (EEFPageDescription page : pages) {
+            List&lt;EEFGroupDescription&gt; groups = page.getGroups();
+            for (EEFGroupDescription group : groups) {
+                // Resolve the links for all the property validation rules
+                List&lt;EEFPropertyValidationRuleDescription&gt; propertyValidationRules = group.getPropertyValidationRules();
+                for (EEFPropertyValidationRuleDescription eefPropertyValidationRule : propertyValidationRules) {
+                    this.resolve(eefPropertyValidationRule, cache);
+                }
+            }
+        }
+    }
+
+    /**
+     * Resolves the link between the property validation rule and the widgets.
+     * 
+     * @param eefPropertyValidationRule
+     *            The property validation rule
+     * @param cache
+     *            The cache
+     */
+    private void resolve(EEFPropertyValidationRuleDescription eefPropertyValidationRule, DescriptionCache cache) {
+        Object siriusDescription = cache.getSiriusDescription(eefPropertyValidationRule);
+        if (siriusDescription instanceof PropertyValidationRule) {
+            PropertyValidationRule siriusPropertyValidationRule = (PropertyValidationRule) siriusDescription;
+            List&lt;WidgetDescription&gt; widgets = siriusPropertyValidationRule.getTargets();
+            for (WidgetDescription siriusWidget : widgets) {
+                Object eefDescription = cache.getEEFDescription(siriusWidget);
+                if (eefDescription instanceof EEFWidgetDescription) {
+                    eefPropertyValidationRule.getTargets().add((EEFWidgetDescription) eefDescription);
+                }
+            }
+        }
+    }
+
+}
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         The IDescriptionLinkResolver lets you resolve links after the transformation of the Sirius Properties model into the EEF model.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         This plugin does not supply any implementation of the IDescriptionLinkResolver interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2016 Obeo&lt;br/&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>
