@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,11 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.IDiagramIdentifierProvider;
 import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Identifier for
@@ -118,8 +120,9 @@ public final class Identifier {
                 Identifier.checkNotNull(edge.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(edge.getTarget()));
 
-                Identifier.checkNotNull(edge.getActualMapping(), "actualMapping"); //$NON-NLS-1$
-                buffer.append(EcoreUtil.getURI(edge.getActualMapping()));
+                IEdgeMapping actualMapping = edge.getActualMapping();
+                Identifier.checkNotNull(actualMapping, "actualMapping"); //$NON-NLS-1$
+                buffer.append(EcoreUtil.getURI(actualMapping));
             }
         }
         return buffer.toString();
@@ -160,8 +163,9 @@ public final class Identifier {
                 Identifier.checkNotNull(node.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(node.getTarget()));
 
-                Identifier.checkNotNull(node.getMapping(), "mapping"); //$NON-NLS-1$
-                buffer.append(EcoreUtil.getURI(node.getMapping()));
+                RepresentationElementMapping mapping = node.getMapping();
+                Identifier.checkNotNull(mapping, "mapping"); //$NON-NLS-1$
+                buffer.append(EcoreUtil.getURI(mapping));
             }
         }
     }
@@ -180,8 +184,9 @@ public final class Identifier {
                 Identifier.checkNotNull(edge.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(edge.getTarget()));
 
-                Identifier.checkNotNull(edge.getMapping(), "mapping"); //$NON-NLS-1$
-                buffer.append(EcoreUtil.getURI(edge.getMapping()));
+                RepresentationElementMapping mapping = edge.getMapping();
+                Identifier.checkNotNull(mapping, "mapping"); //$NON-NLS-1$
+                buffer.append(EcoreUtil.getURI(mapping));
             }
         }
     }

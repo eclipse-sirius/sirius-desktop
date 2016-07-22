@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -378,7 +378,8 @@ public final class EdgeMappingHelper {
     private boolean validate(DEdge dEdge) {
         boolean result = true;
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.VALIDATE_EDGE_KEY);
-        if (dEdge.getActualMapping() != null) {
+        IEdgeMapping actualMapping = dEdge.getActualMapping();
+        if (actualMapping != null) {
             if (cantFindSemanticTargetFromSemanticSource(dEdge)) {
                 result = false;
             }
@@ -393,11 +394,11 @@ public final class EdgeMappingHelper {
             diagram = null;
         }
 
-        if (diagram != null && root != null && dEdge.getActualMapping() != null) {
+        if (diagram != null && root != null && actualMapping != null) {
             final IInterpreter rootInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(root);
 
             // semantic candidates.
-            Option<EdgeMapping> edgeMappingOption = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+            Option<EdgeMapping> edgeMappingOption = new IEdgeMappingQuery(actualMapping).getEdgeMapping();
             if (edgeMappingOption.some() && edgeMappingOption.get().isUseDomainElement()) {
                 final Collection<EObject> candidates = this.getSemanticCandidates(dEdge, rootInterpreter, root, diagram);
                 if (!candidates.contains(dEdge.getTarget())) {
@@ -463,7 +464,8 @@ public final class EdgeMappingHelper {
 
     private Collection<EObject> getSemanticCandidates(DEdge dEdge, final IInterpreter iInterpreter, final EObject model, final DDiagram diagram) {
         Collection<EObject> semanticCandidates = null;
-        final Option<EdgeMapping> actualEdgeMappingOption = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+        IEdgeMapping actualMapping = dEdge.getActualMapping();
+        final Option<EdgeMapping> actualEdgeMappingOption = new IEdgeMappingQuery(actualMapping).getEdgeMapping();
         if (actualEdgeMappingOption.some()) {
             EdgeMapping actualEdgeMapping = actualEdgeMappingOption.get();
             if (actualEdgeMapping.isUseDomainElement() && actualEdgeMapping.getSemanticCandidatesExpression() != null
@@ -476,7 +478,7 @@ public final class EdgeMappingHelper {
                 try {
                     semanticCandidates = iInterpreter.evaluateCollection(context, actualEdgeMapping.getSemanticCandidatesExpression());
                 } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(dEdge.getActualMapping(), DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression(), e);
+                    RuntimeLoggerManager.INSTANCE.error(actualMapping, DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression(), e);
                 } finally {
                     iInterpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
                     iInterpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);

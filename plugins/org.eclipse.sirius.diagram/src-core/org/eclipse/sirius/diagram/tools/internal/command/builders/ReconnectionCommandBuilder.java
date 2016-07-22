@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.ReconnectSourceNodeCommand;
@@ -47,8 +48,8 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.impl.ElementSelectVariableImpl;
 
@@ -143,10 +144,11 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
             cmd.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(reconnectionSource), edge.getTarget(), parentDiagram.get()));
 
             final CompoundCommand cc = new CompoundCommand();
-            if (newEdgeMapping != null && !newEdgeMapping.equals(edge.getActualMapping())) {
+            IEdgeMapping actualMapping = edge.getActualMapping();
+            if (newEdgeMapping != null && !newEdgeMapping.equals(actualMapping)) {
                 cc.append(new SetEdgeActualMappingCommand(editingDomain, edge, newEdgeMapping));
             }
-            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || isEdgeActualMappingUsingDomainElement())) {
+            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || isEdgeActualMappingUsingDomainElement(actualMapping))) {
                 cc.append(new ReconnectSourceNodeCommand(editingDomain, edge, reconnectionTarget, semanticTarget));
             }
             cc.append(cmd);
@@ -155,22 +157,10 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
         return result;
     }
 
-    private boolean isEdgeActualMappingUsingDomainElement() {
-        boolean isEdgeActualMappingUsingDomainElement = false;
-        if (edge.getActualMapping() instanceof EdgeMapping) {
-            isEdgeActualMappingUsingDomainElement = !((EdgeMapping) edge.getActualMapping()).isUseDomainElement();
-        } else if (edge.getActualMapping() instanceof EdgeMappingImport) {
-            isEdgeActualMappingUsingDomainElement = !(getImportedMapping((EdgeMappingImport) edge.getActualMapping())).isUseDomainElement();
-        }
-        return isEdgeActualMappingUsingDomainElement;
-    }
-
-    private EdgeMapping getImportedMapping(EdgeMappingImport edgeMapping) {
-        if (edgeMapping.getImportedMapping() instanceof EdgeMappingImport) {
-            return getImportedMapping((EdgeMappingImport) edgeMapping.getImportedMapping());
-        }
-        Assert.isTrue(edgeMapping.getImportedMapping() instanceof EdgeMapping, Messages.ReconnectionCommandBuilder_mappingImportErrorMsg);
-        return (EdgeMapping) edgeMapping.getImportedMapping();
+    private boolean isEdgeActualMappingUsingDomainElement(IEdgeMapping actualMapping) {
+        Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(actualMapping).getEdgeMapping();
+        Assert.isTrue(edgeMapping.some(), Messages.ReconnectionCommandBuilder_mappingImportErrorMsg);
+        return edgeMapping.get().isUseDomainElement();
     }
 
     private String getReconnectionKindFeatureName() {

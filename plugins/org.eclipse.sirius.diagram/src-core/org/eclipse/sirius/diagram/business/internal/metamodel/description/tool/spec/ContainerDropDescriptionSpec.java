@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -88,8 +89,9 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
 
         } else if (targetContainer instanceof DDiagramElementContainer) {
             final DDiagramElementContainer elementContainer = (DDiagramElementContainer) targetContainer;
-            if (elementContainer.getMapping() instanceof ContainerMapping) {
-                final ContainerMapping containerMapping = (ContainerMapping) elementContainer.getMapping();
+            RepresentationElementMapping mapping = elementContainer.getMapping();
+            if (mapping instanceof ContainerMapping) {
+                final ContainerMapping containerMapping = (ContainerMapping) mapping;
                 final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(containerMapping.getAllContainerMappings());
                 allMappings.addAll(getAllMappingsWithSuperMappings(containerMapping));
                 allMappings.addAll(containerMapping.getAllBorderedNodeMappings());

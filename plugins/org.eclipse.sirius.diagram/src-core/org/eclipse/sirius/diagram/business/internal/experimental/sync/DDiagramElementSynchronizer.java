@@ -67,6 +67,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
@@ -369,16 +370,17 @@ public class DDiagramElementSynchronizer {
     public void computeEdgeDecorations(final DEdge edge, final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration,
             final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration) {
         /* semantic based decorations */
-        final Option<EdgeMapping> actualMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-        if (actualMapping.some() && actualMapping.get().isUseDomainElement() && edgeToSemanticBasedDecoration.containsKey(actualMapping.get().getDomainClass())) {
-            final Collection<SemanticBasedDecoration> semanticBasedDecorations = edgeToSemanticBasedDecoration.get(actualMapping.get().getDomainClass());
+        IEdgeMapping actualMapping = edge.getActualMapping();
+        final Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(actualMapping).getEdgeMapping();
+        if (edgeMapping.some() && edgeMapping.get().isUseDomainElement() && edgeToSemanticBasedDecoration.containsKey(edgeMapping.get().getDomainClass())) {
+            final Collection<SemanticBasedDecoration> semanticBasedDecorations = edgeToSemanticBasedDecoration.get(edgeMapping.get().getDomainClass());
             for (final SemanticBasedDecoration semanticBasedDecoration : semanticBasedDecorations) {
                 this.addDecoration(edge, semanticBasedDecoration);
             }
         }
         /* mapping based decoration */
-        if (edgeToMappingBasedDecoration.containsKey(edge.getActualMapping())) {
-            final Collection<MappingBasedDecoration> mappingBasedDecorations = edgeToMappingBasedDecoration.get(edge.getActualMapping());
+        if (edgeToMappingBasedDecoration.containsKey(actualMapping)) {
+            final Collection<MappingBasedDecoration> mappingBasedDecorations = edgeToMappingBasedDecoration.get(actualMapping);
             for (final MappingBasedDecoration mappingBasedDecoration : mappingBasedDecorations) {
                 this.addDecoration(edge, mappingBasedDecoration);
             }
@@ -538,11 +540,11 @@ public class DDiagramElementSynchronizer {
      */
     protected void refresh(final DDiagramElementContainer container) {
         final DSemanticDecorator cContainer = (DSemanticDecorator) container.eContainer();
+        ContainerMapping containerMapping = container.getActualMapping();
         if (cContainer != null) {
             ContainerStyleDescription containerStyleDescription = null;
             if (AbstractSynchronizerHelper.isTargetDying(container) && AbstractSynchronizerHelper.isTargetDying(cContainer)) {
-                containerStyleDescription = (ContainerStyleDescription) this.mappingHelper.getBestStyleDescription(container.getActualMapping(), container.getTarget(), container,
-                        cContainer.getTarget(), diagram);
+                containerStyleDescription = (ContainerStyleDescription) this.mappingHelper.getBestStyleDescription(containerMapping, container.getTarget(), container, cContainer.getTarget(), diagram);
             }
             if (containerStyleDescription != null) {
                 if (!StringUtil.isEmpty(containerStyleDescription.getLabelExpression())) {
@@ -554,12 +556,12 @@ public class DDiagramElementSynchronizer {
                     }
                 }
                 refreshTooltip(container, containerStyleDescription);
-                refreshStyle(container, container.getActualMapping());
+                refreshStyle(container, containerMapping);
             }
         }
         // clean decorations
         cleanDecoration(container);
-        refreshSemanticElements(container, container.getDiagramElementMapping());
+        refreshSemanticElements(container, containerMapping);
     }
 
     private void cleanDecoration(final DDiagramElement element) {
@@ -584,8 +586,9 @@ public class DDiagramElementSynchronizer {
         final DSemanticDecorator container = (DSemanticDecorator) newNode.eContainer();
         if (container != null) {
             NodeStyleDescription nodeStyleDescription = null;
+            NodeMapping nodeMapping = newNode.getActualMapping();
             if (AbstractSynchronizerHelper.isTargetDying(newNode)) {
-                nodeStyleDescription = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(newNode.getActualMapping(), newNode.getTarget(), newNode, container.getTarget(), diagram);
+                nodeStyleDescription = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(nodeMapping, newNode.getTarget(), newNode, container.getTarget(), diagram);
             }
             if (nodeStyleDescription != null) {
                 if (!StringUtil.isEmpty(nodeStyleDescription.getLabelExpression())) {
@@ -607,7 +610,7 @@ public class DDiagramElementSynchronizer {
                     styleHelper.setComputedSize(newNode, nodeStyleDescription);
                 }
                 refreshTooltip(newNode, nodeStyleDescription);
-                refreshStyle(newNode, newNode.getActualMapping());
+                refreshStyle(newNode, nodeMapping);
             }
         }
 

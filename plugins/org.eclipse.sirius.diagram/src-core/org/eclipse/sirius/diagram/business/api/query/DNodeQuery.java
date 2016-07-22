@@ -94,7 +94,7 @@ public class DNodeQuery {
         if (actualMapping != null) {
             NodeStyleDescription style = actualMapping.getStyle();
             if (style != null) {
-                String labelExpression = node.getActualMapping().getStyle().getLabelExpression();
+                String labelExpression = style.getLabelExpression();
                 hasEmptyNameDefinition = labelExpression.trim().length() != 0;
             }
         }

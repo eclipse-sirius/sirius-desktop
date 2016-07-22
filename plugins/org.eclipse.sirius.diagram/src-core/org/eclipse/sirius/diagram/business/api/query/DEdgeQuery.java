@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.ext.base.Option;
@@ -55,9 +56,10 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     private boolean hasNonEmptyNameDefinition(EStructuralFeature labelStyleFeature) {
         boolean hasEmptyNameDefinition = true;
-        if (edge.getActualMapping() instanceof EdgeMapping) {
-            EdgeMapping actualMapping = (EdgeMapping) edge.getActualMapping();
-            EdgeStyleDescription style = actualMapping.getStyle();
+        IEdgeMapping actualMapping = edge.getActualMapping();
+        if (actualMapping instanceof EdgeMapping) {
+            EdgeMapping edgeMapping = (EdgeMapping) actualMapping;
+            EdgeStyleDescription style = edgeMapping.getStyle();
             if (style != null) {
                 Object labelStyle = style.eGet(labelStyleFeature);
                 if (labelStyle instanceof BasicLabelStyleDescription) {

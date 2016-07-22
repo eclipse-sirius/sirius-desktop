@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,8 @@ public class DiagramMandatoryDomainClassConstraint extends AbstractMandatoryDoma
 
     @Override
     protected EObject getParentDescription(final EObject instance) {
-        if (instance.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || instance.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI())) {
+        String nsURI = instance.eClass().getEPackage().getNsURI();
+        if (nsURI.startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || nsURI.startsWith(DiagramPackage.eINSTANCE.getNsURI())) {
             EObject container = instance.eContainer();
             while (container != null) {
                 if (container instanceof DiagramDescription || container instanceof DiagramExtensionDescription) {

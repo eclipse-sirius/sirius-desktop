@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -226,15 +226,15 @@ public final class DDiagramElementContainerSpecOperations {
      * @return <code>true</code> if the container is valid.
      */
     public static boolean validate(final DDiagramElementContainer container) {
-        if (container.getTarget() != null && DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container) != null && container.getActualMapping() != null) {
+        ContainerMapping actualMapping = container.getActualMapping();
+        if (actualMapping != null && container.getTarget() != null && DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container) != null) {
             final EObject mySemanticElement = container.getTarget();
             final EObject representedParent = DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container);
             EObject representedParentSemantic = DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(container).getTarget();
             if (representedParent instanceof DSemanticDiagram) {
                 representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
             }
-            if (!ContainerMappingHelper
-                    .getNodesCandidates((IContainerMappingExt) container.getActualMapping(), representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container)
+            if (!ContainerMappingHelper.getNodesCandidates((IContainerMappingExt) actualMapping, representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container)
                     .contains(mySemanticElement)) {
                 return false;
             }

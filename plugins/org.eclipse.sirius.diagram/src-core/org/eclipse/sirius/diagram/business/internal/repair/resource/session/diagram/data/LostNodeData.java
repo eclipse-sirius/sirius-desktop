@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -115,8 +115,8 @@ public class LostNodeData extends LostElementDataWithMapping implements ILostEle
             final AbstractDNode otherAbstractNode = (AbstractDNode) parentVPContainer;
             boolean created = false;
 
-            if (createdElement instanceof DNode && otherAbstractNode.getMapping() instanceof AbstractNodeMapping
-                    && ((AbstractNodeMapping) otherAbstractNode.getMapping()).getAllBorderedNodeMappings().contains(createdElement.getMapping())) {
+            RepresentationElementMapping mapping = otherAbstractNode.getMapping();
+            if (createdElement instanceof DNode && mapping instanceof AbstractNodeMapping && ((AbstractNodeMapping) mapping).getAllBorderedNodeMappings().contains(createdElement.getMapping())) {
 
                 created = otherAbstractNode.getOwnedBorderedNodes().add((DNode) createdElement);
 

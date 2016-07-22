@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentation
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.ui.IActionBars;
@@ -116,7 +117,8 @@ public class SubDiagramMenu implements IContributionItemProvider {
     }
 
     private void createDetailsActions(final DDiagramElement dde, final IMenuManager newMenu, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
-        if (dde.getMapping() != null) {
+        RepresentationElementMapping mapping = dde.getMapping();
+        if (mapping != null) {
             EObject sessionFinder = null;
             final EList<EObject> semanticElements = dde.getSemanticElements();
             if (semanticElements != null && !semanticElements.isEmpty()) {
@@ -126,7 +128,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
             }
             final Session session = sessionFinder != null ? SessionManager.INSTANCE.getSession(sessionFinder) : null;
             if (session != null) {
-                for (RepresentationCreationDescription desc : dde.getMapping().getDetailDescriptions()) {
+                for (RepresentationCreationDescription desc : mapping.getDetailDescriptions()) {
                     boolean append = true;
                     if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
                         append = false;

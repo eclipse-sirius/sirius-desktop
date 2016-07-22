@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Iterator;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -48,11 +49,14 @@ public class DMappingBasedQuery {
     public boolean isFromAnyMapping(final Collection<? extends DiagramElementMapping> mappings) {
         boolean anyIsfrom = false;
         final Iterator<? extends DiagramElementMapping> it = mappings.iterator();
-        while (it.hasNext() && !anyIsfrom) {
-            if (dMappingBased.getMapping() instanceof AbstractNodeMapping) {
-                anyIsfrom = new DiagramElementMappingQuery(it.next()).isSuperTypeOf((AbstractNodeMapping) dMappingBased.getMapping());
-            } else {
-                anyIsfrom = new DiagramElementMappingQuery(it.next()).isTypeOf(dMappingBased);
+        if (it.hasNext()) {
+            RepresentationElementMapping mapping = dMappingBased.getMapping();
+            while (it.hasNext() && !anyIsfrom) {
+                if (mapping instanceof AbstractNodeMapping) {
+                    anyIsfrom = new DiagramElementMappingQuery(it.next()).isSuperTypeOf((AbstractNodeMapping) mapping);
+                } else {
+                    anyIsfrom = new DiagramElementMappingQuery(it.next()).isTypeOf(dMappingBased);
+                }
             }
         }
         return anyIsfrom;

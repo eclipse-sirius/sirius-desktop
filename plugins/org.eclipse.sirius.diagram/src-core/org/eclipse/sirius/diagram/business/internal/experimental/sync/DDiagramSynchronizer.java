@@ -1067,14 +1067,14 @@ public class DDiagramSynchronizer {
 
             final AbstractNodeMapping nodeMapping = (AbstractNodeMapping) keptNode.getDiagramElementMapping();
 
-            if (keptNode instanceof DDiagramElementContainer) {
-                final ContainerMapping keptNodeMapping = ((DDiagramElementContainer) keptNode).getActualMapping();
+            if (keptNode instanceof DDiagramElementContainer && nodeMapping instanceof ContainerMapping) {
+                final ContainerMapping keptNodeMapping = (ContainerMapping) nodeMapping;
                 /* handle list attribute change on mapping */
                 keptNode = handleListAttributeChangeOnMapping(keptNode, keptNodeMapping, viewContainer, new SubProgressMonitor(monitor, 1));
 
                 if (keptNode instanceof DNodeContainer) {
                     DNodeContainer dnc = (DNodeContainer) keptNode;
-                    ContainerLayout childrenPresentation = dnc.getActualMapping().getChildrenPresentation();
+                    ContainerLayout childrenPresentation = keptNodeMapping.getChildrenPresentation();
                     if (dnc.getChildrenPresentation() != childrenPresentation) {
                         dnc.setChildrenPresentation(childrenPresentation);
                     }
@@ -1195,13 +1195,14 @@ public class DDiagramSynchronizer {
     private void retrievePreviousCandidates(DragAndDropTarget container, Multimap<EObjectCouple, DDiagramElement> candidates) {
         for (final DDiagramElement child : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
             final EObjectCouple key;
-            if (child.getMapping() == null) {
+            RepresentationElementMapping mapping = child.getMapping();
+            if (mapping == null) {
                 // We need a non-null argument to create the EObjectCouple, as
                 // the element needs to be registered as a "previous candidate"
                 // or it will not be removed from the diagram.
                 key = new EObjectCouple(container, DDiagramSynchronizer.FAKE_MAPPING, ids);
             } else {
-                key = new EObjectCouple(container, child.getMapping(), ids);
+                key = new EObjectCouple(container, mapping, ids);
             }
             candidates.put(key, child);
             /*
@@ -1409,8 +1410,7 @@ public class DDiagramSynchronizer {
                     edgeCandidate.getEdge().setActualMapping(mapping);
                 }
                 this.sync.computeEdgeDecorations(edgeCandidate.getEdge(), edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
-                Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edgeCandidate.getEdge().getActualMapping()).getEdgeMapping();
-
+                Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(mapping).getEdgeMapping();
                 if (edgeMapping.some()) {
                     this.sync.createStyle(edgeCandidate.getEdge(), edgeMapping.get(), diagram);
                     this.sync.refresh(edgeCandidate.getEdge());

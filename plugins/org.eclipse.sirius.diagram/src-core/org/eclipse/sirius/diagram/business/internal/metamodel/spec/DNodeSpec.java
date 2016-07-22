@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.operations.Abstrac
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.impl.DNodeImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
@@ -44,9 +45,9 @@ public class DNodeSpec extends DNodeImpl {
      */
     @Override
     public void refresh() {
-        if (this.getActualMapping() != null) {
-            this.getActualMapping().updateNode(this);
-
+        NodeMapping nodeMapping = this.getActualMapping();
+        if (nodeMapping != null) {
+            nodeMapping.updateNode(this);
             AbstractDNodeSpecOperations.refreshBorderNodes(this);
         }
     }

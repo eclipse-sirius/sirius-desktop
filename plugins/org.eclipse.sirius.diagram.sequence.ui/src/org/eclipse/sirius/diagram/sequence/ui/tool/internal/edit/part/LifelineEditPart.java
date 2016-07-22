@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfig
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
@@ -162,9 +163,10 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     @Override
     public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
         IBorderItemLocator result;
-        if (vpElementBorderItem.getMapping() instanceof EndOfLifeMapping) {
+        RepresentationElementMapping mapping = vpElementBorderItem.getMapping();
+        if (mapping instanceof EndOfLifeMapping) {
             result = new SouthCenteredBorderItemLocator(figure, LayoutEditPartConstants.EOL_BORDER_ITEM_OFFSET);
-        } else if (vpElementBorderItem.getMapping() instanceof ExecutionMapping || vpElementBorderItem.getMapping() instanceof StateMapping) {
+        } else if (mapping instanceof ExecutionMapping || mapping instanceof StateMapping) {
             result = new ExecutionItemLocator(this, figure);
         } else {
             result = super.createBorderItemLocator(figure, vpElementBorderItem);
@@ -194,6 +196,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     /**
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getLifeline(getNotationView()).get();
     }
