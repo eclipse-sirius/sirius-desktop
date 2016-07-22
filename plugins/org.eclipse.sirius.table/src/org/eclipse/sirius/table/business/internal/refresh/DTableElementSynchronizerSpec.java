@@ -304,12 +304,13 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      */
     public boolean refreshLabel(final DCell cell) {
         boolean cellStillExists = false;
-        if (cell.getColumn() != null) {
+        DColumn column = cell.getColumn();
+        if (column != null) {
             final CellUpdater updater = cell.getUpdater();
             if (updater != null) {
                 final String labelExpression = updater.getLabelComputationExpression();
                 if (updater instanceof IntersectionMapping && cell.getLabel() != null) {
-                    cellStillExists = refreshLabelIntersectionMapping(cell, labelExpression);
+                    cellStillExists = refreshLabelIntersectionMapping(cell, labelExpression, (IntersectionMapping) updater, column);
                 } else {
                     cellStillExists = refreshLabel(cell, labelExpression);
                 }
@@ -369,14 +370,13 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The label expression used to refresh the label
      * @return true if a cell is already needed for ths intersection mapping
      */
-    private boolean refreshLabelIntersectionMapping(final DCell cell, final String labelExpression) {
+    private boolean refreshLabelIntersectionMapping(final DCell cell, final String labelExpression, final IntersectionMapping intersectionMapping, final DColumn column) {
         boolean cellNeeded = false;
         DLine line = cell.getLine();
-        DColumn column = cell.getColumn();
         if (line != null && line.getTarget() != null && column != null && column.getTarget() != null) {
-            Collection<EObject> foundColumnTargets = evaluateColumnFinderExpression(cell, cell.getIntersectionMapping());
+            Collection<EObject> foundColumnTargets = evaluateColumnFinderExpression(cell, intersectionMapping);
             if (foundColumnTargets != null && foundColumnTargets.contains(column.getTarget())) {
-                if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), cell.getIntersectionMapping().getPreconditionExpression())) {
+                if (evaluateIntersectionPrecondition(cell.getColumn().getTarget(), cell.getLine(), cell.getColumn(), intersectionMapping.getPreconditionExpression())) {
                     cellNeeded = refreshLabel(cell, labelExpression);
                 }
             }
@@ -584,26 +584,39 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      */
     private void doUpdateStyle(final DCell cell, final DCellStyle style) {
         final TableStyleColorUpdater colorUpdater = new TableStyleColorUpdater();
-        final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell);
+        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
+
+        // Get the style updater for the column
+        ColumnMapping columnMapping = null;
+        StyleUpdater columnStyleUpdater = null;
+        DColumn column = cell.getColumn();
+        if (column != null) {
+            columnMapping = column.getOriginMapping();
+            if (columnMapping instanceof FeatureColumnMapping || columnMapping instanceof ElementColumnMapping) {
+                columnStyleUpdater = (StyleUpdater) columnMapping;
+            }
+        }
+
+        final StyleWithDefaultStatus bestBackgroundStyle = getBestBackgroundColor(cell, intersectionMapping, columnStyleUpdater);
         if (bestBackgroundStyle != null) {
             colorUpdater.updateBackgroundColor(style, ((BackgroundStyleDescription) bestBackgroundStyle.getStyle()).getBackgroundColor(), bestBackgroundStyle.isDefaultStyle(), cell.getTarget());
             if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestBackgroundStyle.getStyle())) {
-                style.setBackgroundStyleOrigin(cell.getIntersectionMapping());
+                style.setBackgroundStyleOrigin(intersectionMapping);
             } else {
-                style.setBackgroundStyleOrigin(cell.getColumn().getOriginMapping());
+                style.setBackgroundStyleOrigin(columnMapping);
             }
         } else {
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
             reset(style, TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
         }
-        final StyleWithDefaultStatus bestForegroundStyle = getBestForegroundStyle(cell);
+        final StyleWithDefaultStatus bestForegroundStyle = getBestForegroundStyle(cell, intersectionMapping, columnStyleUpdater);
         if (bestForegroundStyle != null) {
             ForegroundStyleDescription bestForegroundStyleDesc = (ForegroundStyleDescription) bestForegroundStyle.getStyle();
             colorUpdater.updateForegroundColor(style, ((ForegroundStyleDescription) bestForegroundStyle.getStyle()).getForeGroundColor(), bestForegroundStyle.isDefaultStyle(), cell.getTarget());
             if (new DCellQuery(cell).isStyleDescriptionInIntersectionMapping(bestForegroundStyle.getStyle())) {
-                style.setForegroundStyleOrigin(cell.getIntersectionMapping());
+                style.setForegroundStyleOrigin(intersectionMapping);
             } else {
-                style.setForegroundStyleOrigin(cell.getColumn().getOriginMapping());
+                style.setForegroundStyleOrigin(columnMapping);
             }
             if (bestForegroundStyleDesc.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyleDesc.getLabelFormat());
@@ -652,9 +665,11 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      */
     private void doUpdateStyle(final DLine line, final DTableElementStyle style) {
         final TableStyleColorUpdater colorUpdater = new TableStyleColorUpdater();
-        final ColorDescription bestBackgroundColor = getBestBackgroundColor(line);
+        final LineMapping originMapping = line.getOriginMapping();
+        final ColorDescription bestBackgroundColor = getBestBackgroundColor(line, originMapping);
+
         if (bestBackgroundColor != null) {
-            colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(line.getOriginMapping()).isDefaultBackgroundColor(bestBackgroundColor), line.getTarget());
+            colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(originMapping).isDefaultBackgroundColor(bestBackgroundColor), line.getTarget());
         } else {
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
@@ -663,9 +678,9 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
             }
         }
-        final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(line);
+        final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(line, originMapping);
         if (bestForegroundStyle != null) {
-            boolean defaultStyleDescription = new StyleUpdaterQuery(line.getOriginMapping()).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
+            boolean defaultStyleDescription = new StyleUpdaterQuery(originMapping).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, line.getTarget());
             if (bestForegroundStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestForegroundStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestForegroundStyle.getLabelFormat());
@@ -723,11 +738,12 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      */
     private void doUpdateStyle(final DColumn column, final DTableElementStyle style) {
         StyleUpdater styleUpdater = null;
-        if (column.getOriginMapping() instanceof FeatureColumnMapping || column.getOriginMapping() instanceof ElementColumnMapping) {
-            styleUpdater = (StyleUpdater) column.getOriginMapping();
+        ColumnMapping originMapping = column.getOriginMapping();
+        if (originMapping instanceof FeatureColumnMapping || originMapping instanceof ElementColumnMapping) {
+            styleUpdater = (StyleUpdater) originMapping;
         }
         final TableStyleColorUpdater colorUpdater = new TableStyleColorUpdater();
-        final ColorDescription bestBackgroundColor = getBestBackgroundColor(column);
+        final ColorDescription bestBackgroundColor = getBestBackgroundColor(column, styleUpdater);
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(styleUpdater).isDefaultBackgroundColor(bestBackgroundColor), column.getTarget());
         } else {
@@ -738,7 +754,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
             }
         }
-        final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(column);
+        final ForegroundStyleDescription bestForegroundStyle = getBestForegroundStyle(column, styleUpdater);
         if (bestForegroundStyle != null) {
             boolean defaultStyleDescription = new StyleUpdaterQuery(styleUpdater).isDefaultForegroundColor(bestForegroundStyle.getForeGroundColor());
             colorUpdater.updateForegroundColor(style, bestForegroundStyle.getForeGroundColor(), defaultStyleDescription, column.getTarget());
@@ -799,17 +815,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The associate {@link StyleUpdater column updater}
      * @return The best colorMapping for this cell, or null otherwise
      */
-    private StyleWithDefaultStatus getBestBackgroundColor(final DCell cell) {
+    private StyleWithDefaultStatus getBestBackgroundColor(final DCell cell, final StyleUpdater cellStyleUpdater, final StyleUpdater columnStyleUpdater) {
         BackgroundStyleDescription bestBackgroundStyleDesc = null;
         boolean bestBackgroundColorIsConditonal = false;
 
-        // Get the style updater for the cell
-        StyleUpdater cellStyleUpdater = cell.getIntersectionMapping();
-        // Get the style updater for the column
-        StyleUpdater columnStyleUpdater = null;
-        if (cell.getColumn() != null && (cell.getColumn().getOriginMapping() instanceof FeatureColumnMapping || cell.getColumn().getOriginMapping() instanceof ElementColumnMapping)) {
-            columnStyleUpdater = (StyleUpdater) cell.getColumn().getOriginMapping();
-        }
         // Use the default style
         if (cellStyleUpdater != null) {
             if (cellStyleUpdater.getDefaultBackground() != null && cellStyleUpdater.getDefaultBackground().getBackgroundColor() != null) {
@@ -870,11 +879,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The current DLine
      * @return The best background color for this line, or null otherwise
      */
-    private ColorDescription getBestBackgroundColor(final DLine line) {
+    private ColorDescription getBestBackgroundColor(final DLine line, final StyleUpdater styleUpdater) {
         ColorDescription bestBackgroundColor = null;
         boolean bestBackgroundColorIsConditonal = false;
 
-        StyleUpdater styleUpdater = line.getOriginMapping();
         if (styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() != null) {
             bestBackgroundColor = styleUpdater.getDefaultBackground().getBackgroundColor();
         }
@@ -902,13 +910,9 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @return The default background color if it uses a FixedColor for this
      *         column, or null otherwise
      */
-    private ColorDescription getBestBackgroundColor(final DColumn column) {
+    private ColorDescription getBestBackgroundColor(final DColumn column, final StyleUpdater styleUpdater) {
         ColorDescription bestBackgroundColor = null;
-        StyleUpdater styleUpdater = null;
-        if (column.getOriginMapping() instanceof FeatureColumnMapping || column.getOriginMapping() instanceof ElementColumnMapping) {
-            styleUpdater = (StyleUpdater) column.getOriginMapping();
-        }
-        if (styleUpdater != null && styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
+        if (styleUpdater.getDefaultBackground() != null && styleUpdater.getDefaultBackground().getBackgroundColor() instanceof FixedColor) {
             bestBackgroundColor = styleUpdater.getDefaultBackground().getBackgroundColor();
         }
         return bestBackgroundColor;
@@ -931,17 +935,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @return The best ForegroundStyleDescription for this cell, or null
      *         otherwise
      */
-    private StyleWithDefaultStatus getBestForegroundStyle(final DCell cell) {
+    private StyleWithDefaultStatus getBestForegroundStyle(final DCell cell, final StyleUpdater cellStyleUpdater, final StyleUpdater columnStyleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDesc = null;
         boolean bestForegroundColorIsConditonal = false;
 
-        // Get the style updater for the cell
-        StyleUpdater cellStyleUpdater = cell.getIntersectionMapping();
-        // Get the style updater for the column
-        StyleUpdater columnStyleUpdater = null;
-        if (cell.getColumn() != null && (cell.getColumn().getOriginMapping() instanceof FeatureColumnMapping || cell.getColumn().getOriginMapping() instanceof ElementColumnMapping)) {
-            columnStyleUpdater = (StyleUpdater) cell.getColumn().getOriginMapping();
-        }
         // Use the default style
         if (cellStyleUpdater != null) {
             if (cellStyleUpdater.getDefaultForeground() != null && cellStyleUpdater.getDefaultForeground().getForeGroundColor() != null) {
@@ -1013,11 +1010,10 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @return The best ForegroundStyleDescription for this cell, or null
      *         otherwise
      */
-    private ForegroundStyleDescription getBestForegroundStyle(final DLine line) {
+    private ForegroundStyleDescription getBestForegroundStyle(final DLine line, final StyleUpdater styleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDescription = null;
         boolean bestStyleIsConditonalStyle = false;
 
-        StyleUpdater styleUpdater = line.getOriginMapping();
         if (styleUpdater.getDefaultForeground() != null) {
             bestForegroundStyleDescription = styleUpdater.getDefaultForeground();
         }
@@ -1045,13 +1041,9 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * @return The default foreground style if it uses a FixedColor for this
      *         column, or null otherwise
      */
-    private ForegroundStyleDescription getBestForegroundStyle(final DColumn column) {
+    private ForegroundStyleDescription getBestForegroundStyle(final DColumn column, final StyleUpdater styleUpdater) {
         ForegroundStyleDescription bestForegroundStyleDescription = null;
-        StyleUpdater styleUpdater = null;
-        if (column.getOriginMapping() instanceof FeatureColumnMapping || column.getOriginMapping() instanceof ElementColumnMapping) {
-            styleUpdater = (StyleUpdater) column.getOriginMapping();
-        }
-        if (styleUpdater != null && styleUpdater.getDefaultForeground() != null && styleUpdater.getDefaultForeground().getForeGroundColor() instanceof FixedColor) {
+        if (styleUpdater.getDefaultForeground() != null && styleUpdater.getDefaultForeground().getForeGroundColor() instanceof FixedColor) {
             bestForegroundStyleDescription = styleUpdater.getDefaultForeground();
         }
         return bestForegroundStyleDescription;
@@ -1065,8 +1057,9 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      */
     public void refreshSemanticElements(final DCell newCell) {
         final Collection<EObject> newElements = Lists.newArrayList();
-        if (newCell.getIntersectionMapping() != null) {
-            refreshSemanticElements(newCell, newCell.getIntersectionMapping());
+        IntersectionMapping intersectionMapping = newCell.getIntersectionMapping();
+        if (intersectionMapping != null) {
+            refreshSemanticElements(newCell, intersectionMapping);
         } else {
             if (newCell.getColumn().getOriginMapping() instanceof FeatureColumnMapping) {
                 if (newCell.getTarget() != null) {

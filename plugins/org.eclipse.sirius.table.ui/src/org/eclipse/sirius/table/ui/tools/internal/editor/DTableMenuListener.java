@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,9 +70,10 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -195,6 +196,7 @@ public class DTableMenuListener implements IMenuListener {
      * 
      * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
      */
+    @Override
     public void menuAboutToShow(final IMenuManager manager) {
         // Refresh the cached actions if needed
         treeViewManager.fillMenu();
@@ -328,7 +330,7 @@ public class DTableMenuListener implements IMenuListener {
                 }
             }
             if (decorator instanceof DRepresentationElement) {
-                if (buildOpenRepresentationsMenu((IMenuManager) openRepresentation.getInnerItem(), decorator, session)) {
+                if (buildOpenRepresentationsMenu((IMenuManager) openRepresentation.getInnerItem(), (DRepresentationElement) decorator, session)) {
                     // If at least one navigable representation menu
                     // has been created, we have to make the navigate menu
                     // visible
@@ -338,11 +340,10 @@ public class DTableMenuListener implements IMenuListener {
         }
     }
 
-    private boolean buildOpenRepresentationsMenu(final IMenuManager open, final EObject designerObj, final Session session) {
-        final DRepresentationElement element = (DRepresentationElement) designerObj;
-        if (element.getMapping() != null) {
-
-            for (final RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+    private boolean buildOpenRepresentationsMenu(final IMenuManager open, final DRepresentationElement element, final Session session) {
+        RepresentationElementMapping mapping = element.getMapping();
+        if (mapping != null) {
+            for (final RepresentationNavigationDescription navDesc : mapping.getNavigationDescriptions()) {
                 boolean append = true;
                 if (!isFromActiveViewpoint(session, navDesc.getRepresentationDescription())) {
                     append = false;
@@ -494,6 +495,7 @@ public class DTableMenuListener implements IMenuListener {
         final Collection<DLine> selectedLines = treeViewManager.getSelectedLines();
         if (selectedLines != null && !selectedLines.isEmpty()) {
             Predicate<DLine> isVisible = new Predicate<DLine>() {
+                @Override
                 public boolean apply(DLine input) {
                     return input.isVisible();
                 }
@@ -582,10 +584,11 @@ public class DTableMenuListener implements IMenuListener {
     }
 
     private void createDetailsActions(final DTableElement currentElement, final SubContributionItem newMenuItems) {
-        if (currentElement.getMapping() != null) {
+        RepresentationElementMapping mapping = currentElement.getMapping();
+        if (mapping != null) {
             final Session session = currentElement.getTarget() != null ? SessionManager.INSTANCE.getSession(currentElement.getTarget()) : null;
             if (session != null) {
-                for (RepresentationCreationDescription desc : currentElement.getMapping().getDetailDescriptions()) {
+                for (RepresentationCreationDescription desc : mapping.getDetailDescriptions()) {
                     boolean append = true;
                     if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
                         append = false;
@@ -603,8 +606,8 @@ public class DTableMenuListener implements IMenuListener {
                     }
                     if (append) {
                         newMenuItems.setVisible(true);
-                        ((IMenuManager) newMenuItems.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc,
-                                currentElement, treeViewManager.getEditingDomain(), treeViewManager.getTableCommandFactory()));
+                        ((IMenuManager) newMenuItems.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR,
+                                new CreateRepresentationFromRepresentationCreationDescription(desc, currentElement, treeViewManager.getEditingDomain(), treeViewManager.getTableCommandFactory()));
                     }
                 }
             }

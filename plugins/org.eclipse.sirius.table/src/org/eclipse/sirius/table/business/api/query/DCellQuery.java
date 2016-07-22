@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
+import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
@@ -272,8 +273,10 @@ public class DCellQuery {
         if (!(style instanceof ForegroundStyleDescription || style instanceof BackgroundStyleDescription)) {
             throw new IllegalArgumentException(Messages.Table_WrongStyleAttribute);
         }
-        if (cell.getIntersectionMapping() != null) {
-            if (cell.getIntersectionMapping().equals(style.eContainer()) || (style.eContainer() != null && cell.getIntersectionMapping().equals(style.eContainer().eContainer()))) {
+        IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
+        if (intersectionMapping != null) {
+            EObject styleContainer = style.eContainer();
+            if (intersectionMapping.equals(styleContainer) || (styleContainer != null && intersectionMapping.equals(styleContainer.eContainer()))) {
                 return true;
             }
         }
@@ -304,9 +307,10 @@ public class DCellQuery {
      */
     public String getExportableLabel() {
         String label = cell.getLabel();
-        if (cell.getUpdater() instanceof FeatureColumnMapping && cell.getTarget() != null) {
-            String featureName = ((FeatureColumnMapping) cell.getUpdater()).getFeatureName();
-            if (!StringUtil.isEmpty(featureName) && StringUtil.isEmpty(cell.getUpdater().getLabelComputationExpression())) {
+        CellUpdater updater = cell.getUpdater();
+        if (updater instanceof FeatureColumnMapping && cell.getTarget() != null) {
+            String featureName = ((FeatureColumnMapping) updater).getFeatureName();
+            if (!StringUtil.isEmpty(featureName) && StringUtil.isEmpty(updater.getLabelComputationExpression())) {
                 ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(cell);
                 EObject target = cell.getTarget();
                 EStructuralFeature eStructuralFeature = null;

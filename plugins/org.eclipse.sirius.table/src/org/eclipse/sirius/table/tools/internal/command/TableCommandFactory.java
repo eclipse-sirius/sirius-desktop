@@ -48,6 +48,7 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
+import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
@@ -506,9 +507,10 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         if (!getPermissionAuthority().canEditInstance(editedCell)) {
             result = new InvalidPermissionCommand(domain, editedCell);
         } else {
-            if (editedCell.getUpdater() != null) {
-                if (editedCell.getUpdater().getDirectEdit() != null) {
-                    result = buildCommandFromCell(editedCell, editedCell.getUpdater().getDirectEdit(), newValue);
+            CellUpdater updater = editedCell.getUpdater();
+            if (updater != null) {
+                if (updater.getDirectEdit() != null) {
+                    result = buildCommandFromCell(editedCell, updater.getDirectEdit(), newValue);
                     addRefreshTask(TableHelper.getTable(editedCell), (SiriusCommand) result, null);
                 }
             }

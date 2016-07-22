@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.api.query.DLineQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
+import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
@@ -118,8 +119,11 @@ public class DeleteLinesAction extends Action {
 
     private DeleteTool getDeleteTool(DLine line) {
         DeleteTool tool = null;
-        if (line != null && line.getOriginMapping() != null) {
-            tool = line.getOriginMapping().getDelete();
+        if (line != null) {
+            LineMapping originMapping = line.getOriginMapping();
+            if (originMapping != null) {
+                tool = originMapping.getDelete();
+            }
         }
         return tool;
     }

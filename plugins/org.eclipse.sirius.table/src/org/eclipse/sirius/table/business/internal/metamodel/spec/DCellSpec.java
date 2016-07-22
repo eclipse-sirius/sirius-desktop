@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,9 @@
 package org.eclipse.sirius.table.business.internal.metamodel.spec;
 
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
+import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
@@ -31,11 +33,16 @@ public class DCellSpec extends DCellImpl {
     @Override
     public CellUpdater basicGetUpdater() {
         CellUpdater updater = null;
-        if (getColumn() != null && getColumn().getOriginMapping() instanceof CellUpdater) {
-            updater = (CellUpdater) getColumn().getOriginMapping();
+        DColumn dColumn = getColumn();
+        if (dColumn != null) {
+            ColumnMapping originMapping = dColumn.getOriginMapping();
+            if (originMapping instanceof CellUpdater) {
+                updater = (CellUpdater) originMapping;
+            }
         }
-        if (getIntersectionMapping() != null) {
-            updater = getIntersectionMapping();
+        IntersectionMapping intersectMapping = getIntersectionMapping();
+        if (intersectMapping != null) {
+            updater = intersectMapping;
         }
         return updater;
     }
@@ -82,6 +89,7 @@ public class DCellSpec extends DCellImpl {
      * 
      * @see org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getUpdater()
      */
+    @Override
     public CellUpdater getUpdater() {
         CellUpdater updater = basicGetUpdater();
         return updater != null && updater.eIsProxy() ? (CellUpdater) eResolveProxy((InternalEObject) updater) : updater;

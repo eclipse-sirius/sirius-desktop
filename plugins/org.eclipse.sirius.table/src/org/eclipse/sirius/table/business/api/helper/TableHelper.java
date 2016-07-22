@@ -32,6 +32,7 @@ import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
+import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -294,7 +295,8 @@ public final class TableHelper {
      */
     public static boolean canEditCrossTableCell(final DCell cell) {
         boolean canEdit = false;
-        if (cell.getUpdater() != null && cell.getUpdater().getDirectEdit() != null) {
+        CellUpdater updater = cell.getUpdater();
+        if (updater != null && updater.getDirectEdit() != null) {
             canEdit = true;
         }
         return canEdit;

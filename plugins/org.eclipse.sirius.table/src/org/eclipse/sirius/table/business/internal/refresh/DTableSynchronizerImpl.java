@@ -706,8 +706,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         // Add all existing cells with this mapping or with an invalid mapping
         // to the old values.
         for (final DCell cell : new DTableQuery(table).getCells()) {
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (cell.getIntersectionMapping() == null || cell.getIntersectionMapping().eResource() == null);
-            if (iMapping.equals(cell.getIntersectionMapping()) || mappingIsObsolete) {
+            IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
+            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (intersectionMapping == null || intersectionMapping.eResource() == null);
+            if (iMapping.equals(intersectionMapping) || mappingIsObsolete) {
                 status.addInOld(new DCellCandidate(cell, this.ids));
             }
         }
@@ -868,8 +869,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
         // Add all existing cells with this mapping or with an invalid mapping
         // to the old values.
         for (final DCell cell : new DTableQuery(table).getCells()) {
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (cell.getIntersectionMapping() == null || cell.getIntersectionMapping().eResource() == null);
-            if (iMapping.equals(cell.getIntersectionMapping()) || mappingIsObsolete) {
+            IntersectionMapping intersectionMapping = cell.getIntersectionMapping();
+            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (intersectionMapping == null || intersectionMapping.eResource() == null);
+            if (iMapping.equals(intersectionMapping) || mappingIsObsolete) {
                 status.addInOld(new DCellCandidate(cell, this.ids));
             }
         }
@@ -1073,8 +1075,9 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             }
         }
         for (final DLine line : container.getLines()) {
-            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (line.getOriginMapping().eResource() == null);
-            if (line.getOriginMapping() == mapping || mappingIsObsolete) {
+            LineMapping originMapping = line.getOriginMapping();
+            boolean mappingIsObsolete = TableDialectServices.isHandledByMovida(table) ? false : (originMapping.eResource() == null);
+            if (originMapping == mapping || mappingIsObsolete) {
                 status.addInOld(new DLineCandidate(line, this.ids));
             }
         }

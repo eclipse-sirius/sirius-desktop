@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,6 +60,7 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
@@ -140,12 +141,13 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             Option<DCell> optCell = TableHelper.getCell(line, featureColumn);
             if (optCell.some()) {
                 DCell cell = optCell.get();
-                if (cell.getUpdater() != null && cell.getUpdater().getCanEdit() != null && cell.getUpdater().getCanEdit().length() > 0) {
+                CellUpdater updater = cell.getUpdater();
+                if (updater != null && updater.getCanEdit() != null && updater.getCanEdit().length() > 0) {
                     final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
                     try {
-                        canEdit = interpreter.evaluateBoolean(cell.getTarget(), cell.getUpdater().getCanEdit());
+                        canEdit = interpreter.evaluateBoolean(cell.getTarget(), updater.getCanEdit());
                     } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
+                        RuntimeLoggerManager.INSTANCE.error(updater, DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
                     }
                 }
                 result = canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
@@ -164,7 +166,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         if (element instanceof DLine) {
             final Option<DCell> editedCell = TableHelper.getCell((DLine) element, featureColumn);
             if (editedCell.some()) {
-                final boolean directEdit = editedCell.get().getUpdater() != null && editedCell.get().getUpdater().getDirectEdit() != null;
+                CellUpdater updater = editedCell.get().getUpdater();
+                final boolean directEdit = updater != null && updater.getDirectEdit() != null;
                 return getBestCellEditor(editedCell.get().getTarget(), directEdit);
             }
         }
@@ -189,7 +192,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 final EObject featureParent = editedCell.getTarget();
 
                 boolean directEdit = false;
-                if (editedCell.getUpdater() != null && editedCell.getUpdater().getDirectEdit() != null) {
+                CellUpdater updater = editedCell.getUpdater();
+                if (updater != null && updater.getDirectEdit() != null) {
                     directEdit = true;
                 }
                 if (directEdit) {
@@ -268,7 +272,8 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             try {
                 if (tempValue != null || isEReference(featureParent)) {
                     final Object finalValue = tempValue;
-                    if (editedCell.getUpdater() != null && editedCell.getUpdater().getDirectEdit() != null) {
+                    CellUpdater updater = editedCell.getUpdater();
+                    if (updater != null && updater.getDirectEdit() != null) {
                         // Specific set
                         specificSetValue(editedCell, finalValue);
                     } else {
