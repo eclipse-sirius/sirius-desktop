@@ -57,11 +57,13 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEditPartEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
@@ -257,23 +259,24 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         // Get the figure of the target edit part
         EditPart hostEditPart = getHost();
         final IBorderItemEditPart borderItemEP = (IBorderItemEditPart) hostEditPart;
+
         EditPartViewer editPartViewer = hostEditPart.getViewer();
         Point shiftedLocation = request.getLocation().getCopy();
         EditPart targetEditPart = editPartViewer.findObjectAtExcluding(shiftedLocation, Collections.emptyList(), new IBorderedShapeEditPartCondition());
-
         if (targetEditPart instanceof AbstractGraphicalEditPart) {
             AbstractGraphicalEditPart targetAbstractGraphicalEditPart = (AbstractGraphicalEditPart) targetEditPart;
             IFigure targetFigure = targetAbstractGraphicalEditPart.getFigure();
 
             final IFigure feedback = getDragSourceFeedbackFigure();
             feedbackFigureDisplayed = true;
-            final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds());
-            getHostFigure().translateToAbsolute(rect);
-            rect.translate(request.getMoveDelta());
-            rect.resize(request.getSizeDelta());
+            final PrecisionRectangle feedbackRectangle = new PrecisionRectangle(getInitialFeedbackBounds());
+            getHostFigure().translateToAbsolute(feedbackRectangle);
+            feedbackRectangle.translate(request.getMoveDelta());
+            feedbackRectangle.resize(request.getSizeDelta());
             Rectangle realLocation = null;
+
             // Only necessary in the case of bordered node dropping
-            if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart)) {
+            if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart) && !isInLayoutingMode(hostEditPart)) {
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
@@ -282,38 +285,37 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 } else {
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
-                // Verify if the dropping of bordered node is not an element of
-                // the same level
+                // Verify if the dropping of bordered node is not an element
+                // of the same level
                 if (targetAbstractGraphicalEditPart.getParent() != getHost().getParent().getParent()) {
-                    // Verify if the parent is the diagram. If it, calculates
-                    // the position of the ghost relative to the diagram,
-                    // otherwise compared to the parent
+                    // Verify if the parent is the diagram. If it,
+                    // calculates the position of the ghost relative to the
+                    // diagram, otherwise compared to the parent
                     if (targetAbstractGraphicalEditPart.getParent() instanceof DiagramEditPart) {
-                        targetAbstractGraphicalEditPart.getFigure().translateToAbsolute(rect);
+                        targetAbstractGraphicalEditPart.getFigure().translateToAbsolute(feedbackRectangle);
                     } else {
-                        targetAbstractGraphicalEditPart.getFigure().translateToRelative(rect);
+                        targetAbstractGraphicalEditPart.getFigure().translateToRelative(feedbackRectangle);
                     }
                 } else {
-                    getHostFigure().translateToRelative(rect);
+                    getHostFigure().translateToRelative(feedbackRectangle);
                 }
-                // if the bordered node is collapsed, we extend the feedback to
-                // consider his extended bounds
+                // if the bordered node is collapsed, we extend the feedback
+                // to consider his extended bounds
                 if (hostEditPart instanceof IGraphicalEditPart && getOrCreateBorderNodeCollapseManager().isCollapsed((IGraphicalEditPart) hostEditPart)) {
                     Dimension initialDim = getOrCreateBorderNodeCollapseManager().getInitialDimension((IGraphicalEditPart) hostEditPart);
-                    Rectangle newBoundsAbsolute = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, rect, null);
+                    Rectangle newBoundsAbsolute = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, feedbackRectangle, null);
                     borderItemLocator.setConstraint(newBoundsAbsolute);
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
-                    rect.setBounds(newBoundsAbsolute);
+                    feedbackRectangle.setBounds(newBoundsAbsolute);
                 }
-                realLocation = borderItemLocator.getValidLocation(rect, feedback, getFiguresToIgnore(request), getBorderNodeFeedbacks(request));
+                realLocation = borderItemLocator.getValidLocation(feedbackRectangle, feedback, getFiguresToIgnore(request), getBorderNodeFeedbacks(request));
 
                 targetFigure.translateToAbsolute(realLocation);
                 feedback.translateToRelative(realLocation);
                 feedback.setBounds(realLocation);
                 storeFeedback(feedback, request);
-
-                // Add the real location in request (this location is used in
-                // SiriusContainerDropPolicy)
+                // Add the real location in request (this location is used
+                // inSiriusContainerDropPolicy)
                 Map<DDiagramElement, Point> locationsForDDiagramElement = getLocationsForDDiagramElement(request);
                 if (getOrCreateBorderNodeCollapseManager().isCollapsed(borderItemEP)) {
                     realLocation = PortLayoutHelper.getCollapseCandidateLocation(borderItemEP.getFigure().getSize(), realLocation, targetFigure.getBounds());
@@ -326,18 +328,18 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
                 if (borderItemLocator != null) {
 
-                    getHostFigure().translateToRelative(rect);
-                    Rectangle newRect = getOrCreateBorderNodeCollapseManager().expandCollapsedNodeBounds(borderItemEP, rect);
+                    getHostFigure().translateToRelative(feedbackRectangle);
+                    Rectangle newRect = getOrCreateBorderNodeCollapseManager().expandCollapsedNodeBounds(borderItemEP, feedbackRectangle);
                     if (newRect != null) {
-                        rect.setBounds(newRect);
+                        feedbackRectangle.setBounds(newRect);
                     }
                     if (borderItemLocator instanceof DBorderItemLocator) {
                         // Compute the list of figures to ignore during the
                         // conflict detection.
                         List<IFigure> figuresToIgnore = getFiguresToIgnore(request);
-                        realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore, getBorderNodeFeedbacks(request));
+                        realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(feedbackRectangle, borderItemEP.getFigure(), figuresToIgnore, getBorderNodeFeedbacks(request));
                     } else {
-                        realLocation = borderItemLocator.getValidLocation(rect.getCopy(), borderItemEP.getFigure());
+                        realLocation = borderItemLocator.getValidLocation(feedbackRectangle.getCopy(), borderItemEP.getFigure());
                     }
                     if (getOrCreateBorderNodeCollapseManager().hasBeenExpanded()) {
                         getOrCreateBorderNodeCollapseManager().restoreCollapsedNode(borderItemEP);
@@ -350,6 +352,25 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 }
             }
         }
+    }
+
+    /**
+     * Returns true if the given part is used in a diagram in layouting mode.
+     * False otherwise or if no diagram is associated to it.
+     * 
+     * @param editPart
+     *            the part from which we want to know if it associated to a
+     *            diagram in layouting mode.
+     * @return true if the given part is used in a diagram in layouting mode.
+     *         False otherwise or if no diagram is associated to it.
+     */
+    private boolean isInLayoutingMode(EditPart editPart) {
+        if (editPart instanceof IDiagramBorderNodeEditPart) {
+            final IDiagramBorderNodeEditPart borderNodeEditPart = (IDiagramBorderNodeEditPart) editPart;
+            final DDiagram parentDiagram = borderNodeEditPart.resolveDiagramElement().getParentDiagram();
+            return parentDiagram.isIsInLayoutingMode();
+        }
+        return false;
     }
 
     /**

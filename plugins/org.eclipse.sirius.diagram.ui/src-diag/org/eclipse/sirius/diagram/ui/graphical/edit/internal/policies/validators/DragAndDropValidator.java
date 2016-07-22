@@ -21,10 +21,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
@@ -32,6 +35,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
@@ -75,12 +79,14 @@ public class DragAndDropValidator {
      * @return true if the request is valid (i.e. can be executed)
      */
     public boolean isValid(ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart) {
-        init(request, hostGraphicalEditPart);
-        boolean isValid = false;
+
+        boolean isValid = init(request, hostGraphicalEditPart);
         // If there is no element to drop the drag'n'drop request has been
         // consider has invalid.
         if (!elementsFromEclipseViewToDrop.isEmpty() || !elementsFromDiagramToDrop.isEmpty()) {
-            isValid = RequestConstants.REQ_DROP.equals(request.getType());
+            isValid = isValid && RequestConstants.REQ_DROP.equals(request.getType());
+        } else {
+            isValid = false;
         }
         if (isValid) {
             dragAndDropDescription = targetDragAndDropTarget.getDragAndDropDescription();
@@ -98,30 +104,77 @@ public class DragAndDropValidator {
         return isValid;
     }
 
-    private void init(ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart) {
+    /**
+     * Initializes the set containing {@link DDiagramElement} associated to
+     * dragged elements.
+     * 
+     * Returns false if an element to drop is a BorderedNode and if the layout
+     * mode is activated in the diagram of the host part drag and drop is
+     * forbidden in this case (returning false will invalidate the drop and
+     * re-enable the move).
+     * 
+     * @param request
+     *            the request from which the initialization is done.
+     * @param hostGraphicalEditPart
+     *            the part target of the drop.
+     * @return false if an element to drop is a bordered node and if the layout
+     *         mode is activated in the diagram of the host part. True
+     *         otherwise.
+     */
+    private boolean init(ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart) {
         List<?> editParts = request.getEditParts();
+        boolean isInLayoutingMode = isInLayoutingMode(hostGraphicalEditPart);
         for (Object editPart : editParts) {
             if (editPart instanceof DragAndDropWrapper) {
                 DragAndDropWrapper dragAndDropWrapperToDrop = (DragAndDropWrapper) editPart;
                 elementsFromEclipseViewToDrop.add(dragAndDropWrapperToDrop);
             } else if (editPart instanceof IGraphicalEditPart) {
                 IGraphicalEditPart graphicalEditPartToDrop = (IGraphicalEditPart) editPart;
+
                 /*
                  * Impossible to move a border node in a subfunction if there is
                  * a drag and drop tool associated to the node drag'n'drop
                  * should not be enabled on the same container to avoid to block
                  * the move of an element
                  */
-                if (!(graphicalEditPartToDrop.getParent() == hostGraphicalEditPart || hostGraphicalEditPart instanceof CompartmentEditPart
-                        && graphicalEditPartToDrop.getParent() == hostGraphicalEditPart.getParent())
+                if (!(graphicalEditPartToDrop.getParent() == hostGraphicalEditPart
+                        || hostGraphicalEditPart instanceof CompartmentEditPart && graphicalEditPartToDrop.getParent() == hostGraphicalEditPart.getParent())
                         && graphicalEditPartToDrop.resolveSemanticElement() instanceof DSemanticDecorator) {
                     EObject elementFromDiagramToDrop = graphicalEditPartToDrop.resolveSemanticElement();
                     DDiagramElement dDiagramElementTopDrop = (DDiagramElement) elementFromDiagramToDrop;
                     elementsFromDiagramToDrop.add(dDiagramElementTopDrop);
                     editPartsFromDiagramToDrop.add(graphicalEditPartToDrop);
+
+                    if (isInLayoutingMode && graphicalEditPartToDrop instanceof IDiagramBorderNodeEditPart) {
+                        return false;
+                    }
+
                 }
             }
         }
+        return true;
+    }
+
+    /**
+     * Returns true if the given part is used in a diagram in layouting mode.
+     * False otherwise or if no diagram is associated to it.
+     * 
+     * @param graphicalEditPart
+     *            the part from which we want to know if it associated to a
+     *            diagram in layouting mode.
+     * @return true if the given part is used in a diagram in layouting mode.
+     *         False otherwise or if no diagram is associated to it.
+     */
+    private boolean isInLayoutingMode(GraphicalEditPart graphicalEditPart) {
+        View notationView = graphicalEditPart.getNotationView();
+        if (notationView != null) {
+            Diagram diagram = notationView.getDiagram();
+            if (diagram != null) {
+                EObject element = diagram.getElement();
+                return element instanceof DDiagram && ((DDiagram) element).isIsInLayoutingMode();
+            }
+        }
+        return false;
     }
 
     private boolean isValidDragAndDropRequestForElementFromEclipseView() {
