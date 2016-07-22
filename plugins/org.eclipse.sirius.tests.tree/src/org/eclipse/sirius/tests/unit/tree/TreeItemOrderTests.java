@@ -107,14 +107,28 @@ public class TreeItemOrderTests extends TreeCommonTest implements TreeEcoreModel
      */
     private void checkSubItemsOrder(DTreeItemContainer itemCont, List<TreeItemMapping> subItemMappings) {
         // Nothing to test if there is only on or no element.
+        TreeItemMapping currentMapping = null;
+        TreeItemMapping nextMapping = null;
         if (itemCont.getOwnedTreeItems().size() > 1) {
             List<DTreeItem> subItems = itemCont.getOwnedTreeItems();
             for (int i = 0; i < subItems.size() - 1; i++) {
                 DTreeItem current = subItems.get(i);
                 DTreeItem next = subItems.get(i + 1);
 
-                TreeItemMapping currentMapping = current.getActualMapping();
-                TreeItemMapping nextMapping = next.getActualMapping();
+                // First element, nextMapping is still null, we get the mapping
+                // of the current tree item as currentMapping and we get the
+                // mapping of next as next.getActualMapping.
+
+                // For the other elements (step i: current=subItems[i];
+                // next=subItems[i+1]), we can use the value of nextMapping
+                // computed during the previous step (step j=i-1) of the
+                // iteration with current=subItems[i-1]; next=subItems[i]
+                // So there is no need to get the the actual mapping another
+                // time.
+                currentMapping = nextMapping == null ? current.getActualMapping() : nextMapping;
+                // Update nextMapping, now that previous value is known and used
+                // as currentMapping.
+                nextMapping = next.getActualMapping();
 
                 if (currentMapping == nextMapping) {
                     // Check semantic order

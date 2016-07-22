@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
@@ -50,9 +51,10 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -255,9 +257,10 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     private boolean buildOpenRepresentationsMenu(final IMenuManager openMenu, final DRepresentationElement element, final Session session) {
-        if (element.getMapping() != null) {
+        RepresentationElementMapping mapping = element.getMapping();
+        if (mapping != null) {
 
-            for (final RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+            for (final RepresentationNavigationDescription navDesc : mapping.getNavigationDescriptions()) {
                 boolean append = true;
                 if (!isFromActiveViewpoint(session, navDesc.getRepresentationDescription())) {
                     append = false;
@@ -321,8 +324,9 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     private void addCreateActions(IMenuManager manager, DTreeItem singleSelectedItem) {
-        if (singleSelectedItem.getActualMapping() != null) {
-            final List<AbstractToolAction> createActions = getMappingToCreateActions().get(singleSelectedItem.getActualMapping());
+        TreeItemMapping actualMapping = singleSelectedItem.getActualMapping();
+        if (actualMapping != null) {
+            final List<AbstractToolAction> createActions = getMappingToCreateActions().get(actualMapping);
             if (createActions != null && !createActions.isEmpty()) {
                 for (final AbstractToolAction createAction : createActions) {
                     ((AbstractToolItemAction) createAction).setLine(singleSelectedItem);
@@ -343,10 +347,11 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     private void createDetailsActions(final DTreeItem currentElement, final SubContributionItem newMenuItem) {
-        if (currentElement.getMapping() != null) {
+        RepresentationElementMapping mapping = currentElement.getMapping();
+        if (mapping != null) {
             final Session session = currentElement.getTarget() != null ? SessionManager.INSTANCE.getSession(currentElement.getTarget()) : null;
             if (session != null) {
-                for (RepresentationCreationDescription desc : currentElement.getMapping().getDetailDescriptions()) {
+                for (RepresentationCreationDescription desc : mapping.getDetailDescriptions()) {
                     boolean append = true;
                     if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
                         append = false;

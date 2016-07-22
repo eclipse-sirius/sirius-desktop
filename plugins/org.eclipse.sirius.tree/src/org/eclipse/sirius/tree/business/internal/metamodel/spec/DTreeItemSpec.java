@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ public class DTreeItemSpec extends DTreeItemImpl {
      * 
      * @see org.eclipse.sirius.tree.impl.DTreeItemImpl#getTreeElementMapping()
      */
+    @Override
     public TreeMapping getTreeElementMapping() {
         TreeMapping treeElementMapping = basicGetTreeElementMapping();
         return treeElementMapping != null && treeElementMapping.eIsProxy() ? (TreeMapping) eResolveProxy((InternalEObject) treeElementMapping) : treeElementMapping;
@@ -62,11 +63,7 @@ public class DTreeItemSpec extends DTreeItemImpl {
      */
     @Override
     public StyleUpdater basicGetStyleUpdater() {
-        StyleUpdater updater = null;
-        if (getActualMapping() != null) {
-            updater = getActualMapping();
-        }
-        return updater;
+        return getActualMapping();
     }
 
     /**
@@ -75,6 +72,7 @@ public class DTreeItemSpec extends DTreeItemImpl {
      * 
      * @see org.eclipse.sirius.tree.impl.DTreeItemImpl#getStyleUpdater()
      */
+    @Override
     public StyleUpdater getStyleUpdater() {
         StyleUpdater styleUpdater = basicGetStyleUpdater();
         return styleUpdater != null && styleUpdater.eIsProxy() ? (StyleUpdater) eResolveProxy((InternalEObject) styleUpdater) : styleUpdater;
@@ -84,6 +82,7 @@ public class DTreeItemSpec extends DTreeItemImpl {
      * 
      * {@inheritDoc}
      */
+    @Override
     public TreeItemUpdater getUpdater() {
         TreeItemUpdater updater = basicGetUpdater();
         return updater != null && updater.eIsProxy() ? (TreeItemUpdater) eResolveProxy((InternalEObject) updater) : updater;
@@ -95,10 +94,6 @@ public class DTreeItemSpec extends DTreeItemImpl {
      */
     @Override
     public TreeItemUpdater basicGetUpdater() {
-        TreeItemUpdater updater = null;
-        if (getActualMapping() != null) {
-            updater = getActualMapping();
-        }
-        return updater;
+        return getActualMapping();
     }
 }
