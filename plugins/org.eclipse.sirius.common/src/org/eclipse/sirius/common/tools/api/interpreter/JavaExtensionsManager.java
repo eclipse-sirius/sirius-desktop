@@ -28,6 +28,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -390,11 +391,13 @@ public final class JavaExtensionsManager {
                     genModelURI = genModelURI.appendFragment("/"); //$NON-NLS-1$
                 }
                 EObject genModel = set.getEObject(genModelURI, true);
-                if (genModel != null && genModel.eClass().getEPackage() != null && "GenModel".equals(genModel.eClass().getName()) && "genmodel".equals(genModel.eClass().getEPackage().getName())) { //$NON-NLS-1$ //$NON-NLS-2$
-                    Collection<EObject> genPackages = (Collection<EObject>) genModel.eGet(genModel.eClass().getEStructuralFeature("genPackages")); //$NON-NLS-1$
-                    collectEPackages(ecorePackages, genPackages);
+                if (genModel != null) {
+                    EClass eClass = genModel.eClass();
+                    if (eClass.getEPackage() != null && "GenModel".equals(eClass.getName()) && "genmodel".equals(eClass.getEPackage().getName())) { //$NON-NLS-1$ //$NON-NLS-2$
+                        Collection<EObject> genPackages = (Collection<EObject>) genModel.eGet(eClass.getEStructuralFeature("genPackages")); //$NON-NLS-1$
+                        collectEPackages(ecorePackages, genPackages);
+                    }
                 }
-
             }
         }
     }

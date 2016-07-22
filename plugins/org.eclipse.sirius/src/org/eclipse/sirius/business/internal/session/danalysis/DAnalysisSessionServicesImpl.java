@@ -15,7 +15,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -366,8 +368,10 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private boolean isAGMFDiagramOnAssociatedInstance(final EObject object, final EObject associatedInstance) {
-        if ("Diagram".equals(object.eClass().getName()) && object.eClass().getEPackage() != null && "notation".equals(object.eClass().getEPackage().getNsPrefix())) { //$NON-NLS-1$ //$NON-NLS-2$
-            final EObject element = (EObject) object.eGet(object.eClass().getEStructuralFeature("element")); //$NON-NLS-1$
+        EClass eClass = object.eClass();
+        EPackage ePackage = eClass.getEPackage();
+        if ("Diagram".equals(eClass.getName()) && ePackage != null && "notation".equals(ePackage.getNsPrefix())) { //$NON-NLS-1$ //$NON-NLS-2$
+            final EObject element = (EObject) object.eGet(eClass.getEStructuralFeature("element")); //$NON-NLS-1$
             if (element != null && element == associatedInstance) {
                 return true;
             }

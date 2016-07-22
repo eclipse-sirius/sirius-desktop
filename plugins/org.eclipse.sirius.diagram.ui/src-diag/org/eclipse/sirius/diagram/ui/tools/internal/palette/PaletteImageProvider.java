@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -56,8 +57,9 @@ public class PaletteImageProvider {
      */
     public ImageDescriptor getImageDescriptor(final AbstractToolDescription abstractToolDescription) {
         String path = null;
-        if (abstractToolDescription.eClass().getEStructuralFeature(ICON_PATH) != null) {
-            path = (String) abstractToolDescription.eGet(abstractToolDescription.eClass().getEStructuralFeature(ICON_PATH));
+        EStructuralFeature iconPathAttr = abstractToolDescription.eClass().getEStructuralFeature(ICON_PATH);
+        if (iconPathAttr != null) {
+            path = (String) abstractToolDescription.eGet(iconPathAttr);
         }
         if (path == null || StringUtil.isEmpty(path.trim())) {
             /* try to find the image descriptor with mappings */

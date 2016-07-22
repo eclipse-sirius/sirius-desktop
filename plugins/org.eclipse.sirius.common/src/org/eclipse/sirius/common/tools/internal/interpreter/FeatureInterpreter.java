@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,7 +78,8 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
         Object result = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String featureName = expression.trim().substring(PREFIX.length());
-            EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
+            EClass targetEClass = target.eClass();
+            EStructuralFeature feature = targetEClass.getEStructuralFeature(featureName);
             if (feature != null) {
                 result = target.eGet(feature);
             } else if (E_CONTAINER_FEATURE_NAME.equals(featureName)) {
@@ -88,7 +89,7 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             } else if (E_ALL_CONTENTS_FEATURE_NAME.equals(featureName)) {
                 result = Lists.newArrayList(target.eAllContents());
             } else if (E_CLASS_FEATURE_NAME.equals(featureName)) {
-                result = target.eClass();
+                result = targetEClass;
             } else if (E_CROSS_REFERENCES_FEATURE_NAME.equals(featureName)) {
                 result = target.eCrossReferences();
             } else {

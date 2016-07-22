@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -131,18 +131,20 @@ public class CommonItemSorter extends ViewerSorter {
         int result = Collator.getInstance().compare(e1 != null ? e1.getName() : defaultName, e2 != null ? e2.getName() : defaultName);
         // if different representation types, compare class names to sort
         // navigator
-        if (e1 != null && e2 != null && e1.eClass() != null && !e1.eClass().equals(e2.eClass())) {
-            result = Collator.getInstance().compare(e1.eClass().getName(), e2.eClass().getName());
+        if (e1 != null && e2 != null) {
+            EClass e1Class = e1.eClass();
+            EClass e2Class = e2.eClass();
+            if (e1Class != null && !e1Class.equals(e2Class)) {
+                result = Collator.getInstance().compare(e1Class.getName(), e2Class.getName());
 
-            EClass e1TypeToCompare = getRepresentationType(e1);
+                EClass e1TypeToCompare = getRepresentationType(e1);
+                EClass e2TypeToCompare = getRepresentationType(e2);
 
-            EClass e2TypeToCompare = getRepresentationType(e2);
-
-            if (e1TypeToCompare != null && e2TypeToCompare != null && !e1TypeToCompare.equals(e2TypeToCompare)) {
-                result = Collator.getInstance().compare(e1TypeToCompare.getName(), e2TypeToCompare.getName());
+                if (e1TypeToCompare != null && e2TypeToCompare != null && !e1TypeToCompare.equals(e2TypeToCompare)) {
+                    result = Collator.getInstance().compare(e1TypeToCompare.getName(), e2TypeToCompare.getName());
+                }
             }
         }
-
         return result;
     }
 

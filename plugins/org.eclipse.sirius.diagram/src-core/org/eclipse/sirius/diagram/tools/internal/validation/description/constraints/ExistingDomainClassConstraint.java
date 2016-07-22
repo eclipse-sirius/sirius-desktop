@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,8 +106,8 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
     }
 
     private boolean isValidNsURI(EObject eObj) {
-        return eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || eObj.eClass().getEPackage().getNsURI().startsWith(DescriptionPackage.eINSTANCE.getNsURI())
-                || eObj.eClass().getEPackage().getNsURI().startsWith(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNsURI())
-                || eObj.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI());
+        String nsURI = eObj.eClass().getEPackage().getNsURI();
+        return nsURI.startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || nsURI.startsWith(DescriptionPackage.eINSTANCE.getNsURI())
+                || nsURI.startsWith(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNsURI()) || nsURI.startsWith(DiagramPackage.eINSTANCE.getNsURI());
     }
 }
