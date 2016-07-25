@@ -156,7 +156,10 @@ public final class StyleHelper {
      */
     public void refreshStyle(final Style style, final Option<? extends Style> previousStyle) {
         if (style != null && !isWorkspaceImageStyleWithNotWorkspaceImageDescription(style)) {
+            // No need to update the style's description as we take its
+            // description.
             final StyleDescription description = style.getDescription();
+
             // Some styles are ContainerStyleDescription AND
             // NodeStyleDescription (WorkspaceImageDescription for example).
             // Verify if style is instanceof Container Style. this case is
@@ -219,6 +222,8 @@ public final class StyleHelper {
         } else {
             style = DiagramFactory.eINSTANCE.createEdgeStyle();
         }
+        style.setDescription(description);
+
         if (description.getBeginLabelStyleDescription() != null) {
             style.setBeginLabelStyle(DiagramFactory.eINSTANCE.createBeginLabelStyle());
         }
@@ -237,9 +242,6 @@ public final class StyleHelper {
     private void updateEdgeStyle(final EdgeStyleDescription edgeDescription, final EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
         Integer size = Integer.valueOf(1);
 
-        if (edgeStyle.getDescription() != edgeDescription) {
-            edgeStyle.setDescription(edgeDescription);
-        }
         if (edgeDescription != null) {
             if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
                 edgeStyle.setSourceArrow(previousStyle.get().getSourceArrow());
@@ -859,16 +861,13 @@ public final class StyleHelper {
 
     private FlatContainerStyle createFlatContainerStyle(final FlatContainerStyleDescription description) {
         final FlatContainerStyle style = DiagramFactory.eINSTANCE.createFlatContainerStyle();
+        style.setDescription(description);
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateFlatContainerStyle(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateFlatContainerStyle(final FlatContainerStyle style, final FlatContainerStyleDescription description, Option<ContainerStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName())
                 && previousStyle.get() instanceof FlatContainerStyle) {
             style.setBackgroundStyle(((FlatContainerStyle) previousStyle.get()).getBackgroundStyle());
@@ -888,16 +887,13 @@ public final class StyleHelper {
 
     private ShapeContainerStyle createShapeContainerStyle(final ShapeContainerStyleDescription description) {
         final ShapeContainerStyle style = DiagramFactory.eINSTANCE.createShapeContainerStyle();
+        style.setDescription(description);
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateShapeContainerStyle(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateShapeContainerStyle(final ShapeContainerStyle style, final ShapeContainerStyleDescription description, Option<ContainerStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName())
@@ -985,16 +981,13 @@ public final class StyleHelper {
 
     private WorkspaceImage createWorkspaceImage(final WorkspaceImageDescription description) {
         final WorkspaceImage image = DiagramFactory.eINSTANCE.createWorkspaceImage();
+        image.setDescription(description);
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateWorkspaceImage(image, description, noPreviousStyle);
         return image;
     }
 
     private void updateWorkspaceImage(final WorkspaceImage image, final WorkspaceImageDescription description, Option<? extends Style> previousStyle) {
-        if (image.getDescription() != description) {
-            image.setDescription(description);
-        }
-
         if (!previousStyle.some() || (previousStyle.some() && previousStyle.get() instanceof LabelStyle)) {
             updateLabelStyleFeatures(description, image, (Option<LabelStyle>) previousStyle);
         }
@@ -1026,16 +1019,13 @@ public final class StyleHelper {
 
     private BundledImage createBundledImage(final BundledImageDescription description) {
         final BundledImage image = DiagramFactory.eINSTANCE.createBundledImage();
+        image.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateBundledImage(image, description, noPreviousStyle);
         return image;
     }
 
     private void updateBundledImage(final BundledImage image, final BundledImageDescription description, Option<NodeStyle> previousStyle) {
-        if (image.getDescription() != description) {
-            image.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, image, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE.getName()) && previousStyle.get() instanceof BundledImage) {
@@ -1054,31 +1044,25 @@ public final class StyleHelper {
 
     private Note createNote(final NoteDescription description) {
         final Note style = DiagramFactory.eINSTANCE.createNote();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateNote(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateNote(final Note style, final NoteDescription description, Option<NodeStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
     }
 
     private GaugeCompositeStyle createGaugeCompositeStyle(final GaugeCompositeStyleDescription description) {
         final GaugeCompositeStyle style = DiagramFactory.eINSTANCE.createGaugeCompositeStyle();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateGaugeCompositeStyle(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateGaugeCompositeStyle(final GaugeCompositeStyle style, final GaugeCompositeStyleDescription description, Option<NodeStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         EList<GaugeSection> newGaugeSections = new BasicEList<GaugeSection>();
@@ -1135,16 +1119,13 @@ public final class StyleHelper {
 
     private Dot createDot(final DotDescription description) {
         final Dot style = DiagramFactory.eINSTANCE.createDot();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateDot(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateDot(final Dot style, final DotDescription description, Option<NodeStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName()) && previousStyle.get() instanceof Dot) {
@@ -1160,18 +1141,13 @@ public final class StyleHelper {
 
     private Square createSquare(final SquareDescription description) {
         final Square style = DiagramFactory.eINSTANCE.createSquare();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateSquare(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateSquare(final Square style, final SquareDescription description, Option<NodeStyle> previousStyle) {
-        // If the style's color is null or one of either the style or
-        // description color is not a scale value (recomputed later), reset it
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
         if (style.getHeight().intValue() != description.getHeight().intValue() && !style.getCustomFeatures().contains(DiagramPackage.Literals.SQUARE__HEIGHT.getName())) {
             style.setHeight(description.getHeight());
@@ -1203,16 +1179,13 @@ public final class StyleHelper {
 
     private CustomStyle createCustomStyle(final CustomStyleDescription description) {
         final CustomStyle style = DiagramFactory.eINSTANCE.createCustomStyle();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateCustomStyle(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateCustomStyle(final CustomStyle style, final CustomStyleDescription description, Option<NodeStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.CUSTOM_STYLE__ID.getName()) && previousStyle.get() instanceof CustomStyle) {
@@ -1227,16 +1200,13 @@ public final class StyleHelper {
 
     private Lozenge createLozenge(final LozengeNodeDescription description) {
         final Lozenge style = DiagramFactory.eINSTANCE.createLozenge();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateLozenge(style, description, noPreviousStyle);
         return style;
     }
 
     private void updateLozenge(final Lozenge style, final LozengeNodeDescription description, Option<NodeStyle> previousStyle) {
-        if (style.getDescription() != description) {
-            style.setDescription(description);
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (style.eContainer() instanceof DNode) {
@@ -1298,6 +1268,7 @@ public final class StyleHelper {
 
     private NodeStyle createEllipse(final EllipseNodeDescription description) {
         final Ellipse style = DiagramFactory.eINSTANCE.createEllipse();
+        style.setDescription(description);
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateEllipse(style, description, noPreviousStyle);
         return style;
