@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,9 +39,10 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.query.WorkspaceImageQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
- * A ResourceSet listener to resize image with this default size.
+ * A ResourceSet listener to resize image with its default size.
  * 
  * @author jdupont
  */
@@ -123,8 +124,9 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
                 differentPath = false;
             }
         }
-        isWorkspaceImageStyleResized = dDiagramElement.getStyle().getDescription() instanceof WorkspaceImageDescription
-                && ((WorkspaceImageDescription) dDiagramElement.getStyle().getDescription()).getSizeComputationExpression().equals("-1") && differentPath; //$NON-NLS-1$
+        StyleDescription description = dDiagramElement.getStyle().getDescription();
+        isWorkspaceImageStyleResized = description instanceof WorkspaceImageDescription
+                && ((WorkspaceImageDescription) description).getSizeComputationExpression().equals("-1") && differentPath; //$NON-NLS-1$
         return isWorkspaceImageStyleResized;
     }
 
@@ -162,11 +164,12 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
             for (DDiagramElement element : elementsToResize) {
                 Node node = SiriusGMFHelper.getGmfNode(element, session);
                 Size size = (Size) node.getLayoutConstraint();
-                if (element.getStyle().getDescription() instanceof WorkspaceImageDescription) {
-                    Dimension defaultDimension = new WorkspaceImageQuery((WorkspaceImageDescription) element.getStyle().getDescription()).getDefaultDimension();
+                StyleDescription styleDescription = element.getStyle().getDescription();
+                if (styleDescription instanceof WorkspaceImageDescription) {
+                    Dimension defaultDimension = new WorkspaceImageQuery((WorkspaceImageDescription) styleDescription).getDefaultDimension();
                     size.setHeight(defaultDimension.height);
                     size.setWidth(defaultDimension.width);
-                } else if (element.getStyle().getDescription() instanceof NodeStyleDescription) {
+                } else if (styleDescription instanceof NodeStyleDescription) {
                     size.setHeight(((DNode) element).getHeight() * LayoutUtils.SCALE);
                     size.setWidth(((DNode) element).getWidth() * LayoutUtils.SCALE);
                 }

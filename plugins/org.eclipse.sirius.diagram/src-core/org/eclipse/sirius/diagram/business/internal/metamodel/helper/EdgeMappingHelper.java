@@ -56,6 +56,7 @@ import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 import com.google.common.collect.Lists;
@@ -207,10 +208,6 @@ public final class EdgeMappingHelper {
         // Get the best style according to conditionals styles
         final EdgeStyle style = (EdgeStyle) new MappingHelper(interpreter).getBestStyle(edgeMapping, newEdge.getTarget(), diagram, container, diagram);
         EdgeStyleDescription styleDescription = null;
-        if (style != null && style.getDescription() instanceof EdgeStyleDescription) {
-            styleDescription = (EdgeStyleDescription) style.getDescription();
-        }
-
         DiagramElementMappingHelper.refreshSemanticElements(edgeMapping, newEdge, interpreter);
 
         // The optional path.
@@ -218,6 +215,10 @@ public final class EdgeMappingHelper {
 
         if (style != null) {
             newEdge.setOwnedStyle(style);
+            StyleDescription description = style.getDescription();
+            if (description instanceof EdgeStyleDescription) {
+                styleDescription = (EdgeStyleDescription) description;
+            }
         }
         if (newEdge.getOwnedStyle() != null) {
             Option<EdgeStyle> noPreviousStyle = Options.newNone();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -157,8 +158,8 @@ public class ImageSelectorService {
             if (basicLabelStyle instanceof WorkspaceImage) {
                 updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, workspacePath);
                 if (!basicLabelStyle.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
-                    updateWorkspacePathCmd = updateWorkspacePathCmd.chain(AddCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES,
-                            DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
+                    updateWorkspacePathCmd = updateWorkspacePathCmd.chain(
+                            AddCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
                 }
             } else {
                 Object feature = getFeature(basicLabelStyle);
@@ -231,8 +232,9 @@ public class ImageSelectorService {
             workspaceImage.setBorderLineStyle(oldStyle.getBorderLineStyle());
             workspaceImage.setBorderSize(oldStyle.getBorderSize());
 
-            if (oldStyle.getDescription() instanceof BorderedStyleDescription) {
-                BorderedStyleDescription oldDesc = (BorderedStyleDescription) oldStyle.getDescription();
+            StyleDescription oldDescription = oldStyle.getDescription();
+            if (oldDescription instanceof BorderedStyleDescription) {
+                BorderedStyleDescription oldDesc = (BorderedStyleDescription) oldDescription;
                 workspaceImageDescription.setBorderColor(oldDesc.getBorderColor());
                 workspaceImageDescription.setBorderLineStyle(oldDesc.getBorderLineStyle());
                 workspaceImageDescription.setBorderSizeComputationExpression(oldDesc.getBorderSizeComputationExpression());

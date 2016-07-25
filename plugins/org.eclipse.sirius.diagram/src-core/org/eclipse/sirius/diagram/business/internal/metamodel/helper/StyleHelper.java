@@ -176,7 +176,7 @@ public final class StyleHelper {
             if (description instanceof EdgeStyleDescription) {
                 updateEdgeStyle((EdgeStyleDescription) description, (EdgeStyle) style, (Option<EdgeStyle>) previousStyle);
             }
-            refreshColors(style, previousStyle);
+            refreshColors(description, style, previousStyle);
         }
     }
 
@@ -237,7 +237,7 @@ public final class StyleHelper {
         }
         Option<EdgeStyle> noPreviousStyle = Options.newNone();
         updateEdgeStyle(description, style, noPreviousStyle);
-        refreshColors(style, noPreviousStyle);
+        refreshColors(description, style, noPreviousStyle);
         return style;
     }
 
@@ -346,12 +346,14 @@ public final class StyleHelper {
                 edgeStyle.setCenterLabelStyle(previousStyle.get().getCenterLabelStyle());
             }
         }
-        if (edgeDescription.getCenterLabelStyleDescription() != null && edgeStyle.getCenterLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
-            CenterLabelStyle centerLabelStyle = DiagramFactory.eINSTANCE.createCenterLabelStyle();
+
+        CenterLabelStyleDescription centerLabelStyleDesc = edgeDescription.getCenterLabelStyleDescription();
+        CenterLabelStyle centerLabelStyle = edgeStyle.getCenterLabelStyle();
+        if (centerLabelStyleDesc != null && centerLabelStyle == null && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
+            centerLabelStyle = DiagramFactory.eINSTANCE.createCenterLabelStyle();
             edgeStyle.setCenterLabelStyle(centerLabelStyle);
         }
-        updateEdgeLabel(edgeDescription.getCenterLabelStyleDescription(), edgeStyle.getCenterLabelStyle());
+        updateEdgeLabel(centerLabelStyleDesc, centerLabelStyle);
 
         if (previousStyle.some()) {
             if (previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
@@ -359,12 +361,14 @@ public final class StyleHelper {
                 edgeStyle.setBeginLabelStyle(previousStyle.get().getBeginLabelStyle());
             }
         }
-        if (edgeDescription.getBeginLabelStyleDescription() != null && edgeStyle.getBeginLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
-            BeginLabelStyle beginLabelStyle = DiagramFactory.eINSTANCE.createBeginLabelStyle();
+
+        BeginLabelStyleDescription beginLabelStyleDec = edgeDescription.getBeginLabelStyleDescription();
+        BeginLabelStyle beginLabelStyle = edgeStyle.getBeginLabelStyle();
+        if (beginLabelStyleDec != null && beginLabelStyle == null && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
+            beginLabelStyle = DiagramFactory.eINSTANCE.createBeginLabelStyle();
             edgeStyle.setBeginLabelStyle(beginLabelStyle);
         }
-        updateEdgeLabel(edgeDescription.getBeginLabelStyleDescription(), edgeStyle.getBeginLabelStyle());
+        updateEdgeLabel(beginLabelStyleDec, beginLabelStyle);
 
         if (previousStyle.some()) {
             if (previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
@@ -372,12 +376,15 @@ public final class StyleHelper {
                 edgeStyle.setBeginLabelStyle(previousStyle.get().getBeginLabelStyle());
             }
         }
-        if (edgeDescription.getEndLabelStyleDescription() != null && edgeStyle.getEndLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
-            EndLabelStyle endLabelStyle = DiagramFactory.eINSTANCE.createEndLabelStyle();
+
+        EndLabelStyleDescription endLabelStyleDesc = edgeDescription.getEndLabelStyleDescription();
+        EndLabelStyle endLabelStyle = edgeStyle.getEndLabelStyle();
+        if (endLabelStyleDesc != null && endLabelStyle == null && !edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
+            endLabelStyle = DiagramFactory.eINSTANCE.createEndLabelStyle();
             edgeStyle.setEndLabelStyle(endLabelStyle);
         }
-        updateEdgeLabel(edgeDescription.getEndLabelStyleDescription(), edgeStyle.getEndLabelStyle());
+
+        updateEdgeLabel(endLabelStyleDesc, endLabelStyle);
     }
 
     private void updateEdgeCenteringInformations(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
@@ -480,18 +487,6 @@ public final class StyleHelper {
     }
 
     private void updateEdgeLabel(BasicLabelStyleDescription description, BasicLabelStyle style) {
-        if (description instanceof BeginLabelStyleDescription && style instanceof BeginLabelStyle && ((BeginLabelStyle) style).getDescription() != description) {
-            ((BeginLabelStyle) style).setDescription(description);
-        }
-
-        if (description instanceof EndLabelStyleDescription && style instanceof EndLabelStyle && ((EndLabelStyle) style).getDescription() != description) {
-            ((EndLabelStyle) style).setDescription(description);
-        }
-
-        if (description instanceof CenterLabelStyleDescription && style instanceof CenterLabelStyle && ((CenterLabelStyle) style).getDescription() != description) {
-            ((CenterLabelStyle) style).setDescription(description);
-        }
-
         if (description != null && style != null) {
             Option<NodeStyle> noPreviousStyle = Options.newNone();
             updateBasicLabelStyleFeatures(description, style, noPreviousStyle);
@@ -575,7 +570,7 @@ public final class StyleHelper {
         if (style != null) {
             style.setHideLabelByDefault(description.isHideLabelByDefault());
             Option<Style> noPreviousStyle = Options.newNone();
-            refreshColors(style, noPreviousStyle);
+            refreshColors(description, style, noPreviousStyle);
         }
 
         return style;
@@ -672,7 +667,7 @@ public final class StyleHelper {
             style.setLabelPosition(description.getLabelPosition());
             style.setHideLabelByDefault(description.isHideLabelByDefault());
             Option<Style> noPreviousStyle = Options.newNone();
-            refreshColors(style, noPreviousStyle);
+            refreshColors(description, style, noPreviousStyle);
         }
         return style;
     }
@@ -973,8 +968,8 @@ public final class StyleHelper {
             image.setWorkspacePath(((WorkspaceImage) previousStyle.get()).getWorkspacePath());
             image.getCustomFeatures().add(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         } else {
-            if (image.getWorkspacePath() == null || !image.getWorkspacePath().equals(description.getWorkspacePath())
-                    && !image.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
+            if (image.getWorkspacePath() == null
+                    || !image.getWorkspacePath().equals(description.getWorkspacePath()) && !image.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
                 image.setWorkspacePath(description.getWorkspacePath());
             }
         }
@@ -1319,94 +1314,62 @@ public final class StyleHelper {
     /**
      * Refreshes all colors of the given style.
      * 
+     * @param description
+     *            the description.
      * @param style
      *            the style.
      * @param previousStyle
      *            the previous style (if existing) to keep compatible
      *            customization.
      */
-    protected void refreshColors(final Style style, Option<? extends Style> previousStyle) {
+    protected void refreshColors(StyleDescription description, final Style style, Option<? extends Style> previousStyle) {
         EObject context = style.eContainer();
         /*
          * If there is no description we won't have a lot of chance to update
          * anything..
          */
-        if (style.getDescription() != null) {
+        if (description != null) {
             if (context != null) {
                 if (context instanceof DSemanticDecorator) {
                     context = ((DSemanticDecorator) context).getTarget();
                 }
-                colorUpdater.updateColors(context, style, style.getDescription(), previousStyle);
-                refreshEdgeStyleWithContext(style, context, previousStyle);
+                colorUpdater.updateColors(context, style, description, previousStyle);
+                refreshEdgeLabelColors(context, style, description, previousStyle);
             } else {
-                colorUpdater.updateColors(style, style.getDescription(), previousStyle);
-                refreshEdgeStyle(style, previousStyle);
+                colorUpdater.updateColors(style, description, previousStyle);
+                refreshEdgeLabelColors(null, style, description, previousStyle);
             }
         }
-
     }
 
-    /**
-     * @param style
-     */
-    private void refreshEdgeStyle(final Style style, Option<? extends Style> previousStyle) {
-        if (style instanceof EdgeStyle && (!previousStyle.some() || previousStyle.get() instanceof EdgeStyle)) {
-            CenterLabelStyle centerLabelStyle = ((EdgeStyle) style).getCenterLabelStyle();
+    private void refreshEdgeLabelColors(final EObject context, Style style, StyleDescription description, Option<? extends Style> previousStyle) {
+        if (style instanceof EdgeStyle && description instanceof EdgeStyleDescription) {
+            EdgeStyleDescription edgeStyleDescription = (EdgeStyleDescription) description;
+            EdgeStyle edgeStyle = (EdgeStyle) style;
+
+            CenterLabelStyle centerLabelStyle = edgeStyle.getCenterLabelStyle();
             if (centerLabelStyle != null) {
                 Option<CenterLabelStyle> previousCenterLabelStyle = Options.newNone();
                 if (previousStyle.some()) {
                     previousCenterLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getCenterLabelStyle());
                 }
-                colorUpdater.updateColors(centerLabelStyle, centerLabelStyle.getDescription(), previousCenterLabelStyle);
+                colorUpdater.updateColors(context, centerLabelStyle, edgeStyleDescription.getCenterLabelStyleDescription(), previousCenterLabelStyle);
             }
-            BeginLabelStyle beginLabelStyle = ((EdgeStyle) style).getBeginLabelStyle();
+            BeginLabelStyle beginLabelStyle = edgeStyle.getBeginLabelStyle();
             if (beginLabelStyle != null) {
                 Option<BeginLabelStyle> previousBeginLabelStyle = Options.newNone();
                 if (previousStyle.some()) {
                     previousBeginLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getBeginLabelStyle());
                 }
-                colorUpdater.updateColors(beginLabelStyle, beginLabelStyle.getDescription(), previousBeginLabelStyle);
+                colorUpdater.updateColors(context, beginLabelStyle, edgeStyleDescription.getBeginLabelStyleDescription(), previousBeginLabelStyle);
             }
-            EndLabelStyle endLabelStyle = ((EdgeStyle) style).getEndLabelStyle();
+            EndLabelStyle endLabelStyle = edgeStyle.getEndLabelStyle();
             if (endLabelStyle != null) {
                 Option<EndLabelStyle> previousEndLabelStyle = Options.newNone();
                 if (previousStyle.some()) {
                     previousEndLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getEndLabelStyle());
                 }
-                colorUpdater.updateColors(endLabelStyle, endLabelStyle.getDescription(), previousEndLabelStyle);
-            }
-        }
-    }
-
-    /**
-     * @param style
-     * @param context
-     */
-    private void refreshEdgeStyleWithContext(final Style style, EObject context, Option<? extends Style> previousStyle) {
-        if (style instanceof EdgeStyle) {
-            CenterLabelStyle centerLabelStyle = ((EdgeStyle) style).getCenterLabelStyle();
-            if (centerLabelStyle != null) {
-                Option<CenterLabelStyle> previousCenterLabelStyle = Options.newNone();
-                if (previousStyle.some()) {
-                    previousCenterLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getCenterLabelStyle());
-                }
-                colorUpdater.updateColors(context, centerLabelStyle, centerLabelStyle.getDescription(), previousCenterLabelStyle);
-            }
-            BeginLabelStyle beginLabelStyle = ((EdgeStyle) style).getBeginLabelStyle();
-            if (beginLabelStyle != null) {
-                Option<BeginLabelStyle> previousBeginLabelStyle = Options.newNone();
-                if (previousStyle.some()) {
-                    previousBeginLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getBeginLabelStyle());
-                }
-                colorUpdater.updateColors(context, beginLabelStyle, beginLabelStyle.getDescription(), previousBeginLabelStyle);
-            }
-            EndLabelStyle endLabelStyle = ((EdgeStyle) style).getEndLabelStyle();
-            if (endLabelStyle != null) {
-                Option<EndLabelStyle> previousEndLabelStyle = Options.newNone();
-                if (previousStyle.some()) {
-                    previousEndLabelStyle = Options.newSome(((EdgeStyle) previousStyle.get()).getEndLabelStyle());
-                }
-                colorUpdater.updateColors(context, endLabelStyle, endLabelStyle.getDescription(), previousEndLabelStyle);
+                colorUpdater.updateColors(context, endLabelStyle, edgeStyleDescription.getEndLabelStyleDescription(), previousEndLabelStyle);
             }
         }
     }
@@ -1449,8 +1412,8 @@ public final class StyleHelper {
      * @return if the description is the same type as the style
      */
     private boolean isDifferentDescription(Style bestStyle, Style currentStyle) {
-        return !EqualityHelper.areEquals(bestStyle.getDescription(), currentStyle.getDescription()) || !bestStyle.getClass().equals(currentStyle.getClass())
-                && currentStyle.getCustomFeatures().isEmpty();
+        return !EqualityHelper.areEquals(bestStyle.getDescription(), currentStyle.getDescription())
+                || !bestStyle.getClass().equals(currentStyle.getClass()) && currentStyle.getCustomFeatures().isEmpty();
     }
 
     /**

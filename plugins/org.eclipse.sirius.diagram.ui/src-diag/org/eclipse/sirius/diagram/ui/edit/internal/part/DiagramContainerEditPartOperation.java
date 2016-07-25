@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -452,17 +453,25 @@ public final class DiagramContainerEditPartOperation {
 
     private static Dimension getCornerDimension(EObject eObj) {
         final Dimension corner = new Dimension(0, 0);
-        if (eObj instanceof DStylizable) {
-            final Style style = ((DStylizable) eObj).getStyle();
-            if (style != null && style.getDescription() instanceof ContainerStyleDescription) {
-                final ContainerStyleDescription description = (ContainerStyleDescription) style.getDescription();
-                if (description.isRoundedCorner()) {
-                    corner.height = description.getArcHeight();
-                    corner.width = description.getArcWidth();
-                }
+        StyleDescription styleDescription = getStyleDecription(eObj);
+        if (styleDescription instanceof ContainerStyleDescription) {
+            final ContainerStyleDescription description = (ContainerStyleDescription) styleDescription;
+            if (description.isRoundedCorner()) {
+                corner.height = description.getArcHeight();
+                corner.width = description.getArcWidth();
             }
         }
         return corner;
+    }
+
+    private static StyleDescription getStyleDecription(EObject eObj) {
+        if (eObj instanceof DStylizable) {
+            final Style style = ((DStylizable) eObj).getStyle();
+            if (style != null) {
+                return style.getDescription();
+            }
+        }
+        return null;
     }
 
     /**
