@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,12 +17,15 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Handle;
 import org.eclipse.gef.editpolicies.SelectionHandlesEditPolicy;
 import org.eclipse.gef.handles.BendpointMoveHandle;
 import org.eclipse.gef.handles.ConnectionEndHandle;
 import org.eclipse.gef.handles.ConnectionStartHandle;
-import org.eclipse.gef.handles.NonResizableHandleKit;
+import org.eclipse.gef.handles.MoveHandle;
+import org.eclipse.gef.tools.DragEditPartsTracker;
+import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
@@ -122,9 +125,28 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
      */
     protected List<Handle> createNameSelectionHandles() {
         final List<Handle> list = Lists.newArrayList();
-        for (AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
+        for (final AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
             if (edgeNameEditPart != null && edgeNameEditPart.getEditText() != null && !"".equals(edgeNameEditPart.getEditText())) { //$NON-NLS-1$
-                NonResizableHandleKit.addMoveHandle(edgeNameEditPart, list);
+                list.add(new MoveHandle(edgeNameEditPart) {
+                    /**
+                     * Overridden to create the same
+                     * {@link DragEditPartsTracker} than
+                     *
+                     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.
+                     *      LabelEditPart#getDragTracker(Request) that always
+                     *      returns true for isMove() method.
+                     */
+                    @Override
+                    protected DragTracker createDragTracker() {
+                        DragEditPartsTracker tracker = new DragEditPartsTrackerEx(edgeNameEditPart) {
+                            @Override
+                            protected boolean isMove() {
+                                return true;
+                            }
+                        };
+                        return tracker;
+                    }
+                });
             }
         }
 
