@@ -13,6 +13,7 @@ h3. User-Visible Changes
 If a viewpoint  has been defined with a more recent version of Sirius than the one you are using, the @ViewpointRegistry@ will not register it and a warning is logged in the error log view to inform the user.
 * <span class="label label-info">Modified</span> The "move edge group":./user/diagrams/Diagrams.html#move_edge_group feature now also work for a selection of edge group.
 * <span class="label label-info">Modified</span> In a diagram editor, the zoom with mouse wheel is now zooming on mouse location instead of center of the editor. See "user documentation":./user/diagrams/Diagrams.html#zooming_diagram_id .
+* <span class="label label-info">Modified</span> The direct edit on a Note or Text is now accessible by a slow double click like any other diagram element.
 
 h3. Specifier-Visible Changes
 

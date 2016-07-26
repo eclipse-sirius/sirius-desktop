@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -23,8 +24,12 @@ import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.TextEditorAppearedCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -124,19 +129,58 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         checkDirectEditLabel(precondition);
     }
 
-    private void checkDirectEditLabel(String precondition) {
-        // Click a first time on the edit part to select it.
-        editor.click(CLASS_NAME, AbstractDiagramContainerEditPart.class);
-        SWTBotUtils.waitAllUiEvents();
-        // Click a second time on the edit part to enable the direct edit mode.
-        editor.clickCentered(CLASS_NAME, AbstractDiagramContainerEditPart.class);
-        SWTBotUtils.waitAllUiEvents();
+    /**
+     * Tests that the direct edit on a Note requires only two clicks.
+     * 
+     * @throws Exception
+     *             thrown to fail
+     */
+    public void testDirectEditOnNote() throws Exception {
+        if (!System.getProperty("os.name").equals("Linux")) {
+            editor.activateTool("Note");
+            editor.click(100, 100);
+            editor.directEditType("Note Label");
 
-        /* wait until text widget appears */
-        try {
-            editor.bot().text();
-        } catch (Exception e) {
-            assertTrue("The direct edit mode is not accessible while there is no precondition.", "[false/]".equals(precondition));
+            editor.click(CLASS_NAME, AbstractDiagramContainerEditPart.class);
+            SWTBotUtils.waitAllUiEvents();
+
+            checkDirectEditLabel(null, "Note Label", SiriusNoteEditPart.class);
+        }
+    }
+
+    /**
+     * Tests that the direct edit on a Note requires only two clicks.
+     * 
+     * @throws Exception
+     *             thrown to fail
+     */
+    public void testDirectEditOnText() throws Exception {
+        if (!System.getProperty("os.name").equals("Linux")) {
+            editor.activateTool("Text");
+            editor.click(100, 100);
+            editor.directEditType("Text Label");
+
+            editor.click(CLASS_NAME, AbstractDiagramContainerEditPart.class);
+            SWTBotUtils.waitAllUiEvents();
+
+            checkDirectEditLabel(null, "Text Label", SiriusTextEditPart.class);
+        }
+    }
+
+    private void checkDirectEditLabel(String precondition) {
+        checkDirectEditLabel(precondition, CLASS_NAME, AbstractDiagramContainerEditPart.class);
+    }
+
+    private void checkDirectEditLabel(String precondition, final String editPartlabel, Class<? extends IGraphicalEditPart> editPartClass) {
+        // Click a first time on the edit part to select it.
+        editor.click(editPartlabel, editPartClass);
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new CheckSelectedCondition(editor, editPartlabel, editPartClass));
+        // Click a second time on the edit part to enable the direct edit mode.
+        editor.clickCentered(editPartlabel, editPartClass);
+
+        bot.waitUntil(new TextEditorAppearedCondition(editor, editPartClass, precondition), 3000);
+        if ("[false/]".equals(precondition)) {
             return;
         }
         /* Find the text widget and check its label now. */
@@ -144,8 +188,9 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         if (controls.size() == 1) {
             final Text textControl = controls.get(0);
             UIThreadRunnable.syncExec(new VoidResult() {
+                @Override
                 public void run() {
-                    assertEquals(CLASS_NAME, textControl.getText());
+                    assertEquals(editPartlabel, textControl.getText());
                 }
             });
         } else {
@@ -154,7 +199,7 @@ public class DirectEditLabelTest extends AbstractSiriusSwtBotGefTestCase {
         // Edit the current edit part by adding a suffix to its current name.
         editor.directEditType("newLabel");
         // Check that an editPart exists with the expected new name.
-        editor.getEditPart("newLabel", AbstractDiagramContainerEditPart.class);
+        editor.getEditPart("newLabel", editPartClass);
     }
 
     private void addDirectEditToolToVSM(DiagramDescription diagramDescription, String precondition) throws Exception {
