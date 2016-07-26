@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VSMForEdgeLabelsMoveTest" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VSMForEdgeLabelsMoveTest" version="11.0.0.201601261200">
   <ownedViewpoints name="VSMForEdgeLabelsMoveTest" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20EClass']" name="Diagram" domainClass="ecore.EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
@@ -392,6 +392,204 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithBeginAndCenterLabel" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference" preconditionExpression="[not name.equalsIgnoreCase('inOut')/]" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithBeginAndCenterLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithBeginAndCenterLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true">
+          <style sourceArrow="Diamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <beginLabelStyleDescription labelExpression="aql:self.name+'Begin'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name+'Center'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESupertypes" semanticCandidatesExpression="" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithBeginAndCenterLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithBeginAndCenterLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eSuperTypes">
+          <style targetArrow="InputClosedArrow" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+          <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PortOut" preconditionExpression="[name.equalsIgnoreCase('out')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eOperations" domainClass="ecore.EOperation">
+            <style xsi:type="style:BundledImageDescription" labelExpression="[name + '()'/]" labelAlignment="LEFT" tooltipExpression="feature:name" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:interface">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="feature:abstract">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Package" activeByDefault="true"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithZeroSpecifiedLabel" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference" preconditionExpression="[not name.equalsIgnoreCase('inOut')/]" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithZeroSpecifiedLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithZeroSpecifiedLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true">
+          <style sourceArrow="Diamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESupertypes" semanticCandidatesExpression="" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithZeroSpecifiedLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithZeroSpecifiedLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eSuperTypes">
+          <style targetArrow="InputClosedArrow" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+          <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PortOut" preconditionExpression="[name.equalsIgnoreCase('out')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eOperations" domainClass="ecore.EOperation">
+            <style xsi:type="style:BundledImageDescription" labelExpression="[name + '()'/]" labelAlignment="LEFT" tooltipExpression="feature:name" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:interface">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="feature:abstract">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Package" activeByDefault="true"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithEmptyLabel" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference" preconditionExpression="[not name.equalsIgnoreCase('inOut')/]" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithEmptyLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithEmptyLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true">
+          <style sourceArrow="Diamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <beginLabelStyleDescription labelExpression="aql:''">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:''">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription showIcon="false" labelExpression="aql:''">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESupertypes" semanticCandidatesExpression="" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithEmptyLabel']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForEdgeLabelsMoveTest']/@ownedRepresentations[name='DiagramWithEmptyLabel']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eSuperTypes">
+          <style targetArrow="InputClosedArrow" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClass" semanticCandidatesExpression="[eClassifiers/]" synchronizationLock="true" domainClass="ecore.EClass" childrenPresentation="List">
+          <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PortOut" preconditionExpression="[name.equalsIgnoreCase('out')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eOperations" domainClass="ecore.EOperation">
+            <style xsi:type="style:BundledImageDescription" labelExpression="[name + '()'/]" labelAlignment="LEFT" tooltipExpression="feature:name" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderSizeComputationExpression="1" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:interface">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="feature:abstract">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Package" activeByDefault="true"/>
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">

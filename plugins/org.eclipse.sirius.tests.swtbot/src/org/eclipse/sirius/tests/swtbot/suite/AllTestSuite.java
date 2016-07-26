@@ -154,7 +154,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CompartmentsDragAndDropTest.class);
         suite.addTestSuite(EdgeSelectionTest.class);
         suite.addTestSuite(DiagramMouseZoomTest.class);
-
+        suite.addTestSuite(EdgeLabelsMoveFromEdgeMoveTest.class);
     }
 
     /**
@@ -247,7 +247,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
         suite.addTestSuite(EdgeLabelStabilityTest.class);
-        suite.addTestSuite(EdgeLabelsMoveFromEdgeMoveTest.class);
         suite.addTestSuite(EdgeLabelsMoveTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
         suite.addTestSuite(EdgeOnFigureWithAlphaAnchorTest.class);

@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,6 +28,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Transform;
 import org.eclipse.draw2d.geometry.Vector;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
@@ -32,16 +36,21 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg.KeyPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
@@ -1119,5 +1128,202 @@ public class EdgeLabelsMoveFromEdgeMoveTest extends AbstractSiriusSwtBotGefTestC
         diagramEditor.zoom(zoomLevel);
         diagramEditor.maximize();
         return diagramEditor;
+    }
+
+    /**
+     * Tests that begin, end and center labels of an edge are snapped back when
+     * the action "Snap Back Label(s) is used on it.
+     */
+    public void testSingleSnapBackOnEdgeWithThreeLabels() {
+        String diagramName = "EdgeWith3SegmentsHVH";
+
+        diagramEditor = setUpEditorAccordingToDimensions(diagramName, ZoomLevel.ZOOM_100);
+
+        String beginLabel = "refToFBegin";
+        String centerLabel = "refToFCenter";
+        String endLabel = "refToFEnd";
+
+        // Expected distance between edge center and label origin point after
+        // using the action.
+        Map<String, Long> expectedLabelToDistanceWithEdge = new HashMap<String, Long>();
+        expectedLabelToDistanceWithEdge.put(beginLabel, Long.valueOf(65));
+        expectedLabelToDistanceWithEdge.put(centerLabel, Long.valueOf(13));
+        expectedLabelToDistanceWithEdge.put(endLabel, Long.valueOf(92));
+
+        checkLabelsSnapBack("E", "F", beginLabel, centerLabel, endLabel, expectedLabelToDistanceWithEdge);
+    }
+
+    /**
+     * Tests that begin and center labels of an edge are snapped back when the
+     * action "Snap Back Label(s) is used on it and no end label is specified.
+     */
+    public void testSingleSnapBackOnEdgeWithTwoLabels() {
+        String diagramName = "DiagramWithBeginAndCenterLabel";
+
+        diagramEditor = setUpEditorAccordingToDimensions(diagramName, diagramName, ZoomLevel.ZOOM_100);
+
+        String beginLabel = "refToFBegin";
+        String centerLabel = "refToFCenter";
+
+        // Expected distance between edge center and label origin point after
+        // using the action.
+        Map<String, Long> expectedLabelToDistanceWithEdge = new HashMap<String, Long>();
+        expectedLabelToDistanceWithEdge.put(beginLabel, Long.valueOf(24));
+        expectedLabelToDistanceWithEdge.put(centerLabel, Long.valueOf(10));
+
+        checkLabelsSnapBack("E", "F", beginLabel, centerLabel, null, expectedLabelToDistanceWithEdge);
+    }
+
+    /**
+     * Tests that edge labels don't move when using snap back label action on an
+     * edge without labels defined.
+     */
+    public void testSingleSnapBackOnEdgeWithZeroLabels() {
+        String diagramName = "DiagramWithZeroSpecifiedLabel";
+
+        diagramEditor = setUpEditorAccordingToDimensions(diagramName, diagramName, ZoomLevel.ZOOM_100);
+
+        checkAllEdgeLabelsDontMove("E", "F");
+    }
+
+    /**
+     * Tests that edge labels don't move when using snap back label action on an
+     * edge with empty labels.
+     */
+    public void testSingleSnapBackOnEdgeWithEmptyLabels() {
+        String diagramName = "DiagramWithEmptyLabel";
+
+        diagramEditor = setUpEditorAccordingToDimensions(diagramName, diagramName, ZoomLevel.ZOOM_100);
+
+        checkAllEdgeLabelsDontMove("E", "F");
+    }
+
+    /**
+     * Verifies that all labels of the edge related to the given source and
+     * target part does not move when Snap back Label(s) action is run.
+     * 
+     * @param targetEditPartName
+     *            the name of the edit part used as target of the edge from
+     *            which we test the snap back labels action.
+     * @param sourceEditPartName
+     *            the name of the edit part used as source of the edge from
+     *            which we test the snap back labels action.
+     * @param beginLabelName
+     *            the name of the begin label of an edge.
+     * @param centerLabelName
+     *            the name of the center label of an edge.
+     * @param endLabelName
+     *            the name of the end label of an edge.
+     * 
+     */
+    private void checkAllEdgeLabelsDontMove(String sourceEditPartName, String targetEditPartName) {
+        SWTBotGefEditPart sourceEditPart = diagramEditor.getEditPart(sourceEditPartName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart targetEditPart = diagramEditor.getEditPart(targetEditPartName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefConnectionEditPart swtEdgeEditPart = diagramEditor.getConnectionEditPart(sourceEditPart, targetEditPart).get(0);
+
+        AbstractDiagramEdgeEditPart edgeEditPart = (AbstractDiagramEdgeEditPart) swtEdgeEditPart.part();
+
+        List<?> children = edgeEditPart.getChildren();
+        assertEquals(3, children.size());
+
+        AbstractDiagramNameEditPart lablOne = (AbstractDiagramNameEditPart) children.get(0);
+        AbstractDiagramNameEditPart lablTwo = (AbstractDiagramNameEditPart) children.get(1);
+        AbstractDiagramNameEditPart lablThree = (AbstractDiagramNameEditPart) children.get(2);
+
+        Rectangle originalBoundLabelOne = lablOne.getFigure().getBounds().getTranslated(0, 0);
+        Rectangle originalBoundLabelTwo = lablTwo.getFigure().getBounds().getTranslated(0, 0);
+        Rectangle originalBoundLabelThree = lablThree.getFigure().getBounds().getTranslated(0, 0);
+
+        edgeEditPart.performRequest(new Request(ActionIds.EDGE_SNAP_BACK));
+        SWTBotUtils.waitAllUiEvents();
+
+        // We verify that labels have not moved.
+        assertEquals("Label '" + lablOne.getEditText() + "' position has changed whereas it should have not.", originalBoundLabelOne, lablOne.getFigure().getBounds());
+        assertEquals("Label '" + lablTwo.getEditText() + "' position has changed whereas it should have not.", originalBoundLabelTwo, lablTwo.getFigure().getBounds());
+        assertEquals("Label '" + lablThree.getEditText() + "' position has changed whereas it should have not.", originalBoundLabelThree, lablThree.getFigure().getBounds());
+
+    }
+
+    /**
+     * Verifies that given label(s) are snapped back correctly by using the
+     * given original and expected distances between edge center and labels
+     * origin points.
+     * 
+     * @param targetEditPartName
+     *            the name of the edit part used as target of the edge from
+     *            which we test the snap back labels action.
+     * @param sourceEditPartName
+     *            the name of the edit part used as source of the edge from
+     *            which we test the snap back labels action.
+     * @param beginLabelName
+     *            the name of the begin label of an edge.
+     * @param centerLabelName
+     *            the name of the center label of an edge.
+     * @param endLabelName
+     *            the name of the end label of an edge.
+     * @param expectedLabelToDistanceWithEdge
+     *            a map containing the original distance between edge center and
+     *            label origin point.
+     */
+    private void checkLabelsSnapBack(String sourceEditPartName, String targetEditPartName, String beginLabelName, String centerLabelName, String endLabelName,
+            Map<String, Long> expectedLabelToDistanceWithEdge) {
+        SWTBotGefEditPart sourceEditPart = diagramEditor.getEditPart(sourceEditPartName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefEditPart targetEditPart = diagramEditor.getEditPart(targetEditPartName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefConnectionEditPart swtEdgeEditPart = diagramEditor.getConnectionEditPart(sourceEditPart, targetEditPart).get(0);
+
+        AbstractDiagramEdgeEditPart edgeEditPart = (AbstractDiagramEdgeEditPart) swtEdgeEditPart.part();
+        Point edgeCenter = ((ViewEdgeFigure) edgeEditPart.getFigure()).getPoints().getMidpoint();
+
+        List<?> children = edgeEditPart.getChildren();
+        assertEquals("Wrong number of children parts", 3, children.size());
+
+        SWTBotGefEditPart botBeginRefPart = beginLabelName != null ? diagramEditor.getEditPart(beginLabelName) : null;
+        SWTBotGefEditPart botCenterRefPart = centerLabelName != null ? diagramEditor.getEditPart(centerLabelName) : null;
+        SWTBotGefEditPart botEndRefPart = endLabelName != null ? diagramEditor.getEditPart(endLabelName) : null;
+        AbstractDEdgeNameEditPart beginRefPart = beginLabelName != null ? (AbstractDEdgeNameEditPart) botBeginRefPart.part() : null;
+        AbstractDEdgeNameEditPart centerRefPart = centerLabelName != null ? (AbstractDEdgeNameEditPart) botCenterRefPart.part() : null;
+        AbstractDEdgeNameEditPart endRefPart = endLabelName != null ? (AbstractDEdgeNameEditPart) botEndRefPart.part() : null;
+
+        Point boundBeginRef = beginLabelName != null ? beginRefPart.getFigure().getBounds().getCenter() : null;
+        Point boundCenterRef = centerLabelName != null ? centerRefPart.getFigure().getBounds().getCenter() : null;
+        Point boundEndRef = endLabelName != null ? endRefPart.getFigure().getBounds().getCenter() : null;
+
+        // We check the labels are not to their default location
+        if (beginLabelName != null)
+            assertNotEquals("Label '" + beginLabelName + "'must not be to the default position", expectedLabelToDistanceWithEdge.get(beginLabelName),
+                    (Long) Math.round(edgeCenter.getDistance(boundBeginRef)));
+        if (centerLabelName != null)
+            assertNotEquals("Label '" + centerLabelName + "'must not be to the default position", expectedLabelToDistanceWithEdge.get(centerLabelName),
+                    (Long) Math.round(edgeCenter.getDistance(boundCenterRef)));
+        if (endLabelName != null)
+            assertNotEquals("Label '" + endLabelName + "'must not be to the default position", expectedLabelToDistanceWithEdge.get(endLabelName),
+                    (Long) Math.round(edgeCenter.getDistance(boundEndRef)));
+
+        CheckEditPartMoved checkBeginRefPartMoved = beginLabelName != null ? new CheckEditPartMoved(botBeginRefPart) : null;
+        CheckEditPartMoved checkCenterRefPartMoved = centerLabelName != null ? new CheckEditPartMoved(botCenterRefPart) : null;
+        CheckEditPartMoved checkEndRefPartMoved = endLabelName != null ? new CheckEditPartMoved(botEndRefPart) : null;
+
+        edgeEditPart.performRequest(new Request(ActionIds.EDGE_SNAP_BACK));
+        if (beginLabelName != null)
+            bot.waitUntil(checkBeginRefPartMoved);
+        if (centerLabelName != null)
+            bot.waitUntil(checkCenterRefPartMoved);
+        if (endLabelName != null)
+            bot.waitUntil(checkEndRefPartMoved);
+
+        boundBeginRef = beginLabelName != null ? beginRefPart.getFigure().getBounds().getCenter() : null;
+        boundCenterRef = centerLabelName != null ? centerRefPart.getFigure().getBounds().getCenter() : null;
+        boundEndRef = endLabelName != null ? endRefPart.getFigure().getBounds().getCenter() : null;
+        // We verify that labels have been moved near the edge at its default
+        // location.
+        if (beginLabelName != null)
+            assertEquals("Label '" + beginLabelName + "'must be to its default position", expectedLabelToDistanceWithEdge.get(beginLabelName),
+                    (Long) Math.round(edgeCenter.getDistance(boundBeginRef)));
+        if (centerLabelName != null)
+            assertEquals("Label '" + centerLabelName + "'must be to its default position", expectedLabelToDistanceWithEdge.get(centerLabelName),
+                    (Long) Math.round(edgeCenter.getDistance(boundCenterRef)));
+        if (endLabelName != null)
+            assertEquals("Label '" + endLabelName + "'must be to its default position", expectedLabelToDistanceWithEdge.get(endLabelName), (Long) Math.round(edgeCenter.getDistance(boundEndRef)));
+
     }
 }

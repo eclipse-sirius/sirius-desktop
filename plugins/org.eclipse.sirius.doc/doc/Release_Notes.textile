@@ -49,6 +49,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* <span class="label label-success">Added</span> The constant @EDGE_SNAP_BACK@ has been added in class @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds@. It corresponds to the new snap back label action id that is present on edges.
 * <span class="label label-success">Added</span> 2 methods are added in @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ (and also in @org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager@):
 ** @applyFormat(IGraphicalEditPart)@: Apply the current format data (layout data and style data) to the given edit part.
 ** @applyStyle(IGraphicalEditPart)@: Apply the current style data to the give edit part.

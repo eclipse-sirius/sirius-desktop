@@ -104,4 +104,8 @@ public interface ActionIds {
      */
     String ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES = "siriusCopyAppearancePropertiesAction"; //$NON-NLS-1$
 
+    /**
+     * Action's id of the action snap backing all labels of an edge.
+     */
+    String EDGE_SNAP_BACK = "edgeSnapBackAction"; //$NON-NLS-1$
 }

@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusEdgeSnapBackAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
@@ -74,6 +75,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new SelectHiddenElementsAction(workbenchPage);
         } else if (ActionIds.ROUTING_STYLE.equals(actionId)) {
             result = TabbarRouterAction.createTreeRouterAction(workbenchPage);
+        } else if (ActionIds.EDGE_SNAP_BACK.equals(actionId)) {
+            result = new SiriusEdgeSnapBackAction(workbenchPage);
         } else if (ActionIds.DESELECT_ALL.equals(actionId)) {
             result = new DeselectAllAction();
         } else if (ActionIds.DISTRIBUTE_GAPS_HORIZONTALLY.equals(actionId)) {

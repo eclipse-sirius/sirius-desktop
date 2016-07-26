@@ -1107,6 +1107,15 @@ public final class Messages {
     public static String SiriusDocumentProvider_UnsynchronizedFileSaveError;
 
     @TranslatableMessage
+    public static String SiriusEdgeSnapBackAction_EdgeSnapBackActionToolTipText;
+
+    @TranslatableMessage
+    public static String SiriusEdgeSnapBackAction_EdgeSnapBackLabel;
+
+    @TranslatableMessage
+    public static String SiriusEdgeSnapBackAction_EdgeSnapBackCommandLabel;
+
+    @TranslatableMessage
     public static String SiriusElementChooserDialog_SelectModelElementTitle;
 
     @TranslatableMessage

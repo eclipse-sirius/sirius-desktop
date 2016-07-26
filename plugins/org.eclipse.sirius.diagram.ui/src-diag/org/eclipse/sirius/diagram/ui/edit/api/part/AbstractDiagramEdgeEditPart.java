@@ -54,6 +54,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOp
 import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeSelectionFeedbackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusEdgeLabelSnapBackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -64,7 +65,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.Siri
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -161,8 +161,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         } else {
             installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, selectionFeedBackEditPolicy);
         }
-        // Replace the feedback policy to have a lighter color for guides
-        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
+        // Policy that handles snap back action and have a lighter color for
+        // guides
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusEdgeLabelSnapBackEditPolicy());
     }
 
     @Override

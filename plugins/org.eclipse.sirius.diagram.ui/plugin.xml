@@ -162,7 +162,18 @@
                  toolbarPath="/toolbarCopyAppearanceGroup">
            </partAction>
          </partContribution>
-
+         
+		<popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart">
+            </popupStructuredContributionCriteria>
+            <popupMenu path="/filterFormatGroup" id="formatMenu">
+            </popupMenu>
+            <popupMenuGroup path="/formatMenu/" id="miscellaneousGroup">
+            </popupMenuGroup>
+            <popupAction path="/formatMenu/miscellaneousGroup" id="edgeSnapBackAction">
+            </popupAction>
+          </popupContribution>       
+          
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
             <popupMenuGroup path="/editMenu/" id="copyFormatGroup" separator="true"/>

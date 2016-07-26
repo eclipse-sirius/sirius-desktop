@@ -109,6 +109,21 @@ There are specific shortcuts to change the move behavior:
 
 h3. Manage edges
 
+h4. Snap back edge labels
+
+All visible edge labels can be snapped back to their default position by using the action _Snap back label(s)_. This action is available within the edge contextual menu under the format section _Format/Snap back label(s)_:
+!images/snap-back-label.png!
+
+The result of this action is visible here: 
+!images/snapped-back-label.png!
+
+This action is also available individually for each visible label of an edge. To use it, you have to use the action _Snap Back_ under the label contextual menu _Format/Snap Back_:
+!images/snap-back-label-from-label.png!
+
+The result of this action is visible here: 
+
+!images/snapped-back-label-from-label.png!
+
 h4. Move bend-points
 
 It is possible to snap the bend-points to all shapes by pressing <kdb>F4</kdb> shortcut key during the move. This feature is only available if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram. As for _Snap to grid_, and unlike to snap for node, there is no guide drawn during the move.
