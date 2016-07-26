@@ -90,6 +90,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
@@ -514,14 +515,7 @@ public class DDiagramElementSynchronizer {
             final NodeStyleDescription style = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(newNode.getActualMapping(), newNode.getTarget(), newNode, container.getTarget(),
                     diagram);
             if (style != null) {
-                if (!StringUtil.isEmpty(style.getLabelExpression())) {
-                    String computeLabel = computeLabel(newNode, style);
-                    if (!("".equals(newNode.getName()) && computeLabel == null) && !StringUtil.equals(newNode.getName(), computeLabel)) { //$NON-NLS-1$
-                        // This is a workaround for a CDO issue in legacy mode
-                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                        newNode.setName(computeLabel);
-                    }
-                }
+                refreshLabel(newNode, style);
                 refreshTooltip(newNode, style);
             }
         }
@@ -547,14 +541,7 @@ public class DDiagramElementSynchronizer {
                 containerStyleDescription = (ContainerStyleDescription) this.mappingHelper.getBestStyleDescription(containerMapping, container.getTarget(), container, cContainer.getTarget(), diagram);
             }
             if (containerStyleDescription != null) {
-                if (!StringUtil.isEmpty(containerStyleDescription.getLabelExpression())) {
-                    String computeLabel = computeLabel(container, containerStyleDescription);
-                    if (!("".equals(container.getName()) && computeLabel == null) && !StringUtil.equals(container.getName(), computeLabel)) { //$NON-NLS-1$
-                        // This is a workaround for a CDO issue in legacy mode
-                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                        container.setName(computeLabel);
-                    }
-                }
+                refreshLabel(container, containerStyleDescription);
                 refreshTooltip(container, containerStyleDescription);
                 refreshStyle(container, containerMapping);
             }
@@ -591,15 +578,9 @@ public class DDiagramElementSynchronizer {
                 nodeStyleDescription = (NodeStyleDescription) this.mappingHelper.getBestStyleDescription(nodeMapping, newNode.getTarget(), newNode, container.getTarget(), diagram);
             }
             if (nodeStyleDescription != null) {
-                if (!StringUtil.isEmpty(nodeStyleDescription.getLabelExpression())) {
-                    String computeLabel = computeLabel(newNode, nodeStyleDescription);
-                    if (!("".equals(newNode.getName()) && computeLabel == null) && !StringUtil.equals(newNode.getName(), computeLabel)) { //$NON-NLS-1$
-                        // This is a workaround for a CDO issue in legacy mode
-                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                        newNode.setName(computeLabel);
-                    }
+                if (newNode.getResizeKind() != nodeStyleDescription.getResizeKind()) {
+                    newNode.setResizeKind(nodeStyleDescription.getResizeKind());
                 }
-                newNode.setResizeKind(nodeStyleDescription.getResizeKind());
 
                 // Don't set width and height here for Ellipse, Lozenge, Square
                 // or WorkspaceImage styles
@@ -609,6 +590,8 @@ public class DDiagramElementSynchronizer {
                 if (!StringUtil.isEmpty(nodeStyleDescription.getSizeComputationExpression()) && !customSizeRefresh) {
                     styleHelper.setComputedSize(newNode, nodeStyleDescription);
                 }
+
+                refreshLabel(newNode, nodeStyleDescription);
                 refreshTooltip(newNode, nodeStyleDescription);
                 refreshStyle(newNode, nodeMapping);
             }
@@ -616,8 +599,18 @@ public class DDiagramElementSynchronizer {
 
         // clean decorations
         cleanDecoration(newNode);
-
         refreshSemanticElements(newNode, newNode.getDiagramElementMapping());
+    }
+
+    private void refreshLabel(final DDiagramElement dde, LabelStyleDescription labelStyleDescription) {
+        if (!StringUtil.isEmpty(labelStyleDescription.getLabelExpression())) {
+            String computedLabel = computeLabel(dde, labelStyleDescription);
+            if (!("".equals(dde.getName()) && computedLabel == null) && !StringUtil.equals(dde.getName(), computedLabel)) { //$NON-NLS-1$
+                // This is a workaround for a CDO issue in legacy mode
+                // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
+                dde.setName(computedLabel);
+            }
+        }
     }
 
     private void refreshTooltip(final DDiagramElement elt, final TooltipStyleDescription style) {
