@@ -26,9 +26,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -90,16 +90,17 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters" };
 
-    private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { "Refresh diagram", "Show/Hide", "Pin/Unpin", "Paste the current recorded layout to the selected diagram", "Zoom In (Ctrl+=)",
-            "Zoom Out (Ctrl+-)", "Export diagram as image" };
+    private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
+            Messages.SelectPinnedElementsAction_tooltip, Messages.PasteStyleAction_toolTipText, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
-    private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Activate Layouting Mode" };
+    private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.SetLayoutingModeCommandAndUpdateActionImage_activateLabel };
 
     private static final String[] CONTAINER_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color",
             "Fill &Color", "Li&ne Color", "Line Style" };
 
-    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
-            "Hide label", "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
+    private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
+            Messages.SiriusDiagramActionBarContributor_hideElement, Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,
+            Messages.SiriusDiagramActionBarContributor_deleteFromModel, "Font", Messages.SetStyleToWorkspaceImageAction_text, Messages.ResetStylePropertiesToDefaultValuesAction_text,
             "Apply the applicable appearance properties of the last selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
 
     private static final String[] CONTAINER_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Bold Font Style", "Italic Font Style" };

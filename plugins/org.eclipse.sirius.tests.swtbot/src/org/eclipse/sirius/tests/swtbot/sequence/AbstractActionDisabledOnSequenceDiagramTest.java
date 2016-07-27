@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -35,22 +36,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * @author jdupont, mporhel
  */
 public abstract class AbstractActionDisabledOnSequenceDiagramTest extends AbstractDefaultModelSequenceTests {
-
-    private static final String PIN = "Pin selected elements";
-
-    private static final String UNPIN = "Unpin selected elements";
-
-    private static final String HIDE = "Hide element";
-
-    private static final String COPY_LAYOUT = "Copy the layout of the selected diagram elements";
-
-    private static final String PIN_UNPIN_WIZARD = "Pin/Unpin";
-
-    private static final String DIALOG_PINNING = "Diagram elements pinning";
-
-    private static final String SHOW_HIDE_WIZARD = "Show/Hide";
-
-    private static final String DIALOG_SHOWING = "Diagram elements visibility";
 
     /**
      * Method to retrieve the part to check.
@@ -93,7 +78,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * interactionUses, combinedFragments, Lost messages and found messages.
      */
     public void testPinFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The pin action in tabbar should not be enabled", PIN);
+        testActionFromTabbarOnSequenceDiagramComponents("The pin action in tabbar should not be enabled", Messages.PinElementsEclipseAction_text);
     }
 
     /**
@@ -101,7 +86,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * interactionUses, combinedFragments, Lost messages and found messages.
      */
     public void testUnpinFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The unPin action in tabbar should not be enabled", UNPIN);
+        testActionFromTabbarOnSequenceDiagramComponents("The unPin action in tabbar should not be enabled", Messages.UnpinElementsEclipseAction_text);
     }
 
     /**
@@ -109,7 +94,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * interactionUses, combinedFragments, Lost messages and found messages.
      */
     public void testHideFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The Hide action in tabbar should not be enabled", HIDE);
+        testActionFromTabbarOnSequenceDiagramComponents("The Hide action in tabbar should not be enabled", Messages.SiriusDiagramActionBarContributor_hideElement);
     }
 
     /**
@@ -118,7 +103,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * messages.
      */
     public void testCopyLayoutFromTabbarOnSequenceDiagramsComponents() {
-        testActionFromTabbarOnSequenceDiagramComponents("The Copy Layout action in tabbar should not be enabled", COPY_LAYOUT);
+        testActionFromTabbarOnSequenceDiagramComponents("The Copy Format action in tabbar should not be enabled", Messages.CopyFormatAction_toolTipText);
     }
 
     /**
@@ -128,7 +113,8 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * Session should not be in dirty.
      */
     public void testPinUnPinWizardFromTabbarOnSequenceDiagramsComponents() {
-        testActionWizardFromTabbarOnSequenceDiagramComponents(PIN_UNPIN_WIZARD, DIALOG_PINNING, "The elements in wizard Pin/UnPin should be show grayed and should have no effect");
+        testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectPinnedElementsAction_tooltip, Messages.SelectPinnedElementsAction_label,
+                "The elements in wizard Pin/UnPin should be show grayed and should have no effect");
     }
 
     /**
@@ -138,7 +124,8 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * Session should not be in dirty.
      */
     public void testShowHideWizardFromTabbarOnSequenceDiagramsComponents() {
-        testActionWizardFromTabbarOnSequenceDiagramComponents(SHOW_HIDE_WIZARD, DIALOG_SHOWING, "The elements in wizard Show/Hide should be show grayed and should have no effect");
+        testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectHiddenElementsAction_tooltip, Messages.HiddenElementsSelectionCommand_dialogTitle,
+                "The elements in wizard Show/Hide should be show grayed and should have no effect");
     }
 
     private void testActionWizardFromTabbarOnSequenceDiagramComponents(String toolTipAction, String dialogName, String messageError) {

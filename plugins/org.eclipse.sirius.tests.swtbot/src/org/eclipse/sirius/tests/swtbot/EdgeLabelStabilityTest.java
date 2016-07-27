@@ -15,6 +15,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -50,10 +51,6 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String FILE_DIR = "/";
 
     private static final String C2 = "C2Too lonnnnnnnnnnnng name";
-
-    private static final String COPY_LAYOUT_TOOLTIP = "Copy the layout of the selected diagram elements";
-
-    private static final String PASTE_LAYOUT_TOOLTIP = "Paste the current recorded layout to the selected diagram";
 
     private UIResource sessionAirdResource;
 
@@ -138,13 +135,13 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             Dimension edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);
 
             // Copy layout
-            bot.toolbarButtonWithTooltip(COPY_LAYOUT_TOOLTIP).click();
+            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText).click();
 
             // Open temp diagram
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_TEMP, DDiagram.class);
 
             // Paste layout
-            bot.toolbarButtonWithTooltip(PASTE_LAYOUT_TOOLTIP).click();
+            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText).click();
 
             assertEquals("The edge label width has changed", edgeLabelDimension.width, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).width);
             assertEquals("The edge label height has changed", edgeLabelDimension.height, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).height);
@@ -156,7 +153,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);
 
             // Copy layout
-            bot.toolbarButtonWithTooltip(COPY_LAYOUT_TOOLTIP).click();
+            bot.toolbarButtonWithTooltip(Messages.CopyFormatAction_toolTipText).click();
 
             // Close this editor to toggle back to temp diagram
             bot.activeEditor().close();
@@ -168,7 +165,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
                     .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_TEMP, UIDiagramRepresentation.class).open();
 
             // Paste layout
-            bot.toolbarButtonWithTooltip(PASTE_LAYOUT_TOOLTIP).click();
+            bot.toolbarButtonWithTooltip(Messages.PasteFormatAction_toolTipText).click();
 
             assertEquals("The edge label width has changed", edgeLabelDimension.width, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).width);
             assertEquals("The edge label height has changed", edgeLabelDimension.height, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).height);
