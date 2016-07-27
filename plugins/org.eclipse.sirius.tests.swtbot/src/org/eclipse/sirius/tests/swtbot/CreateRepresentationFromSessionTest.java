@@ -17,6 +17,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -183,6 +184,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
+        bot.waitUntil(Conditions.shellIsActive("Create Representation Wizard"));
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
 
@@ -235,6 +237,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.button(FINISH).click();
 
         // choose the representation name
+        bot.waitUntil(Conditions.shellIsActive("New " + representationDescLabel));
         SWTBotShell shell = bot.shell("New " + representationDescLabel);
         shell.activate();
         bot.button(OK).click();
@@ -267,6 +270,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
+        bot.waitUntil(Conditions.shellIsActive("Create Representation Wizard"));
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
         checkButtonBeforeSelectionFirstWizard();
@@ -276,6 +280,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.button(NEXT).click();
 
         // select semantic element of the new representation
+        bot.waitUntil(Conditions.shellIsActive("Create Representation"));
         shell = bot.shell("Create Representation");
         shell.activate();
         checkButtonBeforeSelectionSecondWizard();
@@ -288,6 +293,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
+        bot.waitUntil(Conditions.shellIsActive("Create Representation Wizard"));
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
         bot.button(CANCEL);
