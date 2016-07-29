@@ -91,7 +91,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String[] DIAGRAM_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange All", "Select &All", "Layers", "Filters" };
 
     private static final String[] DIAGRAM_TOOLBARBUTTONS_TOOLTIPS = { Messages.SiriusDiagramActionBarContributor_refreshDiagram, Messages.SelectHiddenElementsAction_tooltip,
-            Messages.SelectPinnedElementsAction_tooltip, Messages.PasteStyleAction_toolTipText, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
+            Messages.SelectPinnedElementsAction_tooltip, Messages.PasteFormatAction_toolTipText, "Zoom In (Ctrl+=)", "Zoom Out (Ctrl+-)", Messages.SaveAsImageFileAction_label };
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { Messages.SetLayoutingModeCommandAndUpdateActionImage_activateLabel };
 
