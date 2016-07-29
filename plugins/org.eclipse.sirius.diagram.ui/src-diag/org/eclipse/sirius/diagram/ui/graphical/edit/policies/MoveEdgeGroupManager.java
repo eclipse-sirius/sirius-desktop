@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,9 @@
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -24,6 +26,8 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -39,12 +43,20 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * This class is responsible for managing the move edge group tool. see #471104
  * relevant ticket or specification for more details.
  * 
- * @author Florian Barbin
+ * @author <a href="mailto:florian.barbin@obeo.fr">Florian Barbin</a>
  *
  */
 public class MoveEdgeGroupManager {
@@ -97,14 +109,28 @@ public class MoveEdgeGroupManager {
     public void showGroupFeedback() {
         if (accept()) {
             ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
-            AbstractDiagramBorderNodeEditPart sourceEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getSource();
-            AbstractDiagramBorderNodeEditPart targetEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getTarget();
-            ChangeBoundsRequest sourceChangeBoundsRequest = createChangeBoundsRequest(sourceEditPart);
-            ChangeBoundsRequest targetChangeBoundsRequest = createChangeBoundsRequest(targetEditPart);
-            sourceEditPart.showSourceFeedback(sourceChangeBoundsRequest);
-            targetEditPart.showSourceFeedback(targetChangeBoundsRequest);
+            for (ConnectionEditPart selectedConnectionEditPart : Iterables.filter(connectionEditPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
+                showGroupFeedback(selectedConnectionEditPart);
+            }
         }
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private void showGroupFeedback(ConnectionEditPart connectionEditPart) {
+        AbstractDiagramBorderNodeEditPart sourceEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getSource();
+        AbstractDiagramBorderNodeEditPart targetEditPart = (AbstractDiagramBorderNodeEditPart) connectionEditPart.getTarget();
+        Set<EditPart> movedBorderNodes = Sets.newLinkedHashSet();
+        for (ConnectionEditPart cep : Iterables.filter(sourceEditPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
+            movedBorderNodes.add(cep.getSource());
+            movedBorderNodes.add(cep.getTarget());
+        }
+        ChangeBoundsRequest sourceChangeBoundsRequest = createChangeBoundsRequest(sourceEditPart);
+        sourceChangeBoundsRequest.getEditParts().addAll(movedBorderNodes);
+        ChangeBoundsRequest targetChangeBoundsRequest = createChangeBoundsRequest(targetEditPart);
+        targetChangeBoundsRequest.getEditParts().addAll(movedBorderNodes);
+        sourceEditPart.showSourceFeedback(sourceChangeBoundsRequest);
+        targetEditPart.showSourceFeedback(targetChangeBoundsRequest);
     }
 
     /**
@@ -114,21 +140,34 @@ public class MoveEdgeGroupManager {
         if (request instanceof BendpointRequest) {
             if (isToolActivatedOrHasBeenActivated()) {
                 ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
-                EditPart sourceEditPart = connectionEditPart.getSource();
-                EditPart targetEditPart = connectionEditPart.getTarget();
-
-                if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
-                    AbstractDiagramBorderNodeEditPart sourceBorderNodeEditPart = (AbstractDiagramBorderNodeEditPart) sourceEditPart;
-                    AbstractDiagramBorderNodeEditPart targetBorderNodeEditPart = (AbstractDiagramBorderNodeEditPart) targetEditPart;
-
-                    ChangeBoundsRequest changeBoundsRequest = new ChangeBoundsRequest(RequestConstants.REQ_DROP);
-                    sourceBorderNodeEditPart.eraseSourceFeedback(changeBoundsRequest);
-                    targetBorderNodeEditPart.eraseSourceFeedback(changeBoundsRequest);
-
+                for (ConnectionEditPart selectedConnectionEditPart : Iterables.filter(connectionEditPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
+                    eraseGroupFeedback(selectedConnectionEditPart);
                 }
             }
         }
 
+    }
+
+    /**
+     * Erases the group feedback of a specific {@link ConnectionEditPart} if
+     * this action has been activated.
+     * 
+     * @param connectionEditPart
+     *            the {@link ConnectionEditPart} to erase the feedback
+     */
+    private void eraseGroupFeedback(ConnectionEditPart connectionEditPart) {
+        EditPart sourceEditPart = connectionEditPart.getSource();
+        EditPart targetEditPart = connectionEditPart.getTarget();
+
+        if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+            AbstractDiagramBorderNodeEditPart sourceBorderNodeEditPart = (AbstractDiagramBorderNodeEditPart) sourceEditPart;
+            AbstractDiagramBorderNodeEditPart targetBorderNodeEditPart = (AbstractDiagramBorderNodeEditPart) targetEditPart;
+
+            ChangeBoundsRequest changeBoundsRequest = new ChangeBoundsRequest(RequestConstants.REQ_DROP);
+            sourceBorderNodeEditPart.eraseSourceFeedback(changeBoundsRequest);
+            targetBorderNodeEditPart.eraseSourceFeedback(changeBoundsRequest);
+
+        }
     }
 
     /**
@@ -139,15 +178,24 @@ public class MoveEdgeGroupManager {
     public Command getCommand() {
         if (accept()) {
             ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
-            EditPart sourceEditPart = connectionEditPart.getSource();
-            EditPart targetEditPart = connectionEditPart.getTarget();
-            Command srcCommand = createCommand((AbstractDiagramBorderNodeEditPart) sourceEditPart);
-            if (srcCommand != null) {
-                Command tgtCommand = createCommand((AbstractDiagramBorderNodeEditPart) targetEditPart);
-                if (tgtCommand != null) {
-                    srcCommand = srcCommand.chain(tgtCommand);
-                    return srcCommand;
-                }
+            CompoundCommand cc = new CompoundCommand(Messages.EdgeGroupMoveMessage);
+            for (ConnectionEditPart selectedConnectionEditPart : Iterables.filter(connectionEditPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
+                cc.add(getCommand(selectedConnectionEditPart));
+            }
+            return cc;
+        }
+        return null;
+    }
+
+    private Command getCommand(ConnectionEditPart connectionEditPart) {
+        EditPart sourceEditPart = connectionEditPart.getSource();
+        EditPart targetEditPart = connectionEditPart.getTarget();
+        Command srcCommand = createCommand((AbstractDiagramBorderNodeEditPart) sourceEditPart);
+        if (srcCommand != null) {
+            Command tgtCommand = createCommand((AbstractDiagramBorderNodeEditPart) targetEditPart);
+            if (tgtCommand != null) {
+                srcCommand = srcCommand.chain(tgtCommand);
+                return srcCommand;
             }
         }
         return null;
@@ -167,7 +215,7 @@ public class MoveEdgeGroupManager {
 
     /**
      * Determines if the given request is a valid request for this tool.<br/>
-     * The edge should respect the following rules:
+     * Each selected edge should respect the following rules:
      * <ul>
      * <li>a border node as source</li>
      * <li>a border node as target</li>
@@ -175,26 +223,54 @@ public class MoveEdgeGroupManager {
      * <li>target node has only one connection: the moved edge.</li>
      * <li>Both border nodes are on the same axe (Horizontal or Vertical)</li>
      * </ul>
+     * <br/>
+     * Furthermore, every selected edge group should be in the same direction
+     * and only edges should be selected.
      * 
-     * @return true if the move edge and border nodes can be activated,
+     * @return true if the moved edges and border nodes can be activated,
      *         otherwise false.
      */
+    @SuppressWarnings("unchecked")
     private boolean accept() {
         if (request instanceof BendpointRequest) {
             ConnectionEditPart connectionEditPart = ((BendpointRequest) request).getSource();
-            EditPart sourceEditPart = connectionEditPart.getSource();
-            EditPart targetEditPart = connectionEditPart.getTarget();
+            // The selected diagram element should only contain edges otherwise
+            // the move is not valid
+            final Set<Integer> edgeDirections = Sets.newLinkedHashSet();
+            boolean result = Iterables.all(connectionEditPart.getViewer().getSelectedEditParts(), Predicates.and(Predicates.instanceOf(ConnectionEditPart.class), new Predicate<ConnectionEditPart>() {
+                /**
+                 * Determines if the given edge respects the following rules:
+                 * <ul>
+                 * <li>a border node as source</li>
+                 * <li>a border node as target</li>
+                 * <li>source node has only one connection: the moved edge.</li>
+                 * <li>target node has only one connection: the moved edge.</li>
+                 * <li>Both border nodes are on the same axe (Horizontal or
+                 * Vertical)</li>
+                 * </ul>
+                 */
+                @Override
+                public boolean apply(ConnectionEditPart input) {
+                    EditPart sourceEditPart = input.getSource();
+                    EditPart targetEditPart = input.getTarget();
 
-            if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
-                if (getAllConnections((AbstractDiagramBorderNodeEditPart) sourceEditPart).size() == 1 && getAllConnections((AbstractDiagramBorderNodeEditPart) targetEditPart).size() == 1) {
-                    int sourceDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) sourceEditPart);
-                    int targetDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) targetEditPart);
-                    if (sourceDirection == targetDirection) {
-                        direction = sourceDirection;
-                        return true;
+                    if (sourceEditPart instanceof AbstractDiagramBorderNodeEditPart && targetEditPart instanceof AbstractDiagramBorderNodeEditPart) {
+                        if (getAllConnections((AbstractDiagramBorderNodeEditPart) sourceEditPart).size() == 1 && getAllConnections((AbstractDiagramBorderNodeEditPart) targetEditPart).size() == 1) {
+                            int sourceDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) sourceEditPart);
+                            int targetDirection = getBorderNodeDirection((AbstractDiagramBorderNodeEditPart) targetEditPart);
+                            if (sourceDirection == targetDirection) {
+                                direction = sourceDirection;
+                                edgeDirections.add(sourceDirection);
+                                return true;
+                            }
+                        }
                     }
+                    return false;
                 }
-            }
+            }));
+            // There should be only one kind of direction for every edges to
+            // authorize the move
+            return result && edgeDirections.size() == 1;
         }
         return false;
     }
@@ -215,7 +291,8 @@ public class MoveEdgeGroupManager {
                 }
             }
         }
-        return null;
+        // If some conflict is detected then the move is forbidden
+        return UnexecutableCommand.INSTANCE;
     }
 
     private boolean conflictDetected(AbstractDiagramBorderNodeEditPart editPart, Point moveDelta) {
@@ -231,7 +308,20 @@ public class MoveEdgeGroupManager {
             bounds.setBounds(newBounds);
         }
 
-        Rectangle validLocation = locator.getValidLocation(bounds, figure);
+        List<IFigure> figureToIgnore = Lists.newArrayList();
+        figureToIgnore.add(figure);
+        for (ConnectionEditPart connectionEditPart : Iterables.filter(editPart.getViewer().getSelectedEditParts(), ConnectionEditPart.class)) {
+            EditPart source = connectionEditPart.getSource();
+            EditPart target = connectionEditPart.getTarget();
+            if (source instanceof AbstractDiagramBorderNodeEditPart && source.getParent().equals(editPart.getParent())) {
+                figureToIgnore.add(((AbstractDiagramBorderNodeEditPart) source).getFigure());
+            }
+            if (target instanceof AbstractDiagramBorderNodeEditPart && target.getParent().equals(editPart.getParent())) {
+                figureToIgnore.add(((AbstractDiagramBorderNodeEditPart) target).getFigure());
+            }
+        }
+
+        Rectangle validLocation = ((DBorderItemLocator) locator).getValidLocation(bounds, figure, figureToIgnore, Collections.<IFigure> emptyList());
         if (borderNodeCollapseManager.hasBeenExpanded()) {
             borderNodeCollapseManager.restoreCollapsedNode(editPart);
         }

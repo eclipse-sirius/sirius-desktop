@@ -144,6 +144,13 @@ The edge group moving is authorized only if these conditions are met:
 
 Examples of authorized moving:
 !images/compoundmoves2.png!
+
+Furthermore, since Sirius 4.1, it is possible to move several edge groups at once. However, the selection needs to validate the following rules:
+* each selected elements must be an edge with border nodes as source and target.
+* each edge groups must be horizontal (source and target on the west or east border) or vertical (source and target on the north or south border).
+* each edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.
+
+Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.
  
 h3(#distribute). Distribute elements
 

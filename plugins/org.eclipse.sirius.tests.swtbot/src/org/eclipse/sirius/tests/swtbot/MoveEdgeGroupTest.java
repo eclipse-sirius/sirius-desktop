@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -17,6 +22,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -29,10 +35,14 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 /**
  * Tests for the move edge group feature. See #471104 for more details.
  * 
- * @author Florian Barbin
+ * @author <a href="mailto:florian.barbin@obeo.fr">Florian Barbin</a>
  *
  */
 public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
@@ -95,8 +105,24 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveRectilinearEdgeGroup() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge2", new Point(15, -20), PositionConstants.HORIZONTAL, false);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2");
+    }
+
+    /**
+     * Tests that moving a selection of several rectilinear edge groups works
+     * properly for the following cases:
+     * <ul>
+     * <li>By selecting a bendpoint</li>
+     * <li>By selecting a segment</li>
+     * <li>In case of conflict with others border nodes, the command is not
+     * applied.</li>
+     * </ul>
+     */
+    public void testMoveRectilinearEdgeGroupMultipleSelection() {
+        moveBendpoint(ZoomLevel.ZOOM_100, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1", "edge1bis");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2", "edge2bis");
     }
 
     /**
@@ -105,8 +131,18 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveRectilinearEdgeGroupZoom125() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge2", new Point(15, -20), PositionConstants.HORIZONTAL, false);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2");
+    }
+
+    /**
+     * Tests that moving a selection of several rectilinear edge groups works
+     * properly for the same cases than above but with a 125% zoom.
+     */
+    public void testMoveRectilinearEdgeGroupZoom125MultipleSelection() {
+        moveBendpoint(ZoomLevel.ZOOM_125, "edge1", new Point(-20, -20), PositionConstants.HORIZONTAL, true);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.HORIZONTAL, true, "edge1", "edge1bis");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(15, -20), PositionConstants.HORIZONTAL, false, "edge2", "edge2bis");
     }
 
     /**
@@ -125,8 +161,70 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroup() {
         moveBendpoint(ZoomLevel.ZOOM_100, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_100, "edge3", new Point(-20, -20), PositionConstants.VERTICAL, false);
-        moveSegment(ZoomLevel.ZOOM_100, "edge3", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
+    }
+
+    /**
+     * Tests that moving a selection of several oblique edge groups works
+     * properly for the following cases:
+     * <ul>
+     * <li>By selecting a bendpoint</li>
+     * <li>By selecting a segment:
+     * <ul>
+     * <li>In case of conflict with others border nodes, the command is not
+     * applied.</li>
+     * <li>In case of authorized move.</li>
+     * </ul>
+     * </li>
+     * </ul>
+     */
+    public void testMoveObliqueEdgeGroupMultipleSelection() {
+        moveBendpoint(ZoomLevel.ZOOM_100, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3", "edge3bis");
+    }
+
+    /**
+     * Tests that moving a selection of two edge groups where one edge group
+     * take the former location of the other edge group is allowed.
+     */
+    public void testMoveObliqueEdgeGroupMultipleSelectionNoConlict() {
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -50), PositionConstants.VERTICAL, true, "edge3bis", "edge4bis");
+    }
+
+    /**
+     * Tests that moving a selection of two edge groups where the primary
+     * selection (edge3bis) further that its source and target parent bounds is
+     * forbidden.
+     */
+    public void testMoveObliqueEdgeGroupMultipleSelectionForbiddenByPrimarySelection() {
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, +100), PositionConstants.VERTICAL, false, "edge3bis", "edge4bis");
+    }
+
+    /**
+     * Tests that moving a selection of two edge groups where a selected edge
+     * that is not the primary selection (edge4bis) further that its source and
+     * target parent bounds is forbidden.
+     */
+    public void testMoveObliqueEdgeGroupMultipleSelectionForbiddenByNotPrimarySelection() {
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -150), PositionConstants.VERTICAL, false, "edge3bis", "edge4bis");
+    }
+
+    /**
+     * Tests that moving a selection of two edge groups with different direction
+     * is forbidden. They should be all vertical or horizontal.
+     */
+    public void testMoveObliqueEdgeGroupMultipleSelectionWithDifferentDirectionsForbidden() {
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -50), PositionConstants.VERTICAL, false, "edge1bis", "edge4bis");
+    }
+
+    /**
+     * Tests that if among the selection there is an element that is not an
+     * edge, the move is forbidden.
+     */
+    public void testMoveObliqueEdgeGroupAndContainerMultipleSelectionForbidden() {
+        moveSegment(ZoomLevel.ZOOM_100, new Point(-10, -150), PositionConstants.VERTICAL, false, "edge3bis", "edge4bis", "container4");
     }
 
     /**
@@ -134,22 +232,41 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testMoveObliqueEdgeGroupZoom125() {
         moveBendpoint(ZoomLevel.ZOOM_125, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
-        moveSegment(ZoomLevel.ZOOM_125, "edge3", new Point(-20, -20), PositionConstants.VERTICAL, false);
-        moveSegment(ZoomLevel.ZOOM_125, "edge3", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3");
     }
 
-    private void moveSegment(ZoomLevel zoomLevel, String name, Point delta, int expectedAxis, boolean authorized) {
+    /**
+     * Tests that moving a selection of several oblique edge groups works
+     * properly with a 125% zoom.
+     */
+    public void testMoveObliqueEdgeGroupZoom125MultipleSelection() {
+        moveBendpoint(ZoomLevel.ZOOM_125, "edge4", new Point(-10, -10), PositionConstants.VERTICAL, true);
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-20, -20), PositionConstants.VERTICAL, false, "edge3", "edge3bis");
+        moveSegment(ZoomLevel.ZOOM_125, new Point(-10, -10), PositionConstants.VERTICAL, true, "edge3", "edge3bis");
+    }
+
+    private void moveSegment(ZoomLevel zoomLevel, Point delta, int expectedAxis, boolean authorized, String... names) {
         editor.zoom(zoomLevel);
         editor.scrollTo(0, 0);
 
-        SWTBotGefEditPart elementToMove = editor.getEditPart(name, AbstractDiagramEdgeEditPart.class);
+        Set<SWTBotGefEditPart> elementsToMove = Sets.newLinkedHashSet();
+        for (String name : names) {
 
-        // Select the element to move
-        editor.select(elementToMove);
+            // SWTBotGefEditPart elementToMove = editor.getEditPart(name);
+            if (name.startsWith("edge")) {
+                elementsToMove.add(editor.getEditPart(name, AbstractDiagramEdgeEditPart.class));
+            } else if (name.startsWith("container")) {
+                elementsToMove.add(editor.getEditPart(name, AbstractDiagramContainerEditPart.class));
+            }
+            // assertTrue(elementToMove.part() instanceof ConnectionEditPart);
+        }
+
+        // Select the elements to move
+        editor.select(elementsToMove);
 
         // Get point to move
-        assertTrue(elementToMove.part() instanceof ConnectionEditPart);
-        ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
+        ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementsToMove.iterator().next().part();
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
         PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
         Point firstPoint = pointList.getPoint(0);
@@ -163,7 +280,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
             pointToMove.x = Math.round(firstPoint.x + ((secondPoint.x - firstPoint.x) / 2));
         }
 
-        dragPoint(zoomLevel, name, pointToMove, delta, expectedAxis, authorized);
+        dragPoint(zoomLevel, elementsToMove, pointToMove, delta, expectedAxis, authorized);
         // Move to initial location
         undo(localSession.getOpenedSession());
         editor.scrollTo(0, 0);
@@ -175,7 +292,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
 
         SWTBotGefEditPart elementToMove = editor.getEditPart(name, AbstractDiagramEdgeEditPart.class);
 
-        // Select the element to move
+        // Select the elements to move
         editor.select(elementToMove);
 
         // Get the bendpoint to move
@@ -185,7 +302,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
         PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
         Point pointToMove = pointList.getPoint(1);
 
-        dragPoint(zoomLevel, name, pointToMove, delta, expectedAxis, authorized);
+        dragPoint(zoomLevel, Collections.singleton(elementToMove), pointToMove, delta, expectedAxis, authorized);
         // Move to initial location
         undo(localSession.getOpenedSession());
         editor.scrollTo(0, 0);
@@ -210,27 +327,32 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
      *            group should not be authorized and should retrieve its initial
      *            location.
      */
-    private void dragPoint(ZoomLevel zoomLevel, String name, Point start, Point delta, int expectedAxis, boolean noConflicts) {
+    private void dragPoint(ZoomLevel zoomLevel, Set<SWTBotGefEditPart> elementsToMove, Point start, Point delta, int expectedAxis, boolean noConflicts) {
         boolean snapToGrid = editor.isSnapToGrid();
         boolean snapToShape = editor.isSnapToShape();
         try {
             editor.setSnapToGrid(false);
             editor.setSnapToShape(false);
-            SWTBotGefEditPart elementToMove = editor.getEditPart(name, AbstractDiagramEdgeEditPart.class);
 
-            // Select the element to move
-            editor.select(elementToMove);
+            HashMap<SWTBotGefEditPart, List<Rectangle>> initialLocations = Maps.newHashMap();
+            for (SWTBotGefEditPart elementToMove : elementsToMove) {
+                if (elementToMove.part() instanceof ConnectionEditPart) {
+                    ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
 
-            assertTrue(elementToMove.part() instanceof ConnectionEditPart);
-            ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
+                    // Get connection ends bounds
+                    IGraphicalEditPart source = (IGraphicalEditPart) connectionEditPart.getSource();
+                    Rectangle sourceInitalBounds = source.getFigure().getBounds().getCopy();
+                    source.getFigure().translateToAbsolute(sourceInitalBounds);
+                    IGraphicalEditPart target = (IGraphicalEditPart) connectionEditPart.getTarget();
+                    Rectangle targetInitalBounds = target.getFigure().getBounds().getCopy();
+                    target.getFigure().translateToAbsolute(targetInitalBounds);
+                    List<Rectangle> locations = Lists.newArrayList();
+                    locations.add(sourceInitalBounds);
+                    locations.add(targetInitalBounds);
+                    initialLocations.put(elementToMove, locations);
+                }
+            }
 
-            // Get connection ends bounds
-            IGraphicalEditPart source = (IGraphicalEditPart) connectionEditPart.getSource();
-            Rectangle sourceInitalBounds = source.getFigure().getBounds().getCopy();
-            source.getFigure().translateToAbsolute(sourceInitalBounds);
-            IGraphicalEditPart target = (IGraphicalEditPart) connectionEditPart.getTarget();
-            Rectangle targetInitalBounds = target.getFigure().getBounds().getCopy();
-            target.getFigure().translateToAbsolute(targetInitalBounds);
 
             final Point endpoint = new Point(start.x + delta.x, start.y + delta.y);
 
@@ -247,15 +369,29 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
             } else {
                 pointToTranslate.x = 0;
             }
-            Rectangle expectedSourceBounds = sourceInitalBounds.getCopy();
-            Rectangle expectedTargetBounds = targetInitalBounds.getCopy();
-            if (noConflicts) {
-                pointToTranslate.scale(zoomLevel.getAmount());
-                expectedSourceBounds.translate(pointToTranslate);
-                expectedTargetBounds.translate(pointToTranslate);
+            pointToTranslate.scale(zoomLevel.getAmount());
+
+            // Check locations of each source/target of moved connections
+            for (SWTBotGefEditPart elementToMove : elementsToMove) {
+                if (elementToMove.part() instanceof ConnectionEditPart) {
+                    List<Rectangle> locationsList = initialLocations.get(elementToMove);
+                    Rectangle sourceInitalBounds = locationsList.get(0);
+                    Rectangle targetInitalBounds = locationsList.get(1);
+                    Rectangle expectedSourceBounds = sourceInitalBounds.getCopy();
+                    Rectangle expectedTargetBounds = targetInitalBounds.getCopy();
+                    if (noConflicts) {
+                        expectedSourceBounds.translate(pointToTranslate);
+                        expectedTargetBounds.translate(pointToTranslate);
+                    }
+                    ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
+
+                    // Get connection ends bounds
+                    IGraphicalEditPart source = (IGraphicalEditPart) connectionEditPart.getSource();
+                    IGraphicalEditPart target = (IGraphicalEditPart) connectionEditPart.getTarget();
+                    bot.waitUntil(new CheckBoundsCondition(source, expectedSourceBounds, false, false));
+                    bot.waitUntil(new CheckBoundsCondition(target, expectedTargetBounds, false, false));
+                }
             }
-            bot.waitUntil(new CheckBoundsCondition(source, expectedSourceBounds, false, false));
-            bot.waitUntil(new CheckBoundsCondition(target, expectedTargetBounds, false, false));
         } finally {
             editor.setSnapToGrid(snapToGrid);
             editor.setSnapToShape(snapToShape);

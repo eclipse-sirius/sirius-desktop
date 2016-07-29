@@ -306,6 +306,13 @@
 			<br/>
 			<img border="0" src="images/compoundmoves2.png"/>
 		</p>
+		<p>Furthermore, since Sirius 4.1, it is possible to move several edge groups at once. However, the selection needs to validate the following rules:</p>
+		<ul>
+			<li>each selected elements must be an edge with border nodes as source and target.</li>
+			<li>each edge groups must be horizontal (source and target on the west or east border) or vertical (source and target on the north or south border).</li>
+			<li>each edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.</li>
+		</ul>
+		<p>Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.</p>
 		<h3 id="distribute">Distribute elements</h3>
 		<p>Four new actions allow to distribute shapes: </p>
 		<p>

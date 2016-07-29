@@ -7,6 +7,8 @@
       <elements xsi:type="migrationmodeler:Bordered" id="bn10"/>
       <elements xsi:type="migrationmodeler:Bordered"/>
       <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
     </containers>
     <containers id="container1">
       <elements xsi:type="migrationmodeler:Bordered" id="bn5"/>
@@ -14,9 +16,13 @@
       <elements xsi:type="migrationmodeler:Bordered" id="bn3"/>
       <elements xsi:type="migrationmodeler:Bordered" id="bn2"/>
       <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
     </containers>
     <containers id="container3">
       <elements xsi:type="migrationmodeler:Bordered" id="bn4"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
       <elements xsi:type="migrationmodeler:Bordered"/>
     </containers>
     <containers id="container4">
@@ -28,6 +34,7 @@
         <elements xsi:type="migrationmodeler:Container">
           <elements xsi:type="migrationmodeler:Bordered"/>
           <elements xsi:type="migrationmodeler:Bordered" id="bn1"/>
+          <elements xsi:type="migrationmodeler:Bordered"/>
           <elements xsi:type="migrationmodeler:Bordered"/>
           <elements xsi:type="migrationmodeler:Bordered"/>
         </elements>
@@ -46,5 +53,9 @@
     <edges id="edge1" source="//@representations.0/@containers.1/@elements.3" target="//@representations.0/@containers.4/@elements.0/@elements.0/@elements.1"/>
     <edges id="edge5" source="//@representations.0/@containers.3/@elements.1" target="//@representations.0/@containers.0/@elements.2"/>
     <edges id="edge6" source="//@representations.0/@containers.0" target="//@representations.0/@containers.3"/>
+    <edges id="edge1bis" source="//@representations.0/@containers.1/@elements.5" target="//@representations.0/@containers.4/@elements.0/@elements.0/@elements.4"/>
+    <edges id="edge2bis" source="//@representations.0/@containers.1/@elements.6" target="//@representations.0/@containers.2/@elements.2"/>
+    <edges id="edge3bis" source="//@representations.0/@containers.0/@elements.6" target="//@representations.0/@containers.1/@elements.4"/>
+    <edges id="edge4bis" source="//@representations.0/@containers.0/@elements.5" target="//@representations.0/@containers.1/@elements.7"/>
   </representations>
 </migrationmodeler:TestCase>

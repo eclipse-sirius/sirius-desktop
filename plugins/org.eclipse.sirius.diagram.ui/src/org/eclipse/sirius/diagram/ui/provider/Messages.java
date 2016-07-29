@@ -486,6 +486,9 @@ public final class Messages {
     public static String EclipseImageSelectorDescriptor_extensionLoadingError;
 
     @TranslatableMessage
+    public static String EdgeGroupMoveMessage;
+
+    @TranslatableMessage
     public static String EdgeReconnectionHelper_invalidReconnectionKind;
 
     @TranslatableMessage

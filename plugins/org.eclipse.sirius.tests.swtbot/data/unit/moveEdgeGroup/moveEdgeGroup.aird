@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_tyCgMPfKEeOewbIoSlcvjw" selectedViews="_uYpNMPfKEeOewbIoSlcvjw" version="10.1.0.201507101000">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_tyCgMPfKEeOewbIoSlcvjw" selectedViews="_uYpNMPfKEeOewbIoSlcvjw" version="11.1.0.201606300900">
   <semanticResources>platform:/resource/Test/moveEdgeGroup.migrationmodeler</semanticResources>
   <semanticResources>moveEdgeGroup.migrationmodeler</semanticResources>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_uYpNMPfKEeOewbIoSlcvjw">
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_uYpNMPfKEeOewbIoSlcvjw">
+    <viewpoint xmi:type="description:Viewpoint" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']"/>
+    <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_PwppQFTLEeasaLTJO4uWBw" name="diagram1" representation="_S9cCQEW0EeWzE_Xsv11e2Q">
+      <description xmi:type="description_1:DiagramDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']"/>
+      <target xmi:type="migrationmodeler:Diagram" href="moveEdgeGroup.migrationmodeler#//@representations.0"/>
+    </ownedRepresentationDescriptors>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_S9cCQEW0EeWzE_Xsv11e2Q" name="diagram1">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_S9cCQUW0EeWzE_Xsv11e2Q" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_S9cCQkW0EeWzE_Xsv11e2Q"/>
@@ -59,8 +64,19 @@
               <styles xmi:type="notation:ShapeStyle" xmi:id="_rURDMUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6U84EsnEeW5nJsF29lAdQ" x="60" y="-2" width="10" height="10"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_dPqzIFTLEeasaLTJO4uWBw" type="3012" element="_dPInoFTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_dPqzI1TLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_dPqzJFTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_dPraMFTLEeasaLTJO4uWBw" type="3003" element="_dPOuQFTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_dPraMVTLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dPraMlTLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_dPqzIVTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dPqzIlTLEeasaLTJO4uWBw" x="44" y="60" width="10" height="10"/>
+            </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_UUD28UW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8" fillColor="10265827"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UUD28kW0EeWzE_Xsv11e2Q" x="660" y="264"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UUD28kW0EeWzE_Xsv11e2Q" x="648" y="344"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_UUIIYEW0EeWzE_Xsv11e2Q" type="2002" element="_UTufwEW0EeWzE_Xsv11e2Q">
             <children xmi:type="notation:Node" xmi:id="_UUIvcEW0EeWzE_Xsv11e2Q" type="5006"/>
@@ -91,7 +107,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6Vj8EsnEeW5nJsF29lAdQ" x="95" y="-2" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_UUIIYUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UUIIYkW0EeWzE_Xsv11e2Q" x="420" y="252"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UUIIYkW0EeWzE_Xsv11e2Q" x="408" y="332"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_X6dV4EW0EeWzE_Xsv11e2Q" type="2002" element="_X6VaEEW0EeWzE_Xsv11e2Q">
             <children xmi:type="notation:Node" xmi:id="_X6dV40W0EeWzE_Xsv11e2Q" type="5006"/>
@@ -108,7 +124,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6hAQkW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_X6fLEUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WLAEsnEeW5nJsF29lAdQ" x="140" y="17" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WLAEsnEeW5nJsF29lAdQ" x="140" y="145" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_X6fyIEW0EeWzE_Xsv11e2Q" type="3012" element="_X6X2UEW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_X6gZMkW0EeWzE_Xsv11e2Q" type="5010">
@@ -119,7 +135,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6hnUkW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_X6gZMEW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WLAUsnEeW5nJsF29lAdQ" x="140" y="48" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WLAUsnEeW5nJsF29lAdQ" x="140" y="176" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_ro85wEW0EeWzE_Xsv11e2Q" type="3012" element="_rorM8EW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_ro9g0EW0EeWzE_Xsv11e2Q" type="5010">
@@ -130,7 +146,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ro-H4kW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_ro85wUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WyEEsnEeW5nJsF29lAdQ" x="106" y="60" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6WyEEsnEeW5nJsF29lAdQ" x="106" y="188" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_sFzN0EW0EeWzE_Xsv11e2Q" type="3012" element="_sFgS4EW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_sFz04EW0EeWzE_Xsv11e2Q" type="5010">
@@ -152,10 +168,32 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sO0m8kW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_sOzY0UW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6XZIEsnEeW5nJsF29lAdQ" x="77" y="60" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6XZIEsnEeW5nJsF29lAdQ" x="77" y="188" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_f_4Q8FTLEeasaLTJO4uWBw" type="3012" element="_f_f2cFTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_f_4Q81TLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_f_4Q9FTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_f_4Q9VTLEeasaLTJO4uWBw" type="3003" element="_f_f2cVTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_f_4Q9lTLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f_4Q91TLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_f_4Q8VTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_f_4Q8lTLEeasaLTJO4uWBw" x="-2" y="62" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_gI304FTLEeasaLTJO4uWBw" type="3012" element="_gIn9QFTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_gI3041TLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_gI305FTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_gI305VTLEeasaLTJO4uWBw" type="3003" element="_gIn9QVTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_gI305lTLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gI3051TLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_gI304VTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gI304lTLEeasaLTJO4uWBw" x="-2" y="112" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_X6dV4UW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6dV4kW0EeWzE_Xsv11e2Q" x="408" y="84"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6dV4kW0EeWzE_Xsv11e2Q" x="396" y="36" height="198"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_X6d88EW0EeWzE_Xsv11e2Q" type="2002" element="_X6WBIUW0EeWzE_Xsv11e2Q">
             <children xmi:type="notation:Node" xmi:id="_X6d880W0EeWzE_Xsv11e2Q" type="5006"/>
@@ -172,7 +210,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6kDkkW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_X6iOYUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YAMEsnEeW5nJsF29lAdQ" x="-2" y="48" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YAMEsnEeW5nJsF29lAdQ" x="-2" y="182" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_X6i1ckW0EeWzE_Xsv11e2Q" type="3012" element="_X6ZEcEW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_X6jcgEW0EeWzE_Xsv11e2Q" type="5010">
@@ -183,7 +221,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6kDlUW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_X6i1c0W0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YAMUsnEeW5nJsF29lAdQ" x="-2" y="17" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YAMUsnEeW5nJsF29lAdQ" x="-2" y="151" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_r0h3oEW0EeWzE_Xsv11e2Q" type="3012" element="_r0CIYEW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_r0iesUW0EeWzE_Xsv11e2Q" type="5010">
@@ -194,7 +232,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r0js0kW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_r0h3oUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YnQEsnEeW5nJsF29lAdQ" x="44" y="60" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6YnQEsnEeW5nJsF29lAdQ" x="44" y="194" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_r8N0AEW0EeWzE_Xsv11e2Q" type="3012" element="_r71ZgEW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_r8N0A0W0EeWzE_Xsv11e2Q" type="5010">
@@ -205,7 +243,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r8ObEkW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_r8N0AUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6ZOUEsnEeW5nJsF29lAdQ" x="133" y="60" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6ZOUEsnEeW5nJsF29lAdQ" x="133" y="194" width="10" height="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_sYWWYEW0EeWzE_Xsv11e2Q" type="3012" element="_sYC0YEW0EeWzE_Xsv11e2Q">
               <children xmi:type="notation:Node" xmi:id="_sYXkgEW0EeWzE_Xsv11e2Q" type="5010">
@@ -216,10 +254,43 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sYYLkkW0EeWzE_Xsv11e2Q"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_sYWWYUW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6ZOUUsnEeW5nJsF29lAdQ" x="140" y="21" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6ZOUUsnEeW5nJsF29lAdQ" x="140" y="118" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Uv5xgFTLEeasaLTJO4uWBw" type="3012" element="_UvVw0FTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_Uv6_oFTLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Uv6_oVTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Uv_4IFTLEeasaLTJO4uWBw" type="3003" element="_UvVw0VTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Uv_4IVTLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uv_4IlTLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Uv5xgVTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uv5xglTLEeasaLTJO4uWBw" x="133" y="-2" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_c_bXsFTLEeasaLTJO4uWBw" type="3012" element="_c_H1sFTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_c_b-wFTLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_c_b-wVTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_c_b-wlTLEeasaLTJO4uWBw" type="3003" element="_c_H1sVTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_c_b-w1TLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c_b-xFTLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_c_bXsVTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c_bXslTLEeasaLTJO4uWBw" x="44" y="-2" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_gvB18FTLEeasaLTJO4uWBw" type="3012" element="_guxXQFTLEeasaLTJO4uWBw">
+              <children xmi:type="notation:Node" xmi:id="_gvB181TLEeasaLTJO4uWBw" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_gvB19FTLEeasaLTJO4uWBw" x="-1"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_gvB19VTLEeasaLTJO4uWBw" type="3003" element="_guxXQVTLEeasaLTJO4uWBw">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_gvB19lTLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gvB191TLEeasaLTJO4uWBw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_gvB18VTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gvB18lTLEeasaLTJO4uWBw" x="140" y="68" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_X6d88UW0EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6d88kW0EeWzE_Xsv11e2Q" x="636" y="84"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6d88kW0EeWzE_Xsv11e2Q" x="624" y="30" height="204"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_12nDwEW4EeWzE_Xsv11e2Q" type="2002" element="_12SToEW4EeWzE_Xsv11e2Q">
             <children xmi:type="notation:Node" xmi:id="_12nDw0W4EeWzE_Xsv11e2Q" type="5006"/>
@@ -277,6 +348,17 @@
                       <styles xmi:type="notation:ShapeStyle" xmi:id="_BYhAsUW5EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p6bDgEsnEeW5nJsF29lAdQ" x="-2" y="36" width="10" height="10"/>
                     </children>
+                    <children xmi:type="notation:Node" xmi:id="_XB0w0FTLEeasaLTJO4uWBw" type="3012" element="_XBpKoFTLEeasaLTJO4uWBw">
+                      <children xmi:type="notation:Node" xmi:id="_XB1X4FTLEeasaLTJO4uWBw" type="5010">
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_XB1X4VTLEeasaLTJO4uWBw" x="-1"/>
+                      </children>
+                      <children xmi:type="notation:Node" xmi:id="_XB1X4lTLEeasaLTJO4uWBw" type="3003" element="_XBpKoVTLEeasaLTJO4uWBw">
+                        <styles xmi:type="notation:ShapeStyle" xmi:id="_XB1X41TLEeasaLTJO4uWBw" fontName="Segoe UI"/>
+                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XB1X5FTLEeasaLTJO4uWBw"/>
+                      </children>
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_XB0w0VTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XB0w0lTLEeasaLTJO4uWBw" x="77" y="-2" width="10" height="10"/>
+                    </children>
                     <styles xmi:type="notation:ShapeStyle" xmi:id="_AIYOgUW5EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AIYOgkW5EeWzE_Xsv11e2Q" x="31" y="30"/>
                   </children>
@@ -290,7 +372,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_12nDxkW4EeWzE_Xsv11e2Q"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_12nDwUW4EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_12nDwkW4EeWzE_Xsv11e2Q" x="828" y="96"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_12nDwkW4EeWzE_Xsv11e2Q" x="816" y="176"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_8VFjEEW4EeWzE_Xsv11e2Q" type="2002" element="_8UwL4EW4EeWzE_Xsv11e2Q">
             <children xmi:type="notation:Node" xmi:id="_8VFjE0W4EeWzE_Xsv11e2Q" type="5006"/>
@@ -299,7 +381,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_8VGKIkW4EeWzE_Xsv11e2Q"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_8VFjEUW4EeWzE_Xsv11e2Q" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8VFjEkW4EeWzE_Xsv11e2Q" x="888" y="276"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8VFjEkW4EeWzE_Xsv11e2Q" x="876" y="356"/>
           </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_S9iv8kW0EeWzE_Xsv11e2Q"/>
           <edges xmi:type="notation:Edge" xmi:id="_iL37UEW0EeWzE_Xsv11e2Q" type="4001" element="_iLb2cEW0EeWzE_Xsv11e2Q" source="_UT3CoEW0EeWzE_Xsv11e2Q" target="_UUBasEW0EeWzE_Xsv11e2Q">
@@ -410,8 +492,88 @@
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_5jJaAUplEeWFR4-GINH9ew"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_5jJaAkplEeWFR4-GINH9ew" fontName="Cantarell" fontHeight="8"/>
             <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5jJaA0plEeWFR4-GINH9ew" points="[3, 25, -10, -100]$[14, 125, 1, 0]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5jVnQEplEeWFR4-GINH9ew" id="(0.12,0.6428571428571429)"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5jVnQEplEeWFR4-GINH9ew" id="(0.11999999999999998,0.8760932944606414)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5jWOUEplEeWFR4-GINH9ew" id="(0.12666666666666668,0.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_YQrJkFTLEeasaLTJO4uWBw" type="4001" element="_YQXnkFTLEeasaLTJO4uWBw" source="_BLMWYEW5EeWzE_Xsv11e2Q" target="_AIYOgEW5EeWzE_Xsv11e2Q">
+            <children xmi:type="notation:Node" xmi:id="_YQrwoFTLEeasaLTJO4uWBw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQrwoVTLEeasaLTJO4uWBw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_YQrwolTLEeasaLTJO4uWBw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQrwo1TLEeasaLTJO4uWBw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_YQrwpFTLEeasaLTJO4uWBw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQrwpVTLEeasaLTJO4uWBw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_YQrJkVTLEeasaLTJO4uWBw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_YQrJklTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_YQrJk1TLEeasaLTJO4uWBw" points="[900, 215, 900, 215]$[902, 168, 902, 168]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YQs-wFTLEeasaLTJO4uWBw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YQs-wVTLEeasaLTJO4uWBw" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_YQs-wlTLEeasaLTJO4uWBw" type="4001" element="_YQXnk1TLEeasaLTJO4uWBw" source="_Uv5xgFTLEeasaLTJO4uWBw" target="_XB0w0FTLEeasaLTJO4uWBw">
+            <children xmi:type="notation:Node" xmi:id="_YQs-xlTLEeasaLTJO4uWBw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQs-x1TLEeasaLTJO4uWBw" x="34" y="46"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_YQs-yFTLEeasaLTJO4uWBw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQs-yVTLEeasaLTJO4uWBw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_YQs-ylTLEeasaLTJO4uWBw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YQs-y1TLEeasaLTJO4uWBw" x="7"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_YQs-w1TLEeasaLTJO4uWBw" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_YQs-xFTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_YQs-xVTLEeasaLTJO4uWBw" points="[-5, -2, -215, -232]$[-5, -12, -215, -242]$[218, -12, 8, -242]$[218, 228, 8, -2]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YQs-zFTLEeasaLTJO4uWBw" id="(1.0,0.2)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_YQs-zVTLEeasaLTJO4uWBw" id="(0.0,0.2)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_eGGr4FTLEeasaLTJO4uWBw" type="4001" element="_eFyi0FTLEeasaLTJO4uWBw" source="_c_bXsFTLEeasaLTJO4uWBw" target="_dPqzIFTLEeasaLTJO4uWBw">
+            <children xmi:type="notation:Node" xmi:id="_eGGr5FTLEeasaLTJO4uWBw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eGGr5VTLEeasaLTJO4uWBw" x="-55" y="25"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eGGr5lTLEeasaLTJO4uWBw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eGGr51TLEeasaLTJO4uWBw" x="99" y="-38"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eGGr6FTLEeasaLTJO4uWBw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eGGr6VTLEeasaLTJO4uWBw" x="-12" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_eGGr4VTLEeasaLTJO4uWBw" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_eGGr4lTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eGGr41TLEeasaLTJO4uWBw" points="[-1, 0, -25, -366]$[-1, 76, -25, -290]$[47, 76, 23, -290]$[47, 250, 23, -116]$[70, 250, 46, -116]$[70, 371, 46, 5]$[28, 371, 4, 5]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eGHS8FTLEeasaLTJO4uWBw" id="(0.6,1.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eGHS8VTLEeasaLTJO4uWBw" id="(0.6,0.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_jIaIIFTLEeasaLTJO4uWBw" type="4001" element="_jIF_EFTLEeasaLTJO4uWBw" source="_gI304FTLEeasaLTJO4uWBw" target="_sYWWYEW0EeWzE_Xsv11e2Q">
+            <children xmi:type="notation:Node" xmi:id="_jIaIJFTLEeasaLTJO4uWBw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaIJVTLEeasaLTJO4uWBw" x="-6" y="-18"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jIaIJlTLEeasaLTJO4uWBw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaIJ1TLEeasaLTJO4uWBw" x="-1" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jIaIKFTLEeasaLTJO4uWBw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaIKVTLEeasaLTJO4uWBw" y="8"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_jIaIIVTLEeasaLTJO4uWBw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_jIaIIlTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jIaII1TLEeasaLTJO4uWBw" points="[0, 0, -360, -3]$[360, 3, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jIavMFTLEeasaLTJO4uWBw" id="(1.0,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jIavMVTLEeasaLTJO4uWBw" id="(0.0,0.3)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_jmGwwFTLEeasaLTJO4uWBw" type="4001" element="_jl3gMFTLEeasaLTJO4uWBw" source="_f_4Q8FTLEeasaLTJO4uWBw" target="_gvB18FTLEeasaLTJO4uWBw">
+            <children xmi:type="notation:Node" xmi:id="_jmHX0FTLEeasaLTJO4uWBw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jmHX0VTLEeasaLTJO4uWBw" x="-1" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jmHX0lTLEeasaLTJO4uWBw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jmHX01TLEeasaLTJO4uWBw" x="-1" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jmHX1FTLEeasaLTJO4uWBw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jmHX1VTLEeasaLTJO4uWBw" x="1" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_jmGwwVTLEeasaLTJO4uWBw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_jmGwwlTLEeasaLTJO4uWBw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jmGww1TLEeasaLTJO4uWBw" points="[0, 0, -360, 0]$[172, -24, -188, -24]$[360, 0, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jmHX1lTLEeasaLTJO4uWBw" id="(1.0,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_jmHX11TLEeasaLTJO4uWBw" id="(0.0,0.0)"/>
           </edges>
         </data>
       </ownedAnnotationEntries>
@@ -451,6 +613,20 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
         </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dPInoFTLEeasaLTJO4uWBw" incomingEdges="_eFyi0FTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.2/@elements.2"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.2/@elements.2"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_dPOuQFTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rfeKMEsxEeWT0fYxKfS3Bw" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
           <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
         </ownedStyle>
@@ -475,6 +651,9 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
         </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_UTufwUW0EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash" backgroundStyle="GradientTopToBottom" foregroundColor="204,242,166">
           <customFeatures>borderLineStyle</customFeatures>
           <customFeatures>backgroundStyle</customFeatures>
@@ -525,6 +704,31 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
         </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_f_f2cFTLEeasaLTJO4uWBw" outgoingEdges="_jl3gMFTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.0/@elements.5"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.0/@elements.5"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_f_f2cVTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_gIn9QFTLEeasaLTJO4uWBw" outgoingEdges="_jIF_EFTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.0/@elements.6"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.0/@elements.6"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_gIn9QVTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_X6WBIEW0EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
           <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
         </ownedStyle>
@@ -565,14 +769,53 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sYC0YEW0EeWzE_Xsv11e2Q" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sYC0YEW0EeWzE_Xsv11e2Q" incomingEdges="_jIF_EFTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
           <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.4"/>
           <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.4"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_sYC0YUW0EeWzE_Xsv11e2Q" color="255,245,181">
             <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
         </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_UvVw0FTLEeasaLTJO4uWBw" outgoingEdges="_YQXnk1TLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.5"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.5"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_UvVw0VTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_c_H1sFTLEeasaLTJO4uWBw" outgoingEdges="_eFyi0FTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.6"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.6"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_c_H1sVTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_guxXQFTLEeasaLTJO4uWBw" incomingEdges="_jl3gMFTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.7"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.1/@elements.7"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_guxXQVTLEeasaLTJO4uWBw" color="255,245,181">
+            <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_X6WoMEW0EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
           <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
         </ownedStyle>
@@ -621,6 +864,9 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_12SToEW4EeWzE_Xsv11e2Q">
         <target xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4"/>
         <semanticElements xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_12S6sEW4EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
           <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
         </ownedStyle>
@@ -632,7 +878,7 @@
             <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']"/>
-          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_AIAbEEW5EeWzE_Xsv11e2Q">
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_AIAbEEW5EeWzE_Xsv11e2Q" incomingEdges="_YQXnkFTLEeasaLTJO4uWBw">
             <target xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0"/>
             <semanticElements xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0"/>
             <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_A4xJoEW5EeWzE_Xsv11e2Q" width="1" height="1" resizeKind="NSEW">
@@ -651,7 +897,7 @@
               </ownedStyle>
               <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
             </ownedBorderedNodes>
-            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BKP7MEW5EeWzE_Xsv11e2Q" width="1" height="1" resizeKind="NSEW">
+            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BKP7MEW5EeWzE_Xsv11e2Q" outgoingEdges="_YQXnkFTLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
               <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0/@elements.2"/>
               <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0/@elements.2"/>
               <ownedStyle xmi:type="diagram:Square" xmi:id="_BKP7MUW5EeWzE_Xsv11e2Q" color="255,245,181">
@@ -667,6 +913,17 @@
               </ownedStyle>
               <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
             </ownedBorderedNodes>
+            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_XBpKoFTLEeasaLTJO4uWBw" incomingEdges="_YQXnk1TLEeasaLTJO4uWBw" width="1" height="1" resizeKind="NSEW">
+              <target xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0/@elements.4"/>
+              <semanticElements xmi:type="migrationmodeler:Bordered" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.4/@elements.0/@elements.0/@elements.4"/>
+              <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+              <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+              <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+              <ownedStyle xmi:type="diagram:Square" xmi:id="_XBpKoVTLEeasaLTJO4uWBw" color="255,245,181">
+                <description xmi:type="style:SquareDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']/@style"/>
+              </ownedStyle>
+              <actualMapping xmi:type="description_1:NodeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']"/>
+            </ownedBorderedNodes>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_AIBCIEW5EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
               <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
             </ownedStyle>
@@ -677,6 +934,9 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_8UwL4EW4EeWzE_Xsv11e2Q">
         <target xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.5"/>
         <semanticElements xmi:type="migrationmodeler:Container" href="moveEdgeGroup.migrationmodeler#//@representations.0/@containers.5"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_8Uwy8EW4EeWzE_Xsv11e2Q" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
           <description xmi:type="style:FlatContainerStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@style"/>
         </ownedStyle>
@@ -712,14 +972,60 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
       </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_YQXnkFTLEeasaLTJO4uWBw" name="newEdge" sourceNode="_BKP7MEW5EeWzE_Xsv11e2Q" targetNode="_AIAbEEW5EeWzE_Xsv11e2Q">
+        <target xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.4"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.4"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_YQXnkVTLEeasaLTJO4uWBw" strokeColor="39,76,114">
+          <description xmi:type="style:EdgeStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_YQXnklTLEeasaLTJO4uWBw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_YQXnk1TLEeasaLTJO4uWBw" name="edge1bis" sourceNode="_UvVw0FTLEeasaLTJO4uWBw" targetNode="_XBpKoFTLEeasaLTJO4uWBw">
+        <target xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.8"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.8"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_YQXnlFTLEeasaLTJO4uWBw" routingStyle="manhattan" strokeColor="39,76,114">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_YQXnlVTLEeasaLTJO4uWBw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_eFyi0FTLEeasaLTJO4uWBw" name="edge2bis" sourceNode="_c_H1sFTLEeasaLTJO4uWBw" targetNode="_dPInoFTLEeasaLTJO4uWBw">
+        <target xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.9"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.9"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_eFzJ4FTLEeasaLTJO4uWBw" routingStyle="manhattan" strokeColor="39,76,114">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_eFzJ4VTLEeasaLTJO4uWBw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jIF_EFTLEeasaLTJO4uWBw" name="edge3bis" sourceNode="_gIn9QFTLEeasaLTJO4uWBw" targetNode="_sYC0YEW0EeWzE_Xsv11e2Q">
+        <target xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.10"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.10"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jIF_EVTLEeasaLTJO4uWBw" strokeColor="39,76,114">
+          <description xmi:type="style:EdgeStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_jIF_ElTLEeasaLTJO4uWBw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jl3gMFTLEeasaLTJO4uWBw" name="edge4bis" sourceNode="_f_f2cFTLEeasaLTJO4uWBw" targetNode="_guxXQFTLEeasaLTJO4uWBw">
+        <target xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.11"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="moveEdgeGroup.migrationmodeler#//@representations.0/@edges.11"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jl4HQFTLEeasaLTJO4uWBw" strokeColor="39,76,114">
+          <description xmi:type="style:EdgeStyleDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_jl4HQVTLEeasaLTJO4uWBw"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_S9cCQ0W0EeWzE_Xsv11e2Q"/>
       <activatedLayers xmi:type="description_1:Layer" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer"/>
       <target xmi:type="migrationmodeler:Diagram" href="moveEdgeGroup.migrationmodeler#//@representations.0"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="moveEdgeGroup.odesign#//@ownedViewpoints[name='centered']"/>
   </ownedViews>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_-Rt5YEfdEeWXC_XxZcekKg">
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_-Rt5YEfdEeWXC_XxZcekKg">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/VP-3832/tree.odesign#//@ownedViewpoints[name='tree']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
