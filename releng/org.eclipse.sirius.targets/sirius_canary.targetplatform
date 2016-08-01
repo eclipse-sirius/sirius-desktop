@@ -5,7 +5,7 @@ include "modules/eef-ng.tpd"
 
 with source, requirements
 
-location Eclipse-Neon-Integration "http://download.eclipse.org/eclipse/updates/4.6-N-builds/" {
+location Eclipse-Oxygen-Integration "http://download.eclipse.org/eclipse/updates/4.7-N-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy
 	org.eclipse.sdk.ide lazy
@@ -20,7 +20,7 @@ location Orbit-Recommended "http://download.eclipse.org/modeling/emf/cdo/orbit/l
 	org.easymock lazy
 }
 
-location GEF-LastSuccessful "https://hudson.eclipse.org/gef/job/gef-master/lastSuccessfulBuild/artifact/update-site/" {
+location GEF-LastSuccessful "https://hudson.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.draw2d.sdk.feature.group lazy
 	org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy
