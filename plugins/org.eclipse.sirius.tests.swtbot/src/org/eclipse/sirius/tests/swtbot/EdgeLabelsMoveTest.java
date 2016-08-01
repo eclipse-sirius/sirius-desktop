@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -144,7 +144,8 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
 
         diagramEditor = setUpEditorAccordingToDimensions(diagramName, ZoomLevel.ZOOM_100);
 
-        SWTBotGefEditPart editPart = diagramEditor.getEditPart("refToBBegin");
+        SWTBotGefEditPart editPart = diagramEditor.getEditPart("refToBCenter");
+        editPart.select();
         GraphicalEditPart part = (GraphicalEditPart) editPart.part();
 
         IFigure figure = part.getFigure();
@@ -154,10 +155,10 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
         int originalX = part.getFigure().getBounds().x;
         int originalY = part.getFigure().getBounds().y;
         CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(editPart);
-        diagramEditor.dragWithKey(part.getFigure().getBounds().x, part.getFigure().getBounds().y, part.getFigure().getBounds().x - 10, part.getFigure().getBounds().y - 10, SWT.None);
+        diagramEditor.dragWithKey(part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y, part.getFigure().getBounds().x + 10, part.getFigure().getBounds().y - 10, SWT.None);
         bot.waitUntil(checkEditPartMoved);
 
-        assertEquals(originalX - 10, part.getFigure().getBounds().x);
-        assertEquals(originalY - 10, part.getFigure().getBounds().y);
+        assertEquals("The x coordinate should be the same as the move is only on y axis.", originalX, part.getFigure().getBounds().x);
+        assertEquals("The y coordinate should be different as the label has been moved by moving its border.", originalY - 10, part.getFigure().getBounds().y);
     }
 }
