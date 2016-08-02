@@ -38,7 +38,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyFormatAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteFormatAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -52,6 +51,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.Tabbar
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarDistributeMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPasteFormatMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarPinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
@@ -628,12 +628,9 @@ public class TabbarContributionFactory {
      *         being initialized.
      */
     public IContributionItem createPasteFormatContribution(IDiagramWorkbenchPart part) {
-        IWorkbenchPartSite site = part.getSite();
-        if (site != null) {
-            PasteFormatAction pasteFormatAction = new PasteFormatAction(site.getPage(), part);
-            return new ActionContributionItem(pasteFormatAction);
-        }
-        return null;
+        TabbarPasteFormatMenuManager pasteFormatMenu = new TabbarPasteFormatMenuManager();
+        pasteFormatMenu.setVisible(true);
+        return pasteFormatMenu;
     }
 
     /**

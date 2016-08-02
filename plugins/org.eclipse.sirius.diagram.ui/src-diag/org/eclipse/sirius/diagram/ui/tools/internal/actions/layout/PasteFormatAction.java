@@ -98,8 +98,8 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
         Command pasteFormatCommand = UnexecutableCommand.INSTANCE;
         if (SiriusLayoutDataManagerForSemanticElementsFactory.getInstance().getSiriusLayoutDataManager().containsData()) {
 
-            // Create a compound command to hold the resize commands
-            CompoundCommand doStoreFormatsCmd = new CompoundCommand(Messages.PasteFormatAction_restoreFormatCommandLabel);
+            // Create a compound command to hold the paste commands
+            CompoundCommand doPasteFormatsCmd = new CompoundCommand(Messages.PasteFormatAction_restoreFormatCommandLabel);
 
             // Create an iterator for the selection
             final Iterator<?> iter = getSelectedObjects().iterator();
@@ -114,12 +114,12 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
                         final Object next = iter.next();
                         if (next instanceof IGraphicalEditPart) {
                             final IGraphicalEditPart torestore = (IGraphicalEditPart) next;
-                            doStoreFormatsCmd.add(new ICommandProxy(new PasteFormatDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
+                            doPasteFormatsCmd.add(new ICommandProxy(new PasteFormatDataCommand(torestore.getEditingDomain(), diagram.get(), torestore)));
                         }
                     }
                 }
             }
-            pasteFormatCommand = doStoreFormatsCmd.unwrap();
+            pasteFormatCommand = doPasteFormatsCmd.unwrap();
         }
         return pasteFormatCommand;
     }

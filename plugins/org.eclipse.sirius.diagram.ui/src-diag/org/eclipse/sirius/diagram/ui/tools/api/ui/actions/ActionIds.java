@@ -29,6 +29,9 @@ public interface ActionIds {
     /** Action contribution id for the copy format (layout and style). */
     String COPY_FORMAT = "copyFormatAction"; //$NON-NLS-1$
 
+    /** Id of menu that groups paste actions. **/
+    String MENU_PASTE_FORMAT = "pasteFormatMenu"; //$NON-NLS-1$
+
     /** Action contribution id for the paste format (layout and style). */
     String PASTE_FORMAT = "pasteFormatAction"; //$NON-NLS-1$
 
