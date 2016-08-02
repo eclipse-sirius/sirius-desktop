@@ -131,7 +131,7 @@ public final class GradientHelper {
      * @return the corresponding pattern.
      */
     public static Pattern getGradientLeftToRight(final Rectangle bounds, final Color backgroundColor, final Color gradientColor) {
-        return VisualBindingManager.getDefault().getPatternFromValue(bounds.x, bounds.y, bounds.x + bounds.width, bounds.y, backgroundColor, gradientColor);
+        return VisualBindingManager.getDefault().getPatternFromValue(bounds.x, bounds.y, bounds.width, 0, backgroundColor, gradientColor);
     }
 
     /**
@@ -160,7 +160,7 @@ public final class GradientHelper {
         if (gradientZoneHeight != bounds.height) {
             y = bounds.y - (i - bounds.height) / 2;
         }
-        return VisualBindingManager.getDefault().getPatternFromValue(x, y, x + gradientZoneWidth, y + gradientZoneHeight, backgroundColor, gradientColor);
+        return VisualBindingManager.getDefault().getPatternFromValue(x, y, gradientZoneWidth, gradientZoneHeight, backgroundColor, gradientColor);
     }
 
     /**
@@ -234,6 +234,6 @@ public final class GradientHelper {
      * @return the correesponding pattern.
      */
     public static GradientPaint getGradientPaintTopToBottom(final Rectangle bounds, final Color backgroundColor, final Color gradientColor) {
-        return VisualBindingManager.getDefault().getGradientPaintFromValue(bounds.x, bounds.y, bounds.x, bounds.y + bounds.height, backgroundColor, gradientColor);
+        return VisualBindingManager.getDefault().getGradientPaintFromValue(bounds.x, bounds.y, 0, bounds.height, backgroundColor, gradientColor);
     }
 }

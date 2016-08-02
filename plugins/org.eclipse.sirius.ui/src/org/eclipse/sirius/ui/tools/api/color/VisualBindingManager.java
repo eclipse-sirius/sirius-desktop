@@ -552,7 +552,7 @@ public class VisualBindingManager {
         }
 
         public Pattern createPattern() {
-            return new Pattern(null, this.x, this.y, this.w, this.h, this.backgroundColor, this.foregroundColor);
+            return new Pattern(null, this.x, this.y, this.x + this.w, this.y + this.h, this.backgroundColor, this.foregroundColor);
         }
 
         public GradientPaint createGradientPaint() {
