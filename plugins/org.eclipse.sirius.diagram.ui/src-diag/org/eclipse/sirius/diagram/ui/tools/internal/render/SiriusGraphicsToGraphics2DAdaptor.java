@@ -159,6 +159,7 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
             font = state.font;
             fgColor = state.fgColor;
             bgColor = state.bgColor;
+            bgPattern = state.bgPattern;
             XorMode = state.XorMode;
             alpha = state.alpha;
             graphicHints = state.graphicHints;
@@ -939,6 +940,7 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
 
         setBackgroundColor(state.bgColor);
         setForegroundColor(state.fgColor);
+        setBackgroundPattern(state.bgPattern);
         setLineAttributes(state.lineAttributes);
         setXORMode(state.XorMode);
 
