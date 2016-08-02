@@ -33,6 +33,7 @@ public interface IRefreshOverride {
      * 
      * @param dDiagram
      *            the diagram to refresh.
+     * @return true if the refresh should not be done, false otherwise.
      */
     boolean aroundRefresh(DDiagram dDiagram);
 
