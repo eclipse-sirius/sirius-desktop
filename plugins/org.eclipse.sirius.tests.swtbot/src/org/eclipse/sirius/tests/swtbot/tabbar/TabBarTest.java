@@ -521,7 +521,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                 assertEquals("The toolbarButton index " + i + " does not have the expected tooltip", expectedTooltip, editor.bot().toolbarButton(i).getToolTipText());
             }
 
-            if (expectedTooltip.equals("Paste the current recorded layout to the selected diagram")) {
+            if (expectedTooltip.equals(Messages.PasteFormatAction_toolTipText)) {
                 // Paste layout is not enabled if there is no previous copy
                 // layout.
                 continue;
