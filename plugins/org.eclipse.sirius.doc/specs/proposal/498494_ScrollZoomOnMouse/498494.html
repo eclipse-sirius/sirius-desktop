@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationMousescrollzoomondiagramisdoneonmouselocation">Sirius Evolution Specification: Mouse scroll zoom on diagram is done on mouse location</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>:  Diagram mouse scroll zoom is based on mouse location instead of diagram editor view center
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-07-26</td>
+				<td>pguilet</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-08-05</td>
+				<td>pguilet</td>
+				<td>Initial version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=498494">Bug 498494 -  Mouse scroll zoom should be based on mouse location for an easier use instead of diagram editor view center</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>Currently the mouse scroll zoom on a diagram works as the following:</p>
+		<ul>
+			<li>We do a scroll with the mouse when hitting CTRL keyboard key.</li>
+			<li>The zoom is applied on the point at the center of the view</li>
+		</ul>
+		<p>This make difficult to zoom to an element not around the center of the view because after the zoom, the element can be out of the screen and we will have to scroll to see it.</p>
+		<p>So to avoid to have to scroll after zooming, the zoom will be done on the point behind the mouse to zoom directly the element targeted. This point will be kept at its view location when possible.</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<h3 id="Simplemousescrollzoomspecification">Simple mouse scroll zoom specification</h3>
+		<p>The implications of a zoom done on the point behind the mouse location is the following :</p>
+		<ul>
+			<li>The diagram is zoomed (in or out)</li>
+			<li>The view on the diagram is updated so the point behind the mouse is kept at the same view position if possible. We have different cases regarding the positioning of the zoomed point :
+				<ul>
+					<li>Zoom expansion is done from the top left corner of the view. This is the view origin point. Positioning is done on two axis x et y. For each axis, the positioning can be :
+						<ul>
+							<li>partial because the zoomed zone is near one or several boundaries of the diagram so you cannot scroll beyond. Zoom does not extend the diagram. The x or y coordinate is put as close as possible of the mouse location.</li>
+							<li>or complete if there is enough space between the diagram boundaries and the zoomed point to have it without shifting it from the mouse location (usually this means we have scroll bars). For example, lets consider the following case were we zoom-in :
+								<img border="0" src="zoomSpecificationExample.png"/>
+								<ul>
+									<li>If a zoom in is done in the left upper zone, the positioning will be partial for the x and y axis because with the zoom applied, we can&#8217;t extend the left and upper side of the diagram. Zoom is all about making a diagram bigger regarding a ratio and not modifying the original width and length. So instead of being under the mouse location, the original zoom point will be shifted to the right and bottom.  </li>
+									<li>If a zoom in is done in the left lower zone and is not enough to, the positioning will be partial for the x axis because with the zoom applied, we can&#8217;t extend the left side of the diagram. So instead of being under the mouse location, the original zoom point will be shifted to the right. But the positioning of the y axis will be complete because the lower side is not the boundary of the diagram and there is enough space below to do the positioning at mouse location even with the zoom.</li>
+									<li>If a zoom in is done in the right lower zone, the positioning will be complete for the x and y axis because there is enough space below the lower side and after the right side of the view to do the positioning under the mouse without seeing diagram boundaries on view that would make a shift of the original zoom point.</li>
+									<li>If a zoom in is done in the right upper zone, the positioning will be partial for the y axis because with the zoom applied, we can&#8217;t extend the upper side of the diagram. So instead of being under the mouse location, the original zoom point will be shifted to the bottom. But the positioning of the x axis will be complete because the lower side is not the boundary of the diagram and there is enough space below to do the centering even with the zoom.</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>***For a zoom-out, it works the same excepted that when boundaries are visible on the view after the zoom then the zoom point will be shifted towards top left location on the view instead of being expanded to the bottom right.</p>
+		<h3 id="Multiplemousescrollzoomspecification">Multiple mouse scroll zoom specification</h3>
+		<p>In case of a succession of mouse scroll, each scroll will be handled independently from the other.
+			<br/>We have different cases regarding a zoom done with more than one mouse scroll.
+		</p>
+		<p>For zoom-in :</p>
+		<ul>
+			<li>Either the point we want to zoom in around is not near diagram boundary from a view viewpoint after the zoom applications. In this case a zoom in will keep the original point at the same view location.</li>
+			<li>Or the zone we want to zoom in is closed to a diagram boundary visible on view after zoom applications. In this case, it is possible that we have we will have to readjust the mouse position by scrolling after some zoom-in to continue to zoom the wanted point because it will be shifted each zoom on a direction opposed to the diagram boundary visible on the view and if the zoom is strong then it can be put outside the view.</li>
+		</ul>
+		<p>For zoom-out :</p>
+		<ul>
+			<li>Either the point we want to zoom out around is not near diagram boundary from a view viewpoint after the zoom applications. In this case a zoom out will keep the original point at the same view location.</li>
+			<li>Or the zone we want to zoom out make the one ore more diagram boundaries visible on the screen after zoom applications. In this case, the zoomed point will be shifted to the top left locations regarding boundaries visible.</li>
+		</ul>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>The User documentation will be updated to describe the possibility to zoom in or out with the mouse wheel and the keyboard key CTRL.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>A test must be done for zoom-in and out when after zoom, no boundary is visible. (The zoomed point is kept under the mouse on the view).</li>
+			<li>A test must be done when diagram boundaries are visible on the view after a zoom in. The zoomed point must be shifted at the right location.</li>
+			<li>A test must be done when diagram boundaries are visible on the view after a zoom out. The zoomed point must be shifted at the right location.</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>
