@@ -23,6 +23,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
@@ -81,6 +82,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -460,22 +462,19 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         // LayoutData.
         Style copyOfSiriusStyle = EcoreUtil.copy(layoutData.getSiriusStyle());
         if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
-            NodeStyle style = (NodeStyle) copyOfSiriusStyle;
             if (semanticDecorator instanceof DNode) {
-                DNode node = (DNode) semanticDecorator;
-                node.setOwnedStyle(style);
+                computeCustomFeatures(((DNode) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
+                ((DNode) semanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
             } else {
-                DNodeListElement nodeListElement = (DNodeListElement) semanticDecorator;
-                nodeListElement.setOwnedStyle(style);
+                computeCustomFeatures(((DNodeListElement) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
+                ((DNodeListElement) semanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
             }
         } else if (semanticDecorator instanceof DDiagramElementContainer && copyOfSiriusStyle instanceof ContainerStyle) {
-            final DDiagramElementContainer container = (DDiagramElementContainer) semanticDecorator;
-            final ContainerStyle style = (ContainerStyle) copyOfSiriusStyle;
-            container.setOwnedStyle(style);
+            computeCustomFeatures(((DDiagramElementContainer) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
+            ((DDiagramElementContainer) semanticDecorator).setOwnedStyle((ContainerStyle) copyOfSiriusStyle);
         } else if (semanticDecorator instanceof DEdge && copyOfSiriusStyle instanceof EdgeStyle) {
-            final DEdge edge = (DEdge) semanticDecorator;
-            final EdgeStyle style = (EdgeStyle) copyOfSiriusStyle;
-            edge.setOwnedStyle(style);
+            computeCustomFeatures(((DEdge) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
+            ((DEdge) semanticDecorator).setOwnedStyle((EdgeStyle) copyOfSiriusStyle);
         }
     }
 
@@ -983,6 +982,34 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
                 labelLayoutData.setId(createKey((DSemanticDecorator) labelNode.getElement()).getId());
             }
             parentLayoutData.setLabel(labelLayoutData);
+        }
+    }
+
+    /**
+     * Check for each attribute of newStyle if it is the same in oldStyle. On
+     * the other hand, this attribute is added to the custom features of the
+     * newStyle.
+     * 
+     * @param oldStyle
+     *            The old style to compare with
+     * @param newStyle
+     *            The new style in which to add custom features.
+     */
+    protected void computeCustomFeatures(Style oldStyle, Style newStyle) {
+        for (EAttribute attribute : newStyle.eClass().getEAllAttributes()) {
+            if (!ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(attribute)) {
+                if (oldStyle.eClass().getEStructuralFeature(attribute.getName()) == null) {
+                    // When the attribute does not exist in old style, it is
+                    // considered as custom
+                    newStyle.getCustomFeatures().add(attribute.getName());
+                } else if (newStyle.eIsSet(attribute)) {
+                    if (!newStyle.eGet(attribute).equals(oldStyle.eGet(attribute))) {
+                        newStyle.getCustomFeatures().add(attribute.getName());
+                    }
+                } else if (oldStyle.eIsSet(attribute)) {
+                    newStyle.getCustomFeatures().add(attribute.getName());
+                }
+            }
         }
     }
 }
