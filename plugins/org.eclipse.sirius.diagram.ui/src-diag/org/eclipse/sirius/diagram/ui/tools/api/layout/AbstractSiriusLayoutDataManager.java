@@ -24,6 +24,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -79,6 +80,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Style;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -161,7 +163,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param applyLayout
      *            true if the layout must be applied, false otherwise
      * @param applyStyle
-     *            true if the layout must be applied, false otherwise
+     *            true if the style must be applied, false otherwise
      */
     protected void applyFormat(final IGraphicalEditPart rootEditPart, boolean applyLayout, boolean applyStyle) {
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
@@ -454,8 +456,11 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The layout data containing the sirius style
      */
     protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractLayoutData layoutData) {
-        if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && layoutData.getSiriusStyle() instanceof NodeStyle) {
-            NodeStyle style = (NodeStyle) layoutData.getSiriusStyle();
+        // Make a copy of the style to allow several Paste with the same
+        // LayoutData.
+        Style copyOfSiriusStyle = EcoreUtil.copy(layoutData.getSiriusStyle());
+        if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
+            NodeStyle style = (NodeStyle) copyOfSiriusStyle;
             if (semanticDecorator instanceof DNode) {
                 DNode node = (DNode) semanticDecorator;
                 node.setOwnedStyle(style);
@@ -463,13 +468,13 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
                 DNodeListElement nodeListElement = (DNodeListElement) semanticDecorator;
                 nodeListElement.setOwnedStyle(style);
             }
-        } else if (semanticDecorator instanceof DDiagramElementContainer && layoutData.getSiriusStyle() instanceof ContainerStyle) {
+        } else if (semanticDecorator instanceof DDiagramElementContainer && copyOfSiriusStyle instanceof ContainerStyle) {
             final DDiagramElementContainer container = (DDiagramElementContainer) semanticDecorator;
-            final ContainerStyle style = (ContainerStyle) layoutData.getSiriusStyle();
+            final ContainerStyle style = (ContainerStyle) copyOfSiriusStyle;
             container.setOwnedStyle(style);
-        } else if (semanticDecorator instanceof DEdge && layoutData.getSiriusStyle() instanceof EdgeStyle) {
+        } else if (semanticDecorator instanceof DEdge && copyOfSiriusStyle instanceof EdgeStyle) {
             final DEdge edge = (DEdge) semanticDecorator;
-            final EdgeStyle style = (EdgeStyle) layoutData.getSiriusStyle();
+            final EdgeStyle style = (EdgeStyle) copyOfSiriusStyle;
             edge.setOwnedStyle(style);
         }
     }
