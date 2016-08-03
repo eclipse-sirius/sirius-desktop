@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationAddsnapbacklabelactioninedgeselectionpopup">Sirius Evolution Specification: Add snap back label action in edge selection popup</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Have the capability to snap back all labels of an edge with a single action
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-07-26</td>
+				<td>pguilet</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-08-03</td>
+				<td>pguilet</td>
+				<td>None.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=498474">Bug 498474 &#8211; Snap back labels functionality must be available on edge selection to improve snap backing speed</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>Currently, to snap back an edge label, you have to use the corresponding action.
+			<br/>So if you have an edge with three labels on it (begin, end and center labels) and you want to snap back all, then you have to select each one and snap back it.
+		</p>
+		<p>This is not really user friendly.</p>
+		<p>We want to be able to snap back all edge labels on one action. </p>
+		<p>To do that, we will add a snap back action on the edge that will snap back all the labels at the same time. This action must work in case of multi edge selection.</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>As a reminder, the current steps to snap back all labels of an edge (an edge can have a maximum of three labels) are :</p>
+		<ul>
+			<li>Select the first label</li>
+			<li>Right click on it</li>
+			<li>Go to format&gt;Snap Back</li>
+			<li>Do the same steps for the second and third label</li>
+		</ul>
+		<p>This is not an efficient way to snap all labels of an edge. </p>
+		<p>A better solution that we will implements for this evolution is to add an action &#171;Snap Back Labels&#187; when selecting an edge containing all labels we want to snap back.
+			<br/>The following picture specifies how to access the action :
+			<br/> 
+			<img border="0" src="specSnapBackLabelsOnEdge.png"/>
+		</p>
+		<ul>
+			<li>The action will have the name 
+				<strong>Snap Back Label(s)</strong>
+			</li>
+			<li>The action will be present in the 
+				<strong>format</strong> section of the contextual menu of the edge if at least one label not empty is specified on the edge. If not, the action will be grayed out like the other of this menu part.
+			</li>
+		</ul>
+		<h3 id="ExecutioncontextsofSnapBackLabelsactionandexecutionresults">Execution contexts of Snap Back Labels action and execution results </h3>
+		<p>The action will be available in the following context :</p>
+		<ul>
+			<li>in case of a single edge selection</li>
+			<li>in case of a multi edge selection (if a multi selection contains something different from an edge, then the action will not be seen and usable)</li>
+		</ul>
+		<h4 id="Singleedgeselectionresult">Single edge selection result</h4>
+		<p>In this context, all the edge labels (up to three labels) will be positioned at their default location.</p>
+		<h4 id="Multiedgesselectionresult.">Multi edges selection result.</h4>
+		<p>In this context, each selected edge will have its label positioned to their default location. </p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>The User documentation will be updated to describe the snap back actions available for labels.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>We have to test the snap back action when all three labels are present.</li>
+			<li>We have to test the snap back when not all labels are defined in the edge (only begin and center label).</li>
+			<li>We have to test the snap back when no labels are present.</li>
+			<li>We have to test the snap back when empty labels are present.</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>When doing the specification, we found a bug regarding diagram node border label.</p>
+		<p>This border label have the action Snap Back available in contextual menu. But the use of it does not snap back the label.
+			<br/>Associate ticket is : https://bugs.eclipse.org/bugs/show_bug.cgi?id=498578
+		</p>
+	</body>
+</html>

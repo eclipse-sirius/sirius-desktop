@@ -1,0 +1,78 @@
+h1. Sirius Evolution Specification: Add snap back label action in edge selection popup
+
+h2. Preamble
+
+_Summary_: Have the capability to snap back all labels of an edge with a single action
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-07-26 | pguilet    | Initial version. |
+| v0.2        | PROPOSAL | 2016-08-03 | pguilet    | None. |
+
+_Relevant tickets_:
+* "Bug 498474 - Snap back labels functionality must be available on edge selection to improve snap backing speed":https://bugs.eclipse.org/bugs/show_bug.cgi?id=498474
+
+h2. Introduction
+
+Currently, to snap back an edge label, you have to use the corresponding action.
+So if you have an edge with three labels on it (begin, end and center labels) and you want to snap back all, then you have to select each one and snap back it.
+
+This is not really user friendly.
+
+We want to be able to snap back all edge labels on one action. 
+
+To do that, we will add a snap back action on the edge that will snap back all the labels at the same time. This action must work in case of multi edge selection.
+
+h2. Detailed Specification
+
+As a reminder, the current steps to snap back all labels of an edge (an edge can have a maximum of three labels) are :
+* Select the first label
+* Right click on it
+* Go to format>Snap Back
+* Do the same steps for the second and third label
+
+This is not an efficient way to snap all labels of an edge. 
+
+A better solution that we will implements for this evolution is to add an action "Snap Back Labels" when selecting an edge containing all labels we want to snap back.
+The following picture specifies how to access the action :
+ !specSnapBackLabelsOnEdge.png!
+ 
+* The action will have the name *Snap Back Label(s)*
+* The action will be present in the *format* section of the contextual menu of the edge if at least one label not empty is specified on the edge. If not, the action will be grayed out like the other of this menu part.
+
+h3. Execution contexts of Snap Back Labels action and execution results 
+
+The action will be available in the following context :
+* in case of a single edge selection
+* in case of a multi edge selection (if a multi selection contains something different from an edge, then the action will not be seen and usable)
+
+h4. Single edge selection result
+ 
+In this context, all the edge labels (up to three labels) will be positioned at their default location.
+
+h4. Multi edges selection result.
+
+In this context, each selected edge will have its label positioned to their default location. 
+
+
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Documentation Changes
+
+The User documentation will be updated to describe the snap back actions available for labels.
+
+
+
+h2. Tests and Non-regression strategy
+
+* We have to test the snap back action when all three labels are present.
+* We have to test the snap back when not all labels are defined in the edge (only begin and center label).
+* We have to test the snap back when no labels are present.
+* We have to test the snap back when empty labels are present.
+
+h2. Implementation choices and tradeoffs
+
+When doing the specification, we found a bug regarding diagram node border label.
+
+This border label have the action Snap Back available in contextual menu. But the use of it does not snap back the label.
+Associate ticket is : https://bugs.eclipse.org/bugs/show_bug.cgi?id=498578
