@@ -1,0 +1,82 @@
+h1. Sirius Evolution Specification: Edge with labels and connected ports compound move - Multiple selection.
+
+h2. Preamble
+
+_Summary_:  Move a selection of several edges with labels and connected ports.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-08-02 | smonnier    | Initial version. |
+| v0.2        | PROPOSAL    | 2016-08-03 | smonnier    | Updated version. |
+
+_Relevant tickets:_
+* "Bug #498869, Multi selection for graphical move of ports+exchanges":https://bugs.eclipse.org/bugs/show_bug.cgi?id=498869
+* "Bug #471104, Edge with labels and connected ports compound moves":https://bugs.eclipse.org/bugs/show_bug.cgi?id=471104
+
+h2. Introduction
+
+This specification presents the next step after the evolution "Edge with labels and connected ports compound moves":../../archived/471104_edgeAndPortsCompoundMoves/471104.html where this functionality is available for a selection of multiple edge groups(An edge group beeing the edge and both source and target border nodes). The first step of this evolution is also presented in the "user documentation":https://www.eclipse.org/sirius/doc/user/diagrams/Diagrams.html#move_edge_group
+
+h2. Detailed Specification
+
+h3. Keyboard modifier:
+
+In the first step of this evolution, it has been decided that the Sirius specific edge group move would be active by holding F3 during move. We will keep the same shortcut.
+
+h3(#validMoves). Identification of the valid moves
+
+* First of all, to move a selection of edge groups, each edge group must satisfy the evolution first step "valid moves":../../archived/471104_edgeAndPortsCompoundMoves/471104.html#validMoves.
+* Then, the whole selection of edge groups have to satisfy the following requirement in order to be moveable:
+** every selected element must be an edge with border nodes as source and target.
+** every edge groups must be horizontal (source and target on the west or east border) or vertical (source and target on the north or south border).
+** every edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.
+* Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.
+
+h3. Feedback
+
+The feedback presented for a "single edge group move":../../archived/471104_edgeAndPortsCompoundMoves/471104.html#feedback will be applied for the selected edge groups.
+
+h3. Impact on Sequence diagrams
+
+The impact on Sequence diagrams is no different than for "single edge group move":../../archived/471104_edgeAndPortsCompoundMoves/471104.html#impact.
+
+h3. Unsupported cases
+
+The unsupported cases are no different than for "single edge group move":../../archived/471104_edgeAndPortsCompoundMoves/471104.html#unsupportedCases.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+No metamodel changes.
+  
+h3. API Changes
+
+API Changes will be completed during implementation, but the first step should already have provided the required APIs.
+
+h3. User Interface Changes
+
+No more user interface changes as in the first step of this evolution.
+
+h3. Documentation Changes
+
+* User documentation: document the modifier and the supported cases. Update from the first step.
+
+* N&N : the new feature must be documented. Update from the first step.
+
+h2. Tests and Non-regression strategy
+
+* SWTBot Tests
+** Horizontal move of a selection of several edge groups (with and without zoom).
+** Vertical move of a selection of several edge groups (with and without zoom).
+** Move of a selection of several edge groups where one edge group new location will be the former location of another edge group of the selection.
+** Test that the move of a selection of several edge groups is valid only if they are all horizontal or vertical.
+** Test that the move of a selection of several edge groups is limited by each edge group parent bounds.
+** Test move with selection containing a node (no move)
+
+* Manual Tests
+** the feedback (supported: allowed/forbidden cases, unsupported cases)
+
+
+h2. Implementation choices and tradeoffs
+
+A selection of both horizontal and vertical edge group could have been valid by moving moveable edge groups (moving the mouse up and down would have move only the horizontal edge groups up and down) but the user experience felt strange to see only part of the selection to be moved. 

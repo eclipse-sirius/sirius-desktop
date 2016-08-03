@@ -55,7 +55,7 @@ CTRL is declared as modifier for the GEF clone action on shapes and not referenc
 
 F3 is used as modifier for a Sirius specific resize interaction. We could also reuse it for the current Sirius specific group move.
 
-h3. Identification of the valid moves
+h3(#validMoves). Identification of the valid moves
 
 The first step of the group move validation will be to check the structure of the group: 
 * an edge (no check on labels)
@@ -78,18 +78,18 @@ The third step consists of:
 
 The edge's bendpoints are relative to the source and target anchors, themselves relatively located to the connected node bounds. So the compound move only has to move the source and target nodes with the same delta, the edge and its labels will automatically follow. However the feedback will have to properly computed and displayed whereas it is directly done in case of standard bendpoint move/creation. 
 
-h3. Feedback
+h3(#feedback). Feedback
 
 The feedback should show the limits of the move or the validation result of the move. The mouse icon should be impacted. 
 It might be different than displaying the moved group in its final position.
 It could be interesting to show guides as done on Sequence diagrams.
 The feedback might not be as advanced as the drag of a single port, which shows the collapsed sibling ports.
 
-h3. Impact on Sequence diagrams
+h3(#impact). Impact on Sequence diagrams
 
 The Sequence diagram defines its own user interactions on Sequence elements. Implementers will have to make sure that this feature is disabled/forbidden on Sequence messages as they are connected to executions or lifelines which are border nodes.
 
-h3. Unsupported cases
+h3(#unsupportedCases). Unsupported cases
 
 The current evolution only deals with edges connected to border nodes having only the moved edge in source/target connections.
 
