@@ -414,23 +414,48 @@ If you want to drag and drop the port in a new container, just drag the port wit
 
 The port is dropped in the container above the mouse location and linked to its closest edge.
 
-h3. Copy/paste of layout
+h3(#copy_paste_format). Copy/paste of format
 
-It is possible to duplicate layout of diagram elements, that is to say to replicate mutual organization of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.
+It is possible to duplicate format of diagram elements, that is to say to replicate mutual organization and style of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.
+By default, this copy/paste replicates the layout (x, y width and height) AND the style (colors, font, ...).
 
-The next picture shows a partial view of a diagram. The tool to replicate the layout is called "Copy layout" and can be activated from the tab-bar or the contextual menu (see "edit" section). In this picture, layout of John Doe and Earvin Johnson persons will be replicated to another diagram.
+But it is also possible to only _Paste Layout_ or only _Paste Style_. The initial copy is always a _Copy Format_ in all cases.
 
-	!images/diagram_editor_copy_layout1.png!
+The next picture shows a partial view of a diagram. The tool to replicate the format is called "Copy Format" and can be activated from the tab-bar when the diagram elements are selected, from the contextual menu (see _Edit_ section) or through the _Ctrl+Alt+Shift+C_ shortcut. In this picture, format of John Doe and Earvin Johnson persons will be replicated to another diagram.
 
-The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called "Paste layout" and can be activated from the toolbar or the contextual menu (see "edit" section).
+	!images/diagram_editor_copy_format.png!
+
+h4. Paste Layout
+
+The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called "Paste Layout" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
 	
-	!images/diagram_editor_copy_layout2.png!
+	!images/diagram_editor_paste_layout1.png!
 
 The layout applies to John Doe and Earvin Johnson and is exactly the same as the original one (compare John Doe and Earvin Johnson each other positions with first screenshot).
 
-	!images/diagram_editor_copy_layout3.png!
+	!images/diagram_editor_paste_layout2.png!
 
 *Warning* : This copy/paste operation copies exactly what you see on a diagram. When using low zoom level, some diagram elements can be twisted and the paste operation will duplicate theses twistings on the other diagram. Please, zoom in to reduce twistings.
+
+h4. Paste Style
+
+The next picture shows the diagram where the layout will be replicated. The tool to paste style is called "Paste Style" and can be activated from the tab-bar or from the contextual menu (see _Edit_ section).
+	
+	!images/diagram_editor_paste_style1.png!
+
+The red font applies to John Doe.
+
+	!images/diagram_editor_paste_style2.png!
+
+h4. Paste Format
+
+The next picture shows the diagram where the layout will be replicated. The tool to paste format is called "Paste Format" and can be activated from the tab-bar when the diagram is selected, from the contextual menu (see _Edit_ section) or through the _Ctrl+Alt+Shift+V_ shortcut.
+
+	!images/diagram_editor_paste_format1.png!
+	
+The result is the same as applying _Paste Format_ and _Paste Style_.
+
+	!images/diagram_editor_paste_format2.png!
 
 h3(#diagram_element_pinning). Diagram element pinning
 
