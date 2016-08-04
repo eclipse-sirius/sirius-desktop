@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
@@ -35,8 +32,9 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 
@@ -123,7 +121,7 @@ public class DragAndDropValidator {
      */
     private boolean init(ChangeBoundsRequest request, GraphicalEditPart hostGraphicalEditPart) {
         List<?> editParts = request.getEditParts();
-        boolean isInLayoutingMode = isInLayoutingMode(hostGraphicalEditPart);
+        boolean isInLayoutingMode = new EditPartQuery(hostGraphicalEditPart).isInLayoutingMode();
         for (Object editPart : editParts) {
             if (editPart instanceof DragAndDropWrapper) {
                 DragAndDropWrapper dragAndDropWrapperToDrop = (DragAndDropWrapper) editPart;
@@ -145,7 +143,7 @@ public class DragAndDropValidator {
                     elementsFromDiagramToDrop.add(dDiagramElementTopDrop);
                     editPartsFromDiagramToDrop.add(graphicalEditPartToDrop);
 
-                    if (isInLayoutingMode && graphicalEditPartToDrop instanceof IDiagramBorderNodeEditPart) {
+                    if (isInLayoutingMode && graphicalEditPartToDrop instanceof IAbstractDiagramNodeEditPart) {
                         return false;
                     }
 
@@ -153,28 +151,6 @@ public class DragAndDropValidator {
             }
         }
         return true;
-    }
-
-    /**
-     * Returns true if the given part is used in a diagram in layouting mode.
-     * False otherwise or if no diagram is associated to it.
-     * 
-     * @param graphicalEditPart
-     *            the part from which we want to know if it associated to a
-     *            diagram in layouting mode.
-     * @return true if the given part is used in a diagram in layouting mode.
-     *         False otherwise or if no diagram is associated to it.
-     */
-    private boolean isInLayoutingMode(GraphicalEditPart graphicalEditPart) {
-        View notationView = graphicalEditPart.getNotationView();
-        if (notationView != null) {
-            Diagram diagram = notationView.getDiagram();
-            if (diagram != null) {
-                EObject element = diagram.getElement();
-                return element instanceof DDiagram && ((DDiagram) element).isIsInLayoutingMode();
-            }
-        }
-        return false;
     }
 
     private boolean isValidDragAndDropRequestForElementFromEclipseView() {

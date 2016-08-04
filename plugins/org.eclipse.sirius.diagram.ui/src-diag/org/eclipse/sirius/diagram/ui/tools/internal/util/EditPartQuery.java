@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -427,8 +430,8 @@ public class EditPartQuery {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
             }
             if (PositionConstants.NORTH == resizedSide) {
-                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y
-                        + parentResizeSize));
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(),
+                        new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y + parentResizeSize));
             } else {
                 shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
             }
@@ -525,8 +528,8 @@ public class EditPartQuery {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
             }
             if (PositionConstants.WEST == resizedSide) {
-                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x + parentResizeSize, expectedNewBounds.y
-                        - currentBounds.y));
+                shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(),
+                        new Dimension(expectedNewBounds.x - currentBounds.x + parentResizeSize, expectedNewBounds.y - currentBounds.y));
             } else {
                 shiftingAccordingToBorderItemLocator.put((Node) borderItemEditPart.getModel(), new Dimension(expectedNewBounds.x - currentBounds.x, expectedNewBounds.y - currentBounds.y));
             }
@@ -578,6 +581,7 @@ public class EditPartQuery {
         } else if (PositionConstants.SOUTH == resizedSide) {
             // Greater (y+height) in first
             getValueToCompareFunction = new Function<IBorderItemEditPart, Integer>() {
+
                 @Override
                 public Integer apply(IBorderItemEditPart from) {
                     Node node = (Node) from.getModel();
@@ -615,6 +619,7 @@ public class EditPartQuery {
                 }
             };
         }
+
         Ordering<IBorderItemEditPart> ordering = Ordering.natural().onResultOf(getValueToCompareFunction);
         return ImmutableSortedSet.orderedBy(ordering).addAll(nodes).build();
     }
@@ -646,5 +651,23 @@ public class EditPartQuery {
             }
         }
         return null;
+    }
+
+    /**
+     * Check if the given part is used in a diagram in layouting mode.
+     * 
+     * @return true if the given part is used in a diagram in layouting mode,
+     *         false otherwise.
+     */
+    public boolean isInLayoutingMode() {
+        View notationView = part.getNotationView();
+        if (notationView != null) {
+            Diagram diagram = notationView.getDiagram();
+            if (diagram != null) {
+                EObject element = diagram.getElement();
+                return element instanceof DDiagram && ((DDiagram) element).isIsInLayoutingMode();
+            }
+        }
+        return false;
     }
 }

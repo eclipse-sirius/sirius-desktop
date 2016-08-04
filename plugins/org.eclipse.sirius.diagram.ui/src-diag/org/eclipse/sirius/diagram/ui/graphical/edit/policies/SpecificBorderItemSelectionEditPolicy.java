@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2015 IBM Corporation and others.
+ * Copyright (c) 2002, 2016 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,13 +57,11 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEditPartEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
@@ -74,6 +72,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicates;
@@ -276,7 +275,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             Rectangle realLocation = null;
 
             // Only necessary in the case of bordered node dropping
-            if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart) && !isInLayoutingMode(hostEditPart)) {
+            if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart) && hostEditPart instanceof IGraphicalEditPart
+                    && !new EditPartQuery((IGraphicalEditPart) hostEditPart).isInLayoutingMode()) {
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
@@ -352,25 +352,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 }
             }
         }
-    }
-
-    /**
-     * Returns true if the given part is used in a diagram in layouting mode.
-     * False otherwise or if no diagram is associated to it.
-     * 
-     * @param editPart
-     *            the part from which we want to know if it associated to a
-     *            diagram in layouting mode.
-     * @return true if the given part is used in a diagram in layouting mode.
-     *         False otherwise or if no diagram is associated to it.
-     */
-    private boolean isInLayoutingMode(EditPart editPart) {
-        if (editPart instanceof IDiagramBorderNodeEditPart) {
-            final IDiagramBorderNodeEditPart borderNodeEditPart = (IDiagramBorderNodeEditPart) editPart;
-            final DDiagram parentDiagram = borderNodeEditPart.resolveDiagramElement().getParentDiagram();
-            return parentDiagram.isIsInLayoutingMode();
-        }
-        return false;
     }
 
     /**

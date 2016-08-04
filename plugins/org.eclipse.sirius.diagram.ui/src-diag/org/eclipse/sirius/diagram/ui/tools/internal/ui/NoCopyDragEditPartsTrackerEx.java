@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,13 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractBorderedDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A specific dragEditPartTracket that disable the clone feature. Indeed, in
@@ -45,12 +52,6 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
         super.setCloneActive(false);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx#reveal
-     * (org.eclipse.gef.EditPart)
-     */
     @Override
     protected void reveal(EditPart editpart) {
         // In Sirius, the drag'n'drop can change (delete and create a new
@@ -60,5 +61,51 @@ public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker 
         if (editpart.getRoot() != null) {
             super.reveal(editpart);
         }
+    }
+
+    /**
+     * Overridden to return a command only if we are not in case of a
+     * drag'n'drop of a node/container outside of its current container.
+     * 
+     * @return A command only if authorized
+     */
+    @Override
+    protected Command getCommand() {
+        if (isAuthorized()) {
+            return super.getCommand();
+        }
+        return UnexecutableCommand.INSTANCE;
+    }
+
+    @Override
+    protected void updateAutoexposeHelper() {
+        // The updateAutoexposeHelper is not called if the drag'n'drop is not
+        // authorized because:
+        // * There is no reason to scroll the diagram
+        // * It causes a strange effect and the forbidden icon disappears.
+        if (isAuthorized()) {
+            super.updateAutoexposeHelper();
+        }
+    }
+
+    /**
+     * @return true if the drag'n'drop is authorized (according to layouting
+     *         mode specificity), false otherwise.
+     */
+    private boolean isAuthorized() {
+        boolean isAuthorized = true;
+        EditPart movedEditPart = getSourceEditPart();
+        if (movedEditPart instanceof AbstractBorderedDiagramElementEditPart && new EditPartQuery((AbstractBorderedDiagramElementEditPart) movedEditPart).isInLayoutingMode()) {
+            // We are in layouting mode
+            EditPart targetEditPart = getTargetEditPart();
+            // Check if the target container is not the same as before move
+            boolean notSameContainer = targetEditPart != null
+                    && !(movedEditPart.getParent() == targetEditPart || targetEditPart instanceof CompartmentEditPart && targetEditPart.getParent() == movedEditPart.getParent());
+            notSameContainer = notSameContainer && (targetEditPart instanceof IGraphicalEditPart && ((IGraphicalEditPart) targetEditPart).resolveSemanticElement() instanceof DSemanticDecorator);
+            if (notSameContainer) {
+                isAuthorized = false;
+            }
+        }
+        return isAuthorized;
     }
 }

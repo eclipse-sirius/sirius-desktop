@@ -12,11 +12,11 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.lang.reflect.Field;
 
-import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -124,8 +124,7 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void checkLayoutingModeisInExpectedState(boolean layoutingModeShouldBeActive) {
         // Step 1 : ensures that the layouting mode is in expected state
-        DDiagram parentDiagram = ((DDiagramElement) ((Node) editor.getEditPart("new Package 1").part().getModel()).getElement()).getParentDiagram();
-        assertEquals(layoutingModeShouldBeActive, parentDiagram.isIsInLayoutingMode());
+        assertEquals(layoutingModeShouldBeActive, new EditPartQuery((IGraphicalEditPart) editor.getEditPart("new Package 1").part()).isInLayoutingMode());
 
         // Step 2 : ensures that the status line displays the expected message
         checkStatusLineShowExpectedMessage(layoutingModeShouldBeActive);
