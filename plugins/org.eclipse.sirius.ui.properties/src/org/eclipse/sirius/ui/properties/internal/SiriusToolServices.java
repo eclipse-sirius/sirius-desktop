@@ -67,7 +67,7 @@ public class SiriusToolServices {
      * @return The text representing the given EObject or <code>null</code> if
      *         none could be found
      */
-    public Object eefViewText(EObject eObject) {
+    public String eefViewText(EObject eObject) {
         return this.editServices.getLabelProviderText(eObject);
     }
 

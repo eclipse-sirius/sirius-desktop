@@ -44,7 +44,8 @@ public class EEFPropertySheetPageProvider implements ISiriusPropertySheetPagePro
                 }
             }
         }
-        return new EEFTabbedPropertySheetPage(source, contributorId);
+
+        return new EEFTabbedPropertySheetPage(new ContributorWrapper(source, contributorId));
     }
 
     private boolean forcesLegacyPropertySheet(RepresentationDescription description) {
