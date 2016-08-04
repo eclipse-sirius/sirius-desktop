@@ -26,6 +26,10 @@ h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, @org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()@ has been added as a wrapper of the @DRepresentation@. In this step, the main impact is that the Sirius common navigator does not display the @DRepresentation@ anymore but the @DRepresentationDescriptor@ instead. All the actions and commands are then based on @DRepresentationDescriptor@.
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* <span class="label label-danger">Removed</span> The deprecated method @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext#getTargetTypes()@ has been removed. Use @getTargetType()@ instead: it returns a @VariableType@ which supports multiple possible types directly.
+
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException@ exception has been added to cancel Sirius session opening due to an .aird version mismatch, i.e. when one the of the loaded Representation resources is coming from a newer Sirius release.

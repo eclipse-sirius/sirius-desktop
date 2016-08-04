@@ -47,22 +47,6 @@ public interface IInterpreterContext {
     boolean requiresTargetType();
 
     /**
-     * Returns the names of all possible types for the target of the expression
-     * to evaluate.
-     * 
-     * The types are computed from the Viewpoint Specification Model. If the
-     * resulting list is empty and the requiresTargetTypes() method return
-     * false, the expected evaluation context type will be EObject.
-     * 
-     * This method is deprecated, getTargetType() should be used instead.
-     * 
-     * @return the names of all possible types for the target of the expression
-     *         to evaluate
-     */
-    @Deprecated
-    Collection<String> getTargetTypes();
-
-    /**
      * Returns the EPackages that are currently available to validate an
      * expression.
      * 
