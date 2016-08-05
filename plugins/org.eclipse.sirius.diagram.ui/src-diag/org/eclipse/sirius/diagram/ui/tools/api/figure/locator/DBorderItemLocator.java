@@ -1090,21 +1090,6 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator#getValidLocation(org.eclipse.draw2d.geometry.Rectangle,
-     *      org.eclipse.draw2d.IFigure)
-     */
-    public Rectangle getValidLocation(final Rectangle proposedLocation, final IFigure borderItem, final List<IFigure> figuresToIgnore) {
-        BitSet authorizedSides = getAuthorizedSides(borderItem);
-        final int side = DBorderItemLocator.findClosestSideOfParent(proposedLocation, getParentBorder(), authorizedSides);
-        final Point newTopLeft = locateOnBorder(proposedLocation, side, NB_SIDES - getNumberOfAuthorizedSides(authorizedSides), borderItem, figuresToIgnore, new ArrayList<IFigure>());
-        Rectangle realLocation = proposedLocation.getCopy();
-        realLocation.setLocation(newTopLeft);
-        return realLocation;
-    }
-
-    /**
      * Lets consider this border item as not fixed.
      */
     public void unfix() {
