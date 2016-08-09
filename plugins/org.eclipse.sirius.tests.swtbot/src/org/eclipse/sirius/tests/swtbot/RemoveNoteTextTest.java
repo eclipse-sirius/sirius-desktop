@@ -13,18 +13,20 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Checks that the "remove from diagram" action removes notes and texts. Also
- * checks that is impossible to use "remove from model" action for notes and
- * texts.
+ * Checks that the "remove from diagram" action removes notes and texts (and
+ * associated NoteAttachment). Also checks that is impossible to use
+ * "remove from model" action for notes and texts.
  * 
  * @author jdupont
  */
@@ -64,7 +66,7 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -74,9 +76,9 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRemoveNoteFromContextualMenuAction() {
         // Select note
         editor.click(NOTE);
-        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE);
-        SWTBotGefEditPart diagram = noteEditPart.parent().parent();
-        assertEquals("The note " + NOTE + " should be present", noteEditPart.parent(), diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).get(0));
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE, NoteEditPart.class);
+        SWTBotGefEditPart diagram = noteEditPart.parent();
+        assertEquals("The note " + NOTE + " should be present", noteEditPart, diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).get(0));
         editor.clickContextMenu(DELETE_FROM_DIAGRAM);
         // Check that the note has been removed
         assertTrue("The note " + NOTE + " should be removed", diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).isEmpty());
@@ -89,7 +91,7 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRemoveNoteAttachmentFromContextualMenuAction() {
         // Select note
         editor.click(NOTE);
-        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE).parent();
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE, NoteEditPart.class);
         SWTBotGefConnectionEditPart noteAttachment = noteEditPart.sourceConnections().get(0);
         noteAttachment.select();
         assertEquals("The note attachment should be present", noteAttachment, noteEditPart.sourceConnections().iterator().next());
@@ -106,9 +108,9 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     public void testRemoveTextFromContextualMenuAction() {
         // Select text
         editor.click(TEXT);
-        SWTBotGefEditPart textEditPart = editor.getEditPart(TEXT);
-        SWTBotGefEditPart diagram = textEditPart.parent().parent();
-        assertEquals("The Text " + TEXT + " should be present", textEditPart.parent(), diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).get(0));
+        SWTBotGefEditPart textEditPart = editor.getEditPart(TEXT, TextEditPart.class);
+        SWTBotGefEditPart diagram = textEditPart.parent();
+        assertEquals("The Text " + TEXT + " should be present", textEditPart, diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).get(0));
         editor.clickContextMenu(DELETE_FROM_DIAGRAM);
         // Check that the text has been removed
         assertTrue("The Text " + TEXT + " should be removed", diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).isEmpty());
@@ -126,12 +128,16 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Select note
         editor.click(NOTE);
-        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE);
-        SWTBotGefEditPart diagram = noteEditPart.parent().parent();
-        assertEquals("The note " + NOTE + " should be present", noteEditPart.parent(), diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).get(0));
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE, NoteEditPart.class);
+        SWTBotGefEditPart diagram = noteEditPart.parent();
+        SWTBotGefConnectionEditPart noteAttachmentPart = noteEditPart.sourceConnections().get(0);
+        View noteAttachment = (View) noteAttachmentPart.part().getModel();
+        assertEquals("The note " + NOTE + " should be present", noteEditPart, diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).get(0));
         editor.bot().toolbarButtonWithTooltip(DELETE_FROM_DIAGRAM).click();
         // Check that the note has been removed
         assertTrue("The note " + NOTE + " should be removed", diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).isEmpty());
+        // Check that the corresponding note attachment has also been removed
+        assertNull("The corresponding note attachment should be removed", noteAttachment.eContainer());
     }
 
     /**
@@ -146,7 +152,7 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Select note
         editor.click(NOTE);
-        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE).parent();
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE, NoteEditPart.class);
         SWTBotGefConnectionEditPart noteAttachment = noteEditPart.sourceConnections().get(0);
         noteAttachment.select();
         assertEquals("The note attachment should be present", noteAttachment, noteEditPart.sourceConnections().iterator().next());
@@ -168,11 +174,15 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Select text
         editor.click(TEXT);
-        SWTBotGefEditPart noteEditPart = editor.getEditPart(TEXT);
-        SWTBotGefEditPart diagram = noteEditPart.parent().parent();
-        assertEquals("The Text " + TEXT + " should be present", noteEditPart.parent(), diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).get(0));
+        SWTBotGefEditPart textEditPart = editor.getEditPart(TEXT, TextEditPart.class);
+        SWTBotGefConnectionEditPart noteAttachmentPart = textEditPart.targetConnections().get(0);
+        View noteAttachment = (View) noteAttachmentPart.part().getModel();
+        SWTBotGefEditPart diagram = textEditPart.parent();
+        assertEquals("The Text " + TEXT + " should be present", textEditPart, diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).get(0));
         editor.bot().toolbarButtonWithTooltip(DELETE_FROM_DIAGRAM).click();
         // Check that the text has been removed
         assertTrue("The Text " + TEXT + " should be removed", diagram.descendants(IsInstanceOf.instanceOf(TextEditPart.class)).isEmpty());
+        // Check that the corresponding note attachment has also been removed
+        assertNull("The corresponding note attachment should be removed", noteAttachment.eContainer());
     }
 }
