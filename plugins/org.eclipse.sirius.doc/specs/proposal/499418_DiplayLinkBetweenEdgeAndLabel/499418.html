@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationDisplaylinkbetweenedgeandtheirlabelsonselection">Sirius Evolution Specification: Display link between edge and their labels on selection</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: When a label of edge is moved, a feedback link is displayed between the label and its edge. The goal of this feature is to display this link as soon as the edge or label is selected.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2016-08-09</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2016-08-17</td>
+				<td>lredor</td>
+				<td>Reviewed version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=499418">Bug 499418 &#8211; Display link between edge and their labels on selection</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>When a label of edge is moved, a feedback link is displayed between the label and its edge, like on this screenshot:
+			<br/>
+			<img border="0" src="images/linkDuringLabelMove.png"/>
+		</p>
+		<p>The goal of this feature is to allow the user to display this link as soon as the edge or one of the labels of this edge is selected. This feature can be activated with a new preference in 
+			<em>Sirius/Sirius Diagram/Connections</em>.
+			<br/>
+			<img border="0" src="images/preferencePage.png"/>
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>By default, the preference will be disabled (same default behavior as previous Sirius version).</p>
+		<p>If the edge has several labels, one link will be displayed for each label.
+			<br/>If a label is selected, only the link for this label is displayed.
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel change.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>A new preference will be added in 
+			<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>.
+		</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>A new preference is available in 
+			<em>Sirius/Sirius Diagram/Connections</em> to activate this new feature.
+		</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>This new feature will be documented in the user guide and mentioned in the release notes.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<ul>
+			<li>No effect with preference disabled</li>
+			<li>Preference enabled:
+				<ul>
+					<li>Select an edge with one center label</li>
+					<li>Select an edge with three labels</li>
+					<li>Select a begin label</li>
+					<li>Select a center label</li>
+					<li>Select a end label</li>
+				</ul>
+			</li>
+		</ul>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>

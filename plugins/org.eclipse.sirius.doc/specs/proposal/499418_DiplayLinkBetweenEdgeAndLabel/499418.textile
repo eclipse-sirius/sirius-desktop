@@ -1,0 +1,57 @@
+h1. Sirius Evolution Specification: Display link between edge and their labels on selection
+
+h2. Preamble
+
+_Summary_: When a label of edge is moved, a feedback link is displayed between the label and its edge. The goal of this feature is to display this link as soon as the edge or label is selected.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2016-08-09 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2016-08-17 | lredor    | Reviewed version. |
+
+_Relevant tickets_:
+* "Bug 499418 - Display link between edge and their labels on selection":https://bugs.eclipse.org/bugs/show_bug.cgi?id=499418
+
+h2. Introduction
+
+When a label of edge is moved, a feedback link is displayed between the label and its edge, like on this screenshot:
+!images/linkDuringLabelMove.png!
+
+The goal of this feature is to allow the user to display this link as soon as the edge or one of the labels of this edge is selected. This feature can be activated with a new preference in _Sirius/Sirius Diagram/Connections_.
+!images/preferencePage.png!
+
+h2. Detailed Specification
+
+By default, the preference will be disabled (same default behavior as previous Sirius version).
+
+If the edge has several labels, one link will be displayed for each label.
+If a label is selected, only the link for this label is displayed.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+No metamodel change.
+
+h3. API Changes
+
+A new preference will be added in @org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys@.
+
+h3. User Interface Changes
+
+A new preference is available in _Sirius/Sirius Diagram/Connections_ to activate this new feature.
+
+h3. Documentation Changes
+
+This new feature will be documented in the user guide and mentioned in the release notes.
+
+h2. Tests and Non-regression strategy
+
+* No effect with preference disabled
+* Preference enabled:
+** Select an edge with one center label
+** Select an edge with three labels
+** Select a begin label
+** Select a center label
+** Select a end label
+
+h2. Implementation choices and tradeoffs
