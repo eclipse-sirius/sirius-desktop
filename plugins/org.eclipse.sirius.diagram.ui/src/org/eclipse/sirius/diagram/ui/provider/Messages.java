@@ -315,6 +315,9 @@ public final class Messages {
     public static String DiagramConnectionsPreferencePage_enableOverrideLabel;
 
     @TranslatableMessage
+    public static String DiagramConnectionsPreferencePage_showEdgeLabelLinkOnSelect;
+
+    @TranslatableMessage
     public static String DiagramDialectEditorDialogFactory_forbiddenOperation;
 
     @TranslatableMessage

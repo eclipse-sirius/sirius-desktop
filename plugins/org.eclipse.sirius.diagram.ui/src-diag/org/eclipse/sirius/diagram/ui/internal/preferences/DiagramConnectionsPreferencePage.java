@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
@@ -56,6 +57,11 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
     protected ComboFieldEditor lineStyleFieldEditor = null;
 
     /**
+     * "Show link between label and edge" field.
+     */
+    protected CheckBoxFieldEditor showLinkFieldEditor = null;
+
+    /**
      * EnableOverride field.
      */
     protected CheckBoxFieldEditor enableOverrideFieldEditor = null;
@@ -85,6 +91,12 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
     @Override
     protected void addFieldEditors(Composite composite) {
         fieldsParent = composite;
+        // Create the check box to enable or not the show link between label and
+        // edge on selection.
+        showLinkFieldEditor = new CheckBoxFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION.name(), Messages.DiagramConnectionsPreferencePage_showEdgeLabelLinkOnSelect,
+                fieldsParent);
+        addField(showLinkFieldEditor);
+
         // Create the check box to enable or not the override.
         enableOverrideFieldEditor = new CheckBoxFieldEditor(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, Messages.DiagramConnectionsPreferencePage_enableOverrideLabel, fieldsParent);
         addField(enableOverrideFieldEditor);

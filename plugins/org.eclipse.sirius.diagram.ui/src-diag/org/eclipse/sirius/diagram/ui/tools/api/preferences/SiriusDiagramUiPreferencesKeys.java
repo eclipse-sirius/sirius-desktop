@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,14 +50,20 @@ public enum SiriusDiagramUiPreferencesKeys {
      * refreshed:
      * <ul>
      * <li>Synchronously: whenever a modification is performed, all decorators
-     * must be refreshed before the user can make any other modification
-     * (<b>Warning:</b> this can have severe impacts on performances)</li>
+     * must be refreshed before the user can make any other modification (
+     * <b>Warning:</b> this can have severe impacts on performances)</li>
      * <li>Asynchronously: whenever a modification is performed, all decorators
      * are refreshed without blocking the end-user (he can make other
      * modifications even if there are still non-updated decorators).</li>
      * </ul>
      */
-    PREF_REFRESH_DECORATORS_SYNCHRONOUSLY(boolean.class);
+    PREF_REFRESH_DECORATORS_SYNCHRONOUSLY(boolean.class),
+
+    /**
+     * Says whether a link between edge and its labels must be show on edge or
+     * label selection.
+     */
+    PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION(boolean.class);
 
     /** The type of the preference. */
     private Class<?> type;

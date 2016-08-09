@@ -26,11 +26,13 @@ import org.eclipse.gef.handles.ConnectionStartHandle;
 import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.tools.DragEditPartsTracker;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 
@@ -68,6 +70,21 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
                 if (child instanceof PolylineDecoration) {
                     final PolylineDecoration decoration = (PolylineDecoration) child;
                     decoration.setLineWidth(DiagramEdgeEditPartOperation.getLineWidth(getEdgeEditPart()) + WIDTH_FEEDBACK);
+                }
+            }
+        }
+
+        if (getHost() instanceof AbstractDiagramNameEditPart) {
+            // Only show the attachment of the current NameEditPart
+            if (((AbstractDiagramNameEditPart) getHost()).getFigure() instanceof SiriusWrapLabelWithAttachment) {
+                ((SiriusWrapLabelWithAttachment) ((AbstractDiagramNameEditPart) getHost()).getFigure()).showAttachment();
+            }
+        } else {
+            for (final AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
+                if (edgeNameEditPart != null && !StringUtil.isEmpty(edgeNameEditPart.getEditText())) {
+                    if (edgeNameEditPart.getFigure() instanceof SiriusWrapLabelWithAttachment) {
+                        ((SiriusWrapLabelWithAttachment) edgeNameEditPart.getFigure()).showAttachment();
+                    }
                 }
             }
         }
@@ -111,6 +128,13 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
      */
     @Override
     protected void hideSelection() {
+        if (getEdgeEditPart() != null) {
+            for (final AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
+                if (edgeNameEditPart.getFigure() instanceof SiriusWrapLabelWithAttachment) {
+                    ((SiriusWrapLabelWithAttachment) edgeNameEditPart.getFigure()).hideAttachment();
+                }
+            }
+        }
         super.hideSelection();
         getEdgeEditPart().refreshForegroundColor();
         getEdgeEditPart().refreshLineStyle();
@@ -126,7 +150,7 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
     protected List<Handle> createNameSelectionHandles() {
         final List<Handle> list = Lists.newArrayList();
         for (final AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
-            if (edgeNameEditPart != null && edgeNameEditPart.getEditText() != null && !"".equals(edgeNameEditPart.getEditText())) { //$NON-NLS-1$
+            if (edgeNameEditPart != null && !StringUtil.isEmpty(edgeNameEditPart.getEditText())) {
                 list.add(new MoveHandle(edgeNameEditPart) {
                     /**
                      * Overridden to create the same

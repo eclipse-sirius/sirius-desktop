@@ -171,7 +171,21 @@ Furthermore, since Sirius 4.1, it is possible to move several edge groups at onc
 * each edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.
 
 Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.
- 
+
+h4(#edge_label_attachment). Display attachment link between edge and its labels
+
+It is possible to display an attachment link between an edge and its labels when edge or label is selected. This is not the default behavior but it can be activated by a preference in _Sirius/Sirius Diagram/Connections_ preference page.
+
+	!images/edgeLabelAttachment_preference.png!
+
+If the edge is selected, one attachment is displayed for all associated labels. 
+
+	!images/edgeLabelAttachment_edgeSelected.png!
+
+If a label is selected, only the attachment between the edge and this label is displayed.
+
+	!images/edgeLabelAttachment_labelSelected.png!
+
 h3(#distribute). Distribute elements
 
 Four new actions allow to distribute shapes: 

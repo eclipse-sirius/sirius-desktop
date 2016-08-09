@@ -103,6 +103,13 @@
 			<li><span class="label label-success">Added</span> The 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">snap to shape</a> feature is now available on border nodes.
 			</li>
+			<li><span class="label label-success">Added</span> It is now possible to display an attachment link between an edge and its labels when label or edge is selected. This is not the default behavior but it can be activated by a preference in 
+				<em>Sirius/Sirius Diagram/Connections</em> preference page. See chapter 
+				<a href="./user/diagrams/Diagrams.html#edge_label_attachment">
+					<em>Display attachment link between edge and its labels</em>
+				</a> in 
+				<em>User Manual</em> for more details.
+			</li>
 			<li><span class="label label-info">Modified</span> When trying to open a session which holds a representation resource or a VSP which was saved using a more recent version of Sirius than the one you are using, the session will be automatically closed displaying an error message. You can overload this behavior by providing you own implementation of 
 				<code>UICallBack</code> in which you can have an UI feedback letting you choose if you want to open the session anyway. Warning: if you choose to proceed, there is no guarantee that the resulting session will be usable. It may even lead to data loss or corruption; use at your own risk.
 			</li>
@@ -316,6 +323,15 @@
 			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery.getAncestor(int...)</code> has been added to retrieve the first ancestor of the view, or itself, that has at least one of the visualID passed as parameter.
+			</li>
+			<li><span class="label label-success">Added</span> The new preference key 
+				<code>PREF_SHOW_LINK_EDGE_LABEL_ON_SELECTION</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys</code>. It corresponds to the preference shown in 
+				<em>Sirius/Sirius Diagram/Connections</em> Eclipse preferences.
+			</li>
+			<li><span class="label label-success">Added</span> The new figure 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment</code> is a specific 
+				<code>SiriusWrapLabel</code> that allows to show an attachment between the label and its edge.
 			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.AbstractSiriusLayoutDataManager</code> is deprecated, use 

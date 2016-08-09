@@ -16,6 +16,7 @@ import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Polyline;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.geometry.Point;
@@ -36,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
@@ -58,6 +60,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusEdgeLabelSnap
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
@@ -68,7 +71,9 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Implementation of the default behaviors of edges.
@@ -432,11 +437,17 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         /**
          * @was-generated
          */
-        private SiriusWrapLabel fFigureViewEdgeNameFigure;
+        private SiriusWrapLabelWithAttachment fFigureViewEdgeNameFigure;
 
-        private SiriusWrapLabel fFigureViewEdgeBeginNameFigure;
+        private SiriusWrapLabelWithAttachment fFigureViewEdgeBeginNameFigure;
 
-        private SiriusWrapLabel fFigureViewEdgeEndNameFigure;
+        private SiriusWrapLabelWithAttachment fFigureViewEdgeEndNameFigure;
+
+        private Polyline attachmentToEdgeNameFigure;
+
+        private Polyline attachmentToEdgeBeginNameFigure;
+
+        private Polyline attachmentToEdgeEndNameFigure;
 
         private CenteringStyle centeringStyle;
 
@@ -509,7 +520,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
          * @param element
          */
         private void createCenterLabelFigure(final EObject element) {
-            fFigureViewEdgeNameFigure = new SiriusWrapLabel();
+            attachmentToEdgeNameFigure = addNewAttachmentFigure();
+
+            fFigureViewEdgeNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.MIDDLE_LOCATION, attachmentToEdgeNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeNameFigure.setText(edge.getName());
@@ -521,13 +534,16 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             fFigureViewEdgeNameFigure.setTextWrap(true);
             fFigureViewEdgeNameFigure.setTextWrapAlignment(PositionConstants.CENTER);
             this.add(fFigureViewEdgeNameFigure);
+
         }
 
         /**
          * @param element
          */
         private void createBeginLabelFigure(final EObject element) {
-            fFigureViewEdgeBeginNameFigure = new SiriusWrapLabel();
+            attachmentToEdgeBeginNameFigure = addNewAttachmentFigure();
+
+            fFigureViewEdgeBeginNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.SOURCE_LOCATION, attachmentToEdgeBeginNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeBeginNameFigure.setText(edge.getBeginLabel());
@@ -539,13 +555,31 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             fFigureViewEdgeBeginNameFigure.setTextWrap(true);
             fFigureViewEdgeBeginNameFigure.setTextWrapAlignment(PositionConstants.CENTER);
             this.add(fFigureViewEdgeBeginNameFigure);
+
+        }
+
+        /**
+         * Create a new attachment figure, add it to the current figure and
+         * return it.
+         * 
+         * @return the new attachment figure.
+         */
+        private Polyline addNewAttachmentFigure() {
+            Polyline newAttachment = new Polyline();
+            newAttachment.setLineStyle(Graphics.LINE_DASHDOT);
+            newAttachment.setForegroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_SELECTION));
+            newAttachment.setVisible(false);
+            this.add(newAttachment);
+            return newAttachment;
         }
 
         /**
          * @param element
          */
         private void createEndLabelFigure(final EObject element) {
-            fFigureViewEdgeEndNameFigure = new SiriusWrapLabel();
+            attachmentToEdgeEndNameFigure = addNewAttachmentFigure();
+
+            fFigureViewEdgeEndNameFigure = new SiriusWrapLabelWithAttachment(LabelViewConstants.TARGET_LOCATION, attachmentToEdgeEndNameFigure);
             if (element instanceof DEdge) {
                 DEdge edge = (DEdge) element;
                 fFigureViewEdgeEndNameFigure.setText(edge.getEndLabel());
@@ -557,6 +591,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             fFigureViewEdgeEndNameFigure.setTextWrap(true);
             fFigureViewEdgeEndNameFigure.setTextWrapAlignment(PositionConstants.CENTER);
             this.add(fFigureViewEdgeEndNameFigure);
+
         }
 
         @SuppressWarnings("deprecation")
