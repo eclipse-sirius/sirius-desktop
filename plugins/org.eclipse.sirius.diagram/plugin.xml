@@ -752,6 +752,10 @@
            class="org.eclipse.sirius.diagram.business.internal.migration.VariableMigrationParticipant"
            kind="VSM">
      </participant>
+     <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.NoteAttachmentWithoutSourceOrTargetMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
   </extension>
   <extension
         point="org.eclipse.sirius.mmdescriptor">
