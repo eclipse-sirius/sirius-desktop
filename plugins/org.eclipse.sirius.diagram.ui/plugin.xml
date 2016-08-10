@@ -1007,7 +1007,7 @@
             commandId="org.eclipse.sirius.diagram.ui.resetOrigin"
             contextId="org.eclipse.sirius.diagram.ui.diagramContext"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+&amp;">
+            sequence="M1+HOME">
       </key>
    </extension>
 
