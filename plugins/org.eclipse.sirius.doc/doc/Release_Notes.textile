@@ -15,6 +15,7 @@ If a viewpoint  has been defined with a more recent version of Sirius than the o
 * <span class="label label-info">Modified</span> The "move edge group":./user/diagrams/Diagrams.html#move_edge_group feature now also work for a selection of edge group.
 * <span class="label label-info">Modified</span> In a diagram editor, the zoom with mouse wheel is now zooming on mouse location instead of center of the editor. See "user documentation":./user/diagrams/Diagrams.html#zooming_diagram_id .
 * <span class="label label-info">Modified</span> The direct edit on a Note or Text is now accessible by a slow double click like any other diagram element.
+* <span class="label label-info">Modified</span> The shortcut _Ctrl+&_, for "_Reset Origin_":./user/diagrams/Diagrams.html#reset_origin action, has been replaced by _Ctrl+HOME_.
 
 h3. Specifier-Visible Changes
 
