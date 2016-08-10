@@ -20,7 +20,7 @@
           <children xmi:type="notation:Node" xmi:id="_I8h1gItNEeSAQMqp0YrSLg" type="2002" element="_I64PsItNEeSAQMqp0YrSLg">
             <children xmi:type="notation:Node" xmi:id="_I8ickItNEeSAQMqp0YrSLg" type="5006"/>
             <children xmi:type="notation:Node" xmi:id="_I8ickYtNEeSAQMqp0YrSLg" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_JeprIItNEeSAQMqp0YrSLg" type="3009" element="//@ownedViews.0/@ownedRepresentations.0/@ownedDiagramElements.1/@ownedDiagramElements.0">
+              <children xmi:type="notation:Node" xmi:id="_JeprIItNEeSAQMqp0YrSLg" type="3009" element="_jJgG8F7UEeaCH6J8zQ_q6A">
                 <children xmi:type="notation:Node" xmi:id="_JeqSMItNEeSAQMqp0YrSLg" type="5004"/>
                 <children xmi:type="notation:Node" xmi:id="_Jeq5QItNEeSAQMqp0YrSLg" type="7003">
                   <children xmi:type="notation:Node" xmi:id="_KYbLwItNEeSAQMqp0YrSLg" type="3010" element="_KWfSEItNEeSAQMqp0YrSLg">
@@ -105,7 +105,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_I642xItNEeSAQMqp0YrSLg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeList" name="NewEClass3" tooltipText="newPackage1.NewEClass3">
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_jJgG8F7UEeaCH6J8zQ_q6A" name="NewEClass3" tooltipText="newPackage1.NewEClass3">
           <target xmi:type="ecore:EClass" href="ListElement.ecore#//newPackage1/NewEClass3"/>
           <semanticElements xmi:type="ecore:EClass" href="ListElement.ecore#//newPackage1/NewEClass3"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
